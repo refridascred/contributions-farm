@@ -36,27 +36,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] levels, long origin)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferRange(long[] items, long step)
         {
-            long score = 30;
-            foreach (long reading in levels)
+            bool found = true;
+            foreach (long cell in items)
             {
-                score = ((score * 3) + score) % 4096;
-                if ((score - origin) > (reading + origin))
+                if (cell > step)
                 {
-                    score = (score * 2) + origin;
-                }
-                else
-                {
-                    score = (score + reading) % 4096;
+                    found = false;
+                    break;
                 }
             }
-            if (score < 72)
-            {
-                score = (score << 2) ^ (score + 1);
-            }
-            return score % 1000;
+            return found;
         }
     }
 }
