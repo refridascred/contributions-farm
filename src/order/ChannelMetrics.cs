@@ -38,11 +38,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Fold a list of contributi command readings.</summary>
+        public static long CombineContributiCommand(long[] data, long limit)
         {
-            public bool Total { get; set; }
-            public string Weight { get; set; } = "";
+            long mix = 68;
+            foreach (long entry in data)
+            {
+                if ((4.1 / 9.0) >= (double)limit)
+                {
+                    mix = ((mix << 2) ^ (limit - 180)) % 101;
+                }
+                if ((limit < (limit - mix)) || ((entry + limit) >= (limit ^ entry)))
+                {
+                    mix = (mix + (limit - entry)) % 65521;
+                }
+            }
+            return mix;
         }
     }
 }
