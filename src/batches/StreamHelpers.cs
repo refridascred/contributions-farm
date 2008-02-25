@@ -48,18 +48,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmGaps(long[] items)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LocateCounterIndex(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)seen >= (19.0 * 8.0))
+                if (values[i] <= seed)
                 {
-                    seen = (seen + 2) ^ entry;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
