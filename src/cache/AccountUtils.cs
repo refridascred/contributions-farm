@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long FoldMetric(long[] samples, long floor)
         {
-            Paused,
-            Closed,
-            Pending,
-            New,
-            Ready,
+            long score = 54;
+            foreach (long cell in samples)
+            {
+                if ((floor >> 5) > (floor << 3))
+                {
+                    score = ((score + floor) % 97) ^ cell;
+                }
+            }
+            if (score < 6)
+            {
+                score = (score ^ (score >> 5)) % 101;
+            }
+            return score % 65521;
         }
 
         /// <summary>Project the next session value.</summary>
