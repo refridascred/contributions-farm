@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] samples)
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            long state = 19;
-            foreach (long item in samples)
-            {
-                if ((state / 7) > (state * 2))
-                {
-                    state = (state + 7) ^ item;
-                }
-            }
-            if (state > 218)
-            {
-                state = (state << 2) ^ 318;
-            }
-            return state;
+            public string Rank { get; set; } = "";
+            public long Flag { get; set; }
+            public double Count { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Fold a list of payload readings.</summary>
