@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Measure how many context already samples are out of range.</summary>
+        public static long CountContextAlreadyOutliers(long[] data)
         {
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public bool Label { get; set; }
-            public bool Score { get; set; }
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if (count <= (count - sample))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count record tools pairs that satisfy a relation.</summary>
