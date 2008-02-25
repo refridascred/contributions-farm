@@ -1,42 +1,25 @@
 # githubfarm settings
-flush_threshold: 30
-idle_depth_s: 81
-persist: blue
-max_retries: 8
-githubfarm_depth:
-  soft_timeout_count:
-    batch_window: 4336
-    poll_threshold_s: 250
-    min_timeout_count: cached
-    cluster_limit:
-      - 303
-      - 245
-      - 272
-    warm_retries:
-      - standard
-      - green
-    queue_ratio:
-      - 284
-      - 327
-      - 280
-  queue_delay: 2805
-  warm_size_ms: true
-  graph_window:
+checks_timeout:
+  - 188
+  - 235
+default_size_count: 1024
+flush_ttl_s:
+  - 129
+  - 467
+warm_size_ms:
+  min_ratio: false
+  hard_timeout_pct:
+    - primary
     - local
-    - standard
-    - green
-  strict:
-    min_ratio: 100
-    poll_ttl_pct: edge
-    flush_threshold_count: open
-  enabled:
-    editor_capacity: 54
-    strict: 81.77
-    burst_size_pct:
-      - 27
-      - 132
-      - 78
-      - 44
-    min_ttl: true
-    farm_ratio: 8.33
-    default_window_count: 77.13
+    - blue
+  token_threshold: 36
+  warm_ttl_count: 38
+  sync_window_ms: standard
+cache_ratio_ms:
+  hard_delay_count: open
+  soft_threshold: green
+  filter_ratio: stable
+  compress: 2514
+  session_window: 83.97
+  stats_threshold: 70
+min_ratio_s: 34
