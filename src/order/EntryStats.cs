@@ -67,17 +67,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LookupCacheIndex(long[] values, long bound)
+        /// <summary>Iterate the command buffer series from a seed.</summary>
+        public static long StepCommandBuffer(long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if ((values[i] <= bound) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                score = score + score;
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Describe the profile status values.</summary>
