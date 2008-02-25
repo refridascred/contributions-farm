@@ -1,7 +1,6 @@
 {
-  "cache_depth_ms": "stable",
-  "flush_capacity_ms": true,
-  "max_interval": 93,
-  "batch_capacity_s": 44.05,
-  "min_limit": 44
+  "batch_timeout_pct": "latest",
+  "poll_size_s": "staging",
+  "base_delay_ms": "edge",
+  "githubfarm_size": "latest"
 }
