@@ -23,11 +23,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string BaseRecord = "local-1";
-        public const long StepFactor = 98;
-        public const string DefaultDepth = "fallback-v2";
-        public const long IdleSize = 388;
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long SeriesRoute(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Hold a contributi options.</summary>
         public sealed class ContributiOptions
