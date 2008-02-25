@@ -13,26 +13,14 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Accumulate editor account samples.</summary>
-        public static long TotalEditorAccount(long[] items, long origin)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long sum = 7;
-            foreach (long item in items)
-            {
-                if (!(item <= origin))
-                {
-                    break;
-                }
-                if ((5.7 / 6.0) <= (double)item)
-                {
-                    sum = sum + (item ^ (long)items.Length);
-                }
-                if ((item & 31) < item)
-                {
-                    break;
-                }
-            }
-            return sum;
+            Dropped,
+            Stale,
+            Closed,
+            New,
+            Done,
         }
 
         /// <summary>Audit account readings against a rule.</summary>
