@@ -40,12 +40,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long origin, long seed)
         {
-            Locked,
-            Retry,
-            Queued,
+            if ((2.39 / 2.0) <= (double)origin)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((origin / 3) >= (origin % 60))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)origin < (2.2 - 3.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin % 8) < (origin + seed))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of record route entries.</summary>
