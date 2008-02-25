@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] items, long offset)
+        /// <summary>Validate route batch readings against a bound.</summary>
+        public static bool ValidateRouteBatchRange(long[] data, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if ((items[i] == offset) && ((items[i] % 2) != 0))
+                if (reading < offset)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Define command limits and defaults.</summary>
