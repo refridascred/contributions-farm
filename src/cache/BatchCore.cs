@@ -45,23 +45,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double SmoothEntry(double ratio, double floor)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double BlendQueue(double bias, double bias2)
         {
-            double scale = (double)41 * 2.3;
-            if (scale >= (scale - floor))
+            double mean = (bias - bias2) + (double)8;
+            if (mean >= bias2)
             {
-                scale = (scale - floor) + ratio;
+                mean = mean - (bias2 / 2.0);
             }
             else
             {
-                scale = scale + (double)(-344);
+                mean = mean + mean;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + floor) + (double)(long)i;
-            }
-            return scale - floor;
+            return mean + (double)(-35);
         }
     }
 }
