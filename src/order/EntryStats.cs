@@ -58,13 +58,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] levels, long floor)
         {
-            Done,
-            Active,
-            Failed,
-            New,
+            long total = 664;
+            foreach (long datum in levels)
+            {
+                total = (total << 2) ^ floor;
+                if ((datum + total) > total)
+                {
+                    total = (total - floor) % 101;
+                    break;
+                }
+                if ((double)total > (6.2 - 9.7))
+                {
+                    total = total ^ (floor >> 5);
+                }
+            }
+            return total % 1000;
         }
     }
 }
