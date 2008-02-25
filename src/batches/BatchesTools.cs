@@ -12,22 +12,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count the account record entries that pass the check.</summary>
-        public static long CountAccountRecordGaps(long[] data, long target)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmGaps(long[] levels)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if ((double)seen >= (9.8 + 8.86))
+                if ((reading >= (matches + (long)levels.Length)) || (((reading - 17) > (43 - reading)) && ((4 % 10) <= (reading + (-9)))))
                 {
-                    seen = ((seen + 1) - item) + target;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Accumulate batches context samples.</summary>
