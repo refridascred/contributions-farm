@@ -44,38 +44,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long bound, long limit)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionBounds(long[] samples, long seed)
         {
-            if (!((limit / 4) < bound))
+            bool valid = true;
+            foreach (long item in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((5.5 / 7.0) > (double)bound)
+                if (item >= seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((bound >> 4) < (limit / 3)) && ((16.0 - 10.0) != (double)limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)bound < 1.75)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
