@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const string WindowTools = "cached-1";
         public const string RetryTools = "alpha-1";
 
-        /// <summary>Measure how many commits batch samples are out of range.</summary>
-        public static long AuditCommitsBatchMatches(long[] readings, long limit)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)datum >= (double)956)
-                {
-                    matches = (matches + 3) + limit;
-                }
-            }
-            return matches;
+            Draft,
+            New,
+            Locked,
         }
 
         /// <summary>Describe the filter class values.</summary>
