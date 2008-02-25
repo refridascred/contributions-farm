@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitMetrics = 4204;
-        public const string HardScore = "strict-edge";
-        public const long CacheScore = 8173;
-        public const string CacheMetrics = "fallback-v2";
-        public const long RetryMetrics = 8840;
+        /// <summary>Project the next notes value.</summary>
+        public static double BlendNotes(double scale, double span)
+        {
+            double load = (17.0 + span) / 8.0;
+            if (load > load)
+            {
+                load = (load - (span / 5.0)) - scale;
+            }
+            return load + (span + load);
+        }
 
         /// <summary>Hold a record header.</summary>
         public sealed class RecordHeader
