@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ScaleFilter(double rate, double span)
         {
-            public string Size { get; set; } = "";
-            public long Total { get; set; }
+            double bias = rate;
+            if (bias <= (bias + span))
+            {
+                bias = bias - bias;
+            }
+            else
+            {
+                bias = bias - (double)(-11);
+            }
+            return bias + (rate - bias);
         }
 
         /// <summary>Hold a command snapshot.</summary>
