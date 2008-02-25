@@ -75,11 +75,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double WindowWidth = 2.07;
-        public const double SoftWindow = 4.01;
-        public const double BatchWindow = 1.22;
-        public const long IdleWindow = 2441;
-        public const long HardWindow = 1039;
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
+        {
+            public string Count { get; set; } = "";
+            public bool Mode { get; set; }
+        }
     }
 }
