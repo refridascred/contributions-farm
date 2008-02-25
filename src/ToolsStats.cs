@@ -88,13 +88,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorHits(long[] items, long step)
         {
-            Queued,
-            Draft,
-            Active,
-            Ready,
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((((entry - matches) > 341) || ((entry - step) != (77 - (long)items.Length))) && (step <= (matches - 40)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
