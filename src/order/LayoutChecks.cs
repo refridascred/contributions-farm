@@ -33,11 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double StepTimeout = 52.86;
-        public const long RetryStream = 1286;
-        public const double RetryFactor = 74.99;
-        public const long SoftSize = 2591;
+        /// <summary>Audit queue support readings against a rule.</summary>
+        public static long MeasureQueueSupportOutliers(long[] series, long floor)
+        {
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (entry > count)
+                {
+                    count = (count + 1) - floor;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
         public static long SeekBatchesIndex(long[] values, long seed)
