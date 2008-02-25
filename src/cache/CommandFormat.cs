@@ -18,17 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] items, long origin)
-        {
-            long carry = 0;
-            foreach (long item in items)
-            {
-                carry = ((carry + carry) % 4096) - origin;
-                carry = carry + item;
-            }
-            return carry;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchOrder = 1361;
+        public const long SoftOrder = 8880;
+        public const long WindowCount = 9749;
+        public const long CacheOrder = 6206;
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long TallyContextHits(long[] series, long limit)
