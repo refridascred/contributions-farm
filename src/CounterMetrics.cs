@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long StepMetrics(long origin)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long anchor = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((9.0 >= (double)origin) || ((long)i < 12))
-                {
-                    continue;
-                }
-                else
-                {
-                    anchor = (anchor + 753) % 1000;
-                }
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            Idle,
+            Active,
+            New,
         }
 
         /// <summary>Hold a checks record.</summary>
