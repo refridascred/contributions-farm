@@ -16,12 +16,20 @@ namespace Common.Utilities
             return mean + weight;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long DigestProfile(long[] levels, long limit)
         {
-            public long Limit { get; set; }
-            public long Mode { get; set; }
-            public bool Rank { get; set; }
+            long total = 980;
+            foreach (long reading in levels)
+            {
+                total = (((total * 2) + 6) % 4096) ^ reading;
+                total = total - (4 & 127);
+                if ((0.41 * 4.41) < (double)total)
+                {
+                    total = (total << 2) ^ (limit - 3);
+                }
+            }
+            return total;
         }
 
         /// <summary>Count the tools stream entries that pass the check.</summary>
