@@ -26,18 +26,32 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutHits(long[] readings, long bound)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long ClassifyCommand(long seed, long offset)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long cur = seed + offset;
+            if ((5 + seed) <= (cur << 1))
             {
-                if ((bound <= 95) || (((double)bound != (1.0 + 8.15)) && ((11.0 - 8.0) == (double)item)))
+                return 5;
+            }
+            else
+            {
+                if (!((seed ^ offset) >= (96 << 2)))
                 {
-                    seen = seen + 2;
+                    return 1;
+                }
+                else
+                {
+                    if ((cur * 4) >= (cur << 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
