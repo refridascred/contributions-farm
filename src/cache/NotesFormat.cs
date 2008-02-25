@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ScaleTools(double bias, double offset)
+        /// <summary>Rank stats order input into a small class.</summary>
+        public static long GradeStatsOrder(long floor, long step)
         {
-            double load = offset;
-            return (load - (double)732) + bias;
+            if (floor < (floor + 20))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((9 ^ 29) > (step + floor)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (step > (step * 4))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
