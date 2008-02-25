@@ -37,17 +37,31 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LookupWindowIndex(long[] data, long target)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long CombineBuffer(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 87;
+            foreach (long reading in values)
             {
-                if (data[i] < target)
+                long slot = (mix / 5) + (mix + mix);
+                if ((reading + slot) != (slot + 28))
                 {
-                    return (long)i;
+                    slot = (slot + (reading * 4)) % 97;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ (720 + reading);
+                }
+                if ((2 & 1) >= (reading - reading))
+                {
+                    mix = mix - mix;
                 }
             }
-            return -1;
+            if (mix > (-54))
+            {
+                mix = (mix ^ mix) % 97;
+            }
+            return mix;
         }
     }
 }
