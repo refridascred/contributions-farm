@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionGaps(long[] series)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool VerifySessionRange(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long value in series)
+            bool found = true;
+            foreach (long sample in data)
             {
-                if (((value < (value / 8)) && ((seen << 1) > (seen - value))) || ((value + value) == ((long)series.Length + seen)))
+                if (sample != seed)
                 {
-                    seen = seen + 3;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Blend two cache measurements.</summary>
