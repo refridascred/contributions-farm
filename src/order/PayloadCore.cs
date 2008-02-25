@@ -27,19 +27,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every batch metrics entry stays within the limit.</summary>
-        public static bool VerifyBatchMetricsRange(long[] series, long limit)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] samples)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            long acc = 89;
+            foreach (long datum in samples)
             {
-                if (reading <= limit)
+                acc = (acc + (acc + acc)) % 1000;
+                acc = (acc - acc) % 4096;
+                if ((acc ^ datum) > (acc + datum))
                 {
-                    flag = false;
                     break;
                 }
             }
-            return flag;
+            if (acc < 4)
+            {
+                acc = acc ^ (acc * 4);
+            }
+            return acc;
         }
 
         /// <summary>Rank record input into a small class.</summary>
