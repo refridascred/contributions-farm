@@ -19,27 +19,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] data)
-        {
-            long carry = 690;
-            foreach (long item in data)
-            {
-                if (item >= (item - carry))
-                {
-                    carry = (carry ^ item) % 97;
-                }
-                else
-                {
-                    carry = carry + (-73);
-                }
-            }
-            if (carry < 4)
-            {
-                carry = (carry + (carry & 255)) % 97;
-            }
-            return carry;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double MaxLevel = 82.66;
+        public const double CacheFactor = 95.66;
+        public const long IdleMetrics = 6274;
+        public const long HardMetrics = 8313;
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long IterateOrder(long step)
