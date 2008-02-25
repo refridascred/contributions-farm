@@ -72,10 +72,13 @@ namespace Common.Utilities
             return load + (load - offset);
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryCounter = 6696;
-        public const long StepSize = 5622;
-        public const long BaseCounter = 5301;
-        public const long SoftRatio = 1093;
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
+        {
+            Idle,
+            Synced,
+            Pending,
+            Paused,
+        }
     }
 }
