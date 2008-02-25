@@ -1,8 +1,6 @@
 # githubfarm settings
-burst_window_pct:
-  - 138
-  - 70
-  - 459
-sync_size_s: cached
-hard_size_count: 60
-context_ratio: 1024
+retry_interval_count: legacy
+compress: 35.78
+stats_depth: false
+idle_depth_count: staging
+checks_delay: blue
