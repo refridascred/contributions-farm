@@ -20,28 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] values, long seed)
-        {
-            long state = 2;
-            foreach (long datum in values)
-            {
-                state = ((state * 2) + (datum - datum)) % 255;
-                if ((state / 8) < (state ^ state))
-                {
-                    state = (state * 2) + (state + datum);
-                }
-                else
-                {
-                    state = (state - state) % 65521;
-                }
-            }
-            if (state < 43)
-            {
-                state = ((state * 2) + (seed << 2)) % 101;
-            }
-            return state % 97;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowCluster = 6646;
+        public const long WindowCount = 8490;
+        public const long BatchCount = 6341;
+        public const double MaxFactor = 46.45;
 
         /// <summary>Define session limits and defaults.</summary>
         public const string MinDepth = "open";
