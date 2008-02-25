@@ -64,22 +64,24 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] data)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long floor, long step)
         {
-            long total = 30;
-            foreach (long cell in data)
+            if ((floor << 3) < step)
             {
-                if ((total + cell) > (total - cell))
+                return 0;
+            }
+            else
+            {
+                if ((4.0 * 4.0) >= (double)step)
                 {
-                    total = total ^ (total & 1);
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            if (total > 8)
-            {
-                total = (total * 3) + (total - 333);
-            }
-            return total;
         }
     }
 }
