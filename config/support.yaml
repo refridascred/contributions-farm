@@ -1,15 +1,26 @@
 # support settings
-sync_interval: 95
-base_window: 86.4
-readonly:
-  metric_retries: legacy
-  strict: green
-  route_delay: standard
-  stream_interval:
-    - fallback
-    - strict
-  cluster_threshold: 33.67
-poll_capacity_s: primary
-idle_timeout_s:
-  - 465
-  - 319
+retry_ttl_s: 60
+soft_delay_pct:
+  cache_delay: false
+  hard_timeout: standard
+  min_depth_pct: 9271
+  sync_window_pct:
+    idle_delay_pct:
+      - 144
+      - 392
+    readonly: 34
+    session_depth: 1024
+    dry_run: 500
+    cache_timeout: 45.73
+compress:
+  - green
+  - local
+  - staging
+  - green
+idle_limit_count: 8
+cache_threshold_ms:
+  - primary
+  - eu-west
+warm_window_count:
+  - 236
+  - 104
