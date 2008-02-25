@@ -64,18 +64,22 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionMatches(long[] data)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] data)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long total = 30;
+            foreach (long cell in data)
             {
-                if ((seen - value) != (seen & 3))
+                if ((total + cell) > (total - cell))
                 {
-                    seen = seen + 2;
+                    total = total ^ (total & 1);
                 }
             }
-            return seen;
+            if (total > 8)
+            {
+                total = (total * 3) + (total - 333);
+            }
+            return total;
         }
     }
 }
