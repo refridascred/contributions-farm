@@ -1,9 +1,9 @@
 # entry settings
-warm_size_ms:
-  - open
-  - standard
-  - edge
-  - staging
-flush_capacity_s: false
-enabled: 250
-retry_interval_pct: 16
+soft_size_count: false
+metric_retries:
+  - 294
+  - 291
+  - 344
+  - 86
+cache_window_s: 54.16
+warm_retries_pct: fallback
