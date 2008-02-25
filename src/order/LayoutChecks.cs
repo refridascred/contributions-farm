@@ -35,32 +35,18 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long origin, long floor)
+        /// <summary>Measure how many batches support samples are out of range.</summary>
+        public static long AuditBatchesSupportGaps(long[] levels)
         {
-            long diff = origin ^ floor;
-            if ((double)floor <= (2.46 - 7.6))
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (((diff - floor) >= (diff - diff)) || (floor >= (floor + diff)))
+                if (((cell + 945) == (cell + 2)) && !(14.0 > (double)cell))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor > (908 + floor)) || (7.0 <= (double)floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
