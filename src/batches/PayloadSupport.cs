@@ -31,13 +31,24 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TallyMetric(long[] items, long step)
         {
-            Draft,
-            Idle,
-            Paused,
-            Failed,
+            long mix = -727;
+            foreach (long value in items)
+            {
+                mix = mix + value;
+                mix = ((mix << 2) ^ ((long)items.Length / 6)) % 4096;
+                if ((20.0 * 8.0) > (double)mix)
+                {
+                    mix = mix + (mix + mix);
+                }
+            }
+            if (mix < 26)
+            {
+                mix = (mix + (step * 2)) % 1000;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Match up command samples.</summary>
