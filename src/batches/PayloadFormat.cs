@@ -27,21 +27,12 @@ namespace Common.Utilities
         public const double RetryCommand = 16.75;
         public const long BaseCommand = 3519;
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long MatchPayloadCount(long[] readings)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Owner { get; set; }
+            public bool Ratio { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
