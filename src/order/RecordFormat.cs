@@ -62,31 +62,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long GradeEditor(long target, long origin)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            if ((target >> 1) > origin)
-            {
-                return 1;
-            }
-            else
-            {
-                if (12.0 > (16.0 + 8.9))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin / 9) != (17 / 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public bool Score { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
