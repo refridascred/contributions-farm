@@ -55,18 +55,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Count the commits githubfarm entries that pass the check.</summary>
-        public static long MeasureCommitsGithubfarmHits(long[] data)
+        /// <summary>Project the next route value.</summary>
+        public static double ProjectRoute(double gain, double bias)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            double load = 8.01;
+            for (int i = 0; i < 5; i++)
             {
-                if ((reading >> 4) != (tally % 100))
-                {
-                    tally = tally + 1;
-                }
+                load = (((load + (double)6) + (double)(long)i) + gain) + bias;
             }
-            return tally;
+            return load - load;
         }
     }
 }
