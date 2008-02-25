@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheGaps(long[] items, long bound)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsLimits(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long reading in items)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                if ((91 < (count - reading)) || !(bound < (reading + bound)))
+                if (sample > step)
                 {
-                    count = count + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Hold a profile info.</summary>
