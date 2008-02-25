@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long WeighEditor(long[] series, long target)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long mark = 8;
-            foreach (long item in series)
-            {
-                if ((mark % 100) >= (target - item))
-                {
-                    mark = (mark ^ (target & 1)) % 97;
-                }
-                else
-                {
-                    mark = (mark * 3) + (mark + item);
-                }
-            }
-            return mark;
+            public double Owner { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Locate a command reading by value.</summary>
