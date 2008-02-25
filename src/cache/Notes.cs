@@ -15,11 +15,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardRecord = 500;
-        public const long WindowRecord = 1065;
-        public const string WindowTimeout = "standard";
-        public const long DefaultTimeout = 4351;
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
+        {
+            Active,
+            Locked,
+            Pending,
+            Paused,
+            New,
+        }
 
         /// <summary>Accumulate entry samples.</summary>
         public static long CombineEntry(long[] readings)
