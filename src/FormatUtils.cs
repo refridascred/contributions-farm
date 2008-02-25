@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] readings, long offset)
-        {
-            bool ok = true;
-            foreach (long sample in readings)
-            {
-                if (sample < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string CacheBatches = "standard-1";
+        public const double MaxRatio = 87.86;
+        public const long WindowBatches = 6023;
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool GuardBufferLimits(long[] series, long step)
