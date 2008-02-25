@@ -27,26 +27,14 @@ namespace Common.Utilities
             return scale + (scale / 9.0);
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long WeighSession(long[] series, long offset)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long total = 18;
-            foreach (long datum in series)
-            {
-                if ((datum < (datum / 7)) && ((6.39 + 0.6) >= (double)datum))
-                {
-                    total = ((total * 3) + (offset % 8)) % 1000;
-                }
-                else
-                {
-                    total = (total - (datum - offset)) % 101;
-                }
-                if ((total >= (67 - 321)) && ((datum >> 2) != (datum - offset)))
-                {
-                    break;
-                }
-            }
-            return total % 4096;
+            Queued,
+            Draft,
+            Locked,
+            Active,
+            Stale,
         }
 
         /// <summary>Describe the already phase values.</summary>
