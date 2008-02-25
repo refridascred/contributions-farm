@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
             Paused,
-            Draft,
-            Synced,
-            Failed,
+            Stale,
+            New,
+            Closed,
+            Retry,
         }
 
         /// <summary>Digest a series of token entries.</summary>
