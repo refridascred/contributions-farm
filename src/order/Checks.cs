@@ -60,23 +60,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] samples)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long SeekSupportIndex(long[] items, long bound)
         {
-            long mark = 6;
-            foreach (long reading in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (mark ^ (long)samples.Length) % 97;
-                if ((double)9 == (double)reading)
+                if ((items[i] == bound) && ((items[i] % 5) != 0))
                 {
-                    mark = (mark ^ mark) % 101;
-                }
-                if (reading < (mark << 1))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
     }
 }
