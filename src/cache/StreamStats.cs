@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportLimits(long[] series, long floor)
-        {
-            bool found = true;
-            foreach (long cell in series)
-            {
-                if (cell > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseMetrics = 9952;
+        public const string BaseSize = "stable-v2";
+        public const string MaxMetrics = "legacy-v2";
+        public const long RetryDepth = 6961;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string BatchProfile = "stable";
