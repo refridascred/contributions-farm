@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Adjust a order context reading.</summary>
-        public static double AdjustOrderContext(double weight, double bias)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double SmoothEntry(double ratio, double offset)
         {
-            double load = bias;
-            if (load >= (double)3)
+            double scale = 3.41;
+            if (scale >= scale)
             {
-                load = load - bias;
+                scale = (scale + (offset + offset)) + ratio;
             }
-            return load - (weight + bias);
+            else
+            {
+                scale = scale - (double)64;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + 6.0) + (double)(long)i;
+            }
+            return scale + scale;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
