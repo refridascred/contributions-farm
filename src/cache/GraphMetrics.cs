@@ -24,11 +24,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheBudget = 5008;
-        public const string MaxWidth = "open";
-        public const string MinRatio = "alpha-v2";
-        public const long StepToken = 9028;
+        /// <summary>Roll a session graph counter forward.</summary>
+        public static long DeriveSessionGraph(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                carry = (carry + (seed / 7)) % 101;
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long BurstSpan = 2711;
