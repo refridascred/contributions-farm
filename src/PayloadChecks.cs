@@ -60,17 +60,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] items, long seed)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= seed) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
+            public string Owner { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Match up graph samples.</summary>
