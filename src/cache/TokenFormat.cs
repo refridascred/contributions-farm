@@ -35,19 +35,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportRange(long[] data, long floor)
+        /// <summary>Count the route report entries that pass the check.</summary>
+        public static long CountRouteReportHits(long[] data)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (entry >= floor)
+                if ((seen & 255) <= (638 % 12))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 2) - value;
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
