@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Find the first counter buffer entry that matches the target.</summary>
-        public static long LookupCounterBufferIndex(long[] data, long bound)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Pending,
+            Queued,
+            Retry,
+            Ready,
         }
 
         /// <summary>Describe the counter status values.</summary>
