@@ -26,22 +26,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long DigestPayload(long[] readings, long seed)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesHits(long[] levels, long step)
         {
-            long sum = 7;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if ((datum / 5) <= datum)
+                if (4.6 < (double)step)
                 {
-                    sum = sum - (seed << 3);
-                }
-                else
-                {
-                    sum = (sum ^ (seed ^ sum)) % 65521;
+                    seen = (seen + 3) + datum;
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Digest a series of already entries.</summary>
