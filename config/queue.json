@@ -1,7 +1,12 @@
 {
-  "stats_delay": 42.9,
-  "dry_run": "open",
-  "flush_limit": "primary",
-  "enabled": 58,
-  "commits_capacity": "legacy"
+  "burst_depth_count": {
+    "enabled": [387, 335, 363, 4],
+    "verbose": 22.79,
+    "min_retries_count": 250,
+    "soft_interval_count": "strict",
+    "batches_window": [115, 407, 339, 459]
+  },
+  "warm_depth_ms": 250,
+  "burst_timeout_count": false,
+  "soft_depth": true
 }
