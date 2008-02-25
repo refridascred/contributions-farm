@@ -38,17 +38,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] values, long seed)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long GradeProfile(long bound, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long offset = bound - target;
+            if (offset >= (bound << 1))
             {
-                if (values[i] > seed)
+                return 6;
+            }
+            else
+            {
+                if ((8 * 3) < offset)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
     }
 }
