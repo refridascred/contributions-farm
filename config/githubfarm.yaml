@@ -1,5 +1,9 @@
 # githubfarm settings
-default_timeout_count: strict
-warm_ttl_ms: 18
-burst_window_pct: 12.29
-warm_ttl_count: 2672
+burst_ratio_s:
+  - 287
+  - 42
+  - 158
+  - 247
+batch_threshold: 30
+poll_depth: green
+max_depth_ms: 10
