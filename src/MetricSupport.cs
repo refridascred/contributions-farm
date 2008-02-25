@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            Retry,
-            Idle,
-            Stale,
+            New,
             Closed,
+            Done,
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
