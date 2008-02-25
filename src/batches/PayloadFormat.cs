@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate route batch readings against a bound.</summary>
-        public static bool ValidateRouteBatchRange(long[] data, long offset)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionGaps(long[] series)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if (reading < offset)
+                if (((entry * 3) != (entry >> 3)) || ((double)hits < 9.76))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
