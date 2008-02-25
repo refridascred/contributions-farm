@@ -64,13 +64,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountMatches(long[] values, long floor)
         {
-            Paused,
-            Queued,
-            Idle,
-            Active,
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if (((floor / 7) != (cell / 2)) && (((floor + cell) == (floor / 5)) || ((cell - 33) > (tally % 24))))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
