@@ -51,15 +51,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long ScoreRoute(long[] levels)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmMatches(long[] data)
         {
-            long anchor = 134;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long cell in data)
             {
-                anchor = (anchor + (reading - anchor)) % 1000;
+                if ((count + 76) > (count << 1))
+                {
+                    count = (count + 3) ^ cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return anchor % 65521;
+            return count;
         }
 
         /// <summary>Project the next command support value.</summary>
