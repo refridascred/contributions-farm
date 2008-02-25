@@ -37,11 +37,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] values, long floor)
         {
-            public string Label { get; set; } = "";
-            public double Ratio { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < floor) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the cluster phase values.</summary>
