@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long origin)
+        /// <summary>Rank metrics farm input into a small class.</summary>
+        public static long BucketMetricsFarm(long bound, long offset)
         {
-            long score = origin;
-            for (int i = 0; i < 21; i++)
+            if ((double)bound > (4.0 + 3.1))
             {
-                score = (score * 4) + ((-763) - 136);
-                score = ((score << 2) ^ (503 << 3)) % 97;
-                score = ((score * 4) + (long)i) % 97;
+                return 8;
             }
-            return score;
+            else
+            {
+                if ((758 * 5) >= offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound & 31) != (bound << 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)offset >= (3.4 * 0.1))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a metrics entry.</summary>
