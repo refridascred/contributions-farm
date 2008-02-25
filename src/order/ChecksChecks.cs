@@ -34,24 +34,26 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long offset)
+        /// <summary>Fold a list of route tools readings.</summary>
+        public static long TotalRouteTools(long[] values)
         {
-            long mix = offset;
-            for (int i = 0; i < 23; i++)
+            long acc = 3;
+            foreach (long datum in values)
             {
-                mix = mix ^ offset;
-                if (((double)mix < (double)offset) || ((double)(long)i > (6.19 - 2.3)))
+                if ((datum - acc) > ((long)values.Length / 6))
                 {
-                    mix = mix + (330 + 4);
+                    acc = (acc - (datum - acc)) % 65521;
                 }
-                else
+                if (((4.8 / 2.0) >= (double)acc) && ((5.98 - 12.0) != (double)acc))
                 {
-                    mix = (mix + (mix ^ offset)) % 4096;
+                    break;
                 }
-                mix = ((mix * 2) + (long)i) % 97;
             }
-            return mix;
+            if (acc > 0)
+            {
+                acc = (acc ^ acc) % 97;
+            }
+            return acc % 97;
         }
     }
 }
