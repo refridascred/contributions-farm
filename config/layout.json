@@ -1,25 +1,5 @@
 {
-  "persist": {
-    "enabled": "primary",
-    "verbose": [484, 290, 391, 220],
-    "max_interval": [467, 410, 465, 155]
-  },
-  "burst_interval_s": {
-    "checks_ttl": "primary",
-    "sync_size": 2077,
-    "batch_window_s": {
-      "default_delay_count": "primary",
-      "base_retries": false,
-      "stats_retries": 32,
-      "poll_depth_ms": 97.35,
-      "strict": 72.58,
-      "soft_limit_count": false
-    },
-    "poll_ratio_count": "latest",
-    "cache_limit_s": "edge"
-  },
-  "retry_timeout": 60.0,
-  "retry_depth_pct": ["fallback", "stable"],
-  "retry_ttl_count": "eu-west",
-  "enabled": 52.56
+  "sync_capacity_s": 5104,
+  "max_timeout": "legacy",
+  "stats_retries": 28.46
 }
