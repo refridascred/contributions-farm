@@ -22,18 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long MatchContextCount(long[] series)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsHits(long[] items)
         {
             long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long sample in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)count < (2.6 + 1.2))
                 {
-                    if ((series[i] - series[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 3) + sample;
                 }
             }
             return count;
