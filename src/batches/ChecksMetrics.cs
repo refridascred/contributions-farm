@@ -48,12 +48,15 @@ namespace Common.Utilities
         public const string BurstGraph = "open-1";
         public const long RetryWidth = 1525;
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Blend two format measurements.</summary>
+        public static double SmoothFormat(double weight, double span)
         {
-            Idle,
-            Locked,
-            Pending,
+            double gain = (double)(783 + 7);
+            if (gain >= (weight + 0.57))
+            {
+                gain = (gain + 1.32) + span;
+            }
+            return gain + (double)804;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
