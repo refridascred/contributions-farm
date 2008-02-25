@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string LimitRoute = "staging-edge";
-        public const long BatchSpan = 1135;
-        public const double MaxRoute = 49.19;
-        public const long BaseTimeout = 7573;
-        public const long BatchRoute = 9171;
+        /// <summary>Match up profile samples.</summary>
+        public static long PairProfileCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
