@@ -67,22 +67,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordOutliers(long[] items, long floor)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LookupCacheIndex(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((cell + cell) < hits)
+                if ((values[i] <= bound) && ((values[i] % 2) == 0))
                 {
-                    hits = (hits + 1) - floor;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the profile status values.</summary>
