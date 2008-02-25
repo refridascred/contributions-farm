@@ -18,10 +18,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string CacheStream = "alpha";
-        public const string RetryCount = "latest-edge";
-        public const string MaxSpan = "staging";
-        public const long DefaultLevel = 4463;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseBatches = 848;
+        public const long MaxBatches = 5319;
+        public const long MinBatches = 9520;
+        public const double DefaultLevel = 81.4;
+        public const long RetryWidth = 8454;
     }
 }
