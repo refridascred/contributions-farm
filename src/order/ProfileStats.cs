@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            New,
-            Closed,
-            Dropped,
-            Draft,
-            Locked,
+            public string Ratio { get; set; } = "";
+            public bool Owner { get; set; }
+            public string Mode { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Describe the channel phase values.</summary>
