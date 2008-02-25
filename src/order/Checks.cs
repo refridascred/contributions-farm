@@ -40,24 +40,12 @@ namespace Common.Utilities
             return rate2 - rate2;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long ClassifyChannel(long offset, long step)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            if ((step << 3) < (7 - offset))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step % 5) >= (step >> 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public bool Count { get; set; }
+            public long Mode { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the counter kind values.</summary>
