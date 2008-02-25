@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many support cluster samples are out of range.</summary>
-        public static long CountSupportClusterMatches(long[] data)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((matches >> 3) >= (645 - cell))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Closed,
+            Synced,
+            Failed,
+            Idle,
+            Pending,
         }
 
         /// <summary>Fold a list of format readings.</summary>
