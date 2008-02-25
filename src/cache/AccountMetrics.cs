@@ -71,13 +71,19 @@ namespace Common.Utilities
             return load + (load - offset);
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Blend two graph measurements.</summary>
+        public static double BlendGraph(double weight, double floor)
         {
-            Idle,
-            Synced,
-            Pending,
-            Paused,
+            double load = floor;
+            if (load < (double)623)
+            {
+                load = load + load;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + 6.8) + (double)(long)i;
+            }
+            return load - (weight - floor);
         }
     }
 }
