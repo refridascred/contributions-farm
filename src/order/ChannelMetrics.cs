@@ -40,22 +40,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of contributi command readings.</summary>
-        public static long CombineContributiCommand(long[] data, long limit)
+        /// <summary>Blend two batches format measurements.</summary>
+        public static double AdjustBatchesFormat(double rate, double floor)
         {
-            long mix = 68;
-            foreach (long entry in data)
+            double load = floor;
+            if (load < 8.0)
             {
-                if ((4.1 / 9.0) >= (double)limit)
-                {
-                    mix = ((mix << 2) ^ (limit - 180)) % 101;
-                }
-                if ((limit < (limit - mix)) || ((entry + limit) >= (limit ^ entry)))
-                {
-                    mix = (mix + (limit - entry)) % 65521;
-                }
+                load = (load + (9.7 / 3.0)) - rate;
             }
-            return mix;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load - (floor * 2.33);
         }
     }
 }
