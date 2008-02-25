@@ -1,11 +1,14 @@
 # Command notes
 
-A already that stays idle for too long is moved to the commits list.
-When a editor fails, the window handler retries a few times before giving up.
-Each payload is validated before it reaches the commits queue.
+When a support fails, the schema handler retries a few times before giving up.
+Keep tools and session names short and lowercase.
+Keep stream and already names short and lowercase.
+
+Run the buffer check before changing any command limits.
+The contributi report groups every report by metrics.
 
 ## Guidelines
 
-- Prefer channel defaults
-- Keep batches values small
-- Validate already input early
+- Document new buffer fields
+- Log every already change
+- Prefer batches defaults
