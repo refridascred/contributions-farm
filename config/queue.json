@@ -1,5 +1,23 @@
 {
-  "audit": [124, 383, 267],
-  "soft_delay": "strict",
-  "support_ratio": true
+  "sync_size_pct": {
+    "warm_threshold": {
+      "audit": "open",
+      "warm_size": "fallback",
+      "entry_window": false
+    },
+    "verbose": 37,
+    "cache_retries": ["local", "eu-west"],
+    "record_retries": 57.22,
+    "default_interval_ms": "eu-west",
+    "sync_threshold_s": {
+      "contributi_depth": "latest",
+      "entry_retries": "local",
+      "compress": "green",
+      "schema_depth": 64.26,
+      "base_delay_count": 88.3,
+      "soft_limit_s": false
+    }
+  },
+  "retry_capacity_pct": true,
+  "retry_retries_pct": 500
 }
