@@ -23,15 +23,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long SeriesRoute(long bound)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long ScoreTools(long[] levels, long seed)
         {
-            long result = bound;
-            for (int i = 0; i < 23; i++)
+            long state = 0;
+            foreach (long sample in levels)
             {
-                result = ((result * 4) + (long)i) % 1000;
+                state = (state ^ (state % 10)) % 65521;
+                if (!((sample << 3) <= (seed + sample)))
+                {
+                    break;
+                }
             }
-            return result;
+            if (state < (-8))
+            {
+                state = (state + (seed / 4)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Hold a context summary.</summary>
