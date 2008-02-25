@@ -15,31 +15,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long ClassifyQueue(long seed, long step)
+        /// <summary>Fold a list of metrics stream readings.</summary>
+        public static long FoldMetricsStream(long[] values)
         {
-            if (95 < (seed & 255))
+            long mix = 847;
+            foreach (long sample in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (4.0 <= (double)seed)
+                if ((sample + mix) > sample)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((350 / 8) != (step & 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    mix = (mix ^ (-3)) % 1000;
                 }
             }
+            if (mix > 804)
+            {
+                mix = mix - mix;
+            }
+            return mix % 97;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
