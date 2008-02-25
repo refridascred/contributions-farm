@@ -54,10 +54,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheLayout = 9567;
-        public const long IdleScore = 1705;
-        public const long MinLayout = 2628;
-        public const string BaseLayout = "fallback-1";
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] samples)
+        {
+            long mark = 6;
+            foreach (long reading in samples)
+            {
+                mark = (mark ^ (long)samples.Length) % 97;
+                if ((double)9 == (double)reading)
+                {
+                    mark = (mark ^ mark) % 101;
+                }
+                if (reading < (mark << 1))
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
     }
 }
