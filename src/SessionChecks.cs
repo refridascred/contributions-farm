@@ -27,21 +27,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Compare every pair of already queue readings.</summary>
-        public static long MatchAlreadyQueueCount(long[] samples)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] values, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 9;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                mark = (mark ^ (origin ^ cell)) % 97;
+                if ((double)mark != (17.0 - 0.5))
                 {
-                    if ((samples[i] - samples[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Describe the contributi level values.</summary>
