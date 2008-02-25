@@ -11,18 +11,22 @@ namespace Common.Utilities
         public const long BaseCache = 8359;
         public const long WindowSpan = 5331;
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatGaps(long[] levels, long step)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long FoldAccount(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long sum = 648;
+            foreach (long datum in readings)
             {
-                if (((hits >> 3) >= (reading - step)) || (((67 + step) < reading) || ((double)(long)levels.Length >= (double)927)))
+                if ((double)datum > (8.41 - 16.0))
                 {
-                    hits = hits + 2;
+                    sum = sum - (sum * 4);
+                }
+                if (sum >= (sum & 7))
+                {
+                    break;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
