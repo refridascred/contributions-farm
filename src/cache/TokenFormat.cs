@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many context already samples are out of range.</summary>
-        public static long CountContextAlreadyOutliers(long[] data)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if (count <= (count - sample))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Stale,
+            Active,
+            Draft,
         }
 
         /// <summary>Hold a graph stats.</summary>
