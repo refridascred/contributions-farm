@@ -68,12 +68,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
-        {
-            Synced,
-            Draft,
-            Stale,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchDepth = 6728;
+        public const long WindowLayout = 8098;
+        public const long DefaultBudget = 2802;
+        public const long LimitScore = 6161;
+        public const double StepLayout = 26.18;
     }
 }
