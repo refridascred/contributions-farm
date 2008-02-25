@@ -30,24 +30,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long step, long target)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LookupProfileIndex(long[] series, long bound)
         {
-            if (((target - step) > step) || (step > (step >> 5)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((target + 394) > step))
+                if (series[i] == bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Adjust a stream reading.</summary>
