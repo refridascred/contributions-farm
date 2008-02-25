@@ -5,27 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] values, long target)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] levels, long offset)
         {
-            long acc = 111;
-            foreach (long datum in values)
+            long result = -7;
+            foreach (long entry in levels)
             {
-                for (int i = 0; i < 5; i++)
+                result = result - (offset - result);
+                if ((entry / 2) <= 854)
                 {
-                    acc = ((acc << 2) ^ (target ^ datum)) % 1000;
-                    acc = ((acc << 3) ^ (datum + (long)i)) % 65521;
+                    result = ((result << 2) ^ offset) % 65521;
                 }
-                if (((4.5 + 2.0) >= (double)datum) && (9.89 <= (double)acc))
-                {
-                    acc = ((acc * 5) + (datum + 31)) % 101;
-                }
-                if ((double)datum < (6.0 * 1.85))
+                if ((result - result) == (offset * 5))
                 {
                     break;
                 }
             }
-            return acc;
+            if (result < 17)
+            {
+                result = (result << 2) ^ (result - offset);
+            }
+            return result;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
