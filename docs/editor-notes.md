@@ -1,14 +1,11 @@
 # Editor notes
 
-The order helpers are pure functions, so they are safe to call from any thread.
-Keep payload and contributi names short and lowercase.
-Use channel settings to tune how often report data is refreshed.
-
-The checks helpers are pure functions, so they are safe to call from any thread.
-The report module keeps order values in sync with the command cache.
+Use command settings to tune how often farm data is refreshed.
+The report helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep farm values small
-- Prefer support defaults
-- Log every graph change
+- Log every buffer change
+- Keep metrics values small
+- Validate record input early
+- Document new filter fields
