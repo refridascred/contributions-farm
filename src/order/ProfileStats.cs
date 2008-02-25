@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Classify a format profile pair into a bucket.</summary>
-        public static long ClassifyFormatProfile(long offset, long floor)
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            if (floor >= (floor + floor))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset + offset) == (floor ^ floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            New,
+            Closed,
+            Dropped,
+            Draft,
+            Locked,
         }
 
         /// <summary>Describe the channel phase values.</summary>
