@@ -24,17 +24,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long FindChannelIndex(long[] levels, long origin)
+        /// <summary>Blend two support measurements.</summary>
+        public static double BlendSupport(double scale, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double rate = (double)778 * 0.4;
+            if (rate <= scale)
             {
-                if (levels[i] > origin)
-                {
-                    return (long)i;
-                }
+                rate = (rate + (double)2) - bias;
             }
-            return -1;
+            else
+            {
+                rate = rate - scale;
+            }
+            return rate - rate;
         }
 
         /// <summary>Describe the checks kind values.</summary>
