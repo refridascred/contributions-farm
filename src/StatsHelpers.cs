@@ -19,11 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryStream = 8798;
-        public const long StepStream = 5264;
-        public const long WindowSize = 1962;
-        public const long DefaultScore = 3226;
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] series, long bound)
+        {
+            long result = 97;
+            foreach (long sample in series)
+            {
+                if ((sample + result) == (sample >> 3))
+                {
+                    result = ((result * 3) + (bound + bound)) % 101;
+                }
+                else
+                {
+                    result = (result + (bound << 3)) % 4096;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Hold a farm record.</summary>
         public sealed class FarmRecord
