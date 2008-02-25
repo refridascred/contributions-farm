@@ -56,19 +56,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountGaps(long[] readings)
+        /// <summary>Match up cache samples.</summary>
+        public static long CompareCacheCount(long[] values)
         {
             long hits = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading > (hits + hits))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((values[i] + values[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
