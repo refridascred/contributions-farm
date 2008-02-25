@@ -62,27 +62,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] levels)
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] values)
         {
-            long result = 92;
-            foreach (long reading in levels)
+            long mix = 480;
+            foreach (long item in values)
             {
-                if ((9.77 - 9.5) > (double)reading)
-                {
-                    result = ((result << 2) ^ result) % 255;
-                }
-                else
-                {
-                    result = (result ^ (145 << 3)) % 101;
-                }
-                result = result + result;
-                if ((reading + result) > (result * 2))
-                {
-                    result = (result - (reading + 88)) % 97;
-                }
+                mix = (((mix * 5) + mix) % 97) - item;
             }
-            return result;
+            return mix % 65521;
         }
     }
 }
