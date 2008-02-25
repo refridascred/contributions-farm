@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LookupProfileIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double CacheSchema = 68.31;
+        public const double LimitTimeout = 34.52;
+        public const long HardSchema = 608;
+        public const long HardDepth = 4624;
 
         /// <summary>Combine editor values into a single score.</summary>
         public static long DigestEditor(long[] samples, long target)
