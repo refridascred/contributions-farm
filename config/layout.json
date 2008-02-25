@@ -1,6 +1,5 @@
 {
-  "farm_ttl": "stable",
-  "buffer_interval": 39.31,
-  "format_window": 1345,
-  "readonly": 60
+  "verbose": 99,
+  "payload_ttl": ["cached", "legacy", "legacy", "open"],
+  "base_interval_s": "blue"
 }
