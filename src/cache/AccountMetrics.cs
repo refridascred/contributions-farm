@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of metrics stream readings.</summary>
-        public static long FoldMetricsStream(long[] values)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long mix = 847;
-            foreach (long sample in values)
-            {
-                if ((sample + mix) > sample)
-                {
-                    mix = (mix ^ (-3)) % 1000;
-                }
-            }
-            if (mix > 804)
-            {
-                mix = mix - mix;
-            }
-            return mix % 97;
+            public string Offset { get; set; } = "";
+            public long Mode { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
