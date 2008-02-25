@@ -44,11 +44,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ScaleChannel(double ratio, double offset)
         {
-            public string Stamp { get; set; } = "";
-            public string Offset { get; set; } = "";
+            double scale = offset - ratio;
+            if (scale > (scale + ratio))
+            {
+                scale = scale + scale;
+            }
+            else
+            {
+                scale = scale + 2.0;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale - (2.9 / 7.0)) - (double)(long)i;
+            }
+            return scale - (double)4;
         }
     }
 }
