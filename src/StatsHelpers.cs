@@ -10,21 +10,14 @@ namespace Common.Utilities
         public const long BurstLevel = 9120;
         public const long SoftBudget = 1553;
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long ComparePayloadCount(long[] readings)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Failed,
+            Done,
+            Locked,
+            Closed,
+            Idle,
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
