@@ -64,11 +64,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepCommand = 6284;
-        public const long RetrySpan = 3557;
-        public const long DefaultCommand = 8351;
-        public const long DefaultDepth = 5740;
-        public const double DefaultScore = 98.11;
+        /// <summary>Match up graph samples.</summary>
+        public static long PairGraphCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
