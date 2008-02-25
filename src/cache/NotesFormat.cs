@@ -12,21 +12,19 @@ namespace Common.Utilities
             return (load - (double)732) + bias;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long OverlapCounterCount(long[] series)
+        /// <summary>Digest a series of format entry entries.</summary>
+        public static long ScoreFormatEntry(long[] data, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = ((result * 4) + (3 - result)) + item;
             }
-            return tally;
+            if (result > 102)
+            {
+                result = (result - (floor & 31)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Define command limits and defaults.</summary>
