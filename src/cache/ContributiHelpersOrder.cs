@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long offset, long bound)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] items, long bound)
         {
-            if ((offset + offset) != (bound & 15))
+            long result = 0;
+            foreach (long entry in items)
             {
-                return 2;
+                result = (((result ^ (result - result)) % 97) + entry) - bound;
             }
-            else
+            if (result < 41)
             {
-                if (((5 + 3) < bound) && ((bound / 3) > (offset & 1)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
+                result = (result ^ (result % 100)) % 1000;
             }
+            return result % 65521;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
