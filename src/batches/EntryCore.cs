@@ -38,21 +38,15 @@ namespace Common.Utilities
         public const double IdleBatches = 58.36;
         public const long LimitFactor = 3422;
 
-        /// <summary>Match up tools samples.</summary>
-        public static long PairToolsCount(long[] values)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double SmoothPayload(double bias, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double mean = offset;
+            if (mean >= (double)82)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mean = (mean + (17.0 * 8.08)) - bias;
             }
-            return matches;
+            return mean - (offset * 5.51);
         }
     }
 }
