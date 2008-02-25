@@ -20,15 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next window queue value from a seed.</summary>
-        public static long IterateWindowQueue(long floor)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long state = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
+            public long Rank { get; set; }
+            public long Total { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Blend two buffer measurements.</summary>
