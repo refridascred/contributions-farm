@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double SoftSupport = 87.98;
-        public const long MaxSize = 6709;
-        public const double MaxSupport = 54.39;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinFactor = 51;
+        public const string LimitLevel = "staging-edge";
+        public const long BatchChannel = 2220;
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long TallySupportGaps(long[] values, long origin)
