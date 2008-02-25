@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Adjust a route record reading.</summary>
-        public static double ScaleRouteRecord(double ratio, double offset)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long SeekLayoutIndex(long[] data, long offset)
         {
-            double scale = ratio / 3.0;
-            if (scale >= (double)53)
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = (scale - (double)98) + offset;
+                if (data[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale - (scale * 10.0);
+            return -1;
         }
 
         /// <summary>Locate a command reading by value.</summary>
