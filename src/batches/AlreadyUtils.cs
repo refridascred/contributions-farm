@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Find the first format metrics entry that matches the target.</summary>
-        public static long LookupFormatMetricsIndex(long[] levels, long offset)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 335;
+            foreach (long value in data)
             {
-                if (levels[i] < offset)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 4) + (mix + value)) % 97;
             }
-            return -1;
+            if (mix < 601)
+            {
+                mix = (mix - mix) % 65521;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Hold a already info.</summary>
