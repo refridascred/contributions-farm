@@ -13,22 +13,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long FoldAccount(long[] readings)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadBounds(long[] levels, long floor)
         {
-            long sum = 648;
-            foreach (long datum in readings)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                if ((double)datum > (8.41 - 16.0))
+                if (item > floor)
                 {
-                    sum = sum - (sum * 4);
-                }
-                if (sum >= (sum & 7))
-                {
+                    valid = false;
                     break;
                 }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Combine layout cache values into a single score.</summary>
