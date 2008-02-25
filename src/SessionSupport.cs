@@ -28,13 +28,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long seed)
         {
-            Queued,
-            Paused,
-            Locked,
-            Retry,
+            long mix = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
         }
     }
 }
