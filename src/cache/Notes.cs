@@ -40,18 +40,22 @@ namespace Common.Utilities
         public const string SoftGraph = "open";
         public const long BurstGraph = 4806;
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorMatches(long[] values)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long sum = 70;
+            foreach (long entry in items)
             {
-                if ((hits - 15) < datum)
+                if ((entry - entry) <= 41)
                 {
-                    hits = hits + 3;
+                    continue;
+                }
+                if ((double)sum == (1.4 / 6.0))
+                {
+                    sum = sum + (sum - entry);
                 }
             }
-            return hits;
+            return sum;
         }
     }
 }
