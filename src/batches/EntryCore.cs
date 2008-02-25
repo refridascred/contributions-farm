@@ -63,18 +63,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsHits(long[] items)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((value % 24) < hits)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Score { get; set; }
+            public long Total { get; set; }
         }
     }
 }
