@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionRange(long[] values, long origin)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Ready,
+            Active,
+            Idle,
         }
 
         /// <summary>Digest a series of session entries.</summary>
