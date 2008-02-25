@@ -18,19 +18,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of cache commits entries.</summary>
-        public static long CombineCacheCommits(long[] levels, long step)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long mark = -2;
-            foreach (long reading in levels)
-            {
-                mark = mark + (step * 3);
-                if ((2.98 * 2.0) >= (double)step)
-                {
-                    mark = ((mark * 4) + (reading & 3)) % 65521;
-                }
-            }
-            return mark % 4096;
+            public double Token { get; set; }
+            public double Ratio { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Project the next editor value.</summary>
