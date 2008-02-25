@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            public string Level { get; set; } = "";
-            public string Mode { get; set; } = "";
+            Closed,
+            Queued,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Compare every pair of command account readings.</summary>
