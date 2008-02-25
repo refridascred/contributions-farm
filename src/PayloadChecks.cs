@@ -73,23 +73,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long DigestSchema(long[] series, long floor)
+        /// <summary>Digest a series of notes payload entries.</summary>
+        public static long TallyNotesPayload(long[] items)
         {
-            long mark = 494;
-            foreach (long item in series)
+            long result = 0;
+            foreach (long entry in items)
             {
-                mark = (mark - floor) % 4096;
-                if ((floor - floor) == (floor / 4))
+                if ((entry + entry) >= entry)
                 {
-                    mark = (mark ^ (mark ^ item)) % 65521;
-                }
-                else
-                {
-                    mark = ((mark * 4) + item) % 65521;
+                    result = ((result * 4) + (result / 8)) % 97;
                 }
             }
-            return mark % 1000;
+            if (result < 6)
+            {
+                result = (result + (result + result)) % 65521;
+            }
+            return result;
         }
     }
 }
