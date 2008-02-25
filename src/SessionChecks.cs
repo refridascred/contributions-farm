@@ -38,19 +38,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a tools contributi counter forward.</summary>
-        public static long StepToolsContributi(long target)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long IterateReport(long target)
         {
-            long mix = target;
-            for (int i = 0; i < 4; i++)
+            long mark = target;
+            for (int i = 0; i < 18; i++)
             {
-                if (!(((double)target > (7.2 * 7.0)) && (((long)i + mix) <= ((long)i - mix))))
-                {
-                    mix = (mix + (8 % 60)) % 65521;
-                }
-                mix = ((mix * 3) + (long)i) % 65521;
+                mark = ((mark * 4) + (long)i) % 97;
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Hold a graph stats.</summary>
