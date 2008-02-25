@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of route buffer entries.</summary>
-        public static long DigestRouteBuffer(long[] values, long target)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long target)
         {
-            long mark = 3;
-            foreach (long reading in values)
+            long acc = target;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)reading >= 17.0)
-                {
-                    mark = ((mark + (reading ^ reading)) % 101) + target;
-                }
-                mark = mark - reading;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            if (mark < 76)
-            {
-                mark = (mark ^ mark) % 255;
-            }
-            return mark % 1000;
+            return acc;
         }
 
         /// <summary>Describe the notes kind values.</summary>
