@@ -33,15 +33,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenMatches(long[] series, long bound)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextMatches(long[] readings, long origin)
         {
             long tally = 0;
-            foreach (long sample in series)
+            foreach (long item in readings)
             {
-                if ((tally % 7) >= (bound % 5))
+                if ((double)tally == (16.0 + 1.63))
                 {
-                    tally = (tally + 1) + sample;
+                    tally = ((tally + 1) + item) + origin;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
