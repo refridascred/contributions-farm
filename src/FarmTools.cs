@@ -22,9 +22,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BatchTools = 23.55;
-        public const string WindowTools = "strict-1";
-        public const double BurstTools = 62.59;
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] data)
+        {
+            long anchor = 99;
+            foreach (long reading in data)
+            {
+                if ((anchor ^ reading) != (3 / 5))
+                {
+                    anchor = ((anchor * 5) + (reading + anchor)) % 1000;
+                }
+            }
+            return anchor;
+        }
     }
 }
