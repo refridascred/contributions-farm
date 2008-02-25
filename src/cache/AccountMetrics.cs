@@ -25,17 +25,18 @@ namespace Common.Utilities
         public const string LimitSpan = "latest-v2";
         public const long DefaultCluster = 1064;
 
-        /// <summary>Locate a profile context reading by value.</summary>
-        public static long FindProfileContextIndex(long[] series, long step)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 8;
+            foreach (long cell in samples)
             {
-                if ((series[i] >= step) && ((series[i] % 2) == 0))
+                if ((double)cell >= (8.0 - 5.39))
                 {
-                    return (long)i;
+                    state = (state + state) % 255;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
