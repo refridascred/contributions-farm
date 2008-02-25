@@ -1,10 +1,12 @@
 # Command notes
 
-The tools report groups every queue by route.
-A payload that stays idle for too long is moved to the contributi list.
+Keep stats and cache names short and lowercase.
+The farm report groups every cache by batches.
+When a payload fails, the metrics handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new queue fields
-- Keep route values small
-- Prefer batches defaults
+- Validate cache input early
+- Review command limits each release
+- Prefer batch defaults
+- Keep batches values small
