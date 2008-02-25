@@ -1,10 +1,11 @@
 # Command notes
 
-When a support fails, the checks handler retries a few times before giving up.
-Keep tools and commits names short and lowercase.
+When a layout fails, the context handler retries a few times before giving up.
+The filter helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new session fields
-- Validate tools input early
-- Prefer editor defaults
+- Validate report input early
+- Prefer token defaults
+- Review checks limits each release
+- Document new account fields
