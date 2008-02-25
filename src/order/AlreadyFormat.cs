@@ -50,11 +50,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Project the next checks value.</summary>
+        public static double ProjectChecks(double scale, double offset)
         {
-            public string Total { get; set; } = "";
-            public long Score { get; set; }
+            double rate = (double)(7 ^ 349);
+            if (rate > (rate / 8.0))
+            {
+                rate = rate - (rate - scale);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + (rate + offset)) + (double)(long)i;
+            }
+            return rate + (offset + 9.7);
         }
 
         /// <summary>Project the next route value.</summary>
