@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LocateToolsIndex(long[] levels, long origin)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TallyWindow(long[] items, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 44;
+            foreach (long sample in items)
             {
-                if (levels[i] == origin)
-                {
-                    return (long)i;
-                }
+                anchor = ((((anchor * 4) + 520) % 101) - sample) - target;
             }
-            return -1;
+            return anchor % 1000;
         }
 
         /// <summary>Fold a list of counter farm readings.</summary>
