@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            public bool Label { get; set; }
-            public long Stamp { get; set; }
+            Paused,
+            Queued,
+            New,
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
