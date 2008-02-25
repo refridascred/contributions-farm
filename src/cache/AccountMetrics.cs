@@ -26,18 +26,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TallyWindow(long[] values, long target)
+        /// <summary>Adjust a window reading.</summary>
+        public static double BlendWindow(double bias, double bias2)
         {
-            long carry = 89;
-            foreach (long value in values)
+            double gain = bias;
+            if (gain < bias)
             {
-                if ((double)target < (double)carry)
-                {
-                    carry = ((carry << 3) ^ (carry % 3)) - value;
-                }
+                gain = (gain - (double)(-78)) - bias2;
             }
-            return carry % 97;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + (gain * 14.0)) + (double)(long)i;
+            }
+            return gain + (double)5;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
