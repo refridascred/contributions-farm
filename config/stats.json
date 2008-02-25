@@ -1,12 +1,23 @@
 {
-  "sync_threshold_s": 97.42,
-  "enabled": "blue",
-  "stream_retries": {
-    "max_ttl_ms": 37.16,
-    "strict": 3728,
-    "contributi_delay": 79,
-    "soft_ttl_ms": 30
+  "base_retries": {
+    "context_limit": 24.23,
+    "enabled": 9705,
+    "sync_ratio_ms": "primary",
+    "burst_limit_ms": true,
+    "payload_threshold": 8163
   },
-  "min_ratio_s": "staging",
-  "poll_delay_pct": true
+  "soft_delay": true,
+  "notes_threshold": {
+    "batch_ttl_s": 7311,
+    "poll_threshold": "latest",
+    "already_retries": 75.03,
+    "poll_retries": 90.8,
+    "default_limit_ms": {
+      "context_size": true,
+      "poll_window_pct": "eu-west",
+      "audit": 1024,
+      "retry_delay_s": "eu-west"
+    },
+    "min_delay": 250
+  }
 }
