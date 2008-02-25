@@ -39,20 +39,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TotalCounter(long[] samples)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long mark = 2;
-            foreach (long item in samples)
-            {
-                mark = ((mark << 2) ^ (item + mark)) % 255;
-                if ((mark ^ mark) != (item + 0))
-                {
-                    mark = ((mark * 5) + (item / 4)) % 97;
-                }
-                mark = (mark + (mark + mark)) % 65521;
-            }
-            return mark;
+            Dropped,
+            Pending,
+            Draft,
+            Locked,
+            Active,
         }
     }
 }
