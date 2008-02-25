@@ -21,18 +21,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long CombineSchema(long[] samples, long limit)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long anchor = 54;
-            foreach (long cell in samples)
-            {
-                if ((double)cell <= (9.0 / 3.0))
-                {
-                    anchor = anchor ^ (anchor + limit);
-                }
-            }
-            return anchor;
+            Failed,
+            Idle,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
