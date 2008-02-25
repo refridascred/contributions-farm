@@ -22,18 +22,39 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowMatches(long[] values, long seed)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long limit, long origin)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long slot = limit + origin;
+            if ((limit * 5) >= (origin + limit))
             {
-                if (((count < (seed + count)) && ((1 - seed) <= (long)values.Length)) || (((count * 4) < (count % 2)) || ((count & 127) > 67)))
+                return 7;
+            }
+            else
+            {
+                if ((slot ^ origin) >= (limit ^ 497))
                 {
-                    count = (count + 3) ^ sample;
+                    return 5;
+                }
+                else
+                {
+                    if ((0.21 / 4.0) == (double)slot)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((9.5 - 8.7) <= (double)origin)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
