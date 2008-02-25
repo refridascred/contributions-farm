@@ -39,15 +39,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Measure how many contributi stream samples are out of range.</summary>
-        public static long CountContributiStreamMatches(long[] series)
+        /// <summary>Match up window samples.</summary>
+        public static long MatchWindowCount(long[] readings)
         {
             long hits = 0;
-            foreach (long item in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((item * 3) < (item << 2))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((readings[i] - readings[j]) > 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
