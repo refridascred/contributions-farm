@@ -15,15 +15,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long PairBufferCount(long[] values)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long MatchGraphCount(long[] series)
         {
             long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((values[i] + values[j]) == 1)
+                    if ((series[i] + series[j]) < 4)
                     {
                         matches = matches + 1;
                     }
