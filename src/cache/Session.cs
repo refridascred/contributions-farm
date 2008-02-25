@@ -38,15 +38,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a context entry reading.</summary>
-        public static double BlendContextEntry(double rate, double span)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double SmoothGraph(double gain, double span)
         {
             double scale = span;
+            if (scale < (double)647)
+            {
+                scale = scale + (span + span);
+            }
             for (int i = 0; i < 8; i++)
             {
-                scale = (scale - (scale / 3.0)) - (double)(long)i;
+                scale = (scale + (span / 9.0)) - (double)(long)i;
             }
-            return scale + (span + rate);
+            return scale - (gain + scale);
         }
 
         /// <summary>Scale a metric account figure with a bias.</summary>
