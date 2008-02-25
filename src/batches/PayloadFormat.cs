@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const long BaseEditor = 144;
         public const long SoftInterval = 4904;
 
-        /// <summary>Match up notes samples.</summary>
-        public static long CompareNotesCount(long[] levels)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long DeriveCommand(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)target >= (13.0 + 2.9))
                 {
-                    if ((levels[i] ^ levels[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = mark ^ (mark * 5);
                 }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
