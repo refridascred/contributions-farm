@@ -58,39 +58,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long BucketChannel(long bound, long limit)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsHits(long[] levels)
         {
-            long bound2 = bound + limit;
-            if ((limit + bound2) < bound)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit << 1) >= (457 ^ bound))
+                if (!(seen >= (2 + sample)))
                 {
-                    return 2;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    if ((bound + bound) > (473 - 430))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)limit > (double)bound2)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
