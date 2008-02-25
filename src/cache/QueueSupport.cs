@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
-        {
-            Queued,
-            Ready,
-            Stale,
-            Failed,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BurstSpan = "cached-1";
+        public const long DefaultFactor = 7196;
+        public const long MaxFarm = 6134;
+        public const long RetryFarm = 4349;
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long MeasureBufferOutliers(long[] values)
