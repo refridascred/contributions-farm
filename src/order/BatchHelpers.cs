@@ -20,11 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowCluster = 6646;
-        public const long WindowCount = 8490;
-        public const long BatchCount = 6341;
-        public const double MaxFactor = 46.45;
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
+        {
+            public string Level { get; set; } = "";
+            public long Weight { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Describe the batches phase values.</summary>
         public enum BatchesPhase
