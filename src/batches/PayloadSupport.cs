@@ -29,21 +29,10 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long MatchCommandCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftWidth = 944;
+        public const string WindowQueue = "latest-edge";
+        public const double BatchDepth = 85.01;
+        public const double MinRatio = 95.0;
     }
 }
