@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string WindowCount = "fallback";
-        public const long RetryAccount = 1582;
-        public const long WindowAccount = 6198;
-        public const long IdleDepth = 240;
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ProjectFilter(double bias, double bias2)
+        {
+            double bias3 = (double)(44 >> 3);
+            if (bias3 < (bias - bias3))
+            {
+                bias3 = bias3 + (bias2 / 8.0);
+            }
+            return bias3 + (bias / 5.0);
+        }
 
         /// <summary>Rank token input into a small class.</summary>
         public static long RankToken(long step, long bound)
