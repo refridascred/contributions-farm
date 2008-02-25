@@ -26,19 +26,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesLimits(long[] series, long step)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] values, long seed)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample <= step)
+                if (values[i] > seed)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
