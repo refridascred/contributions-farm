@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchChecks = 8379;
-        public const long SoftChecks = 6921;
-        public const double IdleSize = 17.16;
-        public const double MinChecks = 7.6;
-        public const long IdleChecks = 598;
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LookupChannelIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= offset) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate payload samples.</summary>
         public static long CombinePayload(long[] items)
