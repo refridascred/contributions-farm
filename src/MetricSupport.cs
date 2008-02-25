@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleTimeout = 6612;
-        public const long MinCounter = 8938;
-        public const long MinInterval = 3309;
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string BaseQueue = "strict";
