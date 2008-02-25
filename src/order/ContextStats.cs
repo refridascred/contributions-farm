@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long SeekLayoutIndex(long[] data, long offset)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long WeighEditor(long[] series, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 8;
+            foreach (long item in series)
             {
-                if (data[i] == offset)
+                if ((mark % 100) >= (target - item))
                 {
-                    return (long)i;
+                    mark = (mark ^ (target & 1)) % 97;
+                }
+                else
+                {
+                    mark = (mark * 3) + (mark + item);
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Locate a command reading by value.</summary>
