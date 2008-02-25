@@ -30,21 +30,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up schema format samples.</summary>
-        public static long PairSchemaFormatCount(long[] values)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LocateMetricIndex(long[] data, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((data[i] < floor) && ((data[i] % 3) == 0))
                 {
-                    if ((values[i] ^ values[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the cache level values.</summary>
