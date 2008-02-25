@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Count the report account entries that pass the check.</summary>
+        public static long TallyReportAccountMatches(long[] items)
         {
-            public long Label { get; set; }
-            public long Offset { get; set; }
-            public long Owner { get; set; }
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (((item * 4) != (seen + seen)) || ((((-859) << 3) >= (0 + seen)) || ((double)item <= 20.0)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the window queue entries that pass the check.</summary>
