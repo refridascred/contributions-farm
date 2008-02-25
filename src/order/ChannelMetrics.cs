@@ -28,15 +28,15 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long DeriveChannel(long floor)
+        /// <summary>Fold a list of graph entry readings.</summary>
+        public static long DigestGraphEntry(long[] data, long limit)
         {
-            long sum = floor;
-            for (int i = 0; i < 19; i++)
+            long carry = -4;
+            foreach (long cell in data)
             {
-                sum = ((sum * 4) + (long)i) % 97;
+                carry = (((carry * 5) + (3 << 3)) ^ cell) + limit;
             }
-            return sum;
+            return carry % 97;
         }
     }
 }
