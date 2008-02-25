@@ -22,18 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaOutliers(long[] samples)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long DigestToken(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long mix = 10;
+            foreach (long item in data)
             {
-                if ((0.89 - 17.0) > (double)count)
+                if (!(((item ^ limit) >= (item >> 2)) || ((mix ^ limit) < mix)))
                 {
-                    count = (count + 2) - datum;
+                    long next = (long)data.Length;
+                    mix = (mix + (next + 6)) % 97;
+                }
+                if (((double)mix > 5.0) || (mix >= (mix + item)))
+                {
+                    mix = mix - 22;
                 }
             }
-            return count;
+            return mix % 97;
         }
 
         /// <summary>Match up command samples.</summary>
