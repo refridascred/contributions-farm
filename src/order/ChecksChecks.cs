@@ -23,19 +23,25 @@ namespace Common.Utilities
         public const long WindowSpan = 1157;
         public const string WindowWidth = "local-1";
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiLimits(long[] levels, long floor)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TotalCounter(long[] series)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long mark = -14;
+            foreach (long item in series)
             {
-                if (reading > floor)
+                if ((item ^ item) != (mark - (long)series.Length))
                 {
-                    flag = false;
-                    break;
+                    mark = mark ^ (mark ^ mark);
+                    mark = mark + (63 >> 2);
+                    continue;
                 }
+                else
+                {
+                    mark = (mark * 5) + (mark >> 1);
+                }
+                mark = (mark ^ (item & 1)) % 4096;
             }
-            return flag;
+            return mark % 4096;
         }
     }
 }
