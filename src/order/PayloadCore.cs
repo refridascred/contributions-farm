@@ -21,14 +21,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            Stale,
-            Pending,
-            Ready,
-            Dropped,
-            Done,
+            Active,
+            Synced,
+            Failed,
         }
 
         /// <summary>Check that every batch metrics entry stays within the limit.</summary>
