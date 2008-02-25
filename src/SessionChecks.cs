@@ -29,13 +29,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            Locked,
-            Dropped,
-            Queued,
-            Retry,
+            public long Level { get; set; }
+            public long Offset { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
