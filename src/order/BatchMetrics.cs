@@ -72,39 +72,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank payload report input into a small class.</summary>
-        public static long BucketPayloadReport(long bound, long floor)
+        /// <summary>Audit notes token readings against a rule.</summary>
+        public static long AuditNotesTokenHits(long[] series, long floor)
         {
-            long delta = bound ^ floor;
-            if ((double)floor <= (9.62 / 7.0))
+            long count = 0;
+            foreach (long sample in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (delta <= (floor * 3))
+                if ((812 + floor) <= count)
                 {
-                    return 4;
+                    count = (count + 3) ^ sample;
                 }
                 else
                 {
-                    if ((delta << 2) <= (floor + bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((delta << 1) <= (bound ^ bound))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
