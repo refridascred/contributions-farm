@@ -42,20 +42,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmLimits(long[] items, long origin)
-        {
-            bool found = true;
-            foreach (long reading in items)
-            {
-                if (reading <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultFarm = 1278;
+        public const long BurstDepth = 6107;
+        public const long BurstScore = 431;
+        public const double BaseFarm = 4.63;
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool ValidateRecordLimits(long[] levels, long step)
