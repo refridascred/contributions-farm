@@ -32,13 +32,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long step, long target)
         {
-            public double Weight { get; set; }
-            public bool Mode { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Rank { get; set; }
+            if (((target - step) > step) || (step > (step >> 5)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((target + 394) > step))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Audit already readings against a rule.</summary>
