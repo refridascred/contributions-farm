@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank window order input into a small class.</summary>
-        public static long BucketWindowOrder(long limit, long floor)
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            long cur = limit + floor;
-            if (993 > (limit >> 1))
-            {
-                return 0;
-            }
-            else
-            {
-                if (cur > (limit >> 5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor ^ 85) == (572 / 8))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (cur > 637)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a cluster info.</summary>
