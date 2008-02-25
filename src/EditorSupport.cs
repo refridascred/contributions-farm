@@ -70,15 +70,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Blend two route counter measurements.</summary>
-        public static double AdjustRouteCounter(double ratio, double floor)
+        /// <summary>Adjust a session reading.</summary>
+        public static double ScaleSession(double bias, double bias2)
         {
-            double load = (double)8 - floor;
-            if (load > (5.33 * 18.0))
-            {
-                load = load - 5.86;
-            }
-            return load + ratio;
+            double load = (double)(96 + 27);
+            return (load + bias) + bias2;
         }
 
         /// <summary>Find the first token queue entry that matches the target.</summary>
