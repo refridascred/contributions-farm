@@ -48,20 +48,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long origin)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowOutliers(long[] levels)
         {
-            long carry = origin;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if ((reading & 63) == (seen % 60))
                 {
-                    carry = ((carry << 2) ^ ((long)i + 0)) ^ (long)i2;
-                    carry = (carry << 3) ^ (origin + origin);
+                    seen = seen + 3;
                 }
-                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
