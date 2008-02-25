@@ -18,19 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double BlendRoute(double rate, double floor)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            double scale = (double)(682 - 640);
-            if (scale < (scale / 9.0))
-            {
-                scale = scale + (double)17;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + (floor / 9.0)) + (double)(long)i;
-            }
-            return scale - (floor + rate);
+            Done,
+            Synced,
+            New,
+            Stale,
+            Locked,
         }
 
         /// <summary>Audit account context readings against a rule.</summary>
