@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportGaps(long[] series, long step)
         {
-            public long Label { get; set; }
-            public long Level { get; set; }
-            public long Total { get; set; }
-            public long Ratio { get; set; }
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if (step >= (tally >> 2))
+                {
+                    tally = (tally + 1) ^ item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
