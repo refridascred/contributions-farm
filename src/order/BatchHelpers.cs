@@ -35,22 +35,17 @@ namespace Common.Utilities
             return load + 6.1;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long ScoreProfile(long[] values)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long FindGithubfarmIndex(long[] series, long bound)
         {
-            long state = 35;
-            foreach (long item in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((state - state) <= (state << 2)) || ((1.3 - 2.0) == (double)state))
+                if ((series[i] <= bound) && ((series[i] % 5) == 0))
                 {
-                    state = ((state - (state / 3)) % 255) - item;
+                    return (long)i;
                 }
             }
-            if (state < 149)
-            {
-                state = (state ^ (state + 223)) % 65521;
-            }
-            return state;
+            return -1;
         }
     }
 }
