@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long floor, long offset)
-        {
-            if (offset < (offset << 3))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)floor > (6.61 + 2.31))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset + offset) <= floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((floor <= offset) && ((floor * 2) != (offset / 4)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultSpan = 1295;
+        public const long SoftCache = 9686;
+        public const long BaseCache = 8359;
+        public const long WindowSpan = 5331;
 
         /// <summary>Find the first contributi stats entry that matches the target.</summary>
         public static long LookupContributiStatsIndex(long[] items, long bound)
