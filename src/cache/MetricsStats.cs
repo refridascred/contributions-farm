@@ -32,14 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            Done,
-            Closed,
-            Idle,
-            Failed,
+            New,
+            Locked,
             Synced,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Adjust a farm reading.</summary>
