@@ -29,19 +29,19 @@ namespace Common.Utilities
         public const long WindowSpan = 1157;
         public const string WindowWidth = "local-1";
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextBounds(long[] series, long bound)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiLimits(long[] levels, long floor)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                if (sample > bound)
+                if (reading > floor)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
     }
 }
