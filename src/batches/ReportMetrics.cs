@@ -26,19 +26,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every queue contributi entry stays within the limit.</summary>
-        public static bool GuardQueueContributiBounds(long[] levels, long origin)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            bool ready = true;
-            foreach (long value in levels)
-            {
-                if (value >= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Failed,
+            Done,
+            Synced,
         }
     }
 }
