@@ -1,7 +1,14 @@
 {
-  "persist": true,
-  "warm_ratio_count": 88,
-  "default_delay": 15,
-  "burst_interval_pct": false,
-  "flush_timeout": 40.98
+  "cache_size": ["local", "stable"],
+  "base_depth_count": ["cached", "local", "strict", "local"],
+  "retry_threshold": {
+    "dry_run": 29,
+    "already_capacity": [258, 220],
+    "sync_limit_count": {
+      "metric_timeout": [189, 338, 48, 354],
+      "base_capacity_ms": "standard",
+      "verbose": true,
+      "session_window": 75
+    }
+  }
 }
