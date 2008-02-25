@@ -19,11 +19,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MaxLevel = 82.66;
-        public const double CacheFactor = 95.66;
-        public const long IdleMetrics = 6274;
-        public const long HardMetrics = 8313;
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long MatchGraphCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long IterateOrder(long step)
