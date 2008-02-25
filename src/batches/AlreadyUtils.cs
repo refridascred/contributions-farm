@@ -20,21 +20,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Count queue contributi pairs that satisfy a relation.</summary>
-        public static long CompareQueueContributiCount(long[] series)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Owner { get; set; }
+            public bool Offset { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Classify a farm already pair into a bucket.</summary>
