@@ -37,15 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] values, long floor)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountHits(long[] items)
         {
-            long result = 75;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                result = (result + value) + floor;
+                if (((seen + reading) == (reading & 15)) || !((22 - reading) < 941))
+                {
+                    seen = seen + 1;
+                }
             }
-            return result % 65521;
+            return seen;
         }
     }
 }
