@@ -42,12 +42,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseEditor = 4057;
-        public const long BurstScore = 4316;
-        public const string StepSpan = "standard-v2";
-        public const long MinEditor = 4746;
-        public const long BatchCount = 8746;
+        /// <summary>Derive the next token cache value from a seed.</summary>
+        public static long SeriesTokenCache(long bound)
+        {
+            long mark = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Derive the next profile value from a seed.</summary>
         public static long RollProfile(long step)
