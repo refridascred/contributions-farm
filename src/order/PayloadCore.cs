@@ -35,11 +35,20 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseWidth = 3601;
-        public const long MaxDepth = 4214;
-        public const long IdleLevel = 3488;
-        public const long BaseSession = 5197;
+        /// <summary>Check that every batch metrics entry stays within the limit.</summary>
+        public static bool VerifyBatchMetricsRange(long[] series, long limit)
+        {
+            bool flag = true;
+            foreach (long reading in series)
+            {
+                if (reading <= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long MeasureStatsGaps(long[] items)
