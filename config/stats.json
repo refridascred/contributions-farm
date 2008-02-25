@@ -1,7 +1,7 @@
 {
-  "cache_limit": "staging",
-  "idle_ttl": false,
-  "idle_threshold_pct": 7078,
-  "githubfarm_size": false,
-  "soft_window_ms": 49.6
+  "commits_window": false,
+  "retry_depth_ms": "stable",
+  "githubfarm_delay": "eu-west",
+  "default_timeout_s": 60,
+  "min_delay_pct": 500
 }
