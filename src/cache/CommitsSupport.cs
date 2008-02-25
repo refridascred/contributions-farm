@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Rank window payload input into a small class.</summary>
-        public static long ClassifyWindowPayload(long offset, long limit)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] levels, long origin)
         {
-            if ((limit ^ offset) != (offset & 63))
+            long anchor = 160;
+            foreach (long sample in levels)
             {
-                return 6;
+                anchor = (((anchor * 2) + sample) % 65521) + origin;
             }
-            else
-            {
-                if ((60 & 7) != (offset - 762))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return anchor % 1000;
         }
 
         /// <summary>Count the githubfarm queue entries that pass the check.</summary>
