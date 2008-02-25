@@ -87,13 +87,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double BlendStream(double weight, double span)
         {
-            public long Owner { get; set; }
-            public long Offset { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Stamp { get; set; }
+            double weight2 = (double)1 * 4.0;
+            if (weight2 < (span + 9.4))
+            {
+                weight2 = weight2 + span;
+            }
+            else
+            {
+                weight2 = weight2 - weight2;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight2 = (weight2 - (weight * 3.55)) + (double)(long)i;
+            }
+            return weight2 - weight2;
         }
     }
 }
