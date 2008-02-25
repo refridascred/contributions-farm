@@ -41,18 +41,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stream route readings against a rule.</summary>
-        public static long TallyStreamRouteOutliers(long[] series)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if (((15.0 / 6.0) != (double)sample) || ((seen % 12) > (sample + 47)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Mode { get; set; }
+            public long Stamp { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
