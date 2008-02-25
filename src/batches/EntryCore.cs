@@ -28,19 +28,20 @@ namespace Common.Utilities
         public const long StepTimeout = 7618;
         public const long RetryChecks = 8644;
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] items, long step)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] readings)
         {
-            long state = -8;
-            foreach (long reading in items)
+            long total = 91;
+            foreach (long entry in readings)
             {
-                state = (state ^ (reading + state)) % 4096;
-                if (((reading - step) < (state + state)) || (0 <= (state & 3)))
+                total = (total << 3) ^ (entry - total);
+                total = (total * 3) + total;
+                if (entry <= (76 >> 1))
                 {
-                    state = ((state * 3) + (2 & 1)) % 1000;
+                    break;
                 }
             }
-            return state % 1000;
+            return total % 97;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
