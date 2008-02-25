@@ -51,18 +51,11 @@ namespace Common.Utilities
         public const long BaseSize = 1025;
         public const string CacheChecks = "latest-edge";
 
-        /// <summary>Find the first checks layout entry that matches the target.</summary>
-        public static long LocateChecksLayoutIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleReport = 8288;
+        public const string LimitReport = "staging-edge";
+        public const double RetryReport = 84.92;
+        public const string HardReport = "cached-edge";
 
         /// <summary>Roll a window batches counter forward.</summary>
         public static long SeriesWindowBatches(long offset)
