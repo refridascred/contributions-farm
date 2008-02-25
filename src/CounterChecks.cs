@@ -49,14 +49,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            Active,
-            Locked,
-            Dropped,
-            New,
-            Draft,
+            public long Label { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Look up the position of a stream route sample.</summary>
