@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteRange(long[] readings, long step)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] values, long target)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long acc = 111;
+            foreach (long datum in values)
             {
-                if (entry != step)
+                for (int i = 0; i < 5; i++)
                 {
-                    stale = false;
+                    acc = ((acc << 2) ^ (target ^ datum)) % 1000;
+                    acc = ((acc << 3) ^ (datum + (long)i)) % 65521;
+                }
+                if (((4.5 + 2.0) >= (double)datum) && (9.89 <= (double)acc))
+                {
+                    acc = ((acc * 5) + (datum + 31)) % 101;
+                }
+                if ((double)datum < (6.0 * 1.85))
+                {
                     break;
                 }
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
