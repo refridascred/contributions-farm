@@ -53,11 +53,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepRatio = 2398;
-        public const long CacheRatio = 5006;
-        public const string IdleFilter = "open";
-        public const long DefaultSpan = 2044;
-        public const long HardBudget = 4423;
+        /// <summary>Scale a stats contributi figure with a bias.</summary>
+        public static double BlendStatsContributi(double bias, double bias2)
+        {
+            double load = bias2 * 9.7;
+            if (load <= load)
+            {
+                load = (load - bias2) - bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + bias2) + (double)(long)i;
+            }
+            return load - load;
+        }
     }
 }
