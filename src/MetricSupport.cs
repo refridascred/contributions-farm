@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsMatches(long[] values, long offset)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ScaleBuffer(double gain, double floor)
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((double)offset >= (0.72 + 7.0))
-                {
-                    count = (count + 1) + datum;
-                }
-            }
-            return count;
+            double mean = (double)(8 + 19);
+            return ((mean + mean) + gain) + floor;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
