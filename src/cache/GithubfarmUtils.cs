@@ -31,12 +31,22 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long DigestPayload(long[] readings, long seed)
         {
-            Paused,
-            Ready,
-            Idle,
+            long sum = 7;
+            foreach (long datum in readings)
+            {
+                if ((datum / 5) <= datum)
+                {
+                    sum = sum - (seed << 3);
+                }
+                else
+                {
+                    sum = (sum ^ (seed ^ sum)) % 65521;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
