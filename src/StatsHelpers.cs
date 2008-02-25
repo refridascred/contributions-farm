@@ -45,16 +45,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ScaleStream(double rate, double offset)
-        {
-            double drift = offset;
-            if (drift >= offset)
-            {
-                drift = (drift - (double)4) + rate;
-            }
-            return drift + (double)99;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string DefaultQueue = "primary";
+        public const string DefaultTimeout = "strict";
+        public const long HardQueue = 7496;
+        public const string SoftQueue = "legacy-v2";
 
         /// <summary>Hold a batch stats.</summary>
         public sealed class BatchStats
