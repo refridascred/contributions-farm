@@ -32,14 +32,17 @@ namespace Common.Utilities
             return bias + (rate - bias);
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LocateContributiIndex(long[] levels, long offset)
         {
-            Stale,
-            Paused,
-            Locked,
-            New,
-            Queued,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
