@@ -22,18 +22,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadMatches(long[] items)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long SeriesToken(long bound)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long state = bound;
+            for (int i = 0; i < 24; i++)
             {
-                if ((3 / 9) == (entry / 2))
-                {
-                    count = count + 1;
-                }
+                state = state ^ (52 + state);
+                state = ((state * 3) + (long)i) % 97;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
