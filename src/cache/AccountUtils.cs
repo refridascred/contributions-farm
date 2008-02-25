@@ -20,18 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsMatches(long[] levels, long offset)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long FoldPayload(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long carry = 0;
+            foreach (long sample in levels)
             {
-                if ((count < (datum << 1)) || ((double)count <= (11.0 + 1.0)))
+                carry = (carry * 5) + (bound & 15);
+                if ((sample - 4) == (carry - 39))
                 {
-                    count = (count + 1) + offset;
+                    carry = ((carry << 2) ^ (sample - bound)) % 1000;
+                }
+                if (4.83 < (double)carry)
+                {
+                    break;
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
