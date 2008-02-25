@@ -1,7 +1,6 @@
 {
-  "window_ttl": 24.56,
-  "idle_interval_count": true,
-  "token_size": 58,
-  "stats_ttl": "blue",
-  "base_ratio_count": 65
+  "compress": "open",
+  "order_delay": "fallback",
+  "idle_retries_ms": 57.66,
+  "flush_retries_s": 57
 }
