@@ -1,21 +1,7 @@
 {
-  "route_capacity": [118, 469, 440, 76],
-  "enabled": {
-    "warm_ratio_ms": true,
-    "strict": {
-      "base_retries_count": true,
-      "verbose": "strict",
-      "retry_interval_s": 30,
-      "default_retries": 3407
-    },
-    "cache_interval": {
-      "soft_limit_ms": "open",
-      "strict": true,
-      "idle_interval_ms": "primary",
-      "verbose": 39.41
-    }
-  },
-  "strict": 100,
-  "editor_delay": "legacy",
-  "dry_run": 34.03
+  "poll_interval": 76,
+  "command_capacity": "latest",
+  "editor_delay": 100,
+  "soft_depth": 63,
+  "context_delay": [139, 142, 175]
 }
