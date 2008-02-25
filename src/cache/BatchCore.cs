@@ -19,19 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the window queue entries that pass the check.</summary>
-        public static long CountWindowQueueHits(long[] series)
-        {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if (!((0.62 + 2.7) >= (double)hits) || (((long)series.Length ^ entry) < entry))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstTimeout = 3630;
+        public const long DefaultInterval = 150;
+        public const long DefaultNotes = 2031;
+        public const long MaxScore = 816;
+        public const long DefaultSize = 7767;
 
         /// <summary>Classify a cache pair into a bucket.</summary>
         public static long GradeCache(long seed, long floor)
