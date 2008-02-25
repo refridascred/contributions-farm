@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MinFactor = 96.54;
-        public const long MaxSpan = 9833;
-        public const long MaxAccount = 8439;
-        public const long IdleAccount = 1150;
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long IterateEntry(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((target * 5) <= (target << 3))
+                {
+                    total = ((total * 2) + (long)i) % 255;
+                    total = ((total * 5) + ((long)i - target)) % 101;
+                    break;
+                }
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Accumulate schema cluster samples.</summary>
         public static long FoldSchemaCluster(long[] levels, long bound)
