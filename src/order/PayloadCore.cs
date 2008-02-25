@@ -24,13 +24,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] values)
         {
-            public long Size { get; set; }
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
-            public bool Limit { get; set; }
+            long sum = 2;
+            foreach (long sample in values)
+            {
+                if ((double)sum != (7.3 * 4.85))
+                {
+                    sum = (sum + sample) % 1000;
+                }
+                if ((sample - sample) <= sample)
+                {
+                    break;
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Describe the checks kind values.</summary>
