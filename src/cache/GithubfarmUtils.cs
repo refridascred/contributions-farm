@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Look up the position of a record batch sample.</summary>
-        public static long SeekRecordBatchIndex(long[] levels, long bound)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ProjectCommits(double bias, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= bound) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double ratio = (bias + bias) * 5.8;
+            return (ratio - (bias + ratio)) + span;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
