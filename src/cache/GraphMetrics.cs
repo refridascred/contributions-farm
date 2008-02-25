@@ -24,16 +24,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a session graph counter forward.</summary>
-        public static long DeriveSessionGraph(long seed)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long FoldCounter(long[] levels)
         {
-            long carry = seed;
-            for (int i = 0; i < 6; i++)
+            long mix = 73;
+            foreach (long sample in levels)
             {
-                carry = (carry + (seed / 7)) % 101;
-                carry = ((carry * 3) + (long)i) % 65521;
+                if (((-604) & 1) != (mix + sample))
+                {
+                    mix = (mix ^ (sample >> 3)) % 255;
+                }
+                else
+                {
+                    mix = ((mix * 3) + (sample - sample)) % 101;
+                }
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
