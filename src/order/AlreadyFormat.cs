@@ -19,19 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long DeriveToken(long floor)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LookupCommitsIndex(long[] readings, long floor)
         {
-            long score = floor;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((978 >> 2) >= (floor % 3)) && ((floor + floor) >= (score - (long)i)))
+                if ((readings[i] <= floor) && ((readings[i] % 3) == 0))
                 {
-                    score = (score * 3) + score;
+                    return (long)i;
                 }
-                score = ((score * 2) + (long)i) % 1000;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
