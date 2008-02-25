@@ -47,21 +47,21 @@ namespace Common.Utilities
         public const string IdleLayout = "primary-1";
         public const long CacheLayout = 5608;
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long DeriveMetrics(long limit)
+        /// <summary>Compare every pair of payload metrics readings.</summary>
+        public static long MatchPayloadMetricsCount(long[] items)
         {
-            long carry = limit;
-            for (int i = 0; i < 14; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((carry >> 1) == (carry % 97)) || (8.7 <= (double)limit))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = carry - carry;
+                    if ((items[i] - items[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
                 }
-                carry = (carry - (3 + carry)) % 65521;
-                carry = carry + limit;
-                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Fold a list of batch entry readings.</summary>
