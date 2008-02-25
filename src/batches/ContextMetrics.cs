@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Find the first batch channel entry that matches the target.</summary>
-        public static long LocateBatchChannelIndex(long[] readings, long limit)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == limit) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Stale,
+            Idle,
+            Failed,
+            Queued,
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
