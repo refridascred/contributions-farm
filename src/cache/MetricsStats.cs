@@ -5,21 +5,29 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Match up batch samples.</summary>
-        public static long MatchBatchCount(long[] readings)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long RollRecord(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = target;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                total = (total + (target + total)) % 255;
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    if ((readings[i] ^ readings[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = ((total + (long)i) % 101) - (long)i2;
+                    total = (total - (target << 1)) % 101;
                 }
+                if ((long)i == (total - target))
+                {
+                    continue;
+                }
+                else
+                {
+                    total = ((total * 4) + (total + 0)) % 101;
+                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
