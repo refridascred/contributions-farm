@@ -1,16 +1,6 @@
 {
-  "tools_delay": 8362,
-  "order_delay": {
-    "queue_limit": true,
-    "farm_timeout": true,
-    "min_limit": {
-      "burst_interval_s": 20,
-      "verbose": 30,
-      "metric_threshold": 6400
-    },
-    "account_size": 42.31
-  },
-  "sync_timeout_pct": 30,
-  "max_threshold_pct": 93.26,
-  "cache_retries_count": true
+  "compress": "cached",
+  "idle_timeout": "green",
+  "sync_ratio": false,
+  "context_delay": 18.77
 }
