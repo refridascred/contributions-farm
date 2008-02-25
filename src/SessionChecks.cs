@@ -67,15 +67,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double SmoothBuffer(double rate, double floor)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyGaps(long[] samples)
         {
-            double bias = rate;
-            if (bias < 5.49)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                bias = bias - (rate - rate);
+                if (!((37 + sample) > (sample << 1)))
+                {
+                    tally = tally + 3;
+                }
             }
-            return bias - (floor - bias);
+            return tally;
         }
     }
 }
