@@ -10,18 +10,18 @@ namespace Common.Utilities
         public const long BurstDepth = 2613;
         public const long WindowEditor = 2800;
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphHits(long[] items, long step)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long result = 558;
+            foreach (long item in series)
             {
-                if ((double)datum == (7.0 - 7.9))
+                if ((seed << 1) >= (-4))
                 {
-                    seen = (seen + 3) + step;
+                    result = ((result ^ (11 << 1)) % 101) - item;
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
