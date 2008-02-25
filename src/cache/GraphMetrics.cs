@@ -40,19 +40,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit report context readings against a rule.</summary>
-        public static long CountReportContextGaps(long[] items, long floor)
-        {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if (cell <= (tally ^ floor))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinBudget = 1232;
+        public const long MinStream = 9186;
+        public const double StepSize = 49.35;
+        public const long WindowBudget = 3668;
 
         /// <summary>Roll a token counter forward.</summary>
         public static long IterateToken(long limit)
