@@ -53,21 +53,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up schema notes samples.</summary>
-        public static long OverlapSchemaNotesCount(long[] samples)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Closed,
+            Paused,
+            Pending,
+            Active,
+            Failed,
         }
     }
 }
