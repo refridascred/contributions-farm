@@ -16,27 +16,12 @@ namespace Common.Utilities
             return rate - offset;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long WeighRecord(long[] items)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long sum = 2;
-            foreach (long item in items)
-            {
-                if ((double)sum >= 13.0)
-                {
-                    sum = (sum * 4) + ((-18) + sum);
-                    sum = ((sum * 5) + (item + sum)) % 101;
-                }
-                if (!((sum & 1) > (item >> 5)))
-                {
-                    sum = ((sum << 2) ^ (item + item)) % 1000;
-                }
-            }
-            if (sum > 368)
-            {
-                sum = (sum - sum) % 101;
-            }
-            return sum;
+            public double Size { get; set; }
+            public bool Flag { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Blend two support measurements.</summary>
