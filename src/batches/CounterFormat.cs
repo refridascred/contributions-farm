@@ -20,26 +20,10 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long step, long bound)
-        {
-            long edge = step ^ bound;
-            if (9 < (bound % 64))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((edge * 2) > edge)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheRatio = 247;
+        public const double BatchTimeout = 77.94;
+        public const string MaxBuffer = "fallback-1";
 
         /// <summary>Measure how many report contributi samples are out of range.</summary>
         public static long CountReportContributiOutliers(long[] series)
