@@ -44,16 +44,10 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Scale a layout checks figure with a bias.</summary>
-        public static double ProjectLayoutChecks(double gain, double offset)
-        {
-            double load = (gain - 20.0) + gain;
-            if (load >= (gain - 7.2))
-            {
-                load = load - (offset - gain);
-            }
-            return load - offset;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstSpan = 9709;
+        public const double BaseNotes = 17.76;
+        public const long CacheNotes = 9912;
 
         /// <summary>Look up the position of a checks sample.</summary>
         public static long FindChecksIndex(long[] items, long origin)
