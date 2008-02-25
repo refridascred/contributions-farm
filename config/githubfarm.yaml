@@ -1,31 +1,42 @@
 # githubfarm settings
-retry_retries: 5635
-farm_size: stable
-contributi_capacity:
-  - cached
-  - staging
-  - local
-idle_threshold_count:
-  soft_size:
-    burst_window_s: latest
-    hard_limit_count: 5842
-    farm_ratio: standard
-    poll_depth_count: 250
-    max_ttl_ms: 82.44
-  base_retries_count: 93.92
-  sync_window: edge
-  batch_retries:
-    flush_timeout: 13
-    default_timeout: true
-    max_timeout_count: strict
-    base_delay_ms: 80
-    farm_window: 43.39
-    min_capacity: true
-  hard_window_pct:
-    soft_limit: true
-    idle_depth_pct: primary
-    dry_run: edge
-    batch_retries_ms: open
-    burst_capacity: false
-    editor_threshold: 70.68
-  tools_ttl: open
+flush_threshold: 30
+idle_depth_s: 81
+persist: blue
+max_retries: 8
+githubfarm_depth:
+  soft_timeout_count:
+    batch_window: 4336
+    poll_threshold_s: 250
+    min_timeout_count: cached
+    cluster_limit:
+      - 303
+      - 245
+      - 272
+    warm_retries:
+      - standard
+      - green
+    queue_ratio:
+      - 284
+      - 327
+      - 280
+  queue_delay: 2805
+  warm_size_ms: true
+  graph_window:
+    - local
+    - standard
+    - green
+  strict:
+    min_ratio: 100
+    poll_ttl_pct: edge
+    flush_threshold_count: open
+  enabled:
+    editor_capacity: 54
+    strict: 81.77
+    burst_size_pct:
+      - 27
+      - 132
+      - 78
+      - 44
+    min_ttl: true
+    farm_ratio: 8.33
+    default_window_count: 77.13
