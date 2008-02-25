@@ -1,10 +1,8 @@
 {
-  "profile_threshold": [76, 339, 223],
-  "default_delay": {
-    "min_interval_count": 4793,
-    "cache_capacity_s": 1501,
-    "batch_retries": 87,
-    "payload_depth": 38.03
-  },
-  "readonly": 6.81
+  "max_timeout_count": 53,
+  "burst_ratio_count": "legacy",
+  "base_limit": true,
+  "burst_timeout_count": false,
+  "audit": 21.79,
+  "persist": 31.6
 }
