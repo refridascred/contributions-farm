@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Project the next batches contributi value.</summary>
+        public static double SmoothBatchesContributi(double rate, double floor)
         {
-            public bool Label { get; set; }
-            public bool Score { get; set; }
-            public double Total { get; set; }
+            double drift = floor;
+            if (drift > (drift - drift))
+            {
+                drift = (drift + (double)13) + rate;
+            }
+            return drift + drift;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
