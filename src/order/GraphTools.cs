@@ -55,25 +55,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long ClassifyReport(long origin, long floor)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double AdjustLayout(double ratio, double floor)
         {
-            long offset = origin - floor;
-            if (!((origin + floor) < origin))
+            double scale = (floor + ratio) + (ratio + floor);
+            if (scale >= (double)13)
             {
-                return 2;
+                scale = scale - (scale * 1.3);
             }
-            else
-            {
-                if (offset <= (offset << 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return scale + (double)79;
         }
     }
 }
