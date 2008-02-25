@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            public double Rank { get; set; }
-            public long Weight { get; set; }
-            public bool Flag { get; set; }
+            public long Ratio { get; set; }
+            public long Size { get; set; }
+            public double Count { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Digest a series of schema tools entries.</summary>
