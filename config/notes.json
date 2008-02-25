@@ -1,7 +1,6 @@
 {
-  "poll_interval": 76,
-  "command_capacity": "latest",
-  "editor_delay": 100,
-  "soft_depth": 63,
-  "context_delay": [139, 142, 175]
+  "max_depth_pct": "cached",
+  "base_interval_s": 7735,
+  "base_size": 1024,
+  "checks_delay": "green"
 }
