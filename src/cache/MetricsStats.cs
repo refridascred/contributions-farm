@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            Active,
-            New,
-            Locked,
             Paused,
-            Stale,
+            Dropped,
+            Ready,
+            Locked,
+            Draft,
         }
 
         /// <summary>Accumulate editor account samples.</summary>
