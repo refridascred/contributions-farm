@@ -24,18 +24,19 @@ namespace Common.Utilities
             return gain2 - (double)940;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmOutliers(long[] samples, long bound)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsBounds(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if ((count - sample) == (421 / 5))
+                if (sample >= limit)
                 {
-                    count = (count + 3) - bound;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
     }
 }
