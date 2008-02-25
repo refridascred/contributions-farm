@@ -43,22 +43,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterOutliers(long[] series, long step)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmGaps(long[] items)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if ((double)step > (6.07 * 6.0))
+                if ((tally * 2) <= (tally - tally))
                 {
-                    matches = (matches + 3) - cell;
+                    tally = (tally + 3) ^ entry;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Count the notes contributi entries that pass the check.</summary>
