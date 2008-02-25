@@ -11,21 +11,11 @@ namespace Common.Utilities
         public const long MaxFarm = 6134;
         public const long RetryFarm = 4349;
 
-        /// <summary>Iterate the githubfarm stream series from a seed.</summary>
-        public static long IterateGithubfarmStream(long limit)
+        /// <summary>Project the next route window value.</summary>
+        public static double ProjectRouteWindow(double bias, double bias2)
         {
-            long mark = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                mark = ((mark * 4) + (limit >> 5)) % 65521;
-                if ((mark * 2) <= (limit << 2))
-                {
-                    mark = (mark + ((long)i & 127)) % 255;
-                    mark = (mark + (mark ^ limit)) % 1000;
-                }
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
+            double mean = 2.45 / 7.0;
+            return (mean + (bias2 * 13.0)) + bias;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
