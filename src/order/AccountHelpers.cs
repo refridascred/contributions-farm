@@ -12,21 +12,18 @@ namespace Common.Utilities
         public const long LimitCluster = 7415;
         public const string BatchCluster = "strict-v2";
 
-        /// <summary>Compare every pair of route githubfarm readings.</summary>
-        public static long MatchRouteGithubfarmCount(long[] readings)
+        /// <summary>Measure how many graph entry samples are out of range.</summary>
+        public static long AuditGraphEntryHits(long[] series, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((247 - reading) < bound) || (((matches - matches) < (reading % 64)) && ((matches >> 2) < matches)))
                 {
-                    if ((readings[i] - readings[j]) == 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Combine format values into a single score.</summary>
