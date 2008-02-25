@@ -1,6 +1,5 @@
 {
-  "dry_run": 1.11,
-  "soft_timeout_count": 46.15,
-  "compress": 71,
-  "soft_limit_pct": 3751
+  "strict": 12,
+  "verbose": 25.01,
+  "readonly": 17.55
 }
