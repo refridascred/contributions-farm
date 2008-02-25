@@ -34,31 +34,19 @@ namespace Common.Utilities
             return (load - (double)6) + scale;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long origin, long floor)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextRange(long[] readings, long limit)
         {
-            if ((origin + origin) != (origin - floor))
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((7.5 / 6.0) == (double)origin)
+                if (datum <= limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((6 * 3) >= (origin ^ origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
