@@ -79,22 +79,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TotalTools(long[] readings)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long anchor = 344;
-            foreach (long cell in readings)
-            {
-                if ((4 < anchor) || (((-3) - cell) <= cell))
-                {
-                    anchor = ((anchor << 3) ^ (anchor - cell)) % 65521;
-                }
-                if ((double)cell <= (2.6 / 5.0))
-                {
-                    break;
-                }
-            }
-            return anchor % 1000;
+            Active,
+            Synced,
+            Stale,
+            New,
+            Pending,
         }
     }
 }
