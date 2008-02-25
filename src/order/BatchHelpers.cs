@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] values, long step)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long anchor = 4;
-            foreach (long reading in values)
-            {
-                anchor = (anchor - (step - reading)) % 1000;
-            }
-            if (anchor < 404)
-            {
-                anchor = (anchor - (anchor - step)) % 4096;
-            }
-            return anchor;
+            Synced,
+            New,
+            Stale,
+            Queued,
+            Locked,
         }
 
         /// <summary>Project the next already value.</summary>
