@@ -33,18 +33,12 @@ namespace Common.Utilities
         public const double BurstScore = 87.93;
         public const long StepTools = 6144;
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionHits(long[] data, long floor)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if (((double)floor > (1.9 + 7.7)) && ((floor * 3) <= hits))
-                {
-                    hits = (hits + 1) + cell;
-                }
-            }
-            return hits;
+            Paused,
+            Stale,
+            Retry,
         }
     }
 }
