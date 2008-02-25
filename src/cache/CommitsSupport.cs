@@ -71,12 +71,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Measure how many command schema samples are out of range.</summary>
+        public static long MeasureCommandSchemaGaps(long[] series)
         {
-            Draft,
-            Stale,
-            Dropped,
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if (hits < (value * 2))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
