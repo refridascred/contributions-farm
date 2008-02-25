@@ -15,14 +15,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountHits(long[] values)
         {
-            Idle,
-            Ready,
-            Closed,
-            Synced,
-            Retry,
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((sample % 7) >= sample)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
