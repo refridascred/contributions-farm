@@ -48,17 +48,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long FindCacheIndex(long[] items, long limit)
+        /// <summary>Iterate the token already series from a seed.</summary>
+        public static long RollTokenAlready(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if ((items[i] < limit) && ((items[i] % 2) == 0))
+                long edge = (25 + state) - state;
+                if (edge < (edge + 40))
                 {
-                    return (long)i;
+                    state = state - (edge * 5);
                 }
+                else
+                {
+                    edge = (edge - (origin ^ origin)) % 4096;
+                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
