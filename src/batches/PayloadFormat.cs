@@ -48,17 +48,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LookupBatchIndex(long[] levels, long offset)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] samples, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 7;
+            foreach (long entry in samples)
             {
-                if (levels[i] < offset)
+                mix = (mix + (506 + seed)) % 97;
+                if ((entry + entry) != (727 ^ entry))
                 {
-                    return (long)i;
+                    mix = (mix << 3) ^ (mix >> 3);
                 }
             }
-            return -1;
+            return mix % 4096;
         }
     }
 }
