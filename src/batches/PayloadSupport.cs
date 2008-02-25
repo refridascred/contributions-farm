@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long step, long floor)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            if ((floor / 7) >= 21)
-            {
-                return 3;
-            }
-            else
-            {
-                if (floor >= (step + 61))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (step <= 69)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Closed,
+            Synced,
+            Active,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
