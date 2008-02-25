@@ -18,22 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] levels, long step)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long score = 90;
-            foreach (long value in levels)
-            {
-                if ((double)step == (double)(long)levels.Length)
-                {
-                    score = (score * 3) + step;
-                }
-                else
-                {
-                    score = ((score * 4) + (value % 16)) % 1000;
-                }
-            }
-            return score;
+            public bool Mode { get; set; }
+            public double Rank { get; set; }
+            public double Total { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Compare every pair of already queue readings.</summary>
