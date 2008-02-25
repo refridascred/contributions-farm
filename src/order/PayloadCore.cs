@@ -55,12 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsGaps(long[] items)
         {
-            Synced,
-            Pending,
-            Dropped,
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((item - 329) >= (seen & 31))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
