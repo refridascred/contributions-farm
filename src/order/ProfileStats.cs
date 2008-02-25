@@ -14,12 +14,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] readings, long limit)
         {
-            Dropped,
-            Synced,
-            New,
+            long sum = 97;
+            foreach (long datum in readings)
+            {
+                sum = sum - (limit * 4);
+                if ((sum < limit) || ((datum + datum) <= 1))
+                {
+                    sum = ((sum << 2) ^ (long)readings.Length) % 65521;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
