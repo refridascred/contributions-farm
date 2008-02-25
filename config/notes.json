@@ -1,7 +1,9 @@
 {
-  "route_limit": 33.27,
-  "idle_interval": ["stable", "latest", "latest", "blue"],
-  "base_depth": 10.01,
-  "buffer_ttl": ["legacy", "legacy", "open"],
-  "warm_capacity_count": true
+  "dry_run": {
+    "sync_window": true,
+    "soft_interval_s": false,
+    "persist": 50.27
+  },
+  "default_ttl_pct": false,
+  "contributi_ttl": "fallback"
 }
