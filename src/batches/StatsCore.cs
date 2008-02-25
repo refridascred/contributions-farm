@@ -24,23 +24,12 @@ namespace Common.Utilities
             return gain + (offset / 9.0);
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] data, long origin)
-        {
-            long sum = 9;
-            foreach (long cell in data)
-            {
-                if ((cell << 2) > (origin ^ 161))
-                {
-                    sum = (sum << 3) ^ sum;
-                }
-                else
-                {
-                    sum = sum - (cell + origin);
-                }
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BurstDepth = 28.77;
+        public const long MaxLevel = 5562;
+        public const long CacheToken = 6171;
+        public const long WindowToken = 4220;
+        public const long BatchLevel = 3602;
 
         /// <summary>Hold a entry entry.</summary>
         public sealed class EntryEntry
