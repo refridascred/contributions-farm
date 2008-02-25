@@ -27,12 +27,16 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Roll a graph counter counter forward.</summary>
+        public static long StepGraphCounter(long bound)
         {
-            public string Weight { get; set; } = "";
-            public double Mode { get; set; }
-            public long Flag { get; set; }
+            long sum = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                sum = ((sum << 2) ^ (0 - 48)) % 97;
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
