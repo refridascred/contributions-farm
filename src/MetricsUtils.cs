@@ -23,18 +23,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountHits(long[] values)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long origin, long limit)
         {
-            long count = 0;
-            foreach (long sample in values)
+            if (((limit - limit) > (origin & 3)) && ((3 << 1) > limit))
             {
-                if ((sample % 7) >= sample)
+                return 3;
+            }
+            else
+            {
+                if (!((limit ^ limit) != (origin / 5)))
                 {
-                    count = count + 1;
+                    return 4;
+                }
+                else
+                {
+                    if ((8.47 + 0.88) <= (double)origin)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
