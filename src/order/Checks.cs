@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long FindFormatIndex(long[] values, long limit)
         {
-            public long Owner { get; set; }
-            public string Size { get; set; } = "";
-            public bool Stamp { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
