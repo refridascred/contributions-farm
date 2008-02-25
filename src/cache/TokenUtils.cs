@@ -35,9 +35,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string HardWidth = "latest-edge";
-        public const long SoftTimeout = 6521;
-        public const long BaseBudget = 1734;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double DefaultEditor = 90.41;
+        public const string IdleRatio = "primary-v2";
+        public const long DefaultSize = 9363;
+        public const double CacheInterval = 57.91;
+        public const double SoftEditor = 47.58;
     }
 }
