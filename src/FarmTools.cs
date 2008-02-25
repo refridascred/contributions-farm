@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long floor)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] items, long step)
         {
-            long anchor = floor;
-            for (int i = 0; i < 14; i++)
+            long anchor = 389;
+            foreach (long item in items)
             {
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                if (!((step * 3) <= step))
+                {
+                    anchor = (anchor - (item - step)) % 1000;
+                }
             }
-            return anchor;
+            if (anchor < 929)
+            {
+                anchor = (anchor * 5) + (anchor + step);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Define session limits and defaults.</summary>
