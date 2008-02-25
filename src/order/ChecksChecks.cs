@@ -31,19 +31,24 @@ namespace Common.Utilities
             return drift + (drift * 2.31);
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ScaleGithubfarm(double weight, double floor)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long offset)
         {
-            double gain = (double)48;
-            if (gain > (double)5)
+            long mix = offset;
+            for (int i = 0; i < 23; i++)
             {
-                gain = gain - (gain + floor);
+                mix = mix ^ offset;
+                if (((double)mix < (double)offset) || ((double)(long)i > (6.19 - 2.3)))
+                {
+                    mix = mix + (330 + 4);
+                }
+                else
+                {
+                    mix = (mix + (mix ^ offset)) % 4096;
+                }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - weight) + (double)(long)i;
-            }
-            return gain - floor;
+            return mix;
         }
     }
 }
