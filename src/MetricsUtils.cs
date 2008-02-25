@@ -61,20 +61,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterRange(long[] levels, long origin)
-        {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinCommits = 5212;
+        public const string StepLevel = "primary";
+        public const long RetryCommits = 2880;
+        public const double MaxSpan = 52.29;
+        public const long BurstDepth = 4178;
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long MatchRecordCount(long[] samples)
