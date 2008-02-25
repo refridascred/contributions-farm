@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Project the next batches value.</summary>
-        public static double BlendBatches(double gain, double offset)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long OverlapCounterCount(long[] readings)
         {
-            double scale = offset;
-            if (scale <= gain)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale = scale + (double)17;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                scale = scale + (offset / 6.0);
-            }
-            return scale - (double)852;
+            return hits;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
