@@ -1,9 +1,7 @@
 # githubfarm settings
-burst_ratio_s:
-  - 287
-  - 42
-  - 158
-  - 247
-batch_threshold: 30
-poll_depth: green
-max_depth_ms: 10
+hard_interval_ms: true
+profile_delay: false
+sync_window_pct: 36.48
+flush_ratio_ms:
+  - primary
+  - fallback
