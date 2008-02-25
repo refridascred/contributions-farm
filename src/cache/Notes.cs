@@ -49,17 +49,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first counter account entry that matches the target.</summary>
-        public static long FindCounterAccountIndex(long[] values, long target)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Paused,
+            Pending,
         }
     }
 }
