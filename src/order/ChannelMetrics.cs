@@ -30,19 +30,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two filter stream measurements.</summary>
-        public static double AdjustFilterStream(double bias, double floor)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            double bias2 = floor;
-            if (bias2 < bias2)
-            {
-                bias2 = (bias2 - 7.28) - bias;
-            }
-            else
-            {
-                bias2 = bias2 - floor;
-            }
-            return bias2 - (double)48;
+            public bool Total { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
