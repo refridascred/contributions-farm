@@ -28,22 +28,13 @@ namespace Common.Utilities
         public const long BurstScore = 8775;
         public const double SoftTimeout = 98.5;
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextMatches(long[] readings, long origin)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long tally = 0;
-            foreach (long item in readings)
-            {
-                if ((double)tally == (16.0 + 1.63))
-                {
-                    tally = ((tally + 1) + item) + origin;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Weight { get; set; }
+            public long Mode { get; set; }
+            public double Rank { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
