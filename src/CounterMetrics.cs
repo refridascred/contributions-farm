@@ -58,12 +58,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long RankCluster(long step, long origin)
         {
-            Retry,
-            Done,
-            Paused,
+            long slot = step - origin;
+            if (slot >= (slot >> 4))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step >> 1) <= (slot + origin))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((slot + origin) >= origin)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((slot - step) >= origin))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
