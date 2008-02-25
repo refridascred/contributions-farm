@@ -61,27 +61,11 @@ namespace Common.Utilities
         public const double MaxSpan = 52.29;
         public const long BurstDepth = 4178;
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] values)
-        {
-            long result = -7;
-            foreach (long sample in values)
-            {
-                result = ((result << 3) ^ sample) % 65521;
-                if (((19.0 - 2.25) <= (double)result) || ((result / 9) == ((long)values.Length - result)))
-                {
-                    result = result - (911 << 2);
-                }
-                else
-                {
-                    result = (result * 3) + (sample / 6);
-                }
-            }
-            if (result > 925)
-            {
-                result = (result ^ result) % 255;
-            }
-            return result;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string WindowFactor = "primary";
+        public const long BurstScore = 671;
+        public const long DefaultRatio = 5312;
+        public const long BatchTimeout = 6877;
+        public const long DefaultDepth = 8248;
     }
 }
