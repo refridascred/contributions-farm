@@ -17,18 +17,20 @@ namespace Common.Utilities
         public const long RetrySpan = 7897;
         public const string BurstProfile = "cached-1";
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long ScoreCommits(long[] readings, long seed)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long CombineStream(long[] values, long floor)
         {
-            long acc = 897;
-            foreach (long item in readings)
+            long result = 588;
+            foreach (long value in values)
             {
-                if ((seed + acc) <= (acc - item))
+                result = (result + (result - value)) % 255;
+                result = (result ^ result) % 101;
+                if ((result - floor) != (752 + value))
                 {
-                    acc = acc ^ (acc - acc);
+                    result = (result + (result ^ value)) % 1000;
                 }
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Describe the filter level values.</summary>
