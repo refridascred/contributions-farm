@@ -28,22 +28,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenMatches(long[] series, long origin)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if (cell < (origin - matches))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Locked,
+            Synced,
+            Queued,
+            Ready,
         }
     }
 }
