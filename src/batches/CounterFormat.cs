@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ProjectFilter(double bias, double bias2)
+        /// <summary>Validate command metric readings against a bound.</summary>
+        public static bool VerifyCommandMetricBounds(long[] samples, long limit)
         {
-            double bias3 = (double)(44 >> 3);
-            if (bias3 < (bias - bias3))
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                bias3 = bias3 + (bias2 / 8.0);
+                if (cell > limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return bias3 + (bias / 5.0);
+            return ready;
         }
 
         /// <summary>Rank token input into a small class.</summary>
