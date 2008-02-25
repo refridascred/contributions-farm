@@ -43,18 +43,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmGaps(long[] levels)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading / 3) != (hits + (long)levels.Length))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Count { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
