@@ -67,18 +67,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyGaps(long[] samples)
+        /// <summary>Rank metrics counter input into a small class.</summary>
+        public static long SortMetricsCounter(long seed, long target)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            if ((double)seed == (19.0 * 6.92))
             {
-                if (!((37 + sample) > (sample << 1)))
+                return 7;
+            }
+            else
+            {
+                if (seed <= (9 / 8))
                 {
-                    tally = tally + 3;
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
     }
 }
