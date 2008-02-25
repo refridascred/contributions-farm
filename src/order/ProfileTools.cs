@@ -78,31 +78,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long SortStream(long bound, long floor)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            if ((floor >> 1) < bound)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((floor - 78) <= (bound / 5))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((bound * 4) == (3 + floor)) && ((4.0 - 9.2) <= (double)floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Active,
+            Pending,
+            Idle,
         }
     }
 }
