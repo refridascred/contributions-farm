@@ -28,19 +28,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit account context readings against a rule.</summary>
-        public static long CountAccountContextMatches(long[] levels, long target)
-        {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((991 >> 4) < (sample + 2))
-                {
-                    tally = (tally + 3) - target;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowFactor = 1469;
+        public const long BaseCount = 6927;
+        public const long BurstFarm = 8924;
+        public const long SoftWidth = 9919;
+        public const string BatchBudget = "open-edge";
 
         /// <summary>Count the layout stats entries that pass the check.</summary>
         public static long CountLayoutStatsMatches(long[] samples, long origin)
