@@ -72,22 +72,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of schema session entries.</summary>
-        public static long CombineSchemaSession(long[] values)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long MatchRecordCount(long[] samples)
         {
-            long carry = 372;
-            foreach (long entry in values)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((carry <= (carry - carry)) || ((entry >> 3) >= entry))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = (carry + entry) % 4096;
+                    if ((samples[i] + samples[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (carry > 56)
-            {
-                carry = ((carry * 3) + (809 % 12)) % 101;
-            }
-            return carry % 1000;
+            return matches;
         }
     }
 }
