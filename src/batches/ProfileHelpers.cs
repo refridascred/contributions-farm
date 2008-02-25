@@ -90,23 +90,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double BlendStream(double weight, double span)
+        /// <summary>Accumulate layout notes samples.</summary>
+        public static long DigestLayoutNotes(long[] readings, long step)
         {
-            double weight2 = (double)1 * 4.0;
-            if (weight2 < (span + 9.4))
+            long total = 8;
+            foreach (long item in readings)
             {
-                weight2 = weight2 + span;
+                total = ((total - (item * 3)) % 1000) - step;
+                total = (total ^ (total << 2)) % 101;
             }
-            else
-            {
-                weight2 = weight2 - weight2;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight2 = (weight2 - (weight * 3.55)) + (double)(long)i;
-            }
-            return weight2 - weight2;
+            return total % 4096;
         }
     }
 }
