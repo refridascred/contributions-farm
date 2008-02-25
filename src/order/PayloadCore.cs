@@ -15,22 +15,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long CombineEntry(long[] values, long origin)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long state = 795;
-            foreach (long reading in values)
-            {
-                if ((double)origin <= (16.0 / 5.0))
-                {
-                    state = (((state * 4) + (971 >> 3)) % 65521) + reading;
-                }
-                else
-                {
-                    state = (state - (1 - state)) % 101;
-                }
-            }
-            return state;
+            Ready,
+            Dropped,
+            Failed,
+            Locked,
         }
 
         /// <summary>Look up the position of a channel sample.</summary>
