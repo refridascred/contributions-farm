@@ -16,13 +16,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            Failed,
-            Done,
-            Pending,
-            Active,
+            public long Score { get; set; }
+            public long Mode { get; set; }
+            public string Flag { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
