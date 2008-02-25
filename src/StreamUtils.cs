@@ -50,18 +50,18 @@ namespace Common.Utilities
         public const long CacheAlready = 4565;
         public const string DefaultAlready = "latest-v2";
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterOutliers(long[] levels, long seed)
+        /// <summary>Count the notes contributi entries that pass the check.</summary>
+        public static long TallyNotesContributiGaps(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (((long)levels.Length <= (count + sample)) || ((sample <= count) && ((double)seed <= 2.74)))
+                if (((double)sample > 7.4) || ((step - step) != (matches + sample)))
                 {
-                    count = count + 2;
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
