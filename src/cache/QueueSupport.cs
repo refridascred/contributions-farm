@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BurstSpan = "cached-1";
-        public const long DefaultFactor = 7196;
-        public const long MaxFarm = 6134;
-        public const long RetryFarm = 4349;
+        /// <summary>Match up tools notes samples.</summary>
+        public static long MatchToolsNotesCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a buffer options.</summary>
         public sealed class BufferOptions
