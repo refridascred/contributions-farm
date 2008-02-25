@@ -36,12 +36,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long target, long seed)
         {
-            Paused,
-            Queued,
-            New,
+            if (seed >= 965)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)target <= (9.0 * 2.6))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Measure how many githubfarm counter samples are out of range.</summary>
