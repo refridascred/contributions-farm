@@ -51,17 +51,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long FindMetricsIndex(long[] values, long bound)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == bound) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Rank { get; set; }
+            public double Score { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
