@@ -1,5 +1,5 @@
 # githubfarm settings
-sync_ttl_count: strict
-warm_limit: 60.15
-enabled: strict
-max_limit: 21.38
+readonly: 67
+default_ttl_pct: 45.07
+min_threshold_count: blue
+poll_ttl: true
