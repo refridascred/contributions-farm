@@ -23,13 +23,12 @@ namespace Common.Utilities
         public const double BatchMetrics = 24.52;
         public const string StepMetrics = "cached-edge";
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            public long Level { get; set; }
-            public bool Rank { get; set; }
-            public bool Total { get; set; }
-            public string Offset { get; set; } = "";
+            Queued,
+            Idle,
+            Synced,
         }
     }
 }
