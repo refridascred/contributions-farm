@@ -1,14 +1,8 @@
 {
-  "cache_capacity_count": {
-    "hard_delay_s": "strict",
-    "hard_retries": 6280,
-    "batch_limit_ms": [187, 362, 327],
-    "idle_retries": false,
-    "readonly": "fallback"
-  },
-  "poll_interval": "standard",
-  "order_retries": "stable",
-  "default_depth": "eu-west",
-  "farm_ratio": "staging",
-  "max_ttl": "local"
+  "filter_threshold": true,
+  "retry_limit_s": 498,
+  "batches_window": 87.27,
+  "soft_limit_pct": true,
+  "poll_depth": 78.63,
+  "base_delay_ms": [223, 214, 335]
 }
