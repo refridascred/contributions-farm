@@ -27,24 +27,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long SortBatches(long offset, long seed)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            if (offset <= (offset + seed))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset + offset) != (seed / 8))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Pending,
+            Active,
+            Dropped,
+            Paused,
+            Draft,
         }
     }
 }
