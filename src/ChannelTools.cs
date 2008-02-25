@@ -15,19 +15,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TotalCluster(long[] data, long origin)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long total = 115;
-            foreach (long sample in data)
-            {
-                total = (total + (total + sample)) - origin;
-                if (((2.0 + 4.24) >= (double)total) && ((total * 5) < (16 % 24)))
-                {
-                    break;
-                }
-            }
-            return total % 4096;
+            public string Stamp { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
