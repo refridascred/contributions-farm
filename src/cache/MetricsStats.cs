@@ -53,18 +53,31 @@ namespace Common.Utilities
             return bias + (double)79;
         }
 
-        /// <summary>Combine already batch values into a single score.</summary>
-        public static long WeighAlreadyBatch(long[] data)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long offset, long origin)
         {
-            long state = 9;
-            foreach (long value in data)
+            if ((double)origin >= (7.51 * 12.0))
             {
-                if (((double)value < 6.31) || ((value ^ value) < (value * 3)))
+                return 3;
+            }
+            else
+            {
+                if ((double)origin > (20.0 * 4.17))
                 {
-                    state = (state * 2) + (state - value);
+                    return 8;
+                }
+                else
+                {
+                    if ((origin / 2) > (offset & 255))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Measure how many farm order samples are out of range.</summary>
