@@ -37,22 +37,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutMatches(long[] items, long floor)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenMatches(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if ((920 % 2) > (item << 2))
+                if ((tally % 7) >= (bound % 5))
                 {
-                    count = (count + 2) - floor;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = (tally + 1) + sample;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
