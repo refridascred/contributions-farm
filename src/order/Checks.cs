@@ -18,13 +18,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Iterate the route payload series from a seed.</summary>
+        public static long SeriesRoutePayload(long origin)
         {
-            public long Score { get; set; }
-            public long Region { get; set; }
-            public bool Token { get; set; }
-            public string Owner { get; set; } = "";
+            long sum = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((14.0 - 0.44) > (double)(long)i)
+                {
+                    sum = ((sum << 3) ^ sum) % 97;
+                }
+                if (sum <= (sum ^ 619))
+                {
+                    sum = sum + origin;
+                }
+                else
+                {
+                    sum = (sum + (long)i) % 97;
+                    sum = (sum + 54) % 101;
+                }
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
