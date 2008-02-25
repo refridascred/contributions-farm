@@ -18,14 +18,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Count the tools stream entries that pass the check.</summary>
+        public static long AuditToolsStreamHits(long[] items, long floor)
         {
-            Retry,
-            Synced,
-            Done,
-            Ready,
-            Draft,
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((item % 2) <= matches)
+                {
+                    matches = (matches + 1) + floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
