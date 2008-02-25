@@ -19,13 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferOutliers(long[] items, long step)
         {
-            Ready,
-            Paused,
-            Done,
-            Active,
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (!((step * 5) <= hits))
+                {
+                    hits = (hits + 3) - sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate buffer commits samples.</summary>
