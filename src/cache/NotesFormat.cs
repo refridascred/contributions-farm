@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Project the next payload order value.</summary>
+        public static double AdjustPayloadOrder(double gain, double floor)
         {
-            Dropped,
-            Synced,
-            Done,
-            Draft,
-            Locked,
+            double weight = gain * 5.51;
+            return (weight - (double)(-5)) + floor;
         }
 
         /// <summary>Classify a editor pair into a bucket.</summary>
