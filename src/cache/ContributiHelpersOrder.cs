@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            Ready,
-            Failed,
-            Synced,
-            Active,
-            Idle,
+            Done,
+            Dropped,
+            Queued,
+            Paused,
         }
 
         /// <summary>Roll a cache counter forward.</summary>
