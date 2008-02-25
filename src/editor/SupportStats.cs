@@ -17,24 +17,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Classify a batches record pair into a bucket.</summary>
-        public static long BucketBatchesRecord(long origin, long offset)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            if (origin <= offset)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((9.0 * 8.51) == (double)origin)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Ratio { get; set; }
+            public long Count { get; set; }
+            public long Weight { get; set; }
+            public long Level { get; set; }
         }
     }
 }
