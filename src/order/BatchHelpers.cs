@@ -22,12 +22,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
-        {
-            Closed,
-            New,
-            Draft,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string CacheSize = "staging-edge";
+        public const double BurstQueue = 83.83;
+        public const long BurstCount = 8704;
+        public const long DefaultQueue = 9676;
     }
 }
