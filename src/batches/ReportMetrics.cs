@@ -19,18 +19,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the context checks entries that pass the check.</summary>
-        public static long AuditContextChecksHits(long[] items, long origin)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long count = 0;
-            foreach (long item in items)
-            {
-                if (((count / 3) < (count - count)) || ((4.5 / 4.0) <= (double)origin))
-                {
-                    count = (count + 2) - item;
-                }
-            }
-            return count;
+            public string Mode { get; set; } = "";
+            public string Level { get; set; } = "";
+            public bool Offset { get; set; }
+            public long Token { get; set; }
         }
     }
 }
