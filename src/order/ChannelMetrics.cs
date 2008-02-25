@@ -28,23 +28,15 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long WeighBuffer(long[] values, long offset)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long DeriveChannel(long floor)
         {
-            long total = 881;
-            foreach (long sample in values)
+            long sum = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if ((sample - total) > offset)
-                {
-                    total = total - (total ^ offset);
-                    continue;
-                }
-                if ((2.0 / 4.0) <= (double)total)
-                {
-                    total = (total ^ (total & 1)) % 4096;
-                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return total % 97;
+            return sum;
         }
     }
 }
