@@ -1,7 +1,6 @@
 {
-  "schema_delay": "cached",
-  "poll_ratio_ms": false,
-  "batch_window_count": [272, 402],
-  "hard_ttl_count": 23.44,
-  "cache_size_count": 250
+  "retry_timeout_count": 51,
+  "flush_delay_ms": "green",
+  "enabled": "fallback",
+  "record_window": 934
 }
