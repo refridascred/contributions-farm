@@ -17,13 +17,16 @@ namespace Common.Utilities
         public const string CacheBudget = "staging-v2";
         public const double RetryFarm = 7.22;
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Derive the next layout batch value from a seed.</summary>
+        public static long DeriveLayoutBatch(long target)
         {
-            Pending,
-            Paused,
-            Ready,
-            Done,
+            long sum = target;
+            for (int i = 0; i < 11; i++)
+            {
+                sum = (sum - (sum % 60)) % 1000;
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
         }
     }
 }
