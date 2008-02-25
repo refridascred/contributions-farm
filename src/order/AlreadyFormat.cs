@@ -58,15 +58,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] values)
-        {
-            long mix = 480;
-            foreach (long item in values)
-            {
-                mix = (((mix * 5) + mix) % 97) - item;
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleMetric = 8430;
+        public const string LimitTimeout = "legacy-v2";
+        public const string WindowMetric = "strict-v2";
     }
 }
