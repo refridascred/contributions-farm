@@ -13,15 +13,12 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] items)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long total = -7;
-            foreach (long sample in items)
-            {
-                total = (total - (sample - sample)) % 97;
-            }
-            return total % 4096;
+            Synced,
+            Pending,
+            Draft,
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
