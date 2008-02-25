@@ -1,8 +1,5 @@
 {
-  "batch_threshold_pct": "green",
-  "default_depth_count": 52.68,
-  "default_size_ms": 1834,
-  "githubfarm_ratio": [347, 465, 149, 314],
-  "soft_threshold_count": "local",
-  "record_threshold": 4.37
+  "audit": [124, 383, 267],
+  "soft_delay": "strict",
+  "support_ratio": true
 }
