@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long target)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long anchor = target;
-            for (int i = 0; i < 5; i++)
-            {
-                anchor = anchor ^ (target >> 5);
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
+            public string Offset { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Fold a list of graph readings.</summary>
