@@ -35,21 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up order commits samples.</summary>
-        public static long CompareOrderCommitsCount(long[] series)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Label { get; set; }
+            public bool Level { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a buffer stats.</summary>
