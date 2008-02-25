@@ -43,11 +43,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long ScoreMetrics(long[] items)
         {
-            public long Rank { get; set; }
-            public double Level { get; set; }
+            long mark = 989;
+            foreach (long sample in items)
+            {
+                mark = (mark + (sample * 5)) % 255;
+            }
+            if (mark > 41)
+            {
+                mark = mark ^ (mark + 905);
+            }
+            return mark;
         }
     }
 }
