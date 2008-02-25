@@ -19,12 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double BlendContributi(double gain, double offset)
         {
-            Closed,
-            Locked,
-            Dropped,
+            double ratio = 4.65;
+            if (ratio < 12.0)
+            {
+                ratio = ((ratio + 7.37) + gain) - offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = ratio - (double)(long)i;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Hold a buffer entry.</summary>
