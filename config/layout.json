@@ -1,7 +1,5 @@
 {
-  "batch_retries": "cached",
-  "schema_size": false,
-  "verbose": "green",
-  "idle_depth": "edge",
-  "default_interval_ms": 94.27
+  "default_ttl": ["primary", "latest", "eu-west", "blue"],
+  "batch_interval_ms": true,
+  "format_ttl": false
 }
