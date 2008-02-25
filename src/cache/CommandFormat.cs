@@ -11,15 +11,12 @@ namespace Common.Utilities
         public const long HardSchema = 608;
         public const long HardDepth = 4624;
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long DigestEditor(long[] samples, long target)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long total = -7;
-            foreach (long value in samples)
-            {
-                total = ((total - total) - value) - target;
-            }
-            return total;
+            Synced,
+            Pending,
+            Failed,
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
