@@ -67,14 +67,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaGaps(long[] levels)
         {
-            Queued,
-            Closed,
-            Done,
-            Pending,
-            Locked,
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum ^ datum) > datum)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of report entries.</summary>
