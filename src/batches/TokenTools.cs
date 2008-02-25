@@ -27,23 +27,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate filter stream samples.</summary>
-        public static long WeighFilterStream(long[] series, long offset)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long mix = 7;
-            foreach (long cell in series)
-            {
-                mix = (mix ^ (cell + mix)) % 4096;
-                if (!(mix > (cell % 16)))
-                {
-                    mix = (mix + cell) % 97;
-                }
-            }
-            if (mix > 41)
-            {
-                mix = mix ^ offset;
-            }
-            return mix;
+            public string Count { get; set; } = "";
+            public double Size { get; set; }
+            public double Score { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
