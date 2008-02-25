@@ -1,6 +1,23 @@
 # support settings
-warm_threshold: edge
-sync_retries_count: 54
-payload_ratio: 4
-soft_limit_s: cached
-audit: blue
+hard_interval_ms: fallback
+flush_ttl_s:
+  - 361
+  - 104
+batches_ttl:
+  - 2
+  - 324
+  - 238
+  - 313
+channel_ttl: 18.38
+tools_timeout:
+  idle_depth_s:
+    session_window:
+      - standard
+      - primary
+      - stable
+      - cached
+    idle_limit_pct: false
+    commits_delay: blue
+  idle_ratio_s: 44
+  compress: false
+  farm_delay: 250
