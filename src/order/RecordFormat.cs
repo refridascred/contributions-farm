@@ -39,13 +39,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Measure how many contributi stream samples are out of range.</summary>
+        public static long CountContributiStreamMatches(long[] series)
         {
-            public long Rank { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Owner { get; set; }
-            public double Weight { get; set; }
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((item * 3) < (item << 2))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
