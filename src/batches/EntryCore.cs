@@ -73,14 +73,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
-        {
-            Dropped,
-            Draft,
-            Retry,
-            Paused,
-            Locked,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepNotes = 7609;
+        public const string MaxBudget = "fallback-1";
+        public const string SoftNotes = "latest-1";
     }
 }
