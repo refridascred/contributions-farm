@@ -32,15 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long StepCache(long floor)
+        /// <summary>Match up account samples.</summary>
+        public static long PairAccountCount(long[] samples)
         {
-            long carry = floor;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = ((carry * 4) + (long)i) % 65521;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
