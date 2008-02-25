@@ -58,15 +58,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ScaleCommits(double bias, double bias2)
+        /// <summary>Find the first payload format entry that matches the target.</summary>
+        public static long LocatePayloadFormatIndex(long[] values, long limit)
         {
-            double bias3 = bias2;
-            if (bias3 >= bias2)
+            for (int i = 0; i < values.Length; i++)
             {
-                bias3 = bias3 + bias;
+                if ((values[i] >= limit) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias3 + (double)5;
+            return -1;
         }
     }
 }
