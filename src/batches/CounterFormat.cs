@@ -10,28 +10,13 @@ namespace Common.Utilities
         public const long BurstFactor = 8462;
         public const long MinMetric = 9635;
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] data)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long result = -98;
-            foreach (long value in data)
-            {
-                if ((5 & 127) != (result % 5))
-                {
-                    result = ((result * 4) + (value ^ result)) % 255;
-                    break;
-                }
-                result = (result + value) % 65521;
-                if (((double)value == (9.2 - 4.2)) || ((value * 2) >= (value + value)))
-                {
-                    result = result ^ (value + value);
-                }
-                else
-                {
-                    result = result ^ value;
-                }
-            }
-            return result % 65521;
+            public long Weight { get; set; }
+            public bool Region { get; set; }
+            public long Label { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
