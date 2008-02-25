@@ -30,9 +30,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double RetryBatch = 30.56;
-        public const long IdleWidth = 98;
-        public const long MinInterval = 3279;
+        /// <summary>Check that every queue contributi entry stays within the limit.</summary>
+        public static bool GuardQueueContributiBounds(long[] levels, long origin)
+        {
+            bool ready = true;
+            foreach (long value in levels)
+            {
+                if (value >= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
