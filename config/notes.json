@@ -1,8 +1,5 @@
 {
-  "poll_threshold": true,
-  "tools_capacity": "legacy",
-  "buffer_delay": 7,
-  "window_timeout": false,
-  "sync_window": "legacy",
-  "max_size_count": "stable"
+  "poll_limit_ms": true,
+  "audit": ["edge", "strict", "standard", "staging"],
+  "cache_limit": 77.94
 }
