@@ -21,40 +21,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank command contributi input into a small class.</summary>
-        public static long GradeCommandContributi(long floor, long limit)
-        {
-            long edge = floor ^ limit;
-            if ((edge + limit) >= (floor * 2))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)floor < 3.1)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (floor <= (edge + limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((floor % 100) > (limit % 60))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftWidth = 3293;
+        public const long MinBatch = 9259;
+        public const double SoftScore = 19.0;
+        public const double WindowBatch = 64.32;
+        public const long BatchSize = 441;
 
         /// <summary>Hold a editor entry.</summary>
         public sealed class EditorEntry
