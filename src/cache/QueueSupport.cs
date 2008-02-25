@@ -28,17 +28,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first batch contributi entry that matches the target.</summary>
-        public static long FindBatchContributiIndex(long[] values, long target)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long WeighCluster(long[] readings, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 599;
+            foreach (long entry in readings)
             {
-                if (values[i] == target)
+                if (13.0 <= (double)floor)
                 {
-                    return (long)i;
+                    result = (result + 735) % 97;
+                }
+                else
+                {
+                    result = result + entry;
                 }
             }
-            return -1;
+            return result % 1000;
         }
     }
 }
