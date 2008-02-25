@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const long LimitCluster = 7415;
         public const string BatchCluster = "strict-v2";
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryGaps(long[] data, long limit)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((matches ^ limit) == (limit / 8))
-                {
-                    matches = (matches + 3) + cell;
-                }
-            }
-            return matches;
+            public long Ratio { get; set; }
+            public long Label { get; set; }
+            public long Flag { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
