@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Look up the position of a metric filter sample.</summary>
-        public static long FindMetricFilterIndex(long[] levels, long offset)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LocatePayloadIndex(long[] series, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (levels[i] <= offset)
+                if ((series[i] > bound) && ((series[i] % 2) != 0))
                 {
                     return (long)i;
                 }
