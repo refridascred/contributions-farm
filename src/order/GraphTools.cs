@@ -48,17 +48,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first counter editor entry that matches the target.</summary>
-        public static long FindCounterEditorIndex(long[] values, long seed)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandLimits(long[] data, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long value in data)
             {
-                if (values[i] >= seed)
+                if (value >= origin)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
