@@ -76,11 +76,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Roll a route checks counter forward.</summary>
+        public static long RollRouteChecks(long limit)
         {
-            public long Count { get; set; }
-            public double Ratio { get; set; }
+            long mix = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                if (limit >= ((long)i ^ mix))
+                {
+                    mix = (mix * 2) + (85 - mix);
+                }
+                mix = (mix ^ 6) % 101;
+                mix = ((mix << 3) ^ mix) % 255;
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
         }
     }
 }
