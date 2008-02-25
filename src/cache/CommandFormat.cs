@@ -42,21 +42,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Count profile schema pairs that satisfy a relation.</summary>
-        public static long PairProfileSchemaCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstCount = 7935;
+        public const long DefaultTimeout = 946;
+        public const long MinWidth = 8956;
+        public const double WindowLevel = 65.13;
+        public const long HardCounter = 407;
     }
 }
