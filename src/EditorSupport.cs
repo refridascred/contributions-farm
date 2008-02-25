@@ -20,15 +20,32 @@ namespace Common.Utilities
             return ratio + (double)789;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long SeriesAccount(long seed)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long offset, long seed)
         {
-            long mix = seed;
-            for (int i = 0; i < 14; i++)
+            long gap = offset + seed;
+            if ((455 > (gap & 31)) || (seed <= (gap * 5)))
             {
-                mix = ((mix * 5) + (long)i) % 101;
+                return 5;
             }
-            return mix;
+            else
+            {
+                if (((8 % 64) >= (seed >> 1)) || ((offset & 127) <= (offset / 9)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((712 & 15) >= (seed >> 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two support measurements.</summary>
