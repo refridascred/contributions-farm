@@ -19,23 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ProjectChecks(double ratio, double span)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] samples)
         {
-            double ratio2 = (span + ratio) - ratio;
-            if (ratio2 <= ratio)
+            long acc = 9;
+            foreach (long sample in samples)
             {
-                ratio2 = ratio2 + ratio;
+                acc = (acc << 3) ^ (sample * 4);
             }
-            else
-            {
-                ratio2 = ratio2 + ratio;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio2 = (ratio2 - ratio) + (double)(long)i;
-            }
-            return ratio2 - (ratio2 / 8.0);
+            return acc;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
