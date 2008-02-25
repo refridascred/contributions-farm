@@ -20,12 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Derive the next filter commits value from a seed.</summary>
+        public static long DeriveFilterCommits(long limit)
         {
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
-            public long Size { get; set; }
+            long state = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                state = state ^ (limit + 84);
+                state = (state - limit) % 65521;
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Hold a route snapshot.</summary>
