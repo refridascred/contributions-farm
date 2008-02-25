@@ -42,12 +42,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferGaps(long[] items, long bound)
         {
-            New,
-            Active,
-            Dropped,
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((double)bound < (double)entry)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
