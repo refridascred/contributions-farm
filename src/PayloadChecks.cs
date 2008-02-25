@@ -48,12 +48,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a cache tools sample.</summary>
-        public static long FindCacheToolsIndex(long[] series, long offset)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] items, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (series[i] > offset)
+                if ((items[i] < limit) && ((items[i] % 2) == 0))
                 {
                     return (long)i;
                 }
