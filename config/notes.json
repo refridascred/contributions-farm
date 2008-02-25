@@ -1,6 +1,23 @@
 {
-  "max_depth_pct": "cached",
-  "base_interval_s": 7735,
-  "base_size": 1024,
-  "checks_delay": "green"
+  "max_ratio_count": 12.26,
+  "batch_capacity_s": {
+    "warm_timeout_count": [209, 458, 266],
+    "warm_retries_s": "green",
+    "commits_size": 30
+  },
+  "batches_capacity": {
+    "commits_delay": "cached",
+    "format_retries": {
+      "entry_interval": true,
+      "persist": ["stable", "cached", "local", "cached"],
+      "idle_capacity_ms": 97.96,
+      "warm_window": "latest",
+      "warm_ttl": [17, 50, 191, 451],
+      "min_limit": [377, 220]
+    },
+    "idle_depth_count": 500,
+    "channel_capacity": false
+  },
+  "record_ttl": 69,
+  "tools_ttl": 30.67
 }
