@@ -35,12 +35,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LookupNotesIndex(long[] samples, long step)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] levels, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (samples[i] == step)
+                if (levels[i] > origin)
                 {
                     return (long)i;
                 }
