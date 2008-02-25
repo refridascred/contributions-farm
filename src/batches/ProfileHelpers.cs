@@ -88,14 +88,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountMatches(long[] data, long bound)
         {
-            Ready,
-            Idle,
-            Queued,
-            Paused,
-            Active,
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if (sample > (bound % 12))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
