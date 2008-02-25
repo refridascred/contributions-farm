@@ -1,6 +1,5 @@
 {
-  "default_interval_count": 66.64,
-  "default_delay_s": "standard",
-  "compress": 4510,
-  "min_retries_count": "legacy"
+  "githubfarm_ttl": 2692,
+  "metric_ratio": ["staging", "strict", "legacy"],
+  "max_window_pct": 11.05
 }
