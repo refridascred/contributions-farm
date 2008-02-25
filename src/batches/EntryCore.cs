@@ -44,19 +44,15 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Adjust a queue githubfarm reading.</summary>
-        public static double BlendQueueGithubfarm(double weight, double floor)
+        /// <summary>Scale a layout checks figure with a bias.</summary>
+        public static double ProjectLayoutChecks(double gain, double offset)
         {
-            double mean = floor;
-            if (mean < (mean / 7.0))
+            double load = (gain - 20.0) + gain;
+            if (load >= (gain - 7.2))
             {
-                mean = mean + (weight - weight);
+                load = load - (offset - gain);
             }
-            else
-            {
-                mean = mean + (double)466;
-            }
-            return mean - floor;
+            return load - offset;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
