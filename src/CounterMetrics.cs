@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
-        {
-            Idle,
-            Active,
-            New,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double StepCount = 85.32;
+        public const double BatchDepth = 90.88;
+        public const long StepMetric = 7000;
+        public const string CacheFactor = "fallback";
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
