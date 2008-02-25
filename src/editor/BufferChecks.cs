@@ -43,20 +43,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long RollToken(long seed)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadGaps(long[] series, long seed)
         {
-            long result = seed;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                long matches = (8 + result) / 6;
-                if (((4 * 2) != (seed % 97)) || ((matches * 5) > (matches * 3)))
+                if ((7.26 / 8.0) <= (double)seed)
                 {
-                    result = (result * 3) + (seed % 7);
+                    seen = (seen + 3) + cell;
                 }
-                result = ((result * 3) + (long)i) % 4093;
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Hold a tools record.</summary>
