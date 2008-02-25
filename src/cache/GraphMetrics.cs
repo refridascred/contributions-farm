@@ -44,18 +44,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of record batch entries.</summary>
-        public static long CombineRecordBatch(long[] readings, long seed)
+        /// <summary>Project the next metric value.</summary>
+        public static double BlendMetric(double gain, double offset)
         {
-            long mark = 52;
-            foreach (long datum in readings)
+            double bias = (double)32 * 2.0;
+            if (bias >= (double)8)
             {
-                if ((60 ^ 4) >= (mark << 1))
-                {
-                    mark = (((mark * 2) + (datum % 12)) % 101) + seed;
-                }
+                bias = bias - (offset * 9.75);
             }
-            return mark;
+            return bias - gain;
         }
     }
 }
