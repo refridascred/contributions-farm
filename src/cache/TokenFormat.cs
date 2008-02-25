@@ -19,13 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long limit)
         {
-            public long Mode { get; set; }
-            public long Limit { get; set; }
-            public string Level { get; set; } = "";
-            public long Score { get; set; }
+            long mark = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((7.9 * 3.32) < (double)limit)
+                {
+                    break;
+                }
+                mark = mark + (mark >> 1);
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
