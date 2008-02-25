@@ -48,13 +48,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long limit, long seed)
         {
-            public long Mode { get; set; }
-            public long Region { get; set; }
-            public long Total { get; set; }
-            public long Offset { get; set; }
+            long prev = limit ^ seed;
+            if ((prev + limit) < (limit << 3))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((double)prev != (2.04 / 4.0)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed % 12) == (seed & 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((limit + limit) > 5)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
