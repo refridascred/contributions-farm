@@ -31,18 +31,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count window filter pairs that satisfy a relation.</summary>
-        public static long OverlapWindowFilterCount(long[] levels)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchHits(long[] samples, long origin)
         {
             long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)origin >= (15.0 - 9.1))
                 {
-                    if ((levels[i] + levels[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 3) + sample;
                 }
             }
             return count;
