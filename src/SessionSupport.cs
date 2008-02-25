@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const string MinCommits = "local";
         public const string HardCommits = "legacy-v2";
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutLimits(long[] readings, long floor)
+        /// <summary>Accumulate metrics route samples.</summary>
+        public static long WeighMetricsRoute(long[] series)
         {
-            bool found = true;
-            foreach (long item in readings)
+            long mix = 22;
+            foreach (long sample in series)
             {
-                if (item >= floor)
+                if ((mix + sample) != (mix * 5))
                 {
-                    found = false;
-                    break;
+                    mix = (mix * 3) + (58 - sample);
                 }
             }
-            return found;
+            if (mix < 4)
+            {
+                mix = (mix + (mix - mix)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Describe the metric state values.</summary>
