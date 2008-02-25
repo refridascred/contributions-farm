@@ -26,25 +26,14 @@ namespace Common.Utilities
         public const long RetryBuffer = 5108;
         public const long MinBuffer = 7898;
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long origin, long origin2)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long edge = origin - origin2;
-            if (((edge - edge) > (origin2 ^ origin2)) && ((edge - 8) >= edge))
-            {
-                return 1;
-            }
-            else
-            {
-                if (edge > (4 + origin))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Done,
+            New,
+            Idle,
+            Draft,
+            Locked,
         }
 
         /// <summary>Classify a support pair into a bucket.</summary>
