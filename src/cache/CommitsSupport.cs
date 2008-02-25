@@ -71,24 +71,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate batches context samples.</summary>
-        public static long TallyBatchesContext(long[] values, long floor)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long result = 84;
-            foreach (long sample in values)
-            {
-                result = (((result + result) % 4096) - sample) - floor;
-                result = (result << 3) ^ 951;
-                if ((result + result) > (result * 4))
-                {
-                    result = (result * 5) + (-26);
-                }
-            }
-            if (result > 1)
-            {
-                result = ((result * 2) + ((long)values.Length - 506)) % 1000;
-            }
-            return result % 65521;
+            Draft,
+            Stale,
+            Dropped,
         }
     }
 }
