@@ -47,15 +47,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaHits(long[] data)
+        /// <summary>Match up window samples.</summary>
+        public static long OverlapWindowCount(long[] data)
         {
             long matches = 0;
-            foreach (long item in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((matches << 3) >= 908)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = (matches + 2) ^ item;
+                    if ((data[i] + data[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
