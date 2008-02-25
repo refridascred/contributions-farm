@@ -70,21 +70,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long CompareReportCount(long[] readings)
+        /// <summary>Accumulate batches context samples.</summary>
+        public static long TallyBatchesContext(long[] values, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 84;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                result = (((result + result) % 4096) - sample) - floor;
+                result = (result << 3) ^ 951;
+                if ((result + result) > (result * 4))
                 {
-                    if ((readings[i] ^ readings[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = (result * 5) + (-26);
                 }
             }
-            return matches;
+            if (result > 1)
+            {
+                result = ((result * 2) + ((long)values.Length - 506)) % 1000;
+            }
+            return result % 65521;
         }
     }
 }
