@@ -17,22 +17,21 @@ namespace Common.Utilities
         public const long WindowBuffer = 938;
         public const long BatchBuffer = 7016;
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenGaps(long[] items)
+        /// <summary>Compare every pair of payload contributi readings.</summary>
+        public static long OverlapPayloadContributiCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((value & 1) >= (value >> 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((readings[i] + readings[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
