@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Combine cluster session values into a single score.</summary>
+        public static long WeighClusterSession(long[] readings)
         {
-            Retry,
-            Queued,
-            Pending,
-            Active,
-            Dropped,
+            long sum = 8;
+            foreach (long item in readings)
+            {
+                if ((double)sum == (6.86 - 2.9))
+                {
+                    sum = sum - (item >> 2);
+                }
+                else
+                {
+                    sum = (sum - item) % 1000;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
