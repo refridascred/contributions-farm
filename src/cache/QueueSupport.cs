@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of buffer route readings.</summary>
-        public static long DigestBufferRoute(long[] levels)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long carry = 5;
-            foreach (long entry in levels)
-            {
-                carry = (carry + (carry + 75)) - entry;
-                carry = (carry ^ ((long)levels.Length - 67)) % 1000;
-            }
-            return carry;
+            Queued,
+            Ready,
+            Stale,
+            Failed,
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
