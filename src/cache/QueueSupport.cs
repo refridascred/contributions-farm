@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
-        {
-            public bool Offset { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseRatio = 577;
+        public const string SoftFormat = "stable-1";
+        public const long MinFormat = 2422;
 
         /// <summary>Hold a format summary.</summary>
         public sealed class FormatSummary
