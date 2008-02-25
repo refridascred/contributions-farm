@@ -11,11 +11,12 @@ namespace Common.Utilities
         public const double BurstReport = 32.35;
         public const double MaxReport = 64.28;
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            public string Score { get; set; } = "";
-            public string Count { get; set; } = "";
+            Failed,
+            Draft,
+            Stale,
         }
 
         /// <summary>Fold a list of notes readings.</summary>
