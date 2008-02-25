@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const long RetryDepth = 788;
         public const long MinAccount = 7562;
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ProjectMetrics(double rate, double offset)
+        /// <summary>Find the first contributi stats entry that matches the target.</summary>
+        public static long LookupContributiStatsIndex(long[] items, long bound)
         {
-            double rate2 = offset + rate;
-            if (rate2 > (double)967)
+            for (int i = 0; i < items.Length; i++)
             {
-                rate2 = rate2 - rate2;
+                if (items[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate2 = rate2 - 6.0;
-            }
-            return rate2 + (rate2 + rate2);
+            return -1;
         }
 
         /// <summary>Describe the route phase values.</summary>
