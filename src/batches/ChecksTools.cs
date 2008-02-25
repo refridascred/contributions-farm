@@ -30,10 +30,13 @@ namespace Common.Utilities
             return rate - ratio;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryCommits = 3056;
-        public const long SoftSpan = 8314;
-        public const long MinInterval = 2627;
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
+        {
+            Done,
+            Queued,
+            Synced,
+        }
 
         /// <summary>Audit record batch readings against a rule.</summary>
         public static long TallyRecordBatchHits(long[] samples)
