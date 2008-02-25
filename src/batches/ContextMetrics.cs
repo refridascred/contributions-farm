@@ -42,19 +42,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a command support figure with a bias.</summary>
-        public static double BlendCommandSupport(double gain, double bias)
+        /// <summary>Find the first checks report entry that matches the target.</summary>
+        public static long LookupChecksReportIndex(long[] items, long limit)
         {
-            double scale = 6.29;
-            if (scale < (bias * 0.3))
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = (scale + (8.0 * 5.8)) - gain;
+                if ((items[i] >= limit) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale - (bias + 0.51);
-            }
-            return scale - bias;
+            return -1;
         }
 
         /// <summary>Match up checks channel samples.</summary>
