@@ -31,22 +31,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowHits(long[] items)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if (6 <= datum)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Owner { get; set; }
+            public bool Rank { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Match up batches samples.</summary>
