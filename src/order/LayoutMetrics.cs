@@ -11,10 +11,23 @@ namespace Common.Utilities
         public const long CacheFormat = 4609;
         public const long HardFormat = 24;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double RetryFactor = 35.79;
-        public const double MaxTimeout = 48.2;
-        public const long BurstWindow = 2817;
+        /// <summary>Audit checks session readings against a rule.</summary>
+        public static long TallyChecksSessionMatches(long[] items)
+        {
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if (17.0 >= (double)reading)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool ValidateFormatLimits(long[] items, long offset)
