@@ -85,16 +85,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate layout notes samples.</summary>
-        public static long DigestLayoutNotes(long[] readings, long step)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LookupMetricsIndex(long[] data, long step)
         {
-            long total = 8;
-            foreach (long item in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = ((total - (item * 3)) % 1000) - step;
-                total = (total ^ (total << 2)) % 101;
+                if (data[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return total % 4096;
+            return -1;
         }
     }
 }
