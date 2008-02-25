@@ -39,15 +39,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ProjectStream(double ratio, double span)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            double mean = (double)84 / 6.0;
-            for (int i = 0; i < 5; i++)
-            {
-                mean = ((mean - span) + (double)(long)i) - ratio;
-            }
-            return mean + span;
+            Queued,
+            New,
+            Ready,
         }
     }
 }
