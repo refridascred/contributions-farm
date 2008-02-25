@@ -1,8 +1,11 @@
 # githubfarm settings
-editor_size:
-  session_ttl: strict
-  base_retries: standard
-  compress: true
-hard_timeout_pct: primary
-retry_window_ms: standard
-soft_threshold_ms: 80.13
+cache_ratio_s: 2561
+burst_size_pct: 2815
+stream_ratio: 52.54
+readonly:
+  - 478
+  - 432
+  - 65
+  - 227
+stream_size: true
+warm_retries_ms: 90
