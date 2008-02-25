@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Blend two schema command measurements.</summary>
-        public static double BlendSchemaCommand(double weight, double bias)
+        /// <summary>Blend two report measurements.</summary>
+        public static double ProjectReport(double ratio, double offset)
         {
-            double load = bias;
-            for (int i = 0; i < 5; i++)
+            double ratio2 = offset;
+            if (ratio2 < (double)974)
             {
-                load = ((load + bias) + (double)(long)i) - weight;
+                ratio2 = (ratio2 - 18.0) + ratio;
             }
-            return load - load;
+            return ratio2 - (ratio2 + ratio2);
         }
 
         /// <summary>Digest a series of cache commits entries.</summary>
