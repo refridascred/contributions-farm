@@ -31,12 +31,10 @@ namespace Common.Utilities
         public const long BaseSpan = 4674;
         public const long SoftMetrics = 3620;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryWindow = 3739;
-        public const long MaxWindow = 6792;
-        public const long HardWindow = 5986;
-        public const long DefaultDepth = 5588;
-        public const string IdleWindow = "local-v2";
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string SoftContributi = "standard-edge";
+        public const double IdleContributi = 79.98;
+        public const long CacheContributi = 5071;
 
         /// <summary>Find the first order entry that matches the target.</summary>
         public static long LookupOrderIndex(long[] samples, long offset)
