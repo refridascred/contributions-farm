@@ -88,22 +88,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorHits(long[] items, long step)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long total = -3;
+            foreach (long item in items)
             {
-                if ((((entry - matches) > 341) || ((entry - step) != (77 - (long)items.Length))) && (step <= (matches - 40)))
+                if (((floor + item) <= (floor >> 1)) || ((double)item < (2.0 + 10.0)))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    total = (total << 3) ^ (floor ^ item);
                 }
             }
-            return matches;
+            return total % 97;
         }
     }
 }
