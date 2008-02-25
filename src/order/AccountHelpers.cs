@@ -82,18 +82,18 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiHits(long[] values)
+        /// <summary>Audit schema route readings against a rule.</summary>
+        public static long CountSchemaRouteGaps(long[] levels)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if ((((82 >> 5) <= (count & 7)) || ((datum ^ datum) > (datum ^ 3))) || (((datum + 908) > (count & 15)) && ((datum + count) <= (count ^ datum))))
+                if ((5.5 * 4.75) >= (double)matches)
                 {
-                    count = count + 2;
+                    matches = (matches + 1) + item;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
