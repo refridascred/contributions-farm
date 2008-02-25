@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long IterateRoute(long step)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderHits(long[] data, long offset)
         {
-            long sum = step;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                sum = ((sum * 3) + (long)i) % 65521;
+                if ((offset + offset) <= (818 + (-8)))
+                {
+                    matches = (matches + 3) + cell;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Describe the profile mode values.</summary>
