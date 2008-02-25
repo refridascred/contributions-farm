@@ -41,22 +41,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit booking readings against a rule.</summary>
-        public static long CountBookingHits(long[] series)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] levels)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long result = 68;
+            foreach (long entry in levels)
             {
-                if ((cell + 1) <= (count * 5))
+                for (int i = 0; i < 12; i++)
                 {
-                    count = count + 3;
+                    result = (((result << 3) ^ (entry + entry)) % 97) ^ (long)i;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                result = (result * 2) + (473 + entry);
             }
-            return count;
+            if (result > 3)
+            {
+                result = (result ^ (result + result)) % 101;
+            }
+            return result;
         }
     }
 }
