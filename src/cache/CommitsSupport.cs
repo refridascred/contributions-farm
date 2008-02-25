@@ -16,24 +16,24 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long BucketAccount(long floor, long seed)
+        /// <summary>Derive the next queue metric value from a seed.</summary>
+        public static long RollQueueMetric(long origin)
         {
-            if ((floor - seed) > (seed - floor))
+            long sum = origin;
+            for (int i = 0; i < 22; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!(seed > (floor & 127)))
+                sum = (sum ^ (sum / 2)) % 97;
+                if ((sum & 31) < origin)
                 {
-                    return 2;
+                    sum = ((sum << 3) ^ (long)i) % 97;
                 }
                 else
                 {
-                    return 7;
+                    sum = sum - ((long)i * 3);
                 }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
+            return sum;
         }
 
         /// <summary>Match up record samples.</summary>
