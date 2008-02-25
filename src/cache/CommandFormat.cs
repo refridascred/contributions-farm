@@ -13,19 +13,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the channel counter series from a seed.</summary>
-        public static long RollChannelCounter(long step)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long mix = step;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((double)(long)i <= (5.23 / 2.0))
-                {
-                    mix = (mix << 3) ^ (mix + step);
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
+            public bool Ratio { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Combine editor tools values into a single score.</summary>
