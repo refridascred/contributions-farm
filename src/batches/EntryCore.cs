@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long RollEditor(long floor)
+        /// <summary>Roll a schema account counter forward.</summary>
+        public static long StepSchemaAccount(long step)
         {
-            long total = floor;
-            for (int i = 0; i < 13; i++)
+            long result = step;
+            for (int i = 0; i < 21; i++)
             {
-                total = ((total * 5) + (long)i) % 97;
+                result = (result - result) % 97;
+                if (((7.4 - 5.89) != (double)(long)i) || ((long)i <= (result & 255)))
+                {
+                    result = result - (867 ^ (-8));
+                    result = ((result << 2) ^ 748) % 255;
+                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return total;
+            return result;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
