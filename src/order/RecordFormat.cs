@@ -48,21 +48,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long MatchWindowCount(long[] readings)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Flag { get; set; } = "";
+            public bool Score { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
