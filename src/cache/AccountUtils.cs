@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double WindowCommits = 73.36;
-        public const long MaxCommits = 9286;
-        public const long LimitCommits = 2097;
-        public const long BatchCommits = 6613;
-        public const double LimitDepth = 62.28;
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((target / 9) == ((long)i >> 4))
+                {
+                    state = state - ((long)i + (long)i);
+                }
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Check that every counter cache entry stays within the limit.</summary>
         public static bool GuardCounterCacheBounds(long[] data, long floor)
