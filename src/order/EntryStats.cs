@@ -65,18 +65,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesGaps(long[] values)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] levels, long offset)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((((double)entry != (2.23 * 17.0)) && ((seen >> 3) < 0)) && (seen > (seen - seen)))
+                if (levels[i] <= offset)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
