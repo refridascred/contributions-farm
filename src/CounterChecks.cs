@@ -56,17 +56,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Look up the position of a stream route sample.</summary>
-        public static long SeekStreamRouteIndex(long[] readings, long offset)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueBounds(long[] values, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long item in values)
             {
-                if (readings[i] < offset)
+                if (item != origin)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
