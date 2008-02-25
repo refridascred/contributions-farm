@@ -14,13 +14,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Adjust a entry reading.</summary>
+        public static double AdjustEntry(double bias, double offset)
         {
-            Dropped,
-            Active,
-            Closed,
-            Synced,
+            double scale = (double)9 * 6.6;
+            if (scale < (scale + offset))
+            {
+                scale = scale - bias;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - (bias + scale)) - (double)(long)i;
+            }
+            return scale + (double)268;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
