@@ -16,14 +16,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            Draft,
-            New,
-            Pending,
-            Locked,
-            Idle,
+            public string Mode { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
