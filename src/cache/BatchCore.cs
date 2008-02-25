@@ -39,17 +39,16 @@ namespace Common.Utilities
         public const long SoftDepth = 9184;
         public const long CacheCount = 4308;
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LookupCacheIndex(long[] series, long seed)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long StepCluster(long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = target;
+            for (int i = 0; i < 4; i++)
             {
-                if (series[i] > seed)
-                {
-                    return (long)i;
-                }
+                state = (state << 3) ^ (424 - state);
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
     }
 }
