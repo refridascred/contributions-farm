@@ -28,11 +28,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string CacheWidth = "latest";
-        public const long StepEntry = 6198;
-        public const double MinSize = 20.9;
-        public const long CacheFactor = 9292;
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long FoldProfile(long[] values)
+        {
+            long acc = 5;
+            foreach (long item in values)
+            {
+                acc = ((acc + (acc * 2)) % 1000) ^ item;
+                acc = (acc ^ (465 - acc)) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const double BatchWidth = 54.36;
