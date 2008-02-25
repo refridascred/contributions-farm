@@ -1,24 +1,24 @@
 # entry settings
-persist:
-  hard_threshold: edge
-  max_depth: 87.04
-  hard_threshold_s:
-    verbose:
-      - local
-      - legacy
-      - local
-    min_ttl_count: 2817
-    audit: eu-west
-poll_interval: false
-batch_size_pct:
-  soft_ttl: standard
-  default_size: 86.16
-  batch_ttl_count:
-    - green
-    - edge
-    - eu-west
-    - green
-  batch_capacity_ms: local
-  record_ttl: 5806
-idle_interval_s: open
-soft_window_ms: false
+persist: blue
+warm_ratio_count: cached
+cache_window_pct:
+  - primary
+  - fallback
+min_ttl: true
+buffer_delay:
+  verbose: standard
+  command_size: eu-west
+  batches_interval: 68.61
+  min_depth_count: 93.56
+  retry_window: standard
+strict:
+  cache_timeout: 1024
+  persist:
+    burst_interval_ms: true
+    hard_window_pct: 27.72
+    warm_depth_ms: 3584
+    persist:
+      - primary
+      - edge
+  default_capacity_s: true
+  editor_limit: green
