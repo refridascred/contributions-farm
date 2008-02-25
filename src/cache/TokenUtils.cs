@@ -32,23 +32,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] levels, long offset)
-        {
-            long result = 6;
-            foreach (long item in levels)
-            {
-                result = ((result * 2) + (item + result)) % 255;
-                if (((3 * 2) > (offset - item)) || ((8 + offset) == (result & 7)))
-                {
-                    break;
-                }
-            }
-            if (result > 13)
-            {
-                result = (result << 2) ^ offset;
-            }
-            return result % 65521;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string HardWidth = "latest-edge";
+        public const long SoftTimeout = 6521;
+        public const long BaseBudget = 1734;
     }
 }
