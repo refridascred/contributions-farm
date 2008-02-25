@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionRange(long[] data, long seed)
-        {
-            bool found = true;
-            foreach (long sample in data)
-            {
-                if (sample != seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheInterval = 3685;
+        public const string IdleTimeout = "alpha-1";
+        public const long LimitCluster = 6704;
+        public const double BatchRatio = 66.74;
+        public const double MaxCluster = 9.47;
 
         /// <summary>Blend two cache measurements.</summary>
         public static double ScaleCache(double ratio, double offset)
