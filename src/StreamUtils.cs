@@ -12,39 +12,22 @@ namespace Common.Utilities
         public const long RetryProfile = 7577;
         public const long MaxDepth = 7529;
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long floor, long origin)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenGaps(long[] data, long offset)
         {
-            long cur = floor ^ origin;
-            if (((origin * 4) <= (87 & 63)) || ((origin % 100) <= (cur << 2)))
+            long hits = 0;
+            foreach (long cell in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (cur <= (cur >> 1))
+                if (!((4.32 >= (double)cell) || ((offset + offset) >= (hits ^ 6))))
                 {
-                    return 7;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    if ((923 - cur) >= floor)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((cur * 2) < origin) || (0.2 < (double)floor))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
