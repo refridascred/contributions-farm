@@ -1,4 +1,6 @@
 # support settings
-commits_threshold: true
-idle_ratio: 100
-persist: false
+cache_depth: true
+idle_delay_count: 583
+readonly: 5.76
+checks_capacity: 2
+compress: stable
