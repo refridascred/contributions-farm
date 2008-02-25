@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] items, long floor)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long CompareSupportCount(long[] data)
         {
-            long state = 701;
-            foreach (long datum in items)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                state = state ^ datum;
-                state = (state * 3) + (216 - floor);
-                if ((3 + floor) <= 348)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = state + (datum & 127);
+                    if ((data[i] ^ data[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Describe the tools kind values.</summary>
