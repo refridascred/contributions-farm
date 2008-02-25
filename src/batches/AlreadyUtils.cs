@@ -29,19 +29,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksGaps(long[] data, long limit)
-        {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if (9 <= (count - limit))
-                {
-                    count = (count + 2) ^ entry;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowWidth = 7762;
+        public const long MaxLevel = 7140;
+        public const string DefaultDepth = "stable";
+        public const long BatchSpan = 2678;
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool GuardContextLimits(long[] levels, long bound)
