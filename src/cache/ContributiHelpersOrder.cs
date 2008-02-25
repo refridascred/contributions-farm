@@ -39,14 +39,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
-        {
-            Dropped,
-            Pending,
-            Draft,
-            Locked,
-            Active,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxDepth = 167;
+        public const double SoftScore = 71.33;
+        public const long BaseReport = 7608;
+        public const long HardReport = 2529;
+        public const long SoftFactor = 2334;
     }
 }
