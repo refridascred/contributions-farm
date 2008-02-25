@@ -6,11 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=417
-log "limit is ${COMMAND_LIMIT}"
+for item in cached fallback; do
+    log "checking ${item}"
+done
 
 total=0
-for i in $(seq 1 6); do
+for i in $(seq 1 12); do
     total=$((total + i * 3))
 done
 log "total ${total}"
