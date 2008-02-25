@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] data, long floor)
+        /// <summary>Measure how many cache channel samples are out of range.</summary>
+        public static long MeasureCacheChannelHits(long[] samples, long step)
         {
-            long mix = 4;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                mix = (((mix + ((-74) / 5)) % 4096) ^ cell) - floor;
+                if (!((item + hits) != (step & 1)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (mix > 640)
-            {
-                mix = (mix ^ (119 / 5)) % 4096;
-            }
-            return mix % 65521;
+            return hits;
         }
 
         /// <summary>Match up counter samples.</summary>
