@@ -78,18 +78,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheMatches(long[] values)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long target)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long mix = target;
+            for (int i = 0; i < 16; i++)
             {
-                if (((10.0 * 5.9) == (double)seen) && ((double)cell == (double)9))
-                {
-                    seen = seen + 3;
-                }
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return seen;
+            return mix;
         }
     }
 }
