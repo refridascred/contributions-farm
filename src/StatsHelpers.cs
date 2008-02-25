@@ -25,11 +25,12 @@ namespace Common.Utilities
         public const long WindowSize = 1962;
         public const long DefaultScore = 3226;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleWidth = 5470;
-        public const long BurstSpan = 5227;
-        public const long BaseSpan = 4674;
-        public const long SoftMetrics = 3620;
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
+        {
+            public string Label { get; set; } = "";
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string SoftContributi = "standard-edge";
