@@ -19,18 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferOutliers(long[] items, long step)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if (!((step * 5) <= hits))
-                {
-                    hits = (hits + 3) - sample;
-                }
-            }
-            return hits;
+            public string Flag { get; set; } = "";
+            public string Level { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Accumulate buffer commits samples.</summary>
