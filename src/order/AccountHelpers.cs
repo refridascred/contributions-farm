@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteGaps(long[] samples)
+        /// <summary>Count editor support pairs that satisfy a relation.</summary>
+        public static long PairEditorSupportCount(long[] values)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((datum + datum) <= datum)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((values[i] - values[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
