@@ -44,24 +44,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long limit, long limit2)
+        /// <summary>Adjust a queue githubfarm reading.</summary>
+        public static double BlendQueueGithubfarm(double weight, double floor)
         {
-            if (((double)limit2 > (6.0 / 9.0)) || ((3.3 * 8.16) >= (double)limit))
+            double mean = floor;
+            if (mean < (mean / 7.0))
             {
-                return 6;
+                mean = mean + (weight - weight);
             }
             else
             {
-                if ((double)limit2 > (double)limit)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
+                mean = mean + (double)466;
             }
+            return mean - floor;
         }
 
         /// <summary>Hold a already info.</summary>
