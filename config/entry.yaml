@@ -1,8 +1,6 @@
 # entry settings
-retry_depth_s: true
-layout_depth: 20.97
-max_retries_ms:
-  - latest
-  - local
-  - cached
-batches_delay: 4059
+retry_retries_ms: 85.36
+idle_capacity_s: eu-west
+compress: 500
+stats_ratio: 250
+strict: 12.72
