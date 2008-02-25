@@ -12,23 +12,12 @@ namespace Common.Utilities
             return (load - (double)732) + bias;
         }
 
-        /// <summary>Measure how many stream stats samples are out of range.</summary>
-        public static long MeasureStreamStatsGaps(long[] series, long origin)
-        {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if (8 >= datum)
-                {
-                    count = (count + 1) - origin;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxSize = 7101;
+        public const long SoftEntry = 3290;
+        public const long BatchLevel = 7070;
+        public const long WindowEntry = 5270;
+        public const long LimitSize = 4219;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long RetryCommand = 5728;
