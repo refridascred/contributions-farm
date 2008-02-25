@@ -34,19 +34,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool ValidateMetricsBounds(long[] data, long step)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            bool found = true;
-            foreach (long cell in data)
-            {
-                if (cell > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Token { get; set; }
+            public long Weight { get; set; }
+            public long Level { get; set; }
         }
     }
 }
