@@ -24,22 +24,17 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Count the tools stream entries that pass the check.</summary>
-        public static long AuditToolsStreamHits(long[] items, long floor)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long item in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((item % 2) <= matches)
+                if (samples[i] <= bound)
                 {
-                    matches = (matches + 1) + floor;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
