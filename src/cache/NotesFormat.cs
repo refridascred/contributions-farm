@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string LimitBudget = "legacy";
-        public const long HardTools = 3369;
-        public const string WindowTools = "cached-1";
-        public const string RetryTools = "alpha-1";
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string IdleCount = "primary";
+        public const long StepChecks = 5025;
+        public const long BatchChecks = 9089;
+        public const long HardChecks = 615;
+        public const long SoftSpan = 8888;
 
         /// <summary>Describe the checks class values.</summary>
         public enum ChecksClass
