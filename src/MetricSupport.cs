@@ -35,14 +35,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Find the first cluster cache entry that matches the target.</summary>
+        public static long LookupClusterCacheIndex(long[] series, long offset)
         {
-            New,
-            Stale,
-            Failed,
-            Ready,
-            Idle,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= offset) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
