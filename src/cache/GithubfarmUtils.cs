@@ -39,12 +39,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            Queued,
-            New,
-            Ready,
+            Locked,
+            Paused,
+            Pending,
+            Retry,
+            Draft,
         }
     }
 }
