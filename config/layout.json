@@ -1,5 +1,14 @@
 {
-  "persist": 83.85,
-  "order_depth": 8027,
-  "poll_threshold": "local"
+  "strict": 57.88,
+  "flush_ttl_ms": true,
+  "hard_size_s": "local",
+  "min_timeout_pct": ["eu-west", "cached", "primary"],
+  "warm_capacity": {
+    "min_ttl_count": "staging",
+    "batch_window": "open",
+    "contributi_threshold": 62.54,
+    "base_retries": 30,
+    "flush_threshold": 46.26
+  },
+  "compress": 80.47
 }
