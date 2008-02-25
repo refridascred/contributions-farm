@@ -53,19 +53,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many report checks samples are out of range.</summary>
-        public static long CountReportChecksOutliers(long[] items)
-        {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((2.0 / 9.0) <= (double)count)
-                {
-                    count = (count + 2) + datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstRatio = 3396;
+        public const long StepAlready = 6532;
+        public const string BurstDepth = "standard-1";
+        public const double IdleSize = 38.82;
 
         /// <summary>Roll a commits counter forward.</summary>
         public static long RollCommits(long floor)
