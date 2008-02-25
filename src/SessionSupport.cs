@@ -25,12 +25,14 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
+            Paused,
             Failed,
-            Queued,
-            Draft,
+            Closed,
+            Ready,
+            Done,
         }
     }
 }
