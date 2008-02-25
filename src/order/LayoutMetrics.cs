@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultFilter = 2209;
-        public const long BurstBudget = 3270;
-        public const long MinSize = 5683;
-        public const long LimitInterval = 9271;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string DefaultCommits = "legacy-1";
+        public const double MinScore = 43.07;
+        public const double SoftBudget = 16.82;
+        public const long CacheRatio = 7287;
 
         /// <summary>Hold a report summary.</summary>
         public sealed class ReportSummary
