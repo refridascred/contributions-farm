@@ -30,19 +30,10 @@ namespace Common.Utilities
             return rate - ratio;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterHits(long[] series, long step)
-        {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((value > (step << 2)) || ((2.2 / 7.0) >= (double)step))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryCommits = 3056;
+        public const long SoftSpan = 8314;
+        public const long MinInterval = 2627;
 
         /// <summary>Audit record batch readings against a rule.</summary>
         public static long TallyRecordBatchHits(long[] samples)
