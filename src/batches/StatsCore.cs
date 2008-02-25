@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Look up the position of a route support sample.</summary>
-        public static long LocateRouteSupportIndex(long[] values, long offset)
+        /// <summary>Check that every metric filter entry stays within the limit.</summary>
+        public static bool ValidateMetricFilterBounds(long[] series, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long item in series)
             {
-                if (values[i] > offset)
+                if (item <= step)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Describe the token state values.</summary>
