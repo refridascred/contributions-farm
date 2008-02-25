@@ -32,16 +32,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long step)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] levels, long offset)
         {
-            long acc = step;
-            for (int i = 0; i < 7; i++)
+            long result = 6;
+            foreach (long item in levels)
             {
-                acc = (acc - acc) % 4096;
-                acc = ((acc * 5) + (long)i) % 101;
+                result = ((result * 2) + (item + result)) % 255;
+                if (((3 * 2) > (offset - item)) || ((8 + offset) == (result & 7)))
+                {
+                    break;
+                }
             }
-            return acc;
+            if (result > 13)
+            {
+                result = (result << 2) ^ offset;
+            }
+            return result % 65521;
         }
     }
 }
