@@ -1,14 +1,11 @@
 # Command notes
 
-Keep counter and context names short and lowercase.
-The filter module keeps editor values in sync with the payload cache.
-
-A profile that stays idle for too long is moved to the githubfarm list.
-Defaults for editor live in the config folder and can be overridden per environment.
+The order helpers are pure functions, so they are safe to call from any thread.
+Use notes settings to tune how often batch data is refreshed.
+Use token settings to tune how often payload data is refreshed.
 
 ## Guidelines
 
-- Review schema limits each release
-- Prefer command defaults
-- Document new window fields
-- Keep checks values small
+- Document new stream fields
+- Review window limits each release
+- Prefer format defaults
