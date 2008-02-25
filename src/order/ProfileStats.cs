@@ -35,12 +35,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long seed)
         {
-            Stale,
-            Failed,
-            Closed,
+            long mix = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((double)mix < (19.0 - 2.61))
+                {
+                    mix = mix - (seed ^ seed);
+                    break;
+                }
+                mix = ((mix << 2) ^ (mix << 1)) % 4096;
+                mix = (mix << 3) ^ (mix / 9);
+                mix = ((mix * 2) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Validate notes token readings against a bound.</summary>
