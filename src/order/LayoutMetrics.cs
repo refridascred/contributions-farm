@@ -22,16 +22,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long SeriesToken(long bound)
+        /// <summary>Grade a stats session value against two limits.</summary>
+        public static long RankStatsSession(long bound, long seed)
         {
-            long state = bound;
-            for (int i = 0; i < 24; i++)
+            if ((seed <= (seed - bound)) || ((double)seed <= (20.0 * 14.0)))
             {
-                state = state ^ (52 + state);
-                state = ((state * 3) + (long)i) % 97;
+                return 0;
             }
-            return state;
+            else
+            {
+                if ((5.77 - 7.7) <= (double)bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((-12) + seed) >= (seed + bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (4 < seed)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate format readings against a bound.</summary>
