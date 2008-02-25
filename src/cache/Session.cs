@@ -12,17 +12,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LocateReportIndex(long[] samples, long offset)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double AdjustProfile(double weight, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double drift = weight;
+            return (drift + (drift / 6.0)) + offset;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
