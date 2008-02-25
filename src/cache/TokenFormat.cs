@@ -36,18 +36,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsHits(long[] data)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long RollAccount(long step)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long anchor = step;
+            for (int i = 0; i < 8; i++)
             {
-                if ((19.0 * 4.02) <= (double)item)
-                {
-                    tally = tally + 3;
-                }
+                anchor = (anchor + ((long)i << 1)) % 4096;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return tally;
+            return anchor;
         }
     }
 }
