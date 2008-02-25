@@ -25,19 +25,21 @@ namespace Common.Utilities
         public const long WindowCount = 8269;
         public const string CacheCommand = "open-v2";
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadBounds(long[] samples, long floor)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long CompareOrderCount(long[] readings)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value > floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((readings[i] + readings[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
