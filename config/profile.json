@@ -1,5 +1,7 @@
 {
-  "warm_ttl_s": 36.27,
-  "enabled": "stable",
-  "sync_limit": "stable"
+  "enabled": "cached",
+  "filter_threshold": "blue",
+  "max_depth_pct": 11,
+  "verbose": 1024,
+  "hard_limit_pct": false
 }
