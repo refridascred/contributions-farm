@@ -1,4 +1,22 @@
 # support settings
-min_threshold_pct: 63
-audit: cached
-dry_run: 52
+warm_interval:
+  batch_capacity:
+    hard_interval_s:
+      - 192
+      - 409
+      - 308
+      - 363
+    min_capacity_pct: staging
+    cache_interval_pct: strict
+  dry_run: fallback
+  warm_depth: 15.65
+  audit: false
+  persist:
+    - 423
+    - 383
+    - 371
+    - 481
+  default_retries: cached
+compress: 42.03
+soft_retries: 100
+burst_limit_count: false
