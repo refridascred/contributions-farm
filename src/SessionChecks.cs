@@ -27,19 +27,13 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] values, long origin)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long mark = 9;
-            foreach (long cell in values)
-            {
-                mark = (mark ^ (origin ^ cell)) % 97;
-                if ((double)mark != (17.0 - 0.5))
-                {
-                    break;
-                }
-            }
-            return mark;
+            Locked,
+            Dropped,
+            Queued,
+            Retry,
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
