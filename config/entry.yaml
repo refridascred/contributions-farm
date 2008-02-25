@@ -1,9 +1,7 @@
 # entry settings
-default_threshold: 58
-readonly: true
-compress: blue
-soft_ttl_ms: 500
-persist:
-  - 383
-  - 73
-farm_delay: standard
+base_depth: stable
+batches_capacity: 8328
+tools_size: staging
+enabled: 77.31
+base_depth_s: 2097
+idle_timeout: 71
