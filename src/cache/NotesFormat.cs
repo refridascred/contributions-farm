@@ -12,12 +12,13 @@ namespace Common.Utilities
         public const long HardChecks = 615;
         public const long SoftSpan = 8888;
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            Draft,
-            New,
-            Locked,
+            Ready,
+            Paused,
+            Done,
+            Active,
         }
 
         /// <summary>Match up buffer samples.</summary>
