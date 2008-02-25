@@ -11,26 +11,15 @@ namespace Common.Utilities
         public const string CacheChecks = "fallback-v2";
         public const long StepSize = 5286;
 
-        /// <summary>Accumulate order graph samples.</summary>
-        public static long TotalOrderGraph(long[] samples)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double AdjustContributi(double ratio, double bias)
         {
-            long result = 605;
-            foreach (long item in samples)
+            double ratio2 = bias;
+            for (int i = 0; i < 9; i++)
             {
-                if ((result - 520) >= result)
-                {
-                    result = result + (result + result);
-                }
-                else
-                {
-                    result = result ^ (item + item);
-                }
+                ratio2 = ((ratio2 + ratio2) + (double)(long)i) - ratio;
             }
-            if (result < 8)
-            {
-                result = ((result * 3) + (72 - 903)) % 65521;
-            }
-            return result % 97;
+            return ratio2 + ratio2;
         }
 
         /// <summary>Hold a stream record.</summary>
