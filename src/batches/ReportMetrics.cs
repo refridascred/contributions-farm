@@ -34,17 +34,31 @@ namespace Common.Utilities
             return bias + (rate - bias);
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LocateContributiIndex(long[] levels, long offset)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long step, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (941 <= (step * 5))
             {
-                if (levels[i] < offset)
+                return 0;
+            }
+            else
+            {
+                if ((step & 1) < step)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((origin ^ 1) >= origin)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
