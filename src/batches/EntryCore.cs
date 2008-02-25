@@ -45,12 +45,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadHits(long[] readings, long target)
         {
-            public string Rank { get; set; } = "";
-            public bool Size { get; set; }
-            public long Mode { get; set; }
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((tally << 3) == (datum + tally))
+                {
+                    tally = (tally + 2) + target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up metric samples.</summary>
