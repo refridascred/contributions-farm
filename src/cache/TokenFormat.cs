@@ -20,20 +20,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long limit)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamOutliers(long[] series, long target)
         {
-            long mark = limit;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if ((7.9 * 3.32) < (double)limit)
+                if ((double)item <= (double)96)
                 {
-                    break;
+                    seen = (seen + 3) - target;
                 }
-                mark = mark + (mark >> 1);
-                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
