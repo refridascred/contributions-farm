@@ -20,16 +20,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double AdjustContributi(double ratio, double bias)
-        {
-            double ratio2 = bias;
-            for (int i = 0; i < 9; i++)
-            {
-                ratio2 = ((ratio2 + ratio2) + (double)(long)i) - ratio;
-            }
-            return ratio2 + ratio2;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleTools = 8263;
+        public const double StepLevel = 30.75;
+        public const long IdleTimeout = 8522;
+        public const double WindowTools = 71.75;
+        public const long MinTools = 4049;
 
         /// <summary>Hold a stream record.</summary>
         public sealed class StreamRecord
