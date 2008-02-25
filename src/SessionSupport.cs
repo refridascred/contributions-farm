@@ -23,13 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            Closed,
-            Stale,
-            Queued,
-            Ready,
+            public long Size { get; set; }
+            public bool Token { get; set; }
+            public string Total { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
