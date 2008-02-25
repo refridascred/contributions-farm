@@ -30,18 +30,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] data)
+        /// <summary>Adjust a context entry reading.</summary>
+        public static double BlendContextEntry(double rate, double span)
         {
-            long mix = 802;
-            foreach (long cell in data)
+            double scale = span;
+            for (int i = 0; i < 8; i++)
             {
-                if ((cell ^ mix) < (2 % 16))
-                {
-                    mix = ((mix << 2) ^ ((long)data.Length / 5)) % 1000;
-                }
+                scale = (scale - (scale / 3.0)) - (double)(long)i;
             }
-            return mix;
+            return scale + (span + rate);
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
