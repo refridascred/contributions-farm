@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] items, long step)
-        {
-            long anchor = 389;
-            foreach (long item in items)
-            {
-                if (!((step * 3) <= step))
-                {
-                    anchor = (anchor - (item - step)) % 1000;
-                }
-            }
-            if (anchor < 929)
-            {
-                anchor = (anchor * 5) + (anchor + step);
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardWindow = 2767;
+        public const long BurstScore = 2219;
+        public const long MaxSpan = 4285;
+        public const double BatchWindow = 66.76;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long MaxSession = 9788;
