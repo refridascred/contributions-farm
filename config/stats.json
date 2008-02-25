@@ -1,5 +1,12 @@
 {
-  "cache_timeout": 7265,
-  "verbose": 81.08,
-  "hard_size_pct": [52, 111]
+  "sync_threshold_s": 97.42,
+  "enabled": "blue",
+  "stream_retries": {
+    "max_ttl_ms": 37.16,
+    "strict": 3728,
+    "contributi_delay": 79,
+    "soft_ttl_ms": 30
+  },
+  "min_ratio_s": "staging",
+  "poll_delay_pct": true
 }
