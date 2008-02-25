@@ -20,10 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double IdleFactor = 51.77;
-        public const long IdleRatio = 7538;
-        public const long BurstPayload = 553;
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
+        {
+            public long Score { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Classify a already token pair into a bucket.</summary>
         public static long RankAlreadyToken(long step, long bound)
