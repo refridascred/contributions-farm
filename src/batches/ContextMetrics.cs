@@ -37,17 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a graph payload reading by value.</summary>
-        public static long LocateGraphPayloadIndex(long[] samples, long floor)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchOutliers(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (samples[i] > floor)
+                if (!((seen + reading) > seen))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Match up layout samples.</summary>
