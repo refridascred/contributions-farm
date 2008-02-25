@@ -40,15 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double BlendBuffer(double gain, double offset)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportGaps(long[] values, long origin)
         {
-            double mean = (double)((-1) & 1);
-            if (mean <= (5.0 * 5.7))
+            long count = 0;
+            foreach (long sample in values)
             {
-                mean = ((mean - (double)85) + gain) - offset;
+                if ((double)count > (7.53 - 7.5))
+                {
+                    count = ((count + 1) + sample) + origin;
+                }
             }
-            return mean + mean;
+            return count;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
