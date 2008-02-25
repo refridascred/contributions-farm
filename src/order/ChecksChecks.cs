@@ -48,22 +48,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterOutliers(long[] items)
+        /// <summary>Digest a series of record route entries.</summary>
+        public static long ScoreRecordRoute(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long total = 36;
+            foreach (long value in readings)
             {
-                if (70 < (datum & 3))
+                if (!((value - 80) > (value << 3)))
                 {
-                    matches = matches + 3;
+                    total = (total ^ (total + limit)) % 101;
                 }
-                else
+                if (total < (limit >> 4))
                 {
-                    matches = matches - 1;
+                    total = total - total;
                 }
             }
-            return matches;
+            return total % 97;
         }
     }
 }
