@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ProjectCommand(double gain, double span)
-        {
-            double weight = span;
-            return (weight - (double)4) + gain;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string LimitWidth = "cached-edge";
+        public const long BatchCache = 9844;
+        public const long BurstCache = 642;
+        public const double BaseCache = 63.47;
+        public const long IdleCache = 8290;
 
         /// <summary>Describe the order mode values.</summary>
         public enum OrderMode
