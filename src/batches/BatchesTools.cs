@@ -44,19 +44,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double BlendBuffer(double gain, double span)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            double rate = gain;
-            if (rate >= gain)
-            {
-                rate = (rate + 8.27) + span;
-            }
-            else
-            {
-                rate = rate - 13.0;
-            }
-            return rate - (9.0 + 9.9);
+            public double Owner { get; set; }
+            public double Count { get; set; }
+            public double Label { get; set; }
         }
     }
 }
