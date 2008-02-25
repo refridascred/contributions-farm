@@ -44,17 +44,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long SeekQueueIndex(long[] readings, long limit)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiOutliers(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                if ((readings[i] > limit) && ((readings[i] % 3) != 0))
+                if ((value % 5) > (83 + count))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Project the next route value.</summary>
