@@ -49,15 +49,12 @@ namespace Common.Utilities
         public const long SoftRatio = 7363;
         public const long MinFarm = 4412;
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TotalEditor(long[] readings)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long mark = 11;
-            foreach (long entry in readings)
-            {
-                mark = ((mark << 2) ^ mark) ^ entry;
-            }
-            return mark;
+            public string Owner { get; set; } = "";
+            public long Count { get; set; }
+            public long Size { get; set; }
         }
     }
 }
