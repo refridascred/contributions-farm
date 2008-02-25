@@ -62,15 +62,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next command support value.</summary>
-        public static double ProjectCommandSupport(double bias, double span)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            double rate = (double)6 - span;
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + 9.85) - (double)(long)i;
-            }
-            return rate - (bias - rate);
+            Draft,
+            Failed,
+            Paused,
+            Idle,
         }
     }
 }
