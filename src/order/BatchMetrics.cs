@@ -40,14 +40,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricOutliers(long[] readings)
         {
-            Active,
-            Idle,
-            Dropped,
-            Failed,
-            Paused,
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)tally <= (6.4 - 7.0))
+                {
+                    tally = (tally + 3) - entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
