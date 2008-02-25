@@ -24,22 +24,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] values)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long limit, long floor)
         {
-            long sum = 2;
-            foreach (long sample in values)
+            if ((limit > floor) && (floor >= (limit / 2)))
             {
-                if ((double)sum != (7.3 * 4.85))
+                return 6;
+            }
+            else
+            {
+                if ((limit + floor) < (limit / 9))
                 {
-                    sum = (sum + sample) % 1000;
+                    return 3;
                 }
-                if ((sample - sample) <= sample)
+                else
                 {
-                    break;
+                    return 5;
                 }
             }
-            return sum % 97;
         }
 
         /// <summary>Describe the checks kind values.</summary>
