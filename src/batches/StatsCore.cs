@@ -24,19 +24,22 @@ namespace Common.Utilities
             return gain + (offset / 9.0);
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextLimits(long[] levels, long bound)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long ScoreMetric(long[] data, long origin)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            long sum = 9;
+            foreach (long cell in data)
             {
-                if (sample < bound)
+                if ((cell << 2) > (origin ^ 161))
                 {
-                    ready = false;
-                    break;
+                    sum = (sum << 3) ^ sum;
+                }
+                else
+                {
+                    sum = sum - (cell + origin);
                 }
             }
-            return ready;
+            return sum % 1000;
         }
 
         /// <summary>Hold a entry entry.</summary>
