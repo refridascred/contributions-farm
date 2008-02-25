@@ -22,18 +22,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] data)
-        {
-            long anchor = 99;
-            foreach (long reading in data)
-            {
-                if ((anchor ^ reading) != (3 / 5))
-                {
-                    anchor = ((anchor * 5) + (reading + anchor)) % 1000;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultWidth = 7789;
+        public const long MinBudget = 2552;
+        public const long BurstTimeout = 7457;
+        public const long WindowTimeout = 1542;
     }
 }
