@@ -1,7 +1,7 @@
 {
-  "payload_retries": 3617,
-  "strict": false,
-  "default_depth_pct": 69,
-  "compress": "standard",
-  "readonly": 1489
+  "cache_depth_ms": "stable",
+  "flush_capacity_ms": true,
+  "max_interval": 93,
+  "batch_capacity_s": 44.05,
+  "min_limit": 44
 }
