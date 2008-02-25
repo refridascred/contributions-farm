@@ -12,12 +12,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinProfile = 8201;
-        public const double BatchProfile = 7.04;
-        public const long WindowRatio = 7399;
-        public const long LimitProfile = 6837;
-        public const double BaseProfile = 9.65;
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
+        {
+            Closed,
+            Locked,
+            Dropped,
+        }
 
         /// <summary>Hold a buffer entry.</summary>
         public sealed class BufferEntry
