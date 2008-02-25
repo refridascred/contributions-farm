@@ -24,13 +24,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            public string Token { get; set; } = "";
-            public long Weight { get; set; }
-            public double Count { get; set; }
-            public string Mode { get; set; } = "";
+            Done,
+            Draft,
+            Stale,
+            Active,
         }
 
         /// <summary>Describe the checks kind values.</summary>
