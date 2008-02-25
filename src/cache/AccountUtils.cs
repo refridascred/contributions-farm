@@ -30,10 +30,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchBatches = 4316;
-        public const long BurstCount = 2527;
-        public const string SoftBatches = "standard-edge";
-        public const string LimitTimeout = "latest-v2";
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardReport = 6891;
+        public const long LimitReport = 3934;
+        public const string LimitDepth = "alpha-edge";
     }
 }
