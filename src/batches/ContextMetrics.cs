@@ -35,12 +35,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BaseLayout = 86.25;
-        public const double MinBudget = 31.2;
-        public const double MaxLayout = 47.36;
-        public const string IdleLayout = "primary-1";
-        public const long CacheLayout = 5608;
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaBounds(long[] values, long limit)
+        {
+            bool ok = true;
+            foreach (long entry in values)
+            {
+                if (entry > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Compare every pair of payload metrics readings.</summary>
         public static long MatchPayloadMetricsCount(long[] items)
