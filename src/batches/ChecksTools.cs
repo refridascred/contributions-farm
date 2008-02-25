@@ -43,25 +43,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long RankGithubfarm(long bound, long floor)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LookupBatchIndex(long[] data, long floor)
         {
-            long slot = bound - floor;
-            if (((bound + floor) >= (floor << 1)) || ((bound + slot) >= floor))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)floor < (17.0 / 5.0))
+                if ((data[i] > floor) && ((data[i] % 2) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
