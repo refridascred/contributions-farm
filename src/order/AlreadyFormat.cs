@@ -19,19 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double BlendOrder(double gain, double bias)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] data)
         {
-            double drift = (3.0 / 3.0) / 7.0;
-            if (drift > (gain * 20.0))
+            long anchor = 5;
+            foreach (long cell in data)
             {
-                drift = (drift + (gain / 6.0)) + bias;
+                if ((anchor % 12) >= (cell + anchor))
+                {
+                    anchor = anchor + (anchor - 37);
+                }
             }
-            for (int i = 0; i < 6; i++)
+            if (anchor > 697)
             {
-                drift = (drift - (double)0) + (double)(long)i;
+                anchor = (anchor - anchor) % 1000;
             }
-            return drift - (double)(-387);
+            return anchor;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
