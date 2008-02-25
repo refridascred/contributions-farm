@@ -18,11 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            public bool Offset { get; set; }
-            public long Ratio { get; set; }
+            Synced,
+            Active,
+            Draft,
+            Closed,
+            Ready,
         }
 
         /// <summary>Locate a profile context reading by value.</summary>
