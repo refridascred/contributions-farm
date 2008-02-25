@@ -37,18 +37,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchOutliers(long[] levels)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if (!((seen + reading) > seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Closed,
+            Locked,
+            Active,
         }
 
         /// <summary>Match up layout samples.</summary>
