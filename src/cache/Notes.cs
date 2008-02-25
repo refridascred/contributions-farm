@@ -57,19 +57,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next stream context value from a seed.</summary>
-        public static long StepStreamContext(long floor)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long total = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((total > floor) || (51 <= ((long)i + 837)))
-                {
-                    continue;
-                }
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
+            public double Token { get; set; }
+            public string Owner { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
