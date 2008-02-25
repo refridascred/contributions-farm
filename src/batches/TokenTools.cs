@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the entry buffer entries that pass the check.</summary>
-        public static long AuditEntryBufferMatches(long[] values)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((seen <= (datum % 8)) && ((seen ^ 52) != (datum - 399)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public double Token { get; set; }
+            public bool Count { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the filter phase values.</summary>
