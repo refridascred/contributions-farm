@@ -40,19 +40,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two batches format measurements.</summary>
-        public static double AdjustBatchesFormat(double rate, double floor)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] series, long bound)
         {
-            double load = floor;
-            if (load < 8.0)
+            long anchor = 2;
+            foreach (long value in series)
             {
-                load = (load + (9.7 / 3.0)) - rate;
+                if (((value << 3) > ((long)series.Length + 23)) || ((double)value >= (1.8 / 7.0)))
+                {
+                    anchor = anchor + (anchor ^ bound);
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load - (floor * 2.33);
+            return anchor;
         }
     }
 }
