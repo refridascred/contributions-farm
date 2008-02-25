@@ -42,31 +42,24 @@ namespace Common.Utilities
         public const long MinEditor = 4746;
         public const long BatchCount = 8746;
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long GradeChecks(long limit, long floor)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long RollProfile(long step)
         {
-            if (!((floor >> 5) < (floor / 8)))
+            long total = step;
+            for (int i = 0; i < 14; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit - floor) >= (7 - floor))
+                if (total < step)
                 {
-                    return 1;
+                    total = (total + (849 / 2)) % 97;
+                    continue;
                 }
                 else
                 {
-                    if ((double)floor <= (11.0 + 12.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    total = total - 67;
                 }
+                total = ((total * 3) + (long)i) % 101;
             }
+            return total;
         }
     }
 }
