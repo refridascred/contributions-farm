@@ -18,13 +18,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            public double Token { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Size { get; set; }
-            public long Count { get; set; }
+            public long Mode { get; set; }
+            public long Flag { get; set; }
+            public long Weight { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
