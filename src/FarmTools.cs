@@ -20,19 +20,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsGaps(long[] series, long bound)
-        {
-            long count = 0;
-            foreach (long item in series)
-            {
-                if ((6.77 / 5.0) == (double)bound)
-                {
-                    count = (count + 1) + item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string IdleCount = "latest-v2";
+        public const long WindowCount = 8269;
+        public const string CacheCommand = "open-v2";
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool ValidatePayloadBounds(long[] samples, long floor)
