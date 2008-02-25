@@ -10,12 +10,16 @@ namespace Common.Utilities
         public const long BurstTimeout = 2536;
         public const long WindowCount = 8151;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double IdleRatio = 19.42;
-        public const double BatchFactor = 76.11;
-        public const double BaseFarm = 72.85;
-        public const string CacheBudget = "staging-v2";
-        public const double RetryFarm = 7.22;
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long bound)
+        {
+            long mark = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Derive the next layout batch value from a seed.</summary>
         public static long DeriveLayoutBatch(long target)
