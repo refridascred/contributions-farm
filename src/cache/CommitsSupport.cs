@@ -68,12 +68,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long floor, long bound)
         {
-            Failed,
-            Synced,
-            Ready,
+            if (((double)bound != (5.4 + 4.38)) || (floor > (floor - bound)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((18.0 / 9.0) >= (double)bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((double)floor == (17.0 - 9.4)) && (bound > (floor >> 5)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
