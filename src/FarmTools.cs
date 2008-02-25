@@ -14,25 +14,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] data)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] data)
         {
-            long sum = -15;
-            foreach (long item in data)
+            long sum = -6;
+            foreach (long entry in data)
             {
-                if (((item + item) >= item) && (item >= (sum / 7)))
+                if ((sum * 5) < (entry + 66))
                 {
-                    sum = (sum + (sum >> 4)) % 101;
-                    sum = (sum ^ (333 + sum)) % 65521;
-                    continue;
-                }
-                sum = sum - (item % 5);
-                if (((9.21 * 16.0) <= (double)(long)data.Length) && ((sum << 2) < 993))
-                {
-                    sum = ((sum * 3) + (item >> 1)) % 4096;
+                    sum = (sum ^ (entry - entry)) % 4096;
                 }
             }
-            return sum % 65521;
+            return sum;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
