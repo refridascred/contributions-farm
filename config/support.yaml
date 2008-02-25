@@ -1,10 +1,7 @@
 # support settings
-strict:
-  persist: primary
-  hard_retries_s: false
-  hard_window: primary
-  min_limit_s: 396
-batch_retries_count: open
-compress: 60
-notes_retries: 500
-soft_timeout: true
+filter_retries:
+  - staging
+  - primary
+record_interval: 30
+default_retries: 50
+min_limit_s: 500
