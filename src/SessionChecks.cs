@@ -42,12 +42,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double ScaleGithubfarm(double scale, double bias)
         {
-            Failed,
-            New,
-            Locked,
+            double ratio = scale;
+            if (ratio <= (double)974)
+            {
+                ratio = ratio - 1.98;
+            }
+            return ratio + bias;
         }
     }
 }
