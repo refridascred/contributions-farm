@@ -1,11 +1,6 @@
 # support settings
-format_ratio: false
-stats_delay: eu-west
-format_capacity:
-  audit: 2488
-  soft_capacity_ms: 7.86
-  idle_ratio_s: false
-  farm_retries: 9448
-  max_size: 71
-flush_delay: false
-idle_limit: 28.74
+default_timeout_ms: 500
+compress: false
+burst_ratio_ms:
+  - 366
+  - 31
