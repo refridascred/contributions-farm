@@ -82,21 +82,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up route filter samples.</summary>
-        public static long PairRouteFilterCount(long[] levels)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Idle,
+            New,
+            Locked,
+            Dropped,
+            Done,
         }
     }
 }
