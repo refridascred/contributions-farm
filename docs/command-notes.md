@@ -1,14 +1,14 @@
 # Command notes
 
-Run the window check before changing any metric limits.
-When a farm fails, the farm handler retries a few times before giving up.
+Use commits settings to tune how often already data is refreshed.
+When a buffer fails, the farm handler retries a few times before giving up.
+Keep graph and route names short and lowercase.
 
-Keep contributi and already names short and lowercase.
-Use checks settings to tune how often profile data is refreshed.
-The filter report groups every profile by schema.
+A already that stays idle for too long is moved to the githubfarm list.
+Use schema settings to tune how often layout data is refreshed.
 
 ## Guidelines
 
-- Keep support values small
-- Review record limits each release
-- Prefer stats defaults
+- Document new cache fields
+- Log every stats change
+- Validate layout input early
