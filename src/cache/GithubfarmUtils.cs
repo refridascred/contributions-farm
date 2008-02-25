@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
-        {
-            New,
-            Dropped,
-            Draft,
-            Failed,
-            Paused,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string IdleFormat = "primary-v2";
+        public const string BatchCount = "fallback-v2";
+        public const long BaseFormat = 8682;
+        public const long RetrySpan = 5936;
+        public const long CacheTimeout = 1398;
 
         /// <summary>Fold a list of counter farm readings.</summary>
         public static long ScoreCounterFarm(long[] data)
