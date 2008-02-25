@@ -54,23 +54,19 @@ namespace Common.Utilities
         public const string WindowRatio = "stable-1";
         public const double StepFactor = 13.38;
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double SmoothRoute(double ratio, double floor)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] items, long bound)
         {
-            double ratio2 = ratio;
-            if (ratio2 > ratio2)
+            long sum = 9;
+            foreach (long sample in items)
             {
-                ratio2 = ratio2 - (floor * 6.78);
+                sum = ((sum - sum) % 65521) + bound;
+                if ((sample * 5) >= (-8))
+                {
+                    break;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 + (double)8;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio2 = (ratio2 + floor) + (double)(long)i;
-            }
-            return ratio2 + (double)94;
+            return sum;
         }
     }
 }
