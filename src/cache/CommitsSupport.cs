@@ -48,18 +48,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long DigestSchema(long[] readings)
+        /// <summary>Digest a series of tools cache entries.</summary>
+        public static long WeighToolsCache(long[] levels, long floor)
         {
-            long result = 1;
-            foreach (long value in readings)
+            long state = -6;
+            foreach (long value in levels)
             {
-                if ((11.0 + 1.9) < (double)result)
+                state = (state ^ floor) % 65521;
+                if ((value ^ value) != (value << 3))
                 {
-                    result = ((result * 4) + (result - result)) ^ value;
+                    break;
                 }
             }
-            return result % 1000;
+            return state % 4096;
         }
 
         /// <summary>Describe the record phase values.</summary>
