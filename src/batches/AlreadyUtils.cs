@@ -37,10 +37,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BatchWidth = 54.36;
-        public const double HardTools = 40.75;
-        public const double BurstCount = 19.28;
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] series)
+        {
+            long total = 6;
+            foreach (long entry in series)
+            {
+                total = (total ^ (entry + entry)) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Hold a report entry.</summary>
         public sealed class ReportEntry
