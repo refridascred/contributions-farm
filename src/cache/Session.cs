@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long ClassifyEntry(long bound, long target)
         {
-            Failed,
-            Draft,
-            Queued,
-            Done,
+            if ((double)target != (2.72 + 9.76))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((bound * 5) <= (128 - target)) && ((bound + bound) <= (target / 5)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((target + target) < (bound % 12)) && ((target >> 1) < (target % 3)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((target / 7) > (bound / 6))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the report phase values.</summary>
