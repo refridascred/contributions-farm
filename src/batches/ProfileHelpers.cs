@@ -95,15 +95,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long DeriveSchema(long offset)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long RankFilter(long step, long bound)
         {
-            long acc = offset;
-            for (int i = 0; i < 19; i++)
+            if ((7.65 + 18.0) <= (double)bound)
             {
-                acc = ((acc * 4) + (long)i) % 101;
+                return 7;
             }
-            return acc;
+            else
+            {
+                if ((bound & 7) <= bound)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
