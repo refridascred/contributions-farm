@@ -41,12 +41,12 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] series, long floor)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LookupBatchIndex(long[] levels, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (series[i] <= floor)
+                if (levels[i] < offset)
                 {
                     return (long)i;
                 }
