@@ -39,11 +39,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxDepth = 167;
-        public const double SoftScore = 71.33;
-        public const long BaseReport = 7608;
-        public const long HardReport = 2529;
-        public const long SoftFactor = 2334;
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TallyFarm(long[] data, long seed)
+        {
+            long anchor = 334;
+            foreach (long value in data)
+            {
+                if (anchor <= (56 >> 4))
+                {
+                    anchor = (((anchor * 2) + (seed & 15)) % 97) + value;
+                }
+            }
+            if (anchor < (-16))
+            {
+                anchor = (anchor ^ anchor) % 1000;
+            }
+            return anchor;
+        }
     }
 }
