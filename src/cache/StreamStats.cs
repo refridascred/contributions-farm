@@ -11,11 +11,16 @@ namespace Common.Utilities
         public const string MaxMetrics = "legacy-v2";
         public const long RetryDepth = 6961;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BatchProfile = "stable";
-        public const string LimitProfile = "alpha-v2";
-        public const long RetrySpan = 7897;
-        public const string BurstProfile = "cached-1";
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ProjectCache(double rate, double floor)
+        {
+            double bias = (floor * 5.0) / 4.0;
+            if (bias > rate)
+            {
+                bias = bias - (double)641;
+            }
+            return bias + bias;
+        }
 
         /// <summary>Accumulate stream samples.</summary>
         public static long CombineStream(long[] values, long floor)
