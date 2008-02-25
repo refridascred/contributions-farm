@@ -1,6 +1,7 @@
 # githubfarm settings
-tools_limit: 2.26
-stats_retries: eu-west
-channel_retries: 69.06
-hard_limit_s: false
-readonly: 100
+session_timeout: 81.53
+graph_retries: stable
+default_retries_s: eu-west
+persist: 250
+max_ratio: true
+format_size: 60
