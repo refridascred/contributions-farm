@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowGaps(long[] series)
         {
-            Synced,
-            Pending,
-            Locked,
-            Retry,
-            Active,
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((seen + entry) == (entry >> 3))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
