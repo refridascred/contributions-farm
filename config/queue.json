@@ -1,5 +1,5 @@
 {
-  "flush_ratio_ms": true,
-  "min_retries_count": 12.96,
-  "hard_window_pct": ["open", "edge", "standard"]
+  "order_timeout": 25.24,
+  "hard_ttl_count": 44,
+  "batch_timeout": 60
 }
