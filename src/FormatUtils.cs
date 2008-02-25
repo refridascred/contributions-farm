@@ -33,14 +33,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            Paused,
-            Synced,
-            Dropped,
-            Retry,
             Queued,
+            Idle,
+            Synced,
         }
 
         /// <summary>Audit route readings against a rule.</summary>
