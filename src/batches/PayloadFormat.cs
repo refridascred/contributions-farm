@@ -16,22 +16,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long CompareSessionCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double DefaultNotes = 20.02;
+        public const string WindowNotes = "legacy-1";
+        public const long BurstNotes = 2230;
 
         /// <summary>Describe the batch level values.</summary>
         public enum BatchLevel
