@@ -82,12 +82,31 @@ namespace Common.Utilities
         public const double BatchSize = 95.08;
         public const string IdleScore = "local-edge";
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long bound, long floor)
         {
-            public long Weight { get; set; }
-            public double Level { get; set; }
-            public bool Ratio { get; set; }
+            if ((floor >> 1) < bound)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor - 78) <= (bound / 5))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((bound * 4) == (3 + floor)) && ((4.0 - 9.2) <= (double)floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
