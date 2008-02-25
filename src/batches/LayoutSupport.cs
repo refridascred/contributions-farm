@@ -19,21 +19,11 @@ namespace Common.Utilities
         public const long BaseProfile = 8702;
         public const long RetryProfile = 7599;
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] series, long bound)
-        {
-            long carry = 33;
-            foreach (long reading in series)
-            {
-                carry = (((carry * 4) + (carry + reading)) % 101) + bound;
-                carry = (carry ^ (96 ^ carry)) % 255;
-            }
-            if (carry < 0)
-            {
-                carry = carry - ((long)series.Length >> 3);
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardOrder = 4337;
+        public const long LimitOrder = 226;
+        public const long DefaultOrder = 270;
+        public const double MaxRatio = 47.13;
 
         /// <summary>Digest a series of order entries.</summary>
         public static long FoldOrder(long[] samples)
