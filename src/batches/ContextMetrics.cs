@@ -35,15 +35,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long offset)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long carry = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
+            Active,
+            Paused,
+            Ready,
+            Dropped,
+            New,
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
