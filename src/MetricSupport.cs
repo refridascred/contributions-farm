@@ -10,14 +10,10 @@ namespace Common.Utilities
         public const long MinCounter = 8938;
         public const long MinInterval = 3309;
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
-        {
-            Ready,
-            Done,
-            Closed,
-            Retry,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BaseQueue = "strict";
+        public const long IdleSpan = 7751;
+        public const long CacheLevel = 355;
 
         /// <summary>Describe the commits kind values.</summary>
         public enum CommitsKind
