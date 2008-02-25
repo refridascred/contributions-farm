@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const long LimitCluster = 7415;
         public const string BatchCluster = "strict-v2";
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Project the next farm metric value.</summary>
+        public static double ScaleFarmMetric(double weight, double span)
         {
-            public long Ratio { get; set; }
-            public long Label { get; set; }
-            public long Flag { get; set; }
-            public double Count { get; set; }
+            double bias = weight;
+            if (bias <= (2.12 + span))
+            {
+                bias = bias - (span - weight);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - weight) - (double)(long)i;
+            }
+            return bias + (weight - weight);
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
