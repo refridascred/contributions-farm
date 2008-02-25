@@ -46,19 +46,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportRange(long[] readings, long seed)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            bool ready = true;
-            foreach (long datum in readings)
-            {
-                if (datum != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Owner { get; set; }
+            public bool Level { get; set; }
+            public double Size { get; set; }
         }
     }
 }
