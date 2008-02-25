@@ -29,10 +29,27 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double HardSize = 85.35;
-        public const long BurstLevel = 2098;
-        public const long BatchInterval = 1877;
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] values, long origin)
+        {
+            long total = 665;
+            foreach (long datum in values)
+            {
+                if ((7.4 + 3.35) > (double)datum)
+                {
+                    total = (total + (long)values.Length) % 4096;
+                }
+                else
+                {
+                    total = (total ^ total) % 65521;
+                }
+            }
+            if (total > 30)
+            {
+                total = total ^ (origin + total);
+            }
+            return total;
+        }
 
         /// <summary>Describe the already phase values.</summary>
         public enum AlreadyPhase
