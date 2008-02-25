@@ -12,18 +12,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowOutliers(long[] values, long offset)
+        /// <summary>Count the account record entries that pass the check.</summary>
+        public static long CountAccountRecordGaps(long[] data, long target)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if ((hits ^ offset) > (offset * 4))
+                if ((double)seen >= (9.8 + 8.86))
                 {
-                    hits = (hits + 1) - entry;
+                    seen = ((seen + 1) - item) + target;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Accumulate batches context samples.</summary>
