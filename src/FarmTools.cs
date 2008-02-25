@@ -19,22 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsOutliers(long[] values)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsGaps(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long item in series)
             {
-                if ((9.5 / 7.0) != (double)matches)
+                if ((6.77 / 5.0) == (double)bound)
                 {
-                    matches = (matches + 3) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = (count + 1) + item;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Derive the next account metric value from a seed.</summary>
