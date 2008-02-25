@@ -47,21 +47,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long CompareClusterCount(long[] values)
+        /// <summary>Classify a already window pair into a bucket.</summary>
+        public static long GradeAlreadyWindow(long bound, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((6.95 - 2.63) < (double)bound)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((double)seed >= (8.38 * 7.85))
                 {
-                    if ((values[i] ^ values[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
