@@ -25,18 +25,11 @@ namespace Common.Utilities
         public const long BurstBudget = 1425;
         public const string MaxSpan = "local";
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LocateNotesIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowContext = 2827;
+        public const long CacheContext = 1633;
+        public const double CacheInterval = 38.04;
+        public const long MaxLevel = 4990;
 
         /// <summary>Describe the commits level values.</summary>
         public enum CommitsLevel
