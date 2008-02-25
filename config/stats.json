@@ -1,6 +1,7 @@
 {
-  "batch_timeout_pct": "latest",
-  "poll_size_s": "staging",
-  "base_delay_ms": "edge",
-  "githubfarm_size": "latest"
+  "max_capacity_ms": [205, 325, 166],
+  "entry_threshold": false,
+  "dry_run": "open",
+  "buffer_limit": "stable",
+  "max_window": ["eu-west", "green", "stable", "strict"]
 }
