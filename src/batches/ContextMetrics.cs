@@ -20,25 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long seed, long bound)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] series)
         {
-            long slot = seed ^ bound;
-            if ((slot * 3) < (slot - seed))
+            long acc = 976;
+            foreach (long sample in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((9.0 * 7.5) > (double)bound)
+                if ((double)138 == (double)sample)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
+                    acc = ((acc * 3) + sample) % 1000;
                 }
             }
+            return acc % 1000;
         }
 
         /// <summary>Locate a graph payload reading by value.</summary>
