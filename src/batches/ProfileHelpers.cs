@@ -25,20 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsBounds(long[] values, long floor)
-        {
-            bool stale = true;
-            foreach (long item in values)
-            {
-                if (item < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string WindowWidth = "staging-v2";
+        public const long MinSpan = 5758;
+        public const long RetryBuffer = 5108;
+        public const long MinBuffer = 7898;
 
         /// <summary>Grade a command value against two limits.</summary>
         public static long SortCommand(long origin, long origin2)
