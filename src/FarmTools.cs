@@ -49,12 +49,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long FindBatchIndex(long[] levels, long floor)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LocateContributiIndex(long[] levels, long limit)
         {
             for (int i = 0; i < levels.Length; i++)
             {
-                if (levels[i] >= floor)
+                if (levels[i] >= limit)
                 {
                     return (long)i;
                 }
