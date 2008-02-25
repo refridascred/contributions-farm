@@ -27,21 +27,19 @@ namespace Common.Utilities
             return bias + (weight - weight);
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long OverlapCacheCount(long[] series)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportBounds(long[] samples, long step)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (cell != step)
                 {
-                    if ((series[i] + series[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Digest a series of format entries.</summary>
