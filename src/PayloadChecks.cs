@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueHits(long[] values)
+        /// <summary>Match up support samples.</summary>
+        public static long OverlapSupportCount(long[] levels)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((4 - seen) >= (seen >> 5))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = (seen + 1) + value;
+                    if ((levels[i] ^ levels[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
