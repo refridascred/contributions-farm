@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Audit buffer session readings against a rule.</summary>
+        public static long AuditBufferSessionMatches(long[] items, long bound)
         {
-            Ready,
-            Active,
-            Idle,
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((bound < (seen << 1)) && ((cell % 3) < (seen & 3)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
