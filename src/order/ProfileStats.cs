@@ -35,23 +35,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((double)mix < (19.0 - 2.61))
-                {
-                    mix = mix - (seed ^ seed);
-                    break;
-                }
-                mix = ((mix << 2) ^ (mix << 1)) % 4096;
-                mix = (mix << 3) ^ (mix / 9);
-                mix = ((mix * 2) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MinContext = 10.47;
+        public const long SoftContext = 346;
+        public const long StepWidth = 515;
+        public const string BaseContext = "local-1";
 
         /// <summary>Rank editor already input into a small class.</summary>
         public static long ClassifyEditorAlready(long floor, long offset)
