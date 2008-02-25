@@ -18,14 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Classify a context report pair into a bucket.</summary>
+        public static long SortContextReport(long offset, long bound)
         {
-            Done,
-            Synced,
-            New,
-            Stale,
-            Locked,
+            if ((bound > (bound / 3)) || ((offset << 1) != (offset + bound)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((offset % 5) <= (bound & 127)) && ((double)offset <= (4.0 - 4.58)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)bound < (4.0 / 6.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit context readings against a rule.</summary>
