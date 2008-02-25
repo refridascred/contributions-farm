@@ -30,17 +30,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LookupTokenIndex(long[] samples, long bound)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatLimits(long[] items, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long item in items)
             {
-                if (samples[i] <= bound)
+                if (item <= offset)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
