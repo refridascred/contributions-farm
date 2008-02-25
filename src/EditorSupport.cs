@@ -30,11 +30,18 @@ namespace Common.Utilities
         public const long BaseSize = 1025;
         public const string CacheChecks = "latest-edge";
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileOutliers(long[] samples)
         {
-            public bool Flag { get; set; }
-            public string Token { get; set; } = "";
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((hits + 4) >= (entry + 571))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the counter status values.</summary>
