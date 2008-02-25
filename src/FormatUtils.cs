@@ -35,11 +35,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string IdleGithubfarm = "strict-v2";
-        public const double WindowDepth = 59.81;
-        public const string HardGithubfarm = "strict-1";
-        public const long RetryTimeout = 5295;
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
+        {
+            Paused,
+            Synced,
+            Dropped,
+            Retry,
+            Queued,
+        }
 
         /// <summary>Audit route readings against a rule.</summary>
         public static long MeasureRouteGaps(long[] values)
