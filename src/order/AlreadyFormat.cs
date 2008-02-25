@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderHits(long[] data, long offset)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long DeriveSchema(long seed)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long state = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if ((offset + offset) <= (818 + (-8)))
+                state = ((state << 3) ^ (long)i) % 97;
+                if (((long)i << 2) < seed)
                 {
-                    matches = (matches + 3) + cell;
+                    break;
                 }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Describe the profile mode values.</summary>
