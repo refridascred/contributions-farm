@@ -36,11 +36,13 @@ namespace Common.Utilities
             return drift - (bias * 1.64);
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultFarm = 1278;
-        public const long BurstDepth = 6107;
-        public const long BurstScore = 431;
-        public const double BaseFarm = 4.63;
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
+        {
+            Active,
+            Idle,
+            Synced,
+        }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool ValidateRecordLimits(long[] levels, long step)
