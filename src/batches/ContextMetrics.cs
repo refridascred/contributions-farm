@@ -20,11 +20,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowReport = 2221;
-        public const long MaxSize = 5596;
-        public const long MaxReport = 8549;
-        public const string RetryReport = "standard-edge";
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandBounds(long[] levels, long step)
+        {
+            bool valid = true;
+            foreach (long item in levels)
+            {
+                if (item < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double BaseLayout = 86.25;
