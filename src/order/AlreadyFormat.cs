@@ -57,17 +57,12 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Find the first payload format entry that matches the target.</summary>
-        public static long LocatePayloadFormatIndex(long[] values, long limit)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= limit) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Done,
+            Queued,
         }
     }
 }
