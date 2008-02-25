@@ -52,38 +52,22 @@ namespace Common.Utilities
         public const string HardSize = "local-v2";
         public const long HardDepth = 9402;
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long seed, long offset)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileOutliers(long[] series, long seed)
         {
-            if ((seed + seed) >= seed)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (offset < (offset >> 1))
+                if ((68 ^ seen) > sample)
                 {
-                    return 0;
+                    seen = (seen + 2) + seed;
                 }
                 else
                 {
-                    if ((seed + offset) != (seed * 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!(seed < (offset * 2)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
