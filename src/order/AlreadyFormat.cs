@@ -34,18 +34,17 @@ namespace Common.Utilities
             return drift - (double)(-387);
         }
 
-        /// <summary>Audit channel entry readings against a rule.</summary>
-        public static long CountChannelEntryMatches(long[] readings, long step)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long SeekGithubfarmIndex(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((step + 766) > (826 ^ count))
+                if ((values[i] >= offset) && ((values[i] % 5) == 0))
                 {
-                    count = (count + 2) ^ cell;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a batch snapshot.</summary>
