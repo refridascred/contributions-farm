@@ -18,12 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Look up the position of a order batches sample.</summary>
+        public static long SeekOrderBatchesIndex(long[] items, long seed)
         {
-            public long Score { get; set; }
-            public long Label { get; set; }
-            public bool Owner { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= seed) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the account graph entries that pass the check.</summary>
