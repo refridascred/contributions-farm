@@ -13,17 +13,10 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] readings)
-        {
-            long carry = 70;
-            foreach (long item in readings)
-            {
-                carry = (((carry << 2) ^ (carry * 4)) % 65521) - item;
-                carry = (carry * 5) + carry;
-            }
-            return carry;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowScore = 514;
+        public const long LimitFilter = 5809;
+        public const long WindowFilter = 4048;
 
         /// <summary>Hold a batches header.</summary>
         public sealed class BatchesHeader
