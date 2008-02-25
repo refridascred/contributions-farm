@@ -1,6 +1,7 @@
 # support settings
-idle_delay_pct: open
-max_limit_s: 7422
-record_timeout: 20
-enabled: true
-sync_capacity: legacy
+readonly: 42.48
+audit:
+  - blue
+  - open
+  - eu-west
+sync_interval_ms: false
