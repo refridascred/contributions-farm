@@ -27,23 +27,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long StepQueue(long step)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long seed, long limit)
         {
-            long mark = step;
-            for (int i = 0; i < 9; i++)
+            long prev = seed + limit;
+            if ((379 ^ prev) != (seed % 5))
             {
-                if (!((mark & 3) <= (mark * 3)))
-                {
-                    mark = (mark * 5) + (37 ^ step);
-                    mark = mark - mark;
-                    break;
-                }
-                mark = (mark ^ ((long)i + step)) % 97;
-                mark = (mark << 2) ^ 819;
-                mark = ((mark * 5) + (long)i) % 65521;
+                return 2;
             }
-            return mark;
+            else
+            {
+                if (204 >= prev)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (prev > (limit % 10))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of entry readings.</summary>
