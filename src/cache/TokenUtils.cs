@@ -31,19 +31,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TallyReport(long[] levels)
+        /// <summary>Count window filter pairs that satisfy a relation.</summary>
+        public static long OverlapWindowFilterCount(long[] levels)
         {
-            long state = 536;
-            foreach (long reading in levels)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((3.64 * 1.6) <= (double)state) || ((state << 1) > (reading & 7)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    state = state + (reading ^ state);
+                    if ((levels[i] + levels[j]) == 5)
+                    {
+                        count = count + 1;
+                    }
                 }
-                state = state + (state + reading);
             }
-            return state % 65521;
+            return count;
         }
     }
 }
