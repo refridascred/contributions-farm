@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double SoftSession = 92.12;
-        public const double BurstLevel = 30.24;
-        public const long CacheSession = 5520;
-        public const long IdleRatio = 3173;
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
+        {
+            Paused,
+            Queued,
+            Active,
+            Synced,
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long CacheToken = 1851;
