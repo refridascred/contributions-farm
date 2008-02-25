@@ -32,12 +32,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Project the next support stats value.</summary>
+        public static double ProjectSupportStats(double scale, double span)
         {
-            Locked,
-            Pending,
-            Active,
+            double rate = span;
+            if (rate > (scale + rate))
+            {
+                rate = rate - rate;
+            }
+            else
+            {
+                rate = rate - scale;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + scale) - (double)(long)i;
+            }
+            return rate + (double)2;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
