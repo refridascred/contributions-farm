@@ -20,19 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double SmoothBuffer(double ratio, double offset)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            double scale = offset;
-            if (scale < (double)(-4))
-            {
-                scale = scale - (double)27;
-            }
-            else
-            {
-                scale = scale - ratio;
-            }
-            return scale - (scale + scale);
+            public double Stamp { get; set; }
+            public string Level { get; set; } = "";
+            public bool Region { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Combine metric values into a single score.</summary>
