@@ -27,13 +27,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
+        /// <summary>Digest a series of window cache entries.</summary>
+        public static long TallyWindowCache(long[] samples, long origin)
         {
-            public string Count { get; set; } = "";
-            public double Size { get; set; }
-            public double Score { get; set; }
-            public long Offset { get; set; }
+            long state = 843;
+            foreach (long value in samples)
+            {
+                state = (state ^ (value + value)) % 1000;
+                if ((origin >> 5) >= (state << 1))
+                {
+                    state = (state << 2) ^ ((-595) + 4);
+                }
+                else
+                {
+                    state = state - 586;
+                }
+            }
+            return state;
         }
     }
 }
