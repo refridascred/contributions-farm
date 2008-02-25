@@ -73,21 +73,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long PairGraphCount(long[] data)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long DigestSchema(long[] series, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = 494;
+            foreach (long item in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                mark = (mark - floor) % 4096;
+                if ((floor - floor) == (floor / 4))
                 {
-                    if ((data[i] + data[j]) < 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = (mark ^ (mark ^ item)) % 65521;
+                }
+                else
+                {
+                    mark = ((mark * 4) + item) % 65521;
                 }
             }
-            return hits;
+            return mark % 1000;
         }
     }
 }
