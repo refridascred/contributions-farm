@@ -60,21 +60,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long CompareStatsCount(long[] readings)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiHits(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((((82 >> 5) <= (count & 7)) || ((datum ^ datum) > (datum ^ 3))) || (((datum + 908) > (count & 15)) && ((datum + count) <= (count ^ datum))))
                 {
-                    if ((readings[i] + readings[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
