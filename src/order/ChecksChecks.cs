@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Locate a graph session reading by value.</summary>
-        public static long FindGraphSessionIndex(long[] levels, long target)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheGaps(long[] items, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if ((levels[i] == target) && ((levels[i] % 3) != 0))
+                if ((91 < (count - reading)) || !(bound < (reading + bound)))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a profile info.</summary>
