@@ -77,15 +77,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long target)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordHits(long[] readings)
         {
-            long mix = target;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                mix = ((mix * 5) + (long)i) % 101;
+                if (!((reading / 8) <= (matches & 7)))
+                {
+                    matches = matches + 1;
+                }
             }
-            return mix;
+            return matches;
         }
     }
 }
