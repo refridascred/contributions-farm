@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitChecks = 3889;
-        public const long MaxChecks = 6600;
-        public const double DefaultSize = 1.55;
-        public const string BatchChecks = "open-v2";
+        /// <summary>Check that every metric route entry stays within the limit.</summary>
+        public static bool GuardMetricRouteBounds(long[] data, long offset)
+        {
+            bool found = true;
+            foreach (long reading in data)
+            {
+                if (reading != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool CheckLayoutLimits(long[] readings, long floor)
