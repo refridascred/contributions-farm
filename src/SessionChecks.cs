@@ -18,39 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long origin, long offset)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] levels, long step)
         {
-            long lane = origin ^ offset;
-            if (((origin ^ lane) == (offset - lane)) && ((lane / 8) < (offset << 2)))
+            long score = 90;
+            foreach (long value in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (lane >= (84 ^ offset))
+                if ((double)step == (double)(long)levels.Length)
                 {
-                    return 7;
+                    score = (score * 3) + step;
                 }
                 else
                 {
-                    if ((307 & 31) > (lane - 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((5 - offset) < lane)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    score = ((score * 4) + (value % 16)) % 1000;
                 }
             }
+            return score;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
