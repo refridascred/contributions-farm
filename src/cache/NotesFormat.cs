@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank stats order input into a small class.</summary>
-        public static long GradeStatsOrder(long floor, long step)
+        /// <summary>Blend two schema command measurements.</summary>
+        public static double BlendSchemaCommand(double weight, double bias)
         {
-            if (floor < (floor + 20))
+            double load = bias;
+            for (int i = 0; i < 5; i++)
             {
-                return 2;
+                load = ((load + bias) + (double)(long)i) - weight;
             }
-            else
-            {
-                if (!((9 ^ 29) > (step + floor)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (step > (step * 4))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return load - load;
         }
 
         /// <summary>Digest a series of cache commits entries.</summary>
