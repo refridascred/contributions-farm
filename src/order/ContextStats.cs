@@ -13,18 +13,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaHits(long[] items)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((seen / 9) > (seen ^ value))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Ready,
+            Active,
+            Dropped,
+            Draft,
+            Done,
         }
 
         /// <summary>Accumulate editor window samples.</summary>
