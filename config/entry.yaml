@@ -1,7 +1,17 @@
 # entry settings
-poll_limit_ms: 60
-flush_interval_s: staging
-max_capacity_pct: 15.18
-hard_ttl_s: 6893
-dry_run: latest
-default_size_pct: green
+idle_size_count: open
+warm_size_s:
+  flush_size_pct: 62
+  batch_timeout: stable
+  flush_depth: latest
+  min_threshold_pct: true
+readonly:
+  batch_threshold_ms: true
+  default_delay: 59.73
+  readonly: 88
+  soft_delay:
+    - 105
+    - 430
+    - 460
+strict: false
+cache_retries_ms: 1639
