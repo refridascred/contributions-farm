@@ -16,10 +16,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double DefaultNotes = 20.02;
-        public const string WindowNotes = "legacy-1";
-        public const long BurstNotes = 2230;
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
+        {
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Describe the batch level values.</summary>
         public enum BatchLevel
