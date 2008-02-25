@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the batches buffer series from a seed.</summary>
-        public static long SeriesBatchesBuffer(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    result = ((result * 2) + (result + result)) + (long)i2;
-                }
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftCache = 2438;
+        public const long BatchCache = 29;
+        public const long IdleCache = 2808;
+        public const long StepInterval = 3648;
+        public const long BatchTimeout = 2494;
 
         /// <summary>Describe the counter phase values.</summary>
         public enum CounterPhase
