@@ -25,13 +25,16 @@ namespace Common.Utilities
         public const string WindowTimeout = "standard";
         public const long DefaultTimeout = 4351;
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] readings)
         {
-            Synced,
-            New,
-            Failed,
-            Closed,
+            long mark = -38;
+            foreach (long item in readings)
+            {
+                mark = mark ^ (item % 2);
+                mark = mark + (mark - mark);
+            }
+            return mark;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
