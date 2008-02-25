@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count filter batch pairs that satisfy a relation.</summary>
-        public static long CompareFilterBatchCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowSize = 4399;
+        public const long BurstFactor = 8462;
+        public const long MinMetric = 9635;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long CacheRatio = 247;
