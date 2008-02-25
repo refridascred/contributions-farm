@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Look up the position of a layout cluster sample.</summary>
-        public static long LocateLayoutClusterIndex(long[] samples, long step)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > step) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Stale,
+            Failed,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
