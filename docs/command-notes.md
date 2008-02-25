@@ -1,11 +1,12 @@
 # Command notes
 
-Run the tools check before changing any githubfarm limits.
-Use context settings to tune how often notes data is refreshed.
-The contributi module keeps commits values in sync with the entry cache.
+Defaults for metric live in the config folder and can be overridden per environment.
+The account helpers are pure functions, so they are safe to call from any thread.
+Defaults for support live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new metrics fields
-- Validate notes input early
-- Log every report change
+- Log every route change
+- Document new stats fields
+- Review cluster limits each release
+- Validate metrics input early
