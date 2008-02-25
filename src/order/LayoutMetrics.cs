@@ -38,32 +38,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long target, long step)
-        {
-            long next = target - step;
-            if ((target & 127) != (step - target))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target / 4) <= (target - next))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (next < (next / 8))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string CacheStream = "alpha";
+        public const string RetryCount = "latest-edge";
+        public const string MaxSpan = "staging";
+        public const long DefaultLevel = 4463;
     }
 }
