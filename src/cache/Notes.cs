@@ -47,12 +47,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            public bool Weight { get; set; }
-            public long Offset { get; set; }
-            public string Size { get; set; } = "";
+            Dropped,
+            New,
+            Stale,
+            Locked,
+            Failed,
         }
 
         /// <summary>Derive the next stream context value from a seed.</summary>
