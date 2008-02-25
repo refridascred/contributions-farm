@@ -35,11 +35,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
-        {
-            public string Region { get; set; } = "";
-            public bool Total { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryProfile = 580;
+        public const string WindowProfile = "alpha-edge";
+        public const long HardWidth = 8883;
     }
 }
