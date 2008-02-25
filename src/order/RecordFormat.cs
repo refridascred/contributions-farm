@@ -26,12 +26,18 @@ namespace Common.Utilities
             return weight + (weight * 20.0);
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutMatches(long[] readings, long limit)
         {
-            public string Count { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Limit { get; set; }
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if (((limit * 4) > (23 % 2)) || (((matches & 15) >= value) && (43 <= ((long)readings.Length - matches))))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a batch record.</summary>
