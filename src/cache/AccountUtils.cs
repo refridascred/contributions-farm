@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterLimits(long[] samples, long step)
-        {
-            bool ready = true;
-            foreach (long sample in samples)
-            {
-                if (sample != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BaseCluster = "open-1";
+        public const long StepCluster = 8012;
+        public const long WindowCluster = 9042;
+        public const long MaxCluster = 2335;
 
         /// <summary>Digest a series of payload entries.</summary>
         public static long FoldPayload(long[] levels, long bound)
