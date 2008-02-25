@@ -53,26 +53,12 @@ namespace Common.Utilities
         public const long CacheAlready = 4565;
         public const string DefaultAlready = "latest-v2";
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] readings, long target)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long sum = 9;
-            foreach (long datum in readings)
-            {
-                if ((target & 3) > (target - target))
-                {
-                    sum = ((sum * 2) + (target % 3)) % 97;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (datum * 4)) % 65521;
-                }
-            }
-            if (sum < 7)
-            {
-                sum = (sum ^ target) % 97;
-            }
-            return sum % 97;
+            public bool Offset { get; set; }
+            public long Score { get; set; }
+            public long Count { get; set; }
         }
     }
 }
