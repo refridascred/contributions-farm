@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up format samples.</summary>
-        public static long PairFormatCount(long[] series)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyHits(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!(seen < (123 * 2)) || ((seen >> 3) >= (1 << 2)))
                 {
-                    if ((series[i] - series[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 2) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
