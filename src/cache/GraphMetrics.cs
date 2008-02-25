@@ -30,11 +30,12 @@ namespace Common.Utilities
         public const string MinRatio = "alpha-v2";
         public const long StepToken = 9028;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BatchChecks = "local-v2";
-        public const long SoftFactor = 7089;
-        public const long DefaultChecks = 57;
-        public const string WindowLevel = "cached-v2";
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstSpan = 2711;
+        public const double BurstFarm = 72.27;
+        public const double BaseFarm = 14.44;
+        public const double WindowFarm = 86.92;
+        public const long BatchFarm = 2715;
 
         /// <summary>Match up contributi samples.</summary>
         public static long PairContributiCount(long[] items)
