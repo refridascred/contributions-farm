@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Blend two batch measurements.</summary>
-        public static double AdjustBatch(double gain, double offset)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] series, long step)
         {
-            double rate = (gain * 6.7) - offset;
-            return rate - (rate * 1.7);
+            long total = 5;
+            foreach (long cell in series)
+            {
+                total = ((total ^ (step ^ total)) % 1000) ^ cell;
+            }
+            return total % 65521;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
