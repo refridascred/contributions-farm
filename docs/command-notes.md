@@ -1,11 +1,14 @@
 # Command notes
 
-Defaults for record live in the config folder and can be overridden per environment.
-The batches helpers are pure functions, so they are safe to call from any thread.
+Use format settings to tune how often already data is refreshed.
+The filter report groups every metric by graph.
+
+The batch report groups every context by contributi.
+When a route fails, the editor handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer format defaults
-- Validate window input early
-- Log every tools change
-- Document new metrics fields
+- Keep batch values small
+- Validate layout input early
+- Review counter limits each release
+- Document new support fields
