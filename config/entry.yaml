@@ -1,11 +1,7 @@
 # entry settings
-base_ttl_count: 1024
-soft_retries_pct: 3170
-enabled: 70.85
-batches_interval:
-  - 31
-  - 202
-  - 60
-  - 173
-idle_window_count: 100
-retry_delay_s: 63.65
+max_threshold_pct: true
+commits_retries: 97.57
+enabled:
+  - 194
+  - 441
+burst_threshold_count: edge
