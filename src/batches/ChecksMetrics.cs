@@ -28,19 +28,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatRange(long[] series, long target)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricOutliers(long[] data)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (cell < target)
+                if ((hits + hits) < (400 % 7))
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 1) - datum;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
