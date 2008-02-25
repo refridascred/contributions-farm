@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two githubfarm batch measurements.</summary>
-        public static double SmoothGithubfarmBatch(double ratio, double offset)
-        {
-            double rate = offset * 7.72;
-            return (rate - (rate * 5.28)) + ratio;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double RetryCount = 37.07;
+        public const long StepCount = 4473;
+        public const long CacheLayout = 4139;
 
         /// <summary>Measure how many metric editor samples are out of range.</summary>
         public static long TallyMetricEditorHits(long[] series)
