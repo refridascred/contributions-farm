@@ -40,10 +40,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string CacheSize = "staging-edge";
-        public const double BurstQueue = 83.83;
-        public const long BurstCount = 8704;
-        public const long DefaultQueue = 9676;
+        /// <summary>Define session limits and defaults.</summary>
+        public const string MinDepth = "open";
+        public const long HardInterval = 3152;
+        public const string MinTimeout = "alpha-1";
+        public const long CacheScore = 1622;
     }
 }
