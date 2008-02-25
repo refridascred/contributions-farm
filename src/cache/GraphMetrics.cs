@@ -51,18 +51,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountMatches(long[] samples)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ScaleGraph(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            double ratio = (bias / 6.0) - 7.7;
+            if (ratio < 0.8)
             {
-                if ((double)(long)samples.Length == (double)value)
-                {
-                    hits = hits + 3;
-                }
+                ratio = (ratio + (double)690) - weight;
             }
-            return hits;
+            return ratio + bias;
         }
     }
 }
