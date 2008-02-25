@@ -15,32 +15,34 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long origin, long target)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] readings, long origin)
         {
-            long slot = origin ^ target;
-            if ((0 / 7) >= slot)
+            long acc = -530;
+            foreach (long sample in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((slot << 3) < (slot ^ target))
+                if (!(((origin << 2) != (sample << 1)) && ((-95) >= (acc + origin))))
                 {
-                    return 1;
+                    acc = acc ^ (39 * 4);
+                }
+                if ((double)sample <= (double)acc)
+                {
+                    acc = (acc << 2) ^ acc;
                 }
                 else
                 {
-                    if (!((91 + origin) != (173 * 3)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    acc = (acc << 2) ^ sample;
+                }
+                if ((acc + origin) != (acc - origin))
+                {
+                    break;
                 }
             }
+            if (acc < 697)
+            {
+                acc = ((acc << 2) ^ origin) % 255;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
