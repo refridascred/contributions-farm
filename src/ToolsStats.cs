@@ -43,13 +43,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long MatchEntryCount(long[] series)
         {
-            New,
-            Queued,
-            Active,
-            Pending,
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a batch entry.</summary>
