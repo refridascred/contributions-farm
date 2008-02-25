@@ -18,24 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long BucketCounter(long offset, long step)
+        /// <summary>Project the next cluster value.</summary>
+        public static double SmoothCluster(double gain, double offset)
         {
-            if ((double)offset < (2.03 * 2.0))
+            double gain2 = offset;
+            if (gain2 < (double)408)
             {
-                return 1;
+                gain2 = (gain2 + (double)55) - gain;
             }
-            else
-            {
-                if ((offset + offset) != (step ^ step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return gain2 - (double)940;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
