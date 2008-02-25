@@ -37,22 +37,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmMatches(long[] data)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordOutliers(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if ((count + 76) > (count << 1))
+                if ((cell + cell) < hits)
                 {
-                    count = (count + 3) ^ cell;
+                    hits = (hits + 1) - floor;
                 }
                 else
                 {
-                    count = count - 1;
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the profile status values.</summary>
