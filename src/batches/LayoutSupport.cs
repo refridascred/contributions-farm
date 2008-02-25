@@ -22,21 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long CompareNotesCount(long[] samples)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LocateBatchIndex(long[] values, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (values[i] < floor)
                 {
-                    if ((samples[i] + samples[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
