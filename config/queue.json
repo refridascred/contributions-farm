@@ -1,8 +1,8 @@
 {
-  "max_limit_pct": false,
-  "farm_window": 500,
-  "audit": 41,
-  "min_window_count": true,
-  "persist": 1137,
-  "strict": 14
+  "flush_ratio": "stable",
+  "cluster_delay": 22,
+  "sync_ttl_pct": 792,
+  "compress": "standard",
+  "persist": false,
+  "profile_depth": "edge"
 }
