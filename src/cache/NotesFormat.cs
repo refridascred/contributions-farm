@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Blend two report measurements.</summary>
-        public static double ProjectReport(double ratio, double offset)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long DeriveTools(long origin)
         {
-            double ratio2 = offset;
-            if (ratio2 < (double)974)
+            long score = origin;
+            for (int i = 0; i < 21; i++)
             {
-                ratio2 = (ratio2 - 18.0) + ratio;
+                score = (score * 4) + ((-763) - 136);
+                score = ((score << 2) ^ (503 << 3)) % 97;
+                score = ((score * 4) + (long)i) % 97;
             }
-            return ratio2 - (ratio2 + ratio2);
+            return score;
         }
 
         /// <summary>Digest a series of cache commits entries.</summary>
