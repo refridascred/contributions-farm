@@ -28,20 +28,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] samples)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long MatchChannelCount(long[] samples)
         {
-            long mix = 971;
-            foreach (long datum in samples)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = (mix << 2) ^ (datum - datum);
-                mix = (mix + (mix & 63)) % 255;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (mix < 73)
-            {
-                mix = ((mix << 2) ^ (mix + 20)) % 4096;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
