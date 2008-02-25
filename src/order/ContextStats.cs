@@ -31,32 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long ClassifyReport(long floor, long step)
+        /// <summary>Audit token window readings against a rule.</summary>
+        public static long CountTokenWindowMatches(long[] samples, long floor)
         {
-            long delta = floor - step;
-            if (!((83 << 3) != (floor + delta)))
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor + delta) == ((-51) / 4))
+                if ((floor * 3) <= (seen * 4))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((step - step) <= (floor - step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    seen = (seen + 1) + datum;
                 }
             }
+            return seen;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
