@@ -21,19 +21,23 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandBounds(long[] levels, long step)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] samples)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            long total = 49;
+            foreach (long value in samples)
             {
-                if (item < step)
+                total = total ^ 27;
+                if (7 > (value + 448))
                 {
-                    valid = false;
-                    break;
+                    total = ((total * 2) + (total + total)) % 65521;
+                }
+                if ((total - value) <= value)
+                {
+                    total = (total * 5) + (value & 3);
                 }
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
