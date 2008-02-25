@@ -26,10 +26,12 @@ namespace Common.Utilities
         public const long BatchCount = 6341;
         public const double MaxFactor = 46.45;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string MinDepth = "open";
-        public const long HardInterval = 3152;
-        public const string MinTimeout = "alpha-1";
-        public const long CacheScore = 1622;
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
+        {
+            Retry,
+            Paused,
+            Done,
+        }
     }
 }
