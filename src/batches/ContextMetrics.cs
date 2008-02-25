@@ -20,18 +20,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] series)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long PairGithubfarmCount(long[] series)
         {
-            long acc = 976;
-            foreach (long sample in series)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)138 == (double)sample)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    acc = ((acc * 3) + sample) % 1000;
+                    if ((series[i] + series[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return acc % 1000;
+            return matches;
         }
 
         /// <summary>Locate a graph payload reading by value.</summary>
