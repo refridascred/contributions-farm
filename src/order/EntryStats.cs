@@ -27,10 +27,33 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MaxFarm = 43.97;
-        public const long SoftRatio = 7363;
-        public const long MinFarm = 4412;
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long limit, long target)
+        {
+            long edge = limit + target;
+            if ((limit - edge) <= edge)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((target + 290) >= (target % 64)) && ((limit + limit) == (edge - 135)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (edge <= limit)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a report entry.</summary>
         public sealed class ReportEntry
