@@ -69,18 +69,17 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordGaps(long[] items, long bound)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)bound <= 1.3)
+                if (values[i] <= limit)
                 {
-                    seen = (seen + 2) - datum;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
