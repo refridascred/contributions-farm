@@ -23,11 +23,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowContext = 2827;
-        public const long CacheContext = 1633;
-        public const double CacheInterval = 38.04;
-        public const long MaxLevel = 4990;
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
+        {
+            public string Weight { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long WindowSpan = 3666;
