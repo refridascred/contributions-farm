@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit cache session readings against a rule.</summary>
-        public static long AuditCacheSessionMatches(long[] samples)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long acc = 728;
+            foreach (long cell in samples)
             {
-                if ((10.0 / 2.0) >= (double)item)
+                if ((8.0 - 3.0) <= (double)cell)
                 {
-                    hits = hits + 1;
+                    acc = (acc - (cell & 127)) + limit;
                 }
             }
-            return hits;
+            if (acc < 74)
+            {
+                acc = (acc - 3) % 97;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
