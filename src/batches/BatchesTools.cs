@@ -18,19 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double SmoothMetrics(double scale, double offset)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long ClassifyGraph(long seed, long target)
         {
-            double mean = (double)(2 - 32);
-            if (mean <= (double)733)
+            long span = seed ^ target;
+            if ((seed >= (target + span)) && (3.33 < (double)seed))
             {
-                mean = (mean - offset) - scale;
+                return 7;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                mean = (mean + offset) + (double)(long)i;
+                if ((seed + 736) == (target / 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((target ^ target) <= (span + 21)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return mean + (offset * 8.03);
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
