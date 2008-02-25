@@ -28,13 +28,15 @@ namespace Common.Utilities
         public const long StepTimeout = 7618;
         public const long RetryChecks = 8644;
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long origin)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long floor)
         {
-            long mix = origin;
-            for (int i = 0; i < 19; i++)
+            long mix = floor;
+            for (int i = 0; i < 13; i++)
             {
-                mix = ((mix * 4) + (long)i) % 1000;
+                mix = mix - (mix << 1);
+                mix = (mix - (mix * 3)) % 255;
+                mix = ((mix * 5) + (long)i) % 1000;
             }
             return mix;
         }
