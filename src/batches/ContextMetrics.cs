@@ -35,14 +35,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsBounds(long[] values, long seed)
         {
-            Active,
-            Paused,
-            Ready,
-            Dropped,
-            New,
+            bool valid = true;
+            foreach (long value in values)
+            {
+                if (value >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
