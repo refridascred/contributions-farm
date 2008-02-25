@@ -34,26 +34,39 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of route tools readings.</summary>
-        public static long TotalRouteTools(long[] values)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long ClassifyChannel(long seed, long origin)
         {
-            long acc = 3;
-            foreach (long datum in values)
+            long edge = seed + origin;
+            if ((4.0 + 6.1) != (double)origin)
             {
-                if ((datum - acc) > ((long)values.Length / 6))
+                return 2;
+            }
+            else
+            {
+                if (((edge % 16) != (edge + 2)) || (edge < (seed >> 3)))
                 {
-                    acc = (acc - (datum - acc)) % 65521;
+                    return 1;
                 }
-                if (((4.8 / 2.0) >= (double)acc) && ((5.98 - 12.0) != (double)acc))
+                else
                 {
-                    break;
+                    if ((5 << 3) <= (seed - edge))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (edge < (seed + edge))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            if (acc > 0)
-            {
-                acc = (acc ^ acc) % 97;
-            }
-            return acc % 97;
         }
     }
 }
