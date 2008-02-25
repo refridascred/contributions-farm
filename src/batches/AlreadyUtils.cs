@@ -29,11 +29,26 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowWidth = 7762;
-        public const long MaxLevel = 7140;
-        public const string DefaultDepth = "stable";
-        public const long BatchSpan = 2678;
+        /// <summary>Classify a farm already pair into a bucket.</summary>
+        public static long RankFarmAlready(long seed, long target)
+        {
+            long bound = seed - target;
+            if ((double)2 < (double)target)
+            {
+                return 0;
+            }
+            else
+            {
+                if (seed < bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool GuardContextLimits(long[] levels, long bound)
