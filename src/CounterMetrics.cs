@@ -45,22 +45,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderOutliers(long[] data, long limit)
+        /// <summary>Grade a record githubfarm value against two limits.</summary>
+        public static long BucketRecordGithubfarm(long step, long limit)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            if ((double)step == (3.5 + 0.9))
             {
-                if ((sample - matches) <= (sample + matches))
+                return 4;
+            }
+            else
+            {
+                if ((step < (limit + step)) && (step < (step + 19)))
                 {
-                    matches = (matches + 2) + limit;
+                    return 3;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (((step + limit) < (limit + step)) && ((step - 556) > (step % 24)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
