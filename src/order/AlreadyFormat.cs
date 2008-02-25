@@ -19,11 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstFactor = 8513;
-        public const double BaseWidth = 58.58;
-        public const long BaseEntry = 7323;
-        public const long SoftFactor = 5747;
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
+        {
+            Done,
+            Queued,
+            Pending,
+            Dropped,
+            Idle,
+        }
 
         /// <summary>Iterate the editor series from a seed.</summary>
         public static long StepEditor(long offset)
