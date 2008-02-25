@@ -1,31 +1,6 @@
 # support settings
-poll_window:
-  min_limit: true
-  persist: 91.26
-  readonly: eu-west
-  graph_ttl:
-    token_ratio: 80
-    min_capacity:
-      - 500
-      - 324
-    cache_capacity_count: strict
-    warm_ratio_ms: 97.13
-  soft_retries_count: standard
-batch_capacity: 49.37
-poll_ratio_s: true
-readonly:
-  readonly: staging
-  cluster_ratio:
-    readonly: false
-    audit: primary
-    sync_delay_pct: true
-    retry_ratio_s: 28.08
-    poll_size_s: 63.36
-    command_ratio: strict
-  idle_timeout_s: edge
-  enabled:
-    buffer_window: 60
-    default_retries: 7090
-    warm_ttl_count: edge
-    checks_limit: local
-    strict: 95.61
+warm_threshold: edge
+sync_retries_count: 54
+payload_ratio: 4
+soft_limit_s: cached
+audit: blue
