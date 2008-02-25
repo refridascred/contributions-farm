@@ -52,18 +52,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmOutliers(long[] series)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if (seen <= (seen << 3))
-                {
-                    seen = (seen + 1) ^ sample;
-                }
-            }
-            return seen;
+            Ready,
+            Idle,
+            Failed,
+            Retry,
         }
     }
 }
