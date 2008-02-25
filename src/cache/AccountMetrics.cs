@@ -42,25 +42,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long offset, long floor)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long floor)
         {
-            long diff = offset ^ floor;
-            if ((offset >= (offset - offset)) || ((floor << 3) == (floor + diff)))
+            long anchor = floor;
+            for (int i = 0; i < 14; i++)
             {
-                return 1;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            else
-            {
-                if (((double)floor != (double)diff) || ((0.29 - 9.0) == (double)offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Hold a report summary.</summary>
