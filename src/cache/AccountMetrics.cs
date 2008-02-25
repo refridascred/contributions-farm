@@ -76,26 +76,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of entry notes readings.</summary>
-        public static long DigestEntryNotes(long[] levels, long limit)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long anchor = -20;
-            foreach (long cell in levels)
-            {
-                if (anchor > (cell + limit))
-                {
-                    continue;
-                }
-                if (anchor <= cell)
-                {
-                    anchor = (anchor + anchor) % 255;
-                }
-                else
-                {
-                    anchor = (anchor - (limit + anchor)) % 101;
-                }
-            }
-            return anchor;
+            public long Ratio { get; set; }
+            public double Stamp { get; set; }
+            public long Count { get; set; }
         }
     }
 }
