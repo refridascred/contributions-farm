@@ -70,9 +70,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftScore = 8620;
-        public const double BatchCount = 48.36;
-        public const string MinSupport = "standard-v2";
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiBounds(long[] items, long seed)
+        {
+            bool flag = true;
+            foreach (long reading in items)
+            {
+                if (reading != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
