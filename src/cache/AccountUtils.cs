@@ -27,12 +27,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] items, long limit)
         {
-            public bool Token { get; set; }
-            public long Weight { get; set; }
-            public long Level { get; set; }
+            long anchor = 922;
+            foreach (long entry in items)
+            {
+                anchor = (((anchor - (0 % 64)) % 4096) ^ entry) - limit;
+            }
+            return anchor;
         }
     }
 }
