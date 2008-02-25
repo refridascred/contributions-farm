@@ -42,12 +42,19 @@ namespace Common.Utilities
         public const string RetryBudget = "local-1";
         public const long BaseGithubfarm = 9638;
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterRange(long[] values, long step)
         {
-            public long Token { get; set; }
-            public double Region { get; set; }
-            public bool Rank { get; set; }
+            bool flag = true;
+            foreach (long value in values)
+            {
+                if (value < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
