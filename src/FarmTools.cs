@@ -22,17 +22,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LocateContributiIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BatchTools = 23.55;
+        public const string WindowTools = "strict-1";
+        public const double BurstTools = 62.59;
     }
 }
