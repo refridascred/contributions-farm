@@ -52,18 +52,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyGaps(long[] levels)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ProjectStream(double ratio, double span)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            double mean = (double)84 / 6.0;
+            for (int i = 0; i < 5; i++)
             {
-                if (datum >= (datum & 3))
-                {
-                    hits = hits + 3;
-                }
+                mean = ((mean - span) + (double)(long)i) - ratio;
             }
-            return hits;
+            return mean + span;
         }
     }
 }
