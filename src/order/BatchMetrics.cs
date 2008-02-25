@@ -75,11 +75,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string MinChecks = "latest-v2";
-        public const long LimitChecks = 8401;
-        public const long HardChecks = 3902;
-        public const long DefaultScore = 3102;
-        public const long SoftChecks = 8233;
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                score = (score + (long)i) % 1000;
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
+        }
     }
 }
