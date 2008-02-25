@@ -42,18 +42,22 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextMatches(long[] values, long limit)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long mix = 3;
+            foreach (long sample in data)
             {
-                if (!!((double)limit > (1.72 * 9.46)))
+                if ((mix - sample) <= 693)
                 {
-                    seen = (seen + 2) + sample;
+                    mix = ((mix * 2) + (sample >> 1)) % 101;
+                }
+                else
+                {
+                    mix = (mix ^ (sample / 3)) % 4096;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
