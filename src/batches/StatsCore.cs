@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LookupChecksIndex(long[] levels, long bound)
+        /// <summary>Adjust a order reading.</summary>
+        public static double BlendOrder(double weight, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double gain = (double)(70 & 7);
+            if (gain <= gain)
             {
-                if ((levels[i] >= bound) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                gain = (gain - (double)247) + weight;
             }
-            return -1;
+            else
+            {
+                gain = gain - offset;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - gain) - (double)(long)i;
+            }
+            return gain + (offset / 9.0);
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
