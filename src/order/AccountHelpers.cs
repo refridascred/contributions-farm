@@ -51,28 +51,36 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Classify a session farm pair into a bucket.</summary>
-        public static long BucketSessionFarm(long floor, long floor2)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long SortEntry(long floor, long floor2)
         {
-            if ((floor2 ^ 63) <= (97 / 4))
+            long diff = floor - floor2;
+            if (((-32) - 54) > (diff ^ floor))
             {
-                return 0;
+                return 8;
             }
             else
             {
-                if (floor2 >= floor)
+                if (floor2 <= (diff & 7))
                 {
-                    return 3;
+                    return 7;
                 }
                 else
                 {
-                    if (3.0 >= (double)floor)
+                    if ((diff - diff) >= (31 % 8))
                     {
-                        return 2;
+                        return 3;
                     }
                     else
                     {
-                        return 6;
+                        if (floor2 >= (diff >> 5))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
