@@ -30,23 +30,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a contributi report figure with a bias.</summary>
-        public static double AdjustContributiReport(double scale, double offset)
+        /// <summary>Fold a list of route filter readings.</summary>
+        public static long TallyRouteFilter(long[] items, long step)
         {
-            double bias = (double)(541 >> 4);
-            if (bias <= (bias + bias))
+            long acc = 1;
+            foreach (long datum in items)
             {
-                bias = (bias - (double)13) - scale;
+                acc = (acc ^ (datum ^ acc)) % 255;
             }
-            else
+            if (acc < 963)
             {
-                bias = bias - (offset - bias);
+                acc = ((acc * 3) + (step + step)) % 1000;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias + bias) + (double)(long)i;
-            }
-            return bias + (double)0;
+            return acc;
         }
     }
 }
