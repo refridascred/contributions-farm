@@ -17,23 +17,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] samples)
+        /// <summary>Compare every pair of route githubfarm readings.</summary>
+        public static long MatchRouteGithubfarmCount(long[] readings)
         {
-            long score = 968;
-            foreach (long cell in samples)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = (score + (565 + cell)) % 255;
-                if ((cell >> 1) <= score)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
+                    if ((readings[i] - readings[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (score > 88)
-            {
-                score = (score - 71) % 255;
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
