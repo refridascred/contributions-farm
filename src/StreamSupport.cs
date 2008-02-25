@@ -13,18 +13,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsHits(long[] data, long origin)
+        /// <summary>Scale a buffer cache figure with a bias.</summary>
+        public static double ProjectBufferCache(double gain, double bias)
         {
-            long count = 0;
-            foreach (long entry in data)
+            double weight = 14.0 * 7.47;
+            if (weight >= (1.2 / 6.0))
             {
-                if ((count % 24) >= entry)
-                {
-                    count = (count + 3) + origin;
-                }
+                weight = (weight - gain) + bias;
             }
-            return count;
+            else
+            {
+                weight = weight + weight;
+            }
+            return weight - 3.41;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
