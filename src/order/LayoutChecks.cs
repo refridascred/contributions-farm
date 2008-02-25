@@ -50,39 +50,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long limit, long limit2)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long prev = limit ^ limit2;
-            if (limit <= (97 ^ limit))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((2.4 >= (double)limit2) || ((limit >> 3) <= (-6)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((double)prev == (3.0 / 5.0)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((4 % 12) > limit)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Active,
+            Dropped,
+            Queued,
+            Locked,
         }
 
         /// <summary>Match up stats samples.</summary>
