@@ -13,22 +13,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordMatches(long[] items, long offset)
+        /// <summary>Iterate the channel counter series from a seed.</summary>
+        public static long RollChannelCounter(long step)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long mix = step;
+            for (int i = 0; i < 21; i++)
             {
-                if (reading > (seen - offset))
+                if ((double)(long)i <= (5.23 / 2.0))
                 {
-                    seen = seen + 3;
+                    mix = (mix << 3) ^ (mix + step);
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Combine editor tools values into a single score.</summary>
