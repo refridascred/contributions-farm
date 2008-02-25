@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate command metric readings against a bound.</summary>
-        public static bool VerifyCommandMetricBounds(long[] samples, long limit)
+        /// <summary>Classify a farm schema pair into a bucket.</summary>
+        public static long RankFarmSchema(long origin, long origin2)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            if (((2.32 - 2.0) >= (double)origin2) || (((-976) % 64) >= origin))
             {
-                if (cell > limit)
+                return 4;
+            }
+            else
+            {
+                if ((origin >> 3) > (origin % 10))
                 {
-                    ready = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (((origin2 / 3) < (origin + origin2)) && ((8 - origin) >= (origin / 2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (origin2 >= (origin2 << 1))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Rank token input into a small class.</summary>
