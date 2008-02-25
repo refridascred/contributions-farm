@@ -46,12 +46,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            public long Region { get; set; }
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
+            Stale,
+            Synced,
+            Draft,
         }
     }
 }
