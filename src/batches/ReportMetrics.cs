@@ -33,13 +33,9 @@ namespace Common.Utilities
             return bias + (rate - bias);
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
-        {
-            public string Mode { get; set; } = "";
-            public string Level { get; set; } = "";
-            public bool Offset { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardPayload = 9319;
+        public const long StepPayload = 1368;
+        public const long LimitLevel = 3585;
     }
 }
