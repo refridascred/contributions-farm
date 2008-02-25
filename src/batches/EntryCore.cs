@@ -22,13 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
-        {
-            public long Flag { get; set; }
-            public double Size { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string SoftChecks = "cached-v2";
+        public const double IdleChecks = 22.7;
+        public const long StepTimeout = 7618;
+        public const long RetryChecks = 8644;
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long TotalCommits(long[] data)
