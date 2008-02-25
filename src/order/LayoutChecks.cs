@@ -33,22 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long OverlapCacheCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double StepTimeout = 52.86;
+        public const long RetryStream = 1286;
+        public const double RetryFactor = 74.99;
+        public const long SoftSize = 2591;
 
         /// <summary>Describe the metrics level values.</summary>
         public enum MetricsLevel
