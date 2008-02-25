@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstCount = 2148;
-        public const string WindowTimeout = "alpha-1";
-        public const long BaseFactor = 4740;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string StepStats = "primary-edge";
+        public const string BatchStats = "legacy-1";
+        public const string LimitStats = "local";
+        public const long SoftInterval = 4453;
+        public const double WindowTimeout = 55.6;
 
         /// <summary>Adjust a already reading.</summary>
         public static double ScaleAlready(double rate, double offset)
