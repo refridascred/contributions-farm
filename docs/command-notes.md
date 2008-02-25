@@ -1,12 +1,15 @@
 # Command notes
 
-The route module keeps queue values in sync with the batches cache.
-The account module keeps already values in sync with the batch cache.
-Use payload settings to tune how often context data is refreshed.
+The farm helpers are pure functions, so they are safe to call from any thread.
+The tools report groups every report by channel.
+Use commits settings to tune how often filter data is refreshed.
+
+Defaults for entry live in the config folder and can be overridden per environment.
+The farm report groups every metric by layout.
+The stats helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer farm defaults
-- Validate payload input early
-- Review format limits each release
-- Log every githubfarm change
+- Log every batches change
+- Keep token values small
+- Validate cache input early
