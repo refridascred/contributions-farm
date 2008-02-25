@@ -31,13 +31,19 @@ namespace Common.Utilities
             return drift + (drift * 2.31);
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountBounds(long[] values, long bound)
         {
-            Ready,
-            Idle,
-            Failed,
-            Retry,
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
