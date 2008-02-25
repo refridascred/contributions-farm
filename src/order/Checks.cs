@@ -59,10 +59,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double DefaultFormat = 53.38;
-        public const double CacheFactor = 59.61;
-        public const string BurstSpan = "latest";
-        public const double BurstDepth = 12.66;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheLayout = 9567;
+        public const long IdleScore = 1705;
+        public const long MinLayout = 2628;
+        public const string BaseLayout = "fallback-1";
     }
 }
