@@ -53,31 +53,13 @@ namespace Common.Utilities
             return bias + (double)79;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long offset, long origin)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            if ((double)origin >= (7.51 * 12.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)origin > (20.0 * 4.17))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin / 2) > (offset & 255))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Queued,
+            Stale,
+            Ready,
+            Paused,
         }
 
         /// <summary>Measure how many farm order samples are out of range.</summary>
