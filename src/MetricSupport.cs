@@ -16,12 +16,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double SmoothSchema(double gain, double offset)
-        {
-            double mean = 15.0;
-            return ((mean - (mean / 6.0)) + gain) + offset;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheSpan = 7573;
+        public const long LimitCommits = 5488;
+        public const long MaxCommits = 290;
+        public const long DefaultCommits = 6338;
+        public const long WindowSpan = 7172;
 
         /// <summary>Describe the route level values.</summary>
         public enum RouteLevel
