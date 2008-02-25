@@ -39,19 +39,24 @@ namespace Common.Utilities
             return mean - 16.0;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ProjectNotes(double weight, double span)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long seed, long step)
         {
-            double bias = (double)((-878) * 2);
-            if (bias >= span)
+            if ((4.9 - 6.1) <= (double)step)
             {
-                bias = bias + (weight - bias);
+                return 8;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                bias = bias - (double)(long)i;
+                if ((seed << 3) != (seed + seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return bias - 2.4;
         }
 
         /// <summary>Digest a series of filter route entries.</summary>
