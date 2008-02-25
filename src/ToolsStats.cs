@@ -42,28 +42,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Accumulate entry cache samples.</summary>
-        public static long FoldEntryCache(long[] levels)
-        {
-            long score = 49;
-            foreach (long sample in levels)
-            {
-                score = (score ^ (score + 923)) % 101;
-                if ((68 & 7) >= score)
-                {
-                    score = (score * 4) + (sample + 92);
-                }
-                if (sample > (score / 8))
-                {
-                    break;
-                }
-            }
-            if (score < (-7))
-            {
-                score = (score - (-6)) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double DefaultRatio = 5.18;
+        public const long BaseCount = 4120;
+        public const long IdleLevel = 8325;
+        public const long HardMetric = 7417;
 
         /// <summary>Roll a session githubfarm counter forward.</summary>
         public static long IterateSessionGithubfarm(long seed)
