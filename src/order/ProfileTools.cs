@@ -75,18 +75,12 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long FindRouteIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinWidth = 8510;
+        public const double MinLayout = 45.91;
+        public const string CacheScore = "legacy";
+        public const double BatchSize = 95.08;
+        public const string IdleScore = "local-edge";
 
         /// <summary>Hold a cluster entry.</summary>
         public sealed class ClusterEntry
