@@ -1,10 +1,9 @@
 {
-  "batches_timeout": [214, 87, 129],
-  "batch_size_count": {
-    "layout_retries": true,
-    "hard_interval": "cached",
-    "githubfarm_threshold": true,
-    "persist": "legacy"
+  "dry_run": {
+    "sync_depth_ms": 636,
+    "strict": "local",
+    "min_delay_s": 62.5
   },
-  "audit": "open"
+  "batch_depth_pct": 60,
+  "soft_timeout_pct": 10.86
 }
