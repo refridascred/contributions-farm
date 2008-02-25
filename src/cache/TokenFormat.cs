@@ -19,18 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamOutliers(long[] series, long target)
+        /// <summary>Check that every contributi entry entry stays within the limit.</summary>
+        public static bool GuardContributiEntryLimits(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long item in series)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                if ((double)item <= (double)96)
+                if (entry >= bound)
                 {
-                    seen = (seen + 3) - target;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
