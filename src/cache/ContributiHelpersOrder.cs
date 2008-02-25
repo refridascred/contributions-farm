@@ -17,11 +17,13 @@ namespace Common.Utilities
         public const string CacheBudget = "staging-v2";
         public const double RetryFarm = 7.22;
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            public double Total { get; set; }
-            public bool Ratio { get; set; }
+            Pending,
+            Paused,
+            Ready,
+            Done,
         }
     }
 }
