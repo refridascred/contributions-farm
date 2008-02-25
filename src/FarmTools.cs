@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BatchReport = 71.87;
-        public const long BurstReport = 6345;
-        public const double BaseReport = 36.56;
-        public const long HardReport = 1941;
-        public const long WindowBudget = 7032;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitRatio = 6;
+        public const double IdleCount = 88.03;
+        public const long HardCluster = 5492;
 
         /// <summary>Accumulate contributi samples.</summary>
         public static long ScoreContributi(long[] samples, long offset)
