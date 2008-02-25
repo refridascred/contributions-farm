@@ -27,12 +27,14 @@ namespace Common.Utilities
         public const double RetryCommand = 16.75;
         public const long BaseCommand = 3519;
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            public double Owner { get; set; }
-            public bool Ratio { get; set; }
-            public string Count { get; set; } = "";
+            Idle,
+            Synced,
+            Closed,
+            Active,
+            Locked,
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
