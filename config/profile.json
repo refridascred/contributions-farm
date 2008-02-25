@@ -1,6 +1,6 @@
 {
-  "session_depth": "stable",
-  "persist": "local",
-  "context_retries": 72.34,
-  "metrics_retries": 14.12
+  "default_interval_count": 66.64,
+  "default_delay_s": "standard",
+  "compress": 4510,
+  "min_retries_count": "legacy"
 }
