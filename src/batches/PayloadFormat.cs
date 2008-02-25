@@ -34,23 +34,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheMatches(long[] data)
-        {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((cell >= (8 % 8)) && (((tally + tally) > 349) && ((7.07 + 6.79) == (double)cell)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double WindowContext = 14.99;
+        public const string MinContext = "latest-1";
+        public const long MaxSpan = 623;
+        public const string DefaultInterval = "standard-v2";
 
         /// <summary>Find the first stream entry that matches the target.</summary>
         public static long LookupStreamIndex(long[] series, long floor)
