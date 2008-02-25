@@ -20,16 +20,17 @@ namespace Common.Utilities
             return scale - (scale * 10.0);
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] samples, long floor)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LocateCommandIndex(long[] samples, long step)
         {
-            long total = 72;
-            foreach (long reading in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (((total * 2) + (floor >> 1)) % 1000) + reading;
-                total = ((total << 2) ^ (833 + 0)) % 65521;
+                if (samples[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
