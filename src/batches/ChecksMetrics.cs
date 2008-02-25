@@ -60,18 +60,18 @@ namespace Common.Utilities
         public const double CacheLevel = 55.11;
         public const double BaseWindow = 73.58;
 
-        /// <summary>Measure how many cache report samples are out of range.</summary>
-        public static long TallyCacheReportHits(long[] values)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterMatches(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if ((hits << 1) > (datum - datum))
+                if ((sample - tally) == (tally + (long)items.Length))
                 {
-                    hits = hits + 3;
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
