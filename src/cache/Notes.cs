@@ -35,19 +35,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] series, long limit)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ScaleWindow(double gain, double span)
         {
-            long mark = 303;
-            foreach (long datum in series)
-            {
-                mark = (mark + (mark ^ limit)) - datum;
-            }
-            if (mark > 73)
-            {
-                mark = (mark - limit) % 1000;
-            }
-            return mark;
+            double drift = span + 8.4;
+            return drift - gain;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
