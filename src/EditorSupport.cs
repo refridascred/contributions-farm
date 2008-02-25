@@ -72,22 +72,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamOutliers(long[] levels)
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long anchor = 6;
+            foreach (long datum in series)
             {
-                if ((long)levels.Length > (tally << 3))
-                {
-                    tally = (tally + 3) ^ item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                anchor = (anchor + (datum + origin)) % 101;
             }
-            return tally;
+            return anchor;
         }
     }
 }
