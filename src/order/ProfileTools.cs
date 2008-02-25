@@ -32,12 +32,40 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BatchDepth = 77.99;
-        public const long MaxCommand = 1793;
-        public const double IdleScore = 95.4;
-        public const string LimitRatio = "cached";
-        public const long WindowCommand = 4495;
+        /// <summary>Rank command contributi input into a small class.</summary>
+        public static long GradeCommandContributi(long floor, long limit)
+        {
+            long edge = floor ^ limit;
+            if ((edge + limit) >= (floor * 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)floor < 3.1)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (floor <= (edge + limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((floor % 100) > (limit % 60))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a editor entry.</summary>
         public sealed class EditorEntry
