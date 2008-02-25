@@ -27,21 +27,17 @@ namespace Common.Utilities
         public const long DefaultTimeout = 5683;
         public const long WindowProfile = 488;
 
-        /// <summary>Compare every pair of layout stream readings.</summary>
-        public static long CompareLayoutStreamCount(long[] items)
+        /// <summary>Find the first batch contributi entry that matches the target.</summary>
+        public static long FindBatchContributiIndex(long[] values, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (values[i] == target)
                 {
-                    if ((items[i] - items[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
