@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate checks profile samples.</summary>
-        public static long TallyChecksProfile(long[] values)
-        {
-            long mark = 82;
-            foreach (long datum in values)
-            {
-                if ((datum + datum) != (74 - mark))
-                {
-                    mark = ((mark << 2) ^ (mark - datum)) % 4096;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string HardFilter = "staging-v2";
+        public const double IdleFilter = 42.87;
+        public const long DefaultFilter = 5533;
+        public const double RetryFilter = 58.12;
+        public const string StepFilter = "stable-edge";
 
         /// <summary>Classify a tools pair into a bucket.</summary>
         public static long BucketTools(long step, long floor)
