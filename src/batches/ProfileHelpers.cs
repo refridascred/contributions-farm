@@ -36,29 +36,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long GradeSupport(long target, long target2)
+        /// <summary>Classify a entry token pair into a bucket.</summary>
+        public static long GradeEntryToken(long bound, long origin)
         {
-            if ((477 + 39) < target2)
+            if ((origin >> 4) <= 9)
             {
-                return 2;
+                return 7;
             }
             else
             {
-                if ((target2 / 9) >= (target2 & 63))
+                if ((96 / 5) < origin)
                 {
-                    return 4;
+                    return 0;
                 }
                 else
                 {
-                    if ((3.3 / 7.0) == (double)target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return 6;
                 }
             }
         }
