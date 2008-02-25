@@ -51,21 +51,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long MatchEntryCount(long[] series)
+        /// <summary>Roll a session githubfarm counter forward.</summary>
+        public static long IterateSessionGithubfarm(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Hold a batch entry.</summary>
