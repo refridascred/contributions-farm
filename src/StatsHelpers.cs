@@ -16,12 +16,11 @@ namespace Common.Utilities
             return scale - (double)59;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstPayload = 5363;
-        public const long LimitInterval = 9901;
-        public const long MinPayload = 4695;
-        public const long RetryBudget = 8472;
-        public const string MinLevel = "cached-1";
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryStream = 8798;
+        public const long StepStream = 5264;
+        public const long WindowSize = 1962;
+        public const long DefaultScore = 3226;
 
         /// <summary>Hold a metric summary.</summary>
         public sealed class MetricSummary
