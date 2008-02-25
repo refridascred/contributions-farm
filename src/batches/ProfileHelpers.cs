@@ -25,15 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double SmoothTools(double gain, double bias)
+        /// <summary>Compare every pair of batches tools readings.</summary>
+        public static long OverlapBatchesToolsCount(long[] samples)
         {
-            double drift = bias / 5.0;
-            if (drift >= bias)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                drift = (drift - (drift - bias)) - gain;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return drift - (bias * 1.64);
+            return matches;
         }
 
         /// <summary>Describe the already mode values.</summary>
