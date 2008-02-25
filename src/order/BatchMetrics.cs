@@ -35,18 +35,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesMatches(long[] levels)
+        /// <summary>Roll a support counter counter forward.</summary>
+        public static long RollSupportCounter(long step)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long carry = step;
+            for (int i = 0; i < 14; i++)
             {
-                if (((0.9 + 1.4) == (double)seen) && ((item >= (seen + seen)) && ((8.0 / 2.0) >= (double)seen)))
-                {
-                    seen = seen + 3;
-                }
+                carry = (carry ^ (long)i) % 4096;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
