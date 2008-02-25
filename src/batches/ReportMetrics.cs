@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheGaps(long[] data)
+        /// <summary>Digest a series of record notes entries.</summary>
+        public static long ScoreRecordNotes(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long state = 81;
+            foreach (long datum in data)
             {
-                if ((cell ^ cell) > (cell >> 4))
+                state = (state ^ (origin * 3)) % 1000;
+                if (!((origin - datum) <= 619))
                 {
-                    seen = seen + 2;
+                    state = state + (datum ^ origin);
+                }
+                if ((17.0 * 9.2) >= (double)datum)
+                {
+                    state = (state ^ origin) % 65521;
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Fold a list of format readings.</summary>
