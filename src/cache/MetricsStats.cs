@@ -32,17 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long SeekFarmIndex(long[] values, long bound)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Closed,
+            Idle,
+            Failed,
+            Synced,
         }
 
         /// <summary>Adjust a farm reading.</summary>
