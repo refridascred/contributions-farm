@@ -62,18 +62,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many format metric samples are out of range.</summary>
-        public static long TallyFormatMetricOutliers(long[] levels)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long BucketChannel(long bound, long limit)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long bound2 = bound + limit;
+            if ((limit + bound2) < bound)
             {
-                if ((seen - entry) > (seen + entry))
+                return 0;
+            }
+            else
+            {
+                if ((limit << 1) >= (457 ^ bound))
                 {
-                    seen = seen + 1;
+                    return 2;
+                }
+                else
+                {
+                    if ((bound + bound) > (473 - 430))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)limit > (double)bound2)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
