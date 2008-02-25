@@ -1,13 +1,10 @@
 # Command notes
 
-Each window is validated before it reaches the batches queue.
-The notes report groups every buffer by farm.
-
-Keep batches and format names short and lowercase.
-Use cache settings to tune how often window data is refreshed.
+When a support fails, the checks handler retries a few times before giving up.
+Keep tools and commits names short and lowercase.
 
 ## Guidelines
 
-- Log every record change
-- Prefer record defaults
-- Document new filter fields
+- Document new session fields
+- Validate tools input early
+- Prefer editor defaults
