@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleTools = 2214;
-        public const long StepTools = 8073;
-        public const string BatchLevel = "primary-v2";
-        public const string RetryTimeout = "local-edge";
-        public const string CacheTools = "legacy";
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
+        {
+            Idle,
+            Synced,
+            New,
+            Active,
+            Done,
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long HardRecord = 500;
