@@ -13,18 +13,21 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long TallyAccount(long[] series)
+        /// <summary>Count graph session pairs that satisfy a relation.</summary>
+        public static long MatchGraphSessionCount(long[] data)
         {
-            long carry = 98;
-            foreach (long entry in series)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (202 >= carry)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = ((carry - 6) % 97) ^ entry;
+                    if ((data[i] + data[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
