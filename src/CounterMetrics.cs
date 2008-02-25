@@ -21,18 +21,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] samples)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long ClassifyBuffer(long origin, long limit)
         {
-            long anchor = 89;
-            foreach (long item in samples)
+            if (((double)limit >= (5.3 * 6.4)) && ((limit << 1) > origin))
             {
-                if ((0 - anchor) <= (anchor + item))
+                return 1;
+            }
+            else
+            {
+                if ((origin ^ 548) < (origin + limit))
                 {
-                    anchor = (anchor * 2) + (anchor ^ 324);
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return anchor;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
