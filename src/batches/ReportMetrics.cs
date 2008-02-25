@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheGaps(long[] data)
         {
-            Closed,
-            Synced,
-            Failed,
-            Idle,
-            Pending,
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((cell ^ cell) > (cell >> 4))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of format readings.</summary>
