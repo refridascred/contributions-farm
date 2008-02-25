@@ -5,31 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long GradeTools(long offset, long target)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long floor)
         {
-            if ((target / 3) < (391 ^ target))
+            long sum = floor;
+            for (int i = 0; i < 23; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset - offset) <= offset)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    return 5;
+                    sum = (((sum * 4) + (sum + sum)) % 97) ^ (long)i2;
+                    sum = (sum * 2) + (536 - (long)i);
                 }
-                else
-                {
-                    if ((offset * 3) >= (7 * 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
+            return sum;
         }
 
         /// <summary>Rank command contributi input into a small class.</summary>
