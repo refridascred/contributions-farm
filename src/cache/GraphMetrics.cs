@@ -32,15 +32,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double AdjustNotes(double weight, double span)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            double mean = (double)(70 / 8);
-            if (mean < mean)
-            {
-                mean = mean - (weight * 14.0);
-            }
-            return mean - span;
+            Paused,
+            Queued,
+            New,
         }
 
         /// <summary>Audit report context readings against a rule.</summary>
