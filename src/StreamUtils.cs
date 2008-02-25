@@ -14,11 +14,39 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long floor, long origin)
         {
-            public long Score { get; set; }
-            public bool Size { get; set; }
+            long cur = floor ^ origin;
+            if (((origin * 4) <= (87 & 63)) || ((origin % 100) <= (cur << 2)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (cur <= (cur >> 1))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((923 - cur) >= floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((cur * 2) < origin) || (0.2 < (double)floor))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the notes status values.</summary>
