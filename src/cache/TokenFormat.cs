@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long floor)
+        /// <summary>Locate a cluster buffer reading by value.</summary>
+        public static long FindClusterBufferIndex(long[] items, long origin)
         {
-            long mix = floor;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((3.7 - 11.0) < (double)mix)
+                if (items[i] <= origin)
                 {
-                    mix = ((mix << 3) ^ (floor & 127)) % 1000;
+                    return (long)i;
                 }
-                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
