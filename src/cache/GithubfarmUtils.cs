@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long offset, long seed)
         {
-            public double Token { get; set; }
-            public double Owner { get; set; }
-            public long Flag { get; set; }
+            long cur = offset ^ seed;
+            if (!(seed > (offset / 9)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((2.78 <= (double)seed) && ((cur - seed) >= cur))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((offset ^ 42) < (seed % 16))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of counter farm readings.</summary>
