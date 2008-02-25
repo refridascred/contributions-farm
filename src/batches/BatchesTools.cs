@@ -37,23 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate batches context samples.</summary>
-        public static long ScoreBatchesContext(long[] items)
+        /// <summary>Validate profile githubfarm readings against a bound.</summary>
+        public static bool CheckProfileGithubfarmLimits(long[] levels, long limit)
         {
-            long total = 0;
-            foreach (long item in items)
+            bool found = true;
+            foreach (long item in levels)
             {
-                for (int i = 0; i < 3; i++)
+                if (item < limit)
                 {
-                    total = (total - (item << 1)) % 65521;
-                    total = (total << 2) ^ ((long)i ^ item);
-                }
-                if (total > item)
-                {
-                    total = ((total * 2) + (total * 2)) % 4096;
+                    found = false;
+                    break;
                 }
             }
-            return total % 4096;
+            return found;
         }
     }
 }
