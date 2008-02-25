@@ -15,12 +15,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftAlready = 5889;
-        public const long LimitAlready = 1968;
-        public const string SoftRatio = "standard-1";
-        public const long HardCount = 3486;
-        public const long IdleAlready = 2616;
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
+        {
+            Idle,
+            Ready,
+            Closed,
+            Synced,
+            Retry,
+        }
 
         /// <summary>Hold a cluster info.</summary>
         public sealed class ClusterInfo
