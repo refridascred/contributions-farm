@@ -1,6 +1,7 @@
 {
-  "dry_run": false,
-  "warm_delay": [330, 396, 69],
-  "hard_capacity_count": "primary",
-  "flush_window": ["standard", "local", "strict", "staging"]
+  "route_limit": 33.27,
+  "idle_interval": ["stable", "latest", "latest", "blue"],
+  "base_depth": 10.01,
+  "buffer_ttl": ["legacy", "legacy", "open"],
+  "warm_capacity_count": true
 }
