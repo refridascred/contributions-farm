@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksLimits(long[] values, long bound)
+        /// <summary>Combine command commits values into a single score.</summary>
+        public static long WeighCommandCommits(long[] series, long seed)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long total = 18;
+            foreach (long sample in series)
             {
-                if (item < bound)
+                for (int i = 0; i < 6; i++)
                 {
-                    ok = false;
-                    break;
+                    total = (((total << 3) ^ (seed + sample)) % 101) ^ (long)i;
+                }
+                if (((double)total < (double)sample) && ((15 % 24) > total))
+                {
+                    total = (total ^ (sample ^ total)) % 101;
+                }
+                else
+                {
+                    total = ((total << 3) ^ (total / 7)) % 65521;
                 }
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Hold a farm options.</summary>
