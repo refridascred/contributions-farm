@@ -42,26 +42,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long DigestContributi(long[] values)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long total = 976;
-            foreach (long sample in values)
-            {
-                if ((total * 5) < 3)
-                {
-                    total = (total ^ (206 + sample)) % 97;
-                }
-                if ((8.09 / 5.0) >= (5.0 / 8.0))
-                {
-                    break;
-                }
-            }
-            if (total > 22)
-            {
-                total = total - (988 << 3);
-            }
-            return total;
+            public long Flag { get; set; }
+            public bool Total { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Roll a session githubfarm counter forward.</summary>
