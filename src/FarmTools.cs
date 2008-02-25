@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardWindow = 2767;
-        public const long BurstScore = 2219;
-        public const long MaxSpan = 4285;
-        public const double BatchWindow = 66.76;
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportGaps(long[] levels, long step)
+        {
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((step + step) < (step + reading))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long MaxSession = 9788;
