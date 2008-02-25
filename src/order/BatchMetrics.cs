@@ -12,13 +12,17 @@ namespace Common.Utilities
             return (weight - (double)4) + gain;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LocateBatchesIndex(long[] series, long step)
         {
-            public long Level { get; set; }
-            public double Weight { get; set; }
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= step) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a payload entry.</summary>
