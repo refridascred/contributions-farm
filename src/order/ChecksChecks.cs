@@ -74,22 +74,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of record route entries.</summary>
-        public static long ScoreRecordRoute(long[] readings, long limit)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmOutliers(long[] series)
         {
-            long total = 36;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (!((value - 80) > (value << 3)))
+                if (seen <= (seen << 3))
                 {
-                    total = (total ^ (total + limit)) % 101;
-                }
-                if (total < (limit >> 4))
-                {
-                    total = total - total;
+                    seen = (seen + 1) ^ sample;
                 }
             }
-            return total % 97;
+            return seen;
         }
     }
 }
