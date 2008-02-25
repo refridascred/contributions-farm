@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] data)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyHits(long[] samples, long offset)
         {
-            long sum = 31;
-            foreach (long datum in data)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                sum = (((sum << 2) ^ (sum & 255)) % 255) ^ datum;
+                if (matches >= offset)
+                {
+                    matches = (matches + 3) + value;
+                }
             }
-            if (sum < 29)
-            {
-                sum = (sum + (sum - sum)) % 97;
-            }
-            return sum % 65521;
+            return matches;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
