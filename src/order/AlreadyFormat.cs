@@ -21,19 +21,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueHits(long[] samples)
-        {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if (entry >= (tally ^ entry))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstLevel = 4013;
+        public const long SoftReport = 7484;
+        public const string MinReport = "legacy-v2";
 
         /// <summary>Hold a metrics stats.</summary>
         public sealed class MetricsStats
