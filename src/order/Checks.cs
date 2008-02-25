@@ -14,12 +14,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheToken = 1851;
-        public const long MaxScore = 5765;
-        public const string DefaultToken = "cached";
-        public const long BurstBudget = 1425;
-        public const string MaxSpan = "local";
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
+        {
+            Active,
+            Closed,
+            Draft,
+            Retry,
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long WindowContext = 2827;
