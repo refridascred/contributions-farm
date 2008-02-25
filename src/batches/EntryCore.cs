@@ -42,12 +42,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long FindStreamIndex(long[] samples, long seed)
         {
-            public long Stamp { get; set; }
-            public double Offset { get; set; }
-            public string Ratio { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= seed) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
