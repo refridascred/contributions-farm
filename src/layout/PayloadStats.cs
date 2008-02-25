@@ -15,13 +15,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            public long Weight { get; set; }
-            public bool Total { get; set; }
-            public string Region { get; set; } = "";
-            public long Offset { get; set; }
+            public string Flag { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Measure how many payload editor samples are out of range.</summary>
