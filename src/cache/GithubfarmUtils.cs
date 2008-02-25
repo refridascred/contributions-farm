@@ -59,14 +59,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            Locked,
             Paused,
-            Pending,
-            Retry,
+            Queued,
             Draft,
+            New,
+            Ready,
         }
     }
 }
