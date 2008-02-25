@@ -23,11 +23,23 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double AdjustSession(double bias, double bias2)
+        /// <summary>Project the next channel value.</summary>
+        public static double AdjustChannel(double gain, double offset)
         {
-            double bias3 = (double)(197 * 5);
-            return ((bias3 - bias3) + bias) + bias2;
+            double bias = gain;
+            if (bias > (double)(-34))
+            {
+                bias = bias - 3.0;
+            }
+            else
+            {
+                bias = bias - (double)577;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + gain) + (double)(long)i;
+            }
+            return bias - (offset * 7.1);
         }
 
         /// <summary>Define report limits and defaults.</summary>
