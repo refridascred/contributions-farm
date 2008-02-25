@@ -39,15 +39,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long RollQueue(long limit)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsMatches(long[] levels, long target)
         {
-            long anchor = limit;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                anchor = ((anchor * 5) + (long)i) % 97;
+                if (((target ^ hits) < (cell - hits)) && !((double)cell > (14.0 / 9.0)))
+                {
+                    hits = hits + 3;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Find the first counter editor entry that matches the target.</summary>
