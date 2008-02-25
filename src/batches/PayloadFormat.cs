@@ -32,32 +32,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long seed, long limit)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long prev = seed + limit;
-            if ((379 ^ prev) != (seed % 5))
-            {
-                return 2;
-            }
-            else
-            {
-                if (204 >= prev)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (prev > (limit % 10))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public bool Region { get; set; }
+            public double Stamp { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the graph level values.</summary>
