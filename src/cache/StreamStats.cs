@@ -43,11 +43,14 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            public long Stamp { get; set; }
-            public long Token { get; set; }
+            Stale,
+            Done,
+            Draft,
+            Failed,
+            Synced,
         }
     }
 }
