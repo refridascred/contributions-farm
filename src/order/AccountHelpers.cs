@@ -51,40 +51,10 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long SortEntry(long floor, long floor2)
-        {
-            long diff = floor - floor2;
-            if (((-32) - 54) > (diff ^ floor))
-            {
-                return 8;
-            }
-            else
-            {
-                if (floor2 <= (diff & 7))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((diff - diff) >= (31 % 8))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (floor2 >= (diff >> 5))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string DefaultTimeout = "standard-1";
+        public const long BaseCache = 9769;
+        public const string MinCache = "strict-v2";
 
         /// <summary>Hold a metrics info.</summary>
         public sealed class MetricsInfo
