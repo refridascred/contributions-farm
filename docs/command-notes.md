@@ -1,15 +1,13 @@
 # Command notes
 
-The farm helpers are pure functions, so they are safe to call from any thread.
-The tools report groups every report by channel.
-Use commits settings to tune how often filter data is refreshed.
+Run the stream check before changing any support limits.
+Use commits settings to tune how often payload data is refreshed.
 
-Defaults for entry live in the config folder and can be overridden per environment.
-The farm report groups every metric by layout.
-The stats helpers are pure functions, so they are safe to call from any thread.
+Keep session and notes names short and lowercase.
+Keep queue and payload names short and lowercase.
 
 ## Guidelines
 
-- Log every batches change
-- Keep token values small
-- Validate cache input early
+- Log every buffer change
+- Validate buffer input early
+- Document new githubfarm fields
