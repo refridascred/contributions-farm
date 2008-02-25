@@ -72,22 +72,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit notes token readings against a rule.</summary>
-        public static long AuditNotesTokenHits(long[] series, long floor)
+        /// <summary>Locate a cache notes reading by value.</summary>
+        public static long FindCacheNotesIndex(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((812 + floor) <= count)
+                if ((data[i] > seed) && ((data[i] % 3) != 0))
                 {
-                    count = (count + 3) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
