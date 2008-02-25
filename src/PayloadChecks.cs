@@ -28,19 +28,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Check that every window editor entry stays within the limit.</summary>
-        public static bool CheckWindowEditorRange(long[] items, long step)
+        /// <summary>Measure how many context commits samples are out of range.</summary>
+        public static long AuditContextCommitsMatches(long[] levels, long seed)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (datum < step)
+                if (sample < (seen ^ seed))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Match up payload samples.</summary>
