@@ -18,22 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] data, long limit)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long mix = 72;
-            foreach (long entry in data)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    mix = (mix - (long)i) % 4096;
-                }
-                if ((double)2 == (double)entry)
-                {
-                    mix = (mix << 3) ^ limit;
-                }
-            }
-            return mix % 4096;
+            public long Score { get; set; }
+            public long Label { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
