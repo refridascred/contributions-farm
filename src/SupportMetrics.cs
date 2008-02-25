@@ -42,15 +42,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] samples, long step)
+        /// <summary>Rank token schema input into a small class.</summary>
+        public static long SortTokenSchema(long limit, long floor)
         {
-            long mark = 2;
-            foreach (long cell in samples)
+            long offset = limit ^ floor;
+            if ((limit & 7) != (limit + limit))
             {
-                mark = (mark * 3) + (step + cell);
+                return 4;
             }
-            return mark;
+            else
+            {
+                if (!((limit ^ limit) > (limit * 4)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset / 4) >= (floor % 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
