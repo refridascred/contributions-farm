@@ -1,5 +1,4 @@
 # support settings
-readonly: 5
-default_window_s: false
-support_size: 250
-retry_window_ms: open
+enabled: false
+sync_delay: latest
+batch_ratio: 67
