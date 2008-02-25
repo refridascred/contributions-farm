@@ -13,13 +13,17 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Locate a report reading by value.</summary>
+        public static long FindReportIndex(long[] levels, long bound)
         {
-            Paused,
-            Failed,
-            Pending,
-            Closed,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the counter level values.</summary>
