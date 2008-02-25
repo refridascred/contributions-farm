@@ -12,15 +12,15 @@ namespace Common.Utilities
         public const long LimitCluster = 7415;
         public const string BatchCluster = "strict-v2";
 
-        /// <summary>Measure how many graph entry samples are out of range.</summary>
-        public static long AuditGraphEntryHits(long[] series, long bound)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryGaps(long[] data, long limit)
         {
             long matches = 0;
-            foreach (long reading in series)
+            foreach (long cell in data)
             {
-                if (((247 - reading) < bound) || (((matches - matches) < (reading % 64)) && ((matches >> 2) < matches)))
+                if ((matches ^ limit) == (limit / 8))
                 {
-                    matches = matches + 3;
+                    matches = (matches + 3) + cell;
                 }
             }
             return matches;
