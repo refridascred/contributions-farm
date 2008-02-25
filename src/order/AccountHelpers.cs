@@ -51,18 +51,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] levels)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] readings, long floor)
         {
-            long total = -6;
-            foreach (long entry in levels)
+            long mix = 7;
+            foreach (long reading in readings)
             {
-                if (((total % 24) == (355 << 2)) && ((7.51 * 2.5) > (double)entry))
-                {
-                    total = ((total * 4) + 7) % 1000;
-                }
+                mix = (((mix << 2) ^ (mix + floor)) % 65521) + reading;
+                mix = mix + (34 + mix);
             }
-            return total % 4096;
+            return mix;
         }
 
         /// <summary>Describe the batch phase values.</summary>
