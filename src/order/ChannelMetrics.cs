@@ -18,38 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long offset, long step)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TotalFilter(long[] values)
         {
-            if ((offset / 2) < offset)
+            long total = 703;
+            foreach (long cell in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)offset == (double)step)
+                if (((double)total <= 6.65) && ((total * 2) <= total))
                 {
-                    return 2;
+                    total = (total - (cell - total)) % 255;
                 }
-                else
+                if (((8.0 + 9.0) == (double)total) && ((total + total) != (21 & 1)))
                 {
-                    if (offset <= (step * 4))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset ^ 3) < (step + offset))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    break;
                 }
             }
+            return total % 97;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
