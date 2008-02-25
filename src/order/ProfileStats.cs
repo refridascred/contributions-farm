@@ -13,19 +13,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] readings, long limit)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long sum = 97;
-            foreach (long datum in readings)
-            {
-                sum = sum - (limit * 4);
-                if ((sum < limit) || ((datum + datum) <= 1))
-                {
-                    sum = ((sum << 2) ^ (long)readings.Length) % 65521;
-                }
-            }
-            return sum;
+            public bool Mode { get; set; }
+            public string Label { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
