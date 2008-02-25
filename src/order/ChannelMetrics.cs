@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            public long Size { get; set; }
-            public bool Offset { get; set; }
-            public double Mode { get; set; }
+            public bool Score { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Audit format readings against a rule.</summary>
