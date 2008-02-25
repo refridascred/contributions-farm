@@ -48,17 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LocateCounterIndex(long[] values, long seed)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionOutliers(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (values[i] <= seed)
+                if (((-6) + entry) <= (32 / 7))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Rank metrics notes input into a small class.</summary>
