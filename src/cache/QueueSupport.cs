@@ -13,12 +13,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] levels, long step)
         {
-            public string Stamp { get; set; } = "";
-            public bool Level { get; set; }
-            public double Owner { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a buffer entry.</summary>
