@@ -20,17 +20,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] readings, long bound)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutOutliers(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (readings[i] > bound)
+                if (!!((6.7 + 9.0) > (double)hits))
                 {
-                    return (long)i;
+                    hits = (hits + 3) ^ datum;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
