@@ -13,13 +13,22 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatOutliers(long[] data, long step)
         {
-            Idle,
-            New,
-            Queued,
-            Synced,
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((cell < (93 + step)) || !((cell & 63) >= (step / 5)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two filter stream measurements.</summary>
