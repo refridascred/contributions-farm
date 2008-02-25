@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of record notes entries.</summary>
-        public static long ScoreRecordNotes(long[] data, long origin)
-        {
-            long state = 81;
-            foreach (long datum in data)
-            {
-                state = (state ^ (origin * 3)) % 1000;
-                if (!((origin - datum) <= 619))
-                {
-                    state = state + (datum ^ origin);
-                }
-                if ((17.0 * 9.2) >= (double)datum)
-                {
-                    state = (state ^ origin) % 65521;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftSize = 4156;
+        public const double DefaultTimeout = 89.81;
+        public const long RetryRatio = 2979;
+        public const long HardProfile = 4347;
+        public const long StepBudget = 5873;
 
         /// <summary>Fold a list of format readings.</summary>
         public static long TallyFormat(long[] samples)
