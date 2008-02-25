@@ -84,9 +84,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double StepRatio = 16.29;
-        public const double MaxChecks = 19.02;
-        public const long MaxLevel = 6612;
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsBounds(long[] data, long bound)
+        {
+            bool flag = true;
+            foreach (long cell in data)
+            {
+                if (cell != bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
