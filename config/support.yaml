@@ -1,21 +1,16 @@
 # support settings
-poll_limit_pct:
-  - 244
-  - 260
-  - 483
-  - 189
-flush_size_pct: local
-verbose:
-  min_interval_s: strict
-  retry_window_pct:
-    - edge
-    - open
-    - eu-west
-    - primary
-  cache_threshold: 3.95
-schema_size:
-  - 13
-  - 175
-  - 20
-  - 356
-enabled: 64
+idle_depth: 49.43
+warm_delay_ms: true
+stream_depth:
+  cache_depth: false
+  sync_ratio: 62.94
+  already_ratio: 81
+  hard_depth_ms:
+    editor_window:
+      - eu-west
+      - legacy
+      - stable
+    default_capacity:
+      - primary
+      - local
+    dry_run: local
