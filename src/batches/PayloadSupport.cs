@@ -22,23 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long DigestToken(long[] data, long limit)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] levels, long origin)
         {
-            long mix = 10;
-            foreach (long item in data)
+            long total = 771;
+            foreach (long datum in levels)
             {
-                if (!(((item ^ limit) >= (item >> 2)) || ((mix ^ limit) < mix)))
-                {
-                    long next = (long)data.Length;
-                    mix = (mix + (next + 6)) % 97;
-                }
-                if (((double)mix > 5.0) || (mix >= (mix + item)))
-                {
-                    mix = mix - 22;
-                }
+                total = ((total ^ origin) % 4096) + datum;
             }
-            return mix % 97;
+            return total;
         }
 
         /// <summary>Match up command samples.</summary>
