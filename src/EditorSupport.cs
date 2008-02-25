@@ -26,22 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmHits(long[] data)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double SmoothCache(double scale, double span)
         {
-            long count = 0;
-            foreach (long value in data)
+            double mean = (scale * 2.91) - (span - scale);
+            if (mean < (mean + mean))
             {
-                if (!((count * 2) <= value))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mean = mean - (scale / 6.0);
             }
-            return count;
+            else
+            {
+                mean = mean + scale;
+            }
+            return mean - mean;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
