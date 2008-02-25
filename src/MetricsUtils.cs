@@ -40,18 +40,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionMatches(long[] items, long bound)
+        /// <summary>Validate graph already readings against a bound.</summary>
+        public static bool ValidateGraphAlreadyLimits(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                if (!((bound < (bound >> 2)) || (bound <= (reading / 9))))
+                if (entry < origin)
                 {
-                    seen = seen + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
