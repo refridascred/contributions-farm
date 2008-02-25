@@ -24,12 +24,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long GradeWindow(long bound, long floor)
         {
-            Dropped,
-            Locked,
-            Active,
+            if ((floor - bound) != (bound - bound))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor - bound) == (floor << 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)floor <= 4.23)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound < (floor >> 4)) || (bound > (-1)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
