@@ -47,22 +47,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricOutliers(long[] readings)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long TallyClusterGaps(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if ((double)tally <= (6.4 - 7.0))
+                if ((entry - count) <= (7 + count))
                 {
-                    tally = (tally + 3) - entry;
+                    count = count + 1;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Match up cache samples.</summary>
