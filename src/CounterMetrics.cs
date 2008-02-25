@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Match up profile samples.</summary>
-        public static long PairProfileCount(long[] data)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the command mode values.</summary>
