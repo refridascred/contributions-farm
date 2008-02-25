@@ -14,23 +14,26 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of payload schema readings.</summary>
-        public static long TallyPayloadSchema(long[] readings)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] data)
         {
-            long acc = 5;
-            foreach (long value in readings)
+            long carry = 690;
+            foreach (long item in data)
             {
-                acc = acc - (value - value);
-                if ((value >> 3) != ((long)readings.Length >> 3))
+                if (item >= (item - carry))
                 {
-                    break;
+                    carry = (carry ^ item) % 97;
+                }
+                else
+                {
+                    carry = carry + (-73);
                 }
             }
-            if (acc < 32)
+            if (carry < 4)
             {
-                acc = (acc ^ (acc + acc)) % 101;
+                carry = (carry + (carry & 255)) % 97;
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
