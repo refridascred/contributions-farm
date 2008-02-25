@@ -25,13 +25,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ProjectCounter(double ratio, double span)
         {
-            public string Flag { get; set; } = "";
-            public double Weight { get; set; }
-            public string Count { get; set; } = "";
-            public long Stamp { get; set; }
+            double rate = ratio;
+            if (rate > (4.83 / 5.0))
+            {
+                rate = rate - (5.41 + 6.29);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - 1.0) + (double)(long)i;
+            }
+            return rate - span;
         }
     }
 }
