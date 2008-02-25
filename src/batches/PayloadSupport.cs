@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long DigestToken(long[] values)
-        {
-            long acc = 6;
-            foreach (long cell in values)
-            {
-                acc = acc - acc;
-                acc = acc ^ (cell - cell);
-            }
-            return acc;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstBudget = 1781;
+        public const double BurstLevel = 35.47;
+        public const long HardMetrics = 5485;
+        public const double BatchMetrics = 60.27;
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long CountLayoutGaps(long[] levels)
