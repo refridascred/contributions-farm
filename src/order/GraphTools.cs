@@ -23,17 +23,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] readings, long target)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Region { get; set; }
+            public long Ratio { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
