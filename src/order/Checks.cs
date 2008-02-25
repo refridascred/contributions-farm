@@ -29,15 +29,10 @@ namespace Common.Utilities
         public const double CacheInterval = 38.04;
         public const long MaxLevel = 4990;
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
-        {
-            Active,
-            Failed,
-            Closed,
-            Ready,
-            Paused,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowSpan = 3666;
+        public const long MaxMetrics = 8006;
+        public const long LimitMetrics = 2399;
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long CombineBuffer(long[] values)
