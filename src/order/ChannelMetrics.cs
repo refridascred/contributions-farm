@@ -40,18 +40,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] series, long bound)
-        {
-            long anchor = 2;
-            foreach (long value in series)
-            {
-                if (((value << 3) > ((long)series.Length + 23)) || ((double)value >= (1.8 / 7.0)))
-                {
-                    anchor = anchor + (anchor ^ bound);
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxFarm = 8410;
+        public const long StepFarm = 5099;
+        public const string BatchScore = "staging-v2";
     }
 }
