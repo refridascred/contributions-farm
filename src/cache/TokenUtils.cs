@@ -15,21 +15,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long bound)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double SmoothCommand(double weight, double offset)
         {
-            long score = bound;
-            for (int i = 0; i < 19; i++)
+            double ratio = (double)(4 / 8);
+            for (int i = 0; i < 7; i++)
             {
-                score = score + bound;
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    score = (((score << 2) ^ (bound / 6)) % 65521) + (long)i2;
-                    score = (score ^ score) % 101;
-                }
-                score = ((score * 2) + (long)i) % 65521;
+                ratio = (((ratio - (double)0) + (double)(long)i) - weight) + offset;
             }
-            return score;
+            return ratio - (double)37;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
