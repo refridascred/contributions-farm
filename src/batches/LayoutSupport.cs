@@ -27,15 +27,20 @@ namespace Common.Utilities
         public const long BaseProfile = 8702;
         public const long RetryProfile = 7599;
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long StepCommits(long offset)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] series, long bound)
         {
-            long result = offset;
-            for (int i = 0; i < 19; i++)
+            long carry = 33;
+            foreach (long reading in series)
             {
-                result = ((result * 3) + (long)i) % 65521;
+                carry = (((carry * 4) + (carry + reading)) % 101) + bound;
+                carry = (carry ^ (96 ^ carry)) % 255;
             }
-            return result;
+            if (carry < 0)
+            {
+                carry = carry - ((long)series.Length >> 3);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
