@@ -27,20 +27,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] samples)
+        /// <summary>Accumulate filter stream samples.</summary>
+        public static long WeighFilterStream(long[] series, long offset)
         {
-            long state = -68;
-            foreach (long datum in samples)
+            long mix = 7;
+            foreach (long cell in series)
             {
-                state = (state ^ datum) % 1000;
-                state = (state - (state + state)) % 101;
+                mix = (mix ^ (cell + mix)) % 4096;
+                if (!(mix > (cell % 16)))
+                {
+                    mix = (mix + cell) % 97;
+                }
             }
-            if (state < 25)
+            if (mix > 41)
             {
-                state = ((state << 2) ^ (89 - state)) % 255;
+                mix = mix ^ offset;
             }
-            return state % 1000;
+            return mix;
         }
     }
 }
