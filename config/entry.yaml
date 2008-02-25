@@ -1,19 +1,8 @@
 # entry settings
-max_capacity:
-  - 236
-  - 180
-  - 160
-queue_interval: true
-idle_retries_pct:
-  - 442
-  - 344
-  - 26
-burst_window_s:
-  - 85
-  - 173
-  - 81
-sync_window_count:
-  batch_depth_count: 100
-  persist: 34
-  command_capacity: 96
-  audit: true
+retry_depth_s: true
+layout_depth: 20.97
+max_retries_ms:
+  - latest
+  - local
+  - cached
+batches_delay: 4059
