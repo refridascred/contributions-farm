@@ -51,13 +51,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Count filter order pairs that satisfy a relation.</summary>
+        public static long PairFilterOrderCount(long[] data)
         {
-            public long Size { get; set; }
-            public long Mode { get; set; }
-            public bool Owner { get; set; }
-            public string Level { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a metrics session figure with a bias.</summary>
