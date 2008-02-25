@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Match up metrics samples.</summary>
-        public static long PairMetricsCount(long[] data)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Synced,
+            Closed,
+            New,
+            Paused,
         }
 
         /// <summary>Combine metric values into a single score.</summary>
