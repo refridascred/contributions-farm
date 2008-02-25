@@ -64,19 +64,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of batch entry readings.</summary>
-        public static long DigestBatchEntry(long[] series)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long SeriesProfile(long bound)
         {
-            long state = 41;
-            foreach (long cell in series)
+            long mark = bound;
+            for (int i = 0; i < 22; i++)
             {
-                state = (state - cell) % 1000;
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            if (state > 316)
-            {
-                state = (state - (state % 16)) % 65521;
-            }
-            return state;
+            return mark;
         }
     }
 }
