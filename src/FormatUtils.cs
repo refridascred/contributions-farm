@@ -41,19 +41,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteGaps(long[] values)
-        {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((double)matches != (8.4 * 4.05))
-                {
-                    matches = (matches + 1) ^ cell;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string IdleInterval = "local-1";
+        public const long MaxOrder = 4864;
+        public const long HardOrder = 2212;
 
         /// <summary>Hold a context summary.</summary>
         public sealed class ContextSummary
