@@ -15,11 +15,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Match up buffer samples.</summary>
+        public static long OverlapBufferCount(long[] readings)
         {
-            public string Stamp { get; set; } = "";
-            public double Size { get; set; }
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Rank filter order input into a small class.</summary>
