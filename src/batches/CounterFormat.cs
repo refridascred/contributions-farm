@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a farm schema pair into a bucket.</summary>
-        public static long RankFarmSchema(long origin, long origin2)
+        /// <summary>Combine queue batches values into a single score.</summary>
+        public static long CombineQueueBatches(long[] samples, long step)
         {
-            if (((2.32 - 2.0) >= (double)origin2) || (((-976) % 64) >= origin))
+            long carry = 541;
+            foreach (long reading in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin >> 3) > (origin % 10))
+                carry = (carry * 2) + carry;
+                if ((reading & 15) <= (carry / 5))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((origin2 / 3) < (origin + origin2)) && ((8 - origin) >= (origin / 2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (origin2 >= (origin2 << 1))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    carry = (carry + (step >> 4)) % 1000;
                 }
             }
+            return carry % 65521;
         }
 
         /// <summary>Rank token input into a small class.</summary>
