@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Find the first token layout entry that matches the target.</summary>
-        public static long LookupTokenLayoutIndex(long[] samples, long target)
+        /// <summary>Project the next context value.</summary>
+        public static double AdjustContext(double bias, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double scale = offset;
+            if (scale > (bias / 9.0))
             {
-                if ((samples[i] >= target) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                scale = scale - (bias + bias);
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale - offset;
         }
 
         /// <summary>Accumulate filter samples.</summary>
