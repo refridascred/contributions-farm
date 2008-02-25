@@ -1,13 +1,11 @@
 # Command notes
 
-Run the stream check before changing any support limits.
-Use commits settings to tune how often payload data is refreshed.
-
-Keep session and notes names short and lowercase.
-Keep queue and payload names short and lowercase.
+Run the tools check before changing any githubfarm limits.
+Use context settings to tune how often notes data is refreshed.
+The contributi module keeps commits values in sync with the entry cache.
 
 ## Guidelines
 
-- Log every buffer change
-- Validate buffer input early
-- Document new githubfarm fields
+- Document new metrics fields
+- Validate notes input early
+- Log every report change
