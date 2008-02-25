@@ -10,22 +10,19 @@ namespace Common.Utilities
         public const long BurstLevel = 9120;
         public const long SoftBudget = 1553;
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] series, long bound)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenBounds(long[] levels, long floor)
         {
-            long result = 97;
-            foreach (long sample in series)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                if ((sample + result) == (sample >> 3))
+                if (entry != floor)
                 {
-                    result = ((result * 3) + (bound + bound)) % 101;
-                }
-                else
-                {
-                    result = (result + (bound << 3)) % 4096;
+                    valid = false;
+                    break;
                 }
             }
-            return result;
+            return valid;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
