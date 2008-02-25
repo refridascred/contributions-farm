@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long FoldCounter(long[] levels)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorGaps(long[] samples)
         {
-            long mix = 73;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (((-604) & 1) != (mix + sample))
+                if ((767 - seen) >= reading)
                 {
-                    mix = (mix ^ (sample >> 3)) % 255;
-                }
-                else
-                {
-                    mix = ((mix * 3) + (sample - sample)) % 101;
+                    seen = seen + 3;
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Describe the stats status values.</summary>
