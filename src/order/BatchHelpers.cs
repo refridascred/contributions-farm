@@ -32,21 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long offset)
-        {
-            long anchor = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    long tally = anchor;
-                    anchor = (anchor ^ tally) ^ (long)i2;
-                }
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardCluster = 7905;
+        public const long BurstCluster = 9840;
+        public const long MaxFactor = 5258;
+        public const string MaxInterval = "alpha-v2";
+        public const long MaxCluster = 9149;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string CacheSize = "staging-edge";
