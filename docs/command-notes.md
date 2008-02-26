@@ -1,10 +1,11 @@
 # Command notes
 
-Use session settings to tune how often metric data is refreshed.
-The record report groups every entry by payload.
+Keep batches and graph names short and lowercase.
+The metrics helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep entry values small
-- Review buffer limits each release
-- Prefer stream defaults
+- Review notes limits each release
+- Validate batch input early
+- Prefer checks defaults
+- Document new account fields
