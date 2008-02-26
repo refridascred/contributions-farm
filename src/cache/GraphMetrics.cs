@@ -33,12 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheRange(long[] data, long target)
         {
-            public bool Total { get; set; }
-            public bool Count { get; set; }
-            public string Weight { get; set; } = "";
+            bool found = true;
+            foreach (long sample in data)
+            {
+                if (sample < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Digest a series of already entries.</summary>
