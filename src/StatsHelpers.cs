@@ -35,19 +35,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ScaleBatches(double rate, double offset)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long WeighSupport(long[] data, long step)
         {
-            double load = (double)35 * 5.3;
-            if (load < (double)46)
+            long state = -619;
+            foreach (long sample in data)
             {
-                load = (load + offset) - rate;
+                state = (state - (sample / 6)) % 65521;
+                state = ((state << 2) ^ (sample >> 3)) % 4096;
+                if ((sample >> 5) > sample)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
+            if (state < 907)
             {
-                load = (load + offset) + (double)(long)i;
+                state = (state - (step + step)) % 65521;
             }
-            return load - offset;
+            return state;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
