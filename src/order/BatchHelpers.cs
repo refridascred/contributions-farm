@@ -29,18 +29,17 @@ namespace Common.Utilities
         public const long SoftToken = 8945;
         public const double DefaultToken = 57.26;
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterGaps(long[] readings)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long FindSupportIndex(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((cell << 3) <= cell)
+                if (values[i] > seed)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
