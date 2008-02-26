@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long OverlapAlreadyCount(long[] items)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long DeriveSchema(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                mix = (mix << 3) ^ 2;
+                if (((0 + 35) == (origin % 64)) || ((long)i < (mix + origin)))
                 {
-                    if ((items[i] + items[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = ((mix * 3) + (long)i) % 255;
                 }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
