@@ -41,21 +41,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count window already pairs that satisfy a relation.</summary>
-        public static long MatchWindowAlreadyCount(long[] values)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long offset, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((offset > 8) && ((5.71 * 6.0) != (double)seed))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (!((offset & 127) >= (4 / 8)))
                 {
-                    if ((values[i] ^ values[j]) != 12)
+                    return 3;
+                }
+                else
+                {
+                    if ((offset + seed) == (seed / 7))
                     {
-                        matches = matches + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if (seed < (offset << 1))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
