@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long WeighReport(long[] levels)
+        /// <summary>Blend two filter layout measurements.</summary>
+        public static double SmoothFilterLayout(double ratio, double floor)
         {
-            long sum = 70;
-            foreach (long entry in levels)
+            double weight = floor;
+            if (weight > ratio)
             {
-                if ((sum >> 2) < (sum + 585))
-                {
-                    sum = ((sum << 3) ^ (entry - entry)) % 255;
-                }
-                else
-                {
-                    sum = sum ^ (entry << 1);
-                }
+                weight = weight + ratio;
             }
-            return sum;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + (3.8 + 18.0)) - (double)(long)i;
+            }
+            return weight - 11.0;
         }
 
         /// <summary>Locate a support reading by value.</summary>
