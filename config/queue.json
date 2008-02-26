@@ -1,5 +1,8 @@
 {
-  "persist": 70,
-  "soft_retries_count": "standard",
-  "min_ratio": false
+  "flush_window_pct": "stable",
+  "burst_limit_s": 91.2,
+  "idle_window_pct": [350, 71, 233, 34],
+  "graph_ttl": false,
+  "context_capacity": "edge",
+  "retry_timeout_count": true
 }
