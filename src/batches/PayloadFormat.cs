@@ -30,10 +30,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseGraph = 5141;
-        public const string HardInterval = "standard-edge";
-        public const long RetryGraph = 3158;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheMatches(long[] series, long bound)
+        {
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((23 + 86) <= matches)
+                {
+                    matches = ((matches + 1) + item) - bound;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long BaseTools = 349;
