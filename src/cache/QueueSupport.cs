@@ -20,18 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadHits(long[] readings, long origin)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((tally << 1) <= (origin + origin))
+                if ((values[i] <= origin) && ((values[i] % 5) == 0))
                 {
-                    tally = (tally + 1) + value;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
