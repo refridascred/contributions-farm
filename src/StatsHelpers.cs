@@ -62,15 +62,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] values)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long mark = 887;
-            foreach (long cell in values)
-            {
-                mark = mark - (cell - cell);
-            }
-            return mark % 4096;
+            public bool Size { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
