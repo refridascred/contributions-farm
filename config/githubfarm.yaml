@@ -1,7 +1,6 @@
 # githubfarm settings
-cache_capacity_count: 60
-payload_depth: true
-tools_window: true
-idle_depth_count: 100
-retry_size_s: 100
-audit: blue
+tools_size: 1451
+audit: 29
+max_size_s: 100
+default_delay_pct: staging
+max_timeout: open
