@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Grade a cache layout value against two limits.</summary>
-        public static long RankCacheLayout(long offset, long seed)
+        /// <summary>Match up githubfarm batch samples.</summary>
+        public static long CompareGithubfarmBatchCount(long[] levels)
         {
-            if ((double)seed < (6.0 / 7.0))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((4.1 + 2.5) > (double)seed) || ((177 & 63) < (seed / 3)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((127 - 99) >= (seed + seed)) || ((double)seed <= (0.87 + 6.49)))
+                    if ((levels[i] - levels[j]) != 10)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)offset < (double)2)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a buffer record.</summary>
