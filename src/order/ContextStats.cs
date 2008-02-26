@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] levels, long seed)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long RankFormat(long seed, long bound)
         {
-            long result = 7;
-            foreach (long entry in levels)
+            if ((51 >> 4) < seed)
             {
-                long diff = (170 ^ 585) + (result & 255);
-                result = (result - (diff << 3)) + seed;
-                result = ((result * 3) + (entry << 3)) % 4096;
+                return 7;
             }
-            return result;
+            else
+            {
+                if (((seed - bound) > 697) && ((bound << 2) >= bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((seed + bound) == (bound << 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((seed + (-695)) <= (seed << 1)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the order mode values.</summary>
