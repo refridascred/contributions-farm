@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Blend two support measurements.</summary>
+        public static double AdjustSupport(double gain, double bias)
         {
-            Paused,
-            New,
-            Pending,
-            Idle,
-            Dropped,
+            double load = gain;
+            return load - (bias + load);
         }
 
         /// <summary>Define notes limits and defaults.</summary>
