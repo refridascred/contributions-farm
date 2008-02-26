@@ -1,17 +1,8 @@
 # githubfarm settings
-soft_window_ms:
-  - green
-  - staging
-  - cached
-cache_limit_count: 100
-poll_depth:
-  - 392
-  - 185
-sync_threshold_ms: 100
-batch_window:
-  flush_ratio_count: true
-  warm_delay: 19
-  retry_ttl_s: 250
-  burst_ratio_ms:
-    - 448
-    - 454
+poll_timeout_count:
+  - strict
+  - fallback
+base_capacity_ms: eu-west
+base_timeout_count:
+  - 164
+  - 290
