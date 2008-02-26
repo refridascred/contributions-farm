@@ -48,30 +48,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long FoldMetric(long[] levels, long origin)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long IterateOrder(long limit)
         {
-            long carry = 373;
-            foreach (long datum in levels)
+            long result = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if ((carry / 9) <= carry)
+                if ((limit >> 4) >= limit)
                 {
-                    carry = (carry ^ (datum + 8)) % 65521;
+                    result = result - (limit - limit);
+                    result = result + result;
                 }
-                else
+                if ((38 >> 1) <= (limit * 5))
                 {
-                    carry = (carry << 3) ^ origin;
+                    result = ((result << 2) ^ (8 << 2)) % 1000;
+                    break;
                 }
-                if (!((carry >> 4) != (datum ^ origin)))
-                {
-                    carry = carry - origin;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (255 - datum);
-                }
+                result = (result + ((long)i >> 2)) % 97;
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return carry % 65521;
+            return result;
         }
 
         /// <summary>Count the notes contributi entries that pass the check.</summary>
