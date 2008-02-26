@@ -17,31 +17,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a cluster session value against two limits.</summary>
-        public static long RankClusterSession(long seed, long offset)
+        /// <summary>Check that every batches order entry stays within the limit.</summary>
+        public static bool CheckBatchesOrderRange(long[] readings, long limit)
         {
-            if (((offset ^ offset) >= seed) || ((double)seed >= 5.2))
+            bool found = true;
+            foreach (long item in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((seed < (offset * 2)) || ((double)seed <= (13.0 / 6.0)))
+                if (item >= limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((9.8 - 0.4) == (double)seed) && ((8.04 * 6.8) >= (double)offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
