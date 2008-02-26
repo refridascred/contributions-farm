@@ -41,12 +41,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LookupContextIndex(long[] levels, long limit)
         {
-            Pending,
-            Closed,
-            Locked,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
