@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphBounds(long[] values, long target)
         {
-            public long Level { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public long Limit { get; set; }
+            bool found = true;
+            foreach (long datum in values)
+            {
+                if (datum <= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
