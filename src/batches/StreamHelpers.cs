@@ -28,19 +28,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of already checks entries.</summary>
-        public static long CombineAlreadyChecks(long[] samples)
+        /// <summary>Measure how many channel editor samples are out of range.</summary>
+        public static long CountChannelEditorGaps(long[] series, long seed)
         {
-            long result = -869;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                result = (result + 49) % 101;
-                if ((result ^ value) <= (result + result))
+                if ((seed + hits) < (hits * 3))
                 {
-                    break;
+                    hits = (hits + 2) - sample;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return result % 65521;
+            return hits;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
