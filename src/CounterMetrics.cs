@@ -27,13 +27,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long BucketCommits(long origin, long limit)
         {
-            Synced,
-            Active,
-            Ready,
-            Closed,
+            if ((origin / 2) > (limit % 5))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((origin / 3) >= origin)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((limit % 12) <= (limit ^ 138)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next contributi batch value from a seed.</summary>
