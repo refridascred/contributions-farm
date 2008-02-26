@@ -40,19 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileOutliers(long[] samples, long offset)
-        {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((seen & 15) <= (offset & 127))
-                {
-                    seen = (seen + 2) + reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string MaxFarm = "local";
+        public const string DefaultFarm = "fallback-edge";
+        public const string SoftFarm = "cached-v2";
 
         /// <summary>Describe the profile state values.</summary>
         public enum ProfileState
