@@ -88,18 +88,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate format graph samples.</summary>
-        public static long FoldFormatGraph(long[] values, long bound)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportMatches(long[] series, long offset)
         {
-            long sum = 71;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if ((221 ^ sum) >= bound)
+                if (!((entry ^ offset) < (entry - entry)) || ((seen - seen) >= (seen >> 5)))
                 {
-                    sum = ((sum << 2) ^ (143 >> 5)) ^ sample;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return sum;
+            return seen;
         }
     }
 }
