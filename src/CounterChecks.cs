@@ -13,31 +13,13 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Classify a context report pair into a bucket.</summary>
-        public static long SortContextReport(long offset, long bound)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            if ((bound > (bound / 3)) || ((offset << 1) != (offset + bound)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((offset % 5) <= (bound & 127)) && ((double)offset <= (4.0 - 4.58)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)bound < (4.0 / 6.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Synced,
+            Stale,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Look up the position of a commits report sample.</summary>
