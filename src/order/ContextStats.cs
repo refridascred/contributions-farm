@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountLimits(long[] series, long target)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long step)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            long mark = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (datum < target)
+                if (8.0 > (double)(long)i)
                 {
-                    stale = false;
-                    break;
+                    mark = mark + (mark + 388);
                 }
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Hold a cache options.</summary>
