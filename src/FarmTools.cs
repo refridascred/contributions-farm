@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of window stats entries.</summary>
-        public static long CombineWindowStats(long[] levels, long offset)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long anchor = 52;
-            foreach (long value in levels)
-            {
-                anchor = ((anchor ^ offset) % 65521) + value;
-            }
-            if (anchor < 6)
-            {
-                anchor = (anchor * 2) + (offset + anchor);
-            }
-            return anchor;
+            Synced,
+            Closed,
+            Draft,
+            Retry,
+            New,
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
