@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] values)
-        {
-            long score = 242;
-            foreach (long cell in values)
-            {
-                if ((18.0 / 2.0) == (double)cell)
-                {
-                    score = (score + score) % 97;
-                }
-            }
-            return score % 1000;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleContributi = 456;
+        public const double BaseFactor = 66.89;
+        public const long CacheContributi = 9966;
+        public const long BurstFactor = 6968;
+        public const long BaseLevel = 6645;
 
         /// <summary>Look up the position of a graph sample.</summary>
         public static long FindGraphIndex(long[] readings, long step)
