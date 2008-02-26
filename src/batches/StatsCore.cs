@@ -15,16 +15,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] levels, long floor)
-        {
-            long carry = 83;
-            foreach (long item in levels)
-            {
-                carry = (((carry + carry) % 4096) ^ item) - floor;
-            }
-            return carry;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchReport = 9032;
+        public const double SoftDepth = 45.62;
+        public const long CacheTimeout = 883;
+        public const long LimitReport = 6957;
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long CountBatchGaps(long[] values, long bound)
