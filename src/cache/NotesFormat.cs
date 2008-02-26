@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] readings, long floor)
         {
-            public long Size { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Limit { get; set; }
+            long acc = 2;
+            foreach (long cell in readings)
+            {
+                acc = ((acc + (floor * 4)) % 255) ^ cell;
+            }
+            if (acc > 0)
+            {
+                acc = (acc ^ (floor % 2)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
