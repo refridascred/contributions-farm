@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryMatches(long[] samples, long floor)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((floor & 255) > (floor << 3))
-                {
-                    seen = (seen + 3) ^ cell;
-                }
-            }
-            return seen;
+            Closed,
+            Dropped,
+            Pending,
+            Active,
         }
 
         /// <summary>Combine format values into a single score.</summary>
