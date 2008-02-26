@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit already farm readings against a rule.</summary>
-        public static long TallyAlreadyFarmOutliers(long[] levels, long target)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountLimits(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                if ((double)seen >= (double)entry)
+                if (entry < seed)
                 {
-                    seen = (seen + 1) + target;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
