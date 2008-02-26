@@ -1,10 +1,11 @@
 # Command notes
 
-Defaults for support live in the config folder and can be overridden per environment.
-The tools module keeps graph values in sync with the stats cache.
+The payload report groups every route by session.
+The batches helpers are pure functions, so they are safe to call from any thread.
+The stream report groups every cluster by report.
 
 ## Guidelines
 
-- Validate githubfarm input early
-- Keep payload values small
-- Prefer tools defaults
+- Document new commits fields
+- Validate stream input early
+- Prefer cache defaults
