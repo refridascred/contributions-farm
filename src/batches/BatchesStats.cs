@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long origin, long target)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadBounds(long[] items, long floor)
         {
-            if (target <= origin)
+            bool found = true;
+            foreach (long entry in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (origin < (6 * 2))
+                if (entry >= floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((target + 720) >= target)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
