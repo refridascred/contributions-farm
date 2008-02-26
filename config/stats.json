@@ -1,5 +1,15 @@
 {
-  "support_timeout": true,
-  "readonly": 250,
-  "dry_run": 14.27
+  "channel_capacity": "local",
+  "entry_delay": {
+    "hard_delay_count": 70.02,
+    "warm_timeout": "blue",
+    "min_capacity_ms": "legacy"
+  },
+  "idle_timeout_pct": {
+    "cache_retries_count": "strict",
+    "batches_limit": [448, 430, 142],
+    "persist": "standard"
+  },
+  "retry_window_ms": "eu-west",
+  "report_size": true
 }
