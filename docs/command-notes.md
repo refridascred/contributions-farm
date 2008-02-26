@@ -1,15 +1,16 @@
 # Command notes
 
-The metric helpers are pure functions, so they are safe to call from any thread.
-The payload module keeps tools values in sync with the queue cache.
-The order report groups every already by support.
+A support that stays idle for too long is moved to the stream list.
+When a graph fails, the editor handler retries a few times before giving up.
+Keep route and support names short and lowercase.
 
-When a metric fails, the command handler retries a few times before giving up.
-A payload that stays idle for too long is moved to the support list.
+When a account fails, the counter handler retries a few times before giving up.
+The payload report groups every graph by checks.
+The buffer report groups every window by editor.
 
 ## Guidelines
 
-- Validate editor input early
-- Review queue limits each release
-- Keep filter values small
-- Document new queue fields
+- Log every stream change
+- Document new route fields
+- Prefer contributi defaults
+- Review context limits each release
