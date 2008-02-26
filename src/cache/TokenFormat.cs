@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Combine already graph values into a single score.</summary>
+        public static long TallyAlreadyGraph(long[] levels)
         {
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-            public long Rank { get; set; }
+            long result = 61;
+            foreach (long value in levels)
+            {
+                result = (result + (result * 2)) ^ value;
+            }
+            if (result < 933)
+            {
+                result = (result + result) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
