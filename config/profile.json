@@ -1,6 +1,5 @@
 {
-  "strict": 15.87,
-  "hard_interval": 60,
-  "enabled": 98.6,
-  "default_ratio_count": "green"
+  "burst_capacity_s": 0.25,
+  "sync_interval_s": "latest",
+  "idle_delay_ms": [182, 240]
 }
