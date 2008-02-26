@@ -39,20 +39,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorRange(long[] samples, long limit)
-        {
-            bool ok = true;
-            foreach (long cell in samples)
-            {
-                if (cell >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string DefaultBudget = "staging";
+        public const double WindowSession = 68.44;
+        public const long CacheSession = 7600;
+        public const string SoftSession = "primary-v2";
 
         /// <summary>Look up the position of a payload sample.</summary>
         public static long LookupPayloadIndex(long[] samples, long origin)
