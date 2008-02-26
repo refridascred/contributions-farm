@@ -61,17 +61,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LocateContextIndex(long[] data, long step)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 79;
+            foreach (long item in readings)
             {
-                if ((data[i] <= step) && ((data[i] % 2) != 0))
+                if (((7.7 - 8.0) <= (double)item) && ((5.36 * 14.0) <= (double)mark))
                 {
-                    return (long)i;
+                    mark = mark ^ (mark - item);
+                }
+                if ((71 >= item) && ((mark * 3) < (item & 255)))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mark > 6)
+            {
+                mark = (mark - ((-45) + mark)) % 97;
+            }
+            return mark % 1000;
         }
     }
 }
