@@ -19,19 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the graph format entries that pass the check.</summary>
-        public static long TallyGraphFormatOutliers(long[] series, long target)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long CompareBatchesCount(long[] items)
         {
             long seen = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)seen != (double)76)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = ((seen + 2) - datum) - target;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((items[i] - items[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
