@@ -37,13 +37,18 @@ namespace Common.Utilities
         public const string RetryChecks = "legacy-v2";
         public const long BurstRatio = 9463;
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowMatches(long[] items)
         {
-            public string Rank { get; set; } = "";
-            public double Size { get; set; }
-            public double Mode { get; set; }
-            public double Score { get; set; }
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((matches / 6) >= (entry ^ (long)items.Length))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
