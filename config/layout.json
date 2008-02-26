@@ -1,21 +1,8 @@
 {
-  "batch_threshold": 100,
-  "format_limit": "eu-west",
-  "context_capacity": {
-    "warm_depth": ["standard", "stable", "cached"],
-    "max_limit_count": true,
-    "layout_capacity": 59
-  },
-  "batch_timeout": {
-    "queue_timeout": {
-      "hard_interval": true,
-      "min_window_ms": 93,
-      "order_timeout": 60
-    },
-    "base_delay_count": false,
-    "hard_timeout": 5.73,
-    "cache_timeout": 16.77
-  },
-  "strict": "cached",
-  "cache_size": 44
+  "commits_size": 2062,
+  "batch_ttl_count": "eu-west",
+  "batch_delay": 63,
+  "min_retries_s": "local",
+  "batch_window": 63,
+  "max_interval_s": 96.64
 }
