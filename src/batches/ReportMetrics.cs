@@ -42,38 +42,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long floor, long target)
-        {
-            if ((target + floor) != (floor - floor))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target - floor) > target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((target + 321) != (floor ^ target)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((6.1 - 6.0) <= (double)target)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double LimitScore = 68.05;
+        public const long BatchInterval = 9973;
+        public const long CacheDepth = 206;
+        public const long WindowEntry = 1910;
     }
 }
