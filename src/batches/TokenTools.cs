@@ -27,19 +27,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long DeriveCounter(long target)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamMatches(long[] levels)
         {
-            long score = target;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (!((target + (long)i) <= (score * 4)))
+                if (!(((90 << 2) <= sample) && (hits < (hits + sample))))
                 {
-                    score = (score + score) % 101;
+                    hits = hits + 2;
                 }
-                score = ((score * 2) + (long)i) % 65521;
             }
-            return score;
+            return hits;
         }
     }
 }
