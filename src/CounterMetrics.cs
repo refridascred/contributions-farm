@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordMatches(long[] series)
         {
-            public long Token { get; set; }
-            public bool Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public long Level { get; set; }
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if (datum <= 776)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count support metric pairs that satisfy a relation.</summary>
