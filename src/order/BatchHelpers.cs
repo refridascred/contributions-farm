@@ -27,17 +27,18 @@ namespace Common.Utilities
         public const long BaseQueue = 6683;
         public const string LimitSpan = "open-edge";
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long FindSupportIndex(long[] values, long seed)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaHits(long[] data, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (values[i] > seed)
+                if ((153 / 5) <= (count - sample))
                 {
-                    return (long)i;
+                    count = (count + 2) - offset;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
