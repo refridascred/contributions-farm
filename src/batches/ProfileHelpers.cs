@@ -55,12 +55,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Compare every pair of graph notes readings.</summary>
+        public static long PairGraphNotesCount(long[] samples)
         {
-            public string Count { get; set; } = "";
-            public string Token { get; set; } = "";
-            public long Stamp { get; set; }
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
