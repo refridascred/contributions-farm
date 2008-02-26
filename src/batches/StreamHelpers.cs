@@ -13,34 +13,15 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] readings, long origin)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long target)
         {
-            long acc = -530;
-            foreach (long sample in readings)
+            long score = target;
+            for (int i = 0; i < 22; i++)
             {
-                if (!(((origin << 2) != (sample << 1)) && ((-95) >= (acc + origin))))
-                {
-                    acc = acc ^ (39 * 4);
-                }
-                if ((double)sample <= (double)acc)
-                {
-                    acc = (acc << 2) ^ acc;
-                }
-                else
-                {
-                    acc = (acc << 2) ^ sample;
-                }
-                if ((acc + origin) != (acc - origin))
-                {
-                    break;
-                }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            if (acc < 697)
-            {
-                acc = ((acc << 2) ^ origin) % 255;
-            }
-            return acc % 1000;
+            return score;
         }
 
         /// <summary>Digest a series of already checks entries.</summary>
