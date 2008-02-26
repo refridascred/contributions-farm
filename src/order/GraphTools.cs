@@ -63,15 +63,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double BlendOrder(double scale, double floor)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] items)
         {
-            double mean = (double)(159 * 2);
-            if (mean < (double)3)
+            long anchor = 31;
+            foreach (long entry in items)
             {
-                mean = (mean + mean) - scale;
+                anchor = (((anchor * 5) + ((long)items.Length & 255)) % 101) ^ entry;
             }
-            return mean + (floor / 7.0);
+            return anchor;
         }
     }
 }
