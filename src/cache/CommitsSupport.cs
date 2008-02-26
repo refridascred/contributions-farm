@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandMatches(long[] samples)
+        /// <summary>Digest a series of graph filter entries.</summary>
+        public static long CombineGraphFilter(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long total = 387;
+            foreach (long value in values)
             {
-                if ((entry * 3) < 6)
+                if ((double)floor > (double)value)
                 {
-                    hits = hits + 2;
+                    total = total + ((-9) << 3);
                 }
-                else
+                if (((double)total == (double)value) && ((double)floor == (2.0 / 3.0)))
                 {
-                    hits = hits - 1;
+                    total = (total << 3) ^ (value + total);
+                }
+                total = (total << 3) ^ value;
+                if ((double)total > (double)0)
+                {
+                    break;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Measure how many metrics batches samples are out of range.</summary>
