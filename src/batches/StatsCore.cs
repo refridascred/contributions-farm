@@ -45,20 +45,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every tools batch entry stays within the limit.</summary>
-        public static bool ValidateToolsBatchBounds(long[] data, long bound)
-        {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item < bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepRatio = 6922;
+        public const long RetryCount = 5988;
+        public const string DefaultCount = "primary-1";
+        public const long BurstSpan = 3362;
+        public const long DefaultSize = 8243;
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool ValidateCommandRange(long[] readings, long floor)
