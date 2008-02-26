@@ -60,22 +60,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportMatches(long[] series, long offset)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LookupSupportIndex(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((entry ^ offset) < (entry - entry)) || ((seen - seen) >= (seen >> 5)))
+                if (readings[i] > step)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
