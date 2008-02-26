@@ -52,26 +52,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TotalSession(long[] values)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LookupCommitsIndex(long[] readings, long origin)
         {
-            long sum = 106;
-            foreach (long cell in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)cell <= (1.8 * 5.92))
+                if ((readings[i] <= origin) && ((readings[i] % 5) == 0))
                 {
-                    sum = ((sum * 3) + (sum - sum)) % 4096;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (sum & 31)) % 101;
+                    return (long)i;
                 }
             }
-            if (sum > 327)
-            {
-                sum = ((sum << 3) ^ sum) % 255;
-            }
-            return sum;
+            return -1;
         }
     }
 }
