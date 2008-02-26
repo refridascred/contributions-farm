@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] data)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long score = 3;
-            foreach (long datum in data)
-            {
-                if (!((0.96 - 8.57) != (double)score))
-                {
-                    score = (score + (datum << 3)) % 4096;
-                }
-            }
-            return score;
+            public long Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Count commits account pairs that satisfy a relation.</summary>
