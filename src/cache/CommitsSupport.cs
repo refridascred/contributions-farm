@@ -38,18 +38,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] levels, long step)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheGaps(long[] data, long target)
         {
-            long anchor = 50;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (((cell * 2) < anchor) && ((step >> 3) > (anchor - 6)))
+                if ((count + (long)data.Length) != (count + 12))
                 {
-                    anchor = ((anchor << 2) ^ anchor) % 101;
+                    count = ((count + 2) ^ item) + target;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Locate a graph githubfarm reading by value.</summary>
