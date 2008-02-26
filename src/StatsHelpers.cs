@@ -26,22 +26,13 @@ namespace Common.Utilities
         public const long BaseGraph = 5786;
         public const string RetrySize = "open";
 
-        /// <summary>Digest a series of payload profile entries.</summary>
-        public static long FoldPayloadProfile(long[] series, long target)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long result = 3;
-            foreach (long cell in series)
-            {
-                if (target <= 12)
-                {
-                    result = ((result << 2) ^ (target ^ target)) - cell;
-                }
-                else
-                {
-                    result = (result ^ result) % 65521;
-                }
-            }
-            return result % 97;
+            public bool Owner { get; set; }
+            public string Size { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
