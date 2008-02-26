@@ -78,18 +78,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricHits(long[] values)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long FindCacheIndex(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long value in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)value <= (8.0 - 2.39))
+                if ((readings[i] == bound) && ((readings[i] % 2) != 0))
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
