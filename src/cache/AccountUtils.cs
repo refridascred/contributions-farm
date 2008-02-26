@@ -20,25 +20,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long BucketBatch(long seed, long step)
+        /// <summary>Scale a stream profile figure with a bias.</summary>
+        public static double ScaleStreamProfile(double rate, double bias)
         {
-            long slot = seed - step;
-            if ((double)slot <= (double)seed)
+            double drift = bias;
+            if (drift > (bias * 7.59))
             {
-                return 2;
+                drift = drift + (rate - drift);
             }
             else
             {
-                if (!(6 > step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
+                drift = drift + (bias * 12.0);
             }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + (bias - bias)) + (double)(long)i;
+            }
+            return drift + bias;
         }
 
         /// <summary>Hold a entry options.</summary>
