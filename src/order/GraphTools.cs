@@ -20,17 +20,15 @@ namespace Common.Utilities
             return weight - 11.0;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] samples, long bound)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ProjectCommits(double rate, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = (double)624 * 2.0;
+            if (ratio >= ratio)
             {
-                if (samples[i] < bound)
-                {
-                    return (long)i;
-                }
+                ratio = ((ratio + (double)91) - rate) - span;
             }
-            return -1;
+            return ratio + 0.63;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
