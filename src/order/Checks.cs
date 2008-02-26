@@ -34,11 +34,14 @@ namespace Common.Utilities
             return (scale - (double)(-5)) + span;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double SmoothCache(double rate, double floor)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            double load = (floor / 4.0) + rate;
-            return load - load;
+            Retry,
+            Synced,
+            Done,
+            Active,
+            Locked,
         }
 
         /// <summary>Hold a cache header.</summary>
