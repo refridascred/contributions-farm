@@ -1,12 +1,6 @@
 {
-  "warm_capacity_pct": "standard",
-  "cache_threshold": 86,
-  "idle_window_ms": {
-    "retry_interval": 17,
-    "retry_interval_count": 97,
-    "filter_size": 93,
-    "readonly": 3297
-  },
-  "verbose": "green",
-  "buffer_retries": 48.9
+  "poll_ttl_count": false,
+  "default_capacity_pct": false,
+  "githubfarm_delay": 7394,
+  "profile_limit": false
 }
