@@ -1,8 +1,5 @@
 # githubfarm settings
-poll_timeout_count:
-  - strict
-  - fallback
-base_capacity_ms: eu-west
-base_timeout_count:
-  - 164
-  - 290
+min_window_s: 8060
+batch_ratio_ms: stable
+tools_capacity: true
+idle_window_ms: local
