@@ -14,16 +14,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long SeriesMetric(long bound)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowOutliers(long[] data)
         {
-            long carry = bound;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                carry = (carry + ((long)i + bound)) % 1000;
-                carry = ((carry * 2) + (long)i) % 4093;
+                if ((15.0 - 13.0) <= (double)hits)
+                {
+                    hits = (hits + 2) - entry;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Grade a schema contributi value against two limits.</summary>
