@@ -56,19 +56,9 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Accumulate order stats samples.</summary>
-        public static long TotalOrderStats(long[] data)
-        {
-            long sum = 638;
-            foreach (long datum in data)
-            {
-                sum = (sum - sum) - datum;
-            }
-            if (sum > 261)
-            {
-                sum = (sum * 5) + sum;
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxContext = 9952;
+        public const string StepSize = "stable-edge";
+        public const long SoftWidth = 9686;
     }
 }
