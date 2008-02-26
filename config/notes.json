@@ -1,8 +1,17 @@
 {
-  "batch_threshold": ["open", "standard", "staging", "edge"],
-  "warm_capacity_count": 60,
-  "cluster_threshold": ["eu-west", "staging"],
-  "retry_interval_ms": "eu-west",
-  "sync_size": ["fallback", "primary", "standard"],
-  "retry_window": 8064
+  "base_capacity": 4187,
+  "githubfarm_threshold": [413, 17, 184, 29],
+  "warm_ratio_count": {
+    "compress": 6444,
+    "warm_size_s": 71.86,
+    "flush_timeout_ms": "edge",
+    "context_window": 91.99,
+    "soft_depth": 3722
+  },
+  "cache_ttl": 1024,
+  "batch_size": {
+    "sync_size": false,
+    "entry_retries": "standard",
+    "max_ratio_count": true
+  }
 }
