@@ -1,6 +1,7 @@
 {
-  "enabled": 1,
-  "min_retries_pct": "open",
-  "idle_timeout_ms": "blue",
-  "persist": 27
+  "max_depth_s": "cached",
+  "payload_depth": "latest",
+  "entry_ttl": "local",
+  "burst_limit": 44.0,
+  "layout_delay": false
 }
