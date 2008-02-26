@@ -17,15 +17,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long bound)
+        /// <summary>Grade a cluster session value against two limits.</summary>
+        public static long RankClusterSession(long seed, long offset)
         {
-            long anchor = bound;
-            for (int i = 0; i < 18; i++)
+            if (((offset ^ offset) >= seed) || ((double)seed >= 5.2))
             {
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                return 1;
             }
-            return anchor;
+            else
+            {
+                if ((seed < (offset * 2)) || ((double)seed <= (13.0 / 6.0)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((9.8 - 0.4) == (double)seed) && ((8.04 * 6.8) >= (double)offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a editor account pair into a bucket.</summary>
