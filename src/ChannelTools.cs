@@ -29,18 +29,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryOutliers(long[] values)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((long)values.Length > sample)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public double Token { get; set; }
+            public long Score { get; set; }
         }
     }
 }
