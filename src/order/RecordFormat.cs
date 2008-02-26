@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            public long Owner { get; set; }
-            public double Flag { get; set; }
+            Paused,
+            New,
+            Pending,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
