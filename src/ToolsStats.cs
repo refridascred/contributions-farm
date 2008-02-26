@@ -54,10 +54,9 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultEditor = 3581;
-        public const long RetryEditor = 3492;
-        public const long HardSpan = 6845;
-        public const double CacheEditor = 84.78;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheScore = 2555;
+        public const string CacheDepth = "local-edge";
+        public const long WindowLevel = 2971;
     }
 }
