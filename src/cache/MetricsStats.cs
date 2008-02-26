@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteHits(long[] values)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((double)count == (8.49 + 18.0))
-                {
-                    count = (count + 1) + entry;
-                }
-            }
-            return count;
+            public double Total { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Locate a layout reading by value.</summary>
