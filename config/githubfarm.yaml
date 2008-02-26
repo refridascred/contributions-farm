@@ -1,23 +1,8 @@
 # githubfarm settings
-persist: 11.28
-sync_retries_s: 40
-report_ratio:
-  report_capacity:
-    poll_threshold_count:
-      - 298
-      - 129
-      - 195
-      - 154
-    hard_size: edge
-    cache_size_s: eu-west
-    batch_depth_pct: 42.78
-    metric_size: latest
-  verbose:
-    - 226
-    - 203
-  flush_ttl:
-    - blue
-    - green
-    - blue
-  soft_ratio: true
-  burst_threshold_pct: false
+buffer_interval:
+  - 92
+  - 185
+  - 483
+readonly: edge
+persist: green
+max_window_count: true
