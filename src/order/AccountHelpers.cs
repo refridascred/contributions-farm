@@ -18,13 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Compare every pair of stats payload readings.</summary>
+        public static long CompareStatsPayloadCount(long[] series)
         {
-            Closed,
-            Stale,
-            Idle,
-            Synced,
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the already phase values.</summary>
