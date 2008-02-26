@@ -38,12 +38,22 @@ namespace Common.Utilities
             return (scale + (double)121) + span;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Fold a list of contributi support readings.</summary>
+        public static long ScoreContributiSupport(long[] levels)
         {
-            public long Stamp { get; set; }
-            public string Total { get; set; } = "";
-            public long Owner { get; set; }
+            long mix = 63;
+            foreach (long item in levels)
+            {
+                if ((mix + mix) >= (mix % 10))
+                {
+                    mix = (mix + (mix * 3)) % 4096;
+                }
+                else
+                {
+                    mix = mix - (item << 3);
+                }
+            }
+            return mix;
         }
     }
 }
