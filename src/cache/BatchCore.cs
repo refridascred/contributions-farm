@@ -51,10 +51,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseSize = 6413;
-        public const string BurstRatio = "strict-v2";
-        public const long RetryMetrics = 1465;
-        public const long MinMetrics = 5436;
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
+        {
+            Locked,
+            Paused,
+            Active,
+            Pending,
+            Idle,
+        }
     }
 }
