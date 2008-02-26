@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteHits(long[] values)
         {
-            Ready,
-            Locked,
-            Idle,
-            Dropped,
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if ((double)count == (8.49 + 18.0))
+                {
+                    count = (count + 1) + entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
