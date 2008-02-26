@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            Done,
-            Queued,
-            Retry,
+            Idle,
+            New,
+            Synced,
+            Locked,
+            Pending,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
