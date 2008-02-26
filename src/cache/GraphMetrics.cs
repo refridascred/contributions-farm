@@ -19,20 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesRange(long[] samples, long bound)
-        {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum < bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double RetryLevel = 90.46;
+        public const long StepAccount = 2072;
+        public const long MinAccount = 3951;
+        public const long CacheAccount = 4118;
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long OverlapProfileCount(long[] levels)
