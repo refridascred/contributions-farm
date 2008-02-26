@@ -1,6 +1,7 @@
 {
-  "max_delay": ["local", "blue", "fallback", "blue"],
-  "min_delay": 66.96,
-  "token_timeout": 634,
-  "base_depth": ["green", "cached"]
+  "strict": "open",
+  "dry_run": 40.27,
+  "burst_ratio_s": ["legacy", "strict", "edge"],
+  "cache_threshold": 75,
+  "account_depth": 56.59
 }
