@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            Stale,
+            Closed,
+            Dropped,
+            Done,
             Retry,
-            New,
-            Draft,
-            Idle,
+            Synced,
         }
 
         /// <summary>Describe the command class values.</summary>
