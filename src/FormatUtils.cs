@@ -80,13 +80,17 @@ namespace Common.Utilities
         public const long HardSpan = 4869;
         public const string WindowDepth = "strict-v2";
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Locate a metrics context reading by value.</summary>
+        public static long LookupMetricsContextIndex(long[] series, long floor)
         {
-            Failed,
-            Synced,
-            Done,
-            Idle,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > floor) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
