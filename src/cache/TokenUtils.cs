@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsOutliers(long[] series)
         {
-            Stale,
-            Draft,
-            Dropped,
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if (!(matches < (matches - matches)))
+                {
+                    matches = (matches + 1) ^ datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the layout state values.</summary>
