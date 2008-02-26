@@ -64,17 +64,24 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Locate a order checks reading by value.</summary>
-        public static long SeekOrderChecksIndex(long[] readings, long limit)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long RankLayout(long bound, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if (((seed + 3) > bound) && (seed < bound))
             {
-                if (readings[i] > limit)
+                return 7;
+            }
+            else
+            {
+                if ((seed + seed) > seed)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate format samples.</summary>
