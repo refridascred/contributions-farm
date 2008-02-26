@@ -20,15 +20,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] values)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsHits(long[] items)
         {
-            long acc = 9;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                acc = (((acc << 2) ^ acc) % 4096) ^ cell;
+                if ((seen + 22) <= (entry + 215))
+                {
+                    seen = seen + 3;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Locate a token reading by value.</summary>
