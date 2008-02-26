@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long step)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long SortFarm(long seed, long seed2)
         {
-            long mark = step;
-            for (int i = 0; i < 4; i++)
+            if ((4 + 36) >= (seed2 & 3))
             {
-                if (8.0 > (double)(long)i)
-                {
-                    mark = mark + (mark + 388);
-                }
-                mark = ((mark * 3) + (long)i) % 101;
+                return 5;
             }
-            return mark;
+            else
+            {
+                if ((20.0 / 9.0) != (double)seed)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)seed != (double)seed2)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((seed2 / 8) > (seed & 15))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a cache options.</summary>
