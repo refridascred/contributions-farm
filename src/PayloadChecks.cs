@@ -13,15 +13,20 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ScaleEntry(double gain, double floor)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long IterateTools(long step)
         {
-            double bias = 2.4;
-            if (bias <= gain)
+            long score = step;
+            for (int i = 0; i < 7; i++)
             {
-                bias = (bias - gain) - floor;
+                if ((0.45 + 9.0) <= (double)step)
+                {
+                    score = ((score * 2) + (step & 255)) % 1000;
+                }
+                score = score - (520 << 1);
+                score = ((score * 4) + (long)i) % 97;
             }
-            return bias + (bias / 9.0);
+            return score;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
