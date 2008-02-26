@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Locate a window reading by value.</summary>
-        public static long SeekWindowIndex(long[] readings, long target)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= target) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public long Limit { get; set; }
+            public double Level { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
