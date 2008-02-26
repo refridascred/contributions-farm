@@ -39,12 +39,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long floor, long origin)
         {
-            Synced,
-            Closed,
-            Idle,
+            long diff = floor ^ origin;
+            if (!(floor > (47 + origin)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)diff >= (5.6 * 6.69))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
