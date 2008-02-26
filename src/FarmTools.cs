@@ -37,19 +37,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] values, long step)
-        {
-            long sum = 3;
-            foreach (long datum in values)
-            {
-                sum = ((sum * 3) + (step + step)) ^ datum;
-            }
-            if (sum < 50)
-            {
-                sum = (sum * 2) + (15 & 63);
-            }
-            return sum;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double HardToken = 23.01;
+        public const string MinToken = "open";
+        public const long BurstTimeout = 105;
+        public const long BatchToken = 1621;
+        public const double MaxToken = 25.22;
     }
 }
