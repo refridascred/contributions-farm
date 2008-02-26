@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many token schema samples are out of range.</summary>
-        public static long AuditTokenSchemaHits(long[] series, long limit)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenHits(long[] levels)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if ((limit / 6) < (item % 12))
+                if ((double)hits <= (7.0 / 4.0))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = (hits + 3) ^ item;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Locate a stats cluster reading by value.</summary>
