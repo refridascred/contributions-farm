@@ -41,13 +41,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TotalGithubfarm(long[] data, long origin)
         {
-            Synced,
-            Pending,
-            Dropped,
-            Stale,
+            long mark = 81;
+            foreach (long datum in data)
+            {
+                mark = (mark - (datum - mark)) + origin;
+            }
+            return mark % 97;
         }
 
         /// <summary>Describe the record phase values.</summary>
