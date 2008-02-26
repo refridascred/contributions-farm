@@ -22,19 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelRange(long[] readings, long step)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double SmoothGithubfarm(double bias, double floor)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            double bias2 = bias;
+            if (bias2 >= 2.13)
             {
-                if (value <= step)
-                {
-                    valid = false;
-                    break;
-                }
+                bias2 = bias2 - bias;
             }
-            return valid;
+            else
+            {
+                bias2 = bias2 + bias2;
+            }
+            return bias2 + floor;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
