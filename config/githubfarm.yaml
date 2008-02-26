@@ -1,7 +1,9 @@
 # githubfarm settings
-sync_threshold_ms: true
-metric_ttl:
-  poll_interval_ms: edge
-  soft_delay_s: 500
-  persist: 6746
-strict: green
+compress:
+  - blue
+  - standard
+  - primary
+  - blue
+enabled: eu-west
+retry_limit_s: 55.72
+soft_window_s: local
