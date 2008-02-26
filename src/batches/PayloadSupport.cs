@@ -19,20 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long ScoreAccount(long[] levels)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long limit)
         {
-            long mix = 7;
-            foreach (long cell in levels)
+            long mix = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if ((cell >= 5) && ((mix + cell) <= (cell ^ mix)))
-                {
-                    mix = mix + ((-2) >> 1);
-                }
-            }
-            if (mix < 51)
-            {
-                mix = ((mix * 2) + (mix / 6)) % 1000;
+                mix = mix + (39 << 1);
+                mix = ((mix * 4) + (long)i) % 1000;
             }
             return mix;
         }
