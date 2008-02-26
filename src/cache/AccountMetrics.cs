@@ -46,23 +46,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferOutliers(long[] series, long limit)
-        {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((limit <= ((-33) % 8)) && (((limit + item) < (275 + matches)) || (matches <= (limit + item))))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstWidth = 3142;
+        public const double MaxProfile = 68.14;
+        public const long BaseProfile = 898;
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long SortStream(long offset, long offset2)
