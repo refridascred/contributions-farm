@@ -36,26 +36,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of context batches entries.</summary>
-        public static long CombineContextBatches(long[] values)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] levels, long step)
         {
-            long mix = 978;
-            foreach (long value in values)
+            long anchor = 50;
+            foreach (long cell in levels)
             {
-                if (((double)mix == (6.21 * 3.4)) || ((7.7 / 6.0) == (double)mix))
+                if (((cell * 2) < anchor) && ((step >> 3) > (anchor - 6)))
                 {
-                    mix = (mix ^ (value / 3)) % 65521;
-                }
-                else
-                {
-                    mix = ((mix * 4) + (value ^ value)) % 97;
+                    anchor = ((anchor << 2) ^ anchor) % 101;
                 }
             }
-            if (mix > 64)
-            {
-                mix = mix ^ (mix + mix);
-            }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Locate a graph githubfarm reading by value.</summary>
