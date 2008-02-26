@@ -22,13 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            Dropped,
-            Idle,
+            Queued,
             Paused,
-            Active,
+            Draft,
+            Idle,
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
