@@ -46,22 +46,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long PairFilterCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCommand = 6866;
+        public const long BurstRatio = 7363;
+        public const long DefaultSpan = 1068;
+        public const long WindowScore = 1389;
 
         /// <summary>Project the next support token value.</summary>
         public static double ScaleSupportToken(double scale, double span)
