@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload stats helpers.</summary>
     public static class PayloadStats
     {
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderBounds(long[] readings, long step)
         {
-            Ready,
-            Queued,
-            New,
-            Paused,
-            Closed,
+            bool found = true;
+            foreach (long cell in readings)
+            {
+                if (cell > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a commits info.</summary>
