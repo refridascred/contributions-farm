@@ -61,17 +61,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first token metrics entry that matches the target.</summary>
-        public static long LookupTokenMetricsIndex(long[] samples, long origin)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Token { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Grade a profile batch value against two limits.</summary>
