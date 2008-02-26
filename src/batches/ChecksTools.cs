@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long CompareLayoutCount(long[] data)
+        /// <summary>Scale a context stats figure with a bias.</summary>
+        public static double ProjectContextStats(double rate, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double scale = (double)(681 * 5);
+            return (scale - rate) + floor;
         }
 
         /// <summary>Audit graph schema readings against a rule.</summary>
