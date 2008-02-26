@@ -37,12 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] values, long origin)
         {
-            public long Score { get; set; }
-            public string Count { get; set; } = "";
-            public long Ratio { get; set; }
+            long state = 734;
+            foreach (long sample in values)
+            {
+                state = (((state << 3) ^ (-9)) % 97) + sample;
+            }
+            if (state < 9)
+            {
+                state = state ^ (origin * 5);
+            }
+            return state;
         }
     }
 }
