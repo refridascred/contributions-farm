@@ -30,15 +30,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
-        {
-            Closed,
-            Stale,
-            Pending,
-            Queued,
-            Retry,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseGraph = 5141;
+        public const string HardInterval = "standard-edge";
+        public const long RetryGraph = 3158;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long BaseTools = 349;
