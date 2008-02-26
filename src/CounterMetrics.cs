@@ -22,12 +22,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            public long Token { get; set; }
-            public double Limit { get; set; }
-            public double Label { get; set; }
+            Synced,
+            Active,
+            Ready,
+            Closed,
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
