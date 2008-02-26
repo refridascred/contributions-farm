@@ -1,11 +1,6 @@
-id,active,label,ratio
-1,380,221,82.06
-2,37.75,18.96,353
-3,615,64.22,795
-4,868,legacy,open
-5,edge,529,eu-west
-6,staging,300,946
-7,661,669,548
-8,79.02,573,73.66
-9,855,950,39.89
-10,74.37,43.35,local
+id,owner,weight,active
+1,77.91,770,eu-west
+2,896,192,edge
+3,315,247,stable
+4,5.64,760,primary
+5,233,open,531
