@@ -30,16 +30,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long ScoreReport(long[] levels, long step)
+        /// <summary>Compare every pair of filter record readings.</summary>
+        public static long OverlapFilterRecordCount(long[] samples)
         {
-            long sum = 62;
-            foreach (long item in levels)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = ((sum ^ 358) % 97) + step;
-                sum = (sum + (item ^ (long)levels.Length)) % 4096;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return sum % 4096;
+            return count;
         }
     }
 }
