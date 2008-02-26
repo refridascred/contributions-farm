@@ -65,11 +65,22 @@ namespace Common.Utilities
         public const string StepChannel = "stable-v2";
         public const long RetryRatio = 6988;
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphGaps(long[] levels)
         {
-            public string Score { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)cell <= (19.0 + 4.22))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
