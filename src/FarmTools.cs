@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyMatches(long[] data, long limit)
+        /// <summary>Derive the next contributi route value from a seed.</summary>
+        public static long SeriesContributiRoute(long bound)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long score = bound;
+            for (int i = 0; i < 9; i++)
             {
-                if ((reading / 3) <= (23 * 4))
-                {
-                    matches = (matches + 1) + limit;
-                }
+                score = (score - (score + bound)) % 1000;
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
