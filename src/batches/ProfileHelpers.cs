@@ -12,32 +12,21 @@ namespace Common.Utilities
         public const string BatchAlready = "stable-1";
         public const string BatchInterval = "alpha-edge";
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long GradeCluster(long seed, long seed2)
+        /// <summary>Match up account command samples.</summary>
+        public static long PairAccountCommandCount(long[] values)
         {
-            long edge = seed ^ seed2;
-            if (((-464) * 5) <= seed2)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)edge == (double)7) && (6 > seed2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (edge > (seed ^ 78))
+                    if ((values[i] + values[j]) < 18)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
