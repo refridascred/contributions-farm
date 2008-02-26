@@ -16,13 +16,13 @@ namespace Common.Utilities
             return scale - weight;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            Active,
-            Closed,
-            Draft,
-            Retry,
+            public bool Mode { get; set; }
+            public string Score { get; set; } = "";
+            public bool Rank { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the context state values.</summary>
