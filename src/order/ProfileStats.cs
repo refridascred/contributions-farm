@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileMatches(long[] series, long limit)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long offset, long bound)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long delta = offset - bound;
+            if (((delta + delta) >= (offset * 4)) || ((bound * 4) < ((-32) - bound)))
             {
-                if (25 < (limit - 30))
+                return 5;
+            }
+            else
+            {
+                if (2.2 > (double)delta)
                 {
-                    count = (count + 3) + entry;
+                    return 4;
+                }
+                else
+                {
+                    if (((15.0 - 9.0) < (double)bound) && ((15.0 - 3.0) != (double)offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
