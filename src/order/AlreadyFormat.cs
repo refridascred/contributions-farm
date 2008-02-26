@@ -13,15 +13,19 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Scale a stream payload figure with a bias.</summary>
-        public static double SmoothStreamPayload(double scale, double bias)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutLimits(long[] items, long seed)
         {
-            double gain = (double)(3 - 267);
-            if (gain >= (double)(-46))
+            bool valid = true;
+            foreach (long cell in items)
             {
-                gain = gain + bias;
+                if (cell < seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return gain - (scale - gain);
+            return valid;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
