@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long MinLevel = 5084;
         public const long DefaultBudget = 9501;
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextBounds(long[] series, long origin)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            bool valid = true;
-            foreach (long datum in series)
-            {
-                if (datum < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Done,
+            Active,
+            Closed,
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
