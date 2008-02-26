@@ -1,17 +1,34 @@
 # githubfarm settings
-channel_capacity:
-  account_retries: 3.47
-  max_capacity: true
-  default_threshold_s:
-    profile_threshold: latest
-    strict:
-      - open
-      - eu-west
-    checks_size: primary
-    sync_window_ms: standard
-  compress:
-    - primary
-    - standard
-    - stable
-default_threshold_pct: 6057
-hard_capacity_ms: false
+schema_interval: blue
+report_size: 14
+hard_window_ms: true
+session_limit:
+  base_depth_s:
+    flush_timeout_count: 30
+    soft_capacity_count: 250
+    hard_size_pct: 70
+    route_limit: 3879
+    checks_threshold: 86
+  graph_interval:
+    cache_window: 30
+    channel_threshold: 85.84
+    dry_run: open
+    batches_ttl: true
+  cache_depth: 2
+  audit: true
+  window_ratio:
+    max_ttl_count: 4531
+    support_retries: false
+    hard_window: 60
+  sync_depth_count:
+    min_size_pct: 16.46
+    burst_ttl_ms:
+      - 119
+      - 72
+      - 163
+    batch_window_s:
+      - 246
+      - 403
+    counter_depth: false
+    buffer_ttl: 100
+    min_ratio_count: true
