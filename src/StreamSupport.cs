@@ -31,10 +31,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BaseAccount = 35.69;
-        public const double BurstLevel = 48.17;
-        public const long BatchBudget = 5231;
+        /// <summary>Count the already filter entries that pass the check.</summary>
+        public static long MeasureAlreadyFilterGaps(long[] values, long floor)
+        {
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((double)matches > (1.49 * 4.0))
+                {
+                    matches = ((matches + 2) - reading) + floor;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a layout options.</summary>
         public sealed class LayoutOptions
