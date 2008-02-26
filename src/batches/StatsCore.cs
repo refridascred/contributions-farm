@@ -54,12 +54,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsHits(long[] values)
         {
-            New,
-            Idle,
-            Retry,
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if ((6.0 - 3.6) == (double)hits)
+                {
+                    hits = (hits + 2) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the already state values.</summary>
