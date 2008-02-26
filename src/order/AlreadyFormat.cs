@@ -21,16 +21,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] levels, long floor)
-        {
-            long sum = 59;
-            foreach (long value in levels)
-            {
-                sum = (((sum - (sum >> 1)) % 65521) ^ value) - floor;
-            }
-            return sum;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryInterval = 3738;
+        public const string RetryWidth = "strict-edge";
+        public const string WindowLevel = "open-1";
 
         /// <summary>Find the first graph cache entry that matches the target.</summary>
         public static long SeekGraphCacheIndex(long[] items, long offset)
