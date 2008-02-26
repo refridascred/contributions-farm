@@ -5,37 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long GradeSession(long target, long target2)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long ClassifyMetric(long origin, long bound)
         {
-            long diff = target ^ target2;
-            if ((94 >> 5) < (target - target))
+            if (bound > (bound & 1))
             {
-                return 6;
+                return 5;
             }
             else
             {
-                if (((target2 << 3) > 3) && (target2 <= 53))
+                if ((bound >= origin) && ((915 + 889) >= bound))
                 {
-                    return 3;
+                    return 1;
                 }
                 else
                 {
-                    if ((diff << 1) <= diff)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((14.0 / 4.0) != (double)target2)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return 6;
                 }
             }
         }
