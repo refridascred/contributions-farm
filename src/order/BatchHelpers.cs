@@ -25,14 +25,10 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
-        {
-            public double Total { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardGraph = 5716;
+        public const long DefaultLevel = 726;
+        public const long BatchGraph = 64;
 
         /// <summary>Locate a githubfarm reading by value.</summary>
         public static long FindGithubfarmIndex(long[] series, long bound)
