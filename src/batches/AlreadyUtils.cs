@@ -12,21 +12,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count commits account pairs that satisfy a relation.</summary>
-        public static long CompareCommitsAccountCount(long[] samples)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Idle,
+            Synced,
+            Locked,
         }
 
         /// <summary>Measure how many session githubfarm samples are out of range.</summary>
