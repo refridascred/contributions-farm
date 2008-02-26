@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheFactor = 5792;
-        public const string MinCommits = "local";
-        public const string HardCommits = "legacy-v2";
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
+        {
+            Queued,
+            Failed,
+            Stale,
+        }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
         public static long CountChannelMatches(long[] series)
