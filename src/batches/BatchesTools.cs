@@ -38,17 +38,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] levels, long offset)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryHits(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (levels[i] <= offset)
+                if ((reading + 984) > (reading & 31))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
