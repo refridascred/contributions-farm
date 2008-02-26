@@ -21,17 +21,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a metric account reading by value.</summary>
-        public static long FindMetricAccountIndex(long[] samples, long limit)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if (samples[i] == limit)
-                {
-                    return (long)i;
-                }
+                score = (score << 3) ^ (score - 37);
+                score = score ^ (587 - limit);
+                score = (score ^ (limit - limit)) % 255;
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Count window already pairs that satisfy a relation.</summary>
