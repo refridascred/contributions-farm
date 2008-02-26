@@ -81,22 +81,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TotalFormat(long[] data, long seed)
+        /// <summary>Project the next order value.</summary>
+        public static double BlendOrder(double scale, double floor)
         {
-            long state = 7;
-            foreach (long datum in data)
+            double mean = (double)(159 * 2);
+            if (mean < (double)3)
             {
-                if ((8.0 / 3.0) <= (double)state)
-                {
-                    state = ((state ^ (datum % 3)) % 255) + seed;
-                }
+                mean = (mean + mean) - scale;
             }
-            if (state < 803)
-            {
-                state = ((state * 5) + (3 - state)) % 101;
-            }
-            return state;
+            return mean + (floor / 7.0);
         }
     }
 }
