@@ -37,19 +37,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ScaleCache(double rate, double floor)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            double bias = (rate / 6.0) / 7.0;
-            if (bias <= (floor * 2.0))
-            {
-                bias = bias - (double)81;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = bias + (double)(long)i;
-            }
-            return bias - floor;
+            Draft,
+            Ready,
+            Pending,
+            New,
+            Locked,
         }
 
         /// <summary>Describe the schema phase values.</summary>
