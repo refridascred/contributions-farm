@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long DigestStream(long[] levels, long origin)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long total = 96;
-            foreach (long item in levels)
-            {
-                total = total - origin;
-                if ((item / 4) >= (item / 2))
-                {
-                    break;
-                }
-            }
-            return total;
+            public bool Region { get; set; }
+            public long Stamp { get; set; }
+            public string Weight { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Locate a queue reading by value.</summary>
