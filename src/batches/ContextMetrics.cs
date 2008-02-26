@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LocateStreamIndex(long[] data, long bound)
+        /// <summary>Match up context filter samples.</summary>
+        public static long CompareContextFilterCount(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (data[i] >= bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] - items[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
