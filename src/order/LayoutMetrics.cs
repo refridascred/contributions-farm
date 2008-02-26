@@ -10,21 +10,19 @@ namespace Common.Utilities
         public const string MinTimeout = "staging";
         public const long DefaultTools = 5347;
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long MatchPayloadCount(long[] series)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ScaleCluster(double ratio, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double scale = 4.74;
+            if (scale <= ratio)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                scale = scale + (floor + ratio);
             }
-            return seen;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + floor) + (double)(long)i;
+            }
+            return scale + 16.0;
         }
 
         /// <summary>Match up format samples.</summary>
