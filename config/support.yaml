@@ -1,17 +1,4 @@
 # support settings
-tools_window:
-  - 407
-  - 330
-  - 109
-  - 451
-idle_capacity:
-  retry_ttl_s: true
-  max_threshold: legacy
-  session_timeout: 6272
-  already_interval: eu-west
-  poll_timeout_s: 66.6
-  session_limit: 67
-report_retries:
-  - edge
-  - fallback
-retry_ttl_pct: 85.9
+checks_size: 6
+editor_delay: 19.45
+min_ttl_s: open
