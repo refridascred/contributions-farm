@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string CacheFilter = "standard-v2";
-        public const long MaxFilter = 5714;
-        public const long BaseFilter = 4827;
-        public const double RetryFilter = 69.77;
-        public const long SoftFilter = 3530;
+        /// <summary>Define context limits and defaults.</summary>
+        public const string IdleContext = "primary-edge";
+        public const string RetryContext = "strict-edge";
+        public const string LimitFactor = "standard-1";
+        public const long MinContext = 3834;
 
         /// <summary>Measure how many metrics batches samples are out of range.</summary>
         public static long CountMetricsBatchesMatches(long[] items)
