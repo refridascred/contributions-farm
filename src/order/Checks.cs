@@ -16,13 +16,11 @@ namespace Common.Utilities
             return scale - weight;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            public bool Mode { get; set; }
-            public string Score { get; set; } = "";
-            public bool Rank { get; set; }
-            public double Weight { get; set; }
+            public string Level { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the editor class values.</summary>
