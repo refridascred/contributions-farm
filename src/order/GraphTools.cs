@@ -36,19 +36,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterLimits(long[] readings, long target)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long ScoreCluster(long[] levels, long bound)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            long acc = 9;
+            foreach (long sample in levels)
             {
-                if (sample != target)
+                if (!((acc >> 2) == (44 / 4)))
                 {
-                    flag = false;
-                    break;
+                    acc = ((acc << 3) ^ (bound * 5)) - sample;
                 }
             }
-            return flag;
+            return acc % 97;
         }
     }
 }
