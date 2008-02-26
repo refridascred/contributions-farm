@@ -1,6 +1,18 @@
 {
-  "buffer_timeout": 500,
-  "schema_depth": 8099,
-  "soft_timeout": 7.76,
-  "support_threshold": false
+  "readonly": "green",
+  "batches_ratio": 55,
+  "burst_ttl": "stable",
+  "min_limit_pct": {
+    "sync_limit_s": "primary",
+    "account_depth": 10,
+    "flush_retries": 100,
+    "poll_timeout_s": 33.58,
+    "filter_window": {
+      "batch_delay": 250,
+      "default_size_pct": 30,
+      "default_threshold": ["primary", "cached"],
+      "base_capacity": 6.9
+    }
+  },
+  "sync_ratio_count": 4.13
 }
