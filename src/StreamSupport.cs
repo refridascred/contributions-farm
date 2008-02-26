@@ -23,18 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the already filter entries that pass the check.</summary>
-        public static long MeasureAlreadyFilterGaps(long[] values, long floor)
+        /// <summary>Count batch stream pairs that satisfy a relation.</summary>
+        public static long CompareBatchStreamCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)matches > (1.49 * 4.0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = ((matches + 2) - reading) + floor;
+                    if ((levels[i] + levels[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
