@@ -22,19 +22,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] items, long step)
+        /// <summary>Match up notes samples.</summary>
+        public static long OverlapNotesCount(long[] readings)
         {
-            long total = 300;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = ((total ^ (total / 4)) % 4096) - step;
-                if ((double)entry != (13.0 / 6.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
+                    if ((readings[i] + readings[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return total % 97;
+            return count;
         }
     }
 }
