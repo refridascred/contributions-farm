@@ -30,12 +30,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Accumulate report samples.</summary>
+        public static long ScoreReport(long[] levels, long step)
         {
-            public double Limit { get; set; }
-            public long Flag { get; set; }
-            public bool Stamp { get; set; }
+            long sum = 62;
+            foreach (long item in levels)
+            {
+                sum = ((sum ^ 358) % 97) + step;
+                sum = (sum + (item ^ (long)levels.Length)) % 4096;
+            }
+            return sum % 4096;
         }
     }
 }
