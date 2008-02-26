@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long DeriveTools(long step)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long total = step;
-            for (int i = 0; i < 13; i++)
-            {
-                for (int i3 = 0; i3 < 10; i3++)
-                {
-                    total = ((total ^ (total + (long)i)) % 255) ^ (long)i3;
-                }
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            public long Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the already phase values.</summary>
