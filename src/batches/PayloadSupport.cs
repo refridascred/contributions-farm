@@ -47,11 +47,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheAlready = 6350;
-        public const long SoftRatio = 3638;
-        public const string HardScore = "staging-edge";
-        public const long HardAlready = 2556;
-        public const double WindowAlready = 46.03;
+        /// <summary>Roll a format counter forward.</summary>
+        public static long RollFormat(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
+        }
     }
 }
