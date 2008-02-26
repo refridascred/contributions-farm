@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of context route readings.</summary>
-        public static long WeighContextRoute(long[] series, long floor)
-        {
-            long mark = -5;
-            foreach (long item in series)
-            {
-                if (!((5.03 + 16.0) >= (double)mark))
-                {
-                    mark = (((mark + mark) % 255) + item) - floor;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string WindowEditor = "strict";
+        public const long BurstScore = 1959;
+        public const long CacheEditor = 6906;
+        public const string BurstWidth = "standard-edge";
+        public const long MaxSpan = 5265;
 
         /// <summary>Project the next payload session value.</summary>
         public static double AdjustPayloadSession(double ratio, double bias)
