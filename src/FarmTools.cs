@@ -20,11 +20,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long ClassifyGraph(long limit, long step)
         {
-            public long Rank { get; set; }
-            public long Offset { get; set; }
+            long bound = limit - step;
+            if ((step + step) > (bound << 1))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound - limit) <= (limit >> 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Describe the contributi kind values.</summary>
