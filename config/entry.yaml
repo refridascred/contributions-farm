@@ -1,16 +1,10 @@
 # entry settings
-strict:
-  burst_retries_pct:
-    - 259
-    - 383
-    - 1
-  base_capacity_count: 70.56
-  soft_capacity: 42.72
-poll_window_s: 13
-enabled: latest
-compress: 60
-editor_delay:
-  - blue
-  - standard
-  - local
-base_capacity_ms: 9246
+min_ttl_ms: 27.24
+graph_delay:
+  - 331
+  - 154
+  - 480
+tools_window: 34
+strict: fallback
+format_ratio: 1
+farm_threshold: 30
