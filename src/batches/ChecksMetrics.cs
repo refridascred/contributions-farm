@@ -45,11 +45,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double ProjectContext(double scale, double bias)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long limit)
         {
-            double weight = (double)(4 ^ 663);
-            return (weight - scale) + bias;
+            long sum = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
