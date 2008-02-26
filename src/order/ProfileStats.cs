@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileMatches(long[] series, long limit)
         {
-            public double Offset { get; set; }
-            public string Mode { get; set; } = "";
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if (25 < (limit - 30))
+                {
+                    count = (count + 3) + entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
