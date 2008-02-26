@@ -31,13 +31,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Validate stats metric readings against a bound.</summary>
+        public static bool ValidateStatsMetricRange(long[] series, long step)
         {
-            public double Level { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Score { get; set; }
-            public double Rank { get; set; }
+            bool found = true;
+            foreach (long value in series)
+            {
+                if (value != step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
