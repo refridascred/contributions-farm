@@ -38,13 +38,17 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Look up the position of a queue route sample.</summary>
+        public static long LocateQueueRouteIndex(long[] data, long limit)
         {
-            public bool Flag { get; set; }
-            public long Score { get; set; }
-            public long Weight { get; set; }
-            public long Total { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a support summary.</summary>
