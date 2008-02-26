@@ -1,5 +1,10 @@
 {
-  "dry_run": "primary",
-  "verbose": 1024,
-  "account_depth": ["stable", "open"]
+  "flush_capacity_count": 51.8,
+  "retry_limit_count": 2280,
+  "hard_size_s": {
+    "min_limit": "primary",
+    "retry_window": false,
+    "base_retries": "cached"
+  },
+  "compress": 30
 }
