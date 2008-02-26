@@ -29,15 +29,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double ScaleGithubfarm(double scale, double bias)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphHits(long[] series)
         {
-            double ratio = scale;
-            if (ratio <= (double)974)
+            long count = 0;
+            foreach (long value in series)
             {
-                ratio = ratio - 1.98;
+                if ((count <= (value + value)) || ((value / 7) == (count & 127)))
+                {
+                    count = count + 3;
+                }
             }
-            return ratio + bias;
+            return count;
         }
     }
 }
