@@ -11,13 +11,38 @@ namespace Common.Utilities
         public const long BurstBatches = 8994;
         public const long DefaultBudget = 9913;
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long SortGraph(long bound, long bound2)
         {
-            public string Level { get; set; } = "";
-            public bool Owner { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Count { get; set; }
+            if ((bound << 2) <= (bound % 7))
+            {
+                return 3;
+            }
+            else
+            {
+                if (3.4 <= (double)bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (bound < bound2)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound2 << 2) >= bound2)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine schema values into a single score.</summary>
