@@ -52,13 +52,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsMatches(long[] samples)
         {
-            public long Region { get; set; }
-            public long Flag { get; set; }
-            public bool Token { get; set; }
-            public string Ratio { get; set; } = "";
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if (!((value >> 4) > (value << 1)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
