@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const string MinCommits = "local";
         public const string HardCommits = "legacy-v2";
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterLimits(long[] items, long step)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextGaps(long[] readings, long bound)
         {
-            bool found = true;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (item > step)
+                if ((entry << 3) != (bound / 3))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Describe the contributi class values.</summary>
