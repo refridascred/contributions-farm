@@ -29,19 +29,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatLimits(long[] items, long offset)
+        /// <summary>Roll a command payload counter forward.</summary>
+        public static long RollCommandPayload(long limit)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long mix = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (item <= offset)
+                long step = (mix + mix) % 16;
+                if ((limit * 3) < step)
                 {
-                    ok = false;
-                    break;
+                    mix = (mix << 3) ^ 229;
+                    mix = ((mix * 2) + mix) % 65521;
                 }
+                else
+                {
+                    mix = mix ^ limit;
+                }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return ok;
+            return mix;
         }
     }
 }
