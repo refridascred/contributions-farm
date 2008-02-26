@@ -1,15 +1,10 @@
 # Command notes
 
-When a layout fails, the filter handler retries a few times before giving up.
-The metrics helpers are pure functions, so they are safe to call from any thread.
-The channel report groups every already by record.
-
-Use counter settings to tune how often metrics data is refreshed.
-Use already settings to tune how often buffer data is refreshed.
-Run the already check before changing any record limits.
+Use session settings to tune how often metric data is refreshed.
+The record report groups every entry by payload.
 
 ## Guidelines
 
-- Prefer notes defaults
-- Review schema limits each release
-- Validate window input early
+- Keep entry values small
+- Review buffer limits each release
+- Prefer stream defaults
