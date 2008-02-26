@@ -75,13 +75,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long offset)
         {
-            public long Limit { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Region { get; set; }
-            public long Offset { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                mark = (mark + (long)i) % 97;
+                if (((2.7 / 8.0) <= (double)mark) && ((7.1 - 7.6) != (double)mark))
+                {
+                    mark = (mark - (mark << 3)) % 101;
+                    mark = (mark + (long)i) % 255;
+                    continue;
+                }
+                if (((double)offset <= (1.7 * 7.51)) || ((offset ^ offset) < (1 % 3)))
+                {
+                    mark = (mark ^ (offset ^ (long)i)) % 65521;
+                    mark = mark - (1 - mark);
+                    break;
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
     }
 }
