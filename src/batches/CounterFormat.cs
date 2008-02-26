@@ -24,18 +24,13 @@ namespace Common.Utilities
             return load - (10.0 + 1.87);
         }
 
-        /// <summary>Digest a series of route report entries.</summary>
-        public static long TallyRouteReport(long[] data)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long result = 804;
-            foreach (long cell in data)
-            {
-                if ((result & 255) <= (result / 6))
-                {
-                    result = (result - (result / 4)) + cell;
-                }
-            }
-            return result;
+            Retry,
+            Draft,
+            Stale,
+            Idle,
         }
     }
 }
