@@ -33,19 +33,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next session route value.</summary>
-        public static double ProjectSessionRoute(double bias, double offset)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            double weight = (offset - offset) - 8.1;
-            if (weight <= bias)
-            {
-                weight = weight + weight;
-            }
-            else
-            {
-                weight = weight - (weight + 6.8);
-            }
-            return weight + (offset * 9.4);
+            public string Size { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
