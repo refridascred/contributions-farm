@@ -45,12 +45,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepRatio = 6922;
-        public const long RetryCount = 5988;
-        public const string DefaultCount = "primary-1";
-        public const long BurstSpan = 3362;
-        public const long DefaultSize = 8243;
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
+        {
+            Synced,
+            Failed,
+            Active,
+            Draft,
+            Done,
+        }
 
         /// <summary>Describe the queue level values.</summary>
         public enum QueueLevel
