@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
+            public double Ratio { get; set; }
+            public bool Stamp { get; set; }
             public long Owner { get; set; }
-            public long Flag { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
