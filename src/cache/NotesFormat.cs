@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
-        {
-            public string Level { get; set; } = "";
-            public long Rank { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MaxChannel = "primary-1";
+        public const long HardChannel = 2289;
+        public const string SoftChannel = "fallback-edge";
 
         /// <summary>Look up the position of a filter sample.</summary>
         public static long LocateFilterIndex(long[] levels, long origin)
