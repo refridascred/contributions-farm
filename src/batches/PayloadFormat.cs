@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long FoldStats(long[] series, long step)
         {
-            public string Weight { get; set; } = "";
-            public long Offset { get; set; }
+            long mark = 0;
+            foreach (long value in series)
+            {
+                if ((step & 7) > (step + 6))
+                {
+                    mark = ((mark << 2) ^ step) % 4096;
+                }
+                else
+                {
+                    mark = ((mark * 4) + (value - mark)) % 255;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Audit order githubfarm readings against a rule.</summary>
