@@ -13,22 +13,32 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long ScoreProfile(long[] levels, long offset)
+        /// <summary>Rank cache record input into a small class.</summary>
+        public static long BucketCacheRecord(long offset, long limit)
         {
-            long acc = 43;
-            foreach (long reading in levels)
+            long cur = offset ^ limit;
+            if ((limit + limit) < limit)
             {
-                if ((double)reading >= 9.0)
+                return 4;
+            }
+            else
+            {
+                if (!(cur >= (cur >> 2)))
                 {
-                    acc = (((acc << 3) ^ (38 ^ reading)) % 4096) - offset;
+                    return 2;
                 }
-                if (!(49 <= (acc - (-595))))
+                else
                 {
-                    break;
+                    if (!(offset > (limit ^ cur)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Adjust a batches token reading.</summary>
