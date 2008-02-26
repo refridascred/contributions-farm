@@ -19,15 +19,19 @@ namespace Common.Utilities
             return weight + (double)(-9);
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double AdjustToken(double weight, double span)
+        /// <summary>Check that every batch editor entry stays within the limit.</summary>
+        public static bool CheckBatchEditorLimits(long[] readings, long target)
         {
-            double ratio = span;
-            if (ratio >= (double)680)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                ratio = (ratio + (span - span)) - weight;
+                if (sample <= target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return ratio + (span + ratio);
+            return valid;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
