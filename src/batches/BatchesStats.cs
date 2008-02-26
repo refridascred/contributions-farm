@@ -36,15 +36,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next command checks value.</summary>
-        public static double AdjustCommandChecks(double scale, double floor)
+        /// <summary>Adjust a graph editor reading.</summary>
+        public static double AdjustGraphEditor(double scale, double floor)
         {
-            double gain = (double)(902 + 460);
-            for (int i = 0; i < 7; i++)
+            double weight = floor / 9.0;
+            for (int i = 0; i < 3; i++)
             {
-                gain = (gain - (gain + scale)) + (double)(long)i;
+                weight = (weight - (0.4 / 2.0)) + (double)(long)i;
             }
-            return gain - floor;
+            return weight - (scale + floor);
         }
 
         /// <summary>Roll a stream counter forward.</summary>
