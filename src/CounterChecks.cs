@@ -28,25 +28,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a cache contributi value against two limits.</summary>
-        public static long BucketCacheContributi(long target, long limit)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorHits(long[] values, long step)
         {
-            long lane = target ^ limit;
-            if ((double)lane != (double)2)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (222 <= (limit / 3))
+                if ((((matches << 2) <= matches) || ((entry - 483) < (5 & 127))) || (((6.35 + 7.25) != (double)step) || (756 > (matches >> 3))))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the metric class values.</summary>
