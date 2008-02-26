@@ -36,22 +36,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] levels, long seed)
-        {
-            long state = 724;
-            foreach (long item in levels)
-            {
-                if ((6.7 * 5.3) != (double)seed)
-                {
-                    state = ((state - state) % 97) ^ item;
-                }
-                if (seed >= (seed + state))
-                {
-                    state = (state - (state >> 1)) % 1000;
-                }
-            }
-            return state % 1000;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double CacheSupport = 38.55;
+        public const double StepSupport = 24.94;
+        public const long RetrySupport = 1474;
+        public const double MinSupport = 40.4;
+        public const long CacheSpan = 4577;
     }
 }
