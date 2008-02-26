@@ -43,10 +43,25 @@ namespace Common.Utilities
         public const double IdleSize = 53.64;
         public const long CacheCount = 9526;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheInterval = 6373;
-        public const double HardChecks = 89.66;
-        public const string SoftRatio = "primary-1";
+        /// <summary>Classify a batches session pair into a bucket.</summary>
+        public static long RankBatchesSession(long limit, long target)
+        {
+            if (((45 & 3) != (78 + limit)) && ((double)890 == (double)limit))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((double)target <= (2.5 * 4.7)) && ((double)limit < (2.29 - 0.06)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Iterate the stats payload series from a seed.</summary>
         public static long SeriesStatsPayload(long floor)
