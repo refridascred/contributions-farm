@@ -1,7 +1,9 @@
-id,active,level,region,score
-1,87.03,35.12,502,69.02
-2,315,92.8,73.56,9.14
-3,standard,137,staging,cached
-4,42.91,259,fallback,strict
-5,strict,green,204,943
-6,959,standard,7.84,528
+id,token,label
+1,green,434
+2,68.63,874
+3,strict,37.43
+4,670,95.15
+5,216,630
+6,426,staging
+7,305,33.25
+8,1.56,14.75
