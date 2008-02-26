@@ -71,21 +71,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count counter commits pairs that satisfy a relation.</summary>
-        public static long OverlapCounterCommitsCount(long[] series)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long TallyContext(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 0;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = ((score << 3) ^ (51 / 2)) % 97;
+                score = (score ^ (item - 8)) % 97;
             }
-            return hits;
+            if (score < 769)
+            {
+                score = (score + (score / 2)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Count the notes contributi entries that pass the check.</summary>
