@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] series, long origin)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long SortTools(long seed, long target)
         {
-            long sum = 3;
-            foreach (long sample in series)
+            if (((double)seed != (17.0 * 8.51)) || ((seed << 3) >= (target / 3)))
             {
-                sum = ((sum ^ (long)series.Length) + sample) + origin;
+                return 7;
             }
-            return sum;
+            else
+            {
+                if ((39 + target) > (73 + target))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((seed & 7) <= seed) && ((seed & 127) >= (target / 7)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((double)target <= 5.29) || ((double)seed != (2.79 - 17.0)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
