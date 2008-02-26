@@ -60,17 +60,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] series, long limit)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long OverlapSchemaCount(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (series[i] == limit)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] - readings[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Find the first contributi notes entry that matches the target.</summary>
