@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesMatches(long[] data, long origin)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long ClassifyPayload(long limit, long floor)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long gap = limit - floor;
+            if (limit < (gap - floor))
             {
-                if (((double)origin == (18.0 - 16.0)) && (entry < (4 ^ origin)))
+                return 2;
+            }
+            else
+            {
+                if ((gap % 60) > (floor % 12))
                 {
-                    matches = matches + 3;
+                    return 7;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 5;
                 }
             }
-            return matches;
         }
 
         /// <summary>Blend two stats measurements.</summary>
