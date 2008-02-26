@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelGaps(long[] items, long offset)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long limit)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long acc = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if ((sample >> 3) > (1 << 2))
-                {
-                    count = (count + 1) + offset;
-                }
+                acc = (acc ^ (limit % 12)) % 4096;
+                acc = (acc << 3) ^ ((long)i ^ acc);
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Describe the editor state values.</summary>
