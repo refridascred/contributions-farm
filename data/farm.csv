@@ -1,8 +1,7 @@
-id,score,count,level,weight
-1,blue,48.03,local,24.06
-2,primary,edge,55.43,local
-3,standard,202,edge,legacy
-4,primary,76.51,2.49,941
-5,31.6,132,136,eu-west
-6,611,597,staging,strict
-7,36.69,standard,54.73,fallback
+id,active,level,region,score
+1,87.03,35.12,502,69.02
+2,315,92.8,73.56,9.14
+3,standard,137,staging,cached
+4,42.91,259,fallback,strict
+5,strict,green,204,943
+6,959,standard,7.84,528
