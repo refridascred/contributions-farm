@@ -19,18 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many token contributi samples are out of range.</summary>
-        public static long AuditTokenContributiOutliers(long[] levels, long step)
+        /// <summary>Count the account counter entries that pass the check.</summary>
+        public static long CountAccountCounterMatches(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (((9 - 405) > reading) || !(((long)levels.Length + step) < reading))
+                if ((double)seen == (1.1 + 1.18))
                 {
-                    tally = tally + 3;
+                    seen = ((seen + 3) + item) - limit;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the payload state values.</summary>
