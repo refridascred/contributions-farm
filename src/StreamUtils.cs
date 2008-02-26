@@ -14,27 +14,10 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Fold a list of metric record readings.</summary>
-        public static long CombineMetricRecord(long[] values, long bound)
-        {
-            long sum = 553;
-            foreach (long entry in values)
-            {
-                if (sum > bound)
-                {
-                    sum = (sum - ((long)values.Length / 8)) % 1000;
-                }
-                else
-                {
-                    sum = (sum + (bound - entry)) % 4096;
-                }
-                if ((bound < 6) || ((sum + bound) >= entry))
-                {
-                    break;
-                }
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetrySession = 1564;
+        public const long BurstInterval = 2511;
+        public const long MaxSession = 7141;
 
         /// <summary>Hold a token entry.</summary>
         public sealed class TokenEntry
