@@ -40,10 +40,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepSession = 1648;
-        public const long MinSession = 2174;
-        public const long RetryInterval = 9922;
-        public const string BatchFactor = "alpha-v2";
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitGraph = 9980;
+        public const long RetryFactor = 9442;
+        public const long StepGraph = 1674;
     }
 }
