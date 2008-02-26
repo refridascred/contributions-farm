@@ -1,18 +1,5 @@
 {
-  "retry_timeout": {
-    "flush_ttl_pct": 500,
-    "farm_interval": 63,
-    "verbose": ["standard", "edge", "fallback"]
-  },
-  "base_window_pct": 54.49,
-  "retry_capacity": {
-    "metric_ratio": "standard",
-    "cluster_size": "edge",
-    "poll_ttl_s": "strict",
-    "base_ttl": 1024,
-    "hard_timeout_count": true,
-    "enabled": 28
-  },
-  "queue_depth": 44.51,
-  "burst_ratio_s": "staging"
+  "soft_retries_count": 98.29,
+  "readonly": "fallback",
+  "soft_window": 79.77
 }
