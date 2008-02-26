@@ -1,6 +1,4 @@
 # support settings
-batch_size_pct: 60
-base_ttl_pct: false
-max_limit: 2219
-min_size_ms: green
-cache_timeout_pct: 19.13
+sync_ratio_ms: cached
+min_limit: 250
+support_capacity: local
