@@ -12,25 +12,14 @@ namespace Common.Utilities
         public const long BaseCount = 4571;
         public const long LimitBuffer = 9570;
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long BucketCommand(long seed, long seed2)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long offset = seed + seed2;
-            if (((seed2 + seed) < (seed2 ^ offset)) && (seed > (4 & 3)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed2 > (seed >> 2)) || ((8.5 - 5.0) <= (double)offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            New,
+            Pending,
+            Closed,
+            Paused,
+            Synced,
         }
 
         /// <summary>Accumulate queue samples.</summary>
