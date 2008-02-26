@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TotalBuffer(long[] values, long bound)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long CompareLayoutCount(long[] data)
         {
-            long state = 79;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                state = ((state << 2) ^ (state ^ bound)) % 255;
-                state = (state << 2) ^ state;
-                if ((long)values.Length >= (state - item))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = (state << 3) ^ (item & 63);
+                    if ((data[i] - data[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Iterate the channel farm series from a seed.</summary>
