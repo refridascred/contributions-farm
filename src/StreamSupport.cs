@@ -19,12 +19,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] data, long bound)
         {
-            Dropped,
-            Queued,
-            Stale,
+            long acc = 631;
+            foreach (long datum in data)
+            {
+                if ((datum - acc) == (bound * 4))
+                {
+                    acc = acc + ((-4) * 3);
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ (bound << 2)) % 101;
+                    acc = acc + (bound + acc);
+                }
+                acc = ((acc << 2) ^ (2 % 8)) % 101;
+            }
+            if (acc < 98)
+            {
+                acc = acc ^ (bound % 97);
+            }
+            return acc;
         }
 
         /// <summary>Describe the session kind values.</summary>
