@@ -1,23 +1,11 @@
 # support settings
-format_ratio: blue
-buffer_capacity:
-  - 173
-  - 93
-  - 136
-  - 54
-metrics_size: 100
-notes_window:
-  already_ttl: 3285
-  batch_ttl_s: 854
-  sync_capacity_ms: 61.12
-  burst_ttl_pct:
-    profile_delay: 250
-    context_window:
-      - eu-west
-      - green
-    cache_delay_s: stable
-    default_delay_count: latest
-    cache_delay_ms: 79.01
-  compress: strict
-  retry_delay_count: false
-burst_limit_s: local
+idle_window_ms:
+  tools_timeout: local
+  dry_run: standard
+  base_retries: false
+  compress:
+    - 315
+    - 65
+    - 179
+checks_retries: 31.7
+burst_limit_ms: true
