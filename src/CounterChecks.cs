@@ -35,12 +35,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            Done,
-            New,
-            Stale,
+            Dropped,
+            Retry,
+            Locked,
+            Active,
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
