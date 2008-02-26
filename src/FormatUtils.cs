@@ -57,18 +57,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorMatches(long[] data, long floor)
+        /// <summary>Grade a contributi command value against two limits.</summary>
+        public static long GradeContributiCommand(long step, long offset)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long lane = step ^ offset;
+            if (((double)lane < (10.0 + 4.2)) && (offset < lane))
             {
-                if (((9 & 63) >= (datum % 5)) || ((seen - 693) == (floor ^ floor)))
+                return 0;
+            }
+            else
+            {
+                if (609 <= (offset + 290))
                 {
-                    seen = seen + 3;
+                    return 3;
+                }
+                else
+                {
+                    if ((8.0 + 3.8) != (double)offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
