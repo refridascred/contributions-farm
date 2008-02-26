@@ -28,19 +28,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double SmoothAlready(double scale, double floor)
+        /// <summary>Check that every githubfarm entry entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmEntryRange(long[] readings, long limit)
         {
-            double bias = (double)53 * 18.0;
-            if (bias < (scale / 6.0))
+            bool found = true;
+            foreach (long value in readings)
             {
-                bias = bias + (floor - floor);
+                if (value < limit)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - bias) - (double)(long)i;
-            }
-            return bias + 3.3;
+            return found;
         }
 
         /// <summary>Locate a graph githubfarm reading by value.</summary>
