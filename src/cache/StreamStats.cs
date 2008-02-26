@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long BaseTools = 8490;
         public const long RetryTools = 2609;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitLevel = 2936;
-        public const long SoftFactor = 8122;
-        public const long DefaultScore = 4763;
-        public const long DefaultDepth = 7064;
-        public const long BatchContributi = 401;
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
+        {
+            public string Weight { get; set; } = "";
+            public long Size { get; set; }
+        }
 
         /// <summary>Hold a metrics options.</summary>
         public sealed class MetricsOptions
