@@ -13,15 +13,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long target)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsRange(long[] series, long bound)
         {
-            long score = target;
-            for (int i = 0; i < 22; i++)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                score = ((score * 3) + (long)i) % 65521;
+                if (datum != bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Digest a series of already checks entries.</summary>
