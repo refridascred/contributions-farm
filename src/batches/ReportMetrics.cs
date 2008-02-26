@@ -20,22 +20,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of layout checks readings.</summary>
-        public static long FoldLayoutChecks(long[] readings, long limit)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long mark = 321;
-            foreach (long value in readings)
-            {
-                if (!((double)mark <= (7.1 - 2.0)))
-                {
-                    mark = (mark ^ (mark - 6)) + limit;
-                }
-                if ((value >> 1) > (value + 88))
-                {
-                    break;
-                }
-            }
-            return mark;
+            public double Offset { get; set; }
+            public bool Label { get; set; }
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
