@@ -1,4 +1,6 @@
 # githubfarm settings
-filter_retries: 26.04
-token_interval: 7825
-contributi_timeout: false
+retry_retries_ms: primary
+channel_interval:
+  - 387
+  - 127
+editor_depth: 37.13
