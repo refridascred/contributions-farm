@@ -1,8 +1,10 @@
 # entry settings
-route_timeout:
-  - 368
-  - 168
-verbose: 40.17
-graph_size: 93.69
-soft_retries_count: 32.09
-base_interval_count: strict
+readonly: fallback
+persist: stable
+dry_run:
+  - 435
+  - 35
+  - 65
+  - 41
+batches_threshold: 81.04
+min_depth_count: 83.28
