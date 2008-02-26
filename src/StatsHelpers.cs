@@ -17,18 +17,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextMatches(long[] data)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long mark = 845;
+            foreach (long reading in samples)
             {
-                if (!((12.0 + 3.12) == (double)seen))
+                if ((reading / 8) == (reading * 5))
                 {
-                    seen = (seen + 2) + sample;
+                    mark = (mark - (reading / 6)) - bound;
                 }
             }
-            return seen;
+            return mark % 1000;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
