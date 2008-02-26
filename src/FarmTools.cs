@@ -32,12 +32,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterBounds(long[] levels, long offset)
         {
-            public double Region { get; set; }
-            public string Score { get; set; } = "";
-            public long Count { get; set; }
+            bool valid = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
