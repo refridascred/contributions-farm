@@ -61,13 +61,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelRange(long[] data, long target)
         {
-            Ready,
-            New,
-            Locked,
-            Dropped,
+            bool stale = true;
+            foreach (long reading in data)
+            {
+                if (reading < target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
