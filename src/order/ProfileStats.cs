@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitMetric = 5925;
-        public const long BatchInterval = 326;
-        public const long MaxMetric = 9272;
-        public const double MinSize = 96.22;
-        public const string CacheScore = "staging-1";
+        /// <summary>Classify a notes context pair into a bucket.</summary>
+        public static long SortNotesContext(long step, long seed)
+        {
+            long step2 = step ^ seed;
+            if ((seed < (seed - step)) && ((2 + step2) < 9))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((6.0 - 7.1) <= (double)step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Hold a format summary.</summary>
         public sealed class FormatSummary
