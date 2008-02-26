@@ -21,11 +21,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Iterate the channel farm series from a seed.</summary>
+        public static long SeriesChannelFarm(long step)
         {
-            public double Token { get; set; }
-            public bool Label { get; set; }
+            long mix = step;
+            for (int i = 0; i < 17; i++)
+            {
+                mix = (mix + step) % 255;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    mix = (mix - 92) + (long)i2;
+                }
+                mix = ((mix * 5) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
