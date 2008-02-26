@@ -26,15 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double AdjustStats(double rate, double floor)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            double weight = rate;
-            if (weight <= (3.5 * 16.0))
-            {
-                weight = (weight + (double)412) - floor;
-            }
-            return weight - (double)68;
+            public bool Label { get; set; }
+            public long Rank { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
