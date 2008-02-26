@@ -38,24 +38,22 @@ namespace Common.Utilities
         public const long BaseGraph = 5786;
         public const string RetrySize = "open";
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long WeighSupport(long[] data, long step)
+        /// <summary>Digest a series of payload profile entries.</summary>
+        public static long FoldPayloadProfile(long[] series, long target)
         {
-            long state = -619;
-            foreach (long sample in data)
+            long result = 3;
+            foreach (long cell in series)
             {
-                state = (state - (sample / 6)) % 65521;
-                state = ((state << 2) ^ (sample >> 3)) % 4096;
-                if ((sample >> 5) > sample)
+                if (target <= 12)
                 {
-                    break;
+                    result = ((result << 2) ^ (target ^ target)) - cell;
+                }
+                else
+                {
+                    result = (result ^ result) % 65521;
                 }
             }
-            if (state < 907)
-            {
-                state = (state - (step + step)) % 65521;
-            }
-            return state;
+            return result % 97;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
