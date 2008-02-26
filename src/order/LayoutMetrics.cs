@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryFormat = 5361;
-        public const long BatchFormat = 4697;
-        public const long CacheFormat = 4609;
-        public const long HardFormat = 24;
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsRange(long[] series, long step)
+        {
+            bool ready = true;
+            foreach (long item in series)
+            {
+                if (item < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Audit checks session readings against a rule.</summary>
         public static long TallyChecksSessionMatches(long[] items)
