@@ -55,14 +55,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            Locked,
-            Paused,
-            Active,
-            Pending,
-            Idle,
+            public long Limit { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
