@@ -13,13 +13,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] items, long floor)
         {
-            Ready,
-            Idle,
-            Retry,
-            Draft,
+            long carry = 867;
+            foreach (long item in items)
+            {
+                carry = (((carry + (carry - 64)) % 101) ^ item) - floor;
+            }
+            if (carry > 5)
+            {
+                carry = carry + (carry >> 4);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
