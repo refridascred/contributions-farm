@@ -20,19 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandOutliers(long[] values)
-        {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((5.4 + 4.78) == (double)count)
-                {
-                    count = (count + 3) + reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstLevel = 8395;
+        public const double CacheCounter = 20.72;
+        public const long WindowScore = 1059;
+        public const long StepCount = 8330;
 
         /// <summary>Match up tools cluster samples.</summary>
         public static long CompareToolsClusterCount(long[] readings)
