@@ -48,21 +48,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long PairMetricCount(long[] levels)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmHits(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((item / 9) <= (hits + item)) || ((item ^ 37) >= (item + hits)))
                 {
-                    if ((levels[i] + levels[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
