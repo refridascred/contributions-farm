@@ -10,18 +10,10 @@ namespace Common.Utilities
         public const long BatchDepth = 7784;
         public const double BaseWindow = 58.14;
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LookupSessionIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleEditor = 6257;
+        public const long IdleSize = 2787;
+        public const long StepEditor = 9690;
 
         /// <summary>Classify a already payload pair into a bucket.</summary>
         public static long BucketAlreadyPayload(long step, long bound)
