@@ -65,18 +65,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmMatches(long[] series)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((tally % 100) >= 203)
-                {
-                    tally = (tally + 3) ^ sample;
-                }
-            }
-            return tally;
+            Retry,
+            Closed,
+            Idle,
         }
     }
 }
