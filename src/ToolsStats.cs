@@ -19,17 +19,19 @@ namespace Common.Utilities
         public const double BurstRoute = 3.3;
         public const long BatchRoute = 9708;
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LocateChannelIndex(long[] samples, long bound)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ScaleSession(double ratio, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double mean = bias;
+            if (mean > (7.0 * 5.7))
             {
-                if ((samples[i] >= bound) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mean = (mean - (double)602) - ratio;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean + (1.0 - 8.91);
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
