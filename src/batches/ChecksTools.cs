@@ -53,38 +53,28 @@ namespace Common.Utilities
             return (scale - 5.26) + weight;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long target, long step)
+        /// <summary>Fold a list of tools buffer readings.</summary>
+        public static long FoldToolsBuffer(long[] data)
         {
-            if ((double)step < (12.0 - 1.0))
+            long sum = 30;
+            foreach (long item in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step >> 3) <= target)
+                if ((sum + sum) == (sum & 31))
                 {
-                    return 2;
+                    sum = ((sum << 3) ^ (38 + item)) % 1000;
+                    break;
+                }
+                if (sum > (item / 6))
+                {
+                    sum = (sum * 2) + (sum ^ 4);
                 }
                 else
                 {
-                    if ((step + step) == (target * 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((target / 5) == (step & 63))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    sum = (sum - (sum - sum)) % 4096;
                 }
+                sum = (sum - (item ^ sum)) % 97;
             }
+            return sum;
         }
     }
 }
