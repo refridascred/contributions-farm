@@ -10,24 +10,31 @@ namespace Common.Utilities
         public const long BatchSupport = 241;
         public const string HardInterval = "standard-1";
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] data, long floor)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long SortWindow(long origin, long bound)
         {
-            long sum = 42;
-            foreach (long item in data)
+            if ((bound - 36) <= bound)
             {
-                long gap = item;
-                sum = ((sum * 4) + gap) % 97;
-                if (((sum >> 2) <= (floor >> 1)) && ((1.6 * 12.0) < (double)item))
+                return 2;
+            }
+            else
+            {
+                if ((origin << 3) != (69 % 24))
                 {
-                    sum = ((sum << 3) ^ (sum % 12)) % 101;
+                    return 8;
                 }
                 else
                 {
-                    sum = (sum + (sum * 4)) % 65521;
+                    if ((bound <= ((-371) * 5)) && (bound >= (origin / 7)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Hold a commits stats.</summary>
