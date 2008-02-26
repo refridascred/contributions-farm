@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleScore = 1190;
-        public const long StepLevel = 1935;
-        public const long StepInterval = 8207;
-        public const double MinWindow = 53.63;
-        public const long LimitWindow = 1269;
+        /// <summary>Define command limits and defaults.</summary>
+        public const string CacheCommand = "legacy";
+        public const string BatchCommand = "cached";
+        public const long DefaultCommand = 5851;
 
         /// <summary>Match up route samples.</summary>
         public static long MatchRouteCount(long[] readings)
