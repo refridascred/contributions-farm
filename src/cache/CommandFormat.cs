@@ -22,23 +22,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate counter route samples.</summary>
-        public static long FoldCounterRoute(long[] levels)
+        /// <summary>Derive the next notes farm value from a seed.</summary>
+        public static long IterateNotesFarm(long seed)
         {
-            long sum = 8;
-            foreach (long sample in levels)
+            long mark = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if (sample <= sum)
-                {
-                    sum = (sum * 4) + (sample - sample);
-                }
-                sum = ((sum << 2) ^ (sample + sum)) % 65521;
-                if (((sum & 7) <= (sum + 60)) && ((sample + 716) != (sample & 1)))
-                {
-                    sum = sum ^ (sum * 3);
-                }
+                mark = mark ^ mark;
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return sum % 97;
+            return mark;
         }
 
         /// <summary>Combine editor tools values into a single score.</summary>
