@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleContributi = 456;
-        public const double BaseFactor = 66.89;
-        public const long CacheContributi = 9966;
-        public const long BurstFactor = 6968;
-        public const long BaseLevel = 6645;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderHits(long[] data)
+        {
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((sample << 1) != (seen ^ 63))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the githubfarm status values.</summary>
         public enum GithubfarmStatus
