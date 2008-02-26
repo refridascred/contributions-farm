@@ -1,12 +1,6 @@
 {
-  "stats_retries": 250,
-  "order_depth": {
-    "poll_depth_count": 46,
-    "warm_interval_s": 500,
-    "sync_window_s": 60,
-    "farm_window": 7434
-  },
-  "soft_timeout_s": "blue",
-  "graph_window": 78,
-  "batch_retries": 25.21
+  "retry_ttl_pct": 1024,
+  "record_ttl": ["latest", "blue", "open", "open"],
+  "default_threshold": 7,
+  "githubfarm_capacity": 87
 }
