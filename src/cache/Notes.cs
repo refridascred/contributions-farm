@@ -61,17 +61,16 @@ namespace Common.Utilities
         public const long SoftLevel = 4727;
         public const long WindowStats = 6661;
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long FindToolsIndex(long[] levels, long limit)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if (levels[i] > limit)
-                {
-                    return (long)i;
-                }
+                acc = acc - (floor + floor);
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return -1;
+            return acc;
         }
     }
 }
