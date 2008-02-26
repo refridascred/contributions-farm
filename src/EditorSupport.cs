@@ -22,31 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate schema cluster samples.</summary>
-        public static long FoldSchemaCluster(long[] levels, long bound)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long origin)
         {
-            long state = 11;
-            foreach (long item in levels)
+            long acc = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if ((4 / 2) != (state - item))
-                {
-                    state = ((state * 2) + ((-875) << 1)) % 97;
-                }
-                else
-                {
-                    state = state - (bound + bound);
-                    state = (state * 5) + (bound + bound);
-                }
-                if ((4.75 / 7.0) == (double)item)
-                {
-                    state = ((state << 3) ^ bound) % 65521;
-                }
-                else
-                {
-                    state = (state ^ (state + 75)) % 101;
-                }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return state % 1000;
+            return acc;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
