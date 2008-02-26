@@ -23,39 +23,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long seed, long offset)
-        {
-            long span = seed + offset;
-            if (((1 >> 5) == (seed - span)) || ((span * 4) <= span))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((276 + offset) >= 4)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((seed + 10) < (offset % 100)) || (seed > (seed + seed)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (seed <= (170 % 64))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string RetryCount = "local-v2";
+        public const long RetrySpan = 8985;
+        public const long WindowGithubfarm = 6197;
+        public const long SoftGithubfarm = 7366;
     }
 }
