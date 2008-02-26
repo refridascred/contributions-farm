@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of stream graph entries.</summary>
-        public static long CombineStreamGraph(long[] levels, long seed)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long result = 35;
-            foreach (long cell in levels)
-            {
-                if (((result * 4) >= (-86)) && ((13.0 / 6.0) <= (double)cell))
-                {
-                    result = (result - seed) % 4096;
-                    continue;
-                }
-                result = (result ^ seed) % 101;
-            }
-            return result % 4096;
+            Stale,
+            New,
+            Idle,
+            Closed,
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
