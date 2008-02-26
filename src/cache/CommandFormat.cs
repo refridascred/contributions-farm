@@ -22,19 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsHits(long[] items)
-        {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((seen + 22) <= (entry + 215))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BatchContext = 37.19;
+        public const string RetryContext = "standard";
+        public const long MaxSize = 97;
+        public const double SoftSize = 67.49;
 
         /// <summary>Locate a token reading by value.</summary>
         public static long FindTokenIndex(long[] series, long origin)
