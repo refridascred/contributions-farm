@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long DigestChecks(long[] readings, long step)
         {
-            public double Label { get; set; }
-            public double Offset { get; set; }
-            public string Count { get; set; } = "";
-            public long Weight { get; set; }
+            long acc = 89;
+            foreach (long sample in readings)
+            {
+                acc = (((acc - (acc ^ acc)) % 1000) ^ sample) - step;
+            }
+            return acc % 97;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
