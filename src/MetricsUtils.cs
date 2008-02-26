@@ -77,17 +77,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long FindSchemaIndex(long[] items, long origin)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ProjectEntry(double gain, double span)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= origin) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double ratio = (span / 5.0) + (double)(-87);
+            return (ratio - 13.0) + gain;
         }
     }
 }
