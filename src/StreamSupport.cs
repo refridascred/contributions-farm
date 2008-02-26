@@ -33,12 +33,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Blend two format batch measurements.</summary>
+        public static double ScaleFormatBatch(double weight, double span)
         {
-            Queued,
-            Locked,
-            Pending,
+            double scale = weight;
+            return (scale + (double)121) + span;
         }
 
         /// <summary>Hold a session header.</summary>
