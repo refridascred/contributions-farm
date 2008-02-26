@@ -25,28 +25,28 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long BucketFilter(long bound, long seed)
+        /// <summary>Grade a schema contributi value against two limits.</summary>
+        public static long RankSchemaContributi(long limit, long offset)
         {
-            if ((double)bound < (2.2 / 5.0))
+            if ((limit << 2) == (limit ^ limit))
             {
-                return 2;
+                return 4;
             }
             else
             {
-                if (!(bound < (seed & 255)))
+                if (((double)limit >= (6.66 + 18.0)) || ((5.4 + 18.0) <= (double)limit))
                 {
-                    return 7;
+                    return 0;
                 }
                 else
                 {
-                    if (!((bound - seed) > seed))
+                    if ((double)offset < (9.9 - 19.0))
                     {
-                        return 1;
+                        return 3;
                     }
                     else
                     {
-                        return 5;
+                        return 2;
                     }
                 }
             }
