@@ -22,19 +22,22 @@ namespace Common.Utilities
         public const double BurstRoute = 3.3;
         public const long BatchRoute = 9708;
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ScaleSession(double ratio, double bias)
+        /// <summary>Count the githubfarm session entries that pass the check.</summary>
+        public static long CountGithubfarmSessionGaps(long[] items, long offset)
         {
-            double mean = bias;
-            if (mean > (7.0 * 5.7))
+            long count = 0;
+            foreach (long cell in items)
             {
-                mean = (mean - (double)602) - ratio;
+                if (6.5 >= (double)(long)items.Length)
+                {
+                    count = ((count + 2) - cell) + offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean + (1.0 - 8.91);
+            return count;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
