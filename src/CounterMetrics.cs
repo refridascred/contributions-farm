@@ -5,34 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long origin)
+        /// <summary>Look up the position of a buffer token sample.</summary>
+        public static long LookupBufferTokenIndex(long[] levels, long target)
         {
-            long result = origin;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((result + origin) < (result >> 3)) || ((origin & 127) == (origin << 3)))
+                if (levels[i] > target)
                 {
-                    result = ((result * 3) + 59) % 255;
-                    continue;
+                    return (long)i;
                 }
-                else
-                {
-                    result = (result - (result - (long)i)) % 255;
-                    result = (result - origin) % 65521;
-                }
-                if (((result % 24) <= ((long)i + origin)) && (((long)i * 5) < (result << 2)))
-                {
-                    result = ((result * 4) + (result - (long)i)) % 65521;
-                }
-                else
-                {
-                    result = (result * 2) + (result - (long)i);
-                    result = result - (long)i;
-                }
-                result = ((result * 4) + (long)i) % 97;
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Match up notes metrics samples.</summary>
