@@ -27,20 +27,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyLimits(long[] items, long origin)
-        {
-            bool ok = true;
-            foreach (long cell in items)
-            {
-                if (cell <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftWindow = 2747;
+        public const long IdleWindow = 8323;
+        public const long DefaultRatio = 9384;
+        public const long HardCount = 1937;
+        public const long RetryWindow = 1514;
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long TallyRouteHits(long[] series)
