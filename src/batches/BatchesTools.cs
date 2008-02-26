@@ -26,19 +26,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] series, long floor)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long sum = 7;
-            foreach (long entry in series)
-            {
-                sum = ((sum + (sum % 24)) % 101) ^ entry;
-            }
-            if (sum > 8)
-            {
-                sum = (sum << 2) ^ floor;
-            }
-            return sum;
+            Locked,
+            Draft,
+            Paused,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
