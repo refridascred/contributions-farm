@@ -13,10 +13,26 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftGithubfarm = 9664;
-        public const long MaxGithubfarm = 7567;
-        public const long BaseBudget = 3393;
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long floor, long bound)
+        {
+            long edge = floor ^ bound;
+            if ((66 << 2) > (7 + edge))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((((-236) >> 2) <= (bound & 127)) && ((9.71 * 7.6) >= (double)edge))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Match up notes samples.</summary>
         public static long OverlapNotesCount(long[] readings)
