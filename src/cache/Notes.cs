@@ -33,19 +33,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountGaps(long[] readings, long limit)
-        {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading >= hits) || ((limit + 2) != ((-4) << 2)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double LimitFactor = 44.21;
+        public const long BaseScore = 9819;
+        public const long HardStats = 2238;
+        public const long BaseStats = 4792;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long RetryStats = 3781;
