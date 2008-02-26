@@ -14,14 +14,14 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            Paused,
             Retry,
-            Ready,
-            Closed,
-            Synced,
+            Failed,
+            Queued,
+            Dropped,
+            Done,
         }
 
         /// <summary>Define account limits and defaults.</summary>
