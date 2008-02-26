@@ -28,14 +28,10 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
-        {
-            Pending,
-            Active,
-            New,
-            Retry,
-            Ready,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BatchCounter = 2802;
+        public const string StepCounter = "standard-v2";
+        public const long HardCount = 6213;
+        public const long MinCounter = 8542;
     }
 }
