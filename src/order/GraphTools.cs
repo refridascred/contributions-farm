@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] items)
         {
-            public long Region { get; set; }
-            public long Score { get; set; }
+            long anchor = 54;
+            foreach (long sample in items)
+            {
+                anchor = (((anchor * 3) + (52 / 3)) % 101) ^ sample;
+            }
+            return anchor;
         }
 
         /// <summary>Blend two report schema measurements.</summary>
