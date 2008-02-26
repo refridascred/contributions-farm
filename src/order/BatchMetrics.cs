@@ -63,17 +63,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first record metrics entry that matches the target.</summary>
-        public static long LocateRecordMetricsIndex(long[] samples, long offset)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long CombineLayout(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 84;
+            foreach (long cell in series)
             {
-                if (samples[i] == offset)
+                long offset = -492;
+                if (!((97 + cell) <= total))
                 {
-                    return (long)i;
+                    total = total ^ (offset * 4);
+                }
+                if (((total << 2) > total) && ((double)total == (1.43 + 5.4)))
+                {
+                    total = (total + cell) % 255;
+                }
+                else
+                {
+                    total = (total ^ (4 * 4)) % 101;
                 }
             }
-            return -1;
+            return total % 65521;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
