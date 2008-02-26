@@ -5,22 +5,29 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long SortChecks(long offset, long origin)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long origin, long target)
         {
-            if (((-9) + offset) < (633 ^ offset))
+            if (target <= origin)
             {
-                return 0;
+                return 3;
             }
             else
             {
-                if ((double)offset < (18.0 + 2.6))
+                if (origin < (6 * 2))
                 {
-                    return 3;
+                    return 6;
                 }
                 else
                 {
-                    return 7;
+                    if ((target + 720) >= target)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
         }
