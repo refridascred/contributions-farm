@@ -40,11 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string SoftReport = "alpha-1";
-        public const long IdleReport = 8076;
-        public const string BatchReport = "latest-1";
-        public const long DefaultSize = 4035;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double IdleLevel = 80.15;
+        public const long HardBudget = 6068;
+        public const long HardFilter = 7786;
+        public const long MaxFilter = 4661;
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long MeasureFarmHits(long[] levels)
