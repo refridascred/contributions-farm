@@ -37,15 +37,10 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long StepContributi(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double CacheSpan = 32.77;
+        public const double StepBudget = 21.61;
+        public const long IdleGraph = 6069;
+        public const string CacheGraph = "latest-1";
     }
 }
