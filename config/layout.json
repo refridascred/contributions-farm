@@ -1,7 +1,6 @@
 {
-  "idle_depth_ms": true,
-  "verbose": 66,
-  "filter_delay": "local",
-  "idle_depth": [244, 331, 348, 328],
-  "strict": 61.98
+  "poll_delay_ms": "standard",
+  "batch_threshold_ms": 6,
+  "order_window": 60,
+  "persist": 81.55
 }
