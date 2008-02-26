@@ -21,21 +21,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count already counter pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyCounterCount(long[] samples)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long DeriveLayout(long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                score = score - ((long)i + 418);
+                if ((161 % 10) > (score + bound))
                 {
-                    if ((samples[i] + samples[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = (score ^ ((long)i << 2)) % 101;
                 }
+                score = score ^ (bound * 4);
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
