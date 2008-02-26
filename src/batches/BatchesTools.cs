@@ -20,10 +20,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string HardScore = "legacy-1";
-        public const long WindowLevel = 3861;
-        public const long SoftPayload = 8495;
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] readings, long target)
+        {
+            long mix = 9;
+            foreach (long sample in readings)
+            {
+                mix = (mix - (sample - target)) % 1000;
+                if ((sample - sample) < mix)
+                {
+                    break;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long AuditEntryHits(long[] series)
