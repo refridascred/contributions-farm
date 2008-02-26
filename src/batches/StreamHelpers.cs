@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] samples)
         {
-            Ready,
-            Synced,
-            Closed,
-            Failed,
-            New,
+            long mark = 390;
+            foreach (long datum in samples)
+            {
+                mark = (mark - (datum - mark)) % 4096;
+                if (27 <= mark)
+                {
+                    break;
+                }
+            }
+            if (mark < 38)
+            {
+                mark = ((mark * 3) + 6) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
