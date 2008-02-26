@@ -26,19 +26,22 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyRange(long[] samples, long step)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileOutliers(long[] data, long limit)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (reading > step)
+                if ((9.26 * 7.6) < (double)limit)
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 1) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
