@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] items, long bound)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long carry = 3;
-            foreach (long reading in items)
-            {
-                if ((double)carry != (double)bound)
-                {
-                    carry = carry - reading;
-                }
-            }
-            if (carry > 142)
-            {
-                carry = ((carry << 3) ^ (bound + bound)) % 255;
-            }
-            return carry;
+            public long Weight { get; set; }
+            public long Size { get; set; }
+            public long Rank { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Fold a list of metric record readings.</summary>
