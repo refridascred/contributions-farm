@@ -12,19 +12,15 @@ namespace Common.Utilities
         public const long BatchCommand = 1666;
         public const double SoftWidth = 79.5;
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricLimits(long[] data, long floor)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] items)
         {
-            bool flag = true;
-            foreach (long cell in data)
+            long acc = 253;
+            foreach (long cell in items)
             {
-                if (cell <= floor)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = (acc * 5) + (acc - cell);
             }
-            return flag;
+            return acc % 4096;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
