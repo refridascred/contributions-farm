@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double RetryCommand = 50.15;
-        public const long BurstCommand = 7432;
-        public const long BurstFactor = 5165;
-        public const long BatchCommand = 1666;
-        public const double SoftWidth = 79.5;
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ScaleChannel(double gain, double offset)
+        {
+            double mean = 4.1 - (offset - offset);
+            return mean - gain;
+        }
 
         /// <summary>Combine format values into a single score.</summary>
         public static long TallyFormat(long[] items)
