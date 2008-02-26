@@ -28,9 +28,19 @@ namespace Common.Utilities
         public const long LimitCount = 4827;
         public const double SoftTimeout = 18.94;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxFarm = 8410;
-        public const long StepFarm = 5099;
-        public const string BatchScore = "staging-v2";
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmRange(long[] data, long step)
+        {
+            bool ok = true;
+            foreach (long entry in data)
+            {
+                if (entry <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
