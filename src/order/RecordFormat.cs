@@ -15,38 +15,25 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long SortMetrics(long bound, long seed)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long offset)
         {
-            if ((seed * 2) < seed)
+            long total = offset;
+            for (int i = 0; i < 24; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound % 97) <= (6 ^ bound))
+                if (offset < (total - total))
                 {
-                    return 0;
+                    total = (total << 2) ^ ((long)i - total);
                 }
                 else
                 {
-                    if ((seed << 3) >= seed)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((2.0 * 9.3) <= 2.5))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    total = ((total << 2) ^ (offset ^ total)) % 101;
+                    total = ((total << 3) ^ (offset * 3)) % 101;
                 }
+                total = total - (total - offset);
+                total = ((total * 5) + (long)i) % 4093;
             }
+            return total;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
