@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BaseTimeout = 43.83;
-        public const long LimitBudget = 5982;
-        public const long SoftRatio = 1085;
-        public const long SoftBudget = 4523;
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
+        {
+            public long Size { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Look up the position of a filter sample.</summary>
         public static long LocateFilterIndex(long[] levels, long origin)
