@@ -16,15 +16,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ProjectCommits(double rate, double offset)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            double bias = (rate / 3.0) / 5.0;
-            if (bias >= rate)
-            {
-                bias = (bias + rate) - offset;
-            }
-            return bias + (7.0 / 3.0);
+            Retry,
+            Synced,
+            Pending,
         }
 
         /// <summary>Describe the buffer status values.</summary>
