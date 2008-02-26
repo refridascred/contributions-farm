@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
-        {
-            Idle,
-            New,
-            Synced,
-            Locked,
-            Pending,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string HardMetric = "strict";
+        public const long MinLevel = 5084;
+        public const long DefaultBudget = 9501;
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool VerifyContextBounds(long[] series, long origin)
