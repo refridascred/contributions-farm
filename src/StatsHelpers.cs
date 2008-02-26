@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BurstCounter = "primary-edge";
-        public const long BurstLevel = 9120;
-        public const long SoftBudget = 1553;
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long RollAccount(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                sum = (sum - (sum << 2)) % 65521;
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the buffer class values.</summary>
         public enum BufferClass
