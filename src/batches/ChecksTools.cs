@@ -33,18 +33,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportGaps(long[] readings)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long seed, long target)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long cur = seed ^ target;
+            if (!((seed ^ cur) >= (seed % 60)))
             {
-                if ((61 - seen) >= (583 + 8))
+                return 4;
+            }
+            else
+            {
+                if ((5.8 < (double)cur) || ((double)seed >= (6.51 / 4.0)))
                 {
-                    seen = (seen + 2) + item;
+                    return 7;
+                }
+                else
+                {
+                    if ((target - target) < (cur - seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the session status values.</summary>
