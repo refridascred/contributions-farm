@@ -40,21 +40,17 @@ namespace Common.Utilities
         public const string CacheInterval = "latest";
         public const long HardInterval = 4405;
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long PairChecksCount(long[] readings)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long SeekLayoutIndex(long[] series, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((series[i] == floor) && ((series[i] % 3) == 0))
                 {
-                    if ((readings[i] + readings[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
