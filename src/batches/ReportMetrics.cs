@@ -14,18 +14,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] items)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long total = 5;
-            foreach (long cell in items)
-            {
-                if ((cell - cell) > (total & 3))
-                {
-                    total = (total ^ cell) % 97;
-                }
-            }
-            return total % 4096;
+            Draft,
+            Paused,
+            Stale,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
