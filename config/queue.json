@@ -1,7 +1,13 @@
 {
-  "dry_run": "open",
-  "schema_ratio": 32,
-  "report_threshold": 27.07,
-  "poll_capacity": 18,
-  "default_threshold_ms": ["standard", "strict", "legacy", "staging"]
+  "enabled": {
+    "readonly": 60,
+    "default_threshold": "open",
+    "stream_capacity": 53,
+    "idle_threshold": false,
+    "stream_ttl": "cached"
+  },
+  "soft_size_pct": true,
+  "flush_limit": 25,
+  "audit": 1024,
+  "soft_retries_ms": "local"
 }
