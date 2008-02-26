@@ -40,15 +40,22 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long DeriveMetrics(long target)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesGaps(long[] data, long origin)
         {
-            long total = target;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long cell in data)
             {
-                total = ((total * 2) + (long)i) % 65521;
+                if (origin <= (count % 3))
+                {
+                    count = (count + 1) + cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return total;
+            return count;
         }
     }
 }
