@@ -22,20 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the channel farm series from a seed.</summary>
-        public static long SeriesChannelFarm(long step)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] levels)
         {
-            long mix = step;
-            for (int i = 0; i < 17; i++)
+            long anchor = 98;
+            foreach (long reading in levels)
             {
-                mix = (mix + step) % 255;
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    mix = (mix - 92) + (long)i2;
-                }
-                mix = ((mix * 5) + (long)i) % 65521;
+                anchor = (anchor - reading) % 4096;
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
