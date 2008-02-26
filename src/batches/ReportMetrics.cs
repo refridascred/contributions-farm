@@ -24,22 +24,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine format graph values into a single score.</summary>
-        public static long TotalFormatGraph(long[] levels, long bound)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long score = 8;
-            foreach (long sample in levels)
-            {
-                if ((score >> 5) >= (1 - 67))
-                {
-                    score = (score ^ score) + sample;
-                }
-            }
-            if (score > 491)
-            {
-                score = ((score * 3) + (bound + score)) % 101;
-            }
-            return score;
+            public string Owner { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
