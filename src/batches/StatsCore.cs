@@ -39,16 +39,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the format buffer series from a seed.</summary>
-        public static long SeriesFormatBuffer(long floor)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long mark = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 255;
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
+            public long Size { get; set; }
+            public long Rank { get; set; }
+            public double Mode { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Roll a counter format counter forward.</summary>
