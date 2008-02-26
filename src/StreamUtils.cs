@@ -36,19 +36,11 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Validate batch channel readings against a bound.</summary>
-        public static bool VerifyBatchChannelBounds(long[] samples, long origin)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            bool ready = true;
-            foreach (long reading in samples)
-            {
-                if (reading != origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Weight { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a already info.</summary>
