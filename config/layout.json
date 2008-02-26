@@ -1,7 +1,13 @@
 {
-  "max_depth_s": "cached",
-  "payload_depth": "latest",
-  "entry_ttl": "local",
-  "burst_limit": 44.0,
-  "layout_delay": false
+  "min_delay": 5699,
+  "compress": [101, 218],
+  "verbose": {
+    "metrics_window": 36,
+    "poll_ttl": "open",
+    "max_ttl_pct": true,
+    "stats_size": [61, 135],
+    "retry_depth_s": "blue"
+  },
+  "route_size": true,
+  "max_depth_pct": true
 }
