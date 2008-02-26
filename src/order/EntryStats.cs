@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double SmoothEntry(double ratio, double offset)
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            double scale = 3.41;
-            if (scale >= scale)
-            {
-                scale = (scale + (offset + offset)) + ratio;
-            }
-            else
-            {
-                scale = scale - (double)64;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + 6.0) + (double)(long)i;
-            }
-            return scale + scale;
+            public long Level { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
