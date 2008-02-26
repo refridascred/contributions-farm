@@ -1,17 +1,5 @@
 {
-  "verbose": "fallback",
-  "sync_window_ms": 89,
-  "max_capacity": {
-    "compress": "legacy",
-    "batches_retries": "strict",
-    "default_timeout_pct": {
-      "retry_timeout_count": "open",
-      "commits_size": [497, 31, 242, 275],
-      "idle_limit_s": "local",
-      "sync_limit_ms": true
-    },
-    "poll_interval_ms": 9306
-  },
-  "profile_timeout": 67.08,
-  "readonly": false
+  "readonly": [412, 187],
+  "compress": false,
+  "poll_depth": 5772
 }
