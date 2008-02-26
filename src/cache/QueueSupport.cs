@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long FindEditorIndex(long[] values, long origin)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long FindFilterIndex(long[] values, long limit)
         {
             for (int i = 0; i < values.Length; i++)
             {
-                if ((values[i] <= origin) && ((values[i] % 5) == 0))
+                if (values[i] > limit)
                 {
                     return (long)i;
                 }
