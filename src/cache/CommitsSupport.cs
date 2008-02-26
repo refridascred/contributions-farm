@@ -80,22 +80,17 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Measure how many payload githubfarm samples are out of range.</summary>
-        public static long CountPayloadGithubfarmOutliers(long[] levels, long floor)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long SeekToolsIndex(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((floor - floor) > (122 / 7)))
+                if (series[i] > bound)
                 {
-                    hits = (hits + 3) ^ reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
