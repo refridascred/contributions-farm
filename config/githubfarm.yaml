@@ -1,9 +1,16 @@
 # githubfarm settings
-burst_threshold: 9432
-checks_delay:
-  - 154
-  - 183
-  - 38
-max_ttl:
-  - 333
-  - 202
+batch_limit_ms: 85
+already_limit: 7598
+order_capacity:
+  tools_ratio: 50
+  compress:
+    - stable
+    - edge
+    - open
+  batch_limit_pct:
+    poll_depth_count: staging
+    sync_interval_pct: open
+    notes_limit: false
+    batch_capacity_count: false
+checks_capacity: true
+order_ttl: green
