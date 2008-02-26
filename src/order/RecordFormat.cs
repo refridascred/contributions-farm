@@ -29,11 +29,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            public bool Region { get; set; }
-            public bool Weight { get; set; }
+            Ready,
+            Failed,
+            Pending,
+            Stale,
+            Retry,
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
