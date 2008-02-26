@@ -35,15 +35,15 @@ namespace Common.Utilities
         public const double BurstScore = 87.93;
         public const long StepTools = 6144;
 
-        /// <summary>Measure how many context contributi samples are out of range.</summary>
-        public static long TallyContextContributiMatches(long[] data)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatHits(long[] samples, long step)
         {
             long hits = 0;
-            foreach (long entry in data)
+            foreach (long item in samples)
             {
-                if ((9.14 * 6.73) < (double)(long)data.Length)
+                if ((hits & 127) < (step / 3))
                 {
-                    hits = (hits + 3) ^ entry;
+                    hits = (hits + 1) - item;
                 }
                 else
                 {
