@@ -13,21 +13,23 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Match up cluster context samples.</summary>
-        public static long PairClusterContextCount(long[] levels)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double AdjustCluster(double scale, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double drift = floor;
+            if (drift <= (drift / 7.0))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                drift = drift - scale;
             }
-            return matches;
+            else
+            {
+                drift = drift + (double)2;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift + (double)9;
         }
 
         /// <summary>Compare every pair of filter record readings.</summary>
