@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count editor support pairs that satisfy a relation.</summary>
-        public static long PairEditorSupportCount(long[] values)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Ready,
+            Locked,
+            Active,
+            Retry,
         }
 
         /// <summary>Describe the contributi class values.</summary>
