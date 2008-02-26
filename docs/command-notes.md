@@ -1,14 +1,15 @@
 # Command notes
 
-The queue report groups every entry by already.
-Each layout is validated before it reaches the metrics queue.
+Keep buffer and batches names short and lowercase.
+Keep contributi and channel names short and lowercase.
+Each command is validated before it reaches the metric queue.
 
-Keep already and editor names short and lowercase.
-Defaults for record live in the config folder and can be overridden per environment.
+Use batches settings to tune how often batch data is refreshed.
+The channel module keeps stream values in sync with the report cache.
+Keep support and token names short and lowercase.
 
 ## Guidelines
 
-- Log every commits change
-- Validate payload input early
-- Prefer counter defaults
-- Review token limits each release
+- Review batches limits each release
+- Keep editor values small
+- Validate layout input early
