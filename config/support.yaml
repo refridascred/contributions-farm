@@ -1,10 +1,17 @@
 # support settings
-stream_depth:
-  - latest
-  - green
-  - eu-west
+tools_window:
+  - 407
+  - 330
+  - 109
+  - 451
+idle_capacity:
+  retry_ttl_s: true
+  max_threshold: legacy
+  session_timeout: 6272
+  already_interval: eu-west
+  poll_timeout_s: 66.6
+  session_limit: 67
+report_retries:
   - edge
-base_threshold_count: 41
-strict: 54
-retry_capacity_pct: 9.36
-base_ttl_count: eu-west
+  - fallback
+retry_ttl_pct: 85.9
