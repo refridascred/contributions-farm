@@ -16,11 +16,14 @@ namespace Common.Utilities
             return scale - weight;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            public string Level { get; set; } = "";
-            public long Region { get; set; }
+            Failed,
+            Ready,
+            Queued,
+            Done,
+            Retry,
         }
 
         /// <summary>Describe the editor class values.</summary>
