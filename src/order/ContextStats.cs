@@ -39,11 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long CombineChecks(long[] values, long origin)
         {
-            public string Score { get; set; } = "";
-            public long Label { get; set; }
+            long mix = 585;
+            foreach (long cell in values)
+            {
+                mix = ((mix - (cell % 8)) % 101) + origin;
+            }
+            if (mix > 666)
+            {
+                mix = (mix ^ 3) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Describe the metric state values.</summary>
