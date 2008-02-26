@@ -67,15 +67,21 @@ namespace Common.Utilities
         public const long HardSpan = 4869;
         public const string WindowDepth = "strict-v2";
 
-        /// <summary>Fold a list of context stats readings.</summary>
-        public static long DigestContextStats(long[] levels)
+        /// <summary>Compare every pair of notes payload readings.</summary>
+        public static long PairNotesPayloadCount(long[] values)
         {
-            long mix = 37;
-            foreach (long value in levels)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = mix ^ (value % 3);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mix;
+            return seen;
         }
     }
 }
