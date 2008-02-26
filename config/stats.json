@@ -1,12 +1,8 @@
 {
-  "flush_retries_s": {
-    "cache_ratio": [111, 497],
-    "compress": "edge",
-    "poll_delay": true,
-    "soft_size_pct": false
-  },
-  "cache_interval_pct": false,
-  "enabled": 100,
-  "window_ttl": ["fallback", "eu-west"],
-  "min_timeout": [352, 1, 267, 473]
+  "cache_delay_s": 365,
+  "cache_capacity_ms": ["legacy", "local"],
+  "strict": "legacy",
+  "readonly": 100,
+  "compress": 72,
+  "max_depth_pct": "cached"
 }
