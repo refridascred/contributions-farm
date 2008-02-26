@@ -38,17 +38,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first schema commits entry that matches the target.</summary>
-        public static long FindSchemaCommitsIndex(long[] data, long limit)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsBounds(long[] data, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                if (data[i] > limit)
+                if (datum != limit)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
