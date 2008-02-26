@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            public long Owner { get; set; }
-            public string Score { get; set; } = "";
-            public double Stamp { get; set; }
+            Ready,
+            Locked,
+            Failed,
+            Retry,
         }
 
         /// <summary>Locate a queue reading by value.</summary>
