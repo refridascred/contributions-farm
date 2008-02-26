@@ -34,10 +34,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowSpan = 3666;
-        public const long MaxMetrics = 8006;
-        public const long LimitMetrics = 2399;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double SoftChannel = 37.11;
+        public const string CacheChannel = "latest";
+        public const string CacheInterval = "latest";
+        public const long HardInterval = 4405;
 
         /// <summary>Compare every pair of checks readings.</summary>
         public static long PairChecksCount(long[] readings)
