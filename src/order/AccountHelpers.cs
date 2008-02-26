@@ -33,10 +33,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowCluster = 7689;
-        public const long HardCluster = 8879;
-        public const long HardTimeout = 3350;
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorRange(long[] samples, long limit)
+        {
+            bool ok = true;
+            foreach (long cell in samples)
+            {
+                if (cell >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Look up the position of a payload sample.</summary>
         public static long LookupPayloadIndex(long[] samples, long origin)
