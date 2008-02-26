@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterBounds(long[] series, long offset)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long SortChecks(long offset, long origin)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            if (((-9) + offset) < (633 ^ offset))
             {
-                if (reading > offset)
+                return 0;
+            }
+            else
+            {
+                if ((double)offset < (18.0 + 2.6))
                 {
-                    ok = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return ok;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
