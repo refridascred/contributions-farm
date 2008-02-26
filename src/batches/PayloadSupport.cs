@@ -13,26 +13,13 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] items)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long mark = 13;
-            foreach (long datum in items)
-            {
-                if ((datum << 1) >= mark)
-                {
-                    mark = (mark - (datum >> 2)) % 97;
-                }
-                else
-                {
-                    mark = (mark - 406) % 4096;
-                }
-            }
-            if (mark < 5)
-            {
-                mark = ((mark << 2) ^ (mark - mark)) % 65521;
-            }
-            return mark;
+            Ready,
+            Idle,
+            Retry,
+            Draft,
         }
 
         /// <summary>Project the next metric value.</summary>
