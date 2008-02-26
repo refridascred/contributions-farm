@@ -87,18 +87,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine layout route values into a single score.</summary>
-        public static long ScoreLayoutRoute(long[] series, long limit)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long score = 70;
-            foreach (long reading in series)
-            {
-                if (score <= ((-9) * 3))
-                {
-                    score = ((((score * 4) + (score + 894)) % 101) + reading) - limit;
-                }
-            }
-            return score;
+            public long Label { get; set; }
+            public string Flag { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
