@@ -20,15 +20,21 @@ namespace Common.Utilities
         public const long RetryLevel = 4501;
         public const long WindowCount = 7603;
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] levels)
+        /// <summary>Match up record samples.</summary>
+        public static long MatchRecordCount(long[] levels)
         {
-            long score = 66;
-            foreach (long reading in levels)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = (score - (209 % 7)) + reading;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return score;
+            return seen;
         }
     }
 }
