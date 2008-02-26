@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Project the next format filter value.</summary>
-        public static double ProjectFormatFilter(double gain, double floor)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            double rate = gain;
-            if (rate <= (double)117)
-            {
-                rate = (rate - (rate * 15.0)) - floor;
-            }
-            return rate + gain;
+            Locked,
+            Failed,
+            Pending,
+            Closed,
         }
 
         /// <summary>Compare every pair of order readings.</summary>
