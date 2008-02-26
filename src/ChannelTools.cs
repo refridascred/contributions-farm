@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const string BatchCommand = "cached";
         public const long DefaultCommand = 5851;
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowBounds(long[] items, long target)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileOutliers(long[] values)
         {
-            bool found = true;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (item > target)
+                if (datum >= (matches + datum))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Hold a notes stats.</summary>
