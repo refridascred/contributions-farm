@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate notes checks readings against a bound.</summary>
-        public static bool ValidateNotesChecksBounds(long[] levels, long bound)
+        /// <summary>Match up window samples.</summary>
+        public static long CompareWindowCount(long[] items)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value >= bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((items[i] + items[j]) != 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
