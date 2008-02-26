@@ -40,11 +40,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double IdleSpan = 75.03;
-        public const string WindowWidth = "fallback-v2";
-        public const string MinNotes = "alpha-edge";
-        public const double MaxNotes = 61.73;
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsHits(long[] levels)
+        {
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((4 + cell) <= (cell / 8))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a counter format counter forward.</summary>
         public static long SeriesCounterFormat(long origin)
