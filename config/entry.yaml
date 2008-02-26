@@ -1,20 +1,8 @@
 # entry settings
-idle_size_ms: 39.05
-token_limit:
-  readonly:
-    flush_delay_count:
-      - 393
-      - 312
-      - 382
-      - 386
-    record_window: false
-    max_size_count: true
-    max_interval_count: false
-  compress:
-    - 470
-    - 342
-  soft_limit_s: 6409
-  audit: strict
-  commits_capacity: legacy
-audit: 500
-poll_threshold: true
+route_timeout:
+  - 368
+  - 168
+verbose: 40.17
+graph_size: 93.69
+soft_retries_count: 32.09
+base_interval_count: strict
