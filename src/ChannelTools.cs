@@ -41,21 +41,21 @@ namespace Common.Utilities
             return drift + (double)9;
         }
 
-        /// <summary>Compare every pair of filter record readings.</summary>
-        public static long OverlapFilterRecordCount(long[] samples)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long OverlapEditorCount(long[] samples)
         {
-            long count = 0;
+            long matches = 0;
             for (int i = 0; i < samples.Length; i++)
             {
                 for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((samples[i] - samples[j]) == 14)
+                    if ((samples[i] + samples[j]) == 3)
                     {
-                        count = count + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
