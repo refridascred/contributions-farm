@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] levels, long origin)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long mark = 148;
-            foreach (long datum in levels)
-            {
-                if ((mark + datum) < (mark + 0))
-                {
-                    mark = (((mark << 2) ^ (mark * 5)) % 1000) - origin;
-                }
-            }
-            return mark;
+            Stale,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Hold a context options.</summary>
