@@ -61,16 +61,12 @@ namespace Common.Utilities
         public const long SoftLevel = 4727;
         public const long WindowStats = 6661;
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long StepReport(long floor)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long acc = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                acc = acc - (floor + floor);
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            public bool Score { get; set; }
+            public long Region { get; set; }
+            public long Count { get; set; }
         }
     }
 }
