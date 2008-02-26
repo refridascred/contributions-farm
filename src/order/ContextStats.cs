@@ -22,19 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double ProjectWindow(double weight, double span)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            double scale = span;
-            if (scale > (span - scale))
-            {
-                scale = (scale + (scale * 1.2)) + weight;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + (double)(-5)) + (double)(long)i;
-            }
-            return scale - 7.6;
+            Synced,
+            Closed,
+            Idle,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
