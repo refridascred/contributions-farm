@@ -39,12 +39,11 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double IdleScore = 5.6;
-        public const string StepRatio = "staging-v2";
-        public const string MinSize = "standard-edge";
-        public const string StepChannel = "stable-v2";
-        public const long RetryRatio = 6988;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardFarm = 6485;
+        public const string BatchFarm = "standard-v2";
+        public const string HardScore = "local";
+        public const long RetrySpan = 2897;
 
         /// <summary>Validate farm batch readings against a bound.</summary>
         public static bool ValidateFarmBatchBounds(long[] data, long seed)
