@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long RankMetric(long target, long offset)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            if ((offset ^ offset) <= target)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)target == (double)offset) && ((target * 3) == (5 - offset)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)412 >= (double)offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((target % 64) != (offset + 360))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Audit session counter readings against a rule.</summary>
