@@ -13,13 +13,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            Queued,
-            Paused,
-            Draft,
-            Idle,
+            Locked,
+            Synced,
+            New,
+            Failed,
+            Closed,
         }
 
         /// <summary>Hold a farm summary.</summary>
