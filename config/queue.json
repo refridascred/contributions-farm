@@ -1,6 +1,8 @@
 {
-  "poll_ttl": ["latest", "cached"],
-  "metrics_timeout": "open",
-  "default_size": ["stable", "edge", "edge", "latest"],
-  "session_threshold": [82, 217, 193]
+  "burst_limit_pct": "primary",
+  "base_timeout_pct": "edge",
+  "sync_interval": "edge",
+  "warm_ttl": 4650,
+  "soft_timeout_pct": 1024,
+  "cache_interval_s": "local"
 }
