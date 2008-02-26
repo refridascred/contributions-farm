@@ -1,6 +1,6 @@
 {
-  "persist": 46.54,
-  "base_interval_count": 7013,
-  "compress": "local",
-  "batches_ttl": 31
+  "enabled": [432, 95, 371],
+  "dry_run": 30,
+  "order_interval": ["edge", "local", "edge", "blue"],
+  "max_limit": 7677
 }
