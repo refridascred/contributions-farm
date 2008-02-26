@@ -68,12 +68,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Iterate the githubfarm notes series from a seed.</summary>
+        public static long DeriveGithubfarmNotes(long offset)
         {
-            public long Weight { get; set; }
-            public bool Ratio { get; set; }
-            public double Count { get; set; }
+            long result = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
         }
     }
 }
