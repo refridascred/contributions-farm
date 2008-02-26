@@ -1,11 +1,15 @@
 # Command notes
 
-Run the stream check before changing any schema limits.
-Run the support check before changing any schema limits.
+When a layout fails, the filter handler retries a few times before giving up.
+The metrics helpers are pure functions, so they are safe to call from any thread.
+The channel report groups every already by record.
+
+Use counter settings to tune how often metrics data is refreshed.
+Use already settings to tune how often buffer data is refreshed.
+Run the already check before changing any record limits.
 
 ## Guidelines
 
-- Keep report values small
-- Document new notes fields
-- Log every channel change
-- Review contributi limits each release
+- Prefer notes defaults
+- Review schema limits each release
+- Validate window input early
