@@ -1,8 +1,16 @@
 {
-  "min_depth": 1024,
-  "hard_delay_count": true,
-  "retry_threshold_s": "primary",
-  "poll_capacity": false,
-  "audit": 36.9,
-  "burst_capacity": 7630
+  "batches_threshold": {
+    "audit": 50.96,
+    "enabled": true,
+    "persist": 32.84,
+    "readonly": 4772,
+    "sync_size_ms": {
+      "cache_ttl_count": 24,
+      "min_ratio": "strict",
+      "batch_window_ms": 60,
+      "compress": 26
+    }
+  },
+  "hard_interval_ms": "eu-west",
+  "base_interval": 14
 }
