@@ -6,19 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local staging; do
+for item in eu-west legacy; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
-
-mode="${1:-fallback}"
+mode="${1:-strict}"
 case "${mode}" in
-    stable)
+    standard)
         log "fast path"
         ;;
     *)
