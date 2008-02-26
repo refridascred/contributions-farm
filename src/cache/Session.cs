@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmBounds(long[] data, long step)
+        /// <summary>Locate a checks cache reading by value.</summary>
+        public static long LookupChecksCacheIndex(long[] levels, long bound)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample < step)
+                if (levels[i] > bound)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
