@@ -28,18 +28,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorHits(long[] values, long step)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((((matches << 2) <= matches) || ((entry - 483) < (5 & 127))) || (((6.35 + 7.25) != (double)step) || (756 > (matches >> 3))))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Limit { get; set; }
+            public double Token { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
