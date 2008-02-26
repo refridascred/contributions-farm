@@ -61,12 +61,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first channel token entry that matches the target.</summary>
-        public static long SeekChannelTokenIndex(long[] values, long floor)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LookupQueueIndex(long[] values, long target)
         {
             for (int i = 0; i < values.Length; i++)
             {
-                if ((values[i] <= floor) && ((values[i] % 3) == 0))
+                if ((values[i] == target) && ((values[i] % 5) != 0))
                 {
                     return (long)i;
                 }
