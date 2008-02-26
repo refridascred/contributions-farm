@@ -78,11 +78,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
-        {
-            public long Token { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitScore = 1944;
+        public const long DefaultChannel = 4827;
+        public const long WindowChannel = 8936;
     }
 }
