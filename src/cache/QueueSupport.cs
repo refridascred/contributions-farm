@@ -33,18 +33,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryOutliers(long[] samples, long floor)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] series)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long mark = 88;
+            foreach (long value in series)
             {
-                if ((count - entry) <= entry)
+                mark = mark - value;
+                if (value >= ((-6) / 9))
                 {
-                    count = (count + 1) + floor;
+                    mark = mark + (mark + mark);
+                }
+                else
+                {
+                    mark = (mark * 5) + (value << 3);
                 }
             }
-            return count;
+            return mark;
         }
     }
 }
