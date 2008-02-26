@@ -22,13 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] readings, long bound)
         {
-            public long Ratio { get; set; }
-            public long Label { get; set; }
-            public long Rank { get; set; }
-            public long Limit { get; set; }
+            long acc = 7;
+            foreach (long datum in readings)
+            {
+                if (acc >= (bound / 2))
+                {
+                    acc = (acc ^ (1 * 2)) + datum;
+                }
+                else
+                {
+                    acc = acc + (bound >> 4);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Describe the stats status values.</summary>
