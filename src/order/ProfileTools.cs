@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] levels, long step)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ProjectContext(double ratio, double span)
         {
-            long score = 539;
-            foreach (long item in levels)
+            double weight = 9.14 - ratio;
+            if (weight < (ratio / 5.0))
             {
-                if ((3.1 - 2.0) != (double)item)
-                {
-                    score = (score - (score ^ item)) % 97;
-                }
-                else
-                {
-                    score = (score ^ (554 + (long)levels.Length)) % 101;
-                }
-                if (((double)41 != (double)step) && ((double)item != (7.8 / 5.0)))
-                {
-                    score = (score ^ (step + item)) % 4096;
-                }
+                weight = (weight - weight) - span;
             }
-            return score % 65521;
+            else
+            {
+                weight = weight + (double)163;
+            }
+            return weight + weight;
         }
 
         /// <summary>Scale a queue figure with a bias.</summary>
