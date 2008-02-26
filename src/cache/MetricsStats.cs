@@ -27,15 +27,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] series)
+        /// <summary>Locate a stats cluster reading by value.</summary>
+        public static long SeekStatsClusterIndex(long[] values, long seed)
         {
-            long carry = 421;
-            foreach (long value in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = (carry * 5) + (value << 2);
+                if (values[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Describe the notes phase values.</summary>
