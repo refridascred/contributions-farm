@@ -63,22 +63,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileMatches(long[] series)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long origin, long step)
         {
-            long count = 0;
-            foreach (long value in series)
+            long edge = origin ^ step;
+            if (!(63 < edge))
             {
-                if ((927 >> 5) >= (count ^ count))
+                return 8;
+            }
+            else
+            {
+                if ((double)edge == (double)step)
                 {
-                    count = (count + 1) + value;
+                    return 0;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((double)edge > 8.0)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return count;
         }
     }
 }
