@@ -60,18 +60,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaGaps(long[] series, long origin)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (!((double)origin < 4.6))
-                {
-                    seen = (seen + 3) ^ reading;
-                }
-            }
-            return seen;
+            public long Offset { get; set; }
+            public double Rank { get; set; }
+            public long Token { get; set; }
+            public double Total { get; set; }
         }
     }
 }
