@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of metric channel readings.</summary>
-        public static long TotalMetricChannel(long[] items)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long RankProfile(long limit, long step)
         {
-            long acc = 640;
-            foreach (long sample in items)
+            if ((step - step) >= step)
             {
-                acc = (acc ^ (acc % 5)) - sample;
+                return 6;
             }
-            return acc % 1000;
+            else
+            {
+                if ((double)step < (0.9 * 15.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((6.17 / 3.0) > (double)step)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((1.45 / 9.0) > (double)limit)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a record account reading by value.</summary>
