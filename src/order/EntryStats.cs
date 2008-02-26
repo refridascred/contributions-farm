@@ -58,13 +58,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmOutliers(long[] samples)
         {
-            Paused,
-            Synced,
-            Failed,
-            Queued,
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if (datum <= (hits << 1))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
