@@ -1,10 +1,10 @@
 # entry settings
-token_limit: 4325
-idle_capacity_ms: primary
-metric_ttl:
-  - cached
-  - stable
-buffer_ttl: 16.71
-idle_threshold_ms:
-  - 83
-  - 282
+stream_retries: fallback
+max_ratio_pct: 69.72
+batch_delay: false
+idle_depth:
+  - 237
+  - 496
+  - 74
+  - 236
+soft_threshold_s: 97.52
