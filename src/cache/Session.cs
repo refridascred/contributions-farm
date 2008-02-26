@@ -46,14 +46,9 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
-        {
-            Paused,
-            Ready,
-            Queued,
-            Pending,
-            New,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinWindow = 6589;
+        public const long LimitFactor = 2452;
+        public const string HardInterval = "standard";
     }
 }
