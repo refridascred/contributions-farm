@@ -19,18 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowOutliers(long[] data)
+        /// <summary>Count the buffer schema entries that pass the check.</summary>
+        public static long MeasureBufferSchemaMatches(long[] readings)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((15.0 - 13.0) <= (double)hits)
+                if (datum < (count % 100))
                 {
-                    hits = (hits + 2) - entry;
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Accumulate tools samples.</summary>
