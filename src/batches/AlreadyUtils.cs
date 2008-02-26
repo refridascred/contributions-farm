@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BurstScore = 519;
-        public const string DefaultQueue = "standard-1";
-        public const long BatchQueue = 2821;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheBatches = 9603;
+        public const long BurstInterval = 8002;
+        public const long BurstBatches = 8994;
+        public const long DefaultBudget = 9913;
 
         /// <summary>Iterate the session series from a seed.</summary>
         public static long IterateSession(long bound)
