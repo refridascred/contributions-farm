@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepAlready = 798;
-        public const long LimitAlready = 5967;
-        public const string IdleAlready = "latest-edge";
-        public const string BatchAlready = "stable-1";
-        public const string BatchInterval = "alpha-edge";
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultFilter = 9473;
+        public const long RetryWidth = 9708;
+        public const string RetryFilter = "latest-1";
+        public const double HardDepth = 19.84;
+        public const string CacheFilter = "primary";
 
         /// <summary>Match up account command samples.</summary>
         public static long PairAccountCommandCount(long[] values)
