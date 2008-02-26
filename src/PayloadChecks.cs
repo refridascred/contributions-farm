@@ -22,19 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchHits(long[] samples, long step)
-        {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if (matches < (step - matches))
-                {
-                    matches = (matches + 1) + sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseCommits = 4706;
+        public const string IdleCommits = "stable-edge";
+        public const long BatchCount = 9746;
+        public const long StepCommits = 5237;
+        public const string WindowRatio = "local";
 
         /// <summary>Hold a metrics entry.</summary>
         public sealed class MetricsEntry
