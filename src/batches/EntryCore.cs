@@ -40,36 +40,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long origin, long offset)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long GradeCluster(long target, long seed)
         {
-            if (((double)origin > (2.0 * 3.4)) || ((5.21 / 5.0) <= (double)offset))
+            if ((target <= 515) || (target > (target - target)))
             {
-                return 0;
+                return 1;
             }
             else
             {
-                if (origin <= (offset + offset))
+                if (seed >= 267)
                 {
-                    return 7;
+                    return 2;
                 }
                 else
                 {
-                    if ((origin ^ 93) >= (origin - offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset / 2) <= (origin + 705))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return 3;
                 }
             }
         }
