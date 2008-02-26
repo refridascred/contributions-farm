@@ -1,9 +1,16 @@
 # githubfarm settings
-poll_depth: 60
-batches_limit: 35
-compress: 82
-notes_delay:
-  - 128
-  - 423
-  - 168
-enabled: 9.97
+report_window: 77
+batch_delay: 62.6
+default_threshold:
+  - 110
+  - 249
+  - 355
+window_interval: legacy
+idle_depth_s:
+  batch_threshold: 6
+  burst_threshold_ms: true
+  notes_window: false
+  graph_threshold: 10.37
+  retry_window_ms: edge
+  stats_ratio: true
+cache_window: 1024
