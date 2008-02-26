@@ -20,17 +20,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a record account reading by value.</summary>
-        public static long LocateRecordAccountIndex(long[] values, long target)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long BucketWindow(long step, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((step / 2) >= (step << 3))
             {
-                if (values[i] == target)
+                return 8;
+            }
+            else
+            {
+                if (origin >= (origin << 3))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
