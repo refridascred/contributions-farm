@@ -60,24 +60,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long floor, long step)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaGaps(long[] series, long origin)
         {
-            if ((floor << 3) < step)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((4.0 * 4.0) >= (double)step)
+                if (!((double)origin < 4.6))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    seen = (seen + 3) ^ reading;
                 }
             }
+            return seen;
         }
     }
 }
