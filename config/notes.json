@@ -1,17 +1,17 @@
 {
-  "account_timeout": 21.96,
-  "strict": 1990,
-  "idle_limit": "stable",
-  "retry_delay": {
-    "already_capacity": "staging",
-    "queue_delay": {
-      "max_window_ms": 25,
-      "burst_ratio_pct": 9.17,
-      "verbose": 78
+  "verbose": "fallback",
+  "sync_window_ms": 89,
+  "max_capacity": {
+    "compress": "legacy",
+    "batches_retries": "strict",
+    "default_timeout_pct": {
+      "retry_timeout_count": "open",
+      "commits_size": [497, 31, 242, 275],
+      "idle_limit_s": "local",
+      "sync_limit_ms": true
     },
-    "stats_depth": "eu-west",
-    "batch_depth_ms": "cached",
-    "idle_ratio": 37.82
+    "poll_interval_ms": 9306
   },
-  "retry_limit_s": 100
+  "profile_timeout": 67.08,
+  "readonly": false
 }
