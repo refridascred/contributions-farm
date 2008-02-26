@@ -1,4 +1,10 @@
 # entry settings
-compress: open
-report_size: 250
-queue_capacity: 9486
+token_limit: 4325
+idle_capacity_ms: primary
+metric_ttl:
+  - cached
+  - stable
+buffer_ttl: 16.71
+idle_threshold_ms:
+  - 83
+  - 282
