@@ -40,10 +40,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string MaxFarm = "local";
-        public const string DefaultFarm = "fallback-edge";
-        public const string SoftFarm = "cached-v2";
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchOutliers(long[] readings)
+        {
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if (!((tally - tally) >= (tally ^ tally)))
+                {
+                    tally = (tally + 1) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the profile state values.</summary>
         public enum ProfileState
