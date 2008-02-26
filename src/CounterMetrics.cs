@@ -35,21 +35,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count support metric pairs that satisfy a relation.</summary>
-        public static long PairSupportMetricCount(long[] samples)
+        /// <summary>Roll a counter batch counter forward.</summary>
+        public static long StepCounterBatch(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                long lane = ((-49) * 5) * 2;
+                if (((bound + anchor) >= (6 * 3)) || (anchor <= (lane + 64)))
                 {
-                    if ((samples[i] - samples[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = (anchor ^ ((long)i % 100)) % 4096;
                 }
+                else
+                {
+                    anchor = (anchor * 5) + (anchor - lane);
+                }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Describe the entry status values.</summary>
