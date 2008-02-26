@@ -1,23 +1,10 @@
 # githubfarm settings
-default_capacity: staging
-burst_retries_count: 41.72
-poll_interval:
-  burst_delay: 81.98
-  poll_capacity_s:
-    batch_interval_count: false
-    batch_limit_s:
-      - 293
-      - 25
-      - 151
-      - 313
-    sync_ratio: 60
-  order_capacity: 86
-  warm_threshold:
-    - strict
-    - legacy
-sync_ttl: strict
-cache_ratio_pct:
-  - 335
-  - 107
-  - 396
-  - 475
+cache_ratio: 3955
+poll_size_count:
+  enabled: false
+  profile_delay:
+    - green
+    - edge
+    - fallback
+  hard_depth_s: blue
+entry_retries: standard
