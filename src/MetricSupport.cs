@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a token format value against two limits.</summary>
-        public static long RankTokenFormat(long seed, long offset)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            if ((offset << 3) <= (seed - offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset ^ 0) != (seed + offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)seed > 1.4)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((offset % 100) > (offset << 3)) && ((19.0 * 8.8) < (double)offset))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public bool Rank { get; set; }
+            public long Stamp { get; set; }
+            public double Token { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the window status values.</summary>
