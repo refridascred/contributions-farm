@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit metrics notes readings against a rule.</summary>
-        public static long CountMetricsNotesHits(long[] samples, long floor)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksMatches(long[] series, long bound)
         {
             long tally = 0;
-            foreach (long reading in samples)
+            foreach (long datum in series)
             {
-                if ((floor >> 5) < reading)
+                if (((10.0 - 5.2) != (double)bound) && (((1.35 / 6.0) >= (double)datum) && ((datum - bound) <= (datum & 7))))
                 {
-                    tally = tally + 2;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
