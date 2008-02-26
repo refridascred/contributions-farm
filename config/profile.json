@@ -1,7 +1,5 @@
 {
-  "persist": 46.82,
-  "hard_timeout_ms": 7905,
-  "warm_limit_s": 9225,
-  "warm_ttl_count": 8456,
-  "audit": "staging"
+  "warm_delay_pct": 96.3,
+  "session_limit": [496, 385],
+  "retry_retries": "standard"
 }
