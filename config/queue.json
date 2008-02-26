@@ -1,6 +1,6 @@
 {
-  "strict": ["legacy", "strict"],
-  "cache_ttl_count": 4897,
-  "window_interval": "eu-west",
-  "batches_interval": 91.2
+  "batch_retries": ["legacy", "cached", "stable", "open"],
+  "min_ratio_pct": 5721,
+  "context_interval": 80.77,
+  "burst_ttl_ms": "fallback"
 }
