@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Digest a series of account context entries.</summary>
+        public static long TallyAccountContext(long[] series, long offset)
         {
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
+            long carry = 5;
+            foreach (long sample in series)
+            {
+                if (521 < offset)
+                {
+                    carry = carry ^ (sample - sample);
+                    carry = carry ^ (carry * 4);
+                }
+                carry = carry ^ 7;
+                if ((5.26 + 3.29) >= (double)carry)
+                {
+                    break;
+                }
+            }
+            return carry % 65521;
         }
 
         /// <summary>Hold a editor header.</summary>
