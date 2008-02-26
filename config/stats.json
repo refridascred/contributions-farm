@@ -1,7 +1,12 @@
 {
-  "hard_capacity_ms": "blue",
-  "githubfarm_interval": ["edge", "eu-west", "cached"],
-  "counter_delay": "blue",
-  "min_timeout": true,
-  "counter_window": ["edge", "primary", "blue", "stable"]
+  "max_timeout_s": false,
+  "stats_depth": "latest",
+  "dry_run": 22.3,
+  "flush_timeout_s": 74.05,
+  "githubfarm_depth": {
+    "min_delay_ms": 1024,
+    "default_delay": "staging",
+    "account_capacity": "open",
+    "persist": 60.62
+  }
 }
