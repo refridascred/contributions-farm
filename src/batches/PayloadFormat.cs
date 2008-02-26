@@ -16,11 +16,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ProjectCommits(double rate, double offset)
         {
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
+            double bias = (rate / 3.0) / 5.0;
+            if (bias >= rate)
+            {
+                bias = (bias + rate) - offset;
+            }
+            return bias + (7.0 / 3.0);
         }
 
         /// <summary>Describe the batch level values.</summary>
