@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Match up batch samples.</summary>
-        public static long PairBatchCount(long[] levels)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long RankFarm(long target, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (((target + target) == (target + 0)) || ((520 / 9) > (target + step)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((target <= (target << 2)) && ((step & 31) > (target * 2)))
                 {
-                    if ((levels[i] - levels[j]) != 8)
+                    return 2;
+                }
+                else
+                {
+                    if (!((double)step >= (4.4 - 4.0)))
                     {
-                        tally = tally + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((step + target) >= (target & 7))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
