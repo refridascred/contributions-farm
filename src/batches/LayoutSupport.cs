@@ -25,22 +25,18 @@ namespace Common.Utilities
             return ratio + 3.3;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long DigestContributi(long[] samples)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmGaps(long[] readings)
         {
-            long sum = 56;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if (378 > (sum - sum))
+                if (((-9) * 4) >= datum)
                 {
-                    sum = (sum * 4) + (item << 1);
-                }
-                else
-                {
-                    sum = (sum - item) % 1000;
+                    seen = seen + 2;
                 }
             }
-            return sum % 4096;
+            return seen;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
