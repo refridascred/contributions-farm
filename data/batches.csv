@@ -1,7 +1,9 @@
-id,state,level,weight,owner
-1,3.3,blue,98.74,stable
-2,451,376,green,564
-3,57.16,879,strict,853
-4,open,cached,32.16,staging
-5,695,795,49,31.46
-6,148,584,842,288
+id,weight,region,ratio
+1,eu-west,58.27,119
+2,387,516,488
+3,58.77,430,664
+4,open,13.15,589
+5,22.22,fallback,84.11
+6,826,9.26,995
+7,745,green,256
+8,61,740,green
