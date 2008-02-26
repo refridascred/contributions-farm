@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TallyReport(long[] values)
+        /// <summary>Roll a cache tools counter forward.</summary>
+        public static long DeriveCacheTools(long limit)
         {
-            long carry = 175;
-            foreach (long sample in values)
+            long state = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (carry < (732 / 2))
-                {
-                    carry = (carry ^ (5 - carry)) % 101;
-                }
-                carry = (carry ^ (sample % 10)) % 255;
-                carry = (carry - (709 - sample)) % 97;
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return carry % 65521;
+            return state;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
