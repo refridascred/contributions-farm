@@ -69,24 +69,17 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Grade a profile batch value against two limits.</summary>
-        public static long GradeProfileBatch(long bound, long target)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LocateToolsIndex(long[] samples, long bound)
         {
-            if ((6.3 / 6.0) < (double)bound)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound - bound) >= bound)
+                if ((samples[i] >= bound) && ((samples[i] % 2) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
