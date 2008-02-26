@@ -22,15 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double AdjustMetrics(double weight, double offset)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            double rate = (double)(71 * 5);
-            if (rate < (double)93)
-            {
-                rate = (rate + (double)1) - weight;
-            }
-            return rate + (offset / 2.0);
+            public double Count { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
