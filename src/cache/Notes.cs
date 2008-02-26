@@ -23,19 +23,19 @@ namespace Common.Utilities
             return weight + (double)(-9);
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiLimits(long[] items, long limit)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheLimits(long[] data, long offset)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long cell in data)
             {
-                if (sample < limit)
+                if (cell != offset)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Accumulate entry samples.</summary>
