@@ -25,12 +25,13 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            public double Region { get; set; }
-            public double Token { get; set; }
-            public double Stamp { get; set; }
+            Pending,
+            Queued,
+            Ready,
+            Synced,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
