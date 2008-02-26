@@ -13,17 +13,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a entry tools sample.</summary>
-        public static long LocateEntryToolsIndex(long[] series, long target)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ProjectStream(double weight, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double bias2 = bias;
+            if (bias2 <= (bias2 / 4.0))
             {
-                if (series[i] > target)
-                {
-                    return (long)i;
-                }
+                bias2 = bias2 + weight;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 - bias2) + (double)(long)i;
+            }
+            return bias2 - (double)79;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
