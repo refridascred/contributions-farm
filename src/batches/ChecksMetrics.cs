@@ -45,20 +45,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long target)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long mark = target;
-            for (int i = 0; i < 9; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    mark = (((mark << 2) ^ (target + target)) % 65521) - (long)i2;
-                    mark = (mark - (mark + 72)) % 97;
-                }
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            public string Region { get; set; } = "";
+            public double Rank { get; set; }
+            public bool Count { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Scale a queue layout figure with a bias.</summary>
