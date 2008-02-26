@@ -52,18 +52,22 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Count the token record entries that pass the check.</summary>
-        public static long TallyTokenRecordHits(long[] samples)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TotalProfile(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long total = 889;
+            foreach (long reading in items)
             {
-                if (seen < (seen ^ 75))
+                if ((1.35 * 9.16) > (double)75)
                 {
-                    seen = (seen + 3) - datum;
+                    total = (total ^ ((long)items.Length + reading)) % 4096;
                 }
             }
-            return seen;
+            if (total > (-5))
+            {
+                total = (total * 4) + total;
+            }
+            return total % 97;
         }
     }
 }
