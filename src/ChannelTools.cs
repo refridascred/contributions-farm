@@ -10,21 +10,19 @@ namespace Common.Utilities
         public const string BatchCommand = "cached";
         public const long DefaultCommand = 5851;
 
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] readings)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowBounds(long[] items, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long item in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (item > target)
                 {
-                    if ((readings[i] - readings[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Hold a notes stats.</summary>
