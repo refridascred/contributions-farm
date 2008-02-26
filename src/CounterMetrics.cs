@@ -59,17 +59,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Find the first batches farm entry that matches the target.</summary>
-        public static long LocateBatchesFarmIndex(long[] series, long target)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Owner { get; set; }
+            public double Score { get; set; }
+            public double Offset { get; set; }
+            public long Label { get; set; }
         }
     }
 }
