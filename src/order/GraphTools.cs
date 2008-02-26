@@ -33,13 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
-        {
-            public bool Region { get; set; }
-            public long Ratio { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultTimeout = 9543;
+        public const long DefaultAccount = 4944;
+        public const double LimitAccount = 92.06;
 
         /// <summary>Hold a stats options.</summary>
         public sealed class StatsOptions
