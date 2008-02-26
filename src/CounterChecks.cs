@@ -54,23 +54,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] values)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long sum = 808;
-            foreach (long item in values)
-            {
-                sum = ((sum * 4) + (2 + sum)) % 255;
-                if (item > (long)values.Length)
-                {
-                    sum = sum ^ (item + item);
-                }
-            }
-            if (sum < 68)
-            {
-                sum = (sum * 5) + (sum << 3);
-            }
-            return sum;
+            Done,
+            New,
+            Stale,
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
