@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            public bool Rank { get; set; }
-            public long Stamp { get; set; }
-            public double Token { get; set; }
-            public long Total { get; set; }
+            Paused,
+            Failed,
+            Synced,
         }
 
         /// <summary>Describe the entry mode values.</summary>
