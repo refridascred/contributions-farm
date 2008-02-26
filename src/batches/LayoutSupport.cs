@@ -14,31 +14,15 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Grade a githubfarm cache value against two limits.</summary>
-        public static long BucketGithubfarmCache(long seed, long floor)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long IterateCommand(long origin)
         {
-            if (floor <= (-87))
+            long total = origin;
+            for (int i = 0; i < 18; i++)
             {
-                return 3;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if ((148 % 2) >= (seed % 97))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((seed + seed) >= (seed + floor)) || (2.0 >= (9.08 * 5.0)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
