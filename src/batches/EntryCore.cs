@@ -28,26 +28,38 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] values)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long origin, long offset)
         {
-            long acc = -51;
-            foreach (long entry in values)
+            if (((double)origin > (2.0 * 3.4)) || ((5.21 / 5.0) <= (double)offset))
             {
-                if ((9 ^ acc) == (entry - entry))
+                return 0;
+            }
+            else
+            {
+                if (origin <= (offset + offset))
                 {
-                    acc = (acc - acc) % 1000;
+                    return 7;
                 }
-                if ((acc << 3) < 872)
+                else
                 {
-                    break;
+                    if ((origin ^ 93) >= (origin - offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset / 2) <= (origin + 705))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (acc < 615)
-            {
-                acc = ((acc * 2) + (acc - acc)) % 4096;
-            }
-            return acc;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
