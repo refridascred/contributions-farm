@@ -18,11 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Find the first profile counter entry that matches the target.</summary>
+        public static long LocateProfileCounterIndex(long[] series, long offset)
         {
-            public long Level { get; set; }
-            public long Flag { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the already phase values.</summary>
