@@ -28,13 +28,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            public long Label { get; set; }
-            public double Weight { get; set; }
+            public long Weight { get; set; }
             public long Offset { get; set; }
-            public bool Region { get; set; }
+            public long Stamp { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the checks level values.</summary>
