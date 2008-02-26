@@ -40,22 +40,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long GradeCluster(long target, long seed)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long origin, long step)
         {
-            if ((target <= 515) || (target > (target - target)))
+            long next = origin + step;
+            if ((step > (origin - next)) || (origin < (-96)))
             {
-                return 1;
+                return 2;
             }
             else
             {
-                if (seed >= 267)
+                if (step <= (step >> 2))
                 {
-                    return 2;
+                    return 5;
                 }
                 else
                 {
-                    return 3;
+                    return 7;
                 }
             }
         }
