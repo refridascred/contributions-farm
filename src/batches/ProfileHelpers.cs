@@ -55,11 +55,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchTimeout = 8006;
-        public const long HardContributi = 3471;
-        public const long WindowContributi = 3641;
-        public const long BurstWidth = 8780;
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
+        {
+            public string Count { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Classify a order pair into a bucket.</summary>
         public static long SortOrder(long origin, long step)
