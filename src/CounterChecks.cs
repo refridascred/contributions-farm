@@ -40,22 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchOutliers(long[] readings)
+        /// <summary>Look up the position of a commits report sample.</summary>
+        public static long FindCommitsReportIndex(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((tally - tally) >= (tally ^ tally)))
+                if (samples[i] == target)
                 {
-                    tally = (tally + 1) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the profile state values.</summary>
