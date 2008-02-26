@@ -24,19 +24,9 @@ namespace Common.Utilities
         public const long WindowSpan = 1157;
         public const string WindowWidth = "local-1";
 
-        /// <summary>Validate session editor readings against a bound.</summary>
-        public static bool CheckSessionEditorBounds(long[] levels, long step)
-        {
-            bool flag = true;
-            foreach (long value in levels)
-            {
-                if (value <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstGithubfarm = 8950;
+        public const long LimitGithubfarm = 2616;
+        public const long RetryWidth = 3112;
     }
 }
