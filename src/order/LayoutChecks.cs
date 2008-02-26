@@ -33,18 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit queue support readings against a rule.</summary>
-        public static long MeasureQueueSupportOutliers(long[] series, long floor)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (entry > count)
-                {
-                    count = (count + 1) - floor;
-                }
-            }
-            return count;
+            public long Flag { get; set; }
+            public long Token { get; set; }
+            public long Offset { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
