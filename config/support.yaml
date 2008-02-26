@@ -1,7 +1,7 @@
 # support settings
-hard_threshold: open
-flush_threshold_count: green
-strict: 6003
-soft_timeout:
-  - 86
-  - 242
+command_timeout:
+  - 3
+  - 362
+batches_depth: false
+dry_run: 3758
+queue_delay: true
