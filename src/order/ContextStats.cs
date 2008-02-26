@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsBounds(long[] items, long floor)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountLimits(long[] series, long target)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                if (datum > floor)
+                if (datum < target)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Adjust a farm graph reading.</summary>
