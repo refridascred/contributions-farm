@@ -19,11 +19,14 @@ namespace Common.Utilities
         public const long BaseProfile = 8702;
         public const long RetryProfile = 7599;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardOrder = 4337;
-        public const long LimitOrder = 226;
-        public const long DefaultOrder = 270;
-        public const double MaxRatio = 47.13;
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
+        {
+            public long Limit { get; set; }
+            public double Label { get; set; }
+            public double Score { get; set; }
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Describe the editor class values.</summary>
         public enum EditorClass
