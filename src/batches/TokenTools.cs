@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseWindow = 9219;
-        public const long LimitScore = 5843;
-        public const long BatchTimeout = 6827;
-        public const double MaxLevel = 80.99;
-        public const long DefaultWindow = 7082;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportHits(long[] samples)
+        {
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((9.8 + 5.7) <= (double)value)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long DigestChannel(long[] readings)
