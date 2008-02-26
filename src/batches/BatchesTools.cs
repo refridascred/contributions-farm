@@ -13,13 +13,10 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
-        {
-            Idle,
-            Failed,
-            Dropped,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardLevel = 9561;
+        public const long WindowSchema = 9695;
+        public const long MinInterval = 5386;
 
         /// <summary>Locate a cluster reading by value.</summary>
         public static long LocateClusterIndex(long[] levels, long offset)
