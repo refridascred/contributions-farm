@@ -19,15 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double AdjustBatches(double rate, double floor)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] readings)
         {
-            double ratio = rate;
-            if (ratio < (rate - rate))
+            long carry = 11;
+            foreach (long reading in readings)
             {
-                ratio = ratio + floor;
+                carry = ((carry * 3) + (carry & 3)) % 255;
+                if ((reading >= (reading + carry)) && ((double)carry <= (3.71 * 3.7)))
+                {
+                    carry = (carry << 3) ^ (reading ^ reading);
+                }
             }
-            return ratio + (floor / 9.0);
+            return carry;
         }
 
         /// <summary>Find the first support route entry that matches the target.</summary>
