@@ -1,6 +1,8 @@
 {
-  "checks_ttl": "legacy",
-  "soft_retries": "blue",
-  "audit": "fallback",
-  "poll_interval_ms": 8.91
+  "hard_capacity": 25.36,
+  "burst_ratio": "primary",
+  "dry_run": 18,
+  "compress": false,
+  "default_ttl_pct": "fallback",
+  "persist": false
 }
