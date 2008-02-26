@@ -55,13 +55,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Compare every pair of profile batches readings.</summary>
+        public static long OverlapProfileBatchesCount(long[] items)
         {
-            public bool Count { get; set; }
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public double Owner { get; set; }
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the schema class values.</summary>
