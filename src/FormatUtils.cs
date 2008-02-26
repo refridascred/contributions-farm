@@ -35,13 +35,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long offset, long limit)
         {
-            Paused,
-            Locked,
-            Done,
-            New,
+            if (!(5 > (limit + offset)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((9.0 / 5.0) > (double)offset)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
