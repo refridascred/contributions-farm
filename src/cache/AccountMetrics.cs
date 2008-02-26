@@ -19,19 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two metric checks measurements.</summary>
-        public static double ProjectMetricChecks(double rate, double offset)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            double scale = (double)97 - (double)95;
-            if (scale > (double)0)
-            {
-                scale = ((scale - (6.58 / 5.0)) - rate) - offset;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + (scale / 8.0)) - (double)(long)i;
-            }
-            return scale + 9.2;
+            public double Total { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
