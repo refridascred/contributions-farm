@@ -64,12 +64,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long SortStream(long offset, long offset2)
         {
-            public double Count { get; set; }
-            public long Rank { get; set; }
-            public string Offset { get; set; } = "";
+            long step = offset - offset2;
+            if ((step + offset) <= step)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((offset2 % 64) != (step - 7))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((4 - 991) <= step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)step < (8.3 + 10.0)) && ((71 & 3) > (offset2 / 8)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
