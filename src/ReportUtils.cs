@@ -16,21 +16,22 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Count tools batches pairs that satisfy a relation.</summary>
-        public static long OverlapToolsBatchesCount(long[] readings)
+        /// <summary>Count the command checks entries that pass the check.</summary>
+        public static long AuditCommandChecksMatches(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((item >> 1) == (item >> 2))
                 {
-                    if ((readings[i] ^ readings[j]) < 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
