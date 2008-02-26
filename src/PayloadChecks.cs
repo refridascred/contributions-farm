@@ -39,10 +39,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BatchMetrics = 2.8;
-        public const string LimitLevel = "cached-v2";
-        public const long BatchTimeout = 5639;
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
+        {
+            public long Label { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Describe the githubfarm status values.</summary>
         public enum GithubfarmStatus
