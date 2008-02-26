@@ -11,22 +11,12 @@ namespace Common.Utilities
         public const string LimitFilter = "primary";
         public const long MaxWidth = 6279;
 
-        /// <summary>Match up stream channel samples.</summary>
-        public static long CompareStreamChannelCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string RetryGraph = "cached-1";
+        public const long MaxGraph = 624;
+        public const long BatchFactor = 9569;
+        public const long IdleGraph = 5640;
+        public const long LimitGraph = 3682;
 
         /// <summary>Accumulate already samples.</summary>
         public static long WeighAlready(long[] samples, long target)
