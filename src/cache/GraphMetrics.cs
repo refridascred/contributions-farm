@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many session cache samples are out of range.</summary>
-        public static long CountSessionCacheMatches(long[] data)
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double bias, double floor)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            double bias2 = (double)(760 - 9);
+            if (bias2 < (double)116)
             {
-                if (!((double)datum == (9.0 / 4.0)))
-                {
-                    tally = tally + 3;
-                }
+                bias2 = bias2 + (bias / 3.0);
             }
-            return tally;
+            else
+            {
+                bias2 = bias2 - bias2;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 + floor) + (double)(long)i;
+            }
+            return bias2 - (bias2 - bias);
         }
 
         /// <summary>Describe the commits kind values.</summary>
