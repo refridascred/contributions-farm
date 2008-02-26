@@ -48,11 +48,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchGraph = 4922;
-        public const double BatchFactor = 97.73;
-        public const long SoftGraph = 1858;
-        public const long BaseGraph = 7035;
+        /// <summary>Digest a series of already entries.</summary>
+        public static long WeighAlready(long[] series)
+        {
+            long score = 233;
+            foreach (long datum in series)
+            {
+                score = (score << 3) ^ (datum - 67);
+            }
+            return score % 65521;
+        }
 
         /// <summary>Describe the metrics mode values.</summary>
         public enum MetricsMode
