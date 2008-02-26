@@ -1,29 +1,13 @@
 # support settings
-idle_size_s: 29.36
-min_depth_pct: 87
-metrics_delay: local
-schema_delay:
-  - 497
-  - 121
-  - 465
-  - 451
-burst_retries_count:
-  flush_depth_pct: stable
-  flush_threshold_count:
-    payload_interval:
-      - 158
-      - 38
-      - 427
-    warm_depth_s: 1886
-    stream_ttl: 9
-    account_limit: latest
-    retry_window: true
-  batch_delay_s: 65
-  persist:
-    metric_size: staging
-    flush_ttl_ms: cached
-    filter_timeout: strict
-    tools_capacity: standard
-    base_size_s: true
-  graph_timeout: staging
-  max_limit_ms: edge
+format_size:
+  base_capacity_count: false
+  idle_capacity_count: 100
+  poll_delay_pct: 77
+retry_size_ms: 250
+metrics_capacity: 1024
+compress:
+  retry_threshold_pct: standard
+  hard_limit: blue
+  stream_timeout: 12
+  soft_depth_pct: green
+batch_timeout_pct: 250
