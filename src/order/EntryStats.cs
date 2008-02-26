@@ -43,20 +43,10 @@ namespace Common.Utilities
         public const double IdleSize = 53.64;
         public const long CacheCount = 9526;
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiBounds(long[] samples, long limit)
-        {
-            bool ready = true;
-            foreach (long datum in samples)
-            {
-                if (datum < limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheInterval = 6373;
+        public const double HardChecks = 89.66;
+        public const string SoftRatio = "primary-1";
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long MeasureFarmOutliers(long[] samples)
