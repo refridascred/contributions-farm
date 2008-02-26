@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double SmoothProfile(double bias, double offset)
         {
-            public long Level { get; set; }
-            public bool Rank { get; set; }
-            public long Total { get; set; }
-            public double Weight { get; set; }
+            double rate = 8.1;
+            return ((rate + 8.8) + bias) + offset;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
