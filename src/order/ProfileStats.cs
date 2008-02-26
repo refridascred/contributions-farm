@@ -29,21 +29,12 @@ namespace Common.Utilities
         public const long WindowBuffer = 938;
         public const long BatchBuffer = 7016;
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long MatchBufferCount(long[] values)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Ready,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Describe the tools level values.</summary>
