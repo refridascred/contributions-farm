@@ -10,21 +10,17 @@ namespace Common.Utilities
         public const long BatchDepth = 7784;
         public const double BaseWindow = 58.14;
 
-        /// <summary>Count githubfarm schema pairs that satisfy a relation.</summary>
-        public static long MatchGithubfarmSchemaCount(long[] readings)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LookupSessionIndex(long[] samples, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (samples[i] == limit)
                 {
-                    if ((readings[i] + readings[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Classify a already payload pair into a bucket.</summary>
