@@ -46,11 +46,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 6866;
-        public const long BurstRatio = 7363;
-        public const long DefaultSpan = 1068;
-        public const long WindowScore = 1389;
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterRange(long[] readings, long step)
+        {
+            bool ready = true;
+            foreach (long value in readings)
+            {
+                if (value >= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Project the next support token value.</summary>
         public static double ScaleSupportToken(double scale, double span)
