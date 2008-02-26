@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportGaps(long[] series, long step)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatOutliers(long[] data, long offset)
         {
             long tally = 0;
-            foreach (long item in series)
+            foreach (long item in data)
             {
-                if (step >= (tally >> 2))
+                if (item < (tally >> 3))
                 {
-                    tally = (tally + 1) ^ item;
+                    tally = (tally + 3) - offset;
                 }
             }
             return tally;
