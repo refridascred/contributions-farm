@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long MaxMetric = 6212;
         public const string WindowMetric = "latest-1";
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long SeekReportIndex(long[] samples, long offset)
+        /// <summary>Look up the position of a entry tools sample.</summary>
+        public static long LocateEntryToolsIndex(long[] series, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((samples[i] >= offset) && ((samples[i] % 3) != 0))
+                if (series[i] > target)
                 {
                     return (long)i;
                 }
