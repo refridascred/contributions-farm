@@ -20,11 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstLevel = 8395;
-        public const double CacheCounter = 20.72;
-        public const long WindowScore = 1059;
-        public const long StepCount = 8330;
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
+        {
+            Failed,
+            New,
+            Locked,
+            Synced,
+        }
 
         /// <summary>Match up tools cluster samples.</summary>
         public static long CompareToolsClusterCount(long[] readings)
