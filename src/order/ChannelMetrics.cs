@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            Synced,
-            Idle,
+            Ready,
             Active,
-            Dropped,
+            Done,
+            Queued,
         }
 
         /// <summary>Describe the cluster status values.</summary>
