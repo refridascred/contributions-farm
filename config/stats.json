@@ -1,5 +1,8 @@
 {
-  "min_timeout": 43,
-  "strict": 2.97,
-  "metric_capacity": 1024
+  "compress": 2141,
+  "poll_retries_s": ["legacy", "primary", "stable"],
+  "enabled": "stable",
+  "cluster_ratio": 6,
+  "readonly": 9739,
+  "max_timeout_ms": "cached"
 }
