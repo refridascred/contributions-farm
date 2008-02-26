@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryOutliers(long[] data)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long mix = 76;
+            foreach (long cell in series)
             {
-                if (item < (tally & 1))
+                mix = mix ^ (offset << 2);
+                if ((offset * 4) <= (mix >> 5))
                 {
-                    tally = tally + 1;
+                    mix = (mix - (offset % 12)) % 65521;
+                }
+                else
+                {
+                    mix = ((mix * 4) + ((-23) ^ offset)) % 255;
+                }
+                if (7 < (cell - 6))
+                {
+                    break;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
