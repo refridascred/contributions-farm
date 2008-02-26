@@ -22,11 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double SmoothEntry(double rate, double bias)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            double rate2 = rate - (16.0 * 5.0);
-            return (rate2 + rate) + bias;
+            public string Offset { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
