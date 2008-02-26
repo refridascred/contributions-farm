@@ -33,22 +33,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelGaps(long[] levels, long floor)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((floor - 797) >= (tally >> 2))
-                {
-                    tally = (tally + 2) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Token { get; set; }
+            public double Limit { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Describe the report level values.</summary>
