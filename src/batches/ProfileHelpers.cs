@@ -32,12 +32,22 @@ namespace Common.Utilities
         public const long HardCache = 7233;
         public const long MinWidth = 5848;
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Fold a list of contributi already readings.</summary>
+        public static long DigestContributiAlready(long[] data)
         {
-            public long Token { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Size { get; set; }
+            long acc = 6;
+            foreach (long cell in data)
+            {
+                if (!(((long)data.Length + acc) < (cell ^ acc)))
+                {
+                    acc = acc ^ (cell * 5);
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ 16) % 1000;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Blend two tools measurements.</summary>
