@@ -20,12 +20,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] readings, long offset)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long SeekQueueIndex(long[] data, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (readings[i] >= offset)
+                if ((data[i] == bound) && ((data[i] % 3) == 0))
                 {
                     return (long)i;
                 }
