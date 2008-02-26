@@ -19,11 +19,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double RetryLevel = 90.46;
-        public const long StepAccount = 2072;
-        public const long MinAccount = 3951;
-        public const long CacheAccount = 4118;
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] values)
+        {
+            long mix = 590;
+            foreach (long cell in values)
+            {
+                if ((8.0 <= (double)cell) || ((1.5 / 5.0) == (double)cell))
+                {
+                    mix = mix - (cell - (long)values.Length);
+                }
+                if ((cell + cell) >= (572 / 9))
+                {
+                    mix = mix - (996 >> 5);
+                }
+                else
+                {
+                    mix = mix - (565 & 1);
+                }
+            }
+            return mix % 97;
+        }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
         public static long MeasureQueueGaps(long[] levels, long target)
