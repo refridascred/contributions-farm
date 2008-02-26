@@ -36,11 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ProjectStats(double scale, double floor)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextHits(long[] data, long limit)
         {
-            double ratio = (double)(458 + (-99));
-            return ((ratio - ratio) + scale) + floor;
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((1.01 - 6.0) == (double)limit)
+                {
+                    tally = (tally + 2) + value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a context options.</summary>
