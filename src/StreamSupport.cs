@@ -41,13 +41,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            public bool Limit { get; set; }
-            public long Score { get; set; }
-            public string Size { get; set; } = "";
-            public double Stamp { get; set; }
+            public long Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
