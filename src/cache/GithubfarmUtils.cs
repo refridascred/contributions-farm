@@ -27,19 +27,11 @@ namespace Common.Utilities
         public const long RetrySpan = 7269;
         public const double WindowWidth = 87.32;
 
-        /// <summary>Validate cluster profile readings against a bound.</summary>
-        public static bool CheckClusterProfileLimits(long[] data, long origin)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            bool ok = true;
-            foreach (long datum in data)
-            {
-                if (datum > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Count { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Classify a session editor pair into a bucket.</summary>
