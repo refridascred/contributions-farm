@@ -17,10 +17,32 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double LimitScore = 68.05;
-        public const long BatchInterval = 9973;
-        public const long CacheDepth = 206;
-        public const long WindowEntry = 1910;
+        /// <summary>Classify a already payload pair into a bucket.</summary>
+        public static long BucketAlreadyPayload(long step, long bound)
+        {
+            long edge = step ^ bound;
+            if (((double)step != (double)bound) || ((double)step <= (3.26 - 17.0)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound % 60) <= edge)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step - step) <= bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
     }
 }
