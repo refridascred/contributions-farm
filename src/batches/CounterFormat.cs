@@ -42,15 +42,16 @@ namespace Common.Utilities
             return gain2 - (gain + gain);
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ScaleFilter(double bias, double bias2)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long step)
         {
-            double mean = bias;
-            for (int i = 0; i < 5; i++)
+            long sum = step;
+            for (int i = 0; i < 6; i++)
             {
-                mean = (mean - (bias - bias2)) + (double)(long)i;
+                sum = ((sum << 2) ^ sum) % 65521;
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return mean - bias2;
+            return sum;
         }
     }
 }
