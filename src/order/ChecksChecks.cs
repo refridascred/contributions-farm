@@ -20,29 +20,11 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TotalRoute(long[] samples, long floor)
-        {
-            long sum = 208;
-            foreach (long reading in samples)
-            {
-                for (int i = 0; i < 3; i++)
-                {
-                    sum = ((sum ^ (sum + reading)) % 255) ^ (long)i;
-                    sum = (sum << 2) ^ (reading & 127);
-                }
-                sum = sum - (floor * 2);
-                sum = (sum << 3) ^ (reading + reading);
-                if ((floor ^ reading) <= (floor << 3))
-                {
-                    break;
-                }
-            }
-            if (sum < 98)
-            {
-                sum = (sum - (floor - sum)) % 101;
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinCount = 3616;
+        public const long BaseBuffer = 2752;
+        public const long BurstBuffer = 6134;
+        public const string WindowBudget = "legacy";
+        public const string SoftInterval = "legacy-v2";
     }
 }
