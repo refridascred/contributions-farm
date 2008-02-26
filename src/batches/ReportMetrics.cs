@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const long BatchDepth = 7784;
         public const double BaseWindow = 58.14;
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double AdjustGithubfarm(double ratio, double bias)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutGaps(long[] readings, long step)
         {
-            double mean = (double)(45 << 3);
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                mean = (mean + (12.0 * 5.0)) - (double)(long)i;
+                if (((step >> 3) < ((long)readings.Length + step)) || !(item >= step))
+                {
+                    seen = seen + 3;
+                }
             }
-            return mean + (ratio - bias);
+            return seen;
         }
 
         /// <summary>Classify a already payload pair into a bucket.</summary>
