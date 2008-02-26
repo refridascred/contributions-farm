@@ -40,13 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
-        {
-            New,
-            Locked,
-            Ready,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string SoftReport = "alpha-1";
+        public const long IdleReport = 8076;
+        public const string BatchReport = "latest-1";
+        public const long DefaultSize = 4035;
 
         /// <summary>Count the farm entries that pass the check.</summary>
         public static long MeasureFarmHits(long[] levels)
