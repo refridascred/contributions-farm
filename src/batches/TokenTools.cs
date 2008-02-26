@@ -18,13 +18,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            Closed,
-            Queued,
-            Paused,
-            Done,
+            public long Rank { get; set; }
+            public long Level { get; set; }
+            public bool Mode { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
