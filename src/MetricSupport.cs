@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            Paused,
-            Failed,
-            Synced,
+            public long Limit { get; set; }
+            public string Total { get; set; } = "";
+            public bool Token { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the entry mode values.</summary>
