@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green edge latest cached; do
+for item in blue standard; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=59
-log "limit is ${RECORD_LIMIT}"
-
 total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 3))
+for i in $(seq 1 6); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
