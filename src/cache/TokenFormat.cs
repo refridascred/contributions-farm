@@ -53,19 +53,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate stats queue readings against a bound.</summary>
-        public static bool VerifyStatsQueueBounds(long[] values, long origin)
-        {
-            bool ok = true;
-            foreach (long reading in values)
-            {
-                if (reading >= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepSpan = 2103;
+        public const long MinDepth = 7593;
+        public const long BatchInterval = 2800;
     }
 }
