@@ -1,10 +1,10 @@
 # Command notes
 
-Defaults for cluster live in the config folder and can be overridden per environment.
-Use counter settings to tune how often editor data is refreshed.
+Defaults for support live in the config folder and can be overridden per environment.
+The tools module keeps graph values in sync with the stats cache.
 
 ## Guidelines
 
-- Validate filter input early
-- Keep account values small
-- Review stats limits each release
+- Validate githubfarm input early
+- Keep payload values small
+- Prefer tools defaults
