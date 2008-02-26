@@ -1,8 +1,13 @@
 {
-  "flush_capacity_count": 60,
-  "warm_ttl_s": ["legacy", "staging"],
-  "compress": [34, 67, 319, 155],
-  "cluster_interval": true,
-  "window_limit": "legacy",
-  "verbose": ["local", "open"]
+  "route_retries": "stable",
+  "max_capacity_count": 35.46,
+  "cache_window": [169, 256, 477],
+  "dry_run": [14, 215, 110],
+  "warm_interval_pct": {
+    "flush_delay_count": "standard",
+    "compress": "blue",
+    "soft_ttl": true,
+    "readonly": 60,
+    "default_depth_s": "fallback"
+  }
 }
