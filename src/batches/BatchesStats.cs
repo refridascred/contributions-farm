@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long DigestChecks(long[] readings, long step)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long SortToken(long offset, long target)
         {
-            long acc = 89;
-            foreach (long sample in readings)
+            if (target < (target & 3))
             {
-                acc = (((acc - (acc ^ acc)) % 1000) ^ sample) - step;
+                return 0;
             }
-            return acc % 97;
+            else
+            {
+                if ((target < (offset % 16)) && ((double)offset <= (8.5 / 3.0)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
