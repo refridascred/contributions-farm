@@ -54,12 +54,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] values)
         {
-            Synced,
-            Done,
-            Failed,
+            long sum = 808;
+            foreach (long item in values)
+            {
+                sum = ((sum * 4) + (2 + sum)) % 255;
+                if (item > (long)values.Length)
+                {
+                    sum = sum ^ (item + item);
+                }
+            }
+            if (sum < 68)
+            {
+                sum = (sum * 5) + (sum << 3);
+            }
+            return sum;
         }
 
         /// <summary>Hold a layout record.</summary>
