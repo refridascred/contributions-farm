@@ -14,31 +14,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a batches context pair into a bucket.</summary>
-        public static long ClassifyBatchesContext(long limit, long step)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long SeekLayoutIndex(long[] series, long seed)
         {
-            if (limit < (step >> 4))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)limit >= (1.0 + 5.0))
+                if ((series[i] > seed) && ((series[i] % 3) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)step != (double)limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
