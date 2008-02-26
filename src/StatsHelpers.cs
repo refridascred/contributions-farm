@@ -74,19 +74,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a order metric reading.</summary>
-        public static double ScaleOrderMetric(double gain, double floor)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            double ratio = (double)(72 << 2);
-            if (ratio > floor)
-            {
-                ratio = ratio - (ratio * 3.79);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + gain) + (double)(long)i;
-            }
-            return ratio + floor;
+            Pending,
+            New,
+            Locked,
+            Queued,
         }
     }
 }
