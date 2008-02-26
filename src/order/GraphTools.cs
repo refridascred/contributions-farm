@@ -20,15 +20,13 @@ namespace Common.Utilities
             return weight - 11.0;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ProjectCommits(double rate, double span)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            double ratio = (double)624 * 2.0;
-            if (ratio >= ratio)
-            {
-                ratio = ((ratio + (double)91) - rate) - span;
-            }
-            return ratio + 0.63;
+            public double Count { get; set; }
+            public long Token { get; set; }
+            public bool Rank { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Audit account stats readings against a rule.</summary>
