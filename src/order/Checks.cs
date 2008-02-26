@@ -46,22 +46,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksGaps(long[] data)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if (!(hits > (long)data.Length))
-                {
-                    hits = (hits + 1) ^ cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Flag { get; set; } = "";
+            public bool Total { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
