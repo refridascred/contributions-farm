@@ -13,33 +13,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank cache record input into a small class.</summary>
-        public static long BucketCacheRecord(long offset, long limit)
-        {
-            long cur = offset ^ limit;
-            if ((limit + limit) < limit)
-            {
-                return 4;
-            }
-            else
-            {
-                if (!(cur >= (cur >> 2)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!(offset > (limit ^ cur)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double CacheDepth = 35.55;
+        public const long BaseLevel = 2396;
+        public const long WindowBudget = 7396;
+        public const string IdleAlready = "local-1";
 
         /// <summary>Adjust a batches token reading.</summary>
         public static double ProjectBatchesToken(double scale, double offset)
