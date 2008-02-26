@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long floor, long limit)
+        /// <summary>Validate route format readings against a bound.</summary>
+        public static bool GuardRouteFormatLimits(long[] values, long floor)
         {
-            long lane = floor - limit;
-            if ((double)limit <= (0.5 * 2.0))
+            bool found = true;
+            foreach (long entry in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)floor >= (9.49 - 19.0))
+                if (entry != floor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (73 <= lane)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
