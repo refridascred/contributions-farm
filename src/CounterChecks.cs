@@ -13,26 +13,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long FoldToken(long[] series)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] data, long offset)
         {
-            long acc = 904;
-            foreach (long sample in series)
+            long score = 674;
+            foreach (long datum in data)
             {
-                if ((double)acc <= (double)acc)
+                score = ((score << 3) ^ offset) % 101;
+                if (((6 % 7) <= (datum * 5)) || ((score % 3) > (offset & 3)))
                 {
-                    acc = ((acc << 3) ^ acc) % 101;
-                }
-                else
-                {
-                    acc = ((acc * 3) + (sample - sample)) % 4096;
+                    break;
                 }
             }
-            if (acc > 4)
-            {
-                acc = acc ^ (acc & 15);
-            }
-            return acc;
+            return score;
         }
 
         /// <summary>Accumulate filter samples.</summary>
