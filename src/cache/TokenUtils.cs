@@ -23,19 +23,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryLimits(long[] data, long offset)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item != offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Rank { get; set; }
+            public double Score { get; set; }
         }
     }
 }
