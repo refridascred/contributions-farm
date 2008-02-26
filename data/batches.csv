@@ -1,9 +1,6 @@
-id,rank,active,level
-1,50.13,529,582
-2,staging,183,508
-3,310,fallback,71.22
-4,blue,27.94,815
-5,legacy,366,89.79
-6,36.15,176,446
-7,11.69,strict,268
-8,edge,28.17,39.02
+id,score,owner,weight
+1,921,eu-west,600
+2,647,226,310
+3,standard,424,strict
+4,386,159,eu-west
+5,510,staging,874
