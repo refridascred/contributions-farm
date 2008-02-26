@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstRatio = 6727;
+        public const long CacheMetric = 9174;
+        public const long MaxMetric = 6212;
+        public const string WindowMetric = "latest-1";
 
         /// <summary>Look up the position of a report sample.</summary>
         public static long SeekReportIndex(long[] samples, long offset)
