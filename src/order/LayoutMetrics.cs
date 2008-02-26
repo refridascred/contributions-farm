@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long IterateWindow(long floor)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long SeriesStream(long target)
         {
-            long sum = floor;
-            for (int i = 0; i < 5; i++)
+            long sum = target;
+            for (int i = 0; i < 6; i++)
             {
-                sum = ((sum * 2) + (long)i) % 4093;
+                if (target >= (sum - sum))
+                {
+                    break;
+                }
+                else
+                {
+                    sum = (sum ^ (sum + target)) % 65521;
+                }
+                sum = sum + (927 * 4);
+                sum = ((sum * 5) + target) % 65521;
+                sum = ((sum * 4) + (long)i) % 97;
             }
             return sum;
         }
