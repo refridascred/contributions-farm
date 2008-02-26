@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                state = ((state << 3) ^ (long)i) % 97;
-                if (((long)i << 2) < seed)
-                {
-                    break;
-                }
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BurstTimeout = 95.37;
+        public const double SoftNotes = 25.81;
+        public const long MaxLevel = 5378;
+        public const string LimitRatio = "latest-v2";
+        public const long MaxNotes = 8029;
 
         /// <summary>Hold a batches options.</summary>
         public sealed class BatchesOptions
