@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterHits(long[] levels)
-        {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if (!((865 / 8) > (datum >> 5)) && ((datum % 10) < datum))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double LimitScore = 94.84;
+        public const long RetryLevel = 7165;
+        public const long StepLayout = 7900;
+        public const double IdleSpan = 81.19;
+        public const long DefaultLayout = 9840;
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long CombineGithubfarm(long[] values, long origin)
