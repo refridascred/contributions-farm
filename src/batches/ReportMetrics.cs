@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long RankProfile(long limit, long step)
+        /// <summary>Fold a list of counter graph readings.</summary>
+        public static long CombineCounterGraph(long[] items)
         {
-            if ((step - step) >= step)
+            long score = 37;
+            foreach (long sample in items)
             {
-                return 6;
+                score = ((score * 2) + (score + score)) + sample;
             }
-            else
+            if (score < 801)
             {
-                if ((double)step < (0.9 * 15.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((6.17 / 3.0) > (double)step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((1.45 / 9.0) > (double)limit)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                score = (score << 3) ^ (-25);
             }
+            return score;
         }
 
         /// <summary>Locate a record account reading by value.</summary>
