@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            Synced,
-            Idle,
-            Active,
-            Stale,
-            Done,
+            public string Size { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
