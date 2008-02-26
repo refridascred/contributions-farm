@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileHits(long[] items, long floor)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if (!!((floor << 2) <= reading))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public double Region { get; set; }
+            public bool Label { get; set; }
+            public long Weight { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Accumulate channel samples.</summary>
