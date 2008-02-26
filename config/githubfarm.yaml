@@ -1,7 +1,4 @@
 # githubfarm settings
-schema_limit:
-  - open
-  - blue
-  - eu-west
-base_limit_s: 45
-verbose: 250
+filter_retries: 26.04
+token_interval: 7825
+contributi_timeout: false
