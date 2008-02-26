@@ -42,14 +42,38 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long ClassifyMetrics(long offset, long seed)
         {
-            Closed,
-            Failed,
-            Locked,
-            Ready,
-            Paused,
+            if (!(4.62 <= (double)offset))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)offset <= (double)seed)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((seed % 100) > (95 % 7))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!(offset < 867))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
