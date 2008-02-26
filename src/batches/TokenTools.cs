@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordOutliers(long[] samples, long offset)
-        {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if (cell <= (offset >> 2))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchLayout = 7365;
+        public const long SoftLayout = 3579;
+        public const double MinLayout = 54.13;
+        public const long RetryLayout = 9698;
 
         /// <summary>Describe the farm status values.</summary>
         public enum FarmStatus
