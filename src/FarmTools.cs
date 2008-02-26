@@ -44,38 +44,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a editor account pair into a bucket.</summary>
-        public static long RankEditorAccount(long target, long step)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            if (target <= (target ^ step))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((step / 6) <= step) && (target >= ((-370) << 3)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((9 - step) >= (step + target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((double)step < (6.1 - 7.5)) && ((double)target <= (5.0 - 3.5)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public double Region { get; set; }
+            public string Score { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
