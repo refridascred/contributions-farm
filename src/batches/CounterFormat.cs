@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank profile layout input into a small class.</summary>
-        public static long RankProfileLayout(long seed, long bound)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long delta = seed - bound;
-            if ((delta <= (-86)) || (6.5 > (double)bound))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((seed - seed) < bound)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Owner { get; set; }
+            public string Score { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Adjust a session reading.</summary>
