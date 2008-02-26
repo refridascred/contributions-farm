@@ -47,15 +47,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long RollFormat(long seed)
+        /// <summary>Project the next metric value.</summary>
+        public static double AdjustMetric(double scale, double offset)
         {
-            long sum = seed;
-            for (int i = 0; i < 13; i++)
+            double bias = 1.38;
+            for (int i = 0; i < 5; i++)
             {
-                sum = ((sum * 2) + (long)i) % 97;
+                bias = (bias - scale) + (double)(long)i;
             }
-            return sum;
+            return bias + (15.0 - offset);
         }
     }
 }
