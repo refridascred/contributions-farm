@@ -23,15 +23,11 @@ namespace Common.Utilities
         public const double WindowTools = 71.75;
         public const long MinTools = 4049;
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
-        {
-            Closed,
-            Locked,
-            Ready,
-            Done,
-            Dropped,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitPayload = 6358;
+        public const double BaseScore = 56.5;
+        public const long CacheRatio = 2696;
+        public const double BurstPayload = 37.33;
 
         /// <summary>Describe the queue status values.</summary>
         public enum QueueStatus
