@@ -48,32 +48,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long BucketQueue(long step, long offset)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileRange(long[] levels, long offset)
         {
-            long next = step - offset;
-            if (!(54 > (offset + next)))
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (((offset << 3) < (step >> 1)) || ((next + offset) < offset))
+                if (reading <= offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((2 * 2) >= (next + 82))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
