@@ -33,13 +33,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            Failed,
-            Idle,
-            Pending,
+            Retry,
             Synced,
+            Stale,
         }
     }
 }
