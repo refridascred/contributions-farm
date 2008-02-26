@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TallyReport(long[] series, long origin)
         {
-            Ready,
-            Active,
-            Done,
-            Queued,
+            long anchor = 684;
+            foreach (long sample in series)
+            {
+                if ((2.1 + 1.0) > (double)anchor)
+                {
+                    anchor = (anchor + (origin & 255)) - sample;
+                }
+            }
+            if (anchor < 218)
+            {
+                anchor = ((anchor * 5) + (origin >> 5)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the cluster status values.</summary>
