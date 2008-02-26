@@ -22,18 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long WeighAlready(long[] levels, long offset)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiOutliers(long[] levels)
         {
-            long mark = 78;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (mark >= ((-8) - mark))
+                if (item > (item / 4))
                 {
-                    mark = (((mark - (mark ^ mark)) % 101) + cell) + offset;
+                    tally = tally + 1;
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
