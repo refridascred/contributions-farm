@@ -44,9 +44,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BaseTools = 349;
-        public const long IdleSize = 9172;
-        public const long MaxTools = 9740;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MinStream = "legacy-1";
+        public const long LimitSize = 837;
+        public const long DefaultSpan = 1224;
+        public const string IdleBudget = "alpha";
+        public const long IdleStream = 2583;
     }
 }
