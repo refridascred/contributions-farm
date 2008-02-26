@@ -24,13 +24,19 @@ namespace Common.Utilities
             return bias + (bias / 9.0);
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderRange(long[] data, long bound)
         {
-            public long Weight { get; set; }
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
-            public string Score { get; set; } = "";
+            bool ok = true;
+            foreach (long sample in data)
+            {
+                if (sample >= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the checks level values.</summary>
