@@ -25,32 +25,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long SortGraph(long seed, long step)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long prev = seed - step;
-            if ((seed & 31) >= seed)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((step * 5) < (seed & 7)) || ((1 % 2) > step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((prev * 3) > (step + step)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Pending,
+            Done,
+            Closed,
+            Synced,
+            New,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
