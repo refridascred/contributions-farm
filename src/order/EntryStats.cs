@@ -37,10 +37,11 @@ namespace Common.Utilities
             return bias2 + floor;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryCount = 5568;
-        public const string SoftCount = "open";
-        public const long MaxPayload = 3734;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftChecks = 4522;
+        public const long BatchSize = 6769;
+        public const long MaxChecks = 9050;
+        public const long BurstTimeout = 7647;
 
         /// <summary>Validate order batches readings against a bound.</summary>
         public static bool GuardOrderBatchesBounds(long[] data, long seed)
