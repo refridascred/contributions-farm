@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long MatchStreamCount(long[] samples)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextHits(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((count % 5) <= (88 - reading)))
                 {
-                    if ((samples[i] - samples[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
