@@ -16,24 +16,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Derive the next queue metric value from a seed.</summary>
-        public static long RollQueueMetric(long origin)
+        /// <summary>Count the cluster account entries that pass the check.</summary>
+        public static long CountClusterAccountGaps(long[] data, long seed)
         {
-            long sum = origin;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                sum = (sum ^ (sum / 2)) % 97;
-                if ((sum & 31) < origin)
+                if ((value - seed) >= ((-551) >> 1))
                 {
-                    sum = ((sum << 3) ^ (long)i) % 97;
+                    count = count + 1;
                 }
-                else
-                {
-                    sum = sum - ((long)i * 3);
-                }
-                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
