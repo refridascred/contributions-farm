@@ -25,23 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] data)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long acc = 4;
-            foreach (long reading in data)
-            {
-                acc = acc + (acc + acc);
-                if ((6 ^ acc) >= 887)
-                {
-                    acc = acc ^ (reading ^ (long)data.Length);
-                }
-            }
-            if (acc > (-19))
-            {
-                acc = (acc ^ acc) % 97;
-            }
-            return acc % 65521;
+            Failed,
+            Ready,
+            Active,
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
