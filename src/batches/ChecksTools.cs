@@ -34,17 +34,14 @@ namespace Common.Utilities
             return gain + offset;
         }
 
-        /// <summary>Look up the position of a commits batch sample.</summary>
-        public static long LocateCommitsBatchIndex(long[] readings, long target)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > target) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Retry,
+            Active,
+            Stale,
+            Queued,
         }
 
         /// <summary>Grade a filter batch value against two limits.</summary>
