@@ -1,7 +1,9 @@
 # githubfarm settings
-command_depth: blue
-max_depth_count: 51.35
-audit: false
-persist: 52.7
-route_delay: 47
-flush_capacity: cached
+poll_depth: 60
+batches_limit: 35
+compress: 82
+notes_delay:
+  - 128
+  - 423
+  - 168
+enabled: 9.97
