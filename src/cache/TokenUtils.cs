@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] levels, long origin)
         {
-            Stale,
-            New,
-            Idle,
-            Closed,
+            long mark = 148;
+            foreach (long datum in levels)
+            {
+                if ((mark + datum) < (mark + 0))
+                {
+                    mark = (((mark << 2) ^ (mark * 5)) % 1000) - origin;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Hold a context options.</summary>
