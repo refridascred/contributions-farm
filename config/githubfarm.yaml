@@ -1,6 +1,21 @@
 # githubfarm settings
-retry_retries_ms: primary
-channel_interval:
-  - 387
-  - 127
-editor_depth: 37.13
+default_size_ms:
+  verbose: primary
+  soft_threshold:
+    - 441
+    - 279
+    - 375
+  persist:
+    persist: 64
+    enabled: 30
+    layout_depth: edge
+    audit: 1024
+    burst_threshold_count:
+      - 142
+      - 286
+      - 167
+  token_window: false
+context_limit: 100
+verbose: edge
+base_capacity_count: 0.23
+min_size: 10
