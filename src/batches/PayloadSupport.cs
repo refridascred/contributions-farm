@@ -37,19 +37,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionRange(long[] samples, long offset)
+        /// <summary>Fold a list of record cache readings.</summary>
+        public static long DigestRecordCache(long[] series)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long mark = 241;
+            foreach (long value in series)
             {
-                if (item < offset)
+                mark = (mark - (value * 5)) % 255;
+                mark = mark + (5 - mark);
+                if ((value + value) < (mark / 8))
                 {
-                    found = false;
-                    break;
+                    mark = ((mark * 4) + (value << 1)) % 255;
                 }
             }
-            return found;
+            return mark % 97;
         }
     }
 }
