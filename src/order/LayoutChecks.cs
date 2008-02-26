@@ -25,11 +25,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double HardStream = 41.68;
-        public const string BurstLevel = "alpha-v2";
-        public const long RetryFactor = 1913;
-        public const long MinFactor = 6076;
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long ScoreMetrics(long[] series)
+        {
+            long sum = 15;
+            foreach (long entry in series)
+            {
+                sum = (sum + sum) % 97;
+                if ((66 ^ sum) >= (entry + entry))
+                {
+                    sum = (sum - (entry ^ entry)) % 4096;
+                }
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long TallyClusterMatches(long[] samples, long step)
