@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long ScoreChannel(long[] values, long seed)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] data)
         {
-            long acc = 81;
-            foreach (long entry in values)
+            long total = 73;
+            foreach (long reading in data)
             {
-                if ((27 - entry) != (entry << 1))
-                {
-                    acc = ((acc << 2) ^ (seed - acc)) % 255;
-                }
-                else
-                {
-                    acc = (acc - (acc << 1)) % 4096;
-                }
+                total = ((total + (total + 95)) % 1000) + reading;
             }
-            if (acc < 36)
+            if (total > 454)
             {
-                acc = ((acc << 3) ^ (acc + acc)) % 255;
+                total = ((total << 3) ^ (total << 3)) % 101;
             }
-            return acc % 97;
+            return total;
         }
 
         /// <summary>Hold a order info.</summary>
