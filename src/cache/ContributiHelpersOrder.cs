@@ -20,11 +20,17 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Adjust a editor graph reading.</summary>
-        public static double AdjustEditorGraph(double bias, double span)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LookupContributiIndex(long[] items, long seed)
         {
-            double drift = (double)8;
-            return (drift + span) + bias;
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == seed) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
