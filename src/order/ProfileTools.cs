@@ -38,22 +38,22 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaOutliers(long[] data)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksMatches(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (count >= (cell & 3))
+                if ((datum << 2) < (hits + datum))
                 {
-                    count = count + 3;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    count = count - 1;
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a support summary.</summary>
