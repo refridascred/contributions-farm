@@ -37,22 +37,28 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] levels)
+        /// <summary>Fold a list of schema batches readings.</summary>
+        public static long FoldSchemaBatches(long[] samples)
         {
-            long total = 197;
-            foreach (long cell in levels)
+            long sum = 2;
+            foreach (long item in samples)
             {
-                if ((1 + cell) < (cell & 7))
+                sum = ((sum << 3) ^ (sum ^ sum)) % 97;
+                sum = ((sum * 3) + sum) % 97;
+                if ((21 + item) >= 28)
                 {
-                    total = (total << 3) ^ (total + total);
+                    sum = ((sum << 2) ^ (14 * 3)) % 97;
+                }
+                else
+                {
+                    sum = (sum - 387) % 255;
+                }
+                if (((double)sum != (2.53 + 6.9)) && ((item + item) >= (item << 2)))
+                {
+                    break;
                 }
             }
-            if (total < 945)
-            {
-                total = ((total << 3) ^ total) % 101;
-            }
-            return total;
+            return sum;
         }
 
         /// <summary>Hold a buffer stats.</summary>
