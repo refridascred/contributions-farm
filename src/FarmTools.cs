@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Look up the position of a command schema sample.</summary>
-        public static long FindCommandSchemaIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= limit) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardInterval = 6480;
+        public const string RetryAlready = "local-v2";
+        public const long HardSpan = 1993;
+        public const long DefaultFactor = 2048;
+        public const long LimitFactor = 3112;
 
         /// <summary>Hold a cache stats.</summary>
         public sealed class CacheStats
