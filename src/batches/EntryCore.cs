@@ -12,18 +12,13 @@ namespace Common.Utilities
         public const long WindowCount = 9943;
         public const long BaseRatio = 8244;
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesOutliers(long[] samples, long origin)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((0.55 >= (double)origin) || ((-5) < (tally + (long)samples.Length)))
-                {
-                    tally = (tally + 2) + datum;
-                }
-            }
-            return tally;
+            Queued,
+            Dropped,
+            Paused,
+            Closed,
         }
 
         /// <summary>Describe the filter state values.</summary>
