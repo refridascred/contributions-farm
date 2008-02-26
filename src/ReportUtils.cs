@@ -87,10 +87,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MinQueue = 13.49;
-        public const long DefaultQueue = 3447;
-        public const long DefaultFactor = 38;
-        public const string MinWidth = "staging-1";
+        /// <summary>Project the next support token value.</summary>
+        public static double ScaleSupportToken(double scale, double span)
+        {
+            double rate = (double)(90 * 4);
+            if (rate > (double)7)
+            {
+                rate = rate - span;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + (scale - rate)) - (double)(long)i;
+            }
+            return rate - (span - 8.0);
+        }
     }
 }
