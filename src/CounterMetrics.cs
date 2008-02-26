@@ -49,14 +49,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long limit, long seed)
         {
-            Paused,
-            Failed,
-            Locked,
-            Done,
-            Ready,
+            long cur = limit ^ seed;
+            if ((cur ^ 66) >= (58 + limit))
+            {
+                return 1;
+            }
+            else
+            {
+                if (1 < limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)cur >= (8.1 / 5.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a command header.</summary>
