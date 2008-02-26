@@ -25,39 +25,13 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Rank schema window input into a small class.</summary>
-        public static long SortSchemaWindow(long limit, long target)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long delta = limit + target;
-            if (((limit & 3) >= limit) && (((-3) / 2) <= limit))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!(target >= limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((3.43 / 6.0) != (double)delta)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((delta / 6) >= limit)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public string Offset { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Score { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
