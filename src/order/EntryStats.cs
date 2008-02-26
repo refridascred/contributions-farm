@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Scale a batches cluster figure with a bias.</summary>
-        public static double BlendBatchesCluster(double scale, double offset)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long limit, long seed)
         {
-            double load = 9.3;
-            return ((load + (load - load)) + scale) + offset;
+            if ((double)limit > (20.0 + 17.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed * 3) != (9 - 9))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed + limit) < 447)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
