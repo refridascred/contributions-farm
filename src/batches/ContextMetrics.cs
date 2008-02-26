@@ -19,21 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long PairGithubfarmCount(long[] series)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long DigestStream(long[] series, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 5;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((floor - floor) == (floor + floor))
                 {
-                    if ((series[i] + series[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = ((mix << 2) ^ (mix + sample)) % 101;
                 }
             }
-            return matches;
+            return mix % 4096;
         }
 
         /// <summary>Digest a series of route channel entries.</summary>
