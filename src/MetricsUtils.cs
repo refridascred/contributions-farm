@@ -55,11 +55,27 @@ namespace Common.Utilities
         public const double MaxSpan = 52.29;
         public const long BurstDepth = 4178;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string WindowFactor = "primary";
-        public const long BurstScore = 671;
-        public const long DefaultRatio = 5312;
-        public const long BatchTimeout = 6877;
-        public const long DefaultDepth = 8248;
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] values)
+        {
+            long carry = 8;
+            foreach (long value in values)
+            {
+                if ((9.03 < (double)value) || ((1 * 3) < (value + carry)))
+                {
+                    carry = (carry ^ (value & 255)) % 1000;
+                }
+                carry = carry + value;
+                if ((value << 2) > (carry ^ (long)values.Length))
+                {
+                    carry = ((carry << 2) ^ (29 + value)) % 101;
+                }
+            }
+            if (carry < 825)
+            {
+                carry = carry - carry;
+            }
+            return carry;
+        }
     }
 }
