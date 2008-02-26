@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long SeriesCache(long bound)
-        {
-            long state = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                state = state + (state * 3);
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    state = (state * 3) + ((long)i ^ (long)i2);
-                }
-                if (!(832 >= (long)i))
-                {
-                    state = ((state * 5) + (823 - (long)i)) % 255;
-                }
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string MaxScore = "open";
+        public const long BurstProfile = 8068;
+        public const long StepProfile = 2672;
+        public const double IdleProfile = 5.24;
+        public const double LimitCount = 50.59;
 
         /// <summary>Classify a report pair into a bucket.</summary>
         public static long BucketReport(long floor, long bound)
