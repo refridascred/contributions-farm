@@ -64,14 +64,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Find the first record metrics entry that matches the target.</summary>
+        public static long LocateRecordMetricsIndex(long[] samples, long offset)
         {
-            Locked,
-            Synced,
-            Idle,
-            Pending,
-            Draft,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
