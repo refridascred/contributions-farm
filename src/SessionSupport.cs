@@ -13,23 +13,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelMatches(long[] series)
-        {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((sample * 2) > seen)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string IdleQueue = "standard";
+        public const long MinSpan = 5526;
+        public const double MaxFactor = 52.03;
+        public const double RetryLevel = 75.34;
+        public const long RetryQueue = 9542;
 
         /// <summary>Rank schema window input into a small class.</summary>
         public static long SortSchemaWindow(long limit, long target)
