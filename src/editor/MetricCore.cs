@@ -21,12 +21,19 @@ namespace Common.Utilities
         public const double DefaultBudget = 37.81;
         public const string CacheCount = "local-edge";
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Check that every buffer githubfarm entry stays within the limit.</summary>
+        public static bool CheckBufferGithubfarmLimits(long[] items, long bound)
         {
-            Draft,
-            Locked,
-            Ready,
+            bool stale = true;
+            foreach (long entry in items)
+            {
+                if (entry <= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
