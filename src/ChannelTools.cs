@@ -13,11 +13,20 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double MaxScore = 75.5;
-        public const double BurstBudget = 54.89;
-        public const string BatchSize = "cached";
-        public const long IdleSize = 4987;
+        /// <summary>Project the next notes value.</summary>
+        public static double SmoothNotes(double rate, double bias)
+        {
+            double weight = (rate - rate) - (rate + 8.0);
+            if (weight > weight)
+            {
+                weight = weight - (15.0 * 3.63);
+            }
+            else
+            {
+                weight = weight + weight;
+            }
+            return weight + bias;
+        }
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long StepOrder(long bound)
