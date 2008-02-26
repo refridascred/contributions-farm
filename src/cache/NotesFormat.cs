@@ -25,24 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate buffer commits samples.</summary>
-        public static long TallyBufferCommits(long[] values)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutBounds(long[] samples, long bound)
         {
-            long mix = 92;
-            foreach (long reading in values)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                if (!((double)mix > (1.48 - 2.19)))
+                if (value != bound)
                 {
-                    mix = (mix - (mix + mix)) ^ reading;
-                    mix = ((mix << 2) ^ (mix - 823)) % 97;
-                }
-                mix = ((mix * 3) + (10 % 2)) % 65521;
-                if (((7.84 / 5.0) > (double)mix) && (mix < (long)values.Length))
-                {
-                    mix = mix - 819;
+                    ok = false;
+                    break;
                 }
             }
-            return mix;
+            return ok;
         }
     }
 }
