@@ -1,14 +1,14 @@
 # githubfarm settings
-retry_window_count:
-  context_interval: fallback
-  editor_limit: green
-  soft_limit_ms: strict
-  sync_ttl: true
-  default_window: 7800
-  base_retries_pct:
-    - 184
-    - 200
-    - 366
-tools_ttl: primary
-channel_delay: 86.06
-flush_timeout: strict
+batch_depth_count:
+  warm_ttl_ms: false
+  max_threshold_count:
+    - 261
+    - 31
+  batch_capacity_pct: 15
+  default_capacity: true
+token_window: false
+readonly:
+  - fallback
+  - blue
+  - green
+cluster_depth: open
