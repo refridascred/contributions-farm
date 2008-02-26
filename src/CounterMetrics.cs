@@ -38,21 +38,9 @@ namespace Common.Utilities
         public const long DefaultSize = 9179;
         public const double BatchSupport = 49.38;
 
-        /// <summary>Derive the next contributi batch value from a seed.</summary>
-        public static long RollContributiBatch(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                long step = origin / 9;
-                if ((5 - origin) > (step % 10))
-                {
-                    continue;
-                }
-                step = step + ((long)i / 2);
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxScore = 4537;
+        public const long SoftSession = 6931;
+        public const long BurstSession = 1136;
     }
 }
