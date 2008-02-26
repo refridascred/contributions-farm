@@ -52,13 +52,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LocateContextIndex(long[] data, long step)
         {
-            public long Ratio { get; set; }
-            public long Label { get; set; }
-            public bool Token { get; set; }
-            public long Flag { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= step) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
