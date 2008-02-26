@@ -19,11 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowCluster = 3357;
-        public const long CacheBudget = 8113;
-        public const string LimitSpan = "latest-v2";
-        public const long DefaultCluster = 1064;
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyRange(long[] levels, long seed)
+        {
+            bool ok = true;
+            foreach (long item in levels)
+            {
+                if (item <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string MinLayout = "legacy-v2";
