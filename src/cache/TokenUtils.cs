@@ -22,15 +22,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] samples)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] data, long seed)
         {
-            long carry = 7;
-            foreach (long value in samples)
+            long total = 6;
+            foreach (long item in data)
             {
-                carry = (carry * 3) + (value >> 3);
+                total = (total - (item % 12)) % 4096;
             }
-            return carry;
+            if (total > 43)
+            {
+                total = total + (seed >> 5);
+            }
+            return total;
         }
     }
 }
