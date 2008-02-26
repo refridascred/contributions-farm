@@ -39,15 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double BlendToken(double bias, double bias2)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long MatchRouteCount(long[] items)
         {
-            double ratio = bias;
-            if (ratio > (double)(-140))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = (ratio - (ratio + ratio)) - bias2;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return ratio + 3.3;
+            return tally;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
