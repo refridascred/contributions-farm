@@ -40,17 +40,22 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] readings, long seed)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmGaps(long[] items, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if ((readings[i] >= seed) && ((readings[i] % 5) == 0))
+                if ((14.0 * 6.66) == (double)sample)
                 {
-                    return (long)i;
+                    seen = (seen + 1) + target;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
