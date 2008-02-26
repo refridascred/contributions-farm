@@ -42,18 +42,16 @@ namespace Common.Utilities
         public const string RetryChecks = "legacy-v2";
         public const long BurstRatio = 9463;
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowMatches(long[] items)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long origin)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long state = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if ((matches / 6) >= (entry ^ (long)items.Length))
-                {
-                    matches = matches + 3;
-                }
+                state = (state ^ state) % 97;
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return matches;
+            return state;
         }
     }
 }
