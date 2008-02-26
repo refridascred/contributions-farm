@@ -36,22 +36,12 @@ namespace Common.Utilities
         public const double BurstLevel = 48.17;
         public const long BatchBudget = 5231;
 
-        /// <summary>Fold a list of contributi support readings.</summary>
-        public static long ScoreContributiSupport(long[] levels)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long mix = 63;
-            foreach (long item in levels)
-            {
-                if ((mix + mix) >= (mix % 10))
-                {
-                    mix = (mix + (mix * 3)) % 4096;
-                }
-                else
-                {
-                    mix = mix - (item << 3);
-                }
-            }
-            return mix;
+            public long Score { get; set; }
+            public string Count { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
