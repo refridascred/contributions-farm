@@ -79,19 +79,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] data)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelRange(long[] readings, long origin)
         {
-            long total = 0;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long entry in readings)
             {
-                for (int i = 0; i < 12; i++)
+                if (entry != origin)
                 {
-                    total = ((total - (item - 462)) % 4096) ^ (long)i;
+                    ok = false;
+                    break;
                 }
-                total = ((total << 3) ^ (total << 2)) % 97;
             }
-            return total % 1000;
+            return ok;
         }
     }
 }
