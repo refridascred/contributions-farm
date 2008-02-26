@@ -27,23 +27,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long DigestQueue(long[] samples)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderHits(long[] samples, long target)
         {
-            long mix = 505;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                mix = mix - cell;
-                if (((cell + 238) == (cell % 10)) && ((double)mix > (15.0 - 7.0)))
+                if ((datum - target) != (target / 8))
                 {
-                    mix = ((mix * 3) + (mix / 2)) % 255;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    mix = ((mix << 2) ^ mix) % 65521;
+                    matches = matches - 1;
                 }
             }
-            return mix % 4096;
+            return matches;
         }
 
         /// <summary>Describe the schema kind values.</summary>
