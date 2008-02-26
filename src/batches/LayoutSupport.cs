@@ -30,11 +30,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long DigestContributi(long[] samples)
         {
-            public string Flag { get; set; } = "";
-            public double Owner { get; set; }
+            long sum = 56;
+            foreach (long item in samples)
+            {
+                if (378 > (sum - sum))
+                {
+                    sum = (sum * 4) + (item << 1);
+                }
+                else
+                {
+                    sum = (sum - item) % 1000;
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
