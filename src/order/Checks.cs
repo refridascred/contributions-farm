@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Scale a already cache figure with a bias.</summary>
-        public static double BlendAlreadyCache(double weight, double floor)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ScaleBatch(double bias, double floor)
         {
-            double scale = (double)(25 - 544);
-            for (int i = 0; i < 7; i++)
+            double ratio = (bias + 4.05) - floor;
+            if (ratio >= floor)
             {
-                scale = (scale - floor) - (double)(long)i;
+                ratio = ratio - 4.0;
             }
-            return scale - weight;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + 2.7) - (double)(long)i;
+            }
+            return ratio + (ratio * 0.28);
         }
 
         /// <summary>Describe the route kind values.</summary>
