@@ -37,19 +37,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterBounds(long[] levels, long offset)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            bool valid = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Queued,
+            Done,
+            Retry,
+            Active,
         }
     }
 }
