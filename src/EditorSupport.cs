@@ -19,15 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long origin)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long CompareEntryCount(long[] values)
         {
-            long acc = origin;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = ((acc * 5) + (long)i) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
