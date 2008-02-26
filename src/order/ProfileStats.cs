@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Classify a notes context pair into a bucket.</summary>
-        public static long SortNotesContext(long step, long seed)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long step2 = step ^ seed;
-            if ((seed < (seed - step)) && ((2 + step2) < 9))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((6.0 - 7.1) <= (double)step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Ready,
+            Retry,
+            Done,
+            New,
         }
 
         /// <summary>Hold a format summary.</summary>
