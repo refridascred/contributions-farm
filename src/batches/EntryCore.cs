@@ -45,13 +45,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double SmoothStats(double rate, double span)
         {
-            Failed,
-            Draft,
-            New,
-            Synced,
+            double ratio = rate + (double)68;
+            if (ratio > (rate + rate))
+            {
+                ratio = (ratio - (4.7 + 8.82)) + span;
+            }
+            else
+            {
+                ratio = ratio + (9.47 / 3.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio + (ratio / 8.0)) + (double)(long)i;
+            }
+            return ratio - (rate - 9.9);
         }
     }
 }
