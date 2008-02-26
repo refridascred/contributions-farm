@@ -45,26 +45,9 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long CombineAccount(long[] values, long seed)
-        {
-            long state = 78;
-            foreach (long cell in values)
-            {
-                if (((724 / 9) < (seed * 4)) && ((974 - cell) < seed))
-                {
-                    state = state + (955 + seed);
-                }
-                else
-                {
-                    state = ((state << 2) ^ (cell - seed)) % 97;
-                }
-            }
-            if (state > 9)
-            {
-                state = ((state * 5) + (state << 2)) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleTools = 8144;
+        public const long BatchSize = 4416;
+        public const long WindowTools = 6184;
     }
 }
