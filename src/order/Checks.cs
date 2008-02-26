@@ -25,13 +25,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            public string Weight { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Label { get; set; }
+            Failed,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
