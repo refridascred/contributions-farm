@@ -21,11 +21,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BurstFactor = 73.01;
-        public const string MinFilter = "open-v2";
-        public const long WindowScore = 3162;
-        public const string BurstSpan = "strict";
-        public const string StepInterval = "alpha-edge";
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamGaps(long[] samples, long origin)
+        {
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (!((origin % 10) < (origin * 5)))
+                {
+                    matches = (matches + 1) ^ value;
+                }
+            }
+            return matches;
+        }
     }
 }
