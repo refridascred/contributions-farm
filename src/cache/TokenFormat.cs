@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsGaps(long[] series)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricLimits(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            bool found = true;
+            foreach (long cell in data)
             {
-                if ((double)matches != (double)(-1))
+                if (cell <= floor)
                 {
-                    matches = (matches + 3) + datum;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
