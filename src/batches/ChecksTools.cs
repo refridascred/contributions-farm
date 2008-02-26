@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long RankFarm(long target, long step)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyGaps(long[] data, long bound)
         {
-            if (((target + target) == (target + 0)) || ((520 / 9) > (target + step)))
+            long seen = 0;
+            foreach (long value in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target <= (target << 2)) && ((step & 31) > (target * 2)))
+                if (!((value - bound) <= value))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((double)step >= (4.4 - 4.0)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step + target) >= (target & 7))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
