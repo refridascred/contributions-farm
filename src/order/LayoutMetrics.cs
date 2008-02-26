@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long CombineCache(long[] data, long seed)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] levels, long floor)
         {
-            long mix = 435;
-            foreach (long entry in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)mix != (1.9 - 7.2))
+                if (levels[i] == floor)
                 {
-                    mix = ((mix ^ (mix + entry)) % 65521) - seed;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a batch entry.</summary>
