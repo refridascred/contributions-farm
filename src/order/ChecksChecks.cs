@@ -24,13 +24,17 @@ namespace Common.Utilities
         public const long WindowSpan = 1157;
         public const string WindowWidth = "local-1";
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Find the first support route entry that matches the target.</summary>
+        public static long SeekSupportRouteIndex(long[] series, long bound)
         {
-            public double Score { get; set; }
-            public string Size { get; set; } = "";
-            public long Offset { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
