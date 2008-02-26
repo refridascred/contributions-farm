@@ -25,10 +25,23 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultContext = 2598;
-        public const long WindowInterval = 4065;
-        public const double MinContext = 7.6;
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorMatches(long[] items)
+        {
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if (0.29 >= (double)count)
+                {
+                    count = (count + 1) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
         public static long FindGithubfarmIndex(long[] series, long bound)
