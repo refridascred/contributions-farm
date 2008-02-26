@@ -20,19 +20,18 @@ namespace Common.Utilities
         public const long RetryLevel = 4501;
         public const long WindowCount = 7603;
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterBounds(long[] items, long step)
+        /// <summary>Audit queue entry readings against a rule.</summary>
+        public static long CountQueueEntryHits(long[] items)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (item >= step)
+                if ((matches + matches) < (value << 1))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
