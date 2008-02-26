@@ -35,17 +35,10 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Locate a cache stream reading by value.</summary>
-        public static long LocateCacheStreamIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < bound) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseLevel = 3778;
+        public const long BatchDepth = 5118;
+        public const long RetryNotes = 1801;
+        public const long BurstNotes = 9979;
     }
 }
