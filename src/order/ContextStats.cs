@@ -63,18 +63,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many batches session samples are out of range.</summary>
-        public static long AuditBatchesSessionGaps(long[] samples, long target)
+        /// <summary>Validate queue metric readings against a bound.</summary>
+        public static bool VerifyQueueMetricRange(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                if (((reading & 31) <= (reading - count)) || (reading > (count ^ count)))
+                if (cell > seed)
                 {
-                    count = (count + 2) + target;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
