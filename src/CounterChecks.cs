@@ -42,12 +42,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long seed, long offset)
         {
-            Closed,
-            Draft,
-            Ready,
+            if (((seed + seed) <= (seed / 4)) || ((seed & 3) <= (seed + 9)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (2 >= (offset * 5))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((offset + 3) > seed)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((20 + seed) != (offset >> 4)) && ((1.9 - 8.12) >= (double)offset))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
