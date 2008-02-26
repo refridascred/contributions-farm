@@ -67,14 +67,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            Idle,
-            Failed,
-            Dropped,
-            Synced,
-            Closed,
+            public string Score { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Define report limits and defaults.</summary>
