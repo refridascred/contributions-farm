@@ -73,14 +73,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
-        {
-            Queued,
-            Idle,
-            Paused,
-            Closed,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardRecord = 834;
+        public const double WindowRecord = 83.71;
+        public const long BaseRecord = 6738;
+        public const long RetryRecord = 4243;
+        public const double MinRecord = 52.7;
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool CheckToolsRange(long[] readings, long floor)
