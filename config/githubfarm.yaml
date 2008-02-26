@@ -1,10 +1,7 @@
 # githubfarm settings
-cache_ratio: 3955
-poll_size_count:
-  enabled: false
-  profile_delay:
-    - green
-    - edge
-    - fallback
-  hard_depth_s: blue
-entry_retries: standard
+cache_capacity_count: 60
+payload_depth: true
+tools_window: true
+idle_depth_count: 100
+retry_size_s: 100
+audit: blue
