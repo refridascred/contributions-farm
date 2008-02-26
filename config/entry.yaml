@@ -1,11 +1,5 @@
 # entry settings
-default_ratio: local
-batch_depth_count: edge
-buffer_window: strict
-min_retries: 48.68
-queue_timeout: 69.88
-batch_size:
-  dry_run: 4537
-  max_interval_count: cached
-  sync_timeout: eu-west
-  format_depth: legacy
+entry_depth: 5973
+poll_capacity: legacy
+idle_size_s: open
+schema_ratio: 8682
