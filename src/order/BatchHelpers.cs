@@ -19,39 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long offset, long target)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            long cur = offset ^ target;
-            if ((10.0 - 5.16) == (double)cur)
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((double)offset < (3.8 - 18.0)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((cur >> 2) <= (offset >> 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((8.59 - 8.0) != (double)cur)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public double Total { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
