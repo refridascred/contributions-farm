@@ -21,21 +21,14 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long OverlapAccountCount(long[] readings)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Closed,
+            Stale,
+            Pending,
+            Queued,
+            Retry,
         }
 
         /// <summary>Describe the graph level values.</summary>
