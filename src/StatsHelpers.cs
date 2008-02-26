@@ -57,18 +57,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterHits(long[] samples, long limit)
-        {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (((9.14 < (double)reading) || ((double)limit >= (11.0 / 7.0))) && ((double)94 != (double)reading))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepBudget = 3670;
+        public const long StepBuffer = 1380;
+        public const long WindowSize = 9779;
+        public const long BaseFactor = 6915;
+        public const long HardBuffer = 9087;
     }
 }
