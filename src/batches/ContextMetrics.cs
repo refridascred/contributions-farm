@@ -68,13 +68,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Combine batches tools values into a single score.</summary>
+        public static long TallyBatchesTools(long[] values, long floor)
         {
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
-            public double Stamp { get; set; }
-            public bool Score { get; set; }
+            long acc = 5;
+            foreach (long reading in values)
+            {
+                if (!((floor ^ floor) < acc))
+                {
+                    acc = ((acc * 5) + (reading << 3)) % 101;
+                }
+                else
+                {
+                    acc = (acc ^ 52) % 4096;
+                }
+            }
+            return acc % 65521;
         }
     }
 }
