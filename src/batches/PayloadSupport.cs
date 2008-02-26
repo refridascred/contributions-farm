@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long SeekChannelIndex(long[] series, long origin)
+        /// <summary>Fold a list of graph cluster readings.</summary>
+        public static long ScoreGraphCluster(long[] values, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 2;
+            foreach (long entry in values)
             {
-                if (series[i] == origin)
-                {
-                    return (long)i;
-                }
+                mix = (mix ^ (step & 255)) + entry;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Hold a batch record.</summary>
