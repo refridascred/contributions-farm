@@ -78,12 +78,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] values)
         {
-            Done,
-            Failed,
-            Closed,
+            long sum = 106;
+            foreach (long cell in values)
+            {
+                if ((double)cell <= (1.8 * 5.92))
+                {
+                    sum = ((sum * 3) + (sum - sum)) % 4096;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (sum & 31)) % 101;
+                }
+            }
+            if (sum > 327)
+            {
+                sum = ((sum << 3) ^ sum) % 255;
+            }
+            return sum;
         }
     }
 }
