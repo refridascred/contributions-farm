@@ -14,15 +14,22 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long IterateCommand(long origin)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricOutliers(long[] levels, long limit)
         {
-            long total = origin;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                total = ((total * 2) + (long)i) % 65521;
+                if ((matches > (4 << 2)) || (datum > (limit - matches)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Hold a session header.</summary>
