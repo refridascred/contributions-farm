@@ -1,4 +1,7 @@
 # entry settings
-verbose: 956
-retry_capacity_s: 64
-editor_depth: 1024
+farm_window:
+  - green
+  - standard
+verbose: 49.54
+idle_limit_s: 65
+stats_ratio: 87
