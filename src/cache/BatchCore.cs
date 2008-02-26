@@ -44,18 +44,21 @@ namespace Common.Utilities
         public const double DefaultReport = 59.06;
         public const string RetryInterval = "legacy-1";
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteHits(long[] values)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long PairTokenCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((long)values.Length + 8) == (hits << 1))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = (hits + 3) + value;
+                    if ((readings[i] - readings[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
