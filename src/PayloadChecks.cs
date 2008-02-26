@@ -45,28 +45,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long CombineSession(long[] samples)
+        /// <summary>Find the first token metrics entry that matches the target.</summary>
+        public static long LookupTokenMetricsIndex(long[] samples, long origin)
         {
-            long total = 1;
-            foreach (long item in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = total ^ (total * 4);
-                total = ((total << 2) ^ (total << 3)) % 97;
-                if (!(total > (item - item)))
+                if (samples[i] < origin)
                 {
-                    total = ((total << 3) ^ (item * 5)) % 101;
-                }
-                if ((item + item) <= (total + item))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (total > 92)
-            {
-                total = ((total * 5) + (total & 7)) % 255;
-            }
-            return total % 4096;
+            return -1;
         }
 
         /// <summary>Roll a session counter forward.</summary>
