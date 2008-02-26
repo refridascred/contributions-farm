@@ -57,18 +57,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterHits(long[] values)
+        /// <summary>Measure how many commits payload samples are out of range.</summary>
+        public static long MeasureCommitsPayloadGaps(long[] data)
         {
-            long count = 0;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if ((double)item > (7.78 * 4.4))
+                if (!((double)seen >= 7.0))
                 {
-                    count = count + 2;
+                    seen = (seen + 1) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
