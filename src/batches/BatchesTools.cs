@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Combine entry format values into a single score.</summary>
+        public static long ScoreEntryFormat(long[] series)
         {
-            public string Owner { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Offset { get; set; }
+            long mark = -5;
+            foreach (long cell in series)
+            {
+                mark = (mark - (97 + cell)) % 4096;
+                if (mark <= (cell & 63))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
