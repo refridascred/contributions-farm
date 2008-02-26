@@ -43,14 +43,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            Active,
-            Draft,
-            Ready,
-            Locked,
+            Synced,
             Stale,
+            Paused,
         }
 
         /// <summary>Accumulate session samples.</summary>
