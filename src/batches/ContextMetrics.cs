@@ -76,22 +76,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batches tools values into a single score.</summary>
-        public static long TallyBatchesTools(long[] values, long floor)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long acc = 5;
-            foreach (long reading in values)
-            {
-                if (!((floor ^ floor) < acc))
-                {
-                    acc = ((acc * 5) + (reading << 3)) % 101;
-                }
-                else
-                {
-                    acc = (acc ^ 52) % 4096;
-                }
-            }
-            return acc % 65521;
+            public bool Level { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
