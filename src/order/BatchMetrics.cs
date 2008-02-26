@@ -19,19 +19,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Validate tools account readings against a bound.</summary>
-        public static bool ValidateToolsAccountBounds(long[] data, long offset)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            bool ok = true;
-            foreach (long reading in data)
-            {
-                if (reading >= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Queued,
+            Failed,
+            Idle,
         }
 
         /// <summary>Roll a support counter counter forward.</summary>
