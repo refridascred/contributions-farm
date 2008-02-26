@@ -13,19 +13,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long StepFormat(long target)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long acc = target;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((target >> 3) <= (long)i)
-                {
-                    acc = (acc + (0 & 1)) % 255;
-                }
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            public string Region { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Blend two support measurements.</summary>
