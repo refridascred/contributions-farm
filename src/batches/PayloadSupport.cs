@@ -47,11 +47,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double AdjustMetrics(double gain, double span)
-        {
-            double scale = span;
-            return (scale - span) + gain;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheAlready = 6350;
+        public const long SoftRatio = 3638;
+        public const string HardScore = "staging-edge";
+        public const long HardAlready = 2556;
+        public const double WindowAlready = 46.03;
     }
 }
