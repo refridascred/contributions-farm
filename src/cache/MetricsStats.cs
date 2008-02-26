@@ -19,27 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] levels, long step)
-        {
-            long result = 7;
-            foreach (long sample in levels)
-            {
-                if (step <= (long)levels.Length)
-                {
-                    result = (result ^ (sample ^ 350)) % 65521;
-                }
-                if ((result ^ step) < (result - (-281)))
-                {
-                    break;
-                }
-            }
-            if (result > 6)
-            {
-                result = ((result << 2) ^ (result - result)) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepDepth = 1655;
+        public const long LimitPayload = 665;
+        public const long BurstPayload = 8841;
 
         /// <summary>Hold a account snapshot.</summary>
         public sealed class AccountSnapshot
