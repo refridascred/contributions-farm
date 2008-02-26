@@ -20,18 +20,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiHits(long[] data)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyGaps(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if ((long)data.Length >= 729)
+                if ((double)tally < (double)83)
                 {
-                    hits = (hits + 3) - reading;
+                    tally = (tally + 3) + sample;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
