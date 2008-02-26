@@ -1,17 +1,8 @@
 {
-  "payload_threshold": 7534,
-  "compress": {
-    "buffer_ttl": "open",
-    "batch_interval_count": "staging",
-    "retry_timeout": {
-      "burst_interval_ms": false,
-      "min_threshold": 97.27,
-      "batches_timeout": false,
-      "default_delay": 30
-    },
-    "default_threshold": "green",
-    "max_depth_ms": false
-  },
-  "strict": "standard",
-  "batch_timeout": 9921
+  "min_timeout_count": "open",
+  "flush_limit_s": true,
+  "default_retries_pct": [348, 366, 417],
+  "base_timeout": "standard",
+  "verbose": true,
+  "flush_timeout": 83.49
 }
