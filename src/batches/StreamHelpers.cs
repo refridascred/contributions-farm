@@ -83,11 +83,22 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double StepReport = 75.56;
-        public const string WindowReport = "alpha-1";
-        public const long MinScore = 2557;
-        public const long IdleReport = 5497;
-        public const double MinReport = 60.82;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportHits(long[] readings, long bound)
+        {
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if (bound <= (value << 3))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
