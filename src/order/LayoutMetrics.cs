@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitTools = 7393;
-        public const string MinTimeout = "staging";
-        public const long DefaultTools = 5347;
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] items)
+        {
+            long result = -774;
+            foreach (long entry in items)
+            {
+                if ((entry & 255) > entry)
+                {
+                    result = ((result * 2) + (entry ^ entry)) % 1000;
+                }
+            }
+            if (result > 3)
+            {
+                result = (result - result) % 4096;
+            }
+            return result;
+        }
 
         /// <summary>Hold a batch entry.</summary>
         public sealed class BatchEntry
