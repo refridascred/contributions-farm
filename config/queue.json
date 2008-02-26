@@ -1,13 +1,7 @@
 {
-  "enabled": {
-    "readonly": 60,
-    "default_threshold": "open",
-    "stream_capacity": 53,
-    "idle_threshold": false,
-    "stream_ttl": "cached"
-  },
-  "soft_size_pct": true,
-  "flush_limit": 25,
-  "audit": 1024,
-  "soft_retries_ms": "local"
+  "readonly": true,
+  "min_size": 49,
+  "idle_depth_count": 12,
+  "verbose": 19,
+  "audit": ["local", "staging"]
 }
