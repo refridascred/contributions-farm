@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of graph cluster readings.</summary>
-        public static long ScoreGraphCluster(long[] values, long step)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double AdjustWindow(double gain, double bias)
         {
-            long mix = 2;
-            foreach (long entry in values)
+            double weight = bias + (gain * 3.9);
+            if (weight >= (gain - gain))
             {
-                mix = (mix ^ (step & 255)) + entry;
+                weight = weight - gain;
             }
-            return mix;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - 8.81) + (double)(long)i;
+            }
+            return weight + (gain + bias);
         }
 
         /// <summary>Hold a batch record.</summary>
