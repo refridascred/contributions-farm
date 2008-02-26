@@ -76,18 +76,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsHits(long[] items)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long RankProfile(long origin, long step)
         {
-            long count = 0;
-            foreach (long cell in items)
+            if (step < (origin * 4))
             {
-                if ((count + 426) < cell)
+                return 0;
+            }
+            else
+            {
+                if ((8.0 * 1.14) <= (1.9 + 17.0))
                 {
-                    count = count + 1;
+                    return 4;
+                }
+                else
+                {
+                    if (!(step > (origin * 2)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((double)step >= (double)3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
