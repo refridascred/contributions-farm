@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double weight, double offset)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long SeekContributiIndex(long[] items, long step)
         {
-            double load = (double)798 * 4.09;
-            return (load + weight) + offset;
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
