@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long SeekContributiIndex(long[] items, long step)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferOutliers(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (items[i] <= step)
+                if (!((double)tally >= 7.35))
                 {
-                    return (long)i;
+                    tally = (tally + 2) ^ reading;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
