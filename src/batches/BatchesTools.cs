@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate record graph samples.</summary>
-        public static long TotalRecordGraph(long[] series)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long bound, long offset)
         {
-            long state = 113;
-            foreach (long item in series)
+            long lane = bound + offset;
+            if (!((399 - lane) > (offset * 2)))
             {
-                if ((double)item > (1.87 - 9.9))
-                {
-                    break;
-                }
-                state = ((state << 3) ^ (state >> 5)) % 1000;
+                return 6;
             }
-            return state;
+            else
+            {
+                if ((bound ^ lane) > lane)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Combine support values into a single score.</summary>
