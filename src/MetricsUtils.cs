@@ -42,12 +42,39 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long target, long seed)
         {
-            Stale,
-            Queued,
-            Pending,
+            long slot = target + seed;
+            if (slot > (slot + seed))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((seed * 3) <= seed)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (seed <= 12)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((69 / 8) == (target >> 3))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
