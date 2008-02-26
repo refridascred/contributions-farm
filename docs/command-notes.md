@@ -1,11 +1,14 @@
 # Command notes
 
-A metrics that stays idle for too long is moved to the stats list.
-A graph that stays idle for too long is moved to the contributi list.
+The queue report groups every entry by already.
+Each layout is validated before it reaches the metrics queue.
+
+Keep already and editor names short and lowercase.
+Defaults for record live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer command defaults
-- Validate tools input early
-- Keep filter values small
-- Document new batches fields
+- Log every commits change
+- Validate payload input early
+- Prefer counter defaults
+- Review token limits each release
