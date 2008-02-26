@@ -23,27 +23,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Combine farm metric values into a single score.</summary>
-        public static long ScoreFarmMetric(long[] series)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double AdjustCommits(double bias, double offset)
         {
-            long acc = 756;
-            foreach (long cell in series)
+            double gain = 20.0 / 9.0;
+            if (gain > (bias / 9.0))
             {
-                acc = (acc ^ (acc << 2)) % 1000;
-                if (((-347) ^ cell) > (acc + acc))
-                {
-                    acc = (acc << 2) ^ acc;
-                }
-                else
-                {
-                    acc = (acc - cell) % 255;
-                }
+                gain = gain - (double)448;
             }
-            if (acc > 8)
+            for (int i = 0; i < 9; i++)
             {
-                acc = ((acc << 2) ^ 3) % 65521;
+                gain = (gain - (offset / 9.0)) + (double)(long)i;
             }
-            return acc % 4096;
+            return gain + offset;
         }
 
         /// <summary>Describe the graph phase values.</summary>
