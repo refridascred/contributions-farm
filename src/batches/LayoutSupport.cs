@@ -41,13 +41,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadLimits(long[] levels, long origin)
         {
-            public long Limit { get; set; }
-            public double Label { get; set; }
-            public double Score { get; set; }
-            public string Total { get; set; } = "";
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the editor class values.</summary>
