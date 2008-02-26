@@ -16,13 +16,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            public long Region { get; set; }
-            public double Size { get; set; }
-            public long Count { get; set; }
-            public string Weight { get; set; } = "";
+            Stale,
+            Done,
+            Pending,
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
