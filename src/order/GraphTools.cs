@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseFarm = 7841;
-        public const string MaxFarm = "strict-edge";
-        public const long StepRatio = 1418;
-        public const long BurstFarm = 7811;
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long StepFilter(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                mix = (mix - (floor + floor)) % 1000;
+                if ((floor ^ floor) >= mix)
+                {
+                    mix = ((mix << 3) ^ (floor << 2)) % 65521;
+                }
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a filter info.</summary>
         public sealed class FilterInfo
