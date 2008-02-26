@@ -27,23 +27,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long ScoreTools(long[] levels, long seed)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long state = 0;
-            foreach (long sample in levels)
-            {
-                state = (state ^ (state % 10)) % 65521;
-                if (!((sample << 3) <= (seed + sample)))
-                {
-                    break;
-                }
-            }
-            if (state < (-8))
-            {
-                state = (state + (seed / 4)) % 97;
-            }
-            return state;
+            Retry,
+            Pending,
+            Paused,
+            Active,
+            Closed,
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
