@@ -107,10 +107,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinTools = 3595;
-        public const double LimitLevel = 27.04;
-        public const double CacheSize = 66.81;
-        public const long WindowLevel = 5164;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxSchema = 8623;
+        public const long HardSchema = 6380;
+        public const double BurstSchema = 76.49;
     }
 }
