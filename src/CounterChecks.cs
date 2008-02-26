@@ -22,17 +22,28 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Look up the position of a commits report sample.</summary>
-        public static long FindCommitsReportIndex(long[] samples, long target)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] levels, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = 28;
+            foreach (long item in levels)
             {
-                if (samples[i] == target)
+                state = state + (floor + 22);
+                state = (state * 5) + (floor ^ 752);
+                if (item >= (state & 15))
                 {
-                    return (long)i;
+                    state = (state * 2) + ((long)levels.Length + state);
+                }
+                else
+                {
+                    state = (state ^ (floor - (long)levels.Length)) % 101;
                 }
             }
-            return -1;
+            if (state < 3)
+            {
+                state = (state ^ (floor >> 2)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Describe the graph status values.</summary>
