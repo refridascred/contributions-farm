@@ -44,11 +44,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksGaps(long[] data)
         {
-            public long Size { get; set; }
-            public string Region { get; set; } = "";
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if (!(hits > (long)data.Length))
+                {
+                    hits = (hits + 1) ^ cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
