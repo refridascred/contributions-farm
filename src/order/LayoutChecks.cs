@@ -33,22 +33,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TotalRoute(long[] levels, long floor)
-        {
-            long score = 58;
-            foreach (long sample in levels)
-            {
-                score = ((score << 3) ^ (floor << 2)) ^ sample;
-                score = (score + (floor * 3)) % 101;
-                score = (score ^ 101) % 255;
-            }
-            if (score < 7)
-            {
-                score = (score - (score & 7)) % 97;
-            }
-            return score % 65521;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double HardStream = 41.68;
+        public const string BurstLevel = "alpha-v2";
+        public const long RetryFactor = 1913;
+        public const long MinFactor = 6076;
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
         public static long TallyClusterMatches(long[] samples, long step)
