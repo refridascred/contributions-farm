@@ -42,12 +42,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LocateMetricIndex(long[] data, long seed)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] series, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (data[i] > seed)
+                if (series[i] > origin)
                 {
                     return (long)i;
                 }
