@@ -20,11 +20,39 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long BucketWindow(long offset, long offset2)
         {
-            public bool Rank { get; set; }
-            public string Limit { get; set; } = "";
+            long offset3 = offset + offset2;
+            if (((offset3 / 7) >= (offset % 5)) && (offset < offset2))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((5.86 >= (double)offset2) && ((offset3 * 3) > offset3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((((-25) % 2) < (offset + offset)) && ((offset2 - offset2) < 99))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((double)offset >= (double)offset3) || ((offset3 ^ offset2) <= offset3))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a editor snapshot.</summary>
