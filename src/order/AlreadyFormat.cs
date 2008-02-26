@@ -28,18 +28,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterGaps(long[] levels)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((seen >> 5) != (cell % 3))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public bool Ratio { get; set; }
+            public double Stamp { get; set; }
+            public double Level { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
