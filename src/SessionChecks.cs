@@ -13,25 +13,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Classify a payload queue pair into a bucket.</summary>
-        public static long SortPayloadQueue(long offset, long target)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long cur = offset + target;
-            if ((target + offset) <= (offset + target))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((42 & 31) > (cur % 3)) && ((offset / 6) <= 0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Dropped,
+            Idle,
+            Paused,
+            Active,
         }
 
         /// <summary>Hold a support entry.</summary>
