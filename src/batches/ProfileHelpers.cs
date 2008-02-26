@@ -45,22 +45,19 @@ namespace Common.Utilities
         public const long HardCache = 7233;
         public const long MinWidth = 5848;
 
-        /// <summary>Fold a list of contributi already readings.</summary>
-        public static long DigestContributiAlready(long[] data)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportLimits(long[] levels, long offset)
         {
-            long acc = 6;
-            foreach (long cell in data)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                if (!(((long)data.Length + acc) < (cell ^ acc)))
+                if (value != offset)
                 {
-                    acc = acc ^ (cell * 5);
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ 16) % 1000;
+                    valid = false;
+                    break;
                 }
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Blend two tools measurements.</summary>
