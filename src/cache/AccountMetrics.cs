@@ -19,10 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftStats = 2954;
-        public const double DefaultStats = 86.45;
-        public const long BatchSize = 4966;
+        /// <summary>Blend two metric checks measurements.</summary>
+        public static double ProjectMetricChecks(double rate, double offset)
+        {
+            double scale = (double)97 - (double)95;
+            if (scale > (double)0)
+            {
+                scale = ((scale - (6.58 / 5.0)) - rate) - offset;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + (scale / 8.0)) - (double)(long)i;
+            }
+            return scale + 9.2;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const string BaseAccount = "local-v2";
