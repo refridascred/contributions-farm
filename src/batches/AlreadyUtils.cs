@@ -33,38 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long SortGraph(long bound, long bound2)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long CompareOrderCount(long[] data)
         {
-            if ((bound << 2) <= (bound % 7))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (3.4 <= (double)bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (bound < bound2)
+                    if ((data[i] - data[j]) == 6)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound2 << 2) >= bound2)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
