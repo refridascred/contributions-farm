@@ -47,22 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] series, long origin)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandMatches(long[] series)
         {
-            long score = 67;
+            long seen = 0;
             foreach (long value in series)
             {
-                if ((score - value) != (score - origin))
+                if ((seen + seen) >= (88 & 1))
                 {
-                    score = (score ^ (score + 519)) % 65521;
+                    seen = (seen + 3) + value;
                 }
             }
-            if (score > 51)
-            {
-                score = (score - (origin - 755)) % 97;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Digest a series of already entries.</summary>
