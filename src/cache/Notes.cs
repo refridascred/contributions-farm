@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Roll a format commits counter forward.</summary>
-        public static long SeriesFormatCommits(long bound)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long result = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
+            public string Count { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
