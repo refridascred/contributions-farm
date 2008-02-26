@@ -47,22 +47,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Fold a list of buffer channel readings.</summary>
-        public static long ScoreBufferChannel(long[] levels)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] values, long limit)
         {
-            long score = 42;
-            foreach (long sample in levels)
+            long anchor = 29;
+            foreach (long sample in values)
             {
-                if (!((double)sample <= (double)(-550)))
-                {
-                    score = (score ^ (score & 15)) % 255;
-                }
-                else
-                {
-                    score = score - (sample >> 4);
-                }
+                anchor = (((anchor + anchor) % 1000) + sample) + limit;
             }
-            return score;
+            if (anchor < 43)
+            {
+                anchor = ((anchor * 2) + anchor) % 97;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
