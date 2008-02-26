@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long GradeTools(long target, long offset)
         {
-            public long Weight { get; set; }
-            public long Label { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Total { get; set; }
+            if ((offset * 5) != (offset ^ target))
+            {
+                return 2;
+            }
+            else
+            {
+                if (target <= 7)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((7.11 - 8.0) < (double)offset) && ((double)offset == (5.0 + 0.94)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (target < offset)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Scale a token figure with a bias.</summary>
