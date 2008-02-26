@@ -22,19 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] samples, long target)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long PairCounterCount(long[] values)
         {
-            long mark = 406;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = (mark << 3) ^ (target + cell);
-                if ((7 > (mark / 8)) && ((target - target) > cell))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = mark + 394;
+                    if ((values[i] ^ values[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
