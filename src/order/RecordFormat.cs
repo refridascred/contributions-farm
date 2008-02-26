@@ -46,10 +46,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string HardSize = "local";
-        public const long IdleScore = 248;
-        public const long StepRatio = 3433;
-        public const long HardAccount = 8665;
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
+        {
+            New,
+            Idle,
+            Failed,
+        }
     }
 }
