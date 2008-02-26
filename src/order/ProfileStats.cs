@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            Ready,
-            Retry,
-            Done,
-            New,
+            public bool Flag { get; set; }
+            public long Count { get; set; }
+            public double Mode { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Roll a entry counter forward.</summary>
