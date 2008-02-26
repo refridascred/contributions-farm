@@ -41,24 +41,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long seed, long floor)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] readings, long target)
         {
-            if (!((floor - floor) <= (floor + floor)))
+            long score = -86;
+            foreach (long item in readings)
             {
-                return 0;
+                score = (((score << 2) ^ (item % 24)) % 97) - target;
+                score = (score << 3) ^ score;
             }
-            else
-            {
-                if (((seed + seed) > (seed + 6)) || ((seed + 9) > seed))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return score;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
