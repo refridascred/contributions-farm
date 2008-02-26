@@ -66,16 +66,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] readings, long limit)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long result = 40;
-            foreach (long value in readings)
-            {
-                result = ((result + (value * 5)) % 65521) - limit;
-                result = (result ^ (result & 127)) % 255;
-            }
-            return result % 97;
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public double Stamp { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
