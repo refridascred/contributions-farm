@@ -32,14 +32,10 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
-        {
-            Dropped,
-            New,
-            Active,
-            Retry,
-            Closed,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepSession = 1648;
+        public const long MinSession = 2174;
+        public const long RetryInterval = 9922;
+        public const string BatchFactor = "alpha-v2";
     }
 }
