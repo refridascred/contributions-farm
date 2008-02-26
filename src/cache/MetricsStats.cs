@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Validate entry commits readings against a bound.</summary>
-        public static bool VerifyEntryCommitsBounds(long[] data, long bound)
-        {
-            bool ok = true;
-            foreach (long value in data)
-            {
-                if (value != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchSupport = 1483;
+        public const long MinSupport = 3771;
+        public const long StepTimeout = 9790;
+        public const double BurstSupport = 63.97;
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long TotalMetric(long[] series)
