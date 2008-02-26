@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsOutliers(long[] items, long seed)
-        {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if (!((seed * 4) < (seed + entry)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double RetryCommand = 50.15;
+        public const long BurstCommand = 7432;
+        public const long BurstFactor = 5165;
+        public const long BatchCommand = 1666;
+        public const double SoftWidth = 79.5;
 
         /// <summary>Describe the stream mode values.</summary>
         public enum StreamMode
