@@ -43,18 +43,21 @@ namespace Common.Utilities
         public const double IdleSize = 53.64;
         public const long CacheCount = 9526;
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandHits(long[] levels, long target)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long MatchCacheCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((6.0 - 8.2) != (double)target) && (tally < (tally % 10)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 1) + datum;
+                    if ((readings[i] - readings[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Iterate the stats payload series from a seed.</summary>
