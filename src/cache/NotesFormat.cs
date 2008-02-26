@@ -29,17 +29,21 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long SeriesEntry(long seed)
+        /// <summary>Match up commits report samples.</summary>
+        public static long PairCommitsReportCount(long[] samples)
         {
-            long acc = seed;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = (acc + (long)i) % 101;
-                acc = (acc + 956) % 4096;
-                acc = ((acc * 2) + (long)i) % 4093;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return acc;
+            return tally;
         }
     }
 }
