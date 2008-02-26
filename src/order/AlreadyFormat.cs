@@ -46,12 +46,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsHits(long[] items)
         {
-            Closed,
-            Done,
-            Queued,
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((count + 426) < cell)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
