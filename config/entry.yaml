@@ -1,24 +1,18 @@
 # entry settings
-support_ratio:
-  - 410
-  - 271
-  - 309
-min_depth: staging
-token_size:
-  min_timeout_s: 13
-  burst_limit_ms:
-    schema_depth: true
-    flush_window_s:
-      - 161
-      - 58
-      - 239
-      - 393
-    retry_ttl: 83
-    min_delay: 5
-  sync_size: false
-  checks_capacity:
-    sync_interval: stable
-    hard_ratio_ms: 500
-    idle_ratio_ms: false
-soft_ratio_ms: legacy
-strict: local
+soft_timeout_pct: 3572
+max_ratio_pct: 87.74
+poll_depth_ms:
+  - standard
+  - blue
+  - local
+cache_threshold_ms:
+  - 259
+  - 112
+  - 135
+  - 14
+hard_limit_pct:
+  - latest
+  - cached
+  - strict
+  - fallback
+session_ratio: 13
