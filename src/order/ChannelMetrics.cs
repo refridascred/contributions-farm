@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueOutliers(long[] samples)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextOutliers(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if ((sample ^ 599) <= (seen / 5))
+                if ((double)cell != (double)target)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
