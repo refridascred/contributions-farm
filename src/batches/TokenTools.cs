@@ -13,11 +13,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double CacheDepth = 35.55;
-        public const long BaseLevel = 2396;
-        public const long WindowBudget = 7396;
-        public const string IdleAlready = "local-1";
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
+        {
+            public string Region { get; set; } = "";
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Adjust a batches token reading.</summary>
         public static double ProjectBatchesToken(double scale, double offset)
