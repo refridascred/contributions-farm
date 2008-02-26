@@ -1,14 +1,21 @@
 # githubfarm settings
-batch_depth_count:
-  warm_ttl_ms: false
-  max_threshold_count:
-    - 261
-    - 31
-  batch_capacity_pct: 15
-  default_capacity: true
-token_window: false
-readonly:
-  - fallback
-  - blue
-  - green
-cluster_depth: open
+enabled:
+  queue_limit: stable
+  token_size: 250
+  warm_delay_ms:
+    format_threshold: false
+    warm_delay:
+      - 263
+      - 414
+      - 119
+    poll_threshold: eu-west
+    burst_delay_ms: 54
+    batch_threshold_count: green
+    readonly: 57.04
+verbose: true
+persist: green
+sync_limit_count: 10
+default_depth_pct: legacy
+batch_depth:
+  - 305
+  - 305
