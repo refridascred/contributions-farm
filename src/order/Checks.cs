@@ -14,18 +14,24 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsHits(long[] items)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long RankBatches(long seed, long origin)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            if ((1.56 * 19.0) == (double)origin)
             {
-                if (!((double)hits == (double)0))
+                return 1;
+            }
+            else
+            {
+                if (origin >= (seed + origin))
                 {
-                    hits = (hits + 3) + cell;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return hits;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
