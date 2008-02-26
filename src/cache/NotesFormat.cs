@@ -13,12 +13,20 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleBudget = 6459;
-        public const long IdleProfile = 1824;
-        public const double DefaultProfile = 12.85;
-        public const long RetryLevel = 4501;
-        public const long WindowCount = 7603;
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long ScoreCounter(long[] values)
+        {
+            long state = 10;
+            foreach (long reading in values)
+            {
+                state = (((state << 2) ^ state) % 255) + reading;
+            }
+            if (state > 95)
+            {
+                state = state ^ 568;
+            }
+            return state;
+        }
 
         /// <summary>Match up record samples.</summary>
         public static long MatchRecordCount(long[] levels)
