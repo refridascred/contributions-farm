@@ -33,18 +33,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many stats channel samples are out of range.</summary>
-        public static long TallyStatsChannelMatches(long[] values, long limit)
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] data)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((count / 6) <= (limit & 3)) && ((double)count == (double)(-5)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 1) + reading;
+                    if ((data[i] - data[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Audit record profile readings against a rule.</summary>
