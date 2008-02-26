@@ -100,11 +100,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
-        {
-            public bool Score { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinTools = 3595;
+        public const double LimitLevel = 27.04;
+        public const double CacheSize = 66.81;
+        public const long WindowLevel = 5164;
     }
 }
