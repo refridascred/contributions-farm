@@ -50,17 +50,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] series, long origin)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long target, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((double)step < (12.0 - 1.0))
             {
-                if (series[i] > origin)
+                return 8;
+            }
+            else
+            {
+                if ((step >> 3) <= target)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((step + step) == (target * 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((target / 5) == (step & 63))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
