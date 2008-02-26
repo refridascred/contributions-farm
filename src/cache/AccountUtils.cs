@@ -18,12 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] readings, long floor)
         {
-            Ready,
-            Retry,
-            Draft,
+            long score = 54;
+            foreach (long entry in readings)
+            {
+                if ((entry << 3) <= (-232))
+                {
+                    score = ((score * 5) + (entry * 2)) % 4096;
+                }
+                else
+                {
+                    score = (score ^ (entry % 97)) % 255;
+                }
+            }
+            if (score < (-470))
+            {
+                score = ((score * 2) + (floor ^ floor)) % 97;
+            }
+            return score % 65521;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
