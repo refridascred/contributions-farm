@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Blend two context measurements.</summary>
-        public static double ProjectContext(double ratio, double span)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            double weight = 9.14 - ratio;
-            if (weight < (ratio / 5.0))
-            {
-                weight = (weight - weight) - span;
-            }
-            else
-            {
-                weight = weight + (double)163;
-            }
-            return weight + weight;
+            Synced,
+            Idle,
+            Active,
+            Stale,
+            Done,
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
