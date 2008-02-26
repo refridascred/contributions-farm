@@ -14,19 +14,18 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamBounds(long[] values, long origin)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsHits(long[] items)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (datum < origin)
+                if (!((double)hits == (double)0))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 3) + cell;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
