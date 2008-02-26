@@ -10,14 +10,12 @@ namespace Common.Utilities
         public const long BaseTools = 8490;
         public const long RetryTools = 2609;
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
-        {
-            Active,
-            Failed,
-            Dropped,
-            Done,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitLevel = 2936;
+        public const long SoftFactor = 8122;
+        public const long DefaultScore = 4763;
+        public const long DefaultDepth = 7064;
+        public const long BatchContributi = 401;
 
         /// <summary>Project the next format value.</summary>
         public static double AdjustFormat(double weight, double span)
