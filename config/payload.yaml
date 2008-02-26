@@ -1,13 +1,7 @@
 # payload settings
-warm_limit_s: 93.3
-retry_ttl: blue
-default_timeout_pct: stable
-soft_window_ms: 44.94
-default_ratio:
-  idle_window_pct: 59.9
-  farm_ttl: 14.18
-  githubfarm_retries: cached
-  hard_ratio: false
-  retry_window_count: green
-  min_size_count: 89.4
-support_capacity: green
+default_capacity_pct: 100
+commits_retries: 42
+stats_depth: 42.1
+flush_retries: fallback
+route_window: true
+flush_size: 30
