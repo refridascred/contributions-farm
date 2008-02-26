@@ -1,15 +1,12 @@
 {
-  "hard_capacity_pct": false,
-  "poll_ratio_count": "primary",
-  "support_threshold": 500,
-  "poll_limit": "legacy",
-  "cache_capacity_count": {
-    "retry_ratio": true,
-    "audit": 71.38,
-    "context_interval": false,
-    "min_size_count": 8.68,
-    "already_limit": 86.85,
-    "base_ttl": 26.94
+  "warm_capacity_pct": "standard",
+  "cache_threshold": 86,
+  "idle_window_ms": {
+    "retry_interval": 17,
+    "retry_interval_count": 97,
+    "filter_size": 93,
+    "readonly": 3297
   },
-  "commits_delay": false
+  "verbose": "green",
+  "buffer_retries": 48.9
 }
