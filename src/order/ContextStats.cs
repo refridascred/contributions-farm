@@ -27,10 +27,14 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BaseInterval = 80.36;
-        public const long LimitCount = 3953;
-        public const double CacheDepth = 67.33;
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
+        {
+            Stale,
+            Active,
+            Ready,
+            Pending,
+        }
 
         /// <summary>Measure how many batches session samples are out of range.</summary>
         public static long AuditBatchesSessionGaps(long[] samples, long target)
