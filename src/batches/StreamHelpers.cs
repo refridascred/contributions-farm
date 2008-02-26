@@ -68,18 +68,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the support checks entries that pass the check.</summary>
-        public static long CountSupportChecksMatches(long[] samples, long target)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if (9.88 > (double)reading)
-                {
-                    tally = (tally + 3) - target;
-                }
-            }
-            return tally;
+            Idle,
+            Failed,
+            Dropped,
+            Synced,
+            Closed,
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
