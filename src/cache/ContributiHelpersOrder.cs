@@ -34,20 +34,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long step)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long OverlapGithubfarmCount(long[] series)
         {
-            long mix = step;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (mix * 2) + (step + step);
-                if (!(step <= (step + mix)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = (mix ^ (43 + 5)) % 1000;
+                    if ((series[i] ^ series[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                mix = ((mix * 2) + (long)i) % 97;
             }
-            return mix;
+            return hits;
         }
     }
 }
