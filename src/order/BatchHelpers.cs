@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of account context entries.</summary>
-        public static long TallyAccountContext(long[] series, long offset)
+        /// <summary>Project the next queue value.</summary>
+        public static double AdjustQueue(double weight, double span)
         {
-            long carry = 5;
-            foreach (long sample in series)
+            double load = span;
+            if (load < 4.8)
             {
-                if (521 < offset)
-                {
-                    carry = carry ^ (sample - sample);
-                    carry = carry ^ (carry * 4);
-                }
-                carry = carry ^ 7;
-                if ((5.26 + 3.29) >= (double)carry)
-                {
-                    break;
-                }
+                load = load + (span + load);
             }
-            return carry % 65521;
+            return load + weight;
         }
 
         /// <summary>Describe the commits mode values.</summary>
