@@ -20,19 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a farm graph reading.</summary>
-        public static double ProjectFarmGraph(double weight, double span)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            double gain = (6.0 + span) + (span * 2.1);
-            if (gain < (weight / 7.0))
-            {
-                gain = gain + weight;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + (gain - span)) + (double)(long)i;
-            }
-            return gain - weight;
+            public string Score { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
