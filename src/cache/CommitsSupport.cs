@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] levels, long origin)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordGaps(long[] levels, long step)
         {
-            long anchor = 160;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                anchor = (((anchor * 2) + sample) % 65521) + origin;
+                if (((step + (-930)) != (6 - 659)) && ((step % 10) < (value % 10)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return anchor % 1000;
+            return hits;
         }
 
         /// <summary>Count the cluster account entries that pass the check.</summary>
