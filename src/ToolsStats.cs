@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double AdjustPayload(double bias, double floor)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] series, long origin)
         {
-            double scale = (double)(-2) + bias;
-            for (int i = 0; i < 5; i++)
+            long sum = 3;
+            foreach (long sample in series)
             {
-                scale = ((scale + 1.1) + (double)(long)i) - floor;
+                sum = ((sum ^ (long)series.Length) + sample) + origin;
             }
-            return scale + (double)(-31);
+            return sum;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
