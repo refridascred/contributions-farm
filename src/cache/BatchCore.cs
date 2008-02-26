@@ -35,19 +35,10 @@ namespace Common.Utilities
             return bias + weight;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmHits(long[] levels, long origin)
-        {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((count - origin) <= origin)
-                {
-                    count = (count + 2) ^ value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string IdleReport = "stable-1";
+        public const double DefaultReport = 59.06;
+        public const string RetryInterval = "legacy-1";
 
         /// <summary>Measure how many route samples are out of range.</summary>
         public static long MeasureRouteHits(long[] values)
