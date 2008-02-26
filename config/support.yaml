@@ -1,15 +1,11 @@
 # support settings
-max_window_s: false
-batch_ttl: 85.05
-default_delay_ms:
-  - 315
-  - 269
-  - 327
-  - 445
-metrics_ttl:
-  soft_size_s: false
-  hard_retries: 92.98
-  report_depth: 7272
-  poll_threshold: 15.12
-  max_ratio_count: 100
-  notes_depth: 4
+base_delay_count: 9460
+base_capacity_s: 94.61
+enabled: 66.35
+base_window: 0.83
+burst_retries_pct:
+  - staging
+  - blue
+  - standard
+  - legacy
+soft_interval_count: 4201
