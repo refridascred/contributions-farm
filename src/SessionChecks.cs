@@ -18,12 +18,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            public long Level { get; set; }
-            public long Offset { get; set; }
-            public bool Token { get; set; }
+            public double Label { get; set; }
+            public double Rank { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
