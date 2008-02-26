@@ -23,14 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            Pending,
-            New,
-            Failed,
-            Retry,
-            Paused,
+            Dropped,
+            Ready,
+            Stale,
+            Done,
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
