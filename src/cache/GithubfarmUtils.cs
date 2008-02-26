@@ -20,12 +20,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double DefaultWindow = 56.55;
-        public const double DefaultCount = 29.19;
-        public const long BurstWindow = 8161;
-        public const long RetrySpan = 7269;
-        public const double WindowWidth = 87.32;
+        /// <summary>Check that every layout checks entry stays within the limit.</summary>
+        public static bool GuardLayoutChecksBounds(long[] levels, long step)
+        {
+            bool ready = true;
+            foreach (long datum in levels)
+            {
+                if (datum != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a batches header.</summary>
         public sealed class BatchesHeader
