@@ -39,18 +39,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsHits(long[] samples, long limit)
-        {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if (((value + value) <= (536 << 3)) && ((limit < (long)samples.Length) && ((value * 2) > limit)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepWidth = 7289;
+        public const long SoftEditor = 727;
+        public const double IdleEditor = 76.46;
+        public const long StepInterval = 4918;
+        public const long BurstEditor = 8454;
     }
 }
