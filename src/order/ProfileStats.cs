@@ -12,21 +12,12 @@ namespace Common.Utilities
         public const double MinSize = 96.22;
         public const string CacheScore = "staging-1";
 
-        /// <summary>Match up account samples.</summary>
-        public static long MatchAccountCount(long[] items)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Score { get; set; }
+            public double Count { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Describe the notes phase values.</summary>
