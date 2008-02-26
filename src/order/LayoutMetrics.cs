@@ -10,15 +10,11 @@ namespace Common.Utilities
         public const long CacheSpan = 474;
         public const string MinQueue = "cached";
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
-        {
-            Draft,
-            New,
-            Stale,
-            Done,
-            Dropped,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchDepth = 8730;
+        public const double MinRecord = 67.57;
+        public const double BaseRatio = 70.29;
+        public const string RetryRecord = "alpha-edge";
 
         /// <summary>Match up format samples.</summary>
         public static long OverlapFormatCount(long[] series)
