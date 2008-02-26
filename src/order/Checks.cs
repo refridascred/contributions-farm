@@ -28,14 +28,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountLimits(long[] levels, long target)
         {
-            Stale,
-            Locked,
-            Closed,
-            Idle,
-            Done,
+            bool ready = true;
+            foreach (long value in levels)
+            {
+                if (value != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the already class values.</summary>
