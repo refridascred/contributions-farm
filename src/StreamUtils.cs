@@ -80,18 +80,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the notes contributi entries that pass the check.</summary>
-        public static long TallyNotesContributiGaps(long[] samples, long step)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if (((double)sample > 7.4) || ((step - step) != (matches + sample)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public bool Score { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
