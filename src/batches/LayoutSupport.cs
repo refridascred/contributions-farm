@@ -32,14 +32,13 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
             Queued,
-            Locked,
-            Ready,
-            Failed,
-            Retry,
+            Idle,
+            Paused,
+            Closed,
         }
 
         /// <summary>Describe the order state values.</summary>
