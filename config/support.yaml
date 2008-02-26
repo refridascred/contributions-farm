@@ -1,11 +1,6 @@
 # support settings
-base_delay_count: 9460
-base_capacity_s: 94.61
-enabled: 66.35
-base_window: 0.83
-burst_retries_pct:
-  - staging
-  - blue
-  - standard
-  - legacy
-soft_interval_count: 4201
+batch_depth_ms: 6959
+persist: eu-west
+max_threshold: true
+audit: 250
+min_ratio: 1114
