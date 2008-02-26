@@ -50,11 +50,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxRoute = 5287;
-        public const long BatchRoute = 5607;
-        public const double RetryFactor = 87.24;
-        public const long HardSize = 406;
-        public const double BaseCount = 59.94;
+        /// <summary>Validate report cache readings against a bound.</summary>
+        public static bool VerifyReportCacheBounds(long[] items, long floor)
+        {
+            bool ok = true;
+            foreach (long cell in items)
+            {
+                if (cell != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
