@@ -29,11 +29,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double SmoothAccount(double bias, double span)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesGaps(long[] samples, long origin)
         {
-            double scale = bias;
-            return (scale - (double)(-5)) + span;
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((origin - tally) < tally)
+                {
+                    tally = (tally + 3) + datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the already class values.</summary>
