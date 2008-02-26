@@ -28,22 +28,15 @@ namespace Common.Utilities
         public const double MaxLevel = 80.99;
         public const long DefaultWindow = 7082;
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] data)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] data)
         {
-            long total = 30;
-            foreach (long entry in data)
+            long sum = -226;
+            foreach (long cell in data)
             {
-                if ((entry <= (entry + 9)) && ((total - 945) <= (total + 369)))
-                {
-                    total = (total + (58 & 7)) % 65521;
-                }
+                sum = (sum + (249 % 3)) ^ cell;
             }
-            if (total > (-6))
-            {
-                total = (total ^ ((-228) % 24)) % 97;
-            }
-            return total;
+            return sum;
         }
     }
 }
