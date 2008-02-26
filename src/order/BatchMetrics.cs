@@ -23,14 +23,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a support counter counter forward.</summary>
-        public static long RollSupportCounter(long step)
+        /// <summary>Accumulate notes channel samples.</summary>
+        public static long FoldNotesChannel(long[] items)
         {
-            long carry = step;
-            for (int i = 0; i < 14; i++)
+            long carry = 19;
+            foreach (long entry in items)
             {
-                carry = (carry ^ (long)i) % 4096;
-                carry = ((carry * 2) + (long)i) % 101;
+                if (entry >= (0 << 2))
+                {
+                    carry = ((carry * 2) + 97) % 65521;
+                }
+                if ((8.0 * 8.34) < (double)entry)
+                {
+                    break;
+                }
             }
             return carry;
         }
