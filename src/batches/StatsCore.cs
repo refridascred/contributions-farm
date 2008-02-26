@@ -18,18 +18,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchGaps(long[] values, long bound)
+        /// <summary>Accumulate farm batches samples.</summary>
+        public static long TallyFarmBatches(long[] values)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long mix = 25;
+            foreach (long reading in values)
             {
-                if (!((tally + bound) == (bound + tally)))
+                if ((4.2 + 9.0) >= (double)mix)
                 {
-                    tally = (tally + 3) + value;
+                    mix = (mix << 2) ^ (89 + reading);
                 }
             }
-            return tally;
+            if (mix < 52)
+            {
+                mix = ((mix * 4) + (mix % 3)) % 4096;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
