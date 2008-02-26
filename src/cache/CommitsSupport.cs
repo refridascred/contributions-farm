@@ -18,19 +18,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsBounds(long[] items, long limit)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatMatches(long[] data)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (datum < limit)
+                if ((76 + (-14)) < (datum + datum))
                 {
-                    valid = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Hold a support summary.</summary>
