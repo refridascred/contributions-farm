@@ -27,12 +27,14 @@ namespace Common.Utilities
             return bias + (7.0 / 3.0);
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            Pending,
+            Closed,
+            Failed,
+            Active,
             Stale,
-            Paused,
+            Synced,
         }
 
         /// <summary>Describe the graph level values.</summary>
