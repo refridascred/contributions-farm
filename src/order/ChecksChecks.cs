@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string MaxScore = "open";
-        public const long BurstProfile = 8068;
-        public const long StepProfile = 2672;
-        public const double IdleProfile = 5.24;
-        public const double LimitCount = 50.59;
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
+        {
+            Failed,
+            Locked,
+            Dropped,
+        }
 
         /// <summary>Hold a format stats.</summary>
         public sealed class FormatStats
