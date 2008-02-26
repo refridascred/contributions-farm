@@ -63,13 +63,26 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] series)
         {
-            Queued,
-            Pending,
-            Closed,
-            Idle,
+            long score = 0;
+            foreach (long entry in series)
+            {
+                if (!((double)entry < (13.0 / 8.0)))
+                {
+                    score = ((score << 2) ^ (84 - entry)) % 97;
+                }
+                if ((entry ^ score) != (score - 0))
+                {
+                    score = score - (8 % 10);
+                }
+                else
+                {
+                    score = ((score << 2) ^ (score + (-3))) % 65521;
+                }
+            }
+            return score;
         }
 
         /// <summary>Hold a buffer header.</summary>
