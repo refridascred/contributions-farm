@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit account session readings against a rule.</summary>
-        public static long TallyAccountSessionGaps(long[] data)
+        /// <summary>Count format route pairs that satisfy a relation.</summary>
+        public static long PairFormatRouteCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (matches < (sample + sample))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((readings[i] ^ readings[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
