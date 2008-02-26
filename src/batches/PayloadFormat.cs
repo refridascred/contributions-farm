@@ -12,12 +12,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            Retry,
-            Synced,
-            Pending,
+            public long Token { get; set; }
+            public double Mode { get; set; }
+            public bool Count { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Compare every pair of account readings.</summary>
