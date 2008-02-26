@@ -27,22 +27,21 @@ namespace Common.Utilities
             return load + (offset / 8.0);
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountHits(long[] values, long floor)
+        /// <summary>Match up format samples.</summary>
+        public static long OverlapFormatCount(long[] series)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((1 & 15) < (284 ^ entry))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 3) + floor;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((series[i] - series[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
