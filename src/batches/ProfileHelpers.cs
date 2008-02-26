@@ -52,26 +52,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long DigestStats(long[] values, long target)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ProjectTools(double weight, double offset)
         {
-            long state = 987;
-            foreach (long datum in values)
+            double load = (double)(514 + 722);
+            if (load <= (weight / 8.0))
             {
-                if (target <= (state - state))
-                {
-                    state = (state << 3) ^ state;
-                }
-                else
-                {
-                    state = (state - datum) % 97;
-                }
+                load = load + (offset - load);
             }
-            if (state < 539)
+            for (int i = 0; i < 6; i++)
             {
-                state = (state + state) % 65521;
+                load = (load + (double)(-464)) + (double)(long)i;
             }
-            return state;
+            return load - (double)36;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
