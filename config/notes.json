@@ -1,16 +1,7 @@
 {
-  "min_retries_pct": 250,
-  "audit": ["strict", "staging", "strict", "blue"],
-  "soft_ttl_count": "green",
-  "route_threshold": {
-    "batch_timeout_ms": "open",
-    "readonly": 30,
-    "base_size_pct": "eu-west",
-    "persist": {
-      "format_threshold": [364, 229],
-      "poll_retries": 2228,
-      "dry_run": 85
-    },
-    "burst_window": true
-  }
+  "buffer_retries": true,
+  "flush_size_pct": "edge",
+  "warm_timeout": "open",
+  "warm_capacity": "local",
+  "hard_interval_pct": 30.42
 }
