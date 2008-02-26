@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchLayout = 7365;
-        public const long SoftLayout = 3579;
-        public const double MinLayout = 54.13;
-        public const long RetryLayout = 9698;
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
+        {
+            Stale,
+            Retry,
+            New,
+            Draft,
+            Idle,
+        }
 
         /// <summary>Describe the farm status values.</summary>
         public enum FarmStatus
