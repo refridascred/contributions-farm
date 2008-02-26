@@ -22,19 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double SmoothGithubfarm(double bias, double floor)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiBounds(long[] items, long origin)
         {
-            double bias2 = bias;
-            if (bias2 >= 2.13)
+            bool found = true;
+            foreach (long datum in items)
             {
-                bias2 = bias2 - bias;
+                if (datum <= origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                bias2 = bias2 + bias2;
-            }
-            return bias2 + floor;
+            return found;
         }
 
         /// <summary>Define command limits and defaults.</summary>
