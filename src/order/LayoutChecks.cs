@@ -64,17 +64,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LookupWindowIndex(long[] levels, long offset)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesMatches(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if ((levels[i] > offset) && ((levels[i] % 3) == 0))
+                if (sample > hits)
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a stream entry.</summary>
