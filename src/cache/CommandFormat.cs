@@ -31,19 +31,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate stats metric readings against a bound.</summary>
-        public static bool ValidateStatsMetricRange(long[] series, long step)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] series, long origin)
         {
-            bool found = true;
-            foreach (long value in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value != step)
+                if ((series[i] <= origin) && ((series[i] % 5) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
