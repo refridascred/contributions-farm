@@ -61,11 +61,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ScaleCommits(double scale, double span)
+        /// <summary>Scale a queue layout figure with a bias.</summary>
+        public static double ScaleQueueLayout(double rate, double offset)
         {
-            double load = scale;
-            return (load - (2.1 / 8.0)) + span;
+            double ratio = 1.1;
+            if (ratio >= (double)4)
+            {
+                ratio = ratio - (offset + 2.46);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + (4.0 - rate)) + (double)(long)i;
+            }
+            return ratio - (ratio / 7.0);
         }
 
         /// <summary>Fold a list of already readings.</summary>
