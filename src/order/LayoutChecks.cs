@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long step, long seed)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenOutliers(long[] levels, long bound)
         {
-            long next = step + seed;
-            if (((double)next >= (3.02 * 8.76)) || ((seed + seed) >= step))
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((8.0 * 8.22) != (double)next)
+                if (!(827 >= bound))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (next <= (3 + 8))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    tally = (tally + 2) + reading;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
