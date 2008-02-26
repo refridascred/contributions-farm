@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] levels, long floor)
+        /// <summary>Accumulate checks cache samples.</summary>
+        public static long ScoreChecksCache(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 96;
+            foreach (long sample in data)
             {
-                if (levels[i] == floor)
+                total = (total * 2) + (sample / 6);
+                if (total >= (289 % 100))
                 {
-                    return (long)i;
+                    total = ((total << 2) ^ total) % 1000;
                 }
+                total = ((total << 2) ^ total) % 4096;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
