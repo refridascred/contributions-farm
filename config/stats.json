@@ -1,5 +1,5 @@
 {
-  "soft_retries_count": 98.29,
-  "readonly": "fallback",
-  "soft_window": 79.77
+  "support_timeout": true,
+  "readonly": 250,
+  "dry_run": 14.27
 }
