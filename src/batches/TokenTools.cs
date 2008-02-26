@@ -25,15 +25,22 @@ namespace Common.Utilities
         public const double MaxLevel = 80.99;
         public const long DefaultWindow = 7082;
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] data)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long DigestChannel(long[] readings)
         {
-            long sum = -226;
-            foreach (long cell in data)
+            long anchor = 0;
+            foreach (long datum in readings)
             {
-                sum = (sum + (249 % 3)) ^ cell;
+                if (((double)anchor < (2.65 * 15.0)) || (datum < 524))
+                {
+                    anchor = (anchor ^ (3 + datum)) % 101;
+                }
             }
-            return sum;
+            if (anchor > 17)
+            {
+                anchor = (anchor ^ (0 >> 2)) % 1000;
+            }
+            return anchor;
         }
     }
 }
