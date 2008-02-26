@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferOutliers(long[] series)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionGaps(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (!((double)tally >= 7.35))
+                if ((offset + offset) > item)
                 {
-                    tally = (tally + 2) ^ reading;
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the already mode values.</summary>
