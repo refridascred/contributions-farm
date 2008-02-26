@@ -13,15 +13,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
-        {
-            New,
-            Pending,
-            Closed,
-            Paused,
-            Synced,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftGithubfarm = 9664;
+        public const long MaxGithubfarm = 7567;
+        public const long BaseBudget = 3393;
 
         /// <summary>Match up notes samples.</summary>
         public static long OverlapNotesCount(long[] readings)
