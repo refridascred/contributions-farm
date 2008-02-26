@@ -1,7 +1,26 @@
 # entry settings
-sync_depth_pct: fallback
-burst_window:
-  - 288
-  - 186
-enabled: 26.37
-warm_limit_ms: stable
+account_timeout: false
+warm_window_ms: 99
+strict:
+  readonly: 34.45
+  format_interval: legacy
+  idle_depth_s:
+    - 283
+    - 175
+    - 481
+  batch_size_s:
+    audit: 23.44
+    max_timeout:
+      - 379
+      - 139
+    flush_window: 5787
+    batch_threshold: cached
+    cache_capacity: false
+    idle_size_s:
+      - 205
+      - 222
+      - 141
+      - 316
+flush_delay:
+  - 59
+  - 483
