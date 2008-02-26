@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const double BatchRatio = 66.74;
         public const double MaxCluster = 9.47;
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ScaleCache(double ratio, double offset)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            double drift = offset;
-            if (drift > (drift + ratio))
-            {
-                drift = drift - ratio;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - ratio) + (double)(long)i;
-            }
-            return drift - 2.7;
+            New,
+            Locked,
+            Ready,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
