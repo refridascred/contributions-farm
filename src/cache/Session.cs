@@ -17,11 +17,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double AdjustProfile(double weight, double offset)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            double drift = weight;
-            return (drift + (drift / 6.0)) + offset;
+            Pending,
+            Ready,
+            Paused,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Digest a series of session buffer entries.</summary>
