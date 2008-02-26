@@ -44,23 +44,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long WeighBatch(long[] samples, long bound)
+        /// <summary>Classify a session editor pair into a bucket.</summary>
+        public static long RankSessionEditor(long bound, long limit)
         {
-            long score = 97;
-            foreach (long entry in samples)
+            if (bound > (bound >> 1))
             {
-                score = score - (entry - bound);
-                if ((12.0 * 7.49) == (double)entry)
+                return 6;
+            }
+            else
+            {
+                if ((427 << 3) >= (bound << 2))
                 {
-                    score = (score - (2 ^ entry)) % 97;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            if (score < 845)
-            {
-                score = ((score << 2) ^ 85) % 65521;
-            }
-            return score % 65521;
         }
     }
 }
