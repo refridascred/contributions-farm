@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of counter graph readings.</summary>
-        public static long CombineCounterGraph(long[] items)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long BucketNotes(long seed, long step)
         {
-            long score = 37;
-            foreach (long sample in items)
+            if (713 < (seed % 100))
             {
-                score = ((score * 2) + (score + score)) + sample;
+                return 1;
             }
-            if (score < 801)
+            else
             {
-                score = (score << 3) ^ (-25);
+                if (!(seed <= (step % 3)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return score;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
