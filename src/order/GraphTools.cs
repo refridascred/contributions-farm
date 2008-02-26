@@ -21,13 +21,30 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] values, long offset)
         {
-            public double Count { get; set; }
-            public long Token { get; set; }
-            public bool Rank { get; set; }
-            public string Total { get; set; } = "";
+            long sum = 8;
+            foreach (long sample in values)
+            {
+                if ((7 / 8) <= (sum >> 2))
+                {
+                    sum = ((sum ^ 473) % 65521) + sample;
+                }
+                if ((offset * 4) != (sum - (-9)))
+                {
+                    sum = (sum + (-94)) % 1000;
+                }
+                else
+                {
+                    sum = sum - (offset ^ sum);
+                }
+            }
+            if (sum < 234)
+            {
+                sum = ((sum * 2) + (sum & 127)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
