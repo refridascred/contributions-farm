@@ -56,18 +56,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmGaps(long[] readings)
+        /// <summary>Compare every pair of editor tools readings.</summary>
+        public static long CompareEditorToolsCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((-9) * 4) >= datum)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((readings[i] - readings[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
