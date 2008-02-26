@@ -50,11 +50,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BurstSize = "legacy-edge";
-        public const long HardBatch = 6563;
-        public const string WindowBatch = "cached";
-        public const long SoftBatch = 2897;
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
+        {
+            Retry,
+            Stale,
+            Ready,
+            Failed,
+            Idle,
+        }
 
         /// <summary>Combine token values into a single score.</summary>
         public static long CombineToken(long[] items, long floor)
