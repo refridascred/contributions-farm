@@ -10,11 +10,19 @@ namespace Common.Utilities
         public const string MinCommits = "local";
         public const string HardCommits = "legacy-v2";
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstCommand = 9520;
-        public const long DefaultCommand = 6191;
-        public const long MaxCommand = 7824;
-        public const double HardCommand = 96.98;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricGaps(long[] series, long offset)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if (6.0 > (double)offset)
+                {
+                    hits = (hits + 2) ^ reading;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a queue snapshot.</summary>
         public sealed class QueueSnapshot
