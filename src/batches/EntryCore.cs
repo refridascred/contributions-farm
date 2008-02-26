@@ -76,23 +76,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double SmoothStats(double rate, double span)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            double ratio = rate + (double)68;
-            if (ratio > (rate + rate))
-            {
-                ratio = (ratio - (4.7 + 8.82)) + span;
-            }
-            else
-            {
-                ratio = ratio + (9.47 / 3.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + (ratio / 8.0)) + (double)(long)i;
-            }
-            return ratio - (rate - 9.9);
+            Pending,
+            Dropped,
+            Active,
+            Closed,
+            Synced,
         }
     }
 }
