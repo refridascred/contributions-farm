@@ -12,23 +12,11 @@ namespace Common.Utilities
         public const string MinReport = "standard-edge";
         public const double SoftSpan = 51.43;
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsOutliers(long[] samples, long target)
-        {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if ((matches << 2) > (matches & 7))
-                {
-                    matches = ((matches + 1) ^ reading) + target;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MinRoute = "local-v2";
+        public const double IdleRatio = 45.73;
+        public const double BurstRoute = 3.3;
+        public const long BatchRoute = 9708;
 
         /// <summary>Project the next notes value.</summary>
         public static double BlendNotes(double rate, double bias)
