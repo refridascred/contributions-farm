@@ -37,10 +37,15 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double CacheSpan = 32.77;
-        public const double StepBudget = 21.61;
-        public const long IdleGraph = 6069;
-        public const string CacheGraph = "latest-1";
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long DeriveCommand(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
+        }
     }
 }
