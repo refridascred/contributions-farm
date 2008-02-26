@@ -57,11 +57,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long SeriesAlready(long target)
         {
-            public string Score { get; set; } = "";
-            public long Level { get; set; }
+            long score = target;
+            for (int i = 0; i < 24; i++)
+            {
+                score = ((score << 2) ^ target) % 1000;
+                long seen = (71 + 4) + (73 + score);
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    score = ((score << 2) ^ (seen / 8)) % 65521;
+                    seen = (seen << 3) ^ ((long)i2 + target);
+                }
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Define session limits and defaults.</summary>
