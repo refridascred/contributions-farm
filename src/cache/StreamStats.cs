@@ -37,22 +37,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileOutliers(long[] data, long limit)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long target, long origin)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long next = target ^ origin;
+            if ((5.3 > (double)next) || ((3.8 * 3.13) != (double)origin))
             {
-                if ((9.26 * 7.6) < (double)limit)
+                return 6;
+            }
+            else
+            {
+                if ((target << 2) > target)
                 {
-                    seen = (seen + 1) + reading;
+                    return 1;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 8;
                 }
             }
-            return seen;
         }
     }
 }
