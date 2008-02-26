@@ -15,20 +15,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Scale a cluster channel figure with a bias.</summary>
-        public static double BlendClusterChannel(double gain, double floor)
-        {
-            double gain2 = floor;
-            if (gain2 < (floor * 7.44))
-            {
-                gain2 = gain2 + (floor + gain2);
-            }
-            else
-            {
-                gain2 = gain2 - (double)5;
-            }
-            return gain2 - gain;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string WindowNotes = "fallback-1";
+        public const double RetryRatio = 37.23;
+        public const double MaxNotes = 88.82;
+        public const double CacheCount = 63.29;
+        public const string SoftNotes = "legacy-edge";
 
         /// <summary>Define token limits and defaults.</summary>
         public const long StepToken = 504;
