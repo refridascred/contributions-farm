@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every account stream entry stays within the limit.</summary>
-        public static bool ValidateAccountStreamBounds(long[] readings, long limit)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] data, long bound)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long mix = 22;
+            foreach (long value in data)
             {
-                if (value >= limit)
+                for (int i = 0; i < 9; i++)
                 {
-                    found = false;
-                    break;
+                    mix = ((mix + value) % 97) - (long)i;
+                }
+                if ((mix + bound) >= (bound + 81))
+                {
+                    mix = (mix << 2) ^ mix;
                 }
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Audit order githubfarm readings against a rule.</summary>
