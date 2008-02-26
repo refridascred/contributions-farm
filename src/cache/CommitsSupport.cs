@@ -26,19 +26,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double AdjustPayload(double bias, double span)
+        /// <summary>Adjust a already reading.</summary>
+        public static double SmoothAlready(double scale, double floor)
         {
-            double scale = (double)(2 % 60);
-            if (scale > scale)
+            double bias = (double)53 * 18.0;
+            if (bias < (scale / 6.0))
             {
-                scale = (scale - (bias + scale)) - span;
+                bias = bias + (floor - floor);
             }
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 3; i++)
             {
-                scale = scale + (double)(long)i;
+                bias = (bias - bias) - (double)(long)i;
             }
-            return scale - (scale / 6.0);
+            return bias + 3.3;
         }
 
         /// <summary>Locate a graph githubfarm reading by value.</summary>
