@@ -13,19 +13,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every stream command entry stays within the limit.</summary>
-        public static bool VerifyStreamCommandRange(long[] data, long limit)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountRange(long[] values, long seed)
         {
-            bool found = true;
-            foreach (long datum in data)
+            bool valid = true;
+            foreach (long item in values)
             {
-                if (datum < limit)
+                if (item <= seed)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
