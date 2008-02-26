@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const double RetryFilter = 69.77;
         public const long SoftFilter = 3530;
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatMatches(long[] data)
+        /// <summary>Measure how many metrics batches samples are out of range.</summary>
+        public static long CountMetricsBatchesMatches(long[] items)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if ((76 + (-14)) < (datum + datum))
+                if (((item ^ item) < (item + tally)) && ((item + 8) != (item + tally)))
                 {
-                    count = count + 1;
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Project the next payload value.</summary>
