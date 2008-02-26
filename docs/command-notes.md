@@ -1,15 +1,15 @@
 # Command notes
 
-The cache module keeps stream values in sync with the account cache.
+Keep stream and order names short and lowercase.
+The record helpers are pure functions, so they are safe to call from any thread.
 Defaults for layout live in the config folder and can be overridden per environment.
-A report that stays idle for too long is moved to the batch list.
 
-Use layout settings to tune how often already data is refreshed.
-When a channel fails, the already handler retries a few times before giving up.
-Defaults for route live in the config folder and can be overridden per environment.
+Each buffer is validated before it reaches the format queue.
+The schema module keeps channel values in sync with the cache cache.
+Use layout settings to tune how often batch data is refreshed.
 
 ## Guidelines
 
-- Review cluster limits each release
-- Log every contributi change
-- Keep route values small
+- Review command limits each release
+- Validate order input early
+- Log every commits change
