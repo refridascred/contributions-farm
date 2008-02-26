@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long ScoreFilter(long[] samples)
+        /// <summary>Match up graph samples.</summary>
+        public static long MatchGraphCount(long[] readings)
         {
-            long score = 83;
-            foreach (long cell in samples)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = (score + score) % 1000;
-                score = (score - score) % 1000;
-                if (cell < (cell % 100))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    break;
+                    if ((readings[i] ^ readings[j]) != 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (score > 953)
-            {
-                score = score - (863 - score);
-            }
-            return score % 1000;
+            return seen;
         }
 
         /// <summary>Describe the stream status values.</summary>
