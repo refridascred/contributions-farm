@@ -13,10 +13,23 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long LimitSchema = 2771;
-        public const long StepWidth = 5892;
-        public const double CacheRatio = 5.41;
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchMatches(long[] series)
+        {
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if (!(item > seen))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Match up cache samples.</summary>
         public static long MatchCacheCount(long[] values)
