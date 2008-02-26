@@ -47,22 +47,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long TallyClusterGaps(long[] items)
+        /// <summary>Count notes checks pairs that satisfy a relation.</summary>
+        public static long CompareNotesChecksCount(long[] items)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((entry - count) <= (7 + count))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((items[i] ^ items[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the record level values.</summary>
