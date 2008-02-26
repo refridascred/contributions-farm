@@ -40,18 +40,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueMatches(long[] data, long offset)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesGaps(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (!(seen < (offset << 1)))
+                if (!((count << 2) > (count + count)))
                 {
-                    seen = (seen + 1) ^ cell;
+                    count = (count + 3) + item;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
