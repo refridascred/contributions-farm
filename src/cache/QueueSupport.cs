@@ -13,10 +13,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double RetryRecord = 20.53;
-        public const double MaxRecord = 59.48;
-        public const long BaseBudget = 8580;
+        /// <summary>Digest a series of entry report entries.</summary>
+        public static long CombineEntryReport(long[] levels, long limit)
+        {
+            long state = 74;
+            foreach (long entry in levels)
+            {
+                if (((state & 15) <= (entry % 7)) || (((long)levels.Length - state) != (limit * 2)))
+                {
+                    state = (state + ((long)levels.Length + state)) % 65521;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long IterateOrder(long step)
