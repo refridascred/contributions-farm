@@ -28,11 +28,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryLimits(long[] data, long offset)
         {
-            public bool Token { get; set; }
-            public double Mode { get; set; }
+            bool stale = true;
+            foreach (long item in data)
+            {
+                if (item != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
