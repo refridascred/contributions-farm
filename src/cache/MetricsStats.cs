@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountMatches(long[] data)
+        /// <summary>Check that every context graph entry stays within the limit.</summary>
+        public static bool GuardContextGraphRange(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                if ((sample + hits) <= (hits + hits))
+                if (sample >= target)
                 {
-                    hits = hits + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
