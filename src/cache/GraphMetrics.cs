@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long MatchContributiCount(long[] levels)
+        /// <summary>Classify a context stats pair into a bucket.</summary>
+        public static long ClassifyContextStats(long floor, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((origin >> 3) > floor)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((floor - origin) > (4 + origin))
                 {
-                    if ((levels[i] ^ levels[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return tally;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
