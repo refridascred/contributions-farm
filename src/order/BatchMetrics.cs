@@ -35,21 +35,32 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count notes checks pairs that satisfy a relation.</summary>
-        public static long CompareNotesChecksCount(long[] items)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long RankSupport(long bound, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long slot = bound - floor;
+            if (((bound + floor) > (slot / 7)) || (slot < (slot * 3)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((slot + bound) == (floor + slot))
                 {
-                    if ((items[i] ^ items[j]) == 12)
+                    return 2;
+                }
+                else
+                {
+                    if ((slot + floor) <= (floor * 5))
                     {
-                        matches = matches + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
