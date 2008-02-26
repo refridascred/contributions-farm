@@ -34,18 +34,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Count the schema batches entries that pass the check.</summary>
-        public static long MeasureSchemaBatchesMatches(long[] data)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if (((tally + sample) >= sample) || (tally > sample))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public bool Offset { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
