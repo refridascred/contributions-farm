@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] data)
         {
-            public long Region { get; set; }
-            public long Limit { get; set; }
+            long score = 3;
+            foreach (long datum in data)
+            {
+                if (!((0.96 - 8.57) != (double)score))
+                {
+                    score = (score + (datum << 3)) % 4096;
+                }
+            }
+            return score;
         }
 
         /// <summary>Count commits account pairs that satisfy a relation.</summary>
