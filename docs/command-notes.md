@@ -1,11 +1,10 @@
 # Command notes
 
-Defaults for editor live in the config folder and can be overridden per environment.
-The schema module keeps editor values in sync with the cache cache.
-Keep schema and farm names short and lowercase.
+Keep stats and githubfarm names short and lowercase.
+When a tools fails, the session handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review metric limits each release
-- Log every payload change
-- Keep buffer values small
+- Validate account input early
+- Document new buffer fields
+- Review contributi limits each release
