@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long RankFormat(long seed, long bound)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            if ((51 >> 4) < seed)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((seed - bound) > 697) && ((bound << 2) >= bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed + bound) == (bound << 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((seed + (-695)) <= (seed << 1)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public long Count { get; set; }
+            public long Flag { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Adjust a farm graph reading.</summary>
