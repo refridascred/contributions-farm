@@ -63,12 +63,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LookupToolsIndex(long[] items, long bound)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long SeekClusterIndex(long[] data, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((items[i] < bound) && ((items[i] % 5) != 0))
+                if ((data[i] < step) && ((data[i] % 3) != 0))
                 {
                     return (long)i;
                 }
