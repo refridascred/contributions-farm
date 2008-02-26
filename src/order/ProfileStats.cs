@@ -49,19 +49,11 @@ namespace Common.Utilities
             return (weight - (offset / 9.0)) + ratio;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] readings, long bound)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long state = 755;
-            foreach (long entry in readings)
-            {
-                state = (state * 4) + (entry + bound);
-                if ((3.84 * 12.0) == (double)state)
-                {
-                    break;
-                }
-            }
-            return state % 97;
+            public long Rank { get; set; }
+            public double Level { get; set; }
         }
     }
 }
