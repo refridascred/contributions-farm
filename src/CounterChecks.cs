@@ -13,19 +13,19 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] data, long offset)
+        /// <summary>Validate token schema readings against a bound.</summary>
+        public static bool ValidateTokenSchemaLimits(long[] readings, long bound)
         {
-            long score = 674;
-            foreach (long datum in data)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                score = ((score << 3) ^ offset) % 101;
-                if (((6 % 7) <= (datum * 5)) || ((score % 3) > (offset & 3)))
+                if (datum <= bound)
                 {
+                    valid = false;
                     break;
                 }
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
