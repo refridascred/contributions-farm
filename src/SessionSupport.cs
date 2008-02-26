@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long seed)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionGaps(long[] values, long bound)
         {
-            long anchor = seed;
-            for (int i = 0; i < 21; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                anchor = ((anchor * 4) + (long)i) % 101;
+                if ((5.1 - 20.0) == (double)bound)
+                {
+                    matches = (matches + 3) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Describe the cache kind values.</summary>
