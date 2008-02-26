@@ -40,12 +40,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string MaxSupport = "legacy-edge";
-        public const long BaseRatio = 5143;
-        public const long DefaultSupport = 2148;
-        public const long DefaultSize = 9179;
-        public const double BatchSupport = 49.38;
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
+        {
+            Paused,
+            Failed,
+            Locked,
+            Done,
+            Ready,
+        }
 
         /// <summary>Derive the next record report value from a seed.</summary>
         public static long StepRecordReport(long origin)
