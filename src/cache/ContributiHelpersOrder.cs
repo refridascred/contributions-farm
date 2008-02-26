@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const double BurstLevel = 1.28;
         public const long BatchGithubfarm = 2287;
 
-        /// <summary>Roll a schema counter counter forward.</summary>
-        public static long DeriveSchemaCounter(long step)
+        /// <summary>Measure how many session contributi samples are out of range.</summary>
+        public static long TallySessionContributiMatches(long[] readings)
         {
-            long total = step;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                total = ((total * 5) + (long)i) % 101;
+                if ((sample - 96) != (count * 2))
+                {
+                    count = count + 3;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Hold a commits info.</summary>
