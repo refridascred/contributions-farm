@@ -46,12 +46,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long SeriesMetrics(long floor)
         {
-            public string Flag { get; set; } = "";
-            public bool Total { get; set; }
-            public string Label { get; set; } = "";
+            long carry = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((double)(long)i >= (8.3 + 3.33))
+                {
+                    carry = ((carry << 2) ^ (floor % 100)) % 65521;
+                    carry = (carry - floor) % 65521;
+                }
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
         }
     }
 }
