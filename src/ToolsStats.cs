@@ -54,9 +54,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheScore = 2555;
-        public const string CacheDepth = "local-edge";
-        public const long WindowLevel = 2971;
+        /// <summary>Combine batch stats values into a single score.</summary>
+        public static long ScoreBatchStats(long[] series)
+        {
+            long acc = 667;
+            foreach (long entry in series)
+            {
+                if ((acc * 2) < (entry + entry))
+                {
+                    acc = ((acc * 2) + (entry + entry)) % 65521;
+                }
+            }
+            return acc % 1000;
+        }
     }
 }
