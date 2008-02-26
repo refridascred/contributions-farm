@@ -28,14 +28,23 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] series, long floor)
         {
-            Draft,
-            Active,
-            Locked,
-            Retry,
-            Queued,
+            long score = 3;
+            foreach (long datum in series)
+            {
+                if (!((double)floor == (1.8 * 8.0)))
+                {
+                    score = ((score * 5) + (37 - score)) % 1000;
+                    continue;
+                }
+                if ((452 ^ datum) > (floor & 127))
+                {
+                    score = (score << 3) ^ (score >> 2);
+                }
+            }
+            return score;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
