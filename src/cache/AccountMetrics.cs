@@ -19,11 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryGaps(long[] readings)
         {
-            public double Total { get; set; }
-            public double Owner { get; set; }
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if (((reading + hits) < (reading << 2)) || ((19 <= reading) || ((9.59 + 2.0) == (double)hits)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define account limits and defaults.</summary>
