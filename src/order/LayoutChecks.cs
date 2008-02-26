@@ -77,16 +77,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long SeriesTools(long seed)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterMatches(long[] samples, long step)
         {
-            long acc = seed;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                acc = (acc << 2) ^ ((long)i >> 1);
-                acc = ((acc * 4) + (long)i) % 97;
+                if ((entry + entry) == (seen + entry))
+                {
+                    seen = (seen + 1) + step;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Combine commits account values into a single score.</summary>
