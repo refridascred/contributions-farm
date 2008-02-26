@@ -29,19 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double BlendBuffer(double gain, double span)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            double mean = (double)0 - span;
-            if (mean < gain)
-            {
-                mean = mean - (mean / 3.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + gain) + (double)(long)i;
-            }
-            return mean + span;
+            public long Offset { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
