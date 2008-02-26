@@ -53,22 +53,22 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TotalProfile(long[] items)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmHits(long[] items)
         {
-            long total = 889;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if ((1.35 * 9.16) > (double)75)
+                if ((double)value <= 3.4)
                 {
-                    total = (total ^ ((long)items.Length + reading)) % 4096;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (total > (-5))
-            {
-                total = (total * 4) + total;
-            }
-            return total % 97;
+            return hits;
         }
     }
 }
