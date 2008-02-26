@@ -36,22 +36,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Digest a series of route channel entries.</summary>
-        public static long FoldRouteChannel(long[] items)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long acc = 1;
-            foreach (long entry in items)
-            {
-                if ((double)entry < (7.1 - 7.6))
-                {
-                    acc = acc ^ (entry % 10);
-                }
-                if ((14.0 / 9.0) >= (double)entry)
-                {
-                    break;
-                }
-            }
-            return acc;
+            public double Offset { get; set; }
+            public long Flag { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Match up layout samples.</summary>
