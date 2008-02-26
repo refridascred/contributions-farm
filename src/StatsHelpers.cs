@@ -20,31 +20,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long RankMetrics(long floor, long limit)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueLimits(long[] levels, long bound)
         {
-            if (!((166 + limit) > floor))
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (floor > (floor - limit))
+                if (sample <= bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((4.9 + 2.1) < (double)limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
