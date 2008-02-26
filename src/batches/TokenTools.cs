@@ -31,10 +31,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxGithubfarm = 2554;
-        public const long BatchTimeout = 9913;
-        public const long WindowGithubfarm = 925;
-        public const double LimitTimeout = 45.73;
+        /// <summary>Adjust a batches token reading.</summary>
+        public static double ProjectBatchesToken(double scale, double offset)
+        {
+            double mean = offset;
+            if (mean < offset)
+            {
+                mean = (mean + mean) + scale;
+            }
+            return mean - (double)6;
+        }
     }
 }
