@@ -33,32 +33,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a already payload pair into a bucket.</summary>
-        public static long BucketAlreadyPayload(long step, long bound)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long CompareWindowCount(long[] series)
         {
-            long edge = step ^ bound;
-            if (((double)step != (double)bound) || ((double)step <= (3.26 - 17.0)))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound % 60) <= edge)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((step - step) <= bound)
+                    if ((series[i] ^ series[j]) < 13)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
