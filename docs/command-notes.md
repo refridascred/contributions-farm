@@ -1,12 +1,11 @@
 # Command notes
 
-Defaults for editor live in the config folder and can be overridden per environment.
-The context helpers are pure functions, so they are safe to call from any thread.
-Each metric is validated before it reaches the filter queue.
+A metrics that stays idle for too long is moved to the stats list.
+A graph that stays idle for too long is moved to the contributi list.
 
 ## Guidelines
 
-- Keep metrics values small
-- Log every session change
-- Document new cluster fields
-- Prefer metric defaults
+- Prefer command defaults
+- Validate tools input early
+- Keep filter values small
+- Document new batches fields
