@@ -1,11 +1,18 @@
 # githubfarm settings
-audit:
-  - latest
-  - green
-context_threshold: blue
-metrics_threshold:
-  poll_size_pct: 89
-  batch_ttl: 67
-  compress: staging
-  sync_threshold: 6371
-  idle_timeout_s: 500
+max_retries_s: 11
+report_depth:
+  queue_delay: staging
+  persist:
+    - blue
+    - stable
+    - green
+    - latest
+  checks_threshold: 60
+dry_run: blue
+retry_threshold: 72
+schema_delay:
+  base_delay_pct: 30
+  verbose: true
+  strict:
+    - 257
+    - 365
