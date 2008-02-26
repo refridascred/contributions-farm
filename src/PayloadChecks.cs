@@ -19,13 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterLimits(long[] items, long floor)
         {
-            Dropped,
-            Synced,
-            Done,
-            Active,
+            bool ok = true;
+            foreach (long value in items)
+            {
+                if (value < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
