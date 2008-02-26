@@ -13,19 +13,31 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountRange(long[] values, long seed)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long RankFarm(long limit, long origin)
         {
-            bool valid = true;
-            foreach (long item in values)
+            if (limit > (origin + origin))
             {
-                if (item <= seed)
+                return 2;
+            }
+            else
+            {
+                if (!((origin - limit) <= (284 + origin)))
                 {
-                    valid = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (((double)2 < (double)limit) || ((limit & 63) < (origin % 64)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
