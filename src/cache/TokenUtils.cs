@@ -28,17 +28,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] levels, long floor)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileRange(long[] items, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long reading in items)
             {
-                if (levels[i] == floor)
+                if (reading >= bound)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
