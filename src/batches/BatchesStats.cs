@@ -52,9 +52,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftBuffer = 3291;
-        public const double StepRatio = 3.26;
-        public const string CacheWidth = "open-edge";
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
+        {
+            public long Region { get; set; }
+            public long Flag { get; set; }
+            public bool Token { get; set; }
+            public string Ratio { get; set; } = "";
+        }
     }
 }
