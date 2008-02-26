@@ -45,12 +45,18 @@ namespace Common.Utilities
         public const long BaseWidth = 7670;
         public const long MaxChannel = 682;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BatchSpan = "standard-1";
-        public const long RetryLayout = 1546;
-        public const long RetrySize = 2680;
-        public const double MaxLayout = 96.57;
-        public const double SoftLayout = 30.98;
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LookupCacheIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] < offset) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first account entry that matches the target.</summary>
         public static long SeekAccountIndex(long[] items, long offset)
