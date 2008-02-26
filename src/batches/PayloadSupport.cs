@@ -25,18 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextHits(long[] samples)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteBounds(long[] data, long target)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if (!((count % 5) <= (88 - reading)))
+                if (datum >= target)
                 {
-                    count = count + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
