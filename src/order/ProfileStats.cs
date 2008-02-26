@@ -19,16 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long offset)
+        /// <summary>Count the graph format entries that pass the check.</summary>
+        public static long TallyGraphFormatOutliers(long[] series, long target)
         {
-            long acc = offset;
-            for (int i = 0; i < 4; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                acc = (acc + acc) % 255;
-                acc = ((acc * 5) + (long)i) % 4093;
+                if ((double)seen != (double)76)
+                {
+                    seen = ((seen + 2) - datum) - target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
