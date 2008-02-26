@@ -35,24 +35,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long limit, long floor)
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] readings, long seed)
         {
-            if ((limit * 2) == (limit % 3))
+            long acc = 830;
+            foreach (long reading in readings)
             {
-                return 1;
+                acc = ((acc * 4) + (58 * 4)) % 65521;
+                if (!(((double)acc < 8.79) && ((seed ^ acc) > acc)))
+                {
+                    acc = ((acc * 5) + acc) % 101;
+                }
+                if ((seed >> 1) == (reading ^ seed))
+                {
+                    acc = ((acc * 3) + ((-4) + acc)) % 1000;
+                }
+                if ((reading << 2) != (28 << 2))
+                {
+                    break;
+                }
             }
-            else
+            if (acc > 60)
             {
-                if ((limit << 2) != (floor >> 5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
+                acc = (acc + (acc << 2)) % 255;
             }
+            return acc;
         }
     }
 }
