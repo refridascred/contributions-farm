@@ -46,19 +46,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ProjectTools(double weight, double offset)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            double load = (double)(514 + 722);
-            if (load <= (weight / 8.0))
-            {
-                load = load + (offset - load);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + (double)(-464)) + (double)(long)i;
-            }
-            return load - (double)36;
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
+            public long Token { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
