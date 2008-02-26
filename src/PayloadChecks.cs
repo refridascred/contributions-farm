@@ -72,21 +72,32 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long OverlapEditorCount(long[] samples)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] items, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 52;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((-86) % 5) < (cell + 183))
                 {
-                    if ((samples[i] - samples[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = (((carry * 3) + (-54)) % 101) + limit;
+                    carry = carry + (carry & 31);
+                }
+                else
+                {
+                    carry = ((carry * 4) + carry) % 65521;
+                    carry = (carry - (carry - carry)) % 101;
+                }
+                if (((8 + carry) != (cell >> 3)) && ((cell << 3) == (carry / 5)))
+                {
+                    carry = ((carry * 5) + (0 << 3)) % 97;
                 }
             }
-            return seen;
+            if (carry > 2)
+            {
+                carry = carry - carry;
+            }
+            return carry;
         }
     }
 }
