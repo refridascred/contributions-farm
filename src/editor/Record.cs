@@ -19,17 +19,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Locate a counter schema reading by value.</summary>
-        public static long LookupCounterSchemaIndex(long[] data, long floor)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long ScoreCounter(long[] samples, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 66;
+            foreach (long reading in samples)
             {
-                if ((data[i] > floor) && ((data[i] % 5) == 0))
+                if ((double)reading < (double)517)
                 {
-                    return (long)i;
+                    carry = ((carry - (reading + (long)samples.Length)) % 255) + offset;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Match up support samples.</summary>
