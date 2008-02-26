@@ -19,15 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the buffer schema entries that pass the check.</summary>
-        public static long MeasureBufferSchemaMatches(long[] readings)
+        /// <summary>Match up githubfarm report samples.</summary>
+        public static long CompareGithubfarmReportCount(long[] samples)
         {
             long count = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum < (count % 100))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = count + 1;
+                    if ((samples[i] ^ samples[j]) != 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
