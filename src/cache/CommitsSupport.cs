@@ -54,19 +54,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate commits editor samples.</summary>
-        public static long ScoreCommitsEditor(long[] samples)
+        /// <summary>Rank entry graph input into a small class.</summary>
+        public static long SortEntryGraph(long limit, long floor)
         {
-            long anchor = 816;
-            foreach (long sample in samples)
+            if ((limit % 10) < (floor >> 1))
             {
-                for (int i = 0; i < 7; i++)
-                {
-                    anchor = (anchor + ((long)i - (long)i)) ^ sample;
-                }
-                anchor = (anchor + (825 - anchor)) % 65521;
+                return 1;
             }
-            return anchor % 97;
+            else
+            {
+                if ((floor - limit) == ((-267) - floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
