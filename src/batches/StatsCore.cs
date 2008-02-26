@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Digest a series of layout support entries.</summary>
-        public static long ScoreLayoutSupport(long[] readings)
+        /// <summary>Count the command entry entries that pass the check.</summary>
+        public static long MeasureCommandEntryOutliers(long[] readings, long target)
         {
-            long result = 9;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                result = ((result * 2) + (value - value)) % 101;
-                if ((5 - value) != (result << 3))
+                if (count >= (target + target))
                 {
-                    break;
+                    count = (count + 2) ^ sample;
                 }
             }
-            return result % 1000;
+            return count;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
