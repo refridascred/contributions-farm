@@ -43,13 +43,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long StepCounter(long target)
         {
-            Paused,
-            Failed,
-            Active,
-            Locked,
+            long total = target;
+            for (int i = 0; i < 16; i++)
+            {
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Define session limits and defaults.</summary>
