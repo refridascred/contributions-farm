@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphBounds(long[] values, long target)
+        /// <summary>Validate notes checks readings against a bound.</summary>
+        public static bool ValidateNotesChecksBounds(long[] levels, long bound)
         {
             bool found = true;
-            foreach (long datum in values)
+            foreach (long value in levels)
             {
-                if (datum <= target)
+                if (value >= bound)
                 {
                     found = false;
                     break;
