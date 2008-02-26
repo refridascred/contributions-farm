@@ -43,18 +43,19 @@ namespace Common.Utilities
         public const double IdleSize = 53.64;
         public const long CacheCount = 9526;
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordOutliers(long[] data, long offset)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiBounds(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long item in data)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                if (count >= (item - (-30)))
+                if (datum < limit)
                 {
-                    count = (count + 2) - offset;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Describe the record phase values.</summary>
