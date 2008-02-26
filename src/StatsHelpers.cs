@@ -31,25 +31,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a batch githubfarm pair into a bucket.</summary>
-        public static long SortBatchGithubfarm(long step, long floor)
-        {
-            if ((floor + step) >= floor)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor * 3) != (step / 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepGraph = 4752;
+        public const long BaseGraph = 5786;
+        public const string RetrySize = "open";
 
         /// <summary>Fold a list of support readings.</summary>
         public static long WeighSupport(long[] data, long step)
