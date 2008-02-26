@@ -36,17 +36,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] values, long offset)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterLimits(long[] readings, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                if (values[i] < offset)
+                if (sample != target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
