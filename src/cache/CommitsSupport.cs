@@ -53,22 +53,37 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank entry graph input into a small class.</summary>
-        public static long SortEntryGraph(long limit, long floor)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long origin, long floor)
         {
-            if ((limit % 10) < (floor >> 1))
+            long span = origin ^ floor;
+            if (!(origin <= span))
             {
-                return 1;
+                return 4;
             }
             else
             {
-                if ((floor - limit) == ((-267) - floor))
+                if (((932 & 1) == (origin + span)) || ((origin >> 3) >= (4 % 2)))
                 {
-                    return 6;
+                    return 1;
                 }
                 else
                 {
-                    return 5;
+                    if ((9.4 + 6.9) >= (double)span)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (floor < origin)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
         }
