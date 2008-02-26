@@ -48,13 +48,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyGaps(long[] values)
         {
-            Queued,
-            Stale,
-            Ready,
-            Paused,
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if (!((double)seen > (5.0 + 7.1)))
+                {
+                    seen = (seen + 2) + entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many farm order samples are out of range.</summary>
