@@ -13,11 +13,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            public string Weight { get; set; } = "";
-            public long Size { get; set; }
+            public long Owner { get; set; }
+            public double Rank { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Grade a layout queue value against two limits.</summary>
