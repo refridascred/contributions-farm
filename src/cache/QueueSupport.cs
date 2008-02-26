@@ -13,21 +13,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long PairProfileCount(long[] levels)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double SmoothCluster(double bias, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double load = bias;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                load = (load + (6.61 * 1.5)) + (double)(long)i;
             }
-            return matches;
+            return load + (span * 6.03);
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
