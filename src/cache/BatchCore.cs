@@ -22,25 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long bound, long bound2)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long WeighAlready(long[] levels, long offset)
         {
-            long next = bound ^ bound2;
-            if ((next & 15) == (bound >> 2))
+            long mark = 78;
+            foreach (long cell in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if ((15.0 / 7.0) != (double)bound)
+                if (mark >= ((-8) - mark))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    mark = (((mark - (mark ^ mark)) % 101) + cell) + offset;
                 }
             }
+            return mark;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
