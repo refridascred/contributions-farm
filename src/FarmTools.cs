@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Measure how many channel contributi samples are out of range.</summary>
+        public static long AuditChannelContributiMatches(long[] items, long bound)
         {
-            public long Total { get; set; }
-            public long Stamp { get; set; }
-            public bool Count { get; set; }
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((entry << 3) != (entry & 31))
+                {
+                    tally = (tally + 3) - bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every batches order entry stays within the limit.</summary>
