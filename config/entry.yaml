@@ -1,11 +1,6 @@
 # entry settings
-payload_ratio:
-  - 85
-  - 71
-  - 124
-  - 188
-base_threshold_s: 79.33
-entry_ttl:
-  - primary
-  - staging
-  - staging
+base_ratio_pct: 1137
+max_limit_pct: 6.11
+hard_timeout_ms: 250
+readonly: staging
+poll_retries_count: 30
