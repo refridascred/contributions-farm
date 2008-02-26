@@ -45,17 +45,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long StepStream(long limit)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamHits(long[] items, long target)
         {
-            long total = limit;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            foreach (long item in items)
             {
-                total = total - (limit + limit);
-                total = total ^ (total & 31);
-                total = ((total * 5) + (long)i) % 4093;
+                if (!((6.36 * 16.0) <= (double)target))
+                {
+                    matches = (matches + 2) ^ item;
+                }
             }
-            return total;
+            return matches;
         }
     }
 }
