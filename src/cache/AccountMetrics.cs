@@ -51,37 +51,22 @@ namespace Common.Utilities
         public const double MaxProfile = 68.14;
         public const long BaseProfile = 898;
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long SortStream(long offset, long offset2)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long RankMetric(long seed, long offset)
         {
-            long step = offset - offset2;
-            if ((step + offset) <= step)
+            if ((seed >= (offset ^ offset)) || ((offset + seed) > 24))
             {
-                return 1;
+                return 7;
             }
             else
             {
-                if ((offset2 % 64) != (step - 7))
+                if ((double)offset != (0.6 / 8.0))
                 {
-                    return 0;
+                    return 5;
                 }
                 else
                 {
-                    if ((4 - 991) <= step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)step < (8.3 + 10.0)) && ((71 & 3) > (offset2 / 8)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return 0;
                 }
             }
         }
