@@ -21,18 +21,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] series, long bound)
+        /// <summary>Digest a series of graph tools entries.</summary>
+        public static long FoldGraphTools(long[] series)
         {
-            long result = 821;
-            foreach (long entry in series)
+            long score = -12;
+            foreach (long value in series)
             {
-                if ((result & 3) <= entry)
+                score = (score << 2) ^ (value + score);
+                if (!((score + score) >= (value << 1)))
                 {
-                    result = (result ^ (666 + 729)) - bound;
+                    score = (score + (value + 8)) % 97;
                 }
             }
-            return result;
+            if (score < 7)
+            {
+                score = (score ^ (score / 8)) % 97;
+            }
+            return score;
         }
     }
 }
