@@ -55,11 +55,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            public long Score { get; set; }
-            public bool Flag { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Owner { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Describe the metrics class values.</summary>
