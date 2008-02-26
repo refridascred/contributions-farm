@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const string LimitFilter = "primary";
         public const long MaxWidth = 6279;
 
-        /// <summary>Combine cache graph values into a single score.</summary>
-        public static long CombineCacheGraph(long[] readings)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderGaps(long[] data, long step)
         {
-            long total = 514;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if ((2 ^ total) < total)
+                if ((tally / 4) <= tally)
                 {
-                    total = ((total + (total * 2)) % 255) ^ datum;
+                    tally = ((tally + 2) ^ reading) + step;
                 }
             }
-            return total % 4096;
+            return tally;
         }
 
         /// <summary>Accumulate already samples.</summary>
