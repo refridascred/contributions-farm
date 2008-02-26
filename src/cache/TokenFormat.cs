@@ -35,12 +35,21 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long PairGithubfarmCount(long[] items)
         {
-            public string Total { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Score { get; set; }
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
