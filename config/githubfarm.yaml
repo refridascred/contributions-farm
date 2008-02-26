@@ -1,21 +1,4 @@
 # githubfarm settings
-default_size_ms:
-  verbose: primary
-  soft_threshold:
-    - 441
-    - 279
-    - 375
-  persist:
-    persist: 64
-    enabled: 30
-    layout_depth: edge
-    audit: 1024
-    burst_threshold_count:
-      - 142
-      - 286
-      - 167
-  token_window: false
-context_limit: 100
-verbose: edge
-base_capacity_count: 0.23
-min_size: 10
+base_retries_s: 9542
+commits_retries: true
+soft_size: true
