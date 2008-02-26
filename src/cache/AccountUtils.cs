@@ -10,15 +10,19 @@ namespace Common.Utilities
         public const double MinTimeout = 30.32;
         public const long DefaultEntry = 9338;
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long bound)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] data, long target)
         {
-            long carry = bound;
-            for (int i = 0; i < 5; i++)
+            long total = 3;
+            foreach (long reading in data)
             {
-                carry = ((carry * 2) + (long)i) % 4093;
+                total = (total + (total + reading)) % 1000;
             }
-            return carry;
+            if (total < 5)
+            {
+                total = total + target;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of graph tools entries.</summary>
