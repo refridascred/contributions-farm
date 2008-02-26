@@ -40,14 +40,15 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long RollCommand(long seed)
         {
-            Retry,
-            Synced,
-            Done,
-            Active,
-            Locked,
+            long acc = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
