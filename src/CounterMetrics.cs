@@ -41,13 +41,22 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportHits(long[] items)
         {
-            Pending,
-            Closed,
-            Synced,
-            Retry,
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((tally & 7) <= (datum + datum))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
