@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
-        {
-            Stale,
-            Draft,
-            New,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinGraph = 2732;
+        public const long LimitGraph = 8111;
+        public const string DefaultSize = "strict";
+        public const long WindowCount = 9943;
+        public const long BaseRatio = 8244;
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long AuditNotesOutliers(long[] samples, long origin)
