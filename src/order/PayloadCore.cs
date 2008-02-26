@@ -22,11 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchEditor = 3531;
-        public const string DefaultEditor = "open-edge";
-        public const string DefaultSize = "latest-1";
-        public const long IdleEditor = 2307;
+        /// <summary>Locate a record reading by value.</summary>
+        public static long SeekRecordIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= bound) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine already metric values into a single score.</summary>
         public static long ScoreAlreadyMetric(long[] values)
