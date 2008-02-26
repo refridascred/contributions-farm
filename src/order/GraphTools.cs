@@ -31,39 +31,12 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long GradeGraph(long limit, long offset)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long delta = limit ^ offset;
-            if (offset >= (507 << 3))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!(limit < (limit * 2)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((3.53 / 5.0) == (double)delta)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)delta != (double)offset)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public bool Token { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
