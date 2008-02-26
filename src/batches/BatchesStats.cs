@@ -45,11 +45,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string HardSession = "strict-1";
-        public const long SoftSession = 8058;
-        public const long MaxSession = 1271;
-        public const long BurstSession = 9945;
-        public const long MaxCount = 8151;
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long limit, long target)
+        {
+            long edge = limit - target;
+            if (edge > (limit >> 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if (edge > (target << 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
     }
 }
