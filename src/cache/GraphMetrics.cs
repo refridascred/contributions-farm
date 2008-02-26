@@ -22,22 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] readings, long bound)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long acc = 7;
-            foreach (long datum in readings)
-            {
-                if (acc >= (bound / 2))
-                {
-                    acc = (acc ^ (1 * 2)) + datum;
-                }
-                else
-                {
-                    acc = acc + (bound >> 4);
-                }
-            }
-            return acc;
+            Draft,
+            Retry,
+            Closed,
         }
 
         /// <summary>Fold a list of payload tools readings.</summary>
