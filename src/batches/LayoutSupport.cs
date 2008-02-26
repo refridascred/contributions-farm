@@ -25,19 +25,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadLimits(long[] levels, long origin)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            bool valid = true;
-            foreach (long datum in levels)
-            {
-                if (datum < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Flag { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the editor class values.</summary>
