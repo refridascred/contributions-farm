@@ -20,14 +20,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            Closed,
-            Stale,
-            Active,
-            Draft,
-            Retry,
+            public long Rank { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the contributi kind values.</summary>
