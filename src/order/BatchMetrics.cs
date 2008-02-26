@@ -12,15 +12,13 @@ namespace Common.Utilities
         public const long BurstFactor = 6968;
         public const long BaseLevel = 6645;
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] values, long seed)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long state = 198;
-            foreach (long sample in values)
-            {
-                state = (((state * 4) + (72 ^ seed)) % 1000) + sample;
-            }
-            return state;
+            Synced,
+            Paused,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Accumulate notes channel samples.</summary>
