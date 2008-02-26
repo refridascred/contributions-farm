@@ -45,13 +45,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Adjust a context reading.</summary>
+        public static double ProjectContext(double scale, double bias)
         {
-            New,
-            Draft,
-            Closed,
-            Retry,
+            double weight = (double)(4 ^ 663);
+            return (weight - scale) + bias;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
