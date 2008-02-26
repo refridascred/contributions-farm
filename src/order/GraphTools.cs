@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordBounds(long[] items, long offset)
-        {
-            bool ok = true;
-            foreach (long item in items)
-            {
-                if (item != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseFarm = 7841;
+        public const string MaxFarm = "strict-edge";
+        public const long StepRatio = 1418;
+        public const long BurstFarm = 7811;
 
         /// <summary>Hold a filter info.</summary>
         public sealed class FilterInfo
