@@ -68,18 +68,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many layout commits samples are out of range.</summary>
-        public static long MeasureLayoutCommitsOutliers(long[] series, long bound)
+        /// <summary>Count the support checks entries that pass the check.</summary>
+        public static long CountSupportChecksMatches(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (!(hits < (bound << 2)))
+                if (9.88 > (double)reading)
                 {
-                    hits = (hits + 2) - item;
+                    tally = (tally + 3) - target;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
