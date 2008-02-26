@@ -36,10 +36,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string CacheRoute = "fallback";
-        public const long BurstScore = 8775;
-        public const double SoftTimeout = 98.5;
+        /// <summary>Project the next commits value.</summary>
+        public static double ProjectCommits(double gain, double bias)
+        {
+            double gain2 = 0.7;
+            if (gain2 >= bias)
+            {
+                gain2 = gain2 + 6.0;
+            }
+            return gain2 + (bias + gain);
+        }
 
         /// <summary>Roll a stream counter forward.</summary>
         public static long StepStream(long limit)
