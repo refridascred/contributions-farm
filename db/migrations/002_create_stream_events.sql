@@ -2,7 +2,9 @@
 CREATE TABLE IF NOT EXISTS stream_events (
     id INTEGER PRIMARY KEY,
     rank INTEGER,
-    token TEXT,
+    state TEXT NOT NULL DEFAULT 'new',
+    region TEXT,
+    count INTEGER NOT NULL DEFAULT 0,
     label TEXT
 );
 
