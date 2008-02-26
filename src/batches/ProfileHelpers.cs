@@ -27,22 +27,10 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Compare every pair of graph notes readings.</summary>
-        public static long PairGraphNotesCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitRatio = 7688;
+        public const long HardCache = 7233;
+        public const long MinWidth = 5848;
 
         /// <summary>Hold a format stats.</summary>
         public sealed class FormatStats
