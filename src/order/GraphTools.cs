@@ -64,12 +64,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Locate a order checks reading by value.</summary>
+        public static long SeekOrderChecksIndex(long[] readings, long limit)
         {
-            public long Total { get; set; }
-            public bool Token { get; set; }
-            public string Mode { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate format samples.</summary>
