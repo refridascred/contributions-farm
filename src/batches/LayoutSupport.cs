@@ -79,13 +79,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsRange(long[] readings, long floor)
         {
-            Synced,
-            Active,
-            Stale,
-            Paused,
+            bool flag = true;
+            foreach (long item in readings)
+            {
+                if (item < floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
