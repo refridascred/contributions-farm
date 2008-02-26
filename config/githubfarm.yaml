@@ -1,18 +1,14 @@
 # githubfarm settings
-max_retries_s: 11
-report_depth:
-  queue_delay: staging
-  persist:
-    - blue
-    - stable
-    - green
-    - latest
-  checks_threshold: 60
-dry_run: blue
-retry_threshold: 72
-schema_delay:
-  base_delay_pct: 30
-  verbose: true
-  strict:
-    - 257
-    - 365
+batch_timeout_ms: blue
+base_size_pct:
+  - primary
+  - staging
+  - staging
+  - primary
+burst_limit: 1024
+soft_window_s: 6270
+batch_depth: 69.18
+record_retries:
+  - 65
+  - 221
+  - 221
