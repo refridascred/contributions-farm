@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            public string Owner { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public double Count { get; set; }
+            public double Limit { get; set; }
+            public long Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
