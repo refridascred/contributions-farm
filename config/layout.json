@@ -1,5 +1,6 @@
 {
-  "base_delay_count": 32,
-  "persist": 78.43,
-  "poll_window_s": "latest"
+  "max_delay": ["local", "blue", "fallback", "blue"],
+  "min_delay": 66.96,
+  "token_timeout": 634,
+  "base_depth": ["green", "cached"]
 }
