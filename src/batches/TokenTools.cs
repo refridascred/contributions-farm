@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long SeekQueueIndex(long[] values, long seed)
+        /// <summary>Iterate the token session series from a seed.</summary>
+        public static long RollTokenSession(long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if ((values[i] < seed) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mix = mix ^ (76 + origin);
+                mix = (mix + 34) % 65521;
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
