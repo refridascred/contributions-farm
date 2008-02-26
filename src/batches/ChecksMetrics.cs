@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Match up githubfarm batch samples.</summary>
-        public static long CompareGithubfarmBatchCount(long[] levels)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                state = (state - (state - limit)) % 1000;
+                if ((state - state) <= limit)
                 {
-                    if ((levels[i] - levels[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = (state << 2) ^ state;
                 }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Hold a buffer record.</summary>
