@@ -1,4 +1,8 @@
 # support settings
-persist: 69.03
-warm_size: false
-batch_delay: strict
+profile_threshold: 78.95
+base_ratio: eu-west
+order_delay: true
+layout_capacity: 57.29
+idle_size_ms:
+  - 129
+  - 413
