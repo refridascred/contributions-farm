@@ -50,17 +50,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long SeekAccountIndex(long[] items, long offset)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesMatches(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (items[i] < offset)
+                if ((double)10 >= (double)entry)
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Combine context values into a single score.</summary>
