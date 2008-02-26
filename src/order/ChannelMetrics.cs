@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorHits(long[] levels, long step)
         {
-            Queued,
-            Pending,
-            Failed,
-            Synced,
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if (((step >> 1) != (item - matches)) && ((-99) < (step / 5)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a farm graph value against two limits.</summary>
