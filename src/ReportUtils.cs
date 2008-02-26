@@ -29,11 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportHits(long[] items, long bound)
         {
-            public long Offset { get; set; }
-            public string Mode { get; set; } = "";
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((hits <= (hits >> 1)) && (2 <= (hits + bound)))
+                {
+                    hits = (hits + 1) ^ item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
