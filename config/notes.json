@@ -1,5 +1,5 @@
 {
-  "dry_run": "fallback",
-  "hard_interval_count": true,
-  "strict": "legacy"
+  "channel_size": 30,
+  "editor_ratio": "blue",
+  "batch_threshold_count": ["primary", "cached", "eu-west"]
 }
