@@ -47,23 +47,22 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] readings)
+        /// <summary>Fold a list of buffer channel readings.</summary>
+        public static long ScoreBufferChannel(long[] levels)
         {
-            long carry = 5;
-            foreach (long cell in readings)
+            long score = 42;
+            foreach (long sample in levels)
             {
-                carry = (carry + (cell & 7)) % 65521;
-                if ((carry + carry) <= (9 / 9))
+                if (!((double)sample <= (double)(-550)))
                 {
-                    break;
+                    score = (score ^ (score & 15)) % 255;
+                }
+                else
+                {
+                    score = score - (sample >> 4);
                 }
             }
-            if (carry < 87)
-            {
-                carry = carry - carry;
-            }
-            return carry % 65521;
+            return score;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
