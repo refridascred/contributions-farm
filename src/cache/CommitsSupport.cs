@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TotalSession(long[] levels)
-        {
-            long sum = 491;
-            foreach (long item in levels)
-            {
-                sum = ((sum + (sum / 4)) % 97) ^ item;
-                sum = sum - (9 + sum);
-                sum = sum + sum;
-            }
-            return sum;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string CacheFilter = "standard-v2";
+        public const long MaxFilter = 5714;
+        public const long BaseFilter = 4827;
+        public const double RetryFilter = 69.77;
+        public const long SoftFilter = 3530;
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long AuditFormatMatches(long[] data)
