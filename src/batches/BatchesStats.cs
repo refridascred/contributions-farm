@@ -16,16 +16,11 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long ScoreStream(long[] series, long bound)
-        {
-            long sum = 632;
-            foreach (long datum in series)
-            {
-                sum = ((sum - (sum - 960)) ^ datum) - bound;
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string MaxSize = "primary-edge";
+        public const double RetryCluster = 39.32;
+        public const long HardCount = 7338;
+        public const long CacheCluster = 7837;
 
         /// <summary>Derive the next already value from a seed.</summary>
         public static long SeriesAlready(long target)
