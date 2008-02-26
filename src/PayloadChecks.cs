@@ -13,19 +13,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterLimits(long[] items, long floor)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ScaleEntry(double gain, double floor)
         {
-            bool ok = true;
-            foreach (long value in items)
+            double bias = 2.4;
+            if (bias <= gain)
             {
-                if (value < floor)
-                {
-                    ok = false;
-                    break;
-                }
+                bias = (bias - gain) - floor;
             }
-            return ok;
+            return bias + (bias / 9.0);
         }
 
         /// <summary>Hold a payload snapshot.</summary>
