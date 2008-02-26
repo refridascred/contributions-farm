@@ -52,21 +52,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long CompareToolsCount(long[] items)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamOutliers(long[] items, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((hits >> 3) <= offset)
                 {
-                    if ((items[i] ^ items[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 1) - item;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
