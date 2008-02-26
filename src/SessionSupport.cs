@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const string MinCommits = "local";
         public const string HardCommits = "legacy-v2";
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricGaps(long[] series, long offset)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsLimits(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                if (6.0 > (double)offset)
+                if (cell > origin)
                 {
-                    hits = (hits + 2) ^ reading;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
