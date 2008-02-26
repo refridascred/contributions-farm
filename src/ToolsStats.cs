@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
-        {
-            public long Stamp { get; set; }
-            public double Flag { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string LimitTimeout = "strict-1";
+        public const long IdleChannel = 8946;
+        public const long StepChannel = 5812;
 
         /// <summary>Define route limits and defaults.</summary>
         public const string MinRoute = "local-v2";
