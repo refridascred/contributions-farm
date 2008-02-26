@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long DeriveSchema(long origin)
+        /// <summary>Measure how many checks route samples are out of range.</summary>
+        public static long TallyChecksRouteHits(long[] levels)
         {
-            long mix = origin;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                mix = (mix << 3) ^ 2;
-                if (((0 + 35) == (origin % 64)) || ((long)i < (mix + origin)))
+                if (datum > (hits + hits))
                 {
-                    mix = ((mix * 3) + (long)i) % 255;
+                    hits = hits + 1;
                 }
-                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
