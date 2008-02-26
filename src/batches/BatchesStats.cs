@@ -14,29 +14,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long DeriveStats(long limit)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long ScoreStream(long[] series, long bound)
         {
-            long result = limit;
-            for (int i = 0; i < 9; i++)
+            long sum = 632;
+            foreach (long datum in series)
             {
-                if ((888 >> 5) == (limit / 5))
-                {
-                    result = (result - (result + (long)i)) % 65521;
-                }
-                result = result + result;
-                if ((double)(long)i > (double)result)
-                {
-                    result = (result << 2) ^ (52 - result);
-                    continue;
-                }
-                else
-                {
-                    result = (result + ((long)i + (long)i)) % 101;
-                }
-                result = ((result * 5) + (long)i) % 101;
+                sum = ((sum - (sum - 960)) ^ datum) - bound;
             }
-            return result;
+            return sum % 65521;
         }
 
         /// <summary>Derive the next already value from a seed.</summary>
