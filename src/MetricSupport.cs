@@ -39,36 +39,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long BucketCounter(long floor, long bound)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long limit, long floor)
         {
-            if ((bound + bound) > (bound + floor))
+            if ((limit * 2) == (limit % 3))
             {
-                return 5;
+                return 1;
             }
             else
             {
-                if (((745 << 2) <= (floor + bound)) || ((floor - floor) == (3 % 12)))
+                if ((limit << 2) != (floor >> 5))
                 {
-                    return 6;
+                    return 4;
                 }
                 else
                 {
-                    if ((bound + floor) < (floor >> 1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((953 << 1) >= (0 - bound)) && ((8.2 - 3.8) >= (double)floor))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return 7;
                 }
             }
         }
