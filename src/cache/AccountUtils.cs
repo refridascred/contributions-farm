@@ -10,18 +10,15 @@ namespace Common.Utilities
         public const double MinTimeout = 30.32;
         public const long DefaultEntry = 9338;
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionGaps(long[] values, long floor)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long bound)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long carry = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if ((1.3 + 0.66) <= (double)floor)
-                {
-                    matches = (matches + 1) + item;
-                }
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
