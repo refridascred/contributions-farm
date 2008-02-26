@@ -1,6 +1,10 @@
 # support settings
-default_timeout_ms: 500
-compress: false
-burst_ratio_ms:
-  - 366
-  - 31
+stream_depth:
+  - latest
+  - green
+  - eu-west
+  - edge
+base_threshold_count: 41
+strict: 54
+retry_capacity_pct: 9.36
+base_ttl_count: eu-west
