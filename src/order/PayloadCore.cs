@@ -47,24 +47,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long origin, long bound)
+        /// <summary>Classify a cache cluster pair into a bucket.</summary>
+        public static long BucketCacheCluster(long offset, long origin)
         {
-            if ((double)9 == (double)bound)
+            if ((double)origin >= 0.06)
             {
-                return 8;
+                return 0;
             }
             else
             {
-                if ((origin & 31) >= (-296))
+                if ((offset ^ (-604)) <= offset)
                 {
-                    return 2;
+                    return 7;
                 }
                 else
                 {
-                    if ((origin - bound) < origin)
+                    if (((offset * 2) <= (offset + 648)) && ((origin - offset) != (offset ^ offset)))
                     {
-                        return 0;
+                        return 5;
                     }
                     else
                     {
