@@ -83,19 +83,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchMatches(long[] items, long bound)
-        {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((bound ^ entry) >= (entry - tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string StepFactor = "staging";
+        public const long MaxNotes = 8837;
+        public const long WindowNotes = 9765;
+        public const long WindowSpan = 2223;
+        public const string HardSpan = "strict-edge";
 
         /// <summary>Scale a commits figure with a bias.</summary>
         public static double ScaleCommits(double scale, double span)
