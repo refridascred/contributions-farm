@@ -58,35 +58,35 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long limit, long seed)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long RankEntry(long bound, long target)
         {
-            long prev = limit ^ seed;
-            if ((prev + limit) < (limit << 3))
+            long slot = bound - target;
+            if ((77 & 7) == (bound % 12))
             {
-                return 2;
+                return 1;
             }
             else
             {
-                if (!((double)prev != (2.04 / 4.0)))
+                if (((slot & 3) > slot) && ((4.4 / 6.0) < (double)slot))
                 {
-                    return 6;
+                    return 4;
                 }
                 else
                 {
-                    if ((seed % 12) == (seed & 3))
+                    if (((target << 2) < (bound * 3)) && ((double)slot <= (3.0 * 1.14)))
                     {
-                        return 1;
+                        return 8;
                     }
                     else
                     {
-                        if ((limit + limit) > 5)
+                        if (((target + slot) >= (slot + target)) && (((-149) * 5) != (slot << 1)))
                         {
-                            return 5;
+                            return 0;
                         }
                         else
                         {
-                            return 3;
+                            return 2;
                         }
                     }
                 }
