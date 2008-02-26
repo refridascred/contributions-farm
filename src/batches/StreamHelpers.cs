@@ -60,18 +60,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadGaps(long[] values, long origin)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((seen - reading) <= (-469))
-                {
-                    seen = (seen + 2) + origin;
-                }
-            }
-            return seen;
+            Locked,
+            Idle,
+            Stale,
         }
 
         /// <summary>Measure how many layout commits samples are out of range.</summary>
