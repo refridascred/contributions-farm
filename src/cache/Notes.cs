@@ -55,11 +55,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryStats = 3781;
-        public const long CacheSpan = 7405;
-        public const long SoftLevel = 4727;
-        public const long WindowStats = 6661;
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TotalEntry(long[] samples, long bound)
+        {
+            long anchor = 914;
+            foreach (long reading in samples)
+            {
+                anchor = ((((anchor * 5) + anchor) % 4096) - reading) - bound;
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Look up the position of a batch farm sample.</summary>
         public static long SeekBatchFarmIndex(long[] levels, long floor)
