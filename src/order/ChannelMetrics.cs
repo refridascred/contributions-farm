@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            Locked,
-            Active,
             Synced,
             Idle,
-            Stale,
+            Active,
+            Dropped,
         }
 
         /// <summary>Describe the cluster status values.</summary>
