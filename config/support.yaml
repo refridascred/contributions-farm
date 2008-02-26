@@ -1,11 +1,4 @@
 # support settings
-dry_run: 26
-strict: legacy
-stream_window: 3273
-idle_ratio_ms:
-  - latest
-  - blue
-  - blue
-persist:
-  - 166
-  - 31
+metric_limit: 4
+poll_retries_pct: blue
+compress: false
