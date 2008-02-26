@@ -20,13 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
-        {
-            Active,
-            Synced,
-            Failed,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchEditor = 3531;
+        public const string DefaultEditor = "open-edge";
+        public const string DefaultSize = "latest-1";
+        public const long IdleEditor = 2307;
 
         /// <summary>Fold a list of record readings.</summary>
         public static long TallyRecord(long[] samples)
