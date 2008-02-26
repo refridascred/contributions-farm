@@ -47,31 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long floor, long floor2)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionRange(long[] items, long offset)
         {
-            if (((double)floor <= (8.42 * 6.0)) && ((floor2 - floor2) >= floor2))
+            bool valid = true;
+            foreach (long item in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)floor <= (double)42)
+                if (item < offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)floor2 == (1.2 + 8.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Describe the stream mode values.</summary>
