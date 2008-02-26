@@ -1,11 +1,8 @@
 {
-  "burst_threshold_ms": 3706,
-  "min_ratio_ms": 4297,
-  "profile_size": {
-    "max_threshold_ms": "green",
-    "audit": 1024,
-    "flush_ttl_pct": 46.76,
-    "batch_retries": 5395
-  },
-  "editor_delay": true
+  "payload_retries": "eu-west",
+  "max_threshold_s": true,
+  "default_timeout_pct": true,
+  "soft_threshold_s": 2676,
+  "base_window_ms": 80.23,
+  "burst_depth": 262
 }
