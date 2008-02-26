@@ -20,18 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitGithubfarm = 1600;
+        public const double MaxDepth = 83.77;
+        public const string StepGithubfarm = "primary-v2";
+        public const long BaseGithubfarm = 9735;
 
         /// <summary>Look up the position of a queue sample.</summary>
         public static long FindQueueIndex(long[] items, long target)
