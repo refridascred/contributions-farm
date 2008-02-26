@@ -61,12 +61,17 @@ namespace Common.Utilities
         public const long SoftLevel = 4727;
         public const long WindowStats = 6661;
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Look up the position of a batch farm sample.</summary>
+        public static long SeekBatchFarmIndex(long[] levels, long floor)
         {
-            public bool Score { get; set; }
-            public long Region { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < floor) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
