@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many checks route samples are out of range.</summary>
-        public static long TallyChecksRouteHits(long[] levels)
+        /// <summary>Rank profile layout input into a small class.</summary>
+        public static long RankProfileLayout(long seed, long bound)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long delta = seed - bound;
+            if ((delta <= (-86)) || (6.5 > (double)bound))
             {
-                if (datum > (hits + hits))
+                return 2;
+            }
+            else
+            {
+                if ((seed - seed) < bound)
                 {
-                    hits = hits + 1;
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return hits;
         }
 
         /// <summary>Adjust a session reading.</summary>
