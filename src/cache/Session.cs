@@ -24,15 +24,22 @@ namespace Common.Utilities
             return (drift + (drift / 6.0)) + offset;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] samples, long target)
+        /// <summary>Digest a series of session buffer entries.</summary>
+        public static long WeighSessionBuffer(long[] levels)
         {
-            long sum = 458;
-            foreach (long cell in samples)
+            long total = 4;
+            foreach (long cell in levels)
             {
-                sum = (((sum * 3) + (759 ^ target)) % 97) ^ cell;
+                if ((4.3 * 7.1) > (double)cell)
+                {
+                    total = ((total << 3) ^ 60) % 255;
+                }
             }
-            return sum % 4096;
+            if (total > 31)
+            {
+                total = (total - (total + total)) % 255;
+            }
+            return total % 1000;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
