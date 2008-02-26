@@ -1,5 +1,6 @@
 {
-  "support_timeout": 76.82,
-  "editor_window": 1024,
-  "enabled": "edge"
+  "poll_threshold": 14.27,
+  "format_interval": true,
+  "flush_limit": 26,
+  "min_limit": "standard"
 }
