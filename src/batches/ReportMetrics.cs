@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardWindow = 7253;
-        public const long BatchDepth = 7784;
-        public const double BaseWindow = 58.14;
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandMatches(long[] levels, long bound)
+        {
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (cell <= (cell - cell))
+                {
+                    hits = (hits + 2) + bound;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Compare every pair of token readings.</summary>
         public static long PairTokenCount(long[] values)
