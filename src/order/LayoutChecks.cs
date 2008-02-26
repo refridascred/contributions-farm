@@ -42,12 +42,18 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordHits(long[] items, long target)
         {
-            public bool Limit { get; set; }
-            public string Token { get; set; } = "";
-            public bool Ratio { get; set; }
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (datum < (datum ^ 4))
+                {
+                    hits = (hits + 2) - target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a schema header.</summary>
