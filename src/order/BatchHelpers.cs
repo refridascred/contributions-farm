@@ -30,17 +30,39 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long FindGithubfarmIndex(long[] series, long bound)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long seed, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long span = seed + offset;
+            if (((1 >> 5) == (seed - span)) || ((span * 4) <= span))
             {
-                if ((series[i] <= bound) && ((series[i] % 5) == 0))
+                return 5;
+            }
+            else
+            {
+                if ((276 + offset) >= 4)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (((seed + 10) < (offset % 100)) || (seed > (seed + seed)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (seed <= (170 % 64))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
