@@ -28,23 +28,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of session buffer entries.</summary>
-        public static long WeighSessionBuffer(long[] levels)
-        {
-            long total = 4;
-            foreach (long cell in levels)
-            {
-                if ((4.3 * 7.1) > (double)cell)
-                {
-                    total = ((total << 3) ^ 60) % 255;
-                }
-            }
-            if (total > 31)
-            {
-                total = (total - (total + total)) % 255;
-            }
-            return total % 1000;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchChecks = 6206;
+        public const long StepSpan = 3259;
+        public const long IdleBudget = 6997;
+        public const string RetryChecks = "legacy-v2";
+        public const long BurstRatio = 9463;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long MinWindow = 6589;
