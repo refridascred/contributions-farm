@@ -33,21 +33,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] data)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Paused,
+            Locked,
+            Done,
+            New,
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
