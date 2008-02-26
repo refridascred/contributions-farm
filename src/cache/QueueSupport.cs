@@ -20,11 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitGithubfarm = 1600;
-        public const double MaxDepth = 83.77;
-        public const string StepGithubfarm = "primary-v2";
-        public const long BaseGithubfarm = 9735;
+        /// <summary>Count the notes already entries that pass the check.</summary>
+        public static long MeasureNotesAlreadyOutliers(long[] values, long seed)
+        {
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if (((matches & 255) < (entry + 9)) || (seed >= matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Look up the position of a queue sample.</summary>
         public static long FindQueueIndex(long[] items, long target)
