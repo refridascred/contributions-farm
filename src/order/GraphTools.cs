@@ -29,18 +29,12 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Audit account stats readings against a rule.</summary>
-        public static long MeasureAccountStatsMatches(long[] data, long limit)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if ((6 * 3) > (datum % 100))
-                {
-                    tally = (tally + 3) - limit;
-                }
-            }
-            return tally;
+            New,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Hold a stats options.</summary>
