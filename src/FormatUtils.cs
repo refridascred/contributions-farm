@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long SeekToolsIndex(long[] samples, long origin)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchBounds(long[] data, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long cell in data)
             {
-                if (samples[i] == origin)
+                if (cell != floor)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
