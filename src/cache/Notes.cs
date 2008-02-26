@@ -45,22 +45,11 @@ namespace Common.Utilities
         public const long SoftLevel = 4727;
         public const long WindowStats = 6661;
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long DigestProfile(long[] readings)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long result = 0;
-            foreach (long reading in readings)
-            {
-                if ((result & 255) < (reading % 24))
-                {
-                    result = (result + result) % 101;
-                }
-                else
-                {
-                    result = (result << 3) ^ reading;
-                }
-            }
-            return result;
+            public long Label { get; set; }
+            public long Level { get; set; }
         }
     }
 }
