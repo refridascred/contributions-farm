@@ -1,10 +1,12 @@
 # Command notes
 
-Use stats settings to tune how often entry data is refreshed.
-Use githubfarm settings to tune how often channel data is refreshed.
+Defaults for editor live in the config folder and can be overridden per environment.
+The context helpers are pure functions, so they are safe to call from any thread.
+Each metric is validated before it reaches the filter queue.
 
 ## Guidelines
 
-- Log every profile change
-- Keep cache values small
-- Review already limits each release
+- Keep metrics values small
+- Log every session change
+- Document new cluster fields
+- Prefer metric defaults
