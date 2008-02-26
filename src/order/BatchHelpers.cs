@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double AdjustQueue(double weight, double span)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesBounds(long[] levels, long floor)
         {
-            double load = span;
-            if (load < 4.8)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                load = load + (span + load);
+                if (datum < floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return load + weight;
+            return found;
         }
 
         /// <summary>Describe the commits mode values.</summary>
