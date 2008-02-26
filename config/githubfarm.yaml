@@ -1,18 +1,7 @@
 # githubfarm settings
-default_ttl_pct: true
-batches_timeout: 480
-hard_delay_s:
-  - staging
-  - latest
-  - fallback
-  - cached
-persist: 24
-default_interval_s:
-  soft_timeout_pct: 4678
-  max_timeout_s:
-    - 371
-    - 468
-    - 144
-    - 152
-  idle_window_count: standard
-  strict: stable
+queue_ttl: 250
+readonly: open
+verbose: 15.69
+base_limit:
+  - 278
+  - 232
