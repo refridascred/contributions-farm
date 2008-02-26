@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string WindowFactor = "cached-edge";
-        public const string MaxCount = "primary-v2";
-        public const string DefaultAccount = "legacy-1";
-        public const string BurstLevel = "standard";
-        public const long BatchSize = 7377;
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
+        {
+            Draft,
+            New,
+            Paused,
+        }
 
         /// <summary>Hold a token options.</summary>
         public sealed class TokenOptions
