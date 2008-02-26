@@ -19,18 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a entry order sample.</summary>
-        public static long LocateEntryOrderIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftStats = 2954;
+        public const double DefaultStats = 86.45;
+        public const long BatchSize = 4966;
 
         /// <summary>Define account limits and defaults.</summary>
         public const string BaseAccount = "local-v2";
