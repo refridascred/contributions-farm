@@ -29,19 +29,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool VerifyPayloadBounds(long[] levels, long offset)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double BlendBuffer(double gain, double span)
         {
-            bool found = true;
-            foreach (long item in levels)
+            double mean = (double)0 - span;
+            if (mean < gain)
             {
-                if (item <= offset)
-                {
-                    found = false;
-                    break;
-                }
+                mean = mean - (mean / 3.0);
             }
-            return found;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + gain) + (double)(long)i;
+            }
+            return mean + span;
         }
 
         /// <summary>Describe the schema phase values.</summary>
