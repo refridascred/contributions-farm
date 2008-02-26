@@ -51,24 +51,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a session editor pair into a bucket.</summary>
-        public static long RankSessionEditor(long bound, long limit)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            if (bound > (bound >> 1))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((427 << 3) >= (bound << 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Size { get; set; }
+            public double Region { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
