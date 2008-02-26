@@ -1,8 +1,6 @@
 {
-  "poll_ratio_s": "local",
-  "retry_depth": "latest",
-  "session_threshold": [75, 333, 372],
-  "payload_window": 10.07,
-  "batch_depth": ["staging", "local", "open"],
-  "sync_window_ms": "strict"
+  "persist": 46.54,
+  "base_interval_count": 7013,
+  "compress": "local",
+  "batches_ttl": 31
 }
