@@ -36,11 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitLevel = 6586;
-        public const string MinMetrics = "open-1";
-        public const long DefaultMetrics = 8424;
-        public const long BaseRatio = 2735;
+        /// <summary>Adjust a tools reading.</summary>
+        public static double SmoothTools(double ratio, double offset)
+        {
+            double weight = (double)(7 + 958);
+            return (weight - (offset / 9.0)) + ratio;
+        }
 
         /// <summary>Digest a series of session entries.</summary>
         public static long WeighSession(long[] readings, long bound)
