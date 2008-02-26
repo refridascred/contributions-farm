@@ -35,15 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine already metric values into a single score.</summary>
-        public static long ScoreAlreadyMetric(long[] values)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long result = 8;
-            foreach (long cell in values)
-            {
-                result = (result << 3) ^ (result + cell);
-            }
-            return result % 1000;
+            Done,
+            Failed,
+            Closed,
         }
 
         /// <summary>Classify a cache cluster pair into a bucket.</summary>
