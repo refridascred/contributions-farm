@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TallyReport(long[] series, long origin)
-        {
-            long anchor = 684;
-            foreach (long sample in series)
-            {
-                if ((2.1 + 1.0) > (double)anchor)
-                {
-                    anchor = (anchor + (origin & 255)) - sample;
-                }
-            }
-            if (anchor < 218)
-            {
-                anchor = ((anchor * 5) + (origin >> 5)) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowWidth = 4468;
+        public const double BatchTimeout = 3.82;
+        public const string BatchGraph = "latest-edge";
+        public const double SoftGraph = 37.25;
+        public const double BaseBudget = 38.93;
 
         /// <summary>Describe the cluster status values.</summary>
         public enum ClusterStatus
