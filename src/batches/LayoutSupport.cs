@@ -48,13 +48,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            Draft,
-            Retry,
-            Dropped,
-            Ready,
+            Synced,
+            Active,
+            Stale,
+            Paused,
         }
     }
 }
