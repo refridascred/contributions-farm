@@ -56,18 +56,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] items, long floor)
-        {
-            long total = -3;
-            foreach (long item in items)
-            {
-                if (((floor + item) <= (floor >> 1)) || ((double)item < (2.0 + 10.0)))
-                {
-                    total = (total << 3) ^ (floor ^ item);
-                }
-            }
-            return total % 97;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string DefaultSupport = "cached-v2";
+        public const double BaseSupport = 27.91;
+        public const long MaxSize = 8588;
+        public const double BatchSupport = 46.61;
     }
 }
