@@ -22,18 +22,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiOutliers(long[] levels)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double SmoothFarm(double weight, double span)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            double bias = weight * 9.74;
+            if (bias >= (bias * 10.0))
             {
-                if (item > (item / 4))
-                {
-                    tally = tally + 1;
-                }
+                bias = bias + span;
             }
-            return tally;
+            else
+            {
+                bias = bias - (span - span);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + (7.46 * 11.0)) + (double)(long)i;
+            }
+            return bias + weight;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
