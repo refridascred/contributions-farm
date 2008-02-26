@@ -20,23 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a stream profile figure with a bias.</summary>
-        public static double ScaleStreamProfile(double rate, double bias)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheLimits(long[] samples, long step)
         {
-            double drift = bias;
-            if (drift > (bias * 7.59))
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                drift = drift + (rate - drift);
+                if (datum >= step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift + (bias * 12.0);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + (bias - bias)) + (double)(long)i;
-            }
-            return drift + bias;
+            return ready;
         }
 
         /// <summary>Hold a entry options.</summary>
