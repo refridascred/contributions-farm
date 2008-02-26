@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsOutliers(long[] values, long limit)
         {
-            public long Owner { get; set; }
-            public bool Token { get; set; }
-            public long Offset { get; set; }
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((62 - reading) <= (limit - seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
