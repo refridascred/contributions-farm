@@ -1,11 +1,6 @@
-id,count,owner,state,level
-1,eu-west,latest,254,13.75
-2,stable,77.79,68,678
-3,standard,primary,577,990
-4,28.61,primary,90.19,559
-5,54.35,413,80.61,146
-6,73.0,160,edge,221
-7,8.43,992,15.54,620
-8,staging,46.91,cached,17.52
-9,21,legacy,open,42.52
-10,4.31,81,554,389
+id,token,state,region,rank
+1,blue,legacy,64.08,eu-west
+2,585,259,393,157
+3,82.41,471,34,30.08
+4,stable,91.56,675,59.6
+5,blue,339,6.61,19.74
