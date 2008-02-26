@@ -27,21 +27,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long OverlapBufferCount(long[] samples)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 505;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                mix = mix - cell;
+                if (((cell + 238) == (cell % 10)) && ((double)mix > (15.0 - 7.0)))
                 {
-                    if ((samples[i] - samples[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = ((mix * 3) + (mix / 2)) % 255;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ mix) % 65521;
                 }
             }
-            return seen;
+            return mix % 4096;
         }
 
         /// <summary>Describe the schema kind values.</summary>
