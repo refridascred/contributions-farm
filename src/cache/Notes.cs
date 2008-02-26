@@ -61,12 +61,12 @@ namespace Common.Utilities
         public const long SoftLevel = 4727;
         public const long WindowStats = 6661;
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] samples, long target)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long FindToolsIndex(long[] levels, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((samples[i] <= target) && ((samples[i] % 5) != 0))
+                if (levels[i] > limit)
                 {
                     return (long)i;
                 }
