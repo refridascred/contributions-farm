@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Match up context filter samples.</summary>
-        public static long CompareContextFilterCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double StepSpan = 13.31;
+        public const long BatchRatio = 8782;
+        public const string SoftQueue = "open-1";
+        public const long HardQueue = 9108;
 
         /// <summary>Combine stream values into a single score.</summary>
         public static long DigestStream(long[] series, long floor)
