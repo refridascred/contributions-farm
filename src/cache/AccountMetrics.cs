@@ -69,12 +69,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            public long Ratio { get; set; }
-            public double Stamp { get; set; }
-            public long Count { get; set; }
+            public double Count { get; set; }
+            public long Rank { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
