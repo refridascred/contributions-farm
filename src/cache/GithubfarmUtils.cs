@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] items)
         {
-            public long Region { get; set; }
-            public long Rank { get; set; }
+            long mark = 8;
+            foreach (long entry in items)
+            {
+                if ((mark * 3) > entry)
+                {
+                    mark = (mark ^ ((long)items.Length % 10)) % 1000;
+                }
+                mark = mark - (entry - 792);
+                if (((long)items.Length * 4) < (mark & 1))
+                {
+                    break;
+                }
+            }
+            if (mark > 77)
+            {
+                mark = (mark + (mark * 2)) % 97;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Describe the record status values.</summary>
