@@ -1,7 +1,4 @@
 # entry settings
-farm_window:
-  - green
-  - standard
-verbose: 49.54
-idle_limit_s: 65
-stats_ratio: 87
+compress: open
+report_size: 250
+queue_capacity: 9486
