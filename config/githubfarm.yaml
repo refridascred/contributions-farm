@@ -1,4 +1,11 @@
 # githubfarm settings
-readonly: 92
-already_timeout: true
-verbose: 27.76
+audit:
+  - latest
+  - green
+context_threshold: blue
+metrics_threshold:
+  poll_size_pct: 89
+  batch_ttl: 67
+  compress: staging
+  sync_threshold: 6371
+  idle_timeout_s: 500
