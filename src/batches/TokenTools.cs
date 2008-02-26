@@ -23,19 +23,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long SeriesCache(long limit)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long anchor = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                if (((limit - 808) != (limit >> 2)) || ((0.34 - 9.3) >= (double)anchor))
-                {
-                    anchor = (anchor ^ (anchor + limit)) % 101;
-                }
-                anchor = ((anchor * 2) + (long)i) % 101;
-            }
-            return anchor;
+            Pending,
+            New,
+            Failed,
+            Retry,
+            Paused,
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
