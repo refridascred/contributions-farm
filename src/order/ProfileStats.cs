@@ -26,12 +26,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            Ready,
-            Synced,
+            Active,
+            Queued,
+            Locked,
             Dropped,
+            Paused,
         }
 
         /// <summary>Project the next counter value.</summary>
