@@ -55,21 +55,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of profile batches readings.</summary>
-        public static long OverlapProfileBatchesCount(long[] items)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ScaleQueue(double ratio, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double weight = (double)9 - (ratio - offset);
+            for (int i = 0; i < 2; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight = (weight + (9.6 - ratio)) - (double)(long)i;
             }
-            return hits;
+            return weight + (weight - 3.47);
         }
 
         /// <summary>Describe the schema class values.</summary>
