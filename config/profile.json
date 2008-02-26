@@ -1,5 +1,7 @@
 {
-  "warm_delay_pct": 96.3,
-  "session_limit": [496, 385],
-  "retry_retries": "standard"
+  "compress": 7,
+  "hard_ttl": 2357,
+  "route_window": 1024,
+  "min_threshold_pct": ["edge", "stable", "blue", "legacy"],
+  "soft_timeout_count": 56.96
 }
