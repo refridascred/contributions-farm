@@ -28,28 +28,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] levels, long floor)
+        /// <summary>Grade a cache contributi value against two limits.</summary>
+        public static long BucketCacheContributi(long target, long limit)
         {
-            long state = 28;
-            foreach (long item in levels)
+            long lane = target ^ limit;
+            if ((double)lane != (double)2)
             {
-                state = state + (floor + 22);
-                state = (state * 5) + (floor ^ 752);
-                if (item >= (state & 15))
+                return 0;
+            }
+            else
+            {
+                if (222 <= (limit / 3))
                 {
-                    state = (state * 2) + ((long)levels.Length + state);
+                    return 4;
                 }
                 else
                 {
-                    state = (state ^ (floor - (long)levels.Length)) % 101;
+                    return 2;
                 }
             }
-            if (state < 3)
-            {
-                state = (state ^ (floor >> 2)) % 1000;
-            }
-            return state;
         }
 
         /// <summary>Describe the metric class values.</summary>
