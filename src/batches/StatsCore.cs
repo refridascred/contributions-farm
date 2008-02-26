@@ -32,13 +32,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            public long Size { get; set; }
-            public long Rank { get; set; }
-            public double Mode { get; set; }
-            public string Stamp { get; set; } = "";
+            Ready,
+            Draft,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Roll a counter format counter forward.</summary>
