@@ -22,19 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricBounds(long[] series, long origin)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenMatches(long[] values, long offset)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (cell != origin)
+                if (!!(hits > datum))
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 3) + offset;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Describe the route kind values.</summary>
