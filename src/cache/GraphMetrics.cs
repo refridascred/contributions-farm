@@ -19,32 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank layout support input into a small class.</summary>
-        public static long ClassifyLayoutSupport(long seed, long origin)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutLimits(long[] items, long limit)
         {
-            long diff = seed ^ origin;
-            if ((8.3 / 8.0) < (double)seed)
+            bool valid = true;
+            foreach (long item in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (((diff ^ seed) < seed) || ((seed - origin) != (origin * 4)))
+                if (item <= limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((7.1 / 9.0) == (double)origin) || (diff <= (diff - 13)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
