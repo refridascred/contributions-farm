@@ -1,7 +1,5 @@
 {
-  "min_ttl": ["legacy", "eu-west"],
-  "compress": true,
-  "graph_retries": 4.41,
-  "route_limit": false,
-  "hard_limit_count": false
+  "base_delay_count": 32,
+  "persist": 78.43,
+  "poll_window_s": "latest"
 }
