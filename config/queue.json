@@ -1,7 +1,7 @@
 {
-  "readonly": true,
-  "min_size": 49,
-  "idle_depth_count": 12,
-  "verbose": 19,
-  "audit": ["local", "staging"]
+  "counter_size": "stable",
+  "warm_size": [342, 13, 167],
+  "cluster_ttl": 39.61,
+  "readonly": 66.24,
+  "default_window_count": "staging"
 }
