@@ -63,15 +63,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] items)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long anchor = 31;
-            foreach (long entry in items)
-            {
-                anchor = (((anchor * 5) + ((long)items.Length & 255)) % 101) ^ entry;
-            }
-            return anchor;
+            public bool Flag { get; set; }
+            public double Count { get; set; }
+            public double Weight { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
