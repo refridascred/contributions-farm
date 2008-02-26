@@ -20,14 +20,31 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long BucketFilter(long bound, long seed)
         {
-            Stale,
-            Paused,
-            Queued,
-            Idle,
-            Done,
+            if ((double)bound < (2.2 / 5.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!(bound < (seed & 255)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((bound - seed) > seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
