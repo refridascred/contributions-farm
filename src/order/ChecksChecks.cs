@@ -24,9 +24,13 @@ namespace Common.Utilities
         public const long WindowSpan = 1157;
         public const string WindowWidth = "local-1";
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstGithubfarm = 8950;
-        public const long LimitGithubfarm = 2616;
-        public const long RetryWidth = 3112;
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
+        {
+            public double Score { get; set; }
+            public string Size { get; set; } = "";
+            public long Offset { get; set; }
+            public long Weight { get; set; }
+        }
     }
 }
