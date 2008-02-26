@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            Idle,
-            Stale,
-            Paused,
+            Queued,
+            Ready,
+            Done,
             Closed,
+            Pending,
         }
 
         /// <summary>Hold a buffer record.</summary>
