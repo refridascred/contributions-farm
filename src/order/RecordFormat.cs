@@ -15,21 +15,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long CompareContextCount(long[] series)
+        /// <summary>Scale a cluster channel figure with a bias.</summary>
+        public static double BlendClusterChannel(double gain, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double gain2 = floor;
+            if (gain2 < (floor * 7.44))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain2 = gain2 + (floor + gain2);
             }
-            return matches;
+            else
+            {
+                gain2 = gain2 - (double)5;
+            }
+            return gain2 - gain;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
