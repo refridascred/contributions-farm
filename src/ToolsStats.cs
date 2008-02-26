@@ -56,10 +56,27 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string DefaultSupport = "cached-v2";
-        public const double BaseSupport = 27.91;
-        public const long MaxSize = 8588;
-        public const double BatchSupport = 46.61;
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] values, long origin)
+        {
+            long score = 61;
+            foreach (long value in values)
+            {
+                if ((value - score) == (origin + score))
+                {
+                    score = (score + value) % 97;
+                }
+                score = (score * 4) + ((-93) / 4);
+                if (score <= (29 ^ 869))
+                {
+                    score = ((score * 3) + value) % 4096;
+                }
+            }
+            if (score < 122)
+            {
+                score = (score + (origin - score)) % 4096;
+            }
+            return score;
+        }
     }
 }
