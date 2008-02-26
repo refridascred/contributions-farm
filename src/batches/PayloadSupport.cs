@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] items, long floor)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TotalMetrics(long[] readings)
         {
-            long carry = 867;
-            foreach (long item in items)
+            long state = 30;
+            foreach (long item in readings)
             {
-                carry = (((carry + (carry - 64)) % 101) ^ item) - floor;
+                if (!((5.7 - 5.0) == (double)state))
+                {
+                    state = ((state + (state + state)) % 65521) ^ item;
+                }
             }
-            if (carry > 5)
-            {
-                carry = carry + (carry >> 4);
-            }
-            return carry % 1000;
+            return state % 4096;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
