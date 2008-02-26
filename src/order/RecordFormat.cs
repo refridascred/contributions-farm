@@ -22,17 +22,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] samples, long target)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountBounds(long[] levels, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                if (samples[i] >= target)
+                if (entry > step)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Count the stats checks entries that pass the check.</summary>
