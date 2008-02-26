@@ -19,13 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            Dropped,
-            Queued,
-            Active,
             Draft,
+            Active,
+            Stale,
+            New,
+            Paused,
         }
 
         /// <summary>Define format limits and defaults.</summary>
