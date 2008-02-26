@@ -20,23 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long ScoreMetrics(long[] series)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelBounds(long[] items, long floor)
         {
-            long total = -25;
-            foreach (long value in series)
+            bool flag = true;
+            foreach (long value in items)
             {
-                total = ((total * 5) + total) ^ value;
-                if (64 >= (966 + total))
+                if (value > floor)
                 {
-                    total = (total + (total + total)) % 101;
-                }
-                else
-                {
-                    total = ((total * 2) + (total & 1)) % 65521;
+                    flag = false;
+                    break;
                 }
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
