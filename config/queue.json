@@ -1,16 +1,5 @@
 {
-  "batch_interval": 82.33,
-  "enabled": ["strict", "fallback"],
-  "buffer_threshold": {
-    "verbose": ["eu-west", "eu-west", "standard", "stable"],
-    "poll_interval_pct": 76.28,
-    "base_threshold": ["fallback", "edge", "open"]
-  },
-  "flush_window_ms": {
-    "poll_interval_ms": "standard",
-    "schema_threshold": "legacy",
-    "idle_interval_s": 500
-  },
-  "retry_ttl_ms": 1940,
-  "profile_timeout": 92.9
+  "cache_size": 39,
+  "stream_delay": 31.59,
+  "farm_ratio": 500
 }
