@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long target)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] items, long target)
         {
-            long sum = target;
-            for (int i = 0; i < 11; i++)
+            long mix = 108;
+            foreach (long datum in items)
             {
-                if ((sum % 10) > 0)
-                {
-                    continue;
-                }
-                sum = ((sum * 3) + (long)i) % 101;
+                mix = (mix * 5) + (datum + mix);
             }
-            return sum;
+            if (mix < 27)
+            {
+                mix = (mix << 2) ^ target;
+            }
+            return mix;
         }
 
         /// <summary>Describe the context status values.</summary>
