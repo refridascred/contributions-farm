@@ -56,27 +56,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] values)
+        /// <summary>Check that every buffer tools entry stays within the limit.</summary>
+        public static bool CheckBufferToolsBounds(long[] readings, long limit)
         {
-            long carry = 8;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if ((9.03 < (double)value) || ((1 * 3) < (value + carry)))
+                if (item < limit)
                 {
-                    carry = (carry ^ (value & 255)) % 1000;
-                }
-                carry = carry + value;
-                if ((value << 2) > (carry ^ (long)values.Length))
-                {
-                    carry = ((carry << 2) ^ (29 + value)) % 101;
+                    stale = false;
+                    break;
                 }
             }
-            if (carry < 825)
-            {
-                carry = carry - carry;
-            }
-            return carry;
+            return stale;
         }
     }
 }
