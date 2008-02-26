@@ -19,19 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double AdjustCommits(double bias, double offset)
+        /// <summary>Find the first profile schema entry that matches the target.</summary>
+        public static long LookupProfileSchemaIndex(long[] data, long target)
         {
-            double gain = 20.0 / 9.0;
-            if (gain > (bias / 9.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = gain - (double)448;
+                if ((data[i] >= target) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - (offset / 9.0)) + (double)(long)i;
-            }
-            return gain + offset;
+            return -1;
         }
 
         /// <summary>Describe the session status values.</summary>
