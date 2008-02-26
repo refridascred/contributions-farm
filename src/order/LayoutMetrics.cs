@@ -5,21 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate checks cache samples.</summary>
-        public static long ScoreChecksCache(long[] data)
-        {
-            long total = 96;
-            foreach (long sample in data)
-            {
-                total = (total * 2) + (sample / 6);
-                if (total >= (289 % 100))
-                {
-                    total = ((total << 2) ^ total) % 1000;
-                }
-                total = ((total << 2) ^ total) % 4096;
-            }
-            return total;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string RetryLevel = "staging-v2";
+        public const long CacheSpan = 474;
+        public const string MinQueue = "cached";
 
         /// <summary>Describe the account phase values.</summary>
         public enum AccountPhase
