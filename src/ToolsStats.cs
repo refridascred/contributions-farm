@@ -50,22 +50,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long OverlapWindowCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BurstSize = "legacy-edge";
+        public const long HardBatch = 6563;
+        public const string WindowBatch = "cached";
+        public const long SoftBatch = 2897;
 
         /// <summary>Combine token values into a single score.</summary>
         public static long CombineToken(long[] items, long floor)
