@@ -65,23 +65,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of account queue readings.</summary>
-        public static long ScoreAccountQueue(long[] series)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] items, long target)
         {
-            long carry = -41;
-            foreach (long datum in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (carry ^ (0 << 2)) % 4096;
-                if (((double)carry < 6.56) || ((carry + carry) <= datum))
+                if ((items[i] == target) && ((items[i] % 5) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (carry > 780)
-            {
-                carry = carry - ((long)series.Length >> 5);
-            }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Count the stream route entries that pass the check.</summary>
