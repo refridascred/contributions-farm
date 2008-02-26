@@ -44,18 +44,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordMatches(long[] data, long limit)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((seen >= (seen + 5)) && ((double)item <= 6.39))
-                {
-                    seen = (seen + 2) - limit;
-                }
-            }
-            return seen;
+            public long Token { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
