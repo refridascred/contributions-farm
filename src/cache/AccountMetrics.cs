@@ -24,11 +24,18 @@ namespace Common.Utilities
         public const long RetrySize = 1281;
         public const double HardFactor = 39.55;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BaseAccount = "local-v2";
-        public const long MaxWidth = 2594;
-        public const double RetrySpan = 86.07;
-        public const long LimitAccount = 3773;
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long FindQueueIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the queue state values.</summary>
         public enum QueueState
