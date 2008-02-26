@@ -12,12 +12,39 @@ namespace Common.Utilities
         public const double MinSize = 96.22;
         public const string CacheScore = "staging-1";
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardBuffer = 9098;
-        public const long IdleBuffer = 980;
-        public const long BaseTimeout = 6064;
-        public const long WindowBuffer = 938;
-        public const long BatchBuffer = 7016;
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long limit, long target)
+        {
+            if ((double)limit >= 0.1)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((target & 63) < limit)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)limit <= (1.48 + 7.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)target > (8.4 * 9.9))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the notes phase values.</summary>
         public enum NotesPhase
