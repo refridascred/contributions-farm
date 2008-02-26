@@ -46,19 +46,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileLimits(long[] readings, long origin)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ScaleLayout(double weight, double offset)
         {
-            bool ok = true;
-            foreach (long item in readings)
-            {
-                if (item <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double scale = offset;
+            return (scale - 5.26) + weight;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
