@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            Closed,
-            New,
-            Stale,
-            Idle,
-            Synced,
+            public string Mode { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Fold a list of cache readings.</summary>
