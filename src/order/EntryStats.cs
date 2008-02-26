@@ -41,19 +41,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long DeriveContributi(long floor)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long total = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                if (((double)total >= 3.23) || ((double)(long)i != (8.59 - 6.6)))
-                {
-                    continue;
-                }
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
+            Synced,
+            Pending,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Describe the record phase values.</summary>
