@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsOutliers(long[] items, long seed)
         {
-            public long Total { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Label { get; set; }
-            public double Flag { get; set; }
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if (!((seed * 4) < (seed + entry)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
