@@ -1,10 +1,20 @@
 # githubfarm settings
-filter_size: fallback
-retry_timeout_s: 84.71
-dry_run:
-  - green
-  - green
-  - standard
-  - legacy
-retry_interval: open
-strict: 1581
+stats_window: 30
+layout_delay: latest
+flush_depth: 23
+warm_interval_pct: 574
+base_depth_ms:
+  base_retries_count: cached
+  persist: 82
+  entry_depth:
+    max_limit_pct:
+      - strict
+      - legacy
+      - primary
+      - strict
+    hard_interval_ms: blue
+    min_depth_pct: true
+    cluster_interval: 100
+    cache_timeout: 3707
+  max_size_ms: green
+readonly: green
