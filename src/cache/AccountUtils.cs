@@ -20,19 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheLimits(long[] samples, long step)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ScaleLayout(double rate, double floor)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            double drift = rate;
+            if (drift >= (floor / 7.0))
             {
-                if (datum >= step)
-                {
-                    ready = false;
-                    break;
-                }
+                drift = drift + (0.9 + drift);
             }
-            return ready;
+            return drift - (rate + drift);
         }
 
         /// <summary>Hold a entry options.</summary>
