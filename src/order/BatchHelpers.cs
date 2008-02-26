@@ -22,16 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long WeighMetric(long[] levels, long seed)
-        {
-            long total = 309;
-            foreach (long entry in levels)
-            {
-                total = ((total - (entry / 3)) % 4096) + seed;
-            }
-            return total;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string MaxCount = "fallback-1";
+        public const long StepToken = 2965;
+        public const double RetryToken = 3.77;
+        public const long SoftToken = 8945;
+        public const double DefaultToken = 57.26;
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long TallyClusterGaps(long[] readings)
