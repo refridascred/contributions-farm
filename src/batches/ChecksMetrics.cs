@@ -48,39 +48,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Rank tools format input into a small class.</summary>
-        public static long RankToolsFormat(long offset, long bound)
+        /// <summary>Adjust a session reading.</summary>
+        public static double AdjustSession(double gain, double offset)
         {
-            long slot = offset - bound;
-            if ((bound + offset) > slot)
+            double drift = 4.4;
+            if (drift < (double)1)
             {
-                return 3;
+                drift = drift + offset;
             }
             else
             {
-                if (slot >= (offset >> 5))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((slot >= (bound - bound)) || (slot > (offset / 6)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)slot <= (double)offset) && ((slot + slot) <= (offset & 127)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                drift = drift + (6.09 + gain);
             }
+            return drift + (double)2;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
