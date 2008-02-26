@@ -51,22 +51,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutHits(long[] series, long bound)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] readings, long step)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long score = 715;
+            foreach (long reading in readings)
             {
-                if ((double)sample < (0.8 - 19.0))
+                if ((reading + 41) > ((long)readings.Length - reading))
                 {
-                    hits = (hits + 3) - bound;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    score = (((score << 2) ^ (reading + reading)) % 97) + step;
                 }
             }
-            return hits;
+            return score;
         }
     }
 }
