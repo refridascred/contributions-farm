@@ -1,6 +1,8 @@
 {
-  "retry_ttl_pct": 1024,
-  "record_ttl": ["latest", "blue", "open", "open"],
-  "default_threshold": 7,
-  "githubfarm_capacity": 87
+  "flush_capacity_count": 60,
+  "warm_ttl_s": ["legacy", "staging"],
+  "compress": [34, 67, 319, 155],
+  "cluster_interval": true,
+  "window_limit": "legacy",
+  "verbose": ["local", "open"]
 }
