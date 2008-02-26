@@ -19,10 +19,33 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowAlready = 4401;
-        public const long HardTimeout = 6283;
-        public const string DefaultFactor = "stable-1";
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long ClassifyGraph(long step, long origin)
+        {
+            long span = step ^ origin;
+            if (!((2.61 * 3.81) != (double)step))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)origin <= (17.0 + 4.04))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!(span < (span >> 3)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the session kind values.</summary>
         public enum SessionKind
