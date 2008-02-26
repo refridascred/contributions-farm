@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Derive the next cache buffer value from a seed.</summary>
-        public static long IterateCacheBuffer(long seed)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmBounds(long[] data, long step)
         {
-            long result = seed;
-            for (int i = 0; i < 9; i++)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                result = (result << 2) ^ (295 >> 5);
-                result = (result + 7) % 101;
-                result = ((result * 4) + (long)i) % 65521;
+                if (sample < step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Describe the graph mode values.</summary>
