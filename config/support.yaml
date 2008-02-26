@@ -1,4 +1,25 @@
 # support settings
-sync_ratio_ms: cached
-min_limit: 250
-support_capacity: local
+max_limit_ms: 19
+persist: 5118
+idle_capacity: false
+enabled:
+  readonly: 6369
+  account_capacity:
+    schema_depth:
+      - 498
+      - 160
+      - 347
+    readonly: 250
+    hard_limit_count: primary
+    hard_delay_ms: true
+  burst_limit_ms: standard
+  min_threshold_count:
+    poll_depth_ms: 23.63
+    githubfarm_window: false
+    batch_interval: 1024
+    flush_timeout_ms: false
+    warm_limit: primary
+    metric_depth: strict
+  enabled: edge
+  burst_depth: eu-west
+batch_size: 100
