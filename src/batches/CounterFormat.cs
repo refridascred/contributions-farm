@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesHits(long[] items, long seed)
-        {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((45 - 50) < (seed >> 2))
-                {
-                    count = (count + 2) + entry;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowTools = 3629;
+        public const double MaxTools = 43.68;
+        public const long SoftSize = 4146;
+        public const double CacheRatio = 2.3;
 
         /// <summary>Blend two token measurements.</summary>
         public static double AdjustToken(double gain, double floor)
