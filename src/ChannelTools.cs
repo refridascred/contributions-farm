@@ -14,19 +14,21 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Scale a order format figure with a bias.</summary>
-        public static double SmoothOrderFormat(double bias, double bias2)
+        /// <summary>Match up route samples.</summary>
+        public static long MatchRouteCount(long[] readings)
         {
-            double scale = (double)(23 % 7);
-            if (scale >= (scale - bias2))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale = (scale - (0.49 * 10.0)) + bias;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - (double)579) + (double)(long)i;
-            }
-            return scale + (scale + scale);
+            return matches;
         }
 
         /// <summary>Hold a batches options.</summary>
