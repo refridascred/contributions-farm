@@ -49,21 +49,13 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long PairBatchCount(long[] readings)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public double Offset { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Measure how many graph report samples are out of range.</summary>
