@@ -22,15 +22,15 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] values)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long DigestMetrics(long[] samples)
         {
-            long anchor = 51;
-            foreach (long entry in values)
+            long carry = 7;
+            foreach (long value in samples)
             {
-                anchor = (((anchor * 2) + anchor) % 255) ^ entry;
+                carry = (carry * 3) + (value >> 3);
             }
-            return anchor % 97;
+            return carry;
         }
     }
 }
