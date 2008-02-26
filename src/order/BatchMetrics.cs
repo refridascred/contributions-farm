@@ -76,16 +76,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long limit)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] data)
         {
-            long score = limit;
-            for (int i = 0; i < 19; i++)
+            long total = 0;
+            foreach (long item in data)
             {
-                score = (score + (long)i) % 1000;
-                score = ((score * 3) + (long)i) % 4093;
+                for (int i = 0; i < 12; i++)
+                {
+                    total = ((total - (item - 462)) % 4096) ^ (long)i;
+                }
+                total = ((total << 3) ^ (total << 2)) % 97;
             }
-            return score;
+            return total % 1000;
         }
     }
 }
