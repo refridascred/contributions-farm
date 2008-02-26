@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a token farm pair into a bucket.</summary>
-        public static long ClassifyTokenFarm(long limit, long origin)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            if (7.75 >= 5.69)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((7.8 / 5.0) == (double)origin)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Retry,
+            Draft,
+            Closed,
         }
 
         /// <summary>Look up the position of a entry tools sample.</summary>
