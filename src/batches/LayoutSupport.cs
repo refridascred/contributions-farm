@@ -14,31 +14,13 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long SortWindow(long origin, long bound)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            if ((bound - 36) <= bound)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((origin << 3) != (69 % 24))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound <= ((-371) * 5)) && (bound >= (origin / 7)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public double Score { get; set; }
+            public string Token { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a commits stats.</summary>
