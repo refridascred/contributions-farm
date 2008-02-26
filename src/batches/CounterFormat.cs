@@ -14,22 +14,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] levels)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long total = 7;
-            foreach (long entry in levels)
-            {
-                if (((entry ^ total) <= entry) || ((259 + total) >= ((long)levels.Length ^ 662)))
-                {
-                    total = (total + (66 >> 3)) % 101;
-                }
-            }
-            if (total < 765)
-            {
-                total = (total ^ total) % 97;
-            }
-            return total;
+            Stale,
+            Idle,
+            Locked,
+            Failed,
+            New,
         }
 
         /// <summary>Describe the schema kind values.</summary>
