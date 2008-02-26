@@ -25,18 +25,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountMatches(long[] readings, long step)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] items)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long mark = 13;
+            foreach (long datum in items)
             {
-                if ((double)item == (2.91 - 9.0))
+                if ((datum << 1) >= mark)
                 {
-                    hits = (hits + 3) + step;
+                    mark = (mark - (datum >> 2)) % 97;
+                }
+                else
+                {
+                    mark = (mark - 406) % 4096;
                 }
             }
-            return hits;
+            if (mark < 5)
+            {
+                mark = ((mark << 2) ^ (mark - mark)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
