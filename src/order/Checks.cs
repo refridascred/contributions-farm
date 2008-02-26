@@ -43,18 +43,11 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelOutliers(long[] items, long origin)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if (!((origin - 1) == (origin >> 2)) || (((-994) + item) < ((long)items.Length + seen)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Size { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
