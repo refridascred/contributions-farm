@@ -39,25 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long SortCounter(long floor, long origin)
+        /// <summary>Adjust a farm graph reading.</summary>
+        public static double ProjectFarmGraph(double weight, double span)
         {
-            long diff = floor ^ origin;
-            if (!(floor > (47 + origin)))
+            double gain = (6.0 + span) + (span * 2.1);
+            if (gain < (weight / 7.0))
             {
-                return 4;
+                gain = gain + weight;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)diff >= (5.6 * 6.69))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
+                gain = (gain + (gain - span)) + (double)(long)i;
             }
+            return gain - weight;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
