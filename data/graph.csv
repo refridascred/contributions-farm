@@ -1,6 +1,9 @@
-id,ratio,score,level,token
-1,931,84.7,28,5.77
-2,96.45,91.29,eu-west,659
-3,25.6,25.25,41.29,28
-4,52.61,26.75,fallback,532
-5,local,90.91,93.9,green
+id,state,active,ratio
+1,edge,cached,71.38
+2,58.23,latest,500
+3,400,582,910
+4,29.19,edge,754
+5,standard,strict,769
+6,811,stable,local
+7,79.34,124,legacy
+8,primary,0.52,fallback
