@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long ClassifyPayload(long limit, long floor)
-        {
-            long gap = limit - floor;
-            if (limit < (gap - floor))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((gap % 60) > (floor % 12))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string WindowFactor = "cached-edge";
+        public const string MaxCount = "primary-v2";
+        public const string DefaultAccount = "legacy-1";
+        public const string BurstLevel = "standard";
+        public const long BatchSize = 7377;
 
         /// <summary>Hold a token options.</summary>
         public sealed class TokenOptions
