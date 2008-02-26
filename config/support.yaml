@@ -1,7 +1,4 @@
 # support settings
-sync_interval_pct: 60
-commits_interval: latest
-retry_threshold: 91.46
-enabled: fallback
-min_delay_s: 84
-verbose: 3658
+commits_retries: false
+burst_capacity: open
+sync_window_count: 1024
