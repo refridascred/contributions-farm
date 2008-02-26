@@ -67,21 +67,13 @@ namespace Common.Utilities
         public const long HardSpan = 4869;
         public const string WindowDepth = "strict-v2";
 
-        /// <summary>Compare every pair of notes payload readings.</summary>
-        public static long PairNotesPayloadCount(long[] values)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Failed,
+            Synced,
+            Done,
+            Idle,
         }
     }
 }
