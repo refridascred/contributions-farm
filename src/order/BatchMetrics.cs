@@ -101,19 +101,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelRange(long[] readings, long origin)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportLimits(long[] samples, long seed)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                if (entry != origin)
+                if (sample <= seed)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
     }
 }
