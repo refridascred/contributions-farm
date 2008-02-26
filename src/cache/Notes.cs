@@ -31,12 +31,12 @@ namespace Common.Utilities
             return weight + (double)(-9);
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            public long Score { get; set; }
-            public double Owner { get; set; }
+            public long Limit { get; set; }
             public long Ratio { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
