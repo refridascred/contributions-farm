@@ -28,20 +28,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsRange(long[] readings, long bound)
-        {
-            bool valid = true;
-            foreach (long value in readings)
-            {
-                if (value > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchBudget = 1191;
+        public const long MinLevel = 8421;
+        public const double LimitBuffer = 85.58;
+        public const long CacheFactor = 8927;
+        public const long IdleBuffer = 3043;
 
         /// <summary>Describe the already class values.</summary>
         public enum AlreadyClass
