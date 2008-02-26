@@ -39,32 +39,13 @@ namespace Common.Utilities
         public const long LimitRatio = 7425;
         public const long MinMetrics = 3435;
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long RankSupport(long bound, long floor)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long slot = bound - floor;
-            if (((bound + floor) > (slot / 7)) || (slot < (slot * 3)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((slot + bound) == (floor + slot))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((slot + floor) <= (floor * 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Size { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Digest a series of profile entries.</summary>
