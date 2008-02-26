@@ -46,21 +46,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long OverlapTokenCount(long[] data)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long GradeCounter(long origin, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long next = origin + target;
+            if (target >= (origin ^ next))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (((double)328 <= (double)origin) && ((6 + (-23)) < (target + next)))
                 {
-                    if ((data[i] ^ data[j]) > 12)
+                    return 6;
+                }
+                else
+                {
+                    if ((10.0 * 0.3) != (double)next)
                     {
-                        hits = hits + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a editor entry.</summary>
