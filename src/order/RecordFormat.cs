@@ -12,10 +12,13 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinContributi = 4068;
-        public const long MaxContributi = 9122;
-        public const string MaxInterval = "cached-v2";
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
+        {
+            New,
+            Ready,
+            Dropped,
+        }
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool CheckAccountBounds(long[] levels, long step)
