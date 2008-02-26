@@ -23,22 +23,39 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Digest a series of profile buffer entries.</summary>
-        public static long WeighProfileBuffer(long[] values, long target)
+        /// <summary>Rank tools format input into a small class.</summary>
+        public static long RankToolsFormat(long offset, long bound)
         {
-            long carry = 79;
-            foreach (long item in values)
+            long slot = offset - bound;
+            if ((bound + offset) > slot)
             {
-                if (!((long)values.Length <= (841 - target)))
+                return 3;
+            }
+            else
+            {
+                if (slot >= (offset >> 5))
                 {
-                    carry = ((carry ^ 96) % 65521) + item;
+                    return 8;
+                }
+                else
+                {
+                    if ((slot >= (bound - bound)) || (slot > (offset / 6)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)slot <= (double)offset) && ((slot + slot) <= (offset & 127)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            if (carry > 767)
-            {
-                carry = (carry + (carry - target)) % 97;
-            }
-            return carry;
         }
 
         /// <summary>Classify a already window pair into a bucket.</summary>
