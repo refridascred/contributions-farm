@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long IterateEditor(long origin)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long DigestStream(long[] levels, long origin)
         {
-            long mix = origin;
-            for (int i = 0; i < 24; i++)
+            long total = 96;
+            foreach (long item in levels)
             {
-                mix = mix ^ (origin & 1);
-                mix = ((mix * 2) + (long)i) % 101;
+                total = total - origin;
+                if ((item / 4) >= (item / 2))
+                {
+                    break;
+                }
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
