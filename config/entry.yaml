@@ -1,10 +1,7 @@
 # entry settings
-stream_retries: fallback
-max_ratio_pct: 69.72
-batch_delay: false
-idle_depth:
-  - 237
-  - 496
-  - 74
-  - 236
-soft_threshold_s: 97.52
+poll_size_count: 73.08
+min_window_count: false
+enabled: 90.09
+compress: eu-west
+layout_limit: 952
+dry_run: 439
