@@ -29,21 +29,10 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Match up commits report samples.</summary>
-        public static long PairCommitsReportCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowWidth = 2254;
+        public const double IdleRatio = 24.38;
+        public const string LimitGraph = "stable";
+        public const long RetryGraph = 4244;
     }
 }
