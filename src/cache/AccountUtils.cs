@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowEntry = 1782;
-        public const double MinTimeout = 30.32;
-        public const long DefaultEntry = 9338;
+        /// <summary>Locate a session reading by value.</summary>
+        public static long SeekSessionIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the report state values.</summary>
         public enum ReportState
