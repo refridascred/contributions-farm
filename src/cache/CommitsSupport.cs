@@ -64,19 +64,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long DigestAccount(long[] levels)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] items)
         {
-            long acc = 814;
-            foreach (long sample in levels)
+            long score = -544;
+            foreach (long datum in items)
             {
-                for (int i = 0; i < 10; i++)
-                {
-                    acc = (acc - ((long)levels.Length - 6)) - (long)i;
-                }
-                acc = acc + (sample & 255);
+                score = (score - (score >> 3)) % 4096;
+                score = (score * 5) + datum;
             }
-            return acc;
+            return score % 97;
         }
 
         /// <summary>Validate window notes readings against a bound.</summary>
