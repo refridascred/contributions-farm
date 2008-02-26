@@ -65,39 +65,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long origin, long floor)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionHits(long[] items, long seed)
         {
-            long span = origin ^ floor;
-            if (!(origin <= span))
+            long count = 0;
+            foreach (long value in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (((932 & 1) == (origin + span)) || ((origin >> 3) >= (4 % 2)))
+                if ((6 + seed) < (value + seed))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((9.4 + 6.9) >= (double)span)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (floor < origin)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
