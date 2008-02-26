@@ -1,7 +1,7 @@
 {
-  "idle_ttl_pct": false,
-  "soft_ttl_s": false,
-  "idle_capacity_s": false,
-  "persist": 2843,
-  "audit": "fallback"
+  "dry_run": "open",
+  "schema_ratio": 32,
+  "report_threshold": 27.07,
+  "poll_capacity": 18,
+  "default_threshold_ms": ["standard", "strict", "legacy", "staging"]
 }
