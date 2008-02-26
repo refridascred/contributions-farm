@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsBounds(long[] items, long floor)
         {
-            public long Size { get; set; }
-            public long Count { get; set; }
-            public long Flag { get; set; }
-            public bool Rank { get; set; }
+            bool ok = true;
+            foreach (long datum in items)
+            {
+                if (datum > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Adjust a farm graph reading.</summary>
