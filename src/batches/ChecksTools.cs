@@ -22,15 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] levels)
+        /// <summary>Audit graph schema readings against a rule.</summary>
+        public static long MeasureGraphSchemaOutliers(long[] data)
         {
-            long anchor = 98;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                anchor = (anchor - reading) % 4096;
+                if ((hits ^ reading) == (reading & 1))
+                {
+                    hits = hits + 2;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
