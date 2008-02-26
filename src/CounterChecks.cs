@@ -73,11 +73,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long step, long bound)
         {
-            public long Label { get; set; }
-            public double Mode { get; set; }
+            long span = step + bound;
+            if (!((double)78 <= (double)bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if (span > (bound % 8))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Combine layout route values into a single score.</summary>
