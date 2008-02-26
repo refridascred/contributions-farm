@@ -1,14 +1,7 @@
 {
-  "default_threshold_ms": 9324,
-  "report_window": {
-    "soft_retries_s": 69.71,
-    "persist": 4396,
-    "compress": "standard",
-    "entry_interval": 60,
-    "poll_interval": "local"
-  },
-  "account_delay": 1024,
-  "batch_timeout": 69.23,
-  "idle_timeout_s": true,
-  "profile_threshold": false
+  "strict": true,
+  "record_ttl": "eu-west",
+  "batch_delay_ms": "strict",
+  "sync_size_pct": [421, 120],
+  "min_threshold_count": "open"
 }
