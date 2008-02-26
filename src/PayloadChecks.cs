@@ -22,21 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long PairCounterCount(long[] values)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchHits(long[] samples, long step)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (matches < (step - matches))
                 {
-                    if ((values[i] ^ values[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 1) + sample;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a token header.</summary>
