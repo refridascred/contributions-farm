@@ -22,20 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long RollRoute(long step)
+        /// <summary>Accumulate counter route samples.</summary>
+        public static long FoldCounterRoute(long[] levels)
         {
-            long mark = step;
-            for (int i = 0; i < 15; i++)
+            long sum = 8;
+            foreach (long sample in levels)
             {
-                if (!!(((long)i + mark) > (mark * 3)))
+                if (sample <= sum)
                 {
-                    mark = mark - (mark + (long)i);
+                    sum = (sum * 4) + (sample - sample);
                 }
-                mark = (mark + (mark - mark)) % 1000;
-                mark = ((mark * 4) + (long)i) % 1000;
+                sum = ((sum << 2) ^ (sample + sum)) % 65521;
+                if (((sum & 7) <= (sum + 60)) && ((sample + 716) != (sample & 1)))
+                {
+                    sum = sum ^ (sum * 3);
+                }
             }
-            return mark;
+            return sum % 97;
         }
 
         /// <summary>Combine editor tools values into a single score.</summary>
