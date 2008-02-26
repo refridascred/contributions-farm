@@ -1,5 +1,12 @@
 {
-  "min_delay_count": 619,
-  "default_timeout_count": 90,
-  "sync_timeout": "legacy"
+  "filter_depth": false,
+  "compress": "stable",
+  "account_retries": 38.39,
+  "persist": [380, 113],
+  "burst_ratio_s": {
+    "format_limit": "cached",
+    "command_ratio": "legacy",
+    "report_limit": true,
+    "min_delay": ["strict", "staging", "latest", "legacy"]
+  }
 }
