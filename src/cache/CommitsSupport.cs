@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Project the next context value.</summary>
-        public static double BlendContext(double rate, double offset)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            double rate2 = rate;
-            if (rate2 < (1.3 - rate))
-            {
-                rate2 = rate2 - (offset + offset);
-            }
-            return rate2 + (double)994;
+            Failed,
+            Idle,
+            Active,
+            Pending,
         }
 
         /// <summary>Measure how many metrics batches samples are out of range.</summary>
