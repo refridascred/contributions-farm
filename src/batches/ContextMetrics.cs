@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long AuditReportOutliers(long[] values)
         {
-            public bool Total { get; set; }
-            public double Label { get; set; }
-            public string Weight { get; set; } = "";
-            public string Score { get; set; } = "";
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if (datum <= hits)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
