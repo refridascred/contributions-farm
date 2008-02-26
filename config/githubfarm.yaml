@@ -1,14 +1,23 @@
 # githubfarm settings
-batch_timeout_ms: blue
-base_size_pct:
-  - primary
-  - staging
-  - staging
-  - primary
-burst_limit: 1024
-soft_window_s: 6270
-batch_depth: 69.18
-record_retries:
-  - 65
-  - 221
-  - 221
+default_capacity: staging
+burst_retries_count: 41.72
+poll_interval:
+  burst_delay: 81.98
+  poll_capacity_s:
+    batch_interval_count: false
+    batch_limit_s:
+      - 293
+      - 25
+      - 151
+      - 313
+    sync_ratio: 60
+  order_capacity: 86
+  warm_threshold:
+    - strict
+    - legacy
+sync_ttl: strict
+cache_ratio_pct:
+  - 335
+  - 107
+  - 396
+  - 475
