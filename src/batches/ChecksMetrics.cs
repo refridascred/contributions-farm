@@ -30,19 +30,21 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long FoldSupport(long[] levels, long target)
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] series)
         {
-            long anchor = 5;
-            foreach (long value in levels)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((value / 9) != (value + anchor))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    break;
+                    if ((series[i] - series[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                anchor = (anchor + anchor) + target;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Hold a stats entry.</summary>
