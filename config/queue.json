@@ -1,5 +1,20 @@
 {
-  "retry_retries_ms": [252, 27],
-  "sync_timeout": "staging",
-  "sync_threshold_ms": 73.38
+  "max_window_ms": {
+    "batch_depth_s": ["local", "local"],
+    "persist": 6348,
+    "payload_capacity": {
+      "burst_retries": 5638,
+      "dry_run": [86, 365, 376, 27],
+      "cache_timeout_count": 53.88
+    },
+    "default_window_pct": false,
+    "batch_limit": {
+      "buffer_limit": 10,
+      "cache_ratio_ms": ["local", "blue", "open", "cached"],
+      "batches_timeout": "open",
+      "warm_size_ms": 47
+    }
+  },
+  "burst_size_count": ["stable", "standard", "edge"],
+  "window_window": ["fallback", "green"]
 }
