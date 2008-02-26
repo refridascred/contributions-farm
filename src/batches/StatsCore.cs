@@ -59,13 +59,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            New,
             Synced,
-            Draft,
-            Pending,
+            Stale,
+            Retry,
+            Active,
         }
     }
 }
