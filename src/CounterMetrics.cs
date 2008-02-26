@@ -12,22 +12,14 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long DigestCache(long[] data)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long result = 659;
-            foreach (long cell in data)
-            {
-                if (((result ^ (-3)) == (1 + result)) && ((3.0 * 0.99) != (double)result))
-                {
-                    result = (result << 2) ^ (cell + result);
-                }
-            }
-            if (result < 3)
-            {
-                result = result + (result << 2);
-            }
-            return result % 65521;
+            Active,
+            Closed,
+            Locked,
+            Paused,
+            Failed,
         }
 
         /// <summary>Hold a payload entry.</summary>
