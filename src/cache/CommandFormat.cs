@@ -33,13 +33,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            public long Label { get; set; }
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
-            public double Owner { get; set; }
+            public double Level { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Score { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
