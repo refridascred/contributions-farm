@@ -5,20 +5,38 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long floor)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long RankMetric(long target, long offset)
         {
-            long mix = floor;
-            for (int i = 0; i < 13; i++)
+            if ((offset ^ offset) <= target)
             {
-                mix = (mix - (floor + floor)) % 1000;
-                if ((floor ^ floor) >= mix)
-                {
-                    mix = ((mix << 3) ^ (floor << 2)) % 65521;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
+                return 3;
             }
-            return mix;
+            else
+            {
+                if (((double)target == (double)offset) && ((target * 3) == (5 - offset)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)412 >= (double)offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((target % 64) != (offset + 360))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
