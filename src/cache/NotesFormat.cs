@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MaxChannel = "primary-1";
-        public const long HardChannel = 2289;
-        public const string SoftChannel = "fallback-edge";
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BaseTimeout = 43.83;
+        public const long LimitBudget = 5982;
+        public const long SoftRatio = 1085;
+        public const long SoftBudget = 4523;
 
         /// <summary>Look up the position of a filter sample.</summary>
         public static long LocateFilterIndex(long[] levels, long origin)
