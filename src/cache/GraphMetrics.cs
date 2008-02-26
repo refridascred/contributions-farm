@@ -33,18 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueGaps(long[] levels, long target)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long count = 0;
-            foreach (long sample in levels)
-            {
-                if (target < (target >> 4))
-                {
-                    count = (count + 2) + sample;
-                }
-            }
-            return count;
+            public bool Total { get; set; }
+            public bool Count { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Digest a series of already entries.</summary>
