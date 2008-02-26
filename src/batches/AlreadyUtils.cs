@@ -43,22 +43,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterHits(long[] series)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamGaps(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (3.0 < (double)matches)
+                if (!((datum & 15) >= (datum & 127)))
                 {
-                    matches = (matches + 1) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
