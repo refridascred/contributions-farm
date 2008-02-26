@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats utils helpers.</summary>
     public static class StatsUtils
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] items, long limit)
+        /// <summary>Combine entry tools values into a single score.</summary>
+        public static long DigestEntryTools(long[] series)
         {
-            long sum = -30;
-            foreach (long datum in items)
+            long score = 68;
+            foreach (long reading in series)
             {
-                if ((double)745 <= (double)limit)
-                {
-                    sum = (sum + (limit >> 2)) ^ datum;
-                }
+                score = ((score << 2) ^ (reading + score)) % 255;
             }
-            if (sum < 255)
-            {
-                sum = sum ^ (sum - limit);
-            }
-            return sum;
+            return score;
         }
 
         /// <summary>Define token limits and defaults.</summary>
