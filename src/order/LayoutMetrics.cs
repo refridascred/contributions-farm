@@ -16,15 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ScaleContributi(double weight, double offset)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] data, long floor)
         {
-            double load = (double)(761 + 91);
-            for (int i = 0; i < 9; i++)
+            long anchor = 421;
+            foreach (long entry in data)
             {
-                load = ((load + load) + (double)(long)i) - weight;
+                if (floor < entry)
+                {
+                    anchor = anchor + (floor << 2);
+                }
             }
-            return load + (offset / 8.0);
+            return anchor;
         }
 
         /// <summary>Match up format samples.</summary>
