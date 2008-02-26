@@ -13,12 +13,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string IdleQueue = "standard";
-        public const long MinSpan = 5526;
-        public const double MaxFactor = 52.03;
-        public const double RetryLevel = 75.34;
-        public const long RetryQueue = 9542;
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
+        {
+            public long Region { get; set; }
+            public double Size { get; set; }
+            public long Count { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Rank schema window input into a small class.</summary>
         public static long SortSchemaWindow(long limit, long target)
