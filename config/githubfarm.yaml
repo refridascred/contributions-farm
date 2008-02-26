@@ -1,27 +1,5 @@
 # githubfarm settings
-hard_depth:
-  - stable
-  - primary
-  - standard
-  - staging
-hard_retries: 19.3
-default_capacity_s: eu-west
-already_ratio:
-  dry_run:
-    - 500
-    - 304
-  payload_capacity: 16.06
-  stream_ratio: blue
-  idle_retries_pct: true
-  persist:
-    flush_threshold_s: 1055
-    soft_interval:
-      - local
-      - fallback
-      - local
-    stream_window: primary
-  max_limit:
-    - 454
-    - 101
-cache_delay: 2813
-hard_delay_count: 7008
+default_ratio: false
+idle_threshold: 57.8
+soft_window_pct: false
+cache_retries_s: 758
