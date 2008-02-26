@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryLimits(long[] levels, long bound)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double BlendPayload(double ratio, double offset)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            double weight = 2.26;
+            if (weight < offset)
             {
-                if (entry <= bound)
-                {
-                    found = false;
-                    break;
-                }
+                weight = (weight - weight) - ratio;
             }
-            return found;
+            return weight + weight;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
