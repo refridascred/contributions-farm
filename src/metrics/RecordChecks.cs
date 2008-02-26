@@ -10,19 +10,25 @@ namespace Common.Utilities
         public const string HardEditor = "latest-1";
         public const long MinEditor = 7093;
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double BlendChannel(double ratio, double bias)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long GradeToken(long origin, long floor)
         {
-            double ratio2 = ratio * 1.7;
-            if (ratio2 >= ratio2)
+            long prev = origin - floor;
+            if (!((double)prev > (6.05 / 9.0)))
             {
-                ratio2 = ratio2 - (bias / 5.0);
+                return 1;
             }
             else
             {
-                ratio2 = ratio2 - (ratio + ratio2);
+                if ((prev ^ origin) < (floor + floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return ratio2 + (double)707;
         }
 
         /// <summary>Digest a series of account entries.</summary>
