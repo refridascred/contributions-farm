@@ -22,24 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double AdjustCluster(double scale, double floor)
-        {
-            double drift = floor;
-            if (drift <= (drift / 7.0))
-            {
-                drift = drift - scale;
-            }
-            else
-            {
-                drift = drift + (double)2;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift + (double)9;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxSize = 5526;
+        public const string SoftEditor = "stable-v2";
+        public const long DefaultInterval = 9920;
+        public const long MaxBudget = 4413;
 
         /// <summary>Compare every pair of editor readings.</summary>
         public static long OverlapEditorCount(long[] samples)
