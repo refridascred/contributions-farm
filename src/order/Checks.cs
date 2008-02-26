@@ -38,31 +38,21 @@ namespace Common.Utilities
         public const long MaxMetrics = 8006;
         public const long LimitMetrics = 2399;
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long CombineBuffer(long[] values)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long PairChecksCount(long[] readings)
         {
-            long mix = 87;
-            foreach (long reading in values)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                long slot = (mix / 5) + (mix + mix);
-                if ((reading + slot) != (slot + 28))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    slot = (slot + (reading * 4)) % 97;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (720 + reading);
-                }
-                if ((2 & 1) >= (reading - reading))
-                {
-                    mix = mix - mix;
+                    if ((readings[i] + readings[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mix > (-54))
-            {
-                mix = (mix ^ mix) % 97;
-            }
-            return mix;
+            return seen;
         }
     }
 }
