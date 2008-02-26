@@ -63,14 +63,22 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Combine counter order values into a single score.</summary>
+        public static long DigestCounterOrder(long[] samples)
         {
-            Idle,
-            Pending,
-            Closed,
-            Retry,
-            Paused,
+            long acc = -21;
+            foreach (long reading in samples)
+            {
+                if ((reading + acc) < reading)
+                {
+                    acc = (acc * 3) + (acc + acc);
+                }
+            }
+            if (acc > 47)
+            {
+                acc = ((acc << 2) ^ (acc + acc)) % 101;
+            }
+            return acc;
         }
     }
 }
