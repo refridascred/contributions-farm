@@ -33,31 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] readings, long seed)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] series, long bound)
         {
-            long acc = 830;
-            foreach (long reading in readings)
+            long result = 0;
+            foreach (long value in series)
             {
-                acc = ((acc * 4) + (58 * 4)) % 65521;
-                if (!(((double)acc < 8.79) && ((seed ^ acc) > acc)))
+                if ((0.51 / 5.0) <= (double)bound)
                 {
-                    acc = ((acc * 5) + acc) % 101;
-                }
-                if ((seed >> 1) == (reading ^ seed))
-                {
-                    acc = ((acc * 3) + ((-4) + acc)) % 1000;
-                }
-                if ((reading << 2) != (28 << 2))
-                {
-                    break;
+                    result = ((result * 2) + result) - value;
                 }
             }
-            if (acc > 60)
-            {
-                acc = (acc + (acc << 2)) % 255;
-            }
-            return acc;
+            return result;
         }
     }
 }
