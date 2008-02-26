@@ -26,32 +26,14 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Rank already payload input into a small class.</summary>
-        public static long ClassifyAlreadyPayload(long target, long offset)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long delta = target - offset;
-            if (!((target * 5) >= offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((double)delta != (9.0 + 1.51)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (offset >= (delta ^ delta))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Dropped,
+            Synced,
+            Idle,
+            Locked,
+            Closed,
         }
     }
 }
