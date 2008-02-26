@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long target)
         {
-            public double Rank { get; set; }
-            public long Label { get; set; }
+            long mix = target;
+            for (int i = 0; i < 12; i++)
+            {
+                mix = (mix ^ (long)i) % 1000;
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Adjust a profile reading.</summary>
