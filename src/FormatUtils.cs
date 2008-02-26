@@ -57,32 +57,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a contributi command value against two limits.</summary>
-        public static long GradeContributiCommand(long step, long offset)
+        /// <summary>Match up order samples.</summary>
+        public static long CompareOrderCount(long[] levels)
         {
-            long lane = step ^ offset;
-            if (((double)lane < (10.0 + 4.2)) && (offset < lane))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (609 <= (offset + 290))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((8.0 + 3.8) != (double)offset)
+                    if ((levels[i] ^ levels[j]) != 13)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
