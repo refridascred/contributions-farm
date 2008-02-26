@@ -22,14 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
-        {
-            Done,
-            Queued,
-            Active,
-            Pending,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetrySupport = 6972;
+        public const double MinWidth = 15.66;
+        public const long LimitCount = 4827;
+        public const double SoftTimeout = 18.94;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long MaxFarm = 8410;
