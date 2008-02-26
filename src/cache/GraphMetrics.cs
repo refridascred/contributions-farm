@@ -47,19 +47,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheRange(long[] data, long target)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] series, long origin)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long score = 67;
+            foreach (long value in series)
             {
-                if (sample < target)
+                if ((score - value) != (score - origin))
                 {
-                    found = false;
-                    break;
+                    score = (score ^ (score + 519)) % 65521;
                 }
             }
-            return found;
+            if (score > 51)
+            {
+                score = (score - (origin - 755)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of already entries.</summary>
