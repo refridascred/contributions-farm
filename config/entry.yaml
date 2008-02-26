@@ -1,25 +1,4 @@
 # entry settings
-burst_ratio: stable
-hard_threshold:
-  base_threshold: primary
-  base_window_pct: 33
-  farm_threshold:
-    payload_depth: open
-    base_timeout_ms: cached
-    persist: true
-    warm_delay_s: legacy
-    warm_window_ms: staging
-    flush_ttl_pct: stable
-  batch_capacity_count: standard
-idle_ratio_s: false
-base_ratio:
-  warm_interval_count: 13.52
-  batch_window_count: 85
-  token_capacity: false
-  soft_interval_s: 18.78
-  warm_threshold_pct: 250
-  sync_ratio_ms:
-    - 500
-    - 369
-    - 198
-    - 164
+verbose: 956
+retry_capacity_s: 64
+editor_depth: 1024
