@@ -36,18 +36,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamMatches(long[] readings)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell / 6) > (cell & 3))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Retry,
+            Ready,
+            Stale,
+            Idle,
+            Done,
         }
 
         /// <summary>Describe the metrics level values.</summary>
