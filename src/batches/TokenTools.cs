@@ -33,22 +33,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long DigestChannel(long[] readings)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long anchor = 0;
-            foreach (long datum in readings)
-            {
-                if (((double)anchor < (2.65 * 15.0)) || (datum < 524))
-                {
-                    anchor = (anchor ^ (3 + datum)) % 101;
-                }
-            }
-            if (anchor > 17)
-            {
-                anchor = (anchor ^ (0 >> 2)) % 1000;
-            }
-            return anchor;
+            public double Total { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
