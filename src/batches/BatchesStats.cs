@@ -52,18 +52,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsMatches(long[] samples)
-        {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if (!((value >> 4) > (value << 1)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string HardSession = "strict-1";
+        public const long SoftSession = 8058;
+        public const long MaxSession = 1271;
+        public const long BurstSession = 9945;
+        public const long MaxCount = 8151;
     }
 }
