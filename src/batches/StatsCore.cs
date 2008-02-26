@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the command entry entries that pass the check.</summary>
-        public static long MeasureCommandEntryOutliers(long[] readings, long target)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (count >= (target + target))
-                {
-                    count = (count + 2) ^ sample;
-                }
-            }
-            return count;
+            Done,
+            Queued,
+            Retry,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
