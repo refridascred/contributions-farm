@@ -36,39 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long GradeSession(long bound, long seed)
+        /// <summary>Measure how many session githubfarm samples are out of range.</summary>
+        public static long AuditSessionGithubfarmHits(long[] items)
         {
-            long gap = bound ^ seed;
-            if ((9.0 + 9.2) <= (double)bound)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (((gap / 7) <= (seed - bound)) || ((gap * 5) >= (69 + 828)))
+                if ((datum - datum) > (372 + seen))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (seed > 6)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((gap - bound) != (gap ^ 49))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
