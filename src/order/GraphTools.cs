@@ -31,24 +31,18 @@ namespace Common.Utilities
             return ratio + 0.63;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long BucketCommand(long floor, long step)
+        /// <summary>Audit account stats readings against a rule.</summary>
+        public static long MeasureAccountStatsMatches(long[] data, long limit)
         {
-            if ((6.0 / 3.0) < (double)floor)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor & 3) <= (floor >> 3))
+                if ((6 * 3) > (datum % 100))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    tally = (tally + 3) - limit;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a stats options.</summary>
