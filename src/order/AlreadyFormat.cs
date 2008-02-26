@@ -47,10 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double MinRatio = 49.13;
-        public const double DefaultReport = 34.69;
-        public const string MaxWidth = "standard-1";
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheGaps(long[] levels)
+        {
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if (!(((tally + sample) >= (sample + sample)) || ((sample + 2) != (tally - sample))))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool CheckToolsLimits(long[] series, long floor)
