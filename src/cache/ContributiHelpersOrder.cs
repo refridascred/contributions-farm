@@ -10,17 +10,15 @@ namespace Common.Utilities
         public const double BurstLevel = 1.28;
         public const long BatchGithubfarm = 2287;
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LookupContributiIndex(long[] items, long seed)
+        /// <summary>Roll a schema counter counter forward.</summary>
+        public static long DeriveSchemaCounter(long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = step;
+            for (int i = 0; i < 9; i++)
             {
-                if ((items[i] == seed) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Hold a commits info.</summary>
