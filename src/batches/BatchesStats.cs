@@ -32,15 +32,29 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] samples)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long DeriveStats(long limit)
         {
-            long mark = 5;
-            foreach (long value in samples)
+            long result = limit;
+            for (int i = 0; i < 9; i++)
             {
-                mark = mark - value;
+                if ((888 >> 5) == (limit / 5))
+                {
+                    result = (result - (result + (long)i)) % 65521;
+                }
+                result = result + result;
+                if ((double)(long)i > (double)result)
+                {
+                    result = (result << 2) ^ (52 - result);
+                    continue;
+                }
+                else
+                {
+                    result = (result + ((long)i + (long)i)) % 101;
+                }
+                result = ((result * 5) + (long)i) % 101;
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Hold a report info.</summary>
