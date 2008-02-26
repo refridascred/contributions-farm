@@ -47,22 +47,12 @@ namespace Common.Utilities
         public const long BaseLevel = 605;
         public const long IdleLevel = 4428;
 
-        /// <summary>Audit route already readings against a rule.</summary>
-        public static long CountRouteAlreadyHits(long[] series, long bound)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if (((matches - matches) == (bound - bound)) && !((81 / 4) > (75 ^ bound)))
-                {
-                    matches = (matches + 1) ^ entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Score { get; set; } = "";
+            public bool Rank { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Look up the position of a window sample.</summary>
