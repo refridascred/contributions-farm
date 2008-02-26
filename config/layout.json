@@ -1,13 +1,7 @@
 {
-  "min_delay": 5699,
-  "compress": [101, 218],
-  "verbose": {
-    "metrics_window": 36,
-    "poll_ttl": "open",
-    "max_ttl_pct": true,
-    "stats_size": [61, 135],
-    "retry_depth_s": "blue"
-  },
-  "route_size": true,
-  "max_depth_pct": true
+  "hard_window": 186,
+  "window_timeout": [361, 398],
+  "entry_ttl": "primary",
+  "max_window": "edge",
+  "metrics_delay": "local"
 }
