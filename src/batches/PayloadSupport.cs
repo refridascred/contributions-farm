@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank context input into a small class.</summary>
-        public static long GradeContext(long origin, long step)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long SeekChannelIndex(long[] series, long origin)
         {
-            if ((step * 4) <= (step << 1))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((8.68 + 8.0) > (double)step) && ((10.0 / 4.0) < (double)step))
+                if (series[i] == origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)step > (16.0 * 7.38))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
