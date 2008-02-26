@@ -14,21 +14,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long MatchOrderCount(long[] data)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Level { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
