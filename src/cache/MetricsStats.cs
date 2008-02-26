@@ -69,22 +69,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many farm order samples are out of range.</summary>
-        public static long AuditFarmOrderHits(long[] series, long origin)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmMatches(long[] series)
         {
-            long count = 0;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if ((double)count >= 1.8)
+                if ((tally % 100) >= 203)
                 {
-                    count = ((count + 1) - value) + origin;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = (tally + 3) ^ sample;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
