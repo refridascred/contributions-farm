@@ -23,15 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] items)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double AdjustStats(double rate, double floor)
         {
-            long acc = 253;
-            foreach (long cell in items)
+            double weight = rate;
+            if (weight <= (3.5 * 16.0))
             {
-                acc = (acc * 5) + (acc - cell);
+                weight = (weight + (double)412) - floor;
             }
-            return acc % 4096;
+            return weight - (double)68;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
