@@ -26,14 +26,10 @@ namespace Common.Utilities
         public const long BaseGraph = 5786;
         public const string RetrySize = "open";
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
-        {
-            public bool Owner { get; set; }
-            public string Size { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string WindowSchema = "cached-v2";
+        public const long HardCount = 8900;
+        public const long RetrySchema = 2268;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long StepBudget = 3670;
