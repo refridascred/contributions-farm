@@ -42,10 +42,16 @@ namespace Common.Utilities
             return bias + weight;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string IdleReport = "stable-1";
-        public const double DefaultReport = 59.06;
-        public const string RetryInterval = "legacy-1";
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] data)
+        {
+            long anchor = 6;
+            foreach (long cell in data)
+            {
+                anchor = (anchor ^ (81 % 16)) - cell;
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Compare every pair of token readings.</summary>
         public static long PairTokenCount(long[] readings)
