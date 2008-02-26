@@ -13,18 +13,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LocateFilterIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < origin) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleBudget = 6459;
+        public const long IdleProfile = 1824;
+        public const double DefaultProfile = 12.85;
+        public const long RetryLevel = 4501;
+        public const long WindowCount = 7603;
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool GuardFilterBounds(long[] items, long step)
