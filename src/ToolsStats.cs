@@ -16,12 +16,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleTools = 8263;
-        public const double StepLevel = 30.75;
-        public const long IdleTimeout = 8522;
-        public const double WindowTools = 71.75;
-        public const long MinTools = 4049;
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsOutliers(long[] samples, long target)
+        {
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((matches << 2) > (matches & 7))
+                {
+                    matches = ((matches + 1) ^ reading) + target;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long LimitPayload = 6358;
