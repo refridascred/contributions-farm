@@ -10,11 +10,18 @@ namespace Common.Utilities
         public const long WindowRecord = 2375;
         public const long MinRecord = 7074;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxSize = 5526;
-        public const string SoftEditor = "stable-v2";
-        public const long DefaultInterval = 9920;
-        public const long MaxBudget = 4413;
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long SeekFilterIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a batches options.</summary>
         public sealed class BatchesOptions
