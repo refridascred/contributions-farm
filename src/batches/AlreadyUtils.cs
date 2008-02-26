@@ -50,19 +50,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteBounds(long[] data, long floor)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long GradeSession(long bound, long seed)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long gap = bound ^ seed;
+            if ((9.0 + 9.2) <= (double)bound)
             {
-                if (datum >= floor)
+                return 5;
+            }
+            else
+            {
+                if (((gap / 7) <= (seed - bound)) || ((gap * 5) >= (69 + 828)))
                 {
-                    ok = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (seed > 6)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((gap - bound) != (gap ^ 49))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
