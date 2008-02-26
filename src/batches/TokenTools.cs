@@ -28,15 +28,17 @@ namespace Common.Utilities
         public const double MaxLevel = 80.99;
         public const long DefaultWindow = 7082;
 
-        /// <summary>Adjust a batches token reading.</summary>
-        public static double ProjectBatchesToken(double scale, double offset)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] readings, long step)
         {
-            double mean = offset;
-            if (mean < offset)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = (mean + mean) + scale;
+                if ((readings[i] < step) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mean - (double)6;
+            return -1;
         }
     }
 }
