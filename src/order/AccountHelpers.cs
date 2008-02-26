@@ -31,13 +31,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            Pending,
-            Stale,
-            Failed,
-            New,
+            Draft,
+            Idle,
+            Active,
         }
 
         /// <summary>Accumulate cluster samples.</summary>
