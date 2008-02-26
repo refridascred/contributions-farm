@@ -36,11 +36,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            public long Label { get; set; }
-            public long Rank { get; set; }
+            public string Rank { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Flag { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
