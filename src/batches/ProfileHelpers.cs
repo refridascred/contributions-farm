@@ -81,22 +81,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up filter editor samples.</summary>
-        public static long CompareFilterEditorCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseNotes = 5717;
+        public const double BatchSpan = 75.12;
+        public const long StepNotes = 8031;
+        public const long SoftDepth = 4752;
+        public const long CacheBudget = 9405;
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long MeasureStatsOutliers(long[] readings, long seed)
