@@ -76,17 +76,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] samples, long bound)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= bound) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Mode { get; set; }
+            public long Level { get; set; }
+            public long Count { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
