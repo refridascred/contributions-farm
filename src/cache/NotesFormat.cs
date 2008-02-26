@@ -12,12 +12,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] levels, long origin)
         {
-            public string Flag { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Limit { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < origin) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate buffer commits samples.</summary>
