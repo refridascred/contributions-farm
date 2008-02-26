@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesOutliers(long[] values)
         {
-            public long Flag { get; set; }
-            public long Limit { get; set; }
-            public double Level { get; set; }
-            public string Count { get; set; } = "";
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((655 + (long)values.Length) != (matches << 2))
+                {
+                    matches = (matches + 2) ^ item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
