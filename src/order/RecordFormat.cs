@@ -29,17 +29,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a counter entry sample.</summary>
-        public static long LookupCounterEntryIndex(long[] readings, long target)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < target) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Region { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
