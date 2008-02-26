@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
-        {
-            Closed,
-            Retry,
-            Pending,
-            Idle,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftSupport = 863;
+        public const long BatchSupport = 241;
+        public const string HardInterval = "standard-1";
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string WindowLevel = "cached-1";
