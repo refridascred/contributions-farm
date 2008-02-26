@@ -1,21 +1,7 @@
 # entry settings
-batch_limit_count: false
-dry_run:
-  - 390
-  - 368
-  - 398
-min_depth_count: 26.59
-hard_depth_count:
-  - local
-  - strict
-  - standard
-  - staging
-enabled:
-  compress: 32.87
-  cluster_interval: edge
-  warm_capacity_s: eu-west
-  poll_delay_ms: green
-  command_size:
-    - 487
-    - 327
-  warm_ratio_pct: 250
+soft_interval: 76.91
+tools_delay: blue
+default_interval_s: green
+cache_size: 6167
+batch_delay: 8896
+retry_threshold_ms: 30
