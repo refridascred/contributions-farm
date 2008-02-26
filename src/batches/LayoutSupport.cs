@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftSupport = 863;
-        public const long BatchSupport = 241;
-        public const string HardInterval = "standard-1";
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
+        {
+            public long Level { get; set; }
+            public bool Rank { get; set; }
+            public long Total { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Grade a window value against two limits.</summary>
         public static long SortWindow(long origin, long bound)
