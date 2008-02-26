@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long SortReport(long floor, long bound)
         {
-            Draft,
-            Pending,
-            Closed,
+            if (bound > ((-54) + bound))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((bound > (floor % 3)) && ((double)bound == (double)floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (9.0 < (double)bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
