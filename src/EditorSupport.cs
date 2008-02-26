@@ -82,22 +82,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the already counter entries that pass the check.</summary>
-        public static long CountAlreadyCounterMatches(long[] values)
-        {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((seen + datum) <= (seen >> 5))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BaseContext = 85.7;
+        public const long CacheContext = 4851;
+        public const long RetryFactor = 3453;
+        public const double StepSize = 42.47;
+        public const long LimitRatio = 4578;
     }
 }
