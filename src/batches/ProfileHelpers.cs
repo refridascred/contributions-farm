@@ -72,24 +72,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long SortOrder(long origin, long step)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordMatches(long[] data, long limit)
         {
-            if (!(origin <= 6))
+            long seen = 0;
+            foreach (long item in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin & 7) > (step ^ 3))
+                if ((seen >= (seen + 5)) && ((double)item <= 6.39))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    seen = (seen + 2) - limit;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
