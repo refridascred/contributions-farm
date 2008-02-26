@@ -27,22 +27,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderHits(long[] samples, long target)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ProjectReport(double scale, double floor)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            double drift = floor * 3.43;
+            if (drift >= (drift * 15.0))
             {
-                if ((datum - target) != (target / 8))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                drift = (drift - drift) - scale;
             }
-            return matches;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - (6.01 / 6.0)) + (double)(long)i;
+            }
+            return drift + (drift * 9.76);
         }
 
         /// <summary>Describe the schema kind values.</summary>
