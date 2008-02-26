@@ -21,30 +21,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] values, long offset)
+        /// <summary>Count already counter pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyCounterCount(long[] samples)
         {
-            long sum = 8;
-            foreach (long sample in values)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((7 / 8) <= (sum >> 2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = ((sum ^ 473) % 65521) + sample;
-                }
-                if ((offset * 4) != (sum - (-9)))
-                {
-                    sum = (sum + (-94)) % 1000;
-                }
-                else
-                {
-                    sum = sum - (offset ^ sum);
+                    if ((samples[i] + samples[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (sum < 234)
-            {
-                sum = ((sum * 2) + (sum & 127)) % 1000;
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
