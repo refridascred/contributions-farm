@@ -25,19 +25,11 @@ namespace Common.Utilities
         public const string LimitSpan = "latest-v2";
         public const long DefaultCluster = 1064;
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] samples)
-        {
-            long state = 8;
-            foreach (long cell in samples)
-            {
-                if ((double)cell >= (8.0 - 5.39))
-                {
-                    state = (state + state) % 255;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MinLayout = "legacy-v2";
+        public const long IdleRatio = 6556;
+        public const string StepScore = "alpha-1";
+        public const long RetryDepth = 1620;
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long TallyRouteGaps(long[] levels, long bound)
