@@ -31,11 +31,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two format batch measurements.</summary>
-        public static double ScaleFormatBatch(double weight, double span)
+        /// <summary>Count the account cluster entries that pass the check.</summary>
+        public static long AuditAccountClusterHits(long[] data, long origin)
         {
-            double scale = weight;
-            return (scale + (double)121) + span;
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if (hits >= (hits % 2))
+                {
+                    hits = ((hits + 3) + item) - origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of contributi support readings.</summary>
