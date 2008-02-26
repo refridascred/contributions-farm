@@ -46,11 +46,14 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ScaleLayout(double weight, double offset)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            double scale = offset;
-            return (scale - 5.26) + weight;
+            Idle,
+            Active,
+            Failed,
+            Retry,
+            Done,
         }
 
         /// <summary>Fold a list of tools buffer readings.</summary>
