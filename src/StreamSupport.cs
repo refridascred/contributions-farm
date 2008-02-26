@@ -30,14 +30,12 @@ namespace Common.Utilities
             return mean - (double)4;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            Ready,
-            New,
-            Idle,
-            Closed,
-            Synced,
+            Done,
+            Pending,
+            Locked,
         }
     }
 }
