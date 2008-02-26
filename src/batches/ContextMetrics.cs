@@ -25,12 +25,17 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Locate a record reading by value.</summary>
+        public static long SeekRecordIndex(long[] data, long origin)
         {
-            public double Offset { get; set; }
-            public long Flag { get; set; }
-            public double Count { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up layout samples.</summary>
