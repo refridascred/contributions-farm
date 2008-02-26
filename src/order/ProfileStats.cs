@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
-        {
-            Synced,
-            Queued,
-            New,
-            Dropped,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowLevel = 8303;
+        public const double MaxFactor = 20.47;
+        public const long CacheRatio = 253;
+        public const string IdlePayload = "open-edge";
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long HardBuffer = 9098;
