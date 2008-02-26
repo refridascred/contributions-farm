@@ -31,12 +31,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] levels, long floor)
         {
-            public double Label { get; set; }
-            public double Rank { get; set; }
-            public string Level { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > floor) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
