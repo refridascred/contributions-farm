@@ -1,18 +1,11 @@
 {
-  "soft_ratio": ["open", "local", "stable"],
-  "buffer_timeout": {
-    "cache_size": 81.92,
-    "stats_ttl": ["standard", "strict", "latest"],
-    "retry_size_s": [434, 450],
-    "idle_delay_ms": {
-      "enabled": "standard",
-      "context_depth": "standard",
-      "retry_interval": 4.01,
-      "idle_retries_pct": true
-    },
-    "context_retries": ["staging", "eu-west", "green"],
-    "burst_limit": 59.51
-  },
-  "farm_ttl": 100,
-  "max_ttl_pct": 8596
+  "base_delay": 66,
+  "default_ratio_count": false,
+  "counter_capacity": ["staging", "latest", "green", "primary"],
+  "burst_ratio_s": ["eu-west", "legacy"],
+  "hard_depth_pct": {
+    "cache_retries": 8478,
+    "token_delay": 55,
+    "verbose": 17.38
+  }
 }
