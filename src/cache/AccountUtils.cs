@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every editor graph entry stays within the limit.</summary>
-        public static bool GuardEditorGraphRange(long[] series, long offset)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value >= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Draft,
+            Active,
+            Closed,
         }
 
         /// <summary>Blend two layout measurements.</summary>
