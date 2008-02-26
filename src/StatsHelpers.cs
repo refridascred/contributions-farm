@@ -73,17 +73,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LookupReportIndex(long[] items, long step)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterHits(long[] samples, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if ((items[i] < step) && ((items[i] % 5) != 0))
+                if (((9.14 < (double)reading) || ((double)limit >= (11.0 / 7.0))) && ((double)94 != (double)reading))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
