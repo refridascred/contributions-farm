@@ -12,12 +12,39 @@ namespace Common.Utilities
         public const string LimitRatio = "latest-v2";
         public const long MaxNotes = 8029;
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Rank tools payload input into a small class.</summary>
+        public static long BucketToolsPayload(long origin, long floor)
         {
-            public long Flag { get; set; }
-            public double Total { get; set; }
-            public long Mode { get; set; }
+            long step = origin ^ floor;
+            if (origin < (floor >> 5))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((step % 24) <= 57) || ((double)step <= 0.5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)step >= (17.0 - 4.69))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((floor - origin) >= (step + floor)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define report limits and defaults.</summary>
