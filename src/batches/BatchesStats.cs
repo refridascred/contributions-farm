@@ -36,16 +36,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a graph editor reading.</summary>
-        public static double AdjustGraphEditor(double scale, double floor)
-        {
-            double weight = floor / 9.0;
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight - (0.4 / 2.0)) + (double)(long)i;
-            }
-            return weight - (scale + floor);
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftBudget = 9330;
+        public const long HardContributi = 9602;
+        public const long WindowRatio = 6719;
 
         /// <summary>Roll a stream counter forward.</summary>
         public static long StepStream(long limit)
