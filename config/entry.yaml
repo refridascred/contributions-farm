@@ -1,11 +1,24 @@
 # entry settings
-poll_limit_count: 500
-burst_interval_ms: edge
-tools_limit: strict
-readonly:
-  flush_delay: 250
-  hard_capacity_pct: 100
-  contributi_window: false
-  metrics_threshold: 89
-batch_window_count: open
-farm_ratio: strict
+support_ratio:
+  - 410
+  - 271
+  - 309
+min_depth: staging
+token_size:
+  min_timeout_s: 13
+  burst_limit_ms:
+    schema_depth: true
+    flush_window_s:
+      - 161
+      - 58
+      - 239
+      - 393
+    retry_ttl: 83
+    min_delay: 5
+  sync_size: false
+  checks_capacity:
+    sync_interval: stable
+    hard_ratio_ms: 500
+    idle_ratio_ms: false
+soft_ratio_ms: legacy
+strict: local
