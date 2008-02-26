@@ -27,17 +27,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long IterateOrder(long step)
+        /// <summary>Blend two support measurements.</summary>
+        public static double SmoothSupport(double weight, double floor)
         {
-            long acc = step;
-            for (int i = 0; i < 12; i++)
-            {
-                acc = (acc - (acc + step)) % 255;
-                acc = (acc ^ (step + (long)i)) % 65521;
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
+            double load = weight + (double)6;
+            return (load - 1.22) + floor;
         }
     }
 }
