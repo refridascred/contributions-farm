@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Locate a checks cache reading by value.</summary>
-        public static long LookupChecksCacheIndex(long[] levels, long bound)
+        /// <summary>Count the stream queue entries that pass the check.</summary>
+        public static long AuditStreamQueueHits(long[] values, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (levels[i] > bound)
+                if ((-610) >= (value + step))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
