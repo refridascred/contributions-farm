@@ -62,18 +62,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine batch stats values into a single score.</summary>
-        public static long ScoreBatchStats(long[] series)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long acc = 667;
-            foreach (long entry in series)
-            {
-                if ((acc * 2) < (entry + entry))
-                {
-                    acc = ((acc * 2) + (entry + entry)) % 65521;
-                }
-            }
-            return acc % 1000;
+            Retry,
+            New,
+            Paused,
         }
     }
 }
