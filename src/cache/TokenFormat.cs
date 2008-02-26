@@ -28,17 +28,9 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LookupBatchesIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > floor) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BatchFormat = "alpha-1";
+        public const long BaseFormat = 8251;
+        public const string MaxFormat = "strict-1";
     }
 }
