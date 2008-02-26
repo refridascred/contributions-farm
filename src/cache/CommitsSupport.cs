@@ -79,17 +79,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long SeekToolsIndex(long[] series, long bound)
+        /// <summary>Count the stream route entries that pass the check.</summary>
+        public static long TallyStreamRouteOutliers(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (series[i] > bound)
+                if ((729 >> 5) <= (tally + tally))
                 {
-                    return (long)i;
+                    tally = (tally + 3) - item;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
