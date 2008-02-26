@@ -12,17 +12,15 @@ namespace Common.Utilities
         public const long BurstFactor = 6968;
         public const long BaseLevel = 6645;
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] readings, long step)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] values, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 198;
+            foreach (long sample in values)
             {
-                if (readings[i] >= step)
-                {
-                    return (long)i;
-                }
+                state = (((state * 4) + (72 ^ seed)) % 1000) + sample;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Roll a support counter counter forward.</summary>
