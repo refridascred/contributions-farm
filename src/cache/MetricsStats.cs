@@ -40,14 +40,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] readings, long seed)
         {
-            Pending,
-            Done,
-            Closed,
-            Synced,
-            New,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two cache measurements.</summary>
