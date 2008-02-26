@@ -23,11 +23,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            public bool Token { get; set; }
-            public long Size { get; set; }
+            public long Level { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
