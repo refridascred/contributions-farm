@@ -34,15 +34,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TotalEntry(long[] samples, long bound)
+        /// <summary>Match up already metrics samples.</summary>
+        public static long CompareAlreadyMetricsCount(long[] data)
         {
-            long anchor = 914;
-            foreach (long reading in samples)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = ((((anchor * 5) + anchor) % 4096) - reading) - bound;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return anchor % 65521;
+            return tally;
         }
 
         /// <summary>Define account limits and defaults.</summary>
