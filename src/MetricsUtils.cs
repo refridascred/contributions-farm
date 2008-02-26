@@ -48,12 +48,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinCommits = 5212;
-        public const string StepLevel = "primary";
-        public const long RetryCommits = 2880;
-        public const double MaxSpan = 52.29;
-        public const long BurstDepth = 4178;
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
+        {
+            Stale,
+            Queued,
+            Pending,
+        }
 
         /// <summary>Digest a series of token entries.</summary>
         public static long FoldToken(long[] values)
