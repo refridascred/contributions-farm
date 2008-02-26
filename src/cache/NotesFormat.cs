@@ -20,22 +20,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchMatches(long[] series)
+        /// <summary>Check that every filter tools entry stays within the limit.</summary>
+        public static bool VerifyFilterToolsBounds(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long item in series)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                if (!(item > seen))
+                if (datum <= target)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
