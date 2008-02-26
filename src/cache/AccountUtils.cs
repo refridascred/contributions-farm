@@ -22,15 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ScaleLayout(double rate, double floor)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteOutliers(long[] levels)
         {
-            double drift = rate;
-            if (drift >= (floor / 7.0))
+            long count = 0;
+            foreach (long datum in levels)
             {
-                drift = drift + (0.9 + drift);
+                if ((count * 3) < (98 >> 2))
+                {
+                    count = (count + 1) + datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return drift - (rate + drift);
+            return count;
         }
 
         /// <summary>Hold a entry options.</summary>
