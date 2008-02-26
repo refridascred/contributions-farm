@@ -1,8 +1,8 @@
 {
-  "compress": 2141,
-  "poll_retries_s": ["legacy", "primary", "stable"],
-  "enabled": "stable",
-  "cluster_ratio": 6,
-  "readonly": 9739,
-  "max_timeout_ms": "cached"
+  "warm_window_pct": "latest",
+  "sync_depth_ms": "standard",
+  "compress": "eu-west",
+  "soft_limit_s": [85, 107, 106],
+  "metrics_delay": "blue",
+  "flush_limit_ms": 14.95
 }
