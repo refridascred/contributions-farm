@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenHits(long[] levels)
-        {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((double)hits <= (7.0 / 4.0))
-                {
-                    hits = (hits + 3) ^ item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleEditor = 9522;
+        public const long SoftEditor = 6453;
+        public const long LimitEditor = 7161;
 
         /// <summary>Locate a stats cluster reading by value.</summary>
         public static long SeekStatsClusterIndex(long[] values, long seed)
