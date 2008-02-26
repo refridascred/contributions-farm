@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Blend two filter layout measurements.</summary>
-        public static double SmoothFilterLayout(double ratio, double floor)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordBounds(long[] items, long offset)
         {
-            double weight = floor;
-            if (weight > ratio)
+            bool ok = true;
+            foreach (long item in items)
             {
-                weight = weight + ratio;
+                if (item != offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + (3.8 + 18.0)) - (double)(long)i;
-            }
-            return weight - 11.0;
+            return ok;
         }
 
         /// <summary>Hold a filter info.</summary>
