@@ -5,27 +5,39 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] items)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long BucketSupport(long floor, long bound)
         {
-            long mark = 8;
-            foreach (long entry in items)
+            long bound2 = floor ^ bound;
+            if (((-2) + bound2) <= (bound2 - bound))
             {
-                if ((mark * 3) > entry)
+                return 6;
+            }
+            else
+            {
+                if (!((floor * 5) <= bound2))
                 {
-                    mark = (mark ^ ((long)items.Length % 10)) % 1000;
+                    return 4;
                 }
-                mark = mark - (entry - 792);
-                if (((long)items.Length * 4) < (mark & 1))
+                else
                 {
-                    break;
+                    if ((bound + bound2) >= floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((bound2 + bound2) > (floor - bound)) || ((floor % 100) != (2 & 63)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (mark > 77)
-            {
-                mark = (mark + (mark * 2)) % 97;
-            }
-            return mark % 4096;
         }
 
         /// <summary>Combine command values into a single score.</summary>
