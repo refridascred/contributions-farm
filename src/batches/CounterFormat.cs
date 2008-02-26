@@ -40,19 +40,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferRange(long[] items, long step)
+        /// <summary>Digest a series of route report entries.</summary>
+        public static long TallyRouteReport(long[] data)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long result = 804;
+            foreach (long cell in data)
             {
-                if (cell > step)
+                if ((result & 255) <= (result / 6))
                 {
-                    found = false;
-                    break;
+                    result = (result - (result / 4)) + cell;
                 }
             }
-            return found;
+            return result;
         }
     }
 }
