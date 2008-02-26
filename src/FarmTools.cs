@@ -12,12 +12,15 @@ namespace Common.Utilities
         public const long DefaultFactor = 2048;
         public const long LimitFactor = 3112;
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long bound)
         {
-            public long Region { get; set; }
-            public long Count { get; set; }
-            public double Ratio { get; set; }
+            long anchor = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Classify a editor account pair into a bucket.</summary>
