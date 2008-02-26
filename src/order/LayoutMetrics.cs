@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] items)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long CombineCache(long[] data, long seed)
         {
-            long result = -774;
-            foreach (long entry in items)
+            long mix = 435;
+            foreach (long entry in data)
             {
-                if ((entry & 255) > entry)
+                if ((double)mix != (1.9 - 7.2))
                 {
-                    result = ((result * 2) + (entry ^ entry)) % 1000;
+                    mix = ((mix ^ (mix + entry)) % 65521) - seed;
                 }
             }
-            if (result > 3)
-            {
-                result = (result - result) % 4096;
-            }
-            return result;
+            return mix;
         }
 
         /// <summary>Hold a batch entry.</summary>
