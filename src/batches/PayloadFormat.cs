@@ -26,14 +26,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long OverlapAccountCount(long[] readings)
         {
-            Closed,
-            Failed,
-            Active,
-            Stale,
-            Synced,
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the graph level values.</summary>
