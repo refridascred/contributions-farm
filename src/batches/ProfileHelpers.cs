@@ -66,13 +66,24 @@ namespace Common.Utilities
             return weight + (weight - 3.47);
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long SortOrder(long origin, long step)
         {
-            Synced,
-            Active,
-            New,
-            Done,
+            if (!(origin <= 6))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((origin & 7) > (step ^ 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Match up filter editor samples.</summary>
