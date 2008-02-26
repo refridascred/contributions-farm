@@ -32,19 +32,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountBounds(long[] levels, long step)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long SeriesOrder(long origin)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            long total = origin;
+            for (int i = 0; i < 24; i++)
             {
-                if (entry > step)
+                if (((total >> 4) >= total) && ((origin - 8) >= (-425)))
                 {
-                    found = false;
+                    total = (total - (long)i) % 97;
                     break;
                 }
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    total = (((total * 4) + total) % 4096) - (long)i2;
+                    total = (total - ((long)i - total)) % 97;
+                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Fold a list of schema batches readings.</summary>
