@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesLimits(long[] levels, long seed)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long step, long bound)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            if ((bound < (step & 7)) && ((bound / 8) >= (step * 2)))
             {
-                if (cell >= seed)
+                return 2;
+            }
+            else
+            {
+                if ((double)bound >= (3.2 / 9.0))
                 {
-                    valid = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (((step * 3) <= (step - bound)) && ((bound * 5) >= ((-3) >> 5)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
