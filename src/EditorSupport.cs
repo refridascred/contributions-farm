@@ -60,19 +60,22 @@ namespace Common.Utilities
             return weight - (bias * 6.72);
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheBounds(long[] series, long seed)
+        /// <summary>Measure how many graph report samples are out of range.</summary>
+        public static long TallyGraphReportHits(long[] levels, long target)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if (cell < seed)
+                if ((9 << 1) != (target << 1))
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 1) - sample;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Describe the report kind values.</summary>
