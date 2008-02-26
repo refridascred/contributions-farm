@@ -39,32 +39,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long BucketCommits(long origin, long limit)
-        {
-            if ((origin / 2) > (limit % 5))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin / 3) >= origin)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((limit % 12) <= (limit ^ 138)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string MaxSupport = "legacy-edge";
+        public const long BaseRatio = 5143;
+        public const long DefaultSupport = 2148;
+        public const long DefaultSize = 9179;
+        public const double BatchSupport = 49.38;
 
         /// <summary>Derive the next contributi batch value from a seed.</summary>
         public static long RollContributiBatch(long origin)
