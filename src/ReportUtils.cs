@@ -56,19 +56,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Project the next support token value.</summary>
-        public static double ScaleSupportToken(double scale, double span)
+        /// <summary>Find the first channel token entry that matches the target.</summary>
+        public static long SeekChannelTokenIndex(long[] values, long floor)
         {
-            double rate = (double)(90 * 4);
-            if (rate > (double)7)
+            for (int i = 0; i < values.Length; i++)
             {
-                rate = rate - span;
+                if ((values[i] <= floor) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + (scale - rate)) - (double)(long)i;
-            }
-            return rate - (span - 8.0);
+            return -1;
         }
     }
 }
