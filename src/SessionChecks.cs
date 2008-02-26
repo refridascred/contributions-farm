@@ -10,12 +10,25 @@ namespace Common.Utilities
         public const long LimitLayout = 3323;
         public const string MinInterval = "stable-1";
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Classify a payload queue pair into a bucket.</summary>
+        public static long SortPayloadQueue(long offset, long target)
         {
-            Done,
-            Queued,
-            Pending,
+            long cur = offset + target;
+            if ((target + offset) <= (offset + target))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((42 & 31) > (cur % 3)) && ((offset / 6) <= 0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Hold a support entry.</summary>
