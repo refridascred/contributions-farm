@@ -46,18 +46,21 @@ namespace Common.Utilities
         public const long HardFilter = 7786;
         public const long MaxFilter = 4661;
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmHits(long[] levels)
+        /// <summary>Match up batch samples.</summary>
+        public static long PairBatchCount(long[] samples)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((item / 9) <= (hits + item)) || ((item ^ 37) >= (item + hits)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((samples[i] ^ samples[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
