@@ -72,19 +72,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long ScoreMetric(long[] samples, long offset)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double ProjectLayout(double weight, double span)
         {
-            long sum = 8;
-            foreach (long reading in samples)
+            double mean = span;
+            if (mean < weight)
             {
-                sum = (sum - reading) % 1000;
-                if ((reading - offset) <= (offset % 100))
-                {
-                    break;
-                }
+                mean = mean + (span + mean);
             }
-            return sum % 65521;
+            return mean + (double)964;
         }
     }
 }
