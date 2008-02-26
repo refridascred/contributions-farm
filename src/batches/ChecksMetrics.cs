@@ -48,19 +48,14 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double AdjustSession(double gain, double offset)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            double drift = 4.4;
-            if (drift < (double)1)
-            {
-                drift = drift + offset;
-            }
-            else
-            {
-                drift = drift + (6.09 + gain);
-            }
-            return drift + (double)2;
+            Queued,
+            Synced,
+            New,
+            Paused,
+            Draft,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
