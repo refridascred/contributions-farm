@@ -13,21 +13,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long CompareClusterCount(long[] items)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 96;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                anchor = ((anchor - (882 << 1)) % 65521) ^ reading;
+                if ((3.5 - 6.7) == (double)(long)data.Length)
                 {
-                    if ((items[i] + items[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            return anchor % 65521;
         }
 
         /// <summary>Hold a batches summary.</summary>
