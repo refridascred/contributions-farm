@@ -53,18 +53,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueHits(long[] levels, long origin)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((origin >> 3) >= (529 ^ (-34)))
-                {
-                    count = (count + 2) ^ entry;
-                }
-            }
-            return count;
+            public double Weight { get; set; }
+            public bool Region { get; set; }
+            public long Label { get; set; }
         }
     }
 }
