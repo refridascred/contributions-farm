@@ -22,15 +22,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double AdjustMetric(double scale, double offset)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            double bias = 1.38;
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - scale) + (double)(long)i;
-            }
-            return bias + (15.0 - offset);
+            public long Token { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
