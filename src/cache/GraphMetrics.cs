@@ -34,15 +34,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long RollSession(long target)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyLimits(long[] items, long origin)
         {
-            long state = target;
-            for (int i = 0; i < 9; i++)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                state = ((state * 5) + (long)i) % 101;
+                if (cell <= origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Digest a series of already entries.</summary>
