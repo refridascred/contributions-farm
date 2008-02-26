@@ -1,6 +1,7 @@
-id,owner,weight,active
-1,77.91,770,eu-west
-2,896,192,edge
-3,315,247,stable
-4,5.64,760,primary
-5,233,open,531
+id,token,state
+1,10.01,primary
+2,608,68.43
+3,827,25.6
+4,995,960
+5,963,blue
+6,552,425
