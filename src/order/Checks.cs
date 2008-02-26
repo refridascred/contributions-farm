@@ -53,22 +53,26 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit commits already readings against a rule.</summary>
-        public static long MeasureCommitsAlreadyGaps(long[] series, long bound)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long CombineAccount(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long state = 78;
+            foreach (long cell in values)
             {
-                if ((8.7 - 1.0) != (double)sample)
+                if (((724 / 9) < (seed * 4)) && ((974 - cell) < seed))
                 {
-                    count = (count + 2) - bound;
+                    state = state + (955 + seed);
                 }
                 else
                 {
-                    count = count - 1;
+                    state = ((state << 2) ^ (cell - seed)) % 97;
                 }
             }
-            return count;
+            if (state > 9)
+            {
+                state = ((state * 5) + (state << 2)) % 1000;
+            }
+            return state;
         }
     }
 }
