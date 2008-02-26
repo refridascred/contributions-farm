@@ -33,17 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long SeekPayloadIndex(long[] data, long step)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadBounds(long[] levels, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long item in levels)
             {
-                if (data[i] == step)
+                if (item <= offset)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
