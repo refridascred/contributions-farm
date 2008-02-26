@@ -53,22 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsHits(long[] values, long bound)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((4.7 / 7.0) > (double)sample)
-                {
-                    count = (count + 3) + bound;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Retry,
+            Closed,
+            Queued,
+            Ready,
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
