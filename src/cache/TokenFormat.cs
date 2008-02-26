@@ -19,20 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] data)
-        {
-            long anchor = 96;
-            foreach (long reading in data)
-            {
-                anchor = ((anchor - (882 << 1)) % 65521) ^ reading;
-                if ((3.5 - 6.7) == (double)(long)data.Length)
-                {
-                    break;
-                }
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultWidth = 188;
+        public const long StepToken = 6697;
+        public const double BaseTimeout = 40.97;
+        public const long LimitToken = 8459;
 
         /// <summary>Match up githubfarm samples.</summary>
         public static long PairGithubfarmCount(long[] items)
