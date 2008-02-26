@@ -14,18 +14,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] series)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long mark = 43;
-            foreach (long datum in series)
-            {
-                if ((datum - datum) > (mark / 6))
-                {
-                    mark = mark ^ (datum - mark);
-                }
-            }
-            return mark;
+            public long Score { get; set; }
+            public double Label { get; set; }
+            public string Weight { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
