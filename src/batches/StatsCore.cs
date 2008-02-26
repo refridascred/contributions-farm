@@ -45,14 +45,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            Synced,
-            Failed,
-            Active,
-            Draft,
-            Done,
+            public long Stamp { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the queue level values.</summary>
