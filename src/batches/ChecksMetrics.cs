@@ -68,21 +68,26 @@ namespace Common.Utilities
             return (load - (2.1 / 8.0)) + span;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long PairCommitsCount(long[] readings)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] data, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 359;
+            foreach (long item in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i = 0; i < 9; i++)
                 {
-                    if ((readings[i] + readings[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = anchor - ((long)i - item);
+                }
+                if (((offset << 2) == (item + offset)) || ((double)anchor <= 3.7))
+                {
+                    anchor = (anchor - (anchor << 1)) % 4096;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ offset) % 4096;
                 }
             }
-            return seen;
+            return anchor % 1000;
         }
     }
 }
