@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] items)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long CombineMetric(long[] items, long step)
         {
-            long anchor = 54;
-            foreach (long sample in items)
+            long anchor = 65;
+            foreach (long cell in items)
             {
-                anchor = (((anchor * 3) + (52 / 3)) % 101) ^ sample;
+                if ((double)549 != (double)(long)items.Length)
+                {
+                    anchor = (anchor - (anchor / 5)) + cell;
+                }
+            }
+            if (anchor < 354)
+            {
+                anchor = (anchor + (step % 60)) % 65521;
             }
             return anchor;
         }
