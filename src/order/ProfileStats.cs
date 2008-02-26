@@ -24,15 +24,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
-        {
-            Active,
-            Queued,
-            Locked,
-            Dropped,
-            Paused,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitLevel = 6586;
+        public const string MinMetrics = "open-1";
+        public const long DefaultMetrics = 8424;
+        public const long BaseRatio = 2735;
 
         /// <summary>Digest a series of session entries.</summary>
         public static long WeighSession(long[] readings, long bound)
