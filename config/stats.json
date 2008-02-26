@@ -1,18 +1,7 @@
 {
-  "readonly": "green",
-  "batches_ratio": 55,
-  "burst_ttl": "stable",
-  "min_limit_pct": {
-    "sync_limit_s": "primary",
-    "account_depth": 10,
-    "flush_retries": 100,
-    "poll_timeout_s": 33.58,
-    "filter_window": {
-      "batch_delay": 250,
-      "default_size_pct": 30,
-      "default_threshold": ["primary", "cached"],
-      "base_capacity": 6.9
-    }
-  },
-  "sync_ratio_count": 4.13
+  "metric_depth": 26,
+  "enabled": [58, 88, 420, 180],
+  "sync_size_pct": "primary",
+  "cache_ratio_count": ["latest", "standard"],
+  "sync_threshold_count": "latest"
 }
