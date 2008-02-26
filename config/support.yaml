@@ -1,4 +1,10 @@
 # support settings
-commits_retries: false
-burst_capacity: open
-sync_window_count: 1024
+dry_run: 84.17
+hard_retries_count: open
+batches_interval: 100
+burst_ttl_pct: true
+retry_retries:
+  - 7
+  - 143
+  - 272
+  - 215
