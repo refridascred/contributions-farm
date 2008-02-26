@@ -1,7 +1,18 @@
 # githubfarm settings
-soft_timeout_count: 500
-burst_delay_count: true
-min_retries_count: 1024
-sync_size: 1958
-warm_timeout: standard
-sync_depth_s: true
+default_ttl_pct: true
+batches_timeout: 480
+hard_delay_s:
+  - staging
+  - latest
+  - fallback
+  - cached
+persist: 24
+default_interval_s:
+  soft_timeout_pct: 4678
+  max_timeout_s:
+    - 371
+    - 468
+    - 144
+    - 152
+  idle_window_count: standard
+  strict: stable
