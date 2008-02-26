@@ -36,12 +36,18 @@ namespace Common.Utilities
             return ratio - (weight + 3.0);
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] samples)
         {
-            Locked,
-            Ready,
-            Pending,
+            long state = -159;
+            foreach (long sample in samples)
+            {
+                if ((3 - sample) >= state)
+                {
+                    state = state ^ (sample % 64);
+                }
+            }
+            return state;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
