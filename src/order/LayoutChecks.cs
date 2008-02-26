@@ -64,11 +64,15 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinCount = 8526;
-        public const long WindowAccount = 9480;
-        public const long StepAccount = 6438;
-        public const double BurstFactor = 58.07;
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
+        {
+            Failed,
+            Idle,
+            Done,
+            New,
+            Synced,
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long LimitScore = 1944;
