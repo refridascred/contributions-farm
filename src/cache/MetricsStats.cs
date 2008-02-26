@@ -39,39 +39,13 @@ namespace Common.Utilities
             return (mean + weight) + span;
         }
 
-        /// <summary>Rank graph session input into a small class.</summary>
-        public static long GradeGraphSession(long floor, long floor2)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long lane = floor ^ floor2;
-            if (floor > (lane / 8))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((5.02 + 20.0) == (double)lane)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)lane > (14.0 * 0.21))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((8 - floor) > (floor2 << 3))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public double Mode { get; set; }
+            public long Token { get; set; }
+            public double Level { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the layout state values.</summary>
