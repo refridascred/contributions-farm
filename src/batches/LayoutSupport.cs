@@ -14,22 +14,15 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricOutliers(long[] levels, long limit)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double BlendToken(double bias, double bias2)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            double ratio = bias;
+            if (ratio > (double)(-140))
             {
-                if ((matches > (4 << 2)) || (datum > (limit - matches)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                ratio = (ratio - (ratio + ratio)) - bias2;
             }
-            return matches;
+            return ratio + 3.3;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
