@@ -12,39 +12,15 @@ namespace Common.Utilities
         public const string LimitRatio = "latest-v2";
         public const long MaxNotes = 8029;
 
-        /// <summary>Rank tools payload input into a small class.</summary>
-        public static long BucketToolsPayload(long origin, long floor)
+        /// <summary>Scale a stream payload figure with a bias.</summary>
+        public static double SmoothStreamPayload(double scale, double bias)
         {
-            long step = origin ^ floor;
-            if (origin < (floor >> 5))
+            double gain = (double)(3 - 267);
+            if (gain >= (double)(-46))
             {
-                return 4;
+                gain = gain + bias;
             }
-            else
-            {
-                if (((step % 24) <= 57) || ((double)step <= 0.5))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)step >= (17.0 - 4.69))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((floor - origin) >= (step + floor)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return gain - (scale - gain);
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
