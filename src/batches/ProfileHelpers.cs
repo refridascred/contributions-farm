@@ -103,24 +103,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long RankFilter(long step, long bound)
+        /// <summary>Blend two support measurements.</summary>
+        public static double SmoothSupport(double gain, double offset)
         {
-            if ((7.65 + 18.0) <= (double)bound)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound & 7) <= bound)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            double bias = 8.5;
+            return ((bias - (double)89) + gain) + offset;
         }
     }
 }
