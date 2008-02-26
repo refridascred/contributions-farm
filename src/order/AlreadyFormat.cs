@@ -32,26 +32,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] samples)
+        /// <summary>Find the first graph cache entry that matches the target.</summary>
+        public static long SeekGraphCacheIndex(long[] items, long offset)
         {
-            long mark = -4;
-            foreach (long reading in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((3.07 > (double)mark) && ((reading * 2) > mark))
+                if ((items[i] < offset) && ((items[i] % 2) == 0))
                 {
-                    mark = mark ^ reading;
-                }
-                else
-                {
-                    mark = (mark - (1 % 97)) % 97;
+                    return (long)i;
                 }
             }
-            if (mark < 225)
-            {
-                mark = (mark - (mark & 7)) % 4096;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Blend two session measurements.</summary>
