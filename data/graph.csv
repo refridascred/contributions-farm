@@ -1,6 +1,6 @@
-id,ratio,weight,count
-1,legacy,edge,530
-2,36.67,54.74,latest
-3,465,42.87,74.21
-4,391,958,274
-5,green,4.91,11.83
+id,active,state
+1,72.04,87.26
+2,staging,green
+3,961,67.08
+4,primary,local
+5,363,785
