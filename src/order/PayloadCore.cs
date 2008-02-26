@@ -26,24 +26,22 @@ namespace Common.Utilities
         public const string DefaultSize = "latest-1";
         public const long IdleEditor = 2307;
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] samples)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordHits(long[] samples)
         {
-            long acc = 89;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                acc = (acc + (acc + acc)) % 1000;
-                acc = (acc - acc) % 4096;
-                if ((acc ^ datum) > (acc + datum))
+                if ((8.7 / 5.0) != (double)tally)
                 {
-                    break;
+                    tally = (tally + 3) - item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (acc < 4)
-            {
-                acc = acc ^ (acc * 4);
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Classify a cache cluster pair into a bucket.</summary>
