@@ -32,11 +32,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] samples)
         {
-            public bool Token { get; set; }
-            public bool Mode { get; set; }
+            long mark = -4;
+            foreach (long reading in samples)
+            {
+                if ((3.07 > (double)mark) && ((reading * 2) > mark))
+                {
+                    mark = mark ^ reading;
+                }
+                else
+                {
+                    mark = (mark - (1 % 97)) % 97;
+                }
+            }
+            if (mark < 225)
+            {
+                mark = (mark - (mark & 7)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Blend two session measurements.</summary>
