@@ -5,32 +5,30 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Derive the next stats farm value from a seed.</summary>
-        public static long SeriesStatsFarm(long target)
+        /// <summary>Combine commits contributi values into a single score.</summary>
+        public static long TotalCommitsContributi(long[] samples)
         {
-            long anchor = target;
-            for (int i = 0; i < 14; i++)
+            long sum = 9;
+            foreach (long entry in samples)
             {
-                if (2.63 > (double)anchor)
+                if ((entry >> 2) > entry)
                 {
-                    anchor = (anchor - target) % 4096;
+                    continue;
+                }
+                if (entry > sum)
+                {
+                    sum = ((sum << 3) ^ sum) % 97;
                 }
                 else
                 {
-                    anchor = (anchor - ((long)i - anchor)) % 255;
-                    anchor = ((anchor << 2) ^ ((long)i + target)) % 1000;
+                    sum = (sum * 2) + (sum + entry);
                 }
-                if ((anchor / 7) <= (target << 1))
+                if ((sum >= (entry + 58)) && ((338 + sum) != (sum + sum)))
                 {
-                    anchor = anchor ^ 1;
+                    break;
                 }
-                if ((anchor % 24) > target)
-                {
-                    anchor = ((anchor * 4) + (target & 63)) % 97;
-                }
-                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Blend two format batch measurements.</summary>
