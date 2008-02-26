@@ -22,16 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next notes farm value from a seed.</summary>
-        public static long IterateNotesFarm(long seed)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] values)
         {
-            long mark = seed;
-            for (int i = 0; i < 20; i++)
+            long acc = 9;
+            foreach (long cell in values)
             {
-                mark = mark ^ mark;
-                mark = ((mark * 3) + (long)i) % 4093;
+                acc = (((acc << 2) ^ acc) % 4096) ^ cell;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Hold a context record.</summary>
