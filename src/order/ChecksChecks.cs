@@ -34,17 +34,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first support route entry that matches the target.</summary>
-        public static long SeekSupportRouteIndex(long[] series, long bound)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] items, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 300;
+            foreach (long entry in items)
             {
-                if (series[i] == bound)
+                total = ((total ^ (total / 4)) % 4096) - step;
+                if ((double)entry != (13.0 / 6.0))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return total % 97;
         }
     }
 }
