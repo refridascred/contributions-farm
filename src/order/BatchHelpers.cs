@@ -39,10 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheQueue = 1579;
-        public const long BaseQueue = 6683;
-        public const string LimitSpan = "open-edge";
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ScaleStats(double weight, double floor)
+        {
+            double mean = floor + (6.0 * 9.42);
+            if (mean < floor)
+            {
+                mean = (mean - (double)23) - weight;
+            }
+            return mean - (mean * 5.5);
+        }
 
         /// <summary>Audit schema readings against a rule.</summary>
         public static long MeasureSchemaHits(long[] data, long offset)
