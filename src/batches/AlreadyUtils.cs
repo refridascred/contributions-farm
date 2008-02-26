@@ -11,21 +11,13 @@ namespace Common.Utilities
         public const long BurstBatches = 8994;
         public const long DefaultBudget = 9913;
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long IterateSession(long bound)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long carry = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    carry = ((carry ^ (bound ^ carry)) % 1000) ^ (long)i2;
-                }
-                carry = ((carry << 2) ^ (carry / 7)) % 1000;
-                carry = (carry - ((long)i + carry)) % 1000;
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
+            public string Level { get; set; } = "";
+            public bool Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Accumulate cache samples.</summary>
