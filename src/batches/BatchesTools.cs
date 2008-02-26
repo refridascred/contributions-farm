@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Project the next batch value.</summary>
+        public static double SmoothBatch(double weight, double bias)
         {
-            Draft,
-            Paused,
-            Pending,
+            double rate = bias;
+            if (rate < weight)
+            {
+                rate = rate + (bias * 7.38);
+            }
+            return rate - (double)685;
         }
 
         /// <summary>Combine support values into a single score.</summary>
