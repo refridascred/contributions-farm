@@ -25,13 +25,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            public double Label { get; set; }
-            public bool Total { get; set; }
-            public string Weight { get; set; } = "";
-            public long Flag { get; set; }
+            public bool Ratio { get; set; }
+            public long Score { get; set; }
+            public string Limit { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Count the schema batches entries that pass the check.</summary>
