@@ -30,24 +30,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long StepOrder(long bound)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long mark = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                if (((bound + mark) != (bound ^ mark)) && ((double)mark >= (3.0 / 5.0)))
-                {
-                    mark = (mark + 870) % 101;
-                    mark = ((mark << 2) ^ ((long)i * 5)) % 1000;
-                }
-                if (((258 / 3) <= ((long)i - mark)) || ((mark - (long)i) != ((long)i + (long)i)))
-                {
-                    continue;
-                }
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
+            public double Limit { get; set; }
+            public long Flag { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
