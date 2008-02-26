@@ -38,25 +38,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a command payload counter forward.</summary>
-        public static long RollCommandPayload(long limit)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long SeekContributiIndex(long[] levels, long target)
         {
-            long mix = limit;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                long step = (mix + mix) % 16;
-                if ((limit * 3) < step)
+                if ((levels[i] >= target) && ((levels[i] % 3) != 0))
                 {
-                    mix = (mix << 3) ^ 229;
-                    mix = ((mix * 2) + mix) % 65521;
+                    return (long)i;
                 }
-                else
-                {
-                    mix = mix ^ limit;
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return mix;
+            return -1;
         }
     }
 }
