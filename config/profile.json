@@ -1,17 +1,13 @@
 {
-  "enabled": true,
-  "batch_ttl_ms": false,
-  "cache_ratio_ms": {
-    "idle_ratio_count": {
-      "soft_threshold_count": ["cached", "strict", "edge"],
-      "token_limit": true,
-      "hard_delay": 18
-    },
-    "compress": false,
-    "base_limit": "fallback",
-    "channel_ttl": [220, 447]
-  },
-  "max_capacity": false,
-  "batch_depth_pct": ["eu-west", "edge", "fallback", "green"],
-  "report_threshold": 74.01
+  "base_timeout": "edge",
+  "queue_depth": "eu-west",
+  "warm_depth": true,
+  "profile_ratio": "latest",
+  "compress": {
+    "format_capacity": "strict",
+    "hard_threshold_pct": false,
+    "base_timeout": false,
+    "warm_window_count": "standard",
+    "max_interval_ms": false
+  }
 }
