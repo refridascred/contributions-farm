@@ -71,12 +71,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double CacheLevel = 46.33;
-        public const long BatchChannel = 9137;
-        public const long MinLevel = 9305;
-        public const long HardSpan = 4869;
-        public const string WindowDepth = "strict-v2";
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandHits(long[] samples)
+        {
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((4.5 * 17.0) <= (double)value)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the payload status values.</summary>
         public enum PayloadStatus
