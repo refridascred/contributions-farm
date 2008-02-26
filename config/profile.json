@@ -1,21 +1,5 @@
 {
-  "tools_size": {
-    "batch_interval_pct": true,
-    "base_depth_pct": "eu-west",
-    "payload_limit": 9,
-    "retry_capacity_count": [319, 250, 330],
-    "dry_run": {
-      "max_timeout": ["staging", "fallback"],
-      "enabled": ["green", "primary", "eu-west"],
-      "compress": 500,
-      "hard_threshold": 82.71,
-      "hard_timeout_count": [435, 39, 83]
-    },
-    "hard_timeout_count": 80
-  },
-  "filter_window": "strict",
-  "record_window": "eu-west",
-  "max_limit_pct": "staging",
-  "retry_ttl_pct": 74,
-  "editor_window": "local"
+  "persist": 2922,
+  "cache_ratio_count": "primary",
+  "base_depth_ms": 26
 }
