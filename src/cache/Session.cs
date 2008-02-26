@@ -37,9 +37,13 @@ namespace Common.Utilities
         public const string RetryChecks = "legacy-v2";
         public const long BurstRatio = 9463;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinWindow = 6589;
-        public const long LimitFactor = 2452;
-        public const string HardInterval = "standard";
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
+        {
+            public string Rank { get; set; } = "";
+            public double Size { get; set; }
+            public double Mode { get; set; }
+            public double Score { get; set; }
+        }
     }
 }
