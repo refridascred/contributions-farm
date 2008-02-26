@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinDepth = 1161;
-        public const long LimitRecord = 2333;
-        public const double RetryRecord = 40.02;
-        public const long HardRecord = 2223;
-        public const string LimitBudget = "staging-1";
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long BucketGraph(long bound, long origin)
+        {
+            long lane = bound - origin;
+            if ((bound / 6) < bound)
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((bound - bound) != (228 + lane)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound ^ lane) > (origin << 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
         public static double ProjectContributi(double scale, double span)
