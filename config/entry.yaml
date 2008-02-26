@@ -1,6 +1,4 @@
 # entry settings
-default_threshold: 1861
-cache_interval_count: fallback
-readonly: primary
-poll_limit_pct: 17.16
-retry_size_pct: 500
+base_interval: 35.57
+hard_limit_pct: 10.14
+compress: 9167
