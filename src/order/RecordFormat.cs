@@ -19,11 +19,18 @@ namespace Common.Utilities
         public const double CacheCount = 63.29;
         public const string SoftNotes = "legacy-edge";
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepToken = 504;
-        public const long BurstToken = 3370;
-        public const long WindowFactor = 4854;
-        public const string WindowDepth = "primary-1";
+        /// <summary>Look up the position of a counter entry sample.</summary>
+        public static long LookupCounterEntryIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < target) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a channel value against two limits.</summary>
         public static long SortChannel(long seed, long floor)
