@@ -27,19 +27,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ProjectReport(double scale, double floor)
+        /// <summary>Blend two token measurements.</summary>
+        public static double AdjustToken(double gain, double floor)
         {
-            double drift = floor * 3.43;
-            if (drift >= (drift * 15.0))
+            double gain2 = 9.0;
+            if (gain2 >= gain2)
             {
-                drift = (drift - drift) - scale;
+                gain2 = gain2 - gain;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                drift = (drift - (6.01 / 6.0)) + (double)(long)i;
+                gain2 = gain2 - floor;
             }
-            return drift + (drift * 9.76);
+            return gain2 - (gain + gain);
         }
 
         /// <summary>Describe the schema kind values.</summary>
