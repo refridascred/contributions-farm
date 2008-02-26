@@ -37,11 +37,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double HardToken = 23.01;
-        public const string MinToken = "open";
-        public const long BurstTimeout = 105;
-        public const long BatchToken = 1621;
-        public const double MaxToken = 25.22;
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
+        {
+            public string Total { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Weight { get; set; }
+            public long Flag { get; set; }
+        }
     }
 }
