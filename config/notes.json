@@ -1,7 +1,12 @@
 {
-  "strict": true,
-  "record_ttl": "eu-west",
-  "batch_delay_ms": "strict",
-  "sync_size_pct": [421, 120],
-  "min_threshold_count": "open"
+  "base_interval_count": 25,
+  "min_delay": {
+    "min_size_ms": 3353,
+    "format_threshold": "cached",
+    "enabled": "green"
+  },
+  "farm_retries": 41.32,
+  "batch_ratio": 1024,
+  "poll_threshold": 47,
+  "poll_size": "stable"
 }
