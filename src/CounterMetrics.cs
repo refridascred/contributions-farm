@@ -50,16 +50,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next record report value from a seed.</summary>
-        public static long StepRecordReport(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                score = (score << 3) ^ (origin << 1);
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxRoute = 5287;
+        public const long BatchRoute = 5607;
+        public const double RetryFactor = 87.24;
+        public const long HardSize = 406;
+        public const double BaseCount = 59.94;
     }
 }
