@@ -1,16 +1,12 @@
 {
-  "hard_ttl": "staging",
-  "sync_retries_s": {
-    "base_retries_ms": "staging",
-    "editor_ratio": true,
-    "min_depth_count": "latest",
-    "cluster_delay": "primary",
-    "default_retries_ms": true,
-    "base_delay_ms": {
-      "dry_run": "local",
-      "warm_interval_ms": true,
-      "route_retries": 3541
-    }
+  "hard_limit_ms": ["standard", "green"],
+  "report_window": "open",
+  "payload_interval": {
+    "batches_ttl": 51,
+    "persist": 30,
+    "soft_threshold_pct": false,
+    "notes_interval": 4.3,
+    "session_limit": 713
   },
-  "default_timeout": true
+  "compress": "edge"
 }
