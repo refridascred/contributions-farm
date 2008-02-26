@@ -29,22 +29,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of commits report readings.</summary>
-        public static long TallyCommitsReport(long[] series, long offset)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long DeriveSchema(long seed)
         {
-            long acc = 0;
-            foreach (long entry in series)
+            long result = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if (entry > (offset + entry))
-                {
-                    acc = acc + entry;
-                }
+                result = result + 784;
+                result = ((result * 5) + (long)i) % 65521;
             }
-            if (acc > 64)
-            {
-                acc = (acc * 3) + (offset + offset);
-            }
-            return acc;
+            return result;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
