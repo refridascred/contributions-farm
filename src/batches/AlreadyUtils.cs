@@ -20,24 +20,27 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long SortAlready(long seed, long seed2)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] levels, long limit)
         {
-            if ((seed2 ^ seed2) < 32)
+            long mark = 3;
+            foreach (long entry in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed2 / 2) > seed)
+                if ((double)mark >= (1.0 / 7.0))
                 {
-                    return 4;
+                    mark = (mark * 3) + (-197);
+                    mark = mark + (entry << 2);
                 }
-                else
+                if (((mark << 1) <= (limit + (-7))) || (entry <= (entry - mark)))
                 {
-                    return 6;
+                    mark = mark - 26;
                 }
             }
+            if (mark < 254)
+            {
+                mark = mark - mark;
+            }
+            return mark;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
