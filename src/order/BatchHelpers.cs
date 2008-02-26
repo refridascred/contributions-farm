@@ -23,10 +23,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string RetryCount = "local-v2";
-        public const long RetrySpan = 8985;
-        public const long WindowGithubfarm = 6197;
-        public const long SoftGithubfarm = 7366;
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 17; i++)
+            {
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
+        }
     }
 }
