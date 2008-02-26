@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyGaps(long[] data, long bound)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if (!((value - bound) <= value))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Queued,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
