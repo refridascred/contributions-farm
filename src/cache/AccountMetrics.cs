@@ -50,24 +50,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long seed, long target)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferOutliers(long[] series, long limit)
         {
-            if ((seed > target) || (8 < (seed + target)))
+            long matches = 0;
+            foreach (long item in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)66 < (double)seed)
+                if ((limit <= ((-33) % 8)) && (((limit + item) < (275 + matches)) || (matches <= (limit + item))))
                 {
-                    return 5;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    return 0;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a record record.</summary>
