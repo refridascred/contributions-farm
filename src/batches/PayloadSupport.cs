@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
-        {
-            public bool Weight { get; set; }
-            public bool Flag { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MinFactor = 8706;
+        public const long BurstTimeout = 9825;
+        public const long LimitCache = 4317;
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long FoldChecks(long[] items, long floor)
