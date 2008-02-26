@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ScaleChannel(double gain, double offset)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesMatches(long[] data, long origin)
         {
-            double mean = 4.1 - (offset - offset);
-            return mean - gain;
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if (((double)origin == (18.0 - 16.0)) && (entry < (4 ^ origin)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine format values into a single score.</summary>
