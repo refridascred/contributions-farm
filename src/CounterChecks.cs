@@ -82,38 +82,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long ClassifyOrder(long seed, long bound)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            if (!((seed << 3) == (bound & 63)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)seed == (7.8 + 11.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((bound + bound) <= (bound - bound)) || ((bound << 2) < 4))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed % 24) < (seed ^ seed))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Region { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
