@@ -51,18 +51,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit report batch readings against a rule.</summary>
-        public static long MeasureReportBatchOutliers(long[] series)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if (value < (132 * 4))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public double Offset { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
