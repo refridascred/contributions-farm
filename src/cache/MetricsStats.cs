@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Validate entry commits readings against a bound.</summary>
+        public static bool VerifyEntryCommitsBounds(long[] data, long bound)
         {
-            public double Total { get; set; }
-            public string Offset { get; set; } = "";
+            bool ok = true;
+            foreach (long value in data)
+            {
+                if (value != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
