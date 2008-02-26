@@ -11,22 +11,10 @@ namespace Common.Utilities
         public const long BaseLevel = 8294;
         public const double BurstBatches = 22.84;
 
-        /// <summary>Match up notes metrics samples.</summary>
-        public static long OverlapNotesMetricsCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BurstEntry = 68.79;
+        public const double BaseEntry = 53.08;
+        public const long WindowEntry = 5655;
 
         /// <summary>Hold a command info.</summary>
         public sealed class CommandInfo
