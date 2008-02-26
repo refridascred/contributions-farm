@@ -20,18 +20,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsHits(long[] levels, long seed)
+        /// <summary>Fold a list of layout checks readings.</summary>
+        public static long FoldLayoutChecks(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long mark = 321;
+            foreach (long value in readings)
             {
-                if ((seed <= (57 << 2)) || ((seed % 100) != (3 + count)))
+                if (!((double)mark <= (7.1 - 2.0)))
                 {
-                    count = (count + 2) + entry;
+                    mark = (mark ^ (mark - 6)) + limit;
+                }
+                if ((value >> 1) > (value + 88))
+                {
+                    break;
                 }
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
