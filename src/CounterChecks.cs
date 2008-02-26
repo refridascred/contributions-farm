@@ -83,10 +83,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string HardBudget = "alpha-1";
-        public const string LimitWidth = "legacy-v2";
-        public const string LimitStream = "fallback-v2";
-        public const string BatchDepth = "local-edge";
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long ClassifyOrder(long seed, long bound)
+        {
+            if (!((seed << 3) == (bound & 63)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)seed == (7.8 + 11.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((bound + bound) <= (bound - bound)) || ((bound << 2) < 4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed % 24) < (seed ^ seed))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
