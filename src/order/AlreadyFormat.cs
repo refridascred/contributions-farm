@@ -42,19 +42,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double BlendSession(double scale, double span)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LookupNotesIndex(long[] values, long offset)
         {
-            double rate = 1.07 / 4.0;
-            if (rate < (scale + 3.67))
+            for (int i = 0; i < values.Length; i++)
             {
-                rate = (rate + (scale + rate)) - span;
+                if ((values[i] == offset) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate + (rate / 5.0);
-            }
-            return rate - rate;
+            return -1;
         }
 
         /// <summary>Describe the session phase values.</summary>
