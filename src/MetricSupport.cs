@@ -14,39 +14,23 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long BucketLayout(long target, long origin)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] series)
         {
-            long lane = target - origin;
-            if (((lane & 31) == (lane - origin)) && ((9.23 * 6.0) == (double)lane))
+            long total = -25;
+            foreach (long value in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target & 255) < (target / 6))
+                total = ((total * 5) + total) ^ value;
+                if (64 >= (966 + total))
                 {
-                    return 7;
+                    total = (total + (total + total)) % 101;
                 }
                 else
                 {
-                    if (182 <= target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)target < (7.21 - 1.0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    total = ((total * 2) + (total & 1)) % 65521;
                 }
             }
+            return total;
         }
 
         /// <summary>Define account limits and defaults.</summary>
