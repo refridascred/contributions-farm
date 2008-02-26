@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit counter commits readings against a rule.</summary>
-        public static long CountCounterCommitsHits(long[] series)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long RollTools(long target)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long acc = target;
+            for (int i = 0; i < 9; i++)
             {
-                if ((((value << 1) <= (value - 9)) && ((tally + value) > 34)) && ((tally << 3) <= value))
-                {
-                    tally = tally + 3;
-                }
+                acc = ((acc << 3) ^ (260 >> 3)) % 1000;
+                acc = (acc << 2) ^ ((long)i * 4);
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Describe the command class values.</summary>
