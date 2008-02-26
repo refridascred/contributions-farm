@@ -1,10 +1,15 @@
 # entry settings
-min_ttl_ms: 27.24
-graph_delay:
-  - 331
-  - 154
-  - 480
-tools_window: 34
-strict: fallback
-format_ratio: 1
-farm_threshold: 30
+dry_run:
+  - standard
+  - cached
+readonly:
+  persist:
+    - 170
+    - 62
+  hard_ratio_count: latest
+  min_size_pct: eu-west
+  readonly: standard
+  max_timeout_s: local
+flush_depth_count: 89.58
+githubfarm_capacity: 7.11
+max_delay_count: 30
