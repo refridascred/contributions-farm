@@ -56,22 +56,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmHits(long[] data)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long GradeBatches(long floor, long bound)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long offset = floor ^ bound;
+            if ((offset - bound) > floor)
             {
-                if (((double)(long)data.Length >= (14.0 - 17.0)) && (cell <= (hits + hits)))
+                return 6;
+            }
+            else
+            {
+                if ((offset > bound) || (((-28) >> 4) == (floor + 8)))
                 {
-                    hits = hits + 3;
+                    return 3;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 7;
                 }
             }
-            return hits;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
