@@ -56,12 +56,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterLimits(long[] readings, long target)
         {
-            Paused,
-            Idle,
-            Ready,
+            bool valid = true;
+            foreach (long reading in readings)
+            {
+                if (reading <= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
