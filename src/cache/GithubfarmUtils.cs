@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] series, long offset)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long mix = 76;
-            foreach (long cell in series)
-            {
-                mix = mix ^ (offset << 2);
-                if ((offset * 4) <= (mix >> 5))
-                {
-                    mix = (mix - (offset % 12)) % 65521;
-                }
-                else
-                {
-                    mix = ((mix * 4) + ((-23) ^ offset)) % 255;
-                }
-                if (7 < (cell - 6))
-                {
-                    break;
-                }
-            }
-            return mix;
+            public long Region { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
