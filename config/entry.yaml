@@ -1,26 +1,16 @@
 # entry settings
-dry_run: primary
-hard_threshold: 8056
-poll_ttl:
-  account_ratio: 250
-  channel_retries:
-    flush_ratio_s: 2764
-    retry_depth_s: edge
-    warm_ratio_count: blue
-  base_interval: 93
-  record_capacity:
-    - 375
-    - 211
-    - 466
-    - 141
-  verbose: 3407
-  poll_threshold_pct:
-    filter_ttl: true
-    compress: legacy
-    strict: 585
-    enabled: true
-    persist: strict
-    warm_ttl_s: eu-west
-verbose: 10.61
-cache_depth: legacy
-buffer_threshold: 9913
+max_window:
+  audit:
+    flush_size_count: edge
+    hard_retries_count: 52
+    flush_depth: fallback
+    metric_timeout: 9835
+    default_capacity: 368
+  compress: 58
+  burst_interval_ms: 73
+  retry_threshold_s: 48.16
+  counter_limit: 1167
+  channel_timeout: 80.53
+compress: 1979
+persist: 8810
+strict: 7897
