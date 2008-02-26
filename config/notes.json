@@ -1,5 +1,7 @@
 {
-  "readonly": [412, 187],
-  "compress": false,
-  "poll_depth": 5772
+  "sync_limit": "strict",
+  "dry_run": 3,
+  "record_limit": 6963,
+  "hard_capacity_pct": [273, 408],
+  "cache_size": "eu-west"
 }
