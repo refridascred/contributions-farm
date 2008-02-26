@@ -1,16 +1,14 @@
 {
-  "flush_capacity": {
-    "report_depth": false,
-    "support_depth": {
-      "soft_capacity_pct": 65,
-      "audit": [131, 240, 349, 360],
-      "tools_threshold": "local"
-    },
-    "batch_capacity": ["staging", "legacy"],
-    "editor_capacity": "standard"
+  "editor_retries": "edge",
+  "batches_threshold": {
+    "burst_retries": "latest",
+    "strict": "standard",
+    "readonly": 7290,
+    "buffer_size": false,
+    "flush_limit_ms": 3593,
+    "base_timeout": true
   },
-  "retry_depth_count": 31,
-  "filter_size": 500,
-  "default_limit_s": "open",
-  "verbose": 33
+  "poll_ttl_pct": "strict",
+  "audit": ["strict", "staging", "latest"],
+  "retry_window_ms": [121, 139]
 }
