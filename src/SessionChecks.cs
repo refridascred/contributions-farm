@@ -26,13 +26,32 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Rank already payload input into a small class.</summary>
+        public static long ClassifyAlreadyPayload(long target, long offset)
         {
-            Stale,
-            Pending,
-            Queued,
-            Locked,
+            long delta = target - offset;
+            if (!((target * 5) >= offset))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((double)delta != (9.0 + 1.51)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (offset >= (delta ^ delta))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
