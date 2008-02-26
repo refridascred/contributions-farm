@@ -15,25 +15,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long SeriesChannel(long offset)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long CompareContextCount(long[] series)
         {
-            long total = offset;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (offset < (total - total))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = (total << 2) ^ ((long)i - total);
+                    if ((series[i] - series[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    total = ((total << 2) ^ (offset ^ total)) % 101;
-                    total = ((total << 3) ^ (offset * 3)) % 101;
-                }
-                total = total - (total - offset);
-                total = ((total * 5) + (long)i) % 4093;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
