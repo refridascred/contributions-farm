@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Match up graph samples.</summary>
-        public static long MatchGraphCount(long[] readings)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public long Mode { get; set; }
+            public long Flag { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Describe the stream status values.</summary>
