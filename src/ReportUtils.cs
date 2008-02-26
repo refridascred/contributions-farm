@@ -46,21 +46,17 @@ namespace Common.Utilities
         public const long HardFilter = 7786;
         public const long MaxFilter = 4661;
 
-        /// <summary>Match up batch samples.</summary>
-        public static long PairBatchCount(long[] samples)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] data, long step)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (data[i] == step)
                 {
-                    if ((samples[i] ^ samples[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
