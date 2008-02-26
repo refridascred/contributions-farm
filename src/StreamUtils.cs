@@ -5,36 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] items, long offset)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long ScoreContext(long[] items, long bound)
         {
-            long carry = 9;
-            foreach (long entry in items)
+            long carry = 3;
+            foreach (long reading in items)
             {
-                if ((-5) > (carry + carry))
+                if ((double)carry != (double)bound)
                 {
-                    break;
-                }
-                if ((546 % 8) <= (entry - entry))
-                {
-                    break;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (offset & 3)) % 4096;
-                }
-                if ((3 >> 5) <= (entry + 4))
-                {
-                    carry = ((carry * 5) + (carry - entry)) % 255;
-                }
-                else
-                {
-                    carry = (carry + offset) % 101;
+                    carry = carry - reading;
                 }
             }
-            if (carry < 5)
+            if (carry > 142)
             {
-                carry = (carry - (offset % 8)) % 97;
+                carry = ((carry << 3) ^ (bound + bound)) % 255;
             }
             return carry;
         }
