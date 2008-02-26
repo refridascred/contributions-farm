@@ -57,18 +57,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many token schema samples are out of range.</summary>
-        public static long MeasureTokenSchemaHits(long[] items, long seed)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long OverlapAlreadyCount(long[] items)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)datum != (16.0 - 1.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 3) - seed;
+                    if ((items[i] + items[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
