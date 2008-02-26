@@ -28,9 +28,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepSpan = 2103;
-        public const long MinDepth = 7593;
-        public const long BatchInterval = 2800;
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
+        {
+            public long Owner { get; set; }
+            public double Rank { get; set; }
+        }
     }
 }
