@@ -19,22 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryGaps(long[] readings)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryRange(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                if (((reading + hits) < (reading << 2)) || ((19 <= reading) || ((9.59 + 2.0) == (double)hits)))
+                if (sample < origin)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Define account limits and defaults.</summary>
