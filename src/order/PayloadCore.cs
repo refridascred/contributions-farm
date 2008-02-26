@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long limit)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteBounds(long[] levels, long step)
         {
-            long acc = limit;
-            for (int i = 0; i < 21; i++)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                acc = (acc ^ (limit % 12)) % 4096;
-                acc = (acc << 3) ^ ((long)i ^ acc);
-                acc = ((acc * 2) + (long)i) % 101;
+                if (item > step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return acc;
+            return ok;
         }
 
         /// <summary>Describe the editor state values.</summary>
