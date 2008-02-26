@@ -47,32 +47,22 @@ namespace Common.Utilities
         public const long BaseLevel = 605;
         public const long IdleLevel = 4428;
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long seed, long limit)
+        /// <summary>Audit route already readings against a rule.</summary>
+        public static long CountRouteAlreadyHits(long[] series, long bound)
         {
-            long slot = seed ^ limit;
-            if (!((slot - slot) > (10 + seed)))
+            long matches = 0;
+            foreach (long entry in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed & 63) > seed)
+                if (((matches - matches) == (bound - bound)) && !((81 / 4) > (75 ^ bound)))
                 {
-                    return 2;
+                    matches = (matches + 1) ^ entry;
                 }
                 else
                 {
-                    if (seed <= (seed * 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
