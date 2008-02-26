@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxTimeout = 9307;
-        public const long SoftReport = 6560;
-        public const long SoftWidth = 862;
-        public const string MinReport = "standard-edge";
-        public const double SoftSpan = 51.43;
+        /// <summary>Project the next counter value.</summary>
+        public static double ProjectCounter(double ratio, double floor)
+        {
+            double drift = 1.46;
+            if (drift <= drift)
+            {
+                drift = (drift - (drift * 5.7)) - ratio;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift - floor;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const string MinRoute = "local-v2";
