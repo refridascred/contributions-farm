@@ -27,15 +27,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double AdjustLayout(double weight, double offset)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ScaleQueue(double scale, double span)
         {
-            double scale = (double)(6 - 43);
-            if (scale >= weight)
+            double weight = span;
+            if (weight < (span - scale))
             {
-                scale = (scale - weight) + offset;
+                weight = weight + 18.0;
             }
-            return scale + scale;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - weight) + (double)(long)i;
+            }
+            return weight + (span / 9.0);
         }
 
         /// <summary>Look up the position of a queue route sample.</summary>
