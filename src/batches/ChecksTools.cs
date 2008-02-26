@@ -26,18 +26,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaMatches(long[] data, long floor)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileLimits(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                if (((double)floor >= (6.1 * 9.2)) || ((tally - floor) < 33))
+                if (item <= origin)
                 {
-                    tally = (tally + 1) ^ item;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
