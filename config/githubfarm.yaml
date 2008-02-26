@@ -1,5 +1,33 @@
 # githubfarm settings
-token_limit: stable
-cache_limit_ms: true
-strict: cached
-cache_size_count: 5710
+metrics_retries: 23
+enabled: 47
+poll_size_ms:
+  - 214
+  - 287
+  - 299
+  - 112
+base_retries_pct:
+  - legacy
+  - green
+  - latest
+  - strict
+token_threshold:
+  command_limit: false
+  batch_size:
+    poll_retries_pct: 68
+    githubfarm_timeout: cached
+    format_window: 250
+    command_capacity: strict
+    sync_size: 3887
+    context_delay:
+      - eu-west
+      - green
+      - local
+  enabled: open
+  soft_interval: 7048
+  burst_window_ms: 88.11
+  session_retries: local
+default_retries_pct:
+  - 219
+  - 450
+  - 59
