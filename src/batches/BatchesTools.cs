@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine entry format values into a single score.</summary>
-        public static long ScoreEntryFormat(long[] series)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long mark = -5;
-            foreach (long cell in series)
-            {
-                mark = (mark - (97 + cell)) % 4096;
-                if (mark <= (cell & 63))
-                {
-                    break;
-                }
-            }
-            return mark;
+            New,
+            Queued,
+            Ready,
         }
 
         /// <summary>Accumulate profile samples.</summary>
