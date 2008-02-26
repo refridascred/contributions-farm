@@ -25,39 +25,16 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Grade a profile format value against two limits.</summary>
-        public static long ClassifyProfileFormat(long limit, long seed)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long IterateGraph(long seed)
         {
-            long span = limit ^ seed;
-            if (((double)seed != (double)span) && ((9.1 - 0.7) <= (double)span))
+            long acc = seed;
+            for (int i = 0; i < 8; i++)
             {
-                return 7;
+                acc = acc ^ acc;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if (((double)span < 5.11) && ((limit + 4) <= (95 + seed)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit & 63) != (seed / 7))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((double)span == (1.8 - 6.36)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
     }
 }
