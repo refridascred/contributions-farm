@@ -81,15 +81,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine route metrics values into a single score.</summary>
-        public static long DigestRouteMetrics(long[] readings)
+        /// <summary>Match up filter editor samples.</summary>
+        public static long CompareFilterEditorCount(long[] data)
         {
-            long result = -624;
-            foreach (long value in readings)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (result - (result + value)) % 255;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
