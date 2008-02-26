@@ -1,11 +1,18 @@
 {
-  "batch_retries_s": ["fallback", "strict", "standard"],
-  "audit": 1932,
-  "batch_ratio_s": "cached",
-  "readonly": ["stable", "fallback", "staging"],
-  "persist": {
-    "retry_ratio_pct": ["legacy", "green", "green"],
-    "warm_capacity_s": true,
-    "hard_retries_s": "fallback"
-  }
+  "profile_threshold": "edge",
+  "channel_ttl": [37, 29],
+  "strict": "green",
+  "burst_capacity_ms": {
+    "idle_window_count": "local",
+    "max_size_ms": "stable",
+    "command_size": 78.07,
+    "sync_depth_ms": {
+      "persist": 20.92,
+      "base_threshold_ms": 80.73,
+      "retry_size": [261, 141]
+    },
+    "cluster_interval": [371, 42]
+  },
+  "burst_size": 33.18,
+  "tools_retries": 67
 }
