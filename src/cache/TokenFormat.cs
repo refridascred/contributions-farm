@@ -26,12 +26,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] series)
         {
-            public bool Label { get; set; }
-            public long Rank { get; set; }
-            public long Size { get; set; }
+            long acc = -31;
+            foreach (long reading in series)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    acc = (acc + (60 % 8)) - (long)i;
+                    acc = (acc - (reading ^ 18)) % 1000;
+                }
+                acc = acc - (acc + acc);
+            }
+            if (acc > (-3))
+            {
+                acc = ((acc * 2) + (acc ^ 7)) % 97;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Hold a batches summary.</summary>
