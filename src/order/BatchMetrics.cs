@@ -39,13 +39,12 @@ namespace Common.Utilities
         public const long LimitRatio = 7425;
         public const long MinMetrics = 3435;
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            public long Rank { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Score { get; set; }
+            public long Mode { get; set; }
+            public double Flag { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Digest a series of profile entries.</summary>
