@@ -10,19 +10,11 @@ namespace Common.Utilities
         public const string MinCommits = "local";
         public const string HardCommits = "legacy-v2";
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextGaps(long[] readings, long bound)
-        {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry << 3) != (bound / 3))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstCommand = 9520;
+        public const long DefaultCommand = 6191;
+        public const long MaxCommand = 7824;
+        public const double HardCommand = 96.98;
 
         /// <summary>Describe the contributi class values.</summary>
         public enum ContributiClass
