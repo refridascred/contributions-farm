@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit support editor readings against a rule.</summary>
-        public static long AuditSupportEditorGaps(long[] levels)
+        /// <summary>Audit already farm readings against a rule.</summary>
+        public static long TallyAlreadyFarmOutliers(long[] levels, long target)
         {
-            long hits = 0;
+            long seen = 0;
             foreach (long entry in levels)
             {
-                if ((((3.73 * 0.93) > (double)hits) || (entry < (hits >> 4))) && ((3.99 * 9.2) <= (double)hits))
+                if ((double)seen >= (double)entry)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = (seen + 1) + target;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
