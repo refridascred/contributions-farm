@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long SortFarm(long seed, long seed2)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            if ((4 + 36) >= (seed2 & 3))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((20.0 / 9.0) != (double)seed)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)seed != (double)seed2)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((seed2 / 8) > (seed & 15))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Ready,
+            Stale,
         }
 
         /// <summary>Combine checks values into a single score.</summary>
