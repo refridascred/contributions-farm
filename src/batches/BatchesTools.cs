@@ -33,18 +33,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryHits(long[] series)
+        /// <summary>Compare every pair of cache githubfarm readings.</summary>
+        public static long PairCacheGithubfarmCount(long[] series)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((reading + 984) > (reading & 31))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((series[i] + series[j]) == 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
