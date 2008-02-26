@@ -19,18 +19,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the account counter entries that pass the check.</summary>
-        public static long CountAccountCounterMatches(long[] readings, long limit)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long CombineGithubfarm(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long mix = 7;
+            foreach (long sample in values)
             {
-                if ((double)seen == (1.1 + 1.18))
+                if ((sample ^ origin) != (mix % 10))
                 {
-                    seen = ((seen + 3) + item) - limit;
+                    mix = ((mix << 3) ^ (origin + origin)) % 101;
+                }
+                else
+                {
+                    mix = (mix ^ (sample + sample)) % 4096;
+                }
+                if ((mix % 100) < (22 & 1))
+                {
+                    break;
                 }
             }
-            return seen;
+            return mix % 97;
         }
 
         /// <summary>Describe the payload state values.</summary>
