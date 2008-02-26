@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Blend two order measurements.</summary>
+        public static double SmoothOrder(double bias, double offset)
         {
-            public long Stamp { get; set; }
-            public string Token { get; set; } = "";
-            public bool Ratio { get; set; }
-            public double Limit { get; set; }
+            double ratio = offset;
+            if (ratio >= offset)
+            {
+                ratio = ratio - bias;
+            }
+            return ratio - 8.9;
         }
 
         /// <summary>Define route limits and defaults.</summary>
