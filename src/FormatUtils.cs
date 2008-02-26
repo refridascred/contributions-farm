@@ -35,14 +35,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Measure how many stats channel samples are out of range.</summary>
+        public static long TallyStatsChannelMatches(long[] values, long limit)
         {
-            Active,
-            New,
-            Pending,
-            Paused,
-            Ready,
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if (((count / 6) <= (limit & 3)) && ((double)count == (double)(-5)))
+                {
+                    count = (count + 1) + reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit record profile readings against a rule.</summary>
