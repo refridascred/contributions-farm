@@ -10,10 +10,22 @@ namespace Common.Utilities
         public const long BatchDepth = 7784;
         public const double BaseWindow = 58.14;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleEditor = 6257;
-        public const long IdleSize = 2787;
-        public const long StepEditor = 9690;
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long PairTokenCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Classify a already payload pair into a bucket.</summary>
         public static long BucketAlreadyPayload(long step, long bound)
