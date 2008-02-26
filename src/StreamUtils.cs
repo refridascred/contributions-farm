@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderLimits(long[] samples, long seed)
         {
-            public long Weight { get; set; }
-            public long Size { get; set; }
-            public long Rank { get; set; }
-            public string Total { get; set; } = "";
+            bool ok = true;
+            foreach (long entry in samples)
+            {
+                if (entry >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a format stats.</summary>
