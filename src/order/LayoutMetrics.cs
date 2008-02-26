@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const string MinTimeout = "staging";
         public const long DefaultTools = 5347;
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double ScaleCluster(double ratio, double floor)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            double scale = 4.74;
-            if (scale <= ratio)
-            {
-                scale = scale + (floor + ratio);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + floor) + (double)(long)i;
-            }
-            return scale + 16.0;
+            public string Region { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Label { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Match up format samples.</summary>
