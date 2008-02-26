@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Check that every account stream entry stays within the limit.</summary>
+        public static bool ValidateAccountStreamBounds(long[] readings, long limit)
         {
-            public double Rank { get; set; }
-            public long Limit { get; set; }
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Audit order githubfarm readings against a rule.</summary>
