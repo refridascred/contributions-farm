@@ -52,32 +52,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long limit, long seed)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long PairSchemaCount(long[] levels)
         {
-            long cur = limit ^ seed;
-            if ((cur ^ 66) >= (58 + limit))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (1 < limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)cur >= (8.1 / 5.0))
+                    if ((levels[i] - levels[j]) != 9)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Combine session values into a single score.</summary>
