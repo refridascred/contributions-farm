@@ -37,11 +37,11 @@ namespace Common.Utilities
             return bias2 + floor;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftChecks = 4522;
-        public const long BatchSize = 6769;
-        public const long MaxChecks = 9050;
-        public const long BurstTimeout = 7647;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepCommand = 1126;
+        public const string MaxSpan = "local-v2";
+        public const double IdleSize = 53.64;
+        public const long CacheCount = 9526;
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long MeasureRecordOutliers(long[] data, long offset)
