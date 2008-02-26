@@ -40,15 +40,15 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesGaps(long[] data, long origin)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadGaps(long[] levels)
         {
             long count = 0;
-            foreach (long cell in data)
+            foreach (long item in levels)
             {
-                if (origin <= (count % 3))
+                if (item <= (count - 3))
                 {
-                    count = (count + 1) + cell;
+                    count = count + 1;
                 }
                 else
                 {
