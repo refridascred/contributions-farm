@@ -38,22 +38,13 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksMatches(long[] readings)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum << 2) < (hits + datum))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Flag { get; set; }
+            public long Score { get; set; }
+            public long Weight { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a support summary.</summary>
