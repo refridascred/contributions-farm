@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long IterateEntry(long target)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long ComparePayloadCount(long[] data)
         {
-            long total = target;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((target * 5) <= (target << 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = ((total * 2) + (long)i) % 255;
-                    total = ((total * 5) + ((long)i - target)) % 101;
-                    break;
+                    if ((data[i] - data[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                total = ((total * 5) + (long)i) % 65521;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Accumulate schema cluster samples.</summary>
