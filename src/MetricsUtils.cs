@@ -68,39 +68,21 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long target, long seed)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long CompareEditorCount(long[] readings)
         {
-            long slot = target + seed;
-            if (slot > (slot + seed))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed * 3) <= seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (seed <= 12)
+                    if ((readings[i] + readings[j]) < 6)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((69 / 8) == (target >> 3))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Adjust a entry reading.</summary>
