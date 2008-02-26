@@ -32,11 +32,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleReport = 8308;
-        public const long SoftCount = 5995;
-        public const long StepReport = 2549;
-        public const double MaxReport = 49.76;
-        public const long DefaultTimeout = 4654;
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
+        {
+            Failed,
+            Idle,
+            Pending,
+            Synced,
+        }
     }
 }
