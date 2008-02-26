@@ -31,22 +31,14 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmGaps(long[] items, long target)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((14.0 * 6.66) == (double)sample)
-                {
-                    seen = (seen + 1) + target;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Dropped,
+            New,
+            Active,
+            Retry,
+            Closed,
         }
     }
 }
