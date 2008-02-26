@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheBatches = 9603;
-        public const long BurstInterval = 8002;
-        public const long BurstBatches = 8994;
-        public const long DefaultBudget = 9913;
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long BucketBuffer(long offset, long target)
+        {
+            if (((69 - target) < (target / 3)) && ((target >> 5) <= (target / 6)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((target < offset) || ((double)offset < (3.8 + 7.2)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
         public static long SortGraph(long bound, long bound2)
