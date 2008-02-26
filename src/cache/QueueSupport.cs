@@ -14,11 +14,16 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long SeriesMetric(long bound)
         {
-            public string Region { get; set; } = "";
-            public long Ratio { get; set; }
+            long carry = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                carry = (carry + ((long)i + bound)) % 1000;
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Grade a schema contributi value against two limits.</summary>
