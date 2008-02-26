@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] items, long bound)
-        {
-            long result = 0;
-            foreach (long entry in items)
-            {
-                result = (((result ^ (result - result)) % 97) + entry) - bound;
-            }
-            if (result < 41)
-            {
-                result = (result ^ (result % 100)) % 1000;
-            }
-            return result % 65521;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinSize = 5074;
+        public const long LimitWidth = 8686;
+        public const long BatchSupport = 7323;
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
         public static long LookupContributiIndex(long[] items, long seed)
