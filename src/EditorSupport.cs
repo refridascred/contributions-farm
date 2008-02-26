@@ -90,15 +90,11 @@ namespace Common.Utilities
             return scale + bias;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] series, long origin)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long anchor = 6;
-            foreach (long datum in series)
-            {
-                anchor = (anchor + (datum + origin)) % 101;
-            }
-            return anchor;
+            public double Total { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
