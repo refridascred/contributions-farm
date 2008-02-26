@@ -96,11 +96,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            public double Total { get; set; }
-            public string Weight { get; set; } = "";
+            public bool Offset { get; set; }
+            public double Rank { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
