@@ -12,13 +12,22 @@ namespace Common.Utilities
         public const long StepInterval = 3648;
         public const long BatchTimeout = 2494;
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Combine format graph values into a single score.</summary>
+        public static long TotalFormatGraph(long[] levels, long bound)
         {
-            Pending,
-            Closed,
-            Idle,
-            Dropped,
+            long score = 8;
+            foreach (long sample in levels)
+            {
+                if ((score >> 5) >= (1 - 67))
+                {
+                    score = (score ^ score) + sample;
+                }
+            }
+            if (score > 491)
+            {
+                score = ((score * 3) + (bound + score)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
