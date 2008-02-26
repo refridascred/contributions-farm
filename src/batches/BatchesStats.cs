@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterBounds(long[] series, long offset)
         {
-            public string Offset { get; set; } = "";
-            public double Count { get; set; }
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
