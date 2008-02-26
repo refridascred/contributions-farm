@@ -56,12 +56,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            public string Score { get; set; } = "";
-            public bool Rank { get; set; }
-            public string Owner { get; set; } = "";
+            public long Label { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Locate a tools reading by value.</summary>
