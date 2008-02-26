@@ -24,13 +24,12 @@ namespace Common.Utilities
         public const long HardEditor = 1441;
         public const long BurstCount = 862;
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            public double Score { get; set; }
-            public double Total { get; set; }
-            public long Flag { get; set; }
-            public bool Token { get; set; }
+            Dropped,
+            New,
+            Closed,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
