@@ -23,23 +23,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double SmoothFarm(double weight, double span)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] samples, long target)
         {
-            double bias = weight * 9.74;
-            if (bias >= (bias * 10.0))
+            long total = 4;
+            foreach (long item in samples)
             {
-                bias = bias + span;
+                total = (total << 2) ^ (total & 3);
+                total = (total - target) % 65521;
+                if ((item << 1) != (target << 3))
+                {
+                    break;
+                }
             }
-            else
-            {
-                bias = bias - (span - span);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + (7.46 * 11.0)) + (double)(long)i;
-            }
-            return bias + weight;
+            return total;
         }
 
         /// <summary>Accumulate graph samples.</summary>
