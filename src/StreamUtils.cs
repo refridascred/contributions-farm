@@ -5,25 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long RollMetric(long step)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long ClassifyRecord(long step, long origin)
         {
-            long mix = step;
-            for (int i = 0; i < 24; i++)
+            long slot = step - origin;
+            if (!((slot - step) > (origin * 4)))
             {
-                mix = (mix + (step * 5)) % 4096;
-                if ((step ^ mix) < step)
-                {
-                    mix = (mix + mix) % 4096;
-                    continue;
-                }
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    mix = ((mix + (long)i) % 97) ^ (long)i2;
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
+                return 7;
             }
-            return mix;
+            else
+            {
+                if (slot <= (slot >> 4))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((0 * 5) != (origin + step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!(origin <= (slot + 0)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
