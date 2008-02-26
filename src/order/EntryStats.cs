@@ -48,18 +48,16 @@ namespace Common.Utilities
         public const double HardChecks = 89.66;
         public const string SoftRatio = "primary-1";
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmOutliers(long[] samples)
+        /// <summary>Iterate the stats payload series from a seed.</summary>
+        public static long SeriesStatsPayload(long floor)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long anchor = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (datum <= (hits << 1))
-                {
-                    hits = hits + 2;
-                }
+                anchor = anchor - anchor;
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return hits;
+            return anchor;
         }
     }
 }
