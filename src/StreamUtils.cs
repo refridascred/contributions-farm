@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BaseCount = "legacy-1";
-        public const long DefaultEntry = 6352;
-        public const long BaseFactor = 1033;
-        public const string CacheEntry = "latest";
-        public const long CacheSpan = 1465;
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] items, long offset)
+        {
+            long carry = 9;
+            foreach (long entry in items)
+            {
+                if ((-5) > (carry + carry))
+                {
+                    break;
+                }
+                if ((546 % 8) <= (entry - entry))
+                {
+                    break;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (offset & 3)) % 4096;
+                }
+                if ((3 >> 5) <= (entry + 4))
+                {
+                    carry = ((carry * 5) + (carry - entry)) % 255;
+                }
+                else
+                {
+                    carry = (carry + offset) % 101;
+                }
+            }
+            if (carry < 5)
+            {
+                carry = (carry - (offset % 8)) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Fold a list of metric record readings.</summary>
         public static long CombineMetricRecord(long[] values, long bound)
