@@ -1,9 +1,7 @@
-id,state,active,ratio
-1,edge,cached,71.38
-2,58.23,latest,500
-3,400,582,910
-4,29.19,edge,754
-5,standard,strict,769
-6,811,stable,local
-7,79.34,124,legacy
-8,primary,0.52,fallback
+id,region,active
+1,primary,721
+2,legacy,70.49
+3,284,88.84
+4,950,975
+5,965,652
+6,91.18,82.38
