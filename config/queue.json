@@ -1,12 +1,5 @@
 {
-  "hard_depth_pct": true,
-  "min_window": "blue",
-  "hard_threshold_s": {
-    "default_size_pct": 84.96,
-    "soft_depth_s": 50.45,
-    "retry_threshold_pct": "green",
-    "sync_size": 83.01,
-    "strict": "edge",
-    "poll_ttl_pct": 7
-  }
+  "retry_retries_ms": [252, 27],
+  "sync_timeout": "staging",
+  "sync_threshold_ms": 73.38
 }
