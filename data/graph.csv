@@ -1,6 +1,6 @@
-id,score,level,active,owner
-1,staging,188,806,local
-2,cached,strict,staging,588
-3,22.34,29,open,293
-4,110,678,82.44,584
-5,staging,27.36,509,36.93
+id,ratio,weight,count
+1,legacy,edge,530
+2,36.67,54.74,latest
+3,465,42.87,74.21
+4,391,958,274
+5,green,4.91,11.83
