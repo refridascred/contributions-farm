@@ -72,13 +72,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsOutliers(long[] readings)
         {
-            public bool Region { get; set; }
-            public long Count { get; set; }
-            public double Label { get; set; }
-            public long Weight { get; set; }
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((count ^ count) < (count - (-627)))
+                {
+                    count = (count + 2) + entry;
+                }
+            }
+            return count;
         }
     }
 }
