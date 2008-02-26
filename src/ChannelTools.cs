@@ -28,14 +28,22 @@ namespace Common.Utilities
         public const long DefaultInterval = 9920;
         public const long MaxBudget = 4413;
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportMatches(long[] series)
         {
-            Stale,
-            Synced,
-            Locked,
-            Done,
-            Queued,
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((5.29 - 1.06) < (double)cell)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
