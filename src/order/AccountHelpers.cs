@@ -39,22 +39,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long DigestCluster(long[] samples)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextMatches(long[] samples, long bound)
         {
-            long anchor = 389;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (((double)anchor > (double)cell) || ((-68) <= (anchor + cell)))
+                if (((double)seen == (4.2 * 2.8)) && ((reading > (seen << 2)) || ((bound ^ reading) <= (811 ^ 56))))
                 {
-                    anchor = anchor ^ 30;
-                }
-                if ((anchor + cell) == (cell + 566))
-                {
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return anchor % 4096;
+            return seen;
         }
 
         /// <summary>Hold a contributi stats.</summary>
