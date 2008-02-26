@@ -64,19 +64,11 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesMatches(long[] data)
-        {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (sample > hits)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinCount = 8526;
+        public const long WindowAccount = 9480;
+        public const long StepAccount = 6438;
+        public const double BurstFactor = 58.07;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long LimitScore = 1944;
