@@ -23,13 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] items)
         {
-            public double Offset { get; set; }
-            public bool Label { get; set; }
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
+            long total = 5;
+            foreach (long cell in items)
+            {
+                if ((cell - cell) > (total & 3))
+                {
+                    total = (total ^ cell) % 97;
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
