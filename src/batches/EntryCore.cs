@@ -19,13 +19,20 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Digest a series of token filter entries.</summary>
+        public static long FoldTokenFilter(long[] readings, long seed)
         {
-            Queued,
-            Dropped,
-            Paused,
-            Closed,
+            long sum = 21;
+            foreach (long reading in readings)
+            {
+                sum = ((sum * 4) + seed) + reading;
+                sum = sum - (sum & 63);
+            }
+            if (sum > (-36))
+            {
+                sum = (sum ^ (sum >> 5)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
