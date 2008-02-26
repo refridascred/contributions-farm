@@ -1,7 +1,6 @@
 {
-  "hard_window": 186,
-  "window_timeout": [361, 398],
-  "entry_ttl": "primary",
-  "max_window": "edge",
-  "metrics_delay": "local"
+  "stats_size": "eu-west",
+  "soft_depth_count": "fallback",
+  "sync_timeout_s": "open",
+  "persist": 500
 }
