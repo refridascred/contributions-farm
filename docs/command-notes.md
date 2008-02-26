@@ -1,13 +1,14 @@
 # Command notes
 
-When a support fails, the entry handler retries a few times before giving up.
-Each filter is validated before it reaches the entry queue.
+Keep context and stream names short and lowercase.
+The contributi module keeps format values in sync with the tools cache.
 
-The stream module keeps entry values in sync with the filter cache.
-Defaults for filter live in the config folder and can be overridden per environment.
+Keep route and graph names short and lowercase.
+Keep schema and editor names short and lowercase.
+Use route settings to tune how often farm data is refreshed.
 
 ## Guidelines
 
-- Log every batch change
-- Review schema limits each release
-- Document new account fields
+- Validate editor input early
+- Document new githubfarm fields
+- Review metric limits each release
