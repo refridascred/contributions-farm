@@ -89,9 +89,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitScore = 1944;
-        public const long DefaultChannel = 4827;
-        public const long WindowChannel = 8936;
+        /// <summary>Combine commits account values into a single score.</summary>
+        public static long CombineCommitsAccount(long[] items, long offset)
+        {
+            long anchor = 6;
+            foreach (long value in items)
+            {
+                anchor = ((((anchor * 3) + anchor) % 1000) ^ value) - offset;
+            }
+            return anchor % 65521;
+        }
     }
 }
