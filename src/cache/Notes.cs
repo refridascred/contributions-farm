@@ -44,19 +44,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsLimits(long[] items, long floor)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountGaps(long[] readings, long limit)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (cell != floor)
+                if ((reading >= hits) || ((limit + 2) != ((-4) << 2)))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
