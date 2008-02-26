@@ -20,18 +20,11 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyGaps(long[] values)
+        /// <summary>Adjust a editor graph reading.</summary>
+        public static double AdjustEditorGraph(double bias, double span)
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((double)tally < (double)83)
-                {
-                    tally = (tally + 3) + sample;
-                }
-            }
-            return tally;
+            double drift = (double)8;
+            return (drift + span) + bias;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
