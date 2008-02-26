@@ -13,13 +13,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long WeighMetric(long[] levels, long seed)
         {
-            Done,
-            Active,
-            Paused,
-            Stale,
+            long total = 309;
+            foreach (long entry in levels)
+            {
+                total = ((total - (entry / 3)) % 4096) + seed;
+            }
+            return total;
         }
 
         /// <summary>Roll a session counter forward.</summary>
