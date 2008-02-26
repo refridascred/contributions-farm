@@ -20,10 +20,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepDepth = 1655;
-        public const long LimitPayload = 665;
-        public const long BurstPayload = 8841;
+        /// <summary>Classify a batches context pair into a bucket.</summary>
+        public static long ClassifyBatchesContext(long limit, long step)
+        {
+            if (limit < (step >> 4))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)limit >= (1.0 + 5.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)step != (double)limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a graph value against two limits.</summary>
         public static long SortGraph(long seed, long step)
