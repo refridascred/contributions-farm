@@ -28,22 +28,15 @@ namespace Common.Utilities
         public const string DefaultSize = "latest-1";
         public const long IdleEditor = 2307;
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordHits(long[] samples)
+        /// <summary>Combine already metric values into a single score.</summary>
+        public static long ScoreAlreadyMetric(long[] values)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long result = 8;
+            foreach (long cell in values)
             {
-                if ((8.7 / 5.0) != (double)tally)
-                {
-                    tally = (tally + 3) - item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                result = (result << 3) ^ (result + cell);
             }
-            return tally;
+            return result % 1000;
         }
 
         /// <summary>Classify a cache cluster pair into a bucket.</summary>
