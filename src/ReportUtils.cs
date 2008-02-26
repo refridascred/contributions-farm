@@ -16,22 +16,17 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Count the command checks entries that pass the check.</summary>
-        public static long AuditCommandChecksMatches(long[] readings)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long SeekOrderIndex(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((item >> 1) == (item >> 2))
+                if ((series[i] == offset) && ((series[i] % 2) != 0))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
