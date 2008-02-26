@@ -61,22 +61,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long CompareOrderCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double CacheLevel = 46.33;
+        public const long BatchChannel = 9137;
+        public const long MinLevel = 9305;
+        public const long HardSpan = 4869;
+        public const string WindowDepth = "strict-v2";
 
         /// <summary>Fold a list of context stats readings.</summary>
         public static long DigestContextStats(long[] levels)
