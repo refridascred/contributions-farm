@@ -19,26 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] values)
+        /// <summary>Audit editor already readings against a rule.</summary>
+        public static long CountEditorAlreadyOutliers(long[] samples)
         {
-            long mix = 590;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if ((8.0 <= (double)cell) || ((1.5 / 5.0) == (double)cell))
+                if ((datum + datum) < (count + count))
                 {
-                    mix = mix - (cell - (long)values.Length);
-                }
-                if ((cell + cell) >= (572 / 9))
-                {
-                    mix = mix - (996 >> 5);
-                }
-                else
-                {
-                    mix = mix - (565 & 1);
+                    count = count + 1;
                 }
             }
-            return mix % 97;
+            return count;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
