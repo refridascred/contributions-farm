@@ -5,26 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long SeriesStream(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 6; i++)
-            {
-                if (target >= (sum - sum))
-                {
-                    break;
-                }
-                else
-                {
-                    sum = (sum ^ (sum + target)) % 65521;
-                }
-                sum = sum + (927 * 4);
-                sum = ((sum * 5) + target) % 65521;
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitTools = 7393;
+        public const string MinTimeout = "staging";
+        public const long DefaultTools = 5347;
 
         /// <summary>Hold a batches snapshot.</summary>
         public sealed class BatchesSnapshot
