@@ -81,14 +81,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            Retry,
-            Stale,
-            Ready,
-            Failed,
-            Idle,
+            Pending,
+            Queued,
+            Paused,
         }
 
         /// <summary>Combine batch stats values into a single score.</summary>
