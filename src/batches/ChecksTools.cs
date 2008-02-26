@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of already notes entries.</summary>
-        public static long ScoreAlreadyNotes(long[] series, long bound)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long acc = 3;
-            foreach (long datum in series)
-            {
-                if ((bound << 3) < (bound - datum))
-                {
-                    acc = (acc + 47) % 97;
-                }
-                else
-                {
-                    acc = (acc - (datum << 2)) % 4096;
-                }
-            }
-            return acc % 1000;
+            Draft,
+            Synced,
+            Stale,
+            Ready,
+            New,
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
