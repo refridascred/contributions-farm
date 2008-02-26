@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            public string Mode { get; set; } = "";
-            public double Offset { get; set; }
+            public double Label { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Check that every metrics contributi entry stays within the limit.</summary>
