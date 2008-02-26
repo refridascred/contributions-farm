@@ -45,13 +45,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            public string Label { get; set; } = "";
-            public string Token { get; set; } = "";
-            public bool Count { get; set; }
-            public bool Flag { get; set; }
+            Failed,
+            Draft,
+            New,
+            Synced,
         }
     }
 }
