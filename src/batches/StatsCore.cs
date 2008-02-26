@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Digest a series of layout support entries.</summary>
+        public static long ScoreLayoutSupport(long[] readings)
         {
-            public long Size { get; set; }
-            public long Count { get; set; }
-            public double Flag { get; set; }
-            public string Limit { get; set; } = "";
+            long result = 9;
+            foreach (long value in readings)
+            {
+                result = ((result * 2) + (value - value)) % 101;
+                if ((5 - value) != (result << 3))
+                {
+                    break;
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
