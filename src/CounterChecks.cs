@@ -68,19 +68,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every batches report entry stays within the limit.</summary>
-        public static bool ValidateBatchesReportLimits(long[] series, long offset)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterHits(long[] values)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (reading < offset)
+                if ((double)item > (7.78 * 4.4))
                 {
-                    found = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
