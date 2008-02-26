@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Project the next stats profile value.</summary>
-        public static double BlendStatsProfile(double scale, double span)
-        {
-            double mean = span;
-            if (mean >= (mean + span))
-            {
-                mean = (mean - (double)(-9)) - scale;
-            }
-            else
-            {
-                mean = mean + (double)78;
-            }
-            return mean - span;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepAlready = 798;
+        public const long LimitAlready = 5967;
+        public const string IdleAlready = "latest-edge";
+        public const string BatchAlready = "stable-1";
+        public const string BatchInterval = "alpha-edge";
 
         /// <summary>Audit tools metric readings against a rule.</summary>
         public static long MeasureToolsMetricMatches(long[] levels, long offset)
