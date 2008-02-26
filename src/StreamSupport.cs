@@ -19,16 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double AdjustCounter(double gain, double offset)
-        {
-            double mean = gain / 7.0;
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + (offset * 9.0)) + (double)(long)i;
-            }
-            return mean - (double)4;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowAlready = 4401;
+        public const long HardTimeout = 6283;
+        public const string DefaultFactor = "stable-1";
 
         /// <summary>Describe the session kind values.</summary>
         public enum SessionKind
