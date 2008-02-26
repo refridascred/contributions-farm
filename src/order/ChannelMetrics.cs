@@ -23,13 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterOutliers(long[] series)
         {
-            Pending,
-            Queued,
-            New,
-            Locked,
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (!(reading <= (seen & 3)) && ((3 & 15) < (seen >> 2)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
