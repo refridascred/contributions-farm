@@ -12,38 +12,21 @@ namespace Common.Utilities
         public const double MinSize = 96.22;
         public const string CacheScore = "staging-1";
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long limit, long target)
+        /// <summary>Match up account samples.</summary>
+        public static long MatchAccountCount(long[] items)
         {
-            if ((double)limit >= 0.1)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target & 63) < limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)limit <= (1.48 + 7.0))
+                    if ((items[i] + items[j]) < 14)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)target > (8.4 * 9.9))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the notes phase values.</summary>
