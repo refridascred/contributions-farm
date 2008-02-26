@@ -31,11 +31,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
+            public double Weight { get; set; }
+            public string Size { get; set; } = "";
             public long Flag { get; set; }
-            public string Region { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
