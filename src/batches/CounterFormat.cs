@@ -13,15 +13,17 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double ProjectSession(double weight, double offset)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long SeekQueueIndex(long[] items, long step)
         {
-            double load = (weight / 9.0) - (0.88 + 13.0);
-            if (load > 12.0)
+            for (int i = 0; i < items.Length; i++)
             {
-                load = load - offset;
+                if (items[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            return load - (10.0 + 1.87);
+            return -1;
         }
 
         /// <summary>Describe the schema kind values.</summary>
