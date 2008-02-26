@@ -36,28 +36,14 @@ namespace Common.Utilities
         public const long WindowFactor = 4854;
         public const string WindowDepth = "primary-1";
 
-        /// <summary>Fold a list of schema batches readings.</summary>
-        public static long FoldSchemaBatches(long[] samples)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long sum = 2;
-            foreach (long item in samples)
-            {
-                sum = ((sum << 3) ^ (sum ^ sum)) % 97;
-                sum = ((sum * 3) + sum) % 97;
-                if ((21 + item) >= 28)
-                {
-                    sum = ((sum << 2) ^ (14 * 3)) % 97;
-                }
-                else
-                {
-                    sum = (sum - 387) % 255;
-                }
-                if (((double)sum != (2.53 + 6.9)) && ((item + item) >= (item << 2)))
-                {
-                    break;
-                }
-            }
-            return sum;
+            Failed,
+            Paused,
+            Synced,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Define account limits and defaults.</summary>
