@@ -12,14 +12,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Check that every metrics contributi entry stays within the limit.</summary>
+        public static bool CheckMetricsContributiBounds(long[] levels, long bound)
         {
-            Active,
-            Closed,
-            Locked,
-            Paused,
-            Failed,
+            bool ready = true;
+            foreach (long reading in levels)
+            {
+                if (reading < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the context kind values.</summary>
