@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Accumulate farm filter samples.</summary>
+        public static long DigestFarmFilter(long[] levels)
         {
-            Closed,
-            Dropped,
-            Pending,
-            Active,
+            long sum = 59;
+            foreach (long value in levels)
+            {
+                if (((value & 31) >= (sum + sum)) && ((double)sum > (6.9 * 6.6)))
+                {
+                    sum = (sum + (sum + value)) % 1000;
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Combine format values into a single score.</summary>
