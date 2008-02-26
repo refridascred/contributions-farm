@@ -1,8 +1,5 @@
 {
-  "commits_size": 2062,
-  "batch_ttl_count": "eu-west",
-  "batch_delay": 63,
-  "min_retries_s": "local",
-  "batch_window": 63,
-  "max_interval_s": 96.64
+  "min_delay_count": 619,
+  "default_timeout_count": 90,
+  "sync_timeout": "legacy"
 }
