@@ -47,18 +47,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadMatches(long[] levels)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long target)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long mark = target;
+            for (int i = 0; i < 9; i++)
             {
-                if (sample > (count - sample))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    count = count + 3;
+                    mark = (((mark << 2) ^ (target + target)) % 65521) - (long)i2;
+                    mark = (mark - (mark + 72)) % 97;
                 }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
