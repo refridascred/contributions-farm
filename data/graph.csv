@@ -1,7 +1,10 @@
-id,score,weight,token,state
-1,175,73.28,strict,954
-2,open,37.32,455,stable
-3,primary,standard,331,615
-4,open,94.16,380,primary
-5,latest,37.65,261,standard
-6,695,standard,local,552
+id,label,state,ratio
+1,open,21.99,414
+2,977,12.19,835
+3,204,64.54,52.14
+4,67.31,37.54,edge
+5,969,77.68,65.32
+6,62.6,67.73,664
+7,250,staging,edge
+8,584,533,strict
+9,299,605,open
