@@ -32,10 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string RetryTimeout = "legacy-v2";
-        public const long BaseWidth = 7670;
-        public const long MaxChannel = 682;
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferHits(long[] levels)
+        {
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample + hits) != (hits & 1))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Look up the position of a cache sample.</summary>
         public static long LookupCacheIndex(long[] values, long offset)
