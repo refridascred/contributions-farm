@@ -1,9 +1,5 @@
 {
-  "verbose": {
-    "min_threshold": "staging",
-    "soft_timeout_ms": ["legacy", "cached", "primary"],
-    "burst_interval": "standard"
-  },
-  "sync_window": 7918,
-  "hard_threshold_ms": false
+  "dry_run": "fallback",
+  "hard_interval_count": true,
+  "strict": "legacy"
 }
