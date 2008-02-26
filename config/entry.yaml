@@ -1,23 +1,7 @@
 # entry settings
-default_timeout: true
-warm_window_count: true
-channel_window:
-  dry_run:
-    dry_run: 81
-    commits_interval: edge
-    format_size: false
-    format_interval: true
-  default_delay_s: 4541
-  cache_limit_pct: stable
-  soft_delay_pct:
-    - local
-    - latest
-    - local
-    - primary
-  hard_delay: edge
-cache_capacity:
-  - 293
-  - 119
-  - 211
-base_timeout: 47
-persist: legacy
+hard_delay_ms: false
+batch_ttl: 15
+flush_delay_ms:
+  flush_interval_pct: 80
+  poll_interval_pct: 66.67
+  readonly: 30
