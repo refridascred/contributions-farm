@@ -19,15 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double AdjustFilter(double weight, double offset)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesRange(long[] samples, long bound)
         {
-            double ratio = (offset / 3.0) + (double)47;
-            if (ratio > (weight + 6.0))
+            bool found = true;
+            foreach (long datum in samples)
             {
-                ratio = ratio - (ratio * 8.65);
+                if (datum < bound)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return ratio - (weight + 3.0);
+            return found;
         }
 
         /// <summary>Accumulate token samples.</summary>
