@@ -52,12 +52,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Project the next payload value.</summary>
+        public static double ScalePayload(double scale, double floor)
         {
-            public long Size { get; set; }
-            public double Region { get; set; }
-            public bool Limit { get; set; }
+            double weight = floor;
+            if (weight >= 0.64)
+            {
+                weight = weight + (scale - scale);
+            }
+            else
+            {
+                weight = weight - (double)0;
+            }
+            return weight - (floor + floor);
         }
     }
 }
