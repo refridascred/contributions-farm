@@ -1,5 +1,14 @@
 {
-  "soft_ratio_count": 55,
-  "retry_capacity": 3037,
-  "sync_window": "edge"
+  "default_threshold_ms": 9324,
+  "report_window": {
+    "soft_retries_s": 69.71,
+    "persist": 4396,
+    "compress": "standard",
+    "entry_interval": 60,
+    "poll_interval": "local"
+  },
+  "account_delay": 1024,
+  "batch_timeout": 69.23,
+  "idle_timeout_s": true,
+  "profile_threshold": false
 }
