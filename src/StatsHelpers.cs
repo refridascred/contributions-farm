@@ -38,11 +38,25 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long StepScore = 3607;
-        public const long DefaultFarm = 7686;
-        public const double CacheFarm = 58.25;
-        public const long MinFarm = 1768;
+        /// <summary>Classify a batch githubfarm pair into a bucket.</summary>
+        public static long SortBatchGithubfarm(long step, long floor)
+        {
+            if ((floor + step) >= floor)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor * 3) != (step / 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Fold a list of support readings.</summary>
         public static long WeighSupport(long[] data, long step)
