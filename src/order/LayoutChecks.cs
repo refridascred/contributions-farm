@@ -60,11 +60,12 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            public long Label { get; set; }
-            public double Rank { get; set; }
+            Locked,
+            Ready,
+            Draft,
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
