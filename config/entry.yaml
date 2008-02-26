@@ -1,4 +1,4 @@
 # entry settings
-base_interval: 35.57
-hard_limit_pct: 10.14
-compress: 9167
+notes_ratio: 0.79
+compress: false
+verbose: staging
