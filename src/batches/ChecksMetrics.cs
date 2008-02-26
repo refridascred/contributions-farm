@@ -71,26 +71,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] data, long offset)
+        /// <summary>Check that every batches graph entry stays within the limit.</summary>
+        public static bool GuardBatchesGraphLimits(long[] values, long step)
         {
-            long anchor = 359;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long value in values)
             {
-                for (int i = 0; i < 9; i++)
+                if (value >= step)
                 {
-                    anchor = anchor - ((long)i - item);
-                }
-                if (((offset << 2) == (item + offset)) || ((double)anchor <= 3.7))
-                {
-                    anchor = (anchor - (anchor << 1)) % 4096;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ offset) % 4096;
+                    valid = false;
+                    break;
                 }
             }
-            return anchor % 1000;
+            return valid;
         }
     }
 }
