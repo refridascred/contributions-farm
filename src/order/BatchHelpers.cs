@@ -24,15 +24,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long target)
+        /// <summary>Validate editor order readings against a bound.</summary>
+        public static bool ValidateEditorOrderBounds(long[] series, long step)
         {
-            long state = target;
-            for (int i = 0; i < 17; i++)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                state = ((state * 4) + (long)i) % 97;
+                if (entry >= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return state;
+            return ok;
         }
     }
 }
