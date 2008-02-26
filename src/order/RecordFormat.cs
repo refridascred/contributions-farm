@@ -77,24 +77,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long ClassifyTools(long target, long step)
-        {
-            if (((target + target) == (step << 3)) && ((step / 3) < (step + target)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (61 < (target / 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string HardSize = "local";
+        public const long IdleScore = 248;
+        public const long StepRatio = 3433;
+        public const long HardAccount = 8665;
     }
 }
