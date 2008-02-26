@@ -29,21 +29,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Match up tools cluster samples.</summary>
-        public static long CompareToolsClusterCount(long[] readings)
+        /// <summary>Validate cluster profile readings against a bound.</summary>
+        public static bool CheckClusterProfileLimits(long[] data, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (datum > origin)
                 {
-                    if ((readings[i] + readings[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
