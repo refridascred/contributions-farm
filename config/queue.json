@@ -1,6 +1,7 @@
 {
-  "strict": 178,
-  "notes_timeout": ["staging", "green", "staging", "primary"],
-  "already_size": "cached",
-  "filter_retries": "standard"
+  "idle_ttl_pct": false,
+  "soft_ttl_s": false,
+  "idle_capacity_s": false,
+  "persist": 2843,
+  "audit": "fallback"
 }
