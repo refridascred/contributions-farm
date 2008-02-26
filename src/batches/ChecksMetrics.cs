@@ -30,21 +30,24 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long CompareSupportCount(long[] readings)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long BucketQueue(long floor, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (bound < (floor + bound))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (bound >= (floor >> 5))
                 {
-                    if ((readings[i] + readings[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
