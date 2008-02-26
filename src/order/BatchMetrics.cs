@@ -69,27 +69,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long CombineLayout(long[] series)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] readings)
         {
-            long total = 84;
-            foreach (long cell in series)
+            long carry = 5;
+            foreach (long cell in readings)
             {
-                long offset = -492;
-                if (!((97 + cell) <= total))
+                carry = (carry + (cell & 7)) % 65521;
+                if ((carry + carry) <= (9 / 9))
                 {
-                    total = total ^ (offset * 4);
-                }
-                if (((total << 2) > total) && ((double)total == (1.43 + 5.4)))
-                {
-                    total = (total + cell) % 255;
-                }
-                else
-                {
-                    total = (total ^ (4 * 4)) % 101;
+                    break;
                 }
             }
-            return total % 65521;
+            if (carry < 87)
+            {
+                carry = carry - carry;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
