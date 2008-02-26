@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long offset)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long SeekPayloadIndex(long[] items, long bound)
         {
-            long carry = offset;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(((long)i * 5) < (offset / 5)))
+                if (items[i] < bound)
                 {
-                    carry = (carry + (offset ^ offset)) % 101;
-                    carry = carry ^ (offset % 7);
+                    return (long)i;
                 }
-                carry = ((carry * 5) + (long)i) % 97;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
