@@ -30,13 +30,18 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowGaps(long[] items)
         {
-            public double Mode { get; set; }
-            public long Count { get; set; }
-            public bool Token { get; set; }
-            public long Region { get; set; }
+            long count = 0;
+            foreach (long value in items)
+            {
+                if (!((double)value == (5.3 + 16.0)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a counter record.</summary>
