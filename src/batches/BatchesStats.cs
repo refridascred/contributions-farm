@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadBounds(long[] items, long floor)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            bool found = true;
-            foreach (long entry in items)
-            {
-                if (entry >= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Label { get; set; }
+            public double Offset { get; set; }
+            public string Count { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Roll a stats counter forward.</summary>
