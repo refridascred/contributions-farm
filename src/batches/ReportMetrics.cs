@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long DigestRecord(long[] samples, long floor)
-        {
-            long state = 62;
-            foreach (long datum in samples)
-            {
-                state = state - (datum / 8);
-                if (!((5 ^ floor) == (floor - floor)))
-                {
-                    state = state ^ (9 << 1);
-                }
-                else
-                {
-                    state = state - (state + state);
-                }
-            }
-            return state;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardWindow = 7253;
+        public const long BatchDepth = 7784;
+        public const double BaseWindow = 58.14;
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
