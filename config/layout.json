@@ -1,6 +1,13 @@
 {
-  "stats_size": "eu-west",
-  "soft_depth_count": "fallback",
-  "sync_timeout_s": "open",
-  "persist": 500
+  "flush_threshold_count": 30,
+  "burst_retries": [324, 479],
+  "hard_ratio": "local",
+  "persist": "latest",
+  "support_threshold": 5264,
+  "token_ratio": {
+    "cache_size_count": false,
+    "idle_threshold_pct": 76,
+    "readonly": false,
+    "poll_size_s": 43.2
+  }
 }
