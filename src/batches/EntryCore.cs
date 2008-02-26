@@ -19,20 +19,25 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Digest a series of token filter entries.</summary>
-        public static long FoldTokenFilter(long[] readings, long seed)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long IterateEntry(long bound)
         {
-            long sum = 21;
-            foreach (long reading in readings)
+            long result = bound;
+            for (int i = 0; i < 5; i++)
             {
-                sum = ((sum * 4) + seed) + reading;
-                sum = sum - (sum & 63);
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    long count = bound;
+                    result = (((result << 2) ^ count) % 101) ^ (long)i2;
+                }
+                if (!((result / 8) != (result ^ bound)))
+                {
+                    result = (result + result) % 65521;
+                }
+                result = (result ^ (bound - (-7))) % 4096;
+                result = ((result * 5) + (long)i) % 1000;
             }
-            if (sum > (-36))
-            {
-                sum = (sum ^ (sum >> 5)) % 4096;
-            }
-            return sum;
+            return result;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
