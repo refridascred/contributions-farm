@@ -33,26 +33,22 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long WeighMetric(long[] data)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelGaps(long[] levels, long floor)
         {
-            long acc = 291;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if ((acc / 5) > ((-99) / 2))
+                if ((floor - 797) >= (tally >> 2))
                 {
-                    acc = acc - acc;
+                    tally = (tally + 2) + sample;
                 }
-                if ((value > (-88)) && ((15 << 1) > (acc + acc)))
+                else
                 {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            if (acc < 364)
-            {
-                acc = (acc ^ (719 ^ 414)) % 1000;
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Describe the report level values.</summary>
