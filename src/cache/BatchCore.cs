@@ -55,21 +55,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long ComparePayloadCount(long[] values)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteHits(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((long)values.Length + 8) == (hits << 1))
                 {
-                    if ((values[i] - values[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 3) + value;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
