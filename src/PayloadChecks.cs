@@ -31,13 +31,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            public string Rank { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Flag { get; set; }
-            public long Total { get; set; }
+            public long Label { get; set; }
+            public double Weight { get; set; }
+            public long Offset { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
