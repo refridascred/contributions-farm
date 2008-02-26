@@ -12,12 +12,15 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] data, long bound)
         {
-            New,
-            Ready,
-            Dropped,
+            long total = 5;
+            foreach (long sample in data)
+            {
+                total = ((total ^ sample) % 65521) + bound;
+            }
+            return total % 97;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
