@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every context graph entry stays within the limit.</summary>
-        public static bool GuardContextGraphRange(long[] items, long target)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            bool ready = true;
-            foreach (long sample in items)
-            {
-                if (sample >= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Ready,
+            Locked,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Classify a batches context pair into a bucket.</summary>
