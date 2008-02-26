@@ -19,18 +19,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit editor already readings against a rule.</summary>
-        public static long CountEditorAlreadyOutliers(long[] samples)
+        /// <summary>Rank layout support input into a small class.</summary>
+        public static long ClassifyLayoutSupport(long seed, long origin)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long diff = seed ^ origin;
+            if ((8.3 / 8.0) < (double)seed)
             {
-                if ((datum + datum) < (count + count))
+                return 4;
+            }
+            else
+            {
+                if (((diff ^ seed) < seed) || ((seed - origin) != (origin * 4)))
                 {
-                    count = count + 1;
+                    return 5;
+                }
+                else
+                {
+                    if (((7.1 / 9.0) == (double)origin) || (diff <= (diff - 13)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
