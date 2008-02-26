@@ -33,22 +33,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheGaps(long[] data, long target)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((count + (long)data.Length) != (count + 12))
-                {
-                    count = ((count + 2) ^ item) + target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Locate a graph githubfarm reading by value.</summary>
