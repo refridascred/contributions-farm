@@ -1,6 +1,13 @@
 # support settings
-idle_depth_ms: 18.13
-audit: 8962
-sync_interval_ms:
-  - eu-west
-  - eu-west
+verbose: 100
+batch_depth_pct: 2879
+soft_limit_count:
+  soft_size_count:
+    - blue
+    - stable
+    - staging
+  poll_interval_pct: blue
+  default_capacity_s: primary
+  notes_depth:
+    - strict
+    - blue
