@@ -30,19 +30,14 @@ namespace Common.Utilities
             return mean - (double)4;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool CheckCacheRange(long[] data, long offset)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            bool ready = true;
-            foreach (long entry in data)
-            {
-                if (entry >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Ready,
+            New,
+            Idle,
+            Closed,
+            Synced,
         }
     }
 }
