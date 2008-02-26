@@ -1,7 +1,13 @@
 {
-  "compress": 7,
-  "hard_ttl": 2357,
-  "route_window": 1024,
-  "min_threshold_pct": ["edge", "stable", "blue", "legacy"],
-  "soft_timeout_count": 56.96
+  "base_ratio": {
+    "flush_ttl_count": 12.88,
+    "default_window_ms": {
+      "compress": false,
+      "burst_capacity_pct": 60.75,
+      "idle_retries": true
+    },
+    "burst_ttl_pct": true
+  },
+  "persist": 1447,
+  "compress": false
 }
