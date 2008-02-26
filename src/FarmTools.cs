@@ -37,13 +37,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] values, long step)
         {
-            Queued,
-            Done,
-            Retry,
-            Active,
+            long sum = 3;
+            foreach (long datum in values)
+            {
+                sum = ((sum * 3) + (step + step)) ^ datum;
+            }
+            if (sum < 50)
+            {
+                sum = (sum * 2) + (15 & 63);
+            }
+            return sum;
         }
     }
 }
