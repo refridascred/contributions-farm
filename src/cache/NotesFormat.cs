@@ -20,19 +20,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every filter tools entry stays within the limit.</summary>
-        public static bool VerifyFilterToolsBounds(long[] series, long target)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            bool flag = true;
-            foreach (long datum in series)
-            {
-                if (datum <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Limit { get; set; }
+            public bool Mode { get; set; }
+            public long Total { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
