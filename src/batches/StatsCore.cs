@@ -52,19 +52,13 @@ namespace Common.Utilities
         public const long BurstSpan = 3362;
         public const long DefaultSize = 8243;
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandRange(long[] readings, long floor)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            bool flag = true;
-            foreach (long entry in readings)
-            {
-                if (entry <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Synced,
+            Draft,
+            Pending,
         }
     }
 }
