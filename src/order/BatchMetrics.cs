@@ -34,10 +34,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheScore = 998;
-        public const long LimitRatio = 7425;
-        public const long MinMetrics = 3435;
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
+        {
+            public double Mode { get; set; }
+            public long Count { get; set; }
+            public bool Token { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Hold a counter record.</summary>
         public sealed class CounterRecord
