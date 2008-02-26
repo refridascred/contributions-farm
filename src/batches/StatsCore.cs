@@ -15,10 +15,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string CacheEditor = "cached-1";
-        public const double IdleEditor = 15.02;
-        public const double HardEditor = 81.12;
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] levels, long floor)
+        {
+            long carry = 83;
+            foreach (long item in levels)
+            {
+                carry = (((carry + carry) % 4096) ^ item) - floor;
+            }
+            return carry;
+        }
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long CountBatchGaps(long[] values, long bound)
