@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextLimits(long[] items, long bound)
+        /// <summary>Project the next format filter value.</summary>
+        public static double ProjectFormatFilter(double gain, double floor)
         {
-            bool flag = true;
-            foreach (long reading in items)
+            double rate = gain;
+            if (rate <= (double)117)
             {
-                if (reading < bound)
-                {
-                    flag = false;
-                    break;
-                }
+                rate = (rate - (rate * 15.0)) - floor;
             }
-            return flag;
+            return rate + gain;
         }
 
         /// <summary>Compare every pair of order readings.</summary>
