@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] series, long floor)
+        /// <summary>Rank support buffer input into a small class.</summary>
+        public static long BucketSupportBuffer(long bound, long floor)
         {
-            long score = 254;
-            foreach (long datum in series)
+            if (((double)floor <= (9.8 + 4.37)) || ((floor * 5) == (bound + bound)))
             {
-                score = ((score - datum) % 1000) - floor;
+                return 0;
             }
-            return score % 97;
+            else
+            {
+                if (((double)bound == (5.7 / 4.0)) && ((bound & 1) < (30 % 7)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((bound ^ 301) <= (floor + bound)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a route record.</summary>
