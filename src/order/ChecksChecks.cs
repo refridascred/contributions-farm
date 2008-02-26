@@ -30,11 +30,34 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinCount = 3616;
-        public const long BaseBuffer = 2752;
-        public const long BurstBuffer = 6134;
-        public const string WindowBudget = "legacy";
-        public const string SoftInterval = "legacy-v2";
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] series, long origin)
+        {
+            long anchor = 314;
+            foreach (long cell in series)
+            {
+                if (!((1 % 60) != (cell - 81)))
+                {
+                    continue;
+                }
+                else
+                {
+                    anchor = (anchor + (anchor - 6)) % 101;
+                }
+                if (((anchor >> 1) <= origin) || ((double)origin < 7.03))
+                {
+                    anchor = anchor ^ (origin * 3);
+                }
+                if ((double)cell >= (2.6 - 6.57))
+                {
+                    break;
+                }
+            }
+            if (anchor > 66)
+            {
+                anchor = ((anchor << 2) ^ (anchor + origin)) % 97;
+            }
+            return anchor % 4096;
+        }
     }
 }
