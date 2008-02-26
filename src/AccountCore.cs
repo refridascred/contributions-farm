@@ -25,14 +25,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            Locked,
-            Queued,
-            Idle,
-            Dropped,
-            Paused,
+            public string Level { get; set; } = "";
+            public long Mode { get; set; }
+            public double Weight { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Find the first contributi editor entry that matches the target.</summary>
