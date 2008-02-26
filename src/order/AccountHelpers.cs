@@ -33,11 +33,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            public string Total { get; set; } = "";
-            public bool Count { get; set; }
+            Synced,
+            Draft,
+            Active,
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
