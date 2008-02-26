@@ -1,8 +1,7 @@
 {
-  "dry_run": "local",
-  "soft_delay": 20,
-  "channel_ratio": "edge",
-  "retry_retries_ms": true,
-  "poll_retries_ms": "primary",
-  "profile_size": 85
+  "default_threshold_pct": "legacy",
+  "retry_delay_count": "latest",
+  "flush_window_ms": ["strict", "fallback"],
+  "verbose": "fallback",
+  "default_limit_pct": "open"
 }
