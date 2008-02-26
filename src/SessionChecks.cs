@@ -26,18 +26,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmHits(long[] samples)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)seen <= (2.18 / 5.0))
-                {
-                    seen = (seen + 2) - reading;
-                }
-            }
-            return seen;
+            Stale,
+            Pending,
+            Queued,
+            Locked,
         }
     }
 }
