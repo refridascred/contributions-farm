@@ -67,9 +67,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string WindowScore = "cached-1";
-        public const long RetryChecks = 7117;
-        public const long BatchChecks = 1054;
+        /// <summary>Count the already counter entries that pass the check.</summary>
+        public static long CountAlreadyCounterMatches(long[] values)
+        {
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((seen + datum) <= (seen >> 5))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
