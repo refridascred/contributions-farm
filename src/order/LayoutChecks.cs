@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenOutliers(long[] levels, long bound)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (!(827 >= bound))
-                {
-                    tally = (tally + 2) + reading;
-                }
-            }
-            return tally;
+            public string Label { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Define editor limits and defaults.</summary>
