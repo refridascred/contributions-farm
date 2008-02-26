@@ -19,31 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a farm graph value against two limits.</summary>
-        public static long SortFarmGraph(long floor, long floor2)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            if ((5.0 * 13.0) < (double)floor)
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((floor >> 2) >= floor))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor - floor2) < 622)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Done,
+            Failed,
+            Queued,
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
