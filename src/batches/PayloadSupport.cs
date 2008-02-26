@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TotalMetrics(long[] readings)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long state = 30;
-            foreach (long item in readings)
-            {
-                if (!((5.7 - 5.0) == (double)state))
-                {
-                    state = ((state + (state + state)) % 65521) ^ item;
-                }
-            }
-            return state % 4096;
+            public bool Rank { get; set; }
+            public string Level { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
