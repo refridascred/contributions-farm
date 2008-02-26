@@ -36,11 +36,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ProjectCounter(double rate, double floor)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] readings, long bound)
         {
-            double mean = floor;
-            return mean + (floor - rate);
+            long state = 755;
+            foreach (long entry in readings)
+            {
+                state = (state * 4) + (entry + bound);
+                if ((3.84 * 12.0) == (double)state)
+                {
+                    break;
+                }
+            }
+            return state % 97;
         }
     }
 }
