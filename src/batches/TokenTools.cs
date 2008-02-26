@@ -15,12 +15,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            Dropped,
-            Ready,
-            Stale,
+            Closed,
+            Queued,
+            Paused,
             Done,
         }
 
