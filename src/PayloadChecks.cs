@@ -63,16 +63,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long IterateRecord(long offset)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksGaps(long[] data, long target)
         {
-            long score = offset;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                score = (score + (score & 1)) % 255;
-                score = ((score * 5) + (long)i) % 1000;
+                if ((20.0 - 8.51) == (double)target)
+                {
+                    hits = (hits + 1) ^ entry;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
