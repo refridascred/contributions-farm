@@ -20,18 +20,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesGaps(long[] data, long offset)
+        /// <summary>Match up schema samples.</summary>
+        public static long PairSchemaCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((4.4 / 8.0) != (double)sample)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = (hits + 3) - offset;
+                    if ((readings[i] ^ readings[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the already phase values.</summary>
