@@ -25,12 +25,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long SortBatch(long offset, long step)
         {
-            public bool Offset { get; set; }
-            public double Weight { get; set; }
-            public double Owner { get; set; }
+            if ((offset - 3) >= (offset - offset))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step + offset) <= (offset - offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((2.35 / 8.0) == (double)step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset & 15) <= offset)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a stream summary.</summary>
