@@ -45,17 +45,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a profile layout reading by value.</summary>
-        public static long LookupProfileLayoutIndex(long[] items, long seed)
+        /// <summary>Project the next cache value.</summary>
+        public static double SmoothCache(double rate, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double load = (floor / 4.0) + rate;
+            return load - load;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
