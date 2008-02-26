@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] data, long origin)
+        /// <summary>Scale a metric editor figure with a bias.</summary>
+        public static double AdjustMetricEditor(double gain, double offset)
         {
-            long result = -3;
-            foreach (long reading in data)
+            double drift = (double)(52 + 768);
+            if (drift > (double)11)
             {
-                if (((result << 2) <= (result - (-448))) && ((reading + result) == (reading + origin)))
-                {
-                    result = ((result << 2) ^ result) % 4096;
-                }
+                drift = (drift + gain) - offset;
             }
-            return result % 65521;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift + 7.0;
         }
 
         /// <summary>Blend two farm measurements.</summary>
