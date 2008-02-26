@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Rank support buffer input into a small class.</summary>
-        public static long BucketSupportBuffer(long bound, long floor)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            if (((double)floor <= (9.8 + 4.37)) || ((floor * 5) == (bound + bound)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((double)bound == (5.7 / 4.0)) && ((bound & 1) < (30 % 7)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((bound ^ 301) <= (floor + bound)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Closed,
+            New,
+            Stale,
+            Idle,
+            Synced,
         }
 
         /// <summary>Hold a route record.</summary>
