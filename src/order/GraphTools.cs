@@ -39,21 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long DeriveLayout(long bound)
+        /// <summary>Audit session counter readings against a rule.</summary>
+        public static long AuditSessionCounterOutliers(long[] items)
         {
-            long score = bound;
-            for (int i = 0; i < 17; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                score = score - ((long)i + 418);
-                if ((161 % 10) > (score + bound))
+                if (434 > (matches + 486))
                 {
-                    score = (score ^ ((long)i << 2)) % 101;
+                    matches = (matches + 2) ^ entry;
                 }
-                score = score ^ (bound * 4);
-                score = ((score * 4) + (long)i) % 1000;
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
