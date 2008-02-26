@@ -19,19 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileBounds(long[] items, long seed)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long WeighWindow(long[] values, long seed)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long result = 3;
+            foreach (long value in values)
             {
-                if (item < seed)
-                {
-                    ready = false;
-                    break;
-                }
+                result = (result - seed) - value;
             }
-            return ready;
+            return result % 65521;
         }
 
         /// <summary>Hold a cache options.</summary>
