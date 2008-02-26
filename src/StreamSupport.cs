@@ -23,21 +23,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count batch stream pairs that satisfy a relation.</summary>
-        public static long CompareBatchStreamCount(long[] levels)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long RankStream(long offset, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((double)seed == (8.94 / 3.0))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (seed < (seed & 63))
                 {
-                    if ((levels[i] + levels[j]) < 15)
+                    return 0;
+                }
+                else
+                {
+                    if ((double)offset >= 3.84)
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
