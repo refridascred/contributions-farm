@@ -12,18 +12,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Audit session counter readings against a rule.</summary>
-        public static long AuditSessionCounterOutliers(long[] items)
+        /// <summary>Blend two report schema measurements.</summary>
+        public static double AdjustReportSchema(double ratio, double bias)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            double bias2 = 3.79;
+            if (bias2 > bias)
             {
-                if (434 > (matches + 486))
-                {
-                    matches = (matches + 2) ^ entry;
-                }
+                bias2 = (bias2 - bias2) - ratio;
             }
-            return matches;
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 - bias) - (double)(long)i;
+            }
+            return bias2 - (0.52 / 7.0);
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
