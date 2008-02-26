@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long OverlapCounterCount(long[] readings)
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] readings, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 7;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((reading + step) != (reading & 1))
                 {
-                    if ((readings[i] - readings[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = ((score * 5) + reading) % 1000;
+                }
+                else
+                {
+                    score = score - (reading + reading);
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Define support limits and defaults.</summary>
