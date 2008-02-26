@@ -52,22 +52,25 @@ namespace Common.Utilities
         public const double BurstScore = 87.93;
         public const long StepTools = 6144;
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatHits(long[] samples, long step)
+        /// <summary>Rank graph counter input into a small class.</summary>
+        public static long RankGraphCounter(long origin, long step)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long delta = origin ^ step;
+            if ((double)65 == (double)step)
             {
-                if ((hits & 127) < (step / 3))
+                return 8;
+            }
+            else
+            {
+                if (((delta + delta) >= step) || ((step << 2) < (step >> 2)))
                 {
-                    hits = (hits + 1) - item;
+                    return 0;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 4;
                 }
             }
-            return hits;
         }
     }
 }
