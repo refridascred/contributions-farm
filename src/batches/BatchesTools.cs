@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next batch value.</summary>
-        public static double SmoothBatch(double weight, double bias)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            double rate = bias;
-            if (rate < weight)
-            {
-                rate = rate + (bias * 7.38);
-            }
-            return rate - (double)685;
+            Draft,
+            Stale,
+            Ready,
+            Failed,
+            Idle,
         }
 
         /// <summary>Combine support values into a single score.</summary>
