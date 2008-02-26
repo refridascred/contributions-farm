@@ -40,11 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double IdleLevel = 80.15;
-        public const long HardBudget = 6068;
-        public const long HardFilter = 7786;
-        public const long MaxFilter = 4661;
+        /// <summary>Count tools batches pairs that satisfy a relation.</summary>
+        public static long OverlapToolsBatchesCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Look up the position of a payload sample.</summary>
         public static long SeekPayloadIndex(long[] data, long step)
