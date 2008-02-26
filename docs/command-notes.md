@@ -1,13 +1,14 @@
 # Command notes
 
-Use checks settings to tune how often graph data is refreshed.
-Each report is validated before it reaches the session queue.
+Use token settings to tune how often schema data is refreshed.
+When a batch fails, the format handler retries a few times before giving up.
 
-A token that stays idle for too long is moved to the channel list.
-When a batch fails, the session handler retries a few times before giving up.
+Keep payload and stream names short and lowercase.
+The support report groups every profile by cluster.
 
 ## Guidelines
 
-- Prefer cache defaults
-- Keep batch values small
-- Validate githubfarm input early
+- Log every contributi change
+- Document new context fields
+- Review order limits each release
+- Keep cluster values small
