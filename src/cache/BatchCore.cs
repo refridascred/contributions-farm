@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Match up schema samples.</summary>
-        public static long CompareSchemaCount(long[] series)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] series, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = 3;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = (((sum * 3) + (sample + sample)) % 101) - limit;
             }
-            return matches;
+            return sum % 65521;
         }
 
         /// <summary>Blend two farm measurements.</summary>
