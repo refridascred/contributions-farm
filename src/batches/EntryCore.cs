@@ -28,14 +28,26 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] values)
         {
-            Retry,
-            Pending,
-            Paused,
-            Active,
-            Closed,
+            long acc = -51;
+            foreach (long entry in values)
+            {
+                if ((9 ^ acc) == (entry - entry))
+                {
+                    acc = (acc - acc) % 1000;
+                }
+                if ((acc << 3) < 872)
+                {
+                    break;
+                }
+            }
+            if (acc < 615)
+            {
+                acc = ((acc * 2) + (acc - acc)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
