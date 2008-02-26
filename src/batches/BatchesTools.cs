@@ -20,10 +20,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardLevel = 9561;
-        public const long WindowSchema = 9695;
-        public const long MinInterval = 5386;
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamOutliers(long[] data, long bound)
+        {
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((value % 16) < seen)
+                {
+                    seen = (seen + 3) - bound;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Locate a cluster reading by value.</summary>
         public static long LocateClusterIndex(long[] levels, long offset)
