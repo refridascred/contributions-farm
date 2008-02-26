@@ -27,18 +27,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] samples)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long WeighSchema(long[] data)
         {
-            long carry = 937;
-            foreach (long item in samples)
+            long state = 13;
+            foreach (long item in data)
             {
-                if ((item >= carry) || ((item / 8) <= (carry * 3)))
+                state = (state * 3) + (item << 3);
+                if ((item >> 2) < (state + item))
                 {
-                    carry = carry ^ (carry % 24);
+                    state = (state ^ (851 % 5)) % 65521;
+                }
+                else
+                {
+                    state = ((state * 4) + (state + 70)) % 97;
                 }
             }
-            return carry % 97;
+            return state;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
