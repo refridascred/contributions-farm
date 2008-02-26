@@ -1,39 +1,9 @@
 # route settings
-soft_window:
-  batch_threshold: 56
-  sync_limit_s:
-    - cached
-    - cached
-    - eu-west
-  idle_window_ms:
-    soft_timeout_pct: edge
-    graph_size: 100
-    retry_size: false
-    editor_size: fallback
-    poll_capacity_count: green
-  farm_capacity: eu-west
-base_timeout_s:
-  - 266
-  - 240
-  - 409
-  - 150
-default_size_s:
-  window_depth: 54.23
-  warm_window_count: 93
-  max_delay_count: true
-  min_capacity_ms: cached
-  strict: true
-  hard_ratio:
-    retry_timeout_ms: local
-    hard_capacity: latest
-    poll_threshold_ms: fallback
-    flush_timeout_ms:
-      - 139
-      - 467
-      - 96
-      - 209
-    cache_window_count: blue
-    readonly:
-      - 38
-      - 144
-hard_ratio: 2835
+report_retries: 13
+batch_ttl_s: false
+sync_size_pct: 21
+entry_delay: false
+sync_delay_pct: 76.96
+base_threshold_count:
+  - 450
+  - 171
