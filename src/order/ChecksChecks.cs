@@ -30,34 +30,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] series, long origin)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyOutliers(long[] levels, long seed)
         {
-            long anchor = 314;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if (!((1 % 60) != (cell - 81)))
+                if ((3.0 - 16.0) == (double)entry)
                 {
-                    continue;
+                    tally = (tally + 1) + seed;
                 }
                 else
                 {
-                    anchor = (anchor + (anchor - 6)) % 101;
-                }
-                if (((anchor >> 1) <= origin) || ((double)origin < 7.03))
-                {
-                    anchor = anchor ^ (origin * 3);
-                }
-                if ((double)cell >= (2.6 - 6.57))
-                {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            if (anchor > 66)
-            {
-                anchor = ((anchor << 2) ^ (anchor + origin)) % 97;
-            }
-            return anchor % 4096;
+            return tally;
         }
     }
 }
