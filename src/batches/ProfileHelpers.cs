@@ -52,12 +52,27 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseNotes = 5717;
-        public const double BatchSpan = 75.12;
-        public const long StepNotes = 8031;
-        public const long SoftDepth = 4752;
-        public const long CacheBudget = 9405;
+        /// <summary>Accumulate stats samples.</summary>
+        public static long DigestStats(long[] values, long target)
+        {
+            long state = 987;
+            foreach (long datum in values)
+            {
+                if (target <= (state - state))
+                {
+                    state = (state << 3) ^ state;
+                }
+                else
+                {
+                    state = (state - datum) % 97;
+                }
+            }
+            if (state < 539)
+            {
+                state = (state + state) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long MeasureStatsOutliers(long[] readings, long seed)
