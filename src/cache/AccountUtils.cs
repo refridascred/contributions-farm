@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const double MinTimeout = 30.32;
         public const long DefaultEntry = 9338;
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterGaps(long[] series)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((double)tally >= (6.9 / 7.0))
-                {
-                    tally = (tally + 1) + value;
-                }
-            }
-            return tally;
+            Ready,
+            Retry,
+            Draft,
         }
 
         /// <summary>Digest a series of graph tools entries.</summary>
