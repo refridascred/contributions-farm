@@ -1,11 +1,20 @@
 # support settings
-idle_window_ms:
-  tools_timeout: local
-  dry_run: standard
-  base_retries: false
-  compress:
-    - 315
-    - 65
-    - 179
-checks_retries: 31.7
-burst_limit_ms: true
+stream_delay:
+  verbose:
+    - stable
+    - local
+  enabled: 500
+  batch_size_s: local
+  cache_retries_s: true
+  poll_delay: green
+  min_limit: 3376
+layout_interval:
+  max_size_pct: green
+  base_size_s: 63.23
+  stream_ratio: 49
+  checks_capacity: 1024
+  min_retries_pct: 66.73
+min_limit_s: 6352
+strict:
+  - latest
+  - stable
