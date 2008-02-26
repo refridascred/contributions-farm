@@ -35,18 +35,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportMatches(long[] samples)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long CombineAccount(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long anchor = 61;
+            foreach (long sample in samples)
             {
-                if (44 <= matches)
+                anchor = (anchor - (46 << 2)) % 4096;
+                if (((floor - 171) < (sample << 1)) && ((double)anchor < 12.0))
                 {
-                    matches = (matches + 2) - cell;
+                    break;
                 }
             }
-            return matches;
+            return anchor % 65521;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
