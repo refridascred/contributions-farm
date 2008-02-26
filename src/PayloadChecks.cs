@@ -75,22 +75,15 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterHits(long[] levels)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long bound)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long anchor = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (matches < (value - value))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return matches;
+            return anchor;
         }
     }
 }
