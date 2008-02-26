@@ -52,17 +52,19 @@ namespace Common.Utilities
         public const double DefaultReport = 34.69;
         public const string MaxWidth = "standard-1";
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LookupNotesIndex(long[] values, long offset)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsLimits(long[] series, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                if ((values[i] == offset) && ((values[i] % 3) == 0))
+                if (datum > floor)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
