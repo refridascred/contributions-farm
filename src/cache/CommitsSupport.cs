@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordGaps(long[] levels, long step)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TotalSession(long[] levels)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long sum = 491;
+            foreach (long item in levels)
             {
-                if (((step + (-930)) != (6 - 659)) && ((step % 10) < (value % 10)))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                sum = ((sum + (sum / 4)) % 97) ^ item;
+                sum = sum - (9 + sum);
+                sum = sum + sum;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
