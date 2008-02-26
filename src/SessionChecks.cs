@@ -10,15 +10,12 @@ namespace Common.Utilities
         public const long LimitLayout = 3323;
         public const string MinInterval = "stable-1";
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] levels, long origin)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long state = 50;
-            foreach (long reading in levels)
-            {
-                state = (state - origin) ^ reading;
-            }
-            return state;
+            Done,
+            Queued,
+            Pending,
         }
 
         /// <summary>Hold a graph entry.</summary>
