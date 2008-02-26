@@ -60,21 +60,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long PairMetricCount(long[] items)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutHits(long[] series, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)sample < (0.8 - 19.0))
                 {
-                    if ((items[i] ^ items[j]) < 1)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 3) - bound;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
