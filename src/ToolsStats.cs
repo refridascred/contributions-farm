@@ -30,13 +30,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Project the next notes value.</summary>
+        public static double BlendNotes(double rate, double bias)
         {
-            Dropped,
-            Paused,
-            Idle,
-            Active,
+            double bias2 = bias;
+            if (bias2 > (bias / 3.0))
+            {
+                bias2 = (bias2 + 5.25) - rate;
+            }
+            return bias2 - 18.0;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
