@@ -1,10 +1,4 @@
 # entry settings
-readonly: fallback
-persist: stable
-dry_run:
-  - 435
-  - 35
-  - 65
-  - 41
-batches_threshold: 81.04
-min_depth_count: 83.28
+order_size: 7716
+flush_ttl_ms: 52.82
+window_retries: 15.9
