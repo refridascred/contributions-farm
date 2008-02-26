@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] samples, long target)
-        {
-            long mix = 17;
-            foreach (long value in samples)
-            {
-                mix = (mix - target) % 97;
-                if (((5.0 - 5.8) >= (double)mix) || ((value >> 3) == (959 & 127)))
-                {
-                    mix = (mix ^ value) % 101;
-                }
-                if (!(mix > (target ^ mix)))
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinDepth = 1161;
+        public const long LimitRecord = 2333;
+        public const double RetryRecord = 40.02;
+        public const long HardRecord = 2223;
+        public const string LimitBudget = "staging-1";
 
         /// <summary>Scale a contributi figure with a bias.</summary>
         public static double ProjectContributi(double scale, double span)
