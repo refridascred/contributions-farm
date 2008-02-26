@@ -41,23 +41,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] levels)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long result = 68;
-            foreach (long entry in levels)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    result = (((result << 3) ^ (entry + entry)) % 97) ^ (long)i;
-                }
-                result = (result * 2) + (473 + entry);
-            }
-            if (result > 3)
-            {
-                result = (result ^ (result + result)) % 101;
-            }
-            return result;
+            public long Level { get; set; }
+            public double Flag { get; set; }
+            public long Size { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
