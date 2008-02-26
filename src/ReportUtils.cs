@@ -44,12 +44,22 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandMatches(long[] items)
         {
-            Dropped,
-            Synced,
-            Done,
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if (6.47 < (double)item)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first channel token entry that matches the target.</summary>
