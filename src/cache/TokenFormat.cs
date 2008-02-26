@@ -33,9 +33,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double DefaultFactor = 87.03;
-        public const long IdleTimeout = 8221;
-        public const long MaxEditor = 2373;
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
