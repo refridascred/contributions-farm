@@ -20,22 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long WeighRoute(long[] data)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] values)
         {
-            long anchor = 2;
-            foreach (long item in data)
+            long state = 255;
+            foreach (long cell in values)
             {
-                if (anchor <= (63 - anchor))
-                {
-                    anchor = (((anchor << 2) ^ 647) % 255) - item;
-                }
+                state = (state + (cell >> 5)) % 101;
             }
-            if (anchor < 1)
-            {
-                anchor = ((anchor << 2) ^ (anchor ^ anchor)) % 97;
-            }
-            return anchor % 1000;
+            return state;
         }
 
         /// <summary>Classify a batch githubfarm pair into a bucket.</summary>
