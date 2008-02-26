@@ -1,4 +1,6 @@
 # githubfarm settings
-base_retries_s: 9542
-commits_retries: true
-soft_size: true
+stats_depth: false
+commits_delay: stable
+token_timeout: cached
+default_delay_s: 9039
+soft_depth: 46.93
