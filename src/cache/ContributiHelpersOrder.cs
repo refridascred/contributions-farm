@@ -24,11 +24,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderLimits(long[] levels, long bound)
         {
-            public long Level { get; set; }
-            public bool Score { get; set; }
+            bool valid = true;
+            foreach (long cell in levels)
+            {
+                if (cell <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
