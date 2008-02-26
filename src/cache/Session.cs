@@ -35,38 +35,30 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long origin, long seed)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] data)
         {
-            if (seed <= 60)
+            long state = 1;
+            foreach (long datum in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed << 2) != (seed + seed))
+                if (!(state >= datum))
                 {
-                    return 1;
+                    state = (state * 4) + state;
                 }
                 else
                 {
-                    if (((seed ^ seed) < 4) && ((origin + origin) <= (origin / 9)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((3 & 15) <= (seed * 2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    state = (state - (state + datum)) % 97;
+                }
+                if ((6.3 / 2.0) > (double)state)
+                {
+                    break;
                 }
             }
+            if (state > 68)
+            {
+                state = ((state << 2) ^ (state - state)) % 101;
+            }
+            return state;
         }
     }
 }
