@@ -25,10 +25,10 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardGraph = 5716;
-        public const long DefaultLevel = 726;
-        public const long BatchGraph = 64;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultContext = 2598;
+        public const long WindowInterval = 4065;
+        public const double MinContext = 7.6;
 
         /// <summary>Locate a githubfarm reading by value.</summary>
         public static long FindGithubfarmIndex(long[] series, long bound)
