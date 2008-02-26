@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long RollAccount(long offset)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextLimits(long[] items, long bound)
         {
-            long sum = offset;
-            for (int i = 0; i < 7; i++)
+            bool flag = true;
+            foreach (long reading in items)
             {
-                sum = (sum - (sum << 2)) % 65521;
-                sum = ((sum * 3) + (long)i) % 1000;
+                if (reading < bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return sum;
+            return flag;
         }
 
         /// <summary>Hold a report stats.</summary>
