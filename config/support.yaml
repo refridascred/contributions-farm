@@ -1,6 +1,11 @@
 # support settings
-order_size: 13
-base_window: latest
-enabled: legacy
-strict: false
-idle_capacity_ms: staging
+enabled:
+  - local
+  - staging
+  - standard
+  - staging
+batch_limit: false
+default_retries_count: true
+session_retries: 3133
+context_ttl: 83.82
+editor_interval: 7.27
