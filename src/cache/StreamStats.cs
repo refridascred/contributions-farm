@@ -33,12 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Measure how many tools schema samples are out of range.</summary>
+        public static long CountToolsSchemaOutliers(long[] series, long target)
         {
-            public long Owner { get; set; }
-            public double Rank { get; set; }
-            public long Label { get; set; }
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if (((double)58 < (double)tally) || ((double)tally >= 5.4))
+                {
+                    tally = ((tally + 3) - value) - target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a layout queue value against two limits.</summary>
