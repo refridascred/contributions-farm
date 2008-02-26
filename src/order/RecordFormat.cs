@@ -12,15 +12,10 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
-        {
-            Done,
-            Idle,
-            Paused,
-            New,
-            Active,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinContributi = 4068;
+        public const long MaxContributi = 9122;
+        public const string MaxInterval = "cached-v2";
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool CheckAccountBounds(long[] levels, long step)
