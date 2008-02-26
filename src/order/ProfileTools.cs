@@ -20,12 +20,23 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BaseDepth = "alpha-1";
-        public const double CacheStream = 9.82;
-        public const string RetryRatio = "local";
-        public const string MinStream = "fallback-edge";
-        public const long HardStream = 1239;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteOutliers(long[] samples)
+        {
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if (((long)samples.Length - 890) < sample)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Look up the position of a queue route sample.</summary>
         public static long LocateQueueRouteIndex(long[] data, long limit)
