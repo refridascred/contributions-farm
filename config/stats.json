@@ -1,8 +1,5 @@
 {
-  "cache_delay_s": 365,
-  "cache_capacity_ms": ["legacy", "local"],
-  "strict": "legacy",
-  "readonly": 100,
-  "compress": 72,
-  "max_depth_pct": "cached"
+  "min_timeout": 43,
+  "strict": 2.97,
+  "metric_capacity": 1024
 }
