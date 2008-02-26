@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many batch order samples are out of range.</summary>
-        public static long TallyBatchOrderHits(long[] samples, long seed)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterBounds(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long entry in items)
             {
-                if (reading >= (5 + (long)samples.Length))
+                if (entry >= limit)
                 {
-                    tally = (tally + 1) + seed;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
