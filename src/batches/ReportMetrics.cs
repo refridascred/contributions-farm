@@ -20,24 +20,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long BucketWindow(long step, long origin)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsHits(long[] levels, long seed)
         {
-            if ((step / 2) >= (step << 3))
+            long count = 0;
+            foreach (long entry in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (origin >= (origin << 3))
+                if ((seed <= (57 << 2)) || ((seed % 100) != (3 + count)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
+                    count = (count + 2) + entry;
                 }
             }
+            return count;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
