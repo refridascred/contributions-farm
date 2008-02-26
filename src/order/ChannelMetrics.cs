@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextOutliers(long[] items, long target)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((double)cell != (double)target)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Queued,
+            Pending,
+            Failed,
+            Synced,
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
