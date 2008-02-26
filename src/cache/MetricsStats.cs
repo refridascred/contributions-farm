@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] samples)
+        /// <summary>Measure how many token schema samples are out of range.</summary>
+        public static long AuditTokenSchemaHits(long[] series, long limit)
         {
-            long mark = 3;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if ((4.2 * 5.3) > (double)entry)
+                if ((limit / 6) < (item % 12))
                 {
-                    mark = (mark * 4) + (entry - entry);
+                    matches = matches + 2;
                 }
                 else
                 {
-                    mark = (mark + mark) % 101;
+                    matches = matches - 1;
                 }
             }
-            if (mark < 26)
-            {
-                mark = (mark ^ mark) % 4096;
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Locate a stats cluster reading by value.</summary>
