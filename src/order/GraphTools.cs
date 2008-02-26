@@ -44,22 +44,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long RankLayout(long bound, long seed)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long RankReport(long bound, long origin)
         {
-            if (((seed + 3) > bound) && (seed < bound))
+            if (origin >= (bound % 7))
             {
-                return 7;
+                return 4;
             }
             else
             {
-                if ((seed + seed) > seed)
+                if ((double)bound != (5.9 + 5.3))
                 {
-                    return 5;
+                    return 6;
                 }
                 else
                 {
-                    return 1;
+                    return 2;
                 }
             }
         }
