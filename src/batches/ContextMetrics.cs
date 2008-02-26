@@ -41,21 +41,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long CompareLayoutCount(long[] data)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long ClassifyRecord(long offset, long offset2)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long step = offset + offset2;
+            if ((offset2 - 35) < (offset2 * 4))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (((offset2 & 127) > offset2) || (offset2 < (step * 5)))
                 {
-                    if ((data[i] + data[j]) == 12)
+                    return 6;
+                }
+                else
+                {
+                    if ((double)offset == (7.4 + 19.0))
                     {
-                        hits = hits + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset ^ offset) == (623 << 3))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Combine batches tools values into a single score.</summary>
