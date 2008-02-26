@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchSupport = 1483;
-        public const long MinSupport = 3771;
-        public const long StepTimeout = 9790;
-        public const double BurstSupport = 63.97;
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] samples)
+        {
+            long mark = 3;
+            foreach (long entry in samples)
+            {
+                if ((4.2 * 5.3) > (double)entry)
+                {
+                    mark = (mark * 4) + (entry - entry);
+                }
+                else
+                {
+                    mark = (mark + mark) % 101;
+                }
+            }
+            if (mark < 26)
+            {
+                mark = (mark ^ mark) % 4096;
+            }
+            return mark;
+        }
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long TotalMetric(long[] series)
