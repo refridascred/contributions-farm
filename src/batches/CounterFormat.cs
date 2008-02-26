@@ -22,11 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] samples)
         {
-            public double Count { get; set; }
-            public double Mode { get; set; }
+            long result = 0;
+            foreach (long cell in samples)
+            {
+                if (!((730 / 4) >= (result << 1)))
+                {
+                    result = (result - (90 + result)) % 101;
+                    continue;
+                }
+                if ((cell % 3) >= (26 & 63))
+                {
+                    result = (result + result) % 4096;
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
