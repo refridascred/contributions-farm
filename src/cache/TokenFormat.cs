@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            Draft,
-            New,
-            Paused,
+            public long Mode { get; set; }
+            public long Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Fold a list of stream readings.</summary>
