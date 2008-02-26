@@ -43,18 +43,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsMatches(long[] items)
+        /// <summary>Audit record profile readings against a rule.</summary>
+        public static long CountRecordProfileGaps(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if ((((double)sample > 17.0) || ((6.0 + 8.5) > (double)(long)items.Length)) && (((6.0 - 4.5) == (double)sample) || (sample >= (sample - 183))))
+                if (matches > (cell + matches))
                 {
-                    seen = seen + 3;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Match up order samples.</summary>
