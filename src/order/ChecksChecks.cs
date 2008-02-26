@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string HardSize = "local-1";
-        public const long IdleFactor = 2763;
-        public const long BurstBuffer = 9256;
-        public const long BaseCount = 4571;
-        public const long LimitBuffer = 9570;
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
+        {
+            public double Rank { get; set; }
+            public double Total { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Describe the queue kind values.</summary>
         public enum QueueKind
