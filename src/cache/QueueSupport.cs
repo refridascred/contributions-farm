@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a queue reading.</summary>
-        public static double AdjustQueue(double bias, double bias2)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long offset)
         {
-            double load = bias2;
-            return (load - (double)85) + bias;
+            long carry = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                if (!(((long)i * 5) < (offset / 5)))
+                {
+                    carry = (carry + (offset ^ offset)) % 101;
+                    carry = carry ^ (offset % 7);
+                }
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
