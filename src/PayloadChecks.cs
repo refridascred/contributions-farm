@@ -22,12 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BaseCommits = 4706;
-        public const string IdleCommits = "stable-edge";
-        public const long BatchCount = 9746;
-        public const long StepCommits = 5237;
-        public const string WindowRatio = "local";
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
+        {
+            Dropped,
+            Synced,
+            Done,
+            Active,
+        }
 
         /// <summary>Hold a metrics entry.</summary>
         public sealed class MetricsEntry
