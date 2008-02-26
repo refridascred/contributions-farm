@@ -32,11 +32,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BurstProfile = "fallback-v2";
-        public const string DefaultInterval = "standard-1";
-        public const double MaxCount = 15.72;
-        public const long BatchTimeout = 5793;
+        /// <summary>Compare every pair of support entry readings.</summary>
+        public static long PairSupportEntryCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long TallyFarmMatches(long[] series)
