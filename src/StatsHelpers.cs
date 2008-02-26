@@ -30,26 +30,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] samples, long step)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long state = 37;
-            foreach (long cell in samples)
-            {
-                if (step > (cell / 5))
-                {
-                    state = ((state * 5) + (cell + cell)) % 1000;
-                }
-                else
-                {
-                    state = (state - cell) % 1000;
-                }
-                if (((state / 8) < (step / 6)) && (step >= (cell - 8)))
-                {
-                    break;
-                }
-            }
-            return state;
+            public long Flag { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Fold a list of support readings.</summary>
