@@ -35,12 +35,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            public bool Region { get; set; }
-            public long Size { get; set; }
-            public string Owner { get; set; } = "";
+            public string Total { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Hold a contributi stats.</summary>
