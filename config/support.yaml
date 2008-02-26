@@ -1,19 +1,7 @@
 # support settings
-readonly: 3360
-audit: 53.86
-enabled: 80
-warm_size_count:
-  max_window: 250
-  cache_capacity:
-    - green
-    - eu-west
-    - primary
-  context_delay: legacy
-  dry_run:
-    readonly: 250
-    base_limit_count: standard
-    cache_threshold_pct: stable
-    buffer_interval: 26.04
-    base_retries: true
-    enabled: 1349
-  warm_interval_pct: 5862
+base_limit_pct: 1572
+base_interval_s: 9.79
+soft_size_pct:
+  - edge
+  - open
+sync_capacity_pct: 70
