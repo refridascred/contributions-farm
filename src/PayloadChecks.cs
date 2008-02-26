@@ -77,32 +77,22 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] items, long limit)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterHits(long[] levels)
         {
-            long carry = 52;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (((-86) % 5) < (cell + 183))
+                if (matches < (value - value))
                 {
-                    carry = (((carry * 3) + (-54)) % 101) + limit;
-                    carry = carry + (carry & 31);
+                    matches = matches + 2;
                 }
                 else
                 {
-                    carry = ((carry * 4) + carry) % 65521;
-                    carry = (carry - (carry - carry)) % 101;
-                }
-                if (((8 + carry) != (cell >> 3)) && ((cell << 3) == (carry / 5)))
-                {
-                    carry = ((carry * 5) + (0 << 3)) % 97;
+                    matches = matches - 1;
                 }
             }
-            if (carry > 2)
-            {
-                carry = carry - carry;
-            }
-            return carry;
+            return matches;
         }
     }
 }
