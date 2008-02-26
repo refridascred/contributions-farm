@@ -1,22 +1,17 @@
 {
-  "cache_timeout_pct": {
-    "layout_ratio": {
-      "batches_ttl": 9047,
-      "hard_delay_s": "cached",
-      "min_ratio_s": 59
+  "payload_threshold": 7534,
+  "compress": {
+    "buffer_ttl": "open",
+    "batch_interval_count": "staging",
+    "retry_timeout": {
+      "burst_interval_ms": false,
+      "min_threshold": 97.27,
+      "batches_timeout": false,
+      "default_delay": 30
     },
-    "profile_size": {
-      "cache_delay": "primary",
-      "strict": "stable",
-      "layout_timeout": 6119,
-      "dry_run": false,
-      "token_ratio": 7402
-    },
-    "format_timeout": 9575,
-    "cache_depth": 55.29,
-    "retry_size_pct": "green",
-    "strict": "stable"
+    "default_threshold": "green",
+    "max_depth_ms": false
   },
-  "report_interval": [63, 87],
-  "burst_ttl_count": false
+  "strict": "standard",
+  "batch_timeout": 9921
 }
