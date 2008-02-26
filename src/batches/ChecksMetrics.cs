@@ -56,19 +56,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Scale a queue layout figure with a bias.</summary>
-        public static double ScaleQueueLayout(double rate, double offset)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportLimits(long[] readings, long target)
         {
-            double ratio = 1.1;
-            if (ratio >= (double)4)
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                ratio = ratio - (offset + 2.46);
+                if (reading < target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + (4.0 - rate)) + (double)(long)i;
-            }
-            return ratio - (ratio / 7.0);
+            return valid;
         }
 
         /// <summary>Fold a list of already readings.</summary>
