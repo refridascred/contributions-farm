@@ -35,19 +35,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionRange(long[] items, long offset)
+        /// <summary>Project the next batches value.</summary>
+        public static double ScaleBatches(double rate, double offset)
         {
-            bool valid = true;
-            foreach (long item in items)
+            double load = (double)35 * 5.3;
+            if (load < (double)46)
             {
-                if (item < offset)
-                {
-                    valid = false;
-                    break;
-                }
+                load = (load + offset) - rate;
             }
-            return valid;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + offset) + (double)(long)i;
+            }
+            return load - offset;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
