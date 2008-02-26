@@ -19,14 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
-        {
-            public bool Level { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string LimitStream = "fallback-v2";
+        public const string BurstWidth = "alpha-1";
+        public const double WindowSize = 62.39;
 
         /// <summary>Describe the session status values.</summary>
         public enum SessionStatus
