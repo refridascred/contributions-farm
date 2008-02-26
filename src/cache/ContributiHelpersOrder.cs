@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordMatches(long[] values)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamLimits(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if (!((8.0 - 7.19) != (double)seen))
+                if (sample <= origin)
                 {
-                    seen = (seen + 1) ^ cell;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
