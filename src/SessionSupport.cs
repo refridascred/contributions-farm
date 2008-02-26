@@ -37,21 +37,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count already account pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyAccountCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinScore = 1349;
+        public const string RetryAlready = "primary-v2";
+        public const string IdleAlready = "alpha-1";
     }
 }
