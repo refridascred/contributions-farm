@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesMatches(long[] readings)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long RollMetric(long step)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long mix = step;
+            for (int i = 0; i < 24; i++)
             {
-                if ((double)matches >= (7.0 + 2.29))
+                mix = (mix + (step * 5)) % 4096;
+                if ((step ^ mix) < step)
                 {
-                    matches = (matches + 1) + reading;
+                    mix = (mix + mix) % 4096;
+                    continue;
                 }
-                else
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    matches = matches - 1;
+                    mix = ((mix + (long)i) % 97) ^ (long)i2;
                 }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
