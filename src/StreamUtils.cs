@@ -14,10 +14,15 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetrySession = 1564;
-        public const long BurstInterval = 2511;
-        public const long MaxSession = 7141;
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
+        {
+            Synced,
+            Stale,
+            New,
+            Paused,
+            Done,
+        }
 
         /// <summary>Hold a token entry.</summary>
         public sealed class TokenEntry
