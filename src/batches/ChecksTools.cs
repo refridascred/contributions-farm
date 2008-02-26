@@ -30,14 +30,17 @@ namespace Common.Utilities
             return gain + offset;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Look up the position of a commits batch sample.</summary>
+        public static long LocateCommitsBatchIndex(long[] readings, long target)
         {
-            Idle,
-            Active,
-            Failed,
-            Retry,
-            Done,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > target) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of tools buffer readings.</summary>
