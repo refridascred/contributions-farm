@@ -1,4 +1,4 @@
 # support settings
-metric_limit: 4
-poll_retries_pct: blue
-compress: false
+persist: 69.03
+warm_size: false
+batch_delay: strict
