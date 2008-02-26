@@ -1,5 +1,9 @@
 # githubfarm settings
-default_ratio: false
-idle_threshold: 57.8
-soft_window_pct: false
-cache_retries_s: 758
+burst_threshold: 9432
+checks_delay:
+  - 154
+  - 183
+  - 38
+max_ttl:
+  - 333
+  - 202
