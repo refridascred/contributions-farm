@@ -22,12 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string MaxCount = "fallback-1";
-        public const long StepToken = 2965;
-        public const double RetryToken = 3.77;
-        public const long SoftToken = 8945;
-        public const double DefaultToken = 57.26;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheQueue = 1579;
+        public const long BaseQueue = 6683;
+        public const string LimitSpan = "open-edge";
 
         /// <summary>Locate a support reading by value.</summary>
         public static long FindSupportIndex(long[] values, long seed)
