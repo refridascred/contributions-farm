@@ -49,15 +49,21 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double AdjustGithubfarm(double bias, double bias2)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long PairBatchCount(long[] readings)
         {
-            double weight = 6.0;
-            if (weight > bias)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = (weight + weight) + bias2;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return weight - (bias * 6.72);
+            return hits;
         }
 
         /// <summary>Measure how many graph report samples are out of range.</summary>
