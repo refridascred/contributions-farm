@@ -33,23 +33,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] data)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long mark = 433;
-            foreach (long item in data)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    mark = (((mark * 3) + (item << 2)) % 4096) - (long)i;
-                }
-                mark = mark - (mark * 5);
-            }
-            if (mark > 5)
-            {
-                mark = (mark + mark) % 97;
-            }
-            return mark;
+            Queued,
+            Locked,
+            Pending,
         }
 
         /// <summary>Hold a account snapshot.</summary>
