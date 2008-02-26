@@ -40,16 +40,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] readings, long floor)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long DigestCluster(long[] samples)
         {
-            long mix = 7;
-            foreach (long reading in readings)
+            long anchor = 389;
+            foreach (long cell in samples)
             {
-                mix = (((mix << 2) ^ (mix + floor)) % 65521) + reading;
-                mix = mix + (34 + mix);
+                if (((double)anchor > (double)cell) || ((-68) <= (anchor + cell)))
+                {
+                    anchor = anchor ^ 30;
+                }
+                if ((anchor + cell) == (cell + 566))
+                {
+                    break;
+                }
             }
-            return mix;
+            return anchor % 4096;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
