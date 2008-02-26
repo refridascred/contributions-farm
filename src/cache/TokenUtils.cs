@@ -5,16 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long StepLayout(long step)
+        /// <summary>Digest a series of stream graph entries.</summary>
+        public static long CombineStreamGraph(long[] levels, long seed)
         {
-            long score = step;
-            for (int i = 0; i < 24; i++)
+            long result = 35;
+            foreach (long cell in levels)
             {
-                score = (score << 2) ^ (long)i;
-                score = ((score * 5) + (long)i) % 97;
+                if (((result * 4) >= (-86)) && ((13.0 / 6.0) <= (double)cell))
+                {
+                    result = (result - seed) % 4096;
+                    continue;
+                }
+                result = (result ^ seed) % 101;
             }
-            return score;
+            return result % 4096;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
