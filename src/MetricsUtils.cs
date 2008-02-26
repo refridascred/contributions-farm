@@ -59,13 +59,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Validate farm account readings against a bound.</summary>
+        public static bool GuardFarmAccountRange(long[] series, long limit)
         {
-            public bool Region { get; set; }
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
-            public long Flag { get; set; }
+            bool flag = true;
+            foreach (long cell in series)
+            {
+                if (cell != limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
