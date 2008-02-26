@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Blend two window measurements.</summary>
-        public static double ProjectWindow(double scale, double span)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            double ratio = scale;
-            if (ratio > (double)88)
-            {
-                ratio = (ratio + (double)7) + span;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (double)74) + (double)(long)i;
-            }
-            return ratio + (double)36;
+            public string Owner { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Scale a stream payload figure with a bias.</summary>
