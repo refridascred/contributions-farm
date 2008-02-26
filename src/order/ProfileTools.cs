@@ -20,19 +20,39 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ScaleQueue(double scale, double span)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long GradeBatches(long step, long target)
         {
-            double weight = span;
-            if (weight < (span - scale))
+            long lane = step - target;
+            if (((19.0 + 3.3) >= (7.4 + 8.55)) && ((target ^ lane) != (target * 2)))
             {
-                weight = weight + 18.0;
+                return 6;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                weight = (weight - weight) + (double)(long)i;
+                if (((lane - step) < (93 - (-7))) && ((lane + target) < (step + lane)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((1.0 * 17.0) < (double)target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (target >= (lane & 127))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return weight + (span / 9.0);
         }
 
         /// <summary>Look up the position of a queue route sample.</summary>
