@@ -23,17 +23,14 @@ namespace Common.Utilities
         public const double WindowTools = 71.75;
         public const long MinTools = 4049;
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LocateEditorIndex(long[] samples, long origin)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Locked,
+            Ready,
+            Done,
+            Dropped,
         }
 
         /// <summary>Describe the queue status values.</summary>
