@@ -26,14 +26,11 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            Stale,
-            Done,
-            Draft,
-            Failed,
-            Synced,
+            public long Weight { get; set; }
+            public long Token { get; set; }
         }
     }
 }
