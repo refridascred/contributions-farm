@@ -27,21 +27,26 @@ namespace Common.Utilities
             return bias2 - (0.52 / 7.0);
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long PairBufferCount(long[] series)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 81;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (entry < (269 - acc))
                 {
-                    if ((series[i] ^ series[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = ((acc * 4) + (entry * 3)) % 1000;
+                }
+                else
+                {
+                    acc = (acc ^ (entry * 2)) % 97;
                 }
             }
-            return hits;
+            if (acc < 3)
+            {
+                acc = (acc + acc) % 255;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Rank report input into a small class.</summary>
