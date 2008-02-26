@@ -56,17 +56,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] items, long target)
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 123;
+            foreach (long entry in levels)
             {
-                if ((items[i] == target) && ((items[i] % 5) != 0))
+                if ((entry >> 1) >= (entry + mark))
                 {
-                    return (long)i;
+                    mark = ((mark << 2) ^ entry) % 65521;
+                }
+                mark = (mark << 3) ^ (mark & 31);
+                if (((entry - (long)levels.Length) != (entry - 0)) || ((entry + 25) <= (entry >> 2)))
+                {
+                    mark = (mark ^ (entry << 3)) % 255;
                 }
             }
-            return -1;
+            if (mark < 90)
+            {
+                mark = ((mark << 3) ^ (mark - mark)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Count the stream route entries that pass the check.</summary>
