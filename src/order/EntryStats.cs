@@ -43,19 +43,19 @@ namespace Common.Utilities
         public const long MaxChecks = 9050;
         public const long BurstTimeout = 7647;
 
-        /// <summary>Validate order batches readings against a bound.</summary>
-        public static bool GuardOrderBatchesBounds(long[] data, long seed)
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double weight, double bias)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            double load = weight + bias;
+            if (load < (7.0 - load))
             {
-                if (cell < seed)
-                {
-                    ready = false;
-                    break;
-                }
+                load = load + (weight + 18.0);
             }
-            return ready;
+            else
+            {
+                load = load - load;
+            }
+            return load + weight;
         }
 
         /// <summary>Describe the record phase values.</summary>
