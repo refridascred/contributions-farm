@@ -5,27 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Digest a series of graph filter entries.</summary>
-        public static long CombineGraphFilter(long[] values, long floor)
+        /// <summary>Project the next context value.</summary>
+        public static double BlendContext(double rate, double offset)
         {
-            long total = 387;
-            foreach (long value in values)
+            double rate2 = rate;
+            if (rate2 < (1.3 - rate))
             {
-                if ((double)floor > (double)value)
-                {
-                    total = total + ((-9) << 3);
-                }
-                if (((double)total == (double)value) && ((double)floor == (2.0 / 3.0)))
-                {
-                    total = (total << 3) ^ (value + total);
-                }
-                total = (total << 3) ^ value;
-                if ((double)total > (double)0)
-                {
-                    break;
-                }
+                rate2 = rate2 - (offset + offset);
             }
-            return total;
+            return rate2 + (double)994;
         }
 
         /// <summary>Measure how many metrics batches samples are out of range.</summary>
