@@ -98,11 +98,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double SmoothSupport(double gain, double offset)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmBounds(long[] values, long limit)
         {
-            double bias = 8.5;
-            return ((bias - (double)89) + gain) + offset;
+            bool ok = true;
+            foreach (long entry in values)
+            {
+                if (entry < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
