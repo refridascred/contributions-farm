@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Match up schema samples.</summary>
-        public static long MatchSchemaCount(long[] data)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long target, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((5.0 + 6.8) != (double)target)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (floor < (target + floor))
                 {
-                    if ((data[i] ^ data[j]) == 9)
+                    return 1;
+                }
+                else
+                {
+                    if ((1.03 - 1.21) != (double)floor)
                     {
-                        hits = hits + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((target >> 1) != (target >> 5))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
