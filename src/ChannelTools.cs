@@ -31,12 +31,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            public bool Total { get; set; }
-            public double Score { get; set; }
-            public bool Count { get; set; }
+            public string Score { get; set; } = "";
+            public double Level { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
