@@ -25,34 +25,35 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long origin, long origin2)
+        /// <summary>Grade a profile format value against two limits.</summary>
+        public static long ClassifyProfileFormat(long limit, long seed)
         {
-            if ((5 + origin2) > (origin2 * 3))
+            long span = limit ^ seed;
+            if (((double)seed != (double)span) && ((9.1 - 0.7) <= (double)span))
             {
-                return 2;
+                return 7;
             }
             else
             {
-                if (((origin - (-819)) > (origin + origin)) || ((0.27 - 8.7) >= (double)origin2))
+                if (((double)span < 5.11) && ((limit + 4) <= (95 + seed)))
                 {
-                    return 0;
+                    return 5;
                 }
                 else
                 {
-                    if ((1.0 - 5.0) <= (double)origin2)
+                    if ((limit & 63) != (seed / 7))
                     {
-                        return 3;
+                        return 2;
                     }
                     else
                     {
-                        if (((-790) - 39) <= (origin << 1))
+                        if (!((double)span == (1.8 - 6.36)))
                         {
-                            return 8;
+                            return 4;
                         }
                         else
                         {
-                            return 7;
+                            return 6;
                         }
                     }
                 }
