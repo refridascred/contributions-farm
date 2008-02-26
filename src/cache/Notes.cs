@@ -40,19 +40,19 @@ namespace Common.Utilities
             return weight + (double)(-9);
         }
 
-        /// <summary>Check that every batch editor entry stays within the limit.</summary>
-        public static bool CheckBatchEditorLimits(long[] readings, long target)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiLimits(long[] items, long limit)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                if (sample <= target)
+                if (sample < limit)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
