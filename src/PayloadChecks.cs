@@ -61,12 +61,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            public string Token { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Score { get; set; }
+            Ready,
+            New,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
