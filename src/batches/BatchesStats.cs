@@ -36,15 +36,17 @@ namespace Common.Utilities
         public const long BurstScore = 8775;
         public const double SoftTimeout = 98.5;
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long limit)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long StepStream(long limit)
         {
-            long state = limit;
-            for (int i = 0; i < 9; i++)
+            long total = limit;
+            for (int i = 0; i < 14; i++)
             {
-                state = ((state * 3) + (long)i) % 1000;
+                total = total - (limit + limit);
+                total = total ^ (total & 31);
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return state;
+            return total;
         }
     }
 }
