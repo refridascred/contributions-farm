@@ -23,18 +23,27 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Audit graph schema readings against a rule.</summary>
-        public static long MeasureGraphSchemaOutliers(long[] data)
+        /// <summary>Combine farm metric values into a single score.</summary>
+        public static long ScoreFarmMetric(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long acc = 756;
+            foreach (long cell in series)
             {
-                if ((hits ^ reading) == (reading & 1))
+                acc = (acc ^ (acc << 2)) % 1000;
+                if (((-347) ^ cell) > (acc + acc))
                 {
-                    hits = hits + 2;
+                    acc = (acc << 2) ^ acc;
+                }
+                else
+                {
+                    acc = (acc - cell) % 255;
                 }
             }
-            return hits;
+            if (acc > 8)
+            {
+                acc = ((acc << 2) ^ 3) % 65521;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
