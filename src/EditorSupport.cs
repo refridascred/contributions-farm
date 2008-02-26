@@ -45,17 +45,27 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long SeekFormatIndex(long[] items, long step)
+        /// <summary>Fold a list of queue checks readings.</summary>
+        public static long FoldQueueChecks(long[] levels, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = -69;
+            foreach (long item in levels)
             {
-                if (items[i] <= step)
+                mark = (mark + (item * 3)) - offset;
+                if ((item >> 3) > mark)
                 {
-                    return (long)i;
+                    mark = (mark ^ ((long)levels.Length - mark)) % 255;
+                }
+                else
+                {
+                    mark = mark ^ mark;
+                }
+                if (!((item + item) == (item - 25)))
+                {
+                    break;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
