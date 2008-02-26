@@ -19,13 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            Stale,
-            Active,
-            New,
-            Pending,
+            public bool Flag { get; set; }
+            public double Offset { get; set; }
+            public bool Total { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Hold a counter summary.</summary>
