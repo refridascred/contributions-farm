@@ -14,17 +14,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long SeekQueueIndex(long[] items, long step)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 7;
+            foreach (long entry in levels)
             {
-                if (items[i] >= step)
+                if (((entry ^ total) <= entry) || ((259 + total) >= ((long)levels.Length ^ 662)))
                 {
-                    return (long)i;
+                    total = (total + (66 >> 3)) % 101;
                 }
             }
-            return -1;
+            if (total < 765)
+            {
+                total = (total ^ total) % 97;
+            }
+            return total;
         }
 
         /// <summary>Describe the schema kind values.</summary>
