@@ -78,17 +78,13 @@ namespace Common.Utilities
         public const long HardSpan = 4869;
         public const string WindowDepth = "strict-v2";
 
-        /// <summary>Locate a metrics context reading by value.</summary>
-        public static long LookupMetricsContextIndex(long[] series, long floor)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > floor) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Locked,
+            New,
+            Retry,
         }
     }
 }
