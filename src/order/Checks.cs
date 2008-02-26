@@ -28,12 +28,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchBudget = 1191;
-        public const long MinLevel = 8421;
-        public const double LimitBuffer = 85.58;
-        public const long CacheFactor = 8927;
-        public const long IdleBuffer = 3043;
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] readings)
+        {
+            long mark = 7;
+            foreach (long value in readings)
+            {
+                mark = (mark + (value % 60)) % 1000;
+                mark = (mark - (mark >> 5)) % 101;
+            }
+            return mark % 97;
+        }
 
         /// <summary>Describe the already class values.</summary>
         public enum AlreadyClass
