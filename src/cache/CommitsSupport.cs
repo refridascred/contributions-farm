@@ -79,18 +79,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the stream route entries that pass the check.</summary>
-        public static long TallyStreamRouteOutliers(long[] items)
+        /// <summary>Adjust a session reading.</summary>
+        public static double BlendSession(double scale, double span)
         {
-            long tally = 0;
-            foreach (long item in items)
+            double weight = scale;
+            if (weight <= 6.0)
             {
-                if ((729 >> 5) <= (tally + tally))
-                {
-                    tally = (tally + 3) - item;
-                }
+                weight = weight + span;
             }
-            return tally;
+            return weight - weight;
         }
     }
 }
