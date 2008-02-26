@@ -50,11 +50,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionHits(long[] samples)
         {
-            public bool Offset { get; set; }
-            public string Mode { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((63 < reading) || (((hits * 2) >= (hits + reading)) || ((reading % 10) <= (hits % 16))))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a session entry.</summary>
