@@ -15,11 +15,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchReport = 9032;
-        public const double SoftDepth = 45.62;
-        public const long CacheTimeout = 883;
-        public const long LimitReport = 6957;
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextBounds(long[] series, long origin)
+        {
+            bool valid = true;
+            foreach (long datum in series)
+            {
+                if (datum < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long CountBatchGaps(long[] values, long bound)
