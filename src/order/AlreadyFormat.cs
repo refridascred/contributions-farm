@@ -21,10 +21,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryInterval = 3738;
-        public const string RetryWidth = "strict-edge";
-        public const string WindowLevel = "open-1";
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
+        {
+            public long Flag { get; set; }
+            public double Total { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Find the first graph cache entry that matches the target.</summary>
         public static long SeekGraphCacheIndex(long[] items, long offset)
