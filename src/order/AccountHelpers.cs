@@ -18,21 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of stats payload readings.</summary>
-        public static long CompareStatsPayloadCount(long[] series)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long DeriveTools(long step)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = step;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i3 = 0; i3 < 10; i3++)
                 {
-                    if ((series[i] + series[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = ((total ^ (total + (long)i)) % 255) ^ (long)i3;
                 }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Describe the already phase values.</summary>
