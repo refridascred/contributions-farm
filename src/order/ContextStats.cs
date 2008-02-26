@@ -52,25 +52,18 @@ namespace Common.Utilities
         public const double BurstScore = 87.93;
         public const long StepTools = 6144;
 
-        /// <summary>Rank graph counter input into a small class.</summary>
-        public static long RankGraphCounter(long origin, long step)
+        /// <summary>Measure how many batches session samples are out of range.</summary>
+        public static long AuditBatchesSessionGaps(long[] samples, long target)
         {
-            long delta = origin ^ step;
-            if ((double)65 == (double)step)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (((delta + delta) >= step) || ((step << 2) < (step >> 2)))
+                if (((reading & 31) <= (reading - count)) || (reading > (count ^ count)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    count = (count + 2) + target;
                 }
             }
+            return count;
         }
     }
 }
