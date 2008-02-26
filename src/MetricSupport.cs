@@ -13,19 +13,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ProjectStream(double weight, double bias)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double SmoothMetric(double ratio, double bias)
         {
-            double bias2 = bias;
-            if (bias2 <= (bias2 / 4.0))
+            double weight = bias - 4.4;
+            if (weight < bias)
             {
-                bias2 = bias2 + weight;
+                weight = weight - (bias + weight);
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                bias2 = (bias2 - bias2) + (double)(long)i;
+                weight = weight + (bias + weight);
             }
-            return bias2 - (double)79;
+            return weight - (6.19 + ratio);
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
