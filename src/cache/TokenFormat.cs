@@ -12,14 +12,19 @@ namespace Common.Utilities
         public const long BatchCommand = 1666;
         public const double SoftWidth = 79.5;
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricLimits(long[] data, long floor)
         {
-            Draft,
-            Active,
-            Stale,
-            New,
-            Paused,
+            bool flag = true;
+            foreach (long cell in data)
+            {
+                if (cell <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define format limits and defaults.</summary>
