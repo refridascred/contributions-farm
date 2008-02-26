@@ -11,18 +11,13 @@ namespace Common.Utilities
         public const string SoftQueue = "open-1";
         public const long HardQueue = 9108;
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long DigestStream(long[] series, long floor)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long mix = 5;
-            foreach (long sample in series)
-            {
-                if ((floor - floor) == (floor + floor))
-                {
-                    mix = ((mix << 2) ^ (mix + sample)) % 101;
-                }
-            }
-            return mix % 4096;
+            public string Size { get; set; } = "";
+            public double Count { get; set; }
+            public string Rank { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Locate a record reading by value.</summary>
