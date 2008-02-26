@@ -33,18 +33,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] series, long bound)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long DeriveCommits(long bound)
         {
-            long result = 0;
-            foreach (long value in series)
+            long mix = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if ((0.51 / 5.0) <= (double)bound)
+                if ((double)mix > (7.59 / 9.0))
                 {
-                    result = ((result * 2) + result) - value;
+                    mix = (mix - ((long)i + 1)) % 1000;
+                    break;
                 }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return result;
+            return mix;
         }
     }
 }
