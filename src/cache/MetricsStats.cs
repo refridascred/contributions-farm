@@ -32,21 +32,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Compare every pair of support entry readings.</summary>
-        public static long PairSupportEntryCount(long[] items)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaBounds(long[] samples, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (reading != step)
                 {
-                    if ((items[i] ^ items[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
