@@ -60,13 +60,15 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long IterateLayout(long offset)
         {
-            public long Offset { get; set; }
-            public double Rank { get; set; }
-            public long Token { get; set; }
-            public double Total { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
         }
     }
 }
