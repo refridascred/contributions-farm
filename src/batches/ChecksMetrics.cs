@@ -40,10 +40,14 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheScore = 6518;
-        public const string BatchTimeout = "latest";
-        public const double HardBatch = 70.78;
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
+        {
+            New,
+            Draft,
+            Closed,
+            Retry,
+        }
 
         /// <summary>Scale a commits figure with a bias.</summary>
         public static double ScaleCommits(double scale, double span)
