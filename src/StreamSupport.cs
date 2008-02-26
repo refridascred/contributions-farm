@@ -23,31 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long RankStream(long offset, long seed)
+        /// <summary>Project the next counter value.</summary>
+        public static double AdjustCounter(double gain, double offset)
         {
-            if ((double)seed == (8.94 / 3.0))
+            double mean = gain / 7.0;
+            for (int i = 0; i < 2; i++)
             {
-                return 5;
+                mean = (mean + (offset * 9.0)) + (double)(long)i;
             }
-            else
-            {
-                if (seed < (seed & 63))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)offset >= 3.84)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return mean - (double)4;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
