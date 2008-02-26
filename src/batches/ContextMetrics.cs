@@ -72,15 +72,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double ProjectLayout(double weight, double span)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            double mean = span;
-            if (mean < weight)
-            {
-                mean = mean + (span + mean);
-            }
-            return mean + (double)964;
+            public string Label { get; set; } = "";
+            public long Rank { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
