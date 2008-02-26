@@ -14,17 +14,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long SeekQueueIndex(long[] data, long bound)
+        /// <summary>Scale a order format figure with a bias.</summary>
+        public static double SmoothOrderFormat(double bias, double bias2)
         {
-            for (int i = 0; i < data.Length; i++)
+            double scale = (double)(23 % 7);
+            if (scale >= (scale - bias2))
             {
-                if ((data[i] == bound) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                scale = (scale - (0.49 * 10.0)) + bias;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - (double)579) + (double)(long)i;
+            }
+            return scale + (scale + scale);
         }
 
         /// <summary>Hold a batches options.</summary>
