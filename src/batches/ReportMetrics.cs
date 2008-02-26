@@ -33,21 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] series)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return tally;
+            return score;
         }
     }
 }
