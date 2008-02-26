@@ -55,32 +55,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long GradeCounter(long origin, long target)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long next = origin + target;
-            if (target >= (origin ^ next))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((double)328 <= (double)origin) && ((6 + (-23)) < (target + next)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((10.0 * 0.3) != (double)next)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Done,
+            Dropped,
+            Ready,
+            Failed,
+            Active,
         }
 
         /// <summary>Hold a editor entry.</summary>
