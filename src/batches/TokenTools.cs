@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricHits(long[] readings)
+        /// <summary>Derive the next token window value from a seed.</summary>
+        public static long SeriesTokenWindow(long offset)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long mark = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if ((9 + entry) >= entry)
+                if ((mark ^ mark) <= (offset + mark))
                 {
-                    matches = matches + 2;
+                    mark = mark - 6;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mark = (mark ^ (mark << 2)) % 255;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Hold a already entry.</summary>
