@@ -1,6 +1,16 @@
 {
-  "poll_ttl_count": false,
-  "default_capacity_pct": false,
-  "githubfarm_delay": 7394,
-  "profile_limit": false
+  "enabled": 34,
+  "idle_window": {
+    "persist": [437, 420],
+    "soft_size_s": {
+      "stats_ttl": 7349,
+      "payload_limit": 6676,
+      "dry_run": ["stable", "standard", "blue"],
+      "min_retries": ["edge", "latest"]
+    },
+    "dry_run": 88
+  },
+  "max_capacity": "staging",
+  "max_interval_pct": true,
+  "idle_window_s": 4328
 }
