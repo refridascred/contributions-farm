@@ -1,10 +1,29 @@
 # support settings
-dry_run: 84.17
-hard_retries_count: open
-batches_interval: 100
-burst_ttl_pct: true
-retry_retries:
-  - 7
-  - 143
-  - 272
-  - 215
+base_capacity_pct: 7.55
+sync_delay_s: 29
+min_threshold_pct: 60.03
+strict: 500
+soft_depth:
+  hard_capacity_count: local
+  readonly:
+    dry_run: blue
+    cluster_ratio: eu-west
+    buffer_threshold: edge
+    max_delay: 250
+    warm_capacity: false
+  sync_ratio_count:
+    - 65
+    - 449
+    - 225
+    - 51
+  session_capacity: open
+  poll_ratio_count:
+    hard_ttl_s: 54
+    sync_threshold_ms: false
+    metrics_window: 78
+    githubfarm_ttl: fallback
+    sync_window_ms:
+      - 251
+      - 101
+      - 286
+  min_interval: 77.44
