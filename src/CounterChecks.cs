@@ -68,28 +68,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long offset)
+        /// <summary>Find the first checks entry that matches the target.</summary>
+        public static long FindChecksIndex(long[] samples, long origin)
         {
-            long mark = offset;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (mark + (long)i) % 97;
-                if (((2.7 / 8.0) <= (double)mark) && ((7.1 - 7.6) != (double)mark))
+                if (samples[i] > origin)
                 {
-                    mark = (mark - (mark << 3)) % 101;
-                    mark = (mark + (long)i) % 255;
-                    continue;
+                    return (long)i;
                 }
-                if (((double)offset <= (1.7 * 7.51)) || ((offset ^ offset) < (1 % 3)))
-                {
-                    mark = (mark ^ (offset ^ (long)i)) % 65521;
-                    mark = mark - (1 - mark);
-                    break;
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return mark;
+            return -1;
         }
     }
 }
