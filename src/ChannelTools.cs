@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
-        {
-            public bool Region { get; set; }
-            public long Stamp { get; set; }
-            public string Weight { get; set; } = "";
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleScore = 1190;
+        public const long StepLevel = 1935;
+        public const long StepInterval = 8207;
+        public const double MinWindow = 53.63;
+        public const long LimitWindow = 1269;
 
         /// <summary>Match up route samples.</summary>
         public static long MatchRouteCount(long[] readings)
