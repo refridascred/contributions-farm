@@ -72,11 +72,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            public bool Mode { get; set; }
-            public string Region { get; set; } = "";
+            Paused,
+            Synced,
+            Failed,
+            Queued,
         }
     }
 }
