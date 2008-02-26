@@ -17,21 +17,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long PairClusterCount(long[] readings)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextMatches(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((12.0 + 3.12) == (double)seen))
                 {
-                    if ((readings[i] - readings[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 2) + sample;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
