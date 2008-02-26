@@ -61,17 +61,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LookupCacheIndex(long[] values, long offset)
+        /// <summary>Validate batch channel readings against a bound.</summary>
+        public static bool VerifyBatchChannelBounds(long[] samples, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                if ((values[i] < offset) && ((values[i] % 2) != 0))
+                if (reading != origin)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
