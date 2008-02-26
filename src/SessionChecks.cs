@@ -39,17 +39,15 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] readings, long floor)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long DeriveMetrics(long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (readings[i] >= floor)
-                {
-                    return (long)i;
-                }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return -1;
+            return total;
         }
     }
 }
