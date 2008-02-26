@@ -12,31 +12,14 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long bound, long floor)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            if ((16.0 + 1.04) > (double)bound)
-            {
-                return 1;
-            }
-            else
-            {
-                if (9 < (1 - bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((floor << 2) >= (floor - bound)) || ((bound % 10) >= bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Draft,
+            Active,
+            Locked,
+            Retry,
+            Queued,
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
