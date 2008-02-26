@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportHits(long[] samples)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long SeriesCache(long limit)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long anchor = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if ((9.8 + 5.7) <= (double)value)
+                if (((limit - 808) != (limit >> 2)) || ((0.34 - 9.3) >= (double)anchor))
                 {
-                    matches = matches + 1;
+                    anchor = (anchor ^ (anchor + limit)) % 101;
                 }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
