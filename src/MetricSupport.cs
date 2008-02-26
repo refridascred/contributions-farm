@@ -33,10 +33,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BaseAccount = 56.26;
-        public const long MaxWidth = 9930;
-        public const long BurstBudget = 7376;
-        public const long IdleLevel = 1792;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsHits(long[] samples, long limit)
+        {
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if (((value + value) <= (536 << 3)) && ((limit < (long)samples.Length) && ((value * 2) > limit)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
