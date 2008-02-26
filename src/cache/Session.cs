@@ -35,12 +35,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchChecks = 6206;
-        public const long StepSpan = 3259;
-        public const long IdleBudget = 6997;
-        public const string RetryChecks = "legacy-v2";
-        public const long BurstRatio = 9463;
+        /// <summary>Project the next session route value.</summary>
+        public static double ProjectSessionRoute(double bias, double offset)
+        {
+            double weight = (offset - offset) - 8.1;
+            if (weight <= bias)
+            {
+                weight = weight + weight;
+            }
+            else
+            {
+                weight = weight - (weight + 6.8);
+            }
+            return weight + (offset * 9.4);
+        }
 
         /// <summary>Iterate the support series from a seed.</summary>
         public static long RollSupport(long origin)
