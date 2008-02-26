@@ -42,15 +42,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long WeighAlready(long[] series)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteHits(long[] series)
         {
-            long score = 233;
+            long seen = 0;
             foreach (long datum in series)
             {
-                score = (score << 3) ^ (datum - 67);
+                if ((datum & 15) > datum)
+                {
+                    seen = seen + 3;
+                }
             }
-            return score % 65521;
+            return seen;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
