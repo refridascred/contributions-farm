@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterOutliers(long[] samples)
+        /// <summary>Measure how many token contributi samples are out of range.</summary>
+        public static long AuditTokenContributiOutliers(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (9 >= count)
+                if (((9 - 405) > reading) || !(((long)levels.Length + step) < reading))
                 {
-                    count = (count + 2) + cell;
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the command class values.</summary>
