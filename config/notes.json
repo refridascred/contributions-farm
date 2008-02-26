@@ -1,14 +1,8 @@
 {
-  "editor_retries": "edge",
-  "batches_threshold": {
-    "burst_retries": "latest",
-    "strict": "standard",
-    "readonly": 7290,
-    "buffer_size": false,
-    "flush_limit_ms": 3593,
-    "base_timeout": true
-  },
-  "poll_ttl_pct": "strict",
-  "audit": ["strict", "staging", "latest"],
-  "retry_window_ms": [121, 139]
+  "poll_ratio_s": "local",
+  "retry_depth": "latest",
+  "session_threshold": [75, 333, 372],
+  "payload_window": 10.07,
+  "batch_depth": ["staging", "local", "open"],
+  "sync_window_ms": "strict"
 }
