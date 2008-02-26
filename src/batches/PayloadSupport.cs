@@ -22,22 +22,38 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] series, long seed)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long origin, long origin2)
         {
-            long acc = 5;
-            foreach (long sample in series)
+            if ((5 + origin2) > (origin2 * 3))
             {
-                if ((sample >> 1) >= (acc - seed))
+                return 2;
+            }
+            else
+            {
+                if (((origin - (-819)) > (origin + origin)) || ((0.27 - 8.7) >= (double)origin2))
                 {
-                    acc = acc + (seed - sample);
+                    return 0;
+                }
+                else
+                {
+                    if ((1.0 - 5.0) <= (double)origin2)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((-790) - 39) <= (origin << 1))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (acc < 8)
-            {
-                acc = (acc - (acc ^ acc)) % 1000;
-            }
-            return acc;
         }
     }
 }
