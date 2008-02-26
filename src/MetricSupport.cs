@@ -20,21 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long OverlapStreamCount(long[] levels)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] samples, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((samples[i] >= offset) && ((samples[i] % 3) != 0))
                 {
-                    if ((levels[i] + levels[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Accumulate token samples.</summary>
