@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            public bool Score { get; set; }
-            public long Weight { get; set; }
+            public long Owner { get; set; }
+            public bool Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
