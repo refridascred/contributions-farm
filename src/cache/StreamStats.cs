@@ -17,17 +17,24 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] items, long floor)
+        /// <summary>Grade a layout queue value against two limits.</summary>
+        public static long BucketLayoutQueue(long step, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((step + step) >= (floor & 31))
             {
-                if ((items[i] == floor) && ((items[i] % 3) != 0))
+                return 6;
+            }
+            else
+            {
+                if ((step & 7) > step)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
