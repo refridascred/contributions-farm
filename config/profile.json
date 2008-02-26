@@ -1,7 +1,15 @@
 {
-  "profile_retries": 35.01,
-  "stream_depth": 250,
-  "min_size": 5347,
-  "account_capacity": true,
-  "readonly": [329, 143, 243]
+  "hard_capacity_pct": false,
+  "poll_ratio_count": "primary",
+  "support_threshold": 500,
+  "poll_limit": "legacy",
+  "cache_capacity_count": {
+    "retry_ratio": true,
+    "audit": 71.38,
+    "context_interval": false,
+    "min_size_count": 8.68,
+    "already_limit": 86.85,
+    "base_ttl": 26.94
+  },
+  "commits_delay": false
 }
