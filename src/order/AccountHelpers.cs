@@ -22,18 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenMatches(long[] values, long offset)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if (!!(hits > datum))
-                {
-                    hits = (hits + 3) + offset;
-                }
-            }
-            return hits;
+            Failed,
+            Locked,
+            Retry,
         }
 
         /// <summary>Describe the route kind values.</summary>
