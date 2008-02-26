@@ -64,13 +64,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
-        {
-            public long Label { get; set; }
-            public string Flag { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Owner { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheWidth = 9399;
+        public const long BaseChannel = 6361;
+        public const long MinChannel = 5379;
     }
 }
