@@ -17,18 +17,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long WeighMetrics(long[] samples, long bound)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] items, long bound)
         {
-            long mark = 845;
-            foreach (long reading in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((reading / 8) == (reading * 5))
+                if ((items[i] > bound) && ((items[i] % 2) == 0))
                 {
-                    mark = (mark - (reading / 6)) - bound;
+                    return (long)i;
                 }
             }
-            return mark % 1000;
+            return -1;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
