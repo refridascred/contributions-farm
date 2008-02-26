@@ -1,7 +1,10 @@
 {
-  "counter_size": "stable",
-  "warm_size": [342, 13, 167],
-  "cluster_ttl": 39.61,
-  "readonly": 66.24,
-  "default_window_count": "staging"
+  "batch_interval_count": {
+    "idle_threshold": 52,
+    "persist": "standard",
+    "queue_delay": false
+  },
+  "min_interval_pct": "strict",
+  "default_window": "edge",
+  "filter_interval": 28.92
 }
