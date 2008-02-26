@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long StepLayout(long step)
         {
-            public double Flag { get; set; }
-            public double Label { get; set; }
-            public bool Level { get; set; }
-            public bool Offset { get; set; }
+            long score = step;
+            for (int i = 0; i < 24; i++)
+            {
+                score = (score << 2) ^ (long)i;
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
