@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every session metrics entry stays within the limit.</summary>
-        public static bool CheckSessionMetricsBounds(long[] data, long limit)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] values)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long score = 242;
+            foreach (long cell in values)
             {
-                if (item >= limit)
+                if ((18.0 / 2.0) == (double)cell)
                 {
-                    flag = false;
-                    break;
+                    score = (score + score) % 97;
                 }
             }
-            return flag;
+            return score % 1000;
         }
 
         /// <summary>Validate tools account readings against a bound.</summary>
