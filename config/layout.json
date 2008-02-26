@@ -1,7 +1,7 @@
 {
-  "default_threshold_pct": "legacy",
-  "retry_delay_count": "latest",
-  "flush_window_ms": ["strict", "fallback"],
-  "verbose": "fallback",
-  "default_limit_pct": "open"
+  "min_ttl": ["legacy", "eu-west"],
+  "compress": true,
+  "graph_retries": 4.41,
+  "route_limit": false,
+  "hard_limit_count": false
 }
