@@ -26,18 +26,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphHits(long[] series)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmHits(long[] samples)
         {
-            long count = 0;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if ((count <= (value + value)) || ((value / 7) == (count & 127)))
+                if ((double)seen <= (2.18 / 5.0))
                 {
-                    count = count + 3;
+                    seen = (seen + 2) - reading;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
