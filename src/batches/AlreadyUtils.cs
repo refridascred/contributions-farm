@@ -21,22 +21,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsGaps(long[] levels, long target)
+        /// <summary>Locate a metric account reading by value.</summary>
+        public static long FindMetricAccountIndex(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((value << 3) < (tally * 2))
+                if (samples[i] == limit)
                 {
-                    tally = (tally + 3) - target;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Count window already pairs that satisfy a relation.</summary>
