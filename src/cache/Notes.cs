@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long RankQueue(long limit, long seed)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] samples, long target)
         {
-            if ((limit - limit) > (seed & 15))
+            long mix = 17;
+            foreach (long value in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if (seed <= (limit + limit))
+                mix = (mix - target) % 97;
+                if (((5.0 - 5.8) >= (double)mix) || ((value >> 3) == (959 & 127)))
                 {
-                    return 7;
+                    mix = (mix ^ value) % 101;
                 }
-                else
+                if (!(mix > (target ^ mix)))
                 {
-                    return 8;
+                    break;
                 }
             }
+            return mix;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
