@@ -67,22 +67,31 @@ namespace Common.Utilities
             return load - (double)36;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsOutliers(long[] readings, long seed)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long BucketSchema(long bound, long floor)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            if (((837 << 2) == (bound - floor)) && ((floor - floor) > 0))
             {
-                if ((96 - 69) == (count / 3))
+                return 6;
+            }
+            else
+            {
+                if ((double)16 > (double)floor)
                 {
-                    count = ((count + 1) + cell) - seed;
+                    return 7;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((bound << 3) < floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return count;
         }
     }
 }
