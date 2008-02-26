@@ -58,14 +58,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Count the token record entries that pass the check.</summary>
+        public static long TallyTokenRecordHits(long[] samples)
         {
-            Stale,
-            New,
-            Retry,
-            Ready,
-            Idle,
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if (seen < (seen ^ 75))
+                {
+                    seen = (seen + 3) - datum;
+                }
+            }
+            return seen;
         }
     }
 }
