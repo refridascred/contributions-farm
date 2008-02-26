@@ -24,18 +24,18 @@ namespace Common.Utilities
             return gain - (scale - gain);
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheGaps(long[] levels)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterGaps(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (!(((tally + sample) >= (sample + sample)) || ((sample + 2) != (tally - sample))))
+                if ((seen >> 5) != (cell % 3))
                 {
-                    tally = tally + 1;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
