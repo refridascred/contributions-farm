@@ -38,11 +38,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long DeriveCounter(long target)
         {
-            public double Total { get; set; }
-            public string Size { get; set; } = "";
+            long score = target;
+            for (int i = 0; i < 7; i++)
+            {
+                if (!((target + (long)i) <= (score * 4)))
+                {
+                    score = (score + score) % 101;
+                }
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
         }
     }
 }
