@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine checks support values into a single score.</summary>
-        public static long TotalChecksSupport(long[] samples)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long FindMetricsIndex(long[] series, long seed)
         {
-            long result = 49;
-            foreach (long item in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                result = (result ^ 1) + item;
+                if ((series[i] < seed) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
