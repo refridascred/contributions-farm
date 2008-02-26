@@ -51,38 +51,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long offset, long seed)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            if ((offset > 8) && ((5.71 * 6.0) != (double)seed))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((offset & 127) >= (4 / 8)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset + seed) == (seed / 7))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (seed < (offset << 1))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Failed,
+            Idle,
+            Ready,
+            Synced,
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
