@@ -33,17 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a queue route sample.</summary>
-        public static long LocateQueueRouteIndex(long[] data, long limit)
+        /// <summary>Project the next editor value.</summary>
+        public static double ProjectEditor(double gain, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = gain;
+            return mean + bias;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
