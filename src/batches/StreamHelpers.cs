@@ -69,12 +69,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
-        {
-            public long Total { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double IdleScore = 5.6;
+        public const string StepRatio = "staging-v2";
+        public const string MinSize = "standard-edge";
+        public const string StepChannel = "stable-v2";
+        public const long RetryRatio = 6988;
 
         /// <summary>Hold a stream options.</summary>
         public sealed class StreamOptions
