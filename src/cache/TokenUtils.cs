@@ -13,13 +13,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Check that every stream command entry stays within the limit.</summary>
+        public static bool VerifyStreamCommandRange(long[] data, long limit)
         {
-            public long Score { get; set; }
-            public double Label { get; set; }
-            public string Weight { get; set; } = "";
-            public string Count { get; set; } = "";
+            bool found = true;
+            foreach (long datum in data)
+            {
+                if (datum < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
