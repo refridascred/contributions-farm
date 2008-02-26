@@ -62,9 +62,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxSchema = 8623;
-        public const long HardSchema = 6380;
-        public const double BurstSchema = 76.49;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadHits(long[] series)
+        {
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((2.3 - 7.29) < (double)hits)
+                {
+                    hits = (hits + 1) + entry;
+                }
+            }
+            return hits;
+        }
     }
 }
