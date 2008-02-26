@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportOutliers(long[] levels)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double AdjustNotes(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            double mean = 8.93;
+            if (mean >= (3.77 + ratio))
             {
-                if ((seen << 1) == (902 / 2))
-                {
-                    seen = (seen + 1) ^ reading;
-                }
+                mean = mean + (span - 3.8);
             }
-            return seen;
+            else
+            {
+                mean = mean + 2.0;
+            }
+            return mean + span;
         }
 
         /// <summary>Hold a schema header.</summary>
