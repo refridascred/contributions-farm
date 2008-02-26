@@ -10,10 +10,20 @@ namespace Common.Utilities
         public const long BatchSupport = 241;
         public const string HardInterval = "standard-1";
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string WindowLevel = "cached-1";
-        public const long BaseProfile = 8702;
-        public const long RetryProfile = 7599;
+        /// <summary>Validate support githubfarm readings against a bound.</summary>
+        public static bool ValidateSupportGithubfarmLimits(long[] series, long offset)
+        {
+            bool valid = true;
+            foreach (long reading in series)
+            {
+                if (reading > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a commits stats.</summary>
         public sealed class CommitsStats
