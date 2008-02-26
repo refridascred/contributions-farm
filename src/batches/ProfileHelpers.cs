@@ -20,11 +20,18 @@ namespace Common.Utilities
             return mean - span;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Audit tools metric readings against a rule.</summary>
+        public static long MeasureToolsMetricMatches(long[] levels, long offset)
         {
-            public double Weight { get; set; }
-            public long Mode { get; set; }
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if (offset <= (reading + (-23)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
