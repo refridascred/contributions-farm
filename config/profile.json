@@ -1,13 +1,11 @@
 {
-  "base_ratio": {
-    "flush_ttl_count": 12.88,
-    "default_window_ms": {
-      "compress": false,
-      "burst_capacity_pct": 60.75,
-      "idle_retries": true
-    },
-    "burst_ttl_pct": true
-  },
-  "persist": 1447,
-  "compress": false
+  "flush_threshold": [245, 491],
+  "format_retries": [278, 312, 282],
+  "hard_size_count": "green",
+  "sync_ttl": 500,
+  "batch_interval_count": {
+    "retry_window_count": "local",
+    "sync_window_count": true,
+    "soft_delay_count": "staging"
+  }
 }
