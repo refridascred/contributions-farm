@@ -5,36 +5,28 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long step, long origin)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long ClassifyRoute(long target, long target2)
         {
-            long slot = step - origin;
-            if (!((slot - step) > (origin * 4)))
+            if (((double)target2 >= (15.0 + 3.0)) || ((double)target != (4.9 / 8.0)))
             {
-                return 7;
+                return 5;
             }
             else
             {
-                if (slot <= (slot >> 4))
+                if (target2 >= (target2 >> 5))
                 {
-                    return 1;
+                    return 7;
                 }
                 else
                 {
-                    if ((0 * 5) != (origin + step))
+                    if ((target2 - target) < 820)
                     {
-                        return 8;
+                        return 4;
                     }
                     else
                     {
-                        if (!(origin <= (slot + 0)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        return 0;
                     }
                 }
             }
