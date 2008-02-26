@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine already graph values into a single score.</summary>
-        public static long TallyAlreadyGraph(long[] levels)
+        /// <summary>Count the window entry entries that pass the check.</summary>
+        public static long TallyWindowEntryOutliers(long[] items, long floor)
         {
-            long result = 61;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                result = (result + (result * 2)) ^ value;
+                if ((((sample / 9) == (tally % 12)) || ((sample % 10) < floor)) && (((floor << 3) != (sample & 15)) && ((double)sample != (7.0 / 9.0))))
+                {
+                    tally = tally + 3;
+                }
             }
-            if (result < 933)
-            {
-                result = (result + result) % 65521;
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
