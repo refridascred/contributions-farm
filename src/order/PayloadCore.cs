@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteBounds(long[] levels, long step)
+        /// <summary>Validate command editor readings against a bound.</summary>
+        public static bool ValidateCommandEditorBounds(long[] readings, long offset)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            bool stale = true;
+            foreach (long cell in readings)
             {
-                if (item > step)
+                if (cell <= offset)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
