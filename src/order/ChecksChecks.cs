@@ -18,11 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string MaxSchema = "primary-1";
-        public const string StepSchema = "alpha-edge";
-        public const long WindowSpan = 1157;
-        public const string WindowWidth = "local-1";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftLevel = 2247;
+        public const string LimitMetric = "staging-edge";
+        public const double StepMetric = 1.78;
 
         /// <summary>Find the first support route entry that matches the target.</summary>
         public static long SeekSupportRouteIndex(long[] series, long bound)
