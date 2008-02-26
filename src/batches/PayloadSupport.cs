@@ -24,16 +24,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long IterateGraph(long seed)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionRange(long[] samples, long offset)
         {
-            long acc = seed;
-            for (int i = 0; i < 8; i++)
+            bool found = true;
+            foreach (long item in samples)
             {
-                acc = acc ^ acc;
-                acc = ((acc * 3) + (long)i) % 65521;
+                if (item < offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return acc;
+            return found;
         }
     }
 }
