@@ -78,17 +78,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long FindCacheIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == bound) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double StepReport = 75.56;
+        public const string WindowReport = "alpha-1";
+        public const long MinScore = 2557;
+        public const long IdleReport = 5497;
+        public const double MinReport = 60.82;
     }
 }
