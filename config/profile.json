@@ -1,25 +1,7 @@
 {
-  "tools_interval": 1024,
-  "soft_timeout_count": 56.91,
-  "sync_threshold": true,
-  "enabled": {
-    "default_timeout": {
-      "batch_depth_pct": "local",
-      "persist": 28.77,
-      "batch_limit_pct": false,
-      "payload_size": 81.36,
-      "max_size_ms": 30
-    },
-    "enabled": 1024,
-    "dry_run": "strict",
-    "persist": {
-      "compress": 2614,
-      "verbose": 7.92,
-      "sync_window_pct": "blue"
-    },
-    "retry_size_ms": true,
-    "cache_interval_s": "stable"
-  },
-  "flush_window": 10,
-  "base_capacity_count": 8556
+  "profile_retries": 35.01,
+  "stream_depth": 250,
+  "min_size": 5347,
+  "account_capacity": true,
+  "readonly": [329, 143, 243]
 }
