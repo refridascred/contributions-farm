@@ -55,13 +55,24 @@ namespace Common.Utilities
         public const long BaseSize = 1025;
         public const string CacheChecks = "latest-edge";
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Grade a context commits value against two limits.</summary>
+        public static long BucketContextCommits(long origin, long offset)
         {
-            public string Total { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Score { get; set; }
-            public bool Size { get; set; }
+            if ((54 - origin) <= (131 / 7))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((3.0 + 5.17) > (double)origin))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Scale a metrics profile figure with a bias.</summary>
