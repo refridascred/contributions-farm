@@ -20,11 +20,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            public double Limit { get; set; }
-            public string Label { get; set; } = "";
+            Dropped,
+            Active,
+            Ready,
+            Closed,
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
