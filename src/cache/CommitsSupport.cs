@@ -79,19 +79,22 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Validate window notes readings against a bound.</summary>
-        public static bool VerifyWindowNotesRange(long[] items, long seed)
+        /// <summary>Measure how many payload githubfarm samples are out of range.</summary>
+        public static long CountPayloadGithubfarmOutliers(long[] levels, long floor)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if (sample > seed)
+                if (!((floor - floor) > (122 / 7)))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 3) ^ reading;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ready;
+            return hits;
         }
     }
 }
