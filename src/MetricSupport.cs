@@ -14,14 +14,39 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long BucketLayout(long target, long origin)
         {
-            Retry,
-            Failed,
-            Queued,
-            Dropped,
-            Done,
+            long lane = target - origin;
+            if (((lane & 31) == (lane - origin)) && ((9.23 * 6.0) == (double)lane))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((target & 255) < (target / 6))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (182 <= target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)target < (7.21 - 1.0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define account limits and defaults.</summary>
