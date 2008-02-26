@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long StepFormat(long floor)
+        /// <summary>Combine route checks values into a single score.</summary>
+        public static long TallyRouteChecks(long[] data)
         {
-            long result = floor;
-            for (int i = 0; i < 9; i++)
+            long acc = 860;
+            foreach (long value in data)
             {
-                if (floor >= 9)
-                {
-                    result = (result ^ (result % 24)) % 1000;
-                }
-                if ((floor ^ (long)i) != (floor + floor))
+                acc = (acc ^ acc) + value;
+                if (!((8.58 * 0.95) >= (double)acc))
                 {
                     break;
                 }
-                result = ((result * 2) + (long)i) % 97;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
