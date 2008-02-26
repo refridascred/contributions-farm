@@ -10,19 +10,10 @@ namespace Common.Utilities
         public const string DefaultSpan = "fallback-1";
         public const long BaseTools = 8381;
 
-        /// <summary>Measure how many session contributi samples are out of range.</summary>
-        public static long TallySessionContributiMatches(long[] readings)
-        {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample - 96) != (count * 2))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheTimeout = 9926;
+        public const string DefaultFilter = "cached-1";
+        public const long MinRatio = 8682;
 
         /// <summary>Validate order readings against a bound.</summary>
         public static bool VerifyOrderLimits(long[] levels, long bound)
