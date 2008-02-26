@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            Paused,
-            Queued,
             Idle,
+            Paused,
+            Failed,
         }
 
         /// <summary>Combine profile values into a single score.</summary>
