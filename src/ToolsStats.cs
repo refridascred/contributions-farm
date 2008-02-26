@@ -49,12 +49,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
-        {
-            public double Weight { get; set; }
-            public bool Region { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultEditor = 3581;
+        public const long RetryEditor = 3492;
+        public const long HardSpan = 6845;
+        public const double CacheEditor = 84.78;
     }
 }
