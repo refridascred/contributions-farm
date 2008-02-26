@@ -40,19 +40,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate graph already readings against a bound.</summary>
-        public static bool ValidateGraphAlreadyLimits(long[] levels, long origin)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueMatches(long[] data, long offset)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (entry < origin)
+                if (!(seen < (offset << 1)))
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 1) ^ cell;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
