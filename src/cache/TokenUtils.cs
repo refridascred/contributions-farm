@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsOutliers(long[] series)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long DigestContext(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long anchor = 0;
+            foreach (long value in levels)
             {
-                if (!(matches < (matches - matches)))
-                {
-                    matches = (matches + 1) ^ datum;
-                }
+                anchor = ((anchor - (value - value)) % 255) - target;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
