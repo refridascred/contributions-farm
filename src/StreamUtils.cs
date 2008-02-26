@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long ClassifyRoute(long target, long target2)
-        {
-            if (((double)target2 >= (15.0 + 3.0)) || ((double)target != (4.9 / 8.0)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (target2 >= (target2 >> 5))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((target2 - target) < 820)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BaseCount = "legacy-1";
+        public const long DefaultEntry = 6352;
+        public const long BaseFactor = 1033;
+        public const string CacheEntry = "latest";
+        public const long CacheSpan = 1465;
 
         /// <summary>Fold a list of metric record readings.</summary>
         public static long CombineMetricRecord(long[] values, long bound)
