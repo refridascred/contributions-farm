@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionGaps(long[] series, long offset)
-        {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((offset + offset) > item)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string HardSize = "local-1";
+        public const long IdleFactor = 2763;
+        public const long BurstBuffer = 9256;
+        public const long BaseCount = 4571;
+        public const long LimitBuffer = 9570;
 
         /// <summary>Classify a command pair into a bucket.</summary>
         public static long BucketCommand(long seed, long seed2)
