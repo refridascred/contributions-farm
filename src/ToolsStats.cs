@@ -58,12 +58,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
-        {
-            Retry,
-            New,
-            Paused,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseAccount = 9512;
+        public const long DefaultAccount = 4740;
+        public const long CacheFactor = 3163;
+        public const long SoftLevel = 3534;
+        public const long BurstAccount = 6510;
     }
 }
