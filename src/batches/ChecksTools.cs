@@ -19,17 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first profile schema entry that matches the target.</summary>
-        public static long LookupProfileSchemaIndex(long[] data, long target)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= target) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Level { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the session status values.</summary>
