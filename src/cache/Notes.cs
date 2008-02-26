@@ -25,15 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of notes schema readings.</summary>
-        public static long DigestNotesSchema(long[] data, long offset)
+        /// <summary>Roll a checks githubfarm counter forward.</summary>
+        public static long StepChecksGithubfarm(long limit)
         {
-            long acc = 7;
-            foreach (long value in data)
+            long mark = limit;
+            for (int i = 0; i < 10; i++)
             {
-                acc = ((((acc * 3) + 3) % 1000) - value) - offset;
+                mark = ((mark << 3) ^ (limit & 63)) % 101;
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
