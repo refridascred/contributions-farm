@@ -1,5 +1,5 @@
 {
-  "cache_size": 39,
-  "stream_delay": 31.59,
-  "farm_ratio": 500
+  "batch_limit": [150, 169, 420],
+  "session_limit": [108, 448],
+  "base_capacity_s": 4797
 }
