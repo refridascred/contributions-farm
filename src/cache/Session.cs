@@ -42,10 +42,14 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseLevel = 3778;
-        public const long BatchDepth = 5118;
-        public const long RetryNotes = 1801;
-        public const long BurstNotes = 9979;
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
+        {
+            Paused,
+            Ready,
+            Queued,
+            Pending,
+            New,
+        }
     }
 }
