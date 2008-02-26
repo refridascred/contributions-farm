@@ -92,12 +92,9 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
-        {
-            public bool Offset { get; set; }
-            public double Rank { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string WindowScore = "cached-1";
+        public const long RetryChecks = 7117;
+        public const long BatchChecks = 1054;
     }
 }
