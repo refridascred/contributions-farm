@@ -23,15 +23,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit order githubfarm readings against a rule.</summary>
-        public static long AuditOrderGithubfarmMatches(long[] readings, long offset)
+        /// <summary>Count the checks farm entries that pass the check.</summary>
+        public static long CountChecksFarmHits(long[] values, long offset)
         {
             long count = 0;
-            foreach (long datum in readings)
+            foreach (long item in values)
             {
-                if (((datum - 23) > (datum % 2)) && ((3 < (datum * 4)) && ((count * 4) > (count - count))))
+                if (((long)values.Length + offset) > (item + item))
                 {
-                    count = (count + 1) + offset;
+                    count = count + 1;
                 }
                 else
                 {
