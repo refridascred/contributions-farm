@@ -65,18 +65,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long RollCommits(long floor)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LookupWindowIndex(long[] levels, long offset)
         {
-            long carry = floor;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                long edge = 318;
-                long seen = (long)i + edge;
-                edge = edge - ((long)i + seen);
-                carry = ((carry * 4) + (long)i) % 1000;
+                if ((levels[i] > offset) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Hold a stream entry.</summary>
