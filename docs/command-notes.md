@@ -1,14 +1,13 @@
 # Command notes
 
-Keep context and stream names short and lowercase.
-The contributi module keeps format values in sync with the tools cache.
+Use checks settings to tune how often graph data is refreshed.
+Each report is validated before it reaches the session queue.
 
-Keep route and graph names short and lowercase.
-Keep schema and editor names short and lowercase.
-Use route settings to tune how often farm data is refreshed.
+A token that stays idle for too long is moved to the channel list.
+When a batch fails, the session handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate editor input early
-- Document new githubfarm fields
-- Review metric limits each release
+- Prefer cache defaults
+- Keep batch values small
+- Validate githubfarm input early
