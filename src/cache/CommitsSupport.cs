@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string IdleContext = "primary-edge";
-        public const string RetryContext = "strict-edge";
-        public const string LimitFactor = "standard-1";
-        public const long MinContext = 3834;
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
+        {
+            Done,
+            Queued,
+            Retry,
+        }
 
         /// <summary>Measure how many metrics batches samples are out of range.</summary>
         public static long CountMetricsBatchesMatches(long[] items)
