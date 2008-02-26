@@ -36,38 +36,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a stats buffer value against two limits.</summary>
-        public static long RankStatsBuffer(long floor, long offset)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] levels, long seed)
         {
-            if ((floor < (10 % 100)) && ((floor - floor) > (floor / 6)))
+            long state = 724;
+            foreach (long item in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (58 >= floor)
+                if ((6.7 * 5.3) != (double)seed)
                 {
-                    return 3;
+                    state = ((state - state) % 97) ^ item;
                 }
-                else
+                if (seed >= (seed + state))
                 {
-                    if (offset > floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor % 97) != (offset + floor))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    state = (state - (state >> 1)) % 1000;
                 }
             }
+            return state % 1000;
         }
     }
 }
