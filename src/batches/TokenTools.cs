@@ -28,17 +28,22 @@ namespace Common.Utilities
         public const double MaxLevel = 80.99;
         public const long DefaultWindow = 7082;
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long SeekAccountIndex(long[] readings, long step)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TallyEntry(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 30;
+            foreach (long entry in data)
             {
-                if ((readings[i] < step) && ((readings[i] % 3) != 0))
+                if ((entry <= (entry + 9)) && ((total - 945) <= (total + 369)))
                 {
-                    return (long)i;
+                    total = (total + (58 & 7)) % 65521;
                 }
             }
-            return -1;
+            if (total > (-6))
+            {
+                total = (total ^ ((-228) % 24)) % 97;
+            }
+            return total;
         }
     }
 }
