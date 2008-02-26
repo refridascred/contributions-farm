@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardInterval = 6480;
-        public const string RetryAlready = "local-v2";
-        public const long HardSpan = 1993;
-        public const long DefaultFactor = 2048;
-        public const long LimitFactor = 3112;
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long MeasureAlreadyMatches(long[] data, long limit)
+        {
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((reading / 3) <= (23 * 4))
+                {
+                    matches = (matches + 1) + limit;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long SeriesBatch(long bound)
