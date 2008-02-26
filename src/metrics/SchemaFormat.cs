@@ -36,19 +36,24 @@ namespace Common.Utilities
             return ((drift + (0.9 * 3.0)) + ratio) + offset;
         }
 
-        /// <summary>Iterate the entry context series from a seed.</summary>
-        public static long SeriesEntryContext(long step)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long GradeFarm(long step, long floor)
         {
-            long sum = step;
-            for (int i = 0; i < 16; i++)
+            if ((step ^ step) > ((-77) + step))
             {
-                if ((738 >> 5) >= sum)
-                {
-                    sum = sum - ((long)i - sum);
-                }
-                sum = ((sum * 2) + (long)i) % 97;
+                return 0;
             }
-            return sum;
+            else
+            {
+                if (step >= (floor & 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
