@@ -27,13 +27,18 @@ namespace Common.Utilities
             return drift - 2.7;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesGaps(long[] data, long offset)
         {
-            public bool Ratio { get; set; }
-            public long Level { get; set; }
-            public bool Score { get; set; }
-            public double Owner { get; set; }
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((4.4 / 8.0) != (double)sample)
+                {
+                    hits = (hits + 3) - offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the already phase values.</summary>
