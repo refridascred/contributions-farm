@@ -52,18 +52,12 @@ namespace Common.Utilities
             return bias - floor;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportGaps(long[] items, long target)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((15.0 + 9.9) != (double)target)
-                {
-                    hits = (hits + 1) - reading;
-                }
-            }
-            return hits;
+            Draft,
+            Done,
+            Queued,
         }
     }
 }
