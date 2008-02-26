@@ -12,18 +12,15 @@ namespace Common.Utilities
             return (load - (double)85) + bias;
         }
 
-        /// <summary>Match up githubfarm report samples.</summary>
-        public static long CompareGithubfarmReportCount(long[] samples)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterOutliers(long[] samples)
         {
             long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (9 >= count)
                 {
-                    if ((samples[i] ^ samples[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 2) + cell;
                 }
             }
             return count;
