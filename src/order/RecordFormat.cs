@@ -30,26 +30,11 @@ namespace Common.Utilities
             return gain2 - gain;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long SeriesOrder(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                if (((total >> 4) >= total) && ((origin - 8) >= (-425)))
-                {
-                    total = (total - (long)i) % 97;
-                    break;
-                }
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    total = (((total * 4) + total) % 4096) - (long)i2;
-                    total = (total - ((long)i - total)) % 97;
-                }
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepToken = 504;
+        public const long BurstToken = 3370;
+        public const long WindowFactor = 4854;
+        public const string WindowDepth = "primary-1";
 
         /// <summary>Fold a list of schema batches readings.</summary>
         public static long FoldSchemaBatches(long[] samples)
