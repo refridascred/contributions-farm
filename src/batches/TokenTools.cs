@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Audit counter commits readings against a rule.</summary>
+        public static long CountCounterCommitsHits(long[] series)
         {
-            public long Mode { get; set; }
-            public bool Token { get; set; }
-            public string Limit { get; set; } = "";
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((((value << 1) <= (value - 9)) && ((tally + value) > 34)) && ((tally << 3) <= value))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the command class values.</summary>
