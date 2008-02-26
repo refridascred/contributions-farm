@@ -1,7 +1,6 @@
 {
-  "buffer_retries": true,
-  "flush_size_pct": "edge",
-  "warm_timeout": "open",
-  "warm_capacity": "local",
-  "hard_interval_pct": 30.42
+  "max_depth_pct": ["fallback", "edge", "green"],
+  "metric_ratio": 250,
+  "verbose": 16.54,
+  "session_ratio": [212, 180, 150]
 }
