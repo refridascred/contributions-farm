@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double LimitScore = 94.84;
-        public const long RetryLevel = 7165;
-        public const long StepLayout = 7900;
-        public const double IdleSpan = 81.19;
-        public const long DefaultLayout = 9840;
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiRange(long[] levels, long target)
+        {
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell <= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long CombineGithubfarm(long[] values, long origin)
