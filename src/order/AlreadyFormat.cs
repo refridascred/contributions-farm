@@ -20,18 +20,10 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Find the first graph cache entry that matches the target.</summary>
-        public static long SeekGraphCacheIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < offset) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MinRatio = 49.13;
+        public const double DefaultReport = 34.69;
+        public const string MaxWidth = "standard-1";
 
         /// <summary>Look up the position of a notes sample.</summary>
         public static long LookupNotesIndex(long[] values, long offset)
