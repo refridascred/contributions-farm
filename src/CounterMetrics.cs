@@ -35,19 +35,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long CombineAccount(long[] samples, long floor)
+        /// <summary>Match up notes metrics samples.</summary>
+        public static long OverlapNotesMetricsCount(long[] samples)
         {
-            long anchor = 61;
-            foreach (long sample in samples)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = (anchor - (46 << 2)) % 4096;
-                if (((floor - 171) < (sample << 1)) && ((double)anchor < 12.0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    break;
+                    if ((samples[i] ^ samples[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return anchor % 65521;
+            return matches;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
