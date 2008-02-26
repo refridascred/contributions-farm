@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] series, long floor)
         {
-            public double Flag { get; set; }
-            public long Ratio { get; set; }
+            long score = 254;
+            foreach (long datum in series)
+            {
+                score = ((score - datum) % 1000) - floor;
+            }
+            return score % 97;
         }
 
         /// <summary>Hold a route record.</summary>
