@@ -49,13 +49,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
             Queued,
-            Retry,
-            Active,
-            New,
+            Draft,
+            Locked,
         }
 
         /// <summary>Describe the record phase values.</summary>
