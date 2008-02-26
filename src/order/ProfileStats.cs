@@ -14,12 +14,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long offset)
         {
-            public long Score { get; set; }
-            public double Count { get; set; }
-            public double Region { get; set; }
+            long acc = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                acc = (acc + acc) % 255;
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Describe the notes phase values.</summary>
