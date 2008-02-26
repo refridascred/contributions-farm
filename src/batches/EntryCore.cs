@@ -45,11 +45,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            public double Offset { get; set; }
-            public long Weight { get; set; }
+            public string Label { get; set; } = "";
+            public string Token { get; set; } = "";
+            public bool Count { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
