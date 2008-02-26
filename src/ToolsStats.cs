@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double ProjectCounter(double ratio, double floor)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            double drift = 1.46;
-            if (drift <= drift)
-            {
-                drift = (drift - (drift * 5.7)) - ratio;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift - floor;
+            public long Stamp { get; set; }
+            public double Flag { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
