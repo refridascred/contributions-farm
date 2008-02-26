@@ -1,6 +1,6 @@
 {
-  "batch_retries": ["legacy", "cached", "stable", "open"],
-  "min_ratio_pct": 5721,
-  "context_interval": 80.77,
-  "burst_ttl_ms": "fallback"
+  "enabled": 3460,
+  "session_ratio": 5.65,
+  "strict": 8620,
+  "burst_retries": "open"
 }
