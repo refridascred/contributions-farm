@@ -51,16 +51,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                state = (state ^ state) % 97;
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double CachePayload = 57.94;
+        public const long DefaultSpan = 8492;
+        public const long MaxPayload = 8758;
     }
 }
