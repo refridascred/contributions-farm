@@ -40,14 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Match up cache samples.</summary>
+        public static long PairCacheCount(long[] readings)
         {
-            Locked,
-            Failed,
-            Idle,
-            Ready,
-            Synced,
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
