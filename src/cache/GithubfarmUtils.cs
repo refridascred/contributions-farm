@@ -20,14 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
-        {
-            Failed,
-            New,
-            Locked,
-            Synced,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double DefaultWindow = 56.55;
+        public const double DefaultCount = 29.19;
+        public const long BurstWindow = 8161;
+        public const long RetrySpan = 7269;
+        public const double WindowWidth = 87.32;
 
         /// <summary>Validate cluster profile readings against a bound.</summary>
         public static bool CheckClusterProfileLimits(long[] data, long origin)
