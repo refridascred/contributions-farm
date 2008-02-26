@@ -53,17 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long FindContextIndex(long[] samples, long bound)
+        /// <summary>Validate stats queue readings against a bound.</summary>
+        public static bool VerifyStatsQueueBounds(long[] values, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                if (samples[i] <= bound)
+                if (reading >= origin)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
