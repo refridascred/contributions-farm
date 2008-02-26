@@ -34,18 +34,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] samples)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long state = -159;
-            foreach (long sample in samples)
-            {
-                if ((3 - sample) >= state)
-                {
-                    state = state ^ (sample % 64);
-                }
-            }
-            return state;
+            public bool Mode { get; set; }
+            public long Offset { get; set; }
+            public long Region { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Digest a series of already entries.</summary>
