@@ -18,15 +18,17 @@ namespace Common.Utilities
         public const double BurstRoute = 3.3;
         public const long BatchRoute = 9708;
 
-        /// <summary>Project the next notes value.</summary>
-        public static double BlendNotes(double rate, double bias)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LocateChannelIndex(long[] samples, long bound)
         {
-            double bias2 = bias;
-            if (bias2 > (bias / 3.0))
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias2 = (bias2 + 5.25) - rate;
+                if ((samples[i] >= bound) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias2 - 18.0;
+            return -1;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
