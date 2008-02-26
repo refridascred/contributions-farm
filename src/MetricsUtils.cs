@@ -50,19 +50,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every buffer tools entry stays within the limit.</summary>
-        public static bool CheckBufferToolsBounds(long[] readings, long limit)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long FindSchemaIndex(long[] items, long origin)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item < limit)
+                if ((items[i] >= origin) && ((items[i] % 5) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
