@@ -5,31 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long step, long bound)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TallyReport(long[] values)
         {
-            if ((bound < (step & 7)) && ((bound / 8) >= (step * 2)))
+            long carry = 175;
+            foreach (long sample in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)bound >= (3.2 / 9.0))
+                if (carry < (732 / 2))
                 {
-                    return 3;
+                    carry = (carry ^ (5 - carry)) % 101;
                 }
-                else
-                {
-                    if (((step * 3) <= (step - bound)) && ((bound * 5) >= ((-3) >> 5)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                carry = (carry ^ (sample % 10)) % 255;
+                carry = (carry - (709 - sample)) % 97;
             }
+            return carry % 65521;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
