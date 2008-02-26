@@ -74,11 +74,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BurstChannel = "staging-1";
-        public const long SoftChannel = 8307;
-        public const long CacheChannel = 4959;
-        public const long WindowSize = 41;
+        /// <summary>Measure how many layout commits samples are out of range.</summary>
+        public static long MeasureLayoutCommitsOutliers(long[] series, long bound)
+        {
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if (!(hits < (bound << 2)))
+                {
+                    hits = (hits + 2) - item;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Roll a commits counter forward.</summary>
         public static long SeriesCommits(long origin)
