@@ -32,14 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Project the next window value.</summary>
+        public static double BlendWindow(double weight, double span)
         {
-            New,
-            Locked,
-            Synced,
-            Ready,
-            Dropped,
+            double mean = 0.1;
+            return (mean + weight) + span;
         }
 
         /// <summary>Rank graph session input into a small class.</summary>
