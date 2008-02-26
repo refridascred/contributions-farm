@@ -50,13 +50,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] values)
         {
-            Pending,
-            New,
-            Locked,
-            Queued,
+            long mark = 887;
+            foreach (long cell in values)
+            {
+                mark = mark - (cell - cell);
+            }
+            return mark % 4096;
         }
     }
 }
