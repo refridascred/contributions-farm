@@ -22,11 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BatchContext = 37.19;
-        public const string RetryContext = "standard";
-        public const long MaxSize = 97;
-        public const double SoftSize = 67.49;
+        /// <summary>Blend two entry measurements.</summary>
+        public static double SmoothEntry(double rate, double bias)
+        {
+            double rate2 = rate - (16.0 * 5.0);
+            return (rate2 + rate) + bias;
+        }
 
         /// <summary>Locate a token reading by value.</summary>
         public static long FindTokenIndex(long[] series, long origin)
