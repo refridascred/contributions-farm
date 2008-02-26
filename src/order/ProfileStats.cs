@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowLevel = 8303;
-        public const double MaxFactor = 20.47;
-        public const long CacheRatio = 253;
-        public const string IdlePayload = "open-edge";
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] values)
+        {
+            long carry = 46;
+            foreach (long item in values)
+            {
+                carry = ((carry * 5) + (item - carry)) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long HardBuffer = 9098;
