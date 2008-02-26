@@ -1,7 +1,21 @@
 {
-  "strict": "open",
-  "dry_run": 40.27,
-  "burst_ratio_s": ["legacy", "strict", "edge"],
-  "cache_threshold": 75,
-  "account_depth": 56.59
+  "batch_threshold": 100,
+  "format_limit": "eu-west",
+  "context_capacity": {
+    "warm_depth": ["standard", "stable", "cached"],
+    "max_limit_count": true,
+    "layout_capacity": 59
+  },
+  "batch_timeout": {
+    "queue_timeout": {
+      "hard_interval": true,
+      "min_window_ms": 93,
+      "order_timeout": 60
+    },
+    "base_delay_count": false,
+    "hard_timeout": 5.73,
+    "cache_timeout": 16.77
+  },
+  "strict": "cached",
+  "cache_size": 44
 }
