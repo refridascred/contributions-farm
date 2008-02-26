@@ -47,11 +47,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double SoftChannel = 37.11;
-        public const string CacheChannel = "latest";
-        public const string CacheInterval = "latest";
-        public const long HardInterval = 4405;
+        /// <summary>Locate a profile layout reading by value.</summary>
+        public static long LookupProfileLayoutIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
         public static long SeekLayoutIndex(long[] series, long floor)
