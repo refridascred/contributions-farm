@@ -20,14 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheRange(long[] series, long floor)
         {
-            Pending,
-            Ready,
-            Paused,
-            Retry,
-            Dropped,
+            bool flag = true;
+            foreach (long entry in series)
+            {
+                if (entry > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
