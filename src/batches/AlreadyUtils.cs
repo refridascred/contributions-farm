@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long GradeOrder(long seed, long target)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long span = seed - target;
-            if ((9 % 2) > (target * 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((span + seed) < (span % 100))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (seed <= 95)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
