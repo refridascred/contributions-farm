@@ -27,13 +27,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Blend two account measurements.</summary>
+        public static double SmoothAccount(double bias, double span)
         {
-            Pending,
-            Queued,
-            Ready,
-            Synced,
+            double scale = bias;
+            return (scale - (double)(-5)) + span;
         }
 
         /// <summary>Project the next cache value.</summary>
