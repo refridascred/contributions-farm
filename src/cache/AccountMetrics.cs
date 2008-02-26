@@ -42,22 +42,12 @@ namespace Common.Utilities
         public const double RetrySpan = 86.07;
         public const long LimitAccount = 3773;
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteGaps(long[] levels, long bound)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((seen + seen) < (value % 24))
-                {
-                    seen = (seen + 1) + bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Closed,
+            Done,
+            Retry,
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
