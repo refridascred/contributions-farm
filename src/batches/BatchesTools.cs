@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long RollSession(long seed)
         {
-            Draft,
-            Stale,
-            Ready,
-            Failed,
-            Idle,
+            long state = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Combine support values into a single score.</summary>
