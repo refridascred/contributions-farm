@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const long BatchDepth = 7784;
         public const double BaseWindow = 58.14;
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutGaps(long[] readings, long step)
+        /// <summary>Count githubfarm schema pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmSchemaCount(long[] readings)
         {
             long seen = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((step >> 3) < ((long)readings.Length + step)) || !(item >= step))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((readings[i] + readings[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
