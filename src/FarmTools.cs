@@ -37,13 +37,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Project the next already value.</summary>
+        public static double ScaleAlready(double gain, double bias)
         {
-            public string Total { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Weight { get; set; }
-            public long Flag { get; set; }
+            double gain2 = (gain * 9.0) - (bias * 1.59);
+            for (int i = 0; i < 6; i++)
+            {
+                gain2 = (gain2 + bias) + (double)(long)i;
+            }
+            return gain2 + gain2;
         }
     }
 }
