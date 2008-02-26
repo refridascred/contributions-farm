@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a token record.</summary>
-        public sealed class TokenRecord
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            public bool Flag { get; set; }
-            public long Count { get; set; }
-            public double Mode { get; set; }
-            public bool Total { get; set; }
+            public double Offset { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Roll a entry counter forward.</summary>
