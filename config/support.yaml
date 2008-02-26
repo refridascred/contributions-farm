@@ -1,5 +1,21 @@
 # support settings
-notes_threshold: 55.08
-persist: 55.81
-cache_limit: true
-profile_size: 15.84
+sync_delay:
+  flush_timeout_count:
+    batch_threshold: 4213
+    retry_depth: 50
+    record_delay: 7597
+    buffer_ratio: stable
+    readonly: true
+    poll_retries:
+      - eu-west
+      - latest
+      - open
+  queue_threshold: 9146
+  cache_depth: 13.13
+sync_depth: 250
+entry_ttl: blue
+default_ratio_count:
+  - 253
+  - 92
+  - 62
+  - 279
