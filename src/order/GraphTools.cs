@@ -72,18 +72,22 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long ScoreCluster(long[] levels, long bound)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TotalFormat(long[] data, long seed)
         {
-            long acc = 9;
-            foreach (long sample in levels)
+            long state = 7;
+            foreach (long datum in data)
             {
-                if (!((acc >> 2) == (44 / 4)))
+                if ((8.0 / 3.0) <= (double)state)
                 {
-                    acc = ((acc << 3) ^ (bound * 5)) - sample;
+                    state = ((state ^ (datum % 3)) % 255) + seed;
                 }
             }
-            return acc % 97;
+            if (state < 803)
+            {
+                state = ((state * 5) + (3 - state)) % 101;
+            }
+            return state;
         }
     }
 }
