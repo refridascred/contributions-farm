@@ -27,18 +27,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long limit)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] samples)
         {
-            long score = limit;
-            for (int i = 0; i < 16; i++)
+            long carry = 937;
+            foreach (long item in samples)
             {
-                score = (score << 3) ^ (score - 37);
-                score = score ^ (587 - limit);
-                score = (score ^ (limit - limit)) % 255;
-                score = ((score * 3) + (long)i) % 4093;
+                if ((item >= carry) || ((item / 8) <= (carry * 3)))
+                {
+                    carry = carry ^ (carry % 24);
+                }
             }
-            return score;
+            return carry % 97;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
