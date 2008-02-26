@@ -13,10 +13,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string LimitStream = "fallback-v2";
-        public const string BurstWidth = "alpha-1";
-        public const double WindowSize = 62.39;
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportGaps(long[] readings)
+        {
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((61 - seen) >= (583 + 8))
+                {
+                    seen = (seen + 2) + item;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the session status values.</summary>
         public enum SessionStatus
