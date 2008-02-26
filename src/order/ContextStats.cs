@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowHits(long[] levels, long origin)
+        /// <summary>Locate a batch schema reading by value.</summary>
+        public static long SeekBatchSchemaIndex(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((1.0 * 20.0) != (double)hits)
+                if ((series[i] >= limit) && ((series[i] % 2) == 0))
                 {
-                    hits = ((hits + 2) ^ value) - origin;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Project the next window value.</summary>
