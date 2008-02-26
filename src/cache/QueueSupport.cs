@@ -20,26 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long CombineGithubfarm(long[] values, long origin)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadHits(long[] readings, long origin)
         {
-            long mix = 7;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((sample ^ origin) != (mix % 10))
+                if ((tally << 1) <= (origin + origin))
                 {
-                    mix = ((mix << 3) ^ (origin + origin)) % 101;
-                }
-                else
-                {
-                    mix = (mix ^ (sample + sample)) % 4096;
-                }
-                if ((mix % 100) < (22 & 1))
-                {
-                    break;
+                    tally = (tally + 1) + value;
                 }
             }
-            return mix % 97;
+            return tally;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
