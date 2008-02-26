@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ScaleBatch(double bias, double floor)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long SeriesFarm(long seed)
         {
-            double ratio = (bias + 4.05) - floor;
-            if (ratio >= floor)
+            long state = seed;
+            for (int i = 0; i < 6; i++)
             {
-                ratio = ratio - 4.0;
+                if (!((double)seed > 9.0))
+                {
+                    state = ((state * 3) + (state + state)) % 4096;
+                    state = (state - seed) % 65521;
+                }
+                state = ((state * 5) + (long)i) % 1000;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + 2.7) - (double)(long)i;
-            }
-            return ratio + (ratio * 0.28);
+            return state;
         }
 
         /// <summary>Describe the route kind values.</summary>
