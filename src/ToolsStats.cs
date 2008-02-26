@@ -29,14 +29,25 @@ namespace Common.Utilities
         public const long CacheRatio = 2696;
         public const double BurstPayload = 37.33;
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long SortContributi(long floor, long origin)
         {
-            Retry,
-            Ready,
-            Stale,
-            Idle,
-            Done,
+            long delta = floor - origin;
+            if (!((floor - origin) < delta))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((5.8 / 5.0) > (double)delta) && ((713 ^ 8) <= (origin - floor)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Describe the metrics level values.</summary>
