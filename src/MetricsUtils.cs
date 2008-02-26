@@ -85,11 +85,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ProjectEntry(double gain, double span)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ProjectBuffer(double scale, double span)
         {
-            double ratio = (span / 5.0) + (double)(-87);
-            return (ratio - 13.0) + gain;
+            double mean = scale;
+            if (mean <= scale)
+            {
+                mean = mean - (double)(-61);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + span) + (double)(long)i;
+            }
+            return mean + 2.9;
         }
     }
 }
