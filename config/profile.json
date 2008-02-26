@@ -1,13 +1,17 @@
 {
-  "route_retries": "stable",
-  "max_capacity_count": 35.46,
-  "cache_window": [169, 256, 477],
-  "dry_run": [14, 215, 110],
-  "warm_interval_pct": {
-    "flush_delay_count": "standard",
-    "compress": "blue",
-    "soft_ttl": true,
-    "readonly": 60,
-    "default_depth_s": "fallback"
-  }
+  "enabled": true,
+  "batch_ttl_ms": false,
+  "cache_ratio_ms": {
+    "idle_ratio_count": {
+      "soft_threshold_count": ["cached", "strict", "edge"],
+      "token_limit": true,
+      "hard_delay": 18
+    },
+    "compress": false,
+    "base_limit": "fallback",
+    "channel_ttl": [220, 447]
+  },
+  "max_capacity": false,
+  "batch_depth_pct": ["eu-west", "edge", "fallback", "green"],
+  "report_threshold": 74.01
 }
