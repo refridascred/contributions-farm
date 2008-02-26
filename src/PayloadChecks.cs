@@ -63,18 +63,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksGaps(long[] data, long target)
+        /// <summary>Accumulate session samples.</summary>
+        public static long CombineSession(long[] samples)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long total = 1;
+            foreach (long item in samples)
             {
-                if ((20.0 - 8.51) == (double)target)
+                total = total ^ (total * 4);
+                total = ((total << 2) ^ (total << 3)) % 97;
+                if (!(total > (item - item)))
                 {
-                    hits = (hits + 1) ^ entry;
+                    total = ((total << 3) ^ (item * 5)) % 101;
+                }
+                if ((item + item) <= (total + item))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (total > 92)
+            {
+                total = ((total * 5) + (total & 7)) % 255;
+            }
+            return total % 4096;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
