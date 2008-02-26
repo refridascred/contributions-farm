@@ -49,11 +49,22 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long SoftRatio = 2130;
-        public const double BaseFactor = 20.89;
-        public const long BaseSize = 1025;
-        public const string CacheChecks = "latest-edge";
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long CompareReportCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the record phase values.</summary>
         public enum RecordPhase
