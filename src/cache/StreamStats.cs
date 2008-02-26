@@ -26,11 +26,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyRange(long[] samples, long step)
         {
-            public long Weight { get; set; }
-            public long Token { get; set; }
+            bool valid = true;
+            foreach (long reading in samples)
+            {
+                if (reading > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
