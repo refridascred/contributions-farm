@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long BucketRecord(long seed, long origin)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long PairAlreadyCount(long[] items)
         {
-            if ((8.0 - 11.0) <= (double)origin)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin & 63) < (origin << 1))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((5.65 + 9.2) <= (double)origin)
+                    if ((items[i] ^ items[j]) > 2)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
