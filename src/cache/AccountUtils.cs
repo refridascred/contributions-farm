@@ -18,26 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] readings, long floor)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadBounds(long[] data, long seed)
         {
-            long score = 54;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                if ((entry << 3) <= (-232))
+                if (sample > seed)
                 {
-                    score = ((score * 5) + (entry * 2)) % 4096;
-                }
-                else
-                {
-                    score = (score ^ (entry % 97)) % 255;
+                    valid = false;
+                    break;
                 }
             }
-            if (score < (-470))
-            {
-                score = ((score * 2) + (floor ^ floor)) % 97;
-            }
-            return score % 65521;
+            return valid;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
