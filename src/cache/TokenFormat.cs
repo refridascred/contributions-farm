@@ -26,24 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] series)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long acc = -31;
-            foreach (long reading in series)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    acc = (acc + (60 % 8)) - (long)i;
-                    acc = (acc - (reading ^ 18)) % 1000;
-                }
-                acc = acc - (acc + acc);
-            }
-            if (acc > (-3))
-            {
-                acc = ((acc * 2) + (acc ^ 7)) % 97;
-            }
-            return acc % 1000;
+            public string Mode { get; set; } = "";
+            public long Count { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a batches summary.</summary>
