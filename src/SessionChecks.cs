@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchLevel = 2053;
-        public const long LimitLayout = 3323;
-        public const string MinInterval = "stable-1";
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
+        {
+            public double Ratio { get; set; }
+            public double Owner { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Classify a payload queue pair into a bucket.</summary>
         public static long SortPayloadQueue(long offset, long target)
