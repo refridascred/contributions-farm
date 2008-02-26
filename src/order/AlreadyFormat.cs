@@ -28,13 +28,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Rank metric context input into a small class.</summary>
+        public static long ClassifyMetricContext(long offset, long bound)
         {
-            public bool Ratio { get; set; }
-            public double Stamp { get; set; }
-            public double Level { get; set; }
-            public bool Mode { get; set; }
+            long offset2 = offset + bound;
+            if (((bound + (-7)) < (bound / 2)) && ((offset << 3) != (offset2 % 10)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset2 / 2) <= (offset << 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((bound + offset) <= offset2)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
