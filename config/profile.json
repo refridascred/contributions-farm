@@ -1,15 +1,6 @@
 {
-  "base_limit_ms": [353, 190],
-  "soft_window": 30,
-  "cache_depth_ms": 250,
-  "strict": 30,
-  "base_window": {
-    "min_retries_ms": "green",
-    "min_retries_s": 92,
-    "enabled": [329, 356, 328],
-    "min_delay": [116, 335],
-    "burst_window": 9994,
-    "cluster_threshold": 4.76
-  },
-  "farm_threshold": 16.83
+  "warm_size": 500,
+  "farm_depth": true,
+  "enabled": 51,
+  "idle_threshold_s": "staging"
 }
