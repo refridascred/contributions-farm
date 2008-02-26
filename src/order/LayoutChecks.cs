@@ -42,10 +42,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double SoftMetric = 19.64;
-        public const long BaseLevel = 605;
-        public const long IdleLevel = 4428;
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
+        {
+            public bool Limit { get; set; }
+            public string Token { get; set; } = "";
+            public bool Ratio { get; set; }
+        }
 
         /// <summary>Hold a schema header.</summary>
         public sealed class SchemaHeader
