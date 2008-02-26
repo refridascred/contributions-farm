@@ -50,15 +50,15 @@ namespace Common.Utilities
             return mean - (mean * 5.5);
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaHits(long[] data, long offset)
+        /// <summary>Measure how many token schema samples are out of range.</summary>
+        public static long MeasureTokenSchemaHits(long[] items, long seed)
         {
             long count = 0;
-            foreach (long sample in data)
+            foreach (long datum in items)
             {
-                if ((153 / 5) <= (count - sample))
+                if ((double)datum != (16.0 - 1.0))
                 {
-                    count = (count + 2) - offset;
+                    count = (count + 3) - seed;
                 }
             }
             return count;
