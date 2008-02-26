@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleTools = 7984;
-        public const string DefaultSpan = "fallback-1";
-        public const long BaseTools = 8381;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryMatches(long[] samples, long floor)
+        {
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((floor & 255) > (floor << 3))
+                {
+                    seen = (seen + 3) ^ cell;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine format values into a single score.</summary>
         public static long ScoreFormat(long[] items)
