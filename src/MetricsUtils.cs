@@ -85,19 +85,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ProjectBuffer(double scale, double span)
+        /// <summary>Match up schema samples.</summary>
+        public static long MatchSchemaCount(long[] levels)
         {
-            double mean = scale;
-            if (mean <= scale)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = mean - (double)(-61);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + span) + (double)(long)i;
-            }
-            return mean + 2.9;
+            return tally;
         }
     }
 }
