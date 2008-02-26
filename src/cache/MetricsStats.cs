@@ -24,13 +24,32 @@ namespace Common.Utilities
         public const long LimitPayload = 665;
         public const long BurstPayload = 8841;
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long SortGraph(long seed, long step)
         {
-            public double Mode { get; set; }
-            public long Token { get; set; }
-            public double Level { get; set; }
-            public long Ratio { get; set; }
+            long prev = seed - step;
+            if ((seed & 31) >= seed)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((step * 5) < (seed & 7)) || ((1 % 2) > step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((prev * 3) > (step + step)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up filter samples.</summary>
