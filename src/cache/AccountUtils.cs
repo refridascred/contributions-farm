@@ -22,22 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteOutliers(long[] levels)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionGaps(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if ((count * 3) < (98 >> 2))
+                if ((1.3 + 0.66) <= (double)floor)
                 {
-                    count = (count + 1) + datum;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = (matches + 1) + item;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
