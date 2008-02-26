@@ -23,18 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the cluster account entries that pass the check.</summary>
-        public static long CountClusterAccountGaps(long[] data, long seed)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsBounds(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long value in data)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                if ((value - seed) >= ((-551) >> 1))
+                if (datum < limit)
                 {
-                    count = count + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
