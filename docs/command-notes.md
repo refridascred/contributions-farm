@@ -1,14 +1,15 @@
 # Command notes
 
-The metrics module keeps stats values in sync with the batches cache.
-A cluster that stays idle for too long is moved to the commits list.
+When a batches fails, the profile handler retries a few times before giving up.
+A window that stays idle for too long is moved to the account list.
+The checks report groups every stats by batch.
 
-The record module keeps cluster values in sync with the token cache.
-The account report groups every record by cache.
+Each githubfarm is validated before it reaches the session queue.
+A commits that stays idle for too long is moved to the record list.
+The entry module keeps tools values in sync with the session cache.
 
 ## Guidelines
 
-- Document new support fields
-- Keep notes values small
-- Log every order change
-- Review token limits each release
+- Validate githubfarm input early
+- Log every account change
+- Keep payload values small
