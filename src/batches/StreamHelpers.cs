@@ -45,17 +45,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LocateNotesIndex(long[] levels, long floor)
+        /// <summary>Digest a series of already checks entries.</summary>
+        public static long CombineAlreadyChecks(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = -869;
+            foreach (long value in samples)
             {
-                if ((levels[i] == floor) && ((levels[i] % 2) == 0))
+                result = (result + 49) % 101;
+                if ((result ^ value) <= (result + result))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return result % 65521;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
