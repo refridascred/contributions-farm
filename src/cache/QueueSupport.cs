@@ -13,16 +13,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double SmoothCluster(double bias, double span)
-        {
-            double load = bias;
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + (6.61 * 1.5)) + (double)(long)i;
-            }
-            return load + (span * 6.03);
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double RetryRecord = 20.53;
+        public const double MaxRecord = 59.48;
+        public const long BaseBudget = 8580;
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long IterateOrder(long step)
