@@ -5,12 +5,40 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheInterval = 3685;
-        public const string IdleTimeout = "alpha-1";
-        public const long LimitCluster = 6704;
-        public const double BatchRatio = 66.74;
-        public const double MaxCluster = 9.47;
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long step, long floor)
+        {
+            long diff = step ^ floor;
+            if (((floor & 31) <= (diff & 63)) || ((floor - 19) < (97 + (-453))))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor < step) && ((diff - floor) >= (step >> 2)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((diff + diff) < step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step + 37) != (step + 66))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the context phase values.</summary>
         public enum ContextPhase
