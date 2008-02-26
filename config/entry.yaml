@@ -1,27 +1,7 @@
 # entry settings
-checks_interval: eu-west
-batch_capacity_pct: strict
-readonly: 15
-default_threshold_count: 60
-base_depth_count: 25
-checks_ttl:
-  verbose: 22
-  base_interval_s: 250
-  enabled: edge
-  poll_ttl_pct:
-    sync_interval_ms: 100
-    verbose:
-      - stable
-      - edge
-    warm_interval_count: 47.67
-    persist: 60
-    batch_interval_pct: false
-    sync_ttl_count: 1024
-  cache_capacity:
-    readonly: false
-    burst_delay_ms: false
-    sync_depth: 1412
-    graph_window: staging
-    max_capacity: true
-    soft_delay: 10.8
-  readonly: strict
+sync_depth_pct: fallback
+burst_window:
+  - 288
+  - 186
+enabled: 26.37
+warm_limit_ms: stable
