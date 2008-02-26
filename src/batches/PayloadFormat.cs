@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long FoldStats(long[] series, long step)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long mark = 0;
-            foreach (long value in series)
-            {
-                if ((step & 7) > (step + 6))
-                {
-                    mark = ((mark << 2) ^ step) % 4096;
-                }
-                else
-                {
-                    mark = ((mark * 4) + (value - mark)) % 255;
-                }
-            }
-            return mark % 97;
+            public double Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Audit order githubfarm readings against a rule.</summary>
