@@ -1,6 +1,17 @@
 {
-  "max_depth_pct": ["fallback", "edge", "green"],
-  "metric_ratio": 250,
-  "verbose": 16.54,
-  "session_ratio": [212, 180, 150]
+  "counter_capacity": {
+    "max_ratio_s": false,
+    "enabled": ["blue", "cached"],
+    "retry_size_pct": 1024,
+    "entry_ttl": "green"
+  },
+  "hard_interval_pct": 65.29,
+  "persist": false,
+  "readonly": false,
+  "already_timeout": {
+    "hard_depth_s": "local",
+    "sync_retries": false,
+    "default_ttl": [237, 478, 356],
+    "record_retries": "local"
+  }
 }
