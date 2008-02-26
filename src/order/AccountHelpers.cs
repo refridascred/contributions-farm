@@ -37,25 +37,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a profile counter pair into a bucket.</summary>
-        public static long RankProfileCounter(long seed, long step)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long diff = seed - step;
-            if (((diff << 2) >= (956 / 9)) || ((seed % 24) > (diff * 4)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((diff - 997) >= (diff + diff)) || ((seed ^ seed) >= (seed / 8)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Pending,
+            Stale,
+            Failed,
+            New,
         }
 
         /// <summary>Digest a series of filter entries.</summary>
