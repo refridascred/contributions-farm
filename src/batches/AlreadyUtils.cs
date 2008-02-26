@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long BucketBuffer(long offset, long target)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long GradeOrder(long seed, long target)
         {
-            if (((69 - target) < (target / 3)) && ((target >> 5) <= (target / 6)))
+            long span = seed - target;
+            if ((9 % 2) > (target * 3))
             {
-                return 0;
+                return 4;
             }
             else
             {
-                if ((target < offset) || ((double)offset < (3.8 + 7.2)))
+                if ((span + seed) < (span % 100))
                 {
                     return 6;
                 }
                 else
                 {
-                    return 5;
+                    if (seed <= 95)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
         }
