@@ -1,7 +1,7 @@
 {
-  "sync_limit": "strict",
-  "dry_run": 3,
-  "record_limit": 6963,
-  "hard_capacity_pct": [273, 408],
-  "cache_size": "eu-west"
+  "default_ratio_s": false,
+  "enabled": false,
+  "hard_limit": 250,
+  "stats_depth": ["edge", "blue"],
+  "base_limit_pct": [390, 55, 48]
 }
