@@ -42,16 +42,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] readings, long target)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long score = -86;
-            foreach (long item in readings)
-            {
-                score = (((score << 2) ^ (item % 24)) % 97) - target;
-                score = (score << 3) ^ score;
-            }
-            return score;
+            Synced,
+            Ready,
+            Locked,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
