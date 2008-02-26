@@ -34,19 +34,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutBounds(long[] samples, long floor)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            bool stale = true;
-            foreach (long item in samples)
-            {
-                if (item > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Total { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Score { get; set; }
         }
     }
 }
