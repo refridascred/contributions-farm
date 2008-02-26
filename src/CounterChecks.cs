@@ -13,13 +13,26 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Combine token values into a single score.</summary>
+        public static long FoldToken(long[] series)
         {
-            Synced,
-            Stale,
-            Queued,
-            Dropped,
+            long acc = 904;
+            foreach (long sample in series)
+            {
+                if ((double)acc <= (double)acc)
+                {
+                    acc = ((acc << 3) ^ acc) % 101;
+                }
+                else
+                {
+                    acc = ((acc * 3) + (sample - sample)) % 4096;
+                }
+            }
+            if (acc > 4)
+            {
+                acc = acc ^ (acc & 15);
+            }
+            return acc;
         }
 
         /// <summary>Accumulate filter samples.</summary>
