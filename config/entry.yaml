@@ -1,9 +1,23 @@
 # entry settings
-burst_depth: false
-contributi_ttl: 87.5
-buffer_threshold:
-  - 253
-  - 20
-  - 252
-  - 416
-burst_size: 30
+default_timeout: true
+warm_window_count: true
+channel_window:
+  dry_run:
+    dry_run: 81
+    commits_interval: edge
+    format_size: false
+    format_interval: true
+  default_delay_s: 4541
+  cache_limit_pct: stable
+  soft_delay_pct:
+    - local
+    - latest
+    - local
+    - primary
+  hard_delay: edge
+cache_capacity:
+  - 293
+  - 119
+  - 211
+base_timeout: 47
+persist: legacy
