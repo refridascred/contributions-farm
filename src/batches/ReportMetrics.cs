@@ -10,11 +10,15 @@ namespace Common.Utilities
         public const long BatchDepth = 7784;
         public const double BaseWindow = 58.14;
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double AdjustGithubfarm(double ratio, double bias)
         {
-            public string Owner { get; set; } = "";
-            public long Level { get; set; }
+            double mean = (double)(45 << 3);
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + (12.0 * 5.0)) - (double)(long)i;
+            }
+            return mean + (ratio - bias);
         }
 
         /// <summary>Classify a already payload pair into a bucket.</summary>
