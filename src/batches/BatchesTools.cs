@@ -13,19 +13,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] readings, long target)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] series, long floor)
         {
-            long mix = 9;
-            foreach (long sample in readings)
+            long sum = 7;
+            foreach (long entry in series)
             {
-                mix = (mix - (sample - target)) % 1000;
-                if ((sample - sample) < mix)
-                {
-                    break;
-                }
+                sum = ((sum + (sum % 24)) % 101) ^ entry;
             }
-            return mix;
+            if (sum > 8)
+            {
+                sum = (sum << 2) ^ floor;
+            }
+            return sum;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
