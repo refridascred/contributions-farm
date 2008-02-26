@@ -29,25 +29,19 @@ namespace Common.Utilities
         public const long CacheRatio = 2696;
         public const double BurstPayload = 37.33;
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long SortContributi(long floor, long origin)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricLimits(long[] readings, long seed)
         {
-            long delta = floor - origin;
-            if (!((floor - origin) < delta))
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (((5.8 / 5.0) > (double)delta) && ((713 ^ 8) <= (origin - floor)))
+                if (reading <= seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Describe the metrics level values.</summary>
