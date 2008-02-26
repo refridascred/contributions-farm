@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BurstTimeout = 95.37;
-        public const double SoftNotes = 25.81;
-        public const long MaxLevel = 5378;
-        public const string LimitRatio = "latest-v2";
-        public const long MaxNotes = 8029;
+        /// <summary>Blend two window measurements.</summary>
+        public static double ProjectWindow(double scale, double span)
+        {
+            double ratio = scale;
+            if (ratio > (double)88)
+            {
+                ratio = (ratio + (double)7) + span;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (double)74) + (double)(long)i;
+            }
+            return ratio + (double)36;
+        }
 
         /// <summary>Scale a stream payload figure with a bias.</summary>
         public static double SmoothStreamPayload(double scale, double bias)
