@@ -1,8 +1,6 @@
 {
-  "hard_capacity": 25.36,
-  "burst_ratio": "primary",
-  "dry_run": 18,
-  "compress": false,
-  "default_ttl_pct": "fallback",
-  "persist": false
+  "order_timeout": [453, 35, 305],
+  "default_window_pct": "staging",
+  "channel_limit": "primary",
+  "dry_run": 8.02
 }
