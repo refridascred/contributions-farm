@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Look up the position of a command schema sample.</summary>
+        public static long FindCommandSchemaIndex(long[] items, long limit)
         {
-            Synced,
-            Closed,
-            Draft,
-            Retry,
-            New,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= limit) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a cache stats.</summary>
