@@ -50,19 +50,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaBounds(long[] samples, long step)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ScaleCache(double rate, double floor)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            double bias = (rate / 6.0) / 7.0;
+            if (bias <= (floor * 2.0))
             {
-                if (reading != step)
-                {
-                    valid = false;
-                    break;
-                }
+                bias = bias - (double)81;
             }
-            return valid;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = bias + (double)(long)i;
+            }
+            return bias - floor;
         }
 
         /// <summary>Describe the schema status values.</summary>
