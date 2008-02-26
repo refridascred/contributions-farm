@@ -43,15 +43,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long IterateLayout(long offset)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiBounds(long[] series, long floor)
         {
-            long mark = offset;
-            for (int i = 0; i < 11; i++)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                mark = ((mark * 5) + (long)i) % 101;
+                if (datum < floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mark;
+            return ok;
         }
     }
 }
