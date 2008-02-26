@@ -28,31 +28,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a filter batch value against two limits.</summary>
-        public static long RankFilterBatch(long bound, long target)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            if (((target % 3) < (232 + target)) || ((double)9 < (double)target))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((211 <= (79 ^ bound)) || ((bound ^ bound) >= (target ^ target)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound / 6) > (target + target))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Locked,
+            Pending,
+            Active,
         }
     }
 }
