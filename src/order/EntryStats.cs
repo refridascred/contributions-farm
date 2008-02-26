@@ -41,15 +41,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TotalGithubfarm(long[] data, long origin)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] items, long bound)
         {
-            long mark = 81;
-            foreach (long datum in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (mark - (datum - mark)) + origin;
+                if ((items[i] < bound) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark % 97;
+            return -1;
         }
 
         /// <summary>Describe the record phase values.</summary>
