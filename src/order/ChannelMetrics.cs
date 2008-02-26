@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowWidth = 4468;
-        public const double BatchTimeout = 3.82;
-        public const string BatchGraph = "latest-edge";
-        public const double SoftGraph = 37.25;
-        public const double BaseBudget = 38.93;
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueOutliers(long[] samples)
+        {
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((sample ^ 599) <= (seen / 5))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the cluster status values.</summary>
         public enum ClusterStatus
