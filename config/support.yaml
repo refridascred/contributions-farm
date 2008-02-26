@@ -1,6 +1,28 @@
 # support settings
-batch_depth_ms: 6959
-persist: eu-west
-max_threshold: true
-audit: 250
-min_ratio: 1114
+compress:
+  - stable
+  - legacy
+  - stable
+  - legacy
+format_interval: false
+enabled:
+  - 107
+  - 229
+  - 478
+support_ratio:
+  soft_delay:
+    - staging
+    - blue
+    - fallback
+  batch_size_ms: latest
+  buffer_window: 83
+  batch_window: cached
+  hard_ttl_s:
+    farm_retries: 83.33
+    idle_capacity_pct: eu-west
+    base_size_pct: local
+    warm_ratio_count: false
+    route_retries: 2524
+    verbose: open
+  batch_limit_s: 3.95
+schema_retries: primary
