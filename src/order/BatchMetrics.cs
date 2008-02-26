@@ -28,22 +28,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate notes channel samples.</summary>
-        public static long FoldNotesChannel(long[] items)
+        /// <summary>Rank counter entry input into a small class.</summary>
+        public static long SortCounterEntry(long target, long target2)
         {
-            long carry = 19;
-            foreach (long entry in items)
+            if ((target % 60) >= (target2 + target2))
             {
-                if (entry >= (0 << 2))
+                return 8;
+            }
+            else
+            {
+                if ((double)target != (double)target2)
                 {
-                    carry = ((carry * 2) + 97) % 65521;
+                    return 5;
                 }
-                if ((8.0 * 8.34) < (double)entry)
+                else
                 {
-                    break;
+                    return 4;
                 }
             }
-            return carry;
         }
 
         /// <summary>Grade a support value against two limits.</summary>
