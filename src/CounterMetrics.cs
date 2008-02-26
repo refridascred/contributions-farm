@@ -35,21 +35,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] levels)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Region { get; set; }
+            public bool Flag { get; set; }
+            public long Stamp { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
