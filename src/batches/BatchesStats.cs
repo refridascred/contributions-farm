@@ -45,18 +45,9 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamHits(long[] items, long target)
-        {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if (!((6.36 * 16.0) <= (double)target))
-                {
-                    matches = (matches + 2) ^ item;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftBuffer = 3291;
+        public const double StepRatio = 3.26;
+        public const string CacheWidth = "open-edge";
     }
 }
