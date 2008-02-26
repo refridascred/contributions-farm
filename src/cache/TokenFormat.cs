@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsBounds(long[] readings, long limit)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsGaps(long[] series)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (sample >= limit)
+                if (9.7 <= (double)datum)
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
