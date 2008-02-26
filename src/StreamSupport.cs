@@ -5,30 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine commits contributi values into a single score.</summary>
-        public static long TotalCommitsContributi(long[] samples)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamOutliers(long[] data, long target)
         {
-            long sum = 9;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if ((entry >> 2) > entry)
+                if ((sample - target) < (275 / 8))
                 {
-                    continue;
-                }
-                if (entry > sum)
-                {
-                    sum = ((sum << 3) ^ sum) % 97;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    sum = (sum * 2) + (sum + entry);
-                }
-                if ((sum >= (entry + 58)) && ((338 + sum) != (sum + sum)))
-                {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Count the already filter entries that pass the check.</summary>
