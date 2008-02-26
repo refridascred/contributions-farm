@@ -83,9 +83,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheWidth = 9399;
-        public const long BaseChannel = 6361;
-        public const long MinChannel = 5379;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string HardBudget = "alpha-1";
+        public const string LimitWidth = "legacy-v2";
+        public const string LimitStream = "fallback-v2";
+        public const string BatchDepth = "local-edge";
     }
 }
