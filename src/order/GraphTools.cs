@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinFactor = 51;
-        public const string LimitLevel = "staging-edge";
-        public const long BatchChannel = 2220;
+        /// <summary>Digest a series of report entries.</summary>
+        public static long WeighReport(long[] levels)
+        {
+            long sum = 70;
+            foreach (long entry in levels)
+            {
+                if ((sum >> 2) < (sum + 585))
+                {
+                    sum = ((sum << 3) ^ (entry - entry)) % 255;
+                }
+                else
+                {
+                    sum = sum ^ (entry << 1);
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Locate a support reading by value.</summary>
         public static long LookupSupportIndex(long[] samples, long bound)
