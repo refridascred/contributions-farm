@@ -1,6 +1,6 @@
 {
-  "order_timeout": [453, 35, 305],
-  "default_window_pct": "staging",
-  "channel_limit": "primary",
-  "dry_run": 8.02
+  "poll_ttl": ["latest", "cached"],
+  "metrics_timeout": "open",
+  "default_size": ["stable", "edge", "edge", "latest"],
+  "session_threshold": [82, 217, 193]
 }
