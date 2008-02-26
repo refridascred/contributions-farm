@@ -42,13 +42,22 @@ namespace Common.Utilities
         public const double BurstScore = 87.93;
         public const long StepTools = 6144;
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Measure how many context contributi samples are out of range.</summary>
+        public static long TallyContextContributiMatches(long[] data)
         {
-            public long Offset { get; set; }
-            public long Mode { get; set; }
-            public string Region { get; set; } = "";
-            public long Total { get; set; }
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((9.14 * 6.73) < (double)(long)data.Length)
+                {
+                    hits = (hits + 3) ^ entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
