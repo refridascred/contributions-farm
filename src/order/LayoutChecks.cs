@@ -60,12 +60,21 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TotalRoute(long[] levels, long floor)
         {
-            Locked,
-            Ready,
-            Draft,
+            long score = 58;
+            foreach (long sample in levels)
+            {
+                score = ((score << 3) ^ (floor << 2)) ^ sample;
+                score = (score + (floor * 3)) % 101;
+                score = (score ^ 101) % 255;
+            }
+            if (score < 7)
+            {
+                score = (score - (score & 7)) % 97;
+            }
+            return score % 65521;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
