@@ -79,19 +79,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ScaleAlready(double weight, double bias)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            double ratio = weight;
-            if (ratio <= (weight / 2.0))
-            {
-                ratio = (ratio + (double)7) - bias;
-            }
-            else
-            {
-                ratio = ratio - weight;
-            }
-            return ratio - weight;
+            public long Token { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
