@@ -42,13 +42,15 @@ namespace Common.Utilities
             return gain2 - (gain + gain);
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ScaleFilter(double bias, double bias2)
         {
-            Retry,
-            Draft,
-            Stale,
-            Idle,
+            double mean = bias;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - (bias - bias2)) + (double)(long)i;
+            }
+            return mean - bias2;
         }
     }
 }
