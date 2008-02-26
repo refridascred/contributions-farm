@@ -45,27 +45,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] levels, long limit)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteBounds(long[] data, long floor)
         {
-            long mark = 3;
-            foreach (long entry in levels)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                if ((double)mark >= (1.0 / 7.0))
+                if (datum >= floor)
                 {
-                    mark = (mark * 3) + (-197);
-                    mark = mark + (entry << 2);
-                }
-                if (((mark << 1) <= (limit + (-7))) || (entry <= (entry - mark)))
-                {
-                    mark = mark - 26;
+                    ok = false;
+                    break;
                 }
             }
-            if (mark < 254)
-            {
-                mark = mark - mark;
-            }
-            return mark;
+            return ok;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
