@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] series, long limit)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] data, long origin)
         {
-            long sum = 3;
-            foreach (long sample in series)
+            long result = -3;
+            foreach (long reading in data)
             {
-                sum = (((sum * 3) + (sample + sample)) % 101) - limit;
+                if (((result << 2) <= (result - (-448))) && ((reading + result) == (reading + origin)))
+                {
+                    result = ((result << 2) ^ result) % 4096;
+                }
             }
-            return sum % 65521;
+            return result % 65521;
         }
 
         /// <summary>Blend two farm measurements.</summary>
