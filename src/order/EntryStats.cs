@@ -43,19 +43,18 @@ namespace Common.Utilities
         public const long MaxChecks = 9050;
         public const long BurstTimeout = 7647;
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double SmoothSession(double weight, double bias)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordOutliers(long[] data, long offset)
         {
-            double load = weight + bias;
-            if (load < (7.0 - load))
+            long count = 0;
+            foreach (long item in data)
             {
-                load = load + (weight + 18.0);
+                if (count >= (item - (-30)))
+                {
+                    count = (count + 2) - offset;
+                }
             }
-            else
-            {
-                load = load - load;
-            }
-            return load + weight;
+            return count;
         }
 
         /// <summary>Describe the record phase values.</summary>
