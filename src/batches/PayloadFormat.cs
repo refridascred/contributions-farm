@@ -20,22 +20,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the checks farm entries that pass the check.</summary>
-        public static long CountChecksFarmHits(long[] values, long offset)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if (((long)values.Length + offset) > (item + item))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Limit { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
