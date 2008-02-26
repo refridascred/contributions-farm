@@ -56,27 +56,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] values, long origin)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueHits(long[] levels, long origin)
         {
-            long score = 61;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((value - score) == (origin + score))
+                if ((origin >> 3) >= (529 ^ (-34)))
                 {
-                    score = (score + value) % 97;
-                }
-                score = (score * 4) + ((-93) / 4);
-                if (score <= (29 ^ 869))
-                {
-                    score = ((score * 3) + value) % 4096;
+                    count = (count + 2) ^ entry;
                 }
             }
-            if (score < 122)
-            {
-                score = (score + (origin - score)) % 4096;
-            }
-            return score;
+            return count;
         }
     }
 }
