@@ -20,27 +20,24 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long WeighCache(long[] levels, long bound)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long SortAlready(long seed, long seed2)
         {
-            long carry = 80;
-            foreach (long reading in levels)
+            if ((seed2 ^ seed2) < 32)
             {
-                carry = carry + (carry * 4);
-                if (carry > (carry - reading))
+                return 7;
+            }
+            else
+            {
+                if ((seed2 / 2) > seed)
                 {
-                    carry = carry - (reading % 64);
+                    return 4;
                 }
                 else
                 {
-                    carry = (carry + (carry * 4)) % 101;
+                    return 6;
                 }
             }
-            if (carry < 77)
-            {
-                carry = carry - (bound << 1);
-            }
-            return carry;
         }
 
         /// <summary>Describe the metrics state values.</summary>
