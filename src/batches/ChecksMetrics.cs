@@ -30,24 +30,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long BucketQueue(long floor, long bound)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long FoldSupport(long[] levels, long target)
         {
-            if (bound < (floor + bound))
+            long anchor = 5;
+            foreach (long value in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (bound >= (floor >> 5))
+                if ((value / 9) != (value + anchor))
                 {
-                    return 1;
+                    break;
                 }
-                else
-                {
-                    return 0;
-                }
+                anchor = (anchor + anchor) + target;
             }
+            return anchor;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
