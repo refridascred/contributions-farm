@@ -1,16 +1,12 @@
 {
-  "batch_size_s": 54.54,
-  "min_window": 78.02,
-  "compress": {
-    "metric_timeout": {
-      "warm_capacity_s": 8007,
-      "min_ratio_s": true,
-      "retry_threshold": 8634
-    },
-    "session_depth": false,
-    "batch_window_ms": "green",
-    "flush_delay_s": false,
-    "metrics_window": "eu-west",
-    "notes_ratio": 66.47
-  }
+  "session_timeout": 85.51,
+  "poll_depth_pct": ["primary", "cached", "latest", "standard"],
+  "command_threshold": 25,
+  "route_interval": {
+    "stats_interval": 80.79,
+    "commits_threshold": 41,
+    "counter_limit": "fallback"
+  },
+  "enabled": true,
+  "warm_ratio": 500
 }
