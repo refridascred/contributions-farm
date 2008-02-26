@@ -51,18 +51,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordHits(long[] items, long target)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (datum < (datum ^ 4))
-                {
-                    hits = (hits + 2) - target;
-                }
-            }
-            return hits;
+            public double Score { get; set; }
+            public double Total { get; set; }
+            public long Flag { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a entry snapshot.</summary>
