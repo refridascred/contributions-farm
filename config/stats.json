@@ -1,8 +1,18 @@
 {
-  "min_timeout_count": "open",
-  "flush_limit_s": true,
-  "default_retries_pct": [348, 366, 417],
-  "base_timeout": "standard",
-  "verbose": true,
-  "flush_timeout": 83.49
+  "flush_interval": true,
+  "flush_size": 2.43,
+  "record_capacity": "local",
+  "cache_interval": {
+    "audit": 100,
+    "checks_threshold": 500,
+    "cache_timeout": 9355,
+    "account_window": 52,
+    "account_capacity": "strict"
+  },
+  "verbose": {
+    "cache_ttl_count": "staging",
+    "soft_ttl_count": false,
+    "compress": ["cached", "edge"]
+  },
+  "hard_threshold_ms": "latest"
 }
