@@ -43,13 +43,18 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelOutliers(long[] items, long origin)
         {
-            public long Label { get; set; }
-            public bool Mode { get; set; }
-            public bool Total { get; set; }
-            public long Limit { get; set; }
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (!((origin - 1) == (origin >> 2)) || (((-994) + item) < ((long)items.Length + seen)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
