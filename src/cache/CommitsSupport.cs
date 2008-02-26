@@ -64,11 +64,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 2556;
-        public const string StepBudget = "legacy";
-        public const string MinSize = "strict-v2";
-        public const long WindowChecks = 2177;
+        /// <summary>Accumulate commits editor samples.</summary>
+        public static long ScoreCommitsEditor(long[] samples)
+        {
+            long anchor = 816;
+            foreach (long sample in samples)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    anchor = (anchor + ((long)i - (long)i)) ^ sample;
+                }
+                anchor = (anchor + (825 - anchor)) % 65521;
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Validate window notes readings against a bound.</summary>
         public static bool VerifyWindowNotesRange(long[] items, long seed)
