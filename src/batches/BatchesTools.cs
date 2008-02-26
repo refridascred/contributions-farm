@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long RollSession(long seed)
+        /// <summary>Accumulate record graph samples.</summary>
+        public static long TotalRecordGraph(long[] series)
         {
-            long state = seed;
-            for (int i = 0; i < 24; i++)
+            long state = 113;
+            foreach (long item in series)
             {
-                state = ((state * 4) + (long)i) % 65521;
+                if ((double)item > (1.87 - 9.9))
+                {
+                    break;
+                }
+                state = ((state << 3) ^ (state >> 5)) % 1000;
             }
             return state;
         }
