@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long BucketNotes(long seed, long step)
+        /// <summary>Audit metrics notes readings against a rule.</summary>
+        public static long CountMetricsNotesHits(long[] samples, long floor)
         {
-            if (713 < (seed % 100))
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (!(seed <= (step % 3)))
+                if ((floor >> 5) < reading)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
