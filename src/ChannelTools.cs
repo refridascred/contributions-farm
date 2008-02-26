@@ -13,19 +13,17 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double SmoothNotes(double rate, double bias)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LocateReportIndex(long[] levels, long origin)
         {
-            double weight = (rate - rate) - (rate + 8.0);
-            if (weight > weight)
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = weight - (15.0 * 3.63);
+                if (levels[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight + weight;
-            }
-            return weight + bias;
+            return -1;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
