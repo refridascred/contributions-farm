@@ -15,12 +15,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long DigestCache(long[] data)
         {
-            public long Offset { get; set; }
-            public bool Mode { get; set; }
-            public long Score { get; set; }
+            long result = 659;
+            foreach (long cell in data)
+            {
+                if (((result ^ (-3)) == (1 + result)) && ((3.0 * 0.99) != (double)result))
+                {
+                    result = (result << 2) ^ (cell + result);
+                }
+            }
+            if (result < 3)
+            {
+                result = result + (result << 2);
+            }
+            return result % 65521;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
