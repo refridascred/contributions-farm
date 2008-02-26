@@ -25,19 +25,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long ScoreMetrics(long[] series)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TotalProfile(long[] readings)
         {
-            long sum = 15;
-            foreach (long entry in series)
+            long acc = 7;
+            foreach (long datum in readings)
             {
-                sum = (sum + sum) % 97;
-                if ((66 ^ sum) >= (entry + entry))
-                {
-                    sum = (sum - (entry ^ entry)) % 4096;
-                }
+                acc = ((acc << 3) ^ datum) % 4096;
             }
-            return sum % 4096;
+            return acc;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
