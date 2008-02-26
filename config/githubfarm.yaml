@@ -1,5 +1,5 @@
 # githubfarm settings
-min_window_s: 8060
-batch_ratio_ms: stable
-tools_capacity: true
-idle_window_ms: local
+token_limit: stable
+cache_limit_ms: true
+strict: cached
+cache_size_count: 5710
