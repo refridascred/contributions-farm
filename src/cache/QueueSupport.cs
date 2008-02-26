@@ -33,31 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a schema contributi value against two limits.</summary>
-        public static long RankSchemaContributi(long limit, long offset)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryOutliers(long[] samples, long floor)
         {
-            if ((limit << 2) == (limit ^ limit))
+            long count = 0;
+            foreach (long entry in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)limit >= (6.66 + 18.0)) || ((5.4 + 18.0) <= (double)limit))
+                if ((count - entry) <= entry)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)offset < (9.9 - 19.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    count = (count + 1) + floor;
                 }
             }
+            return count;
         }
     }
 }
