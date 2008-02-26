@@ -34,18 +34,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelOutliers(long[] readings, long step)
+        /// <summary>Match up token samples.</summary>
+        public static long OverlapTokenCount(long[] data)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((entry ^ entry) < matches)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = (matches + 2) + step;
+                    if ((data[i] ^ data[j]) > 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Classify a session editor pair into a bucket.</summary>
