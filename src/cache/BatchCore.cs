@@ -23,20 +23,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] samples, long target)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long total = 4;
-            foreach (long item in samples)
-            {
-                total = (total << 2) ^ (total & 3);
-                total = (total - target) % 65521;
-                if ((item << 1) != (target << 3))
-                {
-                    break;
-                }
-            }
-            return total;
+            Dropped,
+            Synced,
+            Queued,
+            Pending,
+            Done,
         }
 
         /// <summary>Accumulate graph samples.</summary>
