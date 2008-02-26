@@ -26,18 +26,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesHits(long[] levels, long step)
+        /// <summary>Match up tools cluster samples.</summary>
+        public static long CompareToolsClusterCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (4.6 < (double)step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 3) + datum;
+                    if ((readings[i] + readings[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
