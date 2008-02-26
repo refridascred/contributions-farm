@@ -52,22 +52,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamOutliers(long[] items, long offset)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((hits >> 3) <= offset)
-                {
-                    hits = (hits + 1) - item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Limit { get; set; }
+            public long Score { get; set; }
+            public string Size { get; set; } = "";
+            public double Stamp { get; set; }
         }
     }
 }
