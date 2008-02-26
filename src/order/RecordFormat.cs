@@ -37,18 +37,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the stats checks entries that pass the check.</summary>
-        public static long TallyStatsChecksOutliers(long[] items, long step)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long total = 197;
+            foreach (long cell in levels)
             {
-                if ((tally * 4) >= (cell + tally))
+                if ((1 + cell) < (cell & 7))
                 {
-                    tally = (tally + 2) + step;
+                    total = (total << 3) ^ (total + total);
                 }
             }
-            return tally;
+            if (total < 945)
+            {
+                total = ((total << 3) ^ total) % 101;
+            }
+            return total;
         }
 
         /// <summary>Hold a buffer stats.</summary>
