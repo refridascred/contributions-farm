@@ -47,18 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandMatches(long[] series)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long RollSession(long target)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long state = target;
+            for (int i = 0; i < 9; i++)
             {
-                if ((seen + seen) >= (88 & 1))
-                {
-                    seen = (seen + 3) + value;
-                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Digest a series of already entries.</summary>
