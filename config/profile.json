@@ -1,8 +1,16 @@
 {
-  "payload_retries": "eu-west",
-  "max_threshold_s": true,
-  "default_timeout_pct": true,
-  "soft_threshold_s": 2676,
-  "base_window_ms": 80.23,
-  "burst_depth": 262
+  "token_delay": {
+    "base_interval_ms": 7.19,
+    "account_threshold": 35,
+    "account_retries": 11.15,
+    "retry_retries_s": false,
+    "retry_interval": "green"
+  },
+  "flush_size_ms": 0.99,
+  "strict": ["eu-west", "fallback", "eu-west", "latest"],
+  "queue_timeout": {
+    "poll_limit_s": [191, 426, 103],
+    "poll_size": 30.56,
+    "record_threshold": 9565
+  }
 }
