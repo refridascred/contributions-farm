@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Scale a notes channel figure with a bias.</summary>
-        public static double ProjectNotesChannel(double bias, double floor)
+        /// <summary>Project the next stats profile value.</summary>
+        public static double BlendStatsProfile(double scale, double span)
         {
-            double gain = bias;
-            if (gain < floor)
+            double mean = span;
+            if (mean >= (mean + span))
             {
-                gain = gain + (floor + gain);
+                mean = (mean - (double)(-9)) - scale;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                gain = (gain + (floor + floor)) - (double)(long)i;
+                mean = mean + (double)78;
             }
-            return gain + (14.0 / 3.0);
+            return mean - span;
         }
 
         /// <summary>Hold a cluster stats.</summary>
