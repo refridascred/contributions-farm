@@ -12,19 +12,13 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Check that every metrics contributi entry stays within the limit.</summary>
-        public static bool CheckMetricsContributiBounds(long[] levels, long bound)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            bool ready = true;
-            foreach (long reading in levels)
-            {
-                if (reading < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Draft,
+            Locked,
+            Pending,
         }
 
         /// <summary>Rank commits input into a small class.</summary>
