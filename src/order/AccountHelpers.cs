@@ -57,25 +57,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long GradeBatches(long floor, long bound)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long offset = floor ^ bound;
-            if ((offset - bound) > floor)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((offset > bound) || (((-28) >> 4) == (floor + 8)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public string Count { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
