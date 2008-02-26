@@ -26,18 +26,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] data, long floor)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long anchor = 421;
-            foreach (long entry in data)
-            {
-                if (floor < entry)
-                {
-                    anchor = anchor + (floor << 2);
-                }
-            }
-            return anchor;
+            public double Score { get; set; }
+            public long Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Match up format samples.</summary>
