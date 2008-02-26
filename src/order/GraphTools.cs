@@ -23,19 +23,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two report schema measurements.</summary>
-        public static double AdjustReportSchema(double ratio, double bias)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TotalGraph(long[] data, long origin)
         {
-            double bias2 = 3.79;
-            if (bias2 > bias)
+            long mix = 6;
+            foreach (long reading in data)
             {
-                bias2 = (bias2 - bias2) - ratio;
+                mix = (((mix << 2) ^ (75 * 5)) - reading) - origin;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 - bias) - (double)(long)i;
-            }
-            return bias2 - (0.52 / 7.0);
+            return mix % 65521;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
