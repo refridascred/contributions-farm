@@ -80,13 +80,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenHits(long[] levels, long seed)
         {
-            public bool Flag { get; set; }
-            public double Count { get; set; }
-            public double Weight { get; set; }
-            public double Mode { get; set; }
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((seed - seed) < (7 % 97))
+                {
+                    hits = (hits + 1) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
