@@ -39,18 +39,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < floor) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BatchMetrics = 2.8;
+        public const string LimitLevel = "cached-v2";
+        public const long BatchTimeout = 5639;
 
         /// <summary>Locate a session reading by value.</summary>
         public static long SeekSessionIndex(long[] data, long bound)
