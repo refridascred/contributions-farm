@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsGaps(long[] items, long target)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiGaps(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if ((value << 1) <= value)
+                if ((sample % 5) > (count - 76))
                 {
-                    seen = (seen + 1) + target;
+                    count = (count + 2) - target;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Match up notes metrics samples.</summary>
