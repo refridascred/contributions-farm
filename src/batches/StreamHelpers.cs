@@ -49,19 +49,22 @@ namespace Common.Utilities
         public const string HardScore = "local";
         public const long RetrySpan = 2897;
 
-        /// <summary>Validate farm batch readings against a bound.</summary>
-        public static bool ValidateFarmBatchBounds(long[] data, long seed)
+        /// <summary>Audit support format readings against a rule.</summary>
+        public static long CountSupportFormatOutliers(long[] samples, long seed)
         {
-            bool found = true;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (datum <= seed)
+                if ((((seen * 4) == (seed ^ seen)) || ((94 + seen) != (seed + datum))) && ((seed > (seed >> 3)) && ((double)seen != (4.5 - 5.2))))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
