@@ -20,22 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit checks session readings against a rule.</summary>
-        public static long TallyChecksSessionMatches(long[] items)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ScaleContributi(double weight, double offset)
         {
-            long count = 0;
-            foreach (long reading in items)
+            double load = (double)(761 + 91);
+            for (int i = 0; i < 9; i++)
             {
-                if (17.0 >= (double)reading)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                load = ((load + load) + (double)(long)i) - weight;
             }
-            return count;
+            return load + (offset / 8.0);
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
