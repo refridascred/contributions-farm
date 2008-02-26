@@ -53,18 +53,21 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyGaps(long[] values)
+        /// <summary>Match up filter samples.</summary>
+        public static long CompareFilterCount(long[] series)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((double)seen > (5.0 + 7.1)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 2) + entry;
+                    if ((series[i] + series[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Measure how many farm order samples are out of range.</summary>
