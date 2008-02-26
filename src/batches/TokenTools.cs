@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the already cache series from a seed.</summary>
-        public static long IterateAlreadyCache(long seed)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricHits(long[] readings)
         {
-            long mark = seed;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                mark = (mark - ((long)i * 2)) % 65521;
-                mark = ((mark * 5) + (long)i) % 1000;
+                if ((9 + entry) >= entry)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Hold a already entry.</summary>
