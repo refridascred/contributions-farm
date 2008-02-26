@@ -73,14 +73,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Find the first contributi notes entry that matches the target.</summary>
+        public static long LocateContributiNotesIndex(long[] items, long limit)
         {
-            Pending,
-            Dropped,
-            Active,
-            Closed,
-            Synced,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
