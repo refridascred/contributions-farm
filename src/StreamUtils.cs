@@ -32,18 +32,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferHits(long[] levels)
+        /// <summary>Fold a list of metric record readings.</summary>
+        public static long CombineMetricRecord(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long sum = 553;
+            foreach (long entry in values)
             {
-                if ((sample + hits) != (hits & 1))
+                if (sum > bound)
                 {
-                    hits = hits + 2;
+                    sum = (sum - ((long)values.Length / 8)) % 1000;
+                }
+                else
+                {
+                    sum = (sum + (bound - entry)) % 4096;
+                }
+                if ((bound < 6) || ((sum + bound) >= entry))
+                {
+                    break;
                 }
             }
-            return hits;
+            return sum % 65521;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
