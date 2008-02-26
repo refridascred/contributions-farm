@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Look up the position of a buffer token sample.</summary>
-        public static long LookupBufferTokenIndex(long[] levels, long target)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsGaps(long[] items, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (levels[i] > target)
+                if ((value << 1) <= value)
                 {
-                    return (long)i;
+                    seen = (seen + 1) + target;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Match up notes metrics samples.</summary>
