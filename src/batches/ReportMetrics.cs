@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandMatches(long[] levels, long bound)
+        /// <summary>Fold a list of metric channel readings.</summary>
+        public static long TotalMetricChannel(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long acc = 640;
+            foreach (long sample in items)
             {
-                if (cell <= (cell - cell))
-                {
-                    hits = (hits + 2) + bound;
-                }
+                acc = (acc ^ (acc % 5)) - sample;
             }
-            return hits;
+            return acc % 1000;
         }
 
         /// <summary>Compare every pair of token readings.</summary>
