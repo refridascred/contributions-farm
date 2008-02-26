@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit command graph readings against a rule.</summary>
-        public static long MeasureCommandGraphMatches(long[] samples)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((69 + reading) == (reading % 8))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public string Level { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a cache options.</summary>
