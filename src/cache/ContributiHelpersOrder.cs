@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinGithubfarm = 5786;
-        public const double BurstLevel = 1.28;
-        public const long BatchGithubfarm = 2287;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleTools = 7984;
+        public const string DefaultSpan = "fallback-1";
+        public const long BaseTools = 8381;
 
         /// <summary>Measure how many session contributi samples are out of range.</summary>
         public static long TallySessionContributiMatches(long[] readings)
