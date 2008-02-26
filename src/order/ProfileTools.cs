@@ -48,12 +48,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutMatches(long[] levels, long origin)
         {
-            public string Offset { get; set; } = "";
-            public bool Owner { get; set; }
-            public bool Region { get; set; }
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((origin + origin) <= cell)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define context limits and defaults.</summary>
