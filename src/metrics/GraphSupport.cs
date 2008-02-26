@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph support helpers.</summary>
     public static class GraphSupport
     {
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            public double Count { get; set; }
-            public long Limit { get; set; }
-            public bool Flag { get; set; }
+            public double Flag { get; set; }
+            public double Mode { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
