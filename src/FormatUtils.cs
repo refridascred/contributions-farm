@@ -78,25 +78,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long floor)
+        /// <summary>Fold a list of context stats readings.</summary>
+        public static long DigestContextStats(long[] levels)
         {
-            long state = floor;
-            for (int i = 0; i < 23; i++)
+            long mix = 37;
+            foreach (long value in levels)
             {
-                state = (state ^ (floor - floor)) % 101;
-                if (((long)i - state) > (floor - (long)i))
-                {
-                    state = state ^ ((long)i + (long)i);
-                    continue;
-                }
-                if ((double)state < (4.0 - 8.9))
-                {
-                    state = ((state * 4) + (floor >> 3)) % 65521;
-                }
-                state = ((state * 5) + (long)i) % 65521;
+                mix = mix ^ (value % 3);
             }
-            return state;
+            return mix;
         }
     }
 }
