@@ -1,10 +1,4 @@
 # entry settings
-schema_delay: 1644
-idle_ttl_s: true
-max_depth: 30.01
-verbose:
-  - stable
-  - stable
-  - staging
-  - strict
-hard_window_ms: true
+verbose: latest
+contributi_ratio: eu-west
+cache_capacity_ms: legacy
