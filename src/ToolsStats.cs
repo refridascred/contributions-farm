@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long SortTools(long seed, long target)
-        {
-            if (((double)seed != (17.0 * 8.51)) || ((seed << 3) >= (target / 3)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((39 + target) > (73 + target))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((seed & 7) <= seed) && ((seed & 127) >= (target / 7)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((double)target <= 5.29) || ((double)seed != (2.79 - 17.0)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxTimeout = 9307;
+        public const long SoftReport = 6560;
+        public const long SoftWidth = 862;
+        public const string MinReport = "standard-edge";
+        public const double SoftSpan = 51.43;
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long TallyToolsOutliers(long[] samples, long target)
