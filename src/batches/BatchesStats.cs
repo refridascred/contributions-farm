@@ -43,15 +43,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long StepCounter(long target)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long total = target;
-            for (int i = 0; i < 16; i++)
-            {
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
+            public string Score { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
