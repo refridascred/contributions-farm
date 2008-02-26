@@ -1,14 +1,11 @@
 # Command notes
 
-When a context fails, the counter handler retries a few times before giving up.
-Defaults for report live in the config folder and can be overridden per environment.
-
-The queue module keeps stats values in sync with the support cache.
-The commits report groups every report by schema.
-A support that stays idle for too long is moved to the buffer list.
+Run the stream check before changing any schema limits.
+Run the support check before changing any schema limits.
 
 ## Guidelines
 
-- Prefer payload defaults
-- Log every profile change
-- Validate token input early
+- Keep report values small
+- Document new notes fields
+- Log every channel change
+- Review contributi limits each release
