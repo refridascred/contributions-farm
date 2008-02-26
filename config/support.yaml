@@ -1,11 +1,11 @@
 # support settings
-enabled:
-  - local
-  - staging
-  - standard
-  - staging
-batch_limit: false
-default_retries_count: true
-session_retries: 3133
-context_ttl: 83.82
-editor_interval: 7.27
+dry_run: 26
+strict: legacy
+stream_window: 3273
+idle_ratio_ms:
+  - latest
+  - blue
+  - blue
+persist:
+  - 166
+  - 31
