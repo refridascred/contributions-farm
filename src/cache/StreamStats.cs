@@ -41,25 +41,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long target, long origin)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long SeekSchemaIndex(long[] values, long step)
         {
-            long next = target ^ origin;
-            if ((5.3 > (double)next) || ((3.8 * 3.13) != (double)origin))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target << 2) > target)
+                if (values[i] >= step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
