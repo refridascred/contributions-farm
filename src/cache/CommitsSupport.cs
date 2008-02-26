@@ -65,18 +65,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionHits(long[] items, long seed)
+        /// <summary>Fold a list of account queue readings.</summary>
+        public static long ScoreAccountQueue(long[] series)
         {
-            long count = 0;
-            foreach (long value in items)
+            long carry = -41;
+            foreach (long datum in series)
             {
-                if ((6 + seed) < (value + seed))
+                carry = (carry ^ (0 << 2)) % 4096;
+                if (((double)carry < 6.56) || ((carry + carry) <= datum))
                 {
-                    count = count + 3;
+                    break;
                 }
             }
-            return count;
+            if (carry > 780)
+            {
+                carry = carry - ((long)series.Length >> 5);
+            }
+            return carry % 65521;
         }
 
         /// <summary>Count the stream route entries that pass the check.</summary>
