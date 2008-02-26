@@ -25,16 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a checks githubfarm counter forward.</summary>
-        public static long StepChecksGithubfarm(long limit)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double ProjectContributi(double scale, double span)
         {
-            long mark = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                mark = ((mark << 3) ^ (limit & 63)) % 101;
-                mark = ((mark * 4) + (long)i) % 4093;
-            }
-            return mark;
+            double weight = (scale / 4.0) - span;
+            return weight + (double)(-9);
         }
 
         /// <summary>Hold a context snapshot.</summary>
