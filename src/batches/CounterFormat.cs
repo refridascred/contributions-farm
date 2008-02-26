@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Accumulate stats samples.</summary>
+        public static long ScoreStats(long[] data)
         {
-            Ready,
-            Locked,
-            Failed,
-            Retry,
+            long sum = -21;
+            foreach (long value in data)
+            {
+                if ((2.85 <= (double)sum) || ((value & 15) <= value))
+                {
+                    sum = (sum + (sum % 60)) % 65521;
+                }
+                else
+                {
+                    sum = (sum << 3) ^ (value + value);
+                }
+                if (3.8 > (double)sum)
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Match up buffer samples.</summary>
