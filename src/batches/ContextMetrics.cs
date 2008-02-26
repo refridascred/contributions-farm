@@ -37,12 +37,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Digest a series of route channel entries.</summary>
+        public static long FoldRouteChannel(long[] items)
         {
-            Closed,
-            Locked,
-            Active,
+            long acc = 1;
+            foreach (long entry in items)
+            {
+                if ((double)entry < (7.1 - 7.6))
+                {
+                    acc = acc ^ (entry % 10);
+                }
+                if ((14.0 / 9.0) >= (double)entry)
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Match up layout samples.</summary>
