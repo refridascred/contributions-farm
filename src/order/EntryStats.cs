@@ -72,14 +72,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            Stale,
-            Done,
-            Synced,
-            Queued,
-            Active,
+            public bool Mode { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
