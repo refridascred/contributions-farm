@@ -25,12 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Fold a list of notes schema readings.</summary>
+        public static long DigestNotesSchema(long[] data, long offset)
         {
-            Failed,
-            Ready,
-            Active,
+            long acc = 7;
+            foreach (long value in data)
+            {
+                acc = ((((acc * 3) + 3) % 1000) - value) - offset;
+            }
+            return acc;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
