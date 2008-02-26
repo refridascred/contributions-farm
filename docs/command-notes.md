@@ -1,12 +1,11 @@
 # Command notes
 
-The metrics report groups every schema by entry.
-When a token fails, the session handler retries a few times before giving up.
-A batches that stays idle for too long is moved to the stats list.
+Defaults for buffer live in the config folder and can be overridden per environment.
+The buffer helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer channel defaults
-- Keep command values small
-- Review cache limits each release
-- Document new buffer fields
+- Keep tools values small
+- Review stats limits each release
+- Validate cluster input early
+- Document new checks fields
