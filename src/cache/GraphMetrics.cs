@@ -22,12 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double AdjustFilter(double weight, double offset)
         {
-            Draft,
-            Retry,
-            Closed,
+            double ratio = (offset / 3.0) + (double)47;
+            if (ratio > (weight + 6.0))
+            {
+                ratio = ratio - (ratio * 8.65);
+            }
+            return ratio - (weight + 3.0);
         }
 
         /// <summary>Fold a list of payload tools readings.</summary>
