@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Project the next schema value.</summary>
-        public static double BlendSchema(double weight, double span)
+        /// <summary>Measure how many githubfarm stream samples are out of range.</summary>
+        public static long MeasureGithubfarmStreamHits(long[] items, long origin)
         {
-            double scale = (double)(9 + 4);
-            if (scale <= weight)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                scale = (scale + (double)(-7)) + span;
+                if (5.0 > (double)hits)
+                {
+                    hits = ((hits + 1) + cell) + origin;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return scale - weight;
+            return hits;
         }
 
         /// <summary>Blend two farm measurements.</summary>
