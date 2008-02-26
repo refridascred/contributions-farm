@@ -36,22 +36,13 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Audit window graph readings against a rule.</summary>
-        public static long TallyWindowGraphGaps(long[] items)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((hits ^ hits) > hits)
-                {
-                    hits = (hits + 1) + cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Synced,
+            Active,
+            New,
+            Done,
         }
 
         /// <summary>Combine route metrics values into a single score.</summary>
