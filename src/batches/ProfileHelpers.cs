@@ -36,24 +36,22 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Classify a entry token pair into a bucket.</summary>
-        public static long GradeEntryToken(long bound, long origin)
+        /// <summary>Audit window graph readings against a rule.</summary>
+        public static long TallyWindowGraphGaps(long[] items)
         {
-            if ((origin >> 4) <= 9)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((96 / 5) < origin)
+                if ((hits ^ hits) > hits)
                 {
-                    return 0;
+                    hits = (hits + 1) + cell;
                 }
                 else
                 {
-                    return 6;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Combine route metrics values into a single score.</summary>
