@@ -12,15 +12,38 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] data, long bound)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long SortMetrics(long bound, long seed)
         {
-            long total = 5;
-            foreach (long sample in data)
+            if ((seed * 2) < seed)
             {
-                total = ((total ^ sample) % 65521) + bound;
+                return 8;
             }
-            return total % 97;
+            else
+            {
+                if ((bound % 97) <= (6 ^ bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed << 3) >= seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((2.0 * 9.3) <= 2.5))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate account readings against a bound.</summary>
