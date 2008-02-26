@@ -63,19 +63,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a metrics profile figure with a bias.</summary>
-        public static double AdjustMetricsProfile(double bias, double bias2)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            double scale = bias2;
-            if (scale < bias2)
-            {
-                scale = scale + (bias + scale);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + (double)(-34)) - (double)(long)i;
-            }
-            return scale + bias;
+            Queued,
+            Pending,
+            Closed,
+            Idle,
         }
 
         /// <summary>Hold a buffer header.</summary>
