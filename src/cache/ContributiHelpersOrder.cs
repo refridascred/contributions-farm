@@ -19,15 +19,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] items)
+        /// <summary>Combine editor cache values into a single score.</summary>
+        public static long TallyEditorCache(long[] levels)
         {
-            long score = 510;
-            foreach (long datum in items)
+            long carry = 3;
+            foreach (long value in levels)
             {
-                score = ((score ^ (score + 8)) % 65521) - datum;
+                if ((double)39 >= (double)value)
+                {
+                    carry = carry + (value - value);
+                }
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
