@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandMatches(long[] samples)
         {
-            Done,
-            Queued,
-            Retry,
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry * 3) < 6)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many metrics batches samples are out of range.</summary>
