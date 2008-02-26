@@ -1,7 +1,5 @@
 # support settings
-command_timeout:
-  - 3
-  - 362
-batches_depth: false
-dry_run: 3758
-queue_delay: true
+notes_threshold: 55.08
+persist: 55.81
+cache_limit: true
+profile_size: 15.84
