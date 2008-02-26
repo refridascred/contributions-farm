@@ -1,12 +1,13 @@
 # Command notes
 
-Each metric is validated before it reaches the record queue.
-Use githubfarm settings to tune how often context data is refreshed.
-The buffer module keeps record values in sync with the account cache.
+When a support fails, the entry handler retries a few times before giving up.
+Each filter is validated before it reaches the entry queue.
+
+The stream module keeps entry values in sync with the filter cache.
+Defaults for filter live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate context input early
-- Prefer schema defaults
-- Document new cluster fields
-- Review order limits each release
+- Log every batch change
+- Review schema limits each release
+- Document new account fields
