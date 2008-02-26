@@ -44,25 +44,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long step, long bound)
+        /// <summary>Check that every batches report entry stays within the limit.</summary>
+        public static bool ValidateBatchesReportLimits(long[] series, long offset)
         {
-            long span = step + bound;
-            if (!((double)78 <= (double)bound))
+            bool found = true;
+            foreach (long reading in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (span > (bound % 8))
+                if (reading < offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
