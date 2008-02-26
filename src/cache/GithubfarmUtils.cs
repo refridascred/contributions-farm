@@ -59,17 +59,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long FindMetricsIndex(long[] samples, long step)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long target, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long prev = target - floor;
+            if ((target % 10) > (target / 5))
             {
-                if ((samples[i] > step) && ((samples[i] % 5) != 0))
+                return 4;
+            }
+            else
+            {
+                if ((double)prev > (8.6 / 4.0))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
