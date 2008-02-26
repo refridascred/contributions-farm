@@ -36,15 +36,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ProjectCommits(double gain, double bias)
+        /// <summary>Project the next command checks value.</summary>
+        public static double AdjustCommandChecks(double scale, double floor)
         {
-            double gain2 = 0.7;
-            if (gain2 >= bias)
+            double gain = (double)(902 + 460);
+            for (int i = 0; i < 7; i++)
             {
-                gain2 = gain2 + 6.0;
+                gain = (gain - (gain + scale)) + (double)(long)i;
             }
-            return gain2 + (bias + gain);
+            return gain - floor;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
