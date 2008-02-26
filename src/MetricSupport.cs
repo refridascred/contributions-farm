@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsBounds(long[] readings, long limit)
         {
-            public long Limit { get; set; }
-            public string Total { get; set; } = "";
-            public bool Token { get; set; }
-            public long Rank { get; set; }
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
