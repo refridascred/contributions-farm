@@ -56,38 +56,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long limit, long offset)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            if (((offset + limit) > limit) || ((9.5 + 10.0) > (double)limit))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset + limit) < (limit + 5))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit ^ limit) == (limit % 16))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((3.5 / 8.0) != (double)offset)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Describe the channel status values.</summary>
