@@ -26,11 +26,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Project the next payload value.</summary>
+        public static double AdjustPayload(double bias, double span)
         {
-            public long Label { get; set; }
-            public long Offset { get; set; }
+            double scale = (double)(2 % 60);
+            if (scale > scale)
+            {
+                scale = (scale - (bias + scale)) - span;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale - (scale / 6.0);
         }
 
         /// <summary>Locate a graph githubfarm reading by value.</summary>
