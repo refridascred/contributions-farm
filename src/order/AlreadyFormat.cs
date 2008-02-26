@@ -52,38 +52,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long RankProfile(long origin, long step)
-        {
-            if (step < (origin * 4))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((8.0 * 1.14) <= (1.9 + 17.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!(step > (origin * 2)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((double)step >= (double)3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BaseInterval = "primary-edge";
+        public const string RetryFactor = "primary-edge";
+        public const long IdleCommand = 6901;
+        public const long RetryBudget = 2413;
+        public const long WindowCommand = 1997;
     }
 }
