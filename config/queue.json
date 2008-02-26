@@ -1,10 +1,14 @@
 {
-  "batch_interval_count": {
-    "idle_threshold": 52,
-    "persist": "standard",
-    "queue_delay": false
+  "enabled": "cached",
+  "idle_retries_count": {
+    "base_delay_pct": 58.2,
+    "cache_delay_s": 20.87,
+    "soft_limit_s": 71,
+    "filter_retries": ["standard", "green"],
+    "verbose": ["eu-west", "green", "legacy", "strict"]
   },
-  "min_interval_pct": "strict",
-  "default_window": "edge",
-  "filter_interval": 28.92
+  "command_ratio": 3991,
+  "default_ttl_ms": "standard",
+  "base_interval": 38,
+  "sync_timeout_s": 250
 }
