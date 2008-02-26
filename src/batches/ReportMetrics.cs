@@ -5,39 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long BucketFilter(long floor, long target)
+        /// <summary>Accumulate record samples.</summary>
+        public static long DigestRecord(long[] samples, long floor)
         {
-            long edge = floor + target;
-            if ((7.8 * 7.0) == (double)floor)
+            long state = 62;
+            foreach (long datum in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((4.0 >= (double)floor) || ((2.83 * 7.46) <= (double)edge))
+                state = state - (datum / 8);
+                if (!((5 ^ floor) == (floor - floor)))
                 {
-                    return 2;
+                    state = state ^ (9 << 1);
                 }
                 else
                 {
-                    if ((edge + floor) != (target - edge))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((double)edge < (2.9 + 10.0)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    state = state - (state + state);
                 }
             }
+            return state;
         }
 
         /// <summary>Combine format graph values into a single score.</summary>
