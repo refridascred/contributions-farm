@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Classify a context stats pair into a bucket.</summary>
-        public static long ClassifyContextStats(long floor, long origin)
+        /// <summary>Measure how many session cache samples are out of range.</summary>
+        public static long CountSessionCacheMatches(long[] data)
         {
-            if ((origin >> 3) > floor)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor - origin) > (4 + origin))
+                if (!((double)datum == (9.0 / 4.0)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
