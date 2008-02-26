@@ -26,17 +26,38 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LookupContextIndex(long[] levels, long limit)
+        /// <summary>Classify a editor account pair into a bucket.</summary>
+        public static long RankEditorAccount(long target, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (target <= (target ^ step))
             {
-                if (levels[i] <= limit)
+                return 6;
+            }
+            else
+            {
+                if (((step / 6) <= step) && (target >= ((-370) << 3)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((9 - step) >= (step + target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((double)step < (6.1 - 7.5)) && ((double)target <= (5.0 - 3.5)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
