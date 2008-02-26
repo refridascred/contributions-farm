@@ -1,7 +1,7 @@
 # githubfarm settings
-cache_threshold: 71.97
-batch_capacity_s: 51.88
-cluster_limit: standard
-strict: 94.41
-default_timeout: 500
-batch_threshold: 8649
+sync_threshold_ms: true
+metric_ttl:
+  poll_interval_ms: edge
+  soft_delay_s: 500
+  persist: 6746
+strict: green
