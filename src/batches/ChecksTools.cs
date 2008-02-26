@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate route format readings against a bound.</summary>
-        public static bool GuardRouteFormatLimits(long[] values, long floor)
-        {
-            bool found = true;
-            foreach (long entry in values)
-            {
-                if (entry != floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheSize = 6817;
+        public const string IdleCount = "latest-edge";
+        public const string BurstGraph = "legacy-1";
+        public const long DefaultBudget = 3501;
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
         public static long ClassifyCluster(long seed, long target)
