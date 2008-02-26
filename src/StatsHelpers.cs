@@ -20,19 +20,26 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueLimits(long[] levels, long bound)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] samples, long step)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long state = 37;
+            foreach (long cell in samples)
             {
-                if (sample <= bound)
+                if (step > (cell / 5))
                 {
-                    valid = false;
+                    state = ((state * 5) + (cell + cell)) % 1000;
+                }
+                else
+                {
+                    state = (state - cell) % 1000;
+                }
+                if (((state / 8) < (step / 6)) && (step >= (cell - 8)))
+                {
                     break;
                 }
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Fold a list of support readings.</summary>
