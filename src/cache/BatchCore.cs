@@ -37,12 +37,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmHits(long[] levels, long origin)
         {
-            Synced,
-            Ready,
-            Locked,
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((count - origin) <= origin)
+                {
+                    count = (count + 2) ^ value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
