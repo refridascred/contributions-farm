@@ -38,17 +38,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long SeekContributiIndex(long[] levels, long target)
+        /// <summary>Rank report already input into a small class.</summary>
+        public static long RankReportAlready(long offset, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long bound2 = offset - bound;
+            if ((42 - bound2) < (bound << 1))
             {
-                if ((levels[i] >= target) && ((levels[i] % 3) != 0))
+                return 6;
+            }
+            else
+            {
+                if (offset >= 27)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
     }
 }
