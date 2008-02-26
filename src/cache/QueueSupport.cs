@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double SmoothWindow(double bias, double bias2)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            double drift = bias;
-            if (drift > (double)464)
-            {
-                drift = (drift + 18.0) + bias2;
-            }
-            else
-            {
-                drift = drift + (double)3;
-            }
-            return drift - bias;
+            Draft,
+            Dropped,
+            Done,
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
