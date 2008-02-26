@@ -35,17 +35,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LocateOrderIndex(long[] data, long target)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterGaps(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (data[i] < target)
+                if (((sample + sample) <= ((-91) + sample)) && (matches > (sample & 255)))
                 {
-                    return (long)i;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
