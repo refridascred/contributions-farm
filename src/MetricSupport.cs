@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstRatio = 6727;
-        public const long CacheMetric = 9174;
-        public const long MaxMetric = 6212;
-        public const string WindowMetric = "latest-1";
+        /// <summary>Classify a token farm pair into a bucket.</summary>
+        public static long ClassifyTokenFarm(long limit, long origin)
+        {
+            if (7.75 >= 5.69)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((7.8 / 5.0) == (double)origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Look up the position of a entry tools sample.</summary>
         public static long LocateEntryToolsIndex(long[] series, long target)
