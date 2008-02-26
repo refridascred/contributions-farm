@@ -13,14 +13,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            Queued,
-            New,
-            Stale,
-            Dropped,
             Done,
+            Active,
+            Paused,
+            Stale,
         }
 
         /// <summary>Roll a session counter forward.</summary>
