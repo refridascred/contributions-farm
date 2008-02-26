@@ -21,18 +21,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsHits(long[] series)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] levels, long floor)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long sum = 59;
+            foreach (long value in levels)
             {
-                if ((9.4 >= (double)value) || ((matches < (matches - (-56))) || ((double)value == (6.1 * 3.72))))
-                {
-                    matches = matches + 3;
-                }
+                sum = (((sum - (sum >> 1)) % 65521) ^ value) - floor;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Hold a metrics stats.</summary>
