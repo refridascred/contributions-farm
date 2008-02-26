@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every support tools entry stays within the limit.</summary>
-        public static bool ValidateSupportToolsRange(long[] readings, long origin)
+        /// <summary>Grade a tools command value against two limits.</summary>
+        public static long BucketToolsCommand(long floor, long floor2)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            if ((floor2 ^ floor2) >= 217)
             {
-                if (item < origin)
+                return 7;
+            }
+            else
+            {
+                if ((floor <= (floor2 - floor2)) && ((floor % 12) <= floor2))
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return ok;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
