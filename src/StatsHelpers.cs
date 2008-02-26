@@ -24,22 +24,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long OverlapChannelCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepScore = 3607;
+        public const long DefaultFarm = 7686;
+        public const double CacheFarm = 58.25;
+        public const long MinFarm = 1768;
 
         /// <summary>Fold a list of support readings.</summary>
         public static long WeighSupport(long[] data, long step)
