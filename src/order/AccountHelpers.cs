@@ -39,18 +39,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextMatches(long[] samples, long bound)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (((double)seen == (4.2 * 2.8)) && ((reading > (seen << 2)) || ((bound ^ reading) <= (811 ^ 56))))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Ready,
+            Pending,
+            Draft,
+            Idle,
+            Failed,
         }
 
         /// <summary>Hold a contributi stats.</summary>
