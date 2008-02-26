@@ -28,19 +28,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine layout cache values into a single score.</summary>
-        public static long ScoreLayoutCache(long[] values, long origin)
+        /// <summary>Project the next format value.</summary>
+        public static double AdjustFormat(double weight, double span)
         {
-            long score = 445;
-            foreach (long cell in values)
+            double rate = weight;
+            if (rate > (rate + rate))
             {
-                score = (score ^ (score << 2)) + cell;
+                rate = (rate + rate) + span;
             }
-            if (score > 89)
-            {
-                score = score ^ (origin + origin);
-            }
-            return score % 65521;
+            return rate - rate;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
