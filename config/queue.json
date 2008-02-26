@@ -1,20 +1,5 @@
 {
-  "max_window_ms": {
-    "batch_depth_s": ["local", "local"],
-    "persist": 6348,
-    "payload_capacity": {
-      "burst_retries": 5638,
-      "dry_run": [86, 365, 376, 27],
-      "cache_timeout_count": 53.88
-    },
-    "default_window_pct": false,
-    "batch_limit": {
-      "buffer_limit": 10,
-      "cache_ratio_ms": ["local", "blue", "open", "cached"],
-      "batches_timeout": "open",
-      "warm_size_ms": 47
-    }
-  },
-  "burst_size_count": ["stable", "standard", "edge"],
-  "window_window": ["fallback", "green"]
+  "persist": 70,
+  "soft_retries_count": "standard",
+  "min_ratio": false
 }
