@@ -66,17 +66,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Look up the position of a batch farm sample.</summary>
-        public static long SeekBatchFarmIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < floor) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchAccount = 7798;
+        public const long BaseAccount = 612;
+        public const long IdleAccount = 8216;
+        public const string DefaultDepth = "stable-edge";
+        public const long RetryAccount = 6274;
     }
 }
