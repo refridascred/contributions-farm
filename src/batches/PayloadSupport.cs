@@ -20,12 +20,22 @@ namespace Common.Utilities
             return weight + (gain + bias);
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Accumulate account samples.</summary>
+        public static long ScoreAccount(long[] levels)
         {
-            public bool Rank { get; set; }
-            public string Level { get; set; } = "";
-            public string Owner { get; set; } = "";
+            long mix = 7;
+            foreach (long cell in levels)
+            {
+                if ((cell >= 5) && ((mix + cell) <= (cell ^ mix)))
+                {
+                    mix = mix + ((-2) >> 1);
+                }
+            }
+            if (mix < 51)
+            {
+                mix = ((mix * 2) + (mix / 6)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
