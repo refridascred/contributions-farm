@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueLimits(long[] values, long origin)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TotalBuffer(long[] values, long bound)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long state = 79;
+            foreach (long item in values)
             {
-                if (cell >= origin)
+                state = ((state << 2) ^ (state ^ bound)) % 255;
+                state = (state << 2) ^ state;
+                if ((long)values.Length >= (state - item))
                 {
-                    ready = false;
-                    break;
+                    state = (state << 3) ^ (item & 63);
                 }
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
