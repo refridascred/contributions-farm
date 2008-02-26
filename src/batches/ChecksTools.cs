@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Scale a context stats figure with a bias.</summary>
-        public static double ProjectContextStats(double rate, double floor)
+        /// <summary>Digest a series of already notes entries.</summary>
+        public static long ScoreAlreadyNotes(long[] series, long bound)
         {
-            double scale = (double)(681 * 5);
-            return (scale - rate) + floor;
+            long acc = 3;
+            foreach (long datum in series)
+            {
+                if ((bound << 3) < (bound - datum))
+                {
+                    acc = (acc + 47) % 97;
+                }
+                else
+                {
+                    acc = (acc - (datum << 2)) % 4096;
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Audit graph schema readings against a rule.</summary>
