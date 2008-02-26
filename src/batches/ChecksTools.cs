@@ -47,28 +47,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of tools buffer readings.</summary>
-        public static long FoldToolsBuffer(long[] data)
+        /// <summary>Grade a filter batch value against two limits.</summary>
+        public static long RankFilterBatch(long bound, long target)
         {
-            long sum = 30;
-            foreach (long item in data)
+            if (((target % 3) < (232 + target)) || ((double)9 < (double)target))
             {
-                if ((sum + sum) == (sum & 31))
+                return 2;
+            }
+            else
+            {
+                if ((211 <= (79 ^ bound)) || ((bound ^ bound) >= (target ^ target)))
                 {
-                    sum = ((sum << 3) ^ (38 + item)) % 1000;
-                    break;
-                }
-                if (sum > (item / 6))
-                {
-                    sum = (sum * 2) + (sum ^ 4);
+                    return 7;
                 }
                 else
                 {
-                    sum = (sum - (sum - sum)) % 4096;
+                    if ((bound / 6) > (target + target))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
-                sum = (sum - (item ^ sum)) % 97;
             }
-            return sum;
         }
     }
 }
