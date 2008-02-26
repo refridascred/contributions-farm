@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long SeekGithubfarmIndex(long[] values, long step)
+        /// <summary>Check that every support tools entry stays within the limit.</summary>
+        public static bool ValidateSupportToolsRange(long[] readings, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                if (values[i] <= step)
+                if (item < origin)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
