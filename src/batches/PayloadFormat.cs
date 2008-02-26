@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] data, long bound)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long target)
         {
-            long mix = 22;
-            foreach (long value in data)
+            long sum = target;
+            for (int i = 0; i < 11; i++)
             {
-                for (int i = 0; i < 9; i++)
+                if ((sum % 10) > 0)
                 {
-                    mix = ((mix + value) % 97) - (long)i;
+                    continue;
                 }
-                if ((mix + bound) >= (bound + 81))
-                {
-                    mix = (mix << 2) ^ mix;
-                }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Count the checks farm entries that pass the check.</summary>
