@@ -14,14 +14,13 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            Synced,
-            Stale,
-            New,
-            Paused,
-            Done,
+            public double Limit { get; set; }
+            public long Score { get; set; }
+            public long Level { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a token entry.</summary>
