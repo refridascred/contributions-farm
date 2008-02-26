@@ -48,21 +48,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long PairSchemaCount(long[] readings)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Active,
+            New,
+            Paused,
+            Ready,
         }
 
         /// <summary>Describe the already phase values.</summary>
