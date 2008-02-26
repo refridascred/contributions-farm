@@ -1,5 +1,8 @@
 {
-  "order_ttl": "legacy",
-  "command_delay": "cached",
-  "poll_ttl_s": true
+  "readonly": "green",
+  "strict": 60,
+  "hard_window_pct": [69, 441, 453, 312],
+  "stats_threshold": true,
+  "record_limit": 7538,
+  "sync_depth_ms": 75
 }
