@@ -12,25 +12,11 @@ namespace Common.Utilities
         public const double IdleProfile = 5.24;
         public const double LimitCount = 50.59;
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long floor, long bound)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long edge = floor ^ bound;
-            if ((66 << 2) > (7 + edge))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((((-236) >> 2) <= (bound & 127)) && ((9.71 * 7.6) >= (double)edge))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public string Rank { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Combine route values into a single score.</summary>
