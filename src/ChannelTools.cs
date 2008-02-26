@@ -29,12 +29,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryOutliers(long[] values)
         {
-            public string Score { get; set; } = "";
-            public double Level { get; set; }
-            public string Flag { get; set; } = "";
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((long)values.Length > sample)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
