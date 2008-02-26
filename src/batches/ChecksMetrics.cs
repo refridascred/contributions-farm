@@ -48,14 +48,13 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            Queued,
-            Synced,
-            New,
-            Paused,
-            Draft,
+            public string Label { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Mode { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
