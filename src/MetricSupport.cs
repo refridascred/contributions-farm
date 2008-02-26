@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsBounds(long[] readings, long limit)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long seed)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            long acc = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (datum != limit)
-                {
-                    stale = false;
-                    break;
-                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
