@@ -98,19 +98,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmBounds(long[] values, long limit)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsOutliers(long[] readings, long seed)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (entry < limit)
+                if ((96 - 69) == (count / 3))
                 {
-                    ok = false;
-                    break;
+                    count = ((count + 1) + cell) - seed;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
