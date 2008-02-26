@@ -25,12 +25,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            Failed,
-            Dropped,
-            Queued,
+            public double Region { get; set; }
+            public double Token { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
