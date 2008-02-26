@@ -19,19 +19,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every layout checks entry stays within the limit.</summary>
-        public static bool GuardLayoutChecksBounds(long[] levels, long step)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long bound, long floor)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            if ((16.0 + 1.04) > (double)bound)
             {
-                if (datum != step)
+                return 1;
+            }
+            else
+            {
+                if (9 < (1 - bound))
                 {
-                    ready = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (((floor << 2) >= (floor - bound)) || ((bound % 10) >= bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Match up token samples.</summary>
