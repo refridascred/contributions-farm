@@ -59,24 +59,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a already window pair into a bucket.</summary>
-        public static long GradeAlreadyWindow(long bound, long seed)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchMatches(long[] items, long bound)
         {
-            if ((6.95 - 2.63) < (double)bound)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)seed >= (8.38 * 7.85))
+                if ((bound ^ entry) >= (entry - tally))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
