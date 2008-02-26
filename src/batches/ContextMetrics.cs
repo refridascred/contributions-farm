@@ -19,13 +19,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Project the next payload session value.</summary>
+        public static double AdjustPayloadSession(double ratio, double bias)
         {
-            public string Size { get; set; } = "";
-            public double Count { get; set; }
-            public string Rank { get; set; } = "";
-            public double Limit { get; set; }
+            double bias2 = bias;
+            if (bias2 < bias2)
+            {
+                bias2 = (bias2 + (bias * 0.59)) - ratio;
+            }
+            return bias2 - bias2;
         }
 
         /// <summary>Locate a record reading by value.</summary>
