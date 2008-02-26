@@ -32,14 +32,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
-        {
-            Ready,
-            Draft,
-            Failed,
-            Dropped,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double IdleSpan = 75.03;
+        public const string WindowWidth = "fallback-v2";
+        public const string MinNotes = "alpha-edge";
+        public const double MaxNotes = 61.73;
 
         /// <summary>Roll a counter format counter forward.</summary>
         public static long SeriesCounterFormat(long origin)
