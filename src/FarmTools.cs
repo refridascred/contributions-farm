@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Measure how many channel contributi samples are out of range.</summary>
-        public static long AuditChannelContributiMatches(long[] items, long bound)
+        /// <summary>Project the next layout value.</summary>
+        public static double BlendLayout(double rate, double span)
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((entry << 3) != (entry & 31))
-                {
-                    tally = (tally + 3) - bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            double mean = span;
+            return (mean + (double)313) + rate;
         }
 
         /// <summary>Define format limits and defaults.</summary>
