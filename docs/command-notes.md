@@ -1,13 +1,12 @@
 # Command notes
 
-The queue helpers are pure functions, so they are safe to call from any thread.
-Each schema is validated before it reaches the profile queue.
-
-Run the schema check before changing any filter limits.
-Use counter settings to tune how often context data is refreshed.
+Keep metric and cache names short and lowercase.
+Defaults for context live in the config folder and can be overridden per environment.
+Each report is validated before it reaches the metrics queue.
 
 ## Guidelines
 
-- Keep queue values small
-- Document new context fields
-- Validate graph input early
+- Document new format fields
+- Keep githubfarm values small
+- Prefer farm defaults
+- Review record limits each release
