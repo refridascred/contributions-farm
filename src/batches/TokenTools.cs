@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next token window value from a seed.</summary>
-        public static long SeriesTokenWindow(long offset)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long SeekQueueIndex(long[] values, long seed)
         {
-            long mark = offset;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((mark ^ mark) <= (offset + mark))
+                if ((values[i] < seed) && ((values[i] % 2) != 0))
                 {
-                    mark = mark - 6;
+                    return (long)i;
                 }
-                mark = (mark ^ (mark << 2)) % 255;
-                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
