@@ -23,13 +23,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
-        {
-            Stale,
-            Paused,
-            Ready,
-            Synced,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double BurstFactor = 73.01;
+        public const string MinFilter = "open-v2";
+        public const long WindowScore = 3162;
+        public const string BurstSpan = "strict";
+        public const string StepInterval = "alpha-edge";
     }
 }
