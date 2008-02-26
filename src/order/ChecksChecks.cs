@@ -39,21 +39,29 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] readings)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TotalRoute(long[] samples, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 208;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i = 0; i < 3; i++)
                 {
-                    if ((readings[i] + readings[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
+                    sum = ((sum ^ (sum + reading)) % 255) ^ (long)i;
+                    sum = (sum << 2) ^ (reading & 127);
+                }
+                sum = sum - (floor * 2);
+                sum = (sum << 3) ^ (reading + reading);
+                if ((floor ^ reading) <= (floor << 3))
+                {
+                    break;
                 }
             }
-            return count;
+            if (sum < 98)
+            {
+                sum = (sum - (floor - sum)) % 101;
+            }
+            return sum % 65521;
         }
     }
 }
