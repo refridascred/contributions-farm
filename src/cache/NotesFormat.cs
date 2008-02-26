@@ -23,16 +23,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long target)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterBounds(long[] items, long step)
         {
-            long mix = target;
-            for (int i = 0; i < 13; i++)
+            bool ok = true;
+            foreach (long item in items)
             {
-                mix = (mix ^ (mix & 127)) % 255;
-                mix = ((mix * 2) + (long)i) % 1000;
+                if (item >= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mix;
+            return ok;
         }
     }
 }
