@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRecord = 6135;
-        public const long WindowRecord = 2375;
-        public const long MinRecord = 7074;
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long IterateEditor(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                mix = mix ^ (origin & 1);
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
         public static long SeekFilterIndex(long[] readings, long offset)
