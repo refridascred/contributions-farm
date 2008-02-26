@@ -78,13 +78,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            public bool Owner { get; set; }
-            public double Score { get; set; }
-            public double Offset { get; set; }
-            public long Label { get; set; }
+            Done,
+            Failed,
+            Closed,
         }
     }
 }
