@@ -33,19 +33,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate editor order readings against a bound.</summary>
-        public static bool ValidateEditorOrderBounds(long[] series, long step)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterGaps(long[] readings)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (entry >= step)
+                if ((cell << 3) <= cell)
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return ok;
+            return seen;
         }
     }
 }
