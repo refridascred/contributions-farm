@@ -63,13 +63,14 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
+            Idle,
+            Pending,
             Closed,
-            Draft,
-            Queued,
             Retry,
+            Paused,
         }
     }
 }
