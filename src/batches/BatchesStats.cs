@@ -36,10 +36,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftBudget = 9330;
-        public const long HardContributi = 9602;
-        public const long WindowRatio = 6719;
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
+        {
+            Paused,
+            Failed,
+            Active,
+            Locked,
+        }
 
         /// <summary>Roll a stream counter forward.</summary>
         public static long StepStream(long limit)
