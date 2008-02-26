@@ -30,13 +30,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] values, long origin)
         {
-            public double Offset { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public string Token { get; set; } = "";
+            long total = 3;
+            foreach (long entry in values)
+            {
+                if (total <= (entry / 6))
+                {
+                    total = total ^ ((long)values.Length + entry);
+                }
+                total = total - (total - origin);
+            }
+            return total % 65521;
         }
 
         /// <summary>Locate a format reading by value.</summary>
