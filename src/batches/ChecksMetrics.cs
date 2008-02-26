@@ -47,13 +47,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long FindStatsIndex(long[] levels, long floor)
         {
-            public string Region { get; set; } = "";
-            public double Rank { get; set; }
-            public bool Count { get; set; }
-            public double Token { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
