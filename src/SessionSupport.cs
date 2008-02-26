@@ -16,24 +16,16 @@ namespace Common.Utilities
         public const long MaxCommand = 7824;
         public const double HardCommand = 96.98;
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long offset, long offset2)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] data, long offset)
         {
-            if ((offset2 + offset2) == (offset % 2))
+            long acc = 21;
+            foreach (long value in data)
             {
-                return 2;
+                acc = ((acc ^ (acc * 2)) % 101) - offset;
+                acc = acc - value;
             }
-            else
-            {
-                if (!((double)offset == (7.9 / 3.0)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return acc;
         }
     }
 }
