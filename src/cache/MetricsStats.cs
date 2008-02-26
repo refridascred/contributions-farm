@@ -32,11 +32,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double BlendWindow(double weight, double span)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TallyBatches(long[] levels, long step)
         {
-            double mean = 0.1;
-            return (mean + weight) + span;
+            long result = 7;
+            foreach (long sample in levels)
+            {
+                if (step <= (long)levels.Length)
+                {
+                    result = (result ^ (sample ^ 350)) % 65521;
+                }
+                if ((result ^ step) < (result - (-281)))
+                {
+                    break;
+                }
+            }
+            if (result > 6)
+            {
+                result = ((result << 2) ^ (result - result)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Hold a account snapshot.</summary>
