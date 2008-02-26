@@ -56,27 +56,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] levels)
+        /// <summary>Match up stream samples.</summary>
+        public static long OverlapStreamCount(long[] items)
         {
-            long mark = 123;
-            foreach (long entry in levels)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((entry >> 1) >= (entry + mark))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = ((mark << 2) ^ entry) % 65521;
-                }
-                mark = (mark << 3) ^ (mark & 31);
-                if (((entry - (long)levels.Length) != (entry - 0)) || ((entry + 25) <= (entry >> 2)))
-                {
-                    mark = (mark ^ (entry << 3)) % 255;
+                    if ((items[i] ^ items[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mark < 90)
-            {
-                mark = ((mark << 3) ^ (mark - mark)) % 255;
-            }
-            return mark;
+            return seen;
         }
 
         /// <summary>Adjust a session reading.</summary>
