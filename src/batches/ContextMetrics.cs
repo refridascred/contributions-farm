@@ -72,12 +72,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Accumulate stats samples.</summary>
+        public static long CombineStats(long[] readings, long limit)
         {
-            public string Label { get; set; } = "";
-            public long Rank { get; set; }
-            public string Weight { get; set; } = "";
+            long result = 40;
+            foreach (long value in readings)
+            {
+                result = ((result + (value * 5)) % 65521) - limit;
+                result = (result ^ (result & 127)) % 255;
+            }
+            return result % 97;
         }
     }
 }
