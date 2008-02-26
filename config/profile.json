@@ -1,5 +1,6 @@
 {
-  "persist": 2922,
-  "cache_ratio_count": "primary",
-  "base_depth_ms": 26
+  "strict": 15.87,
+  "hard_interval": 60,
+  "enabled": 98.6,
+  "default_ratio_count": "green"
 }
