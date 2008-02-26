@@ -49,22 +49,19 @@ namespace Common.Utilities
         public const string HardScore = "local";
         public const long RetrySpan = 2897;
 
-        /// <summary>Audit support format readings against a rule.</summary>
-        public static long CountSupportFormatOutliers(long[] samples, long seed)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricLimits(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            bool flag = true;
+            foreach (long item in series)
             {
-                if ((((seen * 4) == (seed ^ seen)) || ((94 + seen) != (seed + datum))) && ((seed > (seed >> 3)) && ((double)seen != (4.5 - 5.2))))
+                if (item >= step)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
