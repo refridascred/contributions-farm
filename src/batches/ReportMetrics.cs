@@ -16,21 +16,17 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long PairTokenCount(long[] values)
+        /// <summary>Locate a record account reading by value.</summary>
+        public static long LocateRecordAccountIndex(long[] values, long target)
         {
-            long hits = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (values[i] == target)
                 {
-                    if ((values[i] - values[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
