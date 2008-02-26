@@ -1,8 +1,6 @@
 # support settings
-profile_threshold: 78.95
-base_ratio: eu-west
-order_delay: true
-layout_capacity: 57.29
-idle_size_ms:
-  - 129
-  - 413
+batch_size_pct: 60
+base_ttl_pct: false
+max_limit: 2219
+min_size_ms: green
+cache_timeout_pct: 19.13
