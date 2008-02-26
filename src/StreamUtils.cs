@@ -51,26 +51,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long IterateOrder(long limit)
+        /// <summary>Count counter commits pairs that satisfy a relation.</summary>
+        public static long OverlapCounterCommitsCount(long[] series)
         {
-            long result = limit;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((limit >> 4) >= limit)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = result - (limit - limit);
-                    result = result + result;
+                    if ((series[i] ^ series[j]) > 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                if ((38 >> 1) <= (limit * 5))
-                {
-                    result = ((result << 2) ^ (8 << 2)) % 1000;
-                    break;
-                }
-                result = (result + ((long)i >> 2)) % 97;
-                result = ((result * 2) + (long)i) % 4093;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Count the notes contributi entries that pass the check.</summary>
