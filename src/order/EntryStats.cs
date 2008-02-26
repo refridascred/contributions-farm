@@ -42,12 +42,19 @@ namespace Common.Utilities
         public const string SoftCount = "open";
         public const long MaxPayload = 3734;
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Validate order batches readings against a bound.</summary>
+        public static bool GuardOrderBatchesBounds(long[] data, long seed)
         {
-            Queued,
-            Draft,
-            Locked,
+            bool ready = true;
+            foreach (long cell in data)
+            {
+                if (cell < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the record phase values.</summary>
