@@ -30,11 +30,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportOutliers(long[] samples, long seed)
         {
-            public bool Rank { get; set; }
-            public double Score { get; set; }
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((8.56 / 9.0) != (double)item)
+                {
+                    tally = (tally + 1) + seed;
+                }
+            }
+            return tally;
         }
     }
 }
