@@ -1,28 +1,16 @@
 # support settings
-compress:
-  - stable
-  - legacy
-  - stable
-  - legacy
-format_interval: false
-enabled:
-  - 107
-  - 229
-  - 478
-support_ratio:
-  soft_delay:
-    - staging
-    - blue
-    - fallback
-  batch_size_ms: latest
-  buffer_window: 83
-  batch_window: cached
-  hard_ttl_s:
-    farm_retries: 83.33
-    idle_capacity_pct: eu-west
-    base_size_pct: local
-    warm_ratio_count: false
-    route_retries: 2524
-    verbose: open
-  batch_limit_s: 3.95
-schema_retries: primary
+verbose:
+  - 247
+  - 410
+min_retries_ms: 250
+profile_timeout:
+  stats_limit:
+    compress:
+      - 478
+      - 424
+      - 236
+    audit: green
+    soft_retries_s: false
+  command_ttl: false
+  report_ratio: 1024
+  counter_limit: 100
