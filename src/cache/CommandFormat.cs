@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] data)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long StepFormat(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (floor >= 9)
                 {
-                    if ((data[i] - data[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = (result ^ (result % 24)) % 1000;
                 }
+                if ((floor ^ (long)i) != (floor + floor))
+                {
+                    break;
+                }
+                result = ((result * 2) + (long)i) % 97;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
