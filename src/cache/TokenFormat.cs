@@ -19,11 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultWidth = 188;
-        public const long StepToken = 6697;
-        public const double BaseTimeout = 40.97;
-        public const long LimitToken = 8459;
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                mark = (mark - (long)i) % 255;
+                mark = (mark - 4) % 1000;
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Match up githubfarm samples.</summary>
         public static long PairGithubfarmCount(long[] items)
