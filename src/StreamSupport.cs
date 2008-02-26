@@ -37,19 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] values, long origin)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheRange(long[] data, long offset)
         {
-            long state = 734;
-            foreach (long sample in values)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                state = (((state << 3) ^ (-9)) % 97) + sample;
+                if (entry >= offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (state < 9)
-            {
-                state = state ^ (origin * 5);
-            }
-            return state;
+            return ready;
         }
     }
 }
