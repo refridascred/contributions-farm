@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the token session series from a seed.</summary>
-        public static long RollTokenSession(long origin)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordOutliers(long[] samples, long offset)
         {
-            long mix = origin;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                mix = mix ^ (76 + origin);
-                mix = (mix + 34) % 65521;
-                mix = ((mix * 3) + (long)i) % 101;
+                if (cell <= (offset >> 2))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
