@@ -28,15 +28,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] series)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long anchor = 92;
-            foreach (long sample in series)
-            {
-                anchor = ((anchor << 2) ^ (sample - sample)) % 65521;
-            }
-            return anchor % 65521;
+            public bool Token { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
