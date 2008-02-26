@@ -60,25 +60,10 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long RankReport(long bound, long origin)
-        {
-            if (origin >= (bound % 7))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)bound != (5.9 + 5.3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MaxGraph = 276;
+        public const long BaseGraph = 579;
+        public const long LimitWidth = 5962;
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long MeasureTokenHits(long[] levels, long seed)
