@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesOutliers(long[] values)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double AdjustQueue(double bias, double bias2)
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((655 + (long)values.Length) != (matches << 2))
-                {
-                    matches = (matches + 2) ^ item;
-                }
-            }
-            return matches;
+            double load = bias2;
+            return (load - (double)85) + bias;
         }
 
         /// <summary>Match up githubfarm report samples.</summary>
