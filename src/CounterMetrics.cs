@@ -36,22 +36,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportHits(long[] items)
+        /// <summary>Derive the next contributi batch value from a seed.</summary>
+        public static long RollContributiBatch(long origin)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long carry = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((tally & 7) <= (datum + datum))
+                long step = origin / 9;
+                if ((5 - origin) > (step % 10))
                 {
-                    tally = tally + 1;
+                    continue;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                step = step + ((long)i / 2);
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return tally;
+            return carry;
         }
     }
 }
