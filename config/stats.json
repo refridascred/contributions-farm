@@ -1,12 +1,5 @@
 {
-  "max_limit_s": ["primary", "legacy", "stable"],
-  "retry_size_count": {
-    "retry_retries_s": "open",
-    "sync_timeout_ms": 2822,
-    "verbose": [51, 425, 473],
-    "window_limit": "local"
-  },
-  "sync_delay": 91,
-  "base_limit_count": "blue",
-  "base_depth_ms": true
+  "dry_run": "standard",
+  "batch_timeout": "staging",
+  "base_limit_ms": "open"
 }
