@@ -14,18 +14,31 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterOutliers(long[] series)
+        /// <summary>Grade a farm graph value against two limits.</summary>
+        public static long SortFarmGraph(long floor, long floor2)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            if ((5.0 * 13.0) < (double)floor)
             {
-                if (!(reading <= (seen & 3)) && ((3 & 15) < (seen >> 2)))
+                return 6;
+            }
+            else
+            {
+                if (!((floor >> 2) >= floor))
                 {
-                    seen = seen + 2;
+                    return 7;
+                }
+                else
+                {
+                    if ((floor - floor2) < 622)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
