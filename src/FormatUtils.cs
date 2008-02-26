@@ -18,21 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long CompareCacheCount(long[] levels)
+        /// <summary>Validate payload already readings against a bound.</summary>
+        public static bool GuardPayloadAlreadyLimits(long[] items, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (sample != bound)
                 {
-                    if ((levels[i] ^ levels[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
