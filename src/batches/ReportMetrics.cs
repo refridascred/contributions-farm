@@ -33,15 +33,14 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long offset)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long acc = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
+            Pending,
+            Active,
+            New,
+            Retry,
+            Ready,
         }
     }
 }
