@@ -1,7 +1,11 @@
 # entry settings
-base_depth: stable
-batches_capacity: 8328
-tools_size: staging
-enabled: 77.31
-base_depth_s: 2097
-idle_timeout: 71
+payload_ratio:
+  - 85
+  - 71
+  - 124
+  - 188
+base_threshold_s: 79.33
+entry_ttl:
+  - primary
+  - staging
+  - staging
