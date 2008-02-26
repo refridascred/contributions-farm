@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ProjectCommits(double bias, double span)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiLimits(long[] levels, long offset)
         {
-            double ratio = (bias + bias) * 5.8;
-            return (ratio - (bias + ratio)) + span;
+            bool ready = true;
+            foreach (long reading in levels)
+            {
+                if (reading < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
