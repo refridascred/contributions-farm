@@ -1,7 +1,7 @@
 # support settings
-base_limit_pct: 1572
-base_interval_s: 9.79
-soft_size_pct:
-  - edge
-  - open
-sync_capacity_pct: 70
+hard_threshold: open
+flush_threshold_count: green
+strict: 6003
+soft_timeout:
+  - 86
+  - 242
