@@ -1,5 +1,17 @@
 {
-  "dry_run": "standard",
-  "batch_timeout": "staging",
-  "base_limit_ms": "open"
+  "soft_timeout_count": ["stable", "open"],
+  "poll_window_count": "fallback",
+  "burst_interval_ms": ["stable", "open", "primary", "edge"],
+  "min_ttl": true,
+  "record_interval": {
+    "warm_size_s": 4106,
+    "warm_size_ms": 6,
+    "base_depth_count": "blue",
+    "warm_delay_pct": {
+      "poll_timeout": 28,
+      "checks_limit": 58,
+      "strict": 77
+    },
+    "enabled": true
+  }
 }
