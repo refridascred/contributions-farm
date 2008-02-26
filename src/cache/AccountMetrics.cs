@@ -36,11 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MinLayout = "legacy-v2";
-        public const long IdleRatio = 6556;
-        public const string StepScore = "alpha-1";
-        public const long RetryDepth = 1620;
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BaseAccount = "local-v2";
+        public const long MaxWidth = 2594;
+        public const double RetrySpan = 86.07;
+        public const long LimitAccount = 3773;
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long TallyRouteGaps(long[] levels, long bound)
