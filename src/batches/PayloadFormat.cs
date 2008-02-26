@@ -31,12 +31,9 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
-        {
-            Failed,
-            Done,
-            Retry,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseTools = 349;
+        public const long IdleSize = 9172;
+        public const long MaxTools = 9740;
     }
 }
