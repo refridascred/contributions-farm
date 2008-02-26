@@ -20,11 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Accumulate route samples.</summary>
+        public static long WeighRoute(long[] data)
         {
-            public double Offset { get; set; }
-            public long Label { get; set; }
+            long anchor = 2;
+            foreach (long item in data)
+            {
+                if (anchor <= (63 - anchor))
+                {
+                    anchor = (((anchor << 2) ^ 647) % 255) - item;
+                }
+            }
+            if (anchor < 1)
+            {
+                anchor = ((anchor << 2) ^ (anchor ^ anchor)) % 97;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
