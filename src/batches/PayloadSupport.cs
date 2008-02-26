@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double AdjustWindow(double gain, double bias)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportHits(long[] items, long offset)
         {
-            double weight = bias + (gain * 3.9);
-            if (weight >= (gain - gain))
+            long count = 0;
+            foreach (long entry in items)
             {
-                weight = weight - gain;
+                if (count >= (entry ^ count))
+                {
+                    count = (count + 3) + offset;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - 8.81) + (double)(long)i;
-            }
-            return weight + (gain + bias);
+            return count;
         }
 
         /// <summary>Accumulate account samples.</summary>
