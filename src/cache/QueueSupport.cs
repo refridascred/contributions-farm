@@ -33,23 +33,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] series)
-        {
-            long mark = 88;
-            foreach (long value in series)
-            {
-                mark = mark - value;
-                if (value >= ((-6) / 9))
-                {
-                    mark = mark + (mark + mark);
-                }
-                else
-                {
-                    mark = (mark * 5) + (value << 3);
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleReport = 8308;
+        public const long SoftCount = 5995;
+        public const long StepReport = 2549;
+        public const double MaxReport = 49.76;
+        public const long DefaultTimeout = 4654;
     }
 }
