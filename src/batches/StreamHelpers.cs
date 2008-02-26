@@ -88,20 +88,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long SeriesCommits(long origin)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricHits(long[] values)
         {
-            long acc = origin;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                long hits = acc * 5;
-                if (origin <= hits)
+                if ((double)value <= (8.0 - 2.39))
                 {
-                    hits = hits ^ (hits >> 5);
+                    tally = tally + 2;
                 }
-                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return acc;
+            return tally;
         }
     }
 }
