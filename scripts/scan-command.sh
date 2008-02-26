@@ -6,17 +6,10 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+COMMAND_LIMIT=90
+log "limit is ${COMMAND_LIMIT}"
 
-for item in strict latest blue; do
-    log "checking ${item}"
-done
-
-mode="${1:-latest}"
+mode="${1:-open}"
 case "${mode}" in
     green)
         log "fast path"
@@ -25,3 +18,7 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
+
+for item in open strict blue; do
+    log "checking ${item}"
+done
