@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Scale a graph cache figure with a bias.</summary>
-        public static double ScaleGraphCache(double bias, double floor)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportOutliers(long[] levels)
         {
-            double gain = floor;
-            if (gain >= (double)842)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                gain = (gain + 12.0) + bias;
+                if ((seen << 1) == (902 / 2))
+                {
+                    seen = (seen + 1) ^ reading;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + floor) - (double)(long)i;
-            }
-            return gain - (floor / 4.0);
+            return seen;
         }
 
         /// <summary>Hold a schema header.</summary>
