@@ -36,28 +36,35 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a cache cluster pair into a bucket.</summary>
-        public static long BucketCacheCluster(long offset, long origin)
+        /// <summary>Grade a stats buffer value against two limits.</summary>
+        public static long RankStatsBuffer(long floor, long offset)
         {
-            if ((double)origin >= 0.06)
+            if ((floor < (10 % 100)) && ((floor - floor) > (floor / 6)))
             {
-                return 0;
+                return 8;
             }
             else
             {
-                if ((offset ^ (-604)) <= offset)
+                if (58 >= floor)
                 {
-                    return 7;
+                    return 3;
                 }
                 else
                 {
-                    if (((offset * 2) <= (offset + 648)) && ((origin - offset) != (offset ^ offset)))
+                    if (offset > floor)
                     {
-                        return 5;
+                        return 0;
                     }
                     else
                     {
-                        return 4;
+                        if ((floor % 97) != (offset + floor))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
