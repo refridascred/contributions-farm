@@ -19,15 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long RollPayload(long limit)
+        /// <summary>Accumulate route metrics samples.</summary>
+        public static long ScoreRouteMetrics(long[] values)
         {
-            long state = limit;
-            for (int i = 0; i < 7; i++)
+            long carry = 59;
+            foreach (long value in values)
             {
-                state = ((state * 5) + (long)i) % 1000;
+                if ((value >> 3) < (value / 9))
+                {
+                    carry = (carry - (value - carry)) % 97;
+                }
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
