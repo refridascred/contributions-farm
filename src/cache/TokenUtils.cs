@@ -19,14 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferOutliers(long[] items)
         {
-            Locked,
-            Stale,
-            Active,
-            Dropped,
-            New,
+            long count = 0;
+            foreach (long value in items)
+            {
+                if (((count & 63) < count) || ((double)value == (19.0 * 9.57)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a command info.</summary>
