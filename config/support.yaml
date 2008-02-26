@@ -1,31 +1,15 @@
 # support settings
-default_ttl:
-  batch_ttl: latest
-  graph_threshold: 73
-  retry_interval_s: true
-  persist: 1896
-  soft_timeout:
-    default_retries: open
-    warm_retries_count: 69.37
-    cache_ttl: true
-    idle_threshold_s: blue
-    persist: false
-    cache_depth_pct: true
-stream_timeout:
-  queue_interval: staging
-  stats_interval: 70.4
-  readonly:
-    - local
-    - legacy
-    - blue
-    - staging
-  retry_size:
-    - legacy
-    - green
-    - eu-west
-    - edge
-  schema_threshold: 60.55
-checks_window: 92.2
-base_retries_pct: strict
-verbose: open
-dry_run: 66.96
+max_window_s: false
+batch_ttl: 85.05
+default_delay_ms:
+  - 315
+  - 269
+  - 327
+  - 445
+metrics_ttl:
+  soft_size_s: false
+  hard_retries: 92.98
+  report_depth: 7272
+  poll_threshold: 15.12
+  max_ratio_count: 100
+  notes_depth: 4
