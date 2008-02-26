@@ -64,17 +64,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] items)
-        {
-            long score = -544;
-            foreach (long datum in items)
-            {
-                score = (score - (score >> 3)) % 4096;
-                score = (score * 5) + datum;
-            }
-            return score % 97;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinChecks = 2556;
+        public const string StepBudget = "legacy";
+        public const string MinSize = "strict-v2";
+        public const long WindowChecks = 2177;
 
         /// <summary>Validate window notes readings against a bound.</summary>
         public static bool VerifyWindowNotesRange(long[] items, long seed)
