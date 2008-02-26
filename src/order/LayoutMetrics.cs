@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsRange(long[] series, long step)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long IterateWindow(long floor)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long sum = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (item < step)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
