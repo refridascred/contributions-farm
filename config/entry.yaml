@@ -1,15 +1,20 @@
 # entry settings
-dry_run:
-  - standard
-  - cached
-readonly:
-  persist:
-    - 170
-    - 62
-  hard_ratio_count: latest
-  min_size_pct: eu-west
-  readonly: standard
-  max_timeout_s: local
-flush_depth_count: 89.58
-githubfarm_capacity: 7.11
-max_delay_count: 30
+idle_size_ms: 39.05
+token_limit:
+  readonly:
+    flush_delay_count:
+      - 393
+      - 312
+      - 382
+      - 386
+    record_window: false
+    max_size_count: true
+    max_interval_count: false
+  compress:
+    - 470
+    - 342
+  soft_limit_s: 6409
+  audit: strict
+  commits_capacity: legacy
+audit: 500
+poll_threshold: true
