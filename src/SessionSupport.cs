@@ -24,21 +24,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long CompareGithubfarmCount(long[] items)
+        /// <summary>Count already account pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyAccountCount(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((items[i] ^ items[j]) != 19)
+                    if ((samples[i] ^ samples[j]) == 6)
                     {
-                        count = count + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
