@@ -13,22 +13,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long CompareContextCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string HardTimeout = "stable-1";
+        public const long MaxFactor = 9276;
+        public const long RetryBuffer = 2275;
+        public const string WindowRatio = "strict-edge";
+        public const string MaxBuffer = "standard";
 
         /// <summary>Describe the counter kind values.</summary>
         public enum CounterKind
