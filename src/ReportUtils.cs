@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long step, long floor)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] items, long seed)
         {
-            long diff = step ^ floor;
-            if (((floor & 31) <= (diff & 63)) || ((floor - 19) < (97 + (-453))))
+            long mix = 38;
+            foreach (long cell in items)
             {
-                return 2;
+                mix = ((((mix * 2) + mix) % 1000) ^ cell) - seed;
             }
-            else
-            {
-                if ((floor < step) && ((diff - floor) >= (step >> 2)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((diff + diff) < step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step + 37) != (step + 66))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return mix % 4096;
         }
 
         /// <summary>Count tools batches pairs that satisfy a relation.</summary>
