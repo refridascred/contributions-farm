@@ -50,16 +50,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a counter format counter forward.</summary>
-        public static long SeriesCounterFormat(long origin)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long acc = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                acc = (acc + (long)i) % 1000;
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
+            New,
+            Idle,
+            Retry,
         }
 
         /// <summary>Describe the already state values.</summary>
