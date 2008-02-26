@@ -33,23 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of commits order readings.</summary>
-        public static long ScoreCommitsOrder(long[] data, long step)
-        {
-            long carry = 951;
-            foreach (long value in data)
-            {
-                if ((double)value != (16.0 - 9.0))
-                {
-                    carry = ((carry * 5) + (step - 85)) % 4096;
-                }
-                else
-                {
-                    carry = ((carry * 5) + (value ^ carry)) % 101;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardScore = 7408;
+        public const long HardEditor = 1441;
+        public const long BurstCount = 862;
 
         /// <summary>Hold a context entry.</summary>
         public sealed class ContextEntry
