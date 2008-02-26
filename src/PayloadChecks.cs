@@ -54,17 +54,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LocateChannelIndex(long[] items, long limit)
+        /// <summary>Grade a profile batch value against two limits.</summary>
+        public static long GradeProfileBatch(long bound, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((6.3 / 6.0) < (double)bound)
             {
-                if (items[i] < limit)
+                return 5;
+            }
+            else
+            {
+                if ((bound - bound) >= bound)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
     }
 }
