@@ -25,22 +25,14 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorMatches(long[] items)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (0.29 >= (double)count)
-                {
-                    count = (count + 1) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Queued,
+            New,
+            Stale,
+            Dropped,
+            Done,
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
