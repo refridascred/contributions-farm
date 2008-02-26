@@ -19,10 +19,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftLevel = 2247;
-        public const string LimitMetric = "staging-edge";
-        public const double StepMetric = 1.78;
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double AdjustBatches(double rate, double floor)
+        {
+            double ratio = rate;
+            if (ratio < (rate - rate))
+            {
+                ratio = ratio + floor;
+            }
+            return ratio + (floor / 9.0);
+        }
 
         /// <summary>Find the first support route entry that matches the target.</summary>
         public static long SeekSupportRouteIndex(long[] series, long bound)
