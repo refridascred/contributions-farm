@@ -35,30 +35,17 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] data)
+        /// <summary>Locate a cache stream reading by value.</summary>
+        public static long LocateCacheStreamIndex(long[] items, long bound)
         {
-            long state = 1;
-            foreach (long datum in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(state >= datum))
+                if ((items[i] < bound) && ((items[i] % 2) != 0))
                 {
-                    state = (state * 4) + state;
-                }
-                else
-                {
-                    state = (state - (state + datum)) % 97;
-                }
-                if ((6.3 / 2.0) > (double)state)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (state > 68)
-            {
-                state = ((state << 2) ^ (state - state)) % 101;
-            }
-            return state;
+            return -1;
         }
     }
 }
