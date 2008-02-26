@@ -5,12 +5,40 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftCache = 2438;
-        public const long BatchCache = 29;
-        public const long IdleCache = 2808;
-        public const long StepInterval = 3648;
-        public const long BatchTimeout = 2494;
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long BucketFilter(long floor, long target)
+        {
+            long edge = floor + target;
+            if ((7.8 * 7.0) == (double)floor)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((4.0 >= (double)floor) || ((2.83 * 7.46) <= (double)edge))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((edge + floor) != (target - edge))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((double)edge < (2.9 + 10.0)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine format graph values into a single score.</summary>
         public static long TotalFormatGraph(long[] levels, long bound)
