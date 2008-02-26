@@ -14,14 +14,10 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
-        {
-            Closed,
-            Pending,
-            Synced,
-            New,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string CacheEditor = "cached-1";
+        public const double IdleEditor = 15.02;
+        public const double HardEditor = 81.12;
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long CountBatchGaps(long[] values, long bound)
