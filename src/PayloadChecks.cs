@@ -13,20 +13,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long IterateTools(long step)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LocateStreamIndex(long[] levels, long offset)
         {
-            long score = step;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((0.45 + 9.0) <= (double)step)
+                if (levels[i] == offset)
                 {
-                    score = ((score * 2) + (step & 255)) % 1000;
+                    return (long)i;
                 }
-                score = score - (520 << 1);
-                score = ((score * 4) + (long)i) % 97;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Classify a channel cache pair into a bucket.</summary>
