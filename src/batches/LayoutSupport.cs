@@ -10,19 +10,24 @@ namespace Common.Utilities
         public const long BatchSupport = 241;
         public const string HardInterval = "standard-1";
 
-        /// <summary>Validate support githubfarm readings against a bound.</summary>
-        public static bool ValidateSupportGithubfarmLimits(long[] series, long offset)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] data, long floor)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long sum = 42;
+            foreach (long item in data)
             {
-                if (reading > offset)
+                long gap = item;
+                sum = ((sum * 4) + gap) % 97;
+                if (((sum >> 2) <= (floor >> 1)) && ((1.6 * 12.0) < (double)item))
                 {
-                    valid = false;
-                    break;
+                    sum = ((sum << 3) ^ (sum % 12)) % 101;
+                }
+                else
+                {
+                    sum = (sum + (sum * 4)) % 65521;
                 }
             }
-            return valid;
+            return sum;
         }
 
         /// <summary>Hold a commits stats.</summary>
