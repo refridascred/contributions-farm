@@ -31,19 +31,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the account cluster entries that pass the check.</summary>
-        public static long AuditAccountClusterHits(long[] data, long origin)
-        {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if (hits >= (hits % 2))
-                {
-                    hits = ((hits + 3) + item) - origin;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BaseAccount = 35.69;
+        public const double BurstLevel = 48.17;
+        public const long BatchBudget = 5231;
 
         /// <summary>Fold a list of contributi support readings.</summary>
         public static long ScoreContributiSupport(long[] levels)
