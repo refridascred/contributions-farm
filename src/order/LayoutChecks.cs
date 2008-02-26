@@ -77,17 +77,16 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long SeekClusterIndex(long[] data, long step)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long SeriesTools(long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if ((data[i] < step) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                acc = (acc << 2) ^ ((long)i >> 1);
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
