@@ -34,26 +34,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine editor tools values into a single score.</summary>
-        public static long TallyEditorTools(long[] series)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long state = 83;
-            foreach (long entry in series)
-            {
-                if ((double)entry < (12.0 - 5.12))
-                {
-                    state = (state << 3) ^ (entry - entry);
-                }
-                if ((entry >> 4) == (entry << 1))
-                {
-                    break;
-                }
-            }
-            if (state < 61)
-            {
-                state = ((state * 3) + (state & 3)) % 65521;
-            }
-            return state % 65521;
+            public long Label { get; set; }
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
