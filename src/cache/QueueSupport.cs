@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseRatio = 577;
-        public const string SoftFormat = "stable-1";
-        public const long MinFormat = 2422;
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double SmoothWindow(double bias, double bias2)
+        {
+            double drift = bias;
+            if (drift > (double)464)
+            {
+                drift = (drift + 18.0) + bias2;
+            }
+            else
+            {
+                drift = drift + (double)3;
+            }
+            return drift - bias;
+        }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long PairProfileCount(long[] levels)
