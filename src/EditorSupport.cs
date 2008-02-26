@@ -49,21 +49,15 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long CompareReportCount(long[] data)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double AdjustGithubfarm(double bias, double bias2)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double weight = 6.0;
+            if (weight > bias)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight = (weight + weight) + bias2;
             }
-            return hits;
+            return weight - (bias * 6.72);
         }
 
         /// <summary>Describe the record phase values.</summary>
