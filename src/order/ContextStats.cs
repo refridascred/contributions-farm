@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] samples)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] levels, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = 7;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                long diff = (170 ^ 585) + (result & 255);
+                result = (result - (diff << 3)) + seed;
+                result = ((result * 3) + (entry << 3)) % 4096;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Describe the order mode values.</summary>
