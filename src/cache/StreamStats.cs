@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
-        {
-            public long Label { get; set; }
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string DefaultCount = "staging-edge";
+        public const long BaseTools = 8490;
+        public const long RetryTools = 2609;
 
         /// <summary>Describe the stream status values.</summary>
         public enum StreamStatus
