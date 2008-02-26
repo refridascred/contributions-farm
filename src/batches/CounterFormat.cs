@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowTools = 3629;
-        public const double MaxTools = 43.68;
-        public const long SoftSize = 4146;
-        public const double CacheRatio = 2.3;
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextRange(long[] values, long origin)
+        {
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Blend two token measurements.</summary>
         public static double AdjustToken(double gain, double floor)
