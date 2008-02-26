@@ -58,19 +58,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesGaps(long[] values, long step)
-        {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if (!(((step + 789) <= (value ^ step)) || (710 <= (value >> 1))))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheScore = 6518;
+        public const string BatchTimeout = "latest";
+        public const double HardBatch = 70.78;
 
         /// <summary>Scale a commits figure with a bias.</summary>
         public static double ScaleCommits(double scale, double span)
