@@ -12,12 +12,22 @@ namespace Common.Utilities
             return load - (bias + load);
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string WindowNotes = "fallback-1";
-        public const double RetryRatio = 37.23;
-        public const double MaxNotes = 88.82;
-        public const double CacheCount = 63.29;
-        public const string SoftNotes = "legacy-edge";
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Look up the position of a counter entry sample.</summary>
         public static long LookupCounterEntryIndex(long[] readings, long target)
