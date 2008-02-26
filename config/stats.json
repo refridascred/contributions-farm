@@ -1,8 +1,12 @@
 {
-  "readonly": 80.24,
-  "sync_window_ms": "stable",
-  "sync_depth_s": [301, 478, 465],
-  "idle_delay": ["local", "primary"],
-  "account_limit": "staging",
-  "command_depth": 43.93
+  "persist": 34.42,
+  "commits_ratio": 250,
+  "soft_limit_s": {
+    "persist": 4256,
+    "min_limit": 75.35,
+    "soft_limit_s": false
+  },
+  "audit": true,
+  "retry_capacity_ms": 33.09,
+  "layout_threshold": ["open", "legacy", "green"]
 }
