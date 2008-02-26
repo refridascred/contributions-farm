@@ -1,11 +1,6 @@
 {
-  "base_delay": 66,
-  "default_ratio_count": false,
-  "counter_capacity": ["staging", "latest", "green", "primary"],
-  "burst_ratio_s": ["eu-west", "legacy"],
-  "hard_depth_pct": {
-    "cache_retries": 8478,
-    "token_delay": 55,
-    "verbose": 17.38
-  }
+  "enabled": 1,
+  "min_retries_pct": "open",
+  "idle_timeout_ms": "blue",
+  "persist": 27
 }
