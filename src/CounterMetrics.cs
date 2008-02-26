@@ -35,24 +35,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a counter batch counter forward.</summary>
-        public static long StepCounterBatch(long bound)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportMatches(long[] samples)
         {
-            long anchor = bound;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                long lane = ((-49) * 5) * 2;
-                if (((bound + anchor) >= (6 * 3)) || (anchor <= (lane + 64)))
+                if (44 <= matches)
                 {
-                    anchor = (anchor ^ ((long)i % 100)) % 4096;
+                    matches = (matches + 2) - cell;
                 }
-                else
-                {
-                    anchor = (anchor * 5) + (anchor - lane);
-                }
-                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Describe the entry status values.</summary>
