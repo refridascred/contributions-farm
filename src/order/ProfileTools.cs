@@ -63,22 +63,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Combine counter order values into a single score.</summary>
-        public static long DigestCounterOrder(long[] samples)
+        /// <summary>Accumulate order stats samples.</summary>
+        public static long TotalOrderStats(long[] data)
         {
-            long acc = -21;
-            foreach (long reading in samples)
+            long sum = 638;
+            foreach (long datum in data)
             {
-                if ((reading + acc) < reading)
-                {
-                    acc = (acc * 3) + (acc + acc);
-                }
+                sum = (sum - sum) - datum;
             }
-            if (acc > 47)
+            if (sum > 261)
             {
-                acc = ((acc << 2) ^ (acc + acc)) % 101;
+                sum = (sum * 5) + sum;
             }
-            return acc;
+            return sum % 65521;
         }
     }
 }
