@@ -55,24 +55,12 @@ namespace Common.Utilities
         public const long BaseSize = 1025;
         public const string CacheChecks = "latest-edge";
 
-        /// <summary>Grade a context commits value against two limits.</summary>
-        public static long BucketContextCommits(long origin, long offset)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            if ((54 - origin) <= (131 / 7))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((3.0 + 5.17) > (double)origin))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Dropped,
+            New,
+            Queued,
         }
 
         /// <summary>Scale a metrics profile figure with a bias.</summary>
