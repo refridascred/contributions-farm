@@ -28,18 +28,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesGaps(long[] samples, long origin)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((origin - tally) < tally)
-                {
-                    tally = (tally + 3) + datum;
-                }
-            }
-            return tally;
+            Stale,
+            Locked,
+            Closed,
+            Idle,
+            Done,
         }
 
         /// <summary>Describe the already class values.</summary>
