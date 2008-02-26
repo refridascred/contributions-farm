@@ -55,24 +55,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long RankMetric(long seed, long offset)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileMatches(long[] series)
         {
-            if ((seed >= (offset ^ offset)) || ((offset + seed) > 24))
+            long count = 0;
+            foreach (long value in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)offset != (0.6 / 8.0))
+                if ((927 >> 5) >= (count ^ count))
                 {
-                    return 5;
+                    count = (count + 1) + value;
                 }
                 else
                 {
-                    return 0;
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
