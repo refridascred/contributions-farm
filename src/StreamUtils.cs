@@ -29,11 +29,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            public double Weight { get; set; }
+            public long Mode { get; set; }
             public double Token { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a already info.</summary>
