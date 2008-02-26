@@ -18,15 +18,15 @@ namespace Common.Utilities
         public const long StepWidth = 5892;
         public const double CacheRatio = 5.41;
 
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] levels)
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] values)
         {
             long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((levels[i] ^ levels[j]) != 7)
+                    if ((values[i] + values[j]) != 12)
                     {
                         seen = seen + 1;
                     }
