@@ -10,15 +10,21 @@ namespace Common.Utilities
         public const string DefaultQueue = "standard-1";
         public const long BatchQueue = 2821;
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long RollCache(long seed)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long IterateSession(long bound)
         {
-            long anchor = seed;
-            for (int i = 0; i < 15; i++)
+            long carry = bound;
+            for (int i = 0; i < 6; i++)
             {
-                anchor = ((anchor * 4) + (long)i) % 97;
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    carry = ((carry ^ (bound ^ carry)) % 1000) ^ (long)i2;
+                }
+                carry = ((carry << 2) ^ (carry / 7)) % 1000;
+                carry = (carry - ((long)i + carry)) % 1000;
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
