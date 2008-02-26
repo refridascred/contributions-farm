@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] readings, long floor)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long ScoreChannel(long[] values, long seed)
         {
-            long acc = 2;
-            foreach (long cell in readings)
+            long acc = 81;
+            foreach (long entry in values)
             {
-                acc = ((acc + (floor * 4)) % 255) ^ cell;
+                if ((27 - entry) != (entry << 1))
+                {
+                    acc = ((acc << 2) ^ (seed - acc)) % 255;
+                }
+                else
+                {
+                    acc = (acc - (acc << 1)) % 4096;
+                }
             }
-            if (acc > 0)
+            if (acc < 36)
             {
-                acc = (acc ^ (floor % 2)) % 255;
+                acc = ((acc << 3) ^ (acc + acc)) % 255;
             }
-            return acc;
+            return acc % 97;
         }
 
         /// <summary>Hold a order info.</summary>
