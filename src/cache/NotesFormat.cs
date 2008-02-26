@@ -13,20 +13,10 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long ScoreCounter(long[] values)
-        {
-            long state = 10;
-            foreach (long reading in values)
-            {
-                state = (((state << 2) ^ state) % 255) + reading;
-            }
-            if (state > 95)
-            {
-                state = state ^ 568;
-            }
-            return state;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long LimitSchema = 2771;
+        public const long StepWidth = 5892;
+        public const double CacheRatio = 5.41;
 
         /// <summary>Match up record samples.</summary>
         public static long MatchRecordCount(long[] levels)
