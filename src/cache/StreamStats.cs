@@ -17,15 +17,13 @@ namespace Common.Utilities
         public const long DefaultDepth = 7064;
         public const long BatchContributi = 401;
 
-        /// <summary>Project the next format value.</summary>
-        public static double AdjustFormat(double weight, double span)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            double rate = weight;
-            if (rate > (rate + rate))
-            {
-                rate = (rate + rate) + span;
-            }
-            return rate - rate;
+            public double Rank { get; set; }
+            public string Score { get; set; } = "";
+            public bool Total { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Describe the metrics phase values.</summary>
