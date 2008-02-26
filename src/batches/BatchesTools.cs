@@ -20,23 +20,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamOutliers(long[] data, long bound)
-        {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((value % 16) < seen)
-                {
-                    seen = (seen + 3) - bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string HardScore = "legacy-1";
+        public const long WindowLevel = 3861;
+        public const long SoftPayload = 8495;
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long AuditEntryHits(long[] series)
