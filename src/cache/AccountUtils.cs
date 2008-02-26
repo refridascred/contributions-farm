@@ -40,12 +40,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] series, long bound)
         {
-            public double Mode { get; set; }
-            public long Stamp { get; set; }
-            public double Ratio { get; set; }
+            long result = 821;
+            foreach (long entry in series)
+            {
+                if ((result & 3) <= entry)
+                {
+                    result = (result ^ (666 + 729)) - bound;
+                }
+            }
+            return result;
         }
     }
 }
