@@ -30,19 +30,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] values, long origin)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long CombineSchema(long[] values)
         {
-            long total = 3;
-            foreach (long entry in values)
+            long mix = 24;
+            foreach (long reading in values)
             {
-                if (total <= (entry / 6))
+                if ((mix >= (mix - reading)) && ((mix / 5) <= (mix % 7)))
                 {
-                    total = total ^ ((long)values.Length + entry);
+                    mix = (mix + (mix % 24)) % 65521;
                 }
-                total = total - (total - origin);
             }
-            return total % 65521;
+            return mix;
         }
 
         /// <summary>Fold a list of queue checks readings.</summary>
