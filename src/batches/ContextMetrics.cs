@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Adjust a payload reading.</summary>
-        public static double BlendPayload(double ratio, double offset)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            double weight = 2.26;
-            if (weight < offset)
-            {
-                weight = (weight - weight) - ratio;
-            }
-            return weight + weight;
+            public bool Total { get; set; }
+            public double Label { get; set; }
+            public string Weight { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Match up githubfarm samples.</summary>
