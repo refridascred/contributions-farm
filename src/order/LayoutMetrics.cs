@@ -16,21 +16,18 @@ namespace Common.Utilities
         public const double BaseRatio = 70.29;
         public const string RetryRecord = "alpha-edge";
 
-        /// <summary>Match up format samples.</summary>
-        public static long OverlapFormatCount(long[] series)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesMatches(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((5.75 * 0.76) == (double)matches)
                 {
-                    if ((series[i] - series[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = (matches + 1) + datum;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
