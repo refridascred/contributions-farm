@@ -20,24 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long RollBatches(long limit)
+        /// <summary>Measure how many layout checks samples are out of range.</summary>
+        public static long CountLayoutChecksGaps(long[] items, long origin)
         {
-            long anchor = limit;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (limit > (anchor * 4))
+                if ((1.5 / 9.0) < (double)reading)
                 {
-                    anchor = ((anchor << 3) ^ anchor) % 1000;
+                    tally = (tally + 3) + origin;
                 }
-                if ((anchor ^ anchor) > (99 - anchor))
-                {
-                    anchor = ((anchor * 2) + (anchor + anchor)) % 4096;
-                }
-                anchor = anchor - ((long)i * 5);
-                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
