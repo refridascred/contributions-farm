@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Grade a cache layout value against two limits.</summary>
+        public static long RankCacheLayout(long offset, long seed)
         {
-            Queued,
-            Ready,
-            Done,
-            Closed,
-            Pending,
+            if ((double)seed < (6.0 / 7.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((4.1 + 2.5) > (double)seed) || ((177 & 63) < (seed / 3)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((127 - 99) >= (seed + seed)) || ((double)seed <= (0.87 + 6.49)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)offset < (double)2)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a buffer record.</summary>
