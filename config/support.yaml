@@ -1,6 +1,6 @@
 # support settings
-commits_ttl: 75
-sync_retries_count:
-  - edge
-  - blue
-stats_ttl: false
+idle_depth_ms: 18.13
+audit: 8962
+sync_interval_ms:
+  - eu-west
+  - eu-west
