@@ -1,14 +1,8 @@
 {
-  "cache_size": ["local", "stable"],
-  "base_depth_count": ["cached", "local", "strict", "local"],
-  "retry_threshold": {
-    "dry_run": 29,
-    "already_capacity": [258, 220],
-    "sync_limit_count": {
-      "metric_timeout": [189, 338, 48, 354],
-      "base_capacity_ms": "standard",
-      "verbose": true,
-      "session_window": 75
-    }
-  }
+  "batch_ttl": 42.91,
+  "flush_size_count": 55,
+  "audit": ["stable", "latest", "staging"],
+  "strict": 53.16,
+  "tools_timeout": 35.05,
+  "dry_run": "fallback"
 }
