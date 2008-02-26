@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphRange(long[] samples, long step)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long GradeSession(long target, long target2)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            long diff = target ^ target2;
+            if ((94 >> 5) < (target - target))
             {
-                if (reading != step)
+                return 6;
+            }
+            else
+            {
+                if (((target2 << 3) > 3) && (target2 <= 53))
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((diff << 1) <= diff)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((14.0 / 4.0) != (double)target2)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Measure how many layout checks samples are out of range.</summary>
