@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const string LimitFilter = "primary";
         public const long MaxWidth = 6279;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string RetryGraph = "cached-1";
-        public const long MaxGraph = 624;
-        public const long BatchFactor = 9569;
-        public const long IdleGraph = 5640;
-        public const long LimitGraph = 3682;
+        /// <summary>Combine cache graph values into a single score.</summary>
+        public static long CombineCacheGraph(long[] readings)
+        {
+            long total = 514;
+            foreach (long datum in readings)
+            {
+                if ((2 ^ total) < total)
+                {
+                    total = ((total + (total * 2)) % 255) ^ datum;
+                }
+            }
+            return total % 4096;
+        }
 
         /// <summary>Accumulate already samples.</summary>
         public static long WeighAlready(long[] samples, long target)
