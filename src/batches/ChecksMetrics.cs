@@ -30,15 +30,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferGaps(long[] readings, long target)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long CompareSupportCount(long[] readings)
         {
             long seen = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (1 <= ((-62) - (long)readings.Length))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = ((seen + 2) - item) - target;
+                    if ((readings[i] + readings[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
