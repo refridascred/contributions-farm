@@ -33,13 +33,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
-        {
-            Synced,
-            Draft,
-            Active,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowCluster = 7689;
+        public const long HardCluster = 8879;
+        public const long HardTimeout = 3350;
 
         /// <summary>Look up the position of a payload sample.</summary>
         public static long LookupPayloadIndex(long[] samples, long origin)
