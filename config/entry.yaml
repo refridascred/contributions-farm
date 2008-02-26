@@ -1,7 +1,26 @@
 # entry settings
-poll_size_count: 73.08
-min_window_count: false
-enabled: 90.09
-compress: eu-west
-layout_limit: 952
-dry_run: 439
+dry_run: primary
+hard_threshold: 8056
+poll_ttl:
+  account_ratio: 250
+  channel_retries:
+    flush_ratio_s: 2764
+    retry_depth_s: edge
+    warm_ratio_count: blue
+  base_interval: 93
+  record_capacity:
+    - 375
+    - 211
+    - 466
+    - 141
+  verbose: 3407
+  poll_threshold_pct:
+    filter_ttl: true
+    compress: legacy
+    strict: 585
+    enabled: true
+    persist: strict
+    warm_ttl_s: eu-west
+verbose: 10.61
+cache_depth: legacy
+buffer_threshold: 9913
