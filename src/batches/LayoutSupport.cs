@@ -14,13 +14,31 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Grade a githubfarm cache value against two limits.</summary>
+        public static long BucketGithubfarmCache(long seed, long floor)
         {
-            public long Region { get; set; }
-            public double Score { get; set; }
-            public string Token { get; set; } = "";
-            public bool Weight { get; set; }
+            if (floor <= (-87))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((148 % 2) >= (seed % 97))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((seed + seed) >= (seed + floor)) || (2.0 >= (9.08 * 5.0)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a commits stats.</summary>
