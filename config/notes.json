@@ -1,5 +1,18 @@
 {
-  "channel_size": 30,
-  "editor_ratio": "blue",
-  "batch_threshold_count": ["primary", "cached", "eu-west"]
+  "batch_retries_pct": 500,
+  "soft_ttl_s": "eu-west",
+  "sync_size_ms": 48.01,
+  "window_interval": {
+    "burst_size_count": 302,
+    "soft_interval": 33,
+    "context_limit": false,
+    "commits_depth": {
+      "max_depth_count": false,
+      "min_limit_ms": true,
+      "readonly": 91.5
+    },
+    "dry_run": 753
+  },
+  "verbose": 9652,
+  "strict": 91
 }
