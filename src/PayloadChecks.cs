@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long MeasureAlreadyMatches(long[] items)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((entry + 85) < entry)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public bool Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
