@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Match up counter context samples.</summary>
-        public static long OverlapCounterContextCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitMetric = 5925;
+        public const long BatchInterval = 326;
+        public const long MaxMetric = 9272;
+        public const double MinSize = 96.22;
+        public const string CacheScore = "staging-1";
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long HardBuffer = 9098;
