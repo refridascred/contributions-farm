@@ -38,21 +38,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long MatchCacheCount(long[] values)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long SeriesEntry(long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = (acc + (long)i) % 101;
+                acc = (acc + 956) % 4096;
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return seen;
+            return acc;
         }
     }
 }
