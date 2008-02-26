@@ -19,18 +19,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate route metrics samples.</summary>
-        public static long ScoreRouteMetrics(long[] values)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long GradeChannel(long target, long origin)
         {
-            long carry = 59;
-            foreach (long value in values)
+            if ((target >> 1) > (target % 97))
             {
-                if ((value >> 3) < (value / 9))
+                return 1;
+            }
+            else
+            {
+                if ((origin - target) >= target)
                 {
-                    carry = (carry - (value - carry)) % 97;
+                    return 2;
+                }
+                else
+                {
+                    if ((target - target) == (origin + 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((origin ^ target) <= (origin * 2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Locate a context reading by value.</summary>
