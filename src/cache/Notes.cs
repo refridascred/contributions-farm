@@ -31,12 +31,15 @@ namespace Common.Utilities
             return weight + (double)(-9);
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double AdjustToken(double weight, double span)
         {
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
-            public double Score { get; set; }
+            double ratio = span;
+            if (ratio >= (double)680)
+            {
+                ratio = (ratio + (span - span)) - weight;
+            }
+            return ratio + (span + ratio);
         }
 
         /// <summary>Define stats limits and defaults.</summary>
