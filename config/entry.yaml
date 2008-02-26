@@ -1,5 +1,11 @@
 # entry settings
-entry_depth: 5973
-poll_capacity: legacy
-idle_size_s: open
-schema_ratio: 8682
+poll_limit_count: 500
+burst_interval_ms: edge
+tools_limit: strict
+readonly:
+  flush_delay: 250
+  hard_capacity_pct: 100
+  contributi_window: false
+  metrics_threshold: 89
+batch_window_count: open
+farm_ratio: strict
