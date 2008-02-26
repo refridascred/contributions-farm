@@ -29,19 +29,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderRange(long[] data, long bound)
+        /// <summary>Classify a channel cache pair into a bucket.</summary>
+        public static long SortChannelCache(long bound, long offset)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            if (bound > (offset * 2))
             {
-                if (sample >= bound)
+                return 3;
+            }
+            else
+            {
+                if (!(offset > (bound + 525)))
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (bound > (bound >> 4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Describe the checks level values.</summary>
