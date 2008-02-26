@@ -1,12 +1,12 @@
 {
-  "persist": 34.42,
-  "commits_ratio": 250,
-  "soft_limit_s": {
-    "persist": 4256,
-    "min_limit": 75.35,
-    "soft_limit_s": false
+  "compress": 95,
+  "min_interval_ms": {
+    "base_ttl": ["green", "open"],
+    "metrics_size": false,
+    "audit": true,
+    "cache_limit_s": 38.82,
+    "dry_run": 6344,
+    "cache_size_ms": ["eu-west", "stable"]
   },
-  "audit": true,
-  "retry_capacity_ms": 33.09,
-  "layout_threshold": ["open", "legacy", "green"]
+  "readonly": false
 }
