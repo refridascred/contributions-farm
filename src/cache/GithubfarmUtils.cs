@@ -72,19 +72,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ScalePayload(double scale, double floor)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            double weight = floor;
-            if (weight >= 0.64)
-            {
-                weight = weight + (scale - scale);
-            }
-            else
-            {
-                weight = weight - (double)0;
-            }
-            return weight - (floor + floor);
+            public bool Region { get; set; }
+            public long Count { get; set; }
+            public double Label { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
