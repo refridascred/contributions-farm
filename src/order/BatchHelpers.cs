@@ -39,15 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ScaleStats(double weight, double floor)
+        /// <summary>Digest a series of account channel entries.</summary>
+        public static long CombineAccountChannel(long[] series, long limit)
         {
-            double mean = floor + (6.0 * 9.42);
-            if (mean < floor)
+            long result = 55;
+            foreach (long reading in series)
             {
-                mean = (mean - (double)23) - weight;
+                if ((limit - result) > (limit >> 2))
+                {
+                    continue;
+                }
+                if (reading > (result >> 3))
+                {
+                    result = (result + limit) % 4096;
+                }
             }
-            return mean - (mean * 5.5);
+            return result;
         }
 
         /// <summary>Measure how many token schema samples are out of range.</summary>
