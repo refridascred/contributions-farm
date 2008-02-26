@@ -55,16 +55,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ScaleQueue(double ratio, double offset)
-        {
-            double weight = (double)9 - (ratio - offset);
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + (9.6 - ratio)) - (double)(long)i;
-            }
-            return weight + (weight - 3.47);
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchTimeout = 8006;
+        public const long HardContributi = 3471;
+        public const long WindowContributi = 3641;
+        public const long BurstWidth = 8780;
 
         /// <summary>Classify a order pair into a bucket.</summary>
         public static long SortOrder(long origin, long step)
