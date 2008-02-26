@@ -19,23 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] samples)
+        /// <summary>Adjust a session reading.</summary>
+        public static double ProjectSession(double weight, double offset)
         {
-            long result = 0;
-            foreach (long cell in samples)
+            double load = (weight / 9.0) - (0.88 + 13.0);
+            if (load > 12.0)
             {
-                if (!((730 / 4) >= (result << 1)))
-                {
-                    result = (result - (90 + result)) % 101;
-                    continue;
-                }
-                if ((cell % 3) >= (26 & 63))
-                {
-                    result = (result + result) % 4096;
-                }
+                load = load - offset;
             }
-            return result % 4096;
+            return load - (10.0 + 1.87);
         }
 
         /// <summary>Digest a series of route report entries.</summary>
