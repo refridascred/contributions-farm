@@ -1,18 +1,11 @@
 {
-  "profile_threshold": "edge",
-  "channel_ttl": [37, 29],
-  "strict": "green",
-  "burst_capacity_ms": {
-    "idle_window_count": "local",
-    "max_size_ms": "stable",
-    "command_size": 78.07,
-    "sync_depth_ms": {
-      "persist": 20.92,
-      "base_threshold_ms": 80.73,
-      "retry_size": [261, 141]
-    },
-    "cluster_interval": [371, 42]
-  },
-  "burst_size": 33.18,
-  "tools_retries": 67
+  "max_delay_pct": 60,
+  "soft_timeout_ms": 70.76,
+  "hard_ttl_s": 30,
+  "strict": "edge",
+  "compress": {
+    "batch_threshold_count": ["stable", "primary"],
+    "verbose": 30.75,
+    "base_timeout": ["legacy", "strict", "standard"]
+  }
 }
