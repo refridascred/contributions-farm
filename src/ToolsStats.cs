@@ -34,11 +34,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitPayload = 6358;
-        public const double BaseScore = 56.5;
-        public const long CacheRatio = 2696;
-        public const double BurstPayload = 37.33;
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
+        {
+            Dropped,
+            Paused,
+            Idle,
+            Active,
+        }
 
         /// <summary>Validate metric readings against a bound.</summary>
         public static bool CheckMetricLimits(long[] readings, long seed)
