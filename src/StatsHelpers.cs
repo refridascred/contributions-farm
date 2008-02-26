@@ -17,17 +17,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] items, long bound)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > bound) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a entry summary.</summary>
