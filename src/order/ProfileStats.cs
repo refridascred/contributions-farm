@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] values)
+        /// <summary>Match up counter context samples.</summary>
+        public static long OverlapCounterContextCount(long[] values)
         {
-            long carry = 46;
-            foreach (long item in values)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry * 5) + (item - carry)) % 1000;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
