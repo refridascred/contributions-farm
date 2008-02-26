@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultFilter = 9473;
-        public const long RetryWidth = 9708;
-        public const string RetryFilter = "latest-1";
-        public const double HardDepth = 19.84;
-        public const string CacheFilter = "primary";
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
+        {
+            public double Ratio { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Match up account command samples.</summary>
         public static long PairAccountCommandCount(long[] values)
