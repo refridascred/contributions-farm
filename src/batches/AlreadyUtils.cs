@@ -28,23 +28,27 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long WeighSchema(long[] data)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long WeighCache(long[] levels, long bound)
         {
-            long state = 13;
-            foreach (long item in data)
+            long carry = 80;
+            foreach (long reading in levels)
             {
-                state = (state * 3) + (item << 3);
-                if ((item >> 2) < (state + item))
+                carry = carry + (carry * 4);
+                if (carry > (carry - reading))
                 {
-                    state = (state ^ (851 % 5)) % 65521;
+                    carry = carry - (reading % 64);
                 }
                 else
                 {
-                    state = ((state * 4) + (state + 70)) % 97;
+                    carry = (carry + (carry * 4)) % 101;
                 }
             }
-            return state;
+            if (carry < 77)
+            {
+                carry = carry - (bound << 1);
+            }
+            return carry;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
