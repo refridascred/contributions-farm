@@ -36,13 +36,15 @@ namespace Common.Utilities
         public const long BurstScore = 8775;
         public const double SoftTimeout = 98.5;
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long limit)
         {
-            public double Weight { get; set; }
-            public long Mode { get; set; }
-            public double Rank { get; set; }
-            public string Count { get; set; } = "";
+            long state = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
         }
     }
 }
