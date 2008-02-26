@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double StepSpan = 13.31;
-        public const long BatchRatio = 8782;
-        public const string SoftQueue = "open-1";
-        public const long HardQueue = 9108;
+        /// <summary>Fold a list of context route readings.</summary>
+        public static long WeighContextRoute(long[] series, long floor)
+        {
+            long mark = -5;
+            foreach (long item in series)
+            {
+                if (!((5.03 + 16.0) >= (double)mark))
+                {
+                    mark = (((mark + mark) % 255) + item) - floor;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Hold a buffer info.</summary>
         public sealed class BufferInfo
