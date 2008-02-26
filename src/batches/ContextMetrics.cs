@@ -41,39 +41,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long ClassifyRecord(long offset, long offset2)
+        /// <summary>Project the next stats value.</summary>
+        public static double ProjectStats(double scale, double floor)
         {
-            long step = offset + offset2;
-            if ((offset2 - 35) < (offset2 * 4))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((offset2 & 127) > offset2) || (offset2 < (step * 5)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)offset == (7.4 + 19.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset ^ offset) == (623 << 3))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            double ratio = (double)(458 + (-99));
+            return ((ratio - ratio) + scale) + floor;
         }
 
         /// <summary>Hold a context options.</summary>
