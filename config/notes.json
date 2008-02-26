@@ -1,6 +1,6 @@
 {
-  "enabled": [432, 95, 371],
-  "dry_run": 30,
-  "order_interval": ["edge", "local", "edge", "blue"],
-  "max_limit": 7677
+  "hard_capacity_s": true,
+  "burst_interval_pct": true,
+  "stream_limit": 61,
+  "readonly": "latest"
 }
