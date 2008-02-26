@@ -34,11 +34,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelOutliers(long[] readings, long step)
         {
-            public long Count { get; set; }
-            public double Offset { get; set; }
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry ^ entry) < matches)
+                {
+                    matches = (matches + 2) + step;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a session editor pair into a bucket.</summary>
