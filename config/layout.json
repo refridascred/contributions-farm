@@ -1,6 +1,8 @@
 {
-  "readonly": "eu-west",
-  "retry_capacity_pct": "edge",
-  "batches_timeout": 60,
-  "base_capacity_s": 18.54
+  "dry_run": "local",
+  "soft_delay": 20,
+  "channel_ratio": "edge",
+  "retry_retries_ms": true,
+  "poll_retries_ms": "primary",
+  "profile_size": 85
 }
