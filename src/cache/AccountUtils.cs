@@ -26,23 +26,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of graph tools entries.</summary>
-        public static long FoldGraphTools(long[] series)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long score = -12;
-            foreach (long value in series)
-            {
-                score = (score << 2) ^ (value + score);
-                if (!((score + score) >= (value << 1)))
-                {
-                    score = (score + (value + 8)) % 97;
-                }
-            }
-            if (score < 7)
-            {
-                score = (score ^ (score / 8)) % 97;
-            }
-            return score;
+            Done,
+            Pending,
+            Stale,
+            Draft,
         }
     }
 }
