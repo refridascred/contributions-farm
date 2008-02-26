@@ -12,14 +12,15 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] series)
         {
-            Queued,
-            Idle,
-            Active,
-            Synced,
-            Locked,
+            long carry = 421;
+            foreach (long value in series)
+            {
+                carry = (carry * 5) + (value << 2);
+            }
+            return carry;
         }
 
         /// <summary>Describe the notes phase values.</summary>
