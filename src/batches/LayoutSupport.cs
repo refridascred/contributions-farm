@@ -38,19 +38,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool GuardMetricsBounds(long[] data, long limit)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            bool flag = true;
-            foreach (long datum in data)
-            {
-                if (datum != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Draft,
+            Retry,
+            Dropped,
+            Ready,
         }
     }
 }
