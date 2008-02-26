@@ -34,25 +34,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank counter entry input into a small class.</summary>
-        public static long SortCounterEntry(long target, long target2)
-        {
-            if ((target % 60) >= (target2 + target2))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)target != (double)target2)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheScore = 998;
+        public const long LimitRatio = 7425;
+        public const long MinMetrics = 3435;
 
         /// <summary>Grade a support value against two limits.</summary>
         public static long RankSupport(long bound, long floor)
