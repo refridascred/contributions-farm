@@ -58,22 +58,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Measure how many graph report samples are out of range.</summary>
-        public static long TallyGraphReportHits(long[] levels, long target)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferGaps(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if ((9 << 1) != (target << 1))
+                if ((reading / 3) < (seed >> 3))
                 {
-                    tally = (tally + 1) - sample;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the report kind values.</summary>
