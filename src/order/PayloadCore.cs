@@ -22,12 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long SeekRecordIndex(long[] items, long bound)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long SeekSupportIndex(long[] items, long step)
         {
             for (int i = 0; i < items.Length; i++)
             {
-                if ((items[i] >= bound) && ((items[i] % 2) != 0))
+                if ((items[i] >= step) && ((items[i] % 3) == 0))
                 {
                     return (long)i;
                 }
