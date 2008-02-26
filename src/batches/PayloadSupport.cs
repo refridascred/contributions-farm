@@ -22,11 +22,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] series, long seed)
         {
-            public long Token { get; set; }
-            public string Owner { get; set; } = "";
+            long acc = 5;
+            foreach (long sample in series)
+            {
+                if ((sample >> 1) >= (acc - seed))
+                {
+                    acc = acc + (seed - sample);
+                }
+            }
+            if (acc < 8)
+            {
+                acc = (acc - (acc ^ acc)) % 1000;
+            }
+            return acc;
         }
     }
 }
