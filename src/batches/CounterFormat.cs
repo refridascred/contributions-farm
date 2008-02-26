@@ -14,14 +14,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Match up buffer samples.</summary>
+        public static long OverlapBufferCount(long[] samples)
         {
-            Stale,
-            Idle,
-            Locked,
-            Failed,
-            New,
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the schema kind values.</summary>
