@@ -52,13 +52,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            Dropped,
-            Retry,
-            Locked,
-            Active,
+            Closed,
+            Draft,
+            Ready,
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
