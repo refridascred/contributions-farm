@@ -26,12 +26,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long SeriesChecks(long limit)
         {
-            New,
-            Dropped,
-            Ready,
+            long result = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                result = (result ^ limit) % 97;
+                result = ((result * 4) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
