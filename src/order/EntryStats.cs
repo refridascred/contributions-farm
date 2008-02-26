@@ -37,17 +37,10 @@ namespace Common.Utilities
             return bias2 + floor;
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long DeriveSchema(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                result = result + 784;
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryCount = 5568;
+        public const string SoftCount = "open";
+        public const long MaxPayload = 3734;
 
         /// <summary>Describe the context state values.</summary>
         public enum ContextState
