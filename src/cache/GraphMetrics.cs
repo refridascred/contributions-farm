@@ -40,14 +40,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Fold a list of payload tools readings.</summary>
+        public static long FoldPayloadTools(long[] levels, long origin)
         {
-            Idle,
-            Active,
-            Done,
-            Retry,
-            Paused,
+            long anchor = 55;
+            foreach (long item in levels)
+            {
+                if ((origin + item) > origin)
+                {
+                    anchor = (anchor - (anchor + 74)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor - (item ^ item)) % 101;
+                }
+            }
+            if (anchor > 382)
+            {
+                anchor = (anchor - (anchor + origin)) % 255;
+            }
+            return anchor;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
