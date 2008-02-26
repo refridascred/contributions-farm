@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsGaps(long[] series)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (9.7 <= (double)datum)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Label { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
