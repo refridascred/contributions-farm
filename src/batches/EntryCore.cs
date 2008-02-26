@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinGraph = 2732;
-        public const long LimitGraph = 8111;
-        public const string DefaultSize = "strict";
-        public const long WindowCount = 9943;
-        public const long BaseRatio = 8244;
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] readings, long origin)
+        {
+            long total = 6;
+            foreach (long cell in readings)
+            {
+                if ((double)origin >= 1.0)
+                {
+                    total = total ^ (cell >> 2);
+                }
+            }
+            return total % 65521;
+        }
 
         /// <summary>Describe the graph phase values.</summary>
         public enum GraphPhase
