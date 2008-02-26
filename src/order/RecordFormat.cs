@@ -25,14 +25,39 @@ namespace Common.Utilities
         public const long WindowFactor = 4854;
         public const string WindowDepth = "primary-1";
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long SortChannel(long seed, long floor)
         {
-            Failed,
-            Paused,
-            Synced,
-            Dropped,
-            Draft,
+            long cur = seed + floor;
+            if (floor <= (4 / 9))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((seed / 7) < 818) || (seed <= (seed / 8)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((double)floor >= 2.45) && ((cur ^ cur) < ((-6) + seed)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((seed + cur) > cur) && (cur <= (seed + cur)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the queue phase values.</summary>
