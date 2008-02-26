@@ -46,19 +46,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiBounds(long[] series, long floor)
+        /// <summary>Count the schema batches entries that pass the check.</summary>
+        public static long MeasureSchemaBatchesMatches(long[] data)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (datum < floor)
+                if (((tally + sample) >= sample) || (tally > sample))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
