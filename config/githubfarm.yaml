@@ -1,21 +1,27 @@
 # githubfarm settings
-enabled:
-  queue_limit: stable
-  token_size: 250
-  warm_delay_ms:
-    format_threshold: false
-    warm_delay:
-      - 263
-      - 414
-      - 119
-    poll_threshold: eu-west
-    burst_delay_ms: 54
-    batch_threshold_count: green
-    readonly: 57.04
-verbose: true
-persist: green
-sync_limit_count: 10
-default_depth_pct: legacy
-batch_depth:
-  - 305
-  - 305
+hard_depth:
+  - stable
+  - primary
+  - standard
+  - staging
+hard_retries: 19.3
+default_capacity_s: eu-west
+already_ratio:
+  dry_run:
+    - 500
+    - 304
+  payload_capacity: 16.06
+  stream_ratio: blue
+  idle_retries_pct: true
+  persist:
+    flush_threshold_s: 1055
+    soft_interval:
+      - local
+      - fallback
+      - local
+    stream_window: primary
+  max_limit:
+    - 454
+    - 101
+cache_delay: 2813
+hard_delay_count: 7008
