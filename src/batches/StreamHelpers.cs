@@ -60,12 +60,11 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            Locked,
-            Idle,
-            Stale,
+            public long Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the batches status values.</summary>
