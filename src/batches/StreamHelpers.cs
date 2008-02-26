@@ -65,22 +65,18 @@ namespace Common.Utilities
         public const string StepChannel = "stable-v2";
         public const long RetryRatio = 6988;
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphGaps(long[] levels)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] samples)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long carry = 5;
+            foreach (long item in samples)
             {
-                if ((double)cell <= (19.0 + 4.22))
+                if ((item & 255) < item)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    carry = carry ^ 24;
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
