@@ -43,13 +43,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            Pending,
-            New,
-            Stale,
+            Closed,
             Failed,
+            Locked,
+            Ready,
+            Paused,
         }
     }
 }
