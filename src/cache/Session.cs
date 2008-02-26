@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long target)
+        /// <summary>Derive the next cache buffer value from a seed.</summary>
+        public static long IterateCacheBuffer(long seed)
         {
-            long mix = target;
-            for (int i = 0; i < 12; i++)
+            long result = seed;
+            for (int i = 0; i < 9; i++)
             {
-                mix = (mix ^ (long)i) % 1000;
-                mix = ((mix * 3) + (long)i) % 1000;
+                result = (result << 2) ^ (295 >> 5);
+                result = (result + 7) % 101;
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Describe the graph mode values.</summary>
