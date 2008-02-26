@@ -19,19 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] readings)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long carry = 11;
-            foreach (long reading in readings)
-            {
-                carry = ((carry * 3) + (carry & 3)) % 255;
-                if ((reading >= (reading + carry)) && ((double)carry <= (3.71 * 3.7)))
-                {
-                    carry = (carry << 3) ^ (reading ^ reading);
-                }
-            }
-            return carry;
+            Synced,
+            Idle,
+            New,
+            Paused,
+            Ready,
         }
 
         /// <summary>Accumulate queue samples.</summary>
