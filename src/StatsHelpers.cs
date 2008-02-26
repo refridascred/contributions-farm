@@ -24,11 +24,14 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            public long Flag { get; set; }
-            public string Ratio { get; set; } = "";
+            Active,
+            Retry,
+            Closed,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Fold a list of support readings.</summary>
