@@ -39,23 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long CombineCache(long[] values, long bound)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long result = 46;
-            foreach (long value in values)
-            {
-                result = (result + bound) % 65521;
-                if (((value * 5) < (value - value)) || (bound <= result))
-                {
-                    break;
-                }
-            }
-            if (result < (-27))
-            {
-                result = result + (706 + 606);
-            }
-            return result;
+            Paused,
+            Retry,
+            Ready,
+            Closed,
+            Synced,
         }
 
         /// <summary>Define account limits and defaults.</summary>
