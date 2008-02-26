@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every editor checks entry stays within the limit.</summary>
-        public static bool ValidateEditorChecksLimits(long[] levels, long seed)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesLimits(long[] levels, long seed)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            bool valid = true;
+            foreach (long cell in levels)
             {
-                if (item != seed)
+                if (cell >= seed)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
