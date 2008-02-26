@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Grade a tools command value against two limits.</summary>
-        public static long BucketToolsCommand(long floor, long floor2)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            if ((floor2 ^ floor2) >= 217)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((floor <= (floor2 - floor2)) && ((floor % 12) <= floor2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public bool Weight { get; set; }
+            public bool Flag { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
