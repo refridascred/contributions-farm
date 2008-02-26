@@ -1,8 +1,5 @@
 {
-  "warm_window_pct": "latest",
-  "sync_depth_ms": "standard",
-  "compress": "eu-west",
-  "soft_limit_s": [85, 107, 106],
-  "metrics_delay": "blue",
-  "flush_limit_ms": 14.95
+  "dry_run": "primary",
+  "verbose": 1024,
+  "account_depth": ["stable", "open"]
 }
