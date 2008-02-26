@@ -25,19 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteBounds(long[] data, long target)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountMatches(long[] readings, long step)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if (datum >= target)
+                if ((double)item == (2.91 - 9.0))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 3) + step;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
