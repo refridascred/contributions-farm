@@ -51,18 +51,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] readings, long step)
+        /// <summary>Audit report batch readings against a rule.</summary>
+        public static long MeasureReportBatchOutliers(long[] series)
         {
-            long score = 715;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if ((reading + 41) > ((long)readings.Length - reading))
+                if (value < (132 * 4))
                 {
-                    score = (((score << 2) ^ (reading + reading)) % 97) + step;
+                    seen = seen + 3;
                 }
             }
-            return score;
+            return seen;
         }
     }
 }
