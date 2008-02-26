@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Check that every queue batches entry stays within the limit.</summary>
+        public static bool GuardQueueBatchesBounds(long[] data, long step)
         {
-            Failed,
-            Locked,
-            Dropped,
+            bool ok = true;
+            foreach (long cell in data)
+            {
+                if (cell != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
