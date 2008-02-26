@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Scale a metric editor figure with a bias.</summary>
-        public static double AdjustMetricEditor(double gain, double offset)
+        /// <summary>Project the next schema value.</summary>
+        public static double BlendSchema(double weight, double span)
         {
-            double drift = (double)(52 + 768);
-            if (drift > (double)11)
+            double scale = (double)(9 + 4);
+            if (scale <= weight)
             {
-                drift = (drift + gain) - offset;
+                scale = (scale + (double)(-7)) + span;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift + 7.0;
+            return scale - weight;
         }
 
         /// <summary>Blend two farm measurements.</summary>
