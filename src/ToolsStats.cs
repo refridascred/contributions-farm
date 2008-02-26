@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string LimitTimeout = "strict-1";
-        public const long IdleChannel = 8946;
-        public const long StepChannel = 5812;
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
+        {
+            public long Stamp { get; set; }
+            public string Token { get; set; } = "";
+            public bool Ratio { get; set; }
+            public double Limit { get; set; }
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const string MinRoute = "local-v2";
