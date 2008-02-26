@@ -1,13 +1,6 @@
 # support settings
-format_size:
-  base_capacity_count: false
-  idle_capacity_count: 100
-  poll_delay_pct: 77
-retry_size_ms: 250
-metrics_capacity: 1024
-compress:
-  retry_threshold_pct: standard
-  hard_limit: blue
-  stream_timeout: 12
-  soft_depth_pct: green
-batch_timeout_pct: 250
+editor_window: latest
+compress: 250
+batch_delay_count: 43
+persist: false
+tools_window: false
