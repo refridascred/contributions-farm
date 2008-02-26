@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long BucketGraph(long bound, long origin)
+        /// <summary>Roll a format commits counter forward.</summary>
+        public static long SeriesFormatCommits(long bound)
         {
-            long lane = bound - origin;
-            if ((bound / 6) < bound)
+            long result = bound;
+            for (int i = 0; i < 16; i++)
             {
-                return 8;
+                result = ((result * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if (!((bound - bound) != (228 + lane)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound ^ lane) > (origin << 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
