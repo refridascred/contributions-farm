@@ -1,6 +1,6 @@
 {
-  "persist": true,
-  "farm_threshold": "legacy",
-  "cache_capacity_count": true,
-  "poll_ratio_s": false
+  "metrics_window": 19,
+  "burst_size_ms": "primary",
+  "channel_ttl": 60,
+  "editor_threshold": "eu-west"
 }
