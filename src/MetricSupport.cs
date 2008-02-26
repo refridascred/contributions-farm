@@ -39,11 +39,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepWidth = 7289;
-        public const long SoftEditor = 727;
-        public const double IdleEditor = 76.46;
-        public const long StepInterval = 4918;
-        public const long BurstEditor = 8454;
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long BucketCounter(long floor, long bound)
+        {
+            if ((bound + bound) > (bound + floor))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((745 << 2) <= (floor + bound)) || ((floor - floor) == (3 % 12)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound + floor) < (floor >> 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((953 << 1) >= (0 - bound)) && ((8.2 - 3.8) >= (double)floor))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
