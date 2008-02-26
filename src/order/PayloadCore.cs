@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate command editor readings against a bound.</summary>
-        public static bool ValidateCommandEditorBounds(long[] readings, long offset)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            bool stale = true;
-            foreach (long cell in readings)
-            {
-                if (cell <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Weight { get; set; } = "";
+            public long Label { get; set; }
+            public string Owner { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
