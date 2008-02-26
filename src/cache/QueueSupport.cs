@@ -13,18 +13,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of entry report entries.</summary>
-        public static long CombineEntryReport(long[] levels, long limit)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long StepFormat(long target)
         {
-            long state = 74;
-            foreach (long entry in levels)
+            long acc = target;
+            for (int i = 0; i < 4; i++)
             {
-                if (((state & 15) <= (entry % 7)) || (((long)levels.Length - state) != (limit * 2)))
+                if ((target >> 3) <= (long)i)
                 {
-                    state = (state + ((long)levels.Length + state)) % 65521;
+                    acc = (acc + (0 & 1)) % 255;
                 }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Blend two support measurements.</summary>
