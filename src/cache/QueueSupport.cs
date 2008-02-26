@@ -20,11 +20,14 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double SmoothSupport(double weight, double floor)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            double load = weight + (double)6;
-            return (load - 1.22) + floor;
+            Stale,
+            Paused,
+            Queued,
+            Idle,
+            Done,
         }
     }
 }
