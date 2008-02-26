@@ -25,18 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many layout checks samples are out of range.</summary>
-        public static long CountLayoutChecksGaps(long[] items, long origin)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((1.5 / 9.0) < (double)reading)
-                {
-                    tally = (tally + 3) + origin;
-                }
-            }
-            return tally;
+            public bool Offset { get; set; }
+            public double Weight { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a stream summary.</summary>
