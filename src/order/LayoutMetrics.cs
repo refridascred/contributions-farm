@@ -38,25 +38,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank report already input into a small class.</summary>
-        public static long RankReportAlready(long offset, long bound)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountHits(long[] values, long floor)
         {
-            long bound2 = offset - bound;
-            if ((42 - bound2) < (bound << 1))
+            long count = 0;
+            foreach (long entry in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (offset >= 27)
+                if ((1 & 15) < (284 ^ entry))
                 {
-                    return 8;
+                    count = (count + 3) + floor;
                 }
                 else
                 {
-                    return 4;
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
