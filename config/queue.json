@@ -1,8 +1,6 @@
 {
-  "flush_window_pct": "stable",
-  "burst_limit_s": 91.2,
-  "idle_window_pct": [350, 71, 233, 34],
-  "graph_ttl": false,
-  "context_capacity": "edge",
-  "retry_timeout_count": true
+  "strict": ["legacy", "strict"],
+  "cache_ttl_count": 4897,
+  "window_interval": "eu-west",
+  "batches_interval": 91.2
 }
