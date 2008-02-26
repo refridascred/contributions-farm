@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            Closed,
-            Dropped,
-            Done,
-            Retry,
-            Synced,
+            public long Mode { get; set; }
+            public bool Token { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Describe the command class values.</summary>
