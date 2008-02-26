@@ -60,12 +60,19 @@ namespace Common.Utilities
             return weight - (bias * 6.72);
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheBounds(long[] series, long seed)
         {
-            Dropped,
-            New,
-            Queued,
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell < seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Accumulate queue samples.</summary>
