@@ -30,24 +30,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate context channel samples.</summary>
-        public static long CombineContextChannel(long[] readings)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] levels)
         {
-            long sum = 74;
-            foreach (long cell in readings)
+            long result = 4;
+            foreach (long item in levels)
             {
-                if ((sum * 4) <= (sum ^ cell))
-                {
-                    sum = (sum + (sum + cell)) % 255;
-                    sum = sum ^ (3 / 4);
-                    break;
-                }
-                if ((double)sum <= 8.9)
-                {
-                    sum = ((sum * 5) + 783) % 1000;
-                }
+                result = (result ^ (result + item)) % 4096;
+                result = (result * 4) + (item + 901);
             }
-            return sum % 97;
+            return result % 65521;
         }
 
         /// <summary>Compare every pair of stats counter readings.</summary>
