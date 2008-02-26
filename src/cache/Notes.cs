@@ -37,11 +37,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double LimitFactor = 44.21;
-        public const long BaseScore = 9819;
-        public const long HardStats = 2238;
-        public const long BaseStats = 4792;
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
+        {
+            public long Score { get; set; }
+            public double Owner { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long RetryStats = 3781;
