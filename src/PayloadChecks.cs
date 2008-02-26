@@ -44,17 +44,14 @@ namespace Common.Utilities
         public const string LimitLevel = "cached-v2";
         public const long BatchTimeout = 5639;
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long SeekSessionIndex(long[] data, long bound)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > bound) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Draft,
+            Ready,
+            Locked,
+            Stale,
         }
 
         /// <summary>Accumulate session samples.</summary>
