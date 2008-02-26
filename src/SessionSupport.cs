@@ -23,12 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorMatches(long[] values)
         {
-            Stale,
-            Done,
-            Pending,
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((double)count <= (2.99 * 5.0))
+                {
+                    count = (count + 3) - reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count already account pairs that satisfy a relation.</summary>
