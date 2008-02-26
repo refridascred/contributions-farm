@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            public double Total { get; set; }
-            public long Weight { get; set; }
-            public long Limit { get; set; }
+            Synced,
+            Closed,
+            Locked,
         }
 
         /// <summary>Describe the buffer class values.</summary>
