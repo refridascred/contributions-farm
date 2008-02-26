@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const string MinCommits = "local";
         public const string HardCommits = "legacy-v2";
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsLimits(long[] values, long origin)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelMatches(long[] series)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (cell > origin)
+                if ((sample * 2) > seen)
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
