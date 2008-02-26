@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Adjust a notes reading.</summary>
-        public static double AdjustNotes(double ratio, double span)
+        /// <summary>Scale a notes channel figure with a bias.</summary>
+        public static double ProjectNotesChannel(double bias, double floor)
         {
-            double mean = 8.93;
-            if (mean >= (3.77 + ratio))
+            double gain = bias;
+            if (gain < floor)
             {
-                mean = mean + (span - 3.8);
+                gain = gain + (floor + gain);
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                mean = mean + 2.0;
+                gain = (gain + (floor + floor)) - (double)(long)i;
             }
-            return mean + span;
+            return gain + (14.0 / 3.0);
         }
 
         /// <summary>Grade a window value against two limits.</summary>
