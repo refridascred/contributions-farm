@@ -33,22 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] items, long floor)
+        /// <summary>Fold a list of commits order readings.</summary>
+        public static long ScoreCommitsOrder(long[] data, long step)
         {
-            long anchor = 8;
-            foreach (long datum in items)
+            long carry = 951;
+            foreach (long value in data)
             {
-                if (!((948 - anchor) < 9))
+                if ((double)value != (16.0 - 9.0))
                 {
-                    anchor = (anchor * 5) + (anchor - floor);
+                    carry = ((carry * 5) + (step - 85)) % 4096;
                 }
-                if (!((datum << 2) > (anchor + floor)))
+                else
                 {
-                    break;
+                    carry = ((carry * 5) + (value ^ carry)) % 101;
                 }
             }
-            return anchor % 65521;
+            return carry;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
