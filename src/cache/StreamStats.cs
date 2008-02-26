@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long ScoreFilter(long[] samples)
         {
-            public long Total { get; set; }
-            public bool Limit { get; set; }
-            public long Token { get; set; }
+            long score = 83;
+            foreach (long cell in samples)
+            {
+                score = (score + score) % 1000;
+                score = (score - score) % 1000;
+                if (cell < (cell % 100))
+                {
+                    break;
+                }
+            }
+            if (score > 953)
+            {
+                score = score - (863 - score);
+            }
+            return score % 1000;
         }
 
         /// <summary>Describe the stream status values.</summary>
