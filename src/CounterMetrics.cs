@@ -12,14 +12,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            Locked,
-            Done,
-            Closed,
-            New,
-            Pending,
+            public long Offset { get; set; }
+            public bool Mode { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Digest a series of metric entries.</summary>
