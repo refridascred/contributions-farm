@@ -19,10 +19,24 @@ namespace Common.Utilities
         public const string BatchSize = "cached";
         public const long IdleSize = 4987;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchWidth = 4083;
-        public const string WindowCount = "strict-v2";
-        public const double BurstFactor = 6.9;
-        public const double BaseFactor = 52.12;
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long StepOrder(long bound)
+        {
+            long mark = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                if (((bound + mark) != (bound ^ mark)) && ((double)mark >= (3.0 / 5.0)))
+                {
+                    mark = (mark + 870) % 101;
+                    mark = ((mark << 2) ^ ((long)i * 5)) % 1000;
+                }
+                if (((258 / 3) <= ((long)i - mark)) || ((mark - (long)i) != ((long)i + (long)i)))
+                {
+                    continue;
+                }
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
+        }
     }
 }
