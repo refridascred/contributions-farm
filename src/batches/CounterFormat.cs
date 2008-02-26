@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long ScoreStats(long[] data)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesHits(long[] items, long seed)
         {
-            long sum = -21;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if ((2.85 <= (double)sum) || ((value & 15) <= value))
+                if ((45 - 50) < (seed >> 2))
                 {
-                    sum = (sum + (sum % 60)) % 65521;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ (value + value);
-                }
-                if (3.8 > (double)sum)
-                {
-                    break;
+                    count = (count + 2) + entry;
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Blend two token measurements.</summary>
