@@ -19,38 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long GradeChannel(long target, long origin)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            if ((target >> 1) > (target % 97))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((origin - target) >= target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target - target) == (origin + 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((origin ^ target) <= (origin * 2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Queued,
+            Active,
+            Draft,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
