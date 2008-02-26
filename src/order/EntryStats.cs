@@ -43,24 +43,18 @@ namespace Common.Utilities
         public const double IdleSize = 53.64;
         public const long CacheCount = 9526;
 
-        /// <summary>Classify a batches session pair into a bucket.</summary>
-        public static long RankBatchesSession(long limit, long target)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandHits(long[] levels, long target)
         {
-            if (((45 & 3) != (78 + limit)) && ((double)890 == (double)limit))
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)target <= (2.5 * 4.7)) && ((double)limit < (2.29 - 0.06)))
+                if (((6.0 - 8.2) != (double)target) && (tally < (tally % 10)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    tally = (tally + 1) + datum;
                 }
             }
+            return tally;
         }
 
         /// <summary>Iterate the stats payload series from a seed.</summary>
