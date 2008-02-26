@@ -47,15 +47,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long limit)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadMatches(long[] levels)
         {
-            long sum = limit;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                sum = ((sum * 5) + (long)i) % 4093;
+                if (sample > (count - sample))
+                {
+                    count = count + 3;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
