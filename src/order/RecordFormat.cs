@@ -71,28 +71,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long seed)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long ClassifyTools(long target, long step)
         {
-            long total = seed;
-            for (int i = 0; i < 15; i++)
+            if (((target + target) == (step << 3)) && ((step / 3) < (step + target)))
             {
-                if ((long)i == (5 + 81))
-                {
-                    total = (total - (total - 4)) % 97;
-                }
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    total = ((total * 4) + (seed - seed)) - (long)i2;
-                }
-                if ((double)seed >= (7.0 * 1.0))
-                {
-                    total = (total ^ ((long)i >> 3)) % 97;
-                    total = (total << 3) ^ (seed >> 4);
-                }
-                total = ((total * 4) + (long)i) % 65521;
+                return 4;
             }
-            return total;
+            else
+            {
+                if (61 < (target / 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
