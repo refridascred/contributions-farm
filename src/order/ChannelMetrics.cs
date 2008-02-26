@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] readings, long step)
+        /// <summary>Measure how many batch order samples are out of range.</summary>
+        public static long TallyBatchOrderHits(long[] samples, long seed)
         {
-            long score = 7;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if ((reading + step) != (reading & 1))
+                if (reading >= (5 + (long)samples.Length))
                 {
-                    score = ((score * 5) + reading) % 1000;
-                }
-                else
-                {
-                    score = score - (reading + reading);
+                    tally = (tally + 1) + seed;
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
