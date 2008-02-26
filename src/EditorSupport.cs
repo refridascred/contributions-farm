@@ -36,18 +36,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long CombineSchema(long[] values)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ProjectCache(double rate, double offset)
         {
-            long mix = 24;
-            foreach (long reading in values)
-            {
-                if ((mix >= (mix - reading)) && ((mix / 5) <= (mix % 7)))
-                {
-                    mix = (mix + (mix % 24)) % 65521;
-                }
-            }
-            return mix;
+            double ratio = (double)57 - 9.45;
+            return ((ratio + (4.0 + ratio)) + rate) + offset;
         }
 
         /// <summary>Fold a list of queue checks readings.</summary>
