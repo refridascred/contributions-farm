@@ -35,14 +35,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            Ready,
-            Pending,
-            Draft,
-            Idle,
-            Failed,
+            public bool Region { get; set; }
+            public long Size { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Hold a contributi stats.</summary>
