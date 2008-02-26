@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine route checks values into a single score.</summary>
-        public static long TallyRouteChecks(long[] data)
+        /// <summary>Count filter counter pairs that satisfy a relation.</summary>
+        public static long CompareFilterCounterCount(long[] items)
         {
-            long acc = 860;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = (acc ^ acc) + value;
-                if (!((8.58 * 0.95) >= (double)acc))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    break;
+                    if ((items[i] - items[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
