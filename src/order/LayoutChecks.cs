@@ -33,13 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] items, long floor)
         {
-            public long Flag { get; set; }
-            public long Token { get; set; }
-            public long Offset { get; set; }
-            public long Limit { get; set; }
+            long anchor = 8;
+            foreach (long datum in items)
+            {
+                if (!((948 - anchor) < 9))
+                {
+                    anchor = (anchor * 5) + (anchor - floor);
+                }
+                if (!((datum << 2) > (anchor + floor)))
+                {
+                    break;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
