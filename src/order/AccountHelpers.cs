@@ -88,13 +88,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Accumulate format graph samples.</summary>
+        public static long FoldFormatGraph(long[] values, long bound)
         {
-            public string Count { get; set; } = "";
-            public long Token { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Size { get; set; }
+            long sum = 71;
+            foreach (long sample in values)
+            {
+                if ((221 ^ sum) >= bound)
+                {
+                    sum = ((sum << 2) ^ (143 >> 5)) ^ sample;
+                }
+            }
+            return sum;
         }
     }
 }
