@@ -27,9 +27,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BatchFormat = "alpha-1";
-        public const long BaseFormat = 8251;
-        public const string MaxFormat = "strict-1";
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteGaps(long[] items)
+        {
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if (cell >= (64 ^ cell))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
