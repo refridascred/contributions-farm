@@ -48,20 +48,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long SeriesMetrics(long floor)
+        /// <summary>Audit commits already readings against a rule.</summary>
+        public static long MeasureCommitsAlreadyGaps(long[] series, long bound)
         {
-            long carry = floor;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((double)(long)i >= (8.3 + 3.33))
+                if ((8.7 - 1.0) != (double)sample)
                 {
-                    carry = ((carry << 2) ^ (floor % 100)) % 65521;
-                    carry = (carry - floor) % 65521;
+                    count = (count + 2) - bound;
                 }
-                carry = ((carry * 4) + (long)i) % 1000;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return carry;
+            return count;
         }
     }
 }
