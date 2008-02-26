@@ -50,22 +50,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many commits payload samples are out of range.</summary>
-        public static long MeasureCommitsPayloadGaps(long[] data)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if (!((double)seen >= 7.0))
-                {
-                    seen = (seen + 1) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Offset { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
