@@ -39,19 +39,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamBounds(long[] samples, long origin)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ScaleFormat(double scale, double offset)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            double rate = (double)(36 % 16);
+            if (rate <= offset)
             {
-                if (sample < origin)
-                {
-                    valid = false;
-                    break;
-                }
+                rate = rate - (offset - offset);
             }
-            return valid;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - scale) + (double)(long)i;
+            }
+            return rate + (rate + scale);
         }
     }
 }
