@@ -45,19 +45,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ScaleFormat(double scale, double offset)
+        /// <summary>Accumulate farm session samples.</summary>
+        public static long DigestFarmSession(long[] samples)
         {
-            double rate = (double)(36 % 16);
-            if (rate <= offset)
+            long carry = 336;
+            foreach (long datum in samples)
             {
-                rate = rate - (offset - offset);
+                if ((carry % 100) > (datum + carry))
+                {
+                    carry = ((carry << 3) ^ carry) % 101;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - scale) + (double)(long)i;
-            }
-            return rate + (rate + scale);
+            return carry % 1000;
         }
     }
 }
