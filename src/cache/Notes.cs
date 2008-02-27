@@ -13,11 +13,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double ProjectContributi(double scale, double span)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long CombineBatch(long[] data)
         {
-            double weight = (scale / 4.0) - span;
-            return weight + (double)(-9);
+            long anchor = 445;
+            foreach (long datum in data)
+            {
+                anchor = ((anchor << 2) ^ (datum % 97)) % 101;
+            }
+            if (anchor < 48)
+            {
+                anchor = ((anchor << 2) ^ (anchor >> 3)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a account record.</summary>
