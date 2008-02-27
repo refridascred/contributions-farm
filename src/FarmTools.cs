@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Check that every order session entry stays within the limit.</summary>
+        public static bool ValidateOrderSessionLimits(long[] series, long limit)
         {
-            public bool Stamp { get; set; }
-            public double Size { get; set; }
+            bool valid = true;
+            foreach (long sample in series)
+            {
+                if (sample < limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
