@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double WindowCommits = 77.07;
-        public const long CacheRatio = 7368;
-        public const string IdleCommits = "standard-edge";
+        /// <summary>Project the next notes value.</summary>
+        public static double SmoothNotes(double gain, double floor)
+        {
+            double bias = 16.0;
+            if (bias < bias)
+            {
+                bias = (bias - 7.3) + gain;
+            }
+            else
+            {
+                bias = bias + (floor - bias);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - bias) + (double)(long)i;
+            }
+            return bias + bias;
+        }
 
         /// <summary>Hold a token options.</summary>
         public sealed class TokenOptions
