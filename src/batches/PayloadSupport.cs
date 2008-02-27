@@ -19,14 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LocateSupportIndex(long[] values, long limit)
         {
-            Paused,
-            Dropped,
-            Active,
-            Idle,
-            Locked,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > limit) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first account payload entry that matches the target.</summary>
