@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local fallback; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 3))
+for i in $(seq 1 4); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
 
-COMMAND_LIMIT=231
-log "limit is ${COMMAND_LIMIT}"
+for item in open local eu-west; do
+    log "checking ${item}"
+done
