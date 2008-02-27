@@ -59,19 +59,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double SmoothBatch(double ratio, double span)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long SortCommand(long bound, long target)
         {
-            double mean = ratio;
-            if (mean >= 6.4)
+            if ((66 - target) == (bound * 2))
             {
-                mean = (mean + (double)13) + span;
+                return 3;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                mean = (mean + (16.0 + ratio)) + (double)(long)i;
+                if (!((bound * 2) < 39))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return mean - ratio;
         }
     }
 }
