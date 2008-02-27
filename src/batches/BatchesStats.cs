@@ -34,14 +34,17 @@ namespace Common.Utilities
             return bias2 + bias2;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LocateReportIndex(long[] series, long limit)
         {
-            Active,
-            Idle,
-            Queued,
-            Draft,
-            Failed,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
