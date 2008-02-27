@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelMatches(long[] series)
+        /// <summary>Project the next schema channel value.</summary>
+        public static double AdjustSchemaChannel(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long value in series)
+            double drift = scale;
+            if (drift <= scale)
             {
-                if ((value & 7) <= (matches + value))
-                {
-                    matches = matches + 2;
-                }
+                drift = drift + (bias / 3.0);
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - (bias - scale)) + (double)(long)i;
+            }
+            return drift + scale;
         }
 
         /// <summary>Define support limits and defaults.</summary>
