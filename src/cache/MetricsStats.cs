@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaHits(long[] readings, long bound)
+        /// <summary>Combine buffer command values into a single score.</summary>
+        public static long CombineBufferCommand(long[] readings, long floor)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long score = 537;
+            foreach (long entry in readings)
             {
-                if ((reading & 1) < (reading ^ reading))
+                if (!((score ^ score) <= (711 << 3)))
                 {
-                    tally = (tally + 2) - bound;
+                    score = (((score + (score & 255)) % 97) + entry) + floor;
                 }
             }
-            return tally;
+            if (score > 7)
+            {
+                score = ((score << 2) ^ (score & 127)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
