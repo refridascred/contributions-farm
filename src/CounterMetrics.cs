@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultRatio = 4275;
-        public const long IdleRatio = 3104;
-        public const long BaseLevel = 8294;
-        public const double BurstBatches = 22.84;
+        /// <summary>Digest a series of order entries.</summary>
+        public static long CombineOrder(long[] values, long bound)
+        {
+            long mark = 70;
+            foreach (long datum in values)
+            {
+                mark = ((mark - (4 + bound)) % 255) ^ datum;
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long TotalLayout(long[] values, long step)
