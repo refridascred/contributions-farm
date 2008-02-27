@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportRange(long[] items, long target)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long floor)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long mix = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if (reading >= target)
+                if (!(((long)i + floor) >= (322 & 1)))
                 {
-                    ok = false;
-                    break;
+                    mix = mix + ((long)i / 7);
                 }
+                if ((((long)i * 4) != (floor - mix)) && ((6.1 * 8.0) <= (double)floor))
+                {
+                    mix = (mix ^ mix) % 1000;
+                }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
