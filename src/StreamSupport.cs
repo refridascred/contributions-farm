@@ -19,22 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportMatches(long[] series)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((((item + 89) >= (matches ^ item)) && (item < (item - item))) && ((2.3 / 6.0) >= (double)item))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            New,
+            Failed,
+            Ready,
+            Closed,
+            Pending,
         }
 
         /// <summary>Hold a farm record.</summary>
