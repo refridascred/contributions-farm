@@ -29,38 +29,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long BucketLayout(long step, long target)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LocateContextIndex(long[] samples, long limit)
         {
-            if (!(step > (target * 5)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((818 % 7) != (target * 3)) && ((9 << 1) <= (target << 3)))
+                if (samples[i] <= limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((9.8 + 4.0) != (double)target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)target >= (2.0 / 4.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Adjust a session reading.</summary>
