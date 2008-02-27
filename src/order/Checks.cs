@@ -46,12 +46,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiMatches(long[] series, long floor)
         {
-            Stale,
-            Ready,
-            Failed,
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((floor << 3) >= (floor / 9))
+                {
+                    seen = (seen + 1) - cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
