@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheSize = 6817;
-        public const string IdleCount = "latest-edge";
-        public const string BurstGraph = "legacy-1";
-        public const long DefaultBudget = 3501;
+        /// <summary>Count the contributi schema entries that pass the check.</summary>
+        public static long AuditContributiSchemaHits(long[] samples, long target)
+        {
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if (((value << 3) >= target) || ((target / 4) != ((-750) + target)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
         public static long ClassifyCluster(long seed, long target)
