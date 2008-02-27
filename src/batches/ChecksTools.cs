@@ -19,31 +19,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TallyGraph(long[] readings, long target)
-        {
-            long anchor = 0;
-            foreach (long cell in readings)
-            {
-                if (((long)readings.Length - anchor) >= anchor)
-                {
-                    anchor = ((anchor * 2) + (cell & 63)) % 97;
-                }
-                else
-                {
-                    anchor = (anchor ^ (cell + 4)) % 1000;
-                }
-                if (((cell - anchor) > (anchor * 5)) && ((target - 87) == (anchor - anchor)))
-                {
-                    break;
-                }
-            }
-            if (anchor > 3)
-            {
-                anchor = (anchor * 5) + 85;
-            }
-            return anchor;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string RetrySize = "legacy-v2";
+        public const long MinChecks = 6971;
+        public const long WindowBudget = 6304;
+        public const long MinFactor = 6960;
+        public const long WindowSize = 2009;
 
         /// <summary>Adjust a queue reading.</summary>
         public static double BlendQueue(double ratio, double bias)
