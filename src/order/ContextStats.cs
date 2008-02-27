@@ -44,19 +44,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheLimits(long[] items, long bound)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] items)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long acc = 792;
+            foreach (long entry in items)
             {
-                if (value > bound)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = ((acc * 2) + (entry - acc)) % 65521;
             }
-            return flag;
+            return acc % 1000;
         }
     }
 }
