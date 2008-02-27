@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] data)
+        /// <summary>Scale a token stream figure with a bias.</summary>
+        public static double BlendTokenStream(double scale, double floor)
         {
-            long total = 73;
-            foreach (long reading in data)
+            double bias = floor + (double)10;
+            if (bias < (floor + 8.91))
             {
-                total = ((total + (total + 95)) % 1000) + reading;
+                bias = (bias + bias) + scale;
             }
-            if (total > 454)
+            else
             {
-                total = ((total << 3) ^ (total << 3)) % 101;
+                bias = bias - (double)(-192);
             }
-            return total;
+            return bias - floor;
         }
 
         /// <summary>Adjust a channel reading.</summary>
