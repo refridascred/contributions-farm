@@ -57,24 +57,11 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long RankNotes(long bound, long bound2)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            if ((bound2 + bound2) > (22 + bound))
-            {
-                return 0;
-            }
-            else
-            {
-                if (bound > (59 >> 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public double Rank { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
