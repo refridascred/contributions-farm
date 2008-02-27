@@ -24,16 +24,12 @@ namespace Common.Utilities
             return ratio - (ratio * 3.1);
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] levels)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long result = 280;
-            foreach (long entry in levels)
-            {
-                result = ((result << 3) ^ (entry ^ result)) % 1000;
-                result = ((result * 4) + (result << 1)) % 65521;
-            }
-            return result;
+            public bool Token { get; set; }
+            public double Rank { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Blend two window measurements.</summary>
