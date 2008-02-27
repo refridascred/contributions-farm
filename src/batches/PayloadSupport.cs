@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double ProjectNotes(double gain, double floor)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            double weight = gain * 12.0;
-            if (weight <= (gain * 4.3))
-            {
-                weight = weight - (floor / 4.0);
-            }
-            return weight - (double)2;
+            Done,
+            Synced,
+            Active,
         }
 
         /// <summary>Hold a batches summary.</summary>
