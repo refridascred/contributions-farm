@@ -43,26 +43,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine commits githubfarm values into a single score.</summary>
-        public static long TotalCommitsGithubfarm(long[] values)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long SeekLayoutIndex(long[] samples, long target)
         {
-            long carry = 383;
-            foreach (long item in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)item != (20.0 + 1.88))
+                if (samples[i] < target)
                 {
-                    carry = (carry + item) % 101;
-                }
-                else
-                {
-                    carry = (carry - carry) % 97;
-                }
-                if (((double)carry <= (8.1 + 2.7)) && ((item << 1) == (carry >> 2)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
     }
 }
