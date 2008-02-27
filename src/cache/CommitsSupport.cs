@@ -58,21 +58,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long OverlapStreamCount(long[] items)
+        /// <summary>Scale a report tools figure with a bias.</summary>
+        public static double SmoothReportTools(double rate, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double mean = bias;
+            if (mean < mean)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = mean - (double)8;
             }
-            return seen;
+            else
+            {
+                mean = mean - 5.21;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + rate) + (double)(long)i;
+            }
+            return mean - (mean - mean);
         }
 
         /// <summary>Adjust a session reading.</summary>
