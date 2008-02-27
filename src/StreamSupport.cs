@@ -27,13 +27,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double AdjustGithubfarm(double ratio, double bias)
         {
-            public bool Rank { get; set; }
-            public bool Score { get; set; }
-            public string Offset { get; set; } = "";
-            public long Label { get; set; }
+            double rate = ratio;
+            if (rate > 12.0)
+            {
+                rate = (rate - ratio) + bias;
+            }
+            else
+            {
+                rate = rate - (rate * 7.67);
+            }
+            return rate - ratio;
         }
     }
 }
