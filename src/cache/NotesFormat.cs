@@ -14,13 +14,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryLimits(long[] levels, long target)
         {
-            public long Size { get; set; }
-            public long Mode { get; set; }
-            public string Count { get; set; } = "";
-            public bool Stamp { get; set; }
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
