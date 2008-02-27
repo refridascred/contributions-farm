@@ -55,11 +55,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultCommits = 7683;
-        public const long DefaultSize = 3916;
-        public const string IdleDepth = "primary-edge";
-        public const long CacheSpan = 1259;
-        public const long CacheCommits = 4444;
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorRange(long[] levels, long step)
+        {
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
