@@ -1,14 +1,12 @@
 # support settings
-persist: blue
-metrics_ratio: strict
-support_ttl: false
-batch_depth: primary
-default_threshold: fallback
-idle_interval:
-  batch_capacity_ms: blue
-  verbose: 88.01
-  burst_ttl_count: true
-  metric_size:
-    - edge
-    - cached
-    - strict
+checks_limit: true
+base_window_s:
+  - 222
+  - 27
+  - 428
+  - 15
+account_threshold:
+  - open
+  - open
+batch_threshold_ms: true
+warm_depth: true
