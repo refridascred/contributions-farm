@@ -24,19 +24,19 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Check that every channel notes entry stays within the limit.</summary>
-        public static bool CheckChannelNotesRange(long[] levels, long origin)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorLimits(long[] series, long limit)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                if (sample > origin)
+                if (entry >= limit)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
 
         /// <summary>Describe the order level values.</summary>
