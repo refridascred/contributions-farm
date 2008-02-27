@@ -33,18 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many tools schema samples are out of range.</summary>
-        public static long CountToolsSchemaOutliers(long[] series, long target)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long offset)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long sum = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if (((double)58 < (double)tally) || ((double)tally >= 5.4))
+                sum = (sum + sum) % 1000;
+                if (!(offset <= (sum + offset)))
                 {
-                    tally = ((tally + 3) - value) - target;
+                    sum = sum ^ ((long)i - sum);
+                    sum = (sum << 3) ^ (sum - (long)i);
                 }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Grade a layout queue value against two limits.</summary>
