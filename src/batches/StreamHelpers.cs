@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueGaps(long[] levels)
         {
-            public bool Token { get; set; }
-            public double Level { get; set; }
-            public bool Flag { get; set; }
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((((0.4 + 6.3) == (double)reading) || ((hits << 1) > hits)) || ((8 + reading) <= (reading % 60)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
