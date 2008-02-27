@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double SmoothEditor(double ratio, double floor)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] readings)
         {
-            double weight = ratio;
-            if (weight >= (weight / 4.0))
+            long carry = 0;
+            foreach (long entry in readings)
             {
-                weight = (weight + 1.0) - floor;
+                for (int i = 0; i < 6; i++)
+                {
+                    carry = ((carry * 5) + (long)i) % 4096;
+                }
+                if ((carry & 31) > (carry / 2))
+                {
+                    carry = (carry * 3) + (entry / 2);
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + (4.0 - ratio)) + (double)(long)i;
-            }
-            return weight - (double)93;
+            return carry % 97;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
