@@ -14,24 +14,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a report batch reading.</summary>
-        public static double ProjectReportBatch(double bias, double floor)
-        {
-            double mean = bias - (floor + floor);
-            if (mean > (bias - floor))
-            {
-                mean = mean - bias;
-            }
-            else
-            {
-                mean = mean - bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean - (double)21;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BatchSupport = "local-edge";
+        public const string BurstSupport = "local";
+        public const long RetrySupport = 8104;
+        public const string CacheTimeout = "standard";
 
         /// <summary>Match up profile samples.</summary>
         public static long OverlapProfileCount(long[] values)
