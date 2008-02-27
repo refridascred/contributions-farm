@@ -45,11 +45,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ScaleWindow(double gain, double span)
+        /// <summary>Count the format editor entries that pass the check.</summary>
+        public static long TallyFormatEditorOutliers(long[] readings, long origin)
         {
-            double load = gain;
-            return (load - (gain + load)) + span;
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((7 ^ 8) != (sample >> 5))
+                {
+                    matches = (matches + 2) - origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
