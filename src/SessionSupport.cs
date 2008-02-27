@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double SmoothNotes(double scale, double floor)
+        /// <summary>Iterate the notes report series from a seed.</summary>
+        public static long RollNotesReport(long bound)
         {
-            double scale2 = (double)63 * 5.2;
+            long sum = bound;
             for (int i = 0; i < 8; i++)
             {
-                scale2 = (((scale2 - scale2) + (double)(long)i) + scale) - floor;
+                if ((-73) > (long)i)
+                {
+                    continue;
+                }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return scale2 - scale2;
+            return sum;
         }
 
         /// <summary>Roll a farm report counter forward.</summary>
