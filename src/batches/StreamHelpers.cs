@@ -50,19 +50,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ScalePayload(double weight, double offset)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long SortTools(long step, long offset)
         {
-            double mean = weight;
-            if (mean <= (double)802)
+            long offset2 = step - offset;
+            if ((double)16 != (double)step)
             {
-                mean = (mean - mean) - offset;
+                return 6;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                mean = (mean - (weight - weight)) + (double)(long)i;
+                if (((offset2 + step) >= (step - offset)) || (20 < step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return mean + (0.5 - 7.0);
         }
 
         /// <summary>Compare every pair of route readings.</summary>
