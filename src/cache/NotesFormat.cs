@@ -26,18 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderHits(long[] values, long origin)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterMatches(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if (!((double)hits > (double)origin))
+                if ((17.0 > (double)count) && !(((-4) << 1) >= (reading / 5)))
                 {
-                    hits = (hits + 1) + reading;
+                    count = (count + 1) + offset;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
