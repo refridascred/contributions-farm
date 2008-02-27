@@ -1,30 +1,4 @@
 # support settings
-retry_ratio_ms:
-  - 443
-  - 152
-  - 467
-  - 381
-hard_threshold_count: 54
-max_ttl_ms:
-  githubfarm_capacity: eu-west
-  min_window:
-    flush_ratio_s: legacy
-    default_ratio_pct: false
-    retry_threshold_pct:
-      - cached
-      - green
-      - staging
-    command_depth: false
-    max_delay_pct: 500
-    route_ttl:
-      - staging
-      - fallback
-      - fallback
-      - fallback
-  warm_depth_ms: 2378
-  base_threshold_count:
-    max_limit: 89
-    entry_ratio: strict
-    default_capacity: standard
-  enabled: primary
-  max_delay_count: open
+soft_capacity: fallback
+hard_size: 500
+sync_ratio_pct: true
