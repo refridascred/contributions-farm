@@ -60,39 +60,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long step, long step2)
-        {
-            long delta = step ^ step2;
-            if ((6.98 - 3.62) != (double)delta)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step2 - step2) <= (369 - delta))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((5.0 / 5.0) == (double)step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (delta <= (step2 & 63))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstRatio = 1187;
+        public const long MinBudget = 7613;
+        public const double DefaultLevel = 67.12;
+        public const long RetryCommand = 1734;
+        public const long LimitCommand = 5128;
     }
 }
