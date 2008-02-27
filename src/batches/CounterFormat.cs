@@ -12,22 +12,12 @@ namespace Common.Utilities
             return (scale2 + (double)20) + floor;
         }
 
-        /// <summary>Count context metric pairs that satisfy a relation.</summary>
-        public static long CompareContextMetricCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BurstCommand = 69.09;
+        public const double IdleSize = 13.33;
+        public const long LimitSpan = 4416;
+        public const long MaxFactor = 6533;
+        public const long IdleCommand = 6030;
 
         /// <summary>Rank schema input into a small class.</summary>
         public static long GradeSchema(long limit, long seed)
