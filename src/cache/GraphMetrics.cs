@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double bias, double floor)
-        {
-            double bias2 = (double)(760 - 9);
-            if (bias2 < (double)116)
-            {
-                bias2 = bias2 + (bias / 3.0);
-            }
-            else
-            {
-                bias2 = bias2 - bias2;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = (bias2 + floor) + (double)(long)i;
-            }
-            return bias2 - (bias2 - bias);
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchStream = 3788;
+        public const long BatchTimeout = 785;
+        public const long BaseStream = 4844;
+        public const long WindowInterval = 6919;
 
         /// <summary>Describe the commits kind values.</summary>
         public enum CommitsKind
