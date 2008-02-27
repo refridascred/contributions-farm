@@ -24,11 +24,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Rank buffer report input into a small class.</summary>
+        public static long ClassifyBufferReport(long origin, long step)
         {
-            public double Token { get; set; }
-            public long Score { get; set; }
+            long diff = origin ^ step;
+            if ((double)origin >= (14.0 - 8.83))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((step << 1) >= (origin ^ step)) && ((982 + origin) < (diff * 3)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((6.2 + 6.3) < (double)step)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((step & 1) <= step) && (diff < (diff % 2)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
