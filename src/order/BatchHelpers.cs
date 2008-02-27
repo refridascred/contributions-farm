@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            public long Total { get; set; }
-            public string Token { get; set; } = "";
-            public long Region { get; set; }
-            public long Size { get; set; }
+            Idle,
+            Draft,
+            Ready,
+            Queued,
+            Active,
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
