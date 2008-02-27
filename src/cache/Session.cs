@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the stream queue entries that pass the check.</summary>
-        public static long AuditStreamQueueHits(long[] values, long step)
+        /// <summary>Digest a series of metrics record entries.</summary>
+        public static long CombineMetricsRecord(long[] values)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long carry = 318;
+            foreach (long item in values)
             {
-                if ((-610) >= (value + step))
-                {
-                    hits = hits + 2;
-                }
+                carry = (carry * 4) + (carry / 4);
+                carry = (carry - (item / 6)) % 1000;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
