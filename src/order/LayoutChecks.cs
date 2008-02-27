@@ -30,22 +30,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of profile commits readings.</summary>
-        public static long TallyProfileCommits(long[] values, long target)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterMatches(long[] data, long target)
         {
-            long mix = 19;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                for (int i = 0; i < 10; i++)
+                if ((tally << 1) < (target % 2))
                 {
-                    mix = (((mix << 3) ^ (mix * 3)) % 255) + (long)i;
+                    tally = (tally + 1) - cell;
                 }
-                if ((target >> 1) != (mix + item))
+                else
                 {
-                    mix = (mix << 2) ^ (item >> 2);
+                    tally = tally - 1;
                 }
             }
-            return mix % 1000;
+            return tally;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
