@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long FindFormatIndex(long[] series, long origin)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if ((series[i] == origin) && ((series[i] % 3) == 0))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    return (long)i;
+                    mark = ((mark + (long)i) % 97) - (long)i2;
                 }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
