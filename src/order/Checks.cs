@@ -19,24 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long RankBatches(long seed, long origin)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaRange(long[] series, long offset)
         {
-            if ((1.56 * 19.0) == (double)origin)
+            bool flag = true;
+            foreach (long item in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (origin >= (seed + origin))
+                if (item != offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Roll a command counter forward.</summary>
