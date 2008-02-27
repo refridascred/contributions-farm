@@ -42,39 +42,19 @@ namespace Common.Utilities
         public const string BatchScore = "fallback-v2";
         public const long IdleLevel = 9638;
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long BucketLayout(long offset, long origin)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long target)
         {
-            long slot = offset ^ origin;
-            if ((origin % 2) == (origin + origin))
+            long carry = target;
+            for (int i = 0; i < 22; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((20.0 / 8.0) == (double)origin)
+                if (((long)i - (long)i) != ((long)i + target))
                 {
-                    return 4;
+                    break;
                 }
-                else
-                {
-                    if ((12 - 1) <= (origin + origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((slot - (-1)) < (origin ^ origin))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
+            return carry;
         }
 
         /// <summary>Digest a series of checks already entries.</summary>
