@@ -54,18 +54,13 @@ namespace Common.Utilities
         public const long CacheSession = 7600;
         public const string SoftSession = "primary-v2";
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryMatches(long[] levels, long floor)
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if ((floor >> 3) != (floor ^ matches))
-                {
-                    matches = (matches + 1) + value;
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public bool Size { get; set; }
+            public double Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Digest a series of graph entries.</summary>
