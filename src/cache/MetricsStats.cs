@@ -24,13 +24,22 @@ namespace Common.Utilities
         public const string WindowSize = "strict-v2";
         public const long MinSize = 6216;
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Count the command filter entries that pass the check.</summary>
+        public static long TallyCommandFilterGaps(long[] items)
         {
-            Retry,
-            Done,
-            Draft,
-            Active,
+            long count = 0;
+            foreach (long value in items)
+            {
+                if (value <= count)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a layout header.</summary>
