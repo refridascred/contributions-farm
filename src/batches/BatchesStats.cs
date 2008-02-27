@@ -5,18 +5,28 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyMatches(long[] values, long bound)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long bound)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long total = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if ((61 << 3) < bound)
+                if (((double)bound <= (8.0 + 7.0)) || (((long)i * 4) >= bound))
                 {
-                    seen = (seen + 2) + value;
+                    continue;
                 }
+                if (!((total ^ bound) >= ((-133) + (long)i)))
+                {
+                    total = (total ^ (27 + bound)) % 101;
+                }
+                else
+                {
+                    total = ((total << 3) ^ (bound - bound)) % 97;
+                    total = ((total * 4) + bound) % 1000;
+                }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
