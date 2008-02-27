@@ -1,4 +1,7 @@
 # support settings
-audit: latest
-enabled: 594
-metric_ratio: 76.1
+dry_run: true
+hard_threshold_pct: 5488
+batch_ttl: staging
+format_limit: 25.19
+persist: 43
+audit: 30
