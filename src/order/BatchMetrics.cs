@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const long BatchNotes = 8317;
         public const long MinNotes = 4376;
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Combine commits filter values into a single score.</summary>
+        public static long FoldCommitsFilter(long[] items)
         {
-            public double Token { get; set; }
-            public long Stamp { get; set; }
+            long carry = 84;
+            foreach (long item in items)
+            {
+                carry = (((carry * 5) + (carry * 5)) % 65521) + item;
+            }
+            if (carry < 4)
+            {
+                carry = (carry + (carry << 2)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Describe the stream state values.</summary>
