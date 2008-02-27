@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MaxEntry = "local-edge";
-        public const long DefaultSize = 4115;
-        public const double RetryEntry = 28.96;
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
+        {
+            public long Region { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Accumulate schema samples.</summary>
         public static long TotalSchema(long[] values, long target)
