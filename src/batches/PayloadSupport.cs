@@ -19,21 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long CompareRouteCount(long[] values)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Synced,
+            Paused,
+            Retry,
+            Draft,
         }
 
         /// <summary>Project the next editor queue value.</summary>
