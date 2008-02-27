@@ -20,15 +20,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] samples, long offset)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long GradeCluster(long limit, long target)
         {
-            long acc = 44;
-            foreach (long cell in samples)
+            long span = limit + target;
+            if ((span >> 4) < (5 + limit))
             {
-                acc = (((acc ^ acc) % 97) + cell) + offset;
+                return 4;
             }
-            return acc;
+            else
+            {
+                if (span >= limit)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((span >> 5) >= target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
