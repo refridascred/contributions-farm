@@ -36,10 +36,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxNotes = 1471;
-        public const long MaxWidth = 4243;
-        public const string BatchBudget = "latest-1";
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmLimits(long[] series, long step)
+        {
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading >= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long BatchCount = 7854;
