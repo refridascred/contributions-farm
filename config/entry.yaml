@@ -1,9 +1,10 @@
 # entry settings
-burst_delay_pct: 1024
-readonly: open
-base_ratio_s:
-  - standard
-  - latest
-  - standard
-audit: 96.14
-editor_limit: blue
+hard_depth_s: edge
+metric_size: 42.78
+window_capacity:
+  - 188
+  - 201
+  - 37
+  - 304
+sync_capacity: open
+retry_depth_count: 3231
