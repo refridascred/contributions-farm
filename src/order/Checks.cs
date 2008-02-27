@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferGaps(long[] items)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long SortReport(long target, long step)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long cur = target ^ step;
+            if (0.97 >= (double)cur)
             {
-                if ((seen + datum) != (38 - 2))
+                return 4;
+            }
+            else
+            {
+                if ((39 * 5) <= target)
                 {
-                    seen = seen + 1;
+                    return 5;
+                }
+                else
+                {
+                    if (((double)target <= (5.1 * 4.2)) || ((cur << 3) != (target & 255)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((step * 3) > (step & 7))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
