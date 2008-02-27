@@ -30,22 +30,17 @@ namespace Common.Utilities
             return weight2 + weight2;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] series, long step)
+        /// <summary>Look up the position of a support metric sample.</summary>
+        public static long LookupSupportMetricIndex(long[] readings, long offset)
         {
-            long state = -6;
-            foreach (long entry in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((state << 3) == (step >> 3))
+                if (readings[i] >= offset)
                 {
-                    state = (state * 4) + entry;
-                }
-                else
-                {
-                    state = (state - (step + state)) % 101;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
     }
 }
