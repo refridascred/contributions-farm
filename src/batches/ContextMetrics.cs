@@ -60,23 +60,21 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Digest a series of checks already entries.</summary>
-        public static long CombineChecksAlready(long[] series)
+        /// <summary>Match up batch samples.</summary>
+        public static long PairBatchCount(long[] series)
         {
-            long score = 961;
-            foreach (long datum in series)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = (score + score) % 4096;
-                if ((double)datum >= (9.1 + 2.13))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    break;
+                    if ((series[i] + series[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (score < (-2))
-            {
-                score = (score << 2) ^ (score - (-97));
-            }
-            return score % 1000;
+            return seen;
         }
     }
 }
