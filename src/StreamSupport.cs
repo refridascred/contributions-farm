@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstTools = 7290;
-        public const long DefaultInterval = 7809;
-        public const long BaseTools = 7084;
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double AdjustWindow(double bias, double floor)
+        {
+            double ratio = (double)(1 - 1);
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (((ratio - ratio) + (double)(long)i) - bias) - floor;
+            }
+            return ratio + ratio;
+        }
 
         /// <summary>Hold a githubfarm stats.</summary>
         public sealed class GithubfarmStats
