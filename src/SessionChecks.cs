@@ -29,18 +29,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaOutliers(long[] samples, long target)
+        /// <summary>Project the next report metric value.</summary>
+        public static double AdjustReportMetric(double ratio, double span)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            double ratio2 = span;
+            if (ratio2 >= (double)567)
             {
-                if ((((-207) + tally) == (82 >> 5)) && ((double)tally == (6.01 / 9.0)))
-                {
-                    tally = ((tally + 1) ^ entry) - target;
-                }
+                ratio2 = ratio2 - (double)378;
             }
-            return tally;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio2 = (ratio2 - (ratio * 3.18)) - (double)(long)i;
+            }
+            return ratio2 + ratio;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
