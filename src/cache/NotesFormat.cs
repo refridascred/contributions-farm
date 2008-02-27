@@ -22,22 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelGaps(long[] readings)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (((double)count >= (double)63) && ((sample ^ count) >= (927 + sample)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Queued,
+            Dropped,
+            Stale,
+            Synced,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
