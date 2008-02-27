@@ -10,18 +10,13 @@ namespace Common.Utilities
         public const long SoftDepth = 3701;
         public const double MaxReport = 63.83;
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferHits(long[] samples, long seed)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((13.0 * 3.59) >= (double)seed)
-                {
-                    count = (count + 3) ^ reading;
-                }
-            }
-            return count;
+            Locked,
+            Closed,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Fold a list of graph readings.</summary>
