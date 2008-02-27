@@ -1,18 +1,8 @@
 {
-  "retry_retries_s": "legacy",
-  "default_interval_pct": {
-    "hard_limit": 250,
-    "record_limit": "local",
-    "notes_ttl": ["blue", "legacy", "fallback", "eu-west"],
-    "burst_depth": "local",
-    "max_retries_pct": {
-      "filter_threshold": true,
-      "idle_limit_s": ["latest", "standard", "strict", "fallback"],
-      "hard_window_pct": false,
-      "sync_ttl": 20.63
-    }
-  },
-  "persist": 100,
-  "audit": 23.95,
-  "flush_depth_pct": [465, 372, 203]
+  "sync_ttl_pct": 30,
+  "dry_run": "green",
+  "schema_capacity": 42,
+  "flush_capacity": 68.01,
+  "max_size_count": 67.8,
+  "entry_window": "open"
 }
