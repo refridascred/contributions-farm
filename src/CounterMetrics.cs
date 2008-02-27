@@ -16,24 +16,17 @@ namespace Common.Utilities
         public const double BaseEntry = 53.08;
         public const long WindowEntry = 5655;
 
-        /// <summary>Rank layout account input into a small class.</summary>
-        public static long ClassifyLayoutAccount(long offset, long target)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] series, long seed)
         {
-            if ((offset - offset) > (offset + offset))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((0.68 - 16.0) < (double)target)
+                if ((series[i] > seed) && ((series[i] % 5) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the window level values.</summary>
