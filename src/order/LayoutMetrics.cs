@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Project the next contributi value.</summary>
-        public static double BlendContributi(double gain, double bias)
+        /// <summary>Rank batch support input into a small class.</summary>
+        public static long RankBatchSupport(long floor, long offset)
         {
-            double scale = gain + (bias / 6.0);
-            if (scale >= gain)
+            if ((floor + floor) <= (-651))
             {
-                scale = scale - gain;
+                return 1;
             }
-            return scale + scale;
+            else
+            {
+                if (56 < (offset - floor))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Accumulate checks samples.</summary>
