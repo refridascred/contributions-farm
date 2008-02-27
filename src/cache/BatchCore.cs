@@ -45,12 +45,12 @@ namespace Common.Utilities
         public const string HardBatches = "fallback-v2";
         public const double MaxBudget = 21.66;
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long SeekPayloadIndex(long[] levels, long offset)
+        /// <summary>Find the first batches token entry that matches the target.</summary>
+        public static long SeekBatchesTokenIndex(long[] items, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((levels[i] == offset) && ((levels[i] % 3) == 0))
+                if ((items[i] > seed) && ((items[i] % 2) == 0))
                 {
                     return (long)i;
                 }
