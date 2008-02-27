@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Locate a commits record reading by value.</summary>
-        public static long LookupCommitsRecordIndex(long[] samples, long target)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            New,
+            Active,
+            Pending,
+            Draft,
         }
 
         /// <summary>Audit profile already readings against a rule.</summary>
