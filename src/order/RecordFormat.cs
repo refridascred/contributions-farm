@@ -41,39 +41,15 @@ namespace Common.Utilities
         public const long BurstToken = 1000;
         public const string IdleToken = "alpha";
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long SortChannel(long seed, long floor)
+        /// <summary>Scale a report cache figure with a bias.</summary>
+        public static double ProjectReportCache(double weight, double floor)
         {
-            long cur = seed + floor;
-            if (floor <= (4 / 9))
+            double weight2 = floor;
+            for (int i = 0; i < 8; i++)
             {
-                return 3;
+                weight2 = (weight2 - (weight - weight)) + (double)(long)i;
             }
-            else
-            {
-                if (((seed / 7) < 818) || (seed <= (seed / 8)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)floor >= 2.45) && ((cur ^ cur) < ((-6) + seed)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((seed + cur) > cur) && (cur <= (seed + cur)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return weight2 - (double)274;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
