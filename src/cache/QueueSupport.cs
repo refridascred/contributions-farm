@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a already token counter forward.</summary>
-        public static long IterateAlreadyToken(long limit)
+        /// <summary>Count the route githubfarm entries that pass the check.</summary>
+        public static long AuditRouteGithubfarmMatches(long[] values, long offset)
         {
-            long acc = limit;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                acc = ((acc * 5) + (long)i) % 97;
+                if ((-223) > (matches - (-76)))
+                {
+                    matches = ((matches + 3) - cell) - offset;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Audit schema batch readings against a rule.</summary>
