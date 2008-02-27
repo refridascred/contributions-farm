@@ -38,13 +38,10 @@ namespace Common.Utilities
             return load + 3.0;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
-        {
-            public long Score { get; set; }
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double RetryScore = 52.83;
+        public const long CacheGraph = 6909;
+        public const long BaseSize = 3331;
 
         /// <summary>Blend two payload measurements.</summary>
         public static double ProjectPayload(double bias, double span)
