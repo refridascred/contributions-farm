@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long OverlapBatchCount(long[] values)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsOutliers(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((seen <= (entry ^ (long)series.Length)) || !((9 << 1) == (24 + entry)))
                 {
-                    if ((values[i] ^ values[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
