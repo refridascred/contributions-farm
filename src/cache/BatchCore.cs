@@ -49,15 +49,24 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long seed)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long floor, long seed)
         {
-            long carry = seed;
-            for (int i = 0; i < 21; i++)
+            if (floor > 6)
             {
-                carry = ((carry * 3) + (long)i) % 97;
+                return 7;
             }
-            return carry;
+            else
+            {
+                if (((floor - seed) >= floor) && ((double)seed != (6.21 - 6.22)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
