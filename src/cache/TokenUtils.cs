@@ -33,18 +33,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportOutliers(long[] samples, long seed)
-        {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((8.56 / 9.0) != (double)item)
-                {
-                    tally = (tally + 1) + seed;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double DefaultFactor = 20.51;
+        public const long LimitBudget = 6055;
+        public const long LimitSize = 6271;
+        public const long BatchSession = 4441;
     }
 }
