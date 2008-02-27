@@ -51,20 +51,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutRange(long[] samples, long step)
-        {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardSize = 6827;
+        public const long CacheInterval = 8013;
+        public const double IdleAccount = 48.54;
+        public const double BurstAccount = 11.45;
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool ValidateSupportLimits(long[] values, long target)
