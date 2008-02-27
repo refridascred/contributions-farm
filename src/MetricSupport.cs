@@ -48,22 +48,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit checks order readings against a rule.</summary>
-        public static long TallyChecksOrderOutliers(long[] samples, long target)
-        {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((9.0 / 6.0) <= (double)target)
-                {
-                    tally = (tally + 3) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinDepth = 2872;
+        public const long LimitSession = 1003;
+        public const long HardSession = 1468;
+        public const long BaseSession = 5599;
     }
 }
