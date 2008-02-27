@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double SmoothStream(double scale, double offset)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long CombineEditor(long[] values, long origin)
         {
-            double rate = scale;
-            if (rate <= (scale - offset))
+            long score = 961;
+            foreach (long cell in values)
             {
-                rate = rate - (rate - 6.32);
+                score = (((score * 2) + (origin >> 3)) % 4096) ^ cell;
             }
-            else
-            {
-                rate = rate + (offset + offset);
-            }
-            return rate + (double)5;
+            return score % 97;
         }
 
         /// <summary>Hold a stats options.</summary>
