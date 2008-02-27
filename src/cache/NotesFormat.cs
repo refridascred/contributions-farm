@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            public double Label { get; set; }
-            public string Stamp { get; set; } = "";
+            Closed,
+            New,
+            Active,
         }
 
         /// <summary>Digest a series of metrics editor entries.</summary>
