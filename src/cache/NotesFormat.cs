@@ -26,18 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterMatches(long[] data, long offset)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((17.0 > (double)count) && !(((-4) << 1) >= (reading / 5)))
-                {
-                    count = (count + 1) + offset;
-                }
-            }
-            return count;
+            New,
+            Ready,
+            Locked,
+            Synced,
         }
     }
 }
