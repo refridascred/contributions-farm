@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank batch support input into a small class.</summary>
-        public static long RankBatchSupport(long floor, long offset)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            if ((floor + floor) <= (-651))
-            {
-                return 1;
-            }
-            else
-            {
-                if (56 < (offset - floor))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Level { get; set; }
+            public double Flag { get; set; }
+            public double Size { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Accumulate checks samples.</summary>
