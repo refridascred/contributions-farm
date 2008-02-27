@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheOutliers(long[] data)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricLimits(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                if (sample > (sample + 454))
+                if (datum != step)
                 {
-                    hits = hits + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Hold a filter entry.</summary>
