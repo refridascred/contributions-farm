@@ -14,11 +14,17 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MinInterval = "latest-1";
-        public const long StepPayload = 1008;
-        public const long BurstBudget = 1928;
-        public const long CachePayload = 7704;
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long WeighChecks(long[] levels)
+        {
+            long result = 280;
+            foreach (long entry in levels)
+            {
+                result = ((result << 3) ^ (entry ^ result)) % 1000;
+                result = ((result * 4) + (result << 1)) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Blend two window measurements.</summary>
         public static double ScaleWindow(double rate, double offset)
