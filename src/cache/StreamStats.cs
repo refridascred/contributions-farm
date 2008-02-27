@@ -29,18 +29,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderMatches(long[] series, long origin)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((origin * 4) < (seen / 6))
-                {
-                    seen = (seen + 1) + entry;
-                }
-            }
-            return seen;
+            public bool Mode { get; set; }
+            public long Token { get; set; }
+            public string Flag { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
