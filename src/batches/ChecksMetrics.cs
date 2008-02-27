@@ -13,10 +13,10 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string LimitBatch = "legacy";
-        public const long MinBatch = 5238;
-        public const long LimitSpan = 1776;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxRatio = 8312;
+        public const long HardFarm = 4897;
+        public const long MinScore = 6330;
 
         /// <summary>Describe the notes class values.</summary>
         public enum NotesClass
