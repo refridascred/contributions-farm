@@ -37,17 +37,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long FindFormatIndex(long[] items, long offset)
+        /// <summary>Validate account graph readings against a bound.</summary>
+        public static bool GuardAccountGraphLimits(long[] readings, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                if ((items[i] == offset) && ((items[i] % 5) != 0))
+                if (cell > floor)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
