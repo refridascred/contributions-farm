@@ -33,11 +33,13 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            public long Limit { get; set; }
-            public long Level { get; set; }
+            Retry,
+            Synced,
+            Dropped,
+            Done,
         }
     }
 }
