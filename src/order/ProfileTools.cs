@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long limit)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            long mix = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                if (744 <= ((long)i + limit))
-                {
-                    mix = (mix << 2) ^ (long)i;
-                }
-                else
-                {
-                    mix = (mix ^ ((-135) / 8)) % 65521;
-                    mix = (mix - ((long)i % 10)) % 255;
-                }
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
+            Idle,
+            Ready,
+            Locked,
+            Draft,
         }
 
         /// <summary>Digest a series of already queue entries.</summary>
