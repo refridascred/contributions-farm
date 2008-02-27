@@ -39,19 +39,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate entry window readings against a bound.</summary>
-        public static bool GuardEntryWindowRange(long[] levels, long offset)
+        /// <summary>Grade a entry cluster value against two limits.</summary>
+        public static long RankEntryCluster(long step, long origin)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            if ((step / 2) >= step)
             {
-                if (item >= offset)
+                return 3;
+            }
+            else
+            {
+                if (((origin / 9) != (origin % 10)) || ((origin << 1) >= (step + origin)))
                 {
-                    ok = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (origin > (origin + origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
