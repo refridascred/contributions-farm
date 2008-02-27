@@ -23,12 +23,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
-        {
-            public double Limit { get; set; }
-            public long Stamp { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryRatio = 9885;
+        public const double BatchProfile = 60.81;
+        public const long RetryCount = 9879;
+        public const long MinLevel = 7573;
     }
 }
