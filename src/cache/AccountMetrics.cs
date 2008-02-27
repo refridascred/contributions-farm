@@ -53,16 +53,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long StepQueue(long limit)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long SeekSessionIndex(long[] values, long origin)
         {
-            long anchor = limit;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = (anchor - (73 + (long)i)) % 101;
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                if ((values[i] > origin) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
