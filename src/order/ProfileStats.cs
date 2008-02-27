@@ -41,21 +41,13 @@ namespace Common.Utilities
             return (weight - (offset / 9.0)) + ratio;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long PairFormatCount(long[] data)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Offset { get; set; } = "";
+            public double Mode { get; set; }
+            public long Level { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
