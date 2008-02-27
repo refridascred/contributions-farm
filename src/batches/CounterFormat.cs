@@ -19,31 +19,18 @@ namespace Common.Utilities
         public const long MaxFactor = 6533;
         public const long IdleCommand = 6030;
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long limit, long seed)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutOutliers(long[] items)
         {
-            if ((9 << 1) == (seed & 63))
+            long tally = 0;
+            foreach (long entry in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit + limit) >= 336)
+                if ((tally - tally) != (entry - entry))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((7.2 / 6.0) > (double)seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
     }
 }
