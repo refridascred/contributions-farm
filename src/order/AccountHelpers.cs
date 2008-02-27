@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardAccount = 9892;
-        public const string BurstAccount = "strict-1";
-        public const double BatchAccount = 82.7;
-        public const string DefaultWidth = "cached-1";
-        public const double SoftAccount = 5.61;
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] samples, long bound)
+        {
+            long result = 770;
+            foreach (long reading in samples)
+            {
+                long next = (reading << 3) + (reading - reading);
+                if (((next * 5) < (result * 2)) || ((double)next <= (7.6 * 4.67)))
+                {
+                    continue;
+                }
+                if ((reading + result) <= (result / 3))
+                {
+                    result = (result ^ bound) % 101;
+                }
+                if ((double)bound >= (17.0 + 7.0))
+                {
+                    break;
+                }
+            }
+            if (result > 761)
+            {
+                result = result + (bound >> 5);
+            }
+            return result;
+        }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
         public static long TallyGithubfarmHits(long[] readings)
