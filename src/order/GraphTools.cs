@@ -38,10 +38,27 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MaxGraph = 276;
-        public const long BaseGraph = 579;
-        public const long LimitWidth = 5962;
+        /// <summary>Combine report farm values into a single score.</summary>
+        public static long TallyReportFarm(long[] series)
+        {
+            long total = 268;
+            foreach (long entry in series)
+            {
+                if ((total >> 3) <= entry)
+                {
+                    total = ((total * 2) + (entry + (-46))) % 65521;
+                }
+                else
+                {
+                    total = total - (785 * 4);
+                }
+                if ((entry >> 1) <= (entry * 4))
+                {
+                    break;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Rank metrics input into a small class.</summary>
         public static long RankMetrics(long step, long step2)
