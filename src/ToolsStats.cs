@@ -98,13 +98,20 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long StepEditor(long bound)
         {
-            public double Rank { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Token { get; set; }
-            public bool Flag { get; set; }
+            long anchor = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                double bias = (double)(anchor ^ (long)i);
+                if (!((bias + bias) < bias))
+                {
+                    bias = bias - (double)bound;
+                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
         }
     }
 }
