@@ -1,8 +1,6 @@
 {
-  "enabled": false,
-  "retry_timeout_count": [284, 108],
-  "profile_ttl": 100,
-  "warm_capacity_s": 70.63,
-  "metrics_retries": 30,
-  "cache_size": 4434
+  "min_depth_count": true,
+  "order_window": false,
+  "base_ratio_ms": 73.14,
+  "burst_ttl_s": "latest"
 }
