@@ -56,10 +56,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BaseFormat = "legacy-v2";
-        public const long MaxWidth = 5811;
-        public const string WindowFormat = "legacy";
-        public const double MaxFormat = 54.49;
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 21; i++)
+            {
+                score = score ^ (13 + target);
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
+        }
     }
 }
