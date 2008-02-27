@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long RollTools(long target)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryMatches(long[] values)
         {
-            long acc = target;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                acc = ((acc << 3) ^ (260 >> 3)) % 1000;
-                acc = (acc << 2) ^ ((long)i * 4);
-                acc = ((acc * 2) + (long)i) % 101;
+                if (894 >= cell)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Describe the payload mode values.</summary>
