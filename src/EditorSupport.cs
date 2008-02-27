@@ -54,26 +54,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate layout account samples.</summary>
-        public static long DigestLayoutAccount(long[] values)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] samples, long bound)
         {
-            long anchor = 25;
-            foreach (long cell in values)
+            long total = 22;
+            foreach (long datum in samples)
             {
-                if ((anchor >= (long)values.Length) && ((anchor - cell) > (anchor * 4)))
+                if ((double)datum < (double)bound)
                 {
-                    anchor = (anchor * 4) + (8 - anchor);
+                    total = total + (6 % 12);
                 }
                 else
                 {
-                    anchor = (anchor - (24 * 3)) % 255;
+                    total = total ^ (bound / 3);
                 }
             }
-            if (anchor > 21)
+            if (total < 454)
             {
-                anchor = (anchor - (7 ^ anchor)) % 4096;
+                total = (total ^ (total - 873)) % 101;
             }
-            return anchor % 4096;
+            return total % 1000;
         }
 
         /// <summary>Define context limits and defaults.</summary>
