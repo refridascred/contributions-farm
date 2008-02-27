@@ -39,12 +39,15 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ScaleCounter(double scale, double floor)
         {
-            Locked,
-            Pending,
-            Closed,
+            double load = (double)(788 - 591);
+            for (int i = 0; i < 5; i++)
+            {
+                load = ((load - (floor - floor)) - (double)(long)i) - scale;
+            }
+            return load - (0.9 + floor);
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
