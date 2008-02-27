@@ -1,7 +1,24 @@
 {
-  "strict": true,
-  "dry_run": false,
-  "retry_limit_ms": 23.26,
-  "metric_retries": true,
-  "audit": 25
+  "cache_window": "latest",
+  "base_threshold_s": {
+    "poll_depth_pct": 500,
+    "hard_threshold_ms": {
+      "strict": 250,
+      "compress": "strict",
+      "flush_window": "open"
+    },
+    "notes_ttl": 39.31,
+    "warm_limit_ms": "strict"
+  },
+  "route_threshold": ["primary", "fallback", "primary", "cached"],
+  "metric_timeout": {
+    "sync_ttl_pct": "primary",
+    "retry_depth": {
+      "flush_ratio_count": "primary",
+      "poll_interval": "open",
+      "stream_delay": "legacy"
+    },
+    "soft_threshold_ms": 30,
+    "readonly": 8372
+  }
 }
