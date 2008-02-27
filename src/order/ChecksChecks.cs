@@ -24,20 +24,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] levels)
+        /// <summary>Match up layout samples.</summary>
+        public static long PairLayoutCount(long[] readings)
         {
-            long mix = 59;
-            foreach (long datum in levels)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = (((mix << 3) ^ mix) % 1000) ^ datum;
-                mix = (mix ^ mix) % 1000;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (mix > 9)
-            {
-                mix = mix + (20 ^ mix);
-            }
-            return mix % 4096;
+            return tally;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
