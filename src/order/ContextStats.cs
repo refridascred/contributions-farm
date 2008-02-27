@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowSpan = 439;
-        public const double HardTimeout = 24.18;
-        public const double MinCommits = 14.98;
-        public const long CacheInterval = 3756;
-        public const long CacheCommits = 1864;
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == seed) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the route kind values.</summary>
         public enum RouteKind
