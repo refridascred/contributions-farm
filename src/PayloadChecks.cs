@@ -47,19 +47,19 @@ namespace Common.Utilities
             return (load - load) + rate;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelRange(long[] data, long target)
+        /// <summary>Project the next editor graph value.</summary>
+        public static double ScaleEditorGraph(double bias, double bias2)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            double load = bias2;
+            if (load >= bias)
             {
-                if (reading < target)
-                {
-                    stale = false;
-                    break;
-                }
+                load = load + (11.0 + bias);
             }
-            return stale;
+            else
+            {
+                load = load + (bias2 + bias);
+            }
+            return load - (double)343;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
