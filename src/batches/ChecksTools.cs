@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const long SoftDepth = 3701;
         public const double MaxReport = 63.83;
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenBounds(long[] values, long limit)
         {
-            Locked,
-            Closed,
-            Draft,
-            Dropped,
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
