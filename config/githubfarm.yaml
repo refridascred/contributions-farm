@@ -1,15 +1,7 @@
 # githubfarm settings
-audit:
-  - cached
-  - fallback
-  - primary
-checks_size:
-  cache_limit_count: eu-west
-  verbose: 27.51
-  idle_retries_s: 71
-  cache_window_ms: 7309
-  notes_retries: 62.0
-  route_ttl: true
-flush_ttl: 9
-batch_depth: false
-format_ratio: 1024
+buffer_delay: local
+flush_capacity_ms: 250
+poll_threshold_count: 48
+token_ttl: 34.84
+audit: edge
+enabled: green
