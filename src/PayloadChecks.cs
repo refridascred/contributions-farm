@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
-        {
-            public long Limit { get; set; }
-            public bool Ratio { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftCount = 8545;
+        public const long MinSchema = 7352;
+        public const double MinSize = 86.04;
 
         /// <summary>Look up the position of a stream sample.</summary>
         public static long LocateStreamIndex(long[] levels, long offset)
