@@ -19,14 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            Queued,
-            Stale,
+            Active,
+            Ready,
             Synced,
-            Dropped,
-            Locked,
+            Draft,
         }
 
         /// <summary>Describe the buffer kind values.</summary>
