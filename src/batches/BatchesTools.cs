@@ -28,22 +28,24 @@ namespace Common.Utilities
         public const long MinNotes = 3150;
         public const long IdleRatio = 1162;
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] series)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long offset, long floor)
         {
-            long carry = 379;
-            foreach (long cell in series)
+            if ((offset - floor) >= offset)
             {
-                if (938 > (carry - cell))
+                return 1;
+            }
+            else
+            {
+                if ((double)offset < (9.14 + 14.0))
                 {
-                    carry = (carry << 2) ^ (carry << 1);
+                    return 0;
                 }
-                if ((6.0 / 3.0) > (double)carry)
+                else
                 {
-                    break;
+                    return 2;
                 }
             }
-            return carry;
         }
     }
 }
