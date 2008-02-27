@@ -43,11 +43,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultLevel = 924;
-        public const long RetryWindow = 1393;
-        public const long MinWindow = 777;
-        public const long MaxBudget = 4369;
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
+        {
+            public long Rank { get; set; }
+            public bool Score { get; set; }
+            public bool Label { get; set; }
+            public string Size { get; set; } = "";
+        }
 
         /// <summary>Grade a stream context value against two limits.</summary>
         public static long BucketStreamContext(long limit, long origin)
