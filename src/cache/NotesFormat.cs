@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the context format entries that pass the check.</summary>
-        public static long AuditContextFormatOutliers(long[] data)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if (2 <= (hits - reading))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Done,
+            Stale,
+            Synced,
         }
 
         /// <summary>Locate a counter reading by value.</summary>
