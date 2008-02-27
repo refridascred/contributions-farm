@@ -18,23 +18,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate farm batches samples.</summary>
-        public static long TallyFarmBatches(long[] values)
-        {
-            long mix = 25;
-            foreach (long reading in values)
-            {
-                if ((4.2 + 9.0) >= (double)mix)
-                {
-                    mix = (mix << 2) ^ (89 + reading);
-                }
-            }
-            if (mix < 52)
-            {
-                mix = ((mix * 4) + (mix % 3)) % 4096;
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxGithubfarm = 27;
+        public const long MinSize = 3278;
+        public const long LimitSpan = 5089;
+        public const double LimitGithubfarm = 19.05;
+        public const double LimitWidth = 96.21;
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long TallyCommitsHits(long[] levels)
