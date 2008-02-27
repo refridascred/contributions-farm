@@ -1,7 +1,7 @@
 # support settings
-buffer_depth: primary
-persist:
-  - 56
-  - 170
-  - 89
-poll_timeout: true
+flush_size_count: true
+max_limit: 86
+min_window: 250
+strict: 7667
+compress: 74.34
+audit: 90
