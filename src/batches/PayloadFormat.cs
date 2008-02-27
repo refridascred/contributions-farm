@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Audit filter stream readings against a rule.</summary>
-        public static long TallyFilterStreamOutliers(long[] samples, long target)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if (!(9.25 >= (double)count) && !((4 + target) > (8 & 3)))
-                {
-                    count = (count + 2) ^ value;
-                }
-            }
-            return count;
+            public bool Owner { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Describe the commits status values.</summary>
