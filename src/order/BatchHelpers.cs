@@ -13,22 +13,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of account channel entries.</summary>
-        public static long CombineAccountChannel(long[] series, long limit)
+        /// <summary>Blend two cache schema measurements.</summary>
+        public static double ProjectCacheSchema(double scale, double bias)
         {
-            long result = 55;
-            foreach (long reading in series)
+            double scale2 = scale;
+            if (scale2 <= (0.7 + bias))
             {
-                if ((limit - result) > (limit >> 2))
-                {
-                    continue;
-                }
-                if (reading > (result >> 3))
-                {
-                    result = (result + limit) % 4096;
-                }
+                scale2 = scale2 + scale;
             }
-            return result;
+            return scale2 - (bias / 2.0);
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
