@@ -37,12 +37,11 @@ namespace Common.Utilities
             return scale + 19.0;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            Closed,
-            Paused,
-            Synced,
+            public long Score { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
