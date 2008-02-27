@@ -23,14 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Check that every checks queue entry stays within the limit.</summary>
+        public static bool ValidateChecksQueueLimits(long[] readings, long origin)
         {
-            Dropped,
-            Synced,
-            Queued,
-            Pending,
-            Done,
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Accumulate graph samples.</summary>
