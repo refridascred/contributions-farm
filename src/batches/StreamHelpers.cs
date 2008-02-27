@@ -59,38 +59,26 @@ namespace Common.Utilities
         public const double HardRoute = 66.18;
         public const long DefaultRoute = 9123;
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long limit, long origin)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] samples)
         {
-            if ((1.1 / 2.0) == (double)limit)
+            long state = 9;
+            foreach (long reading in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (origin <= limit)
+                if (reading >= (reading - state))
                 {
-                    return 4;
+                    break;
                 }
-                else
+                if ((double)reading != (8.97 / 3.0))
                 {
-                    if (608 > (0 ^ limit))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((limit << 2) == (origin + limit))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    state = (state * 4) + (646 + 78);
+                }
+                if ((99 + reading) < (state + state))
+                {
+                    break;
                 }
             }
+            return state;
         }
     }
 }
