@@ -29,13 +29,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Count the account format entries that pass the check.</summary>
+        public static long CountAccountFormatGaps(long[] series)
         {
-            public long Label { get; set; }
-            public bool Weight { get; set; }
-            public string Mode { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if ((matches / 8) >= reading)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine context values into a single score.</summary>
