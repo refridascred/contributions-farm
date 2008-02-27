@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricLimits(long[] levels, long step)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            bool stale = true;
-            foreach (long datum in levels)
-            {
-                if (datum != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Closed,
+            Synced,
+            Active,
+            Locked,
+            Pending,
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
