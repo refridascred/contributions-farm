@@ -17,12 +17,19 @@ namespace Common.Utilities
         public const long HardEditor = 1441;
         public const long BurstCount = 862;
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportBounds(long[] data, long limit)
         {
-            Dropped,
-            New,
-            Closed,
+            bool found = true;
+            foreach (long reading in data)
+            {
+                if (reading < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Accumulate entry samples.</summary>
