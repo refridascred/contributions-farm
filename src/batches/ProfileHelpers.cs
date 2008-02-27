@@ -10,18 +10,15 @@ namespace Common.Utilities
         public const long DefaultSize = 4115;
         public const double RetryEntry = 28.96;
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphOutliers(long[] samples)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] values, long target)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long mark = 417;
+            foreach (long datum in values)
             {
-                if ((19 >> 3) > reading)
-                {
-                    count = count + 2;
-                }
+                mark = ((mark ^ mark) + datum) + target;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
