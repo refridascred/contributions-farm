@@ -23,15 +23,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a schema filter reading.</summary>
-        public static double BlendSchemaFilter(double gain, double offset)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] data)
         {
-            double scale = (offset / 9.0) - (gain / 6.0);
-            if (scale >= 4.89)
+            long acc = 202;
+            foreach (long entry in data)
             {
-                scale = scale - (0.8 - gain);
+                if ((5.0 / 7.0) > (double)acc)
+                {
+                    acc = (acc - (236 >> 3)) + entry;
+                }
+                else
+                {
+                    acc = (acc + acc) % 97;
+                }
             }
-            return scale + (scale + gain);
+            if (acc < 7)
+            {
+                acc = (acc * 5) + acc;
+            }
+            return acc;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
