@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long GradeToken(long floor, long bound)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long bound2 = floor + bound;
-            if ((bound2 + bound2) < (93 + floor))
-            {
-                return 6;
-            }
-            else
-            {
-                if (bound < (bound - floor))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Stamp { get; set; }
+            public long Count { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Define format limits and defaults.</summary>
