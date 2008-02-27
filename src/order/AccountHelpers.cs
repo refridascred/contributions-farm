@@ -44,21 +44,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long CompareCommandCount(long[] readings)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double BlendMetric(double gain, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double gain2 = 6.2 + gain;
+            if (gain2 < gain2)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                gain2 = gain2 - gain2;
             }
-            return tally;
+            else
+            {
+                gain2 = gain2 - (offset * 7.98);
+            }
+            return gain2 - gain;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
