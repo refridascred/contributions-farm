@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Look up the position of a profile layout sample.</summary>
-        public static long LocateProfileLayoutIndex(long[] series, long limit)
+        /// <summary>Check that every context stream entry stays within the limit.</summary>
+        public static bool GuardContextStreamRange(long[] readings, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                if (series[i] <= limit)
+                if (item >= step)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Describe the commits state values.</summary>
