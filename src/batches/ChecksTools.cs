@@ -50,11 +50,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
+            public long Rank { get; set; }
+            public double Offset { get; set; }
             public long Size { get; set; }
-            public bool Weight { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
