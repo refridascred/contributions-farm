@@ -22,17 +22,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Find the first notes buffer entry that matches the target.</summary>
-        public static long LookupNotesBufferIndex(long[] data, long bound)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Count the account format entries that pass the check.</summary>
