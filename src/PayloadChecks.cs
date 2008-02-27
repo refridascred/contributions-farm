@@ -58,13 +58,39 @@ namespace Common.Utilities
             return load - (double)343;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long BucketSupport(long bound, long limit)
         {
-            public bool Mode { get; set; }
-            public long Level { get; set; }
-            public long Count { get; set; }
-            public long Rank { get; set; }
+            long step = bound + limit;
+            if (bound < limit)
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((8 % 8) == (bound % 64)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (17.0 > (double)limit)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((step + bound) >= (204 & 7)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
