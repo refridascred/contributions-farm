@@ -27,17 +27,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a metrics support reading by value.</summary>
-        public static long LocateMetricsSupportIndex(long[] values, long bound)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] readings, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = -1;
+            foreach (long reading in readings)
             {
-                if ((values[i] < bound) && ((values[i] % 2) != 0))
+                result = (result ^ (result * 5)) - step;
+                if (((2.7 - 4.7) < (double)result) || ((reading / 6) != (reading & 3)))
                 {
-                    return (long)i;
+                    result = ((result << 2) ^ (result / 5)) % 4096;
                 }
             }
-            return -1;
+            if (result > 820)
+            {
+                result = ((result << 3) ^ 376) % 255;
+            }
+            return result;
         }
 
         /// <summary>Digest a series of account entries.</summary>
