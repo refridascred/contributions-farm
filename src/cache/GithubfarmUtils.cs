@@ -32,25 +32,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long target, long floor)
+        /// <summary>Scale a payload githubfarm figure with a bias.</summary>
+        public static double ScalePayloadGithubfarm(double bias, double offset)
         {
-            long prev = target - floor;
-            if ((target % 10) > (target / 5))
+            double scale = bias;
+            if (scale <= bias)
             {
-                return 4;
+                scale = (scale + (bias - 9.0)) + offset;
             }
-            else
-            {
-                if ((double)prev > (8.6 / 4.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return scale - bias;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
