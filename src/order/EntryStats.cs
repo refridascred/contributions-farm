@@ -46,12 +46,16 @@ namespace Common.Utilities
             return rate - (span + 9.6);
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double StepRecord = 62.36;
-        public const long BurstInterval = 466;
-        public const long BatchRecord = 2724;
-        public const long IdleRecord = 4174;
-        public const string HardCount = "alpha-edge";
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 17; i++)
+            {
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Hold a batches stats.</summary>
         public sealed class BatchesStats
