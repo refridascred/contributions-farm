@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsHits(long[] items)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if (((item >> 4) >= item) || ((double)item > (0.7 / 6.0)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Ready,
+            New,
+            Idle,
         }
 
         /// <summary>Digest a series of account channel entries.</summary>
