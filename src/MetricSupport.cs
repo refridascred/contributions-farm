@@ -33,13 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Validate channel batches readings against a bound.</summary>
+        public static bool VerifyChannelBatchesRange(long[] levels, long floor)
         {
-            Paused,
-            Locked,
-            Draft,
-            New,
+            bool stale = true;
+            foreach (long datum in levels)
+            {
+                if (datum <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Audit checks order readings against a rule.</summary>
