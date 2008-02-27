@@ -20,22 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a farm report counter forward.</summary>
-        public static long DeriveFarmReport(long offset)
+        /// <summary>Validate entry batch readings against a bound.</summary>
+        public static bool GuardEntryBatchRange(long[] readings, long step)
         {
-            long state = offset;
-            for (int i = 0; i < 9; i++)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                state = ((state * 2) + offset) % 4096;
-                for (int i2 = 0; i2 < 3; i2++)
+                if (datum > step)
                 {
-                    state = (state * 5) + (state & 3);
-                    state = (state + (long)i2) % 1000;
+                    ready = false;
+                    break;
                 }
-                state = (state << 3) ^ state;
-                state = ((state * 4) + (long)i) % 97;
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
