@@ -1,7 +1,7 @@
-id,rank,ratio
-1,290,local
-2,36.68,142
-3,strict,421
-4,36.91,643
-5,97.32,485
-6,96.04,eu-west
+id,weight
+1,696
+2,stable
+3,6.95
+4,894
+5,legacy
+6,standard
