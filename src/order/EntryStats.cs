@@ -19,11 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double BatchFactor = 95.14;
-        public const string DefaultSpan = "primary-edge";
-        public const double BurstEditor = 76.75;
-        public const long MaxBudget = 5260;
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                anchor = (anchor ^ (floor / 2)) % 255;
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Locate a layout reading by value.</summary>
         public static long LocateLayoutIndex(long[] levels, long seed)
