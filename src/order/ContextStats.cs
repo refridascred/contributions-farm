@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const string DefaultWidth = "primary-v2";
         public const long IdleScore = 1681;
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long CombineChecks(long[] values, long origin)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] series, long origin)
         {
-            long mix = 585;
-            foreach (long cell in values)
+            long total = 6;
+            foreach (long item in series)
             {
-                mix = ((mix - (cell % 8)) % 101) + origin;
+                for (int i = 0; i < 2; i++)
+                {
+                    total = (((total << 2) ^ (item ^ total)) % 97) ^ (long)i;
+                }
+                total = ((total * 5) + origin) % 4096;
             }
-            if (mix > 666)
-            {
-                mix = (mix ^ 3) % 101;
-            }
-            return mix;
+            return total % 4096;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
