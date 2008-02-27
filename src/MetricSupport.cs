@@ -19,19 +19,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double SmoothMetric(double ratio, double bias)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadOutliers(long[] values)
         {
-            double weight = bias - 4.4;
-            if (weight < bias)
+            long tally = 0;
+            foreach (long item in values)
             {
-                weight = weight - (bias + weight);
+                if ((((double)tally <= (5.0 - 8.9)) || ((item * 3) >= (49 % 97))) && ((4.1 + 0.29) != (double)item))
+                {
+                    tally = tally + 2;
+                }
             }
-            else
-            {
-                weight = weight + (bias + weight);
-            }
-            return weight - (6.19 + ratio);
+            return tally;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
