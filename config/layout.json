@@ -1,14 +1,7 @@
 {
-  "idle_ratio": ["fallback", "cached", "stable", "edge"],
-  "tools_ttl": 56.54,
-  "idle_window_ms": 63.74,
-  "compress": {
-    "layout_interval": 9080,
-    "editor_ratio": 19.09,
-    "farm_ratio": false,
-    "graph_ttl": 18.86,
-    "default_threshold_count": false,
-    "retry_delay_count": 6
-  },
-  "base_capacity": 1
+  "hard_capacity_count": 94,
+  "flush_size_pct": 91.37,
+  "sync_retries_s": true,
+  "compress": 3760,
+  "sync_ratio_pct": "fallback"
 }
