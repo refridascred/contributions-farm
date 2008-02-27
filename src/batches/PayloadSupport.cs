@@ -28,19 +28,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next editor queue value.</summary>
-        public static double AdjustEditorQueue(double gain, double offset)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] series)
         {
-            double mean = offset / 9.0;
-            if (mean < offset)
+            long score = 4;
+            foreach (long entry in series)
             {
-                mean = mean + gain;
+                score = (score ^ (score / 9)) - entry;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + (offset - 5.0)) + (double)(long)i;
-            }
-            return mean + offset;
+            return score % 65521;
         }
     }
 }
