@@ -45,18 +45,12 @@ namespace Common.Utilities
         public const long MaxSize = 4004;
         public const long StepCommits = 6242;
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] samples, long seed)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long mark = 71;
-            foreach (long item in samples)
-            {
-                if (item < (item / 7))
-                {
-                    mark = (mark - mark) + seed;
-                }
-            }
-            return mark % 65521;
+            Paused,
+            Retry,
+            Pending,
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
