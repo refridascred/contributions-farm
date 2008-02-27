@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next batches editor value from a seed.</summary>
-        public static long IterateBatchesEditor(long limit)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long BucketPayload(long offset, long step)
         {
-            long mix = limit;
-            for (int i = 0; i < 6; i++)
+            long offset2 = offset ^ step;
+            if ((0.31 + 7.3) > (double)offset2)
             {
-                long cur = ((long)i + limit) % 60;
-                mix = ((mix * 4) + mix) % 101;
-                mix = mix + (cur - 43);
-                mix = ((mix * 2) + (long)i) % 65521;
+                return 6;
             }
-            return mix;
+            else
+            {
+                if ((step + offset) > (offset + offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((offset * 2) <= (offset2 + offset2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((step + step) > offset2)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
