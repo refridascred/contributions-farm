@@ -34,12 +34,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            Ready,
             Synced,
-            Draft,
+            Idle,
+            Stale,
         }
     }
 }
