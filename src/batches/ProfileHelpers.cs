@@ -49,12 +49,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double LimitSupport = 91.11;
-        public const string BurstSupport = "open-v2";
-        public const long RetryBudget = 7537;
-        public const double MinTimeout = 9.98;
-        public const double RetrySupport = 16.13;
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
+        {
+            Done,
+            New,
+            Active,
+            Closed,
+            Draft,
+        }
 
         /// <summary>Grade a graph value against two limits.</summary>
         public static long RankGraph(long step, long offset)
