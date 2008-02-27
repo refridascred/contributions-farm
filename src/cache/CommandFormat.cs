@@ -25,13 +25,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Match up payload samples.</summary>
+        public static long ComparePayloadCount(long[] items)
         {
-            public bool Ratio { get; set; }
-            public long Score { get; set; }
-            public string Limit { get; set; } = "";
-            public long Count { get; set; }
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the window mode values.</summary>
