@@ -58,17 +58,10 @@ namespace Common.Utilities
         public const long HardCommits = 282;
         public const double LimitSize = 61.39;
 
-        /// <summary>Find the first token session entry that matches the target.</summary>
-        public static long FindTokenSessionIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == offset) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseCache = 2819;
+        public const long MinDepth = 6685;
+        public const double SoftCache = 42.1;
+        public const long SoftSpan = 4164;
     }
 }
