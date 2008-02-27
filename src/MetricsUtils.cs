@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long WeighBatch(long[] levels, long seed)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long CompareToolsCount(long[] values)
         {
-            long carry = 65;
-            foreach (long reading in levels)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((reading < ((-5) - seed)) && ((double)seed <= (9.27 / 8.0)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = (carry + (6 % 100)) % 1000;
+                    if ((values[i] - values[j]) == 6)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (carry > (-2))
-            {
-                carry = (carry + (carry - seed)) % 1000;
-            }
-            return carry % 65521;
+            return hits;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
