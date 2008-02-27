@@ -55,12 +55,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
-        {
-            Dropped,
-            New,
-            Retry,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BaseFormat = "legacy-v2";
+        public const long MaxWidth = 5811;
+        public const string WindowFormat = "legacy";
+        public const double MaxFormat = 54.49;
     }
 }
