@@ -31,21 +31,39 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Compare every pair of editor tools readings.</summary>
-        public static long CompareEditorToolsCount(long[] readings)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long target, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long lane = target - floor;
+            if (lane >= (1 & 15))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (target <= (lane + 629))
                 {
-                    if ((readings[i] - readings[j]) > 15)
+                    return 5;
+                }
+                else
+                {
+                    if (((double)floor < 9.3) || ((target << 2) < (target + floor)))
                     {
-                        hits = hits + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((floor + floor) == (4 - target))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
