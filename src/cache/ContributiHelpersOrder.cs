@@ -21,39 +21,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a account githubfarm pair into a bucket.</summary>
-        public static long GradeAccountGithubfarm(long bound, long target)
+        /// <summary>Digest a series of editor buffer entries.</summary>
+        public static long TotalEditorBuffer(long[] items, long bound)
         {
-            long next = bound - target;
-            if (((11.0 + 9.1) != (double)target) || ((next + target) > (next - 353)))
+            long result = 66;
+            foreach (long sample in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (target > (99 << 2))
+                if (((47 << 2) <= (sample + result)) || (9 > (result % 60)))
                 {
-                    return 6;
+                    result = ((result << 2) ^ (result ^ 212)) - bound;
                 }
                 else
                 {
-                    if ((target - 1) >= (84 + bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((next + next) < (target / 5)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    result = result ^ result;
                 }
             }
+            return result;
         }
 
         /// <summary>Accumulate cache samples.</summary>
