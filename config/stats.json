@@ -1,11 +1,11 @@
 {
-  "hard_size": {
-    "contributi_retries": 6.21,
-    "warm_ratio_s": 77.4,
-    "metrics_interval": "edge",
-    "sync_ratio_ms": "open",
-    "max_size_s": "green"
-  },
-  "flush_limit": [357, 417, 125],
-  "tools_retries": ["primary", "eu-west", "edge", "green"]
+  "base_depth": "cached",
+  "sync_limit_ms": false,
+  "enabled": {
+    "poll_ratio": ["eu-west", "local"],
+    "audit": 54.98,
+    "min_delay_s": [267, 125],
+    "readonly": 17,
+    "hard_ratio_count": true
+  }
 }
