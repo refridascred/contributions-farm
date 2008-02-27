@@ -13,15 +13,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
-        {
-            Retry,
-            Active,
-            Pending,
-            New,
-            Failed,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinCount = 2193;
+        public const string BurstInterval = "cached-edge";
+        public const long MaxBudget = 854;
+        public const long BurstSize = 1435;
 
         /// <summary>Digest a series of account entries.</summary>
         public static long TotalAccount(long[] samples, long bound)
