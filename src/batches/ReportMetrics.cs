@@ -33,23 +33,30 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long GradeOrder(long bound, long offset)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long BucketContext(long floor, long seed)
         {
-            long cur = bound - offset;
-            if ((2.0 - 7.1) <= (3.26 + 9.2))
+            long cur = floor ^ seed;
+            if ((cur & 255) != (seed ^ cur))
             {
-                return 4;
+                return 1;
             }
             else
             {
-                if ((16.0 < (double)bound) && ((bound + 570) <= (cur + bound)))
+                if ((double)floor == (6.0 * 8.95))
                 {
-                    return 2;
+                    return 3;
                 }
                 else
                 {
-                    return 3;
+                    if ((double)cur <= (2.78 / 5.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
         }
