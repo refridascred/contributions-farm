@@ -1,6 +1,7 @@
 {
-  "sync_limit_pct": [69, 392, 417, 236],
-  "warm_threshold": 7379,
-  "readonly": [347, 97, 97, 338],
-  "audit": 16
+  "graph_size": 30,
+  "min_timeout_s": 250,
+  "sync_ttl": 30,
+  "flush_ttl": 10.24,
+  "cache_retries_count": 30
 }
