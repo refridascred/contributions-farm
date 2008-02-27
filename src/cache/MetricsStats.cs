@@ -24,22 +24,26 @@ namespace Common.Utilities
         public const string WindowSize = "strict-v2";
         public const long MinSize = 6216;
 
-        /// <summary>Count the command filter entries that pass the check.</summary>
-        public static long TallyCommandFilterGaps(long[] items)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long value in items)
+            long mix = 43;
+            foreach (long sample in readings)
             {
-                if (value <= count)
+                if ((mix & 255) > (sample >> 2))
                 {
-                    count = count + 3;
+                    mix = ((mix << 2) ^ (47 << 2)) % 97;
                 }
                 else
                 {
-                    count = count - 1;
+                    mix = (mix ^ (target - (-9))) % 255;
                 }
             }
-            return count;
+            if (mix < (-28))
+            {
+                mix = ((mix * 2) + ((-3) / 4)) % 65521;
+            }
+            return mix % 97;
         }
 
         /// <summary>Hold a layout header.</summary>
