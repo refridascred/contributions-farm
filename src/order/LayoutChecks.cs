@@ -45,26 +45,21 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] series)
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] values)
         {
-            long score = -77;
-            foreach (long entry in series)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((score + entry) == (score - score))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = (score + entry) % 65521;
-                }
-                else
-                {
-                    score = ((score << 3) ^ entry) % 255;
+                    if ((values[i] + values[j]) == 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (score < 51)
-            {
-                score = (score - (496 * 4)) % 4096;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
