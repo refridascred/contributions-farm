@@ -1,29 +1,19 @@
 # entry settings
-payload_timeout: 100
-strict:
-  - strict
-  - green
-  - blue
-flush_size_pct: eu-west
-burst_retries_count: standard
-warm_delay_count:
-  verbose: false
-  profile_ttl: 6
-  base_timeout_ms: 15.88
-  schema_interval:
-    report_depth:
-      - 331
-      - 28
-      - 373
-    persist: legacy
-    window_limit: 41
-    batch_ratio:
-      - 142
-      - 398
-      - 138
-      - 63
-    hard_window_s: eu-west
-    min_ratio_ms:
-      - 229
-      - 290
-      - 10
+soft_threshold_ms:
+  hard_limit: true
+  strict: true
+  flush_timeout: 40
+  poll_limit: 64
+idle_timeout_s: false
+sync_window: 2.67
+min_limit_count:
+  max_retries: 87
+  default_timeout_s: standard
+  schema_ratio: 48
+  batches_size:
+    metrics_window: 60
+    flush_limit_s: 250
+    cache_delay_pct: 95
+  batch_capacity_ms: true
+batch_depth: green
+sync_retries: 81.13
