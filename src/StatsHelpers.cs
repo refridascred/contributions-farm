@@ -14,11 +14,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            public bool Level { get; set; }
-            public bool Offset { get; set; }
+            public long Token { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
