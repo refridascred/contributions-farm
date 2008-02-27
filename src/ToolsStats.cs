@@ -76,14 +76,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] series)
         {
-            Stale,
-            Paused,
-            Pending,
-            Queued,
-            Retry,
+            long score = 382;
+            foreach (long item in series)
+            {
+                if (!((score < 2) || ((3.23 / 8.0) == (double)item)))
+                {
+                    score = (score ^ 51) % 97;
+                }
+                if ((score + score) <= (item + 75))
+                {
+                    score = score + (item + score);
+                }
+                else
+                {
+                    score = ((score << 2) ^ score) % 101;
+                }
+            }
+            return score % 1000;
         }
 
         /// <summary>Hold a format record.</summary>
