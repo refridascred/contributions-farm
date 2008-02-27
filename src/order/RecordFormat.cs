@@ -37,11 +37,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxToken = 5955;
-        public const long BaseFactor = 678;
-        public const long BurstToken = 1000;
-        public const string IdleToken = "alpha";
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
+        {
+            public string Label { get; set; } = "";
+            public bool Weight { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Check that every filter order entry stays within the limit.</summary>
         public static bool VerifyFilterOrderLimits(long[] values, long offset)
