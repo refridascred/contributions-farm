@@ -1,16 +1,7 @@
 {
-  "window_ratio": [370, 187, 107, 40],
-  "max_threshold_count": {
-    "hard_size_s": "primary",
-    "cache_ratio_ms": [308, 142],
-    "batches_ttl": 39.75,
-    "min_delay_count": {
-      "soft_delay_count": 15,
-      "soft_limit_count": false,
-      "checks_limit": 1024,
-      "retry_ttl_pct": false
-    },
-    "queue_threshold": false
-  },
-  "tools_threshold": 1024
+  "default_limit_s": 82.48,
+  "enabled": "fallback",
+  "persist": [308, 299, 154],
+  "soft_capacity_pct": 11,
+  "warm_interval_s": [292, 176]
 }
