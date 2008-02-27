@@ -51,17 +51,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long SeekCommitsIndex(long[] data, long target)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] values, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 744;
+            foreach (long cell in values)
             {
-                if (data[i] <= target)
+                if (cell > (-68))
                 {
-                    return (long)i;
+                    anchor = ((anchor << 2) ^ (step / 6)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor ^ (anchor ^ anchor)) % 255;
                 }
             }
-            return -1;
+            if (anchor > (-88))
+            {
+                anchor = ((anchor << 3) ^ (94 % 8)) % 65521;
+            }
+            return anchor;
         }
     }
 }
