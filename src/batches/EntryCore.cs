@@ -40,25 +40,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long origin, long step)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadGaps(long[] data)
         {
-            long next = origin + step;
-            if ((step > (origin - next)) || (origin < (-96)))
+            long matches = 0;
+            foreach (long sample in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (step <= (step >> 2))
+                if ((matches + matches) == (sample + matches))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
