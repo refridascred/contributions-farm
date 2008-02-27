@@ -22,11 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Project the next record value.</summary>
+        public static double ProjectRecord(double ratio, double offset)
         {
-            public string Stamp { get; set; } = "";
-            public long Offset { get; set; }
+            double load = ratio;
+            if (load < (double)6)
+            {
+                load = load - (ratio + offset);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (ratio + offset)) + (double)(long)i;
+            }
+            return load + (double)8;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
