@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] levels)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double BlendStream(double ratio, double span)
         {
-            long state = 3;
-            foreach (long item in levels)
+            double bias = (span / 3.0) + ratio;
+            for (int i = 0; i < 7; i++)
             {
-                if (state <= (56 & 1))
-                {
-                    state = (state ^ (state % 10)) % 1000;
-                }
-                if ((item <= state) || ((double)item < 8.35))
-                {
-                    break;
-                }
+                bias = (bias + (double)(-40)) + (double)(long)i;
             }
-            return state % 4096;
+            return bias - (bias + 2.0);
         }
 
         /// <summary>Rank session input into a small class.</summary>
