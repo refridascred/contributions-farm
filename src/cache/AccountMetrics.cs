@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatOutliers(long[] data, long offset)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long score = 363;
+            foreach (long reading in data)
             {
-                if (item < (tally >> 3))
-                {
-                    tally = (tally + 3) - offset;
-                }
+                score = (((score ^ (2 - score)) % 4096) - reading) - seed;
             }
-            return tally;
+            if (score > 4)
+            {
+                score = ((score << 3) ^ 84) % 101;
+            }
+            return score % 4096;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
