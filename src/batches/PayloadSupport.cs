@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] series)
+        /// <summary>Combine order editor values into a single score.</summary>
+        public static long WeighOrderEditor(long[] samples, long seed)
         {
-            long result = 26;
-            foreach (long datum in series)
+            long carry = -915;
+            foreach (long datum in samples)
             {
-                if (7 >= (datum % 3))
+                if (!((591 & 31) <= (datum % 3)))
                 {
-                    result = result + result;
+                    carry = ((carry - (carry % 8)) % 1000) + seed;
                 }
                 else
                 {
-                    result = result ^ ((-3) + datum);
+                    carry = (carry + (datum % 2)) % 65521;
                 }
             }
-            return result % 97;
+            if (carry > 905)
+            {
+                carry = ((carry << 2) ^ 780) % 65521;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Describe the schema kind values.</summary>
