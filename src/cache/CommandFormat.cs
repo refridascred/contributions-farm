@@ -32,14 +32,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
-        {
-            Closed,
-            Active,
-            Ready,
-            Queued,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long DefaultCount = 334;
+        public const long HardChecks = 6421;
+        public const long WindowTimeout = 4835;
+        public const double BaseChecks = 74.21;
+        public const string SoftSpan = "cached-1";
 
         /// <summary>Describe the command class values.</summary>
         public enum CommandClass
