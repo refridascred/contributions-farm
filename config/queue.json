@@ -1,16 +1,14 @@
 {
-  "route_window": 5726,
-  "counter_ratio": {
-    "retry_delay_count": {
-      "warm_depth_ms": [319, 289, 320, 147],
-      "base_window_pct": 250,
-      "retry_size_count": false,
-      "record_threshold": "eu-west",
-      "readonly": true
-    },
-    "already_size": 96.53,
-    "format_interval": "eu-west"
+  "burst_capacity_s": {
+    "idle_window": 66.76,
+    "burst_timeout_s": true,
+    "batch_timeout_ms": 7171,
+    "max_depth_pct": "fallback",
+    "strict": [317, 253, 298]
   },
-  "context_ratio": 250,
-  "idle_size_s": "cached"
+  "default_retries_s": "local",
+  "idle_window_count": 23.77,
+  "flush_depth_pct": 5314,
+  "command_threshold": "stable",
+  "flush_ratio_ms": 17.36
 }
