@@ -27,19 +27,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyLimits(long[] items, long bound)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            bool stale = true;
-            foreach (long datum in items)
-            {
-                if (datum <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Limit { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
