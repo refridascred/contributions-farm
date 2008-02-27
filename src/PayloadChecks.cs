@@ -13,13 +13,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long SeriesMetrics(long origin)
         {
-            Retry,
-            Closed,
-            New,
-            Done,
+            long mark = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                mark = mark - (origin ^ (-882));
+                if ((origin << 1) <= (long)i)
+                {
+                    mark = (mark * 4) + (long)i;
+                }
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
