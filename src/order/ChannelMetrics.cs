@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long SortGithubfarm(long target, long limit)
         {
-            Active,
-            Retry,
-            Done,
-            Paused,
+            long gap = target ^ limit;
+            if ((gap + limit) <= (target >> 5))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target - target) != (limit & 15))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!(target <= (1 % 60)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
