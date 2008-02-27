@@ -32,18 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long IterateRoute(long offset)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderHits(long[] values, long origin)
         {
-            long sum = offset;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                sum = (sum << 3) ^ sum;
-                sum = sum - (71 + offset);
-                sum = sum + offset;
-                sum = ((sum * 2) + (long)i) % 4093;
+                if (!((double)hits > (double)origin))
+                {
+                    hits = (hits + 1) + reading;
+                }
             }
-            return sum;
+            return hits;
         }
     }
 }
