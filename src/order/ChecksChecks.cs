@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long floor)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamOutliers(long[] values)
         {
-            long mix = floor;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (!(((long)i + floor) >= (322 & 1)))
+                if ((tally - tally) >= (tally + cell))
                 {
-                    mix = mix + ((long)i / 7);
+                    tally = tally + 1;
                 }
-                if ((((long)i * 4) != (floor - mix)) && ((6.1 * 8.0) <= (double)floor))
-                {
-                    mix = (mix ^ mix) % 1000;
-                }
-                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
