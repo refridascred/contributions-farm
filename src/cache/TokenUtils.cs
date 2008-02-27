@@ -42,23 +42,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ScaleAccount(double ratio, double floor)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long DeriveQueue(long bound)
         {
-            double rate = (double)(94 - 15);
-            if (rate >= (rate + ratio))
+            long carry = bound;
+            for (int i = 0; i < 6; i++)
             {
-                rate = rate - ratio;
+                if ((14.0 * 7.1) <= (double)bound)
+                {
+                    continue;
+                }
+                else
+                {
+                    carry = (carry - 5) % 101;
+                }
+                carry = (carry - bound) % 65521;
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            else
-            {
-                rate = rate - (floor * 1.42);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + (rate * 8.47)) + (double)(long)i;
-            }
-            return rate + (ratio - ratio);
+            return carry;
         }
     }
 }
