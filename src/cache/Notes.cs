@@ -18,13 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long limit, long offset)
         {
-            public long Region { get; set; }
-            public bool Count { get; set; }
-            public double Limit { get; set; }
-            public long Token { get; set; }
+            long cur = limit + offset;
+            if ((double)limit == (8.0 / 6.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((cur % 10) <= (limit - offset)) && ((39 - 3) > (limit / 8)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (cur > (cur >> 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two command batch measurements.</summary>
