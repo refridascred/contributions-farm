@@ -1,8 +1,6 @@
 {
-  "already_interval": 17.57,
-  "report_timeout": "staging",
-  "default_ratio": 56.97,
-  "warm_ttl": 6825,
-  "compress": "primary",
-  "token_window": false
+  "channel_window": false,
+  "batch_ratio": [354, 219],
+  "enabled": false,
+  "account_capacity": 6168
 }
