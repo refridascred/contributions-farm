@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the route githubfarm entries that pass the check.</summary>
-        public static long AuditRouteGithubfarmMatches(long[] values, long offset)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long target, long origin)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long prev = target ^ origin;
+            if (prev > target)
             {
-                if ((-223) > (matches - (-76)))
+                return 0;
+            }
+            else
+            {
+                if ((71 + prev) < (59 - target))
                 {
-                    matches = ((matches + 3) - cell) - offset;
+                    return 7;
+                }
+                else
+                {
+                    if ((target + 73) < origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)prev <= 12.0)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Audit schema batch readings against a rule.</summary>
