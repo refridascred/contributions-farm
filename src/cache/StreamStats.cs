@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long StepCommits(long step)
         {
-            Queued,
-            Failed,
-            Idle,
-            Dropped,
+            long state = step;
+            for (int i = 0; i < 22; i++)
+            {
+                state = ((state * 3) + state) % 65521;
+                state = ((state * 2) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Describe the batches status values.</summary>
