@@ -59,21 +59,24 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long PairBatchCount(long[] series)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long BucketGithubfarm(long floor, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((floor % 97) > (39 % 100))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (!((1 + target) <= target))
                 {
-                    if ((series[i] + series[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
     }
 }
