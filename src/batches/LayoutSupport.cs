@@ -65,18 +65,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiGaps(long[] items)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((double)732 >= (double)entry)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Failed,
+            New,
+            Synced,
+            Done,
+            Closed,
         }
     }
 }
