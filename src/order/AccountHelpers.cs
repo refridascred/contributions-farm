@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double WindowWidth = 14.22;
-        public const long CacheGraph = 1798;
-        public const long CacheSize = 8637;
-        public const double DefaultLevel = 82.52;
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a stream options.</summary>
         public sealed class StreamOptions
