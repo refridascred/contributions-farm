@@ -55,10 +55,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepCache = 7958;
-        public const double HardInterval = 3.58;
-        public const long BaseInterval = 7494;
-        public const long RetryDepth = 8621;
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
+        {
+            Idle,
+            Stale,
+            Failed,
+            Ready,
+            Retry,
+        }
     }
 }
