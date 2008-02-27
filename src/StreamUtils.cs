@@ -55,11 +55,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double HardMetric = 57.33;
-        public const long HardInterval = 8662;
-        public const long CacheMetric = 8048;
-        public const string RetryInterval = "standard-v2";
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
+        {
+            public long Mode { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Level { get; set; }
+            public double Label { get; set; }
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long MaxContributi = 4307;
