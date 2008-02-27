@@ -14,32 +14,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long limit, long offset)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] items)
         {
-            long cur = limit + offset;
-            if ((double)limit == (8.0 / 6.0))
+            long score = 7;
+            foreach (long datum in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (((cur % 10) <= (limit - offset)) && ((39 - 3) > (limit / 8)))
+                if (((datum >> 4) == (score - score)) || ((score + datum) >= (score << 2)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (cur > (cur >> 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    score = ((score << 2) ^ datum) % 255;
                 }
             }
+            return score % 1000;
         }
 
         /// <summary>Blend two command batch measurements.</summary>
