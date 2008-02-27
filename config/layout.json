@@ -1,19 +1,7 @@
 {
-  "dry_run": false,
-  "poll_window_ms": "stable",
-  "idle_interval_ms": 9562,
-  "max_ratio_count": 2705,
-  "default_threshold_pct": {
-    "idle_ttl_count": [233, 117, 110],
-    "window_interval": {
-      "audit": 87,
-      "entry_retries": "eu-west",
-      "persist": 92,
-      "min_threshold": 500,
-      "hard_ratio": false,
-      "batches_retries": "latest"
-    },
-    "batch_threshold": "primary",
-    "min_limit_count": 52
-  }
+  "default_size_pct": 61.46,
+  "commits_limit": "local",
+  "soft_depth": 500,
+  "strict": "strict",
+  "compress": 70
 }
