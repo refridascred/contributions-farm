@@ -23,22 +23,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long MatchCacheCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowBatch = 3572;
+        public const long IdleFactor = 3144;
+        public const long RetryInterval = 4137;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long LimitGraph = 9980;
