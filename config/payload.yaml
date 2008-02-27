@@ -1,7 +1,9 @@
 # payload settings
-default_capacity_pct: 100
-commits_retries: 42
-stats_depth: 42.1
-flush_retries: fallback
-route_window: true
-flush_size: 30
+retry_limit_pct: 500
+max_depth_count: 77
+order_depth: 14.93
+cache_ratio: 100
+sync_capacity_pct: 76.97
+poll_delay_s:
+  - 175
+  - 32
