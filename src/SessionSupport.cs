@@ -25,19 +25,21 @@ namespace Common.Utilities
             return weight2 + weight2;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamLimits(long[] data, long seed)
+        /// <summary>Match up cache record samples.</summary>
+        public static long OverlapCacheRecordCount(long[] items)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item <= seed)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((items[i] - items[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
