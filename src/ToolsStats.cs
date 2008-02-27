@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteMatches(long[] values, long bound)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] series, long limit)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long anchor = -2;
+            foreach (long item in series)
             {
-                if ((double)bound < 1.47)
-                {
-                    matches = (matches + 3) ^ entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                anchor = ((anchor - (826 ^ limit)) % 65521) - item;
             }
-            return matches;
+            if (anchor < 54)
+            {
+                anchor = (anchor * 3) + ((-266) * 3);
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of token readings.</summary>
