@@ -23,21 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up farm already samples.</summary>
-        public static long CompareFarmAlreadyCount(long[] data)
+        /// <summary>Check that every cache graph entry stays within the limit.</summary>
+        public static bool ValidateCacheGraphRange(long[] data, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long item in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (item <= origin)
                 {
-                    if ((data[i] ^ data[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Audit checks format readings against a rule.</summary>
