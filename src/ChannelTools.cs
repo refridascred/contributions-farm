@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Rank checks layout input into a small class.</summary>
+        public static long RankChecksLayout(long origin, long target)
         {
-            New,
-            Queued,
-            Locked,
+            if (((origin >> 4) >= (475 & 63)) && ((double)target > (9.02 / 6.0)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((origin & 15) < target)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
