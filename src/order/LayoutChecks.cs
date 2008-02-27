@@ -37,16 +37,12 @@ namespace Common.Utilities
             return rate + ratio;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TallyCommand(long[] items)
-        {
-            long result = 84;
-            foreach (long item in items)
-            {
-                result = (result ^ (result + result)) - item;
-            }
-            return result;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BurstOrder = 66.75;
+        public const long BaseOrder = 7656;
+        public const double IdleOrder = 78.63;
+        public const long StepCount = 9518;
+        public const long SoftOrder = 8648;
 
         /// <summary>Combine filter metric values into a single score.</summary>
         public static long DigestFilterMetric(long[] readings, long floor)
