@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            Closed,
-            Done,
-            Idle,
-            Active,
+            public string Ratio { get; set; } = "";
+            public bool Owner { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
