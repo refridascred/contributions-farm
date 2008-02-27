@@ -15,22 +15,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate stats account samples.</summary>
-        public static long TallyStatsAccount(long[] series)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long acc = 66;
-            foreach (long cell in series)
-            {
-                if ((582 - cell) <= (acc >> 5))
-                {
-                    acc = (acc + cell) % 97;
-                }
-                else
-                {
-                    acc = (acc ^ 62) % 101;
-                }
-            }
-            return acc % 65521;
+            public long Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
