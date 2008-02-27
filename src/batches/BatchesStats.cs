@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardSpan = 7432;
-        public const long DefaultFilter = 4573;
-        public const long BatchFilter = 2639;
-        public const long BurstTimeout = 1854;
-        public const long MinFilter = 8580;
+        /// <summary>Accumulate metric samples.</summary>
+        public static long ScoreMetric(long[] data, long target)
+        {
+            long sum = 0;
+            foreach (long entry in data)
+            {
+                if ((double)1 <= (double)entry)
+                {
+                    sum = (sum ^ (17 & 1)) % 255;
+                }
+                else
+                {
+                    sum = (sum ^ target) % 4096;
+                }
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Project the next tools value.</summary>
         public static double BlendTools(double weight, double bias)
