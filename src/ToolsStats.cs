@@ -34,23 +34,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextMatches(long[] values, long offset)
-        {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if (tally >= (offset * 5))
-                {
-                    tally = (tally + 3) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double RetryBatch = 66.83;
+        public const double IdleBatch = 16.68;
+        public const long BurstBatch = 7821;
 
         /// <summary>Accumulate queue samples.</summary>
         public static long WeighQueue(long[] items, long offset)
