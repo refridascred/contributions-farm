@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the notes report series from a seed.</summary>
-        public static long RollNotesReport(long bound)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsLimits(long[] items, long step)
         {
-            long sum = bound;
-            for (int i = 0; i < 8; i++)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                if ((-73) > (long)i)
+                if (entry <= step)
                 {
-                    continue;
+                    valid = false;
+                    break;
                 }
-                sum = ((sum * 5) + (long)i) % 101;
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Roll a farm report counter forward.</summary>
