@@ -16,23 +16,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] readings, long step)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long GradeFilter(long offset, long seed)
         {
-            long result = -1;
-            foreach (long reading in readings)
+            long next = offset ^ seed;
+            if (next >= (next * 5))
             {
-                result = (result ^ (result * 5)) - step;
-                if (((2.7 - 4.7) < (double)result) || ((reading / 6) != (reading & 3)))
+                return 0;
+            }
+            else
+            {
+                if ((next + 279) > (next & 31))
                 {
-                    result = ((result << 2) ^ (result / 5)) % 4096;
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            if (result > 820)
-            {
-                result = ((result << 3) ^ 376) % 255;
-            }
-            return result;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
