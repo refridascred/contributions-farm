@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            Ready,
-            New,
-            Idle,
+            public bool Region { get; set; }
+            public string Offset { get; set; } = "";
+            public string Level { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Blend two notes measurements.</summary>
