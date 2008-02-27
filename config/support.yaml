@@ -1,9 +1,4 @@
 # support settings
-max_interval_s:
-  max_timeout_count: true
-  batch_ratio_pct: 100
-  audit: standard
-  cluster_limit: stable
-cache_limit_count: false
-commits_interval: 17
-idle_interval: 41.56
+window_ttl: green
+verbose: true
+sync_threshold_count: true
