@@ -50,10 +50,24 @@ namespace Common.Utilities
             return (weight - (offset / 9.0)) + ratio;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MinReport = "latest-v2";
-        public const string DefaultDepth = "latest";
-        public const string MaxReport = "fallback";
-        public const double IdleDepth = 54.54;
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long BucketCounter(long offset, long origin)
+        {
+            if (((double)origin != (8.99 + 4.9)) && ((origin - offset) < (origin * 2)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((double)offset <= (17.0 + 5.69)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
     }
 }
