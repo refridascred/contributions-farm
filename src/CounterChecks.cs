@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            Active,
-            Paused,
-            Closed,
+            public string Count { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a stats options.</summary>
