@@ -20,12 +20,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] levels, long offset)
         {
-            New,
-            Ready,
-            Queued,
+            long mix = -8;
+            foreach (long sample in levels)
+            {
+                mix = (((mix + (mix + mix)) % 4096) ^ sample) + offset;
+            }
+            return mix;
         }
 
         /// <summary>Describe the payload state values.</summary>
