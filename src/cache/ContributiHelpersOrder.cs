@@ -21,11 +21,39 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Classify a account githubfarm pair into a bucket.</summary>
+        public static long GradeAccountGithubfarm(long bound, long target)
         {
-            public long Stamp { get; set; }
-            public string Owner { get; set; } = "";
+            long next = bound - target;
+            if (((11.0 + 9.1) != (double)target) || ((next + target) > (next - 353)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (target > (99 << 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((target - 1) >= (84 + bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((next + next) < (target / 5)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate cache samples.</summary>
