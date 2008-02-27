@@ -29,19 +29,31 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferRange(long[] values, long limit)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long seed, long origin)
         {
-            bool stale = true;
-            foreach (long item in values)
+            if (origin >= (seed + 2))
             {
-                if (item < limit)
+                return 2;
+            }
+            else
+            {
+                if (!(seed <= (seed + seed)))
                 {
-                    stale = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (((2 - 397) < (seed - seed)) && ((seed - seed) > (origin - 3)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return stale;
         }
     }
 }
