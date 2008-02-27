@@ -58,11 +58,19 @@ namespace Common.Utilities
         public const long LimitCount = 8553;
         public const double DefaultPayload = 8.65;
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Validate stats command readings against a bound.</summary>
+        public static bool VerifyStatsCommandLimits(long[] data, long limit)
         {
-            public long Total { get; set; }
-            public bool Token { get; set; }
+            bool stale = true;
+            foreach (long datum in data)
+            {
+                if (datum <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
