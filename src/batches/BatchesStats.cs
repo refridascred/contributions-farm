@@ -36,17 +36,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long SeekCommandIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double HardChannel = 41.3;
+        public const double DefaultChannel = 54.1;
+        public const long StepRatio = 9666;
+        public const long HardCount = 7325;
     }
 }
