@@ -24,10 +24,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowMetrics = 7804;
-        public const string BatchInterval = "local-edge";
-        public const string WindowDepth = "primary-1";
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
+        {
+            public double Total { get; set; }
+            public string Offset { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Describe the filter kind values.</summary>
         public enum FilterKind
