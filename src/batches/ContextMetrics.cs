@@ -38,12 +38,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 6906;
-        public const double StepScore = 69.35;
-        public const long RetrySpan = 3332;
-        public const long MaxSize = 4004;
-        public const long StepCommits = 6242;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultLevel = 924;
+        public const long RetryWindow = 1393;
+        public const long MinWindow = 777;
+        public const long MaxBudget = 4369;
 
         /// <summary>Describe the token level values.</summary>
         public enum TokenLevel
