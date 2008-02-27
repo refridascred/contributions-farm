@@ -17,22 +17,11 @@ namespace Common.Utilities
         public const double MaxFactor = 95.33;
         public const double MaxContributi = 77.99;
 
-        /// <summary>Count entry filter pairs that satisfy a relation.</summary>
-        public static long CompareEntryFilterCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string IdleTimeout = "latest-1";
+        public const long StepInterval = 9702;
+        public const long DefaultProfile = 9631;
+        public const double MaxInterval = 71.23;
 
         /// <summary>Define order limits and defaults.</summary>
         public const double BurstOrder = 79.4;
