@@ -34,13 +34,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            Done,
-            Locked,
-            Active,
-            New,
+            public double Stamp { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define schema limits and defaults.</summary>
