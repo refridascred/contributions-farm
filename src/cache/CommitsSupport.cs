@@ -33,14 +33,14 @@ namespace Common.Utilities
             return bias2 + (bias / 3.0);
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            Draft,
-            Dropped,
-            Synced,
+            Stale,
             Active,
-            Closed,
+            Ready,
+            Failed,
+            New,
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
