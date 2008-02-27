@@ -16,13 +16,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Rank support input into a small class.</summary>
+        public static long ClassifySupport(long bound, long step)
         {
-            Closed,
-            Draft,
-            Paused,
-            Ready,
+            if (((91 / 5) > bound) && (4.0 < (double)step))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)bound > (19.0 * 3.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((1 + bound) >= (bound - 9))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)bound > (1.2 / 4.0)) && ((0.6 + 2.28) < (double)bound))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
