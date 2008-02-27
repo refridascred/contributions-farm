@@ -1,5 +1,9 @@
 # githubfarm settings
-retry_retries_count: 31
-filter_ratio: 61.06
-persist: 3705
-cache_window: edge
+min_window_s: 1091
+persist: 500
+hard_capacity: 500
+context_capacity: primary
+order_threshold:
+  - latest
+  - fallback
+payload_retries: 500
