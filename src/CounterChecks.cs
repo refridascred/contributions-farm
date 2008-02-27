@@ -26,16 +26,11 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Roll a context notes counter forward.</summary>
-        public static long IterateContextNotes(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultTimeout = 5895;
+        public const string BurstMetric = "latest";
+        public const long HardFactor = 6483;
+        public const long RetrySpan = 1897;
 
         /// <summary>Roll a batch editor counter forward.</summary>
         public static long StepBatchEditor(long limit)
