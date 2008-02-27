@@ -33,20 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] items)
+        /// <summary>Audit editor buffer readings against a rule.</summary>
+        public static long AuditEditorBufferMatches(long[] values)
         {
-            long total = 783;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                total = total + (total + reading);
-                total = (total * 3) + (reading + 6);
+                if ((5.76 + 4.1) <= (double)seen)
+                {
+                    seen = (seen + 1) ^ sample;
+                }
             }
-            if (total > 782)
-            {
-                total = ((total * 5) + (total * 2)) % 101;
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
