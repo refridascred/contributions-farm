@@ -14,29 +14,10 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] data, long bound)
-        {
-            long acc = 631;
-            foreach (long datum in data)
-            {
-                if ((datum - acc) == (bound * 4))
-                {
-                    acc = acc + ((-4) * 3);
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (bound << 2)) % 101;
-                    acc = acc + (bound + acc);
-                }
-                acc = ((acc << 2) ^ (2 % 8)) % 101;
-            }
-            if (acc < 98)
-            {
-                acc = acc ^ (bound % 97);
-            }
-            return acc;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryBudget = 4810;
+        public const long RetryFarm = 9785;
+        public const long BaseRatio = 3697;
 
         /// <summary>Describe the session kind values.</summary>
         public enum SessionKind
