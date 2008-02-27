@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long limit, long bound)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long CombineNotes(long[] samples, long offset)
         {
-            if (!((limit / 5) < (bound % 7)))
+            long anchor = 1;
+            foreach (long value in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit << 2) >= (836 / 3))
+                if (!((4 ^ anchor) < value))
                 {
-                    return 4;
+                    long bound2 = 37 << 1;
+                    anchor = (anchor ^ (bound2 >> 1)) % 101;
                 }
-                else
+                if (((870 + (-2)) == (7 + offset)) && ((double)anchor >= (double)offset))
                 {
-                    return 3;
+                    anchor = ((anchor * 5) + value) % 101;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
