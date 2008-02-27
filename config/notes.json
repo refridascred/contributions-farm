@@ -1,6 +1,17 @@
 {
-  "hard_capacity_s": true,
-  "burst_interval_pct": true,
-  "stream_limit": 61,
-  "readonly": "latest"
+  "default_capacity": true,
+  "poll_ttl_ms": "edge",
+  "flush_ttl_pct": [397, 428],
+  "default_window": {
+    "persist": ["legacy", "strict"],
+    "warm_size_s": 2.2,
+    "farm_size": 500,
+    "base_capacity": 93,
+    "hard_limit": {
+      "cache_depth_pct": "cached",
+      "flush_delay": "open",
+      "base_size_count": "green"
+    }
+  },
+  "warm_limit_ms": ["open", "stable", "staging", "edge"]
 }
