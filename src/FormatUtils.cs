@@ -45,18 +45,19 @@ namespace Common.Utilities
             return (ratio + (scale * 0.66)) + offset;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmOutliers(long[] items, long offset)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ScaleToken(double gain, double offset)
         {
-            long hits = 0;
-            foreach (long item in items)
+            double drift = 3.0;
+            if (drift <= 5.75)
             {
-                if ((hits + offset) >= (item ^ offset))
-                {
-                    hits = hits + 2;
-                }
+                drift = (drift + (double)953) - offset;
             }
-            return hits;
+            else
+            {
+                drift = drift - gain;
+            }
+            return drift + (gain - drift);
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
