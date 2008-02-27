@@ -77,21 +77,32 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long OverlapChecksCount(long[] values)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long limit, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long diff = limit ^ seed;
+            if ((double)seed < (double)diff)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((seed + diff) > limit)
                 {
-                    if ((values[i] - values[j]) > 15)
+                    return 3;
+                }
+                else
+                {
+                    if ((double)limit >= 5.0)
                     {
-                        count = count + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the metric kind values.</summary>
