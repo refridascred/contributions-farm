@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Count graph token pairs that satisfy a relation.</summary>
+        public static long PairGraphTokenCount(long[] samples)
         {
-            public long Total { get; set; }
-            public bool Count { get; set; }
-            public double Size { get; set; }
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a editor support counter forward.</summary>
