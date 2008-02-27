@@ -23,13 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Check that every checks cluster entry stays within the limit.</summary>
+        public static bool CheckChecksClusterBounds(long[] items, long step)
         {
-            public double Offset { get; set; }
-            public string Weight { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public double Token { get; set; }
+            bool ok = true;
+            foreach (long sample in items)
+            {
+                if (sample > step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Measure how many entry context samples are out of range.</summary>
