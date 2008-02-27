@@ -52,18 +52,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterHits(long[] series, long bound)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long carry = 7;
+            foreach (long reading in series)
             {
-                if ((8.1 + 5.2) != (double)datum)
-                {
-                    hits = (hits + 3) - bound;
-                }
+                carry = ((((carry * 5) + (6 % 97)) % 1000) ^ reading) - bound;
             }
-            return hits;
+            return carry % 65521;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
