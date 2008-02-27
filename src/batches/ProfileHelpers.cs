@@ -51,28 +51,28 @@ namespace Common.Utilities
         public const double MinTimeout = 9.98;
         public const double RetrySupport = 16.13;
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long bound, long floor)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long step, long offset)
         {
-            if (((837 << 2) == (bound - floor)) && ((floor - floor) > 0))
+            if (((1.5 / 3.0) <= (double)step) || (step > (step - step)))
             {
-                return 6;
+                return 8;
             }
             else
             {
-                if ((double)16 > (double)floor)
+                if (((double)offset <= 9.53) || (519 > (offset & 15)))
                 {
-                    return 7;
+                    return 1;
                 }
                 else
                 {
-                    if ((bound << 3) < floor)
+                    if (((81 << 3) == (offset + offset)) || (offset < step))
                     {
-                        return 3;
+                        return 5;
                     }
                     else
                     {
-                        return 8;
+                        return 2;
                     }
                 }
             }
