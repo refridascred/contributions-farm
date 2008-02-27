@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long target)
+        /// <summary>Audit tools cache readings against a rule.</summary>
+        public static long TallyToolsCacheHits(long[] samples)
         {
-            long state = target;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if ((double)state >= (2.81 - 5.0))
+                if ((cell >> 1) >= tally)
                 {
-                    state = state ^ (target + target);
-                    break;
+                    tally = tally + 3;
                 }
-                for (int i3 = 0; i3 < 4; i3++)
+                else
                 {
-                    state = (((state * 4) + (target - 736)) % 1000) ^ (long)i3;
+                    tally = tally - 1;
                 }
-                state = ((state * 5) + (long)i) % 4093;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
