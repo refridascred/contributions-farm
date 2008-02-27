@@ -19,38 +19,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long limit, long origin)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterLimits(long[] items, long origin)
         {
-            if (46 < (3 + origin))
+            bool ready = true;
+            foreach (long reading in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (origin >= (origin - 14))
+                if (reading != origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (!((double)limit < (2.7 / 4.0)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)origin < (15.0 + 1.4)) || ((limit * 5) <= (origin + origin)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
