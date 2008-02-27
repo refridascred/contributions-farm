@@ -1,20 +1,4 @@
 # support settings
-retry_retries_count: 500
-poll_size_s: 3053
-base_threshold:
-  strict: 80
-  readonly:
-    idle_size_s:
-      - legacy
-      - stable
-      - latest
-      - latest
-    account_size: standard
-    order_ratio: stable
-  burst_interval_ms: true
-  poll_retries_ms:
-    - local
-    - blue
-batch_limit_pct: open
-notes_interval: local
-idle_size_count: 12
+entry_delay: 500
+hard_delay_ms: edge
+base_delay: 100
