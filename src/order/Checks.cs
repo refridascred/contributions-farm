@@ -46,13 +46,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
+            Stale,
+            Ready,
             Failed,
-            Locked,
-            Closed,
-            Paused,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
