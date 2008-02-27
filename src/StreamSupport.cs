@@ -19,10 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryBudget = 4810;
-        public const long RetryFarm = 9785;
-        public const long BaseRatio = 3697;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportMatches(long[] series)
+        {
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if ((((item + 89) >= (matches ^ item)) && (item < (item - item))) && ((2.3 / 6.0) >= (double)item))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a farm record.</summary>
         public sealed class FarmRecord
