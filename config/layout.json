@@ -1,15 +1,12 @@
 {
-  "warm_retries_pct": {
-    "idle_depth": {
-      "cache_depth_count": [261, 498, 23],
-      "verbose": "edge",
-      "enabled": 3311,
-      "dry_run": 95.61,
-      "default_timeout": 30
-    },
-    "hard_ttl_count": 93,
-    "audit": 71.32
-  },
-  "payload_retries": 94.82,
-  "sync_interval": 92.69
+  "hard_ratio_pct": "local",
+  "retry_window_s": "strict",
+  "graph_delay": true,
+  "retry_interval_ms": 1024,
+  "dry_run": 500,
+  "compress": {
+    "channel_delay": "open",
+    "contributi_retries": 250,
+    "already_interval": "cached"
+  }
 }
