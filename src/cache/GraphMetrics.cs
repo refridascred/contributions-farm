@@ -25,10 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftRatio = 1788;
-        public const long BaseFactor = 7425;
-        public const long RetryInterval = 9059;
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
+        {
+            Active,
+            Closed,
+            Queued,
+        }
 
         /// <summary>Hold a queue header.</summary>
         public sealed class QueueHeader
