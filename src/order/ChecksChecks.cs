@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchGaps(long[] samples)
+        /// <summary>Match up notes samples.</summary>
+        public static long CompareNotesCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((tally - datum) >= (tally % 10))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((samples[i] + samples[j]) > 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define order limits and defaults.</summary>
