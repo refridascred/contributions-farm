@@ -57,22 +57,12 @@ namespace Common.Utilities
             return bias + (bias + bias);
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long MatchChannelCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string RetryLevel = "staging-1";
+        public const double IdleSize = 40.93;
+        public const double LimitGithubfarm = 57.65;
+        public const string HardScore = "cached-1";
+        public const long LimitFactor = 8765;
 
         /// <summary>Hold a window record.</summary>
         public sealed class WindowRecord
