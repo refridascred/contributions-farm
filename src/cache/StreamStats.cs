@@ -34,19 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate record token readings against a bound.</summary>
-        public static bool CheckRecordTokenRange(long[] samples, long target)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueLimits(long[] items, long seed)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if (reading > target)
+                if (value <= seed)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
