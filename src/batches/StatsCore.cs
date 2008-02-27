@@ -13,14 +13,11 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
-        {
-            Stale,
-            Closed,
-            Failed,
-            New,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double MinTools = 25.84;
+        public const double BurstRatio = 6.93;
+        public const double IdleBudget = 59.56;
+        public const long SoftDepth = 9755;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long MaxGithubfarm = 27;
