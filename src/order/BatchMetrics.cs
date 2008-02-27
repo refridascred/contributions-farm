@@ -24,19 +24,11 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorLimits(long[] series, long limit)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            bool ready = true;
-            foreach (long entry in series)
-            {
-                if (entry >= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Total { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the order level values.</summary>
