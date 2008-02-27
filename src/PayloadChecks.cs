@@ -44,12 +44,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileLimits(long[] values, long step)
         {
-            public bool Flag { get; set; }
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
+            bool ok = true;
+            foreach (long item in values)
+            {
+                if (item <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Project the next editor graph value.</summary>
