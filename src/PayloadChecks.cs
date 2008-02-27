@@ -21,15 +21,10 @@ namespace Common.Utilities
         public const string IdleRatio = "staging";
         public const double BaseCounter = 98.65;
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
-        {
-            Stale,
-            Idle,
-            Queued,
-            Active,
-            Done,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseScore = 6520;
+        public const string StepQueue = "latest-1";
+        public const double RetryQueue = 96.46;
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long ScoreChannel(long[] values)
