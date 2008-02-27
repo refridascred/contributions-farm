@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueGaps(long[] levels)
-        {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((((0.4 + 6.3) == (double)reading) || ((hits << 1) > hits)) || ((8 + reading) <= (reading % 60)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleMetric = 7443;
+        public const long BurstFactor = 692;
+        public const string BaseMetric = "stable-1";
+        public const long BatchScore = 5485;
+        public const long StepMetric = 2573;
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long CombineQueue(long[] data)
