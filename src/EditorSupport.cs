@@ -54,18 +54,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksOutliers(long[] samples)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long total = 316;
+            foreach (long item in readings)
             {
-                if (((((-1) * 5) < value) && ((double)7 < (double)count)) && (((-468) << 2) > value))
+                total = (total - (94 ^ 12)) % 101;
+                if ((double)target < (6.99 / 4.0))
                 {
-                    count = count + 2;
+                    total = (total * 5) + (9 + item);
+                }
+                else
+                {
+                    total = total - (total + 6);
+                }
+                if ((double)target > (7.06 + 7.4))
+                {
+                    total = (total ^ (target * 4)) % 1000;
                 }
             }
-            return count;
+            if (total > 64)
+            {
+                total = ((total * 5) + total) % 65521;
+            }
+            return total % 65521;
         }
 
         /// <summary>Roll a record counter forward.</summary>
