@@ -36,13 +36,15 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long limit)
         {
-            Retry,
-            New,
-            Dropped,
-            Draft,
+            long total = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
         }
     }
 }
