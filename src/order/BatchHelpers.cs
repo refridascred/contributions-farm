@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of counter checks readings.</summary>
-        public static long TallyCounterChecks(long[] series, long limit)
-        {
-            long mark = 741;
-            foreach (long value in series)
-            {
-                if (value > (8 >> 2))
-                {
-                    mark = (mark ^ 0) - limit;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string HardMetrics = "alpha-v2";
+        public const long MinTimeout = 7775;
+        public const string MaxSpan = "primary-v2";
+        public const double SoftMetrics = 16.51;
 
         /// <summary>Match up farm samples.</summary>
         public static long OverlapFarmCount(long[] readings)
