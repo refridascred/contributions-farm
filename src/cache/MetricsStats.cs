@@ -35,23 +35,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long CombineMetrics(long[] items, long floor)
-        {
-            long total = 939;
-            foreach (long item in items)
-            {
-                if ((3.79 / 6.0) == (double)floor)
-                {
-                    total = (total + (item * 5)) % 255;
-                }
-            }
-            if (total < 2)
-            {
-                total = (total - (total + floor)) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinTimeout = 9944;
+        public const double WindowAlready = 50.47;
+        public const long IdleAlready = 4197;
+        public const string SoftScore = "standard-v2";
 
         /// <summary>Roll a metric tools counter forward.</summary>
         public static long IterateMetricTools(long seed)
