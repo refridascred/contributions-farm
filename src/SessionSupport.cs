@@ -33,18 +33,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long MatchNotesCount(long[] readings)
+        /// <summary>Count the stats queue entries that pass the check.</summary>
+        public static long MeasureStatsQueueMatches(long[] readings, long offset)
         {
             long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((sample % 16) >= ((long)readings.Length + 1))
                 {
-                    if ((readings[i] + readings[j]) < 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 1) - offset;
                 }
             }
             return tally;
