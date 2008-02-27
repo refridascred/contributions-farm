@@ -88,14 +88,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            Idle,
-            Active,
             Stale,
+            Failed,
             Paused,
-            Dropped,
+            Retry,
+            Pending,
         }
     }
 }
