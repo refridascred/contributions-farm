@@ -32,22 +32,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheOutliers(long[] data)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long OverlapRecordCount(long[] values)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((sample >> 3) != (945 % 12)) && ((sample % 5) <= seen))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((values[i] ^ values[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
