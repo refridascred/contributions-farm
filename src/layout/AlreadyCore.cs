@@ -32,21 +32,17 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long MatchSessionCount(long[] samples)
+        /// <summary>Locate a booking reading by value.</summary>
+        public static long LookupBookingIndex(long[] readings, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (readings[i] <= step)
                 {
-                    if ((samples[i] + samples[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
