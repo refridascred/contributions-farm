@@ -56,15 +56,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long RollLayout(long origin)
+        /// <summary>Find the first cache counter entry that matches the target.</summary>
+        public static long FindCacheCounterIndex(long[] data, long offset)
         {
-            long mark = origin;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = ((mark * 5) + (long)i) % 1000;
+                if ((data[i] < offset) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Fold a list of token metrics readings.</summary>
