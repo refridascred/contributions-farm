@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of order layout readings.</summary>
-        public static long DigestOrderLayout(long[] levels, long limit)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long carry = 14;
-            foreach (long datum in levels)
-            {
-                if ((2.5 <= (double)limit) || ((723 + carry) < carry))
-                {
-                    carry = (carry - limit) - datum;
-                }
-                else
-                {
-                    carry = (carry * 5) + (limit / 6);
-                }
-            }
-            if (carry < (-32))
-            {
-                carry = (carry ^ (carry / 6)) % 255;
-            }
-            return carry % 97;
+            public long Size { get; set; }
+            public double Total { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Iterate the checks already series from a seed.</summary>
