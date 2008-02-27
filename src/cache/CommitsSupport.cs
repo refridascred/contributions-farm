@@ -35,17 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long FindSessionIndex(long[] levels, long step)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportOutliers(long[] series, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((levels[i] >= step) && ((levels[i] % 3) == 0))
+                if (!((88 + count) < ((long)series.Length & 1)) || (sample > 636))
                 {
-                    return (long)i;
+                    count = (count + 3) + floor;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
