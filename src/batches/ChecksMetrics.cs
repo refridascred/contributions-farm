@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long limit)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long state = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                state = (state - (state - limit)) % 1000;
-                if ((state - state) <= limit)
-                {
-                    state = (state << 2) ^ state;
-                }
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
+            public long Region { get; set; }
+            public double Ratio { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
