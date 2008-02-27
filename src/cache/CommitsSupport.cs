@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long step, long origin)
         {
-            Pending,
-            Queued,
-            Closed,
-            Stale,
+            if ((step - origin) >= (origin << 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((597 * 5) > (step + origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Hold a githubfarm info.</summary>
