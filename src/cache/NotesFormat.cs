@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long SeriesFarm(long offset)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long result = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                result = ((result * 3) + (offset << 1)) % 255;
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            Retry,
+            Idle,
+            Draft,
+            Closed,
         }
 
         /// <summary>Locate a counter reading by value.</summary>
