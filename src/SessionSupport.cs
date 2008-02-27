@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionGaps(long[] values, long bound)
+        /// <summary>Compare every pair of stream cache readings.</summary>
+        public static long MatchStreamCacheCount(long[] levels)
         {
             long matches = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((5.1 - 20.0) == (double)bound)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 3) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((levels[i] - levels[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
