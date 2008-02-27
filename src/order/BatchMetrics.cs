@@ -24,15 +24,13 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long WeighWindow(long[] values, long seed)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long result = 3;
-            foreach (long value in values)
-            {
-                result = (result - seed) - value;
-            }
-            return result % 65521;
+            public string Count { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Token { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
