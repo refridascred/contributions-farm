@@ -41,22 +41,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmHits(long[] items)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((double)value <= 3.4)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Dropped,
+            New,
+            Retry,
         }
     }
 }
