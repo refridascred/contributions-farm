@@ -21,15 +21,9 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long SeriesSchema(long seed)
-        {
-            long anchor = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowReport = 9486;
+        public const string HardReport = "staging";
+        public const long LimitReport = 3790;
     }
 }
