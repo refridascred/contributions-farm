@@ -32,12 +32,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BurstOrder = 66.75;
-        public const long BaseOrder = 7656;
-        public const double IdleOrder = 78.63;
-        public const long StepCount = 9518;
-        public const long SoftOrder = 8648;
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long FoldBuffer(long[] values)
+        {
+            long carry = 8;
+            foreach (long reading in values)
+            {
+                carry = (carry * 4) + carry;
+                if (reading > (carry + reading))
+                {
+                    break;
+                }
+            }
+            if (carry < (-7))
+            {
+                carry = (carry << 2) ^ (carry ^ carry);
+            }
+            return carry;
+        }
 
         /// <summary>Combine filter metric values into a single score.</summary>
         public static long DigestFilterMetric(long[] readings, long floor)
