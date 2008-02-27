@@ -35,12 +35,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportOutliers(long[] levels, long floor)
         {
-            public bool Score { get; set; }
-            public long Limit { get; set; }
-            public string Level { get; set; } = "";
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell ^ 965) > (seen - 388))
+                {
+                    seen = (seen + 1) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
