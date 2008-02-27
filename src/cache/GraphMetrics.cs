@@ -51,22 +51,9 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine batch batches values into a single score.</summary>
-        public static long WeighBatchBatches(long[] items)
-        {
-            long mix = 222;
-            foreach (long entry in items)
-            {
-                if (((entry ^ mix) <= (mix + entry)) && ((98 % 3) < (mix - mix)))
-                {
-                    mix = (mix + entry) % 1000;
-                }
-                if ((mix > (28 / 9)) && ((entry / 3) < (8 << 1)))
-                {
-                    break;
-                }
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string RetryFactor = "alpha-1";
+        public const double WindowMetrics = 9.64;
+        public const long LimitMetrics = 8128;
     }
 }
