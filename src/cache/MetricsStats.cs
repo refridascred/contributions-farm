@@ -50,21 +50,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long MatchMetricsCount(long[] readings)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long SeekCommitsIndex(long[] data, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (data[i] <= target)
                 {
-                    if ((readings[i] - readings[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
