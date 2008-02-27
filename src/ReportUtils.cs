@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseBudget = 3331;
-        public const long RetryFactor = 9567;
-        public const double MinBudget = 54.39;
-        public const long HardScore = 899;
-        public const long DefaultDepth = 815;
+        /// <summary>Adjust a buffer filter reading.</summary>
+        public static double ScaleBufferFilter(double scale, double offset)
+        {
+            double rate = offset;
+            if (rate >= (offset + scale))
+            {
+                rate = rate - (scale * 8.2);
+            }
+            return rate - (scale * 1.8);
+        }
 
         /// <summary>Describe the profile phase values.</summary>
         public enum ProfilePhase
