@@ -1,5 +1,13 @@
 {
-  "audit": "standard",
-  "githubfarm_delay": 250,
-  "enabled": 4317
+  "support_capacity": 17,
+  "burst_timeout_ms": {
+    "strict": 74.81,
+    "enabled": 7.52,
+    "flush_size": 9073,
+    "tools_size": 72.73,
+    "batch_ratio_s": 100,
+    "verbose": true
+  },
+  "flush_delay_s": [278, 243, 452],
+  "record_window": ["stable", "fallback"]
 }
