@@ -46,19 +46,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next editor graph value.</summary>
-        public static double ScaleEditorGraph(double bias, double bias2)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountRange(long[] data, long seed)
         {
-            double load = bias2;
-            if (load >= bias)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                load = load + (11.0 + bias);
+                if (sample != seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load + (bias2 + bias);
-            }
-            return load - (double)343;
+            return flag;
         }
 
         /// <summary>Define account limits and defaults.</summary>
