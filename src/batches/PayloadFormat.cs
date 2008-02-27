@@ -11,19 +11,22 @@ namespace Common.Utilities
         public const long DefaultSpan = 2671;
         public const long BatchSpan = 3662;
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaLimits(long[] samples, long step)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterOutliers(long[] items)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if (entry > step)
+                if (((866 ^ count) > (50 + cell)) || (count >= cell))
                 {
-                    stale = false;
-                    break;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
