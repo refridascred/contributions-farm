@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a tools context pair into a bucket.</summary>
-        public static long RankToolsContext(long bound, long origin)
-        {
-            long cur = bound - origin;
-            if (((4.52 * 15.0) != (double)bound) && ((6.0 - 0.23) > (double)bound))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound >= ((-4) % 10)) && ((cur ^ cur) > (origin + cur)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!(cur > (origin - origin)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowDepth = 6198;
+        public const string WindowCommand = "latest";
+        public const string BaseWidth = "fallback-1";
+        public const long DefaultCommand = 4814;
+        public const long MaxInterval = 4415;
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool GuardStatsLimits(long[] readings, long seed)
