@@ -32,15 +32,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] series)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long score = 4;
-            foreach (long entry in series)
-            {
-                score = (score ^ (score / 9)) - entry;
-            }
-            return score % 65521;
+            public double Flag { get; set; }
+            public long Total { get; set; }
         }
     }
 }
