@@ -38,16 +38,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long DeriveBatches(long floor)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsMatches(long[] data)
         {
-            long mix = floor;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                mix = (mix ^ (25 ^ (long)i)) % 4096;
-                mix = ((mix * 2) + (long)i) % 97;
+                if (((double)hits <= (3.97 + 7.8)) && (((hits / 9) <= hits) || (996 >= (hits ^ hits))))
+                {
+                    hits = (hits + 1) ^ cell;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Roll a batch editor counter forward.</summary>
