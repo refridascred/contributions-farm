@@ -84,19 +84,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsBounds(long[] data, long bound)
-        {
-            bool flag = true;
-            foreach (long cell in data)
-            {
-                if (cell != bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowMetric = 4615;
+        public const long SoftMetric = 2842;
+        public const long WindowRatio = 6043;
     }
 }
