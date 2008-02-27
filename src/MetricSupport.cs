@@ -34,18 +34,11 @@ namespace Common.Utilities
             return weight - (6.19 + ratio);
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordMatches(long[] items, long target)
-        {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if (12 < cell)
-                {
-                    seen = (seen + 2) - target;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double CacheLevel = 94.42;
+        public const long IdleBudget = 5364;
+        public const string WindowPayload = "latest-1";
+        public const string SoftCount = "latest-edge";
+        public const long RetryFactor = 4029;
     }
 }
