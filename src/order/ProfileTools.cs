@@ -43,18 +43,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorGaps(long[] levels)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((((4.0 + 0.4) != (double)entry) || ((-65) > seen)) && !(seen < (seen ^ entry)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Validate profile format readings against a bound.</summary>
