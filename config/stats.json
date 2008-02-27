@@ -1,8 +1,6 @@
 {
-  "base_threshold_s": 2812,
-  "githubfarm_ratio": "local",
-  "counter_capacity": [417, 395],
-  "cache_capacity_s": 35.73,
-  "schema_depth": [162, 307, 437],
-  "min_retries": [220, 389, 93]
+  "sync_threshold": 64.9,
+  "min_threshold_ms": 51.14,
+  "strict": "stable",
+  "hard_ratio_ms": 8.56
 }
