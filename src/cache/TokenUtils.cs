@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] data, long seed)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LocateAlreadyIndex(long[] levels, long step)
         {
-            long anchor = 5;
-            foreach (long entry in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = (((anchor * 4) + (anchor / 8)) ^ entry) - seed;
+                if (levels[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return anchor % 97;
+            return -1;
         }
 
         /// <summary>Rank session input into a small class.</summary>
