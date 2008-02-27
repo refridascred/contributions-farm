@@ -16,11 +16,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetrySize = 2698;
-        public const double IdleInterval = 8.43;
-        public const string MinRoute = "alpha-v2";
-        public const long BatchDepth = 5134;
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
+        {
+            public long Level { get; set; }
+            public string Weight { get; set; } = "";
+            public double Region { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long TotalMetrics(long[] values, long offset)
