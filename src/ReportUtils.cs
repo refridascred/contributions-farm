@@ -55,17 +55,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LookupQueueIndex(long[] values, long target)
+        /// <summary>Project the next notes already value.</summary>
+        public static double ScaleNotesAlready(double weight, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double drift = weight;
+            if (drift <= (double)94)
             {
-                if ((values[i] == target) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                drift = drift - (3.3 / 3.0);
             }
-            return -1;
+            else
+            {
+                drift = drift - (double)932;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - (floor - floor)) - (double)(long)i;
+            }
+            return drift + (double)34;
         }
     }
 }
