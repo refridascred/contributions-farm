@@ -1,6 +1,5 @@
 # entry settings
-base_timeout_ms: true
-base_depth_count: true
-readonly: strict
-githubfarm_window: 7978
-default_delay: staging
+soft_window: 1024
+dry_run: 29
+burst_ttl: 7329
+token_interval: green
