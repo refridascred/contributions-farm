@@ -41,32 +41,26 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Grade a stream context value against two limits.</summary>
-        public static long BucketStreamContext(long limit, long origin)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long DigestQueue(long[] series)
         {
-            long bound = limit ^ origin;
-            if ((double)bound != (double)bound)
+            long carry = 776;
+            foreach (long item in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)bound >= (2.81 + 9.2))
+                if (carry < (carry * 5))
                 {
-                    return 1;
+                    carry = carry ^ (carry >> 5);
                 }
                 else
                 {
-                    if (((322 - limit) <= limit) || ((limit - 6) >= (origin - 1)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    carry = carry ^ (item >> 4);
                 }
             }
+            if (carry < 2)
+            {
+                carry = (carry ^ (carry + 91)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
