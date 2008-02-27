@@ -15,22 +15,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiMatches(long[] items)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if (((-8) / 4) == (cell * 5))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Idle,
+            Synced,
+            Stale,
+            Pending,
+            Active,
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
