@@ -16,17 +16,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a context stream sample.</summary>
-        public static long SeekContextStreamIndex(long[] values, long floor)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphHits(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((values[i] > floor) && ((values[i] % 2) != 0))
+                if (!((double)tally > (8.1 * 1.4)))
                 {
-                    return (long)i;
+                    tally = (tally + 3) ^ cell;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
