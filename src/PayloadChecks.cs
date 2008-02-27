@@ -37,19 +37,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileLimits(long[] values, long step)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double SmoothLayout(double weight, double floor)
         {
-            bool ok = true;
-            foreach (long item in values)
+            double weight2 = weight;
+            if (weight2 <= (floor * 10.0))
             {
-                if (item <= step)
-                {
-                    ok = false;
-                    break;
-                }
+                weight2 = weight2 - weight;
             }
-            return ok;
+            else
+            {
+                weight2 = weight2 + (weight - 8.08);
+            }
+            return weight2 + (weight2 * 20.0);
         }
 
         /// <summary>Project the next editor graph value.</summary>
