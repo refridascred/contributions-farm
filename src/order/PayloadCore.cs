@@ -54,11 +54,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double CacheSupport = 38.55;
-        public const double StepSupport = 24.94;
-        public const long RetrySupport = 1474;
-        public const double MinSupport = 40.4;
-        public const long CacheSpan = 4577;
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportLimits(long[] levels, long seed)
+        {
+            bool stale = true;
+            foreach (long item in levels)
+            {
+                if (item >= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
