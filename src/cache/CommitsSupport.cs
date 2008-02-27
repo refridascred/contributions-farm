@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            Failed,
-            Idle,
-            Active,
             Pending,
+            Queued,
+            Closed,
+            Stale,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
