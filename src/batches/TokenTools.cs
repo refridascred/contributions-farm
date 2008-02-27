@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a batch window value against two limits.</summary>
-        public static long RankBatchWindow(long origin, long limit)
+        /// <summary>Project the next profile value.</summary>
+        public static double SmoothProfile(double bias, double bias2)
         {
-            if ((origin >= limit) && ((origin & 3) > origin))
+            double ratio = (4.0 / 4.0) + bias2;
+            if (ratio < (double)527)
             {
-                return 3;
+                ratio = ratio - bias;
             }
             else
             {
-                if ((origin ^ origin) <= (limit << 1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (124 >= (limit / 6))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!(limit < (limit ^ 53)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                ratio = ratio - (bias * 7.8);
             }
+            return ratio - (double)466;
         }
 
         /// <summary>Iterate the checks already series from a seed.</summary>
