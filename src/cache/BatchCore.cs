@@ -34,14 +34,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            Active,
+            Done,
             Locked,
-            Idle,
-            Closed,
-            Pending,
+            Active,
+            New,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
