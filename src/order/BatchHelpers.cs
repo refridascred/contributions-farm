@@ -14,24 +14,17 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long GradeFormat(long limit, long limit2)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long step)
         {
-            if ((limit << 1) > limit)
+            long sum = step;
+            for (int i = 0; i < 10; i++)
             {
-                return 8;
+                sum = (sum ^ sum) % 255;
+                sum = (sum + (-75)) % 65521;
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if (((limit + 173) >= limit) && ((limit % 3) == (limit2 / 8)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
