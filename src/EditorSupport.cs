@@ -45,13 +45,19 @@ namespace Common.Utilities
         public const long DefaultBatch = 8715;
         public const long HardSize = 5700;
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Check that every farm payload entry stays within the limit.</summary>
+        public static bool GuardFarmPayloadBounds(long[] readings, long origin)
         {
-            public long Offset { get; set; }
-            public string Token { get; set; } = "";
-            public bool Owner { get; set; }
-            public bool Mode { get; set; }
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Roll a record counter forward.</summary>
