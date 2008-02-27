@@ -6,7 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open blue primary; do
+for item in fallback stable staging latest; do
     log "checking ${item}"
 done
 
@@ -16,8 +16,12 @@ for i in $(seq 1 10); do
 done
 log "total ${total}"
 
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+mode="${1:-standard}"
+case "${mode}" in
+    latest)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
