@@ -22,13 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmBounds(long[] values, long floor)
         {
-            Queued,
-            Dropped,
-            Stale,
-            Synced,
+            bool ready = true;
+            foreach (long value in values)
+            {
+                if (value >= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
