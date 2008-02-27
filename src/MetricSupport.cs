@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            Retry,
-            Failed,
-            Queued,
-            Idle,
+            Ready,
+            Done,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
