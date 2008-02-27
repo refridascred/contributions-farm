@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double LimitInterval = 33.46;
-        public const long BatchOrder = 4602;
-        public const double MaxTimeout = 45.77;
-        public const long BatchWidth = 2427;
-        public const double LimitOrder = 95.67;
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchGaps(long[] samples)
+        {
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((tally - datum) >= (tally % 10))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long MinFactor = 9247;
