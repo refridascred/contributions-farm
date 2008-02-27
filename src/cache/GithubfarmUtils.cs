@@ -34,18 +34,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of account commits readings.</summary>
-        public static long DigestAccountCommits(long[] series, long floor)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long score = 388;
-            foreach (long item in series)
-            {
-                if ((double)score != (double)item)
-                {
-                    score = score - (score + floor);
-                }
-            }
-            return score % 97;
+            public double Count { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
