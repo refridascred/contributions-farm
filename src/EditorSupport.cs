@@ -13,21 +13,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long CompareEntryCount(long[] values)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 461;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                score = ((score << 2) ^ (score * 4)) - datum;
+                if ((double)score >= (2.4 - 7.7))
                 {
-                    if ((values[i] + values[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (score * 4) + score;
                 }
             }
-            return hits;
+            return score % 65521;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
