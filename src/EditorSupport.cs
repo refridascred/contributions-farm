@@ -43,27 +43,15 @@ namespace Common.Utilities
             return ((ratio + (4.0 + ratio)) + rate) + offset;
         }
 
-        /// <summary>Fold a list of queue checks readings.</summary>
-        public static long FoldQueueChecks(long[] levels, long offset)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long floor)
         {
-            long mark = -69;
-            foreach (long item in levels)
+            long anchor = floor;
+            for (int i = 0; i < 15; i++)
             {
-                mark = (mark + (item * 3)) - offset;
-                if ((item >> 3) > mark)
-                {
-                    mark = (mark ^ ((long)levels.Length - mark)) % 255;
-                }
-                else
-                {
-                    mark = mark ^ mark;
-                }
-                if (!((item + item) == (item - 25)))
-                {
-                    break;
-                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
