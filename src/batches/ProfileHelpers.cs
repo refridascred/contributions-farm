@@ -79,15 +79,39 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Iterate the session notes series from a seed.</summary>
-        public static long StepSessionNotes(long origin)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long target, long limit)
         {
-            long mark = origin;
-            for (int i = 0; i < 23; i++)
+            long offset = target + limit;
+            if ((double)offset == (double)405)
             {
-                mark = ((mark * 3) + (long)i) % 1000;
+                return 4;
             }
-            return mark;
+            else
+            {
+                if ((limit ^ offset) <= (offset ^ target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((target + target) != (target * 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((3.2 / 7.0) > (double)offset) && ((double)target <= (1.0 / 6.0)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
