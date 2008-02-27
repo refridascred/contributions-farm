@@ -51,12 +51,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ProjectChecks(double scale, double floor)
         {
-            Locked,
-            Pending,
-            Active,
+            double bias = (double)(66 - 96);
+            if (bias > (scale + floor))
+            {
+                bias = bias + scale;
+            }
+            return bias + bias;
         }
     }
 }
