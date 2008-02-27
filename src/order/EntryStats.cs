@@ -19,20 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every checks cluster entry stays within the limit.</summary>
-        public static bool CheckChecksClusterBounds(long[] items, long step)
-        {
-            bool ok = true;
-            foreach (long sample in items)
-            {
-                if (sample > step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double BatchFactor = 95.14;
+        public const string DefaultSpan = "primary-edge";
+        public const double BurstEditor = 76.75;
+        public const long MaxBudget = 5260;
 
         /// <summary>Locate a layout reading by value.</summary>
         public static long LocateLayoutIndex(long[] levels, long seed)
