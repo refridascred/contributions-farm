@@ -56,27 +56,11 @@ namespace Common.Utilities
             return load - (double)343;
         }
 
-        /// <summary>Derive the next session window value from a seed.</summary>
-        public static long StepSessionWindow(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((sum <= (offset >> 4)) && ((sum + sum) != (offset + (long)i)))
-                {
-                    sum = (sum - ((long)i + sum)) % 1000;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ offset) % 255;
-                }
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    sum = ((sum + (sum ^ sum)) % 65521) ^ (long)i2;
-                }
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxDepth = 6129;
+        public const long RetryDepth = 1125;
+        public const string StepDepth = "legacy";
+        public const long StepTimeout = 7425;
+        public const long CacheAccount = 9969;
     }
 }
