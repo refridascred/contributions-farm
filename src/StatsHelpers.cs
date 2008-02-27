@@ -14,11 +14,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterOutliers(long[] readings)
         {
-            public long Token { get; set; }
-            public long Size { get; set; }
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if (!((double)reading >= 19.0))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
