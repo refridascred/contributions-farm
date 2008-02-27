@@ -46,27 +46,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] levels)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long mark = 7;
-            foreach (long datum in levels)
-            {
-                if ((15.0 + 1.4) >= (double)mark)
-                {
-                    mark = mark ^ datum;
-                }
-                mark = mark - (datum + datum);
-                if ((datum * 4) <= (datum - mark))
-                {
-                    mark = (mark ^ ((long)levels.Length - datum)) % 65521;
-                }
-            }
-            if (mark > (-265))
-            {
-                mark = (mark - mark) % 4096;
-            }
-            return mark % 97;
+            public bool Score { get; set; }
+            public long Limit { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
