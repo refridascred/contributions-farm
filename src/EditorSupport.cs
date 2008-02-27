@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] readings, long limit)
-        {
-            long mark = 22;
-            foreach (long reading in readings)
-            {
-                if (((mark + mark) == (94 + mark)) && (reading < (limit * 3)))
-                {
-                    mark = ((mark * 2) + (mark + mark)) % 101;
-                }
-            }
-            if (mark < 9)
-            {
-                mark = mark - (long)readings.Length;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string StepBatch = "cached-v2";
+        public const long WindowBatch = 1435;
+        public const string BaseBatch = "primary";
+        public const double MinBudget = 91.8;
 
         /// <summary>Digest a series of stats token entries.</summary>
         public static long DigestStatsToken(long[] values)
