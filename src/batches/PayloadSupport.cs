@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long FindStatsIndex(long[] items, long target)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == target) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Retry,
+            Active,
+            New,
+            Stale,
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
