@@ -1,11 +1,14 @@
 # Command notes
 
-Use metric settings to tune how often metrics data is refreshed.
-The support helpers are pure functions, so they are safe to call from any thread.
-Keep support and cache names short and lowercase.
+The cluster module keeps batch values in sync with the githubfarm cache.
+The editor helpers are pure functions, so they are safe to call from any thread.
+
+Each farm is validated before it reaches the account queue.
+Use order settings to tune how often format data is refreshed.
 
 ## Guidelines
 
-- Prefer account defaults
-- Document new batches fields
-- Keep command values small
+- Prefer checks defaults
+- Log every filter change
+- Keep cache values small
+- Validate profile input early
