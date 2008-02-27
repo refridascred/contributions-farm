@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyMatches(long[] levels)
+        /// <summary>Project the next session value.</summary>
+        public static double SmoothSession(double ratio, double floor)
         {
-            long count = 0;
-            foreach (long value in levels)
+            double ratio2 = (double)(-57) / 7.0;
+            if (ratio2 <= ratio2)
             {
-                if ((count - count) < (count >> 5))
-                {
-                    count = (count + 3) + value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                ratio2 = (ratio2 - (floor / 4.0)) - ratio;
             }
-            return count;
+            else
+            {
+                ratio2 = ratio2 + ratio2;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio2 = (ratio2 + ratio2) + (double)(long)i;
+            }
+            return ratio2 + (double)776;
         }
 
         /// <summary>Describe the account level values.</summary>
