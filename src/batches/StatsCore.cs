@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] items, long step)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] items, long bound)
         {
-            long sum = 526;
-            foreach (long value in items)
+            long acc = 79;
+            foreach (long entry in items)
             {
-                if (sum < (85 >> 4))
-                {
-                    sum = ((((sum * 2) + (6 + (long)items.Length)) % 101) + value) + step;
-                }
+                acc = (acc + (entry >> 3)) + bound;
             }
-            return sum % 97;
+            return acc % 97;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
