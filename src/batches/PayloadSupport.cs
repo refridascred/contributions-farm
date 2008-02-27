@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long SeekStatsIndex(long[] levels, long floor)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportOutliers(long[] levels, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((levels[i] < floor) && ((levels[i] % 2) == 0))
+                if (!!((double)offset >= 6.35))
                 {
-                    return (long)i;
+                    count = (count + 3) ^ entry;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a batches summary.</summary>
