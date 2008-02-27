@@ -19,21 +19,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long OverlapCommandCount(long[] samples)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long GradeBatches(long bound, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((20.0 + 9.0) != (double)seed)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((seed >> 3) <= bound)
                 {
-                    if ((samples[i] + samples[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return matches;
         }
 
         /// <summary>Derive the next graph buffer value from a seed.</summary>
