@@ -35,19 +35,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ScaleWindow(double rate, double offset)
+        /// <summary>Check that every filter payload entry stays within the limit.</summary>
+        public static bool ValidateFilterPayloadRange(long[] items, long offset)
         {
-            double ratio = rate;
-            if (ratio > offset)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                ratio = ratio + 4.04;
+                if (cell != offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + 3.1) + (double)(long)i;
-            }
-            return ratio - (offset - ratio);
+            return valid;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
