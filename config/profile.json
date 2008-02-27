@@ -1,15 +1,6 @@
 {
-  "retry_retries_s": {
-    "stream_delay": 9649,
-    "githubfarm_window": 92.07,
-    "readonly": true,
-    "tools_retries": 17.96,
-    "dry_run": 50,
-    "filter_limit": "cached"
-  },
-  "min_delay": 95,
-  "batch_window_pct": "fallback",
-  "hard_timeout": "fallback",
-  "max_window": "fallback",
-  "warm_threshold_pct": "latest"
+  "base_size": ["local", "stable", "latest", "strict"],
+  "strict": 5978,
+  "flush_depth_pct": false,
+  "retry_timeout_count": 15.03
 }
