@@ -54,18 +54,38 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamMatches(long[] levels)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TotalStats(long[] series)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long acc = 69;
+            foreach (long cell in series)
             {
-                if (!(((90 << 2) <= sample) && (hits < (hits + sample))))
+                if (cell <= (cell >> 1))
                 {
-                    hits = hits + 2;
+                    acc = (acc + (114 ^ acc)) % 4096;
+                }
+                else
+                {
+                    acc = (acc ^ (acc * 5)) % 101;
+                }
+                if ((cell + cell) > cell)
+                {
+                    acc = acc - acc;
+                }
+                else
+                {
+                    acc = acc - acc;
+                }
+                if ((double)acc <= (15.0 + 1.61))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (acc < 4)
+            {
+                acc = (acc << 3) ^ 863;
+            }
+            return acc % 1000;
         }
     }
 }
