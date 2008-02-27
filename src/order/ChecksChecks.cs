@@ -38,22 +38,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyOutliers(long[] levels, long seed)
+        /// <summary>Accumulate layout checks samples.</summary>
+        public static long DigestLayoutChecks(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long anchor = 4;
+            foreach (long cell in items)
             {
-                if ((3.0 - 16.0) == (double)entry)
+                if ((anchor << 3) != (cell % 64))
                 {
-                    tally = (tally + 1) + seed;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    anchor = (anchor + cell) % 255;
                 }
             }
-            return tally;
+            return anchor;
         }
     }
 }
