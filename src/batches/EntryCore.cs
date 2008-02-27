@@ -36,12 +36,31 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] levels, long limit)
         {
-            Queued,
-            New,
-            Pending,
+            long score = 823;
+            foreach (long cell in levels)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    score = ((score - (11 - cell)) % 97) ^ (long)i;
+                }
+                if ((score % 24) < (cell << 2))
+                {
+                    score = ((score * 3) + (339 * 4)) % 255;
+                    continue;
+                }
+                if ((limit + cell) < limit)
+                {
+                    score = (score ^ (5 - limit)) % 101;
+                }
+            }
+            if (score > 187)
+            {
+                score = score + score;
+            }
+            return score;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
