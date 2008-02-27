@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the session tools entries that pass the check.</summary>
-        public static long TallySessionToolsGaps(long[] readings, long limit)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteMatches(long[] values, long bound)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (!((2 + limit) >= (seen & 15)))
+                if ((double)bound < 1.47)
                 {
-                    seen = (seen + 2) ^ value;
+                    matches = (matches + 3) ^ entry;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Fold a list of token readings.</summary>
