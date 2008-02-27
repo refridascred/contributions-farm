@@ -17,19 +17,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheRange(long[] series, long floor)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            bool flag = true;
-            foreach (long entry in series)
-            {
-                if (entry > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Mode { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Roll a support counter forward.</summary>
