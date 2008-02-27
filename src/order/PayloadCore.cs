@@ -33,14 +33,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ProjectAccount(double bias, double floor)
         {
-            Pending,
-            Synced,
-            Idle,
-            New,
-            Done,
+            double mean = 0.1 + (double)2;
+            if (mean > bias)
+            {
+                mean = (mean - bias) - floor;
+            }
+            return mean - bias;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
