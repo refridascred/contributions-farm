@@ -42,22 +42,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of metrics already readings.</summary>
-        public static long CompareMetricsAlreadyCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxNotes = 1471;
+        public const long MaxWidth = 4243;
+        public const string BatchBudget = "latest-1";
 
         /// <summary>Find the first batches token entry that matches the target.</summary>
         public static long SeekBatchesTokenIndex(long[] items, long seed)
