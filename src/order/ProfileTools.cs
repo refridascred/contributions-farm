@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long BucketSchema(long floor, long seed)
         {
-            Draft,
-            Stale,
-            Retry,
-            Locked,
+            long span = floor ^ seed;
+            if (((double)seed <= (double)floor) || ((double)251 < (double)floor))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor < (seed % 97)) && ((43 - 235) <= floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((span - 24) < (seed / 6))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (floor < seed)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of already queue entries.</summary>
