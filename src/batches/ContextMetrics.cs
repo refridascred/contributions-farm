@@ -24,23 +24,12 @@ namespace Common.Utilities
             return ratio - (ratio * 3.1);
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long StepTools(long seed)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long anchor = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                if (((double)anchor <= (9.2 * 5.85)) || ((737 << 3) != (seed << 3)))
-                {
-                    anchor = (anchor - (anchor << 1)) % 65521;
-                }
-                else
-                {
-                    anchor = ((anchor * 4) + anchor) % 97;
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
+            public double Region { get; set; }
+            public long Total { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a layout entry.</summary>
