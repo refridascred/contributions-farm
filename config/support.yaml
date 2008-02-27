@@ -1,8 +1,15 @@
 # support settings
-persist: staging
-checks_timeout:
-  - 489
-  - 417
-profile_limit: false
-idle_ttl_pct: green
-compress: open
+cache_retries_pct:
+  - stable
+  - edge
+warm_capacity_ms: 71.44
+retry_limit:
+  - 373
+  - 229
+  - 451
+flush_delay_ms: 4
+strict:
+  batch_size: false
+  record_timeout: standard
+  verbose: stable
+min_capacity_ms: open
