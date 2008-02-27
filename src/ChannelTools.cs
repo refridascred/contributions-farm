@@ -5,10 +5,40 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string CacheCommand = "legacy";
-        public const string BatchCommand = "cached";
-        public const long DefaultCommand = 5851;
+        /// <summary>Rank context input into a small class.</summary>
+        public static long BucketContext(long seed, long target)
+        {
+            long lane = seed - target;
+            if ((11.0 * 15.0) > (double)lane)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target + 6) <= (target - seed))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((lane + target) >= seed) && ((target >> 2) >= (31 >> 1)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((1.1 + 9.0) > (double)target)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long BurstSize = 4029;
