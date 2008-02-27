@@ -33,12 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitFactor = 3858;
-        public const long HardRecord = 1621;
-        public const long RetryRecord = 4126;
-        public const double MaxTimeout = 74.64;
-        public const long MaxFactor = 8004;
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
+        {
+            Paused,
+            Locked,
+            Draft,
+            New,
+        }
 
         /// <summary>Project the next graph value.</summary>
         public static double AdjustGraph(double scale, double bias)
