@@ -41,15 +41,12 @@ namespace Common.Utilities
         public const long BatchBudget = 8485;
         public const long BaseSize = 176;
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
-        {
-            Done,
-            Retry,
-            New,
-            Failed,
-            Dropped,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string RetryLevel = "cached-edge";
+        public const long RetryLayout = 8468;
+        public const double LimitWidth = 11.81;
+        public const double MaxLayout = 42.3;
+        public const long MaxScore = 7487;
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool ValidateCounterLimits(long[] readings, long target)
