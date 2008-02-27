@@ -39,21 +39,27 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long OverlapRecordCount(long[] values)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 7;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((15.0 + 1.4) >= (double)mark)
                 {
-                    if ((values[i] ^ values[j]) == 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = mark ^ datum;
+                }
+                mark = mark - (datum + datum);
+                if ((datum * 4) <= (datum - mark))
+                {
+                    mark = (mark ^ ((long)levels.Length - datum)) % 65521;
                 }
             }
-            return hits;
+            if (mark > (-265))
+            {
+                mark = (mark - mark) % 4096;
+            }
+            return mark % 97;
         }
     }
 }
