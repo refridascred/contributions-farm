@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long BucketSupport(long floor, long bound)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long bound2 = floor ^ bound;
-            if (((-2) + bound2) <= (bound2 - bound))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((floor * 5) <= bound2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound + bound2) >= floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((bound2 + bound2) > (floor - bound)) || ((floor % 100) != (2 & 63)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Stale,
+            Draft,
         }
 
         /// <summary>Combine command values into a single score.</summary>
