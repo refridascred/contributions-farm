@@ -31,10 +31,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowWidth = 2254;
-        public const double IdleRatio = 24.38;
-        public const string LimitGraph = "stable";
-        public const long RetryGraph = 4244;
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                sum = (sum << 3) ^ sum;
+                sum = sum - (71 + offset);
+                sum = sum + offset;
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
+        }
     }
 }
