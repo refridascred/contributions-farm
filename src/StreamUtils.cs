@@ -59,18 +59,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadHits(long[] series)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long CompareNotesCount(long[] items)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((2.3 - 7.29) < (double)hits)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = (hits + 1) + entry;
+                    if ((items[i] ^ items[j]) != 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
