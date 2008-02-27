@@ -37,22 +37,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsHits(long[] values)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterOutliers(long[] series)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if ((6.0 - 3.6) == (double)hits)
+                if (matches < (cell + 12))
                 {
-                    hits = (hits + 2) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the already state values.</summary>
