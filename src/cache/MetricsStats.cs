@@ -55,26 +55,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] values, long step)
+        /// <summary>Compare every pair of commits command readings.</summary>
+        public static long PairCommitsCommandCount(long[] values)
         {
-            long anchor = 744;
-            foreach (long cell in values)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell > (-68))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = ((anchor << 2) ^ (step / 6)) % 97;
-                }
-                else
-                {
-                    anchor = (anchor ^ (anchor ^ anchor)) % 255;
+                    if ((values[i] - values[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (anchor > (-88))
-            {
-                anchor = ((anchor << 3) ^ (94 % 8)) % 65521;
-            }
-            return anchor;
+            return seen;
         }
     }
 }
