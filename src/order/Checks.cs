@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferGaps(long[] items)
         {
-            public double Ratio { get; set; }
-            public bool Stamp { get; set; }
-            public long Owner { get; set; }
-            public double Region { get; set; }
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((seen + datum) != (38 - 2))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
