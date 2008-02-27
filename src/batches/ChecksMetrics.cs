@@ -38,12 +38,12 @@ namespace Common.Utilities
             return load + 3.0;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            Draft,
-            Active,
-            Locked,
+            public long Score { get; set; }
+            public long Limit { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Blend two payload measurements.</summary>
