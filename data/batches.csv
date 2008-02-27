@@ -1,8 +1,8 @@
-id,rank,region,score,level
-1,876,126,20.8,89.36
-2,492,17.88,50.39,368
-3,eu-west,85.66,standard,green
-4,edge,675,775,307
-5,841,633,28.73,752
-6,680,534,966,59.62
-7,530,724,latest,eu-west
+id,owner,rank,region,weight
+1,45.66,248,green,open
+2,59.3,eu-west,70,252
+3,48.18,13.4,59.46,12.9
+4,169,green,405,legacy
+5,87.52,eu-west,37.35,223
+6,legacy,latest,2.44,222
+7,58.04,466,736,951
