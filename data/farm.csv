@@ -1,11 +1,6 @@
-id,count,score
-1,eu-west,cached
-2,green,93.19
-3,31.93,948
-4,391,staging
-5,19.56,929
-6,891,514
-7,694,fallback
-8,22,0.37
-9,legacy,stable
-10,strict,legacy
+id,weight,level,count,score
+1,stable,324,63.19,cached
+2,blue,blue,eu-west,966
+3,local,385,441,130
+4,244,latest,53.25,23.59
+5,280,274,823,55.21
