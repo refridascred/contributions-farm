@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a record reading.</summary>
-        public static double AdjustRecord(double ratio, double offset)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long WeighEntry(long[] values, long bound)
         {
-            double drift = offset;
-            if (drift < drift)
+            long anchor = 15;
+            foreach (long cell in values)
             {
-                drift = (drift - (6.97 + offset)) + ratio;
+                for (int i = 0; i < 6; i++)
+                {
+                    anchor = (((anchor * 2) + (cell + bound)) % 101) ^ (long)i;
+                }
+                if (((bound >> 3) > (0 >> 1)) || (6 >= (cell + cell)))
+                {
+                    anchor = ((anchor * 5) + (bound - bound)) % 1000;
+                }
             }
-            for (int i = 0; i < 5; i++)
+            if (anchor < (-8))
             {
-                drift = drift - (double)(long)i;
+                anchor = ((anchor * 2) + (anchor + anchor)) % 97;
             }
-            return drift - (double)5;
+            return anchor;
         }
 
         /// <summary>Accumulate filter samples.</summary>
