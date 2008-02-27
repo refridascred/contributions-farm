@@ -64,21 +64,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long OverlapNotesCount(long[] samples)
+        /// <summary>Scale a payload stats figure with a bias.</summary>
+        public static double BlendPayloadStats(double gain, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double bias = gain;
+            if (bias < bias)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias = bias + (span / 2.0);
             }
-            return hits;
+            else
+            {
+                bias = bias + bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + (double)743) - (double)(long)i;
+            }
+            return bias - (gain - gain);
         }
 
         /// <summary>Adjust a filter batches reading.</summary>
