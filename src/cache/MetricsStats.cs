@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleEditor = 9522;
-        public const long SoftEditor = 6453;
-        public const long LimitEditor = 7161;
+        /// <summary>Blend two cache measurements.</summary>
+        public static double BlendCache(double scale, double span)
+        {
+            double bias = scale;
+            if (bias >= (double)2)
+            {
+                bias = (bias + (7.0 + bias)) - span;
+            }
+            return bias + bias;
+        }
 
         /// <summary>Locate a stats cluster reading by value.</summary>
         public static long SeekStatsClusterIndex(long[] values, long seed)
