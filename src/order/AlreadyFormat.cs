@@ -45,18 +45,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the format editor entries that pass the check.</summary>
-        public static long TallyFormatEditorOutliers(long[] readings, long origin)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LocateFilterIndex(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((7 ^ 8) != (sample >> 5))
+                if (levels[i] == step)
                 {
-                    matches = (matches + 2) - origin;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Digest a series of commits githubfarm entries.</summary>
