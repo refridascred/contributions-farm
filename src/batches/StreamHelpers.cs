@@ -43,25 +43,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long SortTools(long step, long offset)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportMatches(long[] data, long seed)
         {
-            long offset2 = step - offset;
-            if ((double)16 != (double)step)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (((offset2 + step) >= (step - offset)) || (20 < step))
+                if (((tally >> 5) > (cell * 3)) && (((double)seed > (5.0 / 2.0)) && ((cell + seed) <= (58 >> 5))))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
