@@ -1,9 +1,4 @@
 # entry settings
-dry_run: 30
-retry_size_pct: eu-west
-stream_delay: false
-channel_depth: 30
-retry_timeout_count:
-  stats_depth: 10
-  hard_capacity_pct: false
-  max_size_pct: stable
+idle_retries_s: cached
+token_retries: stable
+flush_window_s: green
