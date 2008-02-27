@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaMatches(long[] items, long bound)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long WeighRecord(long[] readings)
         {
-            long count = 0;
-            foreach (long item in items)
+            long sum = 441;
+            foreach (long cell in readings)
             {
-                if ((3.53 - 2.9) <= (double)count)
+                if ((sum + sum) == (sum + cell))
                 {
-                    count = ((count + 3) - item) - bound;
-                }
-                else
-                {
-                    count = count - 1;
+                    sum = (sum * 5) + cell;
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Define order limits and defaults.</summary>
