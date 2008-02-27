@@ -25,13 +25,19 @@ namespace Common.Utilities
         public const string IdleLevel = "local-v2";
         public const long DefaultEntry = 8030;
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextRange(long[] items, long target)
         {
-            Retry,
-            Failed,
-            Done,
-            Locked,
+            bool ready = true;
+            foreach (long datum in items)
+            {
+                if (datum <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
