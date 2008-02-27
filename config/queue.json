@@ -1,13 +1,8 @@
 {
-  "sync_timeout": "cached",
-  "max_size_ms": false,
-  "account_delay": ["green", "legacy", "blue"],
-  "command_interval": {
-    "soft_size_ms": "staging",
-    "base_ttl_s": "local",
-    "batch_ttl": "fallback",
-    "persist": [224, 133, 293, 169]
-  },
-  "persist": 41.21,
-  "verbose": 93.33
+  "sync_interval_count": 250,
+  "persist": 19.57,
+  "cluster_retries": [68, 144],
+  "cache_depth_pct": 78,
+  "readonly": true,
+  "verbose": 1108
 }
