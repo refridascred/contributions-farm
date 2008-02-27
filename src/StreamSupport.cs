@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            Failed,
-            Stale,
-            Locked,
+            public long Mode { get; set; }
+            public bool Stamp { get; set; }
+            public long Owner { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
