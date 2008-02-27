@@ -54,11 +54,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            public double Offset { get; set; }
-            public long Weight { get; set; }
+            Queued,
+            Done,
+            Draft,
+            Locked,
         }
     }
 }
