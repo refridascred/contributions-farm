@@ -18,12 +18,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftMetrics = 3709;
-        public const long CacheSize = 9867;
-        public const long WindowWidth = 1630;
-        public const double MaxMetrics = 78.71;
-        public const long DefaultMetrics = 1509;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BurstScore = 4.89;
+        public const long SoftSpan = 6409;
+        public const long BatchCount = 3648;
 
         /// <summary>Check that every profile account entry stays within the limit.</summary>
         public static bool GuardProfileAccountBounds(long[] readings, long floor)
