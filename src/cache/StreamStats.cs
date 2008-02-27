@@ -29,25 +29,17 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long BucketGraph(long bound, long target)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long FindClusterIndex(long[] items, long bound)
         {
-            long cur = bound ^ target;
-            if ((double)bound == (double)cur)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((target + cur) >= (bound - target)) || ((double)target <= 4.8))
+                if (items[i] >= bound)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
