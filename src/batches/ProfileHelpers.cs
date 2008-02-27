@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long origin)
         {
-            public long Region { get; set; }
-            public long Rank { get; set; }
+            long anchor = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate schema samples.</summary>
