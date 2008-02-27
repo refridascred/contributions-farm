@@ -50,32 +50,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long seed, long step)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double BlendQueue(double ratio, double bias)
         {
-            long lane = seed - step;
-            if ((step - 0) >= seed)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((lane + 0) != (seed % 16))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (seed > step)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            double rate = ratio;
+            return (rate + (double)30) + bias;
         }
     }
 }
