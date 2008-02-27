@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit session stats readings against a rule.</summary>
-        public static long MeasureSessionStatsOutliers(long[] readings, long step)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((5.9 + 3.0) < (double)seen)
-                {
-                    seen = ((seen + 2) ^ sample) - step;
-                }
-            }
-            return seen;
+            public bool Score { get; set; }
+            public string Limit { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
