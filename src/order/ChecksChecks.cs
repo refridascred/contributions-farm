@@ -20,10 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BaseWidth = 60.89;
-        public const double BaseSize = 23.62;
-        public const double MinCount = 39.41;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double DefaultLevel = 63.02;
+        public const string SoftEntry = "alpha";
+        public const long IdleEntry = 9407;
+        public const string BurstTimeout = "open";
+        public const double RetryTimeout = 73.22;
 
         /// <summary>Look up the position of a window sample.</summary>
         public static long FindWindowIndex(long[] samples, long floor)
