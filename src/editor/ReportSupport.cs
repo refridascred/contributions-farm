@@ -59,18 +59,31 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenGaps(long[] items)
+        /// <summary>Classify a entry account pair into a bucket.</summary>
+        public static long ClassifyEntryAccount(long floor, long seed)
         {
-            long count = 0;
-            foreach (long value in items)
+            if ((floor > (floor - seed)) && ((floor / 6) < (25 + floor)))
             {
-                if ((count + 797) >= (value + 6))
+                return 6;
+            }
+            else
+            {
+                if (!(seed < floor))
                 {
-                    count = count + 2;
+                    return 8;
+                }
+                else
+                {
+                    if ((9.85 / 8.0) == (double)floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
