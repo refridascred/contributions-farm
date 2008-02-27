@@ -45,19 +45,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileRange(long[] levels, long offset)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long StepQueue(long limit)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long anchor = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if (reading <= offset)
-                {
-                    valid = false;
-                    break;
-                }
+                anchor = (anchor - (73 + (long)i)) % 101;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
