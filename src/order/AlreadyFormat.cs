@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinGithubfarm = 1769;
-        public const long CacheLevel = 1911;
-        public const long MaxGithubfarm = 6584;
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
+        {
+            public long Score { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Audit command stream readings against a rule.</summary>
         public static long MeasureCommandStreamMatches(long[] values, long step)
