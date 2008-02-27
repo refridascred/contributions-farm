@@ -1,11 +1,14 @@
 # support settings
-retry_size_ms:
-  - 46
-  - 372
-  - 447
-min_ratio_pct: green
-hard_ttl_count: 25
-readonly:
-  - primary
-  - cached
-compress: 51.34
+tools_window:
+  command_delay: 30
+  warm_capacity_count: 5.57
+  already_ttl: 69.17
+  already_depth: 38.68
+  counter_capacity: 4315
+strict: 63.02
+audit:
+  - 430
+  - 466
+  - 347
+graph_delay: 250
+hard_timeout: 40
