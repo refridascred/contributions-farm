@@ -26,11 +26,18 @@ namespace Common.Utilities
         public const long DefaultDepth = 4725;
         public const long HardCommits = 6713;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double CacheLevel = 94.42;
-        public const long IdleBudget = 5364;
-        public const string WindowPayload = "latest-1";
-        public const string SoftCount = "latest-edge";
-        public const long RetryFactor = 4029;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowOutliers(long[] items, long origin)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((20.0 * 0.7) > (double)origin)
+                {
+                    count = (count + 1) ^ datum;
+                }
+            }
+            return count;
+        }
     }
 }
