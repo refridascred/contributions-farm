@@ -13,11 +13,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstSpan = 9681;
-        public const string LimitCount = "standard";
-        public const string StepInterval = "stable";
-        public const long RetryRatio = 5978;
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
+        {
+            public long Weight { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Roll a context notes counter forward.</summary>
         public static long IterateContextNotes(long offset)
