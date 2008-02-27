@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseFactor = 8209;
-        public const long DefaultCounter = 9854;
-        public const long RetryTimeout = 760;
-        public const long WindowCounter = 3804;
-        public const long BatchInterval = 744;
+        /// <summary>Match up stream samples.</summary>
+        public static long OverlapStreamCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Match up entry already samples.</summary>
         public static long CompareEntryAlreadyCount(long[] data)
