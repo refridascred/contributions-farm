@@ -12,12 +12,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowMatches(long[] samples, long bound)
         {
-            Idle,
-            Synced,
-            Locked,
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if ((5.09 * 1.18) == (double)bound)
+                {
+                    count = (count + 2) ^ cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many session githubfarm samples are out of range.</summary>
