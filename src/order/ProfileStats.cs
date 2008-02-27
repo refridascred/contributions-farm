@@ -15,13 +15,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            public string Offset { get; set; } = "";
-            public bool Region { get; set; }
-            public long Owner { get; set; }
-            public string Total { get; set; } = "";
+            Stale,
+            Retry,
+            Paused,
         }
 
         /// <summary>Adjust a tools reading.</summary>
