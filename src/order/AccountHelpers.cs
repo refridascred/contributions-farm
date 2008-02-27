@@ -58,10 +58,15 @@ namespace Common.Utilities
         public const long HardCommits = 282;
         public const double LimitSize = 61.39;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseCache = 2819;
-        public const long MinDepth = 6685;
-        public const double SoftCache = 42.1;
-        public const long SoftSpan = 4164;
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long RollBatches(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 13; i++)
+            {
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
+        }
     }
 }
