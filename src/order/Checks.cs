@@ -60,9 +60,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleTools = 8144;
-        public const long BatchSize = 4416;
-        public const long WindowTools = 6184;
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long IteratePayload(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    total = (((total << 2) ^ (seed - total)) % 255) - (long)i2;
+                }
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
+        }
     }
 }
