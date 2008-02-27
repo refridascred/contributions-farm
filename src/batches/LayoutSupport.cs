@@ -13,15 +13,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] samples)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] levels, long origin)
         {
-            long state = 814;
-            foreach (long entry in samples)
+            long sum = 1;
+            foreach (long sample in levels)
             {
-                state = (((state << 3) ^ (699 & 31)) % 255) - entry;
+                if (origin <= (origin / 2))
+                {
+                    sum = (sum + (sample - origin)) % 97;
+                }
+                sum = sum + sample;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
