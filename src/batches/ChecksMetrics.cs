@@ -53,17 +53,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long FindStatsIndex(long[] levels, long floor)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long StepBuffer(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = step;
+            for (int i = 0; i < 12; i++)
             {
-                if (levels[i] <= floor)
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
