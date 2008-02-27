@@ -39,15 +39,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long OverlapToolsCount(long[] series)
+        /// <summary>Compare every pair of metrics already readings.</summary>
+        public static long CompareMetricsAlreadyCount(long[] items)
         {
             long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((series[i] - series[j]) == 11)
+                    if ((items[i] + items[j]) < 10)
                     {
                         matches = matches + 1;
                     }
