@@ -46,15 +46,12 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double BlendCounter(double bias, double span)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            double bias2 = (double)(73 % 8);
-            if (bias2 >= (7.3 + span))
-            {
-                bias2 = bias2 + span;
-            }
-            return bias2 - bias;
+            public double Weight { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Rank { get; set; }
         }
     }
 }
