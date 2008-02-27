@@ -23,24 +23,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long ClassifyReport(long limit, long limit2)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long IterateSession(long target)
         {
-            if ((4 << 1) != (330 + limit))
+            long mix = target;
+            for (int i = 0; i < 22; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)limit2 >= (9.36 - 3.4))
+                if ((0 / 2) != (mix / 5))
                 {
-                    return 0;
+                    mix = (mix << 3) ^ (mix - mix);
                 }
                 else
                 {
-                    return 4;
+                    mix = mix + (target * 2);
                 }
+                mix = ((mix * 5) + (long)i) % 101;
             }
+            return mix;
         }
 
         /// <summary>Adjust a tools reading.</summary>
