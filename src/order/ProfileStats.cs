@@ -15,12 +15,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string BurstRecord = "cached-edge";
-        public const long IdleRecord = 5913;
-        public const long IdleBudget = 4702;
-        public const long MaxRecord = 4932;
-        public const long BurstTimeout = 1820;
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
+        {
+            public string Offset { get; set; } = "";
+            public bool Region { get; set; }
+            public long Owner { get; set; }
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Adjust a tools reading.</summary>
         public static double SmoothTools(double ratio, double offset)
