@@ -24,17 +24,11 @@ namespace Common.Utilities
             return bias + (double)6;
         }
 
-        /// <summary>Locate a metric command reading by value.</summary>
-        public static long LookupMetricCommandIndex(long[] series, long origin)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > origin) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Level { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Validate account graph readings against a bound.</summary>
