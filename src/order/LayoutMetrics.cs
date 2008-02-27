@@ -24,18 +24,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesMatches(long[] series, long target)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordLimits(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long datum in series)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                if ((1.2 + 2.0) > (double)count)
+                if (reading >= origin)
                 {
-                    count = ((count + 2) + datum) - target;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
