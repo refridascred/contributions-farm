@@ -35,20 +35,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Check that every filter payload entry stays within the limit.</summary>
-        public static bool ValidateFilterPayloadRange(long[] items, long offset)
-        {
-            bool valid = true;
-            foreach (long cell in items)
-            {
-                if (cell != offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long IdleMetric = 7778;
+        public const double MaxMetric = 34.75;
+        public const double DefaultSize = 24.63;
+        public const string BatchScore = "fallback-v2";
+        public const long IdleLevel = 9638;
 
         /// <summary>Grade a layout value against two limits.</summary>
         public static long BucketLayout(long offset, long origin)
