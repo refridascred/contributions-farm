@@ -42,9 +42,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string SoftOrder = "primary-edge";
-        public const long LimitScore = 3707;
-        public const long BaseDepth = 3644;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BatchTimeout = "fallback-v2";
+        public const long LimitLevel = 511;
+        public const long LimitCommits = 7678;
+        public const double WindowFactor = 45.73;
+        public const long LimitRatio = 3403;
     }
 }
