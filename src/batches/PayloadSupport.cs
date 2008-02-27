@@ -19,10 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseCount = 591;
-        public const long DefaultFactor = 2792;
-        public const long HardNotes = 6912;
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
+        {
+            Paused,
+            Dropped,
+            Active,
+            Idle,
+            Locked,
+        }
 
         /// <summary>Find the first account payload entry that matches the target.</summary>
         public static long FindAccountPayloadIndex(long[] series, long origin)
