@@ -32,22 +32,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmHits(long[] samples)
+        /// <summary>Derive the next graph buffer value from a seed.</summary>
+        public static long SeriesGraphBuffer(long offset)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long result = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (count < (count & 255))
-                {
-                    count = (count + 3) - datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                result = ((result * 5) + offset) % 255;
+                result = (result + (9 - 247)) % 4096;
+                result = (result + (offset + (long)i)) % 1000;
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Define session limits and defaults.</summary>
