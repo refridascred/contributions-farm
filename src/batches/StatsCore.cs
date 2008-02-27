@@ -33,12 +33,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LocateBatchesIndex(long[] samples, long origin)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] samples, long step)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if ((samples[i] > origin) && ((samples[i] % 3) == 0))
+                if ((samples[i] >= step) && ((samples[i] % 3) == 0))
                 {
                     return (long)i;
                 }
