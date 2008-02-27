@@ -1,11 +1,11 @@
 {
-  "graph_ratio": {
-    "warm_ratio_ms": "legacy",
-    "retry_interval_pct": 250,
-    "cache_depth_s": true,
-    "persist": ["latest", "primary", "stable"]
-  },
-  "default_limit": "standard",
-  "soft_retries_s": 6141,
-  "audit": false
+  "compress": 79.52,
+  "readonly": 52.25,
+  "metric_retries": "staging",
+  "batch_capacity": 100,
+  "audit": {
+    "stream_limit": 72.45,
+    "editor_window": false,
+    "hard_interval_s": "edge"
+  }
 }
