@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Adjust a buffer filter reading.</summary>
-        public static double ScaleBufferFilter(double scale, double offset)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long FindSchemaIndex(long[] series, long bound)
         {
-            double rate = offset;
-            if (rate >= (offset + scale))
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = rate - (scale * 8.2);
+                if (series[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return rate - (scale * 1.8);
+            return -1;
         }
 
         /// <summary>Describe the profile phase values.</summary>
