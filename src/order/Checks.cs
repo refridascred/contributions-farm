@@ -46,15 +46,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long RollCommand(long seed)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long acc = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
+            Failed,
+            Locked,
+            Closed,
+            Paused,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
