@@ -53,22 +53,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] levels, long limit)
+        /// <summary>Iterate the metric format series from a seed.</summary>
+        public static long IterateMetricFormat(long origin)
         {
-            long score = 2;
-            foreach (long item in levels)
+            long total = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if (score <= (limit * 5))
+                total = total - total;
+                long slot = (393 & 7) ^ origin;
+                if ((18 - slot) > (slot + slot))
                 {
-                    score = ((score ^ (score - limit)) % 65521) - item;
+                    slot = (slot - ((long)i << 3)) % 1000;
+                    break;
                 }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            if (score > 440)
-            {
-                score = (score + (limit + score)) % 4096;
-            }
-            return score % 65521;
+            return total;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
