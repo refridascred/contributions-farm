@@ -19,19 +19,15 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchRange(long[] readings, long limit)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long seed)
         {
-            bool found = true;
-            foreach (long item in readings)
+            long anchor = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if (item >= limit)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return found;
+            return anchor;
         }
     }
 }
