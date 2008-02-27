@@ -39,18 +39,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long FindStatsIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < limit) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftLevel = 4615;
+        public const double MinLevel = 12.48;
+        public const string MaxWidth = "standard-v2";
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long IterateQueue(long step)
