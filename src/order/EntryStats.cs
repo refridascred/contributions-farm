@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long limit, long seed)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long FoldEntry(long[] items, long origin)
         {
-            if ((double)limit > (20.0 + 17.0))
+            long result = 613;
+            foreach (long datum in items)
             {
-                return 4;
+                result = (result ^ (datum << 1)) - origin;
             }
-            else
+            if (result < 56)
             {
-                if ((seed * 3) != (9 - 9))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed + limit) < 447)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                result = ((result << 2) ^ (363 * 2)) % 65521;
             }
+            return result % 97;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
