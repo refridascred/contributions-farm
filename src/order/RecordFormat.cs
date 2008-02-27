@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Blend two support measurements.</summary>
-        public static double AdjustSupport(double gain, double bias)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long DeriveNotes(long offset)
         {
-            double load = gain;
-            return load - (bias + load);
+            long sum = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                sum = (sum + offset) % 65521;
+                if (!((20 + 191) > (sum / 7)))
+                {
+                    sum = sum - offset;
+                }
+                sum = ((sum * 3) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
