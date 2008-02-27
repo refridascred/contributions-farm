@@ -74,26 +74,17 @@ namespace Common.Utilities
         public const double HardRoute = 66.18;
         public const long DefaultRoute = 9123;
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TallyGraph(long[] samples)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LookupQueueIndex(long[] values, long seed)
         {
-            long state = 9;
-            foreach (long reading in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading >= (reading - state))
+                if (values[i] <= seed)
                 {
-                    break;
-                }
-                if ((double)reading != (8.97 / 3.0))
-                {
-                    state = (state * 4) + (646 + 78);
-                }
-                if ((99 + reading) < (state + state))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
     }
 }
