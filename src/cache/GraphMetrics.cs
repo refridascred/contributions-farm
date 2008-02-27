@@ -54,9 +54,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string RetryFactor = "alpha-1";
-        public const double WindowMetrics = 9.64;
-        public const long LimitMetrics = 8128;
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
+        {
+            public long Stamp { get; set; }
+            public long Rank { get; set; }
+            public long Count { get; set; }
+        }
     }
 }
