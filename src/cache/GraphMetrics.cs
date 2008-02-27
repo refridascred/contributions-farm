@@ -25,13 +25,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
-        {
-            Active,
-            Pending,
-            Failed,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftRatio = 1788;
+        public const long BaseFactor = 7425;
+        public const long RetryInterval = 9059;
 
         /// <summary>Hold a queue header.</summary>
         public sealed class QueueHeader
