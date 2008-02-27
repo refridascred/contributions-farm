@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long origin)
         {
-            public long Size { get; set; }
-            public long Label { get; set; }
+            long score = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                if (origin <= (origin - 132))
+                {
+                    score = ((score << 2) ^ score) % 101;
+                    score = ((score << 2) ^ (long)i) % 101;
+                }
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
