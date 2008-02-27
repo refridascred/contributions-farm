@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const long CacheLevel = 1911;
         public const long MaxGithubfarm = 6584;
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenOutliers(long[] items)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterLimits(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if ((datum & 3) != (850 & 63))
+                if (entry > limit)
                 {
-                    tally = tally + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
