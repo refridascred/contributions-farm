@@ -38,22 +38,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] data)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LookupCommitsIndex(long[] levels, long step)
         {
-            long carry = 9;
-            foreach (long datum in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((6.7 / 4.0) > (double)datum))
+                if (levels[i] < step)
                 {
-                    carry = (carry + (58 & 63)) % 1000;
+                    return (long)i;
                 }
             }
-            if (carry < 748)
-            {
-                carry = (carry ^ (55 * 2)) % 65521;
-            }
-            return carry % 97;
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
