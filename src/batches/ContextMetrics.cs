@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count stream queue pairs that satisfy a relation.</summary>
-        public static long MatchStreamQueueCount(long[] readings)
+        /// <summary>Project the next order value.</summary>
+        public static double ProjectOrder(double scale, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = bias;
+            if (ratio <= (double)89)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                ratio = (ratio - ratio) + scale;
             }
-            return hits;
+            else
+            {
+                ratio = ratio + (9.0 / 2.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (ratio * 3.8)) + (double)(long)i;
+            }
+            return ratio - (ratio * 3.1);
         }
 
         /// <summary>Fold a list of checks readings.</summary>
