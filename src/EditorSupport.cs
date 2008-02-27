@@ -42,22 +42,13 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] readings, long target)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long carry = 59;
-            foreach (long reading in readings)
-            {
-                if ((carry - target) < carry)
-                {
-                    carry = (carry << 3) ^ reading;
-                }
-                else
-                {
-                    carry = (carry ^ (carry + 64)) % 65521;
-                }
-            }
-            return carry % 97;
+            Active,
+            Done,
+            Paused,
+            Retry,
         }
 
         /// <summary>Hold a report info.</summary>
