@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Match up window samples.</summary>
-        public static long PairWindowCount(long[] series)
+        /// <summary>Count the command farm entries that pass the check.</summary>
+        public static long TallyCommandFarmGaps(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((sample >> 3) > matches) || ((double)matches > (7.7 * 8.88)))
                 {
-                    if ((series[i] + series[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Project the next record value.</summary>
