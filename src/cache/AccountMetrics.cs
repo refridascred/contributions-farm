@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the command farm entries that pass the check.</summary>
-        public static long TallyCommandFarmGaps(long[] readings)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if (((sample >> 3) > matches) || ((double)matches > (7.7 * 8.88)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public string Total { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public double Level { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Project the next record value.</summary>
