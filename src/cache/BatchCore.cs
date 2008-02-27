@@ -5,40 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long GradeNotes(long offset, long floor)
-        {
-            long lane = offset - floor;
-            if (!((floor & 63) == (offset << 1)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((9.0 - 13.0) > (double)lane) || (floor <= (359 % 64)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((7 ^ offset) != (offset - 133))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((632 & 3) < lane))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseFactor = 8209;
+        public const long DefaultCounter = 9854;
+        public const long RetryTimeout = 760;
+        public const long WindowCounter = 3804;
+        public const long BatchInterval = 744;
 
         /// <summary>Match up entry already samples.</summary>
         public static long CompareEntryAlreadyCount(long[] data)
