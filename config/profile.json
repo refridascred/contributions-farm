@@ -1,7 +1,11 @@
 {
-  "graph_size": 30,
-  "min_timeout_s": 250,
-  "sync_ttl": 30,
-  "flush_ttl": 10.24,
-  "cache_retries_count": 30
+  "stats_interval": 40.36,
+  "max_window_ms": 70,
+  "batch_delay_pct": "primary",
+  "flush_ratio": "primary",
+  "idle_timeout": {
+    "base_interval_pct": 3187,
+    "audit": 60,
+    "retry_capacity_count": 3134
+  }
 }
