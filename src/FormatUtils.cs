@@ -27,22 +27,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of notes session readings.</summary>
-        public static long MatchNotesSessionCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepFactor = 6659;
+        public const long LimitWidth = 8509;
+        public const long RetrySize = 6779;
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long MatchProfileCount(long[] values)
