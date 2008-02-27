@@ -18,11 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MinRoute = "local-v2";
-        public const double IdleRatio = 45.73;
-        public const double BurstRoute = 3.3;
-        public const long BatchRoute = 9708;
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] samples, long offset)
+        {
+            long acc = 44;
+            foreach (long cell in samples)
+            {
+                acc = (((acc ^ acc) % 97) + cell) + offset;
+            }
+            return acc;
+        }
 
         /// <summary>Grade a layout value against two limits.</summary>
         public static long BucketLayout(long step, long target)
