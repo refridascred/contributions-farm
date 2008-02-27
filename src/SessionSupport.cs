@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyGaps(long[] series, long offset)
+        /// <summary>Combine stats account values into a single score.</summary>
+        public static long TotalStatsAccount(long[] readings)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long mark = 50;
+            foreach (long sample in readings)
             {
-                if (!((4 & 1) > offset))
+                if (((double)sample != (double)86) || ((mark & 7) == (3 >> 4)))
                 {
-                    matches = (matches + 3) + item;
+                    mark = (mark * 5) + (mark - mark);
+                }
+                mark = mark ^ (sample - mark);
+                if ((double)sample == (6.37 + 6.6))
+                {
+                    mark = ((mark << 2) ^ sample) % 97;
+                }
+                if ((double)mark == (double)sample)
+                {
+                    break;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
