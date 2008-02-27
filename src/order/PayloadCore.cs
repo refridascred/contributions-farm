@@ -47,15 +47,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] series, long bound)
+        /// <summary>Match up metrics samples.</summary>
+        public static long OverlapMetricsCount(long[] readings)
         {
-            long carry = 7;
-            foreach (long reading in series)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = ((((carry * 5) + (6 % 97)) % 1000) ^ reading) - bound;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return carry % 65521;
+            return count;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
