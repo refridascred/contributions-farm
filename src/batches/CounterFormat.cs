@@ -27,17 +27,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] readings, long limit)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileMatches(long[] items, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (readings[i] < limit)
+                if (((double)entry > (18.0 * 7.37)) && ((entry << 2) == (27 * 3)))
                 {
-                    return (long)i;
+                    seen = (seen + 1) + step;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Digest a series of format entries.</summary>
