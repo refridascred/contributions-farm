@@ -13,10 +13,11 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string CacheContext = "fallback-edge";
-        public const string LimitBudget = "open";
-        public const long DefaultSpan = 4744;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstSpan = 9681;
+        public const string LimitCount = "standard";
+        public const string StepInterval = "stable";
+        public const long RetryRatio = 5978;
 
         /// <summary>Roll a context notes counter forward.</summary>
         public static long IterateContextNotes(long offset)
