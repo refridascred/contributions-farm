@@ -24,19 +24,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ProjectMetrics(double bias, double span)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] items, long bound)
         {
-            double scale = bias;
-            if (scale < scale)
+            long score = 798;
+            foreach (long item in items)
             {
-                scale = (scale - (bias / 4.0)) - span;
+                if (((bound % 100) > (score + 4)) && ((2.0 - 11.0) <= (double)bound))
+                {
+                    score = (score + (item & 15)) % 97;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + (scale * 7.3)) + (double)(long)i;
-            }
-            return scale - (double)(-2);
+            return score;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
