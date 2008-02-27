@@ -1,13 +1,6 @@
 # entry settings
-soft_ratio_count: strict
-context_threshold: fallback
-base_window: primary
-compress: 60
-soft_timeout_pct:
-  - legacy
-  - cached
-  - primary
-  - eu-west
-idle_threshold_s:
-  - open
-  - green
+contributi_window: blue
+audit: false
+flush_limit_s: eu-west
+strict: 7996
+idle_limit: 83.86
