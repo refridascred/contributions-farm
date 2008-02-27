@@ -60,19 +60,18 @@ namespace Common.Utilities
         public const double LimitGithubfarm = 19.05;
         public const double LimitWidth = 96.21;
 
-        /// <summary>Validate filter contributi readings against a bound.</summary>
-        public static bool GuardFilterContributiLimits(long[] levels, long step)
+        /// <summary>Count the context contributi entries that pass the check.</summary>
+        public static long MeasureContextContributiHits(long[] data)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (cell > step)
+                if ((tally >= 67) && (((7.93 - 12.0) >= (double)tally) && ((tally / 5) > (value << 2))))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
