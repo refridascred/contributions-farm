@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteMatches(long[] items, long offset)
-        {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if (!((1 ^ 43) <= (tally >> 1)))
-                {
-                    tally = ((tally + 3) + item) - offset;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseTimeout = 5308;
+        public const double CacheFilter = 73.03;
+        public const long DefaultSpan = 2671;
+        public const long BatchSpan = 3662;
 
         /// <summary>Describe the context status values.</summary>
         public enum ContextStatus
