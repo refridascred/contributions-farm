@@ -49,13 +49,13 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutRange(long[] data, long seed)
+        /// <summary>Check that every metrics report entry stays within the limit.</summary>
+        public static bool CheckMetricsReportBounds(long[] samples, long seed)
         {
             bool ok = true;
-            foreach (long cell in data)
+            foreach (long cell in samples)
             {
-                if (cell < seed)
+                if (cell <= seed)
                 {
                     ok = false;
                     break;
