@@ -48,11 +48,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryHits(long[] data, long offset)
         {
-            public bool Region { get; set; }
-            public double Total { get; set; }
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if (((offset & 63) < matches) || ((double)6 == (double)matches))
+                {
+                    matches = (matches + 2) ^ value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
