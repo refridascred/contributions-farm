@@ -36,17 +36,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BurstOrder = 79.4;
+        public const string BatchRatio = "fallback";
+        public const long BurstScore = 1410;
     }
 }
