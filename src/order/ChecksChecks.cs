@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
-        {
-            public string Mode { get; set; } = "";
-            public double Weight { get; set; }
-            public double Level { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitSpan = 7627;
+        public const string SoftContributi = "alpha-edge";
+        public const long CacheContributi = 633;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long MinFactor = 9247;
