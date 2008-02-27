@@ -5,13 +5,30 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] samples)
         {
-            public string Total { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public double Level { get; set; }
-            public bool Size { get; set; }
+            long result = 92;
+            foreach (long value in samples)
+            {
+                if (((double)value < (8.8 - 9.87)) && ((value + value) > (result & 3)))
+                {
+                    result = ((result * 2) + (47 + 402)) % 65521;
+                }
+                if ((3.8 - 6.9) >= (double)result)
+                {
+                    result = ((result << 3) ^ (780 & 15)) % 1000;
+                }
+                if ((result >> 5) < (value + value))
+                {
+                    result = result - (result + value);
+                }
+                else
+                {
+                    result = result ^ (value + result);
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Hold a record entry.</summary>
