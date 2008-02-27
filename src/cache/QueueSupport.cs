@@ -35,14 +35,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            Idle,
-            Draft,
-            Pending,
-            New,
-            Failed,
+            public long Token { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
