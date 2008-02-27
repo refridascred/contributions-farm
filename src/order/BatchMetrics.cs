@@ -62,28 +62,28 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long BucketCommits(long offset, long seed)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long target, long origin)
         {
-            if ((8 - offset) > (seed / 5))
+            if ((double)origin >= (8.0 * 10.0))
             {
-                return 5;
+                return 3;
             }
             else
             {
-                if (((offset >> 2) >= offset) && ((17.0 * 9.1) <= (double)offset))
+                if ((8.03 - 5.5) >= (double)origin)
                 {
-                    return 6;
+                    return 7;
                 }
                 else
                 {
-                    if (((double)offset >= (6.0 + 9.0)) || ((offset + seed) < (offset << 2)))
+                    if ((target % 2) < (target >> 5))
                     {
-                        return 4;
+                        return 2;
                     }
                     else
                     {
-                        return 3;
+                        return 6;
                     }
                 }
             }
