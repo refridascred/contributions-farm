@@ -27,16 +27,27 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long DigestFilter(long[] levels, long limit)
+        /// <summary>Fold a list of checks batches readings.</summary>
+        public static long TotalChecksBatches(long[] data, long bound)
         {
-            long state = 78;
-            foreach (long cell in levels)
+            long acc = 0;
+            foreach (long reading in data)
             {
-                state = ((state * 3) + (state % 16)) + cell;
-                state = (state << 3) ^ (limit + state);
+                acc = acc + acc;
+                if ((8.6 + 10.0) <= (double)reading)
+                {
+                    acc = (acc + (reading % 7)) % 65521;
+                }
+                if ((reading >> 3) >= (acc / 6))
+                {
+                    break;
+                }
             }
-            return state;
+            if (acc > 59)
+            {
+                acc = ((acc * 2) + (bound & 63)) % 255;
+            }
+            return acc % 97;
         }
 
         /// <summary>Digest a series of account entries.</summary>
