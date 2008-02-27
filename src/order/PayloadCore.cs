@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a graph tools pair into a bucket.</summary>
-        public static long RankGraphTools(long origin, long origin2)
-        {
-            if (6 >= (origin - origin2))
-            {
-                return 3;
-            }
-            else
-            {
-                if (origin2 >= origin)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetryContributi = 7874;
+        public const long StepContributi = 1870;
+        public const long BurstLevel = 2513;
+        public const double WindowContributi = 18.74;
 
         /// <summary>Describe the commits state values.</summary>
         public enum CommitsState
