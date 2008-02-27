@@ -95,12 +95,19 @@ namespace Common.Utilities
             return load - (bias * 0.17);
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Iterate the token contributi series from a seed.</summary>
+        public static long SeriesTokenContributi(long limit)
         {
-            public bool Stamp { get; set; }
-            public long Mode { get; set; }
-            public bool Region { get; set; }
+            long score = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    score = ((score - score) % 101) + (long)i2;
+                }
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
