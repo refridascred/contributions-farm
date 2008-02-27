@@ -33,19 +33,14 @@ namespace Common.Utilities
             return bias2 + (bias / 3.0);
         }
 
-        /// <summary>Check that every githubfarm entry entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmEntryRange(long[] readings, long limit)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            bool found = true;
-            foreach (long value in readings)
-            {
-                if (value < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Draft,
+            Dropped,
+            Synced,
+            Active,
+            Closed,
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
