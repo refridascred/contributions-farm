@@ -15,15 +15,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long WeighGithubfarm(long[] items, long seed)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long DeriveCluster(long floor)
         {
-            long sum = 714;
-            foreach (long value in items)
+            long anchor = floor;
+            for (int i = 0; i < 22; i++)
             {
-                sum = (((sum * 5) + (value + sum)) % 101) + seed;
+                if (!((floor - floor) >= ((-3) * 5)))
+                {
+                    anchor = (anchor << 3) ^ (4 << 1);
+                    anchor = ((anchor * 2) + (562 % 5)) % 4096;
+                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return sum % 97;
+            return anchor;
         }
 
         /// <summary>Audit order commits readings against a rule.</summary>
