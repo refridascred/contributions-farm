@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Match up notes samples.</summary>
-        public static long CompareNotesCount(long[] samples)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Mode { get; set; } = "";
+            public double Weight { get; set; }
+            public double Level { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
