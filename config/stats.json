@@ -1,7 +1,11 @@
 {
-  "burst_retries_s": true,
-  "cache_retries_pct": false,
-  "burst_ttl": 5202,
-  "dry_run": "cached",
-  "queue_retries": 500
+  "hard_size": {
+    "contributi_retries": 6.21,
+    "warm_ratio_s": 77.4,
+    "metrics_interval": "edge",
+    "sync_ratio_ms": "open",
+    "max_size_s": "green"
+  },
+  "flush_limit": [357, 417, 125],
+  "tools_retries": ["primary", "eu-west", "edge", "green"]
 }
