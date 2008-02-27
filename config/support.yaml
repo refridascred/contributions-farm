@@ -1,14 +1,12 @@
 # support settings
-tools_window:
-  command_delay: 30
-  warm_capacity_count: 5.57
-  already_ttl: 69.17
-  already_depth: 38.68
-  counter_capacity: 4315
-strict: 63.02
-audit:
-  - 430
-  - 466
-  - 347
-graph_delay: 250
-hard_timeout: 40
+audit: 3674
+burst_threshold_s:
+  - stable
+  - primary
+  - open
+  - legacy
+min_delay_count: true
+batch_timeout_s:
+  - primary
+  - strict
+  - legacy
