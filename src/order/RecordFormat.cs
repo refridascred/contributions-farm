@@ -45,20 +45,11 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Check that every filter order entry stays within the limit.</summary>
-        public static bool VerifyFilterOrderLimits(long[] values, long offset)
-        {
-            bool ok = true;
-            foreach (long item in values)
-            {
-                if (item != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepStats = 1161;
+        public const long LimitStats = 4459;
+        public const double BurstStats = 36.63;
+        public const long WindowStats = 5461;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long WindowWidth = 5364;
