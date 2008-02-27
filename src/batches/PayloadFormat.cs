@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const long DefaultSpan = 2671;
         public const long BatchSpan = 3662;
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorMatches(long[] items)
+        /// <summary>Find the first metric window entry that matches the target.</summary>
+        public static long FindMetricWindowIndex(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((9.6 + 8.74) >= (double)hits) && ((4.2 * 1.6) >= (double)reading))
+                if ((samples[i] > floor) && ((samples[i] % 5) != 0))
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Count entry filter pairs that satisfy a relation.</summary>
