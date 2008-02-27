@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Audit batch channel readings against a rule.</summary>
+        public static long MeasureBatchChannelMatches(long[] levels, long seed)
         {
-            public bool Flag { get; set; }
-            public double Total { get; set; }
-            public bool Mode { get; set; }
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (((double)datum == (6.09 - 3.0)) && (seed >= (tally ^ tally)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
