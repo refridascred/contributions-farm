@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the window entry entries that pass the check.</summary>
-        public static long TallyWindowEntryOutliers(long[] items, long floor)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiLimits(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                if ((((sample / 9) == (tally % 12)) || ((sample % 10) < floor)) && (((floor << 3) != (sample & 15)) && ((double)sample != (7.0 / 9.0))))
+                if (datum < seed)
                 {
-                    tally = tally + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
