@@ -11,11 +11,20 @@ namespace Common.Utilities
         public const long DefaultSpan = 2671;
         public const long BatchSpan = 3662;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepSize = 1154;
-        public const long HardLevel = 9432;
-        public const double MaxFactor = 95.33;
-        public const double MaxContributi = 77.99;
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaLimits(long[] samples, long step)
+        {
+            bool stale = true;
+            foreach (long entry in samples)
+            {
+                if (entry > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string IdleTimeout = "latest-1";
