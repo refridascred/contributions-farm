@@ -33,19 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate channel batches readings against a bound.</summary>
-        public static bool VerifyChannelBatchesRange(long[] levels, long floor)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsLimits(long[] readings, long seed)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                if (datum <= floor)
+                if (item < seed)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Hold a token summary.</summary>
