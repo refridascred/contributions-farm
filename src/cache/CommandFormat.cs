@@ -37,14 +37,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
-        {
-            Active,
-            Draft,
-            Locked,
-            Retry,
-            Paused,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double SoftInterval = 73.67;
+        public const long BaseTools = 2140;
+        public const long MinTools = 5988;
+        public const double SoftTools = 42.54;
     }
 }
