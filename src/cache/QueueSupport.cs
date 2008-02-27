@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a contributi commits value against two limits.</summary>
-        public static long ClassifyContributiCommits(long offset, long floor)
+        /// <summary>Roll a already token counter forward.</summary>
+        public static long IterateAlreadyToken(long limit)
         {
-            if ((offset + floor) >= (floor + offset))
+            long acc = limit;
+            for (int i = 0; i < 10; i++)
             {
-                return 0;
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            else
-            {
-                if ((offset - 8) < (offset + offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
