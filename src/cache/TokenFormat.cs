@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstGraph = 8573;
-        public const double StepGraph = 48.53;
-        public const long LimitSize = 4598;
-        public const string HardScore = "strict-1";
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
+        {
+            public double Size { get; set; }
+            public long Stamp { get; set; }
+            public double Mode { get; set; }
+        }
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool ValidateSupportLimits(long[] values, long target)
