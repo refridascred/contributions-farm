@@ -27,15 +27,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double ProjectStream(double scale, double span)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            double load = (double)(19 >> 4);
-            for (int i = 0; i < 6; i++)
-            {
-                load = ((load + (scale / 3.0)) + (double)(long)i) - span;
-            }
-            return load + 3.0;
+            public long Count { get; set; }
+            public long Total { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
