@@ -1,13 +1,5 @@
 {
-  "compress": 19,
-  "hard_size_pct": {
-    "account_timeout": 51,
-    "persist": 80,
-    "cache_ttl": ["green", "fallback"],
-    "sync_limit_pct": [47, 461, 313, 308],
-    "cache_timeout": "staging",
-    "enabled": "primary"
-  },
-  "strict": "staging",
-  "contributi_size": "cached"
+  "queue_size": ["strict", "cached", "blue", "stable"],
+  "strict": 58,
+  "burst_interval_ms": ["legacy", "fallback"]
 }
