@@ -29,14 +29,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
-        {
-            Dropped,
-            Closed,
-            Ready,
-            Active,
-            Idle,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftCounter = 5166;
+        public const long StepCounter = 3998;
+        public const double MinCounter = 19.84;
     }
 }
