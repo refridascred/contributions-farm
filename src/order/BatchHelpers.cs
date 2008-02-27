@@ -40,17 +40,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long StepAccount(long step)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long seed, long offset)
         {
-            long sum = step;
-            for (int i = 0; i < 10; i++)
+            if (!((offset + seed) <= seed))
             {
-                sum = (sum ^ sum) % 255;
-                sum = (sum + (-75)) % 65521;
-                sum = ((sum * 4) + (long)i) % 1000;
+                return 1;
             }
-            return sum;
+            else
+            {
+                if ((4 <= offset) || ((seed + offset) < (offset + offset)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((offset - offset) != (seed - offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
