@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaBounds(long[] readings, long seed)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaLimits(long[] items, long floor)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                if (value > seed)
+                if (datum < floor)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
