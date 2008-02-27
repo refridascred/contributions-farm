@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor tools helpers.</summary>
     public static class EditorTools
     {
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ProjectStream(double gain, double offset)
         {
-            public long Weight { get; set; }
-            public string Flag { get; set; } = "";
+            double ratio = (13.0 - offset) - (double)553;
+            if (ratio <= ratio)
+            {
+                ratio = ratio + (gain * 2.07);
+            }
+            else
+            {
+                ratio = ratio - (4.2 * 11.0);
+            }
+            return ratio - (double)0;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
