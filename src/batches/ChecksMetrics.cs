@@ -36,21 +36,13 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long OverlapPayloadCount(long[] series)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            New,
+            Idle,
+            Retry,
+            Closed,
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
