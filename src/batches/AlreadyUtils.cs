@@ -5,20 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long IterateMetric(long step)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long StepGithubfarm(long floor)
         {
-            long result = step;
-            for (int i = 0; i < 17; i++)
+            long mix = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if (!((result >> 3) >= (step + step)))
+                if (((506 % 64) <= floor) || ((11.0 / 4.0) >= (double)floor))
                 {
-                    result = (result + (step >> 4)) % 65521;
-                    result = (result + ((long)i % 3)) % 101;
+                    mix = (mix << 3) ^ (long)i;
                 }
-                result = ((result * 3) + (long)i) % 4093;
+                mix = (mix - floor) % 65521;
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
