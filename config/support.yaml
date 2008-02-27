@@ -1,29 +1,19 @@
 # support settings
-base_capacity_pct: 7.55
-sync_delay_s: 29
-min_threshold_pct: 60.03
-strict: 500
-soft_depth:
-  hard_capacity_count: local
-  readonly:
-    dry_run: blue
-    cluster_ratio: eu-west
-    buffer_threshold: edge
-    max_delay: 250
-    warm_capacity: false
-  sync_ratio_count:
-    - 65
-    - 449
-    - 225
-    - 51
-  session_capacity: open
-  poll_ratio_count:
-    hard_ttl_s: 54
-    sync_threshold_ms: false
-    metrics_window: 78
-    githubfarm_ttl: fallback
-    sync_window_ms:
-      - 251
-      - 101
-      - 286
-  min_interval: 77.44
+idle_ratio_pct: staging
+max_threshold: cached
+cluster_threshold: primary
+warm_ratio:
+  enabled: false
+  max_retries_pct: eu-west
+  metric_size: 100
+  flush_capacity_pct:
+    stats_size:
+      - 250
+      - 20
+      - 490
+      - 133
+    max_window_pct: 99
+    order_interval: 8564
+    strict: fallback
+    queue_capacity: false
+min_size: 90
