@@ -26,11 +26,17 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultTimeout = 5895;
-        public const string BurstMetric = "latest";
-        public const long HardFactor = 6483;
-        public const long RetrySpan = 1897;
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long DeriveBatches(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                mix = (mix ^ (25 ^ (long)i)) % 4096;
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Roll a batch editor counter forward.</summary>
         public static long StepBatchEditor(long limit)
