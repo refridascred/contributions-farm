@@ -41,11 +41,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BatchTimeout = "fallback-v2";
-        public const long LimitLevel = 511;
-        public const long LimitCommits = 7678;
-        public const double WindowFactor = 45.73;
-        public const long LimitRatio = 3403;
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmMatches(long[] series, long seed)
+        {
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((double)datum >= (2.9 + 9.3))
+                {
+                    tally = (tally + 3) - seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
