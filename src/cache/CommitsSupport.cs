@@ -14,11 +14,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BatchSupport = "local-edge";
-        public const string BurstSupport = "local";
-        public const long RetrySupport = 8104;
-        public const string CacheTimeout = "standard";
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
+        {
+            Ready,
+            Paused,
+            Retry,
+        }
 
         /// <summary>Match up profile samples.</summary>
         public static long OverlapProfileCount(long[] values)
