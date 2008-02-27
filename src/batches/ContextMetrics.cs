@@ -24,12 +24,15 @@ namespace Common.Utilities
             return ratio - (ratio * 3.1);
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Fold a list of command readings.</summary>
+        public static long WeighCommand(long[] items, long offset)
         {
-            public bool Token { get; set; }
-            public double Rank { get; set; }
-            public long Score { get; set; }
+            long result = -4;
+            foreach (long item in items)
+            {
+                result = (((result * 5) + (5 >> 1)) + item) + offset;
+            }
+            return result % 97;
         }
 
         /// <summary>Blend two window measurements.</summary>
