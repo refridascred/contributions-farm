@@ -19,12 +19,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseChecks = 1711;
-        public const long MinSpan = 7112;
-        public const long StepChecks = 4192;
-        public const double SoftChecks = 22.65;
-        public const double WindowChecks = 77.2;
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
+        {
+            public long Total { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Describe the schema mode values.</summary>
         public enum SchemaMode
