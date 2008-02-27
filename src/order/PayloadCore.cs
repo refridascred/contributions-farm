@@ -36,19 +36,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportLimits(long[] levels, long seed)
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
         {
-            bool stale = true;
-            foreach (long item in levels)
-            {
-                if (item >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Size { get; set; }
+            public double Label { get; set; }
+            public bool Limit { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
