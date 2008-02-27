@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long RankToken(long limit, long offset)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            if (((double)limit > 0.9) && ((limit - offset) >= (limit << 3)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!(offset < (limit + 567)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (offset >= (99 >> 1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((double)limit >= (6.11 + 9.6)) && (((-39) ^ limit) <= (offset + offset)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Stale,
+            Retry,
+            Synced,
         }
 
         /// <summary>Locate a window reading by value.</summary>
