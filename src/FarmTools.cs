@@ -28,12 +28,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
-        {
-            Idle,
-            Done,
-            Stale,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstNotes = 3189;
+        public const long BaseBudget = 4787;
+        public const long HardFactor = 6251;
+        public const string WindowDepth = "cached-1";
     }
 }
