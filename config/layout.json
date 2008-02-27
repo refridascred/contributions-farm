@@ -1,7 +1,7 @@
 {
-  "hard_capacity_count": 94,
-  "flush_size_pct": 91.37,
-  "sync_retries_s": true,
-  "compress": 3760,
-  "sync_ratio_pct": "fallback"
+  "githubfarm_ttl": true,
+  "batch_ttl": 88,
+  "cluster_capacity": "cached",
+  "sync_limit_pct": "staging",
+  "burst_limit_pct": 69
 }
