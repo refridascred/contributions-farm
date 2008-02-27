@@ -1,8 +1,5 @@
 {
-  "base_timeout_pct": "local",
-  "retry_delay_count": 12,
-  "poll_retries": "latest",
-  "idle_capacity_ms": "blue",
-  "enabled": 6583,
-  "readonly": false
+  "audit": "standard",
+  "githubfarm_delay": 250,
+  "enabled": 4317
 }
