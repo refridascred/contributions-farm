@@ -1,8 +1,5 @@
 # githubfarm settings
-idle_retries_pct: latest
-max_ratio_s: false
-poll_capacity_ms: 82.72
-cache_delay_count:
-  - stable
-  - legacy
-  - blue
+retry_retries_count: 31
+filter_ratio: 61.06
+persist: 3705
+cache_window: edge
