@@ -34,38 +34,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long GradeAccount(long target, long seed)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long StepMetric(long floor)
         {
-            if ((98 * 2) != (target + target))
+            long mark = floor;
+            for (int i = 0; i < 12; i++)
             {
-                return 8;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            else
-            {
-                if (target > (target % 24))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed / 2) <= (target << 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((target <= (seed + target)) || (seed > (1 << 3)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
