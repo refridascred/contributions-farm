@@ -1,19 +1,10 @@
 # entry settings
-soft_threshold_ms:
-  hard_limit: true
-  strict: true
-  flush_timeout: 40
-  poll_limit: 64
-idle_timeout_s: false
-sync_window: 2.67
-min_limit_count:
-  max_retries: 87
-  default_timeout_s: standard
-  schema_ratio: 48
-  batches_size:
-    metrics_window: 60
-    flush_limit_s: 250
-    cache_delay_pct: 95
-  batch_capacity_ms: true
-batch_depth: green
-sync_retries: 81.13
+warm_window_s: strict
+default_timeout: false
+idle_interval_count: 4687
+cache_timeout:
+  - edge
+  - cached
+  - strict
+report_depth: strict
+strict: 74.02
