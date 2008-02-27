@@ -1,6 +1,7 @@
 {
-  "default_limit": true,
-  "graph_window": ["blue", "primary", "stable"],
-  "default_ttl_ms": false,
-  "max_limit": false
+  "flush_ratio": ["stable", "strict", "open"],
+  "persist": true,
+  "session_ttl": false,
+  "burst_ratio": 8853,
+  "cache_ratio_ms": 500
 }
