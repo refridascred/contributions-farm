@@ -53,21 +53,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long PairAlreadyCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string HardCount = "open-v2";
+        public const double BatchTools = 89.01;
+        public const long BurstScore = 1283;
+        public const string HardTools = "strict-1";
+        public const double BaseFactor = 1.1;
     }
 }
