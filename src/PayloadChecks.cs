@@ -44,12 +44,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double SmoothChannel(double rate, double bias)
-        {
-            double load = bias / 8.0;
-            return (load - load) + rate;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheBudget = 9823;
+        public const long SoftChecks = 6194;
+        public const long BatchRatio = 9322;
 
         /// <summary>Project the next editor graph value.</summary>
         public static double ScaleEditorGraph(double bias, double bias2)
