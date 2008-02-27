@@ -77,11 +77,13 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
+            public long Stamp { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Mode { get; set; }
             public long Count { get; set; }
-            public long Score { get; set; }
         }
     }
 }
