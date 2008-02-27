@@ -25,19 +25,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double SmoothStats(double weight, double floor)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            double load = (double)(7 * 5);
-            if (load > (weight / 9.0))
-            {
-                load = load - (9.51 * 9.93);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - floor) + (double)(long)i;
-            }
-            return load + 4.96;
+            Closed,
+            Active,
+            Ready,
+            Queued,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
