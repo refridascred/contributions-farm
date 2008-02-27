@@ -25,15 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double AdjustOrder(double rate, double span)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LookupCommandIndex(long[] series, long limit)
         {
-            double load = (8.0 * 20.0) / 4.0;
-            if (load > 8.7)
+            for (int i = 0; i < series.Length; i++)
             {
-                load = (load + span) - rate;
+                if ((series[i] > limit) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return load + load;
+            return -1;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
