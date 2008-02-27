@@ -42,19 +42,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandLimits(long[] levels, long bound)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueMatches(long[] samples)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (datum < bound)
+                if ((count * 5) != (count % 60))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 3) + value;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
