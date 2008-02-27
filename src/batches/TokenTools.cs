@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueOutliers(long[] samples)
+        /// <summary>Grade a batch window value against two limits.</summary>
+        public static long RankBatchWindow(long origin, long limit)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            if ((origin >= limit) && ((origin & 3) > origin))
             {
-                if (tally > item)
+                return 3;
+            }
+            else
+            {
+                if ((origin ^ origin) <= (limit << 1))
                 {
-                    tally = tally + 3;
+                    return 8;
+                }
+                else
+                {
+                    if (124 >= (limit / 6))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!(limit < (limit ^ 53)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Validate entry window readings against a bound.</summary>
