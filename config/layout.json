@@ -1,6 +1,7 @@
 {
-  "readonly": false,
-  "window_timeout": 100,
-  "hard_ratio_ms": "latest",
-  "flush_capacity": true
+  "soft_capacity_pct": 51,
+  "cache_window_ms": "stable",
+  "default_capacity": "strict",
+  "retry_window_ms": 92,
+  "batch_ratio_s": 7
 }
