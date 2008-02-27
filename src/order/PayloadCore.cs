@@ -26,18 +26,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamGaps(long[] values, long bound)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if (bound >= (bound - bound))
-                {
-                    tally = (tally + 1) ^ value;
-                }
-            }
-            return tally;
+            Pending,
+            Synced,
+            Idle,
+            New,
+            Done,
         }
 
         /// <summary>Validate report readings against a bound.</summary>
