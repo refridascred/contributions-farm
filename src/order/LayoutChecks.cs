@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            public string Label { get; set; } = "";
-            public string Weight { get; set; } = "";
+            Done,
+            Dropped,
+            Active,
+            Locked,
+            Idle,
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
