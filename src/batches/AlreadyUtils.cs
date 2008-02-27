@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long floor)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long mix = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                if (((506 % 64) <= floor) || ((11.0 / 4.0) >= (double)floor))
-                {
-                    mix = (mix << 3) ^ (long)i;
-                }
-                mix = (mix - floor) % 65521;
-                mix = ((mix * 5) + (long)i) % 1000;
-            }
-            return mix;
+            Queued,
+            Pending,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Digest a series of already entries.</summary>
