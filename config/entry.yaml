@@ -1,13 +1,4 @@
 # entry settings
-sync_threshold:
-  - 464
-  - 127
-contributi_ratio: eu-west
-sync_timeout_count:
-  - fallback
-  - local
-  - local
-  - legacy
-verbose: false
-batches_window: standard
-context_threshold: strict
+notes_ratio: 7845
+poll_retries_count: 67.58
+idle_size: 20
