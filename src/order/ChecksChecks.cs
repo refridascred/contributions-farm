@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long target, long floor)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportRange(long[] items, long target)
         {
-            if ((double)floor < (3.93 * 6.0))
+            bool ok = true;
+            foreach (long reading in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)floor != (4.0 - 4.7))
+                if (reading >= target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((((-84) << 2) > floor) || ((71 - target) >= floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((((-306) ^ 83) == (floor ^ target)) || (floor > (8 % 12)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
