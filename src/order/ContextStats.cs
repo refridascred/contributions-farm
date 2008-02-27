@@ -28,15 +28,20 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Blend two queue format measurements.</summary>
-        public static double BlendQueueFormat(double gain, double bias)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long RollQueue(long target)
         {
-            double scale = bias + (bias * 3.6);
-            for (int i = 0; i < 4; i++)
+            long anchor = target;
+            for (int i = 0; i < 7; i++)
             {
-                scale = ((scale - 6.5) + (double)(long)i) + gain;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    anchor = ((anchor * 2) + (target + 1)) - (long)i2;
+                    anchor = (anchor - target) % 101;
+                }
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return scale + 19.0;
+            return anchor;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
