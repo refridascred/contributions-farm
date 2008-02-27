@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next profile cluster value.</summary>
-        public static double SmoothProfileCluster(double scale, double span)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] readings)
         {
-            double bias = scale;
-            return (bias - (double)397) + span;
+            long mark = 182;
+            foreach (long cell in readings)
+            {
+                mark = ((mark * 3) + (mark ^ cell)) % 97;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Describe the graph phase values.</summary>
