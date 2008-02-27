@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordGaps(long[] series)
         {
-            public string Size { get; set; } = "";
-            public string Region { get; set; } = "";
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((tally + sample) <= (64 ^ sample))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define support limits and defaults.</summary>
