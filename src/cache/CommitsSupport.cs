@@ -14,18 +14,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many metrics batches samples are out of range.</summary>
-        public static long CountMetricsBatchesMatches(long[] items)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double BlendEditor(double scale, double bias)
         {
-            long tally = 0;
-            foreach (long item in items)
+            double bias2 = (scale - 2.4) - (double)511;
+            if (bias2 >= (bias2 * 8.85))
             {
-                if (((item ^ item) < (item + tally)) && ((item + 8) != (item + tally)))
-                {
-                    tally = tally + 2;
-                }
+                bias2 = bias2 - (double)355;
             }
-            return tally;
+            else
+            {
+                bias2 = bias2 + (double)10;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = (bias2 - (scale * 10.0)) + (double)(long)i;
+            }
+            return bias2 + (bias / 3.0);
         }
 
         /// <summary>Check that every githubfarm entry entry stays within the limit.</summary>
