@@ -48,11 +48,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryTools = 2938;
-        public const long RetryScore = 2837;
-        public const long BatchInterval = 2403;
-        public const double BatchTools = 5.68;
-        public const long CacheBudget = 4451;
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
+        {
+            Closed,
+            Dropped,
+            Locked,
+            Paused,
+        }
     }
 }
