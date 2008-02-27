@@ -20,21 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long CompareAlreadyCount(long[] values)
+        /// <summary>Combine cache layout values into a single score.</summary>
+        public static long FoldCacheLayout(long[] values, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 84;
+            foreach (long value in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((seed < (mix << 2)) && ((seed + 4) > (mix + 684)))
                 {
-                    if ((values[i] + values[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = ((mix - (seed + (long)values.Length)) % 97) + value;
+                }
+                else
+                {
+                    mix = (mix + 561) % 101;
                 }
             }
-            return matches;
+            return mix % 97;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
