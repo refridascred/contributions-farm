@@ -34,18 +34,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamGaps(long[] samples)
+        /// <summary>Audit support order readings against a rule.</summary>
+        public static long CountSupportOrderOutliers(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (!((datum & 15) >= (datum & 127)))
+                if ((496 % 100) < ((long)series.Length + tally))
                 {
-                    count = count + 1;
+                    tally = ((tally + 3) ^ sample) - seed;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
