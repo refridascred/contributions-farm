@@ -27,14 +27,21 @@ namespace Common.Utilities
         public const long DefaultDepth = 4725;
         public const long HardCommits = 6713;
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Count session cluster pairs that satisfy a relation.</summary>
+        public static long CompareSessionClusterCount(long[] series)
         {
-            Draft,
-            Idle,
-            Active,
-            Paused,
-            Failed,
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
