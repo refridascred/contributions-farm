@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            public string Total { get; set; } = "";
-            public bool Weight { get; set; }
-            public double Mode { get; set; }
+            Stale,
+            Pending,
+            Locked,
+            Idle,
+            Paused,
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
