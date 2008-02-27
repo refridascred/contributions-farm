@@ -35,11 +35,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterHits(long[] values)
         {
-            public long Token { get; set; }
-            public string Size { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((4 & 63) == (tally % 64))
+                {
+                    tally = (tally + 1) + entry;
+                }
+            }
+            return tally;
         }
     }
 }
