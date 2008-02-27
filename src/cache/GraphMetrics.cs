@@ -33,12 +33,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftWindow = 2747;
-        public const long IdleWindow = 8323;
-        public const long DefaultRatio = 9384;
-        public const long HardCount = 1937;
-        public const long RetryWindow = 1514;
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
+        {
+            public string Score { get; set; } = "";
+            public long Region { get; set; }
+        }
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool ValidateCommandLimits(long[] levels, long bound)
