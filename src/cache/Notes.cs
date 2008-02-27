@@ -49,19 +49,11 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyBounds(long[] values, long bound)
-        {
-            bool flag = true;
-            foreach (long value in values)
-            {
-                if (value != bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstStats = 5821;
+        public const long DefaultStats = 9581;
+        public const long StepSpan = 2857;
+        public const string SoftStats = "fallback-edge";
+        public const long MinStats = 8193;
     }
 }
