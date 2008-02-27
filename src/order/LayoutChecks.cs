@@ -61,15 +61,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine commits account values into a single score.</summary>
-        public static long CombineCommitsAccount(long[] items, long offset)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long FindSessionIndex(long[] readings, long origin)
         {
-            long anchor = 6;
-            foreach (long value in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = ((((anchor * 3) + anchor) % 1000) ^ value) - offset;
+                if (readings[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return anchor % 65521;
+            return -1;
         }
     }
 }
