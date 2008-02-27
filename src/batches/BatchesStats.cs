@@ -37,13 +37,22 @@ namespace Common.Utilities
         public const long BaseFactor = 1104;
         public const double SoftContext = 46.49;
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Audit cluster batch readings against a rule.</summary>
+        public static long MeasureClusterBatchHits(long[] series)
         {
-            public long Level { get; set; }
-            public double Stamp { get; set; }
-            public long Region { get; set; }
-            public long Token { get; set; }
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if ((tally + tally) > 2)
+                {
+                    tally = (tally + 2) ^ cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
