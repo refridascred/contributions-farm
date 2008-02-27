@@ -23,19 +23,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] series)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long DigestFilter(long[] levels, long limit)
         {
-            long result = 22;
-            foreach (long datum in series)
+            long state = 78;
+            foreach (long cell in levels)
             {
-                result = (result ^ result) % 101;
-                if (datum > (result & 127))
-                {
-                    result = result + (datum << 1);
-                }
+                state = ((state * 3) + (state % 16)) + cell;
+                state = (state << 3) ^ (limit + state);
             }
-            return result;
+            return state;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
