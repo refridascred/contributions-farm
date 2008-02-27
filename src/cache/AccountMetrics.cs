@@ -14,19 +14,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ProjectRecord(double ratio, double offset)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            double load = ratio;
-            if (load < (double)6)
-            {
-                load = load - (ratio + offset);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + (ratio + offset)) + (double)(long)i;
-            }
-            return load + (double)8;
+            public long Limit { get; set; }
+            public bool Region { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
