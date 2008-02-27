@@ -16,18 +16,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferOutliers(long[] items)
+        /// <summary>Match up cluster samples.</summary>
+        public static long OverlapClusterCount(long[] data)
         {
-            long count = 0;
-            foreach (long value in items)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((count & 63) < count) || ((double)value == (19.0 * 9.57)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 3;
+                    if ((data[i] + data[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
