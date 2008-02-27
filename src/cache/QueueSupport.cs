@@ -25,17 +25,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long IterateSchema(long floor)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long MatchGraphCount(long[] data)
         {
-            long result = floor;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = (result ^ (result & 7)) % 101;
-                result = result + floor;
-                result = ((result * 4) + (long)i) % 97;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
