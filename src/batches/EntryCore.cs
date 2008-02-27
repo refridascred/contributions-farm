@@ -19,24 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long DigestContributi(long[] items)
+        /// <summary>Iterate the account profile series from a seed.</summary>
+        public static long RollAccountProfile(long limit)
         {
-            long sum = 2;
-            foreach (long cell in items)
+            long acc = limit;
+            for (int i = 0; i < 21; i++)
             {
-                sum = (sum + cell) % 1000;
-                sum = (sum - 0) % 255;
-                if ((sum >> 5) <= (sum / 7))
-                {
-                    sum = (sum << 3) ^ (795 + cell);
-                }
+                acc = ((acc << 2) ^ (limit >> 3)) % 4096;
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            if (sum < 81)
-            {
-                sum = (sum * 5) + (332 & 127);
-            }
-            return sum;
+            return acc;
         }
 
         /// <summary>Hold a layout options.</summary>
