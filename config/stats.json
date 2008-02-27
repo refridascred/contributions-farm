@@ -1,6 +1,10 @@
 {
-  "soft_window": 39.57,
-  "batch_retries_pct": false,
-  "sync_limit_s": "staging",
-  "compress": 9544
+  "max_size": [191, 51, 27, 489],
+  "stats_ratio": "legacy",
+  "buffer_retries": {
+    "already_depth": true,
+    "cache_window_ms": "eu-west",
+    "cache_size": "latest"
+  },
+  "cache_capacity_count": "staging"
 }
