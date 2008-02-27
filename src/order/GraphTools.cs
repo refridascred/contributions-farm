@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long DeriveFarm(long seed)
         {
-            public double Stamp { get; set; }
-            public double Weight { get; set; }
-            public long Token { get; set; }
-            public bool Ratio { get; set; }
+            long sum = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Adjust a graph counter reading.</summary>
