@@ -29,17 +29,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long FindClusterIndex(long[] items, long bound)
+        /// <summary>Validate record token readings against a bound.</summary>
+        public static bool CheckRecordTokenRange(long[] samples, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                if (items[i] >= bound)
+                if (reading > target)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
