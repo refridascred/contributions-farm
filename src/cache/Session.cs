@@ -32,12 +32,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Roll a support counter forward.</summary>
+        public static long StepSupport(long limit)
         {
-            Locked,
-            Active,
-            Draft,
+            long acc = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    acc = ((acc - acc) % 97) ^ (long)i2;
+                    acc = ((acc << 3) ^ (limit % 7)) % 65521;
+                }
+                if ((50 << 1) != (acc / 3))
+                {
+                    break;
+                }
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Define record limits and defaults.</summary>
