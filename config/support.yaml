@@ -1,4 +1,10 @@
 # support settings
-soft_capacity: fallback
-hard_size: 500
-sync_ratio_pct: true
+profile_depth:
+  format_capacity: 23
+  persist: green
+  burst_threshold_s: 9819
+  warm_capacity_ms: green
+warm_ratio_s: staging
+soft_size_s: false
+metric_interval: 80.52
+idle_delay_pct: 250
