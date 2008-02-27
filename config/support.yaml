@@ -1,25 +1,8 @@
 # support settings
-base_size_count:
-  persist: 98
-  min_timeout_count:
-    cache_delay: 6326
-    warm_retries_s: cached
-    farm_size: 250
-    retry_timeout_ms: 500
-    editor_timeout: eu-west
-  sync_depth_ms:
-    layout_window: 1024
-    order_window: false
-    poll_limit: true
-    compress: true
-  context_threshold: local
-  batch_retries_pct:
-    flush_size_s: false
-    default_ttl_s: fallback
-    enabled: 49
-    order_delay: strict
-    readonly: cached
-  idle_threshold_ms: 17.59
-audit: 60
-persist: 25.68
-flush_size: 90.1
+readonly:
+  - open
+  - legacy
+  - primary
+  - latest
+soft_size_s: open
+sync_size_pct: legacy
