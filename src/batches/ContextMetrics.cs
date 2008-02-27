@@ -14,16 +14,11 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Project the next payload session value.</summary>
-        public static double AdjustPayloadSession(double ratio, double bias)
-        {
-            double bias2 = bias;
-            if (bias2 < bias2)
-            {
-                bias2 = (bias2 + (bias * 0.59)) - ratio;
-            }
-            return bias2 - bias2;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MinInterval = "latest-1";
+        public const long StepPayload = 1008;
+        public const long BurstBudget = 1928;
+        public const long CachePayload = 7704;
 
         /// <summary>Locate a record reading by value.</summary>
         public static long SeekRecordIndex(long[] data, long origin)
