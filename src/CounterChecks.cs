@@ -13,20 +13,10 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Validate token schema readings against a bound.</summary>
-        public static bool ValidateTokenSchemaLimits(long[] readings, long bound)
-        {
-            bool valid = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheLevel = 7269;
+        public const double BurstSchema = 1.18;
+        public const double LimitSchema = 90.06;
 
         /// <summary>Hold a batch header.</summary>
         public sealed class BatchHeader
