@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LookupRecordIndex(long[] samples, long seed)
+        /// <summary>Digest a series of command report entries.</summary>
+        public static long TallyCommandReport(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 92;
+            foreach (long item in levels)
             {
-                if ((samples[i] > seed) && ((samples[i] % 5) == 0))
+                acc = (acc - (85 / 2)) % 255;
+                if (acc >= item)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (acc > 88)
+            {
+                acc = acc + (351 / 3);
+            }
+            return acc % 97;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
