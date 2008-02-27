@@ -1,18 +1,11 @@
 {
-  "graph_interval": 100,
-  "retry_limit_pct": true,
-  "cache_capacity_count": {
-    "enabled": "eu-west",
-    "metrics_depth": 30,
-    "min_window": 86
+  "burst_limit": "local",
+  "flush_capacity": {
+    "filter_timeout": "legacy",
+    "soft_ratio_count": "standard",
+    "metric_size": 73.4,
+    "flush_size_ms": false
   },
-  "audit": false,
-  "metric_size": false,
-  "persist": {
-    "flush_interval": false,
-    "min_capacity": "open",
-    "retry_retries": [79, 228, 170, 116],
-    "min_delay": false,
-    "batch_threshold": 7.11
-  }
+  "already_ttl": 20,
+  "enabled": 86
 }
