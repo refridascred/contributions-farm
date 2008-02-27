@@ -45,30 +45,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] values, long origin)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] items, long floor)
         {
-            long total = 83;
-            foreach (long entry in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i = 0; i < 8; i++)
+                if (items[i] >= floor)
                 {
-                    total = ((total + (origin * 4)) % 65521) + (long)i;
-                }
-                if (((entry - origin) >= (origin + origin)) && ((entry + (long)values.Length) > (origin >> 2)))
-                {
-                    total = (total + (long)values.Length) % 101;
-                }
-                if (((total << 1) >= (entry ^ entry)) || ((double)total >= (4.8 - 15.0)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (total < 494)
-            {
-                total = (total + (origin / 4)) % 101;
-            }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
