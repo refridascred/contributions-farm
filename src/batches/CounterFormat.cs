@@ -20,11 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftSession = 1376;
-        public const string MinFactor = "standard-v2";
-        public const string LimitSession = "fallback-v2";
-        public const long StepSession = 8620;
+        /// <summary>Count context metric pairs that satisfy a relation.</summary>
+        public static long CompareContextMetricCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long IterateContext(long step)
