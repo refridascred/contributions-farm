@@ -50,22 +50,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long ScoreMetrics(long[] data)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteLimits(long[] samples, long seed)
         {
-            long mark = 3;
-            foreach (long datum in data)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                if ((mark < (datum << 1)) && (mark > (datum - datum)))
+                if (datum < seed)
                 {
-                    mark = mark + (long)data.Length;
-                }
-                if ((datum / 2) == (mark << 2))
-                {
-                    mark = (mark + mark) % 1000;
+                    found = false;
+                    break;
                 }
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Iterate the stats token series from a seed.</summary>
