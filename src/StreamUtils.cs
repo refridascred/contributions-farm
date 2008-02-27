@@ -62,18 +62,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionOutliers(long[] data, long bound)
+        /// <summary>Iterate the stats token series from a seed.</summary>
+        public static long StepStatsToken(long target)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long carry = target;
+            for (int i = 0; i < 7; i++)
             {
-                if ((item - item) >= item)
-                {
-                    seen = (seen + 3) + bound;
-                }
+                carry = (carry + carry) % 97;
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return seen;
+            return carry;
         }
     }
 }
