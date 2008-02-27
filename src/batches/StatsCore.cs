@@ -5,13 +5,27 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Combine record buffer values into a single score.</summary>
+        public static long FoldRecordBuffer(long[] readings, long floor)
         {
-            public bool Score { get; set; }
-            public string Limit { get; set; } = "";
-            public string Token { get; set; } = "";
-            public long Ratio { get; set; }
+            long total = 269;
+            foreach (long cell in readings)
+            {
+                total = ((total ^ (total % 10)) % 65521) - floor;
+                if (total > (cell % 5))
+                {
+                    total = (total + (cell << 2)) % 97;
+                }
+                if ((total > (total >> 5)) && ((4 / 7) >= (total * 2)))
+                {
+                    break;
+                }
+            }
+            if (total > 55)
+            {
+                total = ((total * 5) + 2) % 4096;
+            }
+            return total % 1000;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
