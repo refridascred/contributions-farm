@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long IterateMetric(long step)
         {
-            public double Mode { get; set; }
-            public long Score { get; set; }
+            long result = step;
+            for (int i = 0; i < 17; i++)
+            {
+                if (!((result >> 3) >= (step + step)))
+                {
+                    result = (result + (step >> 4)) % 65521;
+                    result = (result + ((long)i % 3)) % 101;
+                }
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
