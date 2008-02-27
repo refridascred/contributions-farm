@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank checks layout input into a small class.</summary>
-        public static long RankChecksLayout(long origin, long target)
+        /// <summary>Audit stream context readings against a rule.</summary>
+        public static long MeasureStreamContextGaps(long[] items, long floor)
         {
-            if (((origin >> 4) >= (475 & 63)) && ((double)target > (9.02 / 6.0)))
+            long matches = 0;
+            foreach (long value in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin & 15) < target)
+                if (!((value + matches) == ((-9) - floor)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
