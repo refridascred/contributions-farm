@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long origin)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long MatchEditorCount(long[] values)
         {
-            long score = origin;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                long next = origin + (origin % 7);
-                if ((((long)i + origin) == (score + next)) && ((double)origin != (2.0 - 4.7)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = ((score << 3) ^ (score ^ (long)i)) % 65521;
-                    continue;
+                    if ((values[i] ^ values[j]) < 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                score = ((score * 5) + (long)i) % 1000;
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
