@@ -1,14 +1,13 @@
 {
-  "enabled": 3,
-  "contributi_window": 6918,
-  "base_delay_pct": {
-    "default_retries_ms": 60,
-    "schema_ratio": "local",
-    "readonly": "green",
-    "compress": 533,
-    "poll_delay_count": 1024,
-    "poll_depth_pct": "standard"
+  "default_interval": {
+    "format_window": 4,
+    "default_ttl_s": 81,
+    "buffer_capacity": 250,
+    "strict": 100
   },
-  "verbose": "local",
-  "batch_depth": 56
+  "compress": 30,
+  "min_threshold": 22,
+  "cache_size_count": "edge",
+  "session_capacity": "strict",
+  "queue_threshold": 5969
 }
