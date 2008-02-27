@@ -33,24 +33,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long offset, long limit)
+        /// <summary>Project the next window value.</summary>
+        public static double AdjustWindow(double scale, double offset)
         {
-            if (!(5 > (limit + offset)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((9.0 / 5.0) > (double)offset)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            double ratio = (double)(1 + 44);
+            return (ratio + (scale * 0.66)) + offset;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
