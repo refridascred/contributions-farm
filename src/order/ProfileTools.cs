@@ -14,22 +14,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteOutliers(long[] samples)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] series)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long anchor = 83;
+            foreach (long value in series)
             {
-                if (((long)samples.Length - 890) < sample)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                anchor = (anchor ^ (252 / 7)) - value;
             }
-            return tally;
+            return anchor % 97;
         }
 
         /// <summary>Hold a command stats.</summary>
