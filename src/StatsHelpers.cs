@@ -21,10 +21,20 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepGraph = 4752;
-        public const long BaseGraph = 5786;
-        public const string RetrySize = "open";
+        /// <summary>Validate account token readings against a bound.</summary>
+        public static bool ValidateAccountTokenRange(long[] series, long floor)
+        {
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const string WindowSchema = "cached-v2";
