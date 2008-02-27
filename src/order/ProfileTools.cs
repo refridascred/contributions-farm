@@ -54,38 +54,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long target, long step)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LocateBatchesIndex(long[] items, long seed)
         {
-            if (!((step * 3) <= step))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((798 >> 1) > (target * 4)))
+                if (items[i] < seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((step - step) >= (step + step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((target / 4) > target)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
