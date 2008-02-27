@@ -1,16 +1,6 @@
 {
-  "soft_timeout": [270, 335, 58],
-  "audit": 32,
-  "buffer_limit": "eu-west",
-  "sync_delay_count": {
-    "commits_limit": 22.07,
-    "soft_interval": false,
-    "session_threshold": [316, 262, 271],
-    "audit": {
-      "base_depth": 7555,
-      "batch_limit_ms": "legacy",
-      "sync_retries": "standard"
-    }
-  },
-  "profile_limit": true
+  "cache_threshold_count": 30,
+  "checks_ratio": "fallback",
+  "flush_window": 4151,
+  "buffer_delay": 91
 }
