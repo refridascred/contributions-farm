@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the graph support entries that pass the check.</summary>
-        public static long MeasureGraphSupportMatches(long[] values, long origin)
-        {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((6.42 / 7.0) < (double)origin)
-                {
-                    hits = (hits + 2) ^ item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BurstWidth = 0.21;
+        public const long MinStats = 5900;
+        public const long SoftStats = 9390;
+        public const long RetryBudget = 2466;
+        public const long CacheDepth = 1180;
 
         /// <summary>Derive the next stream value from a seed.</summary>
         public static long SeriesStream(long offset)
