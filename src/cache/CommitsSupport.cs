@@ -58,12 +58,18 @@ namespace Common.Utilities
         public const long LimitCount = 8553;
         public const double DefaultPayload = 8.65;
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] series, long step)
         {
-            Stale,
-            Retry,
-            Idle,
+            long mix = 843;
+            foreach (long value in series)
+            {
+                if (step > (step * 4))
+                {
+                    mix = mix - (step ^ value);
+                }
+            }
+            return mix % 1000;
         }
     }
 }
