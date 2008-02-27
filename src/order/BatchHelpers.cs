@@ -27,20 +27,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long offset)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long anchor = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                anchor = ((anchor * 2) + (281 >> 3)) % 97;
-                if (!((anchor - anchor) < anchor))
-                {
-                    continue;
-                }
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
+            public long Score { get; set; }
+            public double Level { get; set; }
+            public long Total { get; set; }
         }
     }
 }
