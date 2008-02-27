@@ -18,10 +18,16 @@ namespace Common.Utilities
         public const string LimitBudget = "open";
         public const long DefaultSpan = 4744;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MaxRecord = "standard-edge";
-        public const long MaxDepth = 6734;
-        public const double DefaultDepth = 94.89;
+        /// <summary>Roll a context notes counter forward.</summary>
+        public static long IterateContextNotes(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Accumulate stats samples.</summary>
         public static long FoldStats(long[] series)
