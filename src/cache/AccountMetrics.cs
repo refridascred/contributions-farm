@@ -66,19 +66,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] data, long limit)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowOutliers(long[] samples, long seed)
         {
-            long state = 73;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                state = state - (159 & 31);
-                if (((double)reading <= (9.2 * 20.0)) || ((limit + limit) < (limit - 6)))
+                if (((double)sample > 4.0) || ((double)seed < (double)sample))
                 {
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return state;
+            return seen;
         }
     }
 }
