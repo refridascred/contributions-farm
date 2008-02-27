@@ -51,10 +51,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double DefaultFactor = 20.51;
-        public const long LimitBudget = 6055;
-        public const long LimitSize = 6271;
-        public const long BatchSession = 4441;
+        /// <summary>Blend two account measurements.</summary>
+        public static double ScaleAccount(double ratio, double floor)
+        {
+            double rate = (double)(94 - 15);
+            if (rate >= (rate + ratio))
+            {
+                rate = rate - ratio;
+            }
+            else
+            {
+                rate = rate - (floor * 1.42);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + (rate * 8.47)) + (double)(long)i;
+            }
+            return rate + (ratio - ratio);
+        }
     }
 }
