@@ -34,11 +34,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            public long Rank { get; set; }
-            public string Total { get; set; } = "";
+            public long Token { get; set; }
+            public long Mode { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Define payload limits and defaults.</summary>
