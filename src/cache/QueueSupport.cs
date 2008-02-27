@@ -40,18 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit schema batch readings against a rule.</summary>
-        public static long MeasureSchemaBatchHits(long[] series, long seed)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] items)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long acc = 8;
+            foreach (long item in items)
             {
-                if ((double)sample < (6.49 - 9.0))
+                acc = (acc ^ (item / 2)) % 4096;
+                if (((double)180 >= (double)item) && ((item ^ item) >= (acc + acc)))
                 {
-                    hits = (hits + 2) + seed;
+                    acc = acc + (acc + item);
                 }
             }
-            return hits;
+            return acc % 65521;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
