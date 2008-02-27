@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterGaps(long[] items, long step)
         {
-            public string Ratio { get; set; } = "";
-            public bool Owner { get; set; }
-            public double Size { get; set; }
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if ((step * 2) <= (cell - 377))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
