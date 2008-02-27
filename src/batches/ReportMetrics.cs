@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long DigestBatch(long[] levels)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long score = 557;
-            foreach (long datum in levels)
-            {
-                score = ((score - score) % 65521) - datum;
-                if (score < ((-7) ^ score))
-                {
-                    break;
-                }
-            }
-            if (score > 141)
-            {
-                score = (score - (score + 7)) % 101;
-            }
-            return score;
+            public long Limit { get; set; }
+            public long Label { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a cache options.</summary>
