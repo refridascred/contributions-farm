@@ -24,12 +24,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheDepth = 1519;
-        public const long BaseFarm = 8300;
-        public const string SoftFarm = "staging-1";
-        public const long CacheFarm = 4818;
-        public const double DefaultFarm = 25.81;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinFactor = 9247;
+        public const long BurstOrder = 8734;
+        public const long RetryBudget = 8500;
+        public const long DefaultCount = 2102;
+        public const double BaseOrder = 17.83;
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
