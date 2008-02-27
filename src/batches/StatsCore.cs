@@ -16,19 +16,22 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterLimits(long[] items, long origin)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] levels, long seed)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long result = 76;
+            foreach (long cell in levels)
             {
-                if (reading != origin)
+                if (!((69 >> 4) != (seed + result)))
                 {
-                    ready = false;
-                    break;
+                    result = (result - (cell & 63)) % 4096;
+                }
+                else
+                {
+                    result = (result * 5) + (seed & 1);
                 }
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
