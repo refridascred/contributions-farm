@@ -50,11 +50,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstStats = 5821;
-        public const long DefaultStats = 9581;
-        public const long StepSpan = 2857;
-        public const string SoftStats = "fallback-edge";
-        public const long MinStats = 8193;
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricLimits(long[] items, long origin)
+        {
+            bool valid = true;
+            foreach (long datum in items)
+            {
+                if (datum != origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
