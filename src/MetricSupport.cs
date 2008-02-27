@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Derive the next batches editor value from a seed.</summary>
+        public static long IterateBatchesEditor(long limit)
         {
-            Retry,
-            Draft,
-            Closed,
+            long mix = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                long cur = ((long)i + limit) % 60;
+                mix = ((mix * 4) + mix) % 101;
+                mix = mix + (cur - 43);
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
