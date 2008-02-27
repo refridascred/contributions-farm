@@ -53,14 +53,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Roll a record command counter forward.</summary>
+        public static long SeriesRecordCommand(long limit)
         {
-            Idle,
-            Stale,
-            Failed,
-            Ready,
-            Retry,
+            long acc = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
         }
     }
 }
