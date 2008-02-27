@@ -58,22 +58,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] levels, long step)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long score = 17;
-            foreach (long datum in levels)
-            {
-                if ((datum < (step - datum)) || ((double)step != (6.4 / 6.0)))
-                {
-                    score = ((score * 5) + (536 - step)) % 101;
-                }
-            }
-            if (score > 7)
-            {
-                score = ((score << 3) ^ (step + 487)) % 255;
-            }
-            return score;
+            New,
+            Ready,
+            Dropped,
+            Locked,
+            Queued,
         }
 
         /// <summary>Fold a list of layout readings.</summary>
