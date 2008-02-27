@@ -29,12 +29,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long limit, long bound)
         {
-            Failed,
-            Pending,
-            Draft,
+            if (bound > (bound ^ bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if (limit < (limit & 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)bound == (9.25 + 15.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((bound + limit) >= (1 & 127))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
