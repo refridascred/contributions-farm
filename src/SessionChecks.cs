@@ -13,32 +13,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long BucketStats(long seed, long origin)
-        {
-            if ((seed / 2) <= (origin + (-12)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((origin + origin) <= (seed / 2)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin - 807) >= (seed * 5))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryRecord = 3979;
+        public const long SoftRecord = 9745;
+        public const long LimitDepth = 5896;
+        public const long MaxRecord = 1713;
 
         /// <summary>Digest a series of account entries.</summary>
         public static long TotalAccount(long[] samples, long bound)
