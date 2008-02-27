@@ -53,15 +53,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the githubfarm notes series from a seed.</summary>
-        public static long DeriveGithubfarmNotes(long offset)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaLimits(long[] values, long floor)
         {
-            long result = offset;
-            for (int i = 0; i < 9; i++)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                result = ((result * 3) + (long)i) % 65521;
+                if (cell <= floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return result;
+            return flag;
         }
     }
 }
