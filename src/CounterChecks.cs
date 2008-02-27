@@ -30,23 +30,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] series)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long SeekClusterIndex(long[] levels, long limit)
         {
-            long anchor = 388;
-            foreach (long datum in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 5; i++)
+                if (levels[i] == limit)
                 {
-                    anchor = anchor + ((long)i + 607);
-                    anchor = (anchor << 2) ^ (118 & 63);
-                }
-                if (1 < (anchor - anchor))
-                {
-                    anchor = (anchor ^ (datum + datum)) % 101;
+                    return (long)i;
                 }
             }
-            return anchor % 1000;
+            return -1;
         }
 
         /// <summary>Check that every metrics report entry stays within the limit.</summary>
