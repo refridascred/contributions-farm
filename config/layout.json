@@ -1,5 +1,15 @@
 {
-  "editor_interval": [100, 94, 421],
-  "max_retries": 38.73,
-  "contributi_threshold": 77
+  "warm_retries_pct": {
+    "idle_depth": {
+      "cache_depth_count": [261, 498, 23],
+      "verbose": "edge",
+      "enabled": 3311,
+      "dry_run": 95.61,
+      "default_timeout": 30
+    },
+    "hard_ttl_count": 93,
+    "audit": 71.32
+  },
+  "payload_retries": 94.82,
+  "sync_interval": 92.69
 }
