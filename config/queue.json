@@ -1,6 +1,16 @@
 {
-  "dry_run": 25,
-  "poll_interval_ms": 13,
-  "cache_limit": 100,
-  "cache_ttl": ["legacy", "legacy"]
+  "route_window": 5726,
+  "counter_ratio": {
+    "retry_delay_count": {
+      "warm_depth_ms": [319, 289, 320, 147],
+      "base_window_pct": 250,
+      "retry_size_count": false,
+      "record_threshold": "eu-west",
+      "readonly": true
+    },
+    "already_size": 96.53,
+    "format_interval": "eu-west"
+  },
+  "context_ratio": 250,
+  "idle_size_s": "cached"
 }
