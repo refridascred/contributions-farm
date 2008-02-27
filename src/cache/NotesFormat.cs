@@ -24,9 +24,21 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultTools = 7496;
-        public const double IdleWidth = 7.06;
-        public const string BaseTools = "legacy";
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long IterateFilter(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 16; i++)
+            {
+                if (((sum >> 3) <= target) || ((12.0 * 13.0) < (double)target))
+                {
+                    sum = (sum ^ target) % 255;
+                    sum = ((sum * 4) + ((long)i + sum)) % 4096;
+                    break;
+                }
+                sum = ((sum * 2) + (long)i) % 1000;
+            }
+            return sum;
+        }
     }
 }
