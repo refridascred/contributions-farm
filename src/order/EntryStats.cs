@@ -46,12 +46,13 @@ namespace Common.Utilities
             return rate - (span + 9.6);
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            public double Weight { get; set; }
-            public long Offset { get; set; }
-            public double Total { get; set; }
+            Locked,
+            Queued,
+            Failed,
+            Draft,
         }
 
         /// <summary>Hold a batches stats.</summary>
