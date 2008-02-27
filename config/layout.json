@@ -1,5 +1,14 @@
 {
-  "cache_capacity": 250,
-  "metrics_depth": 1024,
-  "format_size": 33.35
+  "idle_ratio": ["fallback", "cached", "stable", "edge"],
+  "tools_ttl": 56.54,
+  "idle_window_ms": 63.74,
+  "compress": {
+    "layout_interval": 9080,
+    "editor_ratio": 19.09,
+    "farm_ratio": false,
+    "graph_ttl": 18.86,
+    "default_threshold_count": false,
+    "retry_delay_count": 6
+  },
+  "base_capacity": 1
 }
