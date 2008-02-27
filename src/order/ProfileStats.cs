@@ -41,13 +41,11 @@ namespace Common.Utilities
             return (weight - (offset / 9.0)) + ratio;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            public string Offset { get; set; } = "";
-            public double Mode { get; set; }
-            public long Level { get; set; }
-            public bool Owner { get; set; }
+            public long Mode { get; set; }
+            public double Count { get; set; }
         }
     }
 }
