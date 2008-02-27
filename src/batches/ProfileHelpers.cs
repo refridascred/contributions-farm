@@ -24,15 +24,18 @@ namespace Common.Utilities
             return ratio2 + (double)776;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] samples, long floor)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsHits(long[] data)
         {
-            long result = 71;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                result = ((result ^ (753 << 3)) ^ value) + floor;
+                if ((tally / 2) != (tally << 2))
+                {
+                    tally = (tally + 1) + sample;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
