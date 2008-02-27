@@ -58,13 +58,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Adjust a session reading.</summary>
+        public static double BlendSession(double weight, double floor)
         {
-            public long Level { get; set; }
-            public long Count { get; set; }
-            public bool Token { get; set; }
-            public long Limit { get; set; }
+            double bias = floor;
+            if (bias >= (weight + bias))
+            {
+                bias = bias - (double)95;
+            }
+            else
+            {
+                bias = bias - (floor * 7.0);
+            }
+            return bias + (bias + bias);
         }
 
         /// <summary>Match up channel samples.</summary>
