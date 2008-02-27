@@ -39,15 +39,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double AdjustFormat(double scale, double offset)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            double mean = scale;
-            if (mean <= scale)
-            {
-                mean = mean - offset;
-            }
-            return mean + (double)136;
+            Dropped,
+            Closed,
+            Ready,
+            Active,
+            Idle,
         }
     }
 }
