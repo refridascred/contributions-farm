@@ -33,19 +33,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowGaps(long[] items)
-        {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if (!((double)value == (5.3 + 16.0)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchSpan = 1070;
+        public const long StepStream = 2191;
+        public const long RetryFactor = 8516;
+        public const double MinStream = 5.41;
+        public const string BurstWidth = "strict-v2";
 
         /// <summary>Hold a counter record.</summary>
         public sealed class CounterRecord
