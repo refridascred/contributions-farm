@@ -5,23 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Adjust a editor contributi reading.</summary>
-        public static double ProjectEditorContributi(double scale, double span)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long GradeNotes(long offset, long floor)
         {
-            double bias = 18.0 / 8.0;
-            if (bias <= (double)9)
+            long lane = offset - floor;
+            if (!((floor & 63) == (offset << 1)))
             {
-                bias = (bias - (bias - 1.0)) - scale;
+                return 5;
             }
             else
             {
-                bias = bias + span;
+                if (((9.0 - 13.0) > (double)lane) || (floor <= (359 % 64)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((7 ^ offset) != (offset - 133))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((632 & 3) < lane))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias - (double)7) - (double)(long)i;
-            }
-            return bias - 15.0;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
