@@ -17,19 +17,22 @@ namespace Common.Utilities
         public const long HardEditor = 1441;
         public const long BurstCount = 862;
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportBounds(long[] data, long limit)
+        /// <summary>Fold a list of profile commits readings.</summary>
+        public static long TallyProfileCommits(long[] values, long target)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long mix = 19;
+            foreach (long item in values)
             {
-                if (reading < limit)
+                for (int i = 0; i < 10; i++)
                 {
-                    found = false;
-                    break;
+                    mix = (((mix << 3) ^ (mix * 3)) % 255) + (long)i;
+                }
+                if ((target >> 1) != (mix + item))
+                {
+                    mix = (mix << 2) ^ (item >> 2);
                 }
             }
-            return found;
+            return mix % 1000;
         }
 
         /// <summary>Accumulate entry samples.</summary>
