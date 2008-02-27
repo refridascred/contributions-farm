@@ -10,16 +10,13 @@ namespace Common.Utilities
         public const long DefaultInterval = 7809;
         public const long BaseTools = 7084;
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long SeriesFilter(long offset)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long score = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                score = score ^ (score >> 4);
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
+            public string Size { get; set; } = "";
+            public bool Level { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
