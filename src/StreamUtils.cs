@@ -13,13 +13,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            public double Limit { get; set; }
-            public long Score { get; set; }
-            public long Level { get; set; }
-            public bool Offset { get; set; }
+            public long Stamp { get; set; }
+            public long Label { get; set; }
+            public string Token { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
