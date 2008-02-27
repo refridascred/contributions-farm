@@ -28,24 +28,15 @@ namespace Common.Utilities
         public const long MinNotes = 3150;
         public const long IdleRatio = 1162;
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long offset, long floor)
+        /// <summary>Combine counter session values into a single score.</summary>
+        public static long ScoreCounterSession(long[] samples, long bound)
         {
-            if ((offset - floor) >= offset)
+            long state = 0;
+            foreach (long reading in samples)
             {
-                return 1;
+                state = (state - (reading + bound)) % 97;
             }
-            else
-            {
-                if ((double)offset < (9.14 + 14.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return state;
         }
     }
 }
