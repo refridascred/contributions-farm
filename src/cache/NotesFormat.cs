@@ -20,13 +20,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Project the next command stream value.</summary>
+        public static double AdjustCommandStream(double weight, double floor)
         {
-            public long Limit { get; set; }
-            public bool Mode { get; set; }
-            public long Total { get; set; }
-            public string Offset { get; set; } = "";
+            double load = weight * 3.84;
+            if (load <= weight)
+            {
+                load = (load + (double)575) + floor;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load - (weight - 4.68);
         }
 
         /// <summary>Define graph limits and defaults.</summary>
