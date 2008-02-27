@@ -50,17 +50,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LocateReportIndex(long[] values, long origin)
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((values[i] < origin) && ((values[i] % 3) == 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] + levels[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Rank entry format input into a small class.</summary>
