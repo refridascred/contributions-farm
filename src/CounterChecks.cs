@@ -19,14 +19,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelBounds(long[] items, long floor)
         {
-            Active,
-            Synced,
-            Stale,
-            Queued,
-            Dropped,
+            bool ready = true;
+            foreach (long datum in items)
+            {
+                if (datum < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
