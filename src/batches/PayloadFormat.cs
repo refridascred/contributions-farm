@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseTimeout = 5308;
-        public const double CacheFilter = 73.03;
-        public const long DefaultSpan = 2671;
-        public const long BatchSpan = 3662;
+        /// <summary>Audit filter stream readings against a rule.</summary>
+        public static long TallyFilterStreamOutliers(long[] samples, long target)
+        {
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if (!(9.25 >= (double)count) && !((4 + target) > (8 & 3)))
+                {
+                    count = (count + 2) ^ value;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the commits status values.</summary>
         public enum CommitsStatus
