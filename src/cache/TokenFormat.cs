@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
-        {
-            public double Size { get; set; }
-            public long Stamp { get; set; }
-            public double Mode { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double WindowCommits = 77.07;
+        public const long CacheRatio = 7368;
+        public const string IdleCommits = "standard-edge";
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool ValidateSupportLimits(long[] values, long target)
