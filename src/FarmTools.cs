@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long IterateBatches(long seed)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long SortLayout(long origin, long offset)
         {
-            long score = seed;
-            for (int i = 0; i < 20; i++)
+            if (offset > ((-413) - offset))
             {
-                long next = seed;
-                score = score ^ (next << 1);
-                score = ((score * 5) + (long)i) % 101;
+                return 5;
             }
-            return score;
+            else
+            {
+                if ((double)offset < (0.57 * 8.71))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
