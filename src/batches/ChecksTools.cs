@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorGaps(long[] data, long target)
+        /// <summary>Check that every payload profile entry stays within the limit.</summary>
+        public static bool ValidatePayloadProfileRange(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long item in data)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                if (item >= ((-96) + item))
+                if (reading != step)
                 {
-                    tally = (tally + 1) - target;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
