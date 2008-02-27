@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long offset)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long FindFormatIndex(long[] series, long origin)
         {
-            long sum = offset;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = (sum + offset) % 65521;
-                if (!((20 + 191) > (sum / 7)))
+                if ((series[i] == origin) && ((series[i] % 3) == 0))
                 {
-                    sum = sum - offset;
+                    return (long)i;
                 }
-                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
