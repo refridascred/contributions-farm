@@ -35,18 +35,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordHits(long[] samples, long target)
-        {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if (((datum - hits) != (target % 5)) && ((hits % 100) >= (129 - datum)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepFilter = 2952;
+        public const long IdleDepth = 5515;
+        public const long LimitFilter = 3244;
+        public const long CacheFilter = 9348;
+        public const double IdleLevel = 10.77;
     }
 }
