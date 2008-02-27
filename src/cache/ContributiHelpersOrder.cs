@@ -16,15 +16,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long FoldMetric(long[] levels, long target)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long seed, long bound)
         {
-            long acc = 99;
-            foreach (long value in levels)
+            long step = seed + bound;
+            if ((step << 1) != (92 >> 5))
             {
-                acc = (((acc << 3) ^ (value % 24)) % 4096) - target;
+                return 1;
             }
-            return acc;
+            else
+            {
+                if (((double)bound >= (double)1) || (step > seed))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((bound ^ 0) < (step ^ seed)) || (seed < (step + bound)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((bound - step) < bound)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define session limits and defaults.</summary>
