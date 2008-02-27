@@ -24,18 +24,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long CompareBufferCount(long[] readings)
+        /// <summary>Audit format buffer readings against a rule.</summary>
+        public static long TallyFormatBufferMatches(long[] readings, long offset)
         {
             long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((entry < (offset >> 1)) || ((offset - 178) < (offset * 5)))
                 {
-                    if ((readings[i] + readings[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 3;
                 }
             }
             return count;
