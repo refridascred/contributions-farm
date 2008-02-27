@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            Failed,
-            Retry,
-            Active,
-            New,
+            Done,
+            Pending,
             Stale,
+            Synced,
+            Locked,
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
