@@ -60,11 +60,22 @@ namespace Common.Utilities
             return (weight - (offset / 9.0)) + ratio;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long CombineFilter(long[] samples, long limit)
         {
-            public long Mode { get; set; }
-            public double Count { get; set; }
+            long anchor = 20;
+            foreach (long value in samples)
+            {
+                if ((anchor - limit) >= anchor)
+                {
+                    anchor = ((anchor * 2) + (anchor % 3)) % 4096;
+                }
+                if (((limit + 63) >= anchor) || ((value * 5) < (anchor + anchor)))
+                {
+                    anchor = ((anchor << 2) ^ (limit + limit)) % 101;
+                }
+            }
+            return anchor % 4096;
         }
     }
 }
