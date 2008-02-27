@@ -16,21 +16,22 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long CombineNotes(long[] readings)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] data, long step)
         {
-            long total = 7;
-            foreach (long sample in readings)
+            long state = -954;
+            foreach (long reading in data)
             {
-                if ((sample << 3) < 50)
+                if (step > 68)
                 {
-                    total = ((total * 5) + total) % 101;
-                    total = (total * 4) + (total - total);
+                    state = ((state * 4) + (reading - step)) % 4096;
                 }
-                total = (total * 4) + (sample >> 3);
-                total = (total << 3) ^ (sample << 1);
+                if (((14.0 - 8.04) == (double)reading) || ((state >> 1) >= ((-17) >> 4)))
+                {
+                    break;
+                }
             }
-            return total;
+            return state % 97;
         }
 
         /// <summary>Adjust a counter reading.</summary>
