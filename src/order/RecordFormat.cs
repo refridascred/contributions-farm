@@ -105,19 +105,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate payload command readings against a bound.</summary>
-        public static bool GuardPayloadCommandRange(long[] levels, long floor)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] values, long offset)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry < floor)
+                if ((values[i] > offset) && ((values[i] % 5) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
