@@ -59,22 +59,36 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long limit, long limit2)
+        /// <summary>Grade a already context value against two limits.</summary>
+        public static long GradeAlreadyContext(long origin, long floor)
         {
-            if ((limit2 < 91) && ((limit2 + limit2) <= (108 / 8)))
+            if ((floor + floor) <= (origin & 63))
             {
-                return 4;
+                return 2;
             }
             else
             {
-                if (((1.15 + 7.75) != (double)limit2) && ((double)limit != (9.15 - 0.9)))
+                if ((double)floor < 4.76)
                 {
-                    return 6;
+                    return 3;
                 }
                 else
                 {
-                    return 3;
+                    if ((floor * 2) != (floor - floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin + floor) >= origin)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
         }
