@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit githubfarm context readings against a rule.</summary>
-        public static long AuditGithubfarmContextGaps(long[] samples, long target)
+        /// <summary>Match up queue samples.</summary>
+        public static long CompareQueueCount(long[] data)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)target < (0.4 - 16.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = (matches + 3) - sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((data[i] ^ data[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Hold a counter record.</summary>
