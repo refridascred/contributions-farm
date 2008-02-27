@@ -23,12 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
+            Synced,
+            Dropped,
             Locked,
-            Ready,
-            Pending,
+            Active,
         }
 
         /// <summary>Define token limits and defaults.</summary>
