@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the stats notes entries that pass the check.</summary>
-        public static long CountStatsNotesHits(long[] samples)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((3 << 3) == (count / 7))
-                {
-                    count = (count + 3) ^ cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Stamp { get; set; }
+            public double Weight { get; set; }
+            public long Token { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Audit queue counter readings against a rule.</summary>
