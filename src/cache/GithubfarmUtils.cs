@@ -47,18 +47,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsOutliers(long[] readings)
+        /// <summary>Match up schema samples.</summary>
+        public static long PairSchemaCount(long[] levels)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((count ^ count) < (count - (-627)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = (count + 2) + entry;
+                    if ((levels[i] - levels[j]) != 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
