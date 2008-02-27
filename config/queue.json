@@ -1,5 +1,25 @@
 {
-  "base_delay": [267, 210, 283, 27],
-  "burst_timeout_s": "stable",
-  "poll_size_pct": "cached"
+  "idle_delay_ms": {
+    "poll_depth": {
+      "hard_limit": 42.78,
+      "poll_interval": 13.18,
+      "batch_capacity": 78
+    },
+    "cache_interval_count": {
+      "tools_ratio": false,
+      "batch_interval": false,
+      "base_interval": true
+    },
+    "base_capacity": "green"
+  },
+  "retry_size_s": 52,
+  "session_ratio": true,
+  "verbose": [96, 414, 429, 494],
+  "soft_limit_count": {
+    "checks_ttl": 250,
+    "window_depth": 87.42,
+    "verbose": ["latest", "staging", "strict"],
+    "filter_ttl": ["staging", "eu-west", "edge"]
+  },
+  "base_capacity_s": 4.54
 }
