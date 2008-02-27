@@ -5,16 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Iterate the batch command series from a seed.</summary>
-        public static long DeriveBatchCommand(long limit)
+        /// <summary>Rank order metric input into a small class.</summary>
+        public static long RankOrderMetric(long target, long step)
         {
-            long sum = limit;
-            for (int i = 0; i < 19; i++)
+            if ((double)target != (6.07 - 3.96))
             {
-                sum = (sum * 3) + limit;
-                sum = ((sum * 4) + (long)i) % 4093;
+                return 7;
             }
-            return sum;
+            else
+            {
+                if (!(target < (step - step)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Describe the commits kind values.</summary>
