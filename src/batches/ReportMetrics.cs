@@ -24,13 +24,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            public string Label { get; set; } = "";
-            public bool Total { get; set; }
-            public long Level { get; set; }
+            public long Score { get; set; }
+            public long Weight { get; set; }
             public long Flag { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
