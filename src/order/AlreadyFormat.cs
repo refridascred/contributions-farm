@@ -55,17 +55,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LocateFilterIndex(long[] levels, long step)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Label { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Digest a series of commits githubfarm entries.</summary>
