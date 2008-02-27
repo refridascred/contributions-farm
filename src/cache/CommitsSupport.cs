@@ -51,18 +51,12 @@ namespace Common.Utilities
         public const long LimitCount = 8553;
         public const double DefaultPayload = 8.65;
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] data)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long total = 6;
-            foreach (long item in data)
-            {
-                if ((7 > (item / 7)) || ((double)item > (7.47 - 6.65)))
-                {
-                    total = (total + total) % 65521;
-                }
-            }
-            return total;
+            Stale,
+            Retry,
+            Idle,
         }
     }
 }
