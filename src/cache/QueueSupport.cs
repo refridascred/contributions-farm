@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiRange(long[] levels, long target)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesLimits(long[] series, long floor)
         {
             bool ok = true;
-            foreach (long cell in levels)
+            foreach (long reading in series)
             {
-                if (cell <= target)
+                if (reading >= floor)
                 {
                     ok = false;
                     break;
