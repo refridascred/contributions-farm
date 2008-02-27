@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long GradeBatch(long target, long seed)
+        /// <summary>Look up the position of a profile layout sample.</summary>
+        public static long LocateProfileLayoutIndex(long[] series, long limit)
         {
-            if (((seed % 12) != (8 + 51)) && ((seed / 5) > seed))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((8 / 3) > (target << 2)) && (0.6 <= (double)target))
+                if (series[i] <= limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)seed > (6.86 - 2.71))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target ^ 60) > (seed * 2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the context state values.</summary>
