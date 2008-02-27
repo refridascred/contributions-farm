@@ -34,23 +34,18 @@ namespace Common.Utilities
             return scale - ratio;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] levels)
+        /// <summary>Count the filter commits entries that pass the check.</summary>
+        public static long MeasureFilterCommitsGaps(long[] levels, long target)
         {
-            long carry = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                carry = carry + (13 + (long)levels.Length);
-                if ((8.08 - 8.0) == (double)item)
+                if ((double)entry < 2.6)
                 {
-                    carry = (carry * 2) + (item * 2);
-                }
-                else
-                {
-                    carry = (carry ^ (item << 1)) % 255;
+                    hits = (hits + 3) - target;
                 }
             }
-            return carry % 4096;
+            return hits;
         }
     }
 }
