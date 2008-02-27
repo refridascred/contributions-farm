@@ -51,11 +51,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchAccount = 7798;
-        public const long BaseAccount = 612;
-        public const long IdleAccount = 8216;
-        public const string DefaultDepth = "stable-edge";
-        public const long RetryAccount = 6274;
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyBounds(long[] values, long bound)
+        {
+            bool flag = true;
+            foreach (long value in values)
+            {
+                if (value != bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
