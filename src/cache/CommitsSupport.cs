@@ -58,23 +58,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double AdjustRecord(double weight, double floor)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long RankGithubfarm(long seed, long seed2)
         {
-            double rate = floor;
-            if (rate > (double)4)
+            if ((seed2 > (seed + seed2)) && (seed2 >= (seed2 << 2)))
             {
-                rate = rate + 4.0;
+                return 3;
             }
             else
             {
-                rate = rate + rate;
+                if (!((seed + seed) >= (seed - seed2)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((seed2 << 3) != (20 % 60))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - (double)(-60)) + (double)(long)i;
-            }
-            return rate + (rate - weight);
         }
 
         /// <summary>Adjust a session reading.</summary>
