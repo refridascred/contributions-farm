@@ -79,19 +79,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every batches graph entry stays within the limit.</summary>
-        public static bool GuardBatchesGraphLimits(long[] values, long step)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportGaps(long[] levels)
         {
-            bool valid = true;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if (value >= step)
+                if ((tally & 63) < (sample + sample))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
