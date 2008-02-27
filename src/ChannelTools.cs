@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit stream context readings against a rule.</summary>
-        public static long MeasureStreamContextGaps(long[] items, long floor)
+        /// <summary>Accumulate queue checks samples.</summary>
+        public static long TallyQueueChecks(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long mix = 916;
+            foreach (long value in series)
             {
-                if (!((value + matches) == ((-9) - floor)))
-                {
-                    matches = matches + 3;
-                }
+                mix = ((mix << 3) ^ (mix - value)) - seed;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
