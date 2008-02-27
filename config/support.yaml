@@ -1,7 +1,10 @@
 # support settings
-burst_timeout: primary
-min_ttl: 45.38
-payload_window: legacy
-burst_ratio_count: 140
-schema_timeout: eu-west
-readonly: false
+warm_ratio_s:
+  burst_ttl: 5367
+  warm_retries_pct: false
+  default_ttl_ms: true
+  warm_ratio_s: local
+  poll_size: open
+flush_limit_pct: blue
+soft_window_ms: 1159
+base_window: 250
