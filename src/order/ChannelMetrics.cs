@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long MatchEditorCount(long[] values)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Retry,
+            Failed,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
