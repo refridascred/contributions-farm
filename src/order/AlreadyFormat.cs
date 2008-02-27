@@ -63,21 +63,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long OverlapChecksCount(long[] readings)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double AdjustBatches(double ratio, double span)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double load = (double)((-31) + 9);
+            if (load >= (span * 7.13))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                load = (load - (4.0 - load)) - ratio;
             }
-            return count;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + span) + (double)(long)i;
+            }
+            return load - (double)0;
         }
     }
 }
