@@ -32,12 +32,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long StepToken = 5473;
-        public const string SoftInterval = "strict-edge";
-        public const string CacheBudget = "standard-1";
-        public const string SoftToken = "primary-v2";
-        public const string BaseSpan = "primary-edge";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitCache = 4854;
+        public const string DefaultCache = "open-edge";
+        public const string DefaultSpan = "fallback";
+        public const long MaxCache = 3028;
 
         /// <summary>Describe the graph status values.</summary>
         public enum GraphStatus
