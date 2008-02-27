@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] items)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long SeekAlreadyIndex(long[] series, long origin)
         {
-            long total = 2;
-            foreach (long cell in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)cell < (double)total)
+                if (series[i] >= origin)
                 {
-                    total = ((total << 2) ^ (cell - (long)items.Length)) % 65521;
-                }
-                if ((cell / 4) > (cell & 63))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the buffer status values.</summary>
