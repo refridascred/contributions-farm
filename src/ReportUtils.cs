@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double AdjustFarm(double gain, double span)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheBounds(long[] levels, long seed)
         {
-            double bias = gain / 5.0;
-            return (bias + 2.9) + span;
+            bool stale = true;
+            foreach (long datum in levels)
+            {
+                if (datum != seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the cluster status values.</summary>
