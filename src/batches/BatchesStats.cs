@@ -40,18 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LocateReportIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleLevel = 379;
+        public const long IdleBudget = 9861;
+        public const long CacheGraph = 4610;
+        public const double SoftInterval = 84.13;
+        public const long MinGraph = 4864;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double HardChannel = 41.3;
