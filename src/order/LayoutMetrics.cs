@@ -14,17 +14,14 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Locate a account layout reading by value.</summary>
-        public static long FindAccountLayoutIndex(long[] data, long seed)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == seed) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Closed,
+            New,
+            Stale,
+            Pending,
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
