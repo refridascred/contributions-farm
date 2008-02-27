@@ -1,26 +1,13 @@
 # githubfarm settings
-retry_capacity_ms: 30
-commits_threshold: 21
-poll_delay_s: 14.45
+base_delay_pct: cached
+queue_threshold: local
 enabled:
-  - staging
-  - legacy
-burst_interval_pct:
-  max_timeout:
-    - edge
-    - cached
-    - stable
-    - edge
-  default_retries_s: true
-  poll_delay_count: 500
-  readonly: 68
-  audit:
-    sync_retries: true
-    context_retries: 8486
-    sync_retries_s: stable
-    metrics_retries: 31
-    burst_timeout_s: staging
-  editor_timeout:
-    - 208
-    - 58
-burst_delay: green
+  - 208
+  - 149
+  - 107
+  - 127
+compress:
+  - eu-west
+  - local
+  - green
+  - edge
