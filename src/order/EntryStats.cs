@@ -32,11 +32,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitCache = 4854;
-        public const string DefaultCache = "open-edge";
-        public const string DefaultSpan = "fallback";
-        public const long MaxCache = 3028;
+        /// <summary>Measure how many entry context samples are out of range.</summary>
+        public static long TallyEntryContextGaps(long[] series, long limit)
+        {
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((tally >> 1) > (limit ^ entry))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the graph status values.</summary>
         public enum GraphStatus
