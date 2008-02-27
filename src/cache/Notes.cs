@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheBounds(long[] values, long target)
         {
-            Draft,
-            Idle,
-            Pending,
-            Done,
-            Stale,
+            bool stale = true;
+            foreach (long value in values)
+            {
+                if (value <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
