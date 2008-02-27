@@ -44,15 +44,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] items)
+        /// <summary>Count the record contributi entries that pass the check.</summary>
+        public static long CountRecordContributiMatches(long[] items)
         {
-            long acc = 792;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long datum in items)
             {
-                acc = ((acc * 2) + (entry - acc)) % 65521;
+                if ((2.0 * 1.4) >= (8.7 * 5.83))
+                {
+                    count = (count + 2) + datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return acc % 1000;
+            return count;
         }
     }
 }
