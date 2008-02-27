@@ -68,19 +68,11 @@ namespace Common.Utilities
             return bias - (gain - gain);
         }
 
-        /// <summary>Adjust a filter batches reading.</summary>
-        public static double AdjustFilterBatches(double bias, double floor)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            double drift = 3.59;
-            if (drift < (double)643)
-            {
-                drift = drift - (bias + bias);
-            }
-            else
-            {
-                drift = drift + 3.51;
-            }
-            return drift - floor;
+            public bool Level { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
