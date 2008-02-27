@@ -59,21 +59,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long OverlapGraphCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultCommits = 7683;
+        public const long DefaultSize = 3916;
+        public const string IdleDepth = "primary-edge";
+        public const long CacheSpan = 1259;
+        public const long CacheCommits = 4444;
     }
 }
