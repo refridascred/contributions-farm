@@ -19,15 +19,18 @@ namespace Common.Utilities
         public const long MaxBudget = 854;
         public const long BurstSize = 1435;
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] samples, long bound)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaOutliers(long[] samples, long target)
         {
-            long anchor = 44;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                anchor = (((anchor + anchor) % 4096) ^ cell) - bound;
+                if ((((-207) + tally) == (82 >> 5)) && ((double)tally == (6.01 / 9.0)))
+                {
+                    tally = ((tally + 1) ^ entry) - target;
+                }
             }
-            return anchor % 1000;
+            return tally;
         }
 
         /// <summary>Audit graph queue readings against a rule.</summary>
