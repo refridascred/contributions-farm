@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            Done,
-            Dropped,
-            Active,
-            Locked,
             Idle,
+            New,
+            Pending,
+            Done,
+            Ready,
         }
 
         /// <summary>Hold a stats stats.</summary>
