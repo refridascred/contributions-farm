@@ -14,14 +14,24 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Roll a context counter forward.</summary>
+        public static long DeriveContext(long target)
         {
-            Draft,
-            Failed,
-            New,
-            Done,
-            Locked,
+            long sum = target;
+            for (int i = 0; i < 11; i++)
+            {
+                if (((sum % 64) >= (sum * 4)) && ((sum * 3) <= 88))
+                {
+                    sum = sum - sum;
+                    sum = ((sum << 2) ^ target) % 65521;
+                }
+                else
+                {
+                    sum = (sum ^ 454) % 255;
+                }
+                sum = ((sum * 2) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Audit format buffer readings against a rule.</summary>
