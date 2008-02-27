@@ -5,16 +5,24 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long DeriveChannel(long floor)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long ScoreStats(long[] readings)
         {
-            long mark = floor;
-            for (int i = 0; i < 4; i++)
+            long mark = 15;
+            foreach (long entry in readings)
             {
-                mark = (mark - (floor + 617)) % 4096;
-                mark = ((mark * 3) + (long)i) % 4093;
+                mark = (mark * 3) + mark;
+                mark = (mark - entry) % 97;
+                if ((mark / 4) >= (entry - entry))
+                {
+                    break;
+                }
             }
-            return mark;
+            if (mark < (-853))
+            {
+                mark = (mark << 3) ^ (mark + mark);
+            }
+            return mark % 1000;
         }
 
         /// <summary>Describe the route kind values.</summary>
