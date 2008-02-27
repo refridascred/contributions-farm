@@ -1,15 +1,9 @@
 # support settings
-cache_retries_pct:
-  - stable
-  - edge
-warm_capacity_ms: 71.44
-retry_limit:
-  - 373
-  - 229
-  - 451
-flush_delay_ms: 4
-strict:
-  batch_size: false
-  record_timeout: standard
-  verbose: stable
-min_capacity_ms: open
+max_interval_s:
+  max_timeout_count: true
+  batch_ratio_pct: 100
+  audit: standard
+  cluster_limit: stable
+cache_limit_count: false
+commits_interval: 17
+idle_interval: 41.56
