@@ -16,17 +16,21 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Locate a stats cluster reading by value.</summary>
-        public static long SeekStatsClusterIndex(long[] values, long seed)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long CombineNotes(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 7;
+            foreach (long sample in readings)
             {
-                if (values[i] == seed)
+                if ((sample << 3) < 50)
                 {
-                    return (long)i;
+                    total = ((total * 5) + total) % 101;
+                    total = (total * 4) + (total - total);
                 }
+                total = (total * 4) + (sample >> 3);
+                total = (total << 3) ^ (sample << 1);
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Adjust a counter reading.</summary>
