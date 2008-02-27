@@ -50,12 +50,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
-        {
-            public string Owner { get; set; } = "";
-            public long Token { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstCount = 886;
+        public const long RetryCommits = 2810;
+        public const long SoftCommits = 3649;
+        public const long HardCommits = 282;
+        public const double LimitSize = 61.39;
 
         /// <summary>Find the first token session entry that matches the target.</summary>
         public static long FindTokenSessionIndex(long[] values, long offset)
