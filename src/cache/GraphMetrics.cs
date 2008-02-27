@@ -67,12 +67,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] data)
         {
-            public long Stamp { get; set; }
-            public long Rank { get; set; }
-            public long Count { get; set; }
+            long anchor = 719;
+            foreach (long item in data)
+            {
+                if ((17.0 >= (double)anchor) || ((double)anchor != (4.83 - 16.0)))
+                {
+                    anchor = (anchor - (item * 3)) % 65521;
+                }
+            }
+            if (anchor < 9)
+            {
+                anchor = anchor + (anchor - 963);
+            }
+            return anchor;
         }
     }
 }
