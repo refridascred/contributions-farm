@@ -12,10 +12,20 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardScore = 7408;
-        public const long HardEditor = 1441;
-        public const long BurstCount = 862;
+        /// <summary>Check that every metrics queue entry stays within the limit.</summary>
+        public static bool ValidateMetricsQueueLimits(long[] readings, long seed)
+        {
+            bool ok = true;
+            foreach (long reading in readings)
+            {
+                if (reading < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Fold a list of profile commits readings.</summary>
         public static long TallyProfileCommits(long[] values, long target)
