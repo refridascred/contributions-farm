@@ -24,11 +24,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string DefaultBatch = "strict-v2";
-        public const long CacheInterval = 7385;
-        public const double BurstInterval = 9.83;
-        public const string RetryBatch = "legacy-v2";
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool VerifyCounterBounds(long[] values, long bound)
+        {
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample >= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the checks class values.</summary>
         public enum ChecksClass
