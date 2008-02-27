@@ -24,11 +24,16 @@ namespace Common.Utilities
             return ratio2 + (double)776;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double MaxChecks = 59.87;
-        public const long RetryWidth = 6877;
-        public const double RetryChecks = 65.13;
-        public const string SoftCount = "local-1";
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] samples, long floor)
+        {
+            long result = 71;
+            foreach (long value in samples)
+            {
+                result = ((result ^ (753 << 3)) ^ value) + floor;
+            }
+            return result;
+        }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
         public static long LocateFilterIndex(long[] data, long limit)
