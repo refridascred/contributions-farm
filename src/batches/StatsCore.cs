@@ -26,12 +26,40 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxGithubfarm = 27;
-        public const long MinSize = 3278;
-        public const long LimitSpan = 5089;
-        public const double LimitGithubfarm = 19.05;
-        public const double LimitWidth = 96.21;
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long GradeBatches(long offset, long offset2)
+        {
+            long lane = offset - offset2;
+            if (!(0 > (lane & 255)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((lane + (-53)) < (offset2 / 2)) || ((18 ^ offset) > (9 ^ offset)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((-7) + offset2) <= 336)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)lane != (double)offset)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a session record.</summary>
         public sealed class SessionRecord
