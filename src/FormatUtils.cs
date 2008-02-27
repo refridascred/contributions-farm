@@ -53,13 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmOutliers(long[] items, long offset)
         {
-            Retry,
-            Closed,
-            Queued,
-            Ready,
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((hits + offset) >= (item ^ offset))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
