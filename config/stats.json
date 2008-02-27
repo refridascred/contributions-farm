@@ -1,7 +1,23 @@
 {
-  "min_timeout": 65.16,
-  "cache_window_pct": false,
-  "sync_retries": "fallback",
-  "readonly": 65,
-  "poll_interval": "green"
+  "idle_retries_count": 59.95,
+  "buffer_capacity": {
+    "idle_ratio_s": ["cached", "eu-west", "edge", "legacy"],
+    "default_interval": {
+      "warm_size_s": 54.98,
+      "readonly": "strict",
+      "batch_threshold_ms": 500,
+      "batches_size": true,
+      "batch_ttl": true,
+      "retry_timeout_s": 30
+    },
+    "cache_ratio": "latest"
+  },
+  "payload_delay": {
+    "editor_size": "standard",
+    "batch_threshold_ms": [89, 394],
+    "record_ratio": 54.15
+  },
+  "counter_timeout": "strict",
+  "retry_interval": 30,
+  "persist": "latest"
 }
