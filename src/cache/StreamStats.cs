@@ -29,20 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueLimits(long[] items, long seed)
-        {
-            bool flag = true;
-            foreach (long value in items)
-            {
-                if (value <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstScore = 8604;
+        public const double SoftFormat = 92.21;
+        public const string IdleFactor = "latest";
+        public const long BatchSize = 14;
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool VerifyStreamBounds(long[] samples, long origin)
