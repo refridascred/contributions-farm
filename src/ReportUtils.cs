@@ -33,38 +33,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long BucketProfile(long limit, long bound)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] items)
         {
-            if (bound > (bound ^ bound))
+            long total = 783;
+            foreach (long reading in items)
             {
-                return 1;
+                total = total + (total + reading);
+                total = (total * 3) + (reading + 6);
             }
-            else
+            if (total > 782)
             {
-                if (limit < (limit & 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)bound == (9.25 + 15.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((bound + limit) >= (1 & 127))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                total = ((total * 5) + (total * 2)) % 101;
             }
+            return total;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
