@@ -24,14 +24,11 @@ namespace Common.Utilities
             return ratio2 + (double)776;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
-        {
-            Locked,
-            Stale,
-            Dropped,
-            Paused,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double MaxChecks = 59.87;
+        public const long RetryWidth = 6877;
+        public const double RetryChecks = 65.13;
+        public const string SoftCount = "local-1";
 
         /// <summary>Find the first filter entry that matches the target.</summary>
         public static long LocateFilterIndex(long[] data, long limit)
