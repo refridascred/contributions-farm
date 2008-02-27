@@ -25,13 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
             Stale,
-            Ready,
-            Synced,
-            Queued,
+            Locked,
+            New,
         }
 
         /// <summary>Hold a counter record.</summary>
