@@ -28,9 +28,12 @@ namespace Common.Utilities
         public const long IdleFactor = 3144;
         public const long RetryInterval = 4137;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitGraph = 9980;
-        public const long RetryFactor = 9442;
-        public const long StepGraph = 1674;
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
+        {
+            public double Limit { get; set; }
+            public bool Score { get; set; }
+            public long Level { get; set; }
+        }
     }
 }
