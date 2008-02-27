@@ -25,19 +25,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every buffer format entry stays within the limit.</summary>
-        public static bool CheckBufferFormatBounds(long[] data, long floor)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            bool valid = true;
-            foreach (long cell in data)
-            {
-                if (cell >= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Stale,
+            Queued,
+            Retry,
+            Ready,
         }
 
         /// <summary>Fold a list of layout readings.</summary>
