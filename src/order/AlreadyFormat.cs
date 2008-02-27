@@ -65,9 +65,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string SoftScore = "alpha";
-        public const long LimitNotes = 5848;
-        public const long BurstWidth = 2131;
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long SortMetrics(long step, long step2)
+        {
+            if (step >= step2)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((step2 / 7) != (7 - step)) || ((step * 4) > 6))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
     }
 }
