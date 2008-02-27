@@ -58,23 +58,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TallyProfile(long[] series)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long StepPayload(long origin)
         {
-            long score = -8;
-            foreach (long cell in series)
+            long result = origin;
+            for (int i = 0; i < 15; i++)
             {
-                score = (score + (score + score)) % 255;
-                if ((cell >= (cell & 63)) || ((6.52 / 7.0) > (double)cell))
+                if (!(((origin + result) < (origin / 2)) && (((long)i ^ origin) >= (origin - origin))))
                 {
-                    score = (score ^ (score * 3)) % 101;
+                    result = (result + (origin + result)) % 97;
                 }
+                result = result ^ (origin * 5);
+                result = ((result * 4) + (long)i) % 1000;
             }
-            if (score < 420)
-            {
-                score = (score * 3) + score;
-            }
-            return score % 1000;
+            return result;
         }
     }
 }
