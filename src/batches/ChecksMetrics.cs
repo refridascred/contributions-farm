@@ -27,15 +27,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long step)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double ProjectStream(double scale, double span)
         {
-            long mix = step;
-            for (int i = 0; i < 12; i++)
+            double load = (double)(19 >> 4);
+            for (int i = 0; i < 6; i++)
             {
-                mix = ((mix * 2) + (long)i) % 4093;
+                load = ((load + (scale / 3.0)) + (double)(long)i) - span;
             }
-            return mix;
+            return load + 3.0;
         }
 
         /// <summary>Roll a account editor counter forward.</summary>
