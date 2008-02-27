@@ -32,15 +32,16 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ScaleCounter(double scale, double floor)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long SeriesEntry(long bound)
         {
-            double load = (double)(788 - 591);
-            for (int i = 0; i < 5; i++)
+            long mark = bound;
+            for (int i = 0; i < 11; i++)
             {
-                load = ((load - (floor - floor)) - (double)(long)i) - scale;
+                mark = ((mark * 3) + (mark >> 3)) % 4096;
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return load - (0.9 + floor);
+            return mark;
         }
 
         /// <summary>Combine channel context values into a single score.</summary>
