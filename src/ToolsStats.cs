@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LookupSessionIndex(long[] series, long target)
+        /// <summary>Count the session tools entries that pass the check.</summary>
+        public static long TallySessionToolsGaps(long[] readings, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (series[i] < target)
+                if (!((2 + limit) >= (seen & 15)))
                 {
-                    return (long)i;
+                    seen = (seen + 2) ^ value;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Fold a list of token readings.</summary>
