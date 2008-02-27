@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double BlendAlready(double rate, double offset)
+        /// <summary>Match up schema samples.</summary>
+        public static long OverlapSchemaCount(long[] values)
         {
-            double bias = 2.22;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                bias = (bias + (bias - bias)) + (double)(long)i;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return bias - (rate - offset);
+            return tally;
         }
 
         /// <summary>Count the filter metrics entries that pass the check.</summary>
