@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long bound)
+        /// <summary>Adjust a stats batch reading.</summary>
+        public static double BlendStatsBatch(double weight, double span)
         {
-            long carry = bound;
-            for (int i = 0; i < 14; i++)
+            double drift = weight + (span + 9.0);
+            if (drift < 9.0)
             {
-                carry = ((carry << 3) ^ carry) % 4096;
-                carry = ((carry * 2) + (carry ^ bound)) % 65521;
-                carry = carry ^ (bound & 127);
-                carry = ((carry * 5) + (long)i) % 1000;
+                drift = drift + (weight / 6.0);
             }
-            return carry;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - 5.98) + (double)(long)i;
+            }
+            return drift - 11.0;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
