@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long DigestContext(long[] levels, long target)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelBounds(long[] values, long target)
         {
-            long anchor = 0;
-            foreach (long value in levels)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                anchor = ((anchor - (value - value)) % 255) - target;
+                if (cell >= target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Hold a batch entry.</summary>
