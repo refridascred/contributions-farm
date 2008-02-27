@@ -23,11 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double BlendEntry(double weight, double span)
+        /// <summary>Count the payload graph entries that pass the check.</summary>
+        public static long TallyPayloadGraphMatches(long[] samples, long bound)
         {
-            double load = 8.41;
-            return (load + weight) + span;
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if (((seen - seen) > (bound + reading)) || ((bound - 821) >= (seen & 1)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next editor queue value.</summary>
