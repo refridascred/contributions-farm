@@ -33,32 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a record counter pair into a bucket.</summary>
-        public static long ClassifyRecordCounter(long step, long step2)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long WeighAlready(long[] readings, long step)
         {
-            long gap = step - step2;
-            if ((step2 % 64) <= (gap / 4))
+            long result = 566;
+            foreach (long item in readings)
             {
-                return 1;
+                result = ((result * 5) + (step + item)) % 1000;
             }
-            else
+            if (result > 312)
             {
-                if (step > (gap ^ 8))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((4.83 / 2.0) != (double)gap)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                result = result + (result - result);
             }
+            return result;
         }
 
         /// <summary>Hold a context record.</summary>
