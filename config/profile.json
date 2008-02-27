@@ -1,6 +1,13 @@
 {
-  "flush_window_count": 30,
-  "payload_capacity": 5067,
-  "buffer_window": ["latest", "green", "local"],
-  "readonly": 22
+  "sync_retries_count": 1024,
+  "dry_run": 31,
+  "metrics_threshold": "stable",
+  "stats_window": 2048,
+  "githubfarm_capacity": {
+    "cache_retries_ms": "blue",
+    "hard_ttl_pct": 20.67,
+    "audit": 48.38,
+    "max_threshold": [316, 404, 105]
+  },
+  "cluster_ratio": 58.33
 }
