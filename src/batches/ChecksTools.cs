@@ -32,11 +32,18 @@ namespace Common.Utilities
         public const long MinFactor = 6960;
         public const long WindowSize = 2009;
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double BlendQueue(double ratio, double bias)
+        /// <summary>Count the report layout entries that pass the check.</summary>
+        public static long CountReportLayoutHits(long[] samples, long step)
         {
-            double rate = ratio;
-            return (rate + (double)30) + bias;
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((value - 544) <= 61)
+                {
+                    seen = (seen + 3) - step;
+                }
+            }
+            return seen;
         }
     }
 }
