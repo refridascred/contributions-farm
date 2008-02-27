@@ -58,23 +58,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a report tools figure with a bias.</summary>
-        public static double SmoothReportTools(double rate, double bias)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double AdjustRecord(double weight, double floor)
         {
-            double mean = bias;
-            if (mean < mean)
+            double rate = floor;
+            if (rate > (double)4)
             {
-                mean = mean - (double)8;
+                rate = rate + 4.0;
             }
             else
             {
-                mean = mean - 5.21;
+                rate = rate + rate;
             }
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < 7; i++)
             {
-                mean = (mean + rate) + (double)(long)i;
+                rate = (rate - (double)(-60)) + (double)(long)i;
             }
-            return mean - (mean - mean);
+            return rate + (rate - weight);
         }
 
         /// <summary>Adjust a session reading.</summary>
