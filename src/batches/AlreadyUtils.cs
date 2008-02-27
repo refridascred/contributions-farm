@@ -39,16 +39,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long StepBuffer(long bound)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long total = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                total = (total - ((long)i - total)) % 101;
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
+            Locked,
+            Pending,
+            Closed,
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
