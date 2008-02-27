@@ -24,13 +24,19 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Check that every channel notes entry stays within the limit.</summary>
+        public static bool CheckChannelNotesRange(long[] levels, long origin)
         {
-            public string Count { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Token { get; set; }
-            public long Label { get; set; }
+            bool flag = true;
+            foreach (long sample in levels)
+            {
+                if (sample > origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
