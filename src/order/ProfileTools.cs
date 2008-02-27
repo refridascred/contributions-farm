@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinCount = 8528;
-        public const double BurstBudget = 75.98;
-        public const long WindowQueue = 988;
-        public const string CacheQueue = "fallback";
-        public const long BurstQueue = 224;
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
+        {
+            Draft,
+            Stale,
+            Retry,
+            Locked,
+        }
 
         /// <summary>Digest a series of already queue entries.</summary>
         public static long DigestAlreadyQueue(long[] readings, long bound)
