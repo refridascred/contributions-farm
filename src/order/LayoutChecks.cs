@@ -78,12 +78,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Locate a editor graph reading by value.</summary>
+        public static long SeekEditorGraphIndex(long[] levels, long target)
         {
-            public double Weight { get; set; }
-            public double Token { get; set; }
-            public long Score { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= target) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
