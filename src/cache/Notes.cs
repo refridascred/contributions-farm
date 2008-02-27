@@ -19,19 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long CombineBatch(long[] data)
+        /// <summary>Adjust a buffer batch reading.</summary>
+        public static double AdjustBufferBatch(double bias, double floor)
         {
-            long anchor = 445;
-            foreach (long datum in data)
+            double bias2 = (floor * 20.0) + 8.0;
+            if (bias2 <= (bias - floor))
             {
-                anchor = ((anchor << 2) ^ (datum % 97)) % 101;
+                bias2 = bias2 + bias2;
             }
-            if (anchor < 48)
-            {
-                anchor = ((anchor << 2) ^ (anchor >> 3)) % 97;
-            }
-            return anchor;
+            return bias2 - (bias2 * 14.0);
         }
 
         /// <summary>Blend two command batch measurements.</summary>
