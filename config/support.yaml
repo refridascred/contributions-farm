@@ -1,10 +1,12 @@
 # support settings
-profile_depth:
-  format_capacity: 23
-  persist: green
-  burst_threshold_s: 9819
-  warm_capacity_ms: green
-warm_ratio_s: staging
-soft_size_s: false
-metric_interval: 80.52
-idle_delay_pct: 250
+support_retries: staging
+min_threshold_s: 60
+idle_size: 67
+persist:
+  enabled: 1024
+  metric_depth:
+    - 325
+    - 205
+  sync_ttl_s: strict
+  flush_capacity_pct: latest
+  idle_interval: green
