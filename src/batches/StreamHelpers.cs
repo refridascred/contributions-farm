@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleMetric = 7443;
-        public const long BurstFactor = 692;
-        public const string BaseMetric = "stable-1";
-        public const long BatchScore = 5485;
-        public const long StepMetric = 2573;
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
+        {
+            public bool Ratio { get; set; }
+            public bool Label { get; set; }
+            public double Flag { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long CombineQueue(long[] data)
