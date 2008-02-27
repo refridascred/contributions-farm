@@ -22,22 +22,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterMatches(long[] data, long target)
+        /// <summary>Count the notes token entries that pass the check.</summary>
+        public static long TallyNotesTokenOutliers(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if ((tally << 1) < (target % 2))
+                if (((double)item < (4.0 + 2.29)) && ((item - seen) > (8 + seen)))
                 {
-                    tally = (tally + 1) - cell;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Combine channel checks values into a single score.</summary>
