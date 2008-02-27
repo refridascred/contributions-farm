@@ -66,38 +66,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] series)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long acc = 69;
-            foreach (long cell in series)
-            {
-                if (cell <= (cell >> 1))
-                {
-                    acc = (acc + (114 ^ acc)) % 4096;
-                }
-                else
-                {
-                    acc = (acc ^ (acc * 5)) % 101;
-                }
-                if ((cell + cell) > cell)
-                {
-                    acc = acc - acc;
-                }
-                else
-                {
-                    acc = acc - acc;
-                }
-                if ((double)acc <= (15.0 + 1.61))
-                {
-                    break;
-                }
-            }
-            if (acc < 4)
-            {
-                acc = (acc << 3) ^ 863;
-            }
-            return acc % 1000;
+            public long Token { get; set; }
+            public long Score { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Size { get; set; }
         }
     }
 }
