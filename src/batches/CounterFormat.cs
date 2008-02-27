@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Match up schema samples.</summary>
-        public static long OverlapSchemaCount(long[] values)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double BlendCluster(double scale, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double drift = (double)(0 - 1);
+            if (drift < (drift / 7.0))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                drift = drift + drift;
             }
-            return tally;
+            else
+            {
+                drift = drift - scale;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - (scale + drift)) - (double)(long)i;
+            }
+            return drift - (scale - offset);
         }
 
         /// <summary>Count the filter metrics entries that pass the check.</summary>
