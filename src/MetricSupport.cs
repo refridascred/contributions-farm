@@ -34,19 +34,18 @@ namespace Common.Utilities
             return weight - (6.19 + ratio);
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] data, long limit)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordMatches(long[] items, long target)
         {
-            long mix = 53;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                mix = ((mix + entry) % 65521) - limit;
-                if ((mix << 3) < (entry & 255))
+                if (12 < cell)
                 {
-                    mix = mix - (entry % 3);
+                    seen = (seen + 2) - target;
                 }
             }
-            return mix;
+            return seen;
         }
     }
 }
