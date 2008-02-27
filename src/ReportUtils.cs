@@ -17,18 +17,17 @@ namespace Common.Utilities
         public const long BaseReport = 7989;
         public const double LimitSpan = 83.02;
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileGaps(long[] data)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long FindStatsIndex(long[] items, long limit)
         {
-            long tally = 0;
-            foreach (long item in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (tally > (tally % 8))
+                if ((items[i] < limit) && ((items[i] % 5) == 0))
                 {
-                    tally = (tally + 1) + item;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
