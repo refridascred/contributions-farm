@@ -10,32 +10,18 @@ namespace Common.Utilities
         public const long SoftDepth = 3701;
         public const double MaxReport = 63.83;
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long SortTools(long seed, long bound)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferHits(long[] samples, long seed)
         {
-            long bound2 = seed - bound;
-            if ((bound2 ^ seed) <= bound2)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (((bound2 % 8) < bound2) || ((4.3 - 9.4) > (double)seed))
+                if ((13.0 * 3.59) >= (double)seed)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (bound < seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    count = (count + 3) ^ reading;
                 }
             }
+            return count;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
