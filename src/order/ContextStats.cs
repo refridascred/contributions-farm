@@ -54,24 +54,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank metric route input into a small class.</summary>
-        public static long ClassifyMetricRoute(long limit, long target)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountGaps(long[] samples, long bound)
         {
-            if (((target * 2) >= (limit - target)) && (target >= (29 * 5)))
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit + target) != (target % 5))
+                if ((((double)reading <= 12.0) || ((bound * 3) > (reading + reading))) && ((reading + 76) < (reading + tally)))
                 {
-                    return 4;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    return 7;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
