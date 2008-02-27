@@ -51,13 +51,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
-        {
-            public long Offset { get; set; }
-            public bool Flag { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string CacheBatch = "strict-1";
+        public const long BaseScore = 1788;
+        public const long DefaultBatch = 8715;
+        public const long HardSize = 5700;
 
         /// <summary>Hold a stats summary.</summary>
         public sealed class StatsSummary
