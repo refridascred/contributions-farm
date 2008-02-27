@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long limit)
         {
-            public string Flag { get; set; } = "";
-            public double Limit { get; set; }
-            public bool Region { get; set; }
-            public bool Owner { get; set; }
+            long mix = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                mix = ((mix << 2) ^ (mix + (long)i)) % 4096;
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Describe the farm mode values.</summary>
