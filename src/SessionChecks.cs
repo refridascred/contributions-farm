@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
+            Idle,
             Queued,
             Locked,
-            Done,
-            Stale,
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
