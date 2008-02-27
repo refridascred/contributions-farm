@@ -55,24 +55,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] series, long bound)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long total = 810;
-            foreach (long value in series)
-            {
-                total = (total << 3) ^ ((long)series.Length - value);
-                if ((total & 15) <= 9)
-                {
-                    total = (total << 3) ^ ((long)series.Length * 5);
-                }
-                total = (total * 3) + bound;
-            }
-            if (total < (-373))
-            {
-                total = ((total << 3) ^ (total << 3)) % 4096;
-            }
-            return total;
+            public long Ratio { get; set; }
+            public string Count { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
