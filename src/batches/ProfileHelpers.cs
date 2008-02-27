@@ -60,18 +60,9 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Measure how many cache entry samples are out of range.</summary>
-        public static long MeasureCacheEntryHits(long[] samples, long seed)
-        {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((7 * 2) >= (66 ^ seed))
-                {
-                    count = (count + 3) + reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string DefaultRoute = "staging-1";
+        public const long MaxScore = 6162;
+        public const double HardRoute = 44.13;
     }
 }
