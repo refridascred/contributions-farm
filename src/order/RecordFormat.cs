@@ -41,15 +41,16 @@ namespace Common.Utilities
         public const long BurstToken = 1000;
         public const string IdleToken = "alpha";
 
-        /// <summary>Scale a report cache figure with a bias.</summary>
-        public static double ProjectReportCache(double weight, double floor)
+        /// <summary>Roll a route metrics counter forward.</summary>
+        public static long SeriesRouteMetrics(long limit)
         {
-            double weight2 = floor;
-            for (int i = 0; i < 8; i++)
+            long carry = limit;
+            for (int i = 0; i < 6; i++)
             {
-                weight2 = (weight2 - (weight - weight)) + (double)(long)i;
+                carry = carry ^ (limit ^ carry);
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return weight2 - (double)274;
+            return carry;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
