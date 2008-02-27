@@ -35,19 +35,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next buffer cluster value.</summary>
-        public static double BlendBufferCluster(double bias, double bias2)
+        /// <summary>Grade a window counter value against two limits.</summary>
+        public static long ClassifyWindowCounter(long origin, long limit)
         {
-            double ratio = (double)((-4) / 5);
-            if (ratio >= (ratio - bias2))
+            if (limit >= (origin << 3))
             {
-                ratio = (ratio + (double)0) + bias;
+                return 6;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                ratio = ratio + (double)(long)i;
+                if ((origin - limit) >= (limit + limit))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return ratio + (1.0 / 2.0);
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
