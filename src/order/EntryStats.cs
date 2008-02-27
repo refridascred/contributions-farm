@@ -47,11 +47,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepCommand = 1126;
-        public const string MaxSpan = "local-v2";
-        public const double IdleSize = 53.64;
-        public const long CacheCount = 9526;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepToken = 5473;
+        public const string SoftInterval = "strict-edge";
+        public const string CacheBudget = "standard-1";
+        public const string SoftToken = "primary-v2";
+        public const string BaseSpan = "primary-edge";
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
         public static long MatchCacheCount(long[] readings)
