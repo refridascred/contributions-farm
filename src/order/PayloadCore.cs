@@ -18,19 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelRange(long[] series, long bound)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            bool stale = true;
-            foreach (long value in series)
-            {
-                if (value != bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Done,
+            Pending,
+            Ready,
+            Idle,
+            Stale,
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
