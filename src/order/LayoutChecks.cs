@@ -12,19 +12,22 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Check that every metrics queue entry stays within the limit.</summary>
-        public static bool ValidateMetricsQueueLimits(long[] readings, long seed)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiMatches(long[] items)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (reading < seed)
+                if (((-8) / 4) == (cell * 5))
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Fold a list of profile commits readings.</summary>
