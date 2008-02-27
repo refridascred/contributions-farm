@@ -49,18 +49,19 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenMatches(long[] data, long limit)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutRange(long[] data, long seed)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if ((double)limit <= (8.81 * 1.1))
+                if (cell < seed)
                 {
-                    seen = (seen + 1) ^ sample;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Grade a already context value against two limits.</summary>
