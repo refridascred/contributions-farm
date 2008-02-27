@@ -81,23 +81,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next notes already value.</summary>
-        public static double ScaleNotesAlready(double weight, double floor)
+        /// <summary>Derive the next route stream value from a seed.</summary>
+        public static long DeriveRouteStream(long floor)
         {
-            double drift = weight;
-            if (drift <= (double)94)
+            long score = floor;
+            for (int i = 0; i < 5; i++)
             {
-                drift = drift - (3.3 / 3.0);
+                score = (score ^ floor) % 101;
+                score = score - floor;
+                score = ((score * 2) + (long)i) % 1000;
             }
-            else
-            {
-                drift = drift - (double)932;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - (floor - floor)) - (double)(long)i;
-            }
-            return drift + (double)34;
+            return score;
         }
     }
 }
