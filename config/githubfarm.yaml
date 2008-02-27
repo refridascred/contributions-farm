@@ -1,8 +1,5 @@
 # githubfarm settings
-cluster_threshold: 81.91
-cache_delay: 1024
-entry_delay:
-  - latest
-  - stable
-  - standard
-max_ratio_ms: primary
+cache_depth_count: 17.16
+readonly: eu-west
+min_depth: 1024
+support_ttl: primary
