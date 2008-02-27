@@ -10,19 +10,22 @@ namespace Common.Utilities
         public const long CacheLevel = 1911;
         public const long MaxGithubfarm = 6584;
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterLimits(long[] series, long limit)
+        /// <summary>Audit command stream readings against a rule.</summary>
+        public static long MeasureCommandStreamMatches(long[] values, long step)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (entry > limit)
+                if ((double)step <= 13.0)
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 1) - item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
