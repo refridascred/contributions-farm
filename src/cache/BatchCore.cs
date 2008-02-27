@@ -57,24 +57,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long floor, long seed)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long SeekPayloadIndex(long[] levels, long offset)
         {
-            if (floor > 6)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((floor - seed) >= floor) && ((double)seed != (6.21 - 6.22)))
+                if ((levels[i] == offset) && ((levels[i] % 3) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
