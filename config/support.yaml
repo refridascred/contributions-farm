@@ -1,35 +1,4 @@
 # support settings
-soft_delay_count: blue
-tools_delay:
-  - 326
-  - 337
-  - 236
-  - 92
-strict: 23
-cache_ttl_ms: true
-enabled: local
-contributi_size:
-  context_timeout: 27
-  poll_size_pct:
-    hard_size_ms: 65
-    retry_retries_ms: 100
-    retry_depth_ms:
-      - 480
-      - 212
-      - 96
-      - 116
-    editor_window: open
-    soft_limit: 43.56
-    sync_delay_ms: eu-west
-  hard_timeout_count: 85.89
-  default_interval_pct:
-    default_size: 27
-    dry_run: stable
-    window_window:
-      - open
-      - stable
-      - cached
-      - blue
-    token_delay: 51
-    sync_threshold: latest
-  counter_size: 63
+audit: latest
+enabled: 594
+metric_ratio: 76.1
