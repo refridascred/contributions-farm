@@ -54,32 +54,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long SortReport(long step, long seed)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long IterateQueue(long offset)
         {
-            long prev = step + seed;
-            if ((8.0 * 10.0) == (double)step)
+            long anchor = offset;
+            for (int i = 0; i < 22; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step & 7) != (step / 3))
+                anchor = ((anchor << 2) ^ ((-88) - anchor)) % 101;
+                anchor = ((anchor * 2) + (26 - offset)) % 97;
+                if (!((double)(long)i <= (18.0 + 3.0)))
                 {
-                    return 6;
+                    anchor = anchor - ((long)i + anchor);
+                    anchor = (anchor << 3) ^ (anchor * 2);
                 }
-                else
-                {
-                    if ((prev + 661) <= (seed % 16))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
+            return anchor;
         }
     }
 }
