@@ -19,15 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double BlendBuffer(double weight, double span)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmHits(long[] levels)
         {
-            double weight2 = 7.01;
-            if (weight2 < span)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                weight2 = (weight2 + weight2) + weight;
+                if ((double)sample >= (7.3 * 4.39))
+                {
+                    count = count + 1;
+                }
             }
-            return weight2 + weight2;
+            return count;
         }
 
         /// <summary>Look up the position of a support metric sample.</summary>
