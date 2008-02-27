@@ -2,12 +2,10 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     score REAL NOT NULL DEFAULT 0,
-    owner TEXT NOT NULL,
-    label TEXT
+    level INTEGER,
+    ratio REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_score ON layout_items (score);
+CREATE INDEX IF NOT EXISTS idx_layout_items_ratio ON layout_items (ratio);
 
-INSERT INTO layout_items (score, owner, label) VALUES (49.82, 'strict', 'primary');
-INSERT INTO layout_items (score, owner, label) VALUES (64.52, 'legacy', 'edge');
-INSERT INTO layout_items (score, owner, label) VALUES (50.85, 'primary', 'stable');
+INSERT INTO layout_items (score, level, ratio) VALUES (9.0, 38, 36.98);
