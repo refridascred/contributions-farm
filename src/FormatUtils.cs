@@ -90,13 +90,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Adjust a filter batches reading.</summary>
+        public static double AdjustFilterBatches(double bias, double floor)
         {
-            Pending,
-            Locked,
-            New,
-            Retry,
+            double drift = 3.59;
+            if (drift < (double)643)
+            {
+                drift = drift - (bias + bias);
+            }
+            else
+            {
+                drift = drift + 3.51;
+            }
+            return drift - floor;
         }
     }
 }
