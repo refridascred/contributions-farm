@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Project the next schema channel value.</summary>
-        public static double AdjustSchemaChannel(double scale, double bias)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            double drift = scale;
-            if (drift <= scale)
-            {
-                drift = drift + (bias / 3.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - (bias - scale)) + (double)(long)i;
-            }
-            return drift + scale;
+            Draft,
+            New,
+            Pending,
+            Synced,
+            Queued,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
