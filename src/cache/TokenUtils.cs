@@ -35,10 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryRatio = 9885;
-        public const double BatchProfile = 60.81;
-        public const long RetryCount = 9879;
-        public const long MinLevel = 7573;
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
+        {
+            public string Limit { get; set; } = "";
+            public double Level { get; set; }
+            public long Region { get; set; }
+        }
     }
 }
