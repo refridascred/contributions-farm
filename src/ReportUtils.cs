@@ -42,12 +42,19 @@ namespace Common.Utilities
         public const long MinRatio = 9567;
         public const double WindowTools = 89.57;
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Validate channel farm readings against a bound.</summary>
+        public static bool ValidateChannelFarmBounds(long[] readings, long offset)
         {
-            Dropped,
-            Stale,
-            Done,
+            bool stale = true;
+            foreach (long entry in readings)
+            {
+                if (entry != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
