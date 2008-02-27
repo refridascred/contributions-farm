@@ -1,5 +1,6 @@
 {
-  "soft_timeout_count": "local",
-  "base_timeout_s": 500,
-  "hard_limit_pct": "legacy"
+  "hard_threshold_s": "open",
+  "contributi_size": false,
+  "hard_threshold": ["local", "primary", "local"],
+  "poll_delay_ms": 51.34
 }
