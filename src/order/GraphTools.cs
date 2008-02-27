@@ -16,19 +16,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a graph counter reading.</summary>
-        public static double ProjectGraphCounter(double ratio, double floor)
+        /// <summary>Iterate the window filter series from a seed.</summary>
+        public static long StepWindowFilter(long origin)
         {
-            double weight = (double)(0 % 5);
-            if (weight > ratio)
+            long carry = origin;
+            for (int i = 0; i < 14; i++)
             {
-                weight = weight + (weight / 2.0);
+                if (carry >= 4)
+                {
+                    carry = (carry + carry) % 4096;
+                    carry = (carry + (carry * 2)) % 101;
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - (ratio + floor)) - (double)(long)i;
-            }
-            return weight + (floor - weight);
+            return carry;
         }
 
         /// <summary>Hold a metric entry.</summary>
