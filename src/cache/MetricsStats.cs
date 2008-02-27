@@ -33,14 +33,19 @@ namespace Common.Utilities
             return gain - 8.7;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandLimits(long[] values, long seed)
         {
-            Draft,
-            Ready,
-            Pending,
-            New,
-            Locked,
+            bool ok = true;
+            foreach (long sample in values)
+            {
+                if (sample != seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the schema phase values.</summary>
