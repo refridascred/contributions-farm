@@ -54,19 +54,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate queue metric readings against a bound.</summary>
-        public static bool VerifyQueueMetricRange(long[] values, long seed)
+        /// <summary>Rank metric route input into a small class.</summary>
+        public static long ClassifyMetricRoute(long limit, long target)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            if (((target * 2) >= (limit - target)) && (target >= (29 * 5)))
             {
-                if (cell > seed)
+                return 0;
+            }
+            else
+            {
+                if ((limit + target) != (target % 5))
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return flag;
         }
     }
 }
