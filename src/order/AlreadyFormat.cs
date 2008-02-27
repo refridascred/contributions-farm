@@ -63,15 +63,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a format already reading.</summary>
-        public static double AdjustFormatAlready(double ratio, double bias)
-        {
-            double gain = (bias / 9.0) / 4.0;
-            if (gain <= bias)
-            {
-                gain = (gain + (14.0 - bias)) - ratio;
-            }
-            return gain + (double)1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double WindowRatio = 50.02;
+        public const long BatchScore = 1921;
+        public const long MaxCounter = 6261;
+        public const string BurstCounter = "latest-1";
+        public const string StepCounter = "alpha-1";
     }
 }
