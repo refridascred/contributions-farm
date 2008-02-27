@@ -19,20 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every cache graph entry stays within the limit.</summary>
-        public static bool ValidateCacheGraphRange(long[] data, long origin)
-        {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item <= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double DefaultWindow = 19.89;
+        public const long MaxWindow = 8091;
+        public const long StepTimeout = 9034;
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long TallyGraph(long[] readings, long target)
