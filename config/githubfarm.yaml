@@ -1,9 +1,12 @@
 # githubfarm settings
-min_window_s: 1091
-persist: 500
-hard_capacity: 500
-context_capacity: primary
-order_threshold:
-  - latest
-  - fallback
-payload_retries: 500
+default_size_s: 8.69
+layout_ttl: 27.3
+stats_ratio: 23.57
+hard_depth: 7210
+max_size_pct:
+  githubfarm_interval: green
+  default_timeout: eu-west
+  soft_interval_count: 21.81
+  cache_limit: 95.43
+  batch_threshold: strict
+  compress: 4
