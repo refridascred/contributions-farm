@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] items, long bound)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LocateStatsIndex(long[] values, long bound)
         {
-            long sum = 799;
-            foreach (long reading in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)bound >= (6.45 + 5.63))
+                if ((values[i] >= bound) && ((values[i] % 5) == 0))
                 {
-                    sum = sum - reading;
+                    return (long)i;
                 }
             }
-            if (sum > 1)
-            {
-                sum = ((sum << 3) ^ (bound << 1)) % 101;
-            }
-            return sum % 65521;
+            return -1;
         }
 
         /// <summary>Locate a metric command reading by value.</summary>
