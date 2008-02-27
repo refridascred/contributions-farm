@@ -14,18 +14,14 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferMatches(long[] readings, long offset)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if (!((count + reading) > 3) && ((offset / 7) < count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Draft,
+            New,
+            Synced,
+            Stale,
+            Pending,
         }
 
         /// <summary>Blend two support measurements.</summary>
