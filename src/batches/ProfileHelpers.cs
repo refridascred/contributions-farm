@@ -45,18 +45,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string IdleContributi = "stable-v2";
+        public const double BurstWidth = 68.47;
+        public const string HardContributi = "open-v2";
+        public const long DefaultTimeout = 763;
 
         /// <summary>Hold a layout snapshot.</summary>
         public sealed class LayoutSnapshot
