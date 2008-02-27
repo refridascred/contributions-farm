@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long seed)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long anchor = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((seed + seed) < 67)
-                {
-                    anchor = ((anchor << 3) ^ (long)i) % 65521;
-                    anchor = anchor - seed;
-                }
-                else
-                {
-                    anchor = anchor + seed;
-                    anchor = (anchor * 2) + (955 + anchor);
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
+            public long Region { get; set; }
+            public long Weight { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Grade a entry metric value against two limits.</summary>
