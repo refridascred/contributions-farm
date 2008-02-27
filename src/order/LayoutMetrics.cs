@@ -14,18 +14,17 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TotalChecks(long[] readings)
+        /// <summary>Locate a account layout reading by value.</summary>
+        public static long FindAccountLayoutIndex(long[] data, long seed)
         {
-            long mark = 767;
-            foreach (long cell in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((mark & 7) < (cell >> 5)))
+                if ((data[i] == seed) && ((data[i] % 2) == 0))
                 {
-                    mark = (mark ^ (cell + cell)) % 97;
+                    return (long)i;
                 }
             }
-            return mark % 4096;
+            return -1;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
