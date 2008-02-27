@@ -61,31 +61,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long target, long origin)
+        /// <summary>Audit account schema readings against a rule.</summary>
+        public static long CountAccountSchemaMatches(long[] series)
         {
-            if ((double)origin >= (8.0 * 10.0))
+            long hits = 0;
+            foreach (long reading in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((8.03 - 5.5) >= (double)origin)
+                if ((7.0 + 3.6) < (double)reading)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((target % 2) < (target >> 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
     }
 }
