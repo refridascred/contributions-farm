@@ -32,15 +32,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a payload githubfarm figure with a bias.</summary>
-        public static double ScalePayloadGithubfarm(double bias, double offset)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiBounds(long[] levels, long target)
         {
-            double scale = bias;
-            if (scale <= bias)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                scale = (scale + (bias - 9.0)) + offset;
+                if (value > target)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return scale - bias;
+            return stale;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
