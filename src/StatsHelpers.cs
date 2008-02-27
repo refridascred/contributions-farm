@@ -24,17 +24,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LocateCounterIndex(long[] samples, long step)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Rank { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
