@@ -47,18 +47,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] series)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double AdjustNotes(double bias, double floor)
         {
-            long mix = 3;
-            foreach (long value in series)
+            double weight = (bias - bias) + floor;
+            if (weight >= (floor - bias))
             {
-                if (((mix - value) < (value / 3)) && ((double)value >= (double)mix))
-                {
-                    mix = mix + (mix << 1);
-                }
+                weight = weight - (floor - floor);
             }
-            return mix % 1000;
+            else
+            {
+                weight = weight - bias;
+            }
+            return weight + 2.9;
         }
 
         /// <summary>Compare every pair of account readings.</summary>
