@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long OverlapFarmCount(long[] series)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long RollWindow(long target)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = target;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)state >= (2.81 - 5.0))
                 {
-                    if ((series[i] ^ series[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = state ^ (target + target);
+                    break;
                 }
+                for (int i3 = 0; i3 < 4; i3++)
+                {
+                    state = (((state * 4) + (target - 736)) % 1000) ^ (long)i3;
+                }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Count the schema queue entries that pass the check.</summary>
