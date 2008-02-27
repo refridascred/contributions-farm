@@ -13,11 +13,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryFormat = 434;
-        public const long MaxFormat = 6171;
-        public const long LimitFormat = 8759;
-        public const long StepFormat = 1047;
+        /// <summary>Validate githubfarm order readings against a bound.</summary>
+        public static bool ValidateGithubfarmOrderRange(long[] samples, long floor)
+        {
+            bool ready = true;
+            foreach (long value in samples)
+            {
+                if (value > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long WindowReport = 9486;
