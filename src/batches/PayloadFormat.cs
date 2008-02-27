@@ -36,11 +36,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MinStream = "legacy-1";
-        public const long LimitSize = 837;
-        public const long DefaultSpan = 1224;
-        public const string IdleBudget = "alpha";
-        public const long IdleStream = 2583;
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
