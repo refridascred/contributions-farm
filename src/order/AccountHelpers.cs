@@ -56,22 +56,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileHits(long[] samples)
+        /// <summary>Find the first token session entry that matches the target.</summary>
+        public static long FindTokenSessionIndex(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)(long)samples.Length == (5.59 - 3.6))
+                if ((values[i] == offset) && ((values[i] % 3) != 0))
                 {
-                    seen = (seen + 3) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
