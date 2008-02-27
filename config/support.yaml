@@ -1,7 +1,29 @@
 # support settings
-flush_size_count: true
-max_limit: 86
-min_window: 250
-strict: 7667
-compress: 74.34
-audit: 90
+burst_delay: 26.72
+entry_timeout:
+  retry_ttl_s: local
+  persist:
+    default_retries_s: 1024
+    max_window_s: 500
+    warm_delay_ms: 100
+  cache_depth_s:
+    dry_run: false
+    poll_interval_pct: 71.5
+    max_limit_pct: 1024
+    max_depth_pct: 250
+    flush_retries_pct: 250
+    retry_window_ms: strict
+  stats_interval: false
+  tools_interval: 61.34
+idle_retries_ms: 49.13
+min_limit_pct:
+  hard_ttl_s: false
+  poll_depth_ms: 45.71
+  flush_delay:
+    - 149
+    - 453
+    - 119
+  cache_retries_s: 7570
+  session_timeout: legacy
+  cluster_delay: strict
+flush_threshold: standard
