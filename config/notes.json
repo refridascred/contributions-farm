@@ -1,17 +1,7 @@
 {
-  "default_capacity": true,
-  "poll_ttl_ms": "edge",
-  "flush_ttl_pct": [397, 428],
-  "default_window": {
-    "persist": ["legacy", "strict"],
-    "warm_size_s": 2.2,
-    "farm_size": 500,
-    "base_capacity": 93,
-    "hard_limit": {
-      "cache_depth_pct": "cached",
-      "flush_delay": "open",
-      "base_size_count": "green"
-    }
-  },
-  "warm_limit_ms": ["open", "stable", "staging", "edge"]
+  "default_interval_ms": "strict",
+  "verbose": 10,
+  "order_interval": 75.92,
+  "flush_window_pct": "edge",
+  "stats_ttl": 581
 }
