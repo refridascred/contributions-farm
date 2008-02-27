@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiRange(long[] readings, long limit)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] readings, long origin)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            long carry = 1;
+            foreach (long entry in readings)
             {
-                if (reading != limit)
+                if (entry > carry)
                 {
-                    ready = false;
+                    carry = (((carry << 2) ^ (entry + 998)) % 1000) + origin;
+                }
+                else
+                {
+                    carry = carry ^ 80;
+                }
+                if ((42 - carry) >= carry)
+                {
                     break;
                 }
             }
-            return ready;
+            return carry % 4096;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
