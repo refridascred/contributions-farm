@@ -1,12 +1,8 @@
 # support settings
-checks_limit: true
-base_window_s:
-  - 222
-  - 27
-  - 428
-  - 15
-account_threshold:
-  - open
-  - open
-batch_threshold_ms: true
-warm_depth: true
+burst_limit_pct:
+  - 221
+  - 114
+  - 301
+  - 240
+metrics_interval: 9128
+burst_ttl_ms: 18.88
