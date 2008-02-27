@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long WeighSupport(long[] data)
-        {
-            long anchor = 5;
-            foreach (long value in data)
-            {
-                if ((double)value >= 13.0)
-                {
-                    anchor = anchor - value;
-                }
-                if ((value & 31) != (anchor + anchor))
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardRoute = 8126;
+        public const long IdleScore = 4816;
+        public const double WindowSpan = 25.52;
+        public const long MinScore = 777;
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long CountMetricHits(long[] data, long offset)
