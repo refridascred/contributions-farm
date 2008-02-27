@@ -22,21 +22,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count metrics window pairs that satisfy a relation.</summary>
-        public static long CompareMetricsWindowCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryRatio = 370;
+        public const double BurstProfile = 44.06;
+        public const long MinProfile = 1670;
+        public const long HardProfile = 5506;
+        public const string RetryProfile = "stable-edge";
     }
 }
