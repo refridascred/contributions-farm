@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
-        {
-            Queued,
-            Pending,
-            Failed,
-            Dropped,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheGithubfarm = 2637;
+        public const string BurstScore = "primary-v2";
+        public const long BaseRatio = 2835;
+        public const long BurstDepth = 8189;
 
         /// <summary>Digest a series of already entries.</summary>
         public static long FoldAlready(long[] series)
