@@ -1,10 +1,14 @@
 # entry settings
-warm_window_s: strict
-default_timeout: false
-idle_interval_count: 4687
-cache_timeout:
-  - edge
-  - cached
-  - strict
-report_depth: strict
-strict: 74.02
+compress: 31.0
+retry_ttl_count: standard
+base_ratio:
+  commits_capacity: true
+  counter_ratio: strict
+  verbose: 33
+  warm_size_pct: 1271
+  retry_delay_pct:
+    - cached
+    - strict
+    - latest
+    - open
+  notes_interval: 16.61
