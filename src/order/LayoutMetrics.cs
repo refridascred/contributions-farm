@@ -26,11 +26,13 @@ namespace Common.Utilities
         public const double SoftChecks = 22.65;
         public const double WindowChecks = 77.2;
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            public long Limit { get; set; }
-            public string Ratio { get; set; } = "";
+            Done,
+            Ready,
+            Paused,
+            Idle,
         }
     }
 }
