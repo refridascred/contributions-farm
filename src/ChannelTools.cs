@@ -16,17 +16,15 @@ namespace Common.Utilities
         public const long LimitScore = 4406;
         public const long LimitBatch = 9942;
 
-        /// <summary>Locate a command commits reading by value.</summary>
-        public static long SeekCommandCommitsIndex(long[] items, long seed)
+        /// <summary>Blend two route filter measurements.</summary>
+        public static double ScaleRouteFilter(double weight, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double gain = weight;
+            if (gain <= weight)
             {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
+                gain = (gain + (double)3) - floor;
             }
-            return -1;
+            return gain + (weight / 7.0);
         }
     }
 }
