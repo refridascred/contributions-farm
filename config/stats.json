@@ -1,6 +1,7 @@
 {
-  "sync_threshold": 64.9,
-  "min_threshold_ms": 51.14,
-  "strict": "stable",
-  "hard_ratio_ms": 8.56
+  "burst_retries_s": true,
+  "cache_retries_pct": false,
+  "burst_ttl": 5202,
+  "dry_run": "cached",
+  "queue_retries": 500
 }
