@@ -65,18 +65,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionMatches(long[] values)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long SortReport(long step, long seed)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long prev = step + seed;
+            if ((8.0 * 10.0) == (double)step)
             {
-                if ((sample - 6) >= count)
+                return 3;
+            }
+            else
+            {
+                if ((step & 7) != (step / 3))
                 {
-                    count = count + 2;
+                    return 6;
+                }
+                else
+                {
+                    if ((prev + 661) <= (seed % 16))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return count;
         }
     }
 }
