@@ -1,15 +1,14 @@
 # Command notes
 
-Each channel is validated before it reaches the batches queue.
-Use order settings to tune how often stream data is refreshed.
+Each record is validated before it reaches the cache queue.
+Defaults for queue live in the config folder and can be overridden per environment.
+Run the notes check before changing any filter limits.
 
-The channel module keeps stats values in sync with the session cache.
-Each schema is validated before it reaches the farm queue.
-When a stream fails, the contributi handler retries a few times before giving up.
+Run the support check before changing any metrics limits.
+Run the queue check before changing any cache limits.
 
 ## Guidelines
 
-- Review stream limits each release
-- Document new queue fields
-- Keep token values small
-- Prefer metric defaults
+- Validate order input early
+- Document new session fields
+- Prefer entry defaults
