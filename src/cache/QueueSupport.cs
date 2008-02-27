@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] values, long bound)
+        /// <summary>Grade a contributi commits value against two limits.</summary>
+        public static long ClassifyContributiCommits(long offset, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((offset + floor) >= (floor + offset))
             {
-                if ((values[i] > bound) && ((values[i] % 2) == 0))
+                return 0;
+            }
+            else
+            {
+                if ((offset - 8) < (offset + offset))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the command mode values.</summary>
