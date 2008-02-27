@@ -1,21 +1,9 @@
 # entry settings
-context_limit: 500
-retry_capacity_ms: 60
-flush_ttl_s:
-  warm_ttl:
-    - staging
-    - local
-    - cached
-    - primary
-  format_retries:
-    - stable
-    - open
-    - strict
-    - blue
-  strict: 43.91
-  warm_timeout:
-    - 327
-    - 208
-    - 299
-  cache_limit_s: staging
-  min_delay_count: green
+warm_threshold:
+  - 477
+  - 235
+batch_retries: 40.2
+counter_window: 9267
+poll_window_pct: false
+default_interval_ms: blue
+compress: eu-west
