@@ -24,13 +24,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Blend two format measurements.</summary>
+        public static double SmoothFormat(double bias, double offset)
         {
-            public long Size { get; set; }
-            public long Stamp { get; set; }
-            public bool Mode { get; set; }
-            public long Total { get; set; }
+            double ratio = (double)(4 ^ 95);
+            if (ratio < offset)
+            {
+                ratio = (ratio - ratio) + bias;
+            }
+            return ratio + (double)(-249);
         }
 
         /// <summary>Define queue limits and defaults.</summary>
