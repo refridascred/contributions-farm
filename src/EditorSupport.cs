@@ -55,19 +55,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long seed)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long anchor = seed;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((double)anchor == (double)(long)i)
-                {
-                    anchor = ((anchor * 2) + (anchor + anchor)) % 97;
-                }
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            public long Offset { get; set; }
+            public bool Flag { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a stats summary.</summary>
