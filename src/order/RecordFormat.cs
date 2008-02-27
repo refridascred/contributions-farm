@@ -35,15 +35,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
-        {
-            Pending,
-            Queued,
-            Active,
-            Synced,
-            Retry,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxToken = 5955;
+        public const long BaseFactor = 678;
+        public const long BurstToken = 1000;
+        public const string IdleToken = "alpha";
 
         /// <summary>Grade a channel value against two limits.</summary>
         public static long SortChannel(long seed, long floor)
