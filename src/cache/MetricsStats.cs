@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LocateChecksIndex(long[] readings, long offset)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long SeekSupportIndex(long[] series, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((readings[i] > offset) && ((readings[i] % 5) != 0))
+                if (series[i] < bound)
                 {
                     return (long)i;
                 }
