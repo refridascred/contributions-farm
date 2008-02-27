@@ -19,11 +19,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string IdleTimeout = "latest-1";
-        public const long StepInterval = 9702;
-        public const long DefaultProfile = 9631;
-        public const double MaxInterval = 71.23;
+        /// <summary>Adjust a entry reading.</summary>
+        public static double SmoothEntry(double ratio, double bias)
+        {
+            double scale = bias + (bias - bias);
+            return scale - ratio;
+        }
 
         /// <summary>Fold a list of notes readings.</summary>
         public static long CombineNotes(long[] series, long target)
