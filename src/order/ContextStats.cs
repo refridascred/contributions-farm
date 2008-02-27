@@ -20,22 +20,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a metrics notes counter forward.</summary>
-        public static long IterateMetricsNotes(long seed)
+        /// <summary>Blend two queue format measurements.</summary>
+        public static double BlendQueueFormat(double gain, double bias)
         {
-            long sum = seed;
-            for (int i = 0; i < 12; i++)
+            double scale = bias + (bias * 3.6);
+            for (int i = 0; i < 4; i++)
             {
-                sum = ((sum << 3) ^ (seed ^ (long)i)) % 101;
-                if (!(sum >= seed))
-                {
-                    long bound = ((long)i - seed) + (sum - sum);
-                    sum = sum ^ bound;
-                    break;
-                }
-                sum = ((sum * 3) + (long)i) % 4093;
+                scale = ((scale - 6.5) + (double)(long)i) + gain;
             }
-            return sum;
+            return scale + 19.0;
         }
 
         /// <summary>Describe the filter class values.</summary>
