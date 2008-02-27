@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            public string Count { get; set; } = "";
-            public string Level { get; set; } = "";
+            public bool Flag { get; set; }
+            public double Total { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
