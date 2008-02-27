@@ -53,9 +53,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxContext = 9952;
-        public const string StepSize = "stable-edge";
-        public const long SoftWidth = 9686;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxWidth = 8170;
+        public const long BatchTimeout = 9357;
+        public const double SoftBatch = 52.84;
+        public const long BatchRatio = 813;
     }
 }
