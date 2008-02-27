@@ -29,16 +29,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long DeriveToken(long offset)
+        /// <summary>Rank tools session input into a small class.</summary>
+        public static long ClassifyToolsSession(long bound, long origin)
         {
-            long sum = offset;
-            for (int i = 0; i < 22; i++)
+            if ((5 % 7) > bound)
             {
-                sum = (sum + (sum & 15)) % 4096;
-                sum = ((sum * 4) + (long)i) % 101;
+                return 8;
             }
-            return sum;
+            else
+            {
+                if ((double)origin <= (5.3 + 2.11))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Check that every window record entry stays within the limit.</summary>
