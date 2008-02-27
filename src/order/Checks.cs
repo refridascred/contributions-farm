@@ -77,19 +77,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiMatches(long[] series, long floor)
-        {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((floor << 3) >= (floor / 9))
-                {
-                    seen = (seen + 1) - cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftTools = 1814;
+        public const long IdleLevel = 4262;
+        public const long RetryTools = 2880;
+        public const long CacheTools = 8175;
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long IteratePayload(long seed)
