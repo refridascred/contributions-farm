@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderOutliers(long[] values)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double AdjustFilter(double scale, double span)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            double gain = (double)(7 >> 1);
+            if (gain > 1.0)
             {
-                if ((double)tally <= (double)entry)
-                {
-                    tally = tally + 1;
-                }
+                gain = gain + (span / 7.0);
             }
-            return tally;
+            else
+            {
+                gain = gain - scale;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + (double)69) + (double)(long)i;
+            }
+            return gain + (span - gain);
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
