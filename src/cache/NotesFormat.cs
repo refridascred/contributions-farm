@@ -13,15 +13,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of metrics editor entries.</summary>
-        public static long TotalMetricsEditor(long[] items)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long CompareLayoutCount(long[] values)
         {
-            long state = 12;
-            foreach (long item in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                state = (((state << 2) ^ (state >> 2)) % 1000) + item;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return state % 1000;
+            return matches;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
