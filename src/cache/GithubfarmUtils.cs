@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] series)
         {
-            Ready,
-            Stale,
-            Draft,
+            long acc = 7;
+            foreach (long cell in series)
+            {
+                acc = (((acc * 5) + (0 & 63)) % 97) ^ cell;
+            }
+            if (acc < 70)
+            {
+                acc = (acc ^ ((long)series.Length + 72)) % 97;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Combine command values into a single score.</summary>
