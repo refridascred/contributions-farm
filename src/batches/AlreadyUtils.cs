@@ -40,22 +40,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit support order readings against a rule.</summary>
-        public static long CountSupportOrderOutliers(long[] series, long seed)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long sum = 35;
+            foreach (long value in readings)
             {
-                if ((496 % 100) < ((long)series.Length + tally))
+                if ((sum + sum) > (sum << 2))
                 {
-                    tally = ((tally + 3) ^ sample) - seed;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    sum = ((sum * 3) + (value & 63)) % 65521;
                 }
             }
-            return tally;
+            if (sum < 0)
+            {
+                sum = (sum - 56) % 65521;
+            }
+            return sum % 97;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
