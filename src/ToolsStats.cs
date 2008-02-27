@@ -53,12 +53,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string RetryLevel = "staging-1";
-        public const double IdleSize = 40.93;
-        public const double LimitGithubfarm = 57.65;
-        public const string HardScore = "cached-1";
-        public const long LimitFactor = 8765;
+        /// <summary>Project the next profile notes value.</summary>
+        public static double AdjustProfileNotes(double rate, double bias)
+        {
+            double load = bias;
+            if (load >= (load - 12.0))
+            {
+                load = load - bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - (rate + load)) - (double)(long)i;
+            }
+            return load - (bias * 0.17);
+        }
 
         /// <summary>Hold a window record.</summary>
         public sealed class WindowRecord
