@@ -23,26 +23,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] data)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricHits(long[] data, long offset)
         {
-            long acc = 202;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if ((5.0 / 7.0) > (double)acc)
+                if (count <= sample)
                 {
-                    acc = (acc - (236 >> 3)) + entry;
-                }
-                else
-                {
-                    acc = (acc + acc) % 97;
+                    count = (count + 2) - offset;
                 }
             }
-            if (acc < 7)
-            {
-                acc = (acc * 5) + acc;
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
