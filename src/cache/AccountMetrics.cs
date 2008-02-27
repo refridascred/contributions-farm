@@ -48,13 +48,15 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Roll a cache contributi counter forward.</summary>
+        public static long DeriveCacheContributi(long floor)
         {
-            public double Token { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Offset { get; set; }
-            public string Stamp { get; set; } = "";
+            long acc = floor;
+            for (int i = 0; i < 17; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
