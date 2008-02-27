@@ -20,23 +20,22 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] series, long floor)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] items)
         {
-            long score = 3;
-            foreach (long datum in series)
+            long mark = 19;
+            foreach (long reading in items)
             {
-                if (!((double)floor == (1.8 * 8.0)))
+                if ((long)items.Length < (mark ^ mark))
                 {
-                    score = ((score * 5) + (37 - score)) % 1000;
-                    continue;
-                }
-                if ((452 ^ datum) > (floor & 127))
-                {
-                    score = (score << 3) ^ (score >> 2);
+                    mark = (((mark << 2) ^ (mark & 255)) % 101) ^ reading;
                 }
             }
-            return score;
+            if (mark > 866)
+            {
+                mark = ((mark * 5) + (5 << 3)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
