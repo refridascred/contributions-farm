@@ -56,24 +56,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long SortCommand(long bound, long target)
+        /// <summary>Iterate the tools support series from a seed.</summary>
+        public static long DeriveToolsSupport(long bound)
         {
-            if ((66 - target) == (bound * 2))
+            long result = bound;
+            for (int i = 0; i < 11; i++)
             {
-                return 3;
+                result = ((result * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if (!((bound * 2) < 39))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return result;
         }
     }
 }
