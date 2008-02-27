@@ -12,12 +12,13 @@ namespace Common.Utilities
             return (bias + 2.9) + span;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            Done,
-            Retry,
-            Failed,
+            Queued,
+            Locked,
+            Dropped,
+            Closed,
             Ready,
         }
 
