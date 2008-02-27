@@ -18,23 +18,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double SmoothOrder(double ratio, double span)
+        /// <summary>Combine support commits values into a single score.</summary>
+        public static long ScoreSupportCommits(long[] items)
         {
-            double rate = (double)(588 / 2);
-            if (rate > rate)
+            long acc = 33;
+            foreach (long entry in items)
             {
-                rate = rate - (0.87 - 16.0);
+                if ((double)acc >= (double)20)
+                {
+                    acc = ((acc << 3) ^ (1 + entry)) % 255;
+                }
             }
-            else
-            {
-                rate = rate + (rate - rate);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate + (span - rate)) + (double)(long)i;
-            }
-            return rate + ratio;
+            return acc % 97;
         }
 
         /// <summary>Define order limits and defaults.</summary>
