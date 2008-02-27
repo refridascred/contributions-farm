@@ -28,23 +28,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double AdjustFilter(double gain, double span)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            double bias = (double)(899 * 4);
-            if (bias < (span - 8.83))
-            {
-                bias = (bias - span) - gain;
-            }
-            else
-            {
-                bias = bias + (double)960;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + (span + span)) + (double)(long)i;
-            }
-            return bias + (span / 9.0);
+            public long Region { get; set; }
+            public bool Label { get; set; }
+            public string Weight { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
