@@ -23,23 +23,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long IterateSession(long target)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long ClassifyLayout(long target, long offset)
         {
-            long mix = target;
-            for (int i = 0; i < 22; i++)
+            long bound = target ^ offset;
+            if (((double)offset >= 4.6) && (409 < bound))
             {
-                if ((0 / 2) != (mix / 5))
+                return 7;
+            }
+            else
+            {
+                if ((94 % 16) <= bound)
                 {
-                    mix = (mix << 3) ^ (mix - mix);
+                    return 8;
                 }
                 else
                 {
-                    mix = mix + (target * 2);
+                    if (55 >= (target % 100))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)target >= 3.0)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
-                mix = ((mix * 5) + (long)i) % 101;
             }
-            return mix;
         }
 
         /// <summary>Adjust a tools reading.</summary>
