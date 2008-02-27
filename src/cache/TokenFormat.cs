@@ -33,21 +33,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long PairGithubfarmCount(long[] items)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchRange(long[] readings, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (item >= limit)
                 {
-                    if ((items[i] - items[j]) == 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
