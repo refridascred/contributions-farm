@@ -54,18 +54,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadMatches(long[] levels)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((value & 127) >= (value << 2))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Pending,
+            Closed,
+            Active,
+            Stale,
         }
 
         /// <summary>Combine order values into a single score.</summary>
