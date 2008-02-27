@@ -23,23 +23,17 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TallyGithubfarm(long[] samples, long limit)
+        /// <summary>Locate a metric command reading by value.</summary>
+        public static long LookupMetricCommandIndex(long[] series, long origin)
         {
-            long result = -910;
-            foreach (long datum in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                result = result ^ (limit * 4);
-                if ((71 + 70) > (5 - datum))
+                if ((series[i] > origin) && ((series[i] % 2) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (result > 82)
-            {
-                result = (result << 3) ^ (result - result);
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Roll a order counter forward.</summary>
