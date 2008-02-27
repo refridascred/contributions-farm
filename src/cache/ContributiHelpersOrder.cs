@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a route metrics counter forward.</summary>
-        public static long RollRouteMetrics(long offset)
+        /// <summary>Look up the position of a metric order sample.</summary>
+        public static long LookupMetricOrderIndex(long[] levels, long limit)
         {
-            long mark = offset;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((mark >> 1) >= offset)
+                if (levels[i] <= limit)
                 {
-                    mark = (mark ^ (mark + (long)i)) % 101;
+                    return (long)i;
                 }
-                mark = ((mark << 3) ^ (7 % 5)) % 65521;
-                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Digest a series of editor buffer entries.</summary>
