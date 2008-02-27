@@ -59,38 +59,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a already context value against two limits.</summary>
-        public static long GradeAlreadyContext(long origin, long floor)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double SmoothRecord(double ratio, double bias)
         {
-            if ((floor + floor) <= (origin & 63))
+            double drift = (double)(42 - 7);
+            if (drift > (bias + drift))
             {
-                return 2;
+                drift = drift + (double)0;
             }
             else
             {
-                if ((double)floor < 4.76)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor * 2) != (floor - floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((origin + floor) >= origin)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                drift = drift + (ratio - bias);
             }
+            return drift + (drift - 7.38);
         }
     }
 }
