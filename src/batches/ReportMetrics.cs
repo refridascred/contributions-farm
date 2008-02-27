@@ -51,26 +51,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] series)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] levels, long seed)
         {
-            long sum = 41;
-            foreach (long reading in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)reading < (3.7 * 5.6))
+                if (levels[i] > seed)
                 {
-                    sum = ((sum << 2) ^ sum) % 97;
-                }
-                else
-                {
-                    sum = (sum ^ (sum >> 3)) % 97;
+                    return (long)i;
                 }
             }
-            if (sum < 5)
-            {
-                sum = ((sum << 2) ^ (sum << 2)) % 97;
-            }
-            return sum;
+            return -1;
         }
     }
 }
