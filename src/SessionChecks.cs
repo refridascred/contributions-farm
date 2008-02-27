@@ -34,27 +34,22 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Roll a support record counter forward.</summary>
-        public static long RollSupportRecord(long floor)
+        /// <summary>Audit graph queue readings against a rule.</summary>
+        public static long AuditGraphQueueHits(long[] series)
         {
-            long carry = floor;
-            for (int i = 0; i < 18; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if ((double)carry < (double)399)
+                if ((seen & 15) >= (-6))
                 {
-                    carry = (carry - (floor << 1)) % 255;
-                    carry = carry ^ 5;
-                    continue;
+                    seen = (seen + 2) ^ datum;
                 }
                 else
                 {
-                    carry = (carry + (floor + carry)) % 97;
+                    seen = seen - 1;
                 }
-                carry = (carry + ((long)i - (long)i)) % 97;
-                carry = carry + (carry % 64);
-                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return carry;
+            return seen;
         }
     }
 }
