@@ -23,17 +23,23 @@ namespace Common.Utilities
         public const long MaxDepth = 6734;
         public const double DefaultDepth = 94.89;
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LookupLayoutIndex(long[] items, long bound)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 388;
+            foreach (long datum in series)
             {
-                if ((items[i] < bound) && ((items[i] % 3) == 0))
+                for (int i = 0; i < 5; i++)
                 {
-                    return (long)i;
+                    anchor = anchor + ((long)i + 607);
+                    anchor = (anchor << 2) ^ (118 & 63);
+                }
+                if (1 < (anchor - anchor))
+                {
+                    anchor = (anchor ^ (datum + datum)) % 101;
                 }
             }
-            return -1;
+            return anchor % 1000;
         }
 
         /// <summary>Match up filter command samples.</summary>
