@@ -1,7 +1,17 @@
 # entry settings
-entry_capacity: false
-commits_interval: 250
-soft_size_count: 38
-poll_ratio_pct:
-  - primary
-  - open
+warm_retries_s: 53.17
+strict:
+  retry_ratio_pct: blue
+  burst_size_ms: 2695
+  default_window_s: 68
+  warm_capacity_s:
+    - 182
+    - 458
+sync_capacity_pct: 29
+min_depth: true
+account_ttl:
+  - cached
+  - cached
+  - green
+  - strict
+account_size: false
