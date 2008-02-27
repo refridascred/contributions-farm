@@ -1,5 +1,23 @@
 {
-  "schema_ttl": "stable",
-  "audit": false,
-  "cache_ttl_ms": ["eu-west", "local"]
+  "schema_size": {
+    "verbose": 58.65,
+    "burst_delay_count": 46.24,
+    "idle_limit_count": {
+      "burst_timeout": 27,
+      "retry_ttl": "standard",
+      "sync_window_count": 46.25
+    },
+    "format_size": 500,
+    "soft_ratio_pct": [108, 276],
+    "enabled": 250
+  },
+  "sync_interval_ms": {
+    "poll_size_s": 58.87,
+    "batch_timeout_count": 38,
+    "min_threshold_s": 44.04,
+    "warm_limit_s": "blue"
+  },
+  "metric_ratio": 1024,
+  "tools_limit": "local",
+  "default_limit": 92.05
 }
