@@ -24,18 +24,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] items, long bound)
+        /// <summary>Classify a githubfarm report pair into a bucket.</summary>
+        public static long BucketGithubfarmReport(long origin, long limit)
         {
-            long score = 798;
-            foreach (long item in items)
+            long bound = origin ^ limit;
+            if (!((bound & 63) == (origin % 8)))
             {
-                if (((bound % 100) > (score + 4)) && ((2.0 - 11.0) <= (double)bound))
+                return 3;
+            }
+            else
+            {
+                if ((origin + limit) != (73 / 5))
                 {
-                    score = (score + (item & 15)) % 97;
+                    return 4;
+                }
+                else
+                {
+                    if ((bound >> 5) >= origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((950 + origin) < bound)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
