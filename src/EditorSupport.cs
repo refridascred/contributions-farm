@@ -23,18 +23,23 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Count the editor filter entries that pass the check.</summary>
-        public static long CountEditorFilterOutliers(long[] series)
+        /// <summary>Digest a series of stats token entries.</summary>
+        public static long DigestStatsToken(long[] values)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long carry = -8;
+            foreach (long reading in values)
             {
-                if (count > (count + entry))
+                carry = ((carry << 2) ^ (reading & 7)) % 1000;
+                if ((carry << 3) > reading)
                 {
-                    count = count + 2;
+                    carry = carry ^ (carry & 1);
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (reading - reading)) % 1000;
                 }
             }
-            return count;
+            return carry % 1000;
         }
 
         /// <summary>Accumulate layout samples.</summary>
