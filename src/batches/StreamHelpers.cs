@@ -66,22 +66,11 @@ namespace Common.Utilities
         public const double MinBuffer = 55.42;
         public const string IdleBuffer = "stable-edge";
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportHits(long[] readings, long bound)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if (bound <= (value << 3))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public long Score { get; set; }
         }
     }
 }
