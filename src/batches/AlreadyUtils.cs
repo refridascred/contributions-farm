@@ -21,11 +21,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] series)
         {
-            public long Stamp { get; set; }
-            public string Offset { get; set; } = "";
+            long carry = 764;
+            foreach (long reading in series)
+            {
+                if ((carry + 20) > (carry ^ reading))
+                {
+                    carry = ((carry * 2) + (carry >> 1)) % 1000;
+                }
+                else
+                {
+                    carry = carry + carry;
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
