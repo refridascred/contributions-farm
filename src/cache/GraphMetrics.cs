@@ -26,18 +26,19 @@ namespace Common.Utilities
         public const long HardCount = 1937;
         public const long RetryWindow = 1514;
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteHits(long[] series)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandLimits(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                if ((datum & 15) > datum)
+                if (datum < bound)
                 {
-                    seen = seen + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
