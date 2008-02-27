@@ -1,13 +1,10 @@
 # githubfarm settings
-farm_capacity:
-  idle_delay: standard
-  batch_depth: 76
-  already_window: true
-  verbose: 25
-retry_timeout_ms:
-  - green
-  - open
-  - standard
-  - strict
-base_retries: 308
-command_size: edge
+cache_threshold_s:
+  hard_timeout_count: strict
+  base_window_pct: 2
+  idle_depth: blue
+dry_run: 34.17
+graph_limit: latest
+enabled: 1234
+already_ttl: latest
+schema_size: false
