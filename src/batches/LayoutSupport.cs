@@ -38,26 +38,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of schema checks readings.</summary>
-        public static long WeighSchemaChecks(long[] values)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long origin, long seed)
         {
-            long mix = 7;
-            foreach (long entry in values)
+            long prev = origin - seed;
+            if ((origin ^ prev) > origin)
             {
-                if ((entry + mix) > 47)
+                return 5;
+            }
+            else
+            {
+                if (((prev - prev) > seed) && (1.02 < (double)origin))
                 {
-                    mix = mix ^ (entry - mix);
+                    return 0;
                 }
-                if ((double)mix == (10.0 - 3.58))
+                else
                 {
-                    break;
+                    if (!((prev & 31) >= origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (mix > 511)
-            {
-                mix = (mix * 4) + (8 % 10);
-            }
-            return mix % 1000;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
