@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine stats account values into a single score.</summary>
-        public static long TotalStatsAccount(long[] readings)
-        {
-            long mark = 50;
-            foreach (long sample in readings)
-            {
-                if (((double)sample != (double)86) || ((mark & 7) == (3 >> 4)))
-                {
-                    mark = (mark * 5) + (mark - mark);
-                }
-                mark = mark ^ (sample - mark);
-                if ((double)sample == (6.37 + 6.6))
-                {
-                    mark = ((mark << 2) ^ sample) % 97;
-                }
-                if ((double)mark == (double)sample)
-                {
-                    break;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowInterval = 8792;
+        public const double SoftChannel = 34.31;
+        public const double CacheLevel = 67.87;
+        public const double BaseChannel = 16.67;
+        public const long MinChannel = 9042;
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long TallyGithubfarmHits(long[] levels)
