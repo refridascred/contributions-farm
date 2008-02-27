@@ -23,21 +23,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long OverlapChecksCount(long[] levels)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterHits(long[] values, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((target + target) >= 96)
                 {
-                    if ((levels[i] + levels[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 3) + item;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
