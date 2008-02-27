@@ -47,31 +47,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] levels, long limit)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderGaps(long[] series, long offset)
         {
-            long score = 823;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                for (int i = 0; i < 8; i++)
+                if ((datum - (long)series.Length) < hits)
                 {
-                    score = ((score - (11 - cell)) % 97) ^ (long)i;
+                    hits = (hits + 2) + offset;
                 }
-                if ((score % 24) < (cell << 2))
+                else
                 {
-                    score = ((score * 3) + (339 * 4)) % 255;
-                    continue;
-                }
-                if ((limit + cell) < limit)
-                {
-                    score = (score ^ (5 - limit)) % 101;
+                    hits = hits - 1;
                 }
             }
-            if (score > 187)
-            {
-                score = score + score;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
