@@ -54,19 +54,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] samples)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long result = 705;
-            foreach (long value in samples)
-            {
-                result = ((result + (result + result)) % 4096) + value;
-            }
-            if (result < 38)
-            {
-                result = (result ^ (long)samples.Length) % 101;
-            }
-            return result;
+            public double Offset { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
