@@ -20,11 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            public string Owner { get; set; } = "";
-            public double Mode { get; set; }
+            public long Region { get; set; }
+            public string Offset { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a notes entry.</summary>
