@@ -38,18 +38,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelHits(long[] items, long target)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long DeriveToken(long offset)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long sum = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (sample > hits)
-                {
-                    hits = (hits + 2) + target;
-                }
+                sum = (sum + (sum & 15)) % 4096;
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Check that every window record entry stays within the limit.</summary>
