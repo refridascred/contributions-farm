@@ -28,11 +28,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyOutliers(long[] levels, long limit)
         {
-            public string Score { get; set; } = "";
-            public long Region { get; set; }
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((9.81 + 6.0) >= (double)limit)
+                {
+                    count = (count + 2) + cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
