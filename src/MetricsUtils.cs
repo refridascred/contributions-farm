@@ -60,21 +60,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long MatchSchemaCount(long[] levels)
+        /// <summary>Rank entry format input into a small class.</summary>
+        public static long ClassifyEntryFormat(long limit, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((seed > (seed >> 5)) || ((limit & 31) > (seed + 404)))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (((limit >> 4) >= limit) && (1 >= (limit + seed)))
                 {
-                    if ((levels[i] ^ levels[j]) < 18)
+                    return 5;
+                }
+                else
+                {
+                    if ((limit >> 2) == (seed >> 5))
                     {
-                        tally = tally + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return tally;
         }
     }
 }
