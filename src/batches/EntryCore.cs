@@ -38,13 +38,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            Done,
-            Synced,
+            Queued,
             New,
-            Ready,
+            Pending,
         }
 
         /// <summary>Hold a payload entry.</summary>
