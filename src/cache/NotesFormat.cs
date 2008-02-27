@@ -12,15 +12,15 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long limit)
+        /// <summary>Digest a series of metrics editor entries.</summary>
+        public static long TotalMetricsEditor(long[] items)
         {
-            long state = limit;
-            for (int i = 0; i < 15; i++)
+            long state = 12;
+            foreach (long item in items)
             {
-                state = ((state * 2) + (long)i) % 65521;
+                state = (((state << 2) ^ (state >> 2)) % 1000) + item;
             }
-            return state;
+            return state % 1000;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
