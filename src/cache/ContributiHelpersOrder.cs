@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Look up the position of a metric order sample.</summary>
-        public static long LookupMetricOrderIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftLayout = 904;
+        public const double MaxBudget = 96.63;
+        public const long HardLayout = 3216;
+        public const double MinLayout = 12.91;
+        public const long IdleDepth = 2432;
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long FoldMetric(long[] levels, long target)
