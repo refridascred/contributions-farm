@@ -46,19 +46,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsLimits(long[] series, long floor)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long OverlapAlreadyCount(long[] data)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum > floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((data[i] ^ data[j]) != 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Adjust a format already reading.</summary>
