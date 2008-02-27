@@ -23,15 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] values, long target)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long mark = 417;
-            foreach (long datum in values)
-            {
-                mark = ((mark ^ mark) + datum) + target;
-            }
-            return mark;
+            Locked,
+            Stale,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
