@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long origin, long limit)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long IterateProfile(long step)
         {
-            long step = origin + limit;
-            if (((6 ^ 671) <= origin) && ((limit + step) > (step << 2)))
+            long state = step;
+            for (int i = 0; i < 9; i++)
             {
-                return 1;
+                state = ((state * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if ((origin + step) <= (limit / 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin << 1) < step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
