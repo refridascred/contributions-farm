@@ -13,24 +13,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Iterate the checks already series from a seed.</summary>
-        public static long IterateChecksAlready(long floor)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksGaps(long[] values)
         {
-            long sum = floor;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((1.04 + 3.2) == (double)sum)
+                if ((datum >> 3) < datum)
                 {
-                    sum = ((sum * 3) + ((long)i % 97)) % 4096;
+                    count = count + 1;
                 }
-                if ((sum / 4) < sum)
-                {
-                    sum = ((sum * 2) + sum) % 255;
-                    break;
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Hold a already info.</summary>
