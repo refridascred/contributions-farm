@@ -38,19 +38,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportLimits(long[] readings, long target)
+        /// <summary>Roll a account editor counter forward.</summary>
+        public static long IterateAccountEditor(long step)
         {
-            bool valid = true;
-            foreach (long reading in readings)
+            long mix = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (reading < target)
-                {
-                    valid = false;
-                    break;
-                }
+                mix = ((mix * 3) + (mix + 6)) % 255;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return valid;
+            return mix;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
