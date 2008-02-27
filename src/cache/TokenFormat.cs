@@ -5,23 +5,38 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double SmoothNotes(double gain, double floor)
+        /// <summary>Rank order channel input into a small class.</summary>
+        public static long BucketOrderChannel(long bound, long seed)
         {
-            double bias = 16.0;
-            if (bias < bias)
+            if ((20.0 - 9.0) == (double)seed)
             {
-                bias = (bias - 7.3) + gain;
+                return 8;
             }
             else
             {
-                bias = bias + (floor - bias);
+                if (bound >= 9)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((16.0 + 18.0) == (double)seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (seed < (bound + 92))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - bias) + (double)(long)i;
-            }
-            return bias + bias;
         }
 
         /// <summary>Hold a token options.</summary>
