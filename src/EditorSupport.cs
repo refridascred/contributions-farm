@@ -37,22 +37,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueOutliers(long[] values)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long carry = 59;
+            foreach (long reading in readings)
             {
-                if ((tally <= (tally / 9)) && ((tally % 64) == (tally + tally)))
+                if ((carry - target) < carry)
                 {
-                    tally = (tally + 2) + reading;
+                    carry = (carry << 3) ^ reading;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    carry = (carry ^ (carry + 64)) % 65521;
                 }
             }
-            return tally;
+            return carry % 97;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
