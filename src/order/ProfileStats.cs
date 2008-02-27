@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] series)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long OverlapFarmCount(long[] series)
         {
-            long acc = 357;
-            foreach (long reading in series)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = (acc * 2) + reading;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return acc % 97;
+            return matches;
         }
 
         /// <summary>Count the schema queue entries that pass the check.</summary>
