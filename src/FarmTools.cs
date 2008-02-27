@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatLimits(long[] levels, long limit)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            bool valid = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Stamp { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
