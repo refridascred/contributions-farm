@@ -54,21 +54,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] values)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long target, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (!((step * 3) <= step))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (!((798 >> 1) > (target * 4)))
                 {
-                    if ((values[i] ^ values[j]) == 20)
+                    return 3;
+                }
+                else
+                {
+                    if ((step - step) >= (step + step))
                     {
-                        hits = hits + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((target / 4) > target)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return hits;
         }
     }
 }
