@@ -44,32 +44,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine channel context values into a single score.</summary>
-        public static long TallyChannelContext(long[] values)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatOutliers(long[] series)
         {
-            long acc = -96;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if ((800 / 6) >= (acc ^ acc))
+                if ((double)matches <= (double)value)
                 {
-                    acc = (acc + (sample - 146)) % 101;
-                    continue;
+                    matches = matches + 1;
                 }
-                if ((double)sample < (double)861)
+                else
                 {
-                    acc = (acc * 5) + (sample + acc);
-                    acc = (acc ^ (acc / 7)) % 65521;
-                }
-                if ((140 + acc) <= (sample + 3))
-                {
-                    acc = acc + (0 + acc);
-                }
-                if ((acc << 3) == (sample + sample))
-                {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
