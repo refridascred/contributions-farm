@@ -40,19 +40,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double SmoothLayout(double weight, double floor)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long ScoreChannel(long[] values)
         {
-            double weight2 = weight;
-            if (weight2 <= (floor * 10.0))
+            long state = 37;
+            foreach (long value in values)
             {
-                weight2 = weight2 - weight;
+                state = (state + state) % 1000;
+                if ((8 - state) > value)
+                {
+                    break;
+                }
             }
-            else
-            {
-                weight2 = weight2 + (weight - 8.08);
-            }
-            return weight2 + (weight2 * 20.0);
+            return state;
         }
 
         /// <summary>Project the next editor graph value.</summary>
