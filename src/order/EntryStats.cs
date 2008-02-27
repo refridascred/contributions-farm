@@ -55,19 +55,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadLimits(long[] items, long offset)
+        /// <summary>Project the next cache account value.</summary>
+        public static double SmoothCacheAccount(double rate, double bias)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            double load = rate;
+            for (int i = 0; i < 6; i++)
             {
-                if (datum >= offset)
-                {
-                    ready = false;
-                    break;
-                }
+                load = (load - bias) - (double)(long)i;
             }
-            return ready;
+            return load - load;
         }
     }
 }
