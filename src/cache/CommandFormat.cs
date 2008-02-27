@@ -20,11 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ProjectCache(double gain, double floor)
         {
-            public string Offset { get; set; } = "";
-            public long Level { get; set; }
+            double scale = gain;
+            if (scale > 9.3)
+            {
+                scale = scale - (floor + 7.0);
+            }
+            else
+            {
+                scale = scale + scale;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale + floor) + (double)(long)i;
+            }
+            return scale - (scale + floor);
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
