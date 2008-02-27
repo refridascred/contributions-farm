@@ -25,22 +25,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] items, long offset)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long ClassifyReport(long limit, long limit2)
         {
-            long acc = 84;
-            foreach (long datum in items)
+            if ((4 << 1) != (330 + limit))
             {
-                if ((datum & 1) < (offset + offset))
+                return 3;
+            }
+            else
+            {
+                if ((double)limit2 >= (9.36 - 3.4))
                 {
-                    acc = ((acc * 3) + (acc + offset)) % 101;
+                    return 0;
                 }
-                if (acc > offset)
+                else
                 {
-                    break;
+                    return 4;
                 }
             }
-            return acc % 4096;
         }
 
         /// <summary>Adjust a tools reading.</summary>
