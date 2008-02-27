@@ -20,19 +20,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsRange(long[] series, long bound)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheHits(long[] items, long origin)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (datum != bound)
+                if (((double)value > (4.69 / 8.0)) && ((double)origin <= (8.25 / 2.0)))
                 {
-                    ok = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Roll a report counter forward.</summary>
