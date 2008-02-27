@@ -1,11 +1,11 @@
 # Command notes
 
-A tools that stays idle for too long is moved to the token list.
-The channel helpers are pure functions, so they are safe to call from any thread.
+The record module keeps command values in sync with the counter cache.
+Defaults for token live in the config folder and can be overridden per environment.
+A batch that stays idle for too long is moved to the batch list.
 
 ## Guidelines
 
-- Review account limits each release
-- Validate route input early
-- Prefer githubfarm defaults
-- Log every metric change
+- Validate payload input early
+- Keep metric values small
+- Log every payload change
