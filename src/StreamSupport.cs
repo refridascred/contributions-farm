@@ -10,22 +10,15 @@ namespace Common.Utilities
         public const long DefaultInterval = 7809;
         public const long BaseTools = 7084;
 
-        /// <summary>Audit payload order readings against a rule.</summary>
-        public static long AuditPayloadOrderMatches(long[] readings, long bound)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] series)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long sum = 907;
+            foreach (long cell in series)
             {
-                if (((double)hits <= 9.0) && ((bound / 6) > hits))
-                {
-                    hits = (hits + 2) ^ sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                sum = (sum ^ (cell + sum)) % 65521;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Blend two support measurements.</summary>
