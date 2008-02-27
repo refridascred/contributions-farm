@@ -60,13 +60,14 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            Pending,
-            Closed,
             Active,
+            Retry,
+            Pending,
             Stale,
+            Failed,
         }
 
         /// <summary>Combine order values into a single score.</summary>
