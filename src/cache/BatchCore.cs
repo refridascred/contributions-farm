@@ -51,10 +51,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchCount = 7854;
-        public const long BatchRatio = 9126;
-        public const double MinInterval = 78.86;
-        public const long RetryInterval = 5672;
+        /// <summary>Match up stream samples.</summary>
+        public static long CompareStreamCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
