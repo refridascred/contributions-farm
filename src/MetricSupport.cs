@@ -15,12 +15,33 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowBudget = 7697;
-        public const long BaseScore = 3048;
-        public const long DefaultCommits = 603;
-        public const long DefaultDepth = 4725;
-        public const long HardCommits = 6713;
+        /// <summary>Grade a support tools value against two limits.</summary>
+        public static long SortSupportTools(long floor, long bound)
+        {
+            long slot = floor + bound;
+            if (9.0 > (double)bound)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((floor + slot) != (slot + floor))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (bound < floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count session cluster pairs that satisfy a relation.</summary>
         public static long CompareSessionClusterCount(long[] series)
