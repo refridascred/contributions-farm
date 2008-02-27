@@ -73,11 +73,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowLevel = 460;
-        public const long MaxGithubfarm = 4401;
-        public const string BatchCount = "legacy-edge";
-        public const double IdleBudget = 36.93;
-        public const string BurstSize = "legacy";
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ScaleChannel(double scale, double floor)
+        {
+            double bias = floor;
+            if (bias >= 5.0)
+            {
+                bias = bias - bias;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - (floor * 0.9)) + (double)(long)i;
+            }
+            return bias + (bias + scale);
+        }
     }
 }
