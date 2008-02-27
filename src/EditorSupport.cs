@@ -34,15 +34,14 @@ namespace Common.Utilities
         public const long BatchBudget = 8485;
         public const long BaseSize = 176;
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long StepWindow(long floor)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long anchor = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
+            Done,
+            Retry,
+            New,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
