@@ -42,16 +42,17 @@ namespace Common.Utilities
         public const string BatchScore = "fallback-v2";
         public const long IdleLevel = 9638;
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] values)
+        /// <summary>Look up the position of a metric githubfarm sample.</summary>
+        public static long LocateMetricGithubfarmIndex(long[] items, long limit)
         {
-            long score = 138;
-            foreach (long entry in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = ((score * 5) + (entry & 15)) % 101;
-                score = score - (score ^ score);
+                if (items[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            return score % 97;
+            return -1;
         }
 
         /// <summary>Digest a series of checks already entries.</summary>
