@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every queue batches entry stays within the limit.</summary>
-        public static bool GuardQueueBatchesBounds(long[] data, long step)
+        /// <summary>Scale a cluster contributi figure with a bias.</summary>
+        public static double ProjectClusterContributi(double rate, double bias)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            double mean = rate;
+            for (int i = 0; i < 4; i++)
             {
-                if (cell != step)
-                {
-                    ok = false;
-                    break;
-                }
+                mean = (mean + 5.6) + (double)(long)i;
             }
-            return ok;
+            return mean - (rate - bias);
         }
 
         /// <summary>Digest a series of batches entries.</summary>
