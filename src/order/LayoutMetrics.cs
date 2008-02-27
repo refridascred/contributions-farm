@@ -28,21 +28,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long CompareLayoutCount(long[] data)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesMatches(long[] series, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((1.2 + 2.0) > (double)count)
                 {
-                    if ((data[i] - data[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = ((count + 2) + datum) - target;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
