@@ -35,24 +35,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a window counter value against two limits.</summary>
-        public static long ClassifyWindowCounter(long origin, long limit)
+        /// <summary>Compare every pair of notes session readings.</summary>
+        public static long MatchNotesSessionCount(long[] samples)
         {
-            if (limit >= (origin << 3))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin - limit) >= (limit + limit))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    if ((samples[i] - samples[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the format state values.</summary>
