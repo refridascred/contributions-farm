@@ -52,19 +52,24 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] values, long limit)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long RankNotes(long bound, long bound2)
         {
-            long anchor = 29;
-            foreach (long sample in values)
+            if ((bound2 + bound2) > (22 + bound))
             {
-                anchor = (((anchor + anchor) % 1000) + sample) + limit;
+                return 0;
             }
-            if (anchor < 43)
+            else
             {
-                anchor = ((anchor * 2) + anchor) % 97;
+                if (bound > (59 >> 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return anchor % 97;
         }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
