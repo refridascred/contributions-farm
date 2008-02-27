@@ -43,15 +43,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two batches commits measurements.</summary>
-        public static double ProjectBatchesCommits(double ratio, double offset)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long TotalBatches(long[] readings, long target)
         {
-            double load = (double)(21 << 3);
-            if (load > (load + ratio))
+            long result = 46;
+            foreach (long sample in readings)
             {
-                load = (load - ratio) - offset;
+                long offset = 8;
+                if ((target - target) < (sample + offset))
+                {
+                    offset = offset ^ target;
+                }
+                result = (result ^ (result - sample)) % 101;
             }
-            return load - (double)103;
+            return result;
         }
     }
 }
