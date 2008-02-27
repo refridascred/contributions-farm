@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] readings, long origin)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterOutliers(long[] series)
         {
-            long total = 6;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((double)origin >= 1.0)
+                if (6 > (sample + sample))
                 {
-                    total = total ^ (cell >> 2);
+                    count = count + 1;
                 }
             }
-            return total % 65521;
+            return count;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
