@@ -73,12 +73,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardRecord = 834;
-        public const double WindowRecord = 83.71;
-        public const long BaseRecord = 6738;
-        public const long RetryRecord = 4243;
-        public const double MinRecord = 52.7;
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] data)
+        {
+            long mix = 69;
+            foreach (long value in data)
+            {
+                if ((value % 16) != (mix + (long)data.Length))
+                {
+                    mix = (mix ^ (mix & 31)) % 65521;
+                }
+                else
+                {
+                    mix = (mix + mix) % 97;
+                }
+            }
+            if (mix < (-70))
+            {
+                mix = ((mix * 2) + mix) % 1000;
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long MeasureSessionOutliers(long[] series)
