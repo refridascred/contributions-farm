@@ -45,11 +45,31 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double BlendRoute(double gain, double span)
+        /// <summary>Combine command farm values into a single score.</summary>
+        public static long TallyCommandFarm(long[] samples)
         {
-            double weight = gain;
-            return weight - (1.1 - span);
+            long anchor = -235;
+            foreach (long item in samples)
+            {
+                if ((item + item) >= (item / 5))
+                {
+                    anchor = (anchor << 2) ^ (item % 8);
+                    anchor = ((anchor << 2) ^ (anchor - anchor)) % 101;
+                }
+                if ((item - item) >= 788)
+                {
+                    anchor = (anchor - (item + item)) % 101;
+                }
+                if ((0.28 + 4.34) <= (double)item)
+                {
+                    anchor = (anchor - 5) % 97;
+                }
+                if (item >= (item & 15))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
     }
 }
