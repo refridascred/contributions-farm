@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long ClassifyMetric(long origin, long bound)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] items)
         {
-            if (bound > (bound & 1))
+            long total = 2;
+            foreach (long cell in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound >= origin) && ((915 + 889) >= bound))
+                if ((double)cell < (double)total)
                 {
-                    return 1;
+                    total = ((total << 2) ^ (cell - (long)items.Length)) % 65521;
                 }
-                else
+                if ((cell / 4) > (cell & 63))
                 {
-                    return 6;
+                    break;
                 }
             }
+            return total;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
