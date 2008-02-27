@@ -48,11 +48,17 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LocateFarmIndex(long[] levels, long bound)
         {
-            public double Rank { get; set; }
-            public long Token { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
