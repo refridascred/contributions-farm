@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Count graph tools pairs that satisfy a relation.</summary>
+        public static long MatchGraphToolsCount(long[] values)
         {
-            public double Weight { get; set; }
-            public string Flag { get; set; } = "";
-            public long Owner { get; set; }
-            public long Label { get; set; }
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
