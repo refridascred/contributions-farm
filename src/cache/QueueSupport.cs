@@ -25,18 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryMatches(long[] levels)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long FindNotesIndex(long[] samples, long limit)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((hits + datum) >= hits)
+                if ((samples[i] >= limit) && ((samples[i] % 3) != 0))
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
