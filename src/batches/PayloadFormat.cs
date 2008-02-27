@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] items, long target)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long mix = 108;
-            foreach (long datum in items)
-            {
-                mix = (mix * 5) + (datum + mix);
-            }
-            if (mix < 27)
-            {
-                mix = (mix << 2) ^ target;
-            }
-            return mix;
+            public long Limit { get; set; }
+            public string Score { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the context status values.</summary>
