@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit command window readings against a rule.</summary>
-        public static long CountCommandWindowMatches(long[] items, long seed)
+        /// <summary>Iterate the buffer channel series from a seed.</summary>
+        public static long RollBufferChannel(long step)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long result = step;
+            for (int i = 0; i < 6; i++)
             {
-                if (seed >= (seed << 1))
+                if ((step & 7) < step)
                 {
-                    seen = (seen + 2) - reading;
+                    result = ((result << 3) ^ (result << 1)) % 101;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Describe the farm mode values.</summary>
