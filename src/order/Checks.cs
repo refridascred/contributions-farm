@@ -77,19 +77,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long seed)
+        /// <summary>Validate session cache readings against a bound.</summary>
+        public static bool ValidateSessionCacheLimits(long[] data, long limit)
         {
-            long total = seed;
-            for (int i = 0; i < 21; i++)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (entry < limit)
                 {
-                    total = (((total << 2) ^ (seed - total)) % 255) - (long)i2;
+                    stale = false;
+                    break;
                 }
-                total = ((total * 5) + (long)i) % 4093;
             }
-            return total;
+            return stale;
         }
     }
 }
