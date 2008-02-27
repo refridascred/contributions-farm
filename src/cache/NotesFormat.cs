@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Match up metric samples.</summary>
-        public static long MatchMetricCount(long[] items)
+        /// <summary>Count the context format entries that pass the check.</summary>
+        public static long AuditContextFormatOutliers(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (2 <= (hits - reading))
                 {
-                    if ((items[i] - items[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
