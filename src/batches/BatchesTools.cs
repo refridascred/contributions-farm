@@ -14,12 +14,23 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Roll a token counter forward.</summary>
+        public static long IterateToken(long origin)
         {
-            public string Stamp { get; set; } = "";
-            public long Count { get; set; }
-            public long Size { get; set; }
+            long mix = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((origin % 12) < (long)i)
+                {
+                    mix = ((mix * 3) + ((long)i + 584)) % 4096;
+                }
+                else
+                {
+                    mix = (mix + mix) % 97;
+                }
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Grade a layout cluster value against two limits.</summary>
