@@ -29,21 +29,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long CompareEditorCount(long[] samples)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long limit, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((9 << 1) == (seed & 63))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((limit + limit) >= 336)
                 {
-                    if ((samples[i] - samples[j]) == 19)
+                    return 8;
+                }
+                else
+                {
+                    if ((7.2 / 6.0) > (double)seed)
                     {
-                        tally = tally + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return tally;
         }
     }
 }
