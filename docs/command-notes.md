@@ -1,11 +1,11 @@
 # Command notes
 
-When a layout fails, the route handler retries a few times before giving up.
-Use profile settings to tune how often metric data is refreshed.
-Each command is validated before it reaches the githubfarm queue.
+Run the filter check before changing any tools limits.
+Defaults for format live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review farm limits each release
-- Prefer contributi defaults
-- Log every buffer change
+- Keep channel values small
+- Prefer entry defaults
+- Validate notes input early
+- Log every route change
