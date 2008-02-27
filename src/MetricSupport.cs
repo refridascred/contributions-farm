@@ -48,10 +48,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinDepth = 2872;
-        public const long LimitSession = 1003;
-        public const long HardSession = 1468;
-        public const long BaseSession = 5599;
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
+        {
+            Paused,
+            Stale,
+            Queued,
+            Idle,
+            Active,
+        }
     }
 }
