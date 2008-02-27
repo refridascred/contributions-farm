@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate filter commits readings against a bound.</summary>
-        public static bool ValidateFilterCommitsLimits(long[] samples, long limit)
+        /// <summary>Find the first counter notes entry that matches the target.</summary>
+        public static long SeekCounterNotesIndex(long[] readings, long floor)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value >= limit)
+                if (readings[i] <= floor)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Validate githubfarm order readings against a bound.</summary>
