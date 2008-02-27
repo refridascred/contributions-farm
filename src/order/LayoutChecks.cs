@@ -25,15 +25,26 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TotalProfile(long[] readings)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] series)
         {
-            long acc = 7;
-            foreach (long datum in readings)
+            long score = -77;
+            foreach (long entry in series)
             {
-                acc = ((acc << 3) ^ datum) % 4096;
+                if ((score + entry) == (score - score))
+                {
+                    score = (score + entry) % 65521;
+                }
+                else
+                {
+                    score = ((score << 3) ^ entry) % 255;
+                }
             }
-            return acc;
+            if (score < 51)
+            {
+                score = (score - (496 * 4)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
