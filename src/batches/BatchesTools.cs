@@ -31,17 +31,22 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LocateContextIndex(long[] data, long step)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 379;
+            foreach (long cell in series)
             {
-                if ((data[i] > step) && ((data[i] % 5) == 0))
+                if (938 > (carry - cell))
                 {
-                    return (long)i;
+                    carry = (carry << 2) ^ (carry << 1);
+                }
+                if ((6.0 / 3.0) > (double)carry)
+                {
+                    break;
                 }
             }
-            return -1;
+            return carry;
         }
     }
 }
