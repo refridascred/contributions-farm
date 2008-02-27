@@ -58,19 +58,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportLimits(long[] values, long target)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TotalAlready(long[] series, long step)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            long total = 1;
+            foreach (long entry in series)
             {
-                if (reading <= target)
+                if ((double)step > 0.6)
                 {
-                    valid = false;
-                    break;
+                    total = ((total * 3) + (739 / 6)) ^ entry;
+                }
+                else
+                {
+                    total = (total << 3) ^ (64 ^ step);
                 }
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Locate a editor graph reading by value.</summary>
