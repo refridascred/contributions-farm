@@ -13,11 +13,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double MinTools = 25.84;
-        public const double BurstRatio = 6.93;
-        public const double IdleBudget = 59.56;
-        public const long SoftDepth = 9755;
+        /// <summary>Roll a editor support counter forward.</summary>
+        public static long StepEditorSupport(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                score = (score + (81 ^ score)) % 1000;
+                score = ((score * 4) + (bound + bound)) % 4096;
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const long MaxGithubfarm = 27;
