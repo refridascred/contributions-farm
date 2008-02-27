@@ -58,14 +58,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            New,
-            Ready,
-            Dropped,
-            Locked,
-            Queued,
+            public long Level { get; set; }
+            public long Count { get; set; }
+            public bool Token { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Fold a list of layout readings.</summary>
