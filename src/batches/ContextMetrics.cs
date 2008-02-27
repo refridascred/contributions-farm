@@ -51,18 +51,39 @@ namespace Common.Utilities
             return ratio - (offset - ratio);
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextHits(long[] data, long limit)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long BucketLayout(long offset, long origin)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long slot = offset ^ origin;
+            if ((origin % 2) == (origin + origin))
             {
-                if ((1.01 - 6.0) == (double)limit)
+                return 0;
+            }
+            else
+            {
+                if ((20.0 / 8.0) == (double)origin)
                 {
-                    tally = (tally + 2) + value;
+                    return 4;
+                }
+                else
+                {
+                    if ((12 - 1) <= (origin + origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((slot - (-1)) < (origin ^ origin))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Digest a series of checks already entries.</summary>
