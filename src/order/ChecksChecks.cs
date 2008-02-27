@@ -29,18 +29,17 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Accumulate layout checks samples.</summary>
-        public static long DigestLayoutChecks(long[] items)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long FindWindowIndex(long[] samples, long floor)
         {
-            long anchor = 4;
-            foreach (long cell in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((anchor << 3) != (cell % 64))
+                if ((samples[i] > floor) && ((samples[i] % 5) == 0))
                 {
-                    anchor = (anchor + cell) % 255;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
     }
 }
