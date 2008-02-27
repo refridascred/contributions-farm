@@ -45,15 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutOutliers(long[] samples, long limit)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamOutliers(long[] levels, long step)
         {
             long matches = 0;
-            foreach (long cell in samples)
+            foreach (long entry in levels)
             {
-                if (((double)matches >= (double)(long)samples.Length) && ((double)5 < (double)matches))
+                if (!(((entry + matches) >= (matches / 8)) || ((6.82 - 2.6) >= (double)entry)))
                 {
-                    matches = ((matches + 3) ^ cell) - limit;
+                    matches = (matches + 1) - step;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
