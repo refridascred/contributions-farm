@@ -1,12 +1,13 @@
 {
-  "cluster_limit": {
-    "hard_timeout_s": ["latest", "open", "strict"],
-    "persist": "green",
-    "compress": 32
+  "sync_timeout": "cached",
+  "max_size_ms": false,
+  "account_delay": ["green", "legacy", "blue"],
+  "command_interval": {
+    "soft_size_ms": "staging",
+    "base_ttl_s": "local",
+    "batch_ttl": "fallback",
+    "persist": [224, 133, 293, 169]
   },
-  "readonly": 72.52,
-  "cache_threshold": 1024,
-  "max_ttl_s": 15,
-  "retry_capacity_s": 33.87,
-  "warm_ttl_pct": 8
+  "persist": 41.21,
+  "verbose": 93.33
 }
