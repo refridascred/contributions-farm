@@ -1,11 +1,11 @@
 {
-  "sync_size_ms": "edge",
-  "default_ratio": {
-    "soft_threshold_s": ["eu-west", "strict", "open", "edge"],
-    "payload_window": true,
-    "idle_depth_ms": 1024
+  "cluster_window": {
+    "notes_threshold": 11.66,
+    "sync_limit": "cached",
+    "base_depth_ms": ["stable", "blue"],
+    "warm_limit": "stable",
+    "commits_capacity": 24.31
   },
-  "batch_limit_ms": 40.32,
-  "checks_delay": 500,
-  "default_size": [33, 460, 460]
+  "strict": "blue",
+  "retry_limit_count": 62
 }
