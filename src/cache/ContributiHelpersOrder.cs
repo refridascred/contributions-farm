@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] readings, long origin)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LookupCacheIndex(long[] items, long limit)
         {
-            long result = 57;
-            foreach (long reading in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                result = (((result * 5) + (origin - result)) % 101) - reading;
+                if (items[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
