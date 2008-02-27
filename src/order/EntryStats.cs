@@ -38,21 +38,13 @@ namespace Common.Utilities
         public const string SoftToken = "primary-v2";
         public const string BaseSpan = "primary-edge";
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long MatchCacheCount(long[] readings)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Done,
+            Failed,
+            Queued,
+            Paused,
         }
 
         /// <summary>Describe the metric phase values.</summary>
