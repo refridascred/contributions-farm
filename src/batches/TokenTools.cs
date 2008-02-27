@@ -18,10 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowStream = 5372;
-        public const long CacheStream = 4500;
-        public const string BurstStream = "fallback";
+        /// <summary>Count the batches token entries that pass the check.</summary>
+        public static long AuditBatchesTokenMatches(long[] values, long origin)
+        {
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if (origin >= (datum << 3))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of metrics readings.</summary>
         public static long MatchMetricsCount(long[] samples)
