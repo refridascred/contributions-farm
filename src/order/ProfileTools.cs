@@ -58,18 +58,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphGaps(long[] samples)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorGaps(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if ((cell + (-97)) != (cell + cell))
+                if ((((4.0 + 0.4) != (double)entry) || ((-65) > seen)) && !(seen < (seen ^ entry)))
                 {
-                    hits = hits + 3;
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Validate profile format readings against a bound.</summary>
