@@ -23,38 +23,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long SortBatch(long offset, long step)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            if ((offset - 3) >= (offset - offset))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step + offset) <= (offset - offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((2.35 / 8.0) == (double)step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset & 15) <= offset)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Retry,
+            Done,
+            Pending,
         }
 
         /// <summary>Validate farm account readings against a bound.</summary>
