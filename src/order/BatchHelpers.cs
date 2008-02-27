@@ -34,12 +34,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterHits(long[] items, long floor)
         {
-            public bool Region { get; set; }
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((7.37 * 3.55) > (double)seen)
+                {
+                    seen = ((seen + 2) ^ value) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
