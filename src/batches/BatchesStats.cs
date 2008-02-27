@@ -24,11 +24,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstStats = 7084;
-        public const long HardStats = 6735;
-        public const long MinStats = 3108;
-        public const long IdleDepth = 5676;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string DefaultBatch = "strict-v2";
+        public const long CacheInterval = 7385;
+        public const double BurstInterval = 9.83;
+        public const string RetryBatch = "legacy-v2";
 
         /// <summary>Describe the payload class values.</summary>
         public enum PayloadClass
