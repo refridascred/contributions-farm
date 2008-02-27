@@ -13,12 +13,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double BlendStream(double scale, double floor)
-        {
-            double bias = floor;
-            return bias + (scale + scale);
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleEditor = 2578;
+        public const long StepFactor = 3789;
+        public const double SoftInterval = 38.93;
 
         /// <summary>Match up layout samples.</summary>
         public static long CompareLayoutCount(long[] data)
