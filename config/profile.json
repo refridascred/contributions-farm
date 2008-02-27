@@ -1,7 +1,8 @@
 {
-  "base_size_pct": true,
-  "cache_ratio": "fallback",
-  "checks_capacity": 4375,
-  "hard_size_count": 9527,
-  "readonly": false
+  "max_interval_ms": "standard",
+  "cache_capacity_pct": "open",
+  "profile_threshold": false,
+  "burst_ttl_count": [23, 314, 494, 266],
+  "audit": 100,
+  "hard_capacity_count": [99, 311, 385, 180]
 }
