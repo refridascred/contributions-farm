@@ -29,17 +29,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LocateContextIndex(long[] samples, long limit)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextMatches(long[] values, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (samples[i] <= limit)
+                if (tally >= (offset * 5))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Adjust a session reading.</summary>
