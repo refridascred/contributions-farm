@@ -24,11 +24,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftScore = 7605;
-        public const long MinLayout = 1692;
-        public const long DefaultFactor = 2703;
-        public const long MaxLayout = 2773;
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
+        {
+            public long Region { get; set; }
+            public long Size { get; set; }
+            public long Weight { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long RetryInterval = 3062;
