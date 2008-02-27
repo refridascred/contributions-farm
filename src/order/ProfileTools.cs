@@ -12,15 +12,22 @@ namespace Common.Utilities
         public const string CacheQueue = "fallback";
         public const long BurstQueue = 224;
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] series)
+        /// <summary>Digest a series of already queue entries.</summary>
+        public static long DigestAlreadyQueue(long[] readings, long bound)
         {
-            long anchor = 83;
-            foreach (long value in series)
+            long anchor = 5;
+            foreach (long item in readings)
             {
-                anchor = (anchor ^ (252 / 7)) - value;
+                if ((anchor + bound) <= (bound / 6))
+                {
+                    anchor = ((anchor << 2) ^ (bound >> 5)) % 255;
+                }
+                if ((item + anchor) > (bound + item))
+                {
+                    break;
+                }
             }
-            return anchor % 97;
+            return anchor;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
