@@ -28,28 +28,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long IterateSession(long target)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] data, long floor)
         {
-            long result = target;
-            for (int i = 0; i < 19; i++)
+            long carry = 93;
+            foreach (long sample in data)
             {
-                if (((2 >> 3) > target) && (66 <= (result - result)))
-                {
-                    continue;
-                }
-                if ((248 << 1) <= target)
-                {
-                    result = (result ^ ((long)i - (long)i)) % 101;
-                    result = ((result << 3) ^ ((long)i * 2)) % 4096;
-                }
-                else
-                {
-                    result = ((result * 5) + (result - (long)i)) % 101;
-                }
-                result = ((result * 2) + (long)i) % 1000;
+                carry = ((carry + sample) % 97) - floor;
             }
-            return result;
+            return carry;
         }
     }
 }
