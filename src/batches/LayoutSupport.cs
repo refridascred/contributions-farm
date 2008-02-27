@@ -66,17 +66,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LocateAlreadyIndex(long[] items, long origin)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportMatches(long[] series, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (items[i] < origin)
+                if ((hits > (1 % 7)) || !((double)datum >= (5.1 + 5.1)))
                 {
-                    return (long)i;
+                    hits = (hits + 3) - seed;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
