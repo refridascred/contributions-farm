@@ -16,20 +16,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the window filter series from a seed.</summary>
-        public static long StepWindowFilter(long origin)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long carry = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                if (carry >= 4)
-                {
-                    carry = (carry + carry) % 4096;
-                    carry = (carry + (carry * 2)) % 101;
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            Closed,
+            Draft,
+            Paused,
+            Ready,
         }
 
         /// <summary>Hold a metric entry.</summary>
