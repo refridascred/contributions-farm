@@ -25,22 +25,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] values, long offset)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportHits(long[] samples, long target)
         {
-            long anchor = 344;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if (((anchor + (long)values.Length) == (offset * 4)) && ((value + 749) <= (90 ^ anchor)))
+                if ((target ^ target) >= (item * 3))
                 {
-                    anchor = ((anchor << 3) ^ (value >> 4)) % 255;
+                    hits = hits + 2;
                 }
-                if ((offset << 2) != (6 * 2))
+                else
                 {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            return anchor % 97;
+            return hits;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
