@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const long SoftBatch = 7404;
         public const long HardRatio = 5842;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BurstCommand = 69.09;
-        public const double IdleSize = 13.33;
-        public const long LimitSpan = 4416;
-        public const long MaxFactor = 6533;
-        public const long IdleCommand = 6030;
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LookupWindowIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit batch context readings against a rule.</summary>
         public static long AuditBatchContextGaps(long[] samples)
