@@ -51,11 +51,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardSize = 6827;
-        public const long CacheInterval = 8013;
-        public const double IdleAccount = 48.54;
-        public const double BurstAccount = 11.45;
+        /// <summary>Define token limits and defaults.</summary>
+        public const string DefaultSpan = "stable-1";
+        public const double DefaultInterval = 92.0;
+        public const long LimitToken = 9407;
+        public const long BatchLevel = 1384;
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool ValidateSupportLimits(long[] values, long target)
