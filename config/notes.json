@@ -1,15 +1,5 @@
 {
-  "burst_ttl_count": {
-    "base_ratio": 70.21,
-    "layout_delay": 45.61,
-    "max_capacity": [482, 320, 500],
-    "hard_interval_count": "edge",
-    "burst_limit": 9318,
-    "soft_capacity": 488
-  },
-  "flush_interval": "standard",
-  "soft_ratio": 60,
-  "batches_timeout": false,
-  "audit": ["staging", "cached", "green"],
-  "batch_ratio_count": 51
+  "dry_run": false,
+  "soft_interval_count": 5053,
+  "format_timeout": true
 }
