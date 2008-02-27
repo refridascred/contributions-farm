@@ -54,13 +54,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ProjectLayout(double scale, double offset)
         {
-            Queued,
-            Done,
-            Draft,
-            Locked,
+            double scale2 = scale - offset;
+            if (scale2 < 8.4)
+            {
+                scale2 = scale2 - scale;
+            }
+            else
+            {
+                scale2 = scale2 - (scale * 7.55);
+            }
+            return scale2 - (offset + 5.89);
         }
     }
 }
