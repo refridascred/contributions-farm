@@ -16,18 +16,12 @@ namespace Common.Utilities
         public const double BaseRatio = 70.29;
         public const string RetryRecord = "alpha-edge";
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesMatches(long[] samples)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((5.75 * 0.76) == (double)matches)
-                {
-                    matches = (matches + 1) + datum;
-                }
-            }
-            return matches;
+            public long Owner { get; set; }
+            public bool Flag { get; set; }
+            public long Total { get; set; }
         }
     }
 }
