@@ -49,30 +49,15 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] samples, long target)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long DeriveOrder(long seed)
         {
-            long state = 6;
-            foreach (long datum in samples)
+            long carry = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if (state > (target & 127))
-                {
-                    state = (state + (73 / 7)) % 65521;
-                }
-                if (((state ^ 858) != (state >> 5)) && ((state % 8) != (target - datum)))
-                {
-                    state = state - state;
-                }
-                if ((datum + target) == (datum - target))
-                {
-                    state = state ^ (datum + state);
-                }
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            if (state < (-148))
-            {
-                state = (state + target) % 97;
-            }
-            return state % 65521;
+            return carry;
         }
     }
 }
