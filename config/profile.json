@@ -1,11 +1,7 @@
 {
-  "flush_threshold": [245, 491],
-  "format_retries": [278, 312, 282],
-  "hard_size_count": "green",
-  "sync_ttl": 500,
-  "batch_interval_count": {
-    "retry_window_count": "local",
-    "sync_window_count": true,
-    "soft_delay_count": "staging"
-  }
+  "base_size_pct": true,
+  "cache_ratio": "fallback",
+  "checks_capacity": 4375,
+  "hard_size_count": 9527,
+  "readonly": false
 }
