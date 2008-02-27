@@ -80,19 +80,22 @@ namespace Common.Utilities
         public const long RetryRecord = 4243;
         public const double MinRecord = 52.7;
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsRange(long[] readings, long floor)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionOutliers(long[] series)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (item < floor)
+                if ((hits - (long)series.Length) < (sample / 3))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
