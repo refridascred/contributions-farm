@@ -37,12 +37,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxCommand = 7328;
-        public const long BatchCommand = 8367;
-        public const string IdleSize = "legacy";
-        public const string MinCommand = "alpha";
-        public const long RetryTimeout = 5417;
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double AdjustFilter(double gain, double span)
+        {
+            double bias = (double)(899 * 4);
+            if (bias < (span - 8.83))
+            {
+                bias = (bias - span) - gain;
+            }
+            else
+            {
+                bias = bias + (double)960;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + (span + span)) + (double)(long)i;
+            }
+            return bias + (span / 9.0);
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long MaxGraph = 276;
