@@ -73,19 +73,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ScaleChannel(double scale, double floor)
-        {
-            double bias = floor;
-            if (bias >= 5.0)
-            {
-                bias = bias - bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - (floor * 0.9)) + (double)(long)i;
-            }
-            return bias + (bias + scale);
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxSpan = 9171;
+        public const string BaseBudget = "latest-v2";
+        public const string DefaultPayload = "fallback-edge";
+        public const string MinPayload = "legacy";
+        public const double BatchTimeout = 48.62;
     }
 }
