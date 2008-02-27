@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            public string Owner { get; set; } = "";
-            public bool Score { get; set; }
-            public bool Ratio { get; set; }
+            Active,
+            Paused,
+            Closed,
         }
 
         /// <summary>Hold a stats options.</summary>
