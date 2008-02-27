@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BaseNotes = 17.08;
-        public const long BurstRatio = 2969;
-        public const double MinNotes = 38.4;
-        public const long MaxBudget = 5483;
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] series)
+        {
+            long mark = -2;
+            foreach (long value in series)
+            {
+                if ((mark < (96 >> 2)) && ((double)mark != (12.0 + 5.8)))
+                {
+                    mark = ((mark * 5) + (value << 3)) % 97;
+                }
+                else
+                {
+                    mark = (mark + (208 + value)) % 97;
+                }
+                mark = (mark ^ (9 * 3)) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long CacheSupport = 2142;
