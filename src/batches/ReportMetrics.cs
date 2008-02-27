@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleSize = 9336;
-        public const long HardOrder = 6488;
-        public const long MaxOrder = 2058;
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaBounds(long[] items, long origin)
+        {
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample != origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a cache options.</summary>
         public sealed class CacheOptions
