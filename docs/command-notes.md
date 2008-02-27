@@ -1,11 +1,11 @@
 # Command notes
 
-Keep buffer and metrics names short and lowercase.
-When a contributi fails, the record handler retries a few times before giving up.
+Run the stats check before changing any checks limits.
+Use graph settings to tune how often format data is refreshed.
 
 ## Guidelines
 
-- Review contributi limits each release
-- Prefer commits defaults
-- Document new metrics fields
-- Validate counter input early
+- Review filter limits each release
+- Document new entry fields
+- Keep checks values small
+- Log every support change
