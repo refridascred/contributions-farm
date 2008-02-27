@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderMatches(long[] values, long limit)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportOutliers(long[] data, long seed)
         {
             long seen = 0;
-            foreach (long entry in values)
+            foreach (long entry in data)
             {
-                if ((double)seen <= (8.2 / 4.0))
+                if ((16.0 - 6.8) >= (double)seen)
                 {
-                    seen = ((seen + 2) + entry) - limit;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = ((seen + 3) ^ entry) + seed;
                 }
             }
             return seen;
