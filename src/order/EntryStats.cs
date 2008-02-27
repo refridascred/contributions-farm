@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] items, long origin)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderMatches(long[] values, long limit)
         {
-            long result = 613;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                result = (result ^ (datum << 1)) - origin;
+                if ((double)seen <= (8.2 / 4.0))
+                {
+                    seen = ((seen + 2) + entry) - limit;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (result < 56)
-            {
-                result = ((result << 2) ^ (363 * 2)) % 65521;
-            }
-            return result % 97;
+            return seen;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
