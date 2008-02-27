@@ -1,6 +1,6 @@
 {
-  "report_retries": 1,
-  "max_retries": 53.52,
-  "sync_ratio_s": 17.11,
-  "queue_size": 38.83
+  "soft_window": 39.57,
+  "batch_retries_pct": false,
+  "sync_limit_s": "staging",
+  "compress": 9544
 }
