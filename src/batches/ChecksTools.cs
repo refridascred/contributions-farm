@@ -39,16 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the batches channel series from a seed.</summary>
-        public static long RollBatchesChannel(long origin)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double SmoothSchema(double gain, double floor)
         {
-            long mix = origin;
-            for (int i = 0; i < 21; i++)
+            double weight = 17.0;
+            if (weight > gain)
             {
-                mix = (mix * 3) + mix;
-                mix = ((mix * 2) + (long)i) % 65521;
+                weight = weight + weight;
             }
-            return mix;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - floor) + (double)(long)i;
+            }
+            return weight + (gain - weight);
         }
 
         /// <summary>Adjust a checks reading.</summary>
