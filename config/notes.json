@@ -1,11 +1,6 @@
 {
-  "retry_limit": "staging",
-  "retry_retries": "latest",
-  "cache_limit": {
-    "persist": [249, 335],
-    "hard_size_count": true,
-    "base_size": true
-  },
-  "order_retries": 30,
-  "commits_delay": false
+  "command_retries": true,
+  "base_window": "local",
+  "batch_ratio_pct": 1021,
+  "sync_delay_ms": [267, 398, 405]
 }
