@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit batch channel readings against a rule.</summary>
-        public static long MeasureBatchChannelMatches(long[] levels, long seed)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long RollLayout(long bound)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long sum = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (((double)datum == (6.09 - 3.0)) && (seed >= (tally ^ tally)))
-                {
-                    tally = tally + 2;
-                }
+                sum = sum - (13 + sum);
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
