@@ -52,17 +52,15 @@ namespace Common.Utilities
             return weight2 - (double)274;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long FindProfileIndex(long[] values, long offset)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 496;
+            foreach (long cell in levels)
             {
-                if ((values[i] > offset) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 2) + (cell << 3)) % 65521;
             }
-            return -1;
+            return acc % 1000;
         }
     }
 }
