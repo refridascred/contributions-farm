@@ -58,10 +58,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double SoftInterval = 73.67;
-        public const long BaseTools = 2140;
-        public const long MinTools = 5988;
-        public const double SoftTools = 42.54;
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
+        {
+            Done,
+            Failed,
+            Dropped,
+            Pending,
+            Synced,
+        }
     }
 }
