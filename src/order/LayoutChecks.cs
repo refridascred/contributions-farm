@@ -43,19 +43,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] levels, long bound)
+        /// <summary>Combine channel checks values into a single score.</summary>
+        public static long FoldChannelChecks(long[] levels, long offset)
         {
-            long sum = 729;
-            foreach (long value in levels)
+            long mark = -58;
+            foreach (long item in levels)
             {
-                sum = ((sum * 2) + (value & 3)) - bound;
+                if ((9 - item) == (offset & 15))
+                {
+                    mark = mark - (item ^ (long)levels.Length);
+                }
+                if ((double)mark < 3.0)
+                {
+                    break;
+                }
             }
-            if (sum > 874)
-            {
-                sum = (sum * 2) + (sum & 127);
-            }
-            return sum % 1000;
+            return mark;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
