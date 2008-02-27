@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const long CacheRatio = 7368;
         public const string IdleCommits = "standard-edge";
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportLimits(long[] values, long target)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            bool ready = true;
-            foreach (long cell in values)
-            {
-                if (cell < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Flag { get; set; }
+            public long Limit { get; set; }
+            public bool Token { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
