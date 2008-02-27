@@ -21,18 +21,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit editor buffer readings against a rule.</summary>
-        public static long AuditEditorBufferMatches(long[] values)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileGaps(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((5.76 + 4.1) <= (double)seen)
+                if (tally > (tally % 8))
                 {
-                    seen = (seen + 1) ^ sample;
+                    tally = (tally + 1) + item;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
