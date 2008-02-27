@@ -28,14 +28,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Match up editor cluster samples.</summary>
+        public static long PairEditorClusterCount(long[] levels)
         {
-            Locked,
-            Failed,
-            Dropped,
-            Closed,
-            Active,
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the record status values.</summary>
