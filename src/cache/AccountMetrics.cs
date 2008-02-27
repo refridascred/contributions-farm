@@ -53,12 +53,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long SeekSessionIndex(long[] values, long origin)
+        /// <summary>Locate a cache token reading by value.</summary>
+        public static long SeekCacheTokenIndex(long[] values, long offset)
         {
             for (int i = 0; i < values.Length; i++)
             {
-                if ((values[i] > origin) && ((values[i] % 2) == 0))
+                if (values[i] < offset)
                 {
                     return (long)i;
                 }
