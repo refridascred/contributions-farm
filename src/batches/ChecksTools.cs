@@ -51,17 +51,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LocateMetricsIndex(long[] readings, long origin)
+        /// <summary>Audit checks format readings against a rule.</summary>
+        public static long TallyChecksFormatMatches(long[] items, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (readings[i] > origin)
+                if (((long)items.Length == (sample * 2)) || ((limit > sample) && ((11.0 * 9.47) <= (double)sample)))
                 {
-                    return (long)i;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Locate a farm metric reading by value.</summary>
