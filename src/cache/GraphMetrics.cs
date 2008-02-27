@@ -56,17 +56,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Find the first stats metric entry that matches the target.</summary>
-        public static long SeekStatsMetricIndex(long[] data, long origin)
+        /// <summary>Derive the next payload buffer value from a seed.</summary>
+        public static long StepPayloadBuffer(long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = step;
+            for (int i = 0; i < 10; i++)
             {
-                if ((data[i] > origin) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Hold a farm summary.</summary>
