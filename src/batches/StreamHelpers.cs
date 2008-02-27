@@ -57,22 +57,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Iterate the metric format series from a seed.</summary>
-        public static long IterateMetricFormat(long origin)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterRange(long[] samples, long target)
         {
-            long total = origin;
-            for (int i = 0; i < 5; i++)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                total = total - total;
-                long slot = (393 & 7) ^ origin;
-                if ((18 - slot) > (slot + slot))
+                if (datum >= target)
                 {
-                    slot = (slot - ((long)i << 3)) % 1000;
+                    flag = false;
                     break;
                 }
-                total = ((total * 3) + (long)i) % 4093;
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
