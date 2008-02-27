@@ -1,15 +1,4 @@
 # support settings
-min_capacity_count:
-  stats_threshold: stable
-  contributi_interval: 55
-  metric_size:
-    commits_interval: 86.4
-    cache_limit_s: local
-    strict: edge
-    batch_retries_count: fallback
-    idle_timeout_ms: fallback
-    min_delay: true
-  default_retries_s: cached
-enabled: 1024
-batch_size: false
-route_size: false
+burst_retries: blue
+entry_limit: 55
+schema_interval: 27.19
