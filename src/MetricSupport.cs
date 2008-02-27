@@ -26,18 +26,14 @@ namespace Common.Utilities
         public const long DefaultDepth = 4725;
         public const long HardCommits = 6713;
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowOutliers(long[] items, long origin)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((20.0 * 0.7) > (double)origin)
-                {
-                    count = (count + 1) ^ datum;
-                }
-            }
-            return count;
+            Draft,
+            Idle,
+            Active,
+            Paused,
+            Failed,
         }
     }
 }
