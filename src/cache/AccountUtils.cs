@@ -12,12 +12,15 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleSize = 7341;
-        public const long BurstRatio = 3177;
-        public const string BurstWindow = "local-v2";
-        public const long SoftTimeout = 4253;
-        public const long SoftBudget = 5575;
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
+        {
+            Paused,
+            Done,
+            Closed,
+            Ready,
+            Active,
+        }
 
         /// <summary>Match up checks samples.</summary>
         public static long OverlapChecksCount(long[] levels)
