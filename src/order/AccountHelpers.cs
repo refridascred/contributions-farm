@@ -32,18 +32,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmHits(long[] readings)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if (((tally + value) <= ((-65) & 255)) || ((9 - value) <= tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public double Rank { get; set; }
+            public double Label { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Derive the next graph buffer value from a seed.</summary>
