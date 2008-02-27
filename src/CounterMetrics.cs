@@ -24,22 +24,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] values, long limit)
+        /// <summary>Match up stream samples.</summary>
+        public static long OverlapStreamCount(long[] data)
         {
-            long carry = 1;
-            foreach (long reading in values)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((4.8 / 7.0) == (double)limit) || ((limit + limit) <= (limit / 5)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = (carry << 3) ^ limit;
-                }
-                if ((reading & 255) == (carry * 5))
-                {
-                    break;
+                    if ((data[i] ^ data[j]) != 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
