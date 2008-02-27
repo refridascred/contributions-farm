@@ -15,38 +15,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long RankRecord(long seed, long floor)
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] items)
         {
-            if ((seed % 5) <= (floor & 127))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((246 + seed) == (floor % 97))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (seed >= (floor + seed))
+                    if ((items[i] - items[j]) < 16)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((989 >= ((-4) + seed)) && ((floor - floor) > seed))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
