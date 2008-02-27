@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long WeighEntry(long[] values, long bound)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long IterateTools(long seed)
         {
-            long anchor = 15;
-            foreach (long cell in values)
+            long acc = seed;
+            for (int i = 0; i < 21; i++)
             {
-                for (int i = 0; i < 6; i++)
-                {
-                    anchor = (((anchor * 2) + (cell + bound)) % 101) ^ (long)i;
-                }
-                if (((bound >> 3) > (0 >> 1)) || (6 >= (cell + cell)))
-                {
-                    anchor = ((anchor * 5) + (bound - bound)) % 1000;
-                }
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            if (anchor < (-8))
-            {
-                anchor = ((anchor * 2) + (anchor + anchor)) % 97;
-            }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
