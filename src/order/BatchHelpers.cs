@@ -53,22 +53,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterHits(long[] items, long floor)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long StepBuffer(long offset)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long anchor = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if ((7.37 * 3.55) > (double)seen)
+                anchor = ((anchor * 2) + (281 >> 3)) % 97;
+                if (!((anchor - anchor) < anchor))
                 {
-                    seen = ((seen + 2) ^ value) - floor;
+                    continue;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return seen;
+            return anchor;
         }
     }
 }
