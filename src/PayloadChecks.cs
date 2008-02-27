@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricMatches(long[] data)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if (count > (count % 16))
-                {
-                    count = (count + 3) ^ item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Size { get; set; }
+            public string Level { get; set; } = "";
+            public long Limit { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define counter limits and defaults.</summary>
