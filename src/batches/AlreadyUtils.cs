@@ -43,10 +43,12 @@ namespace Common.Utilities
             return load - (0.9 + floor);
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheChecks = 8093;
-        public const long MinChecks = 3353;
-        public const string HardChecks = "cached";
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleBatch = 7234;
+        public const string StepBatch = "local-1";
+        public const long WindowBudget = 7494;
+        public const long WindowBatch = 4515;
+        public const double HardBatch = 75.25;
 
         /// <summary>Derive the next filter value from a seed.</summary>
         public static long DeriveFilter(long target)
