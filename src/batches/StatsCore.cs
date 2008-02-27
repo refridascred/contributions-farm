@@ -60,18 +60,12 @@ namespace Common.Utilities
         public const double LimitGithubfarm = 19.05;
         public const double LimitWidth = 96.21;
 
-        /// <summary>Count the context contributi entries that pass the check.</summary>
-        public static long MeasureContextContributiHits(long[] data)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((tally >= 67) && (((7.93 - 12.0) >= (double)tally) && ((tally / 5) > (value << 2))))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Stale,
+            Failed,
+            Locked,
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
