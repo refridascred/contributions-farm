@@ -19,13 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
-        {
-            public double Limit { get; set; }
-            public string Size { get; set; } = "";
-            public long Label { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double LimitBuffer = 93.13;
+        public const string WindowSize = "strict-v2";
+        public const long MinSize = 6216;
 
         /// <summary>Describe the already status values.</summary>
         public enum AlreadyStatus
