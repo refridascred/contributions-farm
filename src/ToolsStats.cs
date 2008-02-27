@@ -53,21 +53,19 @@ namespace Common.Utilities
         public const double IdleBatch = 16.68;
         public const long BurstBatch = 7821;
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] values)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsRange(long[] series, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (datum <= bound)
                 {
-                    if ((values[i] ^ values[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Project the next profile notes value.</summary>
