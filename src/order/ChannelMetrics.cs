@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long CombineNotes(long[] samples, long offset)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long origin)
         {
-            long anchor = 1;
-            foreach (long value in samples)
+            long score = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (!((4 ^ anchor) < value))
+                long next = origin + (origin % 7);
+                if ((((long)i + origin) == (score + next)) && ((double)origin != (2.0 - 4.7)))
                 {
-                    long bound2 = 37 << 1;
-                    anchor = (anchor ^ (bound2 >> 1)) % 101;
+                    score = ((score << 3) ^ (score ^ (long)i)) % 65521;
+                    continue;
                 }
-                if (((870 + (-2)) == (7 + offset)) && ((double)anchor >= (double)offset))
-                {
-                    anchor = ((anchor * 5) + value) % 101;
-                }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Hold a record entry.</summary>
