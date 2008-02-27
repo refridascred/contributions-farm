@@ -48,21 +48,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyCount(long[] data)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ScaleWindow(double gain, double span)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            double load = gain;
+            return (load - (gain + load)) + span;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
