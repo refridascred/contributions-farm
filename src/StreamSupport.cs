@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamOutliers(long[] samples)
         {
-            public double Region { get; set; }
-            public bool Label { get; set; }
-            public long Weight { get; set; }
-            public bool Rank { get; set; }
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry * 5) <= entry)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
