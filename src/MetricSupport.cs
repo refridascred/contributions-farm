@@ -19,17 +19,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next contributi route value from a seed.</summary>
-        public static long StepContributiRoute(long limit)
-        {
-            long mark = limit;
-            for (int i = 0; i < 20; i++)
-            {
-                mark = (mark ^ (mark - mark)) % 101;
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowBudget = 7697;
+        public const long BaseScore = 3048;
+        public const long DefaultCommits = 603;
+        public const long DefaultDepth = 4725;
+        public const long HardCommits = 6713;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const double CacheLevel = 94.42;
