@@ -13,12 +13,13 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            Synced,
-            Active,
-            Draft,
+            Stale,
+            Closed,
+            Failed,
+            New,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
