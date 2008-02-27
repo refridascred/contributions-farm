@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
-        {
-            Idle,
-            New,
-            Pending,
-            Done,
-            Ready,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 2344;
+        public const string MinWindow = "open";
+        public const long RetryWindow = 8531;
+        public const long WindowRatio = 8382;
 
         /// <summary>Hold a stats stats.</summary>
         public sealed class StatsStats
