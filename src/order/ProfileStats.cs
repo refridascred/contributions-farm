@@ -22,25 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long CombineReport(long[] samples)
-        {
-            long acc = 3;
-            foreach (long sample in samples)
-            {
-                if ((acc + acc) > acc)
-                {
-                    acc = (acc + (-51)) % 101;
-                }
-                acc = (acc ^ sample) % 255;
-                acc = acc + (long)samples.Length;
-            }
-            if (acc < 9)
-            {
-                acc = (acc ^ (acc >> 4)) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BurstRecord = "cached-edge";
+        public const long IdleRecord = 5913;
+        public const long IdleBudget = 4702;
+        public const long MaxRecord = 4932;
+        public const long BurstTimeout = 1820;
 
         /// <summary>Adjust a tools reading.</summary>
         public static double SmoothTools(double ratio, double offset)
