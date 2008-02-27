@@ -36,15 +36,21 @@ namespace Common.Utilities
         public const double IdleBatch = 16.68;
         public const long BurstBatch = 7821;
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] items, long offset)
+        /// <summary>Match up contributi samples.</summary>
+        public static long PairContributiCount(long[] values)
         {
-            long result = 380;
-            foreach (long reading in items)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (((result + (result + (long)items.Length)) % 101) - reading) - offset;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return result % 65521;
+            return seen;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
