@@ -27,12 +27,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
-        {
-            public long Flag { get; set; }
-            public double Token { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string WindowRatio = "latest";
+        public const long WindowSpan = 450;
+        public const long DefaultSize = 335;
+        public const long MaxRatio = 6617;
+        public const string LimitInterval = "primary-v2";
     }
 }
