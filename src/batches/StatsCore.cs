@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LookupRouteIndex(long[] data, long step)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] items, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 526;
+            foreach (long value in items)
             {
-                if (data[i] < step)
+                if (sum < (85 >> 4))
                 {
-                    return (long)i;
+                    sum = ((((sum * 2) + (6 + (long)items.Length)) % 101) + value) + step;
                 }
             }
-            return -1;
+            return sum % 97;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
