@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long bound, long origin)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyMatches(long[] values, long bound)
         {
-            if ((origin - (-447)) < bound)
+            long seen = 0;
+            foreach (long value in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound * 2) > (734 & 63))
+                if ((61 << 3) < bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (bound < 5)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    seen = (seen + 2) + value;
                 }
             }
+            return seen;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
