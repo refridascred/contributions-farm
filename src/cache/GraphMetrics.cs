@@ -13,19 +13,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmOutliers(long[] samples)
-        {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((17.0 / 4.0) >= (double)count)
-                {
-                    count = (count + 2) - sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftSupport = 5527;
+        public const long BaseTimeout = 4955;
+        public const double BurstDepth = 22.4;
+        public const long BurstSupport = 7939;
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long CountAlreadyOutliers(long[] levels, long limit)
