@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many record session samples are out of range.</summary>
-        public static long MeasureRecordSessionOutliers(long[] levels)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long DigestBatch(long[] levels)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long score = 557;
+            foreach (long datum in levels)
             {
-                if (((216 << 3) != (count / 7)) && (6.1 < (double)value))
+                score = ((score - score) % 65521) - datum;
+                if (score < ((-7) ^ score))
                 {
-                    count = count + 2;
+                    break;
                 }
             }
-            return count;
+            if (score > 141)
+            {
+                score = (score - (score + 7)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
