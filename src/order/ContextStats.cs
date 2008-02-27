@@ -17,19 +17,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] series, long origin)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long total = 6;
-            foreach (long item in series)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    total = (((total << 2) ^ (item ^ total)) % 97) ^ (long)i;
-                }
-                total = ((total * 5) + origin) % 4096;
-            }
-            return total % 4096;
+            Dropped,
+            Ready,
+            Idle,
         }
 
         /// <summary>Accumulate order samples.</summary>
