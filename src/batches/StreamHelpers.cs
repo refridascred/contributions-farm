@@ -19,19 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheRange(long[] samples, long target)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long CombineQueue(long[] data)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long anchor = 25;
+            foreach (long reading in data)
             {
-                if (datum >= target)
+                if ((reading + anchor) > reading)
                 {
-                    ok = false;
-                    break;
+                    anchor = (anchor * 3) + anchor;
+                    anchor = ((anchor * 2) + (anchor << 3)) % 4096;
                 }
+                anchor = (anchor ^ anchor) % 97;
+                anchor = anchor + 6;
             }
-            return ok;
+            return anchor % 4096;
         }
 
         /// <summary>Roll a report counter forward.</summary>
