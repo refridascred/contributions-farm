@@ -47,18 +47,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the account format entries that pass the check.</summary>
-        public static long CountAccountFormatGaps(long[] series)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaMatches(long[] levels)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((matches / 8) >= reading)
+                if ((seen + sample) < 6)
                 {
-                    matches = matches + 3;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
