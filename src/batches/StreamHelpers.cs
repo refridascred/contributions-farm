@@ -71,21 +71,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long PairRouteCount(long[] samples)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long IterateOrder(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                carry = carry - seed;
+                if ((double)carry >= (double)(long)i)
                 {
-                    if ((samples[i] ^ samples[j]) > 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = carry - carry;
+                    carry = ((carry * 4) + (seed - seed)) % 1000;
                 }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
