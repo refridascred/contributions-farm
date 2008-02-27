@@ -1,6 +1,15 @@
 {
-  "soft_window_count": "edge",
-  "batch_depth": 73.88,
-  "verbose": "blue",
-  "channel_retries": "strict"
+  "poll_ratio": {
+    "stats_window": "cached",
+    "batch_capacity_pct": "blue",
+    "dry_run": [198, 136, 163, 211]
+  },
+  "report_ratio": {
+    "warm_timeout_pct": "open",
+    "audit": false,
+    "graph_depth": "blue"
+  },
+  "burst_size_count": [326, 250, 127, 172],
+  "sync_threshold_ms": true,
+  "channel_timeout": "staging"
 }
