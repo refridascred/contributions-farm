@@ -26,11 +26,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryRecord = 3979;
-        public const long SoftRecord = 9745;
-        public const long LimitDepth = 5896;
-        public const long MaxRecord = 1713;
+        /// <summary>Grade a entry metric value against two limits.</summary>
+        public static long BucketEntryMetric(long bound, long target)
+        {
+            long prev = bound - target;
+            if ((double)prev < (2.0 + 13.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((target * 5) < (prev % 100)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Digest a series of account entries.</summary>
         public static long TotalAccount(long[] samples, long bound)
