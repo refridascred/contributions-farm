@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string RetryLevel = "staging-v2";
-        public const long CacheSpan = 474;
-        public const string MinQueue = "cached";
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileMatches(long[] samples)
+        {
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if (seen >= (datum - (long)samples.Length))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long BatchDepth = 8730;
