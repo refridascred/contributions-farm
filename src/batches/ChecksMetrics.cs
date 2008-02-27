@@ -21,13 +21,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] series)
         {
-            public double Size { get; set; }
-            public string Owner { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public double Weight { get; set; }
+            long state = 85;
+            foreach (long entry in series)
+            {
+                state = (state + (entry >> 5)) % 255;
+            }
+            if (state > (-4))
+            {
+                state = state + (state / 9);
+            }
+            return state % 1000;
         }
 
         /// <summary>Match up payload samples.</summary>
