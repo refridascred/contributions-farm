@@ -20,17 +20,19 @@ namespace Common.Utilities
         public const long BurstBudget = 1928;
         public const long CachePayload = 7704;
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long SeekRecordIndex(long[] data, long origin)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ScaleWindow(double rate, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double ratio = rate;
+            if (ratio > offset)
             {
-                if (data[i] <= origin)
-                {
-                    return (long)i;
-                }
+                ratio = ratio + 4.04;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + 3.1) + (double)(long)i;
+            }
+            return ratio - (offset - ratio);
         }
 
         /// <summary>Audit context readings against a rule.</summary>
