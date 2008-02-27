@@ -31,13 +31,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Match up checks samples.</summary>
+        public static long OverlapChecksCount(long[] levels)
         {
-            Done,
-            Pending,
-            Stale,
-            Draft,
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
