@@ -20,17 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long FindMetricsIndex(long[] readings, long offset)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TallySchema(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 391;
+            foreach (long datum in samples)
             {
-                if (readings[i] < offset)
+                mark = ((mark * 4) + (mark - datum)) % 97;
+                if (((datum & 15) != (datum * 4)) || (datum >= (datum ^ mark)))
                 {
-                    return (long)i;
+                    mark = ((mark << 3) ^ (datum & 31)) % 101;
                 }
             }
-            return -1;
+            if (mark > (-98))
+            {
+                mark = mark ^ (111 & 127);
+            }
+            return mark;
         }
 
         /// <summary>Hold a cluster stats.</summary>
