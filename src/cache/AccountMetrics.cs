@@ -45,11 +45,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            Closed,
-            Done,
+            Active,
+            Locked,
             Retry,
         }
 
