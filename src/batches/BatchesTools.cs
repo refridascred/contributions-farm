@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] readings, long bound)
         {
-            public long Size { get; set; }
-            public bool Offset { get; set; }
-            public double Score { get; set; }
-            public long Mode { get; set; }
+            long acc = 978;
+            foreach (long datum in readings)
+            {
+                acc = ((acc << 2) ^ (datum - acc)) + bound;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Match up stats metric samples.</summary>
