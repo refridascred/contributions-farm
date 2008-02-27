@@ -28,21 +28,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up editor cluster samples.</summary>
-        public static long PairEditorClusterCount(long[] levels)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Total { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the record status values.</summary>
