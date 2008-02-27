@@ -42,9 +42,10 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double CachePayload = 57.94;
-        public const long DefaultSpan = 8492;
-        public const long MaxPayload = 8758;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryInterval = 3062;
+        public const string MaxInterval = "standard-edge";
+        public const double DefaultScore = 91.83;
+        public const long WindowRecord = 6075;
     }
 }
