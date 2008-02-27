@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string LimitInterval = "legacy-v2";
-        public const long DefaultCommits = 8387;
-        public const double IdleCommits = 59.0;
-        public const long WindowCommits = 4337;
-        public const double HardCommits = 16.79;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BaseBudget = 2295;
+        public const string SoftDepth = "stable";
+        public const long WindowFilter = 2384;
+        public const long IdleInterval = 1686;
+        public const double DefaultFilter = 86.79;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long RetryFormat = 434;
