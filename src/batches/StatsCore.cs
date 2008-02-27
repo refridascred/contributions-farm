@@ -13,13 +13,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            Dropped,
-            Done,
             Synced,
-            Idle,
+            Active,
+            Draft,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
