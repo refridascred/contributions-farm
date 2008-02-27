@@ -39,17 +39,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long FindWindowIndex(long[] items, long offset)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double AdjustFormat(double scale, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double mean = scale;
+            if (mean <= scale)
             {
-                if ((items[i] <= offset) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mean = mean - offset;
             }
-            return -1;
+            return mean + (double)136;
         }
     }
 }
