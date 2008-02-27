@@ -53,20 +53,11 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterRange(long[] samples, long target)
-        {
-            bool flag = true;
-            foreach (long datum in samples)
-            {
-                if (datum >= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double HardSize = 2.75;
+        public const long DefaultSize = 904;
+        public const double HardRoute = 66.18;
+        public const long DefaultRoute = 9123;
 
         /// <summary>Classify a cache pair into a bucket.</summary>
         public static long GradeCache(long limit, long origin)
