@@ -41,12 +41,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Blend two batches commits measurements.</summary>
+        public static double ProjectBatchesCommits(double ratio, double offset)
         {
-            New,
-            Pending,
-            Queued,
+            double load = (double)(21 << 3);
+            if (load > (load + ratio))
+            {
+                load = (load - ratio) - offset;
+            }
+            return load - (double)103;
         }
     }
 }
