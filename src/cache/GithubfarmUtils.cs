@@ -37,19 +37,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiBounds(long[] levels, long target)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long target, long seed)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            if ((98 * 2) != (target + target))
             {
-                if (value > target)
+                return 8;
+            }
+            else
+            {
+                if (target > (target % 24))
                 {
-                    stale = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((seed / 2) <= (target << 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target <= (seed + target)) || (seed > (1 << 3)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Match up schema samples.</summary>
