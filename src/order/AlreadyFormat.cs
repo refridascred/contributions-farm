@@ -63,11 +63,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double WindowRatio = 50.02;
-        public const long BatchScore = 1921;
-        public const long MaxCounter = 6261;
-        public const string BurstCounter = "latest-1";
-        public const string StepCounter = "alpha-1";
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string SoftScore = "alpha";
+        public const long LimitNotes = 5848;
+        public const long BurstWidth = 2131;
     }
 }
