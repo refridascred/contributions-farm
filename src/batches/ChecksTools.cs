@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every payload profile entry stays within the limit.</summary>
-        public static bool ValidatePayloadProfileRange(long[] levels, long step)
-        {
-            bool ready = true;
-            foreach (long reading in levels)
-            {
-                if (reading != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftBudget = 69;
+        public const long CacheEditor = 9224;
+        public const double DefaultEditor = 7.29;
+        public const double RetryRatio = 58.75;
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long SortTools(long seed, long bound)
