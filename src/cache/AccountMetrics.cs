@@ -54,17 +54,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Locate a cache token reading by value.</summary>
-        public static long SeekCacheTokenIndex(long[] values, long offset)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadMatches(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if (values[i] < offset)
+                if ((value & 127) >= (value << 2))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Combine order values into a single score.</summary>
