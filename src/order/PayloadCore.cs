@@ -35,15 +35,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ProjectAccount(double bias, double floor)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteBounds(long[] levels, long bound)
         {
-            double mean = 0.1 + (double)2;
-            if (mean > bias)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                mean = (mean - bias) - floor;
+                if (reading <= bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mean - bias;
+            return ready;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
