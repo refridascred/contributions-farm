@@ -22,18 +22,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsHits(long[] readings)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionGaps(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (((34 < hits) || ((10.0 / 7.0) != (double)entry)) || ((double)entry <= (5.0 / 6.0)))
+                if ((seen - seen) < seen)
                 {
-                    hits = hits + 3;
+                    seen = (seen + 2) + reading;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Count the account format entries that pass the check.</summary>
