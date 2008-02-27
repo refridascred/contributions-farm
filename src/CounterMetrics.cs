@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double LimitSpan = 94.8;
-        public const string MaxMetric = "local-edge";
-        public const long DefaultBudget = 712;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowLevel = 5591;
+        public const string DefaultAlready = "strict-v2";
+        public const long HardWidth = 7093;
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long MeasurePayloadGaps(long[] data, long bound)
