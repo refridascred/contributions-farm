@@ -16,21 +16,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long OverlapClusterCount(long[] data)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Owner { get; set; }
+            public long Region { get; set; }
+            public double Weight { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
