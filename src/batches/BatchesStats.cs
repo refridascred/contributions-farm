@@ -14,19 +14,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool VerifyCounterBounds(long[] values, long bound)
+        /// <summary>Project the next tools value.</summary>
+        public static double BlendTools(double weight, double bias)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            double bias2 = (double)27 * 5.1;
+            if (bias2 > (bias * 5.8))
             {
-                if (sample >= bound)
-                {
-                    stale = false;
-                    break;
-                }
+                bias2 = bias2 + (bias2 + weight);
             }
-            return stale;
+            else
+            {
+                bias2 = bias2 + (bias2 + weight);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = bias2 + (double)(long)i;
+            }
+            return bias2 + bias2;
         }
 
         /// <summary>Describe the checks class values.</summary>
