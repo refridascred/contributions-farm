@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long offset, long bound)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long PairMetricCount(long[] items)
         {
-            long delta = offset - bound;
-            if (((delta + delta) >= (offset * 4)) || ((bound * 4) < ((-32) - bound)))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (2.2 > (double)delta)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((15.0 - 9.0) < (double)bound) && ((15.0 - 3.0) != (double)offset))
+                    if ((items[i] + items[j]) > 8)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Digest a series of report entries.</summary>
