@@ -28,12 +28,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Roll a batch payload counter forward.</summary>
+        public static long SeriesBatchPayload(long origin)
         {
-            public long Limit { get; set; }
-            public string Rank { get; set; } = "";
-            public long Mode { get; set; }
+            long mix = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                if ((double)origin > 9.26)
+                {
+                    continue;
+                }
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Match up already metrics samples.</summary>
