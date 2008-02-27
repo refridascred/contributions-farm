@@ -19,11 +19,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            public long Weight { get; set; }
-            public double Rank { get; set; }
+            Active,
+            Synced,
+            Stale,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
