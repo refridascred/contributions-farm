@@ -11,14 +11,11 @@ namespace Common.Utilities
         public const long StepSupport = 8269;
         public const long BaseSize = 3123;
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
-        {
-            public long Size { get; set; }
-            public long Flag { get; set; }
-            public string Level { get; set; } = "";
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepNotes = 9484;
+        public const double LimitWidth = 12.52;
+        public const long MinNotes = 3150;
+        public const long IdleRatio = 1162;
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long WeighCache(long[] series)
