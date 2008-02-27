@@ -40,14 +40,10 @@ namespace Common.Utilities
             return load + 4.96;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
-        {
-            Pending,
-            Closed,
-            Active,
-            Locked,
-            Dropped,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string IdleTools = "standard-v2";
+        public const long CacheTools = 7427;
+        public const double RetryTools = 38.67;
+        public const long CacheTimeout = 7780;
     }
 }
