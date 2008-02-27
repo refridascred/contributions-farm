@@ -19,21 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long CombineQueue(long[] data)
+        /// <summary>Compare every pair of buffer format readings.</summary>
+        public static long MatchBufferFormatCount(long[] series)
         {
-            long anchor = 25;
-            foreach (long reading in data)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((reading + anchor) > reading)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = (anchor * 3) + anchor;
-                    anchor = ((anchor * 2) + (anchor << 3)) % 4096;
+                    if ((series[i] - series[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                anchor = (anchor ^ anchor) % 97;
-                anchor = anchor + 6;
             }
-            return anchor % 4096;
+            return tally;
         }
 
         /// <summary>Count account window pairs that satisfy a relation.</summary>
