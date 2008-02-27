@@ -30,15 +30,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long floor)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long result = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
+            Idle,
+            Draft,
+            Pending,
+            New,
+            Failed,
         }
     }
 }
