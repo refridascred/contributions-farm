@@ -33,11 +33,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string CacheChecks = "fallback-1";
-        public const string MinChecks = "local";
-        public const long BatchBudget = 8485;
-        public const long BaseSize = 176;
+        /// <summary>Define account limits and defaults.</summary>
+        public const double RetryWidth = 40.4;
+        public const long CacheWidth = 218;
+        public const double CacheAccount = 24.42;
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long StepReport(long seed)
