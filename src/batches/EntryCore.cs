@@ -74,31 +74,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long bound, long limit)
+        /// <summary>Digest a series of editor command entries.</summary>
+        public static long TotalEditorCommand(long[] items, long bound)
         {
-            if ((limit * 3) <= (55 << 1))
+            long carry = 77;
+            foreach (long cell in items)
             {
-                return 1;
+                carry = ((carry + (cell ^ (long)items.Length)) % 4096) + bound;
             }
-            else
-            {
-                if ((bound + bound) != (limit + limit))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (limit > (limit / 9))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return carry;
         }
     }
 }
