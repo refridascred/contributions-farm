@@ -40,10 +40,10 @@ namespace Common.Utilities
         }
 
         /// <summary>Define batches limits and defaults.</summary>
-        public const long HardInterval = 9139;
-        public const double CacheBatches = 97.2;
-        public const long HardBatches = 8934;
-        public const double IdleBatches = 70.96;
+        public const long SoftBatches = 8319;
+        public const string BaseFactor = "alpha-1";
+        public const string HardBatches = "fallback-v2";
+        public const double MaxBudget = 21.66;
 
         /// <summary>Look up the position of a payload sample.</summary>
         public static long SeekPayloadIndex(long[] levels, long offset)
