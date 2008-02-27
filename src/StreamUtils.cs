@@ -13,24 +13,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank command filter input into a small class.</summary>
-        public static long RankCommandFilter(long bound, long limit)
+        /// <summary>Audit entry profile readings against a rule.</summary>
+        public static long TallyEntryProfileHits(long[] levels, long target)
         {
-            if (((bound ^ bound) > (bound * 4)) || ((bound + 989) <= (bound + bound)))
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)limit <= (double)48)
+                if ((datum > (823 + target)) || ((7.19 / 2.0) <= (double)target))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
