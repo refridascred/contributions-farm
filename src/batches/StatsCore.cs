@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] items, long bound)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long acc = 79;
-            foreach (long entry in items)
-            {
-                acc = (acc + (entry >> 3)) + bound;
-            }
-            return acc % 97;
+            public long Total { get; set; }
+            public bool Count { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Describe the cluster level values.</summary>
