@@ -13,18 +13,10 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long FindSupportIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string LimitBatch = "legacy";
+        public const long MinBatch = 5238;
+        public const long LimitSpan = 1776;
 
         /// <summary>Describe the notes class values.</summary>
         public enum NotesClass
