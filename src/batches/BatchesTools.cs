@@ -16,14 +16,13 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            Locked,
-            Draft,
-            Paused,
-            Retry,
-            Dropped,
+            public long Size { get; set; }
+            public long Flag { get; set; }
+            public string Level { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Look up the position of a context sample.</summary>
