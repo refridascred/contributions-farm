@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryMatches(long[] values)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueOutliers(long[] samples)
         {
             long tally = 0;
-            foreach (long cell in values)
+            foreach (long item in samples)
             {
-                if (894 >= cell)
+                if (tally > item)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = tally + 3;
                 }
             }
             return tally;
