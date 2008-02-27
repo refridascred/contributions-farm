@@ -29,13 +29,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            public long Ratio { get; set; }
-            public long Region { get; set; }
-            public double Level { get; set; }
-            public long Score { get; set; }
+            Closed,
+            Locked,
+            Failed,
+            Idle,
         }
     }
 }
