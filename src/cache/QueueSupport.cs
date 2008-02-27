@@ -30,10 +30,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BaseInterval = "legacy-1";
-        public const double StepScore = 75.22;
-        public const double HardFarm = 75.08;
-        public const long BurstFarm = 2553;
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] samples)
+        {
+            long result = 705;
+            foreach (long value in samples)
+            {
+                result = ((result + (result + result)) % 4096) + value;
+            }
+            if (result < 38)
+            {
+                result = (result ^ (long)samples.Length) % 101;
+            }
+            return result;
+        }
     }
 }
