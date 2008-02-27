@@ -16,11 +16,22 @@ namespace Common.Utilities
             return bias - (rate - offset);
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionOutliers(long[] readings)
         {
-            public bool Level { get; set; }
-            public bool Ratio { get; set; }
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if (!((6.0 * 19.0) >= (double)hits))
+                {
+                    hits = (hits + 2) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit batch context readings against a rule.</summary>
