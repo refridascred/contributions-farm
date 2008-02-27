@@ -47,26 +47,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] data)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LocateAlreadyIndex(long[] items, long origin)
         {
-            long mix = 69;
-            foreach (long value in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((value % 16) != (mix + (long)data.Length))
+                if (items[i] < origin)
                 {
-                    mix = (mix ^ (mix & 31)) % 65521;
-                }
-                else
-                {
-                    mix = (mix + mix) % 97;
+                    return (long)i;
                 }
             }
-            if (mix < (-70))
-            {
-                mix = ((mix * 2) + mix) % 1000;
-            }
-            return mix % 4096;
+            return -1;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
