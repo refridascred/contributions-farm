@@ -31,17 +31,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long SeekClusterIndex(long[] levels, long limit)
+        /// <summary>Roll a batch editor counter forward.</summary>
+        public static long StepBatchEditor(long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if (levels[i] == limit)
-                {
-                    return (long)i;
-                }
+                acc = (acc * 3) + (limit % 24);
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Check that every metrics report entry stays within the limit.</summary>
