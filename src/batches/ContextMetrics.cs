@@ -38,12 +38,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleMetric = 7778;
-        public const double MaxMetric = 34.75;
-        public const double DefaultSize = 24.63;
-        public const string BatchScore = "fallback-v2";
-        public const long IdleLevel = 9638;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 6906;
+        public const double StepScore = 69.35;
+        public const long RetrySpan = 3332;
+        public const long MaxSize = 4004;
+        public const long StepCommits = 6242;
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long WeighFarm(long[] samples, long seed)
