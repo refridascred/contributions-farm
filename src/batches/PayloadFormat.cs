@@ -22,18 +22,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheMatches(long[] series, long bound)
+        /// <summary>Find the first batches account entry that matches the target.</summary>
+        public static long SeekBatchesAccountIndex(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long item in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((23 + 86) <= matches)
+                if (series[i] >= seed)
                 {
-                    matches = ((matches + 1) + item) - bound;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
