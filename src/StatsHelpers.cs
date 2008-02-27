@@ -57,15 +57,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Iterate the tools support series from a seed.</summary>
-        public static long DeriveToolsSupport(long bound)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelHits(long[] samples, long target)
         {
-            long result = bound;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                result = ((result * 3) + (long)i) % 4093;
+                if ((15.0 - 6.7) <= (double)value)
+                {
+                    seen = (seen + 1) + target;
+                }
             }
-            return result;
+            return seen;
         }
     }
 }
