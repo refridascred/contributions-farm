@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Match up stream samples.</summary>
-        public static long OverlapStreamCount(long[] readings)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 35;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((46 + 80) < (result & 1))
                 {
-                    if ((readings[i] + readings[j]) != 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = ((result << 3) ^ (reading + result)) % 101;
+                }
+                if ((result + result) > reading)
+                {
+                    break;
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Match up entry already samples.</summary>
