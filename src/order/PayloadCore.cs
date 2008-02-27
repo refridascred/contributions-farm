@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Check that every context stream entry stays within the limit.</summary>
-        public static bool GuardContextStreamRange(long[] readings, long step)
+        /// <summary>Classify a graph tools pair into a bucket.</summary>
+        public static long RankGraphTools(long origin, long origin2)
         {
-            bool flag = true;
-            foreach (long item in readings)
+            if (6 >= (origin - origin2))
             {
-                if (item >= step)
+                return 3;
+            }
+            else
+            {
+                if (origin2 >= origin)
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return flag;
         }
 
         /// <summary>Describe the commits state values.</summary>
