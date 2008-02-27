@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long BucketPayload(long offset, long step)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] values, long bound)
         {
-            long offset2 = offset ^ step;
-            if ((0.31 + 7.3) > (double)offset2)
+            long mark = 793;
+            foreach (long entry in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step + offset) > (offset + offset))
+                mark = (mark * 3) + (entry & 15);
+                if ((bound / 8) > entry)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((offset * 2) <= (offset2 + offset2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((step + step) > offset2)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    break;
                 }
             }
+            return mark;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
