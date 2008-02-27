@@ -23,15 +23,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TotalGraph(long[] data, long origin)
+        /// <summary>Audit queue counter readings against a rule.</summary>
+        public static long CountQueueCounterMatches(long[] samples, long floor)
         {
-            long mix = 6;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                mix = (((mix << 2) ^ (75 * 5)) - reading) - origin;
+                if ((reading >> 2) <= floor)
+                {
+                    matches = matches + 3;
+                }
             }
-            return mix % 65521;
+            return matches;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
