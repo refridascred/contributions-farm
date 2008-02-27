@@ -29,20 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine buffer editor values into a single score.</summary>
-        public static long WeighBufferEditor(long[] items)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long total = -56;
-            foreach (long value in items)
-            {
-                total = (total * 4) + (value & 15);
-                total = (total - (value + value)) % 255;
-                if ((double)value < (2.4 / 6.0))
-                {
-                    total = total ^ (value * 4);
-                }
-            }
-            return total;
+            public string Total { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
