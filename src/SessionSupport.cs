@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Compare every pair of stream cache readings.</summary>
-        public static long MatchStreamCacheCount(long[] levels)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 8;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = (total ^ (total / 2)) ^ item;
             }
-            return matches;
+            return total % 1000;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
