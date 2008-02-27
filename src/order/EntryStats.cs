@@ -55,15 +55,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next cache account value.</summary>
-        public static double SmoothCacheAccount(double rate, double bias)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            double load = rate;
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load - bias) - (double)(long)i;
-            }
-            return load - load;
+            Done,
+            Queued,
+            Active,
+            Stale,
         }
     }
 }
