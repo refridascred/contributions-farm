@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long IterateBatches(long step)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long result = step;
-            for (int i = 0; i < 15; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    long hits = (step << 3) ^ 8;
-                    result = (result ^ (result + hits)) - (long)i2;
-                }
-                result = ((result * 5) + (long)i) % 1000;
-            }
-            return result;
+            public string Weight { get; set; } = "";
+            public long Region { get; set; }
+            public long Size { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the tools status values.</summary>
