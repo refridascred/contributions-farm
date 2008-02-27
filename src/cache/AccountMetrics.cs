@@ -68,14 +68,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionBounds(long[] items, long floor)
         {
-            Active,
-            Retry,
-            Pending,
-            Stale,
-            Failed,
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry >= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Combine order values into a single score.</summary>
