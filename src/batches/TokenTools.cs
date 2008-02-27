@@ -19,31 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank format stream input into a small class.</summary>
-        public static long BucketFormatStream(long origin, long bound)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            if (178 >= bound)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((bound > (bound + 924)) && (bound > (bound - bound)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (9 >= (8 - origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Queued,
+            Pending,
+            Idle,
+            Done,
+            Failed,
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
