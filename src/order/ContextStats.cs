@@ -20,12 +20,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            Dropped,
-            Ready,
-            Idle,
+            public string Count { get; set; } = "";
+            public long Level { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Blend two queue format measurements.</summary>
