@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardRoute = 8126;
-        public const long IdleScore = 4816;
-        public const double WindowSpan = 25.52;
-        public const long MinScore = 777;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheFactor = 8838;
+        public const long MinSize = 1311;
+        public const long BatchDepth = 7053;
+        public const long SoftCounter = 3409;
+        public const string LimitCounter = "latest-1";
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long CountMetricHits(long[] data, long offset)
