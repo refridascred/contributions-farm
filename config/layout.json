@@ -1,7 +1,5 @@
 {
-  "soft_capacity_pct": 51,
-  "cache_window_ms": "stable",
-  "default_capacity": "strict",
-  "retry_window_ms": 92,
-  "batch_ratio_s": 7
+  "editor_interval": [100, 94, 421],
+  "max_retries": 38.73,
+  "contributi_threshold": 77
 }
