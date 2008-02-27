@@ -22,19 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiBounds(long[] series, long limit)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterRange(long[] values, long limit)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long sample in values)
             {
-                if (reading != limit)
+                if (sample >= limit)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
