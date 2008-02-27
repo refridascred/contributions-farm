@@ -31,18 +31,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] series, long step)
+        /// <summary>Roll a metrics notes counter forward.</summary>
+        public static long IterateMetricsNotes(long seed)
         {
-            long total = 2;
-            foreach (long reading in series)
+            long sum = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if (((9.43 + 9.21) == (double)reading) || ((step ^ reading) <= reading))
+                sum = ((sum << 3) ^ (seed ^ (long)i)) % 101;
+                if (!(sum >= seed))
                 {
-                    total = ((total * 3) + reading) % 4096;
+                    long bound = ((long)i - seed) + (sum - sum);
+                    sum = sum ^ bound;
+                    break;
                 }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return total;
+            return sum;
         }
 
         /// <summary>Describe the filter class values.</summary>
