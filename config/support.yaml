@@ -1,14 +1,7 @@
 # support settings
-tools_capacity: fallback
-metric_interval: 30
-graph_window:
-  format_retries: true
-  batch_ratio: 49.15
-  retry_threshold_ms: fallback
-  format_capacity:
-    - 447
-    - 58
-    - 308
-    - 153
-  idle_ratio_pct: false
-retry_ttl_count: 71
+commits_size: true
+default_timeout_s: 60
+retry_interval:
+  - legacy
+  - legacy
+  - standard
