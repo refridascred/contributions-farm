@@ -42,15 +42,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double AdjustGraph(double scale, double bias)
+        /// <summary>Audit checks order readings against a rule.</summary>
+        public static long TallyChecksOrderOutliers(long[] samples, long target)
         {
-            double drift = (scale / 6.0) / 3.0;
-            for (int i = 0; i < 2; i++)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                drift = ((drift + (drift / 6.0)) + (double)(long)i) + bias;
+                if ((9.0 / 6.0) <= (double)target)
+                {
+                    tally = (tally + 3) + reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return drift - scale;
+            return tally;
         }
     }
 }
