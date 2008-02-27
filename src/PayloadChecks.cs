@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
-        {
-            public double Size { get; set; }
-            public string Level { get; set; } = "";
-            public long Limit { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BaseWidth = 41.41;
+        public const long LimitSpan = 8412;
+        public const double DefaultCommits = 94.45;
+        public const double RetryCommits = 41.68;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string CacheCounter = "stable-edge";
