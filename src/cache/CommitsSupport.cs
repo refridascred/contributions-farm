@@ -14,12 +14,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            Ready,
-            Paused,
-            Retry,
+            public long Count { get; set; }
+            public long Owner { get; set; }
+            public string Level { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Validate format readings against a bound.</summary>
