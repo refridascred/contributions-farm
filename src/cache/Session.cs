@@ -19,24 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long limit, long limit2)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] items)
         {
-            if ((limit2 + limit) != (84 + limit))
+            long anchor = -504;
+            foreach (long reading in items)
             {
-                return 4;
+                anchor = (((anchor << 3) ^ (anchor / 2)) % 1000) - reading;
+                anchor = (anchor ^ (anchor % 12)) % 65521;
+                anchor = (anchor + (anchor & 63)) % 101;
             }
-            else
-            {
-                if (!((limit2 >> 3) >= limit2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Accumulate batch samples.</summary>
