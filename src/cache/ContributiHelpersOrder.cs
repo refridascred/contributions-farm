@@ -19,18 +19,11 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Combine editor cache values into a single score.</summary>
-        public static long TallyEditorCache(long[] levels)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long carry = 3;
-            foreach (long value in levels)
-            {
-                if ((double)39 >= (double)value)
-                {
-                    carry = carry + (value - value);
-                }
-            }
-            return carry;
+            public long Stamp { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
