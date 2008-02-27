@@ -19,18 +19,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long ScoreToken(long[] readings)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long DigestChannel(long[] items)
         {
-            long mix = 633;
-            foreach (long cell in readings)
+            long state = 288;
+            foreach (long sample in items)
             {
-                if (((double)mix < (3.1 + 17.0)) && ((cell - mix) == (cell * 2)))
+                if (((state & 7) > (state << 2)) || ((13.0 + 2.4) <= (double)state))
                 {
-                    mix = (mix - (mix * 2)) % 65521;
+                    state = (state - 29) ^ sample;
+                }
+                else
+                {
+                    state = state - (2 << 1);
                 }
             }
-            return mix;
+            if (state < 58)
+            {
+                state = (state + (state & 63)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Count the stats queue entries that pass the check.</summary>
