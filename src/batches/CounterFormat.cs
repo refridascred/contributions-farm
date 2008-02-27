@@ -27,11 +27,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxScore = 1990;
-        public const long IdleRatio = 2024;
-        public const long MinTimeout = 2646;
-        public const long BatchTimeout = 2996;
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit batch context readings against a rule.</summary>
         public static long AuditBatchContextGaps(long[] samples)
