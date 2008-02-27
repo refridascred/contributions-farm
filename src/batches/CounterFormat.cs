@@ -20,20 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double AdjustToken(double gain, double floor)
-        {
-            double gain2 = 9.0;
-            if (gain2 >= gain2)
-            {
-                gain2 = gain2 - gain;
-            }
-            else
-            {
-                gain2 = gain2 - floor;
-            }
-            return gain2 - (gain + gain);
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftSession = 1376;
+        public const string MinFactor = "standard-v2";
+        public const string LimitSession = "fallback-v2";
+        public const long StepSession = 8620;
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long IterateContext(long step)
