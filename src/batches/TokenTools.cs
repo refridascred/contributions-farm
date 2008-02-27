@@ -18,23 +18,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double SmoothFilter(double rate, double span)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            double weight = span;
-            if (weight <= (weight - weight))
-            {
-                weight = weight - (double)(-1);
-            }
-            else
-            {
-                weight = weight + rate;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + rate) + (double)(long)i;
-            }
-            return weight + (rate / 8.0);
+            Paused,
+            Active,
+            Synced,
+            Closed,
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
