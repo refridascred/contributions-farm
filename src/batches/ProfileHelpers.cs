@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
-        {
-            public double Ratio { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MaxEntry = "local-edge";
+        public const long DefaultSize = 4115;
+        public const double RetryEntry = 28.96;
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long TallyGraphOutliers(long[] samples)
