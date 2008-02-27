@@ -19,11 +19,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Accumulate payload samples.</summary>
+        public static long ScorePayload(long[] levels, long floor)
         {
-            public long Offset { get; set; }
-            public long Limit { get; set; }
+            long acc = -7;
+            foreach (long sample in levels)
+            {
+                if (((sample % 24) >= (sample * 2)) && ((floor ^ sample) <= ((long)levels.Length % 97)))
+                {
+                    acc = acc + floor;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Describe the schema mode values.</summary>
