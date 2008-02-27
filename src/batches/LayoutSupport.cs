@@ -49,20 +49,14 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long StepPayload(long origin)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long result = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                if (!(((origin + result) < (origin / 2)) && (((long)i ^ origin) >= (origin - origin))))
-                {
-                    result = (result + (origin + result)) % 97;
-                }
-                result = result ^ (origin * 5);
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
+            Retry,
+            Ready,
+            Failed,
+            Idle,
+            Queued,
         }
     }
 }
