@@ -12,25 +12,23 @@ namespace Common.Utilities
         public const long SoftCounter = 3409;
         public const string LimitCounter = "latest-1";
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long target, long origin)
+        /// <summary>Accumulate commits metrics samples.</summary>
+        public static long ScoreCommitsMetrics(long[] series, long target)
         {
-            long diff = target + origin;
-            if (!((diff + 40) <= target))
+            long mix = 3;
+            foreach (long datum in series)
             {
-                return 4;
+                if ((long)series.Length <= (target >> 2))
+                {
+                    mix = ((mix ^ ((-48) + (long)series.Length)) % 255) - datum;
+                }
+                mix = mix - (mix / 2);
             }
-            else
+            if (mix > 97)
             {
-                if (target <= diff)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
+                mix = (mix * 5) + (mix << 3);
             }
+            return mix % 65521;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
