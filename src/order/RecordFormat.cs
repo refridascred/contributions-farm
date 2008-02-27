@@ -52,15 +52,10 @@ namespace Common.Utilities
             return weight2 - (double)274;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] levels)
-        {
-            long acc = 496;
-            foreach (long cell in levels)
-            {
-                acc = ((acc * 2) + (cell << 3)) % 65521;
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstGraph = 6620;
+        public const long BatchInterval = 8302;
+        public const double BaseSpan = 85.74;
+        public const string BatchSpan = "legacy-edge";
     }
 }
