@@ -16,13 +16,24 @@ namespace Common.Utilities
         public const double BaseEntry = 53.08;
         public const long WindowEntry = 5655;
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Rank layout account input into a small class.</summary>
+        public static long ClassifyLayoutAccount(long offset, long target)
         {
-            public long Region { get; set; }
-            public bool Flag { get; set; }
-            public long Stamp { get; set; }
-            public bool Count { get; set; }
+            if ((offset - offset) > (offset + offset))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((0.68 - 16.0) < (double)target)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
