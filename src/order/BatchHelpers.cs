@@ -28,14 +28,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
-        {
-            Paused,
-            Failed,
-            Active,
-            Synced,
-            Queued,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchStats = 3076;
+        public const long BurstStats = 7504;
+        public const long MinScore = 9556;
+        public const long SoftCount = 1514;
+        public const long RetryBudget = 9436;
     }
 }
