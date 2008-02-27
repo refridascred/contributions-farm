@@ -27,27 +27,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of checks batches readings.</summary>
-        public static long TotalChecksBatches(long[] data, long bound)
+        /// <summary>Locate a metrics support reading by value.</summary>
+        public static long LocateMetricsSupportIndex(long[] values, long bound)
         {
-            long acc = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = acc + acc;
-                if ((8.6 + 10.0) <= (double)reading)
+                if ((values[i] < bound) && ((values[i] % 2) != 0))
                 {
-                    acc = (acc + (reading % 7)) % 65521;
-                }
-                if ((reading >> 3) >= (acc / 6))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (acc > 59)
-            {
-                acc = ((acc * 2) + (bound & 63)) % 255;
-            }
-            return acc % 97;
+            return -1;
         }
 
         /// <summary>Digest a series of account entries.</summary>
