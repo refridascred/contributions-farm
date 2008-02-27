@@ -33,21 +33,21 @@ namespace Common.Utilities
             return mean - (double)21;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long RollRoute(long floor)
+        /// <summary>Match up profile samples.</summary>
+        public static long OverlapProfileCount(long[] values)
         {
-            long anchor = floor;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = ((anchor << 2) ^ ((long)i ^ floor)) % 1000;
-                anchor = ((anchor * 5) + (anchor + (long)i)) % 4096;
-                if (4 <= (anchor + floor))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    anchor = ((anchor * 5) + (long)i) % 97;
+                    if ((values[i] ^ values[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
