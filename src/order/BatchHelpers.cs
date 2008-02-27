@@ -36,15 +36,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double AdjustGithubfarm(double ratio, double floor)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            double mean = (double)235;
-            for (int i = 0; i < 6; i++)
-            {
-                mean = ((mean - (11.0 - mean)) - (double)(long)i) - floor;
-            }
-            return mean + (ratio * 7.4);
+            Paused,
+            Failed,
+            Active,
+            Synced,
+            Queued,
         }
     }
 }
