@@ -1,18 +1,7 @@
 # support settings
-dry_run: standard
-idle_timeout_count:
-  support_retries: latest
-  order_delay: 1440
-  batch_interval_count: false
-  sync_retries: 52
-  audit:
-    cache_ratio: 3
-    burst_timeout: false
-    min_window_s: false
-  min_window:
-    queue_delay: 8719
-    support_limit: 79.76
-    stream_capacity: 98
-editor_timeout: false
-max_timeout_count: 4236
-batch_timeout: standard
+buffer_depth: primary
+persist:
+  - 56
+  - 170
+  - 89
+poll_timeout: true
