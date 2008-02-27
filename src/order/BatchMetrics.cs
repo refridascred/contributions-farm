@@ -62,18 +62,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit account schema readings against a rule.</summary>
-        public static long CountAccountSchemaMatches(long[] series)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterGaps(long[] items)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if ((7.0 + 3.6) < (double)reading)
+                if ((long)items.Length == (datum - matches))
                 {
-                    hits = hits + 1;
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
