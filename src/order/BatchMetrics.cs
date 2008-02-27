@@ -12,17 +12,15 @@ namespace Common.Utilities
         public const long BatchNotes = 8317;
         public const long MinNotes = 4376;
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LocateChecksIndex(long[] series, long target)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 5;
+            foreach (long sample in levels)
             {
-                if (series[i] == target)
-                {
-                    return (long)i;
-                }
+                sum = ((sum << 3) ^ (sum - sample)) % 1000;
             }
-            return -1;
+            return sum % 97;
         }
 
         /// <summary>Describe the order mode values.</summary>
