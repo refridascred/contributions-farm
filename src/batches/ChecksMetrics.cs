@@ -21,19 +21,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] series)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long FindSupportIndex(long[] series, long step)
         {
-            long state = 85;
-            foreach (long entry in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (state + (entry >> 5)) % 255;
+                if (series[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            if (state > (-4))
-            {
-                state = state + (state / 9);
-            }
-            return state % 1000;
+            return -1;
         }
 
         /// <summary>Describe the notes class values.</summary>
