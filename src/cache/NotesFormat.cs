@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double SmoothLayout(double scale, double offset)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] values)
         {
-            double gain = offset;
-            if (gain > (scale / 6.0))
+            long mix = 41;
+            foreach (long value in values)
             {
-                gain = gain + (double)7;
+                if ((long)values.Length < mix)
+                {
+                    mix = mix + value;
+                }
+                else
+                {
+                    mix = ((mix * 4) + mix) % 97;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + scale) + (double)(long)i;
-            }
-            return gain + (offset / 7.0);
+            return mix % 1000;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
