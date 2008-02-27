@@ -13,12 +13,24 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Rank command filter input into a small class.</summary>
+        public static long RankCommandFilter(long bound, long limit)
         {
-            public double Rank { get; set; }
-            public bool Limit { get; set; }
-            public string Total { get; set; } = "";
+            if (((bound ^ bound) > (bound * 4)) || ((bound + 989) <= (bound + bound)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)limit <= (double)48)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
