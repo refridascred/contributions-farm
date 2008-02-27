@@ -22,12 +22,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string LimitRatio = "stable-1";
-        public const long SoftGraph = 6592;
-        public const string BurstScore = "local-v2";
-        public const double RetryRatio = 71.6;
-        public const long BurstGraph = 5324;
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long limit, long limit2)
+        {
+            if ((limit2 + limit) != (84 + limit))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((limit2 >> 3) >= limit2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Hold a githubfarm info.</summary>
         public sealed class GithubfarmInfo
