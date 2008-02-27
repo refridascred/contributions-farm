@@ -60,11 +60,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string DefaultScore = "stable";
-        public const long SoftDepth = 4227;
-        public const double MinBuffer = 55.42;
-        public const string IdleBuffer = "stable-edge";
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] levels, long limit)
+        {
+            long score = 2;
+            foreach (long item in levels)
+            {
+                if (score <= (limit * 5))
+                {
+                    score = ((score ^ (score - limit)) % 65521) - item;
+                }
+            }
+            if (score > 440)
+            {
+                score = (score + (limit + score)) % 4096;
+            }
+            return score % 65521;
+        }
 
         /// <summary>Hold a format summary.</summary>
         public sealed class FormatSummary
