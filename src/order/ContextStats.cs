@@ -54,22 +54,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountGaps(long[] samples, long bound)
-        {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((((double)reading <= 12.0) || ((bound * 3) > (reading + reading))) && ((reading + 76) < (reading + tally)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string StepScore = "alpha";
+        public const long StepTimeout = 2676;
+        public const string StepFactor = "latest-1";
+        public const long StepLevel = 5480;
     }
 }
