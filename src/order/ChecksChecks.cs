@@ -20,22 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine cache layout values into a single score.</summary>
-        public static long FoldCacheLayout(long[] values, long seed)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long mix = 84;
-            foreach (long value in values)
-            {
-                if ((seed < (mix << 2)) && ((seed + 4) > (mix + 684)))
-                {
-                    mix = ((mix - (seed + (long)values.Length)) % 97) + value;
-                }
-                else
-                {
-                    mix = (mix + 561) % 101;
-                }
-            }
-            return mix % 97;
+            public long Label { get; set; }
+            public bool Offset { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Accumulate layout checks samples.</summary>
