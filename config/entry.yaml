@@ -1,9 +1,4 @@
 # entry settings
-warm_threshold:
-  - 477
-  - 235
-batch_retries: 40.2
-counter_window: 9267
-poll_window_pct: false
-default_interval_ms: blue
-compress: eu-west
+base_window_s: legacy
+batch_delay: primary
+retry_timeout_ms: 88
