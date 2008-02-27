@@ -1,5 +1,8 @@
 {
-  "retry_timeout_pct": 8004,
-  "max_ttl_ms": 250,
-  "idle_limit_s": [311, 409, 161]
+  "warm_window": 5.67,
+  "warm_threshold_ms": 49.72,
+  "record_size": 100,
+  "min_interval_count": 2786,
+  "verbose": 100,
+  "dry_run": ["primary", "stable", "latest", "legacy"]
 }
