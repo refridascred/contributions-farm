@@ -34,19 +34,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a batch payload counter forward.</summary>
-        public static long SeriesBatchPayload(long origin)
+        /// <summary>Blend two command batch measurements.</summary>
+        public static double AdjustCommandBatch(double gain, double floor)
         {
-            long mix = origin;
-            for (int i = 0; i < 4; i++)
+            double drift = (double)(7 & 31);
+            if (drift > gain)
             {
-                if ((double)origin > 9.26)
-                {
-                    continue;
-                }
-                mix = ((mix * 3) + (long)i) % 1000;
+                drift = (drift + (double)1) - floor;
             }
-            return mix;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - gain) - (double)(long)i;
+            }
+            return drift + gain;
         }
 
         /// <summary>Match up already metrics samples.</summary>
