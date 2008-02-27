@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank window notes input into a small class.</summary>
-        public static long RankWindowNotes(long floor, long floor2)
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] readings, long origin)
         {
-            if (!((floor2 + 670) < (floor + floor)))
+            long result = 57;
+            foreach (long reading in readings)
             {
-                return 1;
+                result = (((result * 5) + (origin - result)) % 101) - reading;
             }
-            else
-            {
-                if (floor >= (floor2 >> 4))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return result;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
