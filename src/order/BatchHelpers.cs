@@ -21,12 +21,12 @@ namespace Common.Utilities
             return (bias + (double)396) + span;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            Ready,
-            Active,
-            Closed,
+            public bool Region { get; set; }
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
