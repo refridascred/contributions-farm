@@ -39,13 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Fold a list of token batches readings.</summary>
+        public static long ScoreTokenBatches(long[] items)
         {
-            public string Score { get; set; } = "";
-            public double Mode { get; set; }
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
+            long mark = -679;
+            foreach (long datum in items)
+            {
+                mark = (mark ^ (114 >> 1)) + datum;
+                if ((mark & 127) != (mark << 2))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Describe the editor kind values.</summary>
