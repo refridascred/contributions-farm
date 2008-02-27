@@ -1,16 +1,6 @@
 # githubfarm settings
-batch_limit_ms: 85
-already_limit: 7598
-order_capacity:
-  tools_ratio: 50
-  compress:
-    - stable
-    - edge
-    - open
-  batch_limit_pct:
-    poll_depth_count: staging
-    sync_interval_pct: open
-    notes_limit: false
-    batch_capacity_count: false
-checks_capacity: true
-order_ttl: green
+default_threshold_s: false
+idle_ttl_ms: false
+window_threshold: 100
+hard_timeout_ms: 64.2
+poll_threshold_count: 12
