@@ -1,5 +1,13 @@
 # entry settings
-support_interval: 37
-stream_window: 53.93
-format_ratio: 90.78
-idle_timeout: 5407
+soft_ratio_count: strict
+context_threshold: fallback
+base_window: primary
+compress: 60
+soft_timeout_pct:
+  - legacy
+  - cached
+  - primary
+  - eu-west
+idle_threshold_s:
+  - open
+  - green
