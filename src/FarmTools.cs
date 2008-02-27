@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long SortLayout(long origin, long offset)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatRange(long[] series, long offset)
         {
-            if (offset > ((-413) - offset))
+            bool flag = true;
+            foreach (long datum in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset < (0.57 * 8.71))
+                if (datum < offset)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
