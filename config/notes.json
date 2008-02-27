@@ -1,5 +1,8 @@
 {
-  "sync_delay_pct": 59.27,
-  "readonly": 1024,
-  "dry_run": "edge"
+  "already_interval": 17.57,
+  "report_timeout": "staging",
+  "default_ratio": 56.97,
+  "warm_ttl": 6825,
+  "compress": "primary",
+  "token_window": false
 }
