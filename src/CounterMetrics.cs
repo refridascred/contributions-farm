@@ -38,12 +38,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long CombineLayout(long[] readings)
         {
-            Locked,
-            Paused,
-            Failed,
+            long sum = 523;
+            foreach (long datum in readings)
+            {
+                if ((double)sum < (16.0 + 2.0))
+                {
+                    sum = (sum << 3) ^ (datum + 6);
+                }
+                if (((0.07 - 7.14) == (double)datum) && (datum < (sum & 63)))
+                {
+                    break;
+                }
+            }
+            if (sum > 1)
+            {
+                sum = (sum << 3) ^ sum;
+            }
+            return sum;
         }
     }
 }
