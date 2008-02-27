@@ -81,24 +81,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TallyCommand(long[] items)
+        /// <summary>Iterate the session notes series from a seed.</summary>
+        public static long StepSessionNotes(long origin)
         {
-            long total = 444;
-            foreach (long value in items)
+            long mark = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if ((value + 386) < (value / 3))
-                {
-                    total = (total ^ (value * 4)) % 1000;
-                    break;
-                }
-                total = (total - (value >> 1)) % 65521;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            if (total > 187)
-            {
-                total = total ^ (total * 2);
-            }
-            return total;
+            return mark;
         }
     }
 }
