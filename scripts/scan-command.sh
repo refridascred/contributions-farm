@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=412
-log "limit is ${COMMAND_LIMIT}"
+for item in strict staging green legacy; do
+    log "checking ${item}"
+done
 
-mode="${1:-standard}"
-case "${mode}" in
-    strict)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+COMMAND_LIMIT=152
+log "limit is ${COMMAND_LIMIT}"
