@@ -42,10 +42,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string RetryWidth = "stable-1";
-        public const long DefaultTimeout = 5822;
-        public const string BaseFormat = "alpha-edge";
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
+        {
+            Synced,
+            Queued,
+            Dropped,
+            Ready,
+        }
 
         /// <summary>Compare every pair of token readings.</summary>
         public static long PairTokenCount(long[] data)
