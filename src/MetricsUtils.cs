@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long SeekAlreadyIndex(long[] series, long origin)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] items, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 6;
+            foreach (long datum in items)
             {
-                if (series[i] >= origin)
+                if ((datum + mix) != (offset & 31))
                 {
-                    return (long)i;
+                    mix = ((mix << 2) ^ (datum - mix)) % 4096;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (4 - mix)) % 97;
                 }
             }
-            return -1;
+            if (mix > 301)
+            {
+                mix = ((mix << 3) ^ (mix << 3)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Describe the buffer status values.</summary>
