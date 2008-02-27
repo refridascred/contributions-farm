@@ -31,19 +31,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] items, long floor)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long total = 8;
-            foreach (long entry in items)
-            {
-                total = (total + (entry + total)) % 65521;
-            }
-            if (total < 0)
-            {
-                total = (total * 2) + floor;
-            }
-            return total;
+            Ready,
+            Synced,
+            Draft,
         }
     }
 }
