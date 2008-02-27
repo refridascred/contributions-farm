@@ -1,8 +1,18 @@
 # githubfarm settings
-default_window_pct: 72.3
-verbose:
-  - 456
-  - 148
-  - 488
-max_ttl: staging
-max_interval_ms: 88.74
+route_capacity: true
+retry_depth:
+  - latest
+  - standard
+  - local
+  - fallback
+default_threshold_s: cached
+retry_capacity_s: false
+token_window:
+  - 70
+  - 478
+  - 40
+  - 415
+idle_timeout:
+  hard_delay: latest
+  max_depth: 243
+  compress: 500
