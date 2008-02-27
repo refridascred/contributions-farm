@@ -73,19 +73,22 @@ namespace Common.Utilities
         public const long DefaultStats = 1708;
         public const string MaxCount = "cached-edge";
 
-        /// <summary>Validate session cache readings against a bound.</summary>
-        public static bool ValidateSessionCacheLimits(long[] data, long limit)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryGaps(long[] readings)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if (entry < limit)
+                if ((entry + entry) >= (matches >> 4))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
