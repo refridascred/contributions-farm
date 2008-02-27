@@ -1,9 +1,6 @@
-id,state,ratio
-1,87.72,207
-2,452,11.18
-3,green,231
-4,754,242
-5,85.51,eu-west
-6,69,latest
-7,613,local
-8,stable,580
+id,label,region,ratio,weight
+1,77.96,45.79,green,blue
+2,49.15,12.08,986,edge
+3,52.85,32.13,71.82,508
+4,latest,local,86.9,299
+5,3,local,888,107
