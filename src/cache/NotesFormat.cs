@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyBounds(long[] data, long limit)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryRange(long[] samples, long limit)
         {
-            bool found = true;
-            foreach (long datum in data)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if (datum >= limit)
+                if (entry >= limit)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
