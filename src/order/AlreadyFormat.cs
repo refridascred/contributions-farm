@@ -63,18 +63,21 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of commits githubfarm entries.</summary>
-        public static long TotalCommitsGithubfarm(long[] values, long offset)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long OverlapChecksCount(long[] readings)
         {
-            long acc = 436;
-            foreach (long value in values)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (895 <= (acc >> 4))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = ((acc << 3) ^ (value >> 4)) + offset;
+                    if ((readings[i] - readings[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return acc;
+            return count;
         }
     }
 }
