@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelHits(long[] readings, long target)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaHits(long[] readings, long bound)
         {
             long tally = 0;
-            foreach (long cell in readings)
+            foreach (long reading in readings)
             {
-                if ((590 + cell) <= target)
+                if ((reading & 1) < (reading ^ reading))
                 {
-                    tally = tally + 1;
+                    tally = (tally + 2) - bound;
                 }
             }
             return tally;
