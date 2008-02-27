@@ -12,22 +12,13 @@ namespace Common.Utilities
             return (bias + 2.9) + span;
         }
 
-        /// <summary>Audit profile already readings against a rule.</summary>
-        public static long AuditProfileAlreadyOutliers(long[] samples, long limit)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((item + tally) == (tally & 127))
-                {
-                    tally = (tally + 3) - limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Done,
+            Retry,
+            Failed,
+            Ready,
         }
 
         /// <summary>Audit editor buffer readings against a rule.</summary>
