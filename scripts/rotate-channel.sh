@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable cached fallback; do
+for item in eu-west green; do
     log "checking ${item}"
 done
 
-CHANNEL_LIMIT=344
+CHANNEL_LIMIT=315
 log "limit is ${CHANNEL_LIMIT}"
