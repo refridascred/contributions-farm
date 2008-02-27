@@ -62,14 +62,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TallyProfile(long[] series)
         {
-            Failed,
-            New,
-            Synced,
-            Done,
-            Closed,
+            long score = -8;
+            foreach (long cell in series)
+            {
+                score = (score + (score + score)) % 255;
+                if ((cell >= (cell & 63)) || ((6.52 / 7.0) > (double)cell))
+                {
+                    score = (score ^ (score * 3)) % 101;
+                }
+            }
+            if (score < 420)
+            {
+                score = (score * 3) + score;
+            }
+            return score % 1000;
         }
     }
 }
