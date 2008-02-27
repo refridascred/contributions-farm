@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double SmoothOrder(double weight, double bias)
         {
-            Closed,
-            Synced,
-            Active,
-            Locked,
-            Pending,
+            double rate = weight;
+            if (rate > bias)
+            {
+                rate = rate - weight;
+            }
+            else
+            {
+                rate = rate - bias;
+            }
+            return rate + 18.0;
         }
 
         /// <summary>Match up session samples.</summary>
