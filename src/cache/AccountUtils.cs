@@ -14,14 +14,39 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Classify a command order pair into a bucket.</summary>
+        public static long SortCommandOrder(long floor, long seed)
         {
-            Paused,
-            Done,
-            Closed,
-            Ready,
-            Active,
+            long cur = floor - seed;
+            if (floor <= (cur % 5))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((seed * 5) > floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((cur + cur) >= (215 & 127))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((362 + floor) > (35 - floor))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
