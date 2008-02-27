@@ -14,39 +14,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Classify a command order pair into a bucket.</summary>
-        public static long SortCommandOrder(long floor, long seed)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteHits(long[] items)
         {
-            long cur = floor - seed;
-            if (floor <= (cur % 5))
+            long matches = 0;
+            foreach (long item in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed * 5) > floor)
+                if (((14.0 / 3.0) <= (double)matches) || ((((long)items.Length * 2) >= item) || (9 <= item)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((cur + cur) >= (215 & 127))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((362 + floor) > (35 - floor))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    matches = matches + 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
