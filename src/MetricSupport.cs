@@ -19,18 +19,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadOutliers(long[] values)
+        /// <summary>Derive the next contributi route value from a seed.</summary>
+        public static long StepContributiRoute(long limit)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long mark = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if ((((double)tally <= (5.0 - 8.9)) || ((item * 3) >= (49 % 97))) && ((4.1 + 0.29) != (double)item))
-                {
-                    tally = tally + 2;
-                }
+                mark = (mark ^ (mark - mark)) % 101;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
