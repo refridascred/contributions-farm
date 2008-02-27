@@ -35,11 +35,9 @@ namespace Common.Utilities
             return ratio + (double)(-249);
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string MinFactor = "staging";
-        public const long WindowQueue = 7081;
-        public const double LimitDepth = 47.5;
-        public const long WindowBudget = 4282;
-        public const string SoftQueue = "legacy";
+        /// <summary>Define order limits and defaults.</summary>
+        public const string SoftOrder = "primary-edge";
+        public const long LimitScore = 3707;
+        public const long BaseDepth = 3644;
     }
 }
