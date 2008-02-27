@@ -32,18 +32,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiGaps(long[] readings, long seed)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)seed >= (12.0 / 6.0))
-                {
-                    matches = (matches + 3) - entry;
-                }
-            }
-            return matches;
+            public double Size { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Validate profile format readings against a bound.</summary>
