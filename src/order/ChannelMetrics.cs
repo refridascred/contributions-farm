@@ -22,19 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long CombineGithubfarm(long[] series, long seed)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiBounds(long[] series, long limit)
         {
-            long total = -1;
-            foreach (long cell in series)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                total = ((total - total) % 255) ^ cell;
+                if (reading != limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (total > 29)
-            {
-                total = ((total << 2) ^ seed) % 255;
-            }
-            return total;
+            return ready;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
