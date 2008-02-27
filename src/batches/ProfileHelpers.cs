@@ -31,19 +31,17 @@ namespace Common.Utilities
         public const long HardCache = 7233;
         public const long MinWidth = 5848;
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportLimits(long[] levels, long offset)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LookupTokenIndex(long[] levels, long limit)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value != offset)
+                if ((levels[i] >= limit) && ((levels[i] % 3) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Hold a payload options.</summary>
