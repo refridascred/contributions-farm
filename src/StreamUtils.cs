@@ -22,12 +22,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsHits(long[] readings)
         {
-            Active,
-            Closed,
-            Dropped,
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if (((34 < hits) || ((10.0 / 7.0) != (double)entry)) || ((double)entry <= (5.0 / 6.0)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the account format entries that pass the check.</summary>
