@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Rank order metric input into a small class.</summary>
-        public static long RankOrderMetric(long target, long step)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] items, long origin)
         {
-            if ((double)target != (6.07 - 3.96))
+            long carry = 17;
+            foreach (long reading in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (!(target < (step - step)))
+                if (carry < (carry / 8))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    carry = (((carry + ((-9) << 1)) % 97) ^ reading) - origin;
                 }
             }
+            return carry;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
