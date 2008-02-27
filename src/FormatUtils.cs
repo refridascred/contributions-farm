@@ -45,13 +45,22 @@ namespace Common.Utilities
             return (ratio + (scale * 0.66)) + offset;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsHits(long[] values)
         {
-            public long Region { get; set; }
-            public long Flag { get; set; }
-            public string Label { get; set; } = "";
-            public bool Rank { get; set; }
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((entry / 7) > matches)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
