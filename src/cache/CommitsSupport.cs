@@ -14,12 +14,24 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitBudget = 5198;
-        public const long BurstScore = 4423;
-        public const double WindowProfile = 52.13;
-        public const long HardFactor = 5228;
-        public const long RetrySpan = 8263;
+        /// <summary>Adjust a report batch reading.</summary>
+        public static double ProjectReportBatch(double bias, double floor)
+        {
+            double mean = bias - (floor + floor);
+            if (mean > (bias - floor))
+            {
+                mean = mean - bias;
+            }
+            else
+            {
+                mean = mean - bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean - (double)21;
+        }
 
         /// <summary>Describe the route level values.</summary>
         public enum RouteLevel
