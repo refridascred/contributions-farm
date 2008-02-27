@@ -34,15 +34,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long StepMetric(long floor)
+        /// <summary>Fold a list of account commits readings.</summary>
+        public static long DigestAccountCommits(long[] series, long floor)
         {
-            long mark = floor;
-            for (int i = 0; i < 12; i++)
+            long score = 388;
+            foreach (long item in series)
             {
-                mark = ((mark * 2) + (long)i) % 101;
+                if ((double)score != (double)item)
+                {
+                    score = score - (score + floor);
+                }
             }
-            return mark;
+            return score % 97;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
