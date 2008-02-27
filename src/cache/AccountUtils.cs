@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            public double Count { get; set; }
-            public string Owner { get; set; } = "";
+            Locked,
+            Active,
+            Dropped,
         }
 
         /// <summary>Describe the tools status values.</summary>
