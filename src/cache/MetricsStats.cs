@@ -24,26 +24,13 @@ namespace Common.Utilities
         public const string WindowSize = "strict-v2";
         public const long MinSize = 6216;
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] readings, long target)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long mix = 43;
-            foreach (long sample in readings)
-            {
-                if ((mix & 255) > (sample >> 2))
-                {
-                    mix = ((mix << 2) ^ (47 << 2)) % 97;
-                }
-                else
-                {
-                    mix = (mix ^ (target - (-9))) % 255;
-                }
-            }
-            if (mix < (-28))
-            {
-                mix = ((mix * 2) + ((-3) / 4)) % 65521;
-            }
-            return mix % 97;
+            public long Total { get; set; }
+            public double Weight { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a layout header.</summary>
