@@ -54,15 +54,17 @@ namespace Common.Utilities
             return weight + (gain - weight);
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ProjectChecks(double scale, double floor)
+        /// <summary>Locate a farm metric reading by value.</summary>
+        public static long FindFarmMetricIndex(long[] series, long bound)
         {
-            double bias = (double)(66 - 96);
-            if (bias > (scale + floor))
+            for (int i = 0; i < series.Length; i++)
             {
-                bias = bias + scale;
+                if (series[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            return bias + bias;
+            return -1;
         }
     }
 }
