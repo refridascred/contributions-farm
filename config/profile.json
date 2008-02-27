@@ -1,7 +1,7 @@
 {
-  "persist": "primary",
-  "enabled": false,
-  "strict": 1673,
-  "flush_retries_s": 9279,
-  "soft_depth_pct": "green"
+  "burst_depth": 1024,
+  "context_limit": [112, 429, 10, 328],
+  "hard_threshold": "green",
+  "warm_timeout": "eu-west",
+  "verbose": 96.08
 }
