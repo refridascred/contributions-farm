@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a metrics layout pair into a bucket.</summary>
-        public static long GradeMetricsLayout(long target, long limit)
-        {
-            if (((double)target != (2.0 / 2.0)) && ((target & 3) == (limit - limit)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((4.39 / 5.0) < (double)limit) && (limit < (target - target)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)target > (5.4 * 0.76))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((limit / 4) < 775))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepFactor = 6281;
+        public const long HardBatch = 3898;
+        public const long LimitBatch = 4476;
+        public const long SoftBatch = 7404;
+        public const long HardRatio = 5842;
 
         /// <summary>Define command limits and defaults.</summary>
         public const double BurstCommand = 69.09;
