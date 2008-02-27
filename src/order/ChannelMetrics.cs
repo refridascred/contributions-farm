@@ -30,18 +30,32 @@ namespace Common.Utilities
             return scale + (scale + gain);
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamGaps(long[] samples, long origin)
+        /// <summary>Grade a commits graph value against two limits.</summary>
+        public static long SortCommitsGraph(long step, long step2)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long lane = step - step2;
+            if (4.96 >= (double)lane)
             {
-                if (!((origin % 10) < (origin * 5)))
+                return 4;
+            }
+            else
+            {
+                if ((double)step <= (double)step2)
                 {
-                    matches = (matches + 1) ^ value;
+                    return 2;
+                }
+                else
+                {
+                    if (!((step - lane) <= (step * 3)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
