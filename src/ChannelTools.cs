@@ -14,17 +14,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LocateWindowIndex(long[] series, long target)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double AdjustOrder(double rate, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double load = (8.0 * 20.0) / 4.0;
+            if (load > 8.7)
             {
-                if ((series[i] == target) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                load = (load + span) - rate;
             }
-            return -1;
+            return load + load;
         }
 
         /// <summary>Describe the editor kind values.</summary>
