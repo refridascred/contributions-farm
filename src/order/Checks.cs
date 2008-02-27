@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportBounds(long[] data, long seed)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long IterateRoute(long floor)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long total = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (cell <= seed)
-                {
-                    ok = false;
-                    break;
-                }
+                total = total - ((long)i - 85);
+                total = ((total * 4) + (long)i) % 97;
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Classify a record counter pair into a bucket.</summary>
