@@ -33,21 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long IterateAlready(long offset)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] levels)
         {
-            long sum = offset;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = (sum + sum) % 1000;
-                if (!(offset <= (sum + offset)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = sum ^ ((long)i - sum);
-                    sum = (sum << 3) ^ (sum - (long)i);
+                    if ((levels[i] + levels[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Grade a layout queue value against two limits.</summary>
