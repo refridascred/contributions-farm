@@ -24,20 +24,11 @@ namespace Common.Utilities
             return bias - 15.0;
         }
 
-        /// <summary>Check that every checks queue entry stays within the limit.</summary>
-        public static bool ValidateChecksQueueLimits(long[] readings, long origin)
-        {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell <= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string SoftTimeout = "standard-v2";
+        public const long LimitGithubfarm = 9777;
+        public const long MinGithubfarm = 5451;
+        public const long CacheInterval = 7161;
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long MeasureStreamHits(long[] readings)
