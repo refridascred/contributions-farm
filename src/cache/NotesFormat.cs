@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderOutliers(long[] values)
         {
-            Retry,
-            Idle,
-            Draft,
-            Closed,
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((double)tally <= (double)entry)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
