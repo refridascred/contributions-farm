@@ -1,6 +1,5 @@
 {
-  "base_threshold_count": ["stable", "local"],
-  "cache_timeout_ms": "cached",
-  "command_limit": [282, 63],
-  "tools_retries": "legacy"
+  "poll_depth_count": 60,
+  "batch_timeout": true,
+  "audit": true
 }
