@@ -1,9 +1,5 @@
 # githubfarm settings
-profile_capacity: true
-poll_capacity_ms:
-  - legacy
-  - edge
-  - strict
-default_window: true
-stats_limit: false
-cache_ratio_pct: edge
+idle_depth: 8956
+stream_depth: true
+stats_interval: 59
+default_limit_s: 69
