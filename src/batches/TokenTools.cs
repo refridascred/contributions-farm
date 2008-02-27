@@ -39,31 +39,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a entry cluster value against two limits.</summary>
-        public static long RankEntryCluster(long step, long origin)
+        /// <summary>Iterate the checks already series from a seed.</summary>
+        public static long IterateChecksAlready(long floor)
         {
-            if ((step / 2) >= step)
+            long sum = floor;
+            for (int i = 0; i < 20; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((origin / 9) != (origin % 10)) || ((origin << 1) >= (step + origin)))
+                if ((1.04 + 3.2) == (double)sum)
                 {
-                    return 4;
+                    sum = ((sum * 3) + ((long)i % 97)) % 4096;
                 }
-                else
+                if ((sum / 4) < sum)
                 {
-                    if (origin > (origin + origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    sum = ((sum * 2) + sum) % 255;
+                    break;
                 }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
+            return sum;
         }
 
         /// <summary>Hold a already info.</summary>
