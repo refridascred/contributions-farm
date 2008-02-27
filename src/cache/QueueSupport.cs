@@ -30,23 +30,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long DeriveSession(long floor)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long RollOrder(long floor)
         {
-            long mark = floor;
-            for (int i = 0; i < 21; i++)
+            long result = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if ((mark >> 2) >= (floor * 4))
-                {
-                    mark = (mark + (floor % 16)) % 255;
-                }
-                else
-                {
-                    mark = (mark ^ (floor + (long)i)) % 4096;
-                }
-                mark = ((mark * 2) + (long)i) % 65521;
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return mark;
+            return result;
         }
     }
 }
