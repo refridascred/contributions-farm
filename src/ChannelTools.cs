@@ -24,39 +24,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank buffer report input into a small class.</summary>
-        public static long ClassifyBufferReport(long origin, long step)
+        /// <summary>Locate a command commits reading by value.</summary>
+        public static long SeekCommandCommitsIndex(long[] items, long seed)
         {
-            long diff = origin ^ step;
-            if ((double)origin >= (14.0 - 8.83))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((step << 1) >= (origin ^ step)) && ((982 + origin) < (diff * 3)))
+                if (items[i] < seed)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((6.2 + 6.3) < (double)step)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((step & 1) <= step) && (diff < (diff % 2)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
