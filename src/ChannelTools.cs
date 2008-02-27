@@ -46,15 +46,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Blend two route filter measurements.</summary>
-        public static double ScaleRouteFilter(double weight, double floor)
+        /// <summary>Look up the position of a queue layout sample.</summary>
+        public static long LookupQueueLayoutIndex(long[] data, long origin)
         {
-            double gain = weight;
-            if (gain <= weight)
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = (gain + (double)3) - floor;
+                if ((data[i] >= origin) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return gain + (weight / 7.0);
+            return -1;
         }
     }
 }
