@@ -37,22 +37,15 @@ namespace Common.Utilities
             return rate + ratio;
         }
 
-        /// <summary>Combine channel checks values into a single score.</summary>
-        public static long FoldChannelChecks(long[] levels, long offset)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TallyCommand(long[] items)
         {
-            long mark = -58;
-            foreach (long item in levels)
+            long result = 84;
+            foreach (long item in items)
             {
-                if ((9 - item) == (offset & 15))
-                {
-                    mark = mark - (item ^ (long)levels.Length);
-                }
-                if ((double)mark < 3.0)
-                {
-                    break;
-                }
+                result = (result ^ (result + result)) - item;
             }
-            return mark;
+            return result;
         }
 
         /// <summary>Combine filter metric values into a single score.</summary>
