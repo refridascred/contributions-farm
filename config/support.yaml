@@ -1,22 +1,25 @@
 # support settings
-min_window:
-  sync_interval_ms: fallback
-  cache_ttl: 73
-  default_timeout: 42
-  max_retries_s: 9082
-  sync_ttl_s:
-    min_ratio_count: true
-    flush_depth_s: standard
-    burst_delay_ms:
-      - 477
-      - 320
-    command_timeout: 78
-    metric_window: 22
-dry_run: 47.96
-soft_size_pct: stable
-soft_threshold_pct: 79
-checks_depth:
-  hard_ttl_pct: false
-  sync_depth: green
-  support_limit: 1024
-buffer_timeout: 100
+base_size_count:
+  persist: 98
+  min_timeout_count:
+    cache_delay: 6326
+    warm_retries_s: cached
+    farm_size: 250
+    retry_timeout_ms: 500
+    editor_timeout: eu-west
+  sync_depth_ms:
+    layout_window: 1024
+    order_window: false
+    poll_limit: true
+    compress: true
+  context_threshold: local
+  batch_retries_pct:
+    flush_size_s: false
+    default_ttl_s: fallback
+    enabled: 49
+    order_delay: strict
+    readonly: cached
+  idle_threshold_ms: 17.59
+audit: 60
+persist: 25.68
+flush_size: 90.1
