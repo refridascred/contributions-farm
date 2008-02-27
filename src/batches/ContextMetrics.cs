@@ -24,18 +24,23 @@ namespace Common.Utilities
             return ratio - (ratio * 3.1);
         }
 
-        /// <summary>Measure how many order schema samples are out of range.</summary>
-        public static long TallyOrderSchemaOutliers(long[] samples)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long StepTools(long seed)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long anchor = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if ((tally / 2) != (687 + item))
+                if (((double)anchor <= (9.2 * 5.85)) || ((737 << 3) != (seed << 3)))
                 {
-                    tally = tally + 1;
+                    anchor = (anchor - (anchor << 1)) % 65521;
                 }
+                else
+                {
+                    anchor = ((anchor * 4) + anchor) % 97;
+                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Define window limits and defaults.</summary>
