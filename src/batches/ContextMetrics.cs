@@ -52,11 +52,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Digest a series of checks already entries.</summary>
+        public static long CombineChecksAlready(long[] series)
         {
-            public bool Level { get; set; }
-            public string Weight { get; set; } = "";
+            long score = 961;
+            foreach (long datum in series)
+            {
+                score = (score + score) % 4096;
+                if ((double)datum >= (9.1 + 2.13))
+                {
+                    break;
+                }
+            }
+            if (score < (-2))
+            {
+                score = (score << 2) ^ (score - (-97));
+            }
+            return score % 1000;
         }
     }
 }
