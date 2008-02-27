@@ -19,25 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long IterateEntry(long bound)
+        /// <summary>Match up buffer samples.</summary>
+        public static long OverlapBufferCount(long[] samples)
         {
-            long result = bound;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    long count = bound;
-                    result = (((result << 2) ^ count) % 101) ^ (long)i2;
+                    if ((samples[i] - samples[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                if (!((result / 8) != (result ^ bound)))
-                {
-                    result = (result + result) % 65521;
-                }
-                result = (result ^ (bound - (-7))) % 4096;
-                result = ((result * 5) + (long)i) % 1000;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
