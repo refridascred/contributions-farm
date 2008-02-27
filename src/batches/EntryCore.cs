@@ -29,18 +29,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadGaps(long[] data)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((matches + matches) == (sample + matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Locked,
+            Failed,
+            Dropped,
+            Closed,
+            Active,
         }
 
         /// <summary>Grade a format value against two limits.</summary>
