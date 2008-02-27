@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] samples, long seed)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long mark = 809;
-            foreach (long item in samples)
-            {
-                mark = (mark ^ (item + item)) + seed;
-            }
-            return mark;
+            Draft,
+            Paused,
+            Retry,
+            Ready,
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
