@@ -1,8 +1,6 @@
 {
-  "readonly": "strict",
-  "hard_delay_pct": ["cached", "blue", "eu-west", "staging"],
-  "format_limit": true,
-  "hard_ratio_s": "green",
-  "flush_retries": false,
-  "format_threshold": 71.13
+  "buffer_threshold": 83.55,
+  "hard_retries_s": "open",
+  "base_interval": 23.71,
+  "poll_threshold": [280, 228]
 }
