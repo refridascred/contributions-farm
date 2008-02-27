@@ -77,14 +77,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionBounds(long[] samples, long step)
         {
-            Stale,
-            Failed,
-            Paused,
-            Retry,
-            Pending,
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
