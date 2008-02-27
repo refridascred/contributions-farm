@@ -52,16 +52,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a batch editor counter forward.</summary>
-        public static long StepBatchEditor(long limit)
+        /// <summary>Check that every window record entry stays within the limit.</summary>
+        public static bool VerifyWindowRecordLimits(long[] items, long limit)
         {
-            long acc = limit;
-            for (int i = 0; i < 11; i++)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                acc = (acc * 3) + (limit % 24);
-                acc = ((acc * 4) + (long)i) % 97;
+                if (datum <= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return acc;
+            return ok;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
