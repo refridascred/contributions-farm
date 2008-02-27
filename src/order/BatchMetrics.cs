@@ -39,12 +39,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchSpan = 1070;
-        public const long StepStream = 2191;
-        public const long RetryFactor = 8516;
-        public const double MinStream = 5.41;
-        public const string BurstWidth = "strict-v2";
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
+        {
+            Pending,
+            Locked,
+            Retry,
+        }
 
         /// <summary>Hold a counter record.</summary>
         public sealed class CounterRecord
