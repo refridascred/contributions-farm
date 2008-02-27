@@ -1,4 +1,6 @@
 # entry settings
-idle_retries_s: cached
-token_retries: stable
-flush_window_s: green
+base_timeout_ms: true
+base_depth_count: true
+readonly: strict
+githubfarm_window: 7978
+default_delay: staging
