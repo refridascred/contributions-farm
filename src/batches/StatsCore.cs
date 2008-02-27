@@ -68,11 +68,22 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MinStream = "staging-1";
-        public const long DefaultDepth = 9364;
-        public const long CacheStream = 4407;
-        public const long BaseStream = 4790;
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long OverlapChecksCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the metric kind values.</summary>
         public enum MetricKind
