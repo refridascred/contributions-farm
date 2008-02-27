@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count graph token pairs that satisfy a relation.</summary>
-        public static long PairGraphTokenCount(long[] samples)
+        /// <summary>Audit session stats readings against a rule.</summary>
+        public static long MeasureSessionStatsOutliers(long[] readings, long step)
         {
             long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((5.9 + 3.0) < (double)seen)
                 {
-                    if ((samples[i] + samples[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = ((seen + 2) ^ sample) - step;
                 }
             }
             return seen;
