@@ -30,23 +30,11 @@ namespace Common.Utilities
         public const long MinGithubfarm = 5451;
         public const long CacheInterval = 7161;
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamHits(long[] readings)
-        {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if (!((matches >> 1) == (958 * 5)))
-                {
-                    matches = (matches + 3) - entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardInterval = 9139;
+        public const double CacheBatches = 97.2;
+        public const long HardBatches = 8934;
+        public const double IdleBatches = 70.96;
 
         /// <summary>Look up the position of a payload sample.</summary>
         public static long SeekPayloadIndex(long[] levels, long offset)
