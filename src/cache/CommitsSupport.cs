@@ -70,18 +70,17 @@ namespace Common.Utilities
         public const long LimitCount = 8553;
         public const double DefaultPayload = 8.65;
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] series, long step)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long SeekFilterIndex(long[] levels, long seed)
         {
-            long mix = 843;
-            foreach (long value in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (step > (step * 4))
+                if (levels[i] > seed)
                 {
-                    mix = mix - (step ^ value);
+                    return (long)i;
                 }
             }
-            return mix % 1000;
+            return -1;
         }
     }
 }
