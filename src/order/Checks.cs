@@ -48,26 +48,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long ScoreNotes(long[] samples, long offset)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long PairTokenCount(long[] items)
         {
-            long acc = 8;
-            foreach (long value in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((offset & 7) >= (value + acc))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = acc ^ acc;
-                }
-                else
-                {
-                    acc = (acc ^ (offset ^ 692)) % 255;
-                }
-                if ((offset - offset) <= (acc >> 5))
-                {
-                    break;
+                    if ((items[i] - items[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Hold a entry header.</summary>
