@@ -10,10 +10,17 @@ namespace Common.Utilities
         public const long DefaultInterval = 7809;
         public const long BaseTools = 7084;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double RetryBatches = 81.41;
-        public const long LimitBatches = 3989;
-        public const long WindowInterval = 4242;
+        /// <summary>Iterate the report order series from a seed.</summary>
+        public static long IterateReportOrder(long limit)
+        {
+            long anchor = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                anchor = anchor + (limit & 15);
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Count metrics window pairs that satisfy a relation.</summary>
         public static long CompareMetricsWindowCount(long[] items)
