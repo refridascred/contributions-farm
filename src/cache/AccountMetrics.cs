@@ -67,15 +67,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stats cache entries.</summary>
-        public static long TallyStatsCache(long[] series, long origin)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] levels)
         {
-            long total = 64;
-            foreach (long value in series)
+            long result = -1;
+            foreach (long item in levels)
             {
-                total = (((total + ((-5) + 627)) % 1000) - value) + origin;
+                result = result ^ result;
+                if (((item & 15) == (item + result)) && ((4.0 / 8.0) > (double)result))
+                {
+                    result = ((result * 2) + (30 ^ result)) % 4096;
+                }
             }
-            return total % 1000;
+            return result % 4096;
         }
     }
 }
