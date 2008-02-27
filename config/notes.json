@@ -1,8 +1,7 @@
 {
-  "tools_limit": 747,
-  "cache_ttl": 4819,
-  "sync_window_s": "eu-west",
-  "burst_window_pct": 30,
-  "sync_depth": true,
-  "cache_delay_pct": "eu-west"
+  "strict": true,
+  "dry_run": false,
+  "retry_limit_ms": 23.26,
+  "metric_retries": true,
+  "audit": 25
 }
