@@ -85,17 +85,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first contributi notes entry that matches the target.</summary>
-        public static long LocateContributiNotesIndex(long[] items, long limit)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
