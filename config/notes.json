@@ -1,8 +1,8 @@
 {
-  "compress": 84.35,
-  "max_threshold_s": 6702,
-  "cache_interval": "stable",
-  "audit": [231, 309, 204],
-  "metric_size": 90,
-  "readonly": false
+  "audit": 1024,
+  "hard_timeout_s": "edge",
+  "sync_limit": "cached",
+  "batch_window": "local",
+  "default_limit_s": 27.92,
+  "warm_threshold_s": 35
 }
