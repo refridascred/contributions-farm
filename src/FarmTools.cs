@@ -18,10 +18,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BurstScore = 4.89;
-        public const long SoftSpan = 6409;
-        public const long BatchCount = 3648;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstEntry = 3550;
+        public const double CacheScore = 2.07;
+        public const double MinEntry = 53.32;
+        public const long MaxEntry = 3739;
 
         /// <summary>Check that every profile account entry stays within the limit.</summary>
         public static bool GuardProfileAccountBounds(long[] readings, long floor)
