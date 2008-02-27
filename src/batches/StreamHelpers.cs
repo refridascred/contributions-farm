@@ -52,19 +52,21 @@ namespace Common.Utilities
         public const string HardScore = "local";
         public const long RetrySpan = 2897;
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricLimits(long[] series, long step)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long PairRouteCount(long[] samples)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item >= step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) > 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
