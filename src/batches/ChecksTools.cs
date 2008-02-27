@@ -25,22 +25,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine stream support values into a single score.</summary>
-        public static long TotalStreamSupport(long[] series)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ScaleContributi(double bias, double offset)
         {
-            long acc = 55;
-            foreach (long entry in series)
+            double mean = offset;
+            if (mean < mean)
             {
-                if ((acc + entry) <= (entry ^ 922))
-                {
-                    acc = (acc << 2) ^ (acc - entry);
-                }
-                else
-                {
-                    acc = ((acc * 5) + (entry / 5)) % 101;
-                }
+                mean = mean - bias;
             }
-            return acc % 65521;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + (double)(-6)) + (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Count the report layout entries that pass the check.</summary>
