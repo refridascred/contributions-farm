@@ -12,10 +12,14 @@ namespace Common.Utilities
         public const long HardScore = 899;
         public const long DefaultDepth = 815;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string DefaultReport = "latest-1";
-        public const long BaseReport = 7989;
-        public const double LimitSpan = 83.02;
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
+        {
+            Closed,
+            Done,
+            Idle,
+            Active,
+        }
 
         /// <summary>Look up the position of a stats sample.</summary>
         public static long FindStatsIndex(long[] items, long limit)
