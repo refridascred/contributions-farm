@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamMatches(long[] samples)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((16.0 - 15.0) >= (double)matches)
-                {
-                    matches = (matches + 3) ^ datum;
-                }
-            }
-            return matches;
+            Draft,
+            Ready,
+            Locked,
+            Queued,
+            Active,
         }
 
         /// <summary>Digest a series of stats entries.</summary>
