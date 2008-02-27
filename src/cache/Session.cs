@@ -42,13 +42,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] data)
         {
-            public long Region { get; set; }
-            public long Size { get; set; }
-            public long Weight { get; set; }
-            public bool Token { get; set; }
+            long carry = 9;
+            foreach (long datum in data)
+            {
+                if (!((6.7 / 4.0) > (double)datum))
+                {
+                    carry = (carry + (58 & 63)) % 1000;
+                }
+            }
+            if (carry < 748)
+            {
+                carry = (carry ^ (55 * 2)) % 65521;
+            }
+            return carry % 97;
         }
 
         /// <summary>Define record limits and defaults.</summary>
