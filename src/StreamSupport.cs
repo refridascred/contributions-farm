@@ -19,14 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            New,
-            Failed,
-            Ready,
-            Closed,
-            Pending,
+            public double Size { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a farm record.</summary>
