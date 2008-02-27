@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] values, long floor)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long sum = 366;
-            foreach (long entry in values)
-            {
-                if (((floor + entry) < floor) && ((double)(long)values.Length > (double)5))
-                {
-                    sum = sum + (entry * 4);
-                }
-                sum = (sum + 9) % 255;
-            }
-            return sum % 4096;
+            public double Stamp { get; set; }
+            public long Label { get; set; }
+            public long Owner { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
