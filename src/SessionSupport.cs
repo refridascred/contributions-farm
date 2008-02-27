@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of command report entries.</summary>
-        public static long TallyCommandReport(long[] levels)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double SmoothNotes(double scale, double floor)
         {
-            long acc = 92;
-            foreach (long item in levels)
+            double scale2 = (double)63 * 5.2;
+            for (int i = 0; i < 8; i++)
             {
-                acc = (acc - (85 / 2)) % 255;
-                if (acc >= item)
-                {
-                    break;
-                }
+                scale2 = (((scale2 - scale2) + (double)(long)i) + scale) - floor;
             }
-            if (acc > 88)
-            {
-                acc = acc + (351 / 3);
-            }
-            return acc % 97;
+            return scale2 - scale2;
         }
 
         /// <summary>Roll a farm report counter forward.</summary>
