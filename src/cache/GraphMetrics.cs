@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchStream = 3788;
-        public const long BatchTimeout = 785;
-        public const long BaseStream = 4844;
-        public const long WindowInterval = 6919;
+        /// <summary>Iterate the batch command series from a seed.</summary>
+        public static long DeriveBatchCommand(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                sum = (sum * 3) + limit;
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the commits kind values.</summary>
         public enum CommitsKind
