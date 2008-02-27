@@ -1,14 +1,6 @@
 {
-  "burst_capacity_s": {
-    "idle_window": 66.76,
-    "burst_timeout_s": true,
-    "batch_timeout_ms": 7171,
-    "max_depth_pct": "fallback",
-    "strict": [317, 253, 298]
-  },
-  "default_retries_s": "local",
-  "idle_window_count": 23.77,
-  "flush_depth_pct": 5314,
-  "command_threshold": "stable",
-  "flush_ratio_ms": 17.36
+  "compress": false,
+  "dry_run": 73.64,
+  "batch_depth_pct": "legacy",
+  "flush_interval_ms": true
 }
