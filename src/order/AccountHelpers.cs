@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Match up farm samples.</summary>
-        public static long CompareFarmCount(long[] samples)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaMatches(long[] items, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((3.53 - 2.9) <= (double)count)
                 {
-                    if ((samples[i] - samples[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = ((count + 3) - item) - bound;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a stream options.</summary>
