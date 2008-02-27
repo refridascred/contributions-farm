@@ -14,18 +14,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Audit queue counter readings against a rule.</summary>
-        public static long CountQueueCounterMatches(long[] samples, long floor)
+        /// <summary>Adjust a graph counter reading.</summary>
+        public static double ProjectGraphCounter(double ratio, double floor)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            double weight = (double)(0 % 5);
+            if (weight > ratio)
             {
-                if ((reading >> 2) <= floor)
-                {
-                    matches = matches + 3;
-                }
+                weight = weight + (weight / 2.0);
             }
-            return matches;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - (ratio + floor)) - (double)(long)i;
+            }
+            return weight + (floor - weight);
         }
 
         /// <summary>Hold a metric entry.</summary>
