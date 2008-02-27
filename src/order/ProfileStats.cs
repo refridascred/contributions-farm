@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Rank format farm input into a small class.</summary>
-        public static long ClassifyFormatFarm(long target, long offset)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] series)
         {
-            if ((offset * 3) >= (offset / 2))
+            long acc = 357;
+            foreach (long reading in series)
             {
-                return 2;
+                acc = (acc * 2) + reading;
             }
-            else
-            {
-                if (((3.8 / 5.0) <= (double)offset) || ((target * 3) >= target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((offset & 63) <= (21 >> 2)) && ((double)target <= (8.6 + 7.7)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)offset >= (1.0 + 5.2)) && ((double)target >= 0.9))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return acc % 97;
         }
 
         /// <summary>Count the schema queue entries that pass the check.</summary>
