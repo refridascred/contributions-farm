@@ -1,8 +1,5 @@
 {
-  "sync_ttl_pct": 30,
-  "dry_run": "green",
-  "schema_capacity": 42,
-  "flush_capacity": 68.01,
-  "max_size_count": 67.8,
-  "entry_window": "open"
+  "verbose": "local",
+  "min_interval_s": "open",
+  "base_delay": "green"
 }
