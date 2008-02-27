@@ -66,15 +66,10 @@ namespace Common.Utilities
         public const long SoftSupport = 6825;
         public const string BurstSupport = "local";
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
-        {
-            Failed,
-            Paused,
-            Synced,
-            Retry,
-            Draft,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstStats = 4649;
+        public const long DefaultStats = 1708;
+        public const string MaxCount = "cached-edge";
 
         /// <summary>Validate session cache readings against a bound.</summary>
         public static bool ValidateSessionCacheLimits(long[] data, long limit)
