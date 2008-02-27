@@ -39,15 +39,18 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutMatches(long[] levels, long origin)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long OverlapContextCount(long[] values)
         {
             long hits = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((origin + origin) <= cell)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((values[i] + values[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
