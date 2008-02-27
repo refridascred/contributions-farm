@@ -59,24 +59,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long target)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long total = target;
-            for (int i = 0; i < 19; i++)
-            {
-                total = total - (long)i;
-                if (((double)total >= (5.0 / 6.0)) && ((long)i <= (total + total)))
-                {
-                    total = (total + (target >> 5)) % 65521;
-                }
-                else
-                {
-                    total = (total ^ (total / 8)) % 101;
-                }
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
+            Ready,
+            Draft,
+            Stale,
+            Paused,
         }
     }
 }
