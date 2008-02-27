@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long offset, long offset2)
         {
-            public double Stamp { get; set; }
-            public long Label { get; set; }
-            public long Owner { get; set; }
-            public string Size { get; set; } = "";
+            if (((offset2 >> 2) == (offset & 127)) && ((offset + offset2) > (780 - offset2)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((offset2 - offset2) <= (offset2 ^ offset2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
