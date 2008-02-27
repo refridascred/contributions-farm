@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Iterate the buffer metrics series from a seed.</summary>
-        public static long StepBufferMetrics(long bound)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] values, long floor)
         {
-            long score = bound;
-            for (int i = 0; i < 12; i++)
+            long sum = 366;
+            foreach (long entry in values)
             {
-                score = ((score << 3) ^ (bound + bound)) % 101;
-                score = ((score * 5) + (long)i) % 1000;
+                if (((floor + entry) < floor) && ((double)(long)values.Length > (double)5))
+                {
+                    sum = sum + (entry * 4);
+                }
+                sum = (sum + 9) % 255;
             }
-            return score;
+            return sum % 4096;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
