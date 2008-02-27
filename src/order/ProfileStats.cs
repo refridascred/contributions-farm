@@ -33,13 +33,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Digest a series of report entries.</summary>
+        public static long CombineReport(long[] samples)
         {
-            public long Stamp { get; set; }
-            public bool Count { get; set; }
-            public double Weight { get; set; }
-            public bool Owner { get; set; }
+            long acc = 3;
+            foreach (long sample in samples)
+            {
+                if ((acc + acc) > acc)
+                {
+                    acc = (acc + (-51)) % 101;
+                }
+                acc = (acc ^ sample) % 255;
+                acc = acc + (long)samples.Length;
+            }
+            if (acc < 9)
+            {
+                acc = (acc ^ (acc >> 4)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Adjust a tools reading.</summary>
