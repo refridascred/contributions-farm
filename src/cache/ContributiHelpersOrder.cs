@@ -15,20 +15,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long DeriveCluster(long floor)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long MatchReportCount(long[] levels)
         {
-            long anchor = floor;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((floor - floor) >= ((-3) * 5)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = (anchor << 3) ^ (4 << 1);
-                    anchor = ((anchor * 2) + (562 % 5)) % 4096;
+                    if ((levels[i] - levels[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Audit order commits readings against a rule.</summary>
