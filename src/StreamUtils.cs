@@ -22,12 +22,17 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Find the first notes buffer entry that matches the target.</summary>
+        public static long LookupNotesBufferIndex(long[] data, long bound)
         {
-            public long Mode { get; set; }
-            public double Token { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the account format entries that pass the check.</summary>
