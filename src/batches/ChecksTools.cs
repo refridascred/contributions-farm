@@ -20,18 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountGaps(long[] data, long floor)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if (cell < ((-7) - floor))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Pending,
+            Idle,
+            Ready,
+            Failed,
         }
 
         /// <summary>Fold a list of graph readings.</summary>
