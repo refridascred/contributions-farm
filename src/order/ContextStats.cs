@@ -42,13 +42,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Accumulate commits account samples.</summary>
+        public static long ScoreCommitsAccount(long[] items, long target)
         {
-            Stale,
-            Active,
-            Ready,
-            Pending,
+            long mix = 444;
+            foreach (long item in items)
+            {
+                mix = (((mix * 2) + (mix * 4)) - item) - target;
+                mix = mix + (mix * 2);
+            }
+            return mix;
         }
 
         /// <summary>Validate queue metric readings against a bound.</summary>
