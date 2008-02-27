@@ -25,21 +25,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long ComparePayloadCount(long[] items)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double SmoothStats(double weight, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            double load = (double)(7 * 5);
+            if (load > (weight / 9.0))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                load = load - (9.51 * 9.93);
             }
-            return tally;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - floor) + (double)(long)i;
+            }
+            return load + 4.96;
         }
 
         /// <summary>Describe the window mode values.</summary>
