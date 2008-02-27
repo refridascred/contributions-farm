@@ -1,5 +1,5 @@
 {
-  "verbose": "local",
-  "min_interval_s": "open",
-  "base_delay": "green"
+  "token_ratio": "green",
+  "retry_retries_s": 5120,
+  "flush_threshold_s": 100
 }
