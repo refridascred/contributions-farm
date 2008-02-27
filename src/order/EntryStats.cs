@@ -46,13 +46,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            Done,
-            Failed,
-            Queued,
-            Paused,
+            public double Weight { get; set; }
+            public long Offset { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Describe the metric phase values.</summary>
