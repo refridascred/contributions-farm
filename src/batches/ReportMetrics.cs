@@ -14,12 +14,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ScaleEditor(double weight, double floor)
         {
-            Draft,
-            Paused,
-            Stale,
+            double bias = floor / 3.0;
+            if (bias > 1.9)
+            {
+                bias = bias - (bias * 7.36);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + weight) + (double)(long)i;
+            }
+            return bias - (double)(-90);
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
