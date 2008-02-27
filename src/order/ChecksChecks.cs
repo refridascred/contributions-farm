@@ -29,13 +29,18 @@ namespace Common.Utilities
         public const long DefaultCount = 2102;
         public const double BaseOrder = 17.83;
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsHits(long[] items, long step)
         {
-            public bool Token { get; set; }
-            public double Count { get; set; }
-            public long Rank { get; set; }
-            public long Flag { get; set; }
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((((5.4 * 2.06) >= (double)sample) || ((sample + step) <= tally)) || ((step - tally) == (tally & 127)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
