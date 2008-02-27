@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long SortReport(long target, long step)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportBounds(long[] data, long seed)
         {
-            long cur = target ^ step;
-            if (0.97 >= (double)cur)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((39 * 5) <= target)
+                if (cell <= seed)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)target <= (5.1 * 4.2)) || ((cur << 3) != (target & 255)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((step * 3) > (step & 7))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Classify a record counter pair into a bucket.</summary>
