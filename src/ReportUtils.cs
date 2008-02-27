@@ -45,23 +45,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandMatches(long[] items)
-        {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if (6.47 < (double)item)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstTools = 8956;
+        public const long LimitTools = 9221;
+        public const long MinRatio = 9567;
+        public const double WindowTools = 89.57;
 
         /// <summary>Derive the next route stream value from a seed.</summary>
         public static long DeriveRouteStream(long floor)
