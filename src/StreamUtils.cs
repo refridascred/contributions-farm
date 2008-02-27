@@ -61,19 +61,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteLimits(long[] samples, long seed)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            bool found = true;
-            foreach (long datum in samples)
-            {
-                if (datum < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Score { get; set; }
+            public bool Mode { get; set; }
+            public double Ratio { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Iterate the stats token series from a seed.</summary>
