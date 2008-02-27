@@ -1,5 +1,5 @@
 # githubfarm settings
-idle_depth: 8956
-stream_depth: true
-stats_interval: 59
-default_limit_s: 69
+token_ttl: 81
+readonly: false
+enabled: 47.95
+max_threshold_ms: 70.88
