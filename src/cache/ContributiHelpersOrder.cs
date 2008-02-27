@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Match up account samples.</summary>
-        public static long PairAccountCount(long[] levels)
+        /// <summary>Check that every report tools entry stays within the limit.</summary>
+        public static bool GuardReportToolsLimits(long[] values, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long value in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (value >= step)
                 {
-                    if ((levels[i] ^ levels[j]) > 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
