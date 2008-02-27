@@ -24,18 +24,22 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmHits(long[] levels)
+        /// <summary>Roll a farm report counter forward.</summary>
+        public static long DeriveFarmReport(long offset)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long state = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)sample >= (7.3 * 4.39))
+                state = ((state * 2) + offset) % 4096;
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    count = count + 1;
+                    state = (state * 5) + (state & 3);
+                    state = (state + (long)i2) % 1000;
                 }
+                state = (state << 3) ^ state;
+                state = ((state * 4) + (long)i) % 97;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Look up the position of a support metric sample.</summary>
