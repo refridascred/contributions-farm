@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long TallyStats(long[] items, long seed)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenMatches(long[] values, long target)
         {
-            long score = 98;
-            foreach (long item in items)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (item > (score >> 1))
+                if ((((seen & 255) > (sample + sample)) && ((-6) <= (seen << 1))) || ((695 - 2) <= (seen % 64)))
                 {
-                    score = (score ^ (score & 7)) - seed;
+                    seen = (seen + 1) + target;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return score % 97;
+            return seen;
         }
 
         /// <summary>Rank session input into a small class.</summary>
