@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] values)
+        /// <summary>Match up metric samples.</summary>
+        public static long MatchMetricCount(long[] items)
         {
-            long mix = 41;
-            foreach (long value in values)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((long)values.Length < mix)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = mix + value;
-                }
-                else
-                {
-                    mix = ((mix * 4) + mix) % 97;
+                    if ((items[i] - items[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mix % 1000;
+            return count;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
