@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] series)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamMatches(long[] samples)
         {
-            long acc = 7;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                acc = (((acc * 5) + (0 & 63)) % 97) ^ cell;
+                if ((16.0 - 15.0) >= (double)matches)
+                {
+                    matches = (matches + 3) ^ datum;
+                }
             }
-            if (acc < 70)
-            {
-                acc = (acc ^ ((long)series.Length + 72)) % 97;
-            }
-            return acc % 1000;
+            return matches;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
