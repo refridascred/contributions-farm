@@ -34,16 +34,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long SeriesCommand(long seed)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] samples, long offset)
         {
-            long state = seed;
-            for (int i = 0; i < 12; i++)
+            long acc = 8;
+            foreach (long value in samples)
             {
-                state = (state * 5) + (long)i;
-                state = ((state * 5) + (long)i) % 97;
+                if ((offset & 7) >= (value + acc))
+                {
+                    acc = acc ^ acc;
+                }
+                else
+                {
+                    acc = (acc ^ (offset ^ 692)) % 255;
+                }
+                if ((offset - offset) <= (acc >> 5))
+                {
+                    break;
+                }
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
