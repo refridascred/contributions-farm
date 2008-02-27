@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Rank githubfarm stats input into a small class.</summary>
-        public static long BucketGithubfarmStats(long origin, long origin2)
+        /// <summary>Audit format buffer readings against a rule.</summary>
+        public static long AuditFormatBufferHits(long[] data)
         {
-            long offset = origin + origin2;
-            if (((5.0 * 9.0) == (double)offset) && ((double)offset < 4.23))
+            long tally = 0;
+            foreach (long reading in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (origin2 <= (offset - offset))
+                if ((double)tally != (3.6 + 1.49))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)origin2 >= (5.0 * 5.63))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    tally = (tally + 3) ^ reading;
                 }
             }
+            return tally;
         }
 
         /// <summary>Combine already values into a single score.</summary>
