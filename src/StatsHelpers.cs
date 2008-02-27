@@ -55,19 +55,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorRange(long[] levels, long step)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double SmoothBatch(double ratio, double span)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            double mean = ratio;
+            if (mean >= 6.4)
             {
-                if (datum >= step)
-                {
-                    valid = false;
-                    break;
-                }
+                mean = (mean + (double)13) + span;
             }
-            return valid;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + (16.0 + ratio)) + (double)(long)i;
+            }
+            return mean - ratio;
         }
     }
 }
