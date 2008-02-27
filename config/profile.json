@@ -1,6 +1,5 @@
 {
-  "min_depth_count": true,
-  "order_window": false,
-  "base_ratio_ms": 73.14,
-  "burst_ttl_s": "latest"
+  "retry_window_ms": "eu-west",
+  "min_limit_count": 5.51,
+  "enabled": ["strict", "latest"]
 }
