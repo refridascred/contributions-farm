@@ -1,7 +1,8 @@
-id,active
-1,141
-2,stable
-3,903
-4,993
-5,edge
-6,776
+id,score,rank
+1,staging,44.93
+2,239,924
+3,111,950
+4,594,593
+5,green,42.54
+6,standard,71.15
+7,fallback,199
