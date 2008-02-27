@@ -42,21 +42,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long PairTokenCount(long[] data)
+        /// <summary>Combine batch batches values into a single score.</summary>
+        public static long WeighBatchBatches(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 222;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((entry ^ mix) <= (mix + entry)) && ((98 % 3) < (mix - mix)))
                 {
-                    if ((data[i] - data[j]) == 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix + entry) % 1000;
+                }
+                if ((mix > (28 / 9)) && ((entry / 3) < (8 << 1)))
+                {
+                    break;
                 }
             }
-            return tally;
+            return mix % 4096;
         }
     }
 }
