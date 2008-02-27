@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long limit)
+        /// <summary>Audit command window readings against a rule.</summary>
+        public static long CountCommandWindowMatches(long[] items, long seed)
         {
-            long mix = limit;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                mix = ((mix << 2) ^ (mix + (long)i)) % 4096;
-                mix = ((mix * 3) + (long)i) % 1000;
+                if (seed >= (seed << 1))
+                {
+                    seen = (seen + 2) - reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Describe the farm mode values.</summary>
