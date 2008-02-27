@@ -59,13 +59,11 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
-        {
-            Done,
-            Queued,
-            Active,
-            Stale,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinTimeout = 1303;
+        public const double MinBudget = 68.36;
+        public const double RetrySpan = 71.62;
+        public const double MinAlready = 43.03;
+        public const long SoftRatio = 9135;
     }
 }
