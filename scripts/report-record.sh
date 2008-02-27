@@ -6,21 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in cached standard primary local; do
+    log "checking ${item}"
+done
+
 count=0
-while [ "${count}" -lt 7 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-mode="${1:-edge}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-RECORD_LIMIT=175
+RECORD_LIMIT=377
 log "limit is ${RECORD_LIMIT}"
