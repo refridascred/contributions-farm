@@ -15,16 +15,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Blend two support queue measurements.</summary>
-        public static double ScaleSupportQueue(double ratio, double offset)
-        {
-            double gain = (double)((-49) / 8);
-            if (gain >= (3.0 / 7.0))
-            {
-                gain = gain - (offset - ratio);
-            }
-            return gain - (gain + ratio);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetrySize = 2698;
+        public const double IdleInterval = 8.43;
+        public const string MinRoute = "alpha-v2";
+        public const long BatchDepth = 5134;
 
         /// <summary>Look up the position of a commits sample.</summary>
         public static long LookupCommitsIndex(long[] levels, long step)
