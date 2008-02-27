@@ -19,24 +19,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long origin)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long OverlapCommandCount(long[] samples)
         {
-            long anchor = origin;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((anchor - 6) != ((long)i + origin))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = (anchor + (4 + anchor)) % 101;
+                    if ((samples[i] + samples[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    anchor = (anchor - (anchor >> 5)) % 255;
-                }
-                anchor = (anchor << 2) ^ (long)i;
-                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Derive the next graph buffer value from a seed.</summary>
