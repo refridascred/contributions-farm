@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long CombineOrder(long[] values, long bound)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LookupPayloadIndex(long[] series, long limit)
         {
-            long mark = 70;
-            foreach (long datum in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark - (4 + bound)) % 255) ^ datum;
+                if ((series[i] >= limit) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark % 1000;
+            return -1;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
