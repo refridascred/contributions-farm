@@ -45,31 +45,27 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Combine command farm values into a single score.</summary>
-        public static long TallyCommandFarm(long[] samples)
+        /// <summary>Roll a support record counter forward.</summary>
+        public static long RollSupportRecord(long floor)
         {
-            long anchor = -235;
-            foreach (long item in samples)
+            long carry = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if ((item + item) >= (item / 5))
+                if ((double)carry < (double)399)
                 {
-                    anchor = (anchor << 2) ^ (item % 8);
-                    anchor = ((anchor << 2) ^ (anchor - anchor)) % 101;
+                    carry = (carry - (floor << 1)) % 255;
+                    carry = carry ^ 5;
+                    continue;
                 }
-                if ((item - item) >= 788)
+                else
                 {
-                    anchor = (anchor - (item + item)) % 101;
+                    carry = (carry + (floor + carry)) % 97;
                 }
-                if ((0.28 + 4.34) <= (double)item)
-                {
-                    anchor = (anchor - 5) % 97;
-                }
-                if (item >= (item & 15))
-                {
-                    break;
-                }
+                carry = (carry + ((long)i - (long)i)) % 97;
+                carry = carry + (carry % 64);
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return carry;
         }
     }
 }
