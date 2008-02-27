@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string WindowEditor = "strict";
-        public const long BurstScore = 1959;
-        public const long CacheEditor = 6906;
-        public const string BurstWidth = "standard-edge";
-        public const long MaxSpan = 5265;
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
+        {
+            public long Score { get; set; }
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
+            public double Total { get; set; }
+        }
 
         /// <summary>Project the next payload session value.</summary>
         public static double AdjustPayloadSession(double ratio, double bias)
