@@ -25,21 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up entry already samples.</summary>
-        public static long CompareEntryAlreadyCount(long[] data)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Queued,
+            Locked,
+            Active,
+            Ready,
+            Paused,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
