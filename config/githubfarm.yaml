@@ -1,17 +1,17 @@
 # githubfarm settings
-cache_depth_pct: true
-min_interval:
-  - 409
-  - 288
-poll_retries_count:
-  profile_depth:
-    - 32
-    - 404
-    - 269
-  poll_interval: true
-  context_interval: 78
-warm_limit_ms:
-  dry_run: 100
-  notes_ratio: false
-  stats_depth: 76
-min_window: 90.08
+readonly: 62.63
+verbose: 55.46
+stats_size: 3052
+batch_size: true
+queue_interval: 77
+tools_window:
+  stats_delay: 3657
+  metrics_size:
+    flush_delay: true
+    strict: 1024
+    warm_retries: staging
+    commits_window: 1024
+  sync_limit_ms:
+    - legacy
+    - fallback
+    - edge
