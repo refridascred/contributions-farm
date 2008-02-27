@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long origin)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long score = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                if (origin <= (origin - 132))
-                {
-                    score = ((score << 2) ^ score) % 101;
-                    score = ((score << 2) ^ (long)i) % 101;
-                }
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
+            public double Mode { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
