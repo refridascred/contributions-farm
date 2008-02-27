@@ -12,15 +12,10 @@ namespace Common.Utilities
         public const long HardScore = 899;
         public const long DefaultDepth = 815;
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
-        {
-            Queued,
-            Locked,
-            Dropped,
-            Closed,
-            Ready,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string DefaultReport = "latest-1";
+        public const long BaseReport = 7989;
+        public const double LimitSpan = 83.02;
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long AuditProfileGaps(long[] data)
