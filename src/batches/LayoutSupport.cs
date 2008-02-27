@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every entry context entry stays within the limit.</summary>
-        public static bool VerifyEntryContextRange(long[] values, long target)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            bool ready = true;
-            foreach (long sample in values)
-            {
-                if (sample <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Region { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Fold a list of schema readings.</summary>
