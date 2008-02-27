@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] series, long limit)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 1;
+            foreach (long sample in levels)
             {
-                if ((series[i] < limit) && ((series[i] % 3) == 0))
+                if ((double)total == (8.02 + 12.0))
                 {
-                    return (long)i;
+                    total = (total * 5) + (sample + sample);
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Describe the channel status values.</summary>
