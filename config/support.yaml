@@ -1,13 +1,14 @@
 # support settings
-verbose: 30
-default_size_s: 20
-githubfarm_threshold: 10.82
-soft_threshold:
-  base_ratio_s: local
-  enabled:
-    - legacy
+max_timeout:
+  - 175
+  - 441
+soft_capacity_pct:
+  max_delay_pct: 4755
+  flush_retries: 73.48
+  already_window: open
+  readonly:
+    - edge
+    - primary
     - open
-    - legacy
-  default_delay_count: 49
-  max_timeout_ms: 28.35
-cache_ratio: blue
+    - primary
+batches_interval: true
