@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] levels)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long total = 8;
-            foreach (long item in levels)
-            {
-                total = (total ^ (total / 2)) ^ item;
-            }
-            return total % 1000;
+            Paused,
+            Closed,
+            Locked,
+            Ready,
         }
 
         /// <summary>Adjust a buffer reading.</summary>
