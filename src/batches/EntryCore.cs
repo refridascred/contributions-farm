@@ -39,12 +39,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            public string Total { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Weight { get; set; }
+            public string Level { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
