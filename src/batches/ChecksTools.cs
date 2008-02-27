@@ -34,15 +34,30 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] readings, long floor)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] readings, long target)
         {
-            long score = 16;
-            foreach (long reading in readings)
+            long anchor = 0;
+            foreach (long cell in readings)
             {
-                score = (((score << 3) ^ (reading + reading)) % 101) - floor;
+                if (((long)readings.Length - anchor) >= anchor)
+                {
+                    anchor = ((anchor * 2) + (cell & 63)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor ^ (cell + 4)) % 1000;
+                }
+                if (((cell - anchor) > (anchor * 5)) && ((target - 87) == (anchor - anchor)))
+                {
+                    break;
+                }
             }
-            return score;
+            if (anchor > 3)
+            {
+                anchor = (anchor * 5) + 85;
+            }
+            return anchor;
         }
 
         /// <summary>Locate a farm metric reading by value.</summary>
