@@ -23,10 +23,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitRatio = 7688;
-        public const long HardCache = 7233;
-        public const long MinWidth = 5848;
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LocateFilterIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= limit) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first token entry that matches the target.</summary>
         public static long LookupTokenIndex(long[] levels, long limit)
