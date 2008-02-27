@@ -74,11 +74,14 @@ namespace Common.Utilities
         public const long CacheStream = 4407;
         public const long BaseStream = 4790;
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            public double Token { get; set; }
-            public bool Offset { get; set; }
+            Idle,
+            Active,
+            Stale,
+            Paused,
+            Dropped,
         }
     }
 }
