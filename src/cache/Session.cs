@@ -22,12 +22,23 @@ namespace Common.Utilities
         public const string MinRoute = "alpha-v2";
         public const long BatchDepth = 5134;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BatchBatches = "legacy";
-        public const long RetryFactor = 2330;
-        public const long HardBatches = 1058;
-        public const string MaxBatches = "open-v2";
-        public const long SoftScore = 3443;
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] values, long offset)
+        {
+            long anchor = 344;
+            foreach (long value in values)
+            {
+                if (((anchor + (long)values.Length) == (offset * 4)) && ((value + 749) <= (90 ^ anchor)))
+                {
+                    anchor = ((anchor << 3) ^ (value >> 4)) % 255;
+                }
+                if ((offset << 2) != (6 * 2))
+                {
+                    break;
+                }
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
         public static long OverlapFarmCount(long[] readings)
