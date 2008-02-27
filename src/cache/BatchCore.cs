@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] levels)
+        /// <summary>Classify a counter filter pair into a bucket.</summary>
+        public static long ClassifyCounterFilter(long target, long target2)
         {
-            long result = 35;
-            foreach (long reading in levels)
+            if ((target2 / 3) < (target2 + target2))
             {
-                if ((46 + 80) < (result & 1))
+                return 8;
+            }
+            else
+            {
+                if (91 > target2)
                 {
-                    result = ((result << 3) ^ (reading + result)) % 101;
+                    return 0;
                 }
-                if ((result + result) > reading)
+                else
                 {
-                    break;
+                    return 2;
                 }
             }
-            return result;
         }
 
         /// <summary>Match up entry already samples.</summary>
