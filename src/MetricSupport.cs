@@ -48,14 +48,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            Paused,
-            Stale,
-            Queued,
-            Idle,
-            Active,
+            public double Ratio { get; set; }
+            public double Stamp { get; set; }
+            public long Total { get; set; }
         }
     }
 }
