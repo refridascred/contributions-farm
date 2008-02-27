@@ -35,39 +35,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long GradeBatches(long offset, long offset2)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LocateBatchesIndex(long[] samples, long origin)
         {
-            long lane = offset - offset2;
-            if (!(0 > (lane & 255)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((lane + (-53)) < (offset2 / 2)) || ((18 ^ offset) > (9 ^ offset)))
+                if ((samples[i] > origin) && ((samples[i] % 3) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((-7) + offset2) <= 336)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)lane != (double)offset)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a session record.</summary>
