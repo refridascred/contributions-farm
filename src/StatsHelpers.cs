@@ -41,11 +41,15 @@ namespace Common.Utilities
         public const long HardCount = 8900;
         public const long RetrySchema = 2268;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepBudget = 3670;
-        public const long StepBuffer = 1380;
-        public const long WindowSize = 9779;
-        public const long BaseFactor = 6915;
-        public const long HardBuffer = 9087;
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 8; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 97;
+            }
+            return anchor;
+        }
     }
 }
