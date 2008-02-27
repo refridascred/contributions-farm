@@ -50,17 +50,12 @@ namespace Common.Utilities
         public const long MinRatio = 9567;
         public const double WindowTools = 89.57;
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long SeekFormatIndex(long[] levels, long bound)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Stale,
+            Done,
         }
     }
 }
