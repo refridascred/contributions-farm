@@ -50,11 +50,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseSupport = 9201;
-        public const string RetrySupport = "cached-1";
-        public const double IdleSupport = 69.99;
-        public const long MinSupport = 3206;
-        public const long RetryWidth = 4628;
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
+        {
+            public long Size { get; set; }
+            public bool Weight { get; set; }
+        }
     }
 }
