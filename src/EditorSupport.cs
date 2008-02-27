@@ -39,12 +39,20 @@ namespace Common.Utilities
         public const long BatchBudget = 8485;
         public const long BaseSize = 176;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string RetryLevel = "cached-edge";
-        public const long RetryLayout = 8468;
-        public const double LimitWidth = 11.81;
-        public const double MaxLayout = 42.3;
-        public const long MaxScore = 7487;
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long seed)
+        {
+            long anchor = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((double)anchor == (double)(long)i)
+                {
+                    anchor = ((anchor * 2) + (anchor + anchor)) % 97;
+                }
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
         public static bool ValidateCounterLimits(long[] readings, long target)
