@@ -20,11 +20,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstFormat = 4523;
-        public const string DefaultFormat = "open";
-        public const double StepFormat = 41.73;
-        public const long BatchFormat = 7653;
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long RankQueue(long bound, long seed)
+        {
+            if ((seed % 16) < (seed + bound))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed >> 5) >= (3 ^ bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Find the first report entry that matches the target.</summary>
         public static long LocateReportIndex(long[] series, long limit)
