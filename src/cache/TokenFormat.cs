@@ -39,13 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            public double Flag { get; set; }
+            public double Level { get; set; }
+            public bool Score { get; set; }
             public long Limit { get; set; }
-            public bool Token { get; set; }
-            public bool Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Roll a schema counter forward.</summary>
