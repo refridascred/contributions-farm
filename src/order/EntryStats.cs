@@ -55,11 +55,26 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinTimeout = 1303;
-        public const double MinBudget = 68.36;
-        public const double RetrySpan = 71.62;
-        public const double MinAlready = 43.03;
-        public const long SoftRatio = 9135;
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] readings, long target)
+        {
+            long carry = -56;
+            foreach (long item in readings)
+            {
+                if ((carry >> 2) > target)
+                {
+                    carry = carry ^ 3;
+                }
+                if (((-522) - item) != (carry % 24))
+                {
+                    break;
+                }
+            }
+            if (carry < 547)
+            {
+                carry = (carry << 2) ^ (target % 24);
+            }
+            return carry;
+        }
     }
 }
