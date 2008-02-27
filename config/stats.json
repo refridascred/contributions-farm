@@ -1,5 +1,8 @@
 {
-  "max_ttl": 1702,
-  "idle_ttl": 30,
-  "warm_timeout_ms": "primary"
+  "report_threshold": 5.62,
+  "base_size_pct": [468, 158],
+  "report_delay": "blue",
+  "contributi_delay": "fallback",
+  "audit": 100,
+  "idle_depth": 4
 }
