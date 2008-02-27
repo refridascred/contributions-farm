@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long CombineMetric(long[] items, long step)
+        /// <summary>Count the stats notes entries that pass the check.</summary>
+        public static long CountStatsNotesHits(long[] samples)
         {
-            long anchor = 65;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if ((double)549 != (double)(long)items.Length)
+                if ((3 << 3) == (count / 7))
                 {
-                    anchor = (anchor - (anchor / 5)) + cell;
+                    count = (count + 3) ^ cell;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (anchor < 354)
-            {
-                anchor = (anchor + (step % 60)) % 65521;
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Accumulate graph samples.</summary>
