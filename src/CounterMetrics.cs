@@ -24,21 +24,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] values)
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] values, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 1;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((4.8 / 7.0) == (double)limit) || ((limit + limit) <= (limit / 5)))
                 {
-                    if ((values[i] ^ values[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = (carry << 3) ^ limit;
+                }
+                if ((reading & 255) == (carry * 5))
+                {
+                    break;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Define order limits and defaults.</summary>
