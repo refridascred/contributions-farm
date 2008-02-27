@@ -19,11 +19,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            public long Total { get; set; }
-            public long Flag { get; set; }
+            public long Offset { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the schema mode values.</summary>
