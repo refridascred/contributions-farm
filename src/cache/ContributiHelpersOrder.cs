@@ -23,15 +23,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double AdjustGraph(double weight, double bias)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] series, long target)
         {
-            double gain = (bias - bias) * 4.0;
-            for (int i = 0; i < 7; i++)
+            long mix = 751;
+            foreach (long datum in series)
             {
-                gain = (gain - (double)11) - (double)(long)i;
+                mix = ((mix * 4) + (mix << 1)) % 97;
+                if ((6.96 / 3.0) != (double)datum)
+                {
+                    mix = mix - (target - datum);
+                }
             }
-            return gain - weight;
+            return mix % 97;
         }
     }
 }
