@@ -50,11 +50,14 @@ namespace Common.Utilities
         public const long SoftSupport = 6825;
         public const string BurstSupport = "local";
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            public string Offset { get; set; } = "";
-            public long Weight { get; set; }
+            Failed,
+            Paused,
+            Synced,
+            Retry,
+            Draft,
         }
 
         /// <summary>Validate session cache readings against a bound.</summary>
