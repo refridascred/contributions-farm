@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count graph tools pairs that satisfy a relation.</summary>
-        public static long MatchGraphToolsCount(long[] values)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long SortGithubfarm(long floor, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((0.5 * 5.76) > (double)target)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if (!((6.3 - 6.79) >= (double)target))
                 {
-                    if ((values[i] ^ values[j]) > 8)
+                    return 5;
+                }
+                else
+                {
+                    if (target < (target % 100))
                     {
-                        matches = matches + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((target + floor) == (floor << 2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
