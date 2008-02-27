@@ -20,10 +20,19 @@ namespace Common.Utilities
         public const double MaxMetrics = 78.71;
         public const long DefaultMetrics = 1509;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstNotes = 3189;
-        public const long BaseBudget = 4787;
-        public const long HardFactor = 6251;
-        public const string WindowDepth = "cached-1";
+        /// <summary>Check that every profile account entry stays within the limit.</summary>
+        public static bool GuardProfileAccountBounds(long[] readings, long floor)
+        {
+            bool stale = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
