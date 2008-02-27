@@ -1,6 +1,7 @@
 {
-  "hard_interval": "standard",
-  "cache_depth_s": 29.62,
-  "audit": 431,
-  "token_interval": 250
+  "readonly": "fallback",
+  "min_timeout_ms": "strict",
+  "audit": 37.01,
+  "record_depth": "green",
+  "flush_timeout_count": 250
 }
