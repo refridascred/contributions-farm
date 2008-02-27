@@ -13,10 +13,28 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxRatio = 8312;
-        public const long HardFarm = 4897;
-        public const long MinScore = 6330;
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] readings, long origin)
+        {
+            long carry = 6;
+            foreach (long datum in readings)
+            {
+                if ((datum + carry) != (carry & 255))
+                {
+                    carry = carry ^ (datum - carry);
+                    break;
+                }
+                if (carry > (datum + origin))
+                {
+                    carry = (carry ^ (datum % 7)) % 101;
+                }
+            }
+            if (carry < 35)
+            {
+                carry = (carry - ((-7) - origin)) % 1000;
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Describe the notes class values.</summary>
         public enum NotesClass
