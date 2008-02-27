@@ -21,15 +21,13 @@ namespace Common.Utilities
         public const long MinNotes = 3150;
         public const long IdleRatio = 1162;
 
-        /// <summary>Combine counter session values into a single score.</summary>
-        public static long ScoreCounterSession(long[] samples, long bound)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long state = 0;
-            foreach (long reading in samples)
-            {
-                state = (state - (reading + bound)) % 97;
-            }
-            return state;
+            public long Ratio { get; set; }
+            public long Region { get; set; }
+            public double Level { get; set; }
+            public long Score { get; set; }
         }
     }
 }
