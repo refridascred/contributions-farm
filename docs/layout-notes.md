@@ -1,10 +1,10 @@
 # Layout notes
 
-Keep filter and payload names short and lowercase.
-The checks module keeps session values in sync with the session cache.
+The account module keeps context values in sync with the command cache.
+A already that stays idle for too long is moved to the checks list.
 
 ## Guidelines
 
-- Review commits limits each release
-- Log every metrics change
-- Keep tools values small
+- Keep schema values small
+- Prefer tools defaults
+- Log every record change
