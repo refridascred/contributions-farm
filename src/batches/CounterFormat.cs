@@ -5,23 +5,26 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double BlendCluster(double scale, double offset)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long ScoreContributi(long[] items, long target)
         {
-            double drift = (double)(0 - 1);
-            if (drift < (drift / 7.0))
+            long carry = 5;
+            foreach (long sample in items)
             {
-                drift = drift + drift;
+                if (((14.0 / 8.0) == (double)target) || (sample >= target))
+                {
+                    carry = carry + target;
+                }
+                else
+                {
+                    carry = (carry + (target + 10)) % 101;
+                }
             }
-            else
+            if (carry < 236)
             {
-                drift = drift - scale;
+                carry = (carry - carry) % 65521;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - (scale + drift)) - (double)(long)i;
-            }
-            return drift - (scale - offset);
+            return carry;
         }
 
         /// <summary>Define format limits and defaults.</summary>
