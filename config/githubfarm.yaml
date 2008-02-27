@@ -1,13 +1,8 @@
 # githubfarm settings
-base_delay_pct: cached
-queue_threshold: local
-enabled:
-  - 208
-  - 149
-  - 107
-  - 127
-compress:
-  - eu-west
-  - local
-  - green
-  - edge
+default_window_pct: 72.3
+verbose:
+  - 456
+  - 148
+  - 488
+max_ttl: staging
+max_interval_ms: 88.74
