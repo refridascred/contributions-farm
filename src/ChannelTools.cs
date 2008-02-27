@@ -40,11 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstSize = 4029;
-        public const long HardInterval = 4880;
-        public const long LimitScore = 4406;
-        public const long LimitBatch = 9942;
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] data, long floor)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == floor) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two route filter measurements.</summary>
         public static double ScaleRouteFilter(double weight, double floor)
