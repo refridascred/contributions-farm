@@ -51,11 +51,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string DefaultSpan = "stable-1";
-        public const double DefaultInterval = 92.0;
-        public const long LimitToken = 9407;
-        public const long BatchLevel = 1384;
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long MatchRouteCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool ValidateSupportLimits(long[] values, long target)
