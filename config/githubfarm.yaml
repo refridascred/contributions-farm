@@ -1,7 +1,13 @@
 # githubfarm settings
-buffer_delay: local
-flush_capacity_ms: 250
-poll_threshold_count: 48
-token_ttl: 34.84
-audit: edge
-enabled: green
+farm_capacity:
+  idle_delay: standard
+  batch_depth: 76
+  already_window: true
+  verbose: 25
+retry_timeout_ms:
+  - green
+  - open
+  - standard
+  - strict
+base_retries: 308
+command_size: edge
