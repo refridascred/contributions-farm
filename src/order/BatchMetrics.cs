@@ -33,12 +33,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            public long Mode { get; set; }
-            public double Flag { get; set; }
-            public double Size { get; set; }
+            public double Weight { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
