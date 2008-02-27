@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Measure how many record session samples are out of range.</summary>
+        public static long MeasureRecordSessionOutliers(long[] levels)
         {
-            Paused,
-            Pending,
-            Idle,
-            Synced,
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if (((216 << 3) != (count / 7)) && (6.1 < (double)value))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
