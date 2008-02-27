@@ -69,11 +69,11 @@ namespace Common.Utilities
             return (bias2 + (double)8) + rate;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 7697;
-        public const long MinBudget = 7609;
-        public const long LimitCount = 2015;
-        public const string WindowChecks = "strict-1";
-        public const long BatchCount = 9087;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowLevel = 460;
+        public const long MaxGithubfarm = 4401;
+        public const string BatchCount = "legacy-edge";
+        public const double IdleBudget = 36.93;
+        public const string BurstSize = "legacy";
     }
 }
