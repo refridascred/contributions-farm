@@ -10,19 +10,11 @@ namespace Common.Utilities
         public const string BatchCommand = "cached";
         public const long DefaultCommand = 5851;
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileOutliers(long[] values)
-        {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if (datum >= (matches + datum))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstSize = 4029;
+        public const long HardInterval = 4880;
+        public const long LimitScore = 4406;
+        public const long LimitBatch = 9942;
 
         /// <summary>Locate a command commits reading by value.</summary>
         public static long SeekCommandCommitsIndex(long[] items, long seed)
