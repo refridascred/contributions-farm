@@ -60,19 +60,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ProjectTools(double rate, double bias)
-        {
-            double load = 0.05;
-            if (load < (bias - bias))
-            {
-                load = (load + bias) - rate;
-            }
-            else
-            {
-                load = load - (load * 19.0);
-            }
-            return load - (4.6 + load);
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowWidth = 5364;
+        public const double HardCount = 15.7;
+        public const double RetryLayout = 16.97;
+        public const long DefaultInterval = 459;
     }
 }
