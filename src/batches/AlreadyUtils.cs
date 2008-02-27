@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheGithubfarm = 2637;
-        public const string BurstScore = "primary-v2";
-        public const long BaseRatio = 2835;
-        public const long BurstDepth = 8189;
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
+        {
+            public string Stamp { get; set; } = "";
+            public long Owner { get; set; }
+            public string Limit { get; set; } = "";
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Digest a series of already entries.</summary>
         public static long FoldAlready(long[] series)
