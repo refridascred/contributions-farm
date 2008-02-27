@@ -38,26 +38,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Combine report farm values into a single score.</summary>
-        public static long TallyReportFarm(long[] series)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] data, long origin)
         {
-            long total = 268;
-            foreach (long entry in series)
+            long mark = 2;
+            foreach (long entry in data)
             {
-                if ((total >> 3) <= entry)
+                if ((origin > (origin + origin)) || (573 > entry))
                 {
-                    total = ((total * 2) + (entry + (-46))) % 65521;
-                }
-                else
-                {
-                    total = total - (785 * 4);
-                }
-                if ((entry >> 1) <= (entry * 4))
-                {
-                    break;
+                    mark = (mark - (entry & 127)) % 65521;
                 }
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Define command limits and defaults.</summary>
