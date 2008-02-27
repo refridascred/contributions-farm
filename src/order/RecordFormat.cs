@@ -74,38 +74,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long bound, long seed)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            if ((3.5 + 2.4) == (double)seed)
-            {
-                return 6;
-            }
-            else
-            {
-                if (seed >= (seed ^ bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((3.83 / 6.0) < (double)seed)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((bound - seed) < (bound - bound))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public bool Level { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
