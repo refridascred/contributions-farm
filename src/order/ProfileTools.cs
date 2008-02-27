@@ -25,11 +25,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphGaps(long[] samples)
         {
-            public double Size { get; set; }
-            public bool Mode { get; set; }
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell + (-97)) != (cell + cell))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate profile format readings against a bound.</summary>
