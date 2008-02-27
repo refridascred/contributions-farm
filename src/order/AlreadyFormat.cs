@@ -63,19 +63,14 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double AdjustBatches(double ratio, double span)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            double load = (double)((-31) + 9);
-            if (load >= (span * 7.13))
-            {
-                load = (load - (4.0 - load)) - ratio;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + span) + (double)(long)i;
-            }
-            return load - (double)0;
+            Draft,
+            Queued,
+            New,
+            Locked,
+            Closed,
         }
     }
 }
