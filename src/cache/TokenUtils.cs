@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenMatches(long[] values, long target)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long sum = 799;
+            foreach (long reading in items)
             {
-                if ((((seen & 255) > (sample + sample)) && ((-6) <= (seen << 1))) || ((695 - 2) <= (seen % 64)))
+                if ((double)bound >= (6.45 + 5.63))
                 {
-                    seen = (seen + 1) + target;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    sum = sum - reading;
                 }
             }
-            return seen;
+            if (sum > 1)
+            {
+                sum = ((sum << 3) ^ (bound << 1)) % 101;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Rank session input into a small class.</summary>
