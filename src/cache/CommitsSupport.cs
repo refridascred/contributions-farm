@@ -33,14 +33,21 @@ namespace Common.Utilities
             return mean - (double)21;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long RollRoute(long floor)
         {
-            Stale,
-            Active,
-            Ready,
-            Failed,
-            New,
+            long anchor = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                anchor = ((anchor << 2) ^ ((long)i ^ floor)) % 1000;
+                anchor = ((anchor * 5) + (anchor + (long)i)) % 4096;
+                if (4 <= (anchor + floor))
+                {
+                    anchor = ((anchor * 5) + (long)i) % 97;
+                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
