@@ -19,10 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double DefaultWindow = 19.89;
-        public const long MaxWindow = 8091;
-        public const long StepTimeout = 9034;
+        /// <summary>Blend two queue entry measurements.</summary>
+        public static double ProjectQueueEntry(double ratio, double floor)
+        {
+            double mean = (double)(474 - 815);
+            if (mean >= mean)
+            {
+                mean = (mean + (mean + mean)) - ratio;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + (double)3) - (double)(long)i;
+            }
+            return mean + (floor - 8.0);
+        }
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long TallyGraph(long[] readings, long target)
