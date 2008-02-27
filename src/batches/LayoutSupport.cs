@@ -36,12 +36,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            public long Weight { get; set; }
-            public double Label { get; set; }
-            public bool Level { get; set; }
+            Ready,
+            Draft,
+            Locked,
+            Done,
         }
 
         /// <summary>Digest a series of record entries.</summary>
