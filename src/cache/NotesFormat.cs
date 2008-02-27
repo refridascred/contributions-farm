@@ -26,13 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            New,
-            Ready,
+            Failed,
+            Pending,
+            Idle,
             Locked,
-            Synced,
         }
     }
 }
