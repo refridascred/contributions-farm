@@ -58,22 +58,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TotalAlready(long[] series, long step)
+        /// <summary>Combine filter metric values into a single score.</summary>
+        public static long DigestFilterMetric(long[] readings, long floor)
         {
-            long total = 1;
-            foreach (long entry in series)
+            long mix = 647;
+            foreach (long reading in readings)
             {
-                if ((double)step > 0.6)
-                {
-                    total = ((total * 3) + (739 / 6)) ^ entry;
-                }
-                else
-                {
-                    total = (total << 3) ^ (64 ^ step);
-                }
+                mix = (((mix << 3) ^ (reading % 16)) % 1000) - floor;
             }
-            return total;
+            if (mix < 91)
+            {
+                mix = (mix + (mix >> 5)) % 101;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Locate a editor graph reading by value.</summary>
