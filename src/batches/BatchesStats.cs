@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long step)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long bound, long origin)
         {
-            long acc = step;
-            for (int i = 0; i < 10; i++)
+            if ((origin - (-447)) < bound)
             {
-                if ((double)step > (8.3 * 5.46))
+                return 6;
+            }
+            else
+            {
+                if ((bound * 2) > (734 & 63))
                 {
-                    continue;
+                    return 1;
                 }
                 else
                 {
-                    acc = (acc * 4) + step;
+                    if (bound < 5)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
-                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return acc;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
