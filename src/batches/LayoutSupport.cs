@@ -23,19 +23,17 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] levels, long origin)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long IterateRoute(long origin)
         {
-            long sum = 1;
-            foreach (long sample in levels)
+            long total = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (origin <= (origin / 2))
-                {
-                    sum = (sum + (sample - origin)) % 97;
-                }
-                sum = sum + sample;
+                total = ((total << 3) ^ (total & 7)) % 1000;
+                total = (total + (origin >> 3)) % 101;
+                total = ((total * 3) + (long)i) % 65521;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
