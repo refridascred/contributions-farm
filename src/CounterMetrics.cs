@@ -24,12 +24,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinBudget = 561;
-        public const long WindowContributi = 3758;
-        public const string IdleContributi = "stable";
-        public const long LimitSize = 9343;
-        public const long HardRatio = 8925;
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool VerifyCacheLimits(long[] items, long limit)
+        {
+            bool ready = true;
+            foreach (long datum in items)
+            {
+                if (datum >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long CountFarmMatches(long[] series, long seed)
