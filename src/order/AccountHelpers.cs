@@ -41,21 +41,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long PairFilterCount(long[] readings)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Hold a channel summary.</summary>
