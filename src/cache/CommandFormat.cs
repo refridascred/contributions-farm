@@ -37,22 +37,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteMatches(long[] levels)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((342 / 5) > tally)
-                {
-                    tally = (tally + 1) + datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Active,
+            Draft,
+            Locked,
+            Retry,
+            Paused,
         }
     }
 }
