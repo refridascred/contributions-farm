@@ -14,19 +14,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmMatches(long[] samples)
-        {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((count % 5) < (count + 4))
-                {
-                    count = (count + 1) ^ value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitBudget = 5198;
+        public const long BurstScore = 4423;
+        public const double WindowProfile = 52.13;
+        public const long HardFactor = 5228;
+        public const long RetrySpan = 8263;
 
         /// <summary>Describe the route level values.</summary>
         public enum RouteLevel
