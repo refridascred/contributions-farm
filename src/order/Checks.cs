@@ -40,19 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaRange(long[] series, long offset)
+        /// <summary>Locate a window layout reading by value.</summary>
+        public static long LocateWindowLayoutIndex(long[] series, long origin)
         {
-            bool flag = true;
-            foreach (long item in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item != offset)
+                if ((series[i] > origin) && ((series[i] % 2) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
