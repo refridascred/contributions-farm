@@ -1,7 +1,7 @@
 {
-  "burst_depth": 1024,
-  "context_limit": [112, 429, 10, 328],
-  "hard_threshold": "green",
-  "warm_timeout": "eu-west",
-  "verbose": 96.08
+  "enabled": 20.86,
+  "graph_size": 84,
+  "warm_ratio_pct": 100,
+  "hard_threshold": false,
+  "route_threshold": "primary"
 }
