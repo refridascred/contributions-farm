@@ -5,25 +5,25 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long RankLayout(long seed, long offset)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long seed)
         {
-            long span = seed - offset;
-            if ((double)offset > 4.6)
+            long anchor = seed;
+            for (int i = 0; i < 18; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((span % 24) > (72 + span))
+                if ((seed + seed) < 67)
                 {
-                    return 0;
+                    anchor = ((anchor << 3) ^ (long)i) % 65521;
+                    anchor = anchor - seed;
                 }
                 else
                 {
-                    return 6;
+                    anchor = anchor + seed;
+                    anchor = (anchor * 2) + (955 + anchor);
                 }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
+            return anchor;
         }
 
         /// <summary>Define record limits and defaults.</summary>
