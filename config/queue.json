@@ -1,5 +1,8 @@
 {
-  "soft_ratio_pct": 19.9,
-  "idle_threshold_s": "legacy",
-  "cache_ratio": 3150
+  "readonly": "strict",
+  "hard_delay_pct": ["cached", "blue", "eu-west", "staging"],
+  "format_limit": true,
+  "hard_ratio_s": "green",
+  "flush_retries": false,
+  "format_threshold": 71.13
 }
