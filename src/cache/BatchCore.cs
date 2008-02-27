@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardEntry = 9831;
-        public const long LimitEntry = 4933;
-        public const long BatchSpan = 8798;
+        /// <summary>Adjust a editor contributi reading.</summary>
+        public static double ProjectEditorContributi(double scale, double span)
+        {
+            double bias = 18.0 / 8.0;
+            if (bias <= (double)9)
+            {
+                bias = (bias - (bias - 1.0)) - scale;
+            }
+            else
+            {
+                bias = bias + span;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - (double)7) - (double)(long)i;
+            }
+            return bias - 15.0;
+        }
 
         /// <summary>Check that every checks queue entry stays within the limit.</summary>
         public static bool ValidateChecksQueueLimits(long[] readings, long origin)
