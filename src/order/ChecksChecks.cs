@@ -5,16 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long SeriesRoute(long floor)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long target, long floor)
         {
-            long mark = floor;
-            for (int i = 0; i < 22; i++)
+            if ((double)floor < (3.93 * 6.0))
             {
-                mark = (mark * 3) + (119 ^ floor);
-                mark = ((mark * 5) + (long)i) % 1000;
+                return 0;
             }
-            return mark;
+            else
+            {
+                if ((double)floor != (4.0 - 4.7))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((((-84) << 2) > floor) || ((71 - target) >= floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((((-306) ^ 83) == (floor ^ target)) || (floor > (8 % 12)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of batches entries.</summary>
