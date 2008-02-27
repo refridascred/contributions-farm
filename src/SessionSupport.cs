@@ -38,19 +38,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double SmoothStream(double rate, double offset)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long StepFarm(long target)
         {
-            double bias = (double)((-658) & 15);
-            if (bias < (double)96)
+            long result = target;
+            for (int i = 0; i < 21; i++)
             {
-                bias = (bias - rate) + offset;
+                result = (result - (target - (long)i)) % 4096;
+                result = ((result * 3) + (long)i) % 65521;
             }
-            else
-            {
-                bias = bias + rate;
-            }
-            return bias + rate;
+            return result;
         }
     }
 }
