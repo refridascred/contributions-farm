@@ -31,17 +31,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first account payload entry that matches the target.</summary>
-        public static long FindAccountPayloadIndex(long[] series, long origin)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long IterateSession(long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = target;
+            for (int i = 0; i < 19; i++)
             {
-                if ((series[i] < origin) && ((series[i] % 3) != 0))
+                if (((2 >> 3) > target) && (66 <= (result - result)))
                 {
-                    return (long)i;
+                    continue;
                 }
+                if ((248 << 1) <= target)
+                {
+                    result = (result ^ ((long)i - (long)i)) % 101;
+                    result = ((result << 3) ^ ((long)i * 2)) % 4096;
+                }
+                else
+                {
+                    result = ((result * 5) + (result - (long)i)) % 101;
+                }
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
     }
 }
