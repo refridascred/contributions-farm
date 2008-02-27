@@ -38,19 +38,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountRange(long[] data, long seed)
+        /// <summary>Derive the next notes record value from a seed.</summary>
+        public static long SeriesNotesRecord(long offset)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            long mix = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if (sample != seed)
+                if ((double)10 < (double)mix)
                 {
-                    flag = false;
-                    break;
+                    mix = mix - (offset >> 4);
+                    mix = ((mix << 3) ^ (mix / 7)) % 97;
                 }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return flag;
+            return mix;
         }
 
         /// <summary>Define account limits and defaults.</summary>
