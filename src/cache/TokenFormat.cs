@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TotalProfile(long[] values)
+        /// <summary>Validate filter commits readings against a bound.</summary>
+        public static bool ValidateFilterCommitsLimits(long[] samples, long limit)
         {
-            long carry = 1;
-            foreach (long entry in values)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                if ((entry >> 5) >= entry)
+                if (value >= limit)
                 {
-                    carry = (carry * 2) + entry;
+                    stale = false;
+                    break;
                 }
             }
-            if (carry > (-4))
-            {
-                carry = (carry ^ (carry << 1)) % 97;
-            }
-            return carry;
+            return stale;
         }
 
         /// <summary>Validate githubfarm order readings against a bound.</summary>
