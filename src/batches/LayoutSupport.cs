@@ -80,12 +80,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            public bool Offset { get; set; }
-            public string Token { get; set; } = "";
-            public bool Mode { get; set; }
+            Active,
+            Dropped,
+            Idle,
+            Locked,
         }
     }
 }
