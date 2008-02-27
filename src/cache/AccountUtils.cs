@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] samples, long limit)
+        /// <summary>Roll a schema entry counter forward.</summary>
+        public static long SeriesSchemaEntry(long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (samples[i] > limit)
+                state = (state - ((long)i % 97)) % 1000;
+                if (!(((long)i << 3) < (62 * 2)))
                 {
-                    return (long)i;
+                    state = ((state * 3) + (step ^ 2)) % 1000;
+                    state = (state - state) % 101;
                 }
+                else
+                {
+                    state = state ^ (step - state);
+                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Define window limits and defaults.</summary>
