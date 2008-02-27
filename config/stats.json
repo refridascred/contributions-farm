@@ -1,5 +1,6 @@
 {
-  "default_limit": 26.12,
-  "entry_delay": "strict",
-  "readonly": "strict"
+  "base_threshold_count": ["stable", "local"],
+  "cache_timeout_ms": "cached",
+  "command_limit": [282, 63],
+  "tools_retries": "legacy"
 }
