@@ -56,26 +56,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] readings)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileHits(long[] samples)
         {
-            long mark = 79;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (((7.7 - 8.0) <= (double)item) && ((5.36 * 14.0) <= (double)mark))
+                if ((double)(long)samples.Length == (5.59 - 3.6))
                 {
-                    mark = mark ^ (mark - item);
+                    seen = (seen + 3) + reading;
                 }
-                if ((71 >= item) && ((mark * 3) < (item & 255)))
+                else
                 {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            if (mark > 6)
-            {
-                mark = (mark - ((-45) + mark)) % 97;
-            }
-            return mark % 1000;
+            return seen;
         }
     }
 }
