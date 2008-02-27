@@ -28,12 +28,24 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long SortSession(long origin, long floor)
         {
-            public long Owner { get; set; }
-            public bool Flag { get; set; }
-            public long Total { get; set; }
+            if (!((16.0 / 3.0) < (double)origin))
+            {
+                return 0;
+            }
+            else
+            {
+                if (origin >= (origin + 21))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
