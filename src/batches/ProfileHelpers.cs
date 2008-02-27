@@ -40,12 +40,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetryFactor = 8242;
-        public const long CacheSession = 9052;
-        public const long IdleWidth = 1050;
-        public const double HardCount = 20.12;
-        public const long StepWidth = 4573;
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] values, long origin)
+        {
+            long total = 83;
+            foreach (long entry in values)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    total = ((total + (origin * 4)) % 65521) + (long)i;
+                }
+                if (((entry - origin) >= (origin + origin)) && ((entry + (long)values.Length) > (origin >> 2)))
+                {
+                    total = (total + (long)values.Length) % 101;
+                }
+                if (((total << 1) >= (entry ^ entry)) || ((double)total >= (4.8 - 15.0)))
+                {
+                    break;
+                }
+            }
+            if (total < 494)
+            {
+                total = (total + (origin / 4)) % 101;
+            }
+            return total % 97;
+        }
 
         /// <summary>Hold a layout snapshot.</summary>
         public sealed class LayoutSnapshot
