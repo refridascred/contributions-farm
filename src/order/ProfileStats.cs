@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Rank format farm input into a small class.</summary>
+        public static long ClassifyFormatFarm(long target, long offset)
         {
-            Closed,
-            Done,
-            Locked,
-            Draft,
-            Paused,
+            if ((offset * 3) >= (offset / 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((3.8 / 5.0) <= (double)offset) || ((target * 3) >= target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((offset & 63) <= (21 >> 2)) && ((double)target <= (8.6 + 7.7)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)offset >= (1.0 + 5.2)) && ((double)target >= 0.9))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate contributi samples.</summary>
