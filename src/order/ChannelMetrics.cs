@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorHits(long[] levels, long step)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long WeighSupport(long[] data)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long anchor = 5;
+            foreach (long value in data)
             {
-                if (((step >> 1) != (item - matches)) && ((-99) < (step / 5)))
+                if ((double)value >= 13.0)
                 {
-                    matches = matches + 1;
+                    anchor = anchor - value;
+                }
+                if ((value & 31) != (anchor + anchor))
+                {
+                    break;
                 }
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Adjust a schema filter reading.</summary>
