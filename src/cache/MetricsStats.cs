@@ -18,10 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BatchToken = 85.68;
-        public const long MinToken = 7788;
-        public const long BurstToken = 5490;
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowGaps(long[] samples)
+        {
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell << 3) == (cell >> 2))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine schema cache values into a single score.</summary>
         public static long DigestSchemaCache(long[] samples, long offset)
