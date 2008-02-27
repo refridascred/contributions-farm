@@ -43,20 +43,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every metrics report entry stays within the limit.</summary>
-        public static bool CheckMetricsReportBounds(long[] samples, long seed)
-        {
-            bool ok = true;
-            foreach (long cell in samples)
-            {
-                if (cell <= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double DefaultChecks = 20.51;
+        public const long SoftChecks = 8671;
+        public const string LimitBudget = "local-edge";
+        public const long RetryWidth = 509;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long MinChecks = 7697;
