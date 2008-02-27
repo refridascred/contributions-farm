@@ -45,21 +45,12 @@ namespace Common.Utilities
             return drift + gain;
         }
 
-        /// <summary>Match up already metrics samples.</summary>
-        public static long CompareAlreadyMetricsCount(long[] data)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Flag { get; set; }
+            public string Level { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Validate already readings against a bound.</summary>
