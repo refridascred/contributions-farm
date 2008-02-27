@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long StepCounter(long offset)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long sum = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                if (((-92) % 12) < sum)
-                {
-                    sum = (sum << 2) ^ 94;
-                    sum = (sum * 3) + (offset & 63);
-                }
-                else
-                {
-                    sum = (sum - (4 << 3)) % 65521;
-                }
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
+            Paused,
+            Stale,
+            Pending,
+            Synced,
+            Closed,
         }
 
         /// <summary>Accumulate queue samples.</summary>
