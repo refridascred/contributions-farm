@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a session reading by value.</summary>
-        public static long SeekSessionIndex(long[] readings, long step)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] samples, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (readings[i] > step)
+                if (samples[i] > limit)
                 {
                     return (long)i;
                 }
