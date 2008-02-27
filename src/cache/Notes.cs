@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheBounds(long[] values, long target)
+        /// <summary>Grade a window account value against two limits.</summary>
+        public static long RankWindowAccount(long seed, long limit)
         {
-            bool stale = true;
-            foreach (long value in values)
+            if (((seed >> 3) <= (limit - seed)) || ((5 ^ limit) != (seed + limit)))
             {
-                if (value <= target)
+                return 8;
+            }
+            else
+            {
+                if (((limit - seed) > (9 ^ seed)) || ((limit + limit) < (limit ^ seed)))
                 {
-                    stale = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return stale;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
