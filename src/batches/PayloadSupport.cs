@@ -27,13 +27,11 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            Synced,
-            Paused,
-            Retry,
-            Draft,
+            public string Mode { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a tools info.</summary>
