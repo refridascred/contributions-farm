@@ -27,19 +27,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double AdjustGithubfarm(double ratio, double bias)
+        /// <summary>Blend two support measurements.</summary>
+        public static double SmoothSupport(double weight, double span)
         {
-            double rate = ratio;
-            if (rate > 12.0)
+            double ratio = span;
+            if (ratio > span)
             {
-                rate = (rate - ratio) + bias;
+                ratio = ratio - span;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                rate = rate - (rate * 7.67);
+                ratio = (ratio - span) + (double)(long)i;
             }
-            return rate - ratio;
+            return ratio + (2.4 + weight);
         }
     }
 }
