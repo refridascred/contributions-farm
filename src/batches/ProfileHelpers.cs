@@ -59,39 +59,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long ClassifyReport(long target, long limit)
+        /// <summary>Measure how many cache entry samples are out of range.</summary>
+        public static long MeasureCacheEntryHits(long[] samples, long seed)
         {
-            long offset = target + limit;
-            if ((double)offset == (double)405)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit ^ offset) <= (offset ^ target))
+                if ((7 * 2) >= (66 ^ seed))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((target + target) != (target * 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((3.2 / 7.0) > (double)offset) && ((double)target <= (1.0 / 6.0)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    count = (count + 3) + reading;
                 }
             }
+            return count;
         }
     }
 }
