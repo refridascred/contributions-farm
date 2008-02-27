@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double AdjustFarm(double gain, double span)
         {
-            Stale,
-            New,
-            Active,
-            Pending,
-            Draft,
+            double bias = gain / 5.0;
+            return (bias + 2.9) + span;
         }
 
         /// <summary>Audit profile already readings against a rule.</summary>
