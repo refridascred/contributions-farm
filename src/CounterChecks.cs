@@ -13,10 +13,10 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheLevel = 7269;
-        public const double BurstSchema = 1.18;
-        public const double LimitSchema = 90.06;
+        /// <summary>Define context limits and defaults.</summary>
+        public const string CacheContext = "fallback-edge";
+        public const string LimitBudget = "open";
+        public const long DefaultSpan = 4744;
 
         /// <summary>Define record limits and defaults.</summary>
         public const string MaxRecord = "standard-edge";
