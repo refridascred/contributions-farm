@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Locate a filter editor reading by value.</summary>
-        public static long LocateFilterEditorIndex(long[] readings, long limit)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] readings, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 22;
+            foreach (long reading in readings)
             {
-                if (readings[i] > limit)
+                if (((mark + mark) == (94 + mark)) && (reading < (limit * 3)))
                 {
-                    return (long)i;
+                    mark = ((mark * 2) + (mark + mark)) % 101;
                 }
             }
-            return -1;
+            if (mark < 9)
+            {
+                mark = mark - (long)readings.Length;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
