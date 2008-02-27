@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine buffer command values into a single score.</summary>
-        public static long CombineBufferCommand(long[] readings, long floor)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long score = 537;
-            foreach (long entry in readings)
-            {
-                if (!((score ^ score) <= (711 << 3)))
-                {
-                    score = (((score + (score & 255)) % 97) + entry) + floor;
-                }
-            }
-            if (score > 7)
-            {
-                score = ((score << 2) ^ (score & 127)) % 255;
-            }
-            return score;
+            Synced,
+            Locked,
+            Draft,
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
