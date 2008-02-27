@@ -1,8 +1,14 @@
 # support settings
-readonly:
-  - open
-  - legacy
-  - primary
-  - latest
-soft_size_s: open
-sync_size_pct: legacy
+persist: blue
+metrics_ratio: strict
+support_ttl: false
+batch_depth: primary
+default_threshold: fallback
+idle_interval:
+  batch_capacity_ms: blue
+  verbose: 88.01
+  burst_ttl_count: true
+  metric_size:
+    - edge
+    - cached
+    - strict
