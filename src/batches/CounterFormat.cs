@@ -37,16 +37,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long step)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LookupStreamIndex(long[] levels, long bound)
         {
-            long sum = step;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = ((sum << 2) ^ sum) % 65521;
-                sum = ((sum * 5) + (long)i) % 97;
+                if (levels[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
     }
 }
