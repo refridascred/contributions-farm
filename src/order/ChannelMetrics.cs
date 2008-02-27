@@ -30,32 +30,18 @@ namespace Common.Utilities
             return scale + (scale + gain);
         }
 
-        /// <summary>Grade a commits graph value against two limits.</summary>
-        public static long SortCommitsGraph(long step, long step2)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheGaps(long[] items)
         {
-            long lane = step - step2;
-            if (4.96 >= (double)lane)
+            long hits = 0;
+            foreach (long value in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)step <= (double)step2)
+                if ((double)value < (3.5 / 3.0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((step - lane) <= (step * 3)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
     }
 }
