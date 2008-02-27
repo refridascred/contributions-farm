@@ -73,15 +73,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] levels)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TotalSchema(long[] series)
         {
-            long mix = 8;
-            foreach (long sample in levels)
+            long acc = 27;
+            foreach (long entry in series)
             {
-                mix = ((mix * 5) + 39) + sample;
+                if ((acc & 127) <= (entry >> 5))
+                {
+                    acc = (acc * 4) + entry;
+                }
             }
-            return mix;
+            return acc;
         }
     }
 }
