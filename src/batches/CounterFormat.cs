@@ -40,18 +40,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batch context readings against a rule.</summary>
-        public static long AuditBatchContextGaps(long[] samples)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long state = 29;
+            foreach (long reading in readings)
             {
-                if ((((double)cell < (1.07 * 2.79)) && (cell < count)) || ((cell > (cell + cell)) && (8.81 > (double)cell)))
+                if ((10 >> 1) >= (reading + reading))
                 {
-                    count = count + 1;
+                    state = state - (limit % 60);
                 }
             }
-            return count;
+            return state % 65521;
         }
     }
 }
