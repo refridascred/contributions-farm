@@ -13,22 +13,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TotalBatch(long[] readings)
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] samples)
         {
-            long mix = 3;
-            foreach (long entry in readings)
+            long state = 814;
+            foreach (long entry in samples)
             {
-                if ((0.7 / 5.0) >= (double)mix)
-                {
-                    mix = ((mix + mix) % 101) ^ entry;
-                }
+                state = (((state << 3) ^ (699 & 31)) % 255) - entry;
             }
-            if (mix < 85)
-            {
-                mix = ((mix * 3) + (18 / 9)) % 97;
-            }
-            return mix % 65521;
+            return state;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
