@@ -58,19 +58,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double SmoothRecord(double ratio, double bias)
-        {
-            double drift = (double)(42 - 7);
-            if (drift > (bias + drift))
-            {
-                drift = drift + (double)0;
-            }
-            else
-            {
-                drift = drift + (ratio - bias);
-            }
-            return drift + (drift - 7.38);
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinChecks = 7697;
+        public const long MinBudget = 7609;
+        public const long LimitCount = 2015;
+        public const string WindowChecks = "strict-1";
+        public const long BatchCount = 9087;
     }
 }
