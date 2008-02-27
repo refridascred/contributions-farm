@@ -24,21 +24,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long PairLayoutCount(long[] readings)
+        /// <summary>Project the next metrics value.</summary>
+        public static double ProjectMetrics(double bias, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double scale = bias;
+            if (scale < scale)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                scale = (scale - (bias / 4.0)) - span;
             }
-            return tally;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + (scale * 7.3)) + (double)(long)i;
+            }
+            return scale - (double)(-2);
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
