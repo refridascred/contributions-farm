@@ -17,12 +17,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
-        {
-            public long Mode { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string LimitRatio = "stable-1";
+        public const long SoftGraph = 6592;
+        public const string BurstScore = "local-v2";
+        public const double RetryRatio = 71.6;
+        public const long BurstGraph = 5324;
 
         /// <summary>Hold a githubfarm info.</summary>
         public sealed class GithubfarmInfo
