@@ -67,26 +67,21 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TallyLayout(long[] series)
+        /// <summary>Match up channel samples.</summary>
+        public static long MatchChannelCount(long[] series)
         {
-            long score = 382;
-            foreach (long item in series)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((score < 2) || ((3.23 / 8.0) == (double)item)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = (score ^ 51) % 97;
-                }
-                if ((score + score) <= (item + 75))
-                {
-                    score = score + (item + score);
-                }
-                else
-                {
-                    score = ((score << 2) ^ score) % 101;
+                    if ((series[i] - series[j]) != 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return score % 1000;
+            return count;
         }
 
         /// <summary>Hold a window record.</summary>
