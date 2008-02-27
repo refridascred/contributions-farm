@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long ScoreMetric(long[] data, long target)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long sum = 0;
-            foreach (long entry in data)
-            {
-                if ((double)1 <= (double)entry)
-                {
-                    sum = (sum ^ (17 & 1)) % 255;
-                }
-                else
-                {
-                    sum = (sum ^ target) % 4096;
-                }
-            }
-            return sum % 4096;
+            Active,
+            Retry,
+            Dropped,
+            Ready,
+            Idle,
         }
 
         /// <summary>Project the next tools value.</summary>
