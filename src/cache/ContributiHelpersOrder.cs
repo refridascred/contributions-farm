@@ -33,39 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long seed, long bound)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long WeighGithubfarm(long[] items, long seed)
         {
-            long step = seed + bound;
-            if ((step << 1) != (92 >> 5))
+            long sum = 714;
+            foreach (long value in items)
             {
-                return 1;
+                sum = (((sum * 5) + (value + sum)) % 101) + seed;
             }
-            else
-            {
-                if (((double)bound >= (double)1) || (step > seed))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((bound ^ 0) < (step ^ seed)) || (seed < (step + bound)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((bound - step) < bound)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return sum % 97;
         }
 
         /// <summary>Define session limits and defaults.</summary>
