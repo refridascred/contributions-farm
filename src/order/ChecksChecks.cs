@@ -24,40 +24,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a githubfarm report pair into a bucket.</summary>
-        public static long BucketGithubfarmReport(long origin, long limit)
-        {
-            long bound = origin ^ limit;
-            if (!((bound & 63) == (origin % 8)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin + limit) != (73 / 5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound >> 5) >= origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((950 + origin) < bound)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheDepth = 1519;
+        public const long BaseFarm = 8300;
+        public const string SoftFarm = "staging-1";
+        public const long CacheFarm = 4818;
+        public const double DefaultFarm = 25.81;
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
