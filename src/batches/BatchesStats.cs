@@ -15,13 +15,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
-        {
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstFormat = 4523;
+        public const string DefaultFormat = "open";
+        public const double StepFormat = 41.73;
+        public const long BatchFormat = 7653;
 
         /// <summary>Find the first report entry that matches the target.</summary>
         public static long LocateReportIndex(long[] series, long limit)
