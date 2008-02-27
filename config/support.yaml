@@ -1,8 +1,8 @@
 # support settings
-burst_limit_pct:
-  - 221
-  - 114
-  - 301
-  - 240
-metrics_interval: 9128
-burst_ttl_ms: 18.88
+persist: staging
+checks_timeout:
+  - 489
+  - 417
+profile_limit: false
+idle_ttl_pct: green
+compress: open
