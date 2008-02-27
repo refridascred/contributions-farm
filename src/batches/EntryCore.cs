@@ -65,29 +65,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long ClassifyAccount(long offset, long limit)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long bound, long limit)
         {
-            long offset2 = offset ^ limit;
-            if ((406 - limit) == (864 & 255))
+            if ((limit * 3) <= (55 << 1))
             {
                 return 1;
             }
             else
             {
-                if (((offset2 >> 5) > (limit + limit)) && ((limit % 2) <= offset2))
+                if ((bound + bound) != (limit + limit))
                 {
-                    return 2;
+                    return 6;
                 }
                 else
                 {
-                    if (54 > (offset * 3))
+                    if (limit > (limit / 9))
                     {
                         return 5;
                     }
                     else
                     {
-                        return 4;
+                        return 2;
                     }
                 }
             }
