@@ -24,15 +24,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double SmoothFormat(double bias, double offset)
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] values)
         {
-            double ratio = (double)(4 ^ 95);
-            if (ratio < offset)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = (ratio - ratio) + bias;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return ratio + (double)(-249);
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
