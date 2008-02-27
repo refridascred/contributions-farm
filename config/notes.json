@@ -1,6 +1,12 @@
 {
-  "channel_window": false,
-  "batch_ratio": [354, 219],
-  "enabled": false,
-  "account_capacity": 6168
+  "flush_capacity": 100,
+  "retry_threshold_pct": "primary",
+  "buffer_ttl": {
+    "persist": false,
+    "enabled": "staging",
+    "context_limit": "fallback",
+    "burst_retries_ms": 56.54
+  },
+  "poll_delay_count": 100,
+  "retry_size": 42
 }
