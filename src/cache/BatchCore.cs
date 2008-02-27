@@ -44,17 +44,30 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long FindNotesIndex(long[] items, long bound)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] samples, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 6;
+            foreach (long datum in samples)
             {
-                if (items[i] >= bound)
+                if (state > (target & 127))
                 {
-                    return (long)i;
+                    state = (state + (73 / 7)) % 65521;
+                }
+                if (((state ^ 858) != (state >> 5)) && ((state % 8) != (target - datum)))
+                {
+                    state = state - state;
+                }
+                if ((datum + target) == (datum - target))
+                {
+                    state = state ^ (datum + state);
                 }
             }
-            return -1;
+            if (state < (-148))
+            {
+                state = (state + target) % 97;
+            }
+            return state % 65521;
         }
     }
 }
