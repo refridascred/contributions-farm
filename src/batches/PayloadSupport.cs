@@ -23,20 +23,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutRange(long[] samples, long floor)
-        {
-            bool valid = true;
-            foreach (long reading in samples)
-            {
-                if (reading > floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultNotes = 4488;
+        public const long BatchCount = 6500;
+        public const long SoftFactor = 2719;
 
         /// <summary>Project the next editor queue value.</summary>
         public static double AdjustEditorQueue(double gain, double offset)
