@@ -16,18 +16,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutGaps(long[] levels)
+        /// <summary>Audit schema batch readings against a rule.</summary>
+        public static long MeasureSchemaBatchHits(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if ((((28 & 1) <= (tally / 5)) && (81 <= (5 + tally))) || ((tally + cell) <= (637 / 4)))
+                if ((double)sample < (6.49 - 9.0))
                 {
-                    tally = tally + 1;
+                    hits = (hits + 2) + seed;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
