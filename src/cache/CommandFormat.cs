@@ -15,11 +15,38 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Rank record input into a small class.</summary>
+        public static long RankRecord(long seed, long floor)
         {
-            public long Flag { get; set; }
-            public long Limit { get; set; }
+            if ((seed % 5) <= (floor & 127))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((246 + seed) == (floor % 97))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (seed >= (floor + seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((989 >= ((-4) + seed)) && ((floor - floor) > seed))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
