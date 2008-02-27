@@ -39,11 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsMatches(long[] data, long limit)
         {
-            public string Score { get; set; } = "";
-            public double Rank { get; set; }
+            long matches = 0;
+            foreach (long sample in data)
+            {
+                if ((double)matches < (double)limit)
+                {
+                    matches = (matches + 1) ^ sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate record token readings against a bound.</summary>
