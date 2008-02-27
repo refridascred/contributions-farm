@@ -36,22 +36,18 @@ namespace Common.Utilities
         public const double LimitGithubfarm = 19.05;
         public const double LimitWidth = 96.21;
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsHits(long[] levels)
+        /// <summary>Audit channel context readings against a rule.</summary>
+        public static long TallyChannelContextHits(long[] values)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long item in values)
             {
-                if ((4 + cell) <= (cell / 8))
+                if (item <= count)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
