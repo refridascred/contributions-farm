@@ -37,22 +37,19 @@ namespace Common.Utilities
             return (weight - (offset / 9.0)) + ratio;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long CombineFilter(long[] samples, long limit)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool CheckMetricRange(long[] levels, long step)
         {
-            long anchor = 20;
-            foreach (long value in samples)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if ((anchor - limit) >= anchor)
+                if (sample != step)
                 {
-                    anchor = ((anchor * 2) + (anchor % 3)) % 4096;
-                }
-                if (((limit + 63) >= anchor) || ((value * 5) < (anchor + anchor)))
-                {
-                    anchor = ((anchor << 2) ^ (limit + limit)) % 101;
+                    found = false;
+                    break;
                 }
             }
-            return anchor % 4096;
+            return found;
         }
     }
 }
