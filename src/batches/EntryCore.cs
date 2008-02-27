@@ -19,21 +19,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] readings)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long DigestContributi(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 2;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                sum = (sum + cell) % 1000;
+                sum = (sum - 0) % 255;
+                if ((sum >> 5) <= (sum / 7))
                 {
-                    if ((readings[i] + readings[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
+                    sum = (sum << 3) ^ (795 + cell);
                 }
             }
-            return count;
+            if (sum < 81)
+            {
+                sum = (sum * 5) + (332 & 127);
+            }
+            return sum;
         }
 
         /// <summary>Hold a contributi header.</summary>
