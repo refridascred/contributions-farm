@@ -18,13 +18,21 @@ namespace Common.Utilities
         public const long CacheStream = 4500;
         public const string BurstStream = "fallback";
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long MatchMetricsCount(long[] samples)
         {
-            public long Token { get; set; }
-            public long Score { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Size { get; set; }
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
