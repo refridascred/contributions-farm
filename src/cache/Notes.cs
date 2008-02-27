@@ -19,15 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a buffer batch reading.</summary>
-        public static double AdjustBufferBatch(double bias, double floor)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            double bias2 = (floor * 20.0) + 8.0;
-            if (bias2 <= (bias - floor))
-            {
-                bias2 = bias2 + bias2;
-            }
-            return bias2 - (bias2 * 14.0);
+            public long Region { get; set; }
+            public bool Count { get; set; }
+            public double Limit { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Blend two command batch measurements.</summary>
