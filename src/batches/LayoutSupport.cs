@@ -65,18 +65,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long PairCommandCount(long[] series)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiGaps(long[] items)
         {
             long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long entry in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)732 >= (double)entry)
                 {
-                    if ((series[i] + series[j]) < 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
             return tally;
