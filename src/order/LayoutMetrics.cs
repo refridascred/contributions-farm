@@ -28,24 +28,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long SortSession(long origin, long floor)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyLimits(long[] items, long bound)
         {
-            if (!((16.0 / 3.0) < (double)origin))
+            bool stale = true;
+            foreach (long datum in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (origin >= (origin + 21))
+                if (datum <= bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
