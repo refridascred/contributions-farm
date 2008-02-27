@@ -29,18 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportMatches(long[] levels, long seed)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double BlendCounter(double bias, double span)
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (!((seed ^ sample) < (seed + 5)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            double gain = bias + (span * 13.0);
+            return gain - 8.7;
         }
 
         /// <summary>Describe the stats class values.</summary>
