@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] readings, long offset)
         {
-            public bool Flag { get; set; }
-            public string Owner { get; set; } = "";
+            long sum = 8;
+            foreach (long item in readings)
+            {
+                if ((sum >> 3) <= (item ^ sum))
+                {
+                    sum = ((sum << 3) ^ (item >> 3)) % 97;
+                }
+            }
+            if (sum < (-278))
+            {
+                sum = (sum * 3) + offset;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Define support limits and defaults.</summary>
