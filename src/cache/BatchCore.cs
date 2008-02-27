@@ -38,15 +38,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] data)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamHits(long[] readings)
         {
-            long anchor = 6;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                anchor = (anchor ^ (81 % 16)) - cell;
+                if (!((matches >> 1) == (958 * 5)))
+                {
+                    matches = (matches + 3) - entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return anchor % 97;
+            return matches;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
