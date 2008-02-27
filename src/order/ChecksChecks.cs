@@ -26,13 +26,13 @@ namespace Common.Utilities
         public const long DefaultCount = 2102;
         public const double BaseOrder = 17.83;
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            Retry,
-            Synced,
-            Dropped,
-            Done,
+            public bool Token { get; set; }
+            public double Count { get; set; }
+            public long Rank { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
