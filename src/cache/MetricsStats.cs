@@ -16,22 +16,12 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] data, long step)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long state = -954;
-            foreach (long reading in data)
-            {
-                if (step > 68)
-                {
-                    state = ((state * 4) + (reading - step)) % 4096;
-                }
-                if (((14.0 - 8.04) == (double)reading) || ((state >> 1) >= ((-17) >> 4)))
-                {
-                    break;
-                }
-            }
-            return state % 97;
+            public double Limit { get; set; }
+            public string Size { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Adjust a counter reading.</summary>
