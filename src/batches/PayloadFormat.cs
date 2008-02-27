@@ -26,18 +26,23 @@ namespace Common.Utilities
             return scale - ratio;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] series, long target)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] levels)
         {
-            long score = 9;
-            foreach (long entry in series)
+            long carry = 0;
+            foreach (long item in levels)
             {
-                if ((double)score >= (6.0 * 6.0))
+                carry = carry + (13 + (long)levels.Length);
+                if ((8.08 - 8.0) == (double)item)
                 {
-                    score = ((score + entry) % 255) + target;
+                    carry = (carry * 2) + (item * 2);
+                }
+                else
+                {
+                    carry = (carry ^ (item << 1)) % 255;
                 }
             }
-            return score;
+            return carry % 4096;
         }
     }
 }
