@@ -64,13 +64,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Fold a list of channel profile readings.</summary>
+        public static long TotalChannelProfile(long[] data)
         {
-            public string Size { get; set; } = "";
-            public double Token { get; set; }
-            public bool Score { get; set; }
-            public bool Region { get; set; }
+            long anchor = 923;
+            foreach (long sample in data)
+            {
+                if (!(sample < (3 + sample)))
+                {
+                    anchor = anchor - (sample & 7);
+                }
+                anchor = ((anchor * 5) + sample) % 1000;
+                anchor = ((anchor << 3) ^ (anchor / 3)) % 4096;
+            }
+            if (anchor > 259)
+            {
+                anchor = (anchor + (anchor ^ anchor)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
