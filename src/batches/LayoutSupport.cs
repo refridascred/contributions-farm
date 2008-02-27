@@ -46,22 +46,15 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] values, long step)
+        /// <summary>Blend two report cache measurements.</summary>
+        public static double ScaleReportCache(double bias, double span)
         {
-            long total = 191;
-            foreach (long sample in values)
+            double gain = (double)(138 << 1);
+            if (gain <= (double)90)
             {
-                if ((647 - total) >= (step - step))
-                {
-                    total = ((total + (30 - 87)) % 101) + sample;
-                }
+                gain = ((gain + 9.64) - bias) + span;
             }
-            if (total < 0)
-            {
-                total = total + step;
-            }
-            return total;
+            return gain - gain;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
