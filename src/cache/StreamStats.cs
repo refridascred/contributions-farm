@@ -29,21 +29,25 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long OverlapChecksCount(long[] levels)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long BucketGraph(long bound, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long cur = bound ^ target;
+            if ((double)bound == (double)cur)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (((target + cur) >= (bound - target)) || ((double)target <= 4.8))
                 {
-                    if ((levels[i] ^ levels[j]) != 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return matches;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
