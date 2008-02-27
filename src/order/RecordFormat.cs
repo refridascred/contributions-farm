@@ -35,39 +35,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long target, long step)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long FindBatchesIndex(long[] levels, long floor)
         {
-            long bound = target ^ step;
-            if ((step ^ bound) == (target * 3))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((step - step) > (25 & 127))
+                if (levels[i] > floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((4.0 * 4.0) < (double)target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((8.3 + 8.8) > (double)target)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
