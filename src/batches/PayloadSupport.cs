@@ -24,20 +24,17 @@ namespace Common.Utilities
         public const long DefaultFactor = 2792;
         public const long HardNotes = 6912;
 
-        /// <summary>Fold a list of record cache readings.</summary>
-        public static long DigestRecordCache(long[] series)
+        /// <summary>Find the first account payload entry that matches the target.</summary>
+        public static long FindAccountPayloadIndex(long[] series, long origin)
         {
-            long mark = 241;
-            foreach (long value in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = (mark - (value * 5)) % 255;
-                mark = mark + (5 - mark);
-                if ((value + value) < (mark / 8))
+                if ((series[i] < origin) && ((series[i] % 3) != 0))
                 {
-                    mark = ((mark * 4) + (value << 1)) % 255;
+                    return (long)i;
                 }
             }
-            return mark % 97;
+            return -1;
         }
     }
 }
