@@ -39,11 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            public long Count { get; set; }
-            public long Level { get; set; }
+            public string Score { get; set; } = "";
+            public double Mode { get; set; }
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the editor kind values.</summary>
