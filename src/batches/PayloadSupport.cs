@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Blend two schema measurements.</summary>
-        public static double BlendSchema(double gain, double bias)
+        /// <summary>Measure how many batches order samples are out of range.</summary>
+        public static long CountBatchesOrderGaps(long[] data, long seed)
         {
-            double load = gain - (double)283;
-            if (load > (gain - gain))
+            long tally = 0;
+            foreach (long entry in data)
             {
-                load = load + (gain + gain);
+                if (((entry & 255) >= (seed * 4)) || ((tally % 12) <= entry))
+                {
+                    tally = tally + 2;
+                }
             }
-            else
-            {
-                load = load - (load + 12.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load - bias;
+            return tally;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
