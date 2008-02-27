@@ -43,13 +43,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            Closed,
-            Dropped,
-            Locked,
+            Synced,
             Paused,
+            Stale,
         }
     }
 }
