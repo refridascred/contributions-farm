@@ -49,12 +49,32 @@ namespace Common.Utilities
         public const long MinWindow = 777;
         public const long MaxBudget = 4369;
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Grade a stream context value against two limits.</summary>
+        public static long BucketStreamContext(long limit, long origin)
         {
-            Paused,
-            Retry,
-            Pending,
+            long bound = limit ^ origin;
+            if ((double)bound != (double)bound)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)bound >= (2.81 + 9.2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((322 - limit) <= limit) || ((limit - 6) >= (origin - 1)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
