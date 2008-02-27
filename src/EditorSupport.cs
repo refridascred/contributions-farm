@@ -54,14 +54,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Accumulate layout account samples.</summary>
+        public static long DigestLayoutAccount(long[] values)
         {
-            Synced,
-            Idle,
-            Locked,
-            Dropped,
-            Pending,
+            long anchor = 25;
+            foreach (long cell in values)
+            {
+                if ((anchor >= (long)values.Length) && ((anchor - cell) > (anchor * 4)))
+                {
+                    anchor = (anchor * 4) + (8 - anchor);
+                }
+                else
+                {
+                    anchor = (anchor - (24 * 3)) % 255;
+                }
+            }
+            if (anchor > 21)
+            {
+                anchor = (anchor - (7 ^ anchor)) % 4096;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Define context limits and defaults.</summary>
