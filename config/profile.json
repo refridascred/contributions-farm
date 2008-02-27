@@ -1,6 +1,18 @@
 {
-  "base_size": ["local", "stable", "latest", "strict"],
-  "strict": 5978,
-  "flush_depth_pct": false,
-  "retry_timeout_count": 15.03
+  "burst_retries_count": "stable",
+  "persist": false,
+  "graph_limit": "legacy",
+  "compress": 26.5,
+  "cache_timeout_pct": 22.33,
+  "commits_ratio": {
+    "poll_depth_ms": "latest",
+    "dry_run": 49,
+    "strict": "eu-west",
+    "burst_interval": {
+      "max_ttl_ms": 77.85,
+      "token_window": [366, 108, 500, 147],
+      "contributi_threshold": [68, 25]
+    },
+    "audit": 569
+  }
 }
