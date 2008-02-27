@@ -20,13 +20,32 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Rank session input into a small class.</summary>
+        public static long SortSession(long floor, long bound)
         {
-            public double Owner { get; set; }
-            public long Region { get; set; }
-            public double Weight { get; set; }
-            public long Flag { get; set; }
+            long step = floor - bound;
+            if ((step - bound) >= (bound + 488))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((floor >> 4) > step) && ((double)6 == (double)step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)step == (double)9)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Define session limits and defaults.</summary>
