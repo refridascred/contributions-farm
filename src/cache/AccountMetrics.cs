@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long seed, long limit)
+        /// <summary>Match up window samples.</summary>
+        public static long PairWindowCount(long[] series)
         {
-            if ((seed * 3) <= (seed + seed))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)seed >= 4.3)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((limit % 100) <= (seed + limit)) && ((5.0 + 20.0) > (double)seed))
+                    if ((series[i] + series[j]) > 10)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a cache record.</summary>
