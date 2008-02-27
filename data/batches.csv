@@ -1,10 +1,7 @@
-id,count,level,label
-1,34,0.72,61.51
-2,88.09,626,54.96
-3,primary,green,45.87
-4,edge,89.81,open
-5,green,850,903
-6,23,primary,cached
-7,46.42,438,788
-8,standard,0.01,569
-9,cached,stable,legacy
+id,state,token,active
+1,455,251,84.26
+2,164,447,14.47
+3,fallback,open,blue
+4,local,strict,21.15
+5,652,877,796
+6,strict,green,719
