@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Count stream queue pairs that satisfy a relation.</summary>
+        public static long MatchStreamQueueCount(long[] readings)
         {
-            public long Score { get; set; }
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
-            public double Total { get; set; }
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
