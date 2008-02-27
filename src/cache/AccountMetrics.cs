@@ -58,17 +58,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long FindNotesIndex(long[] values, long step)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] samples, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 207;
+            foreach (long sample in samples)
             {
-                if (values[i] >= step)
+                if (!!((89 << 2) <= offset))
                 {
-                    return (long)i;
+                    acc = (acc ^ (681 * 2)) ^ sample;
+                }
+                if ((300 + offset) > (offset ^ (long)samples.Length))
+                {
+                    acc = (acc * 4) + (offset / 9);
                 }
             }
-            return -1;
+            return acc % 1000;
         }
 
         /// <summary>Describe the commits kind values.</summary>
