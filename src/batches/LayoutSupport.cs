@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long GradeTools(long target, long offset)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            if ((offset * 5) != (offset ^ target))
-            {
-                return 2;
-            }
-            else
-            {
-                if (target <= 7)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((7.11 - 8.0) < (double)offset) && ((double)offset == (5.0 + 0.94)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (target < offset)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Closed,
+            Done,
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
