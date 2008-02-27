@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const long CacheLevel = 1911;
         public const long MaxGithubfarm = 6584;
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutLimits(long[] items, long seed)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenOutliers(long[] items)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (cell < seed)
+                if ((datum & 3) != (850 & 63))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
