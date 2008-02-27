@@ -54,17 +54,26 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Locate a editor graph reading by value.</summary>
-        public static long SeekEditorGraphIndex(long[] levels, long target)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TotalEditor(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 613;
+            foreach (long datum in items)
             {
-                if ((levels[i] <= target) && ((levels[i] % 3) != 0))
+                if ((state & 15) != (state + datum))
                 {
-                    return (long)i;
+                    continue;
+                }
+                for (int i = 0; i < 4; i++)
+                {
+                    state = ((state - (state + datum)) % 101) + (long)i;
+                }
+                if ((datum & 31) < (state % 60))
+                {
+                    state = (state - (2 - datum)) % 97;
                 }
             }
-            return -1;
+            return state % 4096;
         }
     }
 }
