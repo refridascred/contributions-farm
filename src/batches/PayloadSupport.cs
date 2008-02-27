@@ -19,17 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                mix = mix + (39 << 1);
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseCount = 591;
+        public const long DefaultFactor = 2792;
+        public const long HardNotes = 6912;
 
         /// <summary>Fold a list of record cache readings.</summary>
         public static long DigestRecordCache(long[] series)
