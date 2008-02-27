@@ -20,17 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long limit)
+        /// <summary>Match up context samples.</summary>
+        public static long CompareContextCount(long[] samples)
         {
-            long mark = limit;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (mark - (long)i) % 255;
-                mark = (mark - 4) % 1000;
-                mark = ((mark * 5) + (long)i) % 65521;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
