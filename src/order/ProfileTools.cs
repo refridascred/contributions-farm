@@ -56,10 +56,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxWidth = 8170;
-        public const long BatchTimeout = 9357;
-        public const double SoftBatch = 52.84;
-        public const long BatchRatio = 813;
+        /// <summary>Match up stream samples.</summary>
+        public static long PairStreamCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
