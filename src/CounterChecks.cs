@@ -48,21 +48,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Match up filter command samples.</summary>
-        public static long CompareFilterCommandCount(long[] items)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenMatches(long[] data, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)limit <= (8.81 * 1.1))
                 {
-                    if ((items[i] - items[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 1) ^ sample;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Grade a already context value against two limits.</summary>
