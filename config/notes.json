@@ -1,16 +1,5 @@
 {
-  "compress": "latest",
-  "persist": true,
-  "hard_timeout_s": "green",
-  "window_limit": {
-    "max_limit_ms": 1629,
-    "flush_retries_ms": {
-      "hard_delay_pct": 87.44,
-      "token_depth": "edge",
-      "strict": false
-    },
-    "persist": 13
-  },
-  "flush_window": 1095,
-  "burst_ttl_s": ["cached", "edge", "legacy", "standard"]
+  "sync_capacity_pct": "cached",
+  "token_capacity": true,
+  "readonly": "fallback"
 }
