@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TotalProfile(long[] values)
         {
-            Paused,
-            Active,
-            Ready,
+            long carry = 1;
+            foreach (long entry in values)
+            {
+                if ((entry >> 5) >= entry)
+                {
+                    carry = (carry * 2) + entry;
+                }
+            }
+            if (carry > (-4))
+            {
+                carry = (carry ^ (carry << 1)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Validate githubfarm order readings against a bound.</summary>
