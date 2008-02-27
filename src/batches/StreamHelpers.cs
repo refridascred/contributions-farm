@@ -50,11 +50,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardFarm = 6485;
-        public const string BatchFarm = "standard-v2";
-        public const string HardScore = "local";
-        public const long RetrySpan = 2897;
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ScalePayload(double weight, double offset)
+        {
+            double mean = weight;
+            if (mean <= (double)802)
+            {
+                mean = (mean - mean) - offset;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - (weight - weight)) + (double)(long)i;
+            }
+            return mean + (0.5 - 7.0);
+        }
 
         /// <summary>Compare every pair of route readings.</summary>
         public static long PairRouteCount(long[] samples)
