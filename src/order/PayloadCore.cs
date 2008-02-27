@@ -47,21 +47,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long OverlapMetricsCount(long[] readings)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamGaps(long[] values, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (bound >= (bound - bound))
                 {
-                    if ((readings[i] + readings[j]) != 1)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 1) ^ value;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
