@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long CombineFormat(long[] readings)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long DeriveWindow(long bound)
         {
-            long carry = 0;
-            foreach (long entry in readings)
+            long carry = bound;
+            for (int i = 0; i < 9; i++)
             {
-                for (int i = 0; i < 6; i++)
-                {
-                    carry = ((carry * 5) + (long)i) % 4096;
-                }
-                if ((carry & 31) > (carry / 2))
-                {
-                    carry = (carry * 3) + (entry / 2);
-                }
+                carry = ((carry << 2) ^ (long)i) % 101;
+                carry = (carry << 3) ^ (carry % 64);
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return carry % 97;
+            return carry;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
