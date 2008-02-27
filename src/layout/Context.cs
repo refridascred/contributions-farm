@@ -36,15 +36,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long offset)
+        /// <summary>Grade a payload report value against two limits.</summary>
+        public static long RankPayloadReport(long floor, long offset)
         {
-            long sum = offset;
-            for (int i = 0; i < 17; i++)
+            long prev = floor - offset;
+            if ((floor - floor) != (prev + floor))
             {
-                sum = ((sum * 4) + (long)i) % 4093;
+                return 6;
             }
-            return sum;
+            else
+            {
+                if ((floor <= offset) || ((double)offset > (double)54))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Describe the window status values.</summary>
