@@ -72,12 +72,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamBounds(long[] samples, long origin)
         {
-            public string Label { get; set; } = "";
-            public double Offset { get; set; }
-            public bool Count { get; set; }
+            bool valid = true;
+            foreach (long sample in samples)
+            {
+                if (sample < origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
