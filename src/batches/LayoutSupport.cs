@@ -36,19 +36,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterLimits(long[] items, long bound)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry <= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Weight { get; set; }
+            public double Label { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Digest a series of record entries.</summary>
