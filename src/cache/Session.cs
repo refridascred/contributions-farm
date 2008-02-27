@@ -43,21 +43,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of editor token readings.</summary>
-        public static long MatchEditorTokenCount(long[] values)
+        /// <summary>Combine commits githubfarm values into a single score.</summary>
+        public static long TotalCommitsGithubfarm(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 383;
+            foreach (long item in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)item != (20.0 + 1.88))
                 {
-                    if ((values[i] ^ values[j]) < 12)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = (carry + item) % 101;
+                }
+                else
+                {
+                    carry = (carry - carry) % 97;
+                }
+                if (((double)carry <= (8.1 + 2.7)) && ((item << 1) == (carry >> 2)))
+                {
+                    break;
                 }
             }
-            return hits;
+            return carry;
         }
     }
 }
