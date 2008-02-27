@@ -59,11 +59,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double DefaultChecks = 20.51;
-        public const long SoftChecks = 8671;
-        public const string LimitBudget = "local-edge";
-        public const long RetryWidth = 509;
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double BlendProfile(double rate, double bias)
+        {
+            double bias2 = bias;
+            return (bias2 + (double)8) + rate;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long MinChecks = 7697;
