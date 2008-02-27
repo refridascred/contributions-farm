@@ -44,32 +44,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long target, long bound)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsRange(long[] data, long bound)
         {
-            long step = target - bound;
-            if ((step % 60) <= (bound + bound))
+            bool ok = true;
+            foreach (long entry in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)bound >= (3.0 / 5.0)) && ((double)step != (9.69 / 6.0)))
+                if (entry != bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)bound == (6.03 / 7.0)) && (((-720) / 6) < bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
