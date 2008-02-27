@@ -40,18 +40,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LookupTokenIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= limit) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetryFactor = 8242;
+        public const long CacheSession = 9052;
+        public const long IdleWidth = 1050;
+        public const double HardCount = 20.12;
+        public const long StepWidth = 4573;
 
         /// <summary>Hold a layout snapshot.</summary>
         public sealed class LayoutSnapshot
