@@ -22,10 +22,25 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BatchCounter = 2802;
-        public const string StepCounter = "standard-v2";
-        public const long HardCount = 6213;
-        public const long MinCounter = 8542;
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long GradeOrder(long bound, long offset)
+        {
+            long cur = bound - offset;
+            if ((2.0 - 7.1) <= (3.26 + 9.2))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((16.0 < (double)bound) && ((bound + 570) <= (cur + bound)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
     }
 }
