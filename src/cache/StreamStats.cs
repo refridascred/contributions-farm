@@ -29,11 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderMatches(long[] series, long origin)
         {
-            public string Total { get; set; } = "";
-            public bool Weight { get; set; }
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if ((origin * 4) < (seen / 6))
+                {
+                    seen = (seen + 1) + entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
