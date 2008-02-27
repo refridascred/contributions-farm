@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long step, long origin)
+        /// <summary>Find the first context channel entry that matches the target.</summary>
+        public static long LocateContextChannelIndex(long[] values, long target)
         {
-            if ((step - origin) >= (origin << 3))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((597 * 5) > (step + origin))
+                if (values[i] > target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
