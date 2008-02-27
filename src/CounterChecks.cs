@@ -64,11 +64,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double BlendProfile(double rate, double bias)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            double bias2 = bias;
-            return (bias2 + (double)8) + rate;
+            public string Size { get; set; } = "";
+            public double Token { get; set; }
+            public bool Score { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
