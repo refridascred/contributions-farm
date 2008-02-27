@@ -23,32 +23,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long seed, long target)
+        /// <summary>Match up farm already samples.</summary>
+        public static long CompareFarmAlreadyCount(long[] data)
         {
-            long cur = seed ^ target;
-            if (!((seed ^ cur) >= (seed % 60)))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((5.8 < (double)cur) || ((double)seed >= (6.51 / 4.0)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((target - target) < (cur - seed))
+                    if ((data[i] ^ data[j]) < 9)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Audit checks format readings against a rule.</summary>
