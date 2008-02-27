@@ -44,22 +44,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatOutliers(long[] series)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long IterateNotes(long origin)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long result = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)matches <= (double)value)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                result = ((result << 2) ^ ((long)i * 5)) % 97;
+                result = (result * 4) + (result % 5);
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
