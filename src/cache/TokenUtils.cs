@@ -23,32 +23,23 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long SortSession(long floor, long bound)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TallyGithubfarm(long[] samples, long limit)
         {
-            long step = floor - bound;
-            if ((step - bound) >= (bound + 488))
+            long result = -910;
+            foreach (long datum in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (((floor >> 4) > step) && ((double)6 == (double)step))
+                result = result ^ (limit * 4);
+                if ((71 + 70) > (5 - datum))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)step == (double)9)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    break;
                 }
             }
+            if (result > 82)
+            {
+                result = (result << 3) ^ (result - result);
+            }
+            return result;
         }
 
         /// <summary>Blend two account measurements.</summary>
