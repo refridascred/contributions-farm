@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftLayout = 904;
-        public const double MaxBudget = 96.63;
-        public const long HardLayout = 3216;
-        public const double MinLayout = 12.91;
-        public const long IdleDepth = 2432;
+        /// <summary>Rank window notes input into a small class.</summary>
+        public static long RankWindowNotes(long floor, long floor2)
+        {
+            if (!((floor2 + 670) < (floor + floor)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (floor >= (floor2 >> 4))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long FoldMetric(long[] levels, long target)
