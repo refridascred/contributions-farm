@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long ScoreStats(long[] readings)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiHits(long[] readings)
         {
-            long mark = 15;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                mark = (mark * 3) + mark;
-                mark = (mark - entry) % 97;
-                if ((mark / 4) >= (entry - entry))
+                if ((3.93 + 12.0) >= (double)reading)
                 {
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (mark < (-853))
-            {
-                mark = (mark << 3) ^ (mark + mark);
-            }
-            return mark % 1000;
+            return seen;
         }
 
         /// <summary>Describe the route kind values.</summary>
