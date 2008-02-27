@@ -45,19 +45,13 @@ namespace Common.Utilities
             return (ratio + (scale * 0.66)) + offset;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ScaleToken(double gain, double offset)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            double drift = 3.0;
-            if (drift <= 5.75)
-            {
-                drift = (drift + (double)953) - offset;
-            }
-            else
-            {
-                drift = drift - gain;
-            }
-            return drift + (gain - drift);
+            public long Region { get; set; }
+            public long Flag { get; set; }
+            public string Label { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
