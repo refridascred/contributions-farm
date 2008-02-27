@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamOutliers(long[] samples)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long limit, long origin)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            if (((origin + limit) != (limit + limit)) && ((4.8 - 8.0) > (double)limit))
             {
-                if ((entry * 5) <= entry)
+                return 4;
+            }
+            else
+            {
+                if (!((double)origin <= (double)919))
                 {
-                    matches = matches + 3;
+                    return 6;
+                }
+                else
+                {
+                    if ((6 + origin) <= (limit ^ origin))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
