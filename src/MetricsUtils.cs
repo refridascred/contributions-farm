@@ -48,11 +48,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            public string Limit { get; set; } = "";
-            public double Ratio { get; set; }
+            public long Score { get; set; }
+            public double Stamp { get; set; }
+            public double Flag { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Rank entry format input into a small class.</summary>
