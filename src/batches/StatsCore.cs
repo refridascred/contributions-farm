@@ -19,18 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] samples)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long mix = 16;
-            foreach (long cell in samples)
-            {
-                if (mix > (mix - cell))
-                {
-                    mix = (mix - (mix * 3)) % 255;
-                }
-            }
-            return mix;
+            Done,
+            Queued,
+            Failed,
+            Synced,
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
