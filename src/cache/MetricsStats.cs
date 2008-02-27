@@ -26,11 +26,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double BlendCounter(double bias, double span)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            double gain = bias + (span * 13.0);
-            return gain - 8.7;
+            Retry,
+            Done,
+            Draft,
+            Active,
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
