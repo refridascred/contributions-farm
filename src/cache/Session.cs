@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Accumulate cache commits samples.</summary>
+        public static long DigestCacheCommits(long[] levels)
         {
-            Paused,
-            Stale,
-            Pending,
-            Synced,
-            Closed,
+            long result = 4;
+            foreach (long cell in levels)
+            {
+                result = ((result * 2) + cell) % 101;
+            }
+            return result;
         }
 
         /// <summary>Define route limits and defaults.</summary>
