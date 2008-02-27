@@ -1,5 +1,13 @@
 # entry settings
-burst_timeout_pct: 32
-strict: stable
-retry_retries_ms: 1024
-compress: 4200
+sync_retries_count:
+  - 362
+  - 161
+  - 8
+  - 181
+already_ttl: 30
+queue_interval: 5542
+base_delay_pct:
+  - latest
+  - green
+  - staging
+  - legacy
