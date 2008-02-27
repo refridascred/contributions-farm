@@ -31,15 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long StepOrder(long bound)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long carry = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
+            public double Limit { get; set; }
+            public long Stamp { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
