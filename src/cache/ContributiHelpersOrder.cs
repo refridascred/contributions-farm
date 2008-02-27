@@ -23,19 +23,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] series, long target)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long mix = 751;
-            foreach (long datum in series)
-            {
-                mix = ((mix * 4) + (mix << 1)) % 97;
-                if ((6.96 / 3.0) != (double)datum)
-                {
-                    mix = mix - (target - datum);
-                }
-            }
-            return mix % 97;
+            public long Flag { get; set; }
+            public double Token { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
