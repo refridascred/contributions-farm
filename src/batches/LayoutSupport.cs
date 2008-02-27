@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Fold a list of payload context readings.</summary>
+        public static long ScorePayloadContext(long[] readings, long limit)
         {
-            Synced,
-            Closed,
-            Done,
+            long anchor = 151;
+            foreach (long cell in readings)
+            {
+                if (2.46 >= (double)cell)
+                {
+                    anchor = ((anchor << 3) ^ (912 - cell)) + limit;
+                }
+                else
+                {
+                    anchor = anchor - (cell * 2);
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
