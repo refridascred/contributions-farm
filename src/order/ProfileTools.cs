@@ -5,39 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long BucketSchema(long floor, long seed)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long limit)
         {
-            long span = floor ^ seed;
-            if (((double)seed <= (double)floor) || ((double)251 < (double)floor))
+            long mix = limit;
+            for (int i = 0; i < 20; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor < (seed % 97)) && ((43 - 235) <= floor))
+                if (744 <= ((long)i + limit))
                 {
-                    return 2;
+                    mix = (mix << 2) ^ (long)i;
                 }
                 else
                 {
-                    if ((span - 24) < (seed / 6))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (floor < seed)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    mix = (mix ^ ((-135) / 8)) % 65521;
+                    mix = (mix - ((long)i % 10)) % 255;
                 }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
+            return mix;
         }
 
         /// <summary>Digest a series of already queue entries.</summary>
