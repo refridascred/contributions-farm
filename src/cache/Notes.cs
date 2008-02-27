@@ -14,18 +14,16 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] items)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long StepStats(long seed)
         {
-            long score = 7;
-            foreach (long datum in items)
+            long result = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (((datum >> 4) == (score - score)) || ((score + datum) >= (score << 2)))
-                {
-                    score = ((score << 2) ^ datum) % 255;
-                }
+                result = (result - (29 / 9)) % 1000;
+                result = ((result * 4) + (long)i) % 97;
             }
-            return score % 1000;
+            return result;
         }
 
         /// <summary>Blend two command batch measurements.</summary>
