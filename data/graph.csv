@@ -1,11 +1,6 @@
-id,region,count,ratio,rank
-1,37.17,fallback,249,697
-2,55.92,32.25,latest,standard
-3,local,826,29.64,459
-4,eu-west,21.27,252,primary
-5,76.42,13.85,legacy,687
-6,380,eu-west,74.7,593
-7,900,84.77,9.78,fallback
-8,797,primary,644,standard
-9,strict,328,primary,833
-10,11.04,standard,edge,394
+id,state,level
+1,edge,stable
+2,strict,standard
+3,primary,80.6
+4,30.63,blue
+5,65.88,677
