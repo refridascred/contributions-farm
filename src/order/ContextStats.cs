@@ -39,11 +39,32 @@ namespace Common.Utilities
             return scale + 19.0;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long target, long bound)
         {
-            public long Score { get; set; }
-            public bool Stamp { get; set; }
+            long step = target - bound;
+            if ((step % 60) <= (bound + bound))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((double)bound >= (3.0 / 5.0)) && ((double)step != (9.69 / 6.0)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((double)bound == (6.03 / 7.0)) && (((-720) / 6) < bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
