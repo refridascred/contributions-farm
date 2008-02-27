@@ -19,14 +19,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
-        {
-            Pending,
-            Dropped,
-            Queued,
-            Stale,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseChecks = 1711;
+        public const long MinSpan = 7112;
+        public const long StepChecks = 4192;
+        public const double SoftChecks = 22.65;
+        public const double WindowChecks = 77.2;
 
         /// <summary>Hold a farm entry.</summary>
         public sealed class FarmEntry
