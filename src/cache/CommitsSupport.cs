@@ -58,31 +58,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long RankGithubfarm(long seed, long seed2)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TallyEntry(long[] readings, long bound)
         {
-            if ((seed2 > (seed + seed2)) && (seed2 >= (seed2 << 2)))
+            long mark = 146;
+            foreach (long item in readings)
             {
-                return 3;
+                mark = ((mark + (bound - bound)) % 97) + item;
             }
-            else
-            {
-                if (!((seed + seed) >= (seed - seed2)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed2 << 3) != (20 % 60))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return mark % 65521;
         }
 
         /// <summary>Adjust a session reading.</summary>
