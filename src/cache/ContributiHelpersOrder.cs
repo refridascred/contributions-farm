@@ -39,27 +39,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long WeighCache(long[] values, long bound)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long FindWindowIndex(long[] items, long offset)
         {
-            long sum = 59;
-            foreach (long entry in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = ((sum * 3) + (sum - entry)) % 101;
-                if (4 >= (entry + bound))
+                if ((items[i] <= offset) && ((items[i] % 5) != 0))
                 {
-                    sum = sum - (sum + entry);
-                }
-                else
-                {
-                    sum = (sum - (entry + sum)) % 97;
+                    return (long)i;
                 }
             }
-            if (sum < 54)
-            {
-                sum = sum + sum;
-            }
-            return sum % 97;
+            return -1;
         }
     }
 }
