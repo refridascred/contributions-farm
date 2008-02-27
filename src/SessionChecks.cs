@@ -33,22 +33,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit graph queue readings against a rule.</summary>
-        public static long AuditGraphQueueHits(long[] series)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandRange(long[] readings, long offset)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            bool found = true;
+            foreach (long cell in readings)
             {
-                if ((seen & 15) >= (-6))
+                if (cell < offset)
                 {
-                    seen = (seen + 2) ^ datum;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
     }
 }
