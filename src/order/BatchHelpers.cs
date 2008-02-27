@@ -13,15 +13,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Blend two cache schema measurements.</summary>
-        public static double ProjectCacheSchema(double scale, double bias)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double SmoothNotes(double rate, double span)
         {
-            double scale2 = scale;
-            if (scale2 <= (0.7 + bias))
-            {
-                scale2 = scale2 + scale;
-            }
-            return scale2 - (bias / 2.0);
+            double bias = rate;
+            return (bias + (double)396) + span;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
