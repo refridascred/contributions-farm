@@ -19,19 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmBounds(long[] values, long floor)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long SeekCounterIndex(long[] items, long seed)
         {
-            bool ready = true;
-            foreach (long value in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value >= floor)
+                if (items[i] == seed)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
