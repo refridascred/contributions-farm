@@ -23,19 +23,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamBounds(long[] levels, long offset)
+        /// <summary>Count the editor filter entries that pass the check.</summary>
+        public static long CountEditorFilterOutliers(long[] series)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (entry >= offset)
+                if (count > (count + entry))
                 {
-                    ready = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Define account limits and defaults.</summary>
