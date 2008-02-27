@@ -22,33 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a support tools value against two limits.</summary>
-        public static long SortSupportTools(long floor, long bound)
-        {
-            long slot = floor + bound;
-            if (9.0 > (double)bound)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor + slot) != (slot + floor))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (bound < floor)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitFactor = 3858;
+        public const long HardRecord = 1621;
+        public const long RetryRecord = 4126;
+        public const double MaxTimeout = 74.64;
+        public const long MaxFactor = 8004;
 
         /// <summary>Count session cluster pairs that satisfy a relation.</summary>
         public static long CompareSessionClusterCount(long[] series)
