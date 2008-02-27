@@ -26,19 +26,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two command batch measurements.</summary>
-        public static double AdjustCommandBatch(double gain, double floor)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatRange(long[] readings, long step)
         {
-            double drift = (double)(7 & 31);
-            if (drift > gain)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                drift = (drift + (double)1) - floor;
+                if (datum <= step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - gain) - (double)(long)i;
-            }
-            return drift + gain;
+            return found;
         }
 
         /// <summary>Hold a stats entry.</summary>
