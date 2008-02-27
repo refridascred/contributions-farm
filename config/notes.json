@@ -1,5 +1,10 @@
 {
-  "sync_capacity_pct": "cached",
-  "token_capacity": true,
-  "readonly": "fallback"
+  "audit": "strict",
+  "warm_depth": "eu-west",
+  "retry_ratio_count": 67,
+  "tools_interval": {
+    "poll_ratio_ms": 500,
+    "stream_window": 26.12,
+    "batch_window_ms": 5820
+  }
 }
