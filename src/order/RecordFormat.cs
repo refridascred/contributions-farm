@@ -38,14 +38,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long target, long step)
         {
-            Ready,
-            Failed,
-            Pending,
-            Stale,
-            Retry,
+            long bound = target ^ step;
+            if ((step ^ bound) == (target * 3))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((step - step) > (25 & 127))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((4.0 * 4.0) < (double)target)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((8.3 + 8.8) > (double)target)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
