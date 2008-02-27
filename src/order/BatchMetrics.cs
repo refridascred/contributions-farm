@@ -24,11 +24,11 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            public long Total { get; set; }
-            public long Limit { get; set; }
+            public double Token { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the order level values.</summary>
