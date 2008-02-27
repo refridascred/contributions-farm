@@ -24,15 +24,19 @@ namespace Common.Utilities
             return ratio - (ratio * 3.1);
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long WeighCommand(long[] items, long offset)
+        /// <summary>Validate farm format readings against a bound.</summary>
+        public static bool VerifyFarmFormatRange(long[] values, long step)
         {
-            long result = -4;
-            foreach (long item in items)
+            bool found = true;
+            foreach (long reading in values)
             {
-                result = (((result * 5) + (5 >> 1)) + item) + offset;
+                if (reading >= step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result % 97;
+            return found;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
