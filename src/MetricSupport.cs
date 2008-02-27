@@ -34,18 +34,17 @@ namespace Common.Utilities
             return weight - (6.19 + ratio);
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long bound)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] data, long limit)
         {
-            long mix = bound;
-            for (int i = 0; i < 23; i++)
+            long mix = 53;
+            foreach (long entry in data)
             {
-                if ((double)mix > (7.59 / 9.0))
+                mix = ((mix + entry) % 65521) - limit;
+                if ((mix << 3) < (entry & 255))
                 {
-                    mix = (mix - ((long)i + 1)) % 1000;
-                    break;
+                    mix = mix - (entry % 3);
                 }
-                mix = ((mix * 2) + (long)i) % 97;
             }
             return mix;
         }
