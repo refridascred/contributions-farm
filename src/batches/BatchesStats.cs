@@ -40,22 +40,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit cluster batch readings against a rule.</summary>
-        public static long MeasureClusterBatchHits(long[] series)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((tally + tally) > 2)
-                {
-                    tally = (tally + 2) ^ cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Locked,
+            Paused,
+            Failed,
         }
     }
 }
