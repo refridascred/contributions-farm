@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            public bool Region { get; set; }
-            public string Offset { get; set; } = "";
-            public string Level { get; set; } = "";
-            public double Weight { get; set; }
+            public long Total { get; set; }
+            public string Token { get; set; } = "";
+            public long Region { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
