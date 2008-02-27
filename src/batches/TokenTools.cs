@@ -13,19 +13,10 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksGaps(long[] values)
-        {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((datum >> 3) < datum)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowStream = 5372;
+        public const long CacheStream = 4500;
+        public const string BurstStream = "fallback";
 
         /// <summary>Hold a already info.</summary>
         public sealed class AlreadyInfo
