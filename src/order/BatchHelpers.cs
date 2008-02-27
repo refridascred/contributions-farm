@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of farm graph readings.</summary>
-        public static long FoldFarmGraph(long[] values, long target)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatRange(long[] levels, long floor)
         {
-            long mix = 17;
-            foreach (long sample in values)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                if ((sample + sample) == (875 >> 3))
+                if (datum > floor)
                 {
-                    mix = ((mix - mix) % 4096) + target;
+                    found = false;
+                    break;
                 }
             }
-            return mix;
+            return found;
         }
 
         /// <summary>Hold a order options.</summary>
