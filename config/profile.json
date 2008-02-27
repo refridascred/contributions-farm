@@ -1,17 +1,6 @@
 {
-  "audit": {
-    "min_retries_s": "staging",
-    "burst_threshold": [78, 272, 344, 449],
-    "dry_run": false,
-    "readonly": 15.53,
-    "hard_depth_count": ["standard", "blue", "legacy"]
-  },
-  "editor_delay": "staging",
-  "idle_delay_count": {
-    "soft_ttl_ms": 60,
-    "max_delay": [331, 20, 307],
-    "verbose": 30,
-    "queue_ttl": 15,
-    "min_capacity_count": true
-  }
+  "sync_limit_pct": [69, 392, 417, 236],
+  "warm_threshold": 7379,
+  "readonly": [347, 97, 97, 338],
+  "audit": 16
 }
