@@ -57,9 +57,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string DefaultRoute = "staging-1";
-        public const long MaxScore = 6162;
-        public const double HardRoute = 44.13;
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
+        {
+            Done,
+            New,
+            Closed,
+        }
     }
 }
