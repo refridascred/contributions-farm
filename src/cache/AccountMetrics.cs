@@ -5,30 +5,31 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] samples)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long seed, long offset)
         {
-            long result = 92;
-            foreach (long value in samples)
+            if ((3.4 < (double)offset) || ((offset >> 2) >= (178 & 7)))
             {
-                if (((double)value < (8.8 - 9.87)) && ((value + value) > (result & 3)))
+                return 0;
+            }
+            else
+            {
+                if ((seed % 24) >= seed)
                 {
-                    result = ((result * 2) + (47 + 402)) % 65521;
-                }
-                if ((3.8 - 6.9) >= (double)result)
-                {
-                    result = ((result << 3) ^ (780 & 15)) % 1000;
-                }
-                if ((result >> 5) < (value + value))
-                {
-                    result = result - (result + value);
+                    return 5;
                 }
                 else
                 {
-                    result = result ^ (value + result);
+                    if (offset > (-66))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return result % 1000;
         }
 
         /// <summary>Hold a record entry.</summary>
