@@ -14,11 +14,24 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double SmoothNotes(double rate, double span)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long GradeFormat(long limit, long limit2)
         {
-            double bias = rate;
-            return (bias + (double)396) + span;
+            if ((limit << 1) > limit)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((limit + 173) >= limit) && ((limit % 3) == (limit2 / 8)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Hold a report options.</summary>
