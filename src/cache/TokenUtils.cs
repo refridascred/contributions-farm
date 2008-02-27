@@ -24,11 +24,11 @@ namespace Common.Utilities
             return bias + (double)6;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            public double Level { get; set; }
-            public bool Total { get; set; }
+            public string Level { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Validate account graph readings against a bound.</summary>
