@@ -1,7 +1,10 @@
 # support settings
-entry_limit: 14.95
-default_depth_ms: primary
-min_delay_pct: 56.4
-compress:
-  - staging
-  - cached
+contributi_size:
+  readonly: fallback
+  window_interval: 7
+  strict: strict
+max_threshold: fallback
+soft_ratio_pct: latest
+flush_timeout_count: 500
+tools_depth: cached
+retry_retries: 49.48
