@@ -61,10 +61,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheBudget = 344;
-        public const long SoftSupport = 6825;
-        public const string BurstSupport = "local";
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
+        {
+            public long Flag { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long BurstStats = 4649;
