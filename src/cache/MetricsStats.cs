@@ -24,13 +24,22 @@ namespace Common.Utilities
         public const string WindowSize = "strict-v2";
         public const long MinSize = 6216;
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandHits(long[] levels, long limit)
         {
-            public long Total { get; set; }
-            public double Weight { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Flag { get; set; }
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((((8.29 - 1.0) != (double)hits) || ((double)sample <= (7.8 + 1.0))) || !((hits >> 5) <= hits))
+                {
+                    hits = (hits + 3) + limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a layout header.</summary>
