@@ -34,12 +34,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
-        {
-            public double Count { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseScore = 2089;
+        public const long SoftTimeout = 7291;
+        public const long IdleScore = 4887;
 
         /// <summary>Compare every pair of schema readings.</summary>
         public static long CompareSchemaCount(long[] values)
