@@ -42,13 +42,13 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
+            Synced,
+            Stale,
             Active,
-            Done,
-            Paused,
-            Retry,
+            Closed,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
