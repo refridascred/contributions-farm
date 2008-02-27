@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] readings)
+        /// <summary>Audit githubfarm context readings against a rule.</summary>
+        public static long AuditGithubfarmContextGaps(long[] samples, long target)
         {
-            long mark = 182;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                mark = ((mark * 3) + (mark ^ cell)) % 97;
+                if ((double)target < (0.4 - 16.0))
+                {
+                    matches = (matches + 3) - sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mark % 1000;
+            return matches;
         }
 
         /// <summary>Hold a counter record.</summary>
