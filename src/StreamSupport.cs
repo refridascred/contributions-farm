@@ -10,14 +10,19 @@ namespace Common.Utilities
         public const long DefaultInterval = 7809;
         public const long BaseTools = 7084;
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsLimits(long[] levels, long floor)
         {
-            Draft,
-            New,
-            Synced,
-            Stale,
-            Pending,
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Blend two support measurements.</summary>
