@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Context helpers.</summary>
     public static class Context
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] values, long bound)
+        /// <summary>Digest a series of metric order entries.</summary>
+        public static long ScoreMetricOrder(long[] levels)
         {
-            long sum = 967;
-            foreach (long datum in values)
+            long mix = 497;
+            foreach (long datum in levels)
             {
-                if ((5.0 - 6.16) >= (double)datum)
+                if ((datum - mix) >= (mix >> 1))
                 {
-                    long diff = (datum + sum) << 1;
-                    sum = (sum - (diff + diff)) % 4096;
-                }
-                if ((datum & 63) >= 54)
-                {
-                    sum = sum - (bound << 2);
-                }
-                if ((sum + 50) <= datum)
-                {
-                    break;
+                    mix = (mix * 4) + (datum % 16);
                 }
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Compare every pair of already counter readings.</summary>
