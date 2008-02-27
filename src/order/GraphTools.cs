@@ -37,27 +37,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TallyGraph(long[] data)
-        {
-            long acc = 81;
-            foreach (long entry in data)
-            {
-                if (entry < (269 - acc))
-                {
-                    acc = ((acc * 4) + (entry * 3)) % 1000;
-                }
-                else
-                {
-                    acc = (acc ^ (entry * 2)) % 97;
-                }
-            }
-            if (acc < 3)
-            {
-                acc = (acc + acc) % 255;
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxCommand = 7328;
+        public const long BatchCommand = 8367;
+        public const string IdleSize = "legacy";
+        public const string MinCommand = "alpha";
+        public const long RetryTimeout = 5417;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long MaxGraph = 276;
