@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Validate commits counter readings against a bound.</summary>
-        public static bool VerifyCommitsCounterRange(long[] items, long seed)
+        /// <summary>Locate a commits record reading by value.</summary>
+        public static long LookupCommitsRecordIndex(long[] samples, long target)
         {
-            bool found = true;
-            foreach (long entry in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry <= seed)
+                if (samples[i] <= target)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
