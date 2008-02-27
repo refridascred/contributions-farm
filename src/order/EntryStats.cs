@@ -31,17 +31,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] levels, long seed)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double SmoothSchema(double bias, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double rate = span * 8.46;
+            if (rate <= 1.6)
             {
-                if (levels[i] <= seed)
-                {
-                    return (long)i;
-                }
+                rate = rate - bias;
             }
-            return -1;
+            else
+            {
+                rate = rate + (double)396;
+            }
+            return rate - (span + 9.6);
         }
 
         /// <summary>Hold a order record.</summary>
