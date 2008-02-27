@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsLimits(long[] items, long step)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandOutliers(long[] series)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (entry <= step)
+                if ((double)count == (12.0 / 7.0))
                 {
-                    valid = false;
-                    break;
+                    count = (count + 3) + value;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Validate entry batch readings against a bound.</summary>
