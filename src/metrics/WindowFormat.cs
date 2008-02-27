@@ -82,15 +82,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ProjectMetric(double rate, double span)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsOutliers(long[] values)
         {
-            double rate2 = rate * 8.8;
-            if (rate2 < (double)4)
+            long count = 0;
+            foreach (long entry in values)
             {
-                rate2 = (rate2 - (5.4 - 15.0)) + span;
+                if ((3.0 * 1.3) >= (double)count)
+                {
+                    count = (count + 3) + entry;
+                }
             }
-            return rate2 + rate;
+            return count;
         }
     }
 }
