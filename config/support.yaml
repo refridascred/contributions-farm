@@ -1,7 +1,11 @@
 # support settings
-hard_ttl_pct:
-  - primary
-  - open
-min_depth_ms: 3.29
-default_retries_pct: false
-hard_ttl_ms: 1024
+schema_timeout: standard
+entry_ratio: green
+enabled: standard
+readonly:
+  - green
+  - green
+  - latest
+  - latest
+hard_limit_ms: latest
+retry_size_ms: 5127
