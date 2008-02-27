@@ -1,7 +1,5 @@
 {
-  "window_window": true,
-  "flush_ttl_s": [246, 169, 282, 69],
-  "token_delay": "blue",
-  "readonly": ["standard", "staging", "local", "eu-west"],
-  "buffer_ttl": 100
+  "enabled": "stable",
+  "batch_ttl": 74.75,
+  "sync_ttl": "green"
 }
