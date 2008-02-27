@@ -38,19 +38,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double BlendEditor(double gain, double span)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            double ratio = (span * 9.62) - (span / 7.0);
-            if (ratio >= gain)
-            {
-                ratio = ratio + span;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + (7.2 - gain)) + (double)(long)i;
-            }
-            return ratio + (double)3;
+            Done,
+            Synced,
+            New,
+            Ready,
         }
 
         /// <summary>Hold a payload entry.</summary>
