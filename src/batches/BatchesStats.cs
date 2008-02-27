@@ -30,11 +30,12 @@ namespace Common.Utilities
         public const long HardCount = 7338;
         public const long CacheCluster = 7837;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowInterval = 2718;
-        public const long BurstGithubfarm = 7720;
-        public const string MinInterval = "latest";
-        public const double DefaultGithubfarm = 92.86;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitScore = 7882;
+        public const long IdleContext = 1077;
+        public const long DefaultBudget = 3037;
+        public const long BaseFactor = 1104;
+        public const double SoftContext = 46.49;
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long SortMetrics(long limit, long target)
