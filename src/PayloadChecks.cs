@@ -33,10 +33,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheBudget = 9823;
-        public const long SoftChecks = 6194;
-        public const long BatchRatio = 9322;
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
+        {
+            public bool Flag { get; set; }
+            public bool Offset { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Project the next editor graph value.</summary>
         public static double ScaleEditorGraph(double bias, double bias2)
