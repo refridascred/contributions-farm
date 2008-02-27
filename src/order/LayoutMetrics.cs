@@ -13,10 +13,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleEditor = 2578;
-        public const long StepFactor = 3789;
-        public const double SoftInterval = 38.93;
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TotalChecks(long[] readings)
+        {
+            long mark = 767;
+            foreach (long cell in readings)
+            {
+                if (!((mark & 7) < (cell >> 5)))
+                {
+                    mark = (mark ^ (cell + cell)) % 97;
+                }
+            }
+            return mark % 4096;
+        }
 
         /// <summary>Match up layout samples.</summary>
         public static long CompareLayoutCount(long[] data)
