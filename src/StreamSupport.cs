@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const long DefaultInterval = 7809;
         public const long BaseTools = 7084;
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsLimits(long[] levels, long floor)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordOutliers(long[] values)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (reading <= floor)
+                if ((count + 729) == (entry * 2))
                 {
-                    found = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Blend two support measurements.</summary>
