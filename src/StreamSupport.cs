@@ -10,16 +10,16 @@ namespace Common.Utilities
         public const long DefaultInterval = 7809;
         public const long BaseTools = 7084;
 
-        /// <summary>Iterate the report order series from a seed.</summary>
-        public static long IterateReportOrder(long limit)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long SeriesFilter(long offset)
         {
-            long anchor = limit;
-            for (int i = 0; i < 17; i++)
+            long score = offset;
+            for (int i = 0; i < 20; i++)
             {
-                anchor = anchor + (limit & 15);
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                score = score ^ (score >> 4);
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
