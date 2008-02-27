@@ -1,11 +1,7 @@
 {
-  "stats_interval": 40.36,
-  "max_window_ms": 70,
-  "batch_delay_pct": "primary",
-  "flush_ratio": "primary",
-  "idle_timeout": {
-    "base_interval_pct": 3187,
-    "audit": 60,
-    "retry_capacity_count": 3134
-  }
+  "persist": "primary",
+  "enabled": false,
+  "strict": 1673,
+  "flush_retries_s": 9279,
+  "soft_depth_pct": "green"
 }
