@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate order session readings against a bound.</summary>
-        public static bool CheckOrderSessionRange(long[] data, long step)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            bool stale = true;
-            foreach (long reading in data)
-            {
-                if (reading != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Flag { get; set; } = "";
+            public double Limit { get; set; }
+            public bool Region { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Describe the farm mode values.</summary>
