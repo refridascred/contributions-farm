@@ -14,17 +14,25 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] data, long floor)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long ClassifySession(long seed, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long delta = seed - step;
+            if ((delta % 16) < seed)
             {
-                if ((data[i] == floor) && ((data[i] % 3) == 0))
+                return 4;
+            }
+            else
+            {
+                if ((-1) <= step)
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Blend two route filter measurements.</summary>
