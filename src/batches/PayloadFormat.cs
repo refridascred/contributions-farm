@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long FindChecksIndex(long[] series, long floor)
         {
-            public bool Owner { get; set; }
-            public bool Region { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < floor) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the commits status values.</summary>
