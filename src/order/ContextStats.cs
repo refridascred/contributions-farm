@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long StepQueue(long bound)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiRange(long[] readings, long limit)
         {
-            long anchor = bound;
-            for (int i = 0; i < 22; i++)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if ((long)i < (816 % 12))
+                if (reading != limit)
                 {
-                    anchor = (anchor * 4) + 162;
+                    ready = false;
+                    break;
                 }
-                anchor = (anchor + (anchor >> 2)) % 255;
-                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
