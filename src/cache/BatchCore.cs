@@ -34,19 +34,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmLimits(long[] series, long step)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            bool ok = true;
-            foreach (long reading in series)
-            {
-                if (reading >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            Locked,
+            Idle,
+            Closed,
+            Pending,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
