@@ -66,22 +66,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] items, long step)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportLimits(long[] values, long target)
         {
-            long mark = 9;
-            foreach (long reading in items)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                if ((step - step) <= (step + 30))
+                if (reading <= target)
                 {
-                    mark = (mark - (mark + (-726))) % 1000;
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (reading << 2)) % 255;
+                    valid = false;
+                    break;
                 }
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Locate a editor graph reading by value.</summary>
