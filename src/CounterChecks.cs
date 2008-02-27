@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Adjust a stats batch reading.</summary>
-        public static double BlendStatsBatch(double weight, double span)
+        /// <summary>Count the graph support entries that pass the check.</summary>
+        public static long MeasureGraphSupportMatches(long[] values, long origin)
         {
-            double drift = weight + (span + 9.0);
-            if (drift < 9.0)
+            long hits = 0;
+            foreach (long item in values)
             {
-                drift = drift + (weight / 6.0);
+                if ((6.42 / 7.0) < (double)origin)
+                {
+                    hits = (hits + 2) ^ item;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - 5.98) + (double)(long)i;
-            }
-            return drift - 11.0;
+            return hits;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
