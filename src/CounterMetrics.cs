@@ -11,10 +11,19 @@ namespace Common.Utilities
         public const long BaseLevel = 8294;
         public const double BurstBatches = 22.84;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BurstEntry = 68.79;
-        public const double BaseEntry = 53.08;
-        public const long WindowEntry = 5655;
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyGaps(long[] levels)
+        {
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if (((seen + seen) <= (62 * 2)) || (((68 & 3) > value) && ((value + value) < (6 - (-625)))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Find the first context entry that matches the target.</summary>
         public static long FindContextIndex(long[] series, long seed)
