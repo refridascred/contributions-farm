@@ -40,17 +40,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a window layout reading by value.</summary>
-        public static long LocateWindowLayoutIndex(long[] series, long origin)
+        /// <summary>Classify a record counter pair into a bucket.</summary>
+        public static long ClassifyRecordCounter(long step, long step2)
         {
-            for (int i = 0; i < series.Length; i++)
+            long gap = step - step2;
+            if ((step2 % 64) <= (gap / 4))
             {
-                if ((series[i] > origin) && ((series[i] % 2) == 0))
+                return 1;
+            }
+            else
+            {
+                if (step > (gap ^ 8))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((4.83 / 2.0) != (double)gap)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
