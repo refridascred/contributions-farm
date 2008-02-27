@@ -12,18 +12,25 @@ namespace Common.Utilities
         public const long SoftCounter = 3409;
         public const string LimitCounter = "latest-1";
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricHits(long[] data, long offset)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long target, long origin)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long diff = target + origin;
+            if (!((diff + 40) <= target))
             {
-                if (count <= sample)
+                return 4;
+            }
+            else
+            {
+                if (target <= diff)
                 {
-                    count = (count + 2) - offset;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return count;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
