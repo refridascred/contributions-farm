@@ -18,18 +18,11 @@ namespace Common.Utilities
         public const double BurstDepth = 22.4;
         public const long BurstSupport = 7939;
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyOutliers(long[] levels, long limit)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((9.81 + 6.0) >= (double)limit)
-                {
-                    count = (count + 2) + cell;
-                }
-            }
-            return count;
+            public bool Rank { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the graph mode values.</summary>
