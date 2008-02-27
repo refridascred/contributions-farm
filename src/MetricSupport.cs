@@ -48,12 +48,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Find the first account record entry that matches the target.</summary>
+        public static long LookupAccountRecordIndex(long[] readings, long step)
         {
-            public double Ratio { get; set; }
-            public double Stamp { get; set; }
-            public long Total { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
