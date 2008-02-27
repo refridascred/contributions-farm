@@ -39,14 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Iterate the batches channel series from a seed.</summary>
+        public static long RollBatchesChannel(long origin)
         {
-            Pending,
-            Retry,
-            Active,
-            Stale,
-            Queued,
+            long mix = origin;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = (mix * 3) + mix;
+                mix = ((mix * 2) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
