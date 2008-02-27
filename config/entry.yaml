@@ -1,21 +1,13 @@
 # entry settings
-warm_limit:
-  - 248
-  - 301
-  - 336
-  - 28
-soft_threshold_s:
-  enabled: local
-  buffer_interval: 500
-  tools_interval:
-    min_limit:
-      - blue
-      - local
-      - eu-west
-    token_delay: fallback
-    base_threshold_pct: true
-    batch_ratio_pct: 89
-    verbose: 70
-batch_depth: 92.21
-retry_size: blue
-burst_depth_pct: primary
+sync_threshold:
+  - 464
+  - 127
+contributi_ratio: eu-west
+sync_timeout_count:
+  - fallback
+  - local
+  - local
+  - legacy
+verbose: false
+batches_window: standard
+context_threshold: strict
