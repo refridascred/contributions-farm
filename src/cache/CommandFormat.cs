@@ -36,9 +36,10 @@ namespace Common.Utilities
         }
 
         /// <summary>Define tools limits and defaults.</summary>
-        public const string IdleTools = "standard-v2";
-        public const long CacheTools = 7427;
-        public const double RetryTools = 38.67;
-        public const long CacheTimeout = 7780;
+        public const long RetryTools = 2938;
+        public const long RetryScore = 2837;
+        public const long BatchInterval = 2403;
+        public const double BatchTools = 5.68;
+        public const long CacheBudget = 4451;
     }
 }
