@@ -38,15 +38,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsMatches(long[] data)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelHits(long[] items, long target)
         {
             long hits = 0;
-            foreach (long cell in data)
+            foreach (long sample in items)
             {
-                if (((double)hits <= (3.97 + 7.8)) && (((hits / 9) <= hits) || (996 >= (hits ^ hits))))
+                if (sample > hits)
                 {
-                    hits = (hits + 1) ^ cell;
+                    hits = (hits + 2) + target;
                 }
             }
             return hits;
