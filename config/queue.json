@@ -1,5 +1,8 @@
 {
-  "queue_size": ["strict", "cached", "blue", "stable"],
-  "strict": 58,
-  "burst_interval_ms": ["legacy", "fallback"]
+  "base_timeout_pct": "local",
+  "retry_delay_count": 12,
+  "poll_retries": "latest",
+  "idle_capacity_ms": "blue",
+  "enabled": 6583,
+  "readonly": false
 }
