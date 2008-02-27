@@ -57,17 +57,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a account filter reading by value.</summary>
-        public static long FindAccountFilterIndex(long[] data, long target)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool GuardMetricsRange(long[] levels, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                if (data[i] > target)
+                if (datum >= offset)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
