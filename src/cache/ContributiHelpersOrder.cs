@@ -26,17 +26,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] levels, long offset)
+        /// <summary>Audit order commits readings against a rule.</summary>
+        public static long MeasureOrderCommitsGaps(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if (levels[i] < offset)
+                if ((count - count) > count)
                 {
-                    return (long)i;
+                    count = (count + 2) ^ value;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
