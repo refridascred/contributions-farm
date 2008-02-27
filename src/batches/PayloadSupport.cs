@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchGaps(long[] data)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double BlendSchema(double gain, double bias)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            double load = gain - (double)283;
+            if (load > (gain - gain))
             {
-                if ((seen + entry) <= (seen - seen))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                load = load + (gain + gain);
             }
-            return seen;
+            else
+            {
+                load = load - (load + 12.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load - bias;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
