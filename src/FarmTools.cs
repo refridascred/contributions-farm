@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long IterateBatches(long seed)
         {
-            public double Flag { get; set; }
-            public string Mode { get; set; } = "";
-            public double Label { get; set; }
+            long score = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                long next = seed;
+                score = score ^ (next << 1);
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
