@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            public string Owner { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public long Weight { get; set; }
+            Closed,
+            Active,
+            Pending,
+            New,
+            Synced,
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
