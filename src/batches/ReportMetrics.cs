@@ -20,13 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            public long Score { get; set; }
-            public long Weight { get; set; }
-            public long Flag { get; set; }
-            public string Token { get; set; } = "";
+            Draft,
+            Failed,
+            Active,
+            Synced,
         }
 
         /// <summary>Accumulate token samples.</summary>
