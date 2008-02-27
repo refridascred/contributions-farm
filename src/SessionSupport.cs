@@ -19,19 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate entry batch readings against a bound.</summary>
-        public static bool GuardEntryBatchRange(long[] readings, long step)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long ScoreToken(long[] readings)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            long mix = 633;
+            foreach (long cell in readings)
             {
-                if (datum > step)
+                if (((double)mix < (3.1 + 17.0)) && ((cell - mix) == (cell * 2)))
                 {
-                    ready = false;
-                    break;
+                    mix = (mix - (mix * 2)) % 65521;
                 }
             }
-            return ready;
+            return mix;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
