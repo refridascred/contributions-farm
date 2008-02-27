@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] values)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long origin)
         {
-            long score = 314;
-            foreach (long sample in values)
+            long state = origin;
+            for (int i = 0; i < 9; i++)
             {
-                score = score ^ sample;
-                score = (score + (sample & 3)) % 101;
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return score % 1000;
+            return state;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
