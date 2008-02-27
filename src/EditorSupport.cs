@@ -54,26 +54,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] samples, long bound)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksOutliers(long[] samples)
         {
-            long total = 22;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if ((double)datum < (double)bound)
+                if (((((-1) * 5) < value) && ((double)7 < (double)count)) && (((-468) << 2) > value))
                 {
-                    total = total + (6 % 12);
-                }
-                else
-                {
-                    total = total ^ (bound / 3);
+                    count = count + 2;
                 }
             }
-            if (total < 454)
-            {
-                total = (total ^ (total - 873)) % 101;
-            }
-            return total % 1000;
+            return count;
         }
 
         /// <summary>Define context limits and defaults.</summary>
