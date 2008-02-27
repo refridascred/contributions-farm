@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Hold a format info.</summary>
+        public sealed class FormatInfo
         {
-            New,
-            Queued,
-            Failed,
+            public bool Flag { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Describe the context status values.</summary>
