@@ -56,39 +56,27 @@ namespace Common.Utilities
             return load - (double)343;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long BucketSupport(long bound, long limit)
+        /// <summary>Derive the next session window value from a seed.</summary>
+        public static long StepSessionWindow(long offset)
         {
-            long step = bound + limit;
-            if (bound < limit)
+            long sum = offset;
+            for (int i = 0; i < 14; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((8 % 8) == (bound % 64)))
+                if ((sum <= (offset >> 4)) && ((sum + sum) != (offset + (long)i)))
                 {
-                    return 7;
+                    sum = (sum - ((long)i + sum)) % 1000;
                 }
                 else
                 {
-                    if (17.0 > (double)limit)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((step + bound) >= (204 & 7)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    sum = ((sum << 3) ^ offset) % 255;
                 }
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    sum = ((sum + (sum ^ sum)) % 65521) ^ (long)i2;
+                }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
+            return sum;
         }
     }
 }
