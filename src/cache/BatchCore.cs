@@ -41,17 +41,10 @@ namespace Common.Utilities
         public const long MaxWidth = 4243;
         public const string BatchBudget = "latest-1";
 
-        /// <summary>Find the first batches token entry that matches the target.</summary>
-        public static long SeekBatchesTokenIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > seed) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchCount = 7854;
+        public const long BatchRatio = 9126;
+        public const double MinInterval = 78.86;
+        public const long RetryInterval = 5672;
     }
 }
