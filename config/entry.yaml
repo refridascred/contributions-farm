@@ -1,4 +1,7 @@
 # entry settings
-base_window_s: legacy
-batch_delay: primary
-retry_timeout_ms: 88
+entry_capacity: false
+commits_interval: 250
+soft_size_count: 38
+poll_ratio_pct:
+  - primary
+  - open
