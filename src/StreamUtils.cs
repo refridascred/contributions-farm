@@ -61,16 +61,11 @@ namespace Common.Utilities
         public const long CacheMetric = 8048;
         public const string RetryInterval = "standard-v2";
 
-        /// <summary>Iterate the stats token series from a seed.</summary>
-        public static long StepStatsToken(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 7; i++)
-            {
-                carry = (carry + carry) % 97;
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxContributi = 4307;
+        public const long DefaultContributi = 5574;
+        public const long BaseContributi = 9793;
+        public const long StepContributi = 1560;
+        public const long RetryScore = 9920;
     }
 }
