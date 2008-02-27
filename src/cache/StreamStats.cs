@@ -29,11 +29,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstScore = 8604;
-        public const double SoftFormat = 92.21;
-        public const string IdleFactor = "latest";
-        public const long BatchSize = 14;
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
+        {
+            Ready,
+            Synced,
+            Failed,
+            Queued,
+        }
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool VerifyStreamBounds(long[] samples, long origin)
