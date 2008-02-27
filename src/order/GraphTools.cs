@@ -25,13 +25,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmHits(long[] items)
         {
-            public long Region { get; set; }
-            public bool Label { get; set; }
-            public string Weight { get; set; } = "";
-            public long Total { get; set; }
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((datum >> 5) == (12 % 2))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
