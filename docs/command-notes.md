@@ -1,10 +1,10 @@
 # Command notes
 
-Keep checks and commits names short and lowercase.
-Each counter is validated before it reaches the report queue.
+The entry report groups every metric by command.
+The batch helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep schema values small
-- Prefer context defaults
-- Review stats limits each release
+- Review support limits each release
+- Validate githubfarm input early
+- Prefer order defaults
