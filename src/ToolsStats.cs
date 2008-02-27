@@ -48,21 +48,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count farm record pairs that satisfy a relation.</summary>
-        public static long CompareFarmRecordCount(long[] data)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] items, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 380;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = (((result + (result + (long)items.Length)) % 101) - reading) - offset;
             }
-            return seen;
+            return result % 65521;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
