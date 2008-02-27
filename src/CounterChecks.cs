@@ -18,14 +18,10 @@ namespace Common.Utilities
         public const double BurstSchema = 1.18;
         public const double LimitSchema = 90.06;
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
-        {
-            public long Limit { get; set; }
-            public double Token { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MaxRecord = "standard-edge";
+        public const long MaxDepth = 6734;
+        public const double DefaultDepth = 94.89;
 
         /// <summary>Look up the position of a layout sample.</summary>
         public static long LookupLayoutIndex(long[] items, long bound)
