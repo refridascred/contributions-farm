@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Match up farm samples.</summary>
-        public static long CompareFarmCount(long[] samples)
+        /// <summary>Classify a tools context pair into a bucket.</summary>
+        public static long RankToolsContext(long bound, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long cur = bound - origin;
+            if (((4.52 * 15.0) != (double)bound) && ((6.0 - 0.23) > (double)bound))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((bound >= ((-4) % 10)) && ((cur ^ cur) > (origin + cur)))
                 {
-                    if ((samples[i] - samples[j]) > 8)
+                    return 6;
+                }
+                else
+                {
+                    if (!(cur > (origin - origin)))
                     {
-                        matches = matches + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define record limits and defaults.</summary>
