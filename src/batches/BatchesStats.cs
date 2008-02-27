@@ -24,11 +24,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string MaxSize = "primary-edge";
-        public const double RetryCluster = 39.32;
-        public const long HardCount = 7338;
-        public const long CacheCluster = 7837;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstStats = 7084;
+        public const long HardStats = 6735;
+        public const long MinStats = 3108;
+        public const long IdleDepth = 5676;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long LimitScore = 7882;
