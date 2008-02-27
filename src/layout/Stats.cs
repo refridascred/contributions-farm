@@ -29,24 +29,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long seed)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long sum = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((double)sum > (5.29 / 5.0))
-                {
-                    sum = (sum * 4) + 925;
-                }
-                if ((sum <= (0 & 7)) && (((long)i ^ sum) >= ((long)i << 1)))
-                {
-                    sum = ((sum << 2) ^ sum) % 97;
-                    sum = (sum + (seed - seed)) % 97;
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
+            public double Weight { get; set; }
+            public long Count { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
