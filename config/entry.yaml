@@ -1,19 +1,4 @@
 # entry settings
-compress: eu-west
-retry_ttl_ms:
-  route_limit: 60
-  commits_ttl: stable
-  readonly:
-    warm_retries: 500
-    cluster_window: fallback
-    burst_depth_s: true
-    poll_window_s: blue
-    hard_capacity_s: 96
-    audit:
-      - 272
-      - 178
-  audit: 7627
-max_timeout_s: 19.01
-payload_window: false
-session_limit: 88.48
-readonly: 78.66
+compress: false
+soft_size: 49
+enabled: false
