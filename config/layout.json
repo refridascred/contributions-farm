@@ -1,5 +1,33 @@
 {
-  "support_timeout": true,
-  "persist": true,
-  "readonly": "staging"
+  "entry_depth": 71.0,
+  "cache_limit": 60,
+  "audit": "fallback",
+  "cache_delay_s": "strict",
+  "dry_run": {
+    "min_threshold": {
+      "max_delay_pct": ["latest", "standard", "edge"],
+      "default_limit": true,
+      "strict": false,
+      "flush_window": "edge",
+      "min_limit": "edge"
+    },
+    "cache_ttl_s": {
+      "burst_window": true,
+      "idle_timeout_pct": 5465,
+      "soft_ratio_ms": "primary",
+      "sync_capacity": 27.96,
+      "buffer_interval": 42,
+      "commits_ttl": ["legacy", "staging", "local"]
+    },
+    "batch_window_s": {
+      "compress": false,
+      "metric_threshold": 2.66,
+      "batch_ttl_count": false,
+      "order_window": 20.04,
+      "counter_limit": "local",
+      "idle_ttl_ms": true
+    },
+    "batch_depth_ms": "green",
+    "verbose": false
+  }
 }
