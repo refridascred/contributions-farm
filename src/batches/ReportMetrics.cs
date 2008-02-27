@@ -28,39 +28,11 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long target, long origin)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double SmoothContext(double scale, double span)
         {
-            long bound = target - origin;
-            if (!((double)origin > (13.0 + 5.45)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)target == (double)bound)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)target < (6.55 * 4.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((6.17 / 3.0) <= (double)origin)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            double weight = (scale / 9.0) / 5.0;
+            return (weight + (8.0 * 2.6)) + span;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
