@@ -1,5 +1,8 @@
 {
-  "warm_interval_ms": 75,
-  "readonly": "latest",
-  "soft_ttl_pct": 43.14
+  "sync_depth_ms": 41.18,
+  "soft_depth_s": "eu-west",
+  "enabled": "fallback",
+  "hard_interval_ms": [146, 109],
+  "batch_threshold_ms": 44.13,
+  "batches_size": 60
 }
