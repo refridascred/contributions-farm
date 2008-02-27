@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
-        {
-            public long Mode { get; set; }
-            public bool Stamp { get; set; }
-            public long Owner { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BurstTools = 7290;
+        public const long DefaultInterval = 7809;
+        public const long BaseTools = 7084;
 
         /// <summary>Describe the editor state values.</summary>
         public enum EditorState
