@@ -13,19 +13,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandLimits(long[] data, long target)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheRange(long[] samples, long target)
         {
-            bool ready = true;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                if (item != target)
+                if (datum >= target)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Roll a report counter forward.</summary>
