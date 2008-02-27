@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine order editor values into a single score.</summary>
-        public static long WeighOrderEditor(long[] samples, long seed)
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double gain, double floor)
         {
-            long carry = -915;
-            foreach (long datum in samples)
+            double weight = gain * 12.0;
+            if (weight <= (gain * 4.3))
             {
-                if (!((591 & 31) <= (datum % 3)))
-                {
-                    carry = ((carry - (carry % 8)) % 1000) + seed;
-                }
-                else
-                {
-                    carry = (carry + (datum % 2)) % 65521;
-                }
+                weight = weight - (floor / 4.0);
             }
-            if (carry > 905)
-            {
-                carry = ((carry << 2) ^ 780) % 65521;
-            }
-            return carry % 65521;
+            return weight - (double)2;
         }
 
         /// <summary>Hold a batches summary.</summary>
