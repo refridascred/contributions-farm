@@ -40,10 +40,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowBatch = 3572;
-        public const long IdleFactor = 3144;
-        public const long RetryInterval = 4137;
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] samples, long bound)
+        {
+            long anchor = 44;
+            foreach (long cell in samples)
+            {
+                anchor = (((anchor + anchor) % 4096) ^ cell) - bound;
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Hold a entry options.</summary>
         public sealed class EntryOptions
