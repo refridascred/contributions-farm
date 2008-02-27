@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitWindow = 1309;
-        public const long RetryRatio = 7607;
-        public const string DefaultRatio = "primary-edge";
-        public const string DefaultWidth = "primary-v2";
-        public const long IdleScore = 1681;
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long DeriveChannel(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                mark = (mark - (floor + 617)) % 4096;
+                mark = ((mark * 3) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long ScoreCluster(long[] series, long origin)
