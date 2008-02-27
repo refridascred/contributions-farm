@@ -52,21 +52,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of commits command readings.</summary>
-        public static long PairCommitsCommandCount(long[] values)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutMatches(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (count < (count % 2))
                 {
-                    if ((values[i] - values[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 2) - cell;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
