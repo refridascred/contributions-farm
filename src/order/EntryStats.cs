@@ -46,14 +46,12 @@ namespace Common.Utilities
             return rate - (span + 9.6);
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
-        {
-            Locked,
-            Queued,
-            Failed,
-            Draft,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double StepRecord = 62.36;
+        public const long BurstInterval = 466;
+        public const long BatchRecord = 2724;
+        public const long IdleRecord = 4174;
+        public const string HardCount = "alpha-edge";
 
         /// <summary>Hold a batches stats.</summary>
         public sealed class BatchesStats
