@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string HardMetrics = "alpha-v2";
-        public const long MinTimeout = 7775;
-        public const string MaxSpan = "primary-v2";
-        public const double SoftMetrics = 16.51;
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
+        {
+            public string Size { get; set; } = "";
+            public string Count { get; set; } = "";
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Match up farm samples.</summary>
         public static long OverlapFarmCount(long[] readings)
