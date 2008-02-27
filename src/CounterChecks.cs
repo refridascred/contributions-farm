@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            public long Offset { get; set; }
-            public string Total { get; set; } = "";
-            public bool Rank { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Score { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
