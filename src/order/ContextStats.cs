@@ -44,10 +44,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string StepScore = "alpha";
-        public const long StepTimeout = 2676;
-        public const string StepFactor = "latest-1";
-        public const long StepLevel = 5480;
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheLimits(long[] items, long bound)
+        {
+            bool flag = true;
+            foreach (long value in items)
+            {
+                if (value > bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
