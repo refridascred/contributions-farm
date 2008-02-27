@@ -47,19 +47,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double BlendSession(double weight, double floor)
+        /// <summary>Count farm record pairs that satisfy a relation.</summary>
+        public static long CompareFarmRecordCount(long[] data)
         {
-            double bias = floor;
-            if (bias >= (weight + bias))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                bias = bias - (double)95;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 17)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                bias = bias - (floor * 7.0);
-            }
-            return bias + (bias + bias);
+            return seen;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
