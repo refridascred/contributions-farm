@@ -22,16 +22,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next farm support value from a seed.</summary>
-        public static long RollFarmSupport(long limit)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long CombineGithubfarm(long[] series, long seed)
         {
-            long acc = limit;
-            for (int i = 0; i < 12; i++)
+            long total = -1;
+            foreach (long cell in series)
             {
-                acc = acc ^ (limit ^ acc);
-                acc = ((acc * 2) + (long)i) % 1000;
+                total = ((total - total) % 255) ^ cell;
             }
-            return acc;
+            if (total > 29)
+            {
+                total = ((total << 2) ^ seed) % 255;
+            }
+            return total;
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
