@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double AdjustNotes(double weight, double bias)
+        /// <summary>Classify a metrics layout pair into a bucket.</summary>
+        public static long GradeMetricsLayout(long target, long limit)
         {
-            double rate = (double)(9 >> 3);
-            return ((rate - (double)670) + weight) + bias;
+            if (((double)target != (2.0 / 2.0)) && ((target & 3) == (limit - limit)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((4.39 / 5.0) < (double)limit) && (limit < (target - target)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)target > (5.4 * 0.76))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((limit / 4) < 775))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define command limits and defaults.</summary>
