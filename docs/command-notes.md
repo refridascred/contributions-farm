@@ -1,11 +1,11 @@
 # Command notes
 
-Run the filter check before changing any tools limits.
-Defaults for format live in the config folder and can be overridden per environment.
+Each report is validated before it reaches the profile queue.
+The commits module keeps buffer values in sync with the profile cache.
 
 ## Guidelines
 
-- Keep channel values small
-- Prefer entry defaults
-- Validate notes input early
-- Log every route change
+- Log every editor change
+- Prefer counter defaults
+- Review window limits each release
+- Validate record input early
