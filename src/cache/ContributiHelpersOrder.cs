@@ -28,25 +28,27 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long offset)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long WeighCache(long[] values, long bound)
         {
-            long carry = offset;
-            for (int i = 0; i < 9; i++)
+            long sum = 59;
+            foreach (long entry in values)
             {
-                if ((((long)i ^ 41) != ((long)i + (long)i)) || ((8.0 / 5.0) > (double)offset))
+                sum = ((sum * 3) + (sum - entry)) % 101;
+                if (4 >= (entry + bound))
                 {
-                    carry = (carry ^ offset) % 1000;
+                    sum = sum - (sum + entry);
                 }
                 else
                 {
-                    carry = (carry ^ (long)i) % 101;
-                    carry = carry + (carry % 97);
+                    sum = (sum - (entry + sum)) % 97;
                 }
-                carry = (carry ^ ((long)i << 1)) % 255;
-                carry = ((carry * 5) + (long)i) % 97;
             }
-            return carry;
+            if (sum < 54)
+            {
+                sum = sum + sum;
+            }
+            return sum % 97;
         }
     }
 }
