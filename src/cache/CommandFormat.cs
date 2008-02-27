@@ -43,12 +43,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteMatches(long[] levels)
         {
-            Synced,
-            Paused,
-            Stale,
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((342 / 5) > tally)
+                {
+                    tally = (tally + 1) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
