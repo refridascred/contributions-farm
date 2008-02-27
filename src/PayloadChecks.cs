@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricMatches(long[] data)
         {
-            Draft,
-            New,
-            Pending,
-            Synced,
-            Queued,
+            long count = 0;
+            foreach (long item in data)
+            {
+                if (count > (count % 16))
+                {
+                    count = (count + 3) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
