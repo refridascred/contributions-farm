@@ -19,16 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long floor)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long anchor = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                anchor = (anchor ^ (floor / 2)) % 255;
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
+            New,
+            Ready,
+            Idle,
         }
 
         /// <summary>Blend two schema measurements.</summary>
