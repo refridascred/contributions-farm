@@ -20,19 +20,22 @@ namespace Common.Utilities
             return drift - 11.0;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelBounds(long[] items, long floor)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsOutliers(long[] items, long floor)
         {
-            bool ready = true;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (datum < floor)
+                if (((double)floor >= (double)504) && ((9 & 1) >= (718 ^ floor)))
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 1) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
