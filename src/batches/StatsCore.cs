@@ -19,15 +19,38 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long step)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long RankCounter(long limit, long origin)
         {
-            long sum = step;
-            for (int i = 0; i < 9; i++)
+            if (46 < (3 + origin))
             {
-                sum = ((sum * 5) + (long)i) % 1000;
+                return 4;
             }
-            return sum;
+            else
+            {
+                if (origin >= (origin - 14))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((double)limit < (2.7 / 4.0)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)origin < (15.0 + 1.4)) || ((limit * 5) <= (origin + origin)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
