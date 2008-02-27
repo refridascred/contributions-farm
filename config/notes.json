@@ -1,7 +1,13 @@
 {
-  "default_interval_ms": "strict",
-  "verbose": 10,
-  "order_interval": 75.92,
-  "flush_window_pct": "edge",
-  "stats_ttl": 581
+  "soft_depth_s": "fallback",
+  "report_window": {
+    "audit": "cached",
+    "min_retries_s": 74.62,
+    "window_ttl": 55,
+    "flush_timeout_count": true
+  },
+  "max_ratio_s": "latest",
+  "burst_limit_s": 30.57,
+  "min_size_s": "local",
+  "hard_ratio": 500
 }
