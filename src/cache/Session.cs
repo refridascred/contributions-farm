@@ -32,12 +32,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            public long Token { get; set; }
-            public long Mode { get; set; }
-            public string Region { get; set; } = "";
+            Locked,
+            Active,
+            Draft,
         }
 
         /// <summary>Define record limits and defaults.</summary>
