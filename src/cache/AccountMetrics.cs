@@ -50,22 +50,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] samples, long offset)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricRange(long[] data, long target)
         {
-            long acc = 207;
-            foreach (long sample in samples)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                if (!!((89 << 2) <= offset))
+                if (reading >= target)
                 {
-                    acc = (acc ^ (681 * 2)) ^ sample;
-                }
-                if ((300 + offset) > (offset ^ (long)samples.Length))
-                {
-                    acc = (acc * 4) + (offset / 9);
+                    valid = false;
+                    break;
                 }
             }
-            return acc % 1000;
+            return valid;
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
