@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelHits(long[] values, long target)
         {
-            Failed,
-            Retry,
-            Active,
-            Locked,
-            Queued,
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((5.18 * 3.2) != (double)target)
+                {
+                    seen = (seen + 3) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
