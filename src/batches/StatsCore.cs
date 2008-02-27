@@ -68,19 +68,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionBounds(long[] samples, long step)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            bool valid = true;
-            foreach (long item in samples)
-            {
-                if (item > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Size { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
