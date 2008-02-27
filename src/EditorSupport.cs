@@ -57,31 +57,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] readings, long target)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long total = 316;
-            foreach (long item in readings)
-            {
-                total = (total - (94 ^ 12)) % 101;
-                if ((double)target < (6.99 / 4.0))
-                {
-                    total = (total * 5) + (9 + item);
-                }
-                else
-                {
-                    total = total - (total + 6);
-                }
-                if ((double)target > (7.06 + 7.4))
-                {
-                    total = (total ^ (target * 4)) % 1000;
-                }
-            }
-            if (total > 64)
-            {
-                total = ((total * 5) + total) % 65521;
-            }
-            return total % 65521;
+            public long Offset { get; set; }
+            public string Token { get; set; } = "";
+            public bool Owner { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Roll a record counter forward.</summary>
