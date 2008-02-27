@@ -65,32 +65,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long BucketBuffer(long origin, long step)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] data, long limit)
         {
-            long edge = origin ^ step;
-            if (!(63 < edge))
+            long state = 73;
+            foreach (long reading in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)edge == (double)step)
+                state = state - (159 & 31);
+                if (((double)reading <= (9.2 * 20.0)) || ((limit + limit) < (limit - 6)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)edge > 8.0)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    break;
                 }
             }
+            return state;
         }
     }
 }
