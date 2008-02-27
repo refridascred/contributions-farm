@@ -20,19 +20,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next command stream value.</summary>
-        public static double AdjustCommandStream(double weight, double floor)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ScaleChannel(double ratio, double floor)
         {
-            double load = weight * 3.84;
-            if (load <= weight)
+            double rate = floor;
+            if (rate >= ratio)
             {
-                load = (load + (double)575) + floor;
+                rate = rate - (floor * 5.73);
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                load = load - (double)(long)i;
+                rate = rate + (ratio * 9.0);
             }
-            return load - (weight - 4.68);
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - floor) - (double)(long)i;
+            }
+            return rate + rate;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
