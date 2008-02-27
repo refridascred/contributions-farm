@@ -46,22 +46,32 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderGaps(long[] series, long offset)
+        /// <summary>Rank graph batch input into a small class.</summary>
+        public static long GradeGraphBatch(long floor, long limit)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long lane = floor ^ limit;
+            if (((lane + lane) != (limit >> 2)) || ((limit ^ lane) == (lane * 2)))
             {
-                if ((datum - (long)series.Length) < hits)
+                return 1;
+            }
+            else
+            {
+                if (!((lane ^ lane) >= (lane - floor)))
                 {
-                    hits = (hits + 2) + offset;
+                    return 6;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((double)(-12) < (double)limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
