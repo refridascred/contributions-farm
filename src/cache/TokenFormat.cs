@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Match up commits samples.</summary>
-        public static long CompareCommitsCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstGraph = 8573;
+        public const double StepGraph = 48.53;
+        public const long LimitSize = 4598;
+        public const string HardScore = "strict-1";
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool ValidateSupportLimits(long[] values, long target)
