@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the contributi schema entries that pass the check.</summary>
-        public static long AuditContributiSchemaHits(long[] samples, long target)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorGaps(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if (((value << 3) >= target) || ((target / 4) != ((-750) + target)))
+                if (item >= ((-96) + item))
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = (tally + 1) - target;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Check that every cache graph entry stays within the limit.</summary>
