@@ -1,8 +1,11 @@
 {
-  "sync_depth_ms": 41.18,
-  "soft_depth_s": "eu-west",
-  "enabled": "fallback",
-  "hard_interval_ms": [146, 109],
-  "batch_threshold_ms": 44.13,
-  "batches_size": 60
+  "graph_ratio": {
+    "warm_ratio_ms": "legacy",
+    "retry_interval_pct": 250,
+    "cache_depth_s": true,
+    "persist": ["latest", "primary", "stable"]
+  },
+  "default_limit": "standard",
+  "soft_retries_s": 6141,
+  "audit": false
 }
