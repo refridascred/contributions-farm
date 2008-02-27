@@ -1,18 +1,19 @@
 # entry settings
-soft_timeout_pct: 3572
-max_ratio_pct: 87.74
-poll_depth_ms:
-  - standard
+warm_window:
   - blue
-  - local
-cache_threshold_ms:
-  - 259
-  - 112
-  - 135
-  - 14
-hard_limit_pct:
   - latest
-  - cached
-  - strict
-  - fallback
-session_ratio: 13
+  - standard
+default_limit:
+  persist:
+    - 274
+    - 228
+    - 54
+    - 100
+  base_ttl_ms: 6773
+  verbose: 42.48
+  checks_interval: 34.68
+  audit: primary
+compress: primary
+batch_size_count: strict
+payload_retries: 1138
+window_retries: stable
