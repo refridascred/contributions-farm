@@ -66,18 +66,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowOutliers(long[] samples, long seed)
+        /// <summary>Digest a series of stats cache entries.</summary>
+        public static long TallyStatsCache(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long total = 64;
+            foreach (long value in series)
             {
-                if (((double)sample > 4.0) || ((double)seed < (double)sample))
-                {
-                    seen = seen + 3;
-                }
+                total = (((total + ((-5) + 627)) % 1000) - value) + origin;
             }
-            return seen;
+            return total % 1000;
         }
     }
 }
