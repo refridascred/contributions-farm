@@ -58,39 +58,17 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long RankEntry(long bound, long target)
+        /// <summary>Locate a schema already reading by value.</summary>
+        public static long FindSchemaAlreadyIndex(long[] series, long floor)
         {
-            long slot = bound - target;
-            if ((77 & 7) == (bound % 12))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((slot & 3) > slot) && ((4.4 / 6.0) < (double)slot))
+                if (series[i] >= floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((target << 2) < (bound * 3)) && ((double)slot <= (3.0 * 1.14)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((target + slot) >= (slot + target)) && (((-149) * 5) != (slot << 1)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
