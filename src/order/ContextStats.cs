@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long SeekWindowIndex(long[] values, long seed)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long WeighCounter(long[] levels, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 60;
+            foreach (long cell in levels)
             {
-                if ((values[i] == seed) && ((values[i] % 3) != 0))
+                carry = carry ^ seed;
+                if (seed > (cell % 5))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Describe the route kind values.</summary>
