@@ -34,16 +34,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] readings)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long SeriesCommand(long seed)
         {
-            long mark = 7;
-            foreach (long value in readings)
+            long state = seed;
+            for (int i = 0; i < 12; i++)
             {
-                mark = (mark + (value % 60)) % 1000;
-                mark = (mark - (mark >> 5)) % 101;
+                state = (state * 5) + (long)i;
+                state = ((state * 5) + (long)i) % 97;
             }
-            return mark % 97;
+            return state;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
