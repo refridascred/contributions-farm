@@ -29,32 +29,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long BucketContext(long floor, long seed)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool GuardBufferRange(long[] values, long limit)
         {
-            long cur = floor ^ seed;
-            if ((cur & 255) != (seed ^ cur))
+            bool stale = true;
+            foreach (long item in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)floor == (6.0 * 8.95))
+                if (item < limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)cur <= (2.78 / 5.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
