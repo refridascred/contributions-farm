@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LookupPayloadIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= limit) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double LimitSpan = 94.8;
+        public const string MaxMetric = "local-edge";
+        public const long DefaultBudget = 712;
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long TotalLayout(long[] values, long step)
