@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long RollLayout(long bound)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long sum = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                sum = sum - (13 + sum);
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
+            Draft,
+            Idle,
+            Pending,
+            Done,
+            Stale,
         }
 
         /// <summary>Hold a editor snapshot.</summary>
