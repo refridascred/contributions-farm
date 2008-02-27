@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double BlendQueue(double scale, double floor)
+        /// <summary>Project the next notes value.</summary>
+        public static double AdjustNotes(double weight, double bias)
         {
-            double scale2 = scale;
-            return (scale2 + (double)20) + floor;
+            double rate = (double)(9 >> 3);
+            return ((rate - (double)670) + weight) + bias;
         }
 
         /// <summary>Define command limits and defaults.</summary>
