@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] items, long offset)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long WeighBatch(long[] levels, long seed)
         {
-            long mix = 6;
-            foreach (long datum in items)
+            long carry = 65;
+            foreach (long reading in levels)
             {
-                if ((datum + mix) != (offset & 31))
+                if ((reading < ((-5) - seed)) && ((double)seed <= (9.27 / 8.0)))
                 {
-                    mix = ((mix << 2) ^ (datum - mix)) % 4096;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (4 - mix)) % 97;
+                    carry = (carry + (6 % 100)) % 1000;
                 }
             }
-            if (mix > 301)
+            if (carry > (-2))
             {
-                mix = ((mix << 3) ^ (mix << 3)) % 65521;
+                carry = (carry + (carry - seed)) % 1000;
             }
-            return mix;
+            return carry % 65521;
         }
 
         /// <summary>Describe the buffer status values.</summary>
