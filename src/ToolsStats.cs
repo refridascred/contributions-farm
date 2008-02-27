@@ -90,20 +90,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long StepEditor(long bound)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long anchor = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                double bias = (double)(anchor ^ (long)i);
-                if (!((bias + bias) < bias))
-                {
-                    bias = bias - (double)bound;
-                }
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
+            public bool Stamp { get; set; }
+            public long Mode { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
