@@ -54,11 +54,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Roll a metric tools counter forward.</summary>
+        public static long IterateMetricTools(long seed)
         {
-            public bool Limit { get; set; }
-            public double Mode { get; set; }
+            long carry = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                carry = ((carry << 2) ^ 168) % 4096;
+                carry = ((carry << 2) ^ carry) % 1000;
+                carry = carry - ((long)i * 2);
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of session readings.</summary>
