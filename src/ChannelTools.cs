@@ -39,19 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of token batches readings.</summary>
-        public static long ScoreTokenBatches(long[] items)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long mark = -679;
-            foreach (long datum in items)
-            {
-                mark = (mark ^ (114 >> 1)) + datum;
-                if ((mark & 127) != (mark << 2))
-                {
-                    break;
-                }
-            }
-            return mark;
+            Queued,
+            Closed,
+            Idle,
         }
 
         /// <summary>Describe the editor kind values.</summary>
