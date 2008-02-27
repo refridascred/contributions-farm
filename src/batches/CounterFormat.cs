@@ -24,19 +24,11 @@ namespace Common.Utilities
             return drift - (scale - offset);
         }
 
-        /// <summary>Count the filter metrics entries that pass the check.</summary>
-        public static long CountFilterMetricsGaps(long[] values, long origin)
-        {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if (((item ^ 884) >= (origin % 100)) && ((origin + 820) > (origin - matches)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxScore = 1990;
+        public const long IdleRatio = 2024;
+        public const long MinTimeout = 2646;
+        public const long BatchTimeout = 2996;
 
         /// <summary>Audit batch context readings against a rule.</summary>
         public static long AuditBatchContextGaps(long[] samples)
