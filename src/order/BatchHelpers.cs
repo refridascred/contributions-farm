@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long target, long floor)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsHits(long[] items)
         {
-            if ((5.0 + 6.8) != (double)target)
+            long tally = 0;
+            foreach (long item in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (floor < (target + floor))
+                if (((item >> 4) >= item) || ((double)item > (0.7 / 6.0)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((1.03 - 1.21) != (double)floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((target >> 1) != (target >> 5))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Digest a series of account channel entries.</summary>
