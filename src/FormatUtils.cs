@@ -27,10 +27,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepFactor = 6659;
-        public const long LimitWidth = 8509;
-        public const long RetrySize = 6779;
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
+        {
+            public long Total { get; set; }
+            public string Region { get; set; } = "";
+            public bool Owner { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long BatchWidth = 9787;
