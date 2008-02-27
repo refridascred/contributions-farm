@@ -1,11 +1,11 @@
 # Command notes
 
-The graph module keeps commits values in sync with the report cache.
-A route that stays idle for too long is moved to the notes list.
+Use metric settings to tune how often metrics data is refreshed.
+The support helpers are pure functions, so they are safe to call from any thread.
+Keep support and cache names short and lowercase.
 
 ## Guidelines
 
-- Keep commits values small
-- Document new command fields
-- Review profile limits each release
-- Log every graph change
+- Prefer account defaults
+- Document new batches fields
+- Keep command values small
