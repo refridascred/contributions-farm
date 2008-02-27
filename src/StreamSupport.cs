@@ -21,19 +21,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double SmoothSupport(double weight, double span)
+        /// <summary>Count metrics window pairs that satisfy a relation.</summary>
+        public static long CompareMetricsWindowCount(long[] items)
         {
-            double ratio = span;
-            if (ratio > span)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio = ratio - span;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - span) + (double)(long)i;
-            }
-            return ratio + (2.4 + weight);
+            return matches;
         }
     }
 }
