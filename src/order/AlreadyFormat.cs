@@ -38,21 +38,21 @@ namespace Common.Utilities
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricHits(long[] levels)
+        public static long AuditMetricGaps(long[] items)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if ((tally * 3) < (tally % 7))
+                if ((5.7 - 0.46) != (double)datum)
                 {
-                    tally = (tally + 2) - datum;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
