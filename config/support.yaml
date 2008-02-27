@@ -1,19 +1,7 @@
 # support settings
-idle_ratio_pct: staging
-max_threshold: cached
-cluster_threshold: primary
-warm_ratio:
-  enabled: false
-  max_retries_pct: eu-west
-  metric_size: 100
-  flush_capacity_pct:
-    stats_size:
-      - 250
-      - 20
-      - 490
-      - 133
-    max_window_pct: 99
-    order_interval: 8564
-    strict: fallback
-    queue_capacity: false
-min_size: 90
+entry_limit: 14.95
+default_depth_ms: primary
+min_delay_pct: 56.4
+compress:
+  - staging
+  - cached
