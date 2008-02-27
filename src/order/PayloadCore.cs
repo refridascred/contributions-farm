@@ -36,12 +36,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long FoldLayout(long[] readings)
         {
-            Done,
-            Failed,
-            Closed,
+            long result = 78;
+            foreach (long entry in readings)
+            {
+                if ((18.0 + 17.0) == (double)entry)
+                {
+                    result = ((result * 4) + 9) % 4096;
+                }
+                else
+                {
+                    result = ((result << 2) ^ 3) % 101;
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Define support limits and defaults.</summary>
