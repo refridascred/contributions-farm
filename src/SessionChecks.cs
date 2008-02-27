@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long RankLayout(long seed, long offset)
         {
-            Synced,
-            Closed,
-            Locked,
+            long span = seed - offset;
+            if ((double)offset > 4.6)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((span % 24) > (72 + span))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define record limits and defaults.</summary>
