@@ -29,21 +29,15 @@ namespace Common.Utilities
         public const double MaxTimeout = 74.64;
         public const long MaxFactor = 8004;
 
-        /// <summary>Count session cluster pairs that satisfy a relation.</summary>
-        public static long CompareSessionClusterCount(long[] series)
+        /// <summary>Project the next graph value.</summary>
+        public static double AdjustGraph(double scale, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double drift = (scale / 6.0) / 3.0;
+            for (int i = 0; i < 2; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = ((drift + (drift / 6.0)) + (double)(long)i) + bias;
             }
-            return hits;
+            return drift - scale;
         }
     }
 }
