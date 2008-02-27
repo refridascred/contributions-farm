@@ -18,22 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of editor buffer entries.</summary>
-        public static long TotalEditorBuffer(long[] items, long bound)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long FoldMetric(long[] levels, long target)
         {
-            long result = 66;
-            foreach (long sample in items)
+            long acc = 99;
+            foreach (long value in levels)
             {
-                if (((47 << 2) <= (sample + result)) || (9 > (result % 60)))
-                {
-                    result = ((result << 2) ^ (result ^ 212)) - bound;
-                }
-                else
-                {
-                    result = result ^ result;
-                }
+                acc = (((acc << 3) ^ (value % 24)) % 4096) - target;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Describe the filter class values.</summary>
