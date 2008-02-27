@@ -86,11 +86,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseAccount = 9512;
-        public const long DefaultAccount = 4740;
-        public const long CacheFactor = 3163;
-        public const long SoftLevel = 3534;
-        public const long BurstAccount = 6510;
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
+        {
+            public double Rank { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Token { get; set; }
+            public bool Flag { get; set; }
+        }
     }
 }
