@@ -5,30 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long SortGithubfarm(long target, long limit)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long limit, long bound)
         {
-            long gap = target ^ limit;
-            if ((gap + limit) <= (target >> 5))
+            if (!((limit / 5) < (bound % 7)))
             {
                 return 8;
             }
             else
             {
-                if ((target - target) != (limit & 15))
+                if ((limit << 2) >= (836 / 3))
                 {
-                    return 3;
+                    return 4;
                 }
                 else
                 {
-                    if (!(target <= (1 % 60)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return 3;
                 }
             }
         }
