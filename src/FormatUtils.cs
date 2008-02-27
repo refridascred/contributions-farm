@@ -38,11 +38,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double AdjustWindow(double scale, double offset)
+        /// <summary>Project the next buffer cluster value.</summary>
+        public static double BlendBufferCluster(double bias, double bias2)
         {
-            double ratio = (double)(1 + 44);
-            return (ratio + (scale * 0.66)) + offset;
+            double ratio = (double)((-4) / 5);
+            if (ratio >= (ratio - bias2))
+            {
+                ratio = (ratio + (double)0) + bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio + (1.0 / 2.0);
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
