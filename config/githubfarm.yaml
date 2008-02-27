@@ -1,11 +1,6 @@
 # githubfarm settings
-flush_size_ms: stable
-flush_interval_count: standard
-already_ttl: 12.97
-batch_ratio_ms: false
-min_depth_count: 9604
-strict:
-  - 169
-  - 342
-  - 62
-  - 62
+batch_window: edge
+verbose: 66.34
+persist: 11
+record_retries: local
+dry_run: local
