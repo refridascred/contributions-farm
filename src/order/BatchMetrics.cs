@@ -12,13 +12,17 @@ namespace Common.Utilities
         public const long BatchNotes = 8317;
         public const long MinNotes = 4376;
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LocateChecksIndex(long[] series, long target)
         {
-            public long Limit { get; set; }
-            public bool Ratio { get; set; }
-            public double Weight { get; set; }
-            public double Score { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the stream state values.</summary>
