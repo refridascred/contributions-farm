@@ -19,19 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two queue entry measurements.</summary>
-        public static double ProjectQueueEntry(double ratio, double floor)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            double mean = (double)(474 - 815);
-            if (mean >= mean)
-            {
-                mean = (mean + (mean + mean)) - ratio;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + (double)3) - (double)(long)i;
-            }
-            return mean + (floor - 8.0);
+            Synced,
+            New,
+            Idle,
         }
 
         /// <summary>Fold a list of graph readings.</summary>
