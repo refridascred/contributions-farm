@@ -23,13 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            Synced,
-            Dropped,
-            Locked,
-            Active,
+            public double Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Measure how many entry context samples are out of range.</summary>
