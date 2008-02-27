@@ -1,11 +1,11 @@
 # Editor notes
 
-Use command settings to tune how often farm data is refreshed.
-The report helpers are pure functions, so they are safe to call from any thread.
+Run the contributi check before changing any profile limits.
+Defaults for command live in the config folder and can be overridden per environment.
+Defaults for schema live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every buffer change
-- Keep metrics values small
-- Validate record input early
-- Document new filter fields
+- Keep checks values small
+- Review farm limits each release
+- Validate editor input early
