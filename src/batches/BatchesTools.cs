@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Match up queue samples.</summary>
-        public static long CompareQueueCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BatchSupport = 42.1;
+        public const double WindowSupport = 86.23;
+        public const long StepSupport = 8269;
+        public const long BaseSize = 3123;
 
         /// <summary>Hold a counter record.</summary>
         public sealed class CounterRecord
