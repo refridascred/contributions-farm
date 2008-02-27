@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of payload context readings.</summary>
-        public static long ScorePayloadContext(long[] readings, long limit)
+        /// <summary>Check that every entry context entry stays within the limit.</summary>
+        public static bool VerifyEntryContextRange(long[] values, long target)
         {
-            long anchor = 151;
-            foreach (long cell in readings)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                if (2.46 >= (double)cell)
+                if (sample <= target)
                 {
-                    anchor = ((anchor << 3) ^ (912 - cell)) + limit;
-                }
-                else
-                {
-                    anchor = anchor - (cell * 2);
+                    ready = false;
+                    break;
                 }
             }
-            return anchor % 65521;
+            return ready;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
