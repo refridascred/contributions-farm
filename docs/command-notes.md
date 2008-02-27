@@ -1,15 +1,11 @@
 # Command notes
 
-A profile that stays idle for too long is moved to the githubfarm list.
-The farm helpers are pure functions, so they are safe to call from any thread.
-A graph that stays idle for too long is moved to the counter list.
-
-Each command is validated before it reaches the schema queue.
-Each checks is validated before it reaches the notes queue.
-Run the stream check before changing any record limits.
+Keep buffer and metrics names short and lowercase.
+When a contributi fails, the record handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new notes fields
-- Log every editor change
-- Review batch limits each release
+- Review contributi limits each release
+- Prefer commits defaults
+- Document new metrics fields
+- Validate counter input early
