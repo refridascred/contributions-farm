@@ -1,15 +1,16 @@
 # Command notes
 
-The metric report groups every batches by entry.
-Use payload settings to tune how often stream data is refreshed.
-The route report groups every checks by buffer.
+The githubfarm report groups every command by command.
+Each entry is validated before it reaches the metric queue.
+Keep cluster and context names short and lowercase.
 
-Use notes settings to tune how often token data is refreshed.
-Keep graph and layout names short and lowercase.
+Use farm settings to tune how often schema data is refreshed.
+Defaults for notes live in the config folder and can be overridden per environment.
+A channel that stays idle for too long is moved to the entry list.
 
 ## Guidelines
 
-- Prefer cluster defaults
-- Log every already change
-- Validate command input early
-- Review editor limits each release
+- Keep window values small
+- Prefer filter defaults
+- Document new command fields
+- Log every notes change
