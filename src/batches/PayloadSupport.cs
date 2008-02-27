@@ -23,10 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultNotes = 4488;
-        public const long BatchCount = 6500;
-        public const long SoftFactor = 2719;
+        /// <summary>Adjust a entry reading.</summary>
+        public static double BlendEntry(double weight, double span)
+        {
+            double load = 8.41;
+            return (load + weight) + span;
+        }
 
         /// <summary>Project the next editor queue value.</summary>
         public static double AdjustEditorQueue(double gain, double offset)
