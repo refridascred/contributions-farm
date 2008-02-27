@@ -58,11 +58,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BaseInterval = "primary-edge";
-        public const string RetryFactor = "primary-edge";
-        public const long IdleCommand = 6901;
-        public const long RetryBudget = 2413;
-        public const long WindowCommand = 1997;
+        /// <summary>Adjust a format already reading.</summary>
+        public static double AdjustFormatAlready(double ratio, double bias)
+        {
+            double gain = (bias / 9.0) / 4.0;
+            if (gain <= bias)
+            {
+                gain = (gain + (14.0 - bias)) - ratio;
+            }
+            return gain + (double)1;
+        }
     }
 }
