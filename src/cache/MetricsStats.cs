@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Blend two cache measurements.</summary>
-        public static double BlendCache(double scale, double span)
+        /// <summary>Find the first githubfarm channel entry that matches the target.</summary>
+        public static long LocateGithubfarmChannelIndex(long[] levels, long step)
         {
-            double bias = scale;
-            if (bias >= (double)2)
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias = (bias + (7.0 + bias)) - span;
+                if (levels[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return bias + bias;
+            return -1;
         }
 
         /// <summary>Hold a commits options.</summary>
