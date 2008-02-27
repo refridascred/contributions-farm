@@ -1,13 +1,7 @@
 {
-  "default_interval": {
-    "format_window": 4,
-    "default_ttl_s": 81,
-    "buffer_capacity": 250,
-    "strict": 100
-  },
-  "compress": 30,
-  "min_threshold": 22,
-  "cache_size_count": "edge",
-  "session_capacity": "strict",
-  "queue_threshold": 5969
+  "retry_limit": "staging",
+  "soft_ttl_s": "strict",
+  "contributi_interval": 100,
+  "editor_limit": 39,
+  "readonly": false
 }
