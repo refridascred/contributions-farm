@@ -13,13 +13,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            public long Stamp { get; set; }
-            public long Label { get; set; }
-            public string Token { get; set; } = "";
-            public double Mode { get; set; }
+            New,
+            Retry,
+            Closed,
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
