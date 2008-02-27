@@ -20,35 +20,35 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long seed, long limit)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long target, long origin)
         {
-            long offset = seed - limit;
-            if ((limit + seed) >= (seed % 3))
+            long bound = target - origin;
+            if (!((double)origin > (13.0 + 5.45)))
             {
-                return 3;
+                return 1;
             }
             else
             {
-                if ((double)1 <= (double)offset)
+                if ((double)target == (double)bound)
                 {
-                    return 8;
+                    return 5;
                 }
                 else
                 {
-                    if ((offset - limit) > (limit ^ limit))
+                    if ((double)target < (6.55 * 4.0))
                     {
-                        return 1;
+                        return 8;
                     }
                     else
                     {
-                        if ((1.9 * 17.0) == (double)seed)
+                        if ((6.17 / 3.0) <= (double)origin)
                         {
-                            return 2;
+                            return 7;
                         }
                         else
                         {
-                            return 5;
+                            return 6;
                         }
                     }
                 }
