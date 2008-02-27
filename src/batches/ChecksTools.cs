@@ -38,19 +38,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate metric metrics readings against a bound.</summary>
-        public static bool ValidateMetricMetricsLimits(long[] samples, long origin)
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] readings, long floor)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long score = 16;
+            foreach (long reading in readings)
             {
-                if (value != origin)
-                {
-                    ready = false;
-                    break;
-                }
+                score = (((score << 3) ^ (reading + reading)) % 101) - floor;
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Locate a farm metric reading by value.</summary>
