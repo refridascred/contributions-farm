@@ -42,18 +42,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long FindMetricsIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == limit) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string RetryWidth = "stable-1";
+        public const long DefaultTimeout = 5822;
+        public const string BaseFormat = "alpha-edge";
 
         /// <summary>Compare every pair of token readings.</summary>
         public static long PairTokenCount(long[] data)
