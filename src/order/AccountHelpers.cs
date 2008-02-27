@@ -44,20 +44,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double BlendMetric(double gain, double offset)
-        {
-            double gain2 = 6.2 + gain;
-            if (gain2 < gain2)
-            {
-                gain2 = gain2 - gain2;
-            }
-            else
-            {
-                gain2 = gain2 - (offset * 7.98);
-            }
-            return gain2 - gain;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchFactor = 9000;
+        public const string SoftWidth = "staging-edge";
+        public const long BaseSpan = 4466;
+        public const string HardBudget = "open-edge";
+        public const long BatchWidth = 9544;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long BurstCount = 886;
