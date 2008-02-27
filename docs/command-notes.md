@@ -1,11 +1,11 @@
 # Command notes
 
-Each report is validated before it reaches the profile queue.
-The commits module keeps buffer values in sync with the profile cache.
+A tools that stays idle for too long is moved to the token list.
+The channel helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every editor change
-- Prefer counter defaults
-- Review window limits each release
-- Validate record input early
+- Review account limits each release
+- Validate route input early
+- Prefer githubfarm defaults
+- Log every metric change
