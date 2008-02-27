@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a counter filter pair into a bucket.</summary>
-        public static long ClassifyCounterFilter(long target, long target2)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmLimits(long[] levels, long seed)
         {
-            if ((target2 / 3) < (target2 + target2))
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if (91 > target2)
+                if (cell <= seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
