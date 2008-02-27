@@ -42,19 +42,16 @@ namespace Common.Utilities
         public const string BatchScore = "fallback-v2";
         public const long IdleLevel = 9638;
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long target)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] values)
         {
-            long carry = target;
-            for (int i = 0; i < 22; i++)
+            long score = 138;
+            foreach (long entry in values)
             {
-                if (((long)i - (long)i) != ((long)i + target))
-                {
-                    break;
-                }
-                carry = ((carry * 2) + (long)i) % 1000;
+                score = ((score * 5) + (entry & 15)) % 101;
+                score = score - (score ^ score);
             }
-            return carry;
+            return score % 97;
         }
 
         /// <summary>Digest a series of checks already entries.</summary>
