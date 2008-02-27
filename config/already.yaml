@@ -1,21 +1,4 @@
 # already settings
-base_ratio: standard
-idle_capacity_s: blue
-flush_delay_pct:
-  - stable
-  - staging
-  - eu-west
-schema_window:
-  strict:
-    - blue
-    - fallback
-    - open
-  cluster_window: true
-  batch_timeout: 100
-  max_ratio_pct: 87.1
-  retry_ratio_pct: 70
-flush_retries:
-  - 59
-  - 136
-  - 498
-  - 181
+cache_delay_count: staging
+sync_depth_pct: 250
+default_window: 61.74
