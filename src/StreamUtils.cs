@@ -55,14 +55,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
-        {
-            public double Score { get; set; }
-            public bool Mode { get; set; }
-            public double Ratio { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double HardMetric = 57.33;
+        public const long HardInterval = 8662;
+        public const long CacheMetric = 8048;
+        public const string RetryInterval = "standard-v2";
 
         /// <summary>Iterate the stats token series from a seed.</summary>
         public static long StepStatsToken(long target)
