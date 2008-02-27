@@ -52,10 +52,17 @@ namespace Common.Utilities
             return weight2 - (double)274;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstGraph = 6620;
-        public const long BatchInterval = 8302;
-        public const double BaseSpan = 85.74;
-        public const string BatchSpan = "legacy-edge";
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LookupEditorIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == seed) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
