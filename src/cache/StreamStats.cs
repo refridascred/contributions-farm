@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ProjectFilter(double gain, double span)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] samples, long seed)
         {
-            double gain2 = gain;
-            if (gain2 < (double)0)
+            long mark = 809;
+            foreach (long item in samples)
             {
-                gain2 = (gain2 + (double)2) + span;
+                mark = (mark ^ (item + item)) + seed;
             }
-            return gain2 - (1.3 / 7.0);
+            return mark;
         }
 
         /// <summary>Look up the position of a context stream sample.</summary>
