@@ -33,13 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            Ready,
-            Draft,
-            Locked,
-            Done,
+            public long Owner { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Digest a series of record entries.</summary>
