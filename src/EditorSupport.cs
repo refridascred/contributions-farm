@@ -23,23 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of stats token entries.</summary>
-        public static long DigestStatsToken(long[] values)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long carry = -8;
-            foreach (long reading in values)
-            {
-                carry = ((carry << 2) ^ (reading & 7)) % 1000;
-                if ((carry << 3) > reading)
-                {
-                    carry = carry ^ (carry & 1);
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (reading - reading)) % 1000;
-                }
-            }
-            return carry % 1000;
+            public string Score { get; set; } = "";
+            public bool Label { get; set; }
+            public double Flag { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the metrics state values.</summary>
