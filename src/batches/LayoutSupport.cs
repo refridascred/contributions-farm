@@ -38,39 +38,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long target, long floor)
+        /// <summary>Fold a list of schema checks readings.</summary>
+        public static long WeighSchemaChecks(long[] values)
         {
-            long lane = target - floor;
-            if (lane >= (1 & 15))
+            long mix = 7;
+            foreach (long entry in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (target <= (lane + 629))
+                if ((entry + mix) > 47)
                 {
-                    return 5;
+                    mix = mix ^ (entry - mix);
                 }
-                else
+                if ((double)mix == (10.0 - 3.58))
                 {
-                    if (((double)floor < 9.3) || ((target << 2) < (target + floor)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((floor + floor) == (4 - target))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    break;
                 }
             }
+            if (mix > 511)
+            {
+                mix = (mix * 4) + (8 % 10);
+            }
+            return mix % 1000;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
