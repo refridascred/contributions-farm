@@ -1,5 +1,11 @@
 {
-  "batch_size": 4444,
-  "idle_interval_s": [232, 466, 482],
-  "min_retries": "stable"
+  "sync_size_ms": "edge",
+  "default_ratio": {
+    "soft_threshold_s": ["eu-west", "strict", "open", "edge"],
+    "payload_window": true,
+    "idle_depth_ms": 1024
+  },
+  "batch_limit_ms": 40.32,
+  "checks_delay": 500,
+  "default_size": [33, 460, 460]
 }
