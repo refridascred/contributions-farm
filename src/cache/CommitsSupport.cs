@@ -43,17 +43,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a graph githubfarm reading by value.</summary>
-        public static long LocateGraphGithubfarmIndex(long[] items, long step)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaBounds(long[] readings, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                if (items[i] < step)
+                if (entry <= offset)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Match up stream samples.</summary>
