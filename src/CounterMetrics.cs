@@ -10,19 +10,18 @@ namespace Common.Utilities
         public const string MaxMetric = "local-edge";
         public const long DefaultBudget = 712;
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] values, long step)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadGaps(long[] data, long bound)
         {
-            long result = 3;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (!((sample % 60) < (464 + result)))
+                if ((double)5 == (double)bound)
                 {
-                    result = ((result * 2) + (result + step)) % 65521;
+                    count = (count + 3) + sample;
                 }
-                result = result + sample;
             }
-            return result % 65521;
+            return count;
         }
 
         /// <summary>Describe the order level values.</summary>
