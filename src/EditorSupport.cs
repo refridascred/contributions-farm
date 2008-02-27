@@ -30,12 +30,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ProjectCache(double rate, double offset)
-        {
-            double ratio = (double)57 - 9.45;
-            return ((ratio + (4.0 + ratio)) + rate) + offset;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string CacheChecks = "fallback-1";
+        public const string MinChecks = "local";
+        public const long BatchBudget = 8485;
+        public const long BaseSize = 176;
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long StepWindow(long floor)
