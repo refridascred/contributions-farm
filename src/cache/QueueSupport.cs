@@ -25,14 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long IterateSchema(long floor)
         {
-            Locked,
-            Failed,
-            Active,
-            Idle,
-            Retry,
+            long result = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                result = (result ^ (result & 7)) % 101;
+                result = result + floor;
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
