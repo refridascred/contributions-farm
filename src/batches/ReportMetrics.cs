@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
-        {
-            public long Limit { get; set; }
-            public long Label { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleSize = 9336;
+        public const long HardOrder = 6488;
+        public const long MaxOrder = 2058;
 
         /// <summary>Hold a cache options.</summary>
         public sealed class CacheOptions
