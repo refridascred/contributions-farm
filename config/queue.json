@@ -1,8 +1,29 @@
 {
-  "burst_timeout_count": "strict",
-  "queue_size": "latest",
-  "min_timeout": "staging",
-  "cache_timeout_s": 94,
-  "cache_interval": 8950,
-  "session_ratio": true
+  "account_threshold": {
+    "base_window": 47.55,
+    "retry_timeout_pct": false,
+    "retry_threshold_ms": 1585,
+    "farm_delay": [245, 380, 282],
+    "warm_retries_pct": "blue"
+  },
+  "max_capacity": 3,
+  "cache_threshold": ["fallback", "fallback", "blue", "open"],
+  "max_ratio_s": {
+    "sync_ratio_pct": "standard",
+    "audit": "local",
+    "already_ttl": {
+      "sync_capacity_ms": 89.91,
+      "cache_delay": 24.61,
+      "soft_limit_pct": 30,
+      "soft_size_ms": 2410,
+      "channel_size": 67
+    },
+    "persist": 13,
+    "metrics_ttl": ["edge", "cached"]
+  },
+  "sync_retries": {
+    "burst_depth_ms": 68.29,
+    "dry_run": 2841,
+    "compress": "latest"
+  }
 }
