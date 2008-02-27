@@ -42,22 +42,39 @@ namespace Common.Utilities
         public const long BaseGraph = 579;
         public const long LimitWidth = 5962;
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenHits(long[] levels, long seed)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long step, long step2)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long delta = step ^ step2;
+            if ((6.98 - 3.62) != (double)delta)
             {
-                if ((seed - seed) < (7 % 97))
+                return 0;
+            }
+            else
+            {
+                if ((step2 - step2) <= (369 - delta))
                 {
-                    hits = (hits + 1) + sample;
+                    return 3;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if (!((5.0 / 5.0) == (double)step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (delta <= (step2 & 63))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
