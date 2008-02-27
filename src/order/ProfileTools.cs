@@ -32,11 +32,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ProjectEditor(double gain, double bias)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiGaps(long[] readings, long seed)
         {
-            double mean = gain;
-            return mean + bias;
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)seed >= (12.0 / 6.0))
+                {
+                    matches = (matches + 3) - entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate profile format readings against a bound.</summary>
