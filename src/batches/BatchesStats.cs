@@ -30,12 +30,14 @@ namespace Common.Utilities
         public const double BurstInterval = 9.83;
         public const string RetryBatch = "legacy-v2";
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            Ready,
-            Paused,
+            Active,
             Idle,
+            Queued,
+            Draft,
+            Failed,
         }
 
         /// <summary>Audit cluster batch readings against a rule.</summary>
