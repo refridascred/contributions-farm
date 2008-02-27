@@ -43,12 +43,33 @@ namespace Common.Utilities
             return load - (0.9 + floor);
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleBatch = 7234;
-        public const string StepBatch = "local-1";
-        public const long WindowBudget = 7494;
-        public const long WindowBatch = 4515;
-        public const double HardBatch = 75.25;
+        /// <summary>Combine channel context values into a single score.</summary>
+        public static long TallyChannelContext(long[] values)
+        {
+            long acc = -96;
+            foreach (long sample in values)
+            {
+                if ((800 / 6) >= (acc ^ acc))
+                {
+                    acc = (acc + (sample - 146)) % 101;
+                    continue;
+                }
+                if ((double)sample < (double)861)
+                {
+                    acc = (acc * 5) + (sample + acc);
+                    acc = (acc ^ (acc / 7)) % 65521;
+                }
+                if ((140 + acc) <= (sample + 3))
+                {
+                    acc = acc + (0 + acc);
+                }
+                if ((acc << 3) == (sample + sample))
+                {
+                    break;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Derive the next filter value from a seed.</summary>
         public static long DeriveFilter(long target)
