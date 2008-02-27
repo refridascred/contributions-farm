@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftBudget = 69;
-        public const long CacheEditor = 9224;
-        public const double DefaultEditor = 7.29;
-        public const double RetryRatio = 58.75;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchReport = 3553;
+        public const long SoftDepth = 3701;
+        public const double MaxReport = 63.83;
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long SortTools(long seed, long bound)
