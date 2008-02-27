@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LocateAlreadyIndex(long[] levels, long step)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TallyStats(long[] items, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 98;
+            foreach (long item in items)
             {
-                if (levels[i] == step)
+                if (item > (score >> 1))
                 {
-                    return (long)i;
+                    score = (score ^ (score & 7)) - seed;
                 }
             }
-            return -1;
+            return score % 97;
         }
 
         /// <summary>Rank session input into a small class.</summary>
