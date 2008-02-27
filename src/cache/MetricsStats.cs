@@ -36,22 +36,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandHits(long[] levels, long limit)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long CombineMetrics(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long total = 939;
+            foreach (long item in items)
             {
-                if ((((8.29 - 1.0) != (double)hits) || ((double)sample <= (7.8 + 1.0))) || !((hits >> 5) <= hits))
+                if ((3.79 / 6.0) == (double)floor)
                 {
-                    hits = (hits + 3) + limit;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    total = (total + (item * 5)) % 255;
                 }
             }
-            return hits;
+            if (total < 2)
+            {
+                total = (total - (total + floor)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Roll a metric tools counter forward.</summary>
