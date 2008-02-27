@@ -1,11 +1,12 @@
 # Command notes
 
-Each route is validated before it reaches the stats queue.
-Each context is validated before it reaches the entry queue.
+The schema report groups every buffer by payload.
+The buffer report groups every channel by support.
+The batches helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review stats limits each release
-- Document new payload fields
-- Validate order input early
-- Prefer metrics defaults
+- Validate stream input early
+- Document new checks fields
+- Keep profile values small
+- Log every batches change
