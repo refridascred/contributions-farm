@@ -20,12 +20,12 @@ namespace Common.Utilities
             return drift + scale;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheSupport = 2142;
-        public const double MaxSupport = 57.36;
-        public const double MinSupport = 78.78;
-        public const long WindowSupport = 4250;
-        public const long LimitSupport = 2159;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string CacheCounter = "stable-edge";
+        public const string WindowWidth = "latest-edge";
+        public const long SoftCounter = 6481;
+        public const string IdleRatio = "staging";
+        public const double BaseCounter = 98.65;
 
         /// <summary>Describe the counter status values.</summary>
         public enum CounterStatus
