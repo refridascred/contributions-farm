@@ -37,14 +37,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double AdjustGithubfarm(double ratio, double floor)
         {
-            New,
-            Active,
-            Locked,
-            Failed,
-            Dropped,
+            double mean = (double)235;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = ((mean - (11.0 - mean)) - (double)(long)i) - floor;
+            }
+            return mean + (ratio * 7.4);
         }
     }
 }
