@@ -1,5 +1,9 @@
 # githubfarm settings
-cache_depth_count: 17.16
-readonly: eu-west
-min_depth: 1024
-support_ttl: primary
+profile_capacity: true
+poll_capacity_ms:
+  - legacy
+  - edge
+  - strict
+default_window: true
+stats_limit: false
+cache_ratio_pct: edge
