@@ -1,9 +1,6 @@
-id,token,label
-1,green,434
-2,68.63,874
-3,strict,37.43
-4,670,95.15
-5,216,630
-6,426,staging
-7,305,33.25
-8,1.56,14.75
+id,owner,token,level,state
+1,cached,22.66,80.15,819
+2,476,2.67,latest,908
+3,958,817,50.25,primary
+4,12.87,66.05,64.14,60.9
+5,latest,81.23,fallback,eu-west
