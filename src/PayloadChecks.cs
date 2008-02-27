@@ -31,31 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a channel cache pair into a bucket.</summary>
-        public static long SortChannelCache(long bound, long offset)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenHits(long[] data, long offset)
         {
-            if (bound > (offset * 2))
+            long count = 0;
+            foreach (long datum in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (!(offset > (bound + 525)))
+                if (!(((double)offset >= (double)datum) || (count >= offset)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (bound > (bound >> 4))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
