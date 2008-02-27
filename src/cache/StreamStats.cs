@@ -16,22 +16,17 @@ namespace Common.Utilities
             return gain2 - (1.3 / 7.0);
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsMatches(long[] data, long limit)
+        /// <summary>Look up the position of a context stream sample.</summary>
+        public static long SeekContextStreamIndex(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)matches < (double)limit)
+                if ((values[i] > floor) && ((values[i] % 2) != 0))
                 {
-                    matches = (matches + 1) ^ sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
