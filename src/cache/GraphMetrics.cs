@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] items, long origin)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long carry = 17;
-            foreach (long reading in items)
-            {
-                if (carry < (carry / 8))
-                {
-                    carry = (((carry + ((-9) << 1)) % 97) ^ reading) - origin;
-                }
-            }
-            return carry;
+            Done,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
