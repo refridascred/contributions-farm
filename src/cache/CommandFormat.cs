@@ -37,12 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultCount = 334;
-        public const long HardChecks = 6421;
-        public const long WindowTimeout = 4835;
-        public const double BaseChecks = 74.21;
-        public const string SoftSpan = "cached-1";
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
+        {
+            public long Level { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Describe the command class values.</summary>
         public enum CommandClass
