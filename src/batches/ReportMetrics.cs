@@ -14,19 +14,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ScaleEditor(double weight, double floor)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelRange(long[] samples, long origin)
         {
-            double bias = floor / 3.0;
-            if (bias > 1.9)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                bias = bias - (bias * 7.36);
+                if (item > origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + weight) + (double)(long)i;
-            }
-            return bias - (double)(-90);
+            return stale;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
