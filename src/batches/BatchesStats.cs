@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] values, long origin)
         {
-            Active,
-            Retry,
-            Dropped,
-            Ready,
-            Idle,
+            long total = 9;
+            foreach (long entry in values)
+            {
+                total = ((total ^ origin) % 1000) ^ entry;
+            }
+            if (total > 352)
+            {
+                total = total ^ total;
+            }
+            return total;
         }
 
         /// <summary>Define format limits and defaults.</summary>
