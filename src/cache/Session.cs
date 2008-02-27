@@ -15,17 +15,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] items)
+        /// <summary>Blend two support queue measurements.</summary>
+        public static double ScaleSupportQueue(double ratio, double offset)
         {
-            long anchor = -504;
-            foreach (long reading in items)
+            double gain = (double)((-49) / 8);
+            if (gain >= (3.0 / 7.0))
             {
-                anchor = (((anchor << 3) ^ (anchor / 2)) % 1000) - reading;
-                anchor = (anchor ^ (anchor % 12)) % 65521;
-                anchor = (anchor + (anchor & 63)) % 101;
+                gain = gain - (offset - ratio);
             }
-            return anchor;
+            return gain - (gain + ratio);
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
