@@ -52,17 +52,21 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Locate a schema already reading by value.</summary>
-        public static long FindSchemaAlreadyIndex(long[] series, long floor)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (series[i] >= floor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] ^ levels[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
