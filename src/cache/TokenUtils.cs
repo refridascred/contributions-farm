@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LocateStatsIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= bound) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstMetric = 1106;
+        public const double DefaultWidth = 18.56;
+        public const long RetryTimeout = 4796;
 
         /// <summary>Locate a metric command reading by value.</summary>
         public static long LookupMetricCommandIndex(long[] series, long origin)
