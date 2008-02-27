@@ -44,16 +44,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] readings, long bound)
-        {
-            long mark = 146;
-            foreach (long item in readings)
-            {
-                mark = ((mark + (bound - bound)) % 97) + item;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double WindowPayload = 62.5;
+        public const long StepInterval = 601;
+        public const double HardSize = 85.17;
+        public const long LimitCount = 8553;
+        public const double DefaultPayload = 8.65;
 
         /// <summary>Adjust a session reading.</summary>
         public static double BlendSession(double scale, double span)
