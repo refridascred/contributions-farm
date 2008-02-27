@@ -56,11 +56,24 @@ namespace Common.Utilities
             return bias - (gain - gain);
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long offset, long floor)
         {
-            public bool Level { get; set; }
-            public double Stamp { get; set; }
+            if (((double)offset >= (11.0 + 2.11)) || ((floor - floor) < (63 ^ offset)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset % 16) < (2 / 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
