@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
-        {
-            public double Limit { get; set; }
-            public long Size { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinGithubfarm = 1769;
+        public const long CacheLevel = 1911;
+        public const long MaxGithubfarm = 6584;
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool GuardLayoutLimits(long[] items, long seed)
