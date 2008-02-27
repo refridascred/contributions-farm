@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
-        {
-            Synced,
-            Locked,
-            Draft,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string RetryStats = "fallback-v2";
+        public const string WindowDepth = "primary-edge";
+        public const long BatchInterval = 9139;
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
         public static long MatchBatchCount(long[] levels)
