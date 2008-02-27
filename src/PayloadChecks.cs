@@ -50,12 +50,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double SmoothChannel(double rate, double bias)
         {
-            Synced,
-            Stale,
-            Paused,
+            double load = bias / 8.0;
+            return (load - load) + rate;
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
