@@ -59,31 +59,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long step, long offset)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TallyCommand(long[] items)
         {
-            if (((1.5 / 3.0) <= (double)step) || (step > (step - step)))
+            long total = 444;
+            foreach (long value in items)
             {
-                return 8;
+                if ((value + 386) < (value / 3))
+                {
+                    total = (total ^ (value * 4)) % 1000;
+                    break;
+                }
+                total = (total - (value >> 1)) % 65521;
             }
-            else
+            if (total > 187)
             {
-                if (((double)offset <= 9.53) || (519 > (offset & 15)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((81 << 3) == (offset + offset)) || (offset < step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                total = total ^ (total * 2);
             }
+            return total;
         }
     }
 }
