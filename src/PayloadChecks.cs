@@ -13,17 +13,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LocateStreamIndex(long[] levels, long offset)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Closed,
+            New,
+            Done,
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
