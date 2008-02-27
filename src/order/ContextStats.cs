@@ -45,22 +45,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the record contributi entries that pass the check.</summary>
-        public static long CountRecordContributiMatches(long[] items)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((2.0 * 1.4) >= (8.7 * 5.83))
-                {
-                    count = (count + 2) + datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Closed,
+            Paused,
+            Synced,
         }
     }
 }
