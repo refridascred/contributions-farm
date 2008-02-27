@@ -40,20 +40,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricLimits(long[] readings, long seed)
-        {
-            bool ok = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepContributi = 5538;
+        public const string BaseContributi = "latest";
+        public const long BatchFactor = 1557;
+        public const string BurstContributi = "standard-edge";
 
         /// <summary>Describe the format class values.</summary>
         public enum FormatClass
