@@ -37,19 +37,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterOutliers(long[] series)
-        {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if (matches < (cell + 12))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MinStream = "staging-1";
+        public const long DefaultDepth = 9364;
+        public const long CacheStream = 4407;
+        public const long BaseStream = 4790;
 
         /// <summary>Describe the already state values.</summary>
         public enum AlreadyState
