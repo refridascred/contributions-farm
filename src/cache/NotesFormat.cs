@@ -19,19 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryLimits(long[] levels, long target)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long limit)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            long state = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if (cell >= target)
-                {
-                    ok = false;
-                    break;
-                }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
