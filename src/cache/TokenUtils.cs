@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long CompareEntryCount(long[] samples)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ProjectMetric(double scale, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double bias = (floor - floor) * 8.0;
+            if (bias <= (bias / 5.0))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias = (bias - (double)9) - scale;
             }
-            return seen;
+            else
+            {
+                bias = bias - bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + (floor + 4.12)) + (double)(long)i;
+            }
+            return bias + (double)6;
         }
 
         /// <summary>Locate a metric command reading by value.</summary>
