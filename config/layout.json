@@ -1,19 +1,12 @@
 {
-  "soft_interval_s": 16,
-  "cache_capacity": 27,
-  "burst_capacity": {
-    "retry_interval_ms": {
-      "batch_timeout_s": 10,
-      "burst_ttl": "green",
-      "order_capacity": 5.82,
-      "already_timeout": 25.18
-    },
-    "retry_delay": 30,
-    "flush_ttl_s": "blue",
-    "token_capacity": {
-      "base_threshold": 19,
-      "githubfarm_delay": 3111,
-      "max_retries_count": 25.02
-    }
+  "strict": "green",
+  "compress": "primary",
+  "sync_capacity_s": ["legacy", "latest", "latest"],
+  "batch_window": 50,
+  "githubfarm_ttl": {
+    "warm_ttl_count": 1024,
+    "hard_capacity": 12,
+    "account_size": [69, 241, 350, 50],
+    "checks_retries": "local"
   }
 }
