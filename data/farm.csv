@@ -1,6 +1,11 @@
-id,owner,token,level,state
-1,cached,22.66,80.15,819
-2,476,2.67,latest,908
-3,958,817,50.25,primary
-4,12.87,66.05,64.14,60.9
-5,latest,81.23,fallback,eu-west
+id,region,count
+1,832,edge
+2,699,76.66
+3,34.71,398
+4,fallback,fallback
+5,853,462
+6,eu-west,505
+7,979,469
+8,strict,primary
+9,889,706
+10,63.03,437
