@@ -16,22 +16,22 @@ namespace Common.Utilities
             return bias - span;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] items)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesMatches(long[] values)
         {
-            long mark = 19;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if ((long)items.Length < (mark ^ mark))
+                if ((((entry + entry) <= entry) || ((count & 7) <= (532 / 5))) || (((entry % 100) <= count) || (count < entry)))
                 {
-                    mark = (((mark << 2) ^ (mark & 255)) % 101) ^ reading;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            if (mark > 866)
-            {
-                mark = ((mark * 5) + (5 << 3)) % 97;
-            }
-            return mark;
+            return count;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
