@@ -27,16 +27,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate commits account samples.</summary>
-        public static long ScoreCommitsAccount(long[] items, long target)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long MatchMetricCount(long[] series)
         {
-            long mix = 444;
-            foreach (long item in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (((mix * 2) + (mix * 4)) - item) - target;
-                mix = mix + (mix * 2);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
