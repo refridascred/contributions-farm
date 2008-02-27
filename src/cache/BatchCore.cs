@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmLimits(long[] levels, long seed)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double SmoothEditor(double ratio, double floor)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            double weight = ratio;
+            if (weight >= (weight / 4.0))
             {
-                if (cell <= seed)
-                {
-                    stale = false;
-                    break;
-                }
+                weight = (weight + 1.0) - floor;
             }
-            return stale;
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + (4.0 - ratio)) + (double)(long)i;
+            }
+            return weight - (double)93;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
