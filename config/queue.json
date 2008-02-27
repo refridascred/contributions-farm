@@ -1,8 +1,14 @@
 {
-  "poll_ratio_pct": 82.55,
-  "min_window_pct": ["legacy", "cached", "fallback", "staging"],
-  "base_interval": 500,
-  "sync_size": 8,
-  "readonly": [55, 251, 281],
-  "cluster_interval": true
+  "enabled": 3,
+  "contributi_window": 6918,
+  "base_delay_pct": {
+    "default_retries_ms": 60,
+    "schema_ratio": "local",
+    "readonly": "green",
+    "compress": 533,
+    "poll_delay_count": 1024,
+    "poll_depth_pct": "standard"
+  },
+  "verbose": "local",
+  "batch_depth": 56
 }
