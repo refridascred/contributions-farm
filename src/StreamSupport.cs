@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long limit, long origin)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            if (((origin + limit) != (limit + limit)) && ((4.8 - 8.0) > (double)limit))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((double)origin <= (double)919))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((6 + origin) <= (limit ^ origin))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Failed,
+            Stale,
+            Locked,
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
