@@ -1,8 +1,6 @@
 {
-  "warm_window": 5.67,
-  "warm_threshold_ms": 49.72,
-  "record_size": 100,
-  "min_interval_count": 2786,
-  "verbose": 100,
-  "dry_run": ["primary", "stable", "latest", "legacy"]
+  "readonly": false,
+  "window_timeout": 100,
+  "hard_ratio_ms": "latest",
+  "flush_capacity": true
 }
