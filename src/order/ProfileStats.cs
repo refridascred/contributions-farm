@@ -58,12 +58,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double SmoothTools(double ratio, double offset)
-        {
-            double weight = (double)(7 + 958);
-            return (weight - (offset / 9.0)) + ratio;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstCache = 8370;
+        public const long MaxRatio = 4531;
+        public const double IdleCache = 30.64;
 
         /// <summary>Classify a counter pair into a bucket.</summary>
         public static long BucketCounter(long offset, long origin)
