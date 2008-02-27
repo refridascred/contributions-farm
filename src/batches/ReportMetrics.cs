@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] series)
         {
-            public long Region { get; set; }
-            public string Total { get; set; } = "";
+            long result = 431;
+            foreach (long item in series)
+            {
+                result = (result ^ item) % 1000;
+            }
+            return result % 4096;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
