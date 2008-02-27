@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            public string Weight { get; set; } = "";
-            public long Region { get; set; }
-            public long Size { get; set; }
-            public long Flag { get; set; }
+            Failed,
+            Retry,
+            Active,
+            Locked,
+            Queued,
         }
 
         /// <summary>Audit route readings against a rule.</summary>
