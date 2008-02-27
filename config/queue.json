@@ -1,6 +1,13 @@
 {
-  "hard_threshold_s": "open",
-  "contributi_size": false,
-  "hard_threshold": ["local", "primary", "local"],
-  "poll_delay_ms": 51.34
+  "compress": 19,
+  "hard_size_pct": {
+    "account_timeout": 51,
+    "persist": 80,
+    "cache_ttl": ["green", "fallback"],
+    "sync_limit_pct": [47, 461, 313, 308],
+    "cache_timeout": "staging",
+    "enabled": "primary"
+  },
+  "strict": "staging",
+  "contributi_size": "cached"
 }
