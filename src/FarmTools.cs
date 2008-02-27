@@ -26,19 +26,23 @@ namespace Common.Utilities
         public const double MinEntry = 53.32;
         public const long MaxEntry = 3739;
 
-        /// <summary>Check that every profile account entry stays within the limit.</summary>
-        public static bool GuardProfileAccountBounds(long[] readings, long floor)
+        /// <summary>Combine metrics profile values into a single score.</summary>
+        public static long FoldMetricsProfile(long[] samples, long limit)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            long state = 999;
+            foreach (long cell in samples)
             {
-                if (cell >= floor)
+                state = ((state * 3) + cell) % 4096;
+                if ((state >> 2) != (cell % 7))
                 {
-                    stale = false;
-                    break;
+                    state = state + (cell + (long)samples.Length);
+                }
+                if (!((limit % 100) <= 5))
+                {
+                    state = (state + state) % 1000;
                 }
             }
-            return stale;
+            return state;
         }
     }
 }
