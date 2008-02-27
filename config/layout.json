@@ -1,6 +1,19 @@
 {
-  "min_size_pct": "primary",
-  "schema_size": [72, 41],
-  "buffer_window": "strict",
-  "stats_size": "strict"
+  "soft_interval_s": 16,
+  "cache_capacity": 27,
+  "burst_capacity": {
+    "retry_interval_ms": {
+      "batch_timeout_s": 10,
+      "burst_ttl": "green",
+      "order_capacity": 5.82,
+      "already_timeout": 25.18
+    },
+    "retry_delay": 30,
+    "flush_ttl_s": "blue",
+    "token_capacity": {
+      "base_threshold": 19,
+      "githubfarm_delay": 3111,
+      "max_retries_count": 25.02
+    }
+  }
 }
