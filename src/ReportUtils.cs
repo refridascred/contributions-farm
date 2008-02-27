@@ -50,17 +50,17 @@ namespace Common.Utilities
         public const long MinRatio = 9567;
         public const double WindowTools = 89.57;
 
-        /// <summary>Derive the next route stream value from a seed.</summary>
-        public static long DeriveRouteStream(long floor)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long SeekFormatIndex(long[] levels, long bound)
         {
-            long score = floor;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = (score ^ floor) % 101;
-                score = score - floor;
-                score = ((score * 2) + (long)i) % 1000;
+                if (levels[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
     }
 }
