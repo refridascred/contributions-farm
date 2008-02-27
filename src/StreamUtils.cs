@@ -49,20 +49,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] samples)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] data)
         {
-            long score = 0;
-            foreach (long item in samples)
+            long mark = 3;
+            foreach (long datum in data)
             {
-                score = ((score << 3) ^ (51 / 2)) % 97;
-                score = (score ^ (item - 8)) % 97;
+                if ((mark < (datum << 1)) && (mark > (datum - datum)))
+                {
+                    mark = mark + (long)data.Length;
+                }
+                if ((datum / 2) == (mark << 2))
+                {
+                    mark = (mark + mark) % 1000;
+                }
             }
-            if (score < 769)
-            {
-                score = (score + (score / 2)) % 101;
-            }
-            return score;
+            return mark;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
