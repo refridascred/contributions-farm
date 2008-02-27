@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelRange(long[] series, long bound)
         {
-            Active,
-            New,
-            Queued,
+            bool stale = true;
+            foreach (long value in series)
+            {
+                if (value != bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the checks mode values.</summary>
