@@ -15,14 +15,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            Idle,
-            Synced,
-            Stale,
-            Pending,
-            Active,
+            public long Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
