@@ -1,6 +1,11 @@
-id,rank,owner,ratio,state
-1,793,8.4,964,blue
-2,19,115,722,744
-3,549,57,78.46,61.76
-4,835,86.62,279,899
-5,116,84.2,591,96
+id,score,count,weight,label
+1,local,914,46.06,standard
+2,594,primary,staging,29.39
+3,12.87,639,662,26.29
+4,413,primary,419,411
+5,5.04,blue,open,934
+6,edge,primary,edge,720
+7,543,standard,500,local
+8,600,edge,5.74,57.14
+9,650,130,stable,green
+10,4.08,74.02,33.43,blue
