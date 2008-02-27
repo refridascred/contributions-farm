@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportGaps(long[] levels, long bound)
-        {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if (!((double)tally < (5.3 * 1.92)))
-                {
-                    tally = ((tally + 3) ^ entry) - bound;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double WindowWidth = 14.22;
+        public const long CacheGraph = 1798;
+        public const long CacheSize = 8637;
+        public const double DefaultLevel = 82.52;
 
         /// <summary>Hold a stream options.</summary>
         public sealed class StreamOptions
