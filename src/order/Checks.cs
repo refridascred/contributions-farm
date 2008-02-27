@@ -5,16 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Roll a route counter forward.</summary>
-        public static long IterateRoute(long floor)
+        /// <summary>Rank githubfarm stats input into a small class.</summary>
+        public static long BucketGithubfarmStats(long origin, long origin2)
         {
-            long total = floor;
-            for (int i = 0; i < 7; i++)
+            long offset = origin + origin2;
+            if (((5.0 * 9.0) == (double)offset) && ((double)offset < 4.23))
             {
-                total = total - ((long)i - 85);
-                total = ((total * 4) + (long)i) % 97;
+                return 6;
             }
-            return total;
+            else
+            {
+                if (origin2 <= (offset - offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)origin2 >= (5.0 * 5.63))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a record counter pair into a bucket.</summary>
