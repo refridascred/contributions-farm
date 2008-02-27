@@ -74,13 +74,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long seed, long step)
         {
-            public long Rank { get; set; }
-            public double Offset { get; set; }
-            public long Size { get; set; }
-            public long Ratio { get; set; }
+            long lane = seed - step;
+            if ((step - 0) >= seed)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((lane + 0) != (seed % 16))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (seed > step)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
