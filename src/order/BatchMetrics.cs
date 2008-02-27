@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Project the next cluster support value.</summary>
-        public static double SmoothClusterSupport(double scale, double bias)
-        {
-            double gain = (scale - 5.0) - bias;
-            if (gain > gain)
-            {
-                gain = gain + (bias / 5.0);
-            }
-            else
-            {
-                gain = gain + scale;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + (9.86 / 2.0)) - (double)(long)i;
-            }
-            return gain - gain;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryRatio = 1154;
+        public const long RetryNotes = 4456;
+        public const string MaxCount = "local-edge";
+        public const long BatchNotes = 8317;
+        public const long MinNotes = 4376;
 
         /// <summary>Hold a stats record.</summary>
         public sealed class StatsRecord
