@@ -1,24 +1,5 @@
 # entry settings
-order_ratio:
-  - 38
-  - 470
-  - 224
-  - 403
-batch_threshold:
-  enabled: strict
-  readonly:
-    burst_limit: 5624
-    warm_interval: 68
-    dry_run:
-      - 271
-      - 380
-      - 102
-      - 461
-  base_interval_s:
-    - primary
-    - legacy
-    - green
-    - fallback
-  strict: 9628
-  sync_threshold_count: 8522
-persist: false
+support_interval: 37
+stream_window: 53.93
+format_ratio: 90.78
+idle_timeout: 5407
