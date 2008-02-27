@@ -40,11 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string SoftTimeout = "standard-v2";
-        public const long LimitGithubfarm = 9777;
-        public const long MinGithubfarm = 5451;
-        public const long CacheInterval = 7161;
+        /// <summary>Match up entry already samples.</summary>
+        public static long CompareEntryAlreadyCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long HardInterval = 9139;
