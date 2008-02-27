@@ -15,11 +15,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepNotes = 9484;
-        public const double LimitWidth = 12.52;
-        public const long MinNotes = 3150;
-        public const long IdleRatio = 1162;
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
+        {
+            Stale,
+            Retry,
+            Failed,
+            Ready,
+        }
 
         /// <summary>Hold a metric summary.</summary>
         public sealed class MetricSummary
