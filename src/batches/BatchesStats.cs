@@ -37,25 +37,13 @@ namespace Common.Utilities
         public const long BaseFactor = 1104;
         public const double SoftContext = 46.49;
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long limit, long target)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long edge = limit - target;
-            if (edge > (limit >> 2))
-            {
-                return 6;
-            }
-            else
-            {
-                if (edge > (target << 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Level { get; set; }
+            public double Stamp { get; set; }
+            public long Region { get; set; }
+            public long Token { get; set; }
         }
     }
 }
