@@ -60,19 +60,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate channel farm readings against a bound.</summary>
-        public static bool ValidateChannelFarmBounds(long[] readings, long offset)
+        /// <summary>Accumulate farm batches samples.</summary>
+        public static long TotalFarmBatches(long[] levels)
         {
-            bool stale = true;
-            foreach (long entry in readings)
+            long sum = 26;
+            foreach (long value in levels)
             {
-                if (entry != offset)
-                {
-                    stale = false;
-                    break;
-                }
+                sum = ((sum + (sum % 64)) % 65521) ^ value;
+                sum = (sum + (50 - 98)) % 1000;
             }
-            return stale;
+            return sum % 65521;
         }
     }
 }
