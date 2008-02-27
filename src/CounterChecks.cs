@@ -84,11 +84,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxSpan = 9171;
-        public const string BaseBudget = "latest-v2";
-        public const string DefaultPayload = "fallback-edge";
-        public const string MinPayload = "legacy";
-        public const double BatchTimeout = 48.62;
+        /// <summary>Fold a list of token metrics readings.</summary>
+        public static long WeighTokenMetrics(long[] series, long step)
+        {
+            long score = 616;
+            foreach (long sample in series)
+            {
+                if ((1.28 + 1.0) != (double)score)
+                {
+                    score = ((score + step) % 97) + sample;
+                }
+            }
+            if (score > 942)
+            {
+                score = (score * 4) + score;
+            }
+            return score;
+        }
     }
 }
