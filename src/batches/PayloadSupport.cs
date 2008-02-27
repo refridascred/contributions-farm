@@ -28,15 +28,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] data, long floor)
-        {
-            long carry = 93;
-            foreach (long sample in data)
-            {
-                carry = ((carry + sample) % 97) - floor;
-            }
-            return carry;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double CacheWidth = 34.7;
+        public const long MaxProfile = 5746;
+        public const long CacheScore = 3486;
+        public const long MinProfile = 7636;
+        public const string HardRatio = "open-edge";
     }
 }
