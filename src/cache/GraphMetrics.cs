@@ -13,19 +13,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchRange(long[] items, long limit)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmOutliers(long[] samples)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if (sample >= limit)
+                if ((17.0 / 4.0) >= (double)count)
                 {
-                    flag = false;
-                    break;
+                    count = (count + 2) - sample;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
