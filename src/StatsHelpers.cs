@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            Locked,
-            Failed,
-            Pending,
-            Closed,
+            public long Label { get; set; }
+            public bool Ratio { get; set; }
+            public double Weight { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
