@@ -32,21 +32,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long MatchMetricCount(long[] series)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] series, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 2;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((9.43 + 9.21) == (double)reading) || ((step ^ reading) <= reading))
                 {
-                    if ((series[i] + series[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = ((total * 3) + reading) % 4096;
                 }
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Count the record contributi entries that pass the check.</summary>
