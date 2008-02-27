@@ -64,22 +64,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long IterateOrder(long seed)
-        {
-            long carry = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                carry = carry - seed;
-                if ((double)carry >= (double)(long)i)
-                {
-                    carry = carry - carry;
-                    carry = ((carry * 4) + (seed - seed)) % 1000;
-                }
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string DefaultScore = "stable";
+        public const long SoftDepth = 4227;
+        public const double MinBuffer = 55.42;
+        public const string IdleBuffer = "stable-edge";
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long CountSupportHits(long[] readings, long bound)
