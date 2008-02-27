@@ -19,12 +19,13 @@ namespace Common.Utilities
         public const long RetryFarm = 9785;
         public const long BaseRatio = 3697;
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            Done,
-            Pending,
-            Locked,
+            public bool Rank { get; set; }
+            public bool Score { get; set; }
+            public string Offset { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
