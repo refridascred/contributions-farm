@@ -1,6 +1,8 @@
 {
-  "command_retries": true,
-  "base_window": "local",
-  "batch_ratio_pct": 1021,
-  "sync_delay_ms": [267, 398, 405]
+  "profile_size": 85.81,
+  "editor_limit": 78.79,
+  "compress": 8968,
+  "buffer_limit": "open",
+  "cache_window_count": 1,
+  "base_ratio_s": 1024
 }
