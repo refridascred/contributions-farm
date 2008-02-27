@@ -23,13 +23,22 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelGaps(long[] readings)
         {
-            public bool Limit { get; set; }
-            public long Count { get; set; }
-            public bool Offset { get; set; }
-            public double Total { get; set; }
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if (((double)count >= (double)63) && ((sample ^ count) >= (927 + sample)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
