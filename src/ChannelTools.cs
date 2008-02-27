@@ -39,25 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long ClassifySession(long seed, long step)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long delta = seed - step;
-            if ((delta % 16) < seed)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((-1) <= step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Count { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Blend two route filter measurements.</summary>
