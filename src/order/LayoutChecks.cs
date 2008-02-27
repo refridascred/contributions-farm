@@ -51,21 +51,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long MatchRouteCount(long[] data)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] levels, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 729;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = ((sum * 2) + (value & 3)) - bound;
             }
-            return matches;
+            if (sum > 874)
+            {
+                sum = (sum * 2) + (sum & 127);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
