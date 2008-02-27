@@ -41,19 +41,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandRange(long[] readings, long offset)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            bool found = true;
-            foreach (long cell in readings)
-            {
-                if (cell < offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            New,
+            Pending,
+            Queued,
         }
     }
 }
