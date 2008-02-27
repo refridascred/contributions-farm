@@ -34,31 +34,19 @@ namespace Common.Utilities
             return scale + (scale + gain);
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long RollToken(long origin)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] items, long floor)
         {
-            long carry = origin;
-            for (int i = 0; i < 10; i++)
+            long total = 8;
+            foreach (long entry in items)
             {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    carry = ((carry + carry) % 97) ^ (long)i2;
-                }
-                if ((carry + carry) <= (origin + origin))
-                {
-                    carry = ((carry << 3) ^ (carry % 100)) % 1000;
-                }
-                if ((origin >> 1) <= carry)
-                {
-                    carry = ((carry * 3) + (25 - origin)) % 1000;
-                }
-                else
-                {
-                    carry = ((carry * 3) + origin) % 65521;
-                }
-                carry = ((carry * 3) + (long)i) % 4093;
+                total = (total + (entry + total)) % 65521;
             }
-            return carry;
+            if (total < 0)
+            {
+                total = (total * 2) + floor;
+            }
+            return total;
         }
     }
 }
