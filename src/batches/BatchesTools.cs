@@ -14,23 +14,21 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long origin)
+        /// <summary>Match up stats metric samples.</summary>
+        public static long PairStatsMetricCount(long[] series)
         {
-            long mix = origin;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((origin % 12) < (long)i)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = ((mix * 3) + ((long)i + 584)) % 4096;
+                    if ((series[i] ^ series[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    mix = (mix + mix) % 97;
-                }
-                mix = ((mix * 5) + (long)i) % 101;
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Grade a layout cluster value against two limits.</summary>
