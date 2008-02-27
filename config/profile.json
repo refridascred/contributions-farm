@@ -1,5 +1,5 @@
 {
-  "githubfarm_threshold": 70.94,
-  "schema_interval": 6665,
-  "report_depth": "blue"
+  "schema_ttl": "stable",
+  "audit": false,
+  "cache_ttl_ms": ["eu-west", "local"]
 }
