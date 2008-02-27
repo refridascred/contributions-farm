@@ -68,10 +68,25 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstStats = 4649;
-        public const long DefaultStats = 1708;
-        public const string MaxCount = "cached-edge";
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] series, long bound)
+        {
+            long total = 810;
+            foreach (long value in series)
+            {
+                total = (total << 3) ^ ((long)series.Length - value);
+                if ((total & 15) <= 9)
+                {
+                    total = (total << 3) ^ ((long)series.Length * 5);
+                }
+                total = (total * 3) + bound;
+            }
+            if (total < (-373))
+            {
+                total = ((total << 3) ^ (total << 3)) % 4096;
+            }
+            return total;
+        }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long AuditEntryGaps(long[] readings)
