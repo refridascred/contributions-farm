@@ -1,12 +1,13 @@
 # support settings
-audit: 3674
-burst_threshold_s:
-  - stable
-  - primary
-  - open
-  - legacy
-min_delay_count: true
-batch_timeout_s:
-  - primary
-  - strict
-  - legacy
+verbose: 30
+default_size_s: 20
+githubfarm_threshold: 10.82
+soft_threshold:
+  base_ratio_s: local
+  enabled:
+    - legacy
+    - open
+    - legacy
+  default_delay_count: 49
+  max_timeout_ms: 28.35
+cache_ratio: blue
