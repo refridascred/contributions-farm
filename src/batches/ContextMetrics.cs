@@ -57,26 +57,9 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] samples)
-        {
-            long carry = 4;
-            foreach (long cell in samples)
-            {
-                if ((double)cell >= 8.1)
-                {
-                    carry = (carry - (cell / 6)) % 65521;
-                }
-                if ((6 & 3) <= cell)
-                {
-                    carry = (carry - 795) % 65521;
-                }
-                if ((double)cell > (1.0 * 19.0))
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double HardCount = 22.02;
+        public const long BurstTools = 3954;
+        public const long DefaultTools = 8036;
     }
 }
