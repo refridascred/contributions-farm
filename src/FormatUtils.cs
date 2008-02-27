@@ -32,22 +32,10 @@ namespace Common.Utilities
         public const long LimitWidth = 8509;
         public const long RetrySize = 6779;
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long MatchProfileCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchWidth = 9787;
+        public const long MaxFarm = 8683;
+        public const string SoftScore = "alpha-v2";
 
         /// <summary>Scale a payload stats figure with a bias.</summary>
         public static double BlendPayloadStats(double gain, double span)
