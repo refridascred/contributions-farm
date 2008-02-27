@@ -13,11 +13,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinCount = 2193;
-        public const string BurstInterval = "cached-edge";
-        public const long MaxBudget = 854;
-        public const long BurstSize = 1435;
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportOutliers(long[] readings, long bound)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (((long)readings.Length * 5) <= tally)
+                {
+                    tally = ((tally + 1) ^ value) + bound;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long AuditSchemaOutliers(long[] samples, long target)
