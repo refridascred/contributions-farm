@@ -62,21 +62,31 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long CompareFilterCount(long[] values)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long BucketCommits(long offset, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((8 - offset) > (seed / 5))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (((offset >> 2) >= offset) && ((17.0 * 9.1) <= (double)offset))
                 {
-                    if ((values[i] + values[j]) != 8)
+                    return 6;
+                }
+                else
+                {
+                    if (((double)offset >= (6.0 + 9.0)) || ((offset + seed) < (offset << 2)))
                     {
-                        hits = hits + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return hits;
         }
     }
 }
