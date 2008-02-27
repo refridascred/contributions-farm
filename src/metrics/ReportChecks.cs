@@ -22,13 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Audit graph stream readings against a rule.</summary>
+        public static long CountGraphStreamOutliers(long[] levels, long limit)
         {
-            public bool Region { get; set; }
-            public long Label { get; set; }
-            public long Owner { get; set; }
-            public double Size { get; set; }
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample & 255) <= limit)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
