@@ -24,13 +24,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
-        {
-            public long Level { get; set; }
-            public bool Total { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinBudget = 561;
+        public const long WindowContributi = 3758;
+        public const string IdleContributi = "stable";
+        public const long LimitSize = 9343;
+        public const long HardRatio = 8925;
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long CountFarmMatches(long[] series, long seed)
