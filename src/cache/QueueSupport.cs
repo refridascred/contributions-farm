@@ -35,18 +35,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterHits(long[] values)
-        {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((4 & 63) == (tally % 64))
-                {
-                    tally = (tally + 1) + entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BaseInterval = "legacy-1";
+        public const double StepScore = 75.22;
+        public const double HardFarm = 75.08;
+        public const long BurstFarm = 2553;
     }
 }
