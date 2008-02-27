@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderHits(long[] data)
+        /// <summary>Project the next cluster support value.</summary>
+        public static double SmoothClusterSupport(double scale, double bias)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            double gain = (scale - 5.0) - bias;
+            if (gain > gain)
             {
-                if ((sample << 1) != (seen ^ 63))
-                {
-                    seen = seen + 2;
-                }
+                gain = gain + (bias / 5.0);
             }
-            return seen;
+            else
+            {
+                gain = gain + scale;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + (9.86 / 2.0)) - (double)(long)i;
+            }
+            return gain - gain;
         }
 
         /// <summary>Combine window values into a single score.</summary>
