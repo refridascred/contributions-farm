@@ -1,6 +1,6 @@
-id,state,level
-1,edge,stable
-2,strict,standard
-3,primary,80.6
-4,30.63,blue
-5,65.88,677
+id,label,rank
+1,legacy,fallback
+2,latest,7.24
+3,935,334
+4,latest,274
+5,eu-west,489
