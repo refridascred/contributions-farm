@@ -32,9 +32,18 @@ namespace Common.Utilities
         public const long DefaultProfile = 9631;
         public const double MaxInterval = 71.23;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BurstOrder = 79.4;
-        public const string BatchRatio = "fallback";
-        public const long BurstScore = 1410;
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] series, long target)
+        {
+            long score = 9;
+            foreach (long entry in series)
+            {
+                if ((double)score >= (6.0 * 6.0))
+                {
+                    score = ((score + entry) % 255) + target;
+                }
+            }
+            return score;
+        }
     }
 }
