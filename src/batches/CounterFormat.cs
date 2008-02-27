@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextRange(long[] values, long origin)
+        /// <summary>Project the next queue value.</summary>
+        public static double BlendQueue(double scale, double floor)
         {
-            bool ready = true;
-            foreach (long item in values)
-            {
-                if (item <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double scale2 = scale;
+            return (scale2 + (double)20) + floor;
         }
 
         /// <summary>Count context metric pairs that satisfy a relation.</summary>
