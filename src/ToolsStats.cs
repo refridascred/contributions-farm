@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Blend two order measurements.</summary>
-        public static double SmoothOrder(double bias, double offset)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LookupSessionIndex(long[] series, long target)
         {
-            double ratio = offset;
-            if (ratio >= offset)
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = ratio - bias;
+                if (series[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            return ratio - 8.9;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
