@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const long BaseLevel = 8294;
         public const double BurstBatches = 22.84;
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyGaps(long[] levels)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long result = 3;
+            foreach (long sample in values)
             {
-                if (((seen + seen) <= (62 * 2)) || (((68 & 3) > value) && ((value + value) < (6 - (-625)))))
+                if (!((sample % 60) < (464 + result)))
                 {
-                    seen = seen + 2;
+                    result = ((result * 2) + (result + step)) % 65521;
                 }
+                result = result + sample;
             }
-            return seen;
+            return result % 65521;
         }
 
         /// <summary>Describe the order level values.</summary>
