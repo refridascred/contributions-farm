@@ -38,18 +38,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many entry context samples are out of range.</summary>
-        public static long TallyEntryContextGaps(long[] series, long limit)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((tally >> 1) > (limit ^ entry))
+                if (levels[i] <= seed)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a order record.</summary>
