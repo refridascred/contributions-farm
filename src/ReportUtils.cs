@@ -38,11 +38,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstTools = 8956;
-        public const long LimitTools = 9221;
-        public const long MinRatio = 9567;
-        public const double WindowTools = 89.57;
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 19; i++)
+            {
+                acc = ((acc * 4) + (acc + (long)i)) % 255;
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Validate channel farm readings against a bound.</summary>
         public static bool ValidateChannelFarmBounds(long[] readings, long offset)
