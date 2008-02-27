@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const long BatchNotes = 8317;
         public const long MinNotes = 4376;
 
-        /// <summary>Combine commits filter values into a single score.</summary>
-        public static long FoldCommitsFilter(long[] items)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long carry = 84;
-            foreach (long item in items)
-            {
-                carry = (((carry * 5) + (carry * 5)) % 65521) + item;
-            }
-            if (carry < 4)
-            {
-                carry = (carry + (carry << 2)) % 4096;
-            }
-            return carry;
+            public long Limit { get; set; }
+            public bool Ratio { get; set; }
+            public double Weight { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Describe the stream state values.</summary>
