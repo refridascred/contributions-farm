@@ -14,21 +14,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count counter stats pairs that satisfy a relation.</summary>
-        public static long MatchCounterStatsCount(long[] items)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Done,
+            Ready,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Match up checks samples.</summary>
