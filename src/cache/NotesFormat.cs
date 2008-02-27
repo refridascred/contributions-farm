@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double AdjustFilter(double scale, double span)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            double gain = (double)(7 >> 1);
-            if (gain > 1.0)
-            {
-                gain = gain + (span / 7.0);
-            }
-            else
-            {
-                gain = gain - scale;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + (double)69) + (double)(long)i;
-            }
-            return gain + (span - gain);
+            New,
+            Locked,
+            Failed,
+            Idle,
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
