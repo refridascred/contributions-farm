@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Scale a cluster contributi figure with a bias.</summary>
-        public static double ProjectClusterContributi(double rate, double bias)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long SeriesRoute(long floor)
         {
-            double mean = rate;
-            for (int i = 0; i < 4; i++)
+            long mark = floor;
+            for (int i = 0; i < 22; i++)
             {
-                mean = (mean + 5.6) + (double)(long)i;
+                mark = (mark * 3) + (119 ^ floor);
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return mean - (rate - bias);
+            return mark;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
