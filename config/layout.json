@@ -1,7 +1,6 @@
 {
-  "sync_depth_s": 250,
-  "checks_size": 11,
-  "warm_retries_ms": true,
-  "min_delay_pct": 8215,
-  "idle_capacity": "stable"
+  "soft_window_count": "edge",
+  "batch_depth": 73.88,
+  "verbose": "blue",
+  "channel_retries": "strict"
 }
