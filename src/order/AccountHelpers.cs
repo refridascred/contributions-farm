@@ -45,17 +45,18 @@ namespace Common.Utilities
         public const long CacheSession = 7600;
         public const string SoftSession = "primary-v2";
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LookupPayloadIndex(long[] samples, long origin)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryMatches(long[] levels, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if ((samples[i] < origin) && ((samples[i] % 5) == 0))
+                if ((floor >> 3) != (floor ^ matches))
                 {
-                    return (long)i;
+                    matches = (matches + 1) + value;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
