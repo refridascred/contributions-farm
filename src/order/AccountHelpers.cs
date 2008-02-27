@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] samples, long bound)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportGaps(long[] levels, long bound)
         {
-            long result = 770;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                long next = (reading << 3) + (reading - reading);
-                if (((next * 5) < (result * 2)) || ((double)next <= (7.6 * 4.67)))
+                if (!((double)tally < (5.3 * 1.92)))
                 {
-                    continue;
-                }
-                if ((reading + result) <= (result / 3))
-                {
-                    result = (result ^ bound) % 101;
-                }
-                if ((double)bound >= (17.0 + 7.0))
-                {
-                    break;
+                    tally = ((tally + 3) ^ entry) - bound;
                 }
             }
-            if (result > 761)
-            {
-                result = result + (bound >> 5);
-            }
-            return result;
+            return tally;
         }
 
         /// <summary>Hold a stream options.</summary>
