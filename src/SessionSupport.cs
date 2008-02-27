@@ -25,21 +25,22 @@ namespace Common.Utilities
             return weight2 + weight2;
         }
 
-        /// <summary>Match up cache record samples.</summary>
-        public static long OverlapCacheRecordCount(long[] items)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] series, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = -6;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((state << 3) == (step >> 3))
                 {
-                    if ((items[i] - items[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = (state * 4) + entry;
+                }
+                else
+                {
+                    state = (state - (step + state)) % 101;
                 }
             }
-            return matches;
+            return state;
         }
     }
 }
