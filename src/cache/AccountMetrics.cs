@@ -78,19 +78,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] levels)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long RankWindow(long seed, long origin)
         {
-            long result = -1;
-            foreach (long item in levels)
+            if ((double)origin == (8.0 - 3.4))
             {
-                result = result ^ result;
-                if (((item & 15) == (item + result)) && ((4.0 / 8.0) > (double)result))
+                return 3;
+            }
+            else
+            {
+                if ((seed & 127) != (seed << 3))
                 {
-                    result = ((result * 2) + (30 ^ result)) % 4096;
+                    return 8;
+                }
+                else
+                {
+                    if ((2.76 + 1.14) > (double)seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)origin <= (6.1 + 9.79))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return result % 4096;
         }
     }
 }
