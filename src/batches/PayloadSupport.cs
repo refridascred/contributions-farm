@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit buffer schema readings against a rule.</summary>
-        public static long CountBufferSchemaGaps(long[] series, long limit)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long result = 26;
+            foreach (long datum in series)
             {
-                if ((5.23 - 4.36) != (double)limit)
+                if (7 >= (datum % 3))
                 {
-                    seen = (seen + 2) ^ sample;
+                    result = result + result;
+                }
+                else
+                {
+                    result = result ^ ((-3) + datum);
                 }
             }
-            return seen;
+            return result % 97;
         }
 
         /// <summary>Describe the schema kind values.</summary>
