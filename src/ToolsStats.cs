@@ -22,22 +22,38 @@ namespace Common.Utilities
         public const double BurstRoute = 3.3;
         public const long BatchRoute = 9708;
 
-        /// <summary>Count the githubfarm session entries that pass the check.</summary>
-        public static long CountGithubfarmSessionGaps(long[] items, long offset)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long BucketLayout(long step, long target)
         {
-            long count = 0;
-            foreach (long cell in items)
+            if (!(step > (target * 5)))
             {
-                if (6.5 >= (double)(long)items.Length)
+                return 1;
+            }
+            else
+            {
+                if (((818 % 7) != (target * 3)) && ((9 << 1) <= (target << 3)))
                 {
-                    count = ((count + 2) - cell) + offset;
+                    return 6;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((9.8 + 4.0) != (double)target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)target >= (2.0 / 4.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
