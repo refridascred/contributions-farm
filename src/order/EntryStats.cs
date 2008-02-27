@@ -55,26 +55,15 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] readings, long target)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double BlendCounter(double bias, double span)
         {
-            long carry = -56;
-            foreach (long item in readings)
+            double bias2 = (double)(73 % 8);
+            if (bias2 >= (7.3 + span))
             {
-                if ((carry >> 2) > target)
-                {
-                    carry = carry ^ 3;
-                }
-                if (((-522) - item) != (carry % 24))
-                {
-                    break;
-                }
+                bias2 = bias2 + span;
             }
-            if (carry < 547)
-            {
-                carry = (carry << 2) ^ (target % 24);
-            }
-            return carry;
+            return bias2 - bias;
         }
     }
 }
