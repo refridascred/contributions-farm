@@ -39,19 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double SmoothSchema(double gain, double floor)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LocateMetricsIndex(long[] readings, long origin)
         {
-            double weight = 17.0;
-            if (weight > gain)
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = weight + weight;
+                if (readings[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - floor) + (double)(long)i;
-            }
-            return weight + (gain - weight);
+            return -1;
         }
 
         /// <summary>Locate a farm metric reading by value.</summary>
