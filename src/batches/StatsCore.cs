@@ -10,12 +10,15 @@ namespace Common.Utilities
         public const long MinLevel = 5084;
         public const long DefaultBudget = 9501;
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long step)
         {
-            Done,
-            Active,
-            Closed,
+            long sum = step;
+            for (int i = 0; i < 9; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
