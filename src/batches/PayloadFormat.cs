@@ -22,17 +22,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first batches account entry that matches the target.</summary>
-        public static long SeekBatchesAccountIndex(long[] series, long seed)
+        /// <summary>Count entry filter pairs that satisfy a relation.</summary>
+        public static long CompareEntryFilterCount(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (series[i] >= seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] + readings[j]) == 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
