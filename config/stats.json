@@ -1,7 +1,7 @@
 {
-  "flush_depth": 1024,
-  "contributi_retries": [38, 231, 285],
-  "stream_threshold": "standard",
-  "flush_retries": false,
-  "cache_limit": 25
+  "min_timeout": 65.16,
+  "cache_window_pct": false,
+  "sync_retries": "fallback",
+  "readonly": 65,
+  "poll_interval": "green"
 }
