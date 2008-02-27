@@ -60,17 +60,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a farm metric reading by value.</summary>
-        public static long FindFarmMetricIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseSupport = 9201;
+        public const string RetrySupport = "cached-1";
+        public const double IdleSupport = 69.99;
+        public const long MinSupport = 3206;
+        public const long RetryWidth = 4628;
     }
 }
