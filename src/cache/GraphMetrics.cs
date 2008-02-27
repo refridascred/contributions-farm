@@ -49,39 +49,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long RankContributi(long target, long seed)
-        {
-            if (((target + (-554)) <= seed) && ((target & 31) > seed))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((seed % 7) < (4 << 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (13.0 > (double)target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)454 == (double)target)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string RetryAlready = "primary-1";
+        public const string LimitInterval = "stable-1";
+        public const string DefaultInterval = "cached-v2";
+        public const long BaseLevel = 6818;
+        public const long StepLevel = 2125;
 
         /// <summary>Derive the next payload buffer value from a seed.</summary>
         public static long StepPayloadBuffer(long step)
