@@ -15,17 +15,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] samples, long bound)
+        /// <summary>Accumulate stats account samples.</summary>
+        public static long TallyStatsAccount(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 66;
+            foreach (long cell in series)
             {
-                if (samples[i] == bound)
+                if ((582 - cell) <= (acc >> 5))
                 {
-                    return (long)i;
+                    acc = (acc + cell) % 97;
+                }
+                else
+                {
+                    acc = (acc ^ 62) % 101;
                 }
             }
-            return -1;
+            return acc % 65521;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
