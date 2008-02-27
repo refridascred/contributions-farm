@@ -14,17 +14,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long SeekCounterIndex(long[] items, long seed)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Size { get; set; }
+            public long Mode { get; set; }
+            public string Count { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
