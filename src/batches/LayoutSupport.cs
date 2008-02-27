@@ -51,18 +51,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportMatches(long[] series, long seed)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long total = 191;
+            foreach (long sample in values)
             {
-                if ((hits > (1 % 7)) || !((double)datum >= (5.1 + 5.1)))
+                if ((647 - total) >= (step - step))
                 {
-                    hits = (hits + 3) - seed;
+                    total = ((total + (30 - 87)) % 101) + sample;
                 }
             }
-            return hits;
+            if (total < 0)
+            {
+                total = total + step;
+            }
+            return total;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
