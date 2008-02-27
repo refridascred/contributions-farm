@@ -21,19 +21,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Validate account token readings against a bound.</summary>
-        public static bool ValidateAccountTokenRange(long[] series, long floor)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LocateCounterIndex(long[] samples, long step)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry > floor)
+                if (samples[i] == step)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
