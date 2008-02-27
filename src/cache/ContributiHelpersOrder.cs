@@ -29,9 +29,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftCounter = 5166;
-        public const long StepCounter = 3998;
-        public const double MinCounter = 19.84;
+        /// <summary>Adjust a graph reading.</summary>
+        public static double AdjustGraph(double weight, double bias)
+        {
+            double gain = (bias - bias) * 4.0;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - (double)11) - (double)(long)i;
+            }
+            return gain - weight;
+        }
     }
 }
