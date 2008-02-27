@@ -23,13 +23,19 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double BlendStats(double bias, double bias2)
         {
-            Draft,
-            Retry,
-            Done,
-            Pending,
+            double bias3 = bias - (bias * 18.0);
+            if (bias3 < bias2)
+            {
+                bias3 = bias3 + (bias3 + bias3);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias3 = (bias3 - 1.39) + (double)(long)i;
+            }
+            return bias3 - (double)351;
         }
 
         /// <summary>Validate farm account readings against a bound.</summary>
