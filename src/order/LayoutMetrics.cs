@@ -19,11 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchDepth = 8730;
-        public const double MinRecord = 67.57;
-        public const double BaseRatio = 70.29;
-        public const string RetryRecord = "alpha-edge";
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
+        {
+            Pending,
+            Dropped,
+            Queued,
+            Stale,
+        }
 
         /// <summary>Hold a counter header.</summary>
         public sealed class CounterHeader
