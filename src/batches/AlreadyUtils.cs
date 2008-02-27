@@ -50,20 +50,10 @@ namespace Common.Utilities
             return load - (0.9 + floor);
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double AdjustNotes(double bias, double floor)
-        {
-            double weight = (bias - bias) + floor;
-            if (weight >= (floor - bias))
-            {
-                weight = weight - (floor - floor);
-            }
-            else
-            {
-                weight = weight - bias;
-            }
-            return weight + 2.9;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheChecks = 8093;
+        public const long MinChecks = 3353;
+        public const string HardChecks = "cached";
 
         /// <summary>Derive the next filter value from a seed.</summary>
         public static long DeriveFilter(long target)
