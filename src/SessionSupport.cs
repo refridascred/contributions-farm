@@ -23,18 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorMatches(long[] values)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double BlendBuffer(double weight, double span)
         {
-            long count = 0;
-            foreach (long reading in values)
+            double weight2 = 7.01;
+            if (weight2 < span)
             {
-                if ((double)count <= (2.99 * 5.0))
-                {
-                    count = (count + 3) - reading;
-                }
+                weight2 = (weight2 + weight2) + weight;
             }
-            return count;
+            return weight2 + weight2;
         }
 
         /// <summary>Define already limits and defaults.</summary>
