@@ -12,13 +12,13 @@ namespace Common.Utilities
         public const long DefaultCommand = 4814;
         public const long MaxInterval = 4415;
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsLimits(long[] readings, long seed)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmLimits(long[] samples, long target)
         {
             bool ok = true;
-            foreach (long item in readings)
+            foreach (long cell in samples)
             {
-                if (item < seed)
+                if (cell >= target)
                 {
                     ok = false;
                     break;
