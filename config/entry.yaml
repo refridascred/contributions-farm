@@ -1,13 +1,47 @@
 # entry settings
-sync_retries_count:
-  - 362
-  - 161
-  - 8
-  - 181
-already_ttl: 30
-queue_interval: 5542
-base_delay_pct:
-  - latest
-  - green
-  - staging
-  - legacy
+entry_interval:
+  verbose: 57
+  default_delay:
+    account_delay:
+      - 303
+      - 330
+      - 48
+    githubfarm_interval: legacy
+    compress: standard
+    batch_threshold_ms: 454
+  context_ttl: legacy
+  flush_threshold_ms: open
+base_ttl_ms:
+  - local
+  - fallback
+  - edge
+  - open
+warm_capacity_ms: blue
+readonly: legacy
+sync_interval:
+  channel_threshold: fallback
+  persist: 51
+  already_capacity: stable
+  min_limit_ms: blue
+  already_timeout:
+    idle_interval_pct: 78
+    readonly: latest
+    batch_threshold: local
+    sync_timeout_count:
+      - 389
+      - 458
+      - 349
+      - 186
+    default_timeout_s: latest
+  burst_delay: 8052
+poll_window_s:
+  already_timeout: false
+  flush_ratio:
+    batch_threshold_ms: stable
+    enabled: 71.08
+    context_timeout: 60
+    poll_retries_s: 1024
+  contributi_timeout:
+    - primary
+    - green
+    - cached
