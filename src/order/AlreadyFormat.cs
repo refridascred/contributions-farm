@@ -12,22 +12,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Audit command stream readings against a rule.</summary>
-        public static long MeasureCommandStreamMatches(long[] values, long step)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double SmoothAccount(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long item in values)
+            double ratio2 = 18.0;
+            if (ratio2 <= (15.0 * 1.6))
             {
-                if ((double)step <= 13.0)
-                {
-                    seen = (seen + 1) - item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                ratio2 = ratio2 + (ratio * 8.0);
             }
-            return seen;
+            else
+            {
+                ratio2 = ratio2 - (ratio2 - 9.7);
+            }
+            return ratio2 + span;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
