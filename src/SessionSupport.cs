@@ -38,17 +38,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a support metric sample.</summary>
-        public static long LookupSupportMetricIndex(long[] readings, long offset)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double SmoothStream(double rate, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double bias = (double)((-658) & 15);
+            if (bias < (double)96)
             {
-                if (readings[i] >= offset)
-                {
-                    return (long)i;
-                }
+                bias = (bias - rate) + offset;
             }
-            return -1;
+            else
+            {
+                bias = bias + rate;
+            }
+            return bias + rate;
         }
     }
 }
