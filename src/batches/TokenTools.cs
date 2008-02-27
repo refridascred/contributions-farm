@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double SmoothProfile(double bias, double bias2)
+        /// <summary>Fold a list of order layout readings.</summary>
+        public static long DigestOrderLayout(long[] levels, long limit)
         {
-            double ratio = (4.0 / 4.0) + bias2;
-            if (ratio < (double)527)
+            long carry = 14;
+            foreach (long datum in levels)
             {
-                ratio = ratio - bias;
+                if ((2.5 <= (double)limit) || ((723 + carry) < carry))
+                {
+                    carry = (carry - limit) - datum;
+                }
+                else
+                {
+                    carry = (carry * 5) + (limit / 6);
+                }
             }
-            else
+            if (carry < (-32))
             {
-                ratio = ratio - (bias * 7.8);
+                carry = (carry ^ (carry / 6)) % 255;
             }
-            return ratio - (double)466;
+            return carry % 97;
         }
 
         /// <summary>Iterate the checks already series from a seed.</summary>
