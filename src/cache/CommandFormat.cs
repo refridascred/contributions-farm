@@ -15,23 +15,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ProjectCache(double gain, double floor)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] samples, long bound)
         {
-            double scale = gain;
-            if (scale > 9.3)
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = scale - (floor + 7.0);
+                if (samples[i] == bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale + scale;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale + floor) + (double)(long)i;
-            }
-            return scale - (scale + floor);
+            return -1;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
