@@ -50,18 +50,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportGaps(long[] levels)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double ProjectPayload(double bias, double span)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            double rate = bias;
+            for (int i = 0; i < 2; i++)
             {
-                if ((tally & 63) < (sample + sample))
-                {
-                    tally = tally + 1;
-                }
+                rate = (rate + span) + (double)(long)i;
             }
-            return tally;
+            return rate - (span + bias);
         }
     }
 }
