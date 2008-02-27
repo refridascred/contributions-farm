@@ -26,13 +26,21 @@ namespace Common.Utilities
             return bias + (scale + scale);
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Match up layout samples.</summary>
+        public static long CompareLayoutCount(long[] data)
         {
-            Done,
-            Ready,
-            Paused,
-            Idle,
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
