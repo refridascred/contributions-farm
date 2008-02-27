@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LookupCacheIndex(long[] items, long limit)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long origin, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long step = origin + limit;
+            if (((6 ^ 671) <= origin) && ((limit + step) > (step << 2)))
             {
-                if (items[i] <= limit)
+                return 1;
+            }
+            else
+            {
+                if ((origin + step) <= (limit / 3))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((origin << 1) < step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
