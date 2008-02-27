@@ -1,11 +1,8 @@
 # githubfarm settings
-soft_interval: 36.46
-default_window_ms: strict
-soft_depth_ms: false
-sync_limit_s: 100
-editor_depth: 87.19
-flush_capacity_ms:
-  soft_timeout_s: local
-  soft_interval: eu-west
-  dry_run: latest
-  flush_ttl_s: cached
+cluster_threshold: 81.91
+cache_delay: 1024
+entry_delay:
+  - latest
+  - stable
+  - standard
+max_ratio_ms: primary
