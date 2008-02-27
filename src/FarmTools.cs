@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            public bool Token { get; set; }
-            public double Ratio { get; set; }
+            public double Flag { get; set; }
+            public string Mode { get; set; } = "";
             public double Label { get; set; }
         }
 
