@@ -55,22 +55,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsHits(long[] values)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((entry / 7) > matches)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Synced,
+            Ready,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
