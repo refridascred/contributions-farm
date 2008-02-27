@@ -33,12 +33,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Match up command samples.</summary>
+        public static long CompareCommandCount(long[] readings)
         {
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
-            public bool Label { get; set; }
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a channel summary.</summary>
