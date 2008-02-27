@@ -1,32 +1,17 @@
 # githubfarm settings
-idle_ratio_pct: 6173
-batch_timeout: 2791
-layout_ratio:
-  warm_capacity_s: edge
-  max_threshold_s:
-    - 374
-    - 21
-    - 42
-  flush_ratio_s: true
-  base_size_ms: true
-  verbose:
-    strict: eu-west
-    compress: stable
-    enabled: 1024
-    base_limit_ms: 3809
-    entry_size: blue
-    cache_interval_s: false
-base_window_s: 26
-poll_timeout:
-  default_delay: primary
-  burst_ratio_s:
-    warm_window_s: 43.66
-    min_delay_s: 1.93
-    audit: 21.55
-    channel_interval:
-      - 125
-      - 328
-      - 177
-      - 117
-  compress: 78.61
-  enabled: 100
+cache_depth_pct: true
+min_interval:
+  - 409
+  - 288
+poll_retries_count:
+  profile_depth:
+    - 32
+    - 404
+    - 269
+  poll_interval: true
+  context_interval: 78
+warm_limit_ms:
+  dry_run: 100
+  notes_ratio: false
+  stats_depth: 76
+min_window: 90.08
