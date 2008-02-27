@@ -36,22 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long FoldLayout(long[] readings)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterHits(long[] series, long bound)
         {
-            long result = 78;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if ((18.0 + 17.0) == (double)entry)
+                if ((8.1 + 5.2) != (double)datum)
                 {
-                    result = ((result * 4) + 9) % 4096;
-                }
-                else
-                {
-                    result = ((result << 2) ^ 3) % 101;
+                    hits = (hits + 3) - bound;
                 }
             }
-            return result % 97;
+            return hits;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
