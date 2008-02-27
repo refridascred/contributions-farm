@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
-        {
-            Done,
-            Dropped,
-            Paused,
-            Pending,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardSpan = 7432;
+        public const long DefaultFilter = 4573;
+        public const long BatchFilter = 2639;
+        public const long BurstTimeout = 1854;
+        public const long MinFilter = 8580;
 
         /// <summary>Project the next tools value.</summary>
         public static double BlendTools(double weight, double bias)
