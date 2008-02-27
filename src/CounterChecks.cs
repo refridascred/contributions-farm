@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long CombineEditor(long[] values, long origin)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long bound)
         {
-            long score = 961;
-            foreach (long cell in values)
+            long carry = bound;
+            for (int i = 0; i < 14; i++)
             {
-                score = (((score * 2) + (origin >> 3)) % 4096) ^ cell;
+                carry = ((carry << 3) ^ carry) % 4096;
+                carry = ((carry * 2) + (carry ^ bound)) % 65521;
+                carry = carry ^ (bound & 127);
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return score % 97;
+            return carry;
         }
 
         /// <summary>Hold a stats options.</summary>
