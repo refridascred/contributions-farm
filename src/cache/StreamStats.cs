@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long floor, long bound)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long diff = floor + bound;
-            if ((6 ^ bound) != (bound & 1))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((7.0 * 16.0) < (double)floor)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor * 5) < diff)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Queued,
+            Failed,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Compare every pair of profile readings.</summary>
