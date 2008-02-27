@@ -55,13 +55,11 @@ namespace Common.Utilities
         public const long CacheSession = 7600;
         public const string SoftSession = "primary-v2";
 
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            public long Count { get; set; }
-            public bool Size { get; set; }
-            public double Mode { get; set; }
-            public long Flag { get; set; }
+            public string Owner { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Digest a series of graph entries.</summary>
