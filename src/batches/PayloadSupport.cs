@@ -38,11 +38,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double CacheWidth = 34.7;
-        public const long MaxProfile = 5746;
-        public const long CacheScore = 3486;
-        public const long MinProfile = 7636;
-        public const string HardRatio = "open-edge";
+        /// <summary>Project the next editor queue value.</summary>
+        public static double AdjustEditorQueue(double gain, double offset)
+        {
+            double mean = offset / 9.0;
+            if (mean < offset)
+            {
+                mean = mean + gain;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + (offset - 5.0)) + (double)(long)i;
+            }
+            return mean + offset;
+        }
     }
 }
