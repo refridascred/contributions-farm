@@ -1,5 +1,8 @@
 {
-  "base_window_pct": "eu-west",
-  "default_size_count": 64,
-  "batch_capacity_pct": false
+  "enabled": false,
+  "retry_timeout_count": [284, 108],
+  "profile_ttl": 100,
+  "warm_capacity_s": 70.63,
+  "metrics_retries": 30,
+  "cache_size": 4434
 }
