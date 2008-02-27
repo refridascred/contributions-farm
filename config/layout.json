@@ -1,11 +1,5 @@
 {
-  "burst_limit": "local",
-  "flush_capacity": {
-    "filter_timeout": "legacy",
-    "soft_ratio_count": "standard",
-    "metric_size": 73.4,
-    "flush_size_ms": false
-  },
-  "already_ttl": 20,
-  "enabled": 86
+  "retry_timeout_pct": 8004,
+  "max_ttl_ms": 250,
+  "idle_limit_s": [311, 409, 161]
 }
