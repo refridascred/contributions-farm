@@ -11,22 +11,12 @@ namespace Common.Utilities
         public const long DefaultSpan = 2671;
         public const long BatchSpan = 3662;
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterOutliers(long[] items)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if (((866 ^ count) > (50 + cell)) || (count >= cell))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Locked,
+            Ready,
+            Active,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
