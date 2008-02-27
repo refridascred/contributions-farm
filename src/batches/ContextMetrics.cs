@@ -53,24 +53,26 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long BucketGithubfarm(long floor, long target)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] samples)
         {
-            if ((floor % 97) > (39 % 100))
+            long carry = 4;
+            foreach (long cell in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((1 + target) <= target))
+                if ((double)cell >= 8.1)
                 {
-                    return 4;
+                    carry = (carry - (cell / 6)) % 65521;
                 }
-                else
+                if ((6 & 3) <= cell)
                 {
-                    return 0;
+                    carry = (carry - 795) % 65521;
+                }
+                if ((double)cell > (1.0 * 19.0))
+                {
+                    break;
                 }
             }
+            return carry;
         }
     }
 }
