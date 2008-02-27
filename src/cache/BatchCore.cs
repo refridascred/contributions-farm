@@ -49,21 +49,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long CompareStreamCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double DefaultRatio = 61.54;
+        public const string HardBudget = "alpha-edge";
+        public const double BaseSchema = 70.82;
+        public const long WindowSchema = 9846;
+        public const double MaxSize = 32.92;
     }
 }
