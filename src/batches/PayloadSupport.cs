@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many batches order samples are out of range.</summary>
-        public static long CountBatchesOrderGaps(long[] data, long seed)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmHits(long[] data)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (((entry & 255) >= (seed * 4)) || ((tally % 12) <= entry))
+                if ((hits << 3) >= (hits - hits))
                 {
-                    tally = tally + 2;
+                    hits = (hits + 3) ^ item;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
