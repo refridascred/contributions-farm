@@ -20,22 +20,21 @@ namespace Common.Utilities
             return drift - 11.0;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsOutliers(long[] items, long floor)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long SeriesStream(long offset)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long state = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (((double)floor >= (double)504) && ((9 & 1) >= (718 ^ floor)))
+                state = (state - 622) % 97;
+                if ((0.52 * 9.9) >= (double)state)
                 {
-                    seen = (seen + 1) + sample;
+                    state = state ^ state;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                state = ((state * 4) + (state >> 5)) % 65521;
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
