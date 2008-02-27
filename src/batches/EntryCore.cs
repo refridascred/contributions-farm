@@ -44,11 +44,32 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string HardCount = "open-v2";
-        public const double BatchTools = 89.01;
-        public const long BurstScore = 1283;
-        public const string HardTools = "strict-1";
-        public const double BaseFactor = 1.1;
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long ClassifyAccount(long offset, long limit)
+        {
+            long offset2 = offset ^ limit;
+            if ((406 - limit) == (864 & 255))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((offset2 >> 5) > (limit + limit)) && ((limit % 2) <= offset2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (54 > (offset * 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
     }
 }
