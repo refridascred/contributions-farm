@@ -30,18 +30,14 @@ namespace Common.Utilities
         public const long WindowSupport = 4250;
         public const long LimitSupport = 2159;
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenHits(long[] data, long offset)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if (!(((double)offset >= (double)datum) || (count >= offset)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Stale,
+            Idle,
+            Queued,
+            Active,
+            Done,
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
