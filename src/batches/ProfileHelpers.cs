@@ -49,14 +49,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            Done,
-            New,
-            Active,
-            Closed,
-            Draft,
+            public long Flag { get; set; }
+            public double Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Digest a series of command entries.</summary>
