@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Find the first payload metrics entry that matches the target.</summary>
-        public static long SeekPayloadMetricsIndex(long[] samples, long offset)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long GradeBatch(long target, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (((seed % 12) != (8 + 51)) && ((seed / 5) > seed))
             {
-                if ((samples[i] <= offset) && ((samples[i] % 5) == 0))
+                return 2;
+            }
+            else
+            {
+                if (((8 / 3) > (target << 2)) && (0.6 <= (double)target))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)seed > (6.86 - 2.71))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((target ^ 60) > (seed * 2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Locate a support reading by value.</summary>
