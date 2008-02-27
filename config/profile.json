@@ -1,13 +1,8 @@
 {
-  "sync_retries_count": 1024,
-  "dry_run": 31,
-  "metrics_threshold": "stable",
-  "stats_window": 2048,
-  "githubfarm_capacity": {
-    "cache_retries_ms": "blue",
-    "hard_ttl_pct": 20.67,
-    "audit": 48.38,
-    "max_threshold": [316, 404, 105]
-  },
-  "cluster_ratio": 58.33
+  "default_interval_s": 34.96,
+  "enabled": "eu-west",
+  "burst_timeout_count": "blue",
+  "min_window_count": "edge",
+  "burst_timeout": "local",
+  "buffer_interval": "eu-west"
 }
