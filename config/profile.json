@@ -1,12 +1,5 @@
 {
-  "warm_interval": 250,
-  "dry_run": "fallback",
-  "cache_retries_pct": [159, 185, 339],
-  "session_size": "staging",
-  "checks_ttl": {
-    "hard_interval_pct": "staging",
-    "hard_limit": [213, 401, 243],
-    "audit": 500
-  },
-  "commits_retries": false
+  "base_window_pct": "eu-west",
+  "default_size_count": 64,
+  "batch_capacity_pct": false
 }
