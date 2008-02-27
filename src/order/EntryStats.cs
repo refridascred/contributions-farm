@@ -62,16 +62,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the stats payload series from a seed.</summary>
-        public static long SeriesStatsPayload(long floor)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadLimits(long[] items, long offset)
         {
-            long anchor = floor;
-            for (int i = 0; i < 9; i++)
+            bool ready = true;
+            foreach (long datum in items)
             {
-                anchor = anchor - anchor;
-                anchor = ((anchor * 2) + (long)i) % 101;
+                if (datum >= offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return anchor;
+            return ready;
         }
     }
 }
