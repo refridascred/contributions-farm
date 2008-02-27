@@ -1,5 +1,6 @@
 {
-  "token_ratio": "green",
-  "retry_retries_s": 5120,
-  "flush_threshold_s": 100
+  "default_limit": true,
+  "graph_window": ["blue", "primary", "stable"],
+  "default_ttl_ms": false,
+  "max_limit": false
 }
