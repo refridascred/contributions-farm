@@ -1,7 +1,10 @@
-id,rank,count,score
-1,74.57,32,98.09
-2,legacy,standard,33
-3,83.22,892,green
-4,eu-west,52.13,40.58
-5,31.61,674,49.84
-6,34,85.06,open
+id,label,count
+1,26.26,blue
+2,622,39.19
+3,406,748
+4,eu-west,fallback
+5,edge,63.8
+6,258,open
+7,50.22,legacy
+8,38.06,446
+9,edge,stable
