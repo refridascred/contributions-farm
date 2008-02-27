@@ -12,14 +12,11 @@ namespace Common.Utilities
         public const long WindowCommits = 4337;
         public const double HardCommits = 16.79;
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
-        {
-            public double Level { get; set; }
-            public bool Score { get; set; }
-            public long Limit { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryFormat = 434;
+        public const long MaxFormat = 6171;
+        public const long LimitFormat = 8759;
+        public const long StepFormat = 1047;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long WindowReport = 9486;
