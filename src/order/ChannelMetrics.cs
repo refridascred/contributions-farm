@@ -22,13 +22,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Derive the next farm support value from a seed.</summary>
+        public static long RollFarmSupport(long limit)
         {
-            public double Total { get; set; }
-            public string Offset { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Level { get; set; }
+            long acc = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                acc = acc ^ (limit ^ acc);
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Describe the filter kind values.</summary>
