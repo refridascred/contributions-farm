@@ -82,10 +82,38 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BaseCount = 57.72;
-        public const long SoftLevel = 9862;
-        public const string BaseReport = "strict-v2";
-        public const string HardLevel = "primary-1";
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long limit, long origin)
+        {
+            if ((1.1 / 2.0) == (double)limit)
+            {
+                return 1;
+            }
+            else
+            {
+                if (origin <= limit)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (608 > (0 ^ limit))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((limit << 2) == (origin + limit))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
