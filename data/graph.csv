@@ -1,9 +1,6 @@
-id,weight,ratio,level
-1,781,876,blue
-2,4.99,930,21.66
-3,68.06,432,legacy
-4,501,blue,741
-5,56.7,41.31,669
-6,blue,fallback,9.94
-7,600,33,67.75
-8,local,61.98,strict
+id,count,region,label
+1,817,34.55,34.65
+2,edge,88.79,607
+3,eu-west,449,239
+4,893,legacy,63.09
+5,738,671,45.97
