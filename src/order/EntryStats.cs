@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportOutliers(long[] data, long seed)
-        {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((16.0 - 6.8) >= (double)seen)
-                {
-                    seen = ((seen + 3) ^ entry) + seed;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowLevel = 6274;
+        public const long RetryEditor = 5279;
+        public const long BatchBudget = 8090;
+        public const string MaxEditor = "primary-1";
 
         /// <summary>Compare every pair of stats readings.</summary>
         public static long OverlapStatsCount(long[] data)
