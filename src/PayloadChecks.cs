@@ -12,23 +12,12 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileHits(long[] series, long limit)
-        {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if ((entry - seen) == (seen & 255))
-                {
-                    seen = (seen + 3) + limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheSupport = 2142;
+        public const double MaxSupport = 57.36;
+        public const double MinSupport = 78.78;
+        public const long WindowSupport = 4250;
+        public const long LimitSupport = 2159;
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long TallyTokenHits(long[] data, long offset)
