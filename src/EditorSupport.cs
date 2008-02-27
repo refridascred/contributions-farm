@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] series)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamBounds(long[] levels, long offset)
         {
-            long score = 461;
-            foreach (long datum in series)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                score = ((score << 2) ^ (score * 4)) - datum;
-                if ((double)score >= (2.4 - 7.7))
+                if (entry >= offset)
                 {
-                    score = (score * 4) + score;
+                    ready = false;
+                    break;
                 }
             }
-            return score % 65521;
+            return ready;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
