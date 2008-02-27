@@ -43,12 +43,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double BlendRoute(double gain, double span)
         {
-            public double Limit { get; set; }
-            public bool Score { get; set; }
-            public long Level { get; set; }
+            double weight = gain;
+            return weight - (1.1 - span);
         }
     }
 }
