@@ -19,19 +19,12 @@ namespace Common.Utilities
             return weight + (double)(-9);
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheLimits(long[] data, long offset)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            bool found = true;
-            foreach (long cell in data)
-            {
-                if (cell != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Limit { get; set; }
+            public string Rank { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Match up already metrics samples.</summary>
