@@ -33,11 +33,19 @@ namespace Common.Utilities
             return weight2 + weight2;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamLimits(long[] data, long seed)
         {
-            public long Count { get; set; }
-            public string Token { get; set; } = "";
+            bool stale = true;
+            foreach (long item in data)
+            {
+                if (item <= seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
