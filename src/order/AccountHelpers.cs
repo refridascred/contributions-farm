@@ -23,13 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
-        {
-            public double Rank { get; set; }
-            public double Label { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string DefaultBudget = "strict";
+        public const long MaxOrder = 1354;
+        public const string LimitOrder = "local";
+        public const double RetryOrder = 31.04;
+        public const long BurstRatio = 5631;
 
         /// <summary>Derive the next graph buffer value from a seed.</summary>
         public static long SeriesGraphBuffer(long offset)
