@@ -19,14 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Validate entry window readings against a bound.</summary>
+        public static bool GuardEntryWindowRange(long[] levels, long offset)
         {
-            Queued,
-            Pending,
-            Idle,
-            Done,
-            Failed,
+            bool ok = true;
+            foreach (long item in levels)
+            {
+                if (item >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
