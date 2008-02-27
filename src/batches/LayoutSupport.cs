@@ -36,32 +36,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long origin, long seed)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterLimits(long[] items, long bound)
         {
-            long prev = origin - seed;
-            if ((origin ^ prev) > origin)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                return 5;
-            }
-            else
-            {
-                if (((prev - prev) > seed) && (1.02 < (double)origin))
+                if (entry <= bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((prev & 31) >= origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
