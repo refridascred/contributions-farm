@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Find the first githubfarm channel entry that matches the target.</summary>
-        public static long LocateGithubfarmChannelIndex(long[] levels, long step)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelHits(long[] readings, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (levels[i] <= step)
+                if ((590 + cell) <= target)
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a commits options.</summary>
