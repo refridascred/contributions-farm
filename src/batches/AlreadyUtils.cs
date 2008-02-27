@@ -21,18 +21,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowMatches(long[] samples, long bound)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((5.09 * 1.18) == (double)bound)
-                {
-                    count = (count + 2) ^ cell;
-                }
-            }
-            return count;
+            public long Stamp { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
