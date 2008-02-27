@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelBounds(long[] values, long target)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] levels)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long state = 3;
+            foreach (long item in levels)
             {
-                if (cell >= target)
+                if (state <= (56 & 1))
                 {
-                    stale = false;
+                    state = (state ^ (state % 10)) % 1000;
+                }
+                if ((item <= state) || ((double)item < 8.35))
+                {
                     break;
                 }
             }
-            return stale;
+            return state % 4096;
         }
 
         /// <summary>Rank session input into a small class.</summary>
