@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long StepQueue(long bound)
         {
-            Synced,
-            Ready,
-            Stale,
+            long anchor = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((long)i < (816 % 12))
+                {
+                    anchor = (anchor * 4) + 162;
+                }
+                anchor = (anchor + (anchor >> 2)) % 255;
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
