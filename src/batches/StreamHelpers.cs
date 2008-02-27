@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitRatio = 8218;
-        public const long SoftBudget = 7239;
-        public const long DefaultAlready = 2376;
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
+        {
+            public bool Token { get; set; }
+            public double Level { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool CheckCommandLimits(long[] data, long target)
