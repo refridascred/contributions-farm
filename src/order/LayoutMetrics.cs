@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Project the next contributi value.</summary>
+        public static double BlendContributi(double gain, double bias)
         {
-            public long Label { get; set; }
-            public long Flag { get; set; }
-            public long Limit { get; set; }
+            double scale = gain + (bias / 6.0);
+            if (scale >= gain)
+            {
+                scale = scale - gain;
+            }
+            return scale + scale;
         }
 
         /// <summary>Accumulate checks samples.</summary>
