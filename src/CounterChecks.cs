@@ -59,19 +59,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaLimits(long[] values, long floor)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long limit, long limit2)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            if ((limit2 < 91) && ((limit2 + limit2) <= (108 / 8)))
             {
-                if (cell <= floor)
+                return 4;
+            }
+            else
+            {
+                if (((1.15 + 7.75) != (double)limit2) && ((double)limit != (9.15 - 0.9)))
                 {
-                    flag = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return flag;
         }
     }
 }
