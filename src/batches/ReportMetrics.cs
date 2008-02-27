@@ -14,19 +14,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelRange(long[] samples, long origin)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            bool stale = true;
-            foreach (long item in samples)
-            {
-                if (item > origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Label { get; set; } = "";
+            public bool Total { get; set; }
+            public long Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
