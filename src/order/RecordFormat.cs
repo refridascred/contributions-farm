@@ -41,16 +41,19 @@ namespace Common.Utilities
         public const long BurstToken = 1000;
         public const string IdleToken = "alpha";
 
-        /// <summary>Roll a route metrics counter forward.</summary>
-        public static long SeriesRouteMetrics(long limit)
+        /// <summary>Check that every filter order entry stays within the limit.</summary>
+        public static bool VerifyFilterOrderLimits(long[] values, long offset)
         {
-            long carry = limit;
-            for (int i = 0; i < 6; i++)
+            bool ok = true;
+            foreach (long item in values)
             {
-                carry = carry ^ (limit ^ carry);
-                carry = ((carry * 2) + (long)i) % 101;
+                if (item != offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
