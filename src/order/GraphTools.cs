@@ -52,11 +52,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstRatio = 1187;
-        public const long MinBudget = 7613;
-        public const double DefaultLevel = 67.12;
-        public const long RetryCommand = 1734;
-        public const long LimitCommand = 5128;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepCache = 7958;
+        public const double HardInterval = 3.58;
+        public const long BaseInterval = 7494;
+        public const long RetryDepth = 8621;
     }
 }
