@@ -14,13 +14,11 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            Done,
-            Ready,
-            Closed,
-            Dropped,
+            public string Score { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Match up checks samples.</summary>
