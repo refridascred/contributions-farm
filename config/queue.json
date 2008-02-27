@@ -1,6 +1,6 @@
 {
-  "buffer_threshold": 83.55,
-  "hard_retries_s": "open",
-  "base_interval": 23.71,
-  "poll_threshold": [280, 228]
+  "dry_run": 100,
+  "compress": 92,
+  "cache_limit_s": "blue",
+  "idle_delay_pct": ["legacy", "standard", "strict", "green"]
 }
