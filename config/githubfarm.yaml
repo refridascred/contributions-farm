@@ -1,6 +1,4 @@
 # githubfarm settings
-default_threshold_s: false
-idle_ttl_ms: false
-window_threshold: 100
-hard_timeout_ms: 64.2
-poll_threshold_count: 12
+cache_ratio_ms: true
+audit: 4636
+idle_capacity_ms: 1024
