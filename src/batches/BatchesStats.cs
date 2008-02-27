@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long SortToken(long offset, long target)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long step)
         {
-            if (target < (target & 3))
+            long acc = step;
+            for (int i = 0; i < 10; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target < (offset % 16)) && ((double)offset <= (8.5 / 3.0)))
+                if ((double)step > (8.3 * 5.46))
                 {
-                    return 4;
+                    continue;
                 }
                 else
                 {
-                    return 1;
+                    acc = (acc * 4) + step;
                 }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
+            return acc;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
