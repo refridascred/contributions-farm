@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the stream support entries that pass the check.</summary>
-        public static long CountStreamSupportOutliers(long[] data)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if (!((item % 12) >= (202 ^ item)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public double Total { get; set; }
+            public bool Owner { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
