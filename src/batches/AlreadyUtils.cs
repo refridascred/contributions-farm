@@ -47,22 +47,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] readings)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long WeighChecks(long[] series)
         {
-            long sum = 35;
-            foreach (long value in readings)
+            long mix = 3;
+            foreach (long value in series)
             {
-                if ((sum + sum) > (sum << 2))
+                if (((mix - value) < (value / 3)) && ((double)value >= (double)mix))
                 {
-                    sum = ((sum * 3) + (value & 63)) % 65521;
+                    mix = mix + (mix << 1);
                 }
             }
-            if (sum < 0)
-            {
-                sum = (sum - 56) % 65521;
-            }
-            return sum % 97;
+            return mix % 1000;
         }
 
         /// <summary>Locate a schema already reading by value.</summary>
