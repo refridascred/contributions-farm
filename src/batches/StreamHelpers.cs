@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Iterate the buffer metrics series from a seed.</summary>
+        public static long StepBufferMetrics(long bound)
         {
-            public long Label { get; set; }
-            public double Score { get; set; }
-            public long Total { get; set; }
+            long score = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                score = ((score << 3) ^ (bound + bound)) % 101;
+                score = ((score * 5) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Validate metrics readings against a bound.</summary>
