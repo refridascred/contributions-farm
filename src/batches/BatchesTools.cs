@@ -20,15 +20,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] levels, long offset)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long mix = -8;
-            foreach (long sample in levels)
-            {
-                mix = (((mix + (mix + mix)) % 4096) ^ sample) + offset;
-            }
-            return mix;
+            public string Stamp { get; set; } = "";
+            public long Count { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Grade a layout cluster value against two limits.</summary>
