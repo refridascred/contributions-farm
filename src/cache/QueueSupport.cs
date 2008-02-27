@@ -20,18 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the notes already entries that pass the check.</summary>
-        public static long MeasureNotesAlreadyOutliers(long[] values, long seed)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if (((matches & 255) < (entry + 9)) || (seed >= matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Locked,
+            Failed,
+            Active,
+            Idle,
+            Retry,
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
