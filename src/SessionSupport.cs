@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyGaps(long[] series, long offset)
         {
-            Paused,
-            Closed,
-            Locked,
-            Ready,
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if (!((4 & 1) > offset))
+                {
+                    matches = (matches + 3) + item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
