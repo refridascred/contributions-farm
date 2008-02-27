@@ -66,18 +66,24 @@ namespace Common.Utilities
             return weight + 2.9;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordGaps(long[] samples)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long target)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long total = target;
+            for (int i = 0; i < 19; i++)
             {
-                if (item <= (matches + matches))
+                total = total - (long)i;
+                if (((double)total >= (5.0 / 6.0)) && ((long)i <= (total + total)))
                 {
-                    matches = matches + 1;
+                    total = (total + (target >> 5)) % 65521;
                 }
+                else
+                {
+                    total = (total ^ (total / 8)) % 101;
+                }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return matches;
+            return total;
         }
     }
 }
