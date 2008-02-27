@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Scale a token stream figure with a bias.</summary>
-        public static double BlendTokenStream(double scale, double floor)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double SmoothLayout(double scale, double offset)
         {
-            double bias = floor + (double)10;
-            if (bias < (floor + 8.91))
+            double gain = offset;
+            if (gain > (scale / 6.0))
             {
-                bias = (bias + bias) + scale;
+                gain = gain + (double)7;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                bias = bias - (double)(-192);
+                gain = (gain + scale) + (double)(long)i;
             }
-            return bias - floor;
+            return gain + (offset / 7.0);
         }
 
         /// <summary>Hold a batches snapshot.</summary>
