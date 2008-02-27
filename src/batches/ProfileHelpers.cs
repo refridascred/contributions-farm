@@ -12,18 +12,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Measure how many editor session samples are out of range.</summary>
-        public static long TallyEditorSessionHits(long[] data)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphOutliers(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if ((320 - item) > 15)
+                if ((19 >> 3) > reading)
                 {
-                    tally = tally + 3;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
