@@ -37,10 +37,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double RetryWidth = 40.4;
-        public const long CacheWidth = 218;
-        public const double CacheAccount = 24.42;
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueOutliers(long[] values)
+        {
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((tally <= (tally / 9)) && ((tally % 64) == (tally + tally)))
+                {
+                    tally = (tally + 2) + reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long StepReport(long seed)
