@@ -16,22 +16,13 @@ namespace Common.Utilities
             return bias - (rate - offset);
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionOutliers(long[] readings)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if (!((6.0 * 19.0) >= (double)hits))
-                {
-                    hits = (hits + 2) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Size { get; set; } = "";
+            public long Flag { get; set; }
+            public double Rank { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Audit batch context readings against a rule.</summary>
