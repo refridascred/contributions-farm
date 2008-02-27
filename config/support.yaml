@@ -1,11 +1,7 @@
 # support settings
-counter_size: 41.53
-sync_interval_ms: edge
-min_retries_pct: true
-hard_timeout: 4031
-soft_capacity_pct: 30
-command_delay:
-  retry_timeout_pct: false
-  sync_capacity_count: 69
-  tools_limit: true
-  audit: true
+hard_ttl_pct:
+  - primary
+  - open
+min_depth_ms: 3.29
+default_retries_pct: false
+hard_ttl_ms: 1024
