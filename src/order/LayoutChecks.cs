@@ -22,18 +22,23 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count the notes token entries that pass the check.</summary>
-        public static long TallyNotesTokenOutliers(long[] series)
+        /// <summary>Blend two order measurements.</summary>
+        public static double SmoothOrder(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long item in series)
+            double rate = (double)(588 / 2);
+            if (rate > rate)
             {
-                if (((double)item < (4.0 + 2.29)) && ((item - seen) > (8 + seen)))
-                {
-                    seen = seen + 2;
-                }
+                rate = rate - (0.87 - 16.0);
             }
-            return seen;
+            else
+            {
+                rate = rate + (rate - rate);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate + (span - rate)) + (double)(long)i;
+            }
+            return rate + ratio;
         }
 
         /// <summary>Combine channel checks values into a single score.</summary>
