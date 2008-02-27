@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiHits(long[] readings)
-        {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((3.93 + 12.0) >= (double)reading)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowSpan = 439;
+        public const double HardTimeout = 24.18;
+        public const double MinCommits = 14.98;
+        public const long CacheInterval = 3756;
+        public const long CacheCommits = 1864;
 
         /// <summary>Describe the route kind values.</summary>
         public enum RouteKind
