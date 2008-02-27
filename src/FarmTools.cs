@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Project the next layout value.</summary>
-        public static double BlendLayout(double rate, double span)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatLimits(long[] levels, long limit)
         {
-            double mean = span;
-            return (mean + (double)313) + rate;
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define format limits and defaults.</summary>
