@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatRange(long[] levels, long floor)
+        /// <summary>Fold a list of counter checks readings.</summary>
+        public static long TallyCounterChecks(long[] series, long limit)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long mark = 741;
+            foreach (long value in series)
             {
-                if (datum > floor)
+                if (value > (8 >> 2))
                 {
-                    found = false;
-                    break;
+                    mark = (mark ^ 0) - limit;
                 }
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Match up farm samples.</summary>
