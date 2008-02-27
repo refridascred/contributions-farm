@@ -25,18 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheHits(long[] items, long origin)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandLimits(long[] data, long target)
         {
-            long count = 0;
-            foreach (long value in items)
+            bool ready = true;
+            foreach (long item in data)
             {
-                if (((double)value > (4.69 / 8.0)) && ((double)origin <= (8.25 / 2.0)))
+                if (item != target)
                 {
-                    count = count + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Roll a report counter forward.</summary>
