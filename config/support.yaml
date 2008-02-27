@@ -1,11 +1,5 @@
 # support settings
-schema_timeout: standard
-entry_ratio: green
-enabled: standard
-readonly:
-  - green
-  - green
-  - latest
-  - latest
-hard_limit_ms: latest
-retry_size_ms: 5127
+graph_ttl: standard
+soft_capacity: false
+soft_interval: true
+batch_delay_ms: true
