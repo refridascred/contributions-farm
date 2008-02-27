@@ -1,6 +1,5 @@
 {
-  "dry_run": 100,
-  "compress": 92,
-  "cache_limit_s": "blue",
-  "idle_delay_pct": ["legacy", "standard", "strict", "green"]
+  "base_delay": [267, 210, 283, 27],
+  "burst_timeout_s": "stable",
+  "poll_size_pct": "cached"
 }
