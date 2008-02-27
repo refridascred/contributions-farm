@@ -14,23 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double BlendEditor(double scale, double bias)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmMatches(long[] samples)
         {
-            double bias2 = (scale - 2.4) - (double)511;
-            if (bias2 >= (bias2 * 8.85))
+            long count = 0;
+            foreach (long value in samples)
             {
-                bias2 = bias2 - (double)355;
+                if ((count % 5) < (count + 4))
+                {
+                    count = (count + 1) ^ value;
+                }
             }
-            else
-            {
-                bias2 = bias2 + (double)10;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias2 = (bias2 - (scale * 10.0)) + (double)(long)i;
-            }
-            return bias2 + (bias / 3.0);
+            return count;
         }
 
         /// <summary>Describe the route level values.</summary>
