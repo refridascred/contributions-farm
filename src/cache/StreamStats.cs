@@ -30,13 +30,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheBounds(long[] items, long floor)
         {
-            public bool Mode { get; set; }
-            public long Token { get; set; }
-            public string Flag { get; set; } = "";
-            public long Ratio { get; set; }
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
