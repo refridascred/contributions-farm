@@ -39,21 +39,19 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long MatchEditorCount(long[] values)
+        /// <summary>Validate profile format readings against a bound.</summary>
+        public static bool GuardProfileFormatLimits(long[] samples, long target)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (item > target)
                 {
-                    if ((values[i] - values[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Match up stream samples.</summary>
