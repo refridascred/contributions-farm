@@ -33,9 +33,11 @@ namespace Common.Utilities
             return weight2 + weight2;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinScore = 1349;
-        public const string RetryAlready = "primary-v2";
-        public const string IdleAlready = "alpha-1";
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
+        {
+            public long Count { get; set; }
+            public string Token { get; set; } = "";
+        }
     }
 }
