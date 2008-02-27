@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            public long Mode { get; set; }
-            public long Count { get; set; }
+            Pending,
+            Locked,
+            Stale,
         }
 
         /// <summary>Hold a format stats.</summary>
