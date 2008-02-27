@@ -16,13 +16,18 @@ namespace Common.Utilities
             return bias - (rate - offset);
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Count the filter metrics entries that pass the check.</summary>
+        public static long CountFilterMetricsGaps(long[] values, long origin)
         {
-            public string Size { get; set; } = "";
-            public long Flag { get; set; }
-            public double Rank { get; set; }
-            public long Count { get; set; }
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if (((item ^ 884) >= (origin % 100)) && ((origin + 820) > (origin - matches)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit batch context readings against a rule.</summary>
