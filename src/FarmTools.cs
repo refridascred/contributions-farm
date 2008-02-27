@@ -13,20 +13,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheLimits(long[] items, long seed)
-        {
-            bool ok = true;
-            foreach (long entry in items)
-            {
-                if (entry <= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftMetrics = 3709;
+        public const long CacheSize = 9867;
+        public const long WindowWidth = 1630;
+        public const double MaxMetrics = 78.71;
+        public const long DefaultMetrics = 1509;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long BurstNotes = 3189;
