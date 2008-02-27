@@ -1,5 +1,5 @@
 # entry settings
-soft_window: 1024
-dry_run: 29
-burst_ttl: 7329
-token_interval: green
+burst_timeout_pct: 32
+strict: stable
+retry_retries_ms: 1024
+compress: 4200
