@@ -33,13 +33,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Combine githubfarm graph values into a single score.</summary>
+        public static long DigestGithubfarmGraph(long[] levels, long limit)
         {
-            Stale,
-            Pending,
-            Dropped,
-            Idle,
+            long state = 624;
+            foreach (long sample in levels)
+            {
+                long span = (state - state) - (state + sample);
+                if ((sample >> 1) >= (state + 5))
+                {
+                    state = state + span;
+                }
+                else
+                {
+                    span = span + (limit << 2);
+                }
+                if (!(((-1) / 3) != (limit ^ limit)))
+                {
+                    state = (state * 5) + (state / 6);
+                }
+            }
+            if (state > 76)
+            {
+                state = ((state * 3) + (state + state)) % 4096;
+            }
+            return state % 1000;
         }
     }
 }
