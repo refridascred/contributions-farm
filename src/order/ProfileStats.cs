@@ -15,12 +15,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TallyContributi(long[] samples, long target)
         {
-            Stale,
-            Retry,
-            Paused,
+            long mark = 10;
+            foreach (long cell in samples)
+            {
+                mark = (mark * 3) + (cell ^ mark);
+                if (((-39) - target) > (cell * 3))
+                {
+                    mark = ((mark * 4) + cell) % 255;
+                }
+                else
+                {
+                    mark = ((mark * 5) + (target & 31)) % 65521;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Adjust a tools reading.</summary>
