@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Digest a series of tools cluster entries.</summary>
+        public static long DigestToolsCluster(long[] levels)
         {
-            public string Level { get; set; } = "";
-            public bool Label { get; set; }
+            long mark = 508;
+            foreach (long reading in levels)
+            {
+                long seen = 519;
+                if ((double)mark >= (1.91 + 3.7))
+                {
+                    mark = mark + seen;
+                    mark = ((mark * 5) + seen) % 101;
+                    continue;
+                }
+                else
+                {
+                    seen = (seen + (mark - mark)) % 65521;
+                    seen = ((seen * 5) + (reading + reading)) % 101;
+                }
+                mark = ((mark * 3) + ((-93) + mark)) % 255;
+            }
+            return mark % 97;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
