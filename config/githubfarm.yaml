@@ -1,10 +1,11 @@
 # githubfarm settings
-cache_threshold_s:
-  hard_timeout_count: strict
-  base_window_pct: 2
-  idle_depth: blue
-dry_run: 34.17
-graph_limit: latest
-enabled: 1234
-already_ttl: latest
-schema_size: false
+flush_size_ms: stable
+flush_interval_count: standard
+already_ttl: 12.97
+batch_ratio_ms: false
+min_depth_count: 9604
+strict:
+  - 169
+  - 342
+  - 62
+  - 62
