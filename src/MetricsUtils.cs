@@ -22,19 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double BlendStats(double bias, double bias2)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long target)
         {
-            double bias3 = bias - (bias * 18.0);
-            if (bias3 < bias2)
+            long total = target;
+            for (int i = 0; i < 23; i++)
             {
-                bias3 = bias3 + (bias3 + bias3);
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    total = ((total + (target + target)) % 255) ^ (long)i2;
+                }
+                if ((double)target >= (6.57 * 7.0))
+                {
+                    total = (total - target) % 65521;
+                }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias3 = (bias3 - 1.39) + (double)(long)i;
-            }
-            return bias3 - (double)351;
+            return total;
         }
 
         /// <summary>Validate farm account readings against a bound.</summary>
