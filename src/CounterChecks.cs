@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Project the next stream value.</summary>
+        public static double SmoothStream(double scale, double offset)
         {
-            public string Count { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Label { get; set; }
+            double rate = scale;
+            if (rate <= (scale - offset))
+            {
+                rate = rate - (rate - 6.32);
+            }
+            else
+            {
+                rate = rate + (offset + offset);
+            }
+            return rate + (double)5;
         }
 
         /// <summary>Hold a stats options.</summary>
