@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchGaps(long[] data)
         {
-            Done,
-            Pending,
-            Stale,
-            Synced,
-            Locked,
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((seen + entry) <= (seen - seen))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
