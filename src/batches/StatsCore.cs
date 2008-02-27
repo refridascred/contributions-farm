@@ -47,13 +47,11 @@ namespace Common.Utilities
         public const long CacheStream = 4407;
         public const long BaseStream = 4790;
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            Synced,
-            Stale,
-            Retry,
-            Active,
+            public double Token { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
