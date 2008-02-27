@@ -23,17 +23,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] samples, long floor)
+        /// <summary>Rank format stream input into a small class.</summary>
+        public static long BucketFormatStream(long origin, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (178 >= bound)
             {
-                if ((samples[i] > floor) && ((samples[i] % 2) == 0))
+                return 0;
+            }
+            else
+            {
+                if ((bound > (bound + 924)) && (bound > (bound - bound)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (9 >= (8 - origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
