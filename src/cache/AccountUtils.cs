@@ -32,15 +32,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterHits(long[] values, long target)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheOutliers(long[] data)
         {
             long seen = 0;
-            foreach (long item in values)
+            foreach (long sample in data)
             {
-                if ((target + target) >= 96)
+                if (((sample >> 3) != (945 % 12)) && ((sample % 5) <= seen))
                 {
-                    seen = (seen + 3) + item;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
