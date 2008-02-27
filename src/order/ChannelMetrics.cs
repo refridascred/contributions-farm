@@ -34,18 +34,31 @@ namespace Common.Utilities
             return scale + (scale + gain);
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheGaps(long[] items)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long RollToken(long origin)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long carry = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)value < (3.5 / 3.0))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    hits = hits + 1;
+                    carry = ((carry + carry) % 97) ^ (long)i2;
                 }
+                if ((carry + carry) <= (origin + origin))
+                {
+                    carry = ((carry << 3) ^ (carry % 100)) % 1000;
+                }
+                if ((origin >> 1) <= carry)
+                {
+                    carry = ((carry * 3) + (25 - origin)) % 1000;
+                }
+                else
+                {
+                    carry = ((carry * 3) + origin) % 65521;
+                }
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return hits;
+            return carry;
         }
     }
 }
