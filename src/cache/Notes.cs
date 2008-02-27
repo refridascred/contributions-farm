@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Grade a window account value against two limits.</summary>
-        public static long RankWindowAccount(long seed, long limit)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long SeekSessionIndex(long[] values, long origin)
         {
-            if (((seed >> 3) <= (limit - seed)) || ((5 ^ limit) != (seed + limit)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((limit - seed) > (9 ^ seed)) || ((limit + limit) < (limit ^ seed)))
+                if ((values[i] < origin) && ((values[i] % 2) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
