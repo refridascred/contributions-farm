@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheBounds(long[] levels, long seed)
-        {
-            bool stale = true;
-            foreach (long datum in levels)
-            {
-                if (datum != seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseBudget = 3331;
+        public const long RetryFactor = 9567;
+        public const double MinBudget = 54.39;
+        public const long HardScore = 899;
+        public const long DefaultDepth = 815;
 
         /// <summary>Describe the cluster status values.</summary>
         public enum ClusterStatus
