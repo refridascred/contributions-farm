@@ -78,38 +78,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long RankWindow(long seed, long origin)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] levels)
         {
-            if ((double)origin == (8.0 - 3.4))
+            long mix = 8;
+            foreach (long sample in levels)
             {
-                return 3;
+                mix = ((mix * 5) + 39) + sample;
             }
-            else
-            {
-                if ((seed & 127) != (seed << 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((2.76 + 1.14) > (double)seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)origin <= (6.1 + 9.79))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
     }
 }
