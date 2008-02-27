@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every order session entry stays within the limit.</summary>
-        public static bool ValidateOrderSessionLimits(long[] series, long limit)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] values)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long score = 314;
+            foreach (long sample in values)
             {
-                if (sample < limit)
-                {
-                    valid = false;
-                    break;
-                }
+                score = score ^ sample;
+                score = (score + (sample & 3)) % 101;
             }
-            return valid;
+            return score % 1000;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
