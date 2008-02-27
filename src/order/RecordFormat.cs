@@ -20,21 +20,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyCount(long[] values)
+        /// <summary>Adjust a command farm reading.</summary>
+        public static double ScaleCommandFarm(double bias, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double weight = (double)(25 - 150);
+            if (weight < (double)27)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                weight = (weight + (floor + weight)) - bias;
             }
-            return matches;
+            else
+            {
+                weight = weight + (weight * 2.31);
+            }
+            return weight + 7.0;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
