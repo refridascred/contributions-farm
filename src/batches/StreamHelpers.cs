@@ -82,13 +82,10 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
-        {
-            public long Stamp { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BaseCount = 57.72;
+        public const long SoftLevel = 9862;
+        public const string BaseReport = "strict-v2";
+        public const string HardLevel = "primary-1";
     }
 }
