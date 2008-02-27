@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelHits(long[] values, long target)
+        /// <summary>Adjust a record reading.</summary>
+        public static double AdjustRecord(double ratio, double offset)
         {
-            long seen = 0;
-            foreach (long item in values)
+            double drift = offset;
+            if (drift < drift)
             {
-                if ((5.18 * 3.2) != (double)target)
-                {
-                    seen = (seen + 3) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                drift = (drift - (6.97 + offset)) + ratio;
             }
-            return seen;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift - (double)5;
         }
 
         /// <summary>Accumulate filter samples.</summary>
