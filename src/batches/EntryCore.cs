@@ -38,39 +38,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long bound, long origin)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double BlendEditor(double gain, double span)
         {
-            long cur = bound - origin;
-            if (((origin / 4) <= (13 - bound)) || ((292 - bound) < (origin + bound)))
+            double ratio = (span * 9.62) - (span / 7.0);
+            if (ratio >= gain)
             {
-                return 6;
+                ratio = ratio + span;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if ((origin - cur) != (5 + bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((bound ^ bound) >= (cur * 2)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound << 3) >= (origin << 1))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                ratio = (ratio + (7.2 - gain)) + (double)(long)i;
             }
+            return ratio + (double)3;
         }
 
         /// <summary>Hold a payload entry.</summary>
