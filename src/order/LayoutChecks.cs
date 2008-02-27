@@ -18,18 +18,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Combine support commits values into a single score.</summary>
-        public static long ScoreSupportCommits(long[] items)
+        /// <summary>Count the checks cache entries that pass the check.</summary>
+        public static long TallyChecksCacheOutliers(long[] items, long origin)
         {
-            long acc = 33;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if ((double)acc >= (double)20)
+                if (origin < reading)
                 {
-                    acc = ((acc << 3) ^ (1 + entry)) % 255;
+                    seen = seen + 1;
                 }
             }
-            return acc % 97;
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
