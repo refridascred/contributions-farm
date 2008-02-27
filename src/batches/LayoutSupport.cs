@@ -13,21 +13,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long MatchRouteCount(long[] items)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TotalBatch(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 3;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((0.7 / 5.0) >= (double)mix)
                 {
-                    if ((items[i] + items[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = ((mix + mix) % 101) ^ entry;
                 }
             }
-            return tally;
+            if (mix < 85)
+            {
+                mix = ((mix * 3) + (18 / 9)) % 97;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Compare every pair of editor tools readings.</summary>
