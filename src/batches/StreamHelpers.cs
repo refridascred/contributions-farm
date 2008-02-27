@@ -36,12 +36,22 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftSpan = 8577;
-        public const long MinBatches = 5241;
-        public const double LimitBudget = 42.38;
-        public const long BurstWidth = 6179;
-        public const long WindowBatches = 9396;
+        /// <summary>Count account window pairs that satisfy a relation.</summary>
+        public static long OverlapAccountWindowCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of filter metrics readings.</summary>
         public static long ScoreFilterMetrics(long[] readings)
