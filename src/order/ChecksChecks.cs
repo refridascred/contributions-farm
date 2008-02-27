@@ -20,12 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double DefaultLevel = 63.02;
-        public const string SoftEntry = "alpha";
-        public const long IdleEntry = 9407;
-        public const string BurstTimeout = "open";
-        public const double RetryTimeout = 73.22;
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] levels)
+        {
+            long mix = 59;
+            foreach (long datum in levels)
+            {
+                mix = (((mix << 3) ^ mix) % 1000) ^ datum;
+                mix = (mix ^ mix) % 1000;
+            }
+            if (mix > 9)
+            {
+                mix = mix + (20 ^ mix);
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Look up the position of a window sample.</summary>
         public static long FindWindowIndex(long[] samples, long floor)
