@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long origin)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyMatches(long[] levels)
         {
-            long anchor = origin;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                anchor = ((anchor * 3) + (long)i) % 97;
+                if ((count - count) < (count >> 5))
+                {
+                    count = (count + 3) + value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Accumulate schema samples.</summary>
