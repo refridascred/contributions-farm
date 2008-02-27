@@ -58,17 +58,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long LookupEditorIndex(long[] values, long seed)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ProjectTools(double rate, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double load = 0.05;
+            if (load < (bias - bias))
             {
-                if ((values[i] == seed) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                load = (load + bias) - rate;
             }
-            return -1;
+            else
+            {
+                load = load - (load * 19.0);
+            }
+            return load - (4.6 + load);
         }
     }
 }
