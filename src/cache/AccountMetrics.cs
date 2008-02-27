@@ -35,19 +35,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricRange(long[] data, long target)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            bool valid = true;
-            foreach (long reading in data)
-            {
-                if (reading >= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Token { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Offset { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Find the first cluster entry that matches the target.</summary>
