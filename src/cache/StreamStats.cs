@@ -50,24 +50,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a layout queue value against two limits.</summary>
-        public static long BucketLayoutQueue(long step, long floor)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            if ((step + step) >= (floor & 31))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step & 7) > step)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Closed,
+            Active,
+            Locked,
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
