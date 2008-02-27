@@ -37,12 +37,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            public long Score { get; set; }
-            public double Level { get; set; }
-            public long Total { get; set; }
+            New,
+            Active,
+            Locked,
+            Failed,
+            Dropped,
         }
     }
 }
