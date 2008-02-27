@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            public long Stamp { get; set; }
-            public long Count { get; set; }
-            public string Weight { get; set; } = "";
+            Paused,
+            Active,
+            Ready,
         }
 
         /// <summary>Define format limits and defaults.</summary>
