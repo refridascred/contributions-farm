@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BaseBudget = 2295;
-        public const string SoftDepth = "stable";
-        public const long WindowFilter = 2384;
-        public const long IdleInterval = 1686;
-        public const double DefaultFilter = 86.79;
+        /// <summary>Rank token input into a small class.</summary>
+        public static long GradeToken(long floor, long bound)
+        {
+            long bound2 = floor + bound;
+            if ((bound2 + bound2) < (93 + floor))
+            {
+                return 6;
+            }
+            else
+            {
+                if (bound < (bound - floor))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long RetryFormat = 434;
