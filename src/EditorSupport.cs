@@ -68,11 +68,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BaseContext = 85.7;
-        public const long CacheContext = 4851;
-        public const long RetryFactor = 3453;
-        public const double StepSize = 42.47;
-        public const long LimitRatio = 4578;
+        /// <summary>Roll a record counter forward.</summary>
+        public static long IterateRecord(long seed)
+        {
+            long anchor = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                anchor = (anchor + anchor) % 101;
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
+        }
     }
 }
