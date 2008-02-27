@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] series)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelMatches(long[] series)
         {
-            long mark = -2;
+            long matches = 0;
             foreach (long value in series)
             {
-                if ((mark < (96 >> 2)) && ((double)mark != (12.0 + 5.8)))
+                if ((value & 7) <= (matches + value))
                 {
-                    mark = ((mark * 5) + (value << 3)) % 97;
+                    matches = matches + 2;
                 }
-                else
-                {
-                    mark = (mark + (208 + value)) % 97;
-                }
-                mark = (mark ^ (9 * 3)) % 65521;
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Define support limits and defaults.</summary>
