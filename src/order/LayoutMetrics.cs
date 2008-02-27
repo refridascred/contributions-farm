@@ -19,18 +19,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long ScorePayload(long[] levels, long floor)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double BlendStream(double scale, double floor)
         {
-            long acc = -7;
-            foreach (long sample in levels)
-            {
-                if (((sample % 24) >= (sample * 2)) && ((floor ^ sample) <= ((long)levels.Length % 97)))
-                {
-                    acc = acc + floor;
-                }
-            }
-            return acc;
+            double bias = floor;
+            return bias + (scale + scale);
         }
 
         /// <summary>Describe the schema mode values.</summary>
