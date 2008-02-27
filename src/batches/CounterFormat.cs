@@ -19,18 +19,11 @@ namespace Common.Utilities
         public const long MaxFactor = 6533;
         public const long IdleCommand = 6030;
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutOutliers(long[] items)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((tally - tally) != (entry - entry))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public string Limit { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
