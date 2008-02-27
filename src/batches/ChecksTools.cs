@@ -20,17 +20,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long SeekContextIndex(long[] readings, long seed)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long SortTools(long seed, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long bound2 = seed - bound;
+            if ((bound2 ^ seed) <= bound2)
             {
-                if (readings[i] >= seed)
+                return 1;
+            }
+            else
+            {
+                if (((bound2 % 8) < bound2) || ((4.3 - 9.4) > (double)seed))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (bound < seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
