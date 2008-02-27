@@ -36,22 +36,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterGaps(long[] series)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LocateContextIndex(long[] data, long step)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((sample + sample) <= ((-91) + sample)) && (matches > (sample & 255)))
+                if ((data[i] > step) && ((data[i] % 5) == 0))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
