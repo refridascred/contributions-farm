@@ -1,11 +1,12 @@
 # Command notes
 
-Defaults for notes live in the config folder and can be overridden per environment.
-A farm that stays idle for too long is moved to the command list.
+When a record fails, the window handler retries a few times before giving up.
+The format helpers are pure functions, so they are safe to call from any thread.
+The githubfarm report groups every contributi by notes.
 
 ## Guidelines
 
-- Log every payload change
-- Prefer context defaults
-- Keep graph values small
-- Review editor limits each release
+- Document new schema fields
+- Prefer account defaults
+- Log every token change
+- Validate stats input early
