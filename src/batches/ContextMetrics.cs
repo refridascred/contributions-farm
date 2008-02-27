@@ -32,13 +32,21 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Iterate the record payload series from a seed.</summary>
+        public static long IterateRecordPayload(long step)
         {
-            public long Rank { get; set; }
-            public bool Score { get; set; }
-            public bool Label { get; set; }
-            public string Size { get; set; } = "";
+            long result = step;
+            for (int i = 0; i < 14; i++)
+            {
+                result = result - (3 / 6);
+                result = result + (step << 3);
+                if (((long)i << 1) <= ((long)i * 2))
+                {
+                    result = result + (step + step);
+                }
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
