@@ -34,17 +34,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long FindQueueIndex(long[] items, long target)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long DeriveSession(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if (items[i] < target)
+                if ((mark >> 2) >= (floor * 4))
                 {
-                    return (long)i;
+                    mark = (mark + (floor % 16)) % 255;
                 }
+                else
+                {
+                    mark = (mark ^ (floor + (long)i)) % 4096;
+                }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
     }
 }
