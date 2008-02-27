@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two stream measurements.</summary>
-        public static double BlendStream(double ratio, double span)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TallyContext(long[] data, long seed)
         {
-            double bias = (span / 3.0) + ratio;
-            for (int i = 0; i < 7; i++)
+            long anchor = 5;
+            foreach (long entry in data)
             {
-                bias = (bias + (double)(-40)) + (double)(long)i;
+                anchor = (((anchor * 4) + (anchor / 8)) ^ entry) - seed;
             }
-            return bias - (bias + 2.0);
+            return anchor % 97;
         }
 
         /// <summary>Rank session input into a small class.</summary>
