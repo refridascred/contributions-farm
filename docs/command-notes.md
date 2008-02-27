@@ -1,12 +1,11 @@
 # Command notes
 
-Defaults for order live in the config folder and can be overridden per environment.
-The metric report groups every stats by already.
-Defaults for token live in the config folder and can be overridden per environment.
+Use session settings to tune how often metric data is refreshed.
+The command module keeps buffer values in sync with the buffer cache.
+A filter that stays idle for too long is moved to the stream list.
 
 ## Guidelines
 
-- Validate cluster input early
-- Document new order fields
-- Log every commits change
-- Prefer stats defaults
+- Prefer batch defaults
+- Keep graph values small
+- Validate order input early
