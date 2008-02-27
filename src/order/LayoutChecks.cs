@@ -60,18 +60,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterMatches(long[] samples, long step)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] items, long step)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long mark = 9;
+            foreach (long reading in items)
             {
-                if ((entry + entry) == (seen + entry))
+                if ((step - step) <= (step + 30))
                 {
-                    seen = (seen + 1) + step;
+                    mark = (mark - (mark + (-726))) % 1000;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (reading << 2)) % 255;
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Hold a buffer header.</summary>
