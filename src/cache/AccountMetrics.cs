@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] data, long seed)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long seed, long limit)
         {
-            long score = 363;
-            foreach (long reading in data)
+            if ((seed * 3) <= (seed + seed))
             {
-                score = (((score ^ (2 - score)) % 4096) - reading) - seed;
+                return 6;
             }
-            if (score > 4)
+            else
             {
-                score = ((score << 3) ^ 84) % 101;
+                if ((double)seed >= 4.3)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((limit % 100) <= (seed + limit)) && ((5.0 + 20.0) > (double)seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return score % 4096;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
