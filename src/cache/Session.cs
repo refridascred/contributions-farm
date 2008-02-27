@@ -22,18 +22,12 @@ namespace Common.Utilities
         public const string MinRoute = "alpha-v2";
         public const long BatchDepth = 5134;
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BatchBatches = "legacy";
+        public const long RetryFactor = 2330;
+        public const long HardBatches = 1058;
+        public const string MaxBatches = "open-v2";
+        public const long SoftScore = 3443;
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
         public static long OverlapFarmCount(long[] readings)
