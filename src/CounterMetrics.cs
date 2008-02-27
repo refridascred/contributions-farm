@@ -25,17 +25,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] series, long seed)
+        /// <summary>Check that every buffer format entry stays within the limit.</summary>
+        public static bool CheckBufferFormatBounds(long[] data, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long cell in data)
             {
-                if ((series[i] > seed) && ((series[i] % 5) != 0))
+                if (cell >= floor)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
