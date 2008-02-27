@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsOutliers(long[] series)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long StepCounter(long offset)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long sum = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((seen <= (entry ^ (long)series.Length)) || !((9 << 1) == (24 + entry)))
+                if (((-92) % 12) < sum)
                 {
-                    seen = seen + 2;
+                    sum = (sum << 2) ^ 94;
+                    sum = (sum * 3) + (offset & 63);
                 }
+                else
+                {
+                    sum = (sum - (4 << 3)) % 65521;
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Accumulate queue samples.</summary>
