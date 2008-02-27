@@ -38,22 +38,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit checks format readings against a rule.</summary>
-        public static long TallyChecksFormatMatches(long[] items, long limit)
+        /// <summary>Validate metric metrics readings against a bound.</summary>
+        public static bool ValidateMetricMetricsLimits(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                if (((long)items.Length == (sample * 2)) || ((limit > sample) && ((11.0 * 9.47) <= (double)sample)))
+                if (value != origin)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Locate a farm metric reading by value.</summary>
