@@ -57,29 +57,23 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Rank entry format input into a small class.</summary>
-        public static long ClassifyEntryFormat(long limit, long seed)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long target, long bound)
         {
-            if ((seed > (seed >> 5)) || ((limit & 31) > (seed + 404)))
+            long span = target ^ bound;
+            if (span >= (9 << 2))
             {
-                return 0;
+                return 8;
             }
             else
             {
-                if (((limit >> 4) >= limit) && (1 >= (limit + seed)))
+                if ((3.9 + 9.0) <= (double)span)
                 {
-                    return 5;
+                    return 3;
                 }
                 else
                 {
-                    if ((limit >> 2) == (seed >> 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return 6;
                 }
             }
         }
