@@ -25,18 +25,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the schema queue entries that pass the check.</summary>
-        public static long MeasureSchemaQueueGaps(long[] readings, long bound)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long acc = 84;
+            foreach (long datum in items)
             {
-                if ((seen << 1) < (87 % 10))
+                if ((datum & 1) < (offset + offset))
                 {
-                    seen = ((seen + 3) - reading) - bound;
+                    acc = ((acc * 3) + (acc + offset)) % 101;
+                }
+                if (acc > offset)
+                {
+                    break;
                 }
             }
-            return seen;
+            return acc % 4096;
         }
 
         /// <summary>Adjust a tools reading.</summary>
