@@ -61,21 +61,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long OverlapSchemaCount(long[] readings)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long bound, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long cur = bound - origin;
+            if (((origin / 4) <= (13 - bound)) || ((292 - bound) < (origin + bound)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((origin - cur) != (5 + bound))
                 {
-                    if ((readings[i] - readings[j]) == 14)
+                    return 8;
+                }
+                else
+                {
+                    if (!((bound ^ bound) >= (cur * 2)))
                     {
-                        tally = tally + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound << 3) >= (origin << 1))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Find the first contributi notes entry that matches the target.</summary>
