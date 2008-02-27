@@ -1,7 +1,5 @@
 {
-  "default_size_pct": 61.46,
-  "commits_limit": "local",
-  "soft_depth": 500,
-  "strict": "strict",
-  "compress": 70
+  "support_timeout": true,
+  "persist": true,
+  "readonly": "staging"
 }
