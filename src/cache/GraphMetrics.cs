@@ -49,11 +49,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long RankContributi(long target, long seed)
         {
-            public bool Rank { get; set; }
-            public long Level { get; set; }
+            if (((target + (-554)) <= seed) && ((target & 31) > seed))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((seed % 7) < (4 << 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (13.0 > (double)target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)454 == (double)target)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next payload buffer value from a seed.</summary>
