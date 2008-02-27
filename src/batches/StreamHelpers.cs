@@ -47,18 +47,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportMatches(long[] data, long seed)
+        /// <summary>Fold a list of filter metrics readings.</summary>
+        public static long ScoreFilterMetrics(long[] readings)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long acc = 633;
+            foreach (long cell in readings)
             {
-                if (((tally >> 5) > (cell * 3)) && (((double)seed > (5.0 / 2.0)) && ((cell + seed) <= (58 >> 5))))
-                {
-                    tally = tally + 3;
-                }
+                acc = (acc * 4) + (cell / 4);
             }
-            return tally;
+            if (acc < 367)
+            {
+                acc = acc - (acc * 3);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Iterate the metric format series from a seed.</summary>
