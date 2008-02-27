@@ -32,22 +32,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many channel editor samples are out of range.</summary>
-        public static long CountChannelEditorGaps(long[] series, long seed)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long StepReport(long offset)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long anchor = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if ((seed + hits) < (hits * 3))
-                {
-                    hits = (hits + 2) - sample;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
