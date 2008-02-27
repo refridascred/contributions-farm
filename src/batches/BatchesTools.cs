@@ -20,13 +20,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            Stale,
-            Retry,
-            Failed,
+            New,
             Ready,
+            Queued,
         }
 
         /// <summary>Describe the payload state values.</summary>
