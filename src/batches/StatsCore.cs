@@ -33,12 +33,11 @@ namespace Common.Utilities
         public const double LimitGithubfarm = 19.05;
         public const double LimitWidth = 96.21;
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            Stale,
-            Failed,
-            Locked,
+            public bool Region { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
