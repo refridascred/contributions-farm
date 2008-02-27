@@ -25,14 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long offset)
         {
-            Queued,
-            Locked,
-            Active,
-            Ready,
-            Paused,
+            long mix = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
