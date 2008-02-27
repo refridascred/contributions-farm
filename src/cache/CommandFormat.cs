@@ -34,11 +34,14 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            public bool Offset { get; set; }
-            public string Flag { get; set; } = "";
+            Pending,
+            Closed,
+            Active,
+            Locked,
+            Dropped,
         }
     }
 }
