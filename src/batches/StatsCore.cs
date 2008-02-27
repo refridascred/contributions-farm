@@ -19,17 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a editor support counter forward.</summary>
-        public static long StepEditorSupport(long bound)
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] samples)
         {
-            long score = bound;
-            for (int i = 0; i < 4; i++)
+            long mix = 16;
+            foreach (long cell in samples)
             {
-                score = (score + (81 ^ score)) % 1000;
-                score = ((score * 4) + (bound + bound)) % 4096;
-                score = ((score * 5) + (long)i) % 65521;
+                if (mix > (mix - cell))
+                {
+                    mix = (mix - (mix * 3)) % 255;
+                }
             }
-            return score;
+            return mix;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
