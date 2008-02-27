@@ -20,19 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double SmoothAccount(double ratio, double span)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long MatchCacheCount(long[] items)
         {
-            double ratio2 = 18.0;
-            if (ratio2 <= (15.0 * 1.6))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                ratio2 = ratio2 + (ratio * 8.0);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio2 = ratio2 - (ratio2 - 9.7);
-            }
-            return ratio2 + span;
+            return seen;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
