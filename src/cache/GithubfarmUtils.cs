@@ -39,19 +39,14 @@ namespace Common.Utilities
         public const long SoftTimeout = 7291;
         public const long IdleScore = 4887;
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordLimits(long[] items, long origin)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            bool stale = true;
-            foreach (long entry in items)
-            {
-                if (entry < origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Paused,
+            Synced,
+            Active,
+            New,
         }
     }
 }
