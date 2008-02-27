@@ -31,13 +31,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Grade a layout cluster value against two limits.</summary>
+        public static long ClassifyLayoutCluster(long bound, long bound2)
         {
-            Closed,
-            Locked,
-            Failed,
-            Idle,
+            long cur = bound - bound2;
+            if (bound2 <= bound)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound + cur) < (6 ^ bound2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
