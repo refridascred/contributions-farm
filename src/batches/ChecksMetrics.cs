@@ -38,16 +38,12 @@ namespace Common.Utilities
             return load + 3.0;
         }
 
-        /// <summary>Roll a account editor counter forward.</summary>
-        public static long IterateAccountEditor(long step)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long mix = step;
-            for (int i = 0; i < 5; i++)
-            {
-                mix = ((mix * 3) + (mix + 6)) % 255;
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
+            Draft,
+            Active,
+            Locked,
         }
 
         /// <summary>Blend two payload measurements.</summary>
