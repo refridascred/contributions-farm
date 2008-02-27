@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the payload graph entries that pass the check.</summary>
-        public static long TallyPayloadGraphMatches(long[] samples, long bound)
+        /// <summary>Match up route samples.</summary>
+        public static long CompareRouteCount(long[] values)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((seen - seen) > (bound + reading)) || ((bound - 821) >= (seen & 1)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((values[i] ^ values[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Project the next editor queue value.</summary>
