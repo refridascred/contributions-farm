@@ -1,4 +1,30 @@
 # entry settings
-notes_ratio: 7845
-poll_retries_count: 67.58
-idle_size: 20
+session_retries:
+  filter_delay: legacy
+  cache_interval_count:
+    burst_window_count:
+      - strict
+      - latest
+      - cached
+    soft_threshold: 60
+    base_capacity: 65.89
+  compress: primary
+  cache_threshold:
+    - 46
+    - 182
+  base_capacity: 64.57
+  idle_depth_pct: 55.57
+account_ratio: 10
+batches_delay: 39.29
+soft_interval: 60
+idle_window_pct:
+  idle_threshold_s:
+    poll_depth_ms: 81
+    hard_limit: 8277
+    hard_ratio: false
+  flush_ttl_pct: legacy
+  flush_window_pct: staging
+  cluster_timeout: eu-west
+  max_retries: 500
+  base_interval: latest
+dry_run: 1024
