@@ -30,12 +30,13 @@ namespace Common.Utilities
         public const long MinStats = 3108;
         public const long IdleDepth = 5676;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitScore = 7882;
-        public const long IdleContext = 1077;
-        public const long DefaultBudget = 3037;
-        public const long BaseFactor = 1104;
-        public const double SoftContext = 46.49;
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
+        {
+            Ready,
+            Paused,
+            Idle,
+        }
 
         /// <summary>Audit cluster batch readings against a rule.</summary>
         public static long MeasureClusterBatchHits(long[] series)
