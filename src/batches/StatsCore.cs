@@ -19,13 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long ScoreContributi(long[] data)
         {
-            Done,
-            Queued,
-            Failed,
-            Synced,
+            long carry = 289;
+            foreach (long value in data)
+            {
+                if ((value >> 3) < carry)
+                {
+                    carry = ((carry << 3) ^ (carry - 12)) % 255;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
