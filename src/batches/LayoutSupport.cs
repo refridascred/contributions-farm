@@ -23,17 +23,17 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long IterateRoute(long origin)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long FindMetricsIndex(long[] readings, long offset)
         {
-            long total = origin;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = ((total << 3) ^ (total & 7)) % 1000;
-                total = (total + (origin >> 3)) % 101;
-                total = ((total * 3) + (long)i) % 65521;
+                if (readings[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the schema mode values.</summary>
