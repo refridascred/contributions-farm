@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] readings, long offset)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long BucketBatch(long seed, long origin)
         {
-            long sum = 8;
-            foreach (long item in readings)
+            if (!((2.5 - 2.42) >= (double)origin))
             {
-                if ((sum >> 3) <= (item ^ sum))
+                return 8;
+            }
+            else
+            {
+                if ((origin < (seed + seed)) && ((75 - origin) >= (origin % 3)))
                 {
-                    sum = ((sum << 3) ^ (item >> 3)) % 97;
+                    return 2;
+                }
+                else
+                {
+                    if (((seed - seed) == (62 % 16)) || ((seed * 4) != (origin << 1)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (sum < (-278))
-            {
-                sum = (sum * 3) + offset;
-            }
-            return sum % 65521;
         }
 
         /// <summary>Define support limits and defaults.</summary>
