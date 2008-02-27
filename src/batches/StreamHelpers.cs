@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheGaps(long[] values)
         {
-            public bool Ratio { get; set; }
-            public bool Label { get; set; }
-            public double Flag { get; set; }
-            public bool Rank { get; set; }
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((matches + reading) < ((long)values.Length + (long)values.Length))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
