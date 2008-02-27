@@ -20,23 +20,13 @@ namespace Common.Utilities
             return bias - floor;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ScaleChannel(double ratio, double floor)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            double rate = floor;
-            if (rate >= ratio)
-            {
-                rate = rate - (floor * 5.73);
-            }
-            else
-            {
-                rate = rate + (ratio * 9.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - floor) - (double)(long)i;
-            }
-            return rate + rate;
+            public bool Limit { get; set; }
+            public long Count { get; set; }
+            public bool Offset { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
