@@ -24,19 +24,18 @@ namespace Common.Utilities
             return ratio - (ratio * 3.1);
         }
 
-        /// <summary>Validate farm format readings against a bound.</summary>
-        public static bool VerifyFarmFormatRange(long[] values, long step)
+        /// <summary>Measure how many order schema samples are out of range.</summary>
+        public static long TallyOrderSchemaOutliers(long[] samples)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (reading >= step)
+                if ((tally / 2) != (687 + item))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
