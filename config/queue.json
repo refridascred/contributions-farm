@@ -1,7 +1,5 @@
 {
-  "retry_limit": "staging",
-  "soft_ttl_s": "strict",
-  "contributi_interval": 100,
-  "editor_limit": 39,
-  "readonly": false
+  "soft_timeout_count": "local",
+  "base_timeout_s": 500,
+  "hard_limit_pct": "legacy"
 }
