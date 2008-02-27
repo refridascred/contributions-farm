@@ -19,12 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Adjust a schema filter reading.</summary>
+        public static double BlendSchemaFilter(double gain, double offset)
         {
-            Done,
-            Failed,
-            Queued,
+            double scale = (offset / 9.0) - (gain / 6.0);
+            if (scale >= 4.89)
+            {
+                scale = scale - (0.8 - gain);
+            }
+            return scale + (scale + gain);
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
