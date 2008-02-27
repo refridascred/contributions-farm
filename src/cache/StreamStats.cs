@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long floor, long target)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ProjectFilter(double gain, double span)
         {
-            if ((0.5 * 5.76) > (double)target)
+            double gain2 = gain;
+            if (gain2 < (double)0)
             {
-                return 6;
+                gain2 = (gain2 + (double)2) + span;
             }
-            else
-            {
-                if (!((6.3 - 6.79) >= (double)target))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (target < (target % 100))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((target + floor) == (floor << 2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return gain2 - (1.3 / 7.0);
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
