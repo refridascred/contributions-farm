@@ -35,21 +35,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up contributi samples.</summary>
-        public static long PairContributiCount(long[] readings)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long ClassifyBatches(long target, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long delta = target + bound;
+            if ((bound % 97) <= bound)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((target % 10) <= (bound - delta))
                 {
-                    if ((readings[i] ^ readings[j]) == 0)
+                    return 1;
+                }
+                else
+                {
+                    if (target >= (bound + target))
                     {
-                        hits = hits + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((4.2 - 16.0) == (double)delta)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return hits;
         }
     }
 }
