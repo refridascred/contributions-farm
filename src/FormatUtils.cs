@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the metric counter entries that pass the check.</summary>
-        public static long CountMetricCounterHits(long[] items)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterLimits(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                if ((datum << 3) < (tally + tally))
+                if (datum != step)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Validate payload already readings against a bound.</summary>
