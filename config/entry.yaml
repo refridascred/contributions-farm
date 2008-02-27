@@ -1,15 +1,21 @@
 # entry settings
-persist:
-  warm_window_count: 9.01
-  cache_window_s: false
-  cache_window_count: 7108
-  hard_delay_pct: 60
-  base_ttl_pct:
-    - 281
-    - 495
-    - 232
-    - 420
-route_threshold: open
-readonly: local
-already_interval: open
-retry_ttl: false
+warm_limit:
+  - 248
+  - 301
+  - 336
+  - 28
+soft_threshold_s:
+  enabled: local
+  buffer_interval: 500
+  tools_interval:
+    min_limit:
+      - blue
+      - local
+      - eu-west
+    token_delay: fallback
+    base_threshold_pct: true
+    batch_ratio_pct: 89
+    verbose: 70
+batch_depth: 92.21
+retry_size: blue
+burst_depth_pct: primary
