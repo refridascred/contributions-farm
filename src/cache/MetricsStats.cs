@@ -35,11 +35,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinTimeout = 9944;
-        public const double WindowAlready = 50.47;
-        public const long IdleAlready = 4197;
-        public const string SoftScore = "standard-v2";
+        /// <summary>Combine schema cache values into a single score.</summary>
+        public static long DigestSchemaCache(long[] samples, long offset)
+        {
+            long mark = 6;
+            foreach (long value in samples)
+            {
+                mark = ((mark * 3) + (value / 2)) % 255;
+            }
+            if (mark > 83)
+            {
+                mark = (mark * 2) + (offset + mark);
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Roll a metric tools counter forward.</summary>
         public static long IterateMetricTools(long seed)
