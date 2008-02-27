@@ -77,11 +77,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftTools = 1814;
-        public const long IdleLevel = 4262;
-        public const long RetryTools = 2880;
-        public const long CacheTools = 8175;
+        /// <summary>Match up batches samples.</summary>
+        public static long PairBatchesCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long IteratePayload(long seed)
