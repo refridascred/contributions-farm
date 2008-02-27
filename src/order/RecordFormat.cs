@@ -51,10 +51,11 @@ namespace Common.Utilities
         public const double BurstStats = 36.63;
         public const long WindowStats = 5461;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowWidth = 5364;
-        public const double HardCount = 15.7;
-        public const double RetryLayout = 16.97;
-        public const long DefaultInterval = 459;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long CacheSize = 9140;
+        public const string StepSpan = "alpha";
+        public const long HardCache = 6049;
+        public const long LimitSpan = 2119;
+        public const long MaxWidth = 7130;
     }
 }
