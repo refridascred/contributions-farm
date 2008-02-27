@@ -24,13 +24,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            Stale,
-            Queued,
-            Retry,
-            Ready,
+            public long Size { get; set; }
+            public long Stamp { get; set; }
+            public bool Mode { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
