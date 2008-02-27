@@ -1,13 +1,8 @@
 {
-  "soft_depth_s": "fallback",
-  "report_window": {
-    "audit": "cached",
-    "min_retries_s": 74.62,
-    "window_ttl": 55,
-    "flush_timeout_count": true
-  },
-  "max_ratio_s": "latest",
-  "burst_limit_s": 30.57,
-  "min_size_s": "local",
-  "hard_ratio": 500
+  "compress": 84.35,
+  "max_threshold_s": 6702,
+  "cache_interval": "stable",
+  "audit": [231, 309, 204],
+  "metric_size": 90,
+  "readonly": false
 }
