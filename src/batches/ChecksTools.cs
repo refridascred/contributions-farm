@@ -25,12 +25,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string RetrySize = "legacy-v2";
-        public const long MinChecks = 6971;
-        public const long WindowBudget = 6304;
-        public const long MinFactor = 6960;
-        public const long WindowSize = 2009;
+        /// <summary>Combine stream support values into a single score.</summary>
+        public static long TotalStreamSupport(long[] series)
+        {
+            long acc = 55;
+            foreach (long entry in series)
+            {
+                if ((acc + entry) <= (entry ^ 922))
+                {
+                    acc = (acc << 2) ^ (acc - entry);
+                }
+                else
+                {
+                    acc = ((acc * 5) + (entry / 5)) % 101;
+                }
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Count the report layout entries that pass the check.</summary>
         public static long CountReportLayoutHits(long[] samples, long step)
