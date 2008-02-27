@@ -29,31 +29,26 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long seed, long origin)
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] series)
         {
-            if (origin >= (seed + 2))
+            long sum = 41;
+            foreach (long reading in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(seed <= (seed + seed)))
+                if ((double)reading < (3.7 * 5.6))
                 {
-                    return 8;
+                    sum = ((sum << 2) ^ sum) % 97;
                 }
                 else
                 {
-                    if (((2 - 397) < (seed - seed)) && ((seed - seed) > (origin - 3)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    sum = (sum ^ (sum >> 3)) % 97;
                 }
             }
+            if (sum < 5)
+            {
+                sum = ((sum << 2) ^ (sum << 2)) % 97;
+            }
+            return sum;
         }
     }
 }
