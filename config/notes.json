@@ -1,12 +1,11 @@
 {
-  "flush_capacity": 100,
-  "retry_threshold_pct": "primary",
-  "buffer_ttl": {
-    "persist": false,
-    "enabled": "staging",
-    "context_limit": "fallback",
-    "burst_retries_ms": 56.54
+  "idle_ttl_s": {
+    "queue_timeout": 27,
+    "sync_interval_count": true,
+    "poll_ratio_ms": "primary"
   },
-  "poll_delay_count": 100,
-  "retry_size": 42
+  "dry_run": ["green", "blue", "green", "open"],
+  "retry_depth_pct": "open",
+  "retry_delay_s": "cached",
+  "soft_delay_s": "edge"
 }
