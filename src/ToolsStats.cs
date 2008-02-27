@@ -76,21 +76,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long OverlapMetricCount(long[] items)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Stale,
+            Paused,
+            Pending,
+            Queued,
+            Retry,
         }
 
         /// <summary>Define account limits and defaults.</summary>
