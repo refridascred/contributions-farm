@@ -13,20 +13,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long SeriesMetrics(long origin)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileHits(long[] series, long limit)
         {
-            long mark = origin;
-            for (int i = 0; i < 15; i++)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                mark = mark - (origin ^ (-882));
-                if ((origin << 1) <= (long)i)
+                if ((entry - seen) == (seen & 255))
                 {
-                    mark = (mark * 4) + (long)i;
+                    seen = (seen + 3) + limit;
                 }
-                mark = ((mark * 3) + (long)i) % 97;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
