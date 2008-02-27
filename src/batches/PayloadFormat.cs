@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteMatches(long[] items, long offset)
         {
-            public bool Flag { get; set; }
-            public string Total { get; set; } = "";
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if (!((1 ^ 43) <= (tally >> 1)))
+                {
+                    tally = ((tally + 3) + item) - offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the context status values.</summary>
