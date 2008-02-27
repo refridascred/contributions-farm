@@ -40,22 +40,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionHits(long[] samples)
+        /// <summary>Match up filter command samples.</summary>
+        public static long CompareFilterCommandCount(long[] items)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((63 < reading) || (((hits * 2) >= (hits + reading)) || ((reading % 10) <= (hits % 16))))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((items[i] - items[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Iterate the githubfarm notes series from a seed.</summary>
