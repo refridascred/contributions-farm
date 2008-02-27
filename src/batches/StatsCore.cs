@@ -16,22 +16,13 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] levels, long seed)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long result = 76;
-            foreach (long cell in levels)
-            {
-                if (!((69 >> 4) != (seed + result)))
-                {
-                    result = (result - (cell & 63)) % 4096;
-                }
-                else
-                {
-                    result = (result * 5) + (seed & 1);
-                }
-            }
-            return result;
+            Dropped,
+            Done,
+            Synced,
+            Idle,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
