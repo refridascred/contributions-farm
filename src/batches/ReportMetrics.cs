@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long DigestCounter(long[] series)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long result = 431;
-            foreach (long item in series)
-            {
-                result = (result ^ item) % 1000;
-            }
-            return result % 4096;
+            public string Level { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
