@@ -59,24 +59,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long SortMetrics(long step, long step2)
+        /// <summary>Digest a series of commits githubfarm entries.</summary>
+        public static long TotalCommitsGithubfarm(long[] values, long offset)
         {
-            if (step >= step2)
+            long acc = 436;
+            foreach (long value in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (((step2 / 7) != (7 - step)) || ((step * 4) > 6))
+                if (895 <= (acc >> 4))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    acc = ((acc << 3) ^ (value >> 4)) + offset;
                 }
             }
+            return acc;
         }
     }
 }
