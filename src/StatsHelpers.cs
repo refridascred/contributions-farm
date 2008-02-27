@@ -45,12 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string RetryDepth = "strict";
-        public const string SoftToken = "cached-1";
-        public const long BatchScore = 2716;
-        public const long LimitScore = 6074;
-        public const long BaseSize = 4055;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutOutliers(long[] samples, long limit)
+        {
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if (((double)matches >= (double)(long)samples.Length) && ((double)5 < (double)matches))
+                {
+                    matches = ((matches + 3) ^ cell) - limit;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of graph readings.</summary>
         public static long OverlapGraphCount(long[] series)
