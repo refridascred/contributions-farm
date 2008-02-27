@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every report tools entry stays within the limit.</summary>
-        public static bool GuardReportToolsLimits(long[] values, long step)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            bool flag = true;
-            foreach (long value in values)
-            {
-                if (value >= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Owner { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
