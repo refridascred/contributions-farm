@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepFactor = 6281;
-        public const long HardBatch = 3898;
-        public const long LimitBatch = 4476;
-        public const long SoftBatch = 7404;
-        public const long HardRatio = 5842;
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double BlendAlready(double rate, double offset)
+        {
+            double bias = 2.22;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + (bias - bias)) + (double)(long)i;
+            }
+            return bias - (rate - offset);
+        }
 
         /// <summary>Look up the position of a window sample.</summary>
         public static long LookupWindowIndex(long[] items, long offset)
