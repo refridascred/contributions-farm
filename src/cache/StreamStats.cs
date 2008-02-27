@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long StepCommits(long step)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long state = step;
-            for (int i = 0; i < 22; i++)
-            {
-                state = ((state * 3) + state) % 65521;
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
+            public double Weight { get; set; }
+            public string Flag { get; set; } = "";
+            public long Owner { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the batches status values.</summary>
