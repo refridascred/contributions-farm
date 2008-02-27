@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            Closed,
-            Stale,
-            Retry,
-            Synced,
+            New,
+            Queued,
+            Locked,
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
