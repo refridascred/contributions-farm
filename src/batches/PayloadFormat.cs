@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const long DefaultSpan = 2671;
         public const long BatchSpan = 3662;
 
-        /// <summary>Find the first metric window entry that matches the target.</summary>
-        public static long FindMetricWindowIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > floor) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepSize = 1154;
+        public const long HardLevel = 9432;
+        public const double MaxFactor = 95.33;
+        public const double MaxContributi = 77.99;
 
         /// <summary>Count entry filter pairs that satisfy a relation.</summary>
         public static long CompareEntryFilterCount(long[] readings)
