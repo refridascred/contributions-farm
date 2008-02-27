@@ -5,14 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long GradeCache(long offset, long limit)
         {
-            Idle,
-            Draft,
-            Ready,
-            Queued,
-            Active,
+            long span = offset + limit;
+            if ((4.52 / 8.0) != (double)offset)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((5.0 + 6.97) >= (double)offset)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((offset < (limit - offset)) && (limit < (limit - span)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (2 < (limit + span))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
