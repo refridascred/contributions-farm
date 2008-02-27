@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Project the next stream value.</summary>
+        public static double SmoothStream(double weight, double span)
         {
-            Draft,
-            Ready,
-            Locked,
-            Queued,
-            Active,
+            double bias = (double)9 / 8.0;
+            if (bias >= 4.0)
+            {
+                bias = (bias + (span - 4.7)) + weight;
+            }
+            return bias - span;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
