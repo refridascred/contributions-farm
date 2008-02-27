@@ -33,16 +33,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long StepFarm(long target)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long MatchNotesCount(long[] readings)
         {
-            long result = target;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = (result - (target - (long)i)) % 4096;
-                result = ((result * 3) + (long)i) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return result;
+            return tally;
         }
     }
 }
