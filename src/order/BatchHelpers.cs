@@ -40,31 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long seed, long offset)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            if (!((offset + seed) <= seed))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((4 <= offset) || ((seed + offset) < (offset + offset)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset - offset) != (seed - offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public string Owner { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
