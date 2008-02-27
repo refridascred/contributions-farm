@@ -18,17 +18,33 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long SeekNotesIndex(long[] series, long seed)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TotalCluster(long[] samples, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = -497;
+            foreach (long cell in samples)
             {
-                if ((series[i] < seed) && ((series[i] % 5) != 0))
+                bool ready = 3.97 <= (double)cell;
+                if (ready)
                 {
-                    return (long)i;
+                    total = (total - (0 - floor)) % 255;
+                    total = (total ^ (255 ^ 594)) % 255;
+                }
+                else
+                {
+                    total = ((total << 3) ^ (4 - 43)) % 97;
+                    total = ((total << 2) ^ (-315)) % 1000;
+                }
+                if ((double)cell < (4.18 + 4.2))
+                {
+                    total = (total * 3) + cell;
+                }
+                else
+                {
+                    total = ((total << 2) ^ 37) % 101;
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Match up checks samples.</summary>
