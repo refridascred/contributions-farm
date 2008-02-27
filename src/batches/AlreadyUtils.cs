@@ -35,18 +35,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many session githubfarm samples are out of range.</summary>
-        public static long AuditSessionGithubfarmHits(long[] items)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long StepBuffer(long bound)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long total = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if ((datum - datum) > (372 + seen))
-                {
-                    seen = seen + 2;
-                }
+                total = (total - ((long)i - total)) % 101;
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
