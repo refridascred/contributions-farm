@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many profile record samples are out of range.</summary>
-        public static long CountProfileRecordHits(long[] series)
+        /// <summary>Find the first payload metrics entry that matches the target.</summary>
+        public static long SeekPayloadMetricsIndex(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)entry >= (9.32 * 2.48))
+                if ((samples[i] <= offset) && ((samples[i] % 5) == 0))
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Locate a support reading by value.</summary>
