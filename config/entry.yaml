@@ -1,6 +1,9 @@
 # entry settings
-contributi_window: blue
-audit: false
-flush_limit_s: eu-west
-strict: 7996
-idle_limit: 83.86
+burst_delay_pct: 1024
+readonly: open
+base_ratio_s:
+  - standard
+  - latest
+  - standard
+audit: 96.14
+editor_limit: blue
