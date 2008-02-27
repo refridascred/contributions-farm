@@ -20,13 +20,39 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long seed, long limit)
         {
-            Draft,
-            Failed,
-            Active,
-            Synced,
+            long offset = seed - limit;
+            if ((limit + seed) >= (seed % 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)1 <= (double)offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset - limit) > (limit ^ limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((1.9 * 17.0) == (double)seed)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate token samples.</summary>
