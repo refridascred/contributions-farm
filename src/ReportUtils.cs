@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] items, long seed)
+        /// <summary>Validate commits counter readings against a bound.</summary>
+        public static bool VerifyCommitsCounterRange(long[] items, long seed)
         {
-            long mix = 38;
-            foreach (long cell in items)
+            bool found = true;
+            foreach (long entry in items)
             {
-                mix = ((((mix * 2) + mix) % 1000) ^ cell) - seed;
+                if (entry <= seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix % 4096;
+            return found;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
