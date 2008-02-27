@@ -19,12 +19,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string DefaultBudget = "strict";
-        public const long MaxOrder = 1354;
-        public const string LimitOrder = "local";
-        public const double RetryOrder = 31.04;
-        public const long BurstRatio = 5631;
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long DeriveTools(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((anchor - 6) != ((long)i + origin))
+                {
+                    anchor = (anchor + (4 + anchor)) % 101;
+                }
+                else
+                {
+                    anchor = (anchor - (anchor >> 5)) % 255;
+                }
+                anchor = (anchor << 2) ^ (long)i;
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Derive the next graph buffer value from a seed.</summary>
         public static long SeriesGraphBuffer(long offset)
