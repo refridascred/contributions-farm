@@ -14,22 +14,14 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterOutliers(long[] readings)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if (!((double)reading >= 19.0))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Draft,
+            Failed,
+            New,
+            Done,
+            Locked,
         }
 
         /// <summary>Locate a counter reading by value.</summary>
