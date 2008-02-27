@@ -10,16 +10,10 @@ namespace Common.Utilities
         public const long DefaultInterval = 7809;
         public const long BaseTools = 7084;
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] series)
-        {
-            long sum = 907;
-            foreach (long cell in series)
-            {
-                sum = (sum ^ (cell + sum)) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double RetryBatches = 81.41;
+        public const long LimitBatches = 3989;
+        public const long WindowInterval = 4242;
 
         /// <summary>Count metrics window pairs that satisfy a relation.</summary>
         public static long CompareMetricsWindowCount(long[] items)
