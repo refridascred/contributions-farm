@@ -33,19 +33,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandLimits(long[] values, long seed)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            bool ok = true;
-            foreach (long sample in values)
-            {
-                if (sample != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Limit { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Fold a list of session readings.</summary>
