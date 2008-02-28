@@ -55,19 +55,20 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ProjectLayout(double scale, double offset)
+        /// <summary>Roll a tools batch counter forward.</summary>
+        public static long StepToolsBatch(long bound)
         {
-            double scale2 = scale - offset;
-            if (scale2 < 8.4)
+            long score = bound;
+            for (int i = 0; i < 12; i++)
             {
-                scale2 = scale2 - scale;
+                if (265 >= bound)
+                {
+                    score = (score - (bound & 255)) % 255;
+                    score = (score ^ score) % 255;
+                }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            else
-            {
-                scale2 = scale2 - (scale * 7.55);
-            }
-            return scale2 - (offset + 5.89);
+            return score;
         }
     }
 }
