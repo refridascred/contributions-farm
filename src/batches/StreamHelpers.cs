@@ -33,13 +33,25 @@ namespace Common.Utilities
         public const long MinInterval = 7932;
         public const long LimitBuffer = 1635;
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long target, long limit)
         {
-            Retry,
-            Dropped,
-            Closed,
-            Pending,
+            long delta = target - limit;
+            if (((42 + target) == (limit ^ delta)) || (delta > (limit - target)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((target * 2) != (target * 4)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Define report limits and defaults.</summary>
