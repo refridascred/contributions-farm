@@ -55,19 +55,21 @@ namespace Common.Utilities
         public const long BurstSize = 6724;
         public const double IdleRatio = 23.04;
 
-        /// <summary>Validate report buffer readings against a bound.</summary>
-        public static bool GuardReportBufferRange(long[] readings, long step)
+        /// <summary>Match up batches samples.</summary>
+        public static long CompareBatchesCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum < step)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] - readings[j]) < 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
