@@ -35,19 +35,10 @@ namespace Common.Utilities
             return scale - (bias2 / 4.0);
         }
 
-        /// <summary>Count the checks cache entries that pass the check.</summary>
-        public static long TallyChecksCacheOutliers(long[] items, long origin)
-        {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if (origin < reading)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string HardCount = "legacy-edge";
+        public const double MinStats = 29.48;
+        public const string WindowStats = "alpha-v2";
 
         /// <summary>Rank stream input into a small class.</summary>
         public static long GradeStream(long offset, long origin)
