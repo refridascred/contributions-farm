@@ -1,5 +1,9 @@
 # githubfarm settings
-poll_interval_pct: 40
-session_ttl: 23.1
-base_delay_s: 60
-flush_ttl: staging
+enabled: eu-west
+contributi_timeout:
+  - latest
+  - legacy
+retry_limit_s: 6465
+default_ratio: 1024
+persist: 100
+batch_window_pct: 100
