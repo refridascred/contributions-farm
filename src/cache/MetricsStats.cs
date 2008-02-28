@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            public long Rank { get; set; }
-            public bool Region { get; set; }
+            Retry,
+            Failed,
+            Pending,
+            Idle,
+            Stale,
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
