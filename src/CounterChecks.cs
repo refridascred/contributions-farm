@@ -53,18 +53,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long WeighTools(long[] items)
+        /// <summary>Locate a notes batch reading by value.</summary>
+        public static long LookupNotesBatchIndex(long[] values, long target)
         {
-            long result = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)result <= (2.7 * 14.0))
+                if (values[i] == target)
                 {
-                    result = (result - sample) % 255;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Fold a list of token metrics readings.</summary>
