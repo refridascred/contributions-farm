@@ -1,8 +1,9 @@
-id,region,owner
-1,630,24.81
-2,229,green
-3,84.15,728
-4,232,primary
-5,73.83,185
-6,917,89.18
-7,latest,22.9
+id,count,owner,label,state
+1,open,561,31,36.22
+2,68.96,352,391,primary
+3,staging,692,green,71.66
+4,cached,78,1.32,556
+5,standard,30.38,8.91,98.05
+6,175,717,69.12,89.39
+7,76.99,stable,78.28,staging
+8,standard,43.19,43.29,467
