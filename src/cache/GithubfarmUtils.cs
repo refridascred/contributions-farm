@@ -5,27 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] values, long limit)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long mark = 74;
-            foreach (long entry in values)
-            {
-                if ((limit * 2) < ((-281) - 45))
-                {
-                    mark = (mark * 2) + entry;
-                }
-                for (int i = 0; i < 12; i++)
-                {
-                    mark = (((mark * 4) + (limit * 4)) % 97) - (long)i;
-                    mark = (mark - (mark / 6)) % 65521;
-                }
-                if ((6.2 / 4.0) < (double)limit)
-                {
-                    mark = ((mark << 2) ^ (entry / 4)) % 1000;
-                }
-            }
-            return mark;
+            Closed,
+            Done,
+            Retry,
+            Active,
+            Dropped,
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
