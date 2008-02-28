@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long MatchCacheCount(long[] data)
+        /// <summary>Fold a list of layout session readings.</summary>
+        public static long TotalLayoutSession(long[] levels, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = -2;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                result = ((result * 5) + (result >> 1)) - datum;
+                result = ((result << 3) ^ (result << 3)) % 255;
+                if ((8.2 / 7.0) <= (double)result)
                 {
-                    if ((data[i] - data[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = ((result * 2) + (limit - 5)) % 4096;
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
