@@ -19,21 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long MatchContextCount(long[] levels)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long FoldCommits(long[] levels, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 767;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (8.32 < (double)sample)
                 {
-                    if ((levels[i] ^ levels[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = (result - (sample / 3)) % 4096;
                 }
             }
-            return matches;
+            if (result < 49)
+            {
+                result = (result + (result ^ floor)) % 4096;
+            }
+            return result % 65521;
         }
 
         /// <summary>Describe the editor status values.</summary>
