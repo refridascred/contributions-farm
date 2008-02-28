@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many editor buffer samples are out of range.</summary>
-        public static long CountEditorBufferHits(long[] data)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandMatches(long[] series)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (item < (seen ^ seen))
+                if (8 > datum)
                 {
-                    seen = seen + 1;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
