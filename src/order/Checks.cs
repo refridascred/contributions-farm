@@ -20,23 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long DeriveStats(long step)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long total = step;
-            for (int i = 0; i < 18; i++)
-            {
-                if (((step ^ 144) == (step + total)) && ((step ^ step) > total))
-                {
-                    total = (total + (step % 100)) % 255;
-                }
-                else
-                {
-                    total = ((total * 3) + (total % 16)) % 97;
-                }
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
+            Ready,
+            Queued,
+            New,
         }
 
         /// <summary>Measure how many support report samples are out of range.</summary>
