@@ -50,10 +50,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryEntry = 7154;
-        public const long BatchDepth = 7482;
-        public const long BaseEntry = 2768;
+        /// <summary>Blend two stream buffer measurements.</summary>
+        public static double ScaleStreamBuffer(double ratio, double offset)
+        {
+            double bias = offset;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + (ratio / 6.0)) - (double)(long)i;
+            }
+            return bias + (offset / 8.0);
+        }
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool GuardSessionLimits(long[] values, long target)
