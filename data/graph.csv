@@ -1,7 +1,9 @@
-id,state,region
-1,67.36,edge
-2,933,edge
-3,94.3,369
-4,open,966
-5,16,local
-6,711,376
+id,active,level,state,owner
+1,46.83,47.02,382,10
+2,blue,39.1,23.38,latest
+3,37.72,open,fallback,98.44
+4,339,edge,382,eu-west
+5,133,628,stable,green
+6,14.47,203,51,eu-west
+7,121,edge,54.92,legacy
+8,393,577,eu-west,stable
