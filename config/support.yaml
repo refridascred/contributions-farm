@@ -1,4 +1,8 @@
 # support settings
-order_timeout: 65.6
-min_limit_ms: 1513
-cache_interval_count: 68.23
+hard_size_count:
+  - green
+  - strict
+  - edge
+cache_size_pct: 0.99
+metrics_delay: false
+poll_timeout_count: fallback
