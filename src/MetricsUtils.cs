@@ -27,22 +27,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphHits(long[] levels, long limit)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long offset)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long anchor = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if ((limit / 5) < (limit + limit))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    count = (count + 2) ^ sample;
+                    anchor = ((anchor - 133) % 65521) ^ (long)i2;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Combine already values into a single score.</summary>
