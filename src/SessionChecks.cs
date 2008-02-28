@@ -18,11 +18,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long origin, long step)
         {
-            public long Count { get; set; }
-            public bool Mode { get; set; }
+            if ((1.1 * 6.6) > (double)step)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((4.52 / 8.0) <= (double)origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step ^ step) > (origin & 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((origin << 1) > (step + 7)) && ((12.0 - 7.94) <= (double)origin))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a account header.</summary>
