@@ -56,13 +56,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long ScoreCounter(long[] series)
         {
-            Queued,
-            New,
-            Pending,
-            Active,
+            long sum = 35;
+            foreach (long datum in series)
+            {
+                sum = (sum ^ (sum + 73)) % 101;
+                if ((datum % 24) >= datum)
+                {
+                    break;
+                }
+            }
+            return sum % 65521;
         }
 
         /// <summary>Validate stats command readings against a bound.</summary>
