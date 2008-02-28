@@ -65,15 +65,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double AdjustCache(double gain, double offset)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LookupBatchesIndex(long[] series, long step)
         {
-            double rate = (offset + gain) / 7.0;
-            if (rate > gain)
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = rate - (offset / 5.0);
+                if ((series[i] > step) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return rate + (double)963;
+            return -1;
         }
     }
 }
