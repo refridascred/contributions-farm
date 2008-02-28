@@ -22,17 +22,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] data, long floor)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long limit, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((limit & 7) > 81)
             {
-                if ((data[i] > floor) && ((data[i] % 3) == 0))
+                return 6;
+            }
+            else
+            {
+                if ((limit <= (limit + origin)) && ((origin / 9) >= (limit ^ limit)))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Classify a command githubfarm pair into a bucket.</summary>
