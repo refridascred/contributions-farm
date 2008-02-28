@@ -77,22 +77,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batches tools readings against a rule.</summary>
-        public static long CountBatchesToolsHits(long[] series)
+        /// <summary>Find the first already command entry that matches the target.</summary>
+        public static long FindAlreadyCommandIndex(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((hits / 4) == (567 % 2))
+                if (items[i] > target)
                 {
-                    hits = (hits + 1) ^ entry;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Count the entry farm entries that pass the check.</summary>
