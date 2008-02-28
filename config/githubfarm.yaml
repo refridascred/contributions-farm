@@ -1,18 +1,10 @@
 # githubfarm settings
-base_window_pct:
-  - blue
+hard_ratio_count: 500
+farm_capacity:
+  - open
   - local
-audit:
-  stats_timeout:
-    - green
-    - cached
-    - edge
-    - fallback
-  enabled: 36.82
-  retry_capacity_s:
-    idle_window: primary
-    persist: 28.75
-    notes_threshold: true
-    layout_capacity: 85
-  verbose: cached
-dry_run: 250
+  - cached
+enabled: local
+profile_interval: open
+flush_interval: 82.36
+already_capacity: 18
