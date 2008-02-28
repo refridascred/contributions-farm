@@ -1,25 +1,7 @@
 # support settings
-default_window_count:
-  poll_window: 63
-  readonly: 96.19
-  audit: green
-  max_limit: true
-  hard_retries_count: 84.51
-  min_capacity_ms:
-    stream_capacity: open
-    schema_retries: false
-    idle_window_s:
-      - legacy
-      - open
-      - edge
-    verbose: false
-    payload_delay: 6073
-    stream_retries:
-      - primary
-      - staging
-      - cached
-burst_interval: 7115
-flush_capacity: stable
-record_interval: cached
-persist: false
-soft_capacity_ms: 690
+poll_timeout_ms: stable
+retry_delay: legacy
+hard_capacity_ms: fallback
+base_depth: 27
+context_timeout: latest
+sync_window_s: 54.79
