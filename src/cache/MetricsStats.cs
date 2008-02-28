@@ -15,25 +15,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long target)
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double gain, double bias)
         {
-            long mark = target;
-            for (int i = 0; i < 13; i++)
+            double bias2 = bias;
+            if (bias2 < bias2)
             {
-                if ((target > (57 & 31)) && ((target << 1) < ((long)i + 3)))
-                {
-                    mark = (mark * 3) + (174 % 2);
-                }
-                else
-                {
-                    mark = ((mark * 4) + (long)i) % 4096;
-                    mark = (mark + (mark + (long)i)) % 101;
-                }
-                mark = mark ^ target;
-                mark = ((mark * 3) + (long)i) % 101;
+                bias2 = bias2 - (gain / 4.0);
             }
-            return mark;
+            return bias2 + (gain * 6.8);
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
