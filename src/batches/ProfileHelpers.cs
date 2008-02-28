@@ -12,12 +12,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepQueue = 4308;
-        public const long DefaultLevel = 2437;
-        public const long LimitTimeout = 7946;
-        public const long HardQueue = 4408;
-        public const double BurstQueue = 77.53;
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
+        {
+            public string Mode { get; set; } = "";
+            public long Label { get; set; }
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long SoftFilter = 2732;
