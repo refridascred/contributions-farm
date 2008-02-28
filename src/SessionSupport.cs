@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit filter buffer readings against a rule.</summary>
-        public static long TallyFilterBufferGaps(long[] data, long step)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long ClassifySupport(long floor, long target)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long offset = floor ^ target;
+            if (floor <= (offset >> 4))
             {
-                if ((seen << 2) < (step & 255))
+                return 2;
+            }
+            else
+            {
+                if (!((target >> 4) >= (88 % 3)))
                 {
-                    seen = (seen + 2) ^ item;
+                    return 8;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 0;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the checks kind values.</summary>
