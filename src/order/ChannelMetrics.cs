@@ -16,12 +16,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextBounds(long[] series, long limit)
         {
-            New,
-            Synced,
-            Failed,
+            bool valid = true;
+            foreach (long reading in series)
+            {
+                if (reading != limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the order level values.</summary>
