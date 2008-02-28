@@ -41,15 +41,12 @@ namespace Common.Utilities
             return bias2 + 3.08;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ScaleBatches(double ratio, double bias)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            double drift = (double)(927 ^ (-22));
-            if (drift >= (ratio - ratio))
-            {
-                drift = drift + 5.54;
-            }
-            return drift - (bias + bias);
+            Ready,
+            Queued,
+            Draft,
         }
     }
 }
