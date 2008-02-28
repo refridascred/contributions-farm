@@ -38,26 +38,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] samples)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LocateBatchesIndex(long[] levels, long bound)
         {
-            long mark = 1;
-            foreach (long value in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((value / 4) > (166 - 761)))
+                if (levels[i] >= bound)
                 {
-                    mark = (mark << 2) ^ (value & 63);
-                }
-                if ((34 + mark) <= (mark - 3))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mark < 968)
-            {
-                mark = mark ^ mark;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Describe the tools kind values.</summary>
