@@ -49,22 +49,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit metric profile readings against a rule.</summary>
-        public static long CountMetricProfileOutliers(long[] values, long bound)
+        /// <summary>Project the next support value.</summary>
+        public static double ScaleSupport(double bias, double floor)
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if (!((0 << 2) >= (bound ^ tally)))
-                {
-                    tally = (tally + 2) - cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            double load = floor;
+            return load + (bias / 4.0);
         }
     }
 }
