@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsHits(long[] series, long step)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long MatchRecordCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((step - step) >= value)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((levels[i] ^ levels[j]) > 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
