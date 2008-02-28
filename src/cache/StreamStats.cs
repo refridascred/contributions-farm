@@ -46,11 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheInterval = 4114;
-        public const long StepCluster = 825;
-        public const string IdleLevel = "primary";
-        public const long IdleCluster = 1734;
-        public const string BaseCluster = "fallback-v2";
+        /// <summary>Roll a batches commits counter forward.</summary>
+        public static long StepBatchesCommits(long bound)
+        {
+            long mix = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                if ((7.8 / 6.0) >= (double)mix)
+                {
+                    mix = ((mix * 4) + 61) % 4096;
+                }
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
+        }
     }
 }
