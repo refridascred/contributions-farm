@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long CompareEntryCount(long[] samples)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long StepCounter(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                anchor = anchor ^ (step % 64);
+                anchor = anchor ^ 0;
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
