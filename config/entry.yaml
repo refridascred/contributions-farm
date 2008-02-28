@@ -1,17 +1,14 @@
 # entry settings
-warm_retries_s: 53.17
-strict:
-  retry_ratio_pct: blue
-  burst_size_ms: 2695
-  default_window_s: 68
-  warm_capacity_s:
-    - 182
-    - 458
-sync_capacity_pct: 29
-min_depth: true
-account_ttl:
-  - cached
-  - cached
-  - green
-  - strict
-account_size: false
+base_ratio_pct: staging
+enabled: blue
+dry_run: 5804
+retry_window: true
+base_retries_ms:
+  burst_threshold_ms: latest
+  sync_threshold_ms: 70.57
+  retry_timeout_pct: local
+  report_window:
+    - fallback
+    - blue
+    - standard
+  checks_timeout: strict
