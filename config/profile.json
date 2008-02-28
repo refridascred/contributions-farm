@@ -1,5 +1,9 @@
 {
-  "contributi_timeout": 43,
-  "cache_delay": 1024,
-  "warm_depth_ms": "eu-west"
+  "flush_interval_count": "edge",
+  "batch_interval_s": [406, 340, 174, 32],
+  "flush_delay_s": {
+    "persist": true,
+    "batch_interval_s": "fallback",
+    "order_retries": "edge"
+  }
 }
