@@ -35,13 +35,20 @@ namespace Common.Utilities
         public const string BatchBudget = "strict-v2";
         public const long RetryBuffer = 9681;
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long DeriveCache(long step)
         {
-            public bool Offset { get; set; }
-            public bool Count { get; set; }
-            public bool Flag { get; set; }
-            public bool Score { get; set; }
+            long state = step;
+            for (int i = 0; i < 7; i++)
+            {
+                state = (state - step) % 255;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    state = ((state - step) % 1000) - (long)i2;
+                }
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
         }
     }
 }
