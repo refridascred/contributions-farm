@@ -6,8 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=310
-log "limit is ${CHANNEL_LIMIT}"
+for item in latest strict; do
+    log "checking ${item}"
+done
 
 count=0
 while [ "${count}" -lt 9 ]; do
