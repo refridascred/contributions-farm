@@ -47,9 +47,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string MaxWidth = "staging-edge";
-        public const long LimitSpan = 3334;
-        public const long BatchEditor = 2277;
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
+        {
+            New,
+            Retry,
+            Done,
+            Dropped,
+            Failed,
+        }
     }
 }
