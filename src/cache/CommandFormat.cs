@@ -12,12 +12,11 @@ namespace Common.Utilities
         public const string LimitSession = "open-edge";
         public const long MaxSession = 6738;
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            Done,
-            Retry,
-            Ready,
+            public long Total { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
