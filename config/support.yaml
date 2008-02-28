@@ -1,9 +1,14 @@
 # support settings
-report_depth: true
-default_capacity_s: true
-hard_delay: 69.16
-retry_retries:
-  - 193
-  - 473
-  - 422
-persist: true
+min_size_count: 100
+min_depth:
+  default_depth_ms: 56.02
+  base_delay_ms:
+    - 448
+    - 340
+    - 303
+  flush_limit_ms: eu-west
+  order_size:
+    - green
+    - fallback
+batch_timeout: 9549
+persist: fallback
