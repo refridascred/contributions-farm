@@ -33,17 +33,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LookupCounterIndex(long[] levels, long floor)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (levels[i] >= floor)
+                if ((sum & 127) == (long)i)
                 {
-                    return (long)i;
+                    sum = (sum - (3 * 2)) % 1000;
+                    break;
                 }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Rank session input into a small class.</summary>
