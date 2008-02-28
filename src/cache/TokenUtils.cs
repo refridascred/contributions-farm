@@ -30,12 +30,13 @@ namespace Common.Utilities
         public const string BatchBudget = "strict-v2";
         public const long RetryBuffer = 9681;
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
+            public bool Offset { get; set; }
             public bool Count { get; set; }
-            public string Weight { get; set; } = "";
-            public double Ratio { get; set; }
+            public bool Flag { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
