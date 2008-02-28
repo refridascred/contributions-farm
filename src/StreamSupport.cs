@@ -16,13 +16,22 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long ScoreCounter(long[] values)
         {
-            public string Size { get; set; } = "";
-            public bool Level { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Weight { get; set; }
+            long acc = -9;
+            foreach (long cell in values)
+            {
+                if ((88 >> 2) < (acc >> 4))
+                {
+                    acc = ((acc << 2) ^ (cell & 7)) % 1000;
+                }
+                if (cell < (acc + (long)values.Length))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
