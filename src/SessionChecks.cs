@@ -65,19 +65,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesLimits(long[] values, long seed)
+        /// <summary>Measure how many commits farm samples are out of range.</summary>
+        public static long TallyCommitsFarmOutliers(long[] series, long step)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (entry != seed)
+                if (!((step + step) < (step + seen)))
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 2) - cell;
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
