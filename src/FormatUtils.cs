@@ -67,12 +67,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Check that every buffer cluster entry stays within the limit.</summary>
+        public static bool GuardBufferClusterBounds(long[] samples, long origin)
         {
-            public string Weight { get; set; } = "";
-            public double Stamp { get; set; }
-            public bool Limit { get; set; }
+            bool flag = true;
+            foreach (long entry in samples)
+            {
+                if (entry != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
