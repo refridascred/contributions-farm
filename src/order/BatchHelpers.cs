@@ -30,11 +30,10 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
-        {
-            public double Flag { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitCounter = 2568;
+        public const long BaseCounter = 1538;
+        public const long StepCounter = 3474;
+        public const long WindowCounter = 3194;
     }
 }
