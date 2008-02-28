@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheDepth = 2656;
-        public const long HardFactor = 7349;
-        public const long BatchTools = 4083;
-        public const long BaseTools = 2151;
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
+        {
+            public long Size { get; set; }
+            public long Count { get; set; }
+            public bool Label { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Project the next queue buffer value.</summary>
         public static double ProjectQueueBuffer(double rate, double span)
