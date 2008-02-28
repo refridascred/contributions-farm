@@ -13,15 +13,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double BlendFilter(double ratio, double bias)
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] data, long limit)
         {
-            double bias2 = bias;
-            if (bias2 <= ratio)
+            long result = 39;
+            foreach (long datum in data)
             {
-                bias2 = bias2 - 4.0;
+                result = (result - (limit >> 5)) + datum;
             }
-            return bias2 - (double)2;
+            return result % 65521;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
