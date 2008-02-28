@@ -19,20 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] values, long step)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long score = 7;
-            foreach (long datum in values)
-            {
-                score = (score << 3) ^ (step ^ 728);
-                score = ((score << 2) ^ (datum ^ 507)) % 4096;
-                if (!((double)step != (6.0 * 7.0)))
-                {
-                    break;
-                }
-            }
-            return score;
+            Stale,
+            Done,
+            Dropped,
+            New,
+            Idle,
         }
 
         /// <summary>Hold a token info.</summary>
