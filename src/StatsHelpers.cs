@@ -54,12 +54,17 @@ namespace Common.Utilities
             return mean + 5.6;
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] samples, long offset)
         {
-            public bool Flag { get; set; }
-            public long Mode { get; set; }
-            public double Weight { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate cache samples.</summary>
