@@ -28,39 +28,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long BucketCommits(long limit, long floor)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] items, long target)
         {
-            long offset = limit ^ floor;
-            if ((floor <= (limit + offset)) || (offset < (offset + (-50))))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((limit << 1) >= limit))
+                if ((items[i] > target) && ((items[i] % 5) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (floor <= (offset >> 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((limit / 9) >= floor)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
