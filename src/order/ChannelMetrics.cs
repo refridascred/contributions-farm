@@ -20,22 +20,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmGaps(long[] readings)
+        /// <summary>Combine metrics format values into a single score.</summary>
+        public static long WeighMetricsFormat(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long acc = 637;
+            foreach (long reading in series)
             {
-                if ((799 + sample) == (sample % 16))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                acc = (acc ^ reading) % 1000;
             }
-            return seen;
+            if (acc > 396)
+            {
+                acc = (acc + bound) % 4096;
+            }
+            return acc;
         }
     }
 }
