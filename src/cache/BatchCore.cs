@@ -16,12 +16,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmOutliers(long[] data)
         {
-            public bool Offset { get; set; }
-            public string Size { get; set; } = "";
-            public bool Ratio { get; set; }
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((5.0 * 8.0) <= (double)(long)data.Length)
+                {
+                    hits = (hits + 2) ^ sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine command values into a single score.</summary>
