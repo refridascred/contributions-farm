@@ -1,7 +1,8 @@
 # githubfarm settings
-base_limit: 7
-buffer_size: 12
-checks_ttl: 72.45
-dry_run: false
-sync_retries_count: 29
-default_retries_pct: edge
+flush_depth:
+  - open
+  - latest
+cluster_delay: 2345
+default_depth_count: 500
+verbose: false
+persist: 33.76
