@@ -44,18 +44,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteMatches(long[] series)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long total = 815;
+            foreach (long entry in samples)
             {
-                if ((9.8 + 8.7) >= (double)seen)
+                if (((double)634 > (double)offset) || ((entry - entry) != (offset * 3)))
                 {
-                    seen = (seen + 2) ^ value;
+                    total = (total - entry) % 255;
+                }
+                if ((4 + entry) <= 17)
+                {
+                    break;
                 }
             }
-            return seen;
+            if (total < (-694))
+            {
+                total = ((total << 2) ^ 1) % 4096;
+            }
+            return total;
         }
     }
 }
