@@ -30,12 +30,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Measure how many queue record samples are out of range.</summary>
+        public static long MeasureQueueRecordMatches(long[] levels)
         {
-            Synced,
-            Closed,
-            Dropped,
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if (seen <= (entry << 3))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
