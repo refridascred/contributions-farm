@@ -20,24 +20,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] values, long limit)
-        {
-            long mark = 406;
-            foreach (long item in values)
-            {
-                if ((mark - mark) >= (78 & 127))
-                {
-                    mark = (((mark - ((-589) + mark)) % 65521) ^ item) - limit;
-                }
-                mark = (mark + (349 / 4)) % 97;
-            }
-            if (mark < 810)
-            {
-                mark = (mark - mark) % 4096;
-            }
-            return mark;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowQueue = 4845;
+        public const string IdleQueue = "alpha-edge";
+        public const long HardRatio = 9771;
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long FoldChannel(long[] data, long seed)
