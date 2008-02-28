@@ -30,30 +30,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] readings, long offset)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LookupCacheIndex(long[] items, long step)
         {
-            long result = 85;
-            foreach (long reading in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((186 >> 3) <= (result & 255))
+                if (items[i] == step)
                 {
-                    result = ((result << 3) ^ result) % 4096;
-                }
-                else
-                {
-                    result = ((result << 3) ^ (offset ^ reading)) % 97;
-                }
-                if (((double)reading > (double)94) && ((offset * 5) > (offset + offset)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (result < 426)
-            {
-                result = result + (result * 2);
-            }
-            return result % 65521;
+            return -1;
         }
 
         /// <summary>Hold a counter info.</summary>
