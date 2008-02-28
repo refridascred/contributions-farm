@@ -48,11 +48,13 @@ namespace Common.Utilities
         public const string DefaultSupport = "strict-1";
         public const long WindowSupport = 3447;
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            public bool Label { get; set; }
-            public double Score { get; set; }
+            public long Total { get; set; }
+            public bool Owner { get; set; }
+            public double Region { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
