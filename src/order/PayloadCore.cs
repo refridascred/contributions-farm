@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ProjectTools(double scale, double bias)
         {
-            Dropped,
-            Stale,
-            Active,
+            double gain = (bias / 4.0) * 2.5;
+            if (gain < (double)4)
+            {
+                gain = gain + gain;
+            }
+            return gain + scale;
         }
 
         /// <summary>Define context limits and defaults.</summary>
