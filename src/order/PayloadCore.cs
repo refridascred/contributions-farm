@@ -26,19 +26,12 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteBounds(long[] levels, long bound)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            bool ready = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Idle,
+            Stale,
+            New,
         }
 
         /// <summary>Accumulate metric account samples.</summary>
