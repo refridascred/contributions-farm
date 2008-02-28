@@ -16,15 +16,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double AdjustStream(double scale, double bias)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            double drift = bias * 1.05;
-            for (int i = 0; i < 6; i++)
-            {
-                drift = ((drift - (drift - bias)) + (double)(long)i) + scale;
-            }
-            return drift + (9.4 - bias);
+            public long Size { get; set; }
+            public string Count { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Iterate the session notes series from a seed.</summary>
