@@ -13,12 +13,12 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            public string Count { get; set; } = "";
-            public long Level { get; set; }
-            public long Limit { get; set; }
+            Ready,
+            New,
+            Queued,
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
