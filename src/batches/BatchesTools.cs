@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchBounds(long[] items, long origin)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long BucketGithubfarm(long seed, long seed2)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            if ((795 * 2) >= seed2)
             {
-                if (cell >= origin)
+                return 2;
+            }
+            else
+            {
+                if (seed > (seed + seed))
                 {
-                    flag = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)62 < (double)seed)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
