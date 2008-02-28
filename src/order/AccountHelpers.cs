@@ -37,12 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultFormat = 9711;
-        public const long MaxRatio = 9726;
-        public const long WindowFormat = 2816;
-        public const double RetryRatio = 76.55;
-        public const long LimitFormat = 6347;
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
+        {
+            public double Owner { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Describe the format kind values.</summary>
         public enum FormatKind
