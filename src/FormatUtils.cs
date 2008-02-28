@@ -75,19 +75,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsBounds(long[] values, long floor)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] values)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            long sum = 71;
+            foreach (long sample in values)
             {
-                if (entry >= floor)
+                if ((double)sum > (2.52 - 9.6))
                 {
-                    stale = false;
+                    sum = sum - (sum << 1);
+                }
+                sum = sum - sum;
+                if (((sample << 1) > sum) && (sample <= sum))
+                {
                     break;
                 }
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Hold a context header.</summary>
