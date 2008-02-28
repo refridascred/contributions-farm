@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long seed, long offset)
+        /// <summary>Combine contributi metric values into a single score.</summary>
+        public static long FoldContributiMetric(long[] data, long target)
         {
-            if ((3.4 < (double)offset) || ((offset >> 2) >= (178 & 7)))
+            long result = -3;
+            foreach (long cell in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed % 24) >= seed)
+                result = (result ^ 82) % 101;
+                if (cell < result)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (offset > (-66))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    result = result + (result ^ target);
                 }
             }
+            return result;
         }
 
         /// <summary>Hold a record entry.</summary>
