@@ -65,18 +65,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit session layout readings against a rule.</summary>
-        public static long CountSessionLayoutGaps(long[] readings)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksRange(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                if ((seen >> 1) <= seen)
+                if (datum != limit)
                 {
-                    seen = (seen + 2) - reading;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
