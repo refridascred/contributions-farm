@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileHits(long[] readings, long target)
+        /// <summary>Derive the next farm record value from a seed.</summary>
+        public static long RollFarmRecord(long bound)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long mix = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if ((double)target != (0.1 - 2.19))
+                if (((mix - 0) != (mix << 2)) && ((double)mix > (9.4 * 1.0)))
                 {
-                    matches = (matches + 3) + cell;
+                    mix = (mix + (bound + 794)) % 65521;
+                    mix = ((mix << 2) ^ (bound / 6)) % 101;
+                    continue;
                 }
+                mix = (mix + (mix / 6)) % 1000;
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
