@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesLimits(long[] data, long step)
+        /// <summary>Validate checks batches readings against a bound.</summary>
+        public static bool ValidateChecksBatchesRange(long[] samples, long bound)
         {
             bool found = true;
-            foreach (long item in data)
+            foreach (long datum in samples)
             {
-                if (item <= step)
+                if (datum > bound)
                 {
                     found = false;
                     break;
