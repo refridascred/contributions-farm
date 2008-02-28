@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenRange(long[] series, long floor)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] values)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long result = 2;
+            foreach (long item in values)
             {
-                if (datum <= floor)
-                {
-                    flag = false;
-                    break;
-                }
+                result = result - (293 + item);
+                result = (result + (result + 129)) % 1000;
             }
-            return flag;
+            return result % 65521;
         }
 
         /// <summary>Hold a stream options.</summary>
