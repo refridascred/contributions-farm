@@ -58,9 +58,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitRatio = 2535;
-        public const double CacheInterval = 91.42;
-        public const string LimitBatches = "local";
+        /// <summary>Match up window samples.</summary>
+        public static long OverlapWindowCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
