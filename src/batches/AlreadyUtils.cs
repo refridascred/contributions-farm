@@ -40,15 +40,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Blend two stream buffer measurements.</summary>
-        public static double ScaleStreamBuffer(double ratio, double offset)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long FoldStream(long[] samples)
         {
-            double bias = offset;
-            for (int i = 0; i < 3; i++)
+            long state = 1;
+            foreach (long datum in samples)
             {
-                bias = (bias + (ratio / 6.0)) - (double)(long)i;
+                if ((datum + datum) <= (datum << 1))
+                {
+                    state = state + (state / 8);
+                }
             }
-            return bias + (offset / 8.0);
+            if (state < 37)
+            {
+                state = (state << 3) ^ (state ^ 0);
+            }
+            return state;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
