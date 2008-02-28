@@ -34,14 +34,12 @@ namespace Common.Utilities
             return (mean + (span * 9.97)) + gain;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            Dropped,
-            Done,
-            Locked,
-            Closed,
-            Queued,
+            public double Rank { get; set; }
+            public long Size { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
