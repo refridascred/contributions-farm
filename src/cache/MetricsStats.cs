@@ -14,18 +14,25 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Accumulate batch command samples.</summary>
-        public static long TallyBatchCommand(long[] series)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long target)
         {
-            long acc = -31;
-            foreach (long cell in series)
+            long mark = target;
+            for (int i = 0; i < 13; i++)
             {
-                if ((double)acc <= (3.41 - 6.08))
+                if ((target > (57 & 31)) && ((target << 1) < ((long)i + 3)))
                 {
-                    acc = ((acc ^ (acc >> 5)) % 1000) - cell;
+                    mark = (mark * 3) + (174 % 2);
                 }
+                else
+                {
+                    mark = ((mark * 4) + (long)i) % 4096;
+                    mark = (mark + (mark + (long)i)) % 101;
+                }
+                mark = mark ^ target;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return acc % 4096;
+            return mark;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
