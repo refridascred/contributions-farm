@@ -24,20 +24,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsRange(long[] data, long target)
-        {
-            bool ready = true;
-            foreach (long value in data)
-            {
-                if (value < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitWidth = 2658;
+        public const long BatchBudget = 9503;
+        public const long CacheLayout = 6556;
+        public const long MaxLayout = 3970;
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long ScoreChecks(long[] series, long seed)
