@@ -12,19 +12,14 @@ namespace Common.Utilities
         public const long RetryInterval = 8364;
         public const string LimitSpan = "stable-edge";
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatBounds(long[] values, long seed)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            bool stale = true;
-            foreach (long datum in values)
-            {
-                if (datum <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Synced,
+            Done,
+            Active,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Project the next editor value.</summary>
