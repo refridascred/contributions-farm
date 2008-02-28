@@ -35,17 +35,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LocateCacheIndex(long[] readings, long offset)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Size { get; set; }
+            public bool Level { get; set; }
+            public string Rank { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Look up the position of a report sample.</summary>
