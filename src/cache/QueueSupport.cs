@@ -40,19 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double BlendAlready(double gain, double span)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            double scale = (double)(18 - 506);
-            if (scale >= scale)
-            {
-                scale = ((scale - (scale * 7.1)) - gain) - span;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale - (double)6;
+            New,
+            Draft,
+            Idle,
         }
 
         /// <summary>Roll a counter support counter forward.</summary>
