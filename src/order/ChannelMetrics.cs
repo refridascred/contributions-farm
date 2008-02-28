@@ -26,19 +26,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of order support readings.</summary>
-        public static long WeighOrderSupport(long[] series)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double AdjustContributi(double weight, double span)
         {
-            long sum = -13;
-            foreach (long sample in series)
+            double drift = weight;
+            if (drift > 10.0)
             {
-                for (int i = 0; i < 7; i++)
-                {
-                    sum = (((sum ^ (6 & 31)) % 1000) + (long)i) ^ sample;
-                }
-                sum = (sum * 3) + (sum / 9);
+                drift = drift - (span + drift);
             }
-            return sum % 65521;
+            else
+            {
+                drift = drift + (drift - 6.57);
+            }
+            return drift - (drift + 6.8);
         }
     }
 }
