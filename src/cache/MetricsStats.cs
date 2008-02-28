@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] samples, long bound)
         {
-            Done,
-            Draft,
-            Dropped,
+            long score = 39;
+            foreach (long item in samples)
+            {
+                if ((60 * 5) <= item)
+                {
+                    score = ((score << 3) ^ (bound / 7)) % 65521;
+                }
+                if ((double)score <= (double)bound)
+                {
+                    break;
+                }
+            }
+            if (score < 9)
+            {
+                score = (score + (score + score)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
