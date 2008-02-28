@@ -1,10 +1,6 @@
-id,count,token,level,owner
-1,707,599,cached,2.85
-2,6,78.41,open,40.45
-3,46.36,open,31.38,97
-4,993,765,951,129
-5,58.09,835,green,5.54
-6,86,527,30,43.25
-7,open,418,strict,local
-8,559,270,67.63,69.0
-9,cached,open,510,strict
+id,active,label,owner
+1,76.28,0.22,94
+2,primary,open,22.5
+3,strict,653,edge
+4,346,primary,latest
+5,20.63,67.24,blue
