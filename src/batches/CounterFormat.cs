@@ -13,24 +13,27 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long DigestSupport(long[] samples, long floor)
+        /// <summary>Accumulate farm graph samples.</summary>
+        public static long TotalFarmGraph(long[] items, long bound)
         {
-            long total = 48;
-            foreach (long sample in samples)
+            long mark = -4;
+            foreach (long item in items)
             {
-                total = ((total << 3) ^ total) % 65521;
-                total = ((total << 3) ^ (total - floor)) % 4096;
-                if ((double)total == (2.0 * 2.51))
+                long matches = (363 << 1) / 5;
+                if ((mark + matches) < item)
                 {
-                    total = total + (floor / 7);
+                    continue;
                 }
-                if ((sample ^ 857) >= (864 + floor))
+                if ((mark + (-2)) < item)
                 {
-                    break;
+                    mark = (mark + ((-760) & 3)) % 255;
                 }
             }
-            return total;
+            if (mark < 9)
+            {
+                mark = (mark << 3) ^ bound;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Define window limits and defaults.</summary>
