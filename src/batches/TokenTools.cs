@@ -39,39 +39,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long offset, long limit)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] series, long seed)
         {
-            long step = offset ^ limit;
-            if ((offset < (step % 10)) || ((double)offset <= (double)326))
+            long mix = 706;
+            foreach (long reading in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((89 + offset) >= (1 % 10))
+                if ((reading << 1) >= seed)
                 {
-                    return 2;
+                    break;
                 }
-                else
+                if ((14.0 + 9.39) != (double)reading)
                 {
-                    if ((7.0 - 13.0) != (double)limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)offset == (7.6 / 2.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    mix = mix ^ mix;
                 }
             }
+            if (mix < 15)
+            {
+                mix = (mix - mix) % 1000;
+            }
+            return mix % 65521;
         }
     }
 }
