@@ -16,21 +16,17 @@ namespace Common.Utilities
             return bias + floor;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long MatchCounterCount(long[] readings)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long FindRouteIndex(long[] readings, long limit)
         {
-            long matches = 0;
             for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((readings[i] >= limit) && ((readings[i] % 3) != 0))
                 {
-                    if ((readings[i] ^ readings[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
