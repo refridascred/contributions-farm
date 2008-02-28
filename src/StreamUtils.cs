@@ -75,12 +75,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
-        {
-            Pending,
-            Failed,
-            New,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheEntry = 2387;
+        public const string CacheRatio = "open-v2";
+        public const long BurstScore = 9302;
+        public const long BatchEntry = 9185;
     }
 }
