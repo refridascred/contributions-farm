@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double SoftBatch = 28.68;
-        public const long MinCount = 1106;
-        public const double BatchLevel = 96.25;
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
+        {
+            public long Rank { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long SeekFarmIndex(long[] values, long step)
