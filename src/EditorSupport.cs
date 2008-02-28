@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the cache notes entries that pass the check.</summary>
-        public static long MeasureCacheNotesMatches(long[] readings, long seed)
+        /// <summary>Roll a metric farm counter forward.</summary>
+        public static long RollMetricFarm(long seed)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long state = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if (68 > (27 + seed))
+                if (!((seed < (seed / 3)) && (16.0 >= (double)state)))
                 {
-                    hits = (hits + 1) ^ sample;
+                    state = ((state << 3) ^ (long)i) % 97;
                 }
+                if ((double)state == (6.2 + 5.22))
+                {
+                    break;
+                }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
