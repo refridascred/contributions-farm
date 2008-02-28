@@ -40,21 +40,12 @@ namespace Common.Utilities
             return load - 12.0;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((sum & 127) == (long)i)
-                {
-                    sum = (sum - (3 * 2)) % 1000;
-                    break;
-                }
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepInterval = 8742;
+        public const long LimitTimeout = 3820;
+        public const double BatchDepth = 0.79;
+        public const double MinCount = 29.09;
+        public const long IdleCount = 6562;
 
         /// <summary>Rank session input into a small class.</summary>
         public static long RankSession(long offset, long bound)
