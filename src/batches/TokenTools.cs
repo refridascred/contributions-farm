@@ -18,38 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long step, long bound)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            if (bound >= (bound * 4))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound < 257) && ((63 + bound) > step))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)step == (5.2 * 9.1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step + 1) != (step + bound))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public double Weight { get; set; }
+            public long Offset { get; set; }
+            public long Count { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Validate session readings against a bound.</summary>
