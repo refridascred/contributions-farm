@@ -54,12 +54,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
             public long Region { get; set; }
-            public long Token { get; set; }
-            public long Stamp { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
