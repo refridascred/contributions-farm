@@ -1,7 +1,17 @@
 {
-  "idle_retries_ms": "fallback",
-  "enabled": 50,
-  "flush_retries_s": 27,
-  "compress": [323, 258],
-  "retry_limit_s": true
+  "cache_delay_ms": ["cached", "standard"],
+  "githubfarm_depth": 500,
+  "schema_ttl": 1024,
+  "min_capacity_pct": {
+    "strict": 92.99,
+    "flush_timeout_pct": "staging",
+    "max_interval_count": {
+      "tools_window": false,
+      "audit": "green",
+      "warm_limit_pct": 250,
+      "metrics_interval": 30
+    },
+    "hard_retries": 5688,
+    "audit": [171, 304, 398, 250]
+  }
 }
