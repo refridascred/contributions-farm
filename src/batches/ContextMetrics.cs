@@ -50,26 +50,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long DigestQueue(long[] series)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmMatches(long[] readings, long seed)
         {
-            long carry = 776;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (carry < (carry * 5))
+                if ((seed + sample) == (seed & 3))
                 {
-                    carry = carry ^ (carry >> 5);
+                    count = count + 3;
                 }
                 else
                 {
-                    carry = carry ^ (item >> 4);
+                    count = count - 1;
                 }
             }
-            if (carry < 2)
-            {
-                carry = (carry ^ (carry + 91)) % 255;
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
