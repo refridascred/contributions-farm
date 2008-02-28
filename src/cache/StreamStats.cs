@@ -34,21 +34,17 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] data)
+        /// <summary>Locate a queue token reading by value.</summary>
+        public static long SeekQueueTokenIndex(long[] samples, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (samples[i] >= floor)
                 {
-                    if ((data[i] + data[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
