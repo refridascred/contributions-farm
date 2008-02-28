@@ -32,19 +32,13 @@ namespace Common.Utilities
         public const string StepQueue = "latest-1";
         public const double RetryQueue = 96.46;
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long ScoreChannel(long[] values)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long state = 37;
-            foreach (long value in values)
-            {
-                state = (state + state) % 1000;
-                if ((8 - state) > value)
-                {
-                    break;
-                }
-            }
-            return state;
+            public double Size { get; set; }
+            public long Rank { get; set; }
+            public double Ratio { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Derive the next notes record value from a seed.</summary>
