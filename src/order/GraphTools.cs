@@ -40,13 +40,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
-        {
-            public double Weight { get; set; }
-            public bool Flag { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftMetrics = 2165;
+        public const double LimitMetrics = 70.62;
+        public const long LimitFactor = 6375;
 
         /// <summary>Roll a record command counter forward.</summary>
         public static long SeriesRecordCommand(long limit)
