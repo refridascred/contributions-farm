@@ -36,31 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long bound, long limit)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyHits(long[] readings, long floor)
         {
-            if ((bound << 3) == (limit & 15))
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)bound == (5.52 * 2.1)) && ((double)bound < (6.8 + 4.91)))
+                if ((double)floor <= (double)cell)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((8.0 - 2.3) == (double)limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Count the schema checks entries that pass the check.</summary>
