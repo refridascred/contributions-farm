@@ -43,9 +43,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BaseCount = 10.49;
-        public const string BurstSize = "legacy-edge";
-        public const long HardPayload = 5717;
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmRange(long[] samples, long offset)
+        {
+            bool found = true;
+            foreach (long datum in samples)
+            {
+                if (datum < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
