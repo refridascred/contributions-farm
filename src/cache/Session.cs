@@ -56,12 +56,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long FindStreamIndex(long[] samples, long floor)
         {
-            public double Mode { get; set; }
-            public bool Label { get; set; }
-            public double Weight { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
