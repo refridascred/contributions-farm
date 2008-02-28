@@ -1,17 +1,25 @@
 # githubfarm settings
-soft_ttl: primary
-strict: 3.91
-soft_interval_pct:
-  base_window_ms: true
-  command_capacity:
-    - 152
-    - 12
-    - 255
-    - 52
-  profile_size: 67.65
-  graph_ttl: 5376
-  sync_interval_s: strict
-  hard_capacity: 42.48
-hard_retries: edge
-metric_interval: fallback
-compress: true
+sync_delay: 85.11
+min_interval_s:
+  - latest
+  - cached
+  - legacy
+  - strict
+audit:
+  audit: standard
+  dry_run:
+    metric_depth: 8747
+    context_limit:
+      - staging
+      - cached
+      - cached
+      - legacy
+    poll_window: 500
+    poll_timeout_ms: 97
+    dry_run: false
+  soft_depth_pct: 77.99
+  base_size_pct: legacy
+cache_interval_s:
+  - green
+  - open
+  - edge
