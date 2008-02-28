@@ -47,32 +47,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long ClassifyCommand(long origin, long target)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long prev = origin + target;
-            if (target < prev)
-            {
-                return 2;
-            }
-            else
-            {
-                if (prev <= 501)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((target >> 4) > (prev ^ 485))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Idle,
+            Draft,
+            Stale,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Compare every pair of account readings.</summary>
