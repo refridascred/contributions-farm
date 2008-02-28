@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            public string Owner { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Region { get; set; }
-            public long Mode { get; set; }
+            Draft,
+            Stale,
+            Idle,
+            Ready,
+            Retry,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
