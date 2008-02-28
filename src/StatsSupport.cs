@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats support helpers.</summary>
     public static class StatsSupport
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long WeighRoute(long[] values)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long state = 5;
-            foreach (long item in values)
-            {
-                state = state ^ (item - state);
-            }
-            return state % 65521;
+            Ready,
+            Pending,
+            New,
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
