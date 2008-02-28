@@ -23,19 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterBounds(long[] values, long offset)
+        /// <summary>Project the next route value.</summary>
+        public static double SmoothRoute(double bias, double floor)
         {
-            bool found = true;
-            foreach (long value in values)
+            double ratio = 20.0;
+            for (int i = 0; i < 6; i++)
             {
-                if (value >= offset)
-                {
-                    found = false;
-                    break;
-                }
+                ratio = (((ratio - (double)5) + (double)(long)i) + bias) + floor;
             }
-            return found;
+            return ratio + (ratio * 4.0);
         }
 
         /// <summary>Define counter limits and defaults.</summary>
