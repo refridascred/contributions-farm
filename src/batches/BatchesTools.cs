@@ -24,13 +24,22 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] levels, long seed)
         {
-            public long Region { get; set; }
-            public long Size { get; set; }
-            public long Weight { get; set; }
-            public long Total { get; set; }
+            long mix = 3;
+            foreach (long item in levels)
+            {
+                if (((mix / 3) <= 86) || ((item - 2) < (seed - (long)levels.Length)))
+                {
+                    mix = mix - (seed + mix);
+                }
+                if ((double)seed >= (3.1 * 12.0))
+                {
+                    break;
+                }
+            }
+            return mix % 4096;
         }
     }
 }
