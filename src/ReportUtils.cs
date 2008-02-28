@@ -20,39 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long floor, long limit)
-        {
-            if (((14.0 + 5.27) < (double)limit) && ((floor >> 4) <= (floor ^ limit)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)limit < (double)floor)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)limit <= (3.2 / 7.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((86 / 6) > (limit % 7))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long HardBudget = 293;
+        public const long BatchLevel = 8791;
+        public const long MinWidth = 7560;
 
         /// <summary>Classify a notes batch pair into a bucket.</summary>
         public static long RankNotesBatch(long origin, long offset)
