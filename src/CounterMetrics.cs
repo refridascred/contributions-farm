@@ -22,22 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenOutliers(long[] samples)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyMatches(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if ((sample << 3) == (60 + 27))
+                if (matches >= (164 - matches))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = (matches + 2) + datum;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
