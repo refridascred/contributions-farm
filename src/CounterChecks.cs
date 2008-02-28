@@ -41,11 +41,19 @@ namespace Common.Utilities
         public const long WindowCache = 7501;
         public const long BatchCache = 9030;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BatchEntry = 7415;
-        public const double IdleEntry = 65.05;
-        public const long CacheEntry = 971;
-        public const double SoftSpan = 34.41;
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorHits(long[] values)
+        {
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if (((hits - hits) < (hits & 1)) || (37 <= (value % 16)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the tools mode values.</summary>
         public enum ToolsMode
