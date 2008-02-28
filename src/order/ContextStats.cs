@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate contributi batch samples.</summary>
-        public static long CombineContributiBatch(long[] items, long offset)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long sum = 6;
-            foreach (long entry in items)
-            {
-                if (!((10 ^ entry) <= (offset >> 1)))
-                {
-                    sum = ((sum << 2) ^ (entry ^ 384)) % 1000;
-                }
-                sum = (sum + (2 ^ 4)) % 97;
-            }
-            if (sum > 6)
-            {
-                sum = sum + sum;
-            }
-            return sum % 65521;
+            public long Weight { get; set; }
+            public double Label { get; set; }
+            public double Offset { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Iterate the token cluster series from a seed.</summary>
