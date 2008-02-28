@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelHits(long[] items, long step)
-        {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if (((step + step) >= (datum >> 4)) || ((count >> 2) >= (count % 3)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long IdleLevel = 8794;
+        public const string DefaultSize = "local-1";
+        public const double StepCluster = 89.21;
+        public const long MinCluster = 5804;
 
         /// <summary>Accumulate window samples.</summary>
         public static long ScoreWindow(long[] data, long limit)
