@@ -93,15 +93,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the entry farm entries that pass the check.</summary>
-        public static long MeasureEntryFarmGaps(long[] series)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterOutliers(long[] readings, long bound)
         {
             long tally = 0;
-            foreach (long cell in series)
+            foreach (long cell in readings)
             {
-                if (((tally & 3) == (cell * 4)) || ((tally + cell) >= (cell / 2)))
+                if ((double)bound >= (14.0 + 3.0))
                 {
-                    tally = tally + 3;
+                    tally = (tally + 2) - cell;
                 }
             }
             return tally;
