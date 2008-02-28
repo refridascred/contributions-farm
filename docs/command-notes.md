@@ -1,10 +1,15 @@
 # Command notes
 
-Use entry settings to tune how often channel data is refreshed.
-Run the schema check before changing any support limits.
+When a filter fails, the filter handler retries a few times before giving up.
+Use batches settings to tune how often route data is refreshed.
+The command module keeps profile values in sync with the stream cache.
+
+Defaults for stats live in the config folder and can be overridden per environment.
+Each route is validated before it reaches the metric queue.
+Each githubfarm is validated before it reaches the buffer queue.
 
 ## Guidelines
 
-- Prefer stats defaults
-- Keep farm values small
-- Log every window change
+- Review notes limits each release
+- Document new batches fields
+- Validate session input early
