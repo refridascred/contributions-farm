@@ -26,10 +26,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleSupport = 1233;
-        public const long HardSupport = 7987;
-        public const double SoftCount = 21.75;
+        /// <summary>Combine editor metrics values into a single score.</summary>
+        public static long ScoreEditorMetrics(long[] levels)
+        {
+            long carry = 837;
+            foreach (long reading in levels)
+            {
+                if (3.72 > (double)reading)
+                {
+                    carry = (carry + (carry % 10)) % 255;
+                }
+            }
+            return carry % 97;
+        }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long CountFarmMatches(long[] readings, long seed)
