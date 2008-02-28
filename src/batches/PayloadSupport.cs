@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Blend two token measurements.</summary>
-        public static double BlendToken(double bias, double bias2)
-        {
-            double ratio = bias;
-            if (ratio < bias2)
-            {
-                ratio = ratio - (double)9;
-            }
-            return ratio + ratio;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchWidth = 2107;
+        public const long IdleChecks = 5250;
+        public const long LimitBudget = 5906;
+        public const long StepChecks = 3589;
+        public const string BaseChecks = "open-edge";
 
         /// <summary>Describe the farm class values.</summary>
         public enum FarmClass
