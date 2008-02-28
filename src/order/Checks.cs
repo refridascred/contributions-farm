@@ -35,17 +35,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] levels, long limit)
+        /// <summary>Measure how many support report samples are out of range.</summary>
+        public static long TallySupportReportMatches(long[] readings, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if (levels[i] < limit)
+                if (offset >= (value & 7))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define already limits and defaults.</summary>
