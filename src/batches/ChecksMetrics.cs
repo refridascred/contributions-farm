@@ -19,12 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstCount = 726;
-        public const double MaxNotes = 67.8;
-        public const long BaseNotes = 4814;
-        public const long DefaultNotes = 6358;
-        public const long BatchNotes = 4095;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepWidth = 4020;
+        public const long BaseRatio = 4256;
+        public const double IdleDepth = 39.59;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long BatchFilter = 6957;
