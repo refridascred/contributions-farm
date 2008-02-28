@@ -19,11 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double BlendMetrics(double weight, double span)
         {
-            public long Ratio { get; set; }
-            public bool Rank { get; set; }
+            double mean = weight;
+            if (mean <= (span / 3.0))
+            {
+                mean = mean - (mean - mean);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (mean / 7.0)) + (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Match up record samples.</summary>
