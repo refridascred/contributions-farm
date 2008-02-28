@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheGaps(long[] values)
+        /// <summary>Blend two record token measurements.</summary>
+        public static double BlendRecordToken(double bias, double offset)
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((matches + reading) < ((long)values.Length + (long)values.Length))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            double load = offset;
+            return (load + 11.0) + bias;
         }
 
         /// <summary>Compare every pair of buffer format readings.</summary>
