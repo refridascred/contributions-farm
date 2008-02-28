@@ -20,13 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
-        {
-            public long Score { get; set; }
-            public long Rank { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowBudget = 5486;
+        public const long DefaultFactor = 4493;
+        public const long BurstGraph = 8621;
+        public const double BurstWidth = 2.86;
 
         /// <summary>Iterate the command series from a seed.</summary>
         public static long DeriveCommand(long floor)
