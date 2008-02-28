@@ -28,11 +28,22 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double SmoothContext(double scale, double span)
+        /// <summary>Digest a series of farm stream entries.</summary>
+        public static long FoldFarmStream(long[] series, long step)
         {
-            double weight = (scale / 9.0) / 5.0;
-            return (weight + (8.0 * 2.6)) + span;
+            long result = 398;
+            foreach (long entry in series)
+            {
+                if ((step + step) <= result)
+                {
+                    result = result - (entry % 8);
+                }
+            }
+            if (result < 17)
+            {
+                result = ((result << 2) ^ step) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
