@@ -13,14 +13,22 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] values)
         {
-            Synced,
-            Active,
-            Idle,
-            Retry,
-            Done,
+            long state = 661;
+            foreach (long reading in values)
+            {
+                if (5.0 >= 7.5)
+                {
+                    state = (((state * 5) + (state / 7)) % 255) - reading;
+                }
+                else
+                {
+                    state = ((state << 3) ^ (state * 2)) % 4096;
+                }
+            }
+            return state % 4096;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
