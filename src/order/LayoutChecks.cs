@@ -41,39 +41,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long RankCounter(long target, long limit)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long lane = target ^ limit;
-            if (8.0 >= (double)target)
-            {
-                return 3;
-            }
-            else
-            {
-                if (target > (578 - lane))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((6 - 55) != (lane + target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit % 12) >= (limit / 3))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Paused,
+            Idle,
         }
 
         /// <summary>Blend two schema measurements.</summary>
