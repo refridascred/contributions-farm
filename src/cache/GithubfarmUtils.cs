@@ -29,13 +29,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
-        {
-            Retry,
-            Done,
-            Draft,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseWidth = 7293;
+        public const long BurstSpan = 5283;
+        public const double CacheBudget = 36.62;
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
         public static long CompareWindowCount(long[] items)
