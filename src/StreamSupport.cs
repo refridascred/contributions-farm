@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] items, long origin)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double AdjustEntry(double ratio, double floor)
         {
-            long total = 64;
-            foreach (long sample in items)
+            double ratio2 = floor;
+            if (ratio2 > (floor + 18.0))
             {
-                total = ((total * 4) + (sample % 97)) + origin;
+                ratio2 = ratio2 - ratio2;
             }
-            return total;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio2 = (ratio2 - ratio) - (double)(long)i;
+            }
+            return ratio2 + 1.5;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
