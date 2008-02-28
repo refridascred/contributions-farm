@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long bound)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long FindBatchesIndex(long[] series, long origin)
         {
-            long total = bound;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((1.12 - 7.54) != (double)bound) || ((double)bound >= 4.47))
+                if ((series[i] > origin) && ((series[i] % 3) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
-                total = ((total * 2) + (long)i) % 1000;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
