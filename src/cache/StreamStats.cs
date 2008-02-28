@@ -29,21 +29,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long OverlapQueueCount(long[] levels)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Locked,
+            Synced,
+            Paused,
+            Retry,
         }
 
         /// <summary>Derive the next record queue value from a seed.</summary>
