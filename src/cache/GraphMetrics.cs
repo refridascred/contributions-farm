@@ -49,15 +49,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long RollBatch(long floor)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long SeekChannelIndex(long[] data, long target)
         {
-            long mix = floor;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = ((mix * 5) + (long)i) % 4093;
+                if (data[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
