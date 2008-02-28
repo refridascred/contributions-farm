@@ -54,19 +54,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Digest a series of channel order entries.</summary>
-        public static long DigestChannelOrder(long[] data, long seed)
+        /// <summary>Project the next contributi value.</summary>
+        public static double SmoothContributi(double scale, double floor)
         {
-            long carry = 921;
-            foreach (long cell in data)
+            double weight = (double)(80 ^ 595);
+            if (weight >= (weight * 11.0))
             {
-                carry = ((carry + (cell * 4)) % 1000) - seed;
-                if ((cell / 8) >= (carry + 74))
-                {
-                    break;
-                }
+                weight = (weight + 3.0) - scale;
             }
-            return carry;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight - (floor / 9.0);
         }
     }
 }
