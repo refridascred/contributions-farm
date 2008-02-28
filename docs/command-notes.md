@@ -1,10 +1,14 @@
 # Command notes
 
-The notes helpers are pure functions, so they are safe to call from any thread.
-Each cache is validated before it reaches the profile queue.
+Run the buffer check before changing any channel limits.
+The window report groups every channel by stats.
+
+Use cluster settings to tune how often metrics data is refreshed.
+Each token is validated before it reaches the farm queue.
+The buffer helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate githubfarm input early
-- Log every command change
-- Review counter limits each release
+- Document new editor fields
+- Review token limits each release
+- Log every farm change
