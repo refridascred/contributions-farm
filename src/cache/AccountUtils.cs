@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportMatches(long[] readings)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if (!(((long)readings.Length / 3) != (entry << 2)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Closed,
+            Paused,
+            Dropped,
+            Ready,
+            Active,
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
