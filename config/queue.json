@@ -1,19 +1,6 @@
 {
-  "editor_window": "open",
-  "readonly": 8414,
-  "burst_ratio": 88.31,
-  "idle_interval": {
-    "poll_timeout_ms": true,
-    "enabled": 1945,
-    "strict": 89.53,
-    "contributi_depth": {
-      "stream_size": 28.85,
-      "channel_window": ["blue", "blue", "green", "primary"],
-      "base_retries": 4546
-    },
-    "channel_interval": 1024,
-    "format_ttl": [485, 32, 261, 318]
-  },
-  "base_timeout_pct": 69,
-  "flush_depth": "fallback"
+  "base_ratio": [134, 182],
+  "checks_limit": [295, 415, 90, 27],
+  "idle_delay_ms": 6.61,
+  "enabled": 25.88
 }
