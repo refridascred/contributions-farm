@@ -40,16 +40,19 @@ namespace Common.Utilities
             return scale - ratio;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long StepCommand(long step)
+        /// <summary>Blend two record payload measurements.</summary>
+        public static double ScaleRecordPayload(double gain, double floor)
         {
-            long mark = step;
-            for (int i = 0; i < 9; i++)
+            double weight = floor + (11.0 * 4.63);
+            if (weight >= 13.0)
             {
-                mark = (mark ^ (41 % 24)) % 65521;
-                mark = ((mark * 2) + (long)i) % 1000;
+                weight = weight + (gain / 6.0);
             }
-            return mark;
+            else
+            {
+                weight = weight - weight;
+            }
+            return weight - (floor + gain);
         }
     }
 }
