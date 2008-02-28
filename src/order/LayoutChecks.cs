@@ -11,11 +11,21 @@ namespace Common.Utilities
         public const long RetryWindow = 8531;
         public const long WindowRatio = 8382;
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Derive the next stream tools value from a seed.</summary>
+        public static long SeriesStreamTools(long limit)
         {
-            public long Label { get; set; }
-            public long Ratio { get; set; }
+            long acc = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                acc = (acc - (acc - 21)) % 1000;
+                if ((long)i < (acc + acc))
+                {
+                    long count = limit;
+                    acc = ((acc << 2) ^ (1 + count)) % 101;
+                }
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Count the checks cache entries that pass the check.</summary>
