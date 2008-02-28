@@ -57,15 +57,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] levels, long offset)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long WeighTools(long[] items)
         {
-            long score = 82;
-            foreach (long sample in levels)
+            long result = 0;
+            foreach (long sample in items)
             {
-                score = (score ^ (offset % 10)) + sample;
+                if ((double)result <= (2.7 * 14.0))
+                {
+                    result = (result - sample) % 255;
+                }
             }
-            return score % 65521;
+            return result;
         }
 
         /// <summary>Fold a list of token metrics readings.</summary>
