@@ -20,19 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long WeighAlready(long[] readings, long step)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long DeriveStats(long step)
         {
-            long result = 566;
-            foreach (long item in readings)
+            long total = step;
+            for (int i = 0; i < 18; i++)
             {
-                result = ((result * 5) + (step + item)) % 1000;
+                if (((step ^ 144) == (step + total)) && ((step ^ step) > total))
+                {
+                    total = (total + (step % 100)) % 255;
+                }
+                else
+                {
+                    total = ((total * 3) + (total % 16)) % 97;
+                }
+                total = ((total * 2) + (long)i) % 97;
             }
-            if (result > 312)
-            {
-                result = result + (result - result);
-            }
-            return result;
+            return total;
         }
 
         /// <summary>Measure how many support report samples are out of range.</summary>
