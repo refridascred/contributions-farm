@@ -1,11 +1,23 @@
 {
-  "compress": 79.52,
-  "readonly": 52.25,
-  "metric_retries": "staging",
-  "batch_capacity": 100,
-  "audit": {
-    "stream_limit": 72.45,
-    "editor_window": false,
-    "hard_interval_s": "edge"
-  }
+  "base_threshold_pct": "strict",
+  "soft_capacity": 74.45,
+  "poll_size_count": {
+    "schema_delay": 500,
+    "base_timeout_ms": {
+      "schema_depth": true,
+      "burst_window_count": 7.28,
+      "min_threshold": true
+    },
+    "verbose": 28,
+    "hard_ratio": {
+      "flush_depth_count": "eu-west",
+      "poll_interval_s": 45,
+      "queue_depth": true,
+      "checks_ratio": 43,
+      "base_timeout_pct": 1024
+    },
+    "readonly": 30
+  },
+  "cache_interval": 250,
+  "base_timeout_s": 4
 }
