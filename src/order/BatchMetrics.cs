@@ -77,22 +77,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many metric entry samples are out of range.</summary>
-        public static long TallyMetricEntryHits(long[] values, long limit)
-        {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if (((limit % 100) <= (limit / 6)) || ((item >> 3) <= 77))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxWindow = 3836;
+        public const string CacheSpan = "alpha-edge";
+        public const long DefaultWindow = 7257;
+        public const double BurstWindow = 8.31;
+        public const long RetryTimeout = 8702;
     }
 }
