@@ -35,13 +35,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Blend two command measurements.</summary>
+        public static double AdjustCommand(double ratio, double offset)
         {
-            public bool Rank { get; set; }
-            public long Score { get; set; }
-            public bool Region { get; set; }
-            public bool Token { get; set; }
+            double weight = (ratio / 7.0) * 6.91;
+            return weight + offset;
         }
     }
 }
