@@ -1,13 +1,14 @@
 {
-  "poll_ttl_count": 87,
-  "burst_window": 83.49,
-  "audit": {
-    "soft_size": 71,
-    "max_retries_pct": 83,
-    "soft_threshold": [45, 293, 73, 53],
-    "command_size": 5316,
-    "contributi_threshold": ["local", "green", "cached", "green"],
-    "max_timeout": "fallback"
+  "batch_window_pct": {
+    "editor_ttl": [112, 26, 132, 256],
+    "compress": 100,
+    "channel_threshold": true
   },
-  "max_ratio": "green"
+  "flush_interval_ms": {
+    "graph_timeout": "standard",
+    "readonly": ["strict", "strict", "primary", "eu-west"],
+    "window_window": 500
+  },
+  "report_timeout": 100,
+  "min_window": "staging"
 }
