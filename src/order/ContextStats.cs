@@ -15,13 +15,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterBounds(long[] levels, long seed)
         {
-            Locked,
-            Active,
-            Retry,
-            Closed,
+            bool ok = true;
+            foreach (long datum in levels)
+            {
+                if (datum <= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
