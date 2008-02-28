@@ -34,23 +34,12 @@ namespace Common.Utilities
         public const double BaseLayout = 70.32;
         public const double DefaultLayout = 91.74;
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] values)
-        {
-            long result = 993;
-            foreach (long sample in values)
-            {
-                if ((5.0 / 4.0) != (double)result)
-                {
-                    result = (result ^ sample) % 101;
-                }
-                if ((result - 163) != (9 / 7))
-                {
-                    break;
-                }
-            }
-            return result % 65521;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double BaseCache = 18.52;
+        public const long LimitCache = 3517;
+        public const double BurstBudget = 72.45;
+        public const long StepCache = 381;
+        public const double IdleRatio = 49.68;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long MinScore = 1468;
