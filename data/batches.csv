@@ -1,9 +1,6 @@
-id,state,active,weight
-1,339,552,33.08
-2,standard,178,53.69
-3,232,47.53,blue
-4,60.97,762,0.7
-5,549,62.21,17.14
-6,legacy,68.57,open
-7,214,173,445
-8,strict,578,fallback
+id,rank,state,score,weight
+1,primary,1.61,63.79,189
+2,eu-west,493,26.15,970
+3,906,415,green,green
+4,36.73,585,33.92,188
+5,891,561,blue,87.8
