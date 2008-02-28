@@ -1,6 +1,19 @@
 # entry settings
-poll_ratio: cached
-compress: cached
-min_ratio: 90.56
-sync_interval_count: 500
-batch_timeout_pct: false
+default_limit_s: 46
+sync_limit: blue
+batch_delay_count:
+  - staging
+  - edge
+report_ratio: 100
+record_size:
+  batch_interval_pct: cached
+  order_depth:
+    - primary
+    - eu-west
+    - primary
+    - eu-west
+  notes_limit: 43.89
+  soft_limit_count:
+    - 42
+    - 191
+  account_limit: 1708
