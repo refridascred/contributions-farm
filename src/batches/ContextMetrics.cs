@@ -40,22 +40,19 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Fold a list of cluster route readings.</summary>
-        public static long TotalClusterRoute(long[] series)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsLimits(long[] readings, long floor)
         {
-            long score = 636;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if (reading >= (score + reading))
+                if (entry > floor)
                 {
-                    score = ((score << 2) ^ (64 << 2)) % 97;
+                    found = false;
+                    break;
                 }
             }
-            if (score < 3)
-            {
-                score = (score - score) % 97;
-            }
-            return score % 1000;
+            return found;
         }
 
         /// <summary>Hold a farm header.</summary>
