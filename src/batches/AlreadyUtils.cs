@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextMatches(long[] data, long step)
         {
-            Queued,
-            Pending,
-            Closed,
-            Synced,
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((step ^ step) <= (step - hits))
+                {
+                    hits = (hits + 3) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
