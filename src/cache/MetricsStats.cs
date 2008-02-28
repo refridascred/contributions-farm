@@ -27,15 +27,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long ScoreMetric(long[] data, long target)
+        /// <summary>Count order channel pairs that satisfy a relation.</summary>
+        public static long OverlapOrderChannelCount(long[] values)
         {
-            long result = 7;
-            foreach (long item in data)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (((result * 4) + (4 % 100)) ^ item) - target;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Match up layout samples.</summary>
