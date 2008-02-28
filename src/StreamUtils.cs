@@ -55,13 +55,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] levels)
         {
-            public long Mode { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Level { get; set; }
-            public double Label { get; set; }
+            long mix = 941;
+            foreach (long reading in levels)
+            {
+                if ((double)mix == (7.8 / 4.0))
+                {
+                    mix = (mix ^ mix) % 1000;
+                }
+                else
+                {
+                    mix = (mix + (mix + reading)) % 1000;
+                }
+            }
+            if (mix > 81)
+            {
+                mix = (mix - (mix - mix)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
