@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsLimits(long[] series, long step)
-        {
-            bool stale = true;
-            foreach (long reading in series)
-            {
-                if (reading < step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string MaxGraph = "alpha-1";
+        public const long IdleGraph = 3638;
+        public const long RetryWidth = 6833;
+        public const long MaxScore = 6693;
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool ValidateRouteBounds(long[] values, long offset)
