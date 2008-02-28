@@ -1,7 +1,19 @@
 {
-  "batch_size": 100,
-  "hard_window_s": 33.21,
-  "burst_depth_s": 60.2,
-  "profile_limit": [103, 310, 183],
-  "verbose": true
+  "warm_interval_pct": 2155,
+  "verbose": 8943,
+  "format_ratio": {
+    "stats_delay": {
+      "verbose": ["legacy", "local", "cached"],
+      "hard_ratio": "blue",
+      "default_timeout": "green",
+      "sync_capacity_ms": "blue",
+      "sync_timeout": [300, 134, 52, 443]
+    },
+    "warm_timeout": "blue",
+    "format_ratio": 88.58,
+    "compress": [9, 10],
+    "filter_depth": ["strict", "local", "fallback", "eu-west"]
+  },
+  "idle_size_s": 59,
+  "poll_ttl_pct": 31
 }
