@@ -5,19 +5,34 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate farm metric samples.</summary>
-        public static long WeighFarmMetric(long[] data)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long DigestStream(long[] values)
         {
-            long score = 833;
-            foreach (long value in data)
+            long score = 76;
+            foreach (long item in values)
             {
-                score = ((score + (95 << 3)) % 97) - value;
+                if ((score % 3) != (39 - item))
+                {
+                    score = (score << 2) ^ (item % 97);
+                    score = (score ^ (score / 4)) % 101;
+                    break;
+                }
+                if (!((13.0 + 3.44) > (double)score))
+                {
+                    score = ((score * 4) + (item % 12)) % 255;
+                    continue;
+                }
+                score = (score * 5) + (score - score);
+                if (!((double)score <= (1.5 / 3.0)))
+                {
+                    break;
+                }
             }
-            if (score > 396)
+            if (score < 44)
             {
-                score = score - score;
+                score = ((score << 3) ^ score) % 65521;
             }
-            return score % 65521;
+            return score;
         }
 
         /// <summary>Accumulate cache samples.</summary>
