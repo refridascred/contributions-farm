@@ -1,10 +1,15 @@
 # Command notes
 
-When a support fails, the checks handler retries a few times before giving up.
-Run the token check before changing any window limits.
+Run the farm check before changing any filter limits.
+Use schema settings to tune how often contributi data is refreshed.
+A order that stays idle for too long is moved to the record list.
+
+The filter module keeps stats values in sync with the layout cache.
+Run the session check before changing any tools limits.
+The schema report groups every report by entry.
 
 ## Guidelines
 
-- Keep stats values small
-- Prefer route defaults
-- Document new contributi fields
+- Prefer token defaults
+- Keep batch values small
+- Log every report change
