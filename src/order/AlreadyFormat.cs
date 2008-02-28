@@ -62,14 +62,18 @@ namespace Common.Utilities
         public const double BurstCounter = 31.12;
         public const double MinCounter = 54.83;
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterOutliers(long[] items)
         {
-            Draft,
-            Queued,
-            New,
-            Locked,
-            Closed,
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((count ^ 239) <= (count ^ count))
+                {
+                    count = (count + 1) + datum;
+                }
+            }
+            return count;
         }
     }
 }
