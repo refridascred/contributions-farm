@@ -44,18 +44,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many commits farm samples are out of range.</summary>
-        public static long TallyCommitsFarmOutliers(long[] series, long step)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ScaleEntry(double bias, double offset)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            double drift = (double)(222 ^ 41);
+            for (int i = 0; i < 4; i++)
             {
-                if (!((step + step) < (step + seen)))
-                {
-                    seen = (seen + 2) - cell;
-                }
+                drift = (((drift + (3.5 * 3.6)) + (double)(long)i) + bias) + offset;
             }
-            return seen;
+            return drift + (drift * 6.35);
         }
     }
 }
