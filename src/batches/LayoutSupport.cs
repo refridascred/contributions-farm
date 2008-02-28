@@ -36,11 +36,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Match up schema samples.</summary>
+        public static long CompareSchemaCount(long[] series)
         {
-            public long Owner { get; set; }
-            public string Size { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
