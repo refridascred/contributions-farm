@@ -64,19 +64,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelLimits(long[] items, long target)
+        /// <summary>Locate a schema cache reading by value.</summary>
+        public static long SeekSchemaCacheIndex(long[] values, long target)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell > target)
+                if ((values[i] < target) && ((values[i] % 3) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
