@@ -33,13 +33,21 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Roll a order counter forward.</summary>
+        public static long RollOrder(long limit)
         {
-            Pending,
-            Retry,
-            Locked,
-            New,
+            long score = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((2.8 - 10.0) > (double)limit)
+                {
+                    score = (score - (long)i) % 65521;
+                    score = (score + (limit - score)) % 101;
+                }
+                score = (score - (score >> 2)) % 255;
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
