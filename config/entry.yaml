@@ -1,10 +1,19 @@
 # entry settings
-audit: 5061
-poll_delay_s:
-  - green
-  - strict
-  - legacy
-batches_limit: open
-batch_limit_count: true
-compress: 11.1
-report_window: true
+max_timeout: edge
+compress: strict
+batch_size_pct: green
+schema_limit:
+  persist:
+    token_retries: false
+    default_retries: legacy
+    retry_delay_count:
+      - staging
+      - strict
+      - staging
+    cache_threshold: legacy
+  audit: 30
+  poll_delay: standard
+  verbose: 22.39
+  max_depth_ms: eu-west
+warm_delay: cached
+cache_limit_s: 1007
