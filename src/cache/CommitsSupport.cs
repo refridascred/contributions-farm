@@ -72,21 +72,18 @@ namespace Common.Utilities
         public const long HardMetrics = 576;
         public const long CacheMetrics = 8126;
 
-        /// <summary>Compare every pair of githubfarm context readings.</summary>
-        public static long OverlapGithubfarmContextCount(long[] data)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long DigestContext(long[] samples, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 589;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)datum != (4.27 - 10.0))
                 {
-                    if ((data[i] + data[j]) < 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = (sum - step) % 4096;
                 }
             }
-            return seen;
+            return sum;
         }
     }
 }
