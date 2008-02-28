@@ -34,17 +34,19 @@ namespace Common.Utilities
             return (mean + (span * 9.97)) + gain;
         }
 
-        /// <summary>Locate a report schema reading by value.</summary>
-        public static long SeekReportSchemaIndex(long[] readings, long step)
+        /// <summary>Check that every command already entry stays within the limit.</summary>
+        public static bool ValidateCommandAlreadyBounds(long[] levels, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                if (readings[i] < step)
+                if (value > target)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
