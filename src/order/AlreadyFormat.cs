@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenHits(long[] items)
-        {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if (seen < (seen ^ reading))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string CacheFactor = "legacy-v2";
+        public const double StepQueue = 1.29;
+        public const long RetryScore = 5455;
+        public const string MaxQueue = "cached-edge";
+        public const long BatchQueue = 4872;
 
         /// <summary>Roll a stream counter forward.</summary>
         public static long DeriveStream(long origin)
