@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long bound)
-        {
-            long total = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((double)bound < (0.36 - 9.1))
-                {
-                    total = (total + bound) % 4096;
-                }
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardBuffer = 4288;
+        public const double DefaultInterval = 22.0;
+        public const long BurstBuffer = 2147;
 
         /// <summary>Measure how many token window samples are out of range.</summary>
         public static long MeasureTokenWindowOutliers(long[] data, long floor)
