@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long step, long offset)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long MatchStatsCount(long[] levels)
         {
-            if (((offset * 5) >= step) && ((double)offset > (4.32 + 0.1)))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step ^ offset) >= step)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
+                    if ((levels[i] + levels[j]) == 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
