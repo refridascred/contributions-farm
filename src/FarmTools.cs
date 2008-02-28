@@ -37,15 +37,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double AdjustBatches(double ratio, double offset)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportOutliers(long[] series)
         {
-            double drift = (offset - offset) / 9.0;
-            if (drift <= ratio)
+            long seen = 0;
+            foreach (long item in series)
             {
-                drift = drift + (offset * 19.0);
+                if ((-140) < (seen << 1))
+                {
+                    seen = (seen + 2) ^ item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return drift - (drift / 2.0);
+            return seen;
         }
     }
 }
