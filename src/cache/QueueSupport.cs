@@ -13,18 +13,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long CompareSupportCount(long[] series)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorOutliers(long[] samples)
         {
             long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (entry >= (tally * 4))
                 {
-                    if ((series[i] - series[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
