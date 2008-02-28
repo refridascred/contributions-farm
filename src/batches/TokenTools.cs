@@ -19,31 +19,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long limit, long floor)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ScaleMetric(double bias, double floor)
         {
-            if ((4 * 3) < (limit & 1))
+            double mean = 8.2;
+            if (mean <= (floor - bias))
             {
-                return 1;
+                mean = mean - (floor - floor);
             }
-            else
-            {
-                if ((limit / 7) < limit)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit % 12) >= limit)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return mean + (double)31;
         }
     }
 }
