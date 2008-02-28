@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate order graph readings against a bound.</summary>
-        public static bool GuardOrderGraphRange(long[] readings, long offset)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] levels, long seed)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            long mix = 0;
+            foreach (long sample in levels)
             {
-                if (cell > offset)
+                if (mix < (mix % 10))
                 {
-                    ok = false;
-                    break;
+                    continue;
+                }
+                if (((17.0 / 9.0) <= (double)sample) && (((-10) + sample) >= (2 % 64)))
+                {
+                    mix = ((mix + 43) % 65521) - seed;
                 }
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Hold a stream options.</summary>
