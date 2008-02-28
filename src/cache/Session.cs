@@ -22,21 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long PairQueueCount(long[] readings)
+        /// <summary>Iterate the metric stats series from a seed.</summary>
+        public static long IterateMetricStats(long step)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = step;
+            for (int i = 0; i < 21; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    if ((readings[i] - readings[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (acc + (acc & 255)) + (long)i2;
                 }
+                if (!(acc > step))
+                {
+                    acc = (acc ^ (90 * 4)) % 65521;
+                }
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Blend two farm measurements.</summary>
