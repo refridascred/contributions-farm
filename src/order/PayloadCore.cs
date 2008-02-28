@@ -26,19 +26,17 @@ namespace Common.Utilities
         public const long StepContext = 1079;
         public const long RetryScore = 8618;
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ProjectQueue(double scale, double bias)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LocateToolsIndex(long[] data, long target)
         {
-            double ratio = (14.0 - scale) / 9.0;
-            if (ratio <= scale)
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = ratio - (double)135;
+                if (data[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (bias / 4.0)) - (double)(long)i;
-            }
-            return ratio - ratio;
+            return -1;
         }
 
         /// <summary>Check that every notes batches entry stays within the limit.</summary>
