@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenOutliers(long[] readings)
         {
-            Queued,
-            Ready,
-            Failed,
-            Closed,
-            Stale,
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if ((reading * 5) >= (matches - 929))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
