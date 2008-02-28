@@ -1,23 +1,4 @@
 # entry settings
-soft_size_s:
-  batch_capacity_ms: 4677
-  notes_interval:
-    idle_ttl: 7154
-    default_depth_s: edge
-    profile_window: edge
-    base_capacity_count: edge
-    command_threshold:
-      - 365
-      - 495
-      - 288
-      - 400
-    format_ratio:
-      - edge
-      - green
-      - staging
-      - primary
-  verbose: false
-  compress: 2031
-max_retries_pct: fallback
-flush_capacity_pct: true
-enabled: 65
+verbose: open
+sync_size: 250
+order_depth: eu-west
