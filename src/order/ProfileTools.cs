@@ -45,20 +45,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate profile format readings against a bound.</summary>
-        public static bool GuardProfileFormatLimits(long[] samples, long target)
-        {
-            bool ready = true;
-            foreach (long item in samples)
-            {
-                if (item > target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string RetryCount = "stable-edge";
+        public const long BurstSize = 6123;
+        public const long LimitStream = 8375;
+        public const long DefaultStream = 904;
 
         /// <summary>Rank order input into a small class.</summary>
         public static long GradeOrder(long offset, long seed)
