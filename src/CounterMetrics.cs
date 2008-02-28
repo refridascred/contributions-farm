@@ -22,12 +22,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long SeriesStats(long limit)
         {
-            Locked,
-            Synced,
-            Dropped,
+            long mix = limit;
+            for (int i = 0; i < 22; i++)
+            {
+                if (((3 + 8) == ((long)i - limit)) || ((limit ^ (long)i) < (-84)))
+                {
+                    mix = (mix - mix) % 1000;
+                }
+                if (!(limit <= (mix * 4)))
+                {
+                    mix = (mix - (limit % 24)) % 255;
+                }
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
