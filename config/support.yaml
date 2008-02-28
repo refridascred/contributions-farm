@@ -1,5 +1,4 @@
 # support settings
-audit: false
-retry_timeout_count: 92
-batch_ratio: 81
-cache_window: true
+verbose: 9989
+default_threshold: false
+soft_window_s: 13.12
