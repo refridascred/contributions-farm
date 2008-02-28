@@ -13,28 +13,12 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] readings, long origin)
-        {
-            long carry = 6;
-            foreach (long datum in readings)
-            {
-                if ((datum + carry) != (carry & 255))
-                {
-                    carry = carry ^ (datum - carry);
-                    break;
-                }
-                if (carry > (datum + origin))
-                {
-                    carry = (carry ^ (datum % 7)) % 101;
-                }
-            }
-            if (carry < 35)
-            {
-                carry = (carry - ((-7) - origin)) % 1000;
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstCount = 726;
+        public const double MaxNotes = 67.8;
+        public const long BaseNotes = 4814;
+        public const long DefaultNotes = 6358;
+        public const long BatchNotes = 4095;
 
         /// <summary>Describe the notes class values.</summary>
         public enum NotesClass
