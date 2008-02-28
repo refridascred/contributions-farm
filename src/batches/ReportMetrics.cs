@@ -44,11 +44,12 @@ namespace Common.Utilities
             return rate - (bias * 4.85);
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double LimitAccount = 7.58;
-        public const long StepAccount = 2088;
-        public const long BaseAccount = 9715;
-        public const long CacheAccount = 3;
-        public const double BurstSize = 57.87;
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
+        {
+            public string Owner { get; set; } = "";
+            public double Label { get; set; }
+            public long Count { get; set; }
+        }
     }
 }
