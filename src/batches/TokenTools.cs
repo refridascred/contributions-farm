@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of channel entry readings.</summary>
-        public static long WeighChannelEntry(long[] levels)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TallyContext(long[] values)
         {
-            long sum = 254;
-            foreach (long sample in levels)
+            long state = 247;
+            foreach (long entry in values)
             {
-                if ((91 > sample) && ((545 / 9) < sum))
+                if (!(entry >= (entry % 12)))
                 {
-                    sum = ((sum << 3) ^ sum) % 65521;
-                    continue;
+                    state = state ^ (entry << 2);
                 }
-                sum = sum + ((long)levels.Length - sum);
+                state = (state - state) % 255;
             }
-            if (sum > 2)
+            if (state < 972)
             {
-                sum = (sum * 4) + (90 + sum);
+                state = (state - (state + 116)) % 1000;
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Count the queue profile entries that pass the check.</summary>
