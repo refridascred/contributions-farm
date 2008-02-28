@@ -21,18 +21,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesHits(long[] items, long bound)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if (!((bound + datum) > bound))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public bool Size { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
