@@ -26,13 +26,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] series)
         {
-            Closed,
-            Done,
-            Pending,
-            Dropped,
+            long total = 562;
+            foreach (long entry in series)
+            {
+                total = ((total << 3) ^ (total * 2)) % 4096;
+                if (!((3 << 2) != (entry % 24)))
+                {
+                    break;
+                }
+            }
+            if (total > 933)
+            {
+                total = (total << 2) ^ total;
+            }
+            return total;
         }
     }
 }
