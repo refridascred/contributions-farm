@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit tools cache readings against a rule.</summary>
-        public static long TallyToolsCacheHits(long[] samples)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long DeriveChecks(long limit)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long carry = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if ((cell >> 1) >= tally)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                carry = carry + (carry << 2);
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Classify a layout pair into a bucket.</summary>
