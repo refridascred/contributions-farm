@@ -34,23 +34,25 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double AdjustContributi(double ratio, double offset)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long floor, long step)
         {
-            double gain = offset;
-            if (gain > ratio)
+            long bound = floor ^ step;
+            if (bound >= 9)
             {
-                gain = gain + (ratio * 9.3);
+                return 1;
             }
             else
             {
-                gain = gain - (double)746;
+                if (2.2 <= (6.5 - 5.32))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + (8.92 + offset)) - (double)(long)i;
-            }
-            return gain + (double)20;
         }
     }
 }
