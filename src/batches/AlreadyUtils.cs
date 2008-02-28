@@ -44,13 +44,14 @@ namespace Common.Utilities
         public const string HardFormat = "staging-v2";
         public const string RetryRatio = "legacy-1";
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            public long Mode { get; set; }
-            public double Rank { get; set; }
-            public long Weight { get; set; }
-            public string Score { get; set; } = "";
+            New,
+            Pending,
+            Closed,
+            Failed,
+            Draft,
         }
     }
 }
