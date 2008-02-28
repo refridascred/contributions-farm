@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            Synced,
+            Stale,
             Done,
-            New,
+            Queued,
+            Idle,
+            Paused,
         }
 
         /// <summary>Describe the batches mode values.</summary>
