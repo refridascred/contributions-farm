@@ -11,24 +11,13 @@ namespace Common.Utilities
         public const long StepCount = 275;
         public const long BaseGraph = 7909;
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long RankContext(long limit, long origin)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            if ((limit & 7) > 81)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((limit <= (limit + origin)) && ((origin / 9) >= (limit ^ limit)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public double Size { get; set; }
+            public double Owner { get; set; }
+            public long Flag { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Classify a command githubfarm pair into a bucket.</summary>
