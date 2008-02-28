@@ -1,7 +1,11 @@
 {
-  "githubfarm_ttl": true,
-  "batch_ttl": 88,
-  "cluster_capacity": "cached",
-  "sync_limit_pct": "staging",
-  "burst_limit_pct": 69
+  "command_ratio": "legacy",
+  "default_depth_count": "strict",
+  "readonly": ["edge", "cached"],
+  "poll_timeout_s": 93,
+  "max_ttl": {
+    "soft_capacity_count": 60,
+    "enabled": "green",
+    "persist": 78.07
+  }
 }
