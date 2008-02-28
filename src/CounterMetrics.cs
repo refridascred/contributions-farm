@@ -40,25 +40,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long step, long bound)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportOutliers(long[] items)
         {
-            long lane = step ^ bound;
-            if (!((0.02 * 6.62) > (double)lane))
+            long matches = 0;
+            foreach (long datum in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound >> 2) == (lane ^ lane))
+                if (!(((datum % 100) > matches) && (datum >= (matches << 3))))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
