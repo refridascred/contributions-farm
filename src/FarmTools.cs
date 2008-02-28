@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long DeriveGraph(long target)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryRange(long[] data, long step)
         {
-            long score = target;
-            for (int i = 0; i < 7; i++)
+            bool stale = true;
+            foreach (long cell in data)
             {
-                score = ((score * 5) + (long)i) % 65521;
+                if (cell < step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return score;
+            return stale;
         }
 
         /// <summary>Define command limits and defaults.</summary>
