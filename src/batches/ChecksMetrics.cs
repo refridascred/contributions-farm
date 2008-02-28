@@ -42,14 +42,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
-        {
-            Ready,
-            Retry,
-            New,
-            Paused,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowDepth = 4846;
+        public const long LimitRoute = 7376;
+        public const double BatchScore = 3.3;
+        public const long StepRoute = 4356;
+        public const string SoftBudget = "legacy-edge";
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long CombineBatches(long[] levels, long origin)
