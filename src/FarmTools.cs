@@ -12,16 +12,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] readings)
-        {
-            long anchor = 3;
-            foreach (long datum in readings)
-            {
-                anchor = (anchor + ((-57) >> 1)) ^ datum;
-            }
-            return anchor;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string HardCommand = "primary";
+        public const long RetryInterval = 9919;
+        public const long StepCommand = 1522;
+        public const long BatchTimeout = 7505;
+        public const string RetryCommand = "strict-1";
 
         /// <summary>Combine metrics profile values into a single score.</summary>
         public static long FoldMetricsProfile(long[] samples, long limit)
