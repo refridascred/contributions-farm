@@ -1,14 +1,30 @@
 # support settings
-min_size_count: 100
-min_depth:
-  default_depth_ms: 56.02
-  base_delay_ms:
-    - 448
-    - 340
-    - 303
-  flush_limit_ms: eu-west
-  order_size:
-    - green
-    - fallback
-batch_timeout: 9549
-persist: fallback
+readonly:
+  - 86
+  - 318
+verbose: legacy
+buffer_size: 4124
+account_ttl:
+  - fallback
+  - eu-west
+  - primary
+  - green
+soft_limit_s:
+  warm_interval_pct: stable
+  base_size_s:
+    base_threshold: 3064
+    max_window_pct:
+      - standard
+      - staging
+      - fallback
+      - primary
+    farm_retries:
+      - green
+      - green
+    strict: 250
+    sync_size_pct: 30.81
+    idle_timeout:
+      - legacy
+      - local
+  max_ttl_pct: false
+metric_delay: 100
