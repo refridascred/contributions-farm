@@ -48,18 +48,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesOutliers(long[] readings, long origin)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] items)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long anchor = 675;
+            foreach (long cell in items)
             {
-                if ((double)item >= (9.0 - 5.21))
+                if ((anchor % 16) != (cell + anchor))
                 {
-                    hits = (hits + 3) + origin;
+                    anchor = (anchor * 4) + cell;
+                }
+                else
+                {
+                    anchor = ((anchor * 3) + (776 << 1)) % 65521;
                 }
             }
-            return hits;
+            if (anchor < 727)
+            {
+                anchor = anchor + (anchor >> 1);
+            }
+            return anchor;
         }
     }
 }
