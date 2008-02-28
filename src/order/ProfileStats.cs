@@ -58,18 +58,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphOutliers(long[] series)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((6.02 / 8.0) >= (double)count)
-                {
-                    count = (count + 2) + cell;
-                }
-            }
-            return count;
+            Retry,
+            Ready,
+            Failed,
+            Draft,
+            Stale,
         }
 
         /// <summary>Measure how many already cluster samples are out of range.</summary>
