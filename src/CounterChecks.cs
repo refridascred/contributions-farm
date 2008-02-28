@@ -25,21 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long PairAccountCount(long[] readings)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 841;
+            foreach (long value in data)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mark = ((mark - (24 * 2)) % 255) ^ value;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Check that every window record entry stays within the limit.</summary>
