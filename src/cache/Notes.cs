@@ -20,18 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long SeekChecksIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > step) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string MinFilter = "staging-edge";
+        public const long WindowRatio = 5189;
+        public const string LimitFilter = "stable";
+        public const long BurstScore = 3028;
 
         /// <summary>Describe the metric phase values.</summary>
         public enum MetricPhase
