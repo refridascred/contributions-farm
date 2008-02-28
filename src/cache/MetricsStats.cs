@@ -64,11 +64,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxScore = 481;
-        public const string DefaultBudget = "fallback";
-        public const long BurstFactor = 1560;
-        public const string LimitChecks = "alpha";
-        public const double RetryChecks = 72.15;
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double SmoothContributi(double gain, double floor)
+        {
+            double bias = gain * 2.0;
+            if (bias > (bias * 3.0))
+            {
+                bias = bias - (8.0 / 9.0);
+            }
+            else
+            {
+                bias = bias - (6.7 + 2.33);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias + (floor - 3.5)) - (double)(long)i;
+            }
+            return bias - 5.81;
+        }
     }
 }
