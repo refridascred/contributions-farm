@@ -50,32 +50,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank graph batch input into a small class.</summary>
-        public static long GradeGraphBatch(long floor, long limit)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesMatches(long[] samples)
         {
-            long lane = floor ^ limit;
-            if (((lane + lane) != (limit >> 2)) || ((limit ^ lane) == (lane * 2)))
+            long count = 0;
+            foreach (long reading in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((lane ^ lane) >= (lane - floor)))
+                if (51 <= (count - count))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)(-12) < (double)limit)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    count = (count + 2) + reading;
                 }
             }
+            return count;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
