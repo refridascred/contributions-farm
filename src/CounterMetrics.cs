@@ -27,11 +27,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardEditor = 8430;
-        public const string WindowEditor = "local";
-        public const double LimitDepth = 34.66;
-        public const long DefaultEditor = 6724;
+        /// <summary>Project the next editor value.</summary>
+        public static double ScaleEditor(double rate, double bias)
+        {
+            double gain = bias + bias;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = ((gain + (gain + bias)) + (double)(long)i) + rate;
+            }
+            return gain - (bias * 9.6);
+        }
 
         /// <summary>Project the next batches value.</summary>
         public static double ScaleBatches(double ratio, double bias)
