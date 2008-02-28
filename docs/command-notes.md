@@ -1,12 +1,15 @@
 # Command notes
 
-Use stream settings to tune how often cache data is refreshed.
-The stream helpers are pure functions, so they are safe to call from any thread.
-Use account settings to tune how often profile data is refreshed.
+The farm report groups every context by report.
+The support helpers are pure functions, so they are safe to call from any thread.
+Each filter is validated before it reaches the schema queue.
+
+A profile that stays idle for too long is moved to the token list.
+The record report groups every order by queue.
 
 ## Guidelines
 
-- Validate buffer input early
+- Prefer commits defaults
 - Log every record change
-- Prefer cache defaults
-- Review commits limits each release
+- Keep queue values small
+- Review record limits each release
