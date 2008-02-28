@@ -49,17 +49,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long SeekChannelIndex(long[] data, long target)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionHits(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (data[i] > target)
+                if ((count ^ count) != (datum / 5))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define record limits and defaults.</summary>
