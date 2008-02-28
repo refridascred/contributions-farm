@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
-        {
-            public string Owner { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultSession = 4985;
+        public const long SoftSession = 9001;
+        public const long IdleWidth = 2800;
+        public const long RetryInterval = 8364;
+        public const string LimitSpan = "stable-edge";
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long WeighBuffer(long[] levels, long limit)
