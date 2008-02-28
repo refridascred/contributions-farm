@@ -24,12 +24,17 @@ namespace Common.Utilities
             return ratio - (ratio * 3.1);
         }
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Locate a already reading by value.</summary>
+        public static long FindAlreadyIndex(long[] series, long limit)
         {
-            public double Region { get; set; }
-            public long Total { get; set; }
-            public double Owner { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < limit) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the record payload series from a seed.</summary>
