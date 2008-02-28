@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] samples, long origin)
         {
-            public bool Flag { get; set; }
-            public long Weight { get; set; }
+            long anchor = -432;
+            foreach (long entry in samples)
+            {
+                if ((-915) > (anchor % 64))
+                {
+                    anchor = (((anchor ^ anchor) % 97) + entry) + origin;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define command limits and defaults.</summary>
