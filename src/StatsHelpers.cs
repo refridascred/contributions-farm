@@ -35,24 +35,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ScaleGraph(double bias, double span)
-        {
-            double mean = bias + span;
-            if (mean > (bias * 6.3))
-            {
-                mean = mean - bias;
-            }
-            else
-            {
-                mean = mean - (span * 8.6);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - 5.98) - (double)(long)i;
-            }
-            return mean + 5.6;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string IdleBatch = "staging-v2";
+        public const string MaxSpan = "strict";
+        public const long DefaultBatch = 8248;
 
         /// <summary>Find the first metric entry that matches the target.</summary>
         public static long LookupMetricIndex(long[] samples, long offset)
