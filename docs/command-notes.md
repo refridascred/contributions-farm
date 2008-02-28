@@ -1,11 +1,12 @@
 # Command notes
 
-Each tools is validated before it reaches the batch queue.
-Each context is validated before it reaches the queue queue.
-Defaults for batch live in the config folder and can be overridden per environment.
+Use stream settings to tune how often cache data is refreshed.
+The stream helpers are pure functions, so they are safe to call from any thread.
+Use account settings to tune how often profile data is refreshed.
 
 ## Guidelines
 
-- Review record limits each release
-- Log every githubfarm change
-- Prefer channel defaults
+- Validate buffer input early
+- Log every record change
+- Prefer cache defaults
+- Review commits limits each release
