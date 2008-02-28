@@ -1,14 +1,13 @@
 {
-  "batch_window_pct": {
-    "editor_ttl": [112, 26, 132, 256],
-    "compress": 100,
-    "channel_threshold": true
+  "persist": true,
+  "audit": 1024,
+  "hard_ratio": {
+    "graph_limit": 42.72,
+    "retry_threshold": 16.7,
+    "cache_limit_count": 52,
+    "metric_threshold": true,
+    "command_interval": "primary"
   },
-  "flush_interval_ms": {
-    "graph_timeout": "standard",
-    "readonly": ["strict", "strict", "primary", "eu-west"],
-    "window_window": 500
-  },
-  "report_timeout": 100,
-  "min_window": "staging"
+  "base_limit": "eu-west",
+  "readonly": true
 }
