@@ -22,18 +22,21 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long MeasureNotesOutliers(long[] series)
+        /// <summary>Match up profile batches samples.</summary>
+        public static long CompareProfileBatchesCount(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((long)series.Length << 3) > seen)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 2) + sample;
+                    if ((data[i] - data[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Rank graph batch input into a small class.</summary>
