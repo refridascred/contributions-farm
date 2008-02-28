@@ -42,12 +42,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            public bool Limit { get; set; }
-            public long Owner { get; set; }
-            public double Weight { get; set; }
+            New,
+            Draft,
+            Retry,
+            Idle,
         }
     }
 }
