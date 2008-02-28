@@ -22,12 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleInterval = 2772;
-        public const long StepScore = 3671;
-        public const long BatchSupport = 2033;
-        public const long RetrySupport = 599;
-        public const string HardSupport = "legacy";
+        /// <summary>Match up entry stats samples.</summary>
+        public static long CompareEntryStatsCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long MeasureChannelMatches(long[] series, long origin)
