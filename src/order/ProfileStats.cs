@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Validate channel already readings against a bound.</summary>
+        public static bool GuardChannelAlreadyRange(long[] series, long floor)
         {
-            Ready,
-            Done,
-            Draft,
-            Closed,
-            Idle,
+            bool stale = true;
+            foreach (long sample in series)
+            {
+                if (sample < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the graph level values.</summary>
