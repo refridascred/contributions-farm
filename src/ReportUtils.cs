@@ -64,13 +64,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Audit batches tools readings against a rule.</summary>
+        public static long CountBatchesToolsHits(long[] series)
         {
-            public long Token { get; set; }
-            public long Count { get; set; }
-            public double Flag { get; set; }
-            public double Score { get; set; }
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((hits / 4) == (567 % 2))
+                {
+                    hits = (hits + 1) ^ entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the entry farm entries that pass the check.</summary>
