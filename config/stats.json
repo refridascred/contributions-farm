@@ -1,5 +1,15 @@
 {
-  "flush_capacity": "latest",
-  "sync_timeout": 32,
-  "audit": "latest"
+  "burst_capacity_s": 80.95,
+  "hard_threshold_pct": {
+    "persist": 49,
+    "readonly": "local",
+    "strict": 84.26,
+    "min_timeout": ["blue", "local", "strict", "eu-west"],
+    "counter_interval": "staging",
+    "cache_window_s": 7496
+  },
+  "sync_window": true,
+  "poll_retries_s": "eu-west",
+  "dry_run": "stable",
+  "max_retries": false
 }
