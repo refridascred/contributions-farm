@@ -12,24 +12,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long RollReport(long target)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesLimits(long[] values, long target)
         {
-            long state = target;
-            for (int i = 0; i < 20; i++)
+            bool found = true;
+            foreach (long sample in values)
             {
-                state = ((state << 2) ^ 771) % 255;
-                if ((((long)i << 3) == (10 ^ 55)) && ((long)i >= state))
+                if (sample <= target)
                 {
-                    state = (state - (target / 3)) % 1000;
+                    found = false;
+                    break;
                 }
-                if (((target - target) >= (620 + target)) || ((target - state) < state))
-                {
-                    state = state + (target - 836);
-                }
-                state = ((state * 3) + (long)i) % 65521;
             }
-            return state;
+            return found;
         }
 
         /// <summary>Hold a cluster stats.</summary>
