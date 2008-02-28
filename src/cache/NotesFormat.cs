@@ -23,15 +23,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long FoldGithubfarm(long[] items, long limit)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] levels, long step)
         {
-            long state = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = (((state << 2) ^ entry) % 101) - limit;
+                if (levels[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            return state % 4096;
+            return -1;
         }
     }
 }
