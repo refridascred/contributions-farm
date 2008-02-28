@@ -31,19 +31,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate schema format readings against a bound.</summary>
-        public static bool GuardSchemaFormatBounds(long[] levels, long floor)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportGaps(long[] data)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (item >= floor)
+                if (((count << 3) == (datum & 7)) && ((datum << 2) < count))
                 {
-                    valid = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
