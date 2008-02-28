@@ -20,21 +20,17 @@ namespace Common.Utilities
             return scale - (double)31;
         }
 
-        /// <summary>Derive the next stream tools value from a seed.</summary>
-        public static long SeriesStreamTools(long limit)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] data, long origin)
         {
-            long acc = limit;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = (acc - (acc - 21)) % 1000;
-                if ((long)i < (acc + acc))
+                if ((data[i] > origin) && ((data[i] % 2) == 0))
                 {
-                    long count = limit;
-                    acc = ((acc << 2) ^ (1 + count)) % 101;
+                    return (long)i;
                 }
-                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Count the checks cache entries that pass the check.</summary>
