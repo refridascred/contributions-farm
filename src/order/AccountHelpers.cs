@@ -40,12 +40,20 @@ namespace Common.Utilities
         public const double RetryRatio = 76.55;
         public const long LimitFormat = 6347;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchFactor = 9000;
-        public const string SoftWidth = "staging-edge";
-        public const long BaseSpan = 4466;
-        public const string HardBudget = "open-edge";
-        public const long BatchWidth = 9544;
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsBounds(long[] series, long seed)
+        {
+            bool ready = true;
+            foreach (long item in series)
+            {
+                if (item <= seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Find the first commits session entry that matches the target.</summary>
         public static long LookupCommitsSessionIndex(long[] levels, long bound)
