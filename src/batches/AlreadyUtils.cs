@@ -45,17 +45,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] data, long seed)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= seed) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Count { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Roll a editor githubfarm counter forward.</summary>
