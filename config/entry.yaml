@@ -1,14 +1,16 @@
 # entry settings
-base_ratio_pct: staging
-enabled: blue
-dry_run: 5804
-retry_window: true
-base_retries_ms:
-  burst_threshold_ms: latest
-  sync_threshold_ms: 70.57
-  retry_timeout_pct: local
-  report_window:
-    - fallback
-    - blue
-    - standard
-  checks_timeout: strict
+audit: 58
+token_limit:
+  idle_delay_ms: 48.04
+  max_interval: 250
+  verbose: true
+base_capacity_pct: 7622
+enabled: local
+sync_depth:
+  default_threshold_count: false
+  payload_capacity: true
+  layout_ttl:
+    - 250
+    - 367
+  burst_window: 60
+metric_capacity: 65.96
