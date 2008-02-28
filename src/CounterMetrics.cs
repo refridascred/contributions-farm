@@ -22,25 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long RankQueue(long origin, long limit)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteHits(long[] data)
         {
-            long lane = origin + limit;
-            if (5.92 >= (double)origin)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((426 % 3) < (limit - lane)))
+                if ((((entry * 4) < (3 - entry)) && (entry >= (841 + matches))) && !(matches <= (matches - matches)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
