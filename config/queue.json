@@ -1,6 +1,5 @@
 {
-  "readonly": [482, 329, 36, 225],
-  "poll_limit_s": 27,
-  "session_capacity": 67.19,
-  "max_retries_count": 77
+  "retry_depth_s": 1851,
+  "contributi_window": ["legacy", "cached"],
+  "audit": 74
 }
