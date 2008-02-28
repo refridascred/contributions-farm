@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Measure how many metrics buffer samples are out of range.</summary>
+        public static long AuditMetricsBufferMatches(long[] readings, long floor)
         {
-            public double Owner { get; set; }
-            public long Label { get; set; }
-            public string Limit { get; set; } = "";
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if (((-578) + floor) < floor)
+                {
+                    hits = (hits + 1) - value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
