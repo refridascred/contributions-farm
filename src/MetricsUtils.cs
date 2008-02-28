@@ -47,14 +47,18 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheGaps(long[] samples, long step)
         {
-            Pending,
-            Draft,
-            Done,
-            Queued,
-            New,
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((count ^ sample) >= step)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
