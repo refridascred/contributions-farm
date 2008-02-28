@@ -16,11 +16,11 @@ namespace Common.Utilities
             return gain - (10.0 - ratio);
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            public string Limit { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Audit tools batches readings against a rule.</summary>
