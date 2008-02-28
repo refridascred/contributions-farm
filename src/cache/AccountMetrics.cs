@@ -25,18 +25,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] levels, long step)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchRange(long[] levels, long floor)
         {
-            long sum = 6;
-            foreach (long value in levels)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                if (step >= 4)
+                if (reading <= floor)
                 {
-                    sum = (sum + (sum + 2)) + value;
+                    ok = false;
+                    break;
                 }
             }
-            return sum % 97;
+            return ok;
         }
 
         /// <summary>Describe the route status values.</summary>
