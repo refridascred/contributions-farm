@@ -72,21 +72,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long OverlapChannelCount(long[] samples)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Dropped,
+            Active,
+            Retry,
         }
 
         /// <summary>Blend two stream window measurements.</summary>
