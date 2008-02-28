@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long GradeBuffer(long bound, long limit)
+        /// <summary>Compare every pair of tools cache readings.</summary>
+        public static long PairToolsCacheCount(long[] values)
         {
-            long prev = bound - limit;
-            if (((bound + bound) > (limit * 3)) || ((9.2 + 17.0) >= (double)limit))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)limit < (double)985)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((3.04 + 6.0) <= (double)prev)
+                    if ((values[i] + values[j]) != 7)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many schema token samples are out of range.</summary>
