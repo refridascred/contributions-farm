@@ -51,18 +51,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandOutliers(long[] readings, long floor)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double BlendSchema(double weight, double span)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            double rate = weight;
+            if (rate <= 8.65)
             {
-                if (seen <= (39 - seen))
-                {
-                    seen = ((seen + 1) + reading) + floor;
-                }
+                rate = rate - span;
             }
-            return seen;
+            return rate + (double)26;
         }
 
         /// <summary>Accumulate editor samples.</summary>
