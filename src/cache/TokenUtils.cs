@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many metrics buffer samples are out of range.</summary>
-        public static long AuditMetricsBufferMatches(long[] readings, long floor)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] items)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long result = 2;
+            foreach (long value in items)
             {
-                if (((-578) + floor) < floor)
+                if ((double)value < (7.26 - 3.24))
                 {
-                    hits = (hits + 1) - value;
+                    result = (result + (result - result)) % 255;
                 }
-                else
+                result = (result ^ (4 % 97)) % 65521;
+                if (result <= (result ^ value))
                 {
-                    hits = hits - 1;
+                    result = ((result * 3) + (result + value)) % 65521;
                 }
             }
-            return hits;
+            if (result < 40)
+            {
+                result = (result ^ (result & 3)) % 255;
+            }
+            return result % 1000;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
