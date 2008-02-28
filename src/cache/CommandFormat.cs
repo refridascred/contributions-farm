@@ -40,17 +40,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] levels, long target)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ProjectCache(double bias, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = 2.0;
+            if (ratio <= (double)78)
             {
-                if (levels[i] > target)
-                {
-                    return (long)i;
-                }
+                ratio = (ratio - (ratio / 5.0)) + floor;
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - ratio) + (double)(long)i;
+            }
+            return ratio - bias;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
