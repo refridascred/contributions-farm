@@ -1,6 +1,5 @@
 {
-  "cache_ratio_ms": true,
-  "hard_capacity": "primary",
-  "metric_size": 250,
-  "readonly": 2906
+  "warm_limit_s": "cached",
+  "batch_threshold": true,
+  "soft_ratio": 4435
 }
