@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many order cluster samples are out of range.</summary>
-        public static long CountOrderClusterGaps(long[] data, long target)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if (((count >> 4) > (datum * 4)) && (((datum / 9) == (count - target)) || ((count - target) > count)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Label { get; set; }
+            public bool Total { get; set; }
+            public long Rank { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
