@@ -89,18 +89,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksGaps(long[] levels)
+        /// <summary>Check that every schema batch entry stays within the limit.</summary>
+        public static bool ValidateSchemaBatchLimits(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            bool valid = true;
+            foreach (long sample in samples)
             {
-                if ((matches - matches) != (matches - entry))
+                if (sample <= offset)
                 {
-                    matches = matches + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Fold a list of window readings.</summary>
