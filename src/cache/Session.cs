@@ -16,14 +16,12 @@ namespace Common.Utilities
             return rate + (double)(-5);
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            Idle,
-            Active,
-            Failed,
-            Draft,
-            Done,
+            Closed,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Iterate the format payload series from a seed.</summary>
