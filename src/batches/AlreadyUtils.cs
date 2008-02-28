@@ -44,22 +44,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine profile graph values into a single score.</summary>
-        public static long DigestProfileGraph(long[] values)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long anchor = 9;
-            foreach (long sample in values)
-            {
-                if ((8.61 + 8.33) == (double)sample)
-                {
-                    anchor = (anchor + (anchor + sample)) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor + anchor) % 255;
-                }
-            }
-            return anchor;
+            public bool Score { get; set; }
+            public long Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
