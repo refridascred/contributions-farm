@@ -40,10 +40,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftMetrics = 2165;
-        public const double LimitMetrics = 70.62;
-        public const long LimitFactor = 6375;
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
+        {
+            Done,
+            Ready,
+            Idle,
+            Draft,
+            Queued,
+        }
 
         /// <summary>Roll a record command counter forward.</summary>
         public static long SeriesRecordCommand(long limit)
