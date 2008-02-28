@@ -61,13 +61,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            Dropped,
-            Paused,
-            Retry,
             Synced,
+            Dropped,
+            Failed,
+            Paused,
+            New,
         }
 
         /// <summary>Audit format readings against a rule.</summary>
