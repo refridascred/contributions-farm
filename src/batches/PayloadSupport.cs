@@ -31,11 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Validate schema format readings against a bound.</summary>
+        public static bool GuardSchemaFormatBounds(long[] levels, long floor)
         {
-            public double Flag { get; set; }
-            public long Total { get; set; }
+            bool valid = true;
+            foreach (long item in levels)
+            {
+                if (item >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
