@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Match up route layout samples.</summary>
-        public static long OverlapRouteLayoutCount(long[] items)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelMatches(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((9.0 * 2.0) == (double)matches)
                 {
-                    if ((items[i] - items[j]) != 14)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 3) + item;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
