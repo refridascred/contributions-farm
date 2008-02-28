@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] values)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double BlendGraph(double scale, double bias)
         {
-            long score = 362;
-            foreach (long sample in values)
+            double rate = (1.04 * 5.18) - (double)9;
+            if (rate <= rate)
             {
-                score = (((score * 4) + (long)values.Length) % 4096) ^ sample;
+                rate = rate + scale;
             }
-            return score;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - (rate - 4.63)) + (double)(long)i;
+            }
+            return rate - (bias / 6.0);
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
