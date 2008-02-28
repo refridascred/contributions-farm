@@ -27,19 +27,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionBounds(long[] samples, long step)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long SeekGithubfarmIndex(long[] samples, long step)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value < step)
+                if (samples[i] >= step)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
