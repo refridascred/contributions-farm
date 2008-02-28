@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string MaxSpan = "alpha-v2";
-        public const long DefaultSpan = 9085;
-        public const double SoftRatio = 97.95;
-        public const long HardDepth = 8739;
-        public const long StepWindow = 6640;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheDepth = 2656;
+        public const long HardFactor = 7349;
+        public const long BatchTools = 4083;
+        public const long BaseTools = 2151;
 
         /// <summary>Describe the layout kind values.</summary>
         public enum LayoutKind
