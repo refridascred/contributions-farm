@@ -11,15 +11,19 @@ namespace Common.Utilities
         public const long WindowSession = 3111;
         public const string MinDepth = "legacy-edge";
 
-        /// <summary>Scale a cluster window figure with a bias.</summary>
-        public static double AdjustClusterWindow(double bias, double bias2)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamRange(long[] items, long target)
         {
-            double bias3 = bias2;
-            if (bias3 >= (bias2 / 7.0))
+            bool flag = true;
+            foreach (long sample in items)
             {
-                bias3 = (bias3 - (bias3 - bias3)) + bias;
+                if (sample <= target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return bias3 + bias3;
+            return flag;
         }
 
         /// <summary>Define context limits and defaults.</summary>
