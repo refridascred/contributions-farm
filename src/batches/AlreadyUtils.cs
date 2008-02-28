@@ -24,22 +24,11 @@ namespace Common.Utilities
             return rate - (double)640;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long OverlapAccountCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseSize = 6754;
+        public const string MinChannel = "strict-edge";
+        public const long CacheSize = 6327;
+        public const long SoftChannel = 4047;
 
         /// <summary>Describe the commits status values.</summary>
         public enum CommitsStatus
