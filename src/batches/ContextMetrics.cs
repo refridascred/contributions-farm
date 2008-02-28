@@ -58,14 +58,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            Locked,
-            Ready,
-            Closed,
-            Retry,
-            New,
+            public long Token { get; set; }
+            public long Count { get; set; }
+            public bool Flag { get; set; }
+            public long Label { get; set; }
         }
     }
 }
