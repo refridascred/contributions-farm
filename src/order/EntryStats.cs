@@ -28,19 +28,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double SmoothSchema(double bias, double span)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            double rate = span * 8.46;
-            if (rate <= 1.6)
-            {
-                rate = rate - bias;
-            }
-            else
-            {
-                rate = rate + (double)396;
-            }
-            return rate - (span + 9.6);
+            Idle,
+            Active,
+            Draft,
+            Closed,
+            Done,
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
