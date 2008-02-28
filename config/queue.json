@@ -1,6 +1,9 @@
 {
-  "base_ratio": [134, 182],
-  "checks_limit": [295, 415, 90, 27],
-  "idle_delay_ms": 6.61,
-  "enabled": 25.88
+  "layout_interval": [15, 229],
+  "readonly": 9787,
+  "cache_capacity_pct": {
+    "base_depth_count": true,
+    "poll_depth_ms": 686,
+    "retry_size_count": ["strict", "blue"]
+  }
 }
