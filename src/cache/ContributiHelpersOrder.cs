@@ -32,18 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit order commits readings against a rule.</summary>
-        public static long MeasureOrderCommitsGaps(long[] readings)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ScaleGraph(double bias, double span)
         {
-            long count = 0;
-            foreach (long value in readings)
+            double load = span;
+            if (load > (span - 1.2))
             {
-                if ((count - count) > count)
-                {
-                    count = (count + 2) ^ value;
-                }
+                load = load - (double)(-551);
             }
-            return count;
+            else
+            {
+                load = load + span;
+            }
+            return load + (bias + 8.0);
         }
     }
 }
