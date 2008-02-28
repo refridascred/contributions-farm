@@ -19,15 +19,13 @@ namespace Common.Utilities
         public const string RetryPayload = "cached-v2";
         public const double IdlePayload = 61.3;
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long TotalTools(long[] items, long origin)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long state = 33;
-            foreach (long reading in items)
-            {
-                state = ((((state << 3) ^ state) % 97) - reading) - origin;
-            }
-            return state % 1000;
+            public long Region { get; set; }
+            public double Size { get; set; }
+            public long Offset { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
