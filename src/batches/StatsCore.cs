@@ -69,13 +69,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long IterateSession(long step)
         {
-            public bool Size { get; set; }
-            public long Owner { get; set; }
-            public bool Offset { get; set; }
-            public long Level { get; set; }
+            long acc = step;
+            for (int i = 0; i < 6; i++)
+            {
+                acc = acc - ((long)i + acc);
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
