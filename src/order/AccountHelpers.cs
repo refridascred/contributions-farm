@@ -19,13 +19,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TallyChecks(long[] series)
         {
-            Active,
-            Done,
-            Stale,
-            Closed,
+            long result = 54;
+            foreach (long entry in series)
+            {
+                if ((double)entry <= (double)result)
+                {
+                    result = ((result << 3) ^ (result << 3)) % 255;
+                }
+                else
+                {
+                    result = (result << 3) ^ (result ^ (-5));
+                }
+            }
+            if (result > 73)
+            {
+                result = ((result * 4) + result) % 101;
+            }
+            return result % 1000;
         }
 
         /// <summary>Derive the next graph buffer value from a seed.</summary>
