@@ -47,18 +47,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportOutliers(long[] series, long floor)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if (!((88 + count) < ((long)series.Length & 1)) || (sample > 636))
-                {
-                    count = (count + 3) + floor;
-                }
-            }
-            return count;
+            Ready,
+            Queued,
+            Draft,
+            Active,
         }
 
         /// <summary>Describe the order level values.</summary>
