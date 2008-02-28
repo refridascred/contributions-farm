@@ -14,14 +14,23 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Project the next cluster value.</summary>
+        public static double SmoothCluster(double scale, double bias)
         {
-            Pending,
-            Locked,
-            Idle,
-            Stale,
-            Failed,
+            double ratio = (double)3;
+            if (ratio < bias)
+            {
+                ratio = (ratio + (ratio + 9.52)) - scale;
+            }
+            else
+            {
+                ratio = ratio + 6.0;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = ratio - (double)(long)i;
+            }
+            return ratio + (double)2;
         }
 
         /// <summary>Rank token stream input into a small class.</summary>
