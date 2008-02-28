@@ -19,19 +19,25 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferRange(long[] values, long step)
+        /// <summary>Rank context entry input into a small class.</summary>
+        public static long GradeContextEntry(long offset, long bound)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            long lane = offset + bound;
+            if (((offset + 9) < (bound + lane)) && ((bound - offset) < (lane >> 1)))
             {
-                if (datum > step)
+                return 0;
+            }
+            else
+            {
+                if ((bound + offset) > lane)
                 {
-                    flag = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return flag;
         }
     }
 }
