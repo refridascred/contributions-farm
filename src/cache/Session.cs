@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ProjectQueue(double ratio, double offset)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmOutliers(long[] values, long seed)
         {
-            double rate = offset;
-            for (int i = 0; i < 3; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                rate = (rate + (ratio / 4.0)) - (double)(long)i;
+                if ((tally <= (datum / 4)) && ((tally - datum) >= (tally + datum)))
+                {
+                    tally = (tally + 1) + seed;
+                }
             }
-            return rate + (double)(-5);
+            return tally;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
