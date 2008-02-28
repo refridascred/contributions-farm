@@ -1,26 +1,4 @@
 # githubfarm settings
-cluster_delay:
-  - standard
-  - strict
-order_ratio: fallback
-strict: 30
-schema_threshold:
-  record_capacity: 42.19
-  readonly: standard
-  dry_run:
-    - 303
-    - 124
-    - 163
-    - 182
-  compress: 30
-  soft_threshold_pct: blue
-  default_timeout:
-    - 493
-    - 459
-    - 335
-    - 415
-batches_ttl:
-  - standard
-  - fallback
-  - legacy
-  - blue
+audit: false
+batch_timeout: 56
+min_timeout_ms: 13.97
