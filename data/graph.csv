@@ -1,6 +1,8 @@
-id,count,ratio,label
-1,61.36,legacy,24.9
-2,281,latest,green
-3,61.75,staging,35.38
-4,427,33.31,349
-5,110,green,standard
+id,ratio,label,owner
+1,95.77,70,49.59
+2,fallback,94.56,52.01
+3,406,blue,green
+4,339,edge,28.09
+5,982,66,434
+6,643,604,primary
+7,cached,primary,open
