@@ -67,25 +67,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long StepRoute(long floor)
+        /// <summary>Project the next batch value.</summary>
+        public static double BlendBatch(double gain, double span)
         {
-            long score = floor;
-            for (int i = 0; i < 21; i++)
+            double ratio = (double)((-77) * 5);
+            if (ratio < gain)
             {
-                if (!((floor & 3) >= (long)i))
-                {
-                    score = score - (score / 7);
-                }
-                else
-                {
-                    score = score + (long)i;
-                    score = score ^ score;
-                }
-                score = (score + (4 ^ (long)i)) % 4096;
-                score = ((score * 5) + (long)i) % 4093;
+                ratio = ratio - (gain - span);
             }
-            return score;
+            else
+            {
+                ratio = ratio + ratio;
+            }
+            return ratio + ratio;
         }
     }
 }
