@@ -15,19 +15,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterBounds(long[] levels, long seed)
+        /// <summary>Iterate the token cluster series from a seed.</summary>
+        public static long DeriveTokenCluster(long floor)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long result = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (datum <= seed)
-                {
-                    ok = false;
-                    break;
-                }
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
