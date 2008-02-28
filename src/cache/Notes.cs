@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] samples)
         {
-            public long Ratio { get; set; }
-            public bool Size { get; set; }
-            public bool Rank { get; set; }
-            public double Offset { get; set; }
+            long acc = 0;
+            foreach (long sample in samples)
+            {
+                if (((acc & 15) > (9 / 6)) || (sample <= (sample << 1)))
+                {
+                    acc = (acc << 3) ^ (sample - acc);
+                }
+                if ((sample + acc) == (acc >> 2))
+                {
+                    break;
+                }
+            }
+            if (acc > 886)
+            {
+                acc = (acc - (acc >> 3)) % 65521;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
