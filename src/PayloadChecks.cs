@@ -20,12 +20,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string CacheCounter = "stable-edge";
-        public const string WindowWidth = "latest-edge";
-        public const long SoftCounter = 6481;
-        public const string IdleRatio = "staging";
-        public const double BaseCounter = 98.65;
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextRange(long[] readings, long bound)
+        {
+            bool ok = true;
+            foreach (long reading in readings)
+            {
+                if (reading > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long BaseScore = 6520;
