@@ -20,12 +20,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Adjust a tools reading.</summary>
+        public static double BlendTools(double ratio, double bias)
         {
-            public long Limit { get; set; }
-            public bool Region { get; set; }
-            public long Ratio { get; set; }
+            double bias2 = bias / 2.0;
+            if (bias2 < (bias + 1.9))
+            {
+                bias2 = (bias2 + bias) - ratio;
+            }
+            else
+            {
+                bias2 = bias2 + (double)461;
+            }
+            return bias2 - bias2;
         }
 
         /// <summary>Hold a support header.</summary>
