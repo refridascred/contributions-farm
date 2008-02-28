@@ -52,13 +52,19 @@ namespace Common.Utilities
         public const double MaxGraph = 5.79;
         public const long MinScore = 7603;
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsLimits(long[] values, long offset)
         {
-            public double Level { get; set; }
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
-            public double Score { get; set; }
+            bool valid = true;
+            foreach (long cell in values)
+            {
+                if (cell != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
