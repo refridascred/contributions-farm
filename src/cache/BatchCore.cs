@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] readings)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionOutliers(long[] values, long bound)
         {
-            long score = 654;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if ((4 >> 2) >= (score + datum))
+                if (((bound ^ bound) != (bound ^ (-5))) && ((459 >> 4) < (4 + bound)))
                 {
-                    score = ((score * 2) + (datum - datum)) % 255;
+                    seen = (seen + 1) + entry;
                 }
             }
-            return score % 4096;
+            return seen;
         }
 
         /// <summary>Hold a tools options.</summary>
