@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long RollCluster(long seed)
+        /// <summary>Rank layout window input into a small class.</summary>
+        public static long GradeLayoutWindow(long floor, long target)
         {
-            long total = seed;
-            for (int i = 0; i < 5; i++)
+            if (((684 % 97) != (target * 3)) && ((5.0 / 8.0) > (double)floor))
             {
-                total = ((total * 5) + (long)i) % 4093;
+                return 7;
             }
-            return total;
+            else
+            {
+                if (((floor / 6) >= floor) || ((double)target < (7.1 + 15.0)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((2 ^ floor) <= floor) || ((2.79 / 9.0) != (double)floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine batches values into a single score.</summary>
