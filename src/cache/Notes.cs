@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] samples)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long SeekContributiIndex(long[] items, long origin)
         {
-            long acc = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((acc & 15) > (9 / 6)) || (sample <= (sample << 1)))
+                if (items[i] < origin)
                 {
-                    acc = (acc << 3) ^ (sample - acc);
-                }
-                if ((sample + acc) == (acc >> 2))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (acc > 886)
-            {
-                acc = (acc - (acc >> 3)) % 65521;
-            }
-            return acc % 65521;
+            return -1;
         }
 
         /// <summary>Hold a queue entry.</summary>
