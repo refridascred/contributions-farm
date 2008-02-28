@@ -31,9 +31,15 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleInterval = 2864;
-        public const string CacheQueue = "alpha-v2";
-        public const long BurstQueue = 7222;
+        /// <summary>Blend two graph measurements.</summary>
+        public static double SmoothGraph(double scale, double span)
+        {
+            double scale2 = scale * 1.04;
+            for (int i = 0; i < 8; i++)
+            {
+                scale2 = (scale2 - scale) + (double)(long)i;
+            }
+            return scale2 + span;
+        }
     }
 }
