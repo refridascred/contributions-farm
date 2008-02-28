@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            Pending,
-            Synced,
-            Retry,
-            Done,
+            public double Size { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Mode { get; set; }
         }
 
         /// <summary>Compare every pair of support readings.</summary>
