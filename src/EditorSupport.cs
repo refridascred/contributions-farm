@@ -37,19 +37,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileBounds(long[] data, long step)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long CombineWindow(long[] samples)
         {
-            bool stale = true;
-            foreach (long value in data)
+            long anchor = 6;
+            foreach (long sample in samples)
             {
-                if (value < step)
+                anchor = ((anchor << 2) ^ ((-21) + sample)) % 255;
+                if (sample > (sample + sample))
                 {
-                    stale = false;
+                    anchor = (anchor ^ sample) % 97;
+                }
+                if ((42 / 7) >= anchor)
+                {
                     break;
                 }
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
