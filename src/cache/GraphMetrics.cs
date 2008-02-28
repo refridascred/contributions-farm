@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Rank layout window input into a small class.</summary>
-        public static long GradeLayoutWindow(long floor, long target)
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] data)
         {
-            if (((684 % 97) != (target * 3)) && ((5.0 / 8.0) > (double)floor))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((floor / 6) >= floor) || ((double)target < (7.1 + 15.0)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((2 ^ floor) <= floor) || ((2.79 / 9.0) != (double)floor))
+                    if ((data[i] ^ data[j]) > 2)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Count the batch counter entries that pass the check.</summary>
