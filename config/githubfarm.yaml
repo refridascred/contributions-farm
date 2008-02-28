@@ -1,12 +1,41 @@
 # githubfarm settings
-default_size_s: 8.69
-layout_ttl: 27.3
-stats_ratio: 23.57
-hard_depth: 7210
-max_size_pct:
-  githubfarm_interval: green
-  default_timeout: eu-west
-  soft_interval_count: 21.81
-  cache_limit: 95.43
-  batch_threshold: strict
-  compress: 4
+base_depth_count:
+  compress: latest
+  flush_delay: true
+  soft_retries: 100
+cluster_ratio:
+  buffer_delay:
+    retry_capacity_count: fallback
+    soft_interval_count:
+      - legacy
+      - fallback
+    githubfarm_size:
+      - legacy
+      - open
+      - fallback
+    verbose: 1
+    compress:
+      - stable
+      - blue
+    warm_delay_ms: latest
+  editor_threshold: 40.96
+  poll_capacity_ms:
+    tools_window: latest
+    idle_window: true
+    max_capacity: false
+    idle_limit_s: 60
+    base_limit_pct: local
+    default_ttl: blue
+  layout_capacity: local
+  base_retries:
+    - staging
+    - standard
+    - cached
+min_ttl:
+  - 69
+  - 472
+  - 455
+strict:
+  - 331
+  - 4
+  - 96
