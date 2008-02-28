@@ -1,4 +1,8 @@
 # support settings
-enabled: blue
-support_retries: standard
-metric_ratio: 100
+flush_size_s: open
+warm_delay_count:
+  - latest
+  - blue
+  - local
+batch_ratio_ms: eu-west
+warm_threshold_pct: false
