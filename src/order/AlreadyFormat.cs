@@ -67,24 +67,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long floor, long bound)
+        /// <summary>Accumulate farm cache samples.</summary>
+        public static long DigestFarmCache(long[] readings)
         {
-            if ((floor & 1) < (floor ^ floor))
+            long result = 7;
+            foreach (long reading in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound + bound) >= (floor << 3))
+                if (reading < (-12))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    result = (result ^ (result % 24)) % 1000;
                 }
             }
+            if (result > 60)
+            {
+                result = (result + (result + result)) % 4096;
+            }
+            return result;
         }
     }
 }
