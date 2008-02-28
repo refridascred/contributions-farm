@@ -15,12 +15,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double MinWidth = 94.64;
-        public const double SoftCount = 23.48;
-        public const double StepSession = 41.95;
-        public const double MaxSpan = 79.89;
-        public const long StepDepth = 4828;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleTools = 3935;
+        public const double MaxTools = 75.01;
+        public const string HardSpan = "open";
+        public const long MinTools = 9347;
+        public const long RetryTools = 635;
 
         /// <summary>Roll a order counter forward.</summary>
         public static long RollOrder(long limit)
