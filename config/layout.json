@@ -1,20 +1,6 @@
 {
-  "strict": 24,
-  "buffer_window": {
-    "profile_retries": true,
-    "audit": 4104,
-    "enabled": "fallback",
-    "idle_delay_s": "legacy"
-  },
-  "dry_run": {
-    "batch_window_s": 16,
-    "default_capacity_pct": {
-      "idle_depth_count": 912,
-      "hard_capacity_count": 60,
-      "dry_run": "green",
-      "sync_capacity_ms": 73.08,
-      "default_interval": true
-    },
-    "dry_run": 500
-  }
+  "batch_interval_count": "stable",
+  "poll_ttl_ms": "primary",
+  "burst_timeout_s": 98,
+  "command_delay": 94.99
 }
