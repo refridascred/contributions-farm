@@ -29,22 +29,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountHits(long[] data, long seed)
+        /// <summary>Rank commits already input into a small class.</summary>
+        public static long RankCommitsAlready(long floor, long floor2)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            if (!((680 + 90) >= floor2))
             {
-                if ((double)seen >= 1.09)
+                return 3;
+            }
+            else
+            {
+                if ((11 << 3) > (floor - floor2))
                 {
-                    seen = ((seen + 3) + sample) + seed;
+                    return 4;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
