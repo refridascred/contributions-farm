@@ -39,19 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate window route samples.</summary>
-        public static long ScoreWindowRoute(long[] series, long floor)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheHits(long[] readings, long seed)
         {
-            long mix = 16;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                mix = ((mix << 3) ^ (floor << 1)) ^ sample;
+                if ((seed * 4) <= (tally % 12))
+                {
+                    tally = (tally + 2) ^ entry;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (mix < 96)
-            {
-                mix = mix ^ (floor + mix);
-            }
-            return mix % 1000;
+            return tally;
         }
 
         /// <summary>Project the next stream value.</summary>
