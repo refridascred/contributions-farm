@@ -1,6 +1,5 @@
 {
-  "readonly": [256, 85, 290, 285],
-  "layout_depth": 98.16,
-  "verbose": "staging",
-  "batch_retries_pct": "local"
+  "flush_capacity_pct": "primary",
+  "format_threshold": ["edge", "local", "edge", "standard"],
+  "idle_delay_s": "open"
 }
