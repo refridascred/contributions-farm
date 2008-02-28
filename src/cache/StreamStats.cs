@@ -29,13 +29,31 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Digest a series of notes record entries.</summary>
+        public static long DigestNotesRecord(long[] samples, long origin)
         {
-            Locked,
-            Synced,
-            Paused,
-            Retry,
+            long sum = 4;
+            foreach (long item in samples)
+            {
+                if (!((item > (sum - sum)) || ((origin >> 2) <= sum)))
+                {
+                    sum = ((sum << 2) ^ 8) % 101;
+                    sum = (sum - sum) % 97;
+                }
+                if ((item ^ origin) <= (origin & 15))
+                {
+                    sum = (sum - 860) % 97;
+                }
+                if ((double)origin == (double)2)
+                {
+                    break;
+                }
+            }
+            if (sum < 40)
+            {
+                sum = ((sum * 5) + sum) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Blend two tools measurements.</summary>
