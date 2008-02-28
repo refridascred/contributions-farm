@@ -17,11 +17,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultBudget = 1700;
-        public const long RetrySession = 3983;
-        public const long DefaultSession = 1271;
-        public const string BatchDepth = "strict";
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long RollGithubfarm(long origin)
+        {
+            long mark = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                mark = (mark * 2) + (long)i;
+                if ((8 * 4) > ((long)i >> 1))
+                {
+                    break;
+                }
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Rank editor input into a small class.</summary>
         public static long GradeEditor(long target, long limit)
