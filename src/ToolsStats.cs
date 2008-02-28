@@ -19,14 +19,14 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            Closed,
-            Done,
+            Pending,
+            Locked,
+            Idle,
             Stale,
-            Active,
-            New,
+            Failed,
         }
 
         /// <summary>Rank token stream input into a small class.</summary>
