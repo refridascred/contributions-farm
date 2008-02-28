@@ -18,12 +18,13 @@ namespace Common.Utilities
         public const string RetryPayload = "cached-v2";
         public const double IdlePayload = 61.3;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double SoftScore = 23.48;
-        public const string WindowCount = "standard";
-        public const long IdleSpan = 3480;
-        public const long BurstRatio = 1429;
-        public const double SoftFactor = 60.58;
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
+        {
+            Failed,
+            Stale,
+            Retry,
+        }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool VerifyContributiLimits(long[] items, long floor)
