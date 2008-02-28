@@ -26,14 +26,11 @@ namespace Common.Utilities
         public const long DefaultNotes = 6358;
         public const long BatchNotes = 4095;
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
-        {
-            New,
-            Idle,
-            Retry,
-            Closed,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchFilter = 6957;
+        public const double RetryCount = 51.04;
+        public const string WindowFilter = "legacy-edge";
+        public const long IdleFilter = 6339;
 
         /// <summary>Describe the payload status values.</summary>
         public enum PayloadStatus
