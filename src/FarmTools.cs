@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
-        {
-            public string Flag { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Offset { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MinTimeout = "primary-edge";
+        public const long BatchFactor = 4340;
+        public const long BaseBudget = 8231;
+        public const long CachePayload = 8869;
 
         /// <summary>Iterate the already series from a seed.</summary>
         public static long DeriveAlready(long step)
