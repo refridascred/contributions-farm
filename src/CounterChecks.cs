@@ -27,10 +27,20 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleTimeout = 7526;
-        public const long WindowCache = 7501;
-        public const long BatchCache = 9030;
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatLimits(long[] values, long origin)
+        {
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry <= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long AuditEditorHits(long[] values)
