@@ -28,12 +28,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long SeekOrderIndex(long[] samples, long origin)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] data, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((samples[i] <= origin) && ((samples[i] % 3) == 0))
+                if ((data[i] < seed) && ((data[i] % 5) != 0))
                 {
                     return (long)i;
                 }
