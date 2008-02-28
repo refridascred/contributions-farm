@@ -47,18 +47,18 @@ namespace Common.Utilities
         public const double LimitSpan = 0.46;
         public const string BurstContext = "local-edge";
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowHits(long[] samples)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderHits(long[] levels)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (datum >= (datum * 5))
+                if ((264 + reading) < (reading % 100))
                 {
-                    matches = matches + 3;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Define route limits and defaults.</summary>
