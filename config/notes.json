@@ -1,5 +1,7 @@
 {
-  "flush_limit": 32.49,
-  "strict": 23.54,
-  "batch_retries_s": 97.98
+  "layout_threshold": 24.18,
+  "cache_threshold": 83.72,
+  "burst_threshold_pct": ["open", "primary"],
+  "report_limit": false,
+  "compress": "cached"
 }
