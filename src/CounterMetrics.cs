@@ -55,18 +55,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteGaps(long[] levels)
+        /// <summary>Rank stats profile input into a small class.</summary>
+        public static long RankStatsProfile(long floor, long bound)
         {
-            long count = 0;
-            foreach (long value in levels)
+            if ((350 * 4) <= (4 ^ bound))
             {
-                if (((47 + count) <= (count - 94)) && ((value > count) || ((value - value) >= (9 - count))))
+                return 3;
+            }
+            else
+            {
+                if ((bound & 31) == (floor >> 3))
                 {
-                    count = count + 2;
+                    return 6;
+                }
+                else
+                {
+                    if ((bound & 31) < floor)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return count;
         }
     }
 }
