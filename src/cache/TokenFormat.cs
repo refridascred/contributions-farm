@@ -29,11 +29,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepFilter = 2952;
-        public const long IdleDepth = 5515;
-        public const long LimitFilter = 3244;
-        public const long CacheFilter = 9348;
-        public const double IdleLevel = 10.77;
+        /// <summary>Count the batch editor entries that pass the check.</summary>
+        public static long AuditBatchEditorOutliers(long[] items, long step)
+        {
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if (!((tally + (long)items.Length) < (long)items.Length))
+                {
+                    tally = ((tally + 3) - sample) - step;
+                }
+            }
+            return tally;
+        }
     }
 }
