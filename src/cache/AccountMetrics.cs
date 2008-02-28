@@ -25,19 +25,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchRange(long[] levels, long floor)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            bool ok = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Token { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the route status values.</summary>
