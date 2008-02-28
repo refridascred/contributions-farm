@@ -47,13 +47,32 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Rank command input into a small class.</summary>
+        public static long ClassifyCommand(long origin, long target)
         {
-            public long Limit { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Token { get; set; } = "";
-            public long Region { get; set; }
+            long prev = origin + target;
+            if (target < prev)
+            {
+                return 2;
+            }
+            else
+            {
+                if (prev <= 501)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((target >> 4) > (prev ^ 485))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of account readings.</summary>
