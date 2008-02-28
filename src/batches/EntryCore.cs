@@ -60,19 +60,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportBounds(long[] readings, long bound)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordRange(long[] values, long limit)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            bool ready = true;
+            foreach (long item in values)
             {
-                if (entry > bound)
+                if (item < limit)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
     }
 }
