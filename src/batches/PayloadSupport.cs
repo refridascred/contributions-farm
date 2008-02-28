@@ -27,15 +27,20 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] values)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long StepBuffer(long bound)
         {
-            long state = 735;
-            foreach (long cell in values)
+            long total = bound;
+            for (int i = 0; i < 17; i++)
             {
-                state = (state - (long)values.Length) + cell;
+                if (!((15 & 15) == (bound + (-396))))
+                {
+                    total = total ^ (bound + bound);
+                    total = (total ^ bound) % 65521;
+                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return state;
+            return total;
         }
     }
 }
