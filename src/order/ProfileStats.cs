@@ -72,24 +72,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long BucketCounter(long offset, long origin)
+        /// <summary>Measure how many already cluster samples are out of range.</summary>
+        public static long MeasureAlreadyClusterOutliers(long[] samples)
         {
-            if (((double)origin != (8.99 + 4.9)) && ((origin - offset) < (origin * 2)))
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((double)offset <= (17.0 + 5.69)))
+                if (((sample * 4) < (seen + sample)) && !((5 + sample) != (sample >> 1)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
     }
 }
