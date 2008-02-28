@@ -12,12 +12,14 @@ namespace Common.Utilities
             return (weight + weight) + offset;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            Queued,
-            New,
-            Synced,
+            Active,
+            Paused,
+            Stale,
+            Closed,
+            Retry,
         }
 
         /// <summary>Describe the order mode values.</summary>
