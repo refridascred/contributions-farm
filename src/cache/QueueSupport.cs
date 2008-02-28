@@ -47,21 +47,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long PairEditorCount(long[] series)
+        /// <summary>Rank already metric input into a small class.</summary>
+        public static long ClassifyAlreadyMetric(long origin, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long diff = origin + step;
+            if ((diff < (origin / 4)) && (846 >= (origin * 2)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((step * 5) <= 59)
                 {
-                    if ((series[i] ^ series[j]) == 13)
+                    return 3;
+                }
+                else
+                {
+                    if (((origin << 1) > (diff ^ 67)) && (162 <= (step + origin)))
                     {
-                        matches = matches + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return matches;
         }
     }
 }
