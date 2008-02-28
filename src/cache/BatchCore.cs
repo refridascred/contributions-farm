@@ -44,11 +44,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double DefaultRatio = 61.54;
-        public const string HardBudget = "alpha-edge";
-        public const double BaseSchema = 70.82;
-        public const long WindowSchema = 9846;
-        public const double MaxSize = 32.92;
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
+        {
+            public long Region { get; set; }
+            public long Weight { get; set; }
+            public long Total { get; set; }
+        }
     }
 }
