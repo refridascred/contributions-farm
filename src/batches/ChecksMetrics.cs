@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksMatches(long[] items)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelRange(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                if (sample > (seen + seen))
+                if (sample > floor)
                 {
-                    seen = seen + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
