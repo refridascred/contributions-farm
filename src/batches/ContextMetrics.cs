@@ -26,12 +26,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
-        {
-            public long Offset { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleSupport = 1233;
+        public const long HardSupport = 7987;
+        public const double SoftCount = 21.75;
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long CountFarmMatches(long[] readings, long seed)
