@@ -58,20 +58,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsRange(long[] series, long bound)
-        {
-            bool ok = true;
-            foreach (long datum in series)
-            {
-                if (datum <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MaxWidth = 9.35;
+        public const long BatchBudget = 712;
+        public const long CacheContext = 8119;
+        public const long BaseCount = 2033;
+        public const double MinCount = 59.74;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double MaxInterval = 47.69;
