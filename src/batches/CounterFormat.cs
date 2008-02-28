@@ -32,21 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long MatchSessionCount(long[] values)
+        /// <summary>Look up the position of a already commits sample.</summary>
+        public static long SeekAlreadyCommitsIndex(long[] levels, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (levels[i] <= floor)
                 {
-                    if ((values[i] ^ values[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
