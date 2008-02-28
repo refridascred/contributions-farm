@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            public double Ratio { get; set; }
-            public long Size { get; set; }
+            public double Size { get; set; }
+            public long Weight { get; set; }
+            public long Label { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Match up already samples.</summary>
