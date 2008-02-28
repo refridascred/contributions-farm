@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long MinCount = 1106;
         public const double BatchLevel = 96.25;
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long SeekStreamIndex(long[] data, long origin)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long SeekFarmIndex(long[] values, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((data[i] > origin) && ((data[i] % 2) == 0))
+                if (values[i] <= step)
                 {
                     return (long)i;
                 }
