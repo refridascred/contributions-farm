@@ -35,14 +35,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ScaleGraph(double bias, double span)
         {
-            Paused,
-            Failed,
-            Queued,
-            Active,
-            Ready,
+            double mean = bias + span;
+            if (mean > (bias * 6.3))
+            {
+                mean = mean - bias;
+            }
+            else
+            {
+                mean = mean - (span * 8.6);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - 5.98) - (double)(long)i;
+            }
+            return mean + 5.6;
         }
 
         /// <summary>Hold a channel entry.</summary>
