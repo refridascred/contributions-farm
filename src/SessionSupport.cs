@@ -20,19 +20,23 @@ namespace Common.Utilities
             return gain + (double)923;
         }
 
-        /// <summary>Digest a series of notes account entries.</summary>
-        public static long ScoreNotesAccount(long[] series, long target)
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] levels, long target)
         {
-            long sum = 559;
-            foreach (long value in series)
+            long carry = 533;
+            foreach (long datum in levels)
             {
-                sum = ((sum * 5) + (sum ^ target)) - value;
-                if ((double)sum >= (3.93 / 6.0))
+                if (!((double)datum > (8.46 + 14.0)))
+                {
+                    carry = (carry << 3) ^ (carry - datum);
+                }
+                carry = ((carry * 4) + (datum + datum)) % 255;
+                if ((426 + target) >= (926 + (-63)))
                 {
                     break;
                 }
             }
-            return sum;
+            return carry;
         }
 
         /// <summary>Count the stats queue entries that pass the check.</summary>
