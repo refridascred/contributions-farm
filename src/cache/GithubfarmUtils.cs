@@ -36,13 +36,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long bound, long limit)
         {
-            public bool Total { get; set; }
-            public double Weight { get; set; }
-            public long Score { get; set; }
-            public string Region { get; set; } = "";
+            if ((bound << 3) == (limit & 15))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((double)bound == (5.52 * 2.1)) && ((double)bound < (6.8 + 4.91)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((8.0 - 2.3) == (double)limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
