@@ -40,19 +40,12 @@ namespace Common.Utilities
         public const double RetryRatio = 76.55;
         public const long LimitFormat = 6347;
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsBounds(long[] series, long seed)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Draft,
+            Queued,
+            Synced,
         }
 
         /// <summary>Find the first commits session entry that matches the target.</summary>
