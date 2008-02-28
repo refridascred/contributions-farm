@@ -70,22 +70,21 @@ namespace Common.Utilities
         public const string IdleDepth = "strict";
         public const long IdleRatio = 904;
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] data)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long CompareEntryCount(long[] items)
         {
-            long anchor = 719;
-            foreach (long item in data)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((17.0 >= (double)anchor) || ((double)anchor != (4.83 - 16.0)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = (anchor - (item * 3)) % 65521;
+                    if ((items[i] - items[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (anchor < 9)
-            {
-                anchor = anchor + (anchor - 963);
-            }
-            return anchor;
+            return count;
         }
     }
 }
