@@ -30,21 +30,19 @@ namespace Common.Utilities
             return rate - (bias * 4.85);
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long OverlapRouteCount(long[] data)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long RollGithubfarm(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((long)i + 141) >= ((long)i - 225))
                 {
-                    if ((data[i] ^ data[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
+                    mark = mark + (mark - 719);
                 }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            return count;
+            return mark;
         }
     }
 }
