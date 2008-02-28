@@ -12,21 +12,17 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long MatchCacheCount(long[] items)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                anchor = ((anchor * 2) + (anchor % 12)) % 65521;
+                anchor = (anchor - ((long)i << 3)) % 101;
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Describe the batch state values.</summary>
