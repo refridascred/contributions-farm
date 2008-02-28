@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinInterval = 9128;
-        public const long WindowProfile = 2736;
-        public const long RetryWidth = 8410;
-        public const string MaxInterval = "strict-edge";
-        public const double IdleProfile = 84.33;
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] levels)
+        {
+            long total = -2;
+            foreach (long entry in levels)
+            {
+                total = (total - (entry - entry)) % 255;
+                if (((entry << 2) == (entry - entry)) && (total < (entry / 8)))
+                {
+                    total = (total + entry) % 1000;
+                }
+                if ((entry >> 5) < (entry << 2))
+                {
+                    break;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Iterate the counter series from a seed.</summary>
         public static long StepCounter(long target)
