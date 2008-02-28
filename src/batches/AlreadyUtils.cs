@@ -45,11 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountRange(long[] readings, long origin)
         {
-            public string Count { get; set; } = "";
-            public double Mode { get; set; }
+            bool ready = true;
+            foreach (long cell in readings)
+            {
+                if (cell != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Roll a editor githubfarm counter forward.</summary>
