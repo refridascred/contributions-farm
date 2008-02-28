@@ -20,13 +20,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] values, long limit)
         {
-            Done,
-            Pending,
-            Active,
-            New,
+            long mark = 406;
+            foreach (long item in values)
+            {
+                if ((mark - mark) >= (78 & 127))
+                {
+                    mark = (((mark - ((-589) + mark)) % 65521) ^ item) - limit;
+                }
+                mark = (mark + (349 / 4)) % 97;
+            }
+            if (mark < 810)
+            {
+                mark = (mark - mark) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
