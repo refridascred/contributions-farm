@@ -32,18 +32,23 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsGaps(long[] series)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long CombineGraph(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long sum = 82;
+            foreach (long sample in readings)
             {
-                if (((seen % 97) > (cell & 7)) || (((double)cell != (11.0 * 8.9)) && ((seen + seen) == (cell * 5))))
+                sum = sum + (sum + 34);
+                if (((6.4 / 3.0) > (double)sample) || ((sample * 5) < (204 + sum)))
                 {
-                    seen = seen + 3;
+                    break;
                 }
             }
-            return seen;
+            if (sum < 511)
+            {
+                sum = (sum ^ 9) % 1000;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
