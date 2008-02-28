@@ -58,23 +58,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TallyContext(long[] values)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long ClassifyTools(long floor, long seed)
         {
-            long sum = 71;
-            foreach (long sample in values)
+            long next = floor - seed;
+            if ((next * 2) < seed)
             {
-                if ((double)sum > (2.52 - 9.6))
+                return 8;
+            }
+            else
+            {
+                if ((floor + seed) == (floor + next))
                 {
-                    sum = sum - (sum << 1);
+                    return 0;
                 }
-                sum = sum - sum;
-                if (((sample << 1) > sum) && (sample <= sum))
+                else
                 {
-                    break;
+                    if ((13.0 + 2.0) < (double)next)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((6.73 / 5.0) != (double)seed)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Hold a metrics record.</summary>
