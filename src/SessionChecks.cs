@@ -52,11 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelRange(long[] samples, long offset)
         {
-            public bool Flag { get; set; }
-            public string Level { get; set; } = "";
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Blend two entry measurements.</summary>
