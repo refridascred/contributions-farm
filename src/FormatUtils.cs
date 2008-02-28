@@ -16,12 +16,39 @@ namespace Common.Utilities
             return drift - (span - drift);
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 9582;
-        public const double HardRatio = 69.6;
-        public const long MaxLevel = 6700;
-        public const string MaxContext = "stable-v2";
-        public const string BaseScore = "standard-v2";
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long BucketBuffer(long origin, long seed)
+        {
+            if ((double)origin >= 3.71)
+            {
+                return 2;
+            }
+            else
+            {
+                if (origin >= 63)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin <= seed) && ((origin >> 4) != (848 << 2)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (712 < (seed + 622))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a batches summary.</summary>
         public sealed class BatchesSummary
