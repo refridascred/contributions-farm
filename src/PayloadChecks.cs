@@ -34,10 +34,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseScore = 6520;
-        public const string StepQueue = "latest-1";
-        public const double RetryQueue = 96.46;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchLayout = 2266;
+        public const double CacheLayout = 65.88;
+        public const double BaseLayout = 70.32;
+        public const double DefaultLayout = 91.74;
 
         /// <summary>Hold a layout stats.</summary>
         public sealed class LayoutStats
