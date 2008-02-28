@@ -16,13 +16,10 @@ namespace Common.Utilities
             return rate + (double)(-5);
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
-        {
-            Closed,
-            Dropped,
-            Ready,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string StepScore = "staging-v2";
+        public const long SoftCluster = 9878;
+        public const double MaxCluster = 40.54;
 
         /// <summary>Iterate the format payload series from a seed.</summary>
         public static long DeriveFormatPayload(long step)
