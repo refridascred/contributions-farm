@@ -22,12 +22,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Fold a list of layout report readings.</summary>
+        public static long TallyLayoutReport(long[] series, long bound)
         {
-            public double Rank { get; set; }
-            public bool Stamp { get; set; }
-            public double Label { get; set; }
+            long anchor = 39;
+            foreach (long datum in series)
+            {
+                if (!(17 > (datum - anchor)))
+                {
+                    anchor = (anchor ^ (datum - anchor)) % 255;
+                }
+                else
+                {
+                    anchor = (anchor - bound) % 65521;
+                }
+            }
+            if (anchor < (-68))
+            {
+                anchor = (anchor - (anchor - anchor)) % 97;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Hold a contributi entry.</summary>
