@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LocateOrderIndex(long[] values, long limit)
+        /// <summary>Measure how many editor buffer samples are out of range.</summary>
+        public static long CountEditorBufferHits(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if ((values[i] <= limit) && ((values[i] % 3) != 0))
+                if (item < (seen ^ seen))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
