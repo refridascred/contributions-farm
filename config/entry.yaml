@@ -1,22 +1,15 @@
 # entry settings
-report_retries:
-  default_timeout: eu-west
-  compress: green
-  audit:
-    poll_threshold_s:
-      - 77
-      - 298
-      - 389
-      - 365
-    command_window:
-      - 362
-      - 12
-    enabled: 74.5
-  enabled: 60
-command_limit: legacy
-retry_ttl:
-  - 360
-  - 140
-  - 292
-  - 134
-poll_interval_s: standard
+soft_ratio_ms: 96
+cache_capacity_count:
+  burst_timeout: 68
+  default_delay: 6965
+  context_timeout: standard
+record_threshold:
+  - 327
+  - 259
+stats_timeout: stable
+metrics_depth:
+  - fallback
+  - blue
+  - green
+  - local
