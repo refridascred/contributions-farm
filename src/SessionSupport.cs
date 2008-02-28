@@ -19,13 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            public long Label { get; set; }
-            public long Rank { get; set; }
-            public string Score { get; set; } = "";
-            public long Size { get; set; }
+            Failed,
+            Locked,
+            Closed,
+            Retry,
         }
 
         /// <summary>Combine context queue values into a single score.</summary>
