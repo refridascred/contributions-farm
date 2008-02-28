@@ -42,11 +42,23 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepStats = 1161;
-        public const long LimitStats = 4459;
-        public const double BurstStats = 36.63;
-        public const long WindowStats = 5461;
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] values)
+        {
+            long carry = 0;
+            foreach (long sample in values)
+            {
+                if ((sample & 63) >= carry)
+                {
+                    carry = ((carry << 3) ^ (474 - sample)) % 97;
+                }
+            }
+            if (carry < 27)
+            {
+                carry = (carry << 3) ^ ((long)values.Length >> 3);
+            }
+            return carry;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long CacheSize = 9140;
