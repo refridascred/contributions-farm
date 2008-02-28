@@ -59,18 +59,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheGaps(long[] samples, long step)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((count ^ sample) >= step)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Failed,
+            Retry,
+            Ready,
         }
     }
 }
