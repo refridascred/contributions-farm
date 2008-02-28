@@ -58,17 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a batch route sample.</summary>
-        public static long LookupBatchRouteIndex(long[] readings, long floor)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphOutliers(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (readings[i] >= floor)
+                if ((6.02 / 8.0) >= (double)count)
                 {
-                    return (long)i;
+                    count = (count + 2) + cell;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
