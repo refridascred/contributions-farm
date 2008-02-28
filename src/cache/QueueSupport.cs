@@ -20,19 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] values, long bound)
+        /// <summary>Compare every pair of window contributi readings.</summary>
+        public static long MatchWindowContributiCount(long[] samples)
         {
-            long sum = 32;
-            foreach (long item in values)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = (sum + bound) - item;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (sum < (-666))
-            {
-                sum = sum ^ (sum ^ sum);
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Find the first already tools entry that matches the target.</summary>
