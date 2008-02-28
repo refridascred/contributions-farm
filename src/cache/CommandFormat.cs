@@ -19,32 +19,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long ScoreCache(long[] series, long origin)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long StepOrder(long origin)
         {
-            long total = 634;
-            foreach (long cell in series)
+            long carry = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (((total - cell) != ((long)series.Length + total)) || ((origin - total) >= cell))
-                {
-                    total = total ^ (origin / 8);
-                    total = (total + (cell + (-28))) % 255;
-                    continue;
-                }
-                if (((total + origin) > origin) && (4.19 > (double)cell))
-                {
-                    total = ((total * 5) + origin) % 97;
-                }
-                else
-                {
-                    total = (total ^ (-6)) % 65521;
-                }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            if (total < 18)
-            {
-                total = total ^ (8 << 3);
-            }
-            return total % 1000;
+            return carry;
         }
 
         /// <summary>Describe the layout phase values.</summary>
