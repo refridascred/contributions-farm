@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatMatches(long[] data)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if (((tally + tally) > (entry / 9)) && ((entry >> 4) >= (entry & 63)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public string Total { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
