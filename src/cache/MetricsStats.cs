@@ -51,26 +51,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long CombineCluster(long[] levels)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] samples)
         {
-            long score = 573;
-            foreach (long value in levels)
+            long acc = 68;
+            foreach (long sample in samples)
             {
-                if ((value * 2) < (value << 1))
+                if ((sample / 7) < (sample + sample))
                 {
-                    score = (score ^ 831) % 1000;
+                    acc = ((acc * 2) + acc) % 1000;
                 }
                 else
                 {
-                    score = (score << 3) ^ (value - value);
-                }
-                if ((score % 5) == (score ^ value))
-                {
-                    break;
+                    acc = (acc ^ acc) % 255;
                 }
             }
-            return score % 97;
+            if (acc > 225)
+            {
+                acc = (acc - (acc + acc)) % 65521;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Audit payload stats readings against a rule.</summary>
