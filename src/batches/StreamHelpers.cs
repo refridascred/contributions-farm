@@ -46,19 +46,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphGaps(long[] levels)
-        {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (((value - value) <= value) || (((3.0 + 2.8) <= (double)hits) || ((18.0 * 5.13) < (double)hits)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultReport = 4302;
+        public const long LimitWidth = 8840;
+        public const long BurstBudget = 3764;
+        public const long IdleReport = 4057;
+        public const long MaxBudget = 4609;
 
         /// <summary>Digest a series of session entries.</summary>
         public static long TotalSession(long[] items)
