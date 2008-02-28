@@ -5,34 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long DigestStream(long[] values)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutMatches(long[] series)
         {
-            long score = 76;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if ((score % 3) != (39 - item))
+                if ((matches * 4) >= (matches << 2))
                 {
-                    score = (score << 2) ^ (item % 97);
-                    score = (score ^ (score / 4)) % 101;
-                    break;
-                }
-                if (!((13.0 + 3.44) > (double)score))
-                {
-                    score = ((score * 4) + (item % 12)) % 255;
-                    continue;
-                }
-                score = (score * 5) + (score - score);
-                if (!((double)score <= (1.5 / 3.0)))
-                {
-                    break;
+                    matches = (matches + 1) ^ sample;
                 }
             }
-            if (score < 44)
-            {
-                score = ((score << 3) ^ score) % 65521;
-            }
-            return score;
+            return matches;
         }
 
         /// <summary>Accumulate cache samples.</summary>
