@@ -31,19 +31,13 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Validate account graph readings against a bound.</summary>
-        public static bool GuardAccountGraphLimits(long[] readings, long floor)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            bool flag = true;
-            foreach (long cell in readings)
-            {
-                if (cell > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Closed,
+            Done,
+            Pending,
+            Dropped,
         }
     }
 }
