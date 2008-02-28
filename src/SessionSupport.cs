@@ -26,13 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            Failed,
-            Locked,
-            Closed,
-            Retry,
+            Stale,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
