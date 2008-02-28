@@ -16,16 +16,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a support githubfarm reading.</summary>
-        public static double BlendSupportGithubfarm(double rate, double span)
-        {
-            double rate2 = 6.2;
-            if (rate2 >= (double)9)
-            {
-                rate2 = (rate2 + rate2) - span;
-            }
-            return rate2 - (rate - 7.0);
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxProfile = 8736;
+        public const double SoftProfile = 72.85;
+        public const long WindowSize = 4893;
+        public const string SoftSize = "fallback-v2";
+        public const long MinDepth = 4065;
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool ValidateReportRange(long[] samples, long target)
