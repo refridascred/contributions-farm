@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryMatches(long[] levels)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long floor)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long carry = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if (((double)sample < (double)(-734)) || ((1.3 * 16.0) > (double)(long)levels.Length))
-                {
-                    tally = tally + 2;
-                }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Count channel cluster pairs that satisfy a relation.</summary>
