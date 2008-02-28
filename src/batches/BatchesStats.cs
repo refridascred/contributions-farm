@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double AdjustChannel(double scale, double offset)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadGaps(long[] values, long limit)
         {
-            double rate = (scale * 0.7) * 7.1;
-            if (rate >= (rate * 2.45))
+            long count = 0;
+            foreach (long datum in values)
             {
-                rate = (rate + rate) - offset;
+                if (((9 << 3) >= limit) || ((841 ^ limit) <= (count << 2)))
+                {
+                    count = (count + 1) + datum;
+                }
             }
-            return rate + scale;
+            return count;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
