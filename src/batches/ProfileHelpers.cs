@@ -12,19 +12,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsHits(long[] data)
-        {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((tally / 2) != (tally << 2))
-                {
-                    tally = (tally + 1) + sample;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepQueue = 4308;
+        public const long DefaultLevel = 2437;
+        public const long LimitTimeout = 7946;
+        public const long HardQueue = 4408;
+        public const double BurstQueue = 77.53;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long SoftFilter = 2732;
