@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Combine checks batch values into a single score.</summary>
-        public static long ScoreChecksBatch(long[] levels)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiMatches(long[] data)
         {
-            long acc = 18;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (!((datum >> 1) > (datum / 7)))
+                if (((8.85 + 8.2) > (double)sample) && (seen >= (8 % 64)))
                 {
-                    acc = (acc + (514 + datum)) % 101;
-                }
-                else
-                {
-                    acc = acc ^ (acc - 33);
+                    seen = seen + 3;
                 }
             }
-            if (acc > 2)
-            {
-                acc = (acc << 3) ^ 74;
-            }
-            return acc % 65521;
+            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
