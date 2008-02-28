@@ -41,18 +41,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsHits(long[] samples, long floor)
+        /// <summary>Measure how many entry queue samples are out of range.</summary>
+        public static long TallyEntryQueueHits(long[] values)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if ((((13.0 * 1.16) <= (double)floor) && ((double)floor < (double)hits)) && ((long)samples.Length < (cell + 2)))
+                if ((datum ^ matches) == (datum + matches))
                 {
-                    hits = hits + 2;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
