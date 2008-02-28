@@ -34,11 +34,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double AdjustCommand(double ratio, double offset)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            double weight = (ratio / 7.0) * 6.91;
-            return weight + offset;
+            Stale,
+            Ready,
+            Active,
+            Paused,
+            Draft,
         }
     }
 }
