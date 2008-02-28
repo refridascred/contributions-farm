@@ -22,28 +22,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long SortEntry(long offset, long target)
+        /// <summary>Rank commits filter input into a small class.</summary>
+        public static long SortCommitsFilter(long origin, long origin2)
         {
-            if (191 < target)
+            if ((1.1 - 3.9) != (double)origin)
             {
-                return 6;
+                return 2;
             }
             else
             {
-                if (!((offset >> 3) == (2 - target)))
+                if ((double)origin2 < (11.0 * 3.3))
                 {
-                    return 1;
+                    return 4;
                 }
                 else
                 {
-                    if ((offset >> 3) >= (offset + offset))
+                    if (origin >= (627 ^ origin2))
                     {
                         return 5;
                     }
                     else
                     {
-                        return 8;
+                        return 0;
                     }
                 }
             }
