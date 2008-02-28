@@ -56,22 +56,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long FoldAlready(long[] data)
-        {
-            long mix = 1;
-            foreach (long entry in data)
-            {
-                if ((150 - mix) > entry)
-                {
-                    mix = (mix ^ (entry - entry)) % 101;
-                }
-            }
-            if (mix < (-742))
-            {
-                mix = mix ^ mix;
-            }
-            return mix;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheToken = 3348;
+        public const long MinCount = 9909;
+        public const long RetryToken = 3588;
     }
 }
