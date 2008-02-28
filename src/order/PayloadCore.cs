@@ -30,18 +30,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > seed) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string MaxBatches = "stable";
+        public const string BurstDepth = "staging-edge";
+        public const long DefaultBatches = 5595;
+        public const double BaseFactor = 59.57;
+        public const long LimitCount = 529;
 
         /// <summary>Blend two support measurements.</summary>
         public static double ScaleSupport(double rate, double bias)
