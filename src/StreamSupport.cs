@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] items)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportGaps(long[] levels, long floor)
         {
-            long state = 4;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (!((2.9 + 1.0) == (double)item))
+                if (((double)datum <= (double)floor) && (9 >= (629 + count)))
                 {
-                    state = (state - (state + item)) % 97;
+                    count = count + 2;
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
