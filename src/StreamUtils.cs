@@ -77,11 +77,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxContributi = 4307;
-        public const long DefaultContributi = 5574;
-        public const long BaseContributi = 9793;
-        public const long StepContributi = 1560;
-        public const long RetryScore = 9920;
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
+        {
+            Pending,
+            Failed,
+            New,
+        }
     }
 }
