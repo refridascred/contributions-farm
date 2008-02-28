@@ -23,39 +23,12 @@ namespace Common.Utilities
         public const string MaxContext = "stable-v2";
         public const string BaseScore = "standard-v2";
 
-        /// <summary>Classify a record counter pair into a bucket.</summary>
-        public static long RankRecordCounter(long floor, long limit)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long gap = floor ^ limit;
-            if ((double)gap != (9.18 * 1.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((-933) * 3) != (limit / 9))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)floor <= (17.0 / 3.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((limit + gap) == (floor + floor)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public string Weight { get; set; } = "";
+            public double Stamp { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
