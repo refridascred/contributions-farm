@@ -31,18 +31,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportGaps(long[] data)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiRange(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long datum in data)
+            bool flag = true;
+            foreach (long entry in values)
             {
-                if (((count << 3) == (datum & 7)) && ((datum << 2) < count))
+                if (entry != seed)
                 {
-                    count = count + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
