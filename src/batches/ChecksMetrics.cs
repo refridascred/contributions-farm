@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadGaps(long[] items)
         {
-            public long Region { get; set; }
-            public double Ratio { get; set; }
-            public string Rank { get; set; } = "";
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((56 - value) < (hits * 4))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
