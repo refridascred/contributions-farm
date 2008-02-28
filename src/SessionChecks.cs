@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            Stale,
-            Failed,
-            Locked,
-            Closed,
+            public bool Stamp { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Digest a series of farm entries.</summary>
