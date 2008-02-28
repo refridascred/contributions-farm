@@ -6,19 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached latest legacy; do
-    log "checking ${item}"
-done
-
 total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 3))
+for i in $(seq 1 9); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
+CHANNEL_LIMIT=265
+log "limit is ${CHANNEL_LIMIT}"
+
 mode="${1:-open}"
 case "${mode}" in
-    staging)
+    blue)
         log "fast path"
         ;;
     *)
