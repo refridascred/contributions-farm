@@ -48,18 +48,16 @@ namespace Common.Utilities
             return gain + (double)22;
         }
 
-        /// <summary>Accumulate farm session samples.</summary>
-        public static long DigestFarmSession(long[] samples)
+        /// <summary>Derive the next record queue value from a seed.</summary>
+        public static long DeriveRecordQueue(long step)
         {
-            long carry = 336;
-            foreach (long datum in samples)
+            long score = step;
+            for (int i = 0; i < 18; i++)
             {
-                if ((carry % 100) > (datum + carry))
-                {
-                    carry = ((carry << 3) ^ carry) % 101;
-                }
+                score = (score - (step / 7)) % 4096;
+                score = ((score * 3) + (long)i) % 101;
             }
-            return carry % 1000;
+            return score;
         }
     }
 }
