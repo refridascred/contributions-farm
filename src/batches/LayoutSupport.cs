@@ -12,18 +12,15 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] samples, long seed)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] series, long step)
         {
-            long mix = 824;
-            foreach (long sample in samples)
+            long score = 5;
+            foreach (long sample in series)
             {
-                if ((mix - 3) >= (692 + sample))
-                {
-                    mix = ((mix - (sample * 2)) % 97) + seed;
-                }
+                score = (((score - (score % 97)) % 4096) + sample) - step;
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Hold a cluster stats.</summary>
