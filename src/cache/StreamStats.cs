@@ -38,12 +38,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ProjectTools(double bias, double span)
         {
-            public bool Stamp { get; set; }
-            public long Owner { get; set; }
-            public long Score { get; set; }
+            double drift = bias;
+            return (drift + (bias / 5.0)) + span;
         }
     }
 }
