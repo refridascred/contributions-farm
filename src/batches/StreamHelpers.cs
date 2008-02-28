@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Blend two record token measurements.</summary>
-        public static double BlendRecordToken(double bias, double offset)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] series, long limit)
         {
-            double load = offset;
-            return (load + 11.0) + bias;
+            long state = 524;
+            foreach (long cell in series)
+            {
+                if (((limit + state) <= state) && ((84 >> 4) > (cell >> 2)))
+                {
+                    state = state ^ cell;
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Compare every pair of buffer format readings.</summary>
