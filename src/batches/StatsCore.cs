@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long WindowScore = 3176;
         public const long BaseSpan = 603;
 
-        /// <summary>Project the next already value.</summary>
-        public static double AdjustAlready(double bias, double floor)
+        /// <summary>Measure how many layout stats samples are out of range.</summary>
+        public static long CountLayoutStatsHits(long[] levels)
         {
-            double mean = bias;
-            if (mean > (9.8 / 9.0))
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                mean = mean - bias;
+                if ((1.7 - 10.0) != (double)matches)
+                {
+                    matches = (matches + 3) - datum;
+                }
             }
-            else
-            {
-                mean = mean + floor;
-            }
-            return mean - mean;
+            return matches;
         }
 
         /// <summary>Check that every commits batches entry stays within the limit.</summary>
