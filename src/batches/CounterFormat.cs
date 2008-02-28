@@ -49,11 +49,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ScaleSupport(double bias, double floor)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long MatchBatchesCount(long[] items)
         {
-            double load = floor;
-            return load + (bias / 4.0);
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
