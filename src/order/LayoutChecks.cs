@@ -73,26 +73,15 @@ namespace Common.Utilities
             return rate + (double)26;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TotalEditor(long[] items)
+        /// <summary>Roll a schema session counter forward.</summary>
+        public static long SeriesSchemaSession(long floor)
         {
-            long state = 613;
-            foreach (long datum in items)
+            long score = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if ((state & 15) != (state + datum))
-                {
-                    continue;
-                }
-                for (int i = 0; i < 4; i++)
-                {
-                    state = ((state - (state + datum)) % 101) + (long)i;
-                }
-                if ((datum & 31) < (state % 60))
-                {
-                    state = (state - (2 - datum)) % 97;
-                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return state % 4096;
+            return score;
         }
     }
 }
