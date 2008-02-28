@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine contributi metric values into a single score.</summary>
-        public static long FoldContributiMetric(long[] data, long target)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long MatchQueueCount(long[] readings)
         {
-            long result = -3;
-            foreach (long cell in data)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = (result ^ 82) % 101;
-                if (cell < result)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = result + (result ^ target);
+                    if ((readings[i] - readings[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Adjust a tools reading.</summary>
