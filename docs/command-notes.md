@@ -1,12 +1,11 @@
 # Command notes
 
-When a context fails, the window handler retries a few times before giving up.
-Use layout settings to tune how often tools data is refreshed.
-The order module keeps already values in sync with the metric cache.
+Keep queue and stream names short and lowercase.
+Run the stats check before changing any editor limits.
+The record report groups every queue by contributi.
 
 ## Guidelines
 
-- Document new farm fields
-- Log every token change
-- Prefer cache defaults
-- Keep schema values small
+- Log every counter change
+- Review farm limits each release
+- Keep window values small
