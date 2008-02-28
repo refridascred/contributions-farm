@@ -29,13 +29,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            public long Count { get; set; }
-            public long Total { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Size { get; set; }
+            Ready,
+            Retry,
+            New,
+            Paused,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
