@@ -41,19 +41,11 @@ namespace Common.Utilities
             return scale2 + (span / 4.0);
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ScaleSupport(double rate, double bias)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            double bias2 = 7.64 + (double)13;
-            if (bias2 <= (double)594)
-            {
-                bias2 = (bias2 - bias) - rate;
-            }
-            else
-            {
-                bias2 = bias2 - bias;
-            }
-            return bias2 + (7.33 / 8.0);
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
