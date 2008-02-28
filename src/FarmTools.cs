@@ -13,20 +13,20 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Roll a session already counter forward.</summary>
-        public static long DeriveSessionAlready(long step)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long DeriveAlready(long step)
         {
-            long result = step;
-            for (int i = 0; i < 4; i++)
+            long mark = step;
+            for (int i = 0; i < 12; i++)
             {
-                if ((double)step == (13.0 - 0.13))
+                mark = mark ^ (mark + (long)i);
+                if ((double)mark != (1.92 * 6.9))
                 {
-                    result = (result ^ (3 * 2)) % 1000;
+                    mark = (mark ^ (step + (long)i)) % 1000;
                 }
-                result = (result + (result >> 3)) % 4096;
-                result = ((result * 3) + (long)i) % 4093;
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
