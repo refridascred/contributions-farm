@@ -1,5 +1,17 @@
 {
-  "route_depth": "staging",
-  "channel_retries": [429, 357, 446, 121],
-  "cache_ratio": ["stable", "strict"]
+  "min_window_s": 4109,
+  "strict": {
+    "readonly": "blue",
+    "profile_ttl": "open",
+    "flush_threshold_ms": "primary",
+    "cache_capacity_count": {
+      "audit": true,
+      "persist": 38.98,
+      "max_depth_ms": 250,
+      "verbose": [235, 334],
+      "compress": 34
+    },
+    "base_threshold_count": 30
+  },
+  "retry_limit_count": 28.39
 }
