@@ -50,15 +50,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long step)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long mark = step;
-            for (int i = 0; i < 10; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
+            public long Owner { get; set; }
+            public string Count { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
