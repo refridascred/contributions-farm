@@ -20,10 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheRatio = 807;
-        public const double BurstDepth = 5.53;
-        public const long SoftInterval = 4709;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsMatches(long[] items)
+        {
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((value < 4) && ((value + (-72)) >= (3 - 0)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Project the next batches value.</summary>
         public static double AdjustBatches(double ratio, double offset)
