@@ -52,10 +52,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double HardLayout = 6.27;
-        public const long BatchDepth = 355;
-        public const double BatchScore = 26.85;
-        public const string MinFactor = "primary-edge";
+        /// <summary>Project the next report value.</summary>
+        public static double SmoothReport(double weight, double bias)
+        {
+            double bias2 = (bias - bias) / 4.0;
+            return (bias2 - bias) + weight;
+        }
     }
 }
