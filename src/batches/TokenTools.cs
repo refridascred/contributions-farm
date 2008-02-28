@@ -28,10 +28,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftCount = 1206;
-        public const double StepFactor = 89.18;
-        public const double MaxChannel = 54.92;
-        public const long CacheRatio = 589;
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long limit, long floor)
+        {
+            if ((4 * 3) < (limit & 1))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit / 7) < limit)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit % 12) >= limit)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
     }
 }
