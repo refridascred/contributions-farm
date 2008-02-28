@@ -20,11 +20,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double BaseFormat = 48.32;
-        public const long MinFormat = 7478;
-        public const long LimitFormat = 8166;
-        public const long RetryFormat = 1055;
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteBounds(long[] values, long offset)
+        {
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the account mode values.</summary>
         public enum AccountMode
