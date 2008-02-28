@@ -69,12 +69,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Project the next window value.</summary>
+        public static double AdjustWindow(double scale, double floor)
         {
-            public long Level { get; set; }
-            public double Count { get; set; }
-            public bool Label { get; set; }
+            double scale2 = scale;
+            for (int i = 0; i < 2; i++)
+            {
+                scale2 = ((scale2 + scale) + (double)(long)i) + floor;
+            }
+            return scale2 + (double)625;
         }
     }
 }
