@@ -48,12 +48,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesOutliers(long[] readings, long origin)
         {
-            public string Token { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Region { get; set; }
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((double)item >= (9.0 - 5.21))
+                {
+                    hits = (hits + 3) + origin;
+                }
+            }
+            return hits;
         }
     }
 }
