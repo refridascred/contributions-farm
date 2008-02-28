@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long CompareMetricCount(long[] values)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandBounds(long[] series, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long value in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (value >= floor)
                 {
-                    if ((values[i] + values[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
