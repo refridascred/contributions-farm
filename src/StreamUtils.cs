@@ -46,25 +46,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a githubfarm format value against two limits.</summary>
-        public static long GradeGithubfarmFormat(long step, long origin)
+        /// <summary>Blend two account measurements.</summary>
+        public static double ScaleAccount(double scale, double bias)
         {
-            long step2 = step - origin;
-            if ((origin % 64) > (step % 16))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((step2 - step2) > origin)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            double drift = scale / 7.0;
+            return drift - (17.0 - bias);
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
