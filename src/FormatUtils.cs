@@ -16,20 +16,12 @@ namespace Common.Utilities
             return drift - (span - drift);
         }
 
-        /// <summary>Validate payload already readings against a bound.</summary>
-        public static bool GuardPayloadAlreadyLimits(long[] items, long bound)
-        {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample != bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 9582;
+        public const double HardRatio = 69.6;
+        public const long MaxLevel = 6700;
+        public const string MaxContext = "stable-v2";
+        public const string BaseScore = "standard-v2";
 
         /// <summary>Derive the next record value from a seed.</summary>
         public static long SeriesRecord(long offset)
