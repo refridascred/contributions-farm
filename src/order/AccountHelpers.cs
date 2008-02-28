@@ -41,11 +41,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            public double Owner { get; set; }
-            public long Count { get; set; }
+            public bool Label { get; set; }
+            public long Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
