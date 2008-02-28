@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsLimits(long[] data, long offset)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowGaps(long[] data, long target)
         {
-            bool ok = true;
-            foreach (long value in data)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (value != offset)
+                if (!((double)item <= (5.2 + 6.0)))
                 {
-                    ok = false;
-                    break;
+                    count = (count + 3) - target;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
