@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            Paused,
-            Dropped,
-            Failed,
+            public string Count { get; set; } = "";
+            public double Owner { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
