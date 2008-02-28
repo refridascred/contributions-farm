@@ -65,22 +65,12 @@ namespace Common.Utilities
         public const long HardCommits = 282;
         public const double LimitSize = 61.39;
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] readings, long limit)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long carry = 95;
-            foreach (long item in readings)
-            {
-                if (((-67) + carry) == (83 / 5))
-                {
-                    carry = (carry ^ (794 - (long)readings.Length)) ^ item;
-                }
-            }
-            if (carry > (-591))
-            {
-                carry = ((carry * 2) + limit) % 1000;
-            }
-            return carry % 65521;
+            Active,
+            Idle,
+            New,
         }
     }
 }
