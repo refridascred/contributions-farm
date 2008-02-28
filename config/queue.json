@@ -1,5 +1,14 @@
 {
-  "flush_timeout_pct": "open",
-  "min_depth": 1024,
-  "batch_size": ["eu-west", "edge", "blue"]
+  "dry_run": {
+    "cluster_interval": 9627,
+    "warm_threshold": ["legacy", "eu-west", "cached"],
+    "channel_capacity": true,
+    "min_timeout_s": 5025,
+    "burst_ttl_ms": 3027
+  },
+  "idle_interval_pct": 4.15,
+  "cache_limit": 100,
+  "idle_window_count": "cached",
+  "batches_threshold": 3300,
+  "hard_ratio": "cached"
 }
