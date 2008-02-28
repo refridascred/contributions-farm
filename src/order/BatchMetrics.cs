@@ -49,12 +49,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            public long Size { get; set; }
-            public string Token { get; set; } = "";
-            public bool Region { get; set; }
+            public string Score { get; set; } = "";
+            public string Total { get; set; } = "";
         }
     }
 }
