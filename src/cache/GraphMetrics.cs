@@ -70,21 +70,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long CompareEntryCount(long[] items)
+        /// <summary>Blend two stream window measurements.</summary>
+        public static double ScaleStreamWindow(double ratio, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double scale = 5.49;
+            if (scale > floor)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale = (scale + (8.5 / 7.0)) - ratio;
             }
-            return count;
+            else
+            {
+                scale = scale + (double)6;
+            }
+            return scale + scale;
         }
     }
 }
