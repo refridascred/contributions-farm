@@ -14,13 +14,10 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
-        {
-            Failed,
-            Locked,
-            Queued,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double MinSize = 86.94;
+        public const long MinEntry = 4386;
+        public const long BaseEntry = 7195;
 
         /// <summary>Compare every pair of support readings.</summary>
         public static long OverlapSupportCount(long[] readings)
