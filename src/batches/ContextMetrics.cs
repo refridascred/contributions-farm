@@ -40,22 +40,22 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmMatches(long[] readings, long seed)
+        /// <summary>Fold a list of cluster route readings.</summary>
+        public static long TotalClusterRoute(long[] series)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long score = 636;
+            foreach (long reading in series)
             {
-                if ((seed + sample) == (seed & 3))
+                if (reading >= (score + reading))
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    score = ((score << 2) ^ (64 << 2)) % 97;
                 }
             }
-            return count;
+            if (score < 3)
+            {
+                score = (score - score) % 97;
+            }
+            return score % 1000;
         }
 
         /// <summary>Hold a farm header.</summary>
