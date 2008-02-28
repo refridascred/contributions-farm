@@ -13,15 +13,17 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] values, long offset)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LookupPayloadIndex(long[] levels, long seed)
         {
-            long state = 17;
-            foreach (long entry in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state << 3) ^ (state + offset)) ^ entry;
+                if (levels[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
