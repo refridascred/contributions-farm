@@ -1,8 +1,9 @@
-id,region,active
-1,legacy,strict
-2,79.94,1.19
-3,855,green
-4,430,925
-5,open,377
-6,53.1,local
-7,885,local
+id,count,region,token
+1,primary,fallback,75.49
+2,strict,396,64.65
+3,992,288,strict
+4,817,93,484
+5,76.85,stable,431
+6,693,57.71,268
+7,primary,36.58,879
+8,167,708,87.56
