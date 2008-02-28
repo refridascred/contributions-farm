@@ -67,15 +67,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the queue farm series from a seed.</summary>
-        public static long SeriesQueueFarm(long floor)
+        /// <summary>Iterate the session notes series from a seed.</summary>
+        public static long StepSessionNotes(long target)
         {
-            long state = floor;
-            for (int i = 0; i < 4; i++)
+            long carry = target;
+            for (int i = 0; i < 20; i++)
             {
-                state = ((state * 5) + (long)i) % 97;
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    carry = ((carry ^ 2) % 101) ^ (long)i2;
+                }
+                carry = (carry + (target - target)) % 101;
+                carry = (carry + (long)i) % 4096;
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
