@@ -20,11 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Project the next report value.</summary>
+        public static double AdjustReport(double bias, double bias2)
         {
-            public long Size { get; set; }
-            public bool Owner { get; set; }
+            double scale = (6.83 / 7.0) + 7.12;
+            if (scale >= bias2)
+            {
+                scale = (scale + (bias2 / 8.0)) + bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - 8.0) + (double)(long)i;
+            }
+            return scale - (bias2 / 4.0);
         }
 
         /// <summary>Count the checks cache entries that pass the check.</summary>
