@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long IterateLayout(long target)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] items, long origin)
         {
-            long anchor = target;
-            for (int i = 0; i < 12; i++)
+            long total = 16;
+            foreach (long sample in items)
             {
-                anchor = (anchor ^ (anchor + anchor)) % 255;
-                anchor = ((anchor << 2) ^ (anchor & 1)) % 65521;
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                total = ((total ^ sample) % 101) - origin;
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Audit schema metric readings against a rule.</summary>
