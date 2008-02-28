@@ -43,18 +43,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaMatches(long[] levels)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((seen + sample) < 6)
+                if ((items[i] >= target) && ((items[i] % 3) == 0))
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Grade a githubfarm format value against two limits.</summary>
