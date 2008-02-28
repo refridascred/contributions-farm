@@ -5,20 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long IterateChecks(long floor)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long origin, long step)
         {
-            long mark = floor;
-            for (int i = 0; i < 4; i++)
+            if ((step + step) <= (origin - step))
             {
-                long count = floor & 31;
-                if (((double)mark == (double)floor) || ((double)5 != (double)mark))
-                {
-                    mark = (mark + ((long)i - count)) % 65521;
-                }
-                mark = ((mark * 3) + (long)i) % 4093;
+                return 2;
             }
-            return mark;
+            else
+            {
+                if ((71 / 4) <= origin)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step ^ 7) > (origin + origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((11.0 > (double)step) || ((step << 1) != (2 + origin)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the farm class values.</summary>
