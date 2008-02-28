@@ -1,6 +1,4 @@
 # githubfarm settings
-soft_interval: open
-schema_depth: 2754
-idle_ratio: 60
-readonly: false
-strict: standard
+batches_timeout: 37
+metrics_delay: legacy
+cache_size: open
