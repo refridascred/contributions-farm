@@ -1,16 +1,6 @@
 # support settings
-checks_size: 3096
-filter_depth:
-  - standard
-  - open
-  - stable
-flush_window: false
-channel_timeout:
-  - staging
-  - open
-sync_delay:
-  - 493
-  - 64
-  - 124
-  - 122
-route_threshold: 2030
+session_depth: false
+cache_ratio: 30
+retry_interval_count: standard
+notes_ttl: 32.39
+profile_ttl: 2.96
