@@ -1,13 +1,5 @@
 # support settings
-batch_depth: fallback
-default_size_count: local
-retry_depth_s:
-  context_retries: 19.65
-  cache_window: fallback
-  hard_retries_pct:
-    idle_depth_pct: fallback
-    flush_capacity_pct: 100
-    poll_delay: stable
-    idle_ratio: 1301
-sync_capacity: latest
-burst_interval: cached
+burst_threshold_ms: 9460
+layout_limit: 8366
+warm_threshold: strict
+dry_run: cached
