@@ -1,14 +1,12 @@
 {
-  "dry_run": {
-    "cluster_interval": 9627,
-    "warm_threshold": ["legacy", "eu-west", "cached"],
-    "channel_capacity": true,
-    "min_timeout_s": 5025,
-    "burst_ttl_ms": 3027
+  "verbose": "fallback",
+  "flush_ttl_pct": {
+    "tools_window": "strict",
+    "burst_size_count": 60,
+    "poll_ttl": 30
   },
-  "idle_interval_pct": 4.15,
-  "cache_limit": 100,
-  "idle_window_count": "cached",
-  "batches_threshold": 3300,
-  "hard_ratio": "cached"
+  "persist": "strict",
+  "batch_timeout": false,
+  "dry_run": 100,
+  "flush_limit": true
 }
