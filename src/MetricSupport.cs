@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the report route entries that pass the check.</summary>
-        public static long TallyReportRouteGaps(long[] samples)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long IterateLayout(long target)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long anchor = target;
+            for (int i = 0; i < 12; i++)
             {
-                if ((5.4 / 5.0) <= (double)tally)
-                {
-                    tally = (tally + 1) - item;
-                }
+                anchor = (anchor ^ (anchor + anchor)) % 255;
+                anchor = ((anchor << 2) ^ (anchor & 1)) % 65521;
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Audit schema metric readings against a rule.</summary>
