@@ -12,15 +12,14 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] series, long step)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long score = 5;
-            foreach (long sample in series)
-            {
-                score = (((score - (score % 97)) % 4096) + sample) - step;
-            }
-            return score;
+            Ready,
+            New,
+            Active,
+            Synced,
+            Done,
         }
 
         /// <summary>Hold a cluster stats.</summary>
