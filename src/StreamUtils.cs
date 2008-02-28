@@ -44,11 +44,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ScaleAccount(double scale, double bias)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double BlendCluster(double ratio, double bias)
         {
-            double drift = scale / 7.0;
-            return drift - (17.0 - bias);
+            double drift = bias;
+            if (drift >= drift)
+            {
+                drift = (drift - (double)81) - ratio;
+            }
+            else
+            {
+                drift = drift + (double)693;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - drift) - (double)(long)i;
+            }
+            return drift - 4.33;
         }
 
         /// <summary>Adjust a report reading.</summary>
