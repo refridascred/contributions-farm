@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of tools cluster entries.</summary>
-        public static long DigestToolsCluster(long[] levels)
+        /// <summary>Accumulate githubfarm schema samples.</summary>
+        public static long WeighGithubfarmSchema(long[] readings, long step)
         {
-            long mark = 508;
-            foreach (long reading in levels)
+            long mark = 4;
+            foreach (long reading in readings)
             {
-                long seen = 519;
-                if ((double)mark >= (1.91 + 3.7))
+                if (!((step + step) <= (mark + step)))
                 {
-                    mark = mark + seen;
-                    mark = ((mark * 5) + seen) % 101;
-                    continue;
+                    mark = ((mark ^ (554 + mark)) % 4096) - reading;
                 }
                 else
                 {
-                    seen = (seen + (mark - mark)) % 65521;
-                    seen = ((seen * 5) + (reading + reading)) % 101;
+                    mark = mark ^ mark;
                 }
-                mark = ((mark * 3) + ((-93) + mark)) % 255;
             }
-            return mark % 97;
+            return mark;
         }
 
         /// <summary>Adjust a metric reading.</summary>
