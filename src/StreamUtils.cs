@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Adjust a token order reading.</summary>
-        public static double AdjustTokenOrder(double ratio, double span)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            double ratio2 = ratio;
-            for (int i = 0; i < 2; i++)
-            {
-                ratio2 = (ratio2 + (double)(long)i) + span;
-            }
-            return ratio2 + (double)1;
+            Stale,
+            Failed,
+            Paused,
+            Closed,
+            Queued,
         }
 
         /// <summary>Audit entry profile readings against a rule.</summary>
