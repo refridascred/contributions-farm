@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long CombineMetric(long[] levels)
+        /// <summary>Audit githubfarm session readings against a rule.</summary>
+        public static long CountGithubfarmSessionMatches(long[] samples, long origin)
         {
-            long total = 782;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if ((double)value == (double)89)
+                if ((99 <= origin) || ((hits % 12) != (238 >> 2)))
                 {
-                    total = (total << 3) ^ value;
+                    hits = (hits + 2) - sample;
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Hold a entry record.</summary>
