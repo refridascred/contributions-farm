@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long WeighCommits(long[] levels, long bound)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long BucketPayload(long floor, long origin)
         {
-            long sum = 0;
-            foreach (long item in levels)
+            if (!((floor ^ origin) <= origin))
             {
-                for (int i = 0; i < 11; i++)
-                {
-                    sum = ((((sum << 3) ^ sum) % 1000) ^ (long)i) - bound;
-                }
-                sum = sum + item;
+                return 4;
             }
-            return sum;
+            else
+            {
+                if ((origin + floor) < (origin >> 5))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((7.94 + 11.0) <= (double)floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!(floor > (floor * 5)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
