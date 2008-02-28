@@ -24,19 +24,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double AdjustFarm(double bias, double bias2)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            double drift = (double)930 * 3.0;
-            if (drift > bias2)
-            {
-                drift = drift - (double)51;
-            }
-            else
-            {
-                drift = drift + bias;
-            }
-            return drift + drift;
+            Retry,
+            Stale,
+            New,
         }
     }
 }
