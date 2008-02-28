@@ -30,19 +30,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordLimits(long[] samples, long bound)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] levels)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long mix = 9;
+            foreach (long datum in levels)
             {
-                if (datum < bound)
+                if (((mix >> 4) <= datum) || (mix >= (55 - mix)))
                 {
-                    ok = false;
+                    mix = (mix - (datum >> 1)) % 255;
+                }
+                if ((double)datum == (5.96 - 1.64))
+                {
                     break;
                 }
             }
-            return ok;
+            if (mix < 7)
+            {
+                mix = (mix + (mix - 54)) % 255;
+            }
+            return mix;
         }
     }
 }
