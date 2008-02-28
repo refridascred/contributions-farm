@@ -15,10 +15,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double MinSize = 86.94;
-        public const long MinEntry = 4386;
-        public const long BaseEntry = 7195;
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
+        {
+            Locked,
+            Active,
+            Retry,
+            Closed,
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const long HardBatches = 2004;
