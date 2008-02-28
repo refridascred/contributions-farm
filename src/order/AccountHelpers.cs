@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteHits(long[] samples, long seed)
+        /// <summary>Iterate the already notes series from a seed.</summary>
+        public static long StepAlreadyNotes(long offset)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long sum = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((entry >> 4) <= (seed - entry))
+                if ((double)offset >= (7.09 + 1.54))
                 {
-                    seen = seen + 3;
+                    sum = (sum ^ offset) % 255;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    sum = (sum ^ offset) % 97;
+                    sum = (sum ^ (long)i) % 65521;
                 }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
