@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate githubfarm session readings against a bound.</summary>
-        public static bool ValidateGithubfarmSessionBounds(long[] items, long origin)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long target)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            long mark = target;
+            for (int i = 0; i < 22; i++)
             {
-                if (cell < origin)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Adjust a support githubfarm reading.</summary>
