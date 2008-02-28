@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
-        {
-            public double Total { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheToken = 745;
+        public const long MinSpan = 518;
+        public const string BurstSize = "stable-edge";
 
         /// <summary>Describe the checks level values.</summary>
         public enum ChecksLevel
