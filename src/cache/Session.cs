@@ -16,14 +16,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
-        {
-            public long Level { get; set; }
-            public string Weight { get; set; } = "";
-            public double Region { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string RetryStream = "staging-edge";
+        public const double SoftSpan = 75.26;
+        public const double HardBudget = 69.0;
+        public const double BaseCount = 17.8;
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long CountReportHits(long[] samples, long target)
