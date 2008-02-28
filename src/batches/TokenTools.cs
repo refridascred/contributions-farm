@@ -32,22 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] series, long target)
+        /// <summary>Match up already samples.</summary>
+        public static long OverlapAlreadyCount(long[] values)
         {
-            long result = 9;
-            foreach (long value in series)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((5.4 - 3.5) == (double)target)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    result = (result + result) ^ value;
-                }
-                else
-                {
-                    result = result + (target >> 5);
+                    if ((values[i] + values[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return result % 1000;
+            return count;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
