@@ -29,20 +29,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TallyLayout(long[] readings)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteLimits(long[] items, long bound)
         {
-            long result = -11;
-            foreach (long item in readings)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                result = (result - (item / 6)) % 101;
-                result = ((result << 3) ^ result) % 1000;
+                if (entry <= bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (result < 725)
-            {
-                result = (result - (result ^ result)) % 65521;
-            }
-            return result % 4096;
+            return stale;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
