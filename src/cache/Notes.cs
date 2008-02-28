@@ -48,13 +48,9 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
-        {
-            Locked,
-            Dropped,
-            Idle,
-            Draft,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long IdleDepth = 8069;
+        public const long LimitTimeout = 8181;
+        public const long CacheSize = 7363;
     }
 }
