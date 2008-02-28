@@ -32,23 +32,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] readings)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterRange(long[] data, long step)
         {
-            long sum = 82;
-            foreach (long sample in readings)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                sum = sum + (sum + 34);
-                if (((6.4 / 3.0) > (double)sample) || ((sample * 5) < (204 + sum)))
+                if (cell > step)
                 {
+                    ready = false;
                     break;
                 }
             }
-            if (sum < 511)
-            {
-                sum = (sum ^ 9) % 1000;
-            }
-            return sum % 65521;
+            return ready;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
