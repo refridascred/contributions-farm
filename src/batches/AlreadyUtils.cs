@@ -67,23 +67,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] readings, long seed)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long state = 9;
-            foreach (long cell in readings)
-            {
-                state = (state ^ (state + 302)) % 97;
-                if (((state + seed) == (3 + 975)) || ((double)cell > (double)state))
-                {
-                    break;
-                }
-            }
-            if (state < 787)
-            {
-                state = state - seed;
-            }
-            return state % 97;
+            Idle,
+            Draft,
+            Ready,
+            New,
+            Queued,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
