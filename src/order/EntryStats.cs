@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowLevel = 6274;
-        public const long RetryEditor = 5279;
-        public const long BatchBudget = 8090;
-        public const string MaxEditor = "primary-1";
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchLimits(long[] samples, long origin)
+        {
+            bool ready = true;
+            foreach (long value in samples)
+            {
+                if (value >= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool VerifyGraphBounds(long[] items, long offset)
