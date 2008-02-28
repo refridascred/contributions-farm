@@ -35,18 +35,18 @@ namespace Common.Utilities
         public const string BatchBudget = "strict-v2";
         public const long RetryBuffer = 9681;
 
-        /// <summary>Audit support window readings against a rule.</summary>
-        public static long TallySupportWindowGaps(long[] data, long target)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricGaps(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if ((double)target > (10.0 / 5.0))
+                if (datum >= (tally - 632))
                 {
-                    seen = (seen + 1) - reading;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
