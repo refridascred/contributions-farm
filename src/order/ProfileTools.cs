@@ -56,39 +56,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long GradeOrder(long offset, long seed)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelLimits(long[] items, long target)
         {
-            long span = offset - seed;
-            if ((3.8 / 2.0) > (double)span)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed ^ seed) < 6)
+                if (cell > target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (span > 87)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((902 + seed) != (span - 80)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
