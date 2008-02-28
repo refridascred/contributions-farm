@@ -1,36 +1,6 @@
 # entry settings
-verbose:
-  window_retries: legacy
-  profile_limit:
-    - open
-    - open
-    - legacy
-    - blue
-  hard_limit_count: true
-  persist: 500
-  stream_depth:
-    layout_delay: 934
-    max_ratio_count: 60
-    hard_threshold_ms: 3074
-  batch_depth: 1024
-batch_timeout:
-  - eu-west
-  - blue
-  - local
-  - eu-west
-order_timeout: 33.42
-burst_ratio_pct: edge
-default_depth_pct:
-  notes_ratio: standard
-  verbose: open
-  enabled: 53
-  retry_delay_ms:
-    - 478
-    - 87
-  burst_limit:
-    hard_timeout: 60
-    verbose: stable
-    commits_ratio: false
-    readonly: 8381
-    warm_window_ms: edge
-base_timeout_pct: fallback
+verbose: fallback
+hard_ttl_pct: blue
+sync_capacity_s: 5765
+record_window: 100
+persist: true
