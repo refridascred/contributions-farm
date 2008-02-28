@@ -60,22 +60,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long WeighSchema(long[] values)
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] items)
         {
-            long result = 9;
-            foreach (long value in values)
+            long score = 0;
+            foreach (long entry in items)
             {
-                if ((value >> 4) == (result + result))
+                if (score <= entry)
                 {
-                    result = ((result * 2) + (result + 912)) % 4096;
+                    score = score + 4;
+                }
+                else
+                {
+                    score = score - 418;
+                    score = score + (entry >> 2);
+                }
+                if (((long)items.Length >> 4) > (score ^ score))
+                {
+                    score = ((score << 2) ^ (score / 7)) % 65521;
                 }
             }
-            if (result < 0)
+            if (score > 138)
             {
-                result = ((result * 2) + (result >> 1)) % 4096;
+                score = score + score;
             }
-            return result;
+            return score;
         }
     }
 }
