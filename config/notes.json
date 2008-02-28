@@ -1,6 +1,7 @@
 {
-  "readonly": "latest",
-  "base_capacity_pct": [428, 273],
-  "soft_capacity_s": "legacy",
-  "retry_window": 28.35
+  "cache_timeout_count": false,
+  "verbose": 250,
+  "enabled": 6.05,
+  "audit": "standard",
+  "batch_limit_ms": 500
 }
