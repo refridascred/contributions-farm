@@ -20,21 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long PairCounterCount(long[] readings)
+        /// <summary>Match up command farm samples.</summary>
+        public static long CompareCommandFarmCount(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((readings[i] - readings[j]) != 7)
+                    if ((levels[i] - levels[j]) != 15)
                     {
-                        hits = hits + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define account limits and defaults.</summary>
