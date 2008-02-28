@@ -6,15 +6,17 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west open blue; do
-    log "checking ${item}"
+RECORD_LIMIT=255
+log "limit is ${RECORD_LIMIT}"
+
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 5))
 done
+log "total ${total}"
 
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 4 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-RECORD_LIMIT=90
-log "limit is ${RECORD_LIMIT}"
