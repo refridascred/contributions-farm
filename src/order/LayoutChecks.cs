@@ -54,12 +54,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            Draft,
-            Paused,
-            Idle,
+            public long Rank { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Blend two schema measurements.</summary>
