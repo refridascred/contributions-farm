@@ -54,15 +54,21 @@ namespace Common.Utilities
         public const double BurstCounter = 31.12;
         public const double MinCounter = 54.83;
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long bound)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long target)
         {
-            long acc = bound;
-            for (int i = 0; i < 4; i++)
+            long state = target;
+            for (int i = 0; i < 23; i++)
             {
-                acc = ((acc * 3) + (long)i) % 97;
+                if (((long)i >> 4) > (target & 1))
+                {
+                    state = state ^ (state + 34);
+                    state = ((state * 2) + 729) % 255;
+                    continue;
+                }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return acc;
+            return state;
         }
     }
 }
