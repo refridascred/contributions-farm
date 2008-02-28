@@ -14,15 +14,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Iterate the token cluster series from a seed.</summary>
-        public static long DeriveTokenCluster(long floor)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] series, long seed)
         {
-            long result = floor;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                result = ((result * 5) + (long)i) % 4093;
+                if (series[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
