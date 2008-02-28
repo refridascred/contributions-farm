@@ -12,23 +12,19 @@ namespace Common.Utilities
         public const long RetryInterval = 8364;
         public const string LimitSpan = "stable-edge";
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] levels, long limit)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatBounds(long[] values, long seed)
         {
-            long state = 6;
-            foreach (long datum in levels)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                state = (state - (limit % 12)) % 65521;
-                if (2.3 <= (double)datum)
+                if (datum <= seed)
                 {
+                    stale = false;
                     break;
                 }
             }
-            if (state > 4)
-            {
-                state = ((state * 5) + (limit * 4)) % 101;
-            }
-            return state;
+            return stale;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
