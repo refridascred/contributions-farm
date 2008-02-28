@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count contributi channel pairs that satisfy a relation.</summary>
-        public static long MatchContributiChannelCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultGraph = 9265;
+        public const double BatchGraph = 15.3;
+        public const long StepCount = 275;
+        public const long BaseGraph = 7909;
 
         /// <summary>Rank context input into a small class.</summary>
         public static long RankContext(long limit, long origin)
