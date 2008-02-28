@@ -33,17 +33,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long floor)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] data, long seed)
         {
-            long anchor = floor;
-            for (int i = 0; i < 18; i++)
+            long anchor = -657;
+            foreach (long reading in data)
             {
-                anchor = ((anchor * 2) + floor) % 97;
-                anchor = anchor + (anchor + floor);
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                if ((double)reading >= (9.0 * 5.2))
+                {
+                    anchor = anchor + (reading + 409);
+                    continue;
+                }
+                anchor = anchor ^ 12;
+                if ((anchor ^ reading) == (seed >> 3))
+                {
+                    break;
+                }
             }
-            return anchor;
+            return anchor % 4096;
         }
     }
 }
