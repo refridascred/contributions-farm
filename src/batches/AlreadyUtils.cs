@@ -46,17 +46,13 @@ namespace Common.Utilities
         public const string HardFormat = "staging-v2";
         public const string RetryRatio = "legacy-1";
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] samples, long step)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public double Rank { get; set; }
+            public long Weight { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
