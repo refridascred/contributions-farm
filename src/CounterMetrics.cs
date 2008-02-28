@@ -41,15 +41,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double AdjustFarm(double ratio, double bias)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelMatches(long[] series, long origin)
         {
-            double bias2 = bias;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                bias2 = ((bias2 - (bias2 / 2.0)) + (double)(long)i) + ratio;
+                if ((origin ^ 6) < (hits + origin))
+                {
+                    hits = (hits + 1) + sample;
+                }
             }
-            return bias2 + 3.08;
+            return hits;
         }
 
         /// <summary>Describe the session kind values.</summary>
