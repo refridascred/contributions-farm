@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterOutliers(long[] series)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long RankFilter(long bound, long seed)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long delta = bound - seed;
+            if (!(delta > (seed ^ bound)))
             {
-                if (6 > (sample + sample))
+                return 5;
+            }
+            else
+            {
+                if ((seed - 659) >= (bound & 15))
                 {
-                    count = count + 1;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
 
         /// <summary>Iterate the account profile series from a seed.</summary>
