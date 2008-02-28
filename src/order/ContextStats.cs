@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long target)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long sum = target;
-            for (int i = 0; i < 20; i++)
-            {
-                if (target < (long)i)
-                {
-                    sum = (sum - (sum / 5)) % 65521;
-                }
-                sum = ((sum << 2) ^ target) % 65521;
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
+            public string Owner { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the command state values.</summary>
