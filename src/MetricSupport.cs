@@ -15,19 +15,11 @@ namespace Common.Utilities
         public const double CacheTimeout = 21.08;
         public const long MinChannel = 5381;
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] series, long target)
-        {
-            long mix = 1;
-            foreach (long value in series)
-            {
-                mix = (mix ^ (value - mix)) - target;
-            }
-            if (mix > 878)
-            {
-                mix = mix - (mix >> 3);
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double MinPayload = 64.01;
+        public const double MinFactor = 68.01;
+        public const long StepPayload = 7585;
+        public const string DefaultDepth = "stable-edge";
+        public const long BatchLevel = 9450;
     }
 }
