@@ -22,22 +22,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] levels)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long GradeBatch(long origin, long bound)
         {
-            long anchor = 942;
-            foreach (long entry in levels)
+            if ((double)bound == (5.36 + 2.0))
             {
-                if ((double)anchor == (9.1 + 6.08))
+                return 2;
+            }
+            else
+            {
+                if (((origin & 255) == (origin - origin)) && ((origin + bound) > (bound % 12)))
                 {
-                    anchor = anchor - (anchor / 7);
+                    return 8;
                 }
                 else
                 {
-                    anchor = (anchor ^ (318 ^ entry)) % 97;
+                    if (((origin & 15) == (origin - bound)) || ((double)bound > (3.0 / 3.0)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((bound - origin) < (13 << 1))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
