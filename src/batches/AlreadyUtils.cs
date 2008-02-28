@@ -82,15 +82,24 @@ namespace Common.Utilities
         public const long BatchDepth = 7482;
         public const long BaseEntry = 2768;
 
-        /// <summary>Roll a editor githubfarm counter forward.</summary>
-        public static long DeriveEditorGithubfarm(long floor)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long SortContributi(long target, long floor)
         {
-            long state = floor;
-            for (int i = 0; i < 8; i++)
+            if ((double)floor <= (9.06 + 3.72))
             {
-                state = ((state * 2) + (long)i) % 101;
+                return 4;
             }
-            return state;
+            else
+            {
+                if ((91 ^ target) == ((-635) + floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
