@@ -52,11 +52,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Count the filter buffer entries that pass the check.</summary>
+        public static long MeasureFilterBufferOutliers(long[] values)
         {
-            public double Weight { get; set; }
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((cell + cell) <= 668)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
