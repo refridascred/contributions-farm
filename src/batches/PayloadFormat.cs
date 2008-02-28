@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long step, long seed)
+        /// <summary>Check that every checks record entry stays within the limit.</summary>
+        public static bool CheckChecksRecordLimits(long[] data, long offset)
         {
-            long gap = step ^ seed;
-            if ((gap >> 3) < (step / 5))
+            bool ready = true;
+            foreach (long value in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step >> 1) == (47 << 2))
+                if (value != offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Hold a tools info.</summary>
