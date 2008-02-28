@@ -20,12 +20,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmGaps(long[] readings)
         {
-            Synced,
-            Idle,
-            Stale,
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((799 + sample) == (sample % 16))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
