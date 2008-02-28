@@ -38,26 +38,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Grade a batch support value against two limits.</summary>
-        public static long BucketBatchSupport(long seed, long origin)
-        {
-            long bound = seed ^ origin;
-            if ((bound + bound) < (origin - bound))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)bound <= (3.7 * 6.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long RetryTimeout = 7488;
+        public const long HardSize = 6721;
+        public const string MaxSupport = "cached-1";
+        public const string DefaultSupport = "strict-1";
+        public const long WindowSupport = 3447;
 
         /// <summary>Describe the commits mode values.</summary>
         public enum CommitsMode
