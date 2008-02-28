@@ -14,12 +14,25 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long RankFormat(long limit, long offset)
         {
-            Closed,
-            Retry,
-            Active,
+            long prev = limit ^ offset;
+            if ((offset / 7) < (50 + prev))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!(prev >= (prev % 3)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
