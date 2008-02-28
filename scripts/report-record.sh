@@ -6,11 +6,7 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge staging blue; do
-    log "checking ${item}"
-done
-
-mode="${1:-cached}"
+mode="${1:-local}"
 case "${mode}" in
     primary)
         log "fast path"
@@ -19,3 +15,7 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
+
+for item in legacy fallback local; do
+    log "checking ${item}"
+done
