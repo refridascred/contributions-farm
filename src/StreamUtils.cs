@@ -30,14 +30,12 @@ namespace Common.Utilities
         public const long BaseStream = 4098;
         public const long IdleSize = 1124;
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            New,
-            Ready,
-            Paused,
-            Closed,
-            Active,
+            Queued,
+            Failed,
+            Pending,
         }
 
         /// <summary>Adjust a cluster reading.</summary>
