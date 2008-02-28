@@ -55,14 +55,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            Ready,
-            Retry,
-            Done,
-            Draft,
-            New,
+            public double Weight { get; set; }
+            public long Count { get; set; }
         }
     }
 }
