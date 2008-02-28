@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every support batch entry stays within the limit.</summary>
-        public static bool CheckSupportBatchLimits(long[] readings, long limit)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            bool ok = true;
-            foreach (long reading in readings)
-            {
-                if (reading != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Pending,
+            Synced,
+            Retry,
+            Done,
         }
 
         /// <summary>Compare every pair of window contributi readings.</summary>
