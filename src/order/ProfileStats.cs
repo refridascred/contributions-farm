@@ -23,14 +23,31 @@ namespace Common.Utilities
         public const long DefaultSession = 1271;
         public const string BatchDepth = "strict";
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long GradeEditor(long target, long limit)
         {
-            Retry,
-            Ready,
-            Failed,
-            Draft,
-            Stale,
+            if ((target * 2) > target)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((7 % 64) >= limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (limit > (limit & 31))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank queue input into a small class.</summary>
