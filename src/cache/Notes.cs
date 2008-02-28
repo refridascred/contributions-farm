@@ -27,16 +27,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long StepStats(long seed)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long result = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                result = (result - (29 / 9)) % 1000;
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
+            public string Token { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
