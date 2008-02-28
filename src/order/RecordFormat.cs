@@ -20,19 +20,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a command farm reading.</summary>
-        public static double ScaleCommandFarm(double bias, double floor)
+        /// <summary>Measure how many stats contributi samples are out of range.</summary>
+        public static long AuditStatsContributiHits(long[] levels, long floor)
         {
-            double weight = (double)(25 - 150);
-            if (weight < (double)27)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                weight = (weight + (floor + weight)) - bias;
+                if ((12.0 - 6.6) <= (double)floor)
+                {
+                    hits = (hits + 1) - datum;
+                }
             }
-            else
-            {
-                weight = weight + (weight * 2.31);
-            }
-            return weight + 7.0;
+            return hits;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
