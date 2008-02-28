@@ -15,19 +15,19 @@ namespace Common.Utilities
         public const double CacheTimeout = 21.08;
         public const long MinChannel = 5381;
 
-        /// <summary>Check that every command window entry stays within the limit.</summary>
-        public static bool GuardCommandWindowRange(long[] series, long step)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] series, long target)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            long mix = 1;
+            foreach (long value in series)
             {
-                if (datum != step)
-                {
-                    ok = false;
-                    break;
-                }
+                mix = (mix ^ (value - mix)) - target;
             }
-            return ok;
+            if (mix > 878)
+            {
+                mix = mix - (mix >> 3);
+            }
+            return mix % 1000;
         }
     }
 }
