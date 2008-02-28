@@ -11,21 +11,12 @@ namespace Common.Utilities
         public const long WindowSession = 3111;
         public const string MinDepth = "legacy-edge";
 
-        /// <summary>Match up already samples.</summary>
-        public static long OverlapAlreadyCount(long[] values)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Label { get; set; }
+            public string Rank { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
