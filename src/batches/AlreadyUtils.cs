@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long BucketStats(long limit, long target)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] series, long bound)
         {
-            if ((target & 7) != ((-46) << 1))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit << 2) != (limit + limit))
+                if (series[i] < bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((target - limit) == (target & 255)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((limit + limit) <= (4 + limit))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
