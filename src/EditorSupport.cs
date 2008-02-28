@@ -34,19 +34,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every entry checks entry stays within the limit.</summary>
-        public static bool VerifyEntryChecksLimits(long[] data, long target)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            bool ready = true;
-            foreach (long sample in data)
-            {
-                if (sample <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Active,
+            Draft,
+            Failed,
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
