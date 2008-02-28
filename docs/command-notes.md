@@ -1,13 +1,15 @@
 # Command notes
 
-Each filter is validated before it reaches the command queue.
-Each window is validated before it reaches the profile queue.
+Keep commits and farm names short and lowercase.
+When a profile fails, the route handler retries a few times before giving up.
 
-Run the account check before changing any stream limits.
-Run the layout check before changing any order limits.
+Keep command and cache names short and lowercase.
+The payload report groups every payload by githubfarm.
+The editor helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate token input early
-- Review support limits each release
-- Prefer githubfarm defaults
+- Validate filter input early
+- Review buffer limits each release
+- Log every context change
+- Keep metrics values small
