@@ -37,16 +37,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long SeriesOrder(long origin)
+        /// <summary>Match up notes samples.</summary>
+        public static long CompareNotesCount(long[] levels)
         {
-            long sum = origin;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = sum + ((long)i - sum);
-                sum = ((sum * 2) + (long)i) % 1000;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return sum;
+            return hits;
         }
     }
 }
