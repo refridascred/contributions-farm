@@ -20,15 +20,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long DeriveReport(long step)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long total = step;
-            for (int i = 0; i < 7; i++)
-            {
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
+            public double Rank { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
