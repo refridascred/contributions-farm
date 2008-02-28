@@ -20,21 +20,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up command farm samples.</summary>
-        public static long CompareCommandFarmCount(long[] levels)
+        /// <summary>Accumulate record samples.</summary>
+        public static long FoldRecord(long[] readings, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 6;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((anchor + step) >= (anchor >> 1)) || ((step * 5) >= (step - 83)))
                 {
-                    if ((levels[i] - levels[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = (anchor - (544 ^ step)) % 255;
+                }
+                if (((anchor + anchor) <= anchor) || ((0.45 / 4.0) < (double)step))
+                {
+                    anchor = (anchor * 3) + (anchor & 1);
+                }
+                if (!((datum ^ 1) < (step + 11)))
+                {
+                    anchor = (anchor - (728 + datum)) % 65521;
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Hold a metrics record.</summary>
