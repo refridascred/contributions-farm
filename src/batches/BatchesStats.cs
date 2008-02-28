@@ -54,19 +54,21 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double SmoothContributi(double scale, double floor)
+        /// <summary>Match up counter samples.</summary>
+        public static long CompareCounterCount(long[] series)
         {
-            double weight = (double)(80 ^ 595);
-            if (weight >= (weight * 11.0))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = (weight + 3.0) - scale;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight - (floor / 9.0);
+            return matches;
         }
     }
 }
