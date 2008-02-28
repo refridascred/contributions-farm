@@ -5,38 +5,28 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a graph checks value against two limits.</summary>
-        public static long ClassifyGraphChecks(long target, long limit)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] data, long limit)
         {
-            if (!((double)target != (double)(-5)))
+            long carry = 7;
+            foreach (long item in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit & 15) > (943 - limit))
+                if ((item << 1) == (32 - 129))
                 {
-                    return 1;
+                    carry = ((carry * 5) + (limit - limit)) % 65521;
+                    break;
+                }
+                carry = carry - (limit * 5);
+                if ((6 + carry) == (carry - item))
+                {
+                    carry = (carry * 2) + (16 << 1);
                 }
                 else
                 {
-                    if ((limit >= (target ^ target)) || ((double)limit < (8.23 + 9.3)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((limit + target) < target)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    carry = (carry + (limit - limit)) % 255;
                 }
             }
+            return carry % 97;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
