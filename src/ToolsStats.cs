@@ -54,12 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double MaxWidth = 9.35;
-        public const long BatchBudget = 712;
-        public const long CacheContext = 8119;
-        public const long BaseCount = 2033;
-        public const double MinCount = 59.74;
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
+        {
+            public bool Flag { get; set; }
+            public double Total { get; set; }
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double MaxInterval = 47.69;
