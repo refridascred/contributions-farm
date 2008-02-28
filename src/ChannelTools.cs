@@ -11,17 +11,16 @@ namespace Common.Utilities
         public const long MaxRatio = 3881;
         public const string CacheStream = "alpha";
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] samples, long bound)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long DeriveAlready(long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (samples[i] < bound)
-                {
-                    return (long)i;
-                }
+                acc = (acc ^ (bound * 5)) % 1000;
+                acc = ((acc * 4) + (long)i) % 1000;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Hold a buffer entry.</summary>
