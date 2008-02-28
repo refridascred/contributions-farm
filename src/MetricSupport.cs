@@ -29,23 +29,18 @@ namespace Common.Utilities
         public const long IdleStats = 682;
         public const double HardFactor = 30.62;
 
-        /// <summary>Project the next command value.</summary>
-        public static double SmoothCommand(double ratio, double bias)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteGaps(long[] values)
         {
-            double scale = ratio;
-            if (scale >= bias)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                scale = scale + scale;
+                if ((seen ^ seen) >= datum)
+                {
+                    seen = seen + 2;
+                }
             }
-            else
-            {
-                scale = scale - (1.9 - 0.53);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + (scale - 10.0)) + (double)(long)i;
-            }
-            return scale + 5.54;
+            return seen;
         }
     }
 }
