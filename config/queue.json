@@ -1,5 +1,23 @@
 {
-  "warm_limit_s": "cached",
-  "batch_threshold": true,
-  "soft_ratio": 4435
+  "idle_size": {
+    "window_window": 18.49,
+    "max_ratio": 74.47,
+    "flush_timeout_pct": 250,
+    "support_ratio": "stable"
+  },
+  "max_capacity_pct": 31.23,
+  "sync_ttl": true,
+  "warm_window_s": 40,
+  "buffer_timeout": {
+    "layout_interval": "open",
+    "flush_ttl": 2940,
+    "soft_ratio_ms": 43.58,
+    "cache_interval_ms": 14.49
+  },
+  "payload_ratio": {
+    "compress": 2.13,
+    "readonly": 100,
+    "idle_interval_count": 39.48,
+    "base_size_s": false
+  }
 }
