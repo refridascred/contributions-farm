@@ -20,22 +20,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the account schema entries that pass the check.</summary>
-        public static long MeasureAccountSchemaGaps(long[] values)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LookupStatsIndex(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((539 + 70) > (entry ^ entry))
+                if (levels[i] > target)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
