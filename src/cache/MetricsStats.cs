@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            public long Limit { get; set; }
-            public double Ratio { get; set; }
-            public double Weight { get; set; }
-            public long Owner { get; set; }
+            public long Rank { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
