@@ -67,19 +67,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every buffer cluster entry stays within the limit.</summary>
-        public static bool GuardBufferClusterBounds(long[] samples, long origin)
+        /// <summary>Iterate the queue farm series from a seed.</summary>
+        public static long SeriesQueueFarm(long floor)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            long state = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (entry != origin)
-                {
-                    flag = false;
-                    break;
-                }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
