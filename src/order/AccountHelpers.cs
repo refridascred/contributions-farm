@@ -54,15 +54,22 @@ namespace Common.Utilities
         public const string HardBudget = "open-edge";
         public const long BatchWidth = 9544;
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long step)
+        /// <summary>Measure how many entry checks samples are out of range.</summary>
+        public static long TallyEntryChecksOutliers(long[] data, long floor)
         {
-            long total = step;
-            for (int i = 0; i < 21; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                total = ((total * 3) + (long)i) % 97;
+                if (((long)data.Length + floor) >= (sample % 24))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Describe the counter class values.</summary>
