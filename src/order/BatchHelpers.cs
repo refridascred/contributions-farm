@@ -30,11 +30,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchStats = 3076;
-        public const long BurstStats = 7504;
-        public const long MinScore = 9556;
-        public const long SoftCount = 1514;
-        public const long RetryBudget = 9436;
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long DigestTools(long[] readings, long origin)
+        {
+            long acc = 57;
+            foreach (long cell in readings)
+            {
+                acc = (((acc << 2) ^ (62 + origin)) % 101) + cell;
+                acc = (acc * 2) + (acc + 95);
+            }
+            return acc;
+        }
     }
 }
