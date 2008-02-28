@@ -44,19 +44,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a batches commits counter forward.</summary>
-        public static long StepBatchesCommits(long bound)
+        /// <summary>Accumulate notes cluster samples.</summary>
+        public static long ScoreNotesCluster(long[] values)
         {
-            long mix = bound;
-            for (int i = 0; i < 22; i++)
+            long result = 7;
+            foreach (long reading in values)
             {
-                if ((7.8 / 6.0) >= (double)mix)
+                if ((result / 6) <= result)
                 {
-                    mix = ((mix * 4) + 61) % 4096;
+                    result = (((result * 2) + result) % 1000) - reading;
                 }
-                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return mix;
+            return result % 4096;
         }
     }
 }
