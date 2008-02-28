@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatRange(long[] series, long offset)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long CompareSupportCount(long[] values)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum < offset)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((values[i] - values[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
