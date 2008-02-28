@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate cache commits samples.</summary>
-        public static long DigestCacheCommits(long[] levels)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] items, long offset)
         {
-            long result = 4;
-            foreach (long cell in levels)
+            long sum = 64;
+            foreach (long cell in items)
             {
-                result = ((result * 2) + cell) % 101;
+                sum = sum + offset;
+                if ((offset < (cell / 5)) && ((sum * 2) < sum))
+                {
+                    sum = (sum - (cell << 3)) % 97;
+                    sum = (sum + (offset >> 1)) % 4096;
+                }
+                sum = (sum ^ (sum - 67)) % 97;
             }
-            return result;
+            return sum % 97;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
