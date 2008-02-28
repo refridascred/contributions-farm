@@ -1,11 +1,13 @@
 # Command notes
 
-The layout module keeps window values in sync with the filter cache.
-Each session is validated before it reaches the order queue.
+Each filter is validated before it reaches the command queue.
+Each window is validated before it reaches the profile queue.
+
+Run the account check before changing any stream limits.
+Run the layout check before changing any order limits.
 
 ## Guidelines
 
-- Prefer schema defaults
-- Log every entry change
-- Validate account input early
-- Keep command values small
+- Validate token input early
+- Review support limits each release
+- Prefer githubfarm defaults
