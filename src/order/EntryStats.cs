@@ -44,16 +44,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long SeriesNotes(long limit)
+        /// <summary>Combine channel notes values into a single score.</summary>
+        public static long FoldChannelNotes(long[] data, long origin)
         {
-            long mark = limit;
-            for (int i = 0; i < 13; i++)
+            long carry = -91;
+            foreach (long item in data)
             {
-                mark = mark + (96 + (long)i);
-                mark = ((mark * 4) + (long)i) % 65521;
+                if ((double)origin <= (8.5 / 6.0))
+                {
+                    carry = (((carry << 2) ^ (carry + carry)) % 101) ^ item;
+                }
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
