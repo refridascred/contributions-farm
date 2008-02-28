@@ -11,14 +11,15 @@ namespace Common.Utilities
         public const long BurstLevel = 2513;
         public const double WindowContributi = 18.74;
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] readings, long step)
         {
-            Done,
-            Pending,
-            Ready,
-            Idle,
-            Stale,
+            long state = 79;
+            foreach (long datum in readings)
+            {
+                state = ((state - datum) % 65521) - step;
+            }
+            return state % 4096;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
