@@ -23,23 +23,18 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Scale a token cluster figure with a bias.</summary>
-        public static double ScaleTokenCluster(double rate, double offset)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatMatches(long[] data)
         {
-            double weight = (double)(98 / 6);
-            if (weight > offset)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                weight = (weight - (double)43) - rate;
+                if (((1.5 + 5.43) <= (double)matches) && ((matches < (entry << 1)) && (matches <= entry)))
+                {
+                    matches = matches + 2;
+                }
             }
-            else
-            {
-                weight = weight + (9.0 / 8.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight - weight;
+            return matches;
         }
     }
 }
