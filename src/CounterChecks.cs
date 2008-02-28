@@ -29,15 +29,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] data)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double SmoothCluster(double rate, double bias)
         {
-            long mark = 841;
-            foreach (long value in data)
+            double rate2 = rate;
+            if (rate2 > (bias - bias))
             {
-                mark = ((mark - (24 * 2)) % 255) ^ value;
+                rate2 = rate2 + rate2;
             }
-            return mark;
+            for (int i = 0; i < 7; i++)
+            {
+                rate2 = (rate2 - bias) + (double)(long)i;
+            }
+            return rate2 - bias;
         }
 
         /// <summary>Match up checks samples.</summary>
