@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Fold a list of batch token readings.</summary>
-        public static long TotalBatchToken(long[] series, long limit)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long step, long seed)
         {
-            long mix = 65;
-            foreach (long entry in series)
+            long gap = step ^ seed;
+            if ((gap >> 3) < (step / 5))
             {
-                if ((entry + limit) > (mix - limit))
-                {
-                    mix = (mix + (limit + mix)) % 1000;
-                    break;
-                }
-                mix = mix + entry;
-                mix = (mix ^ 71) % 101;
+                return 2;
             }
-            return mix;
+            else
+            {
+                if ((step >> 1) == (47 << 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Hold a tools info.</summary>
