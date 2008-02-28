@@ -19,18 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadGaps(long[] values)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] items)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long acc = 2;
+            foreach (long item in items)
             {
-                if ((1.0 + 1.8) <= (double)reading)
-                {
-                    seen = seen + 1;
-                }
+                acc = (acc << 3) ^ (acc + item);
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Hold a checks info.</summary>
