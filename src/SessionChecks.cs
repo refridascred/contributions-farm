@@ -25,23 +25,11 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] series)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long mark = 31;
-            foreach (long datum in series)
-            {
-                mark = (mark - (mark >> 2)) % 4096;
-                if (datum >= 191)
-                {
-                    mark = (mark << 2) ^ (94 % 3);
-                }
-                else
-                {
-                    mark = (mark - datum) % 4096;
-                }
-            }
-            return mark;
+            public bool Flag { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Blend two entry measurements.</summary>
