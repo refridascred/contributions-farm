@@ -47,23 +47,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double BlendToken(double rate, double span)
+        /// <summary>Look up the position of a counter batch sample.</summary>
+        public static long FindCounterBatchIndex(long[] levels, long offset)
         {
-            double load = (double)(4 + 22);
-            if (load >= (span / 2.0))
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = (load - (double)11) + rate;
+                if (levels[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load - (double)27;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + (double)214) + (double)(long)i;
-            }
-            return load + span;
+            return -1;
         }
 
         /// <summary>Rank format metrics input into a small class.</summary>
