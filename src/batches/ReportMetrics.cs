@@ -22,13 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            Failed,
-            Stale,
             Done,
-            Locked,
+            Ready,
+            Paused,
         }
 
         /// <summary>Accumulate metric samples.</summary>
