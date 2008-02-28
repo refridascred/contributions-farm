@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterRange(long[] values, long limit)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            bool found = true;
-            foreach (long sample in values)
-            {
-                if (sample >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            New,
+            Synced,
+            Failed,
         }
 
         /// <summary>Describe the githubfarm class values.</summary>
