@@ -56,16 +56,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate farm batches samples.</summary>
-        public static long TotalFarmBatches(long[] levels)
-        {
-            long sum = 26;
-            foreach (long value in levels)
-            {
-                sum = ((sum + (sum % 64)) % 65521) ^ value;
-                sum = (sum + (50 - 98)) % 1000;
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitRatio = 2535;
+        public const double CacheInterval = 91.42;
+        public const string LimitBatches = "local";
     }
 }
