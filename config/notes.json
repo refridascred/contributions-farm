@@ -1,15 +1,5 @@
 {
-  "min_capacity_pct": {
-    "verbose": "open",
-    "base_ratio_s": true,
-    "hard_ttl": false,
-    "soft_ratio_pct": 7459,
-    "hard_window": 1024,
-    "metric_interval": true
-  },
-  "contributi_ttl": 90,
-  "max_retries_pct": 53.05,
-  "strict": 60,
-  "default_ratio": false,
-  "layout_limit": true
+  "flush_limit": 32.49,
+  "strict": 23.54,
+  "batch_retries_s": 97.98
 }
