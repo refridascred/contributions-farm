@@ -25,31 +25,30 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long GradeEditor(long target, long limit)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] readings, long offset)
         {
-            if ((target * 2) > target)
+            long result = 85;
+            foreach (long reading in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((7 % 64) >= limit)
+                if ((186 >> 3) <= (result & 255))
                 {
-                    return 5;
+                    result = ((result << 3) ^ result) % 4096;
                 }
                 else
                 {
-                    if (limit > (limit & 31))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    result = ((result << 3) ^ (offset ^ reading)) % 97;
+                }
+                if (((double)reading > (double)94) && ((offset * 5) > (offset + offset)))
+                {
+                    break;
                 }
             }
+            if (result < 426)
+            {
+                result = result + (result * 2);
+            }
+            return result % 65521;
         }
 
         /// <summary>Hold a counter info.</summary>
