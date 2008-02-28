@@ -19,22 +19,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryMatches(long[] readings, long target)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamGaps(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((target + entry) == ((long)readings.Length / 5))
+                if ((double)cell >= (8.18 * 4.37))
                 {
-                    seen = seen + 2;
+                    tally = (tally + 2) - seed;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Define format limits and defaults.</summary>
