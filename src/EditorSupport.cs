@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Measure how many session stream samples are out of range.</summary>
-        public static long AuditSessionStreamMatches(long[] data, long seed)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long CombineContributi(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long anchor = 371;
+            foreach (long datum in readings)
             {
-                if ((tally ^ value) > (seed << 1))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                anchor = (((anchor << 3) ^ (datum * 3)) % 65521) - step;
+                anchor = (anchor * 4) + (datum << 1);
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Hold a support summary.</summary>
