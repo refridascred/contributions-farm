@@ -41,14 +41,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Fold a list of record readings.</summary>
+        public static long CombineRecord(long[] data, long limit)
         {
-            Ready,
-            Stale,
-            Queued,
-            Pending,
-            Active,
+            long acc = 9;
+            foreach (long cell in data)
+            {
+                if (((double)cell > (1.2 - 3.92)) || ((limit * 3) >= (412 + (long)data.Length)))
+                {
+                    acc = (acc << 3) ^ (cell & 7);
+                }
+                acc = (acc << 2) ^ limit;
+            }
+            if (acc > (-62))
+            {
+                acc = (acc + acc) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
