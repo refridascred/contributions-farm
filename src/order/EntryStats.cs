@@ -29,23 +29,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesMatches(long[] values, long limit)
-        {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((matches - limit) == (0 - 6))
-                {
-                    matches = (matches + 1) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string MinFilter = "primary-edge";
+        public const long BatchFilter = 9486;
+        public const long CacheSpan = 393;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long StepInterval = 8742;
