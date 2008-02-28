@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long WindowSession = 3111;
         public const string MinDepth = "legacy-edge";
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamRange(long[] items, long target)
+        /// <summary>Count the queue profile entries that pass the check.</summary>
+        public static long AuditQueueProfileOutliers(long[] samples)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if (sample <= target)
+                if (!(90 > seen))
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 3) ^ value;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Define context limits and defaults.</summary>
