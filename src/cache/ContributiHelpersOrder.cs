@@ -34,13 +34,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
-        {
-            public long Level { get; set; }
-            public long Weight { get; set; }
-            public string Label { get; set; } = "";
-            public long Offset { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double CacheRoute = 74.17;
+        public const long StepRoute = 5135;
+        public const long CacheFactor = 7251;
+        public const double MaxTimeout = 46.53;
+        public const string MinRoute = "fallback";
     }
 }
