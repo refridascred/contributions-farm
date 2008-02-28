@@ -54,11 +54,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterMatches(long[] values)
         {
-            public long Region { get; set; }
-            public bool Rank { get; set; }
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if (value >= matches)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
