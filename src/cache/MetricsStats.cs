@@ -54,18 +54,11 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Audit payload stats readings against a rule.</summary>
-        public static long CountPayloadStatsHits(long[] items, long seed)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((seed / 8) <= 812)
-                {
-                    matches = (matches + 3) ^ reading;
-                }
-            }
-            return matches;
+            public double Flag { get; set; }
+            public long Score { get; set; }
         }
     }
 }
