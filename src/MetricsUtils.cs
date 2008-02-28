@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long step)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            long score = step;
-            for (int i = 0; i < 23; i++)
-            {
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
+            public double Token { get; set; }
+            public long Score { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
