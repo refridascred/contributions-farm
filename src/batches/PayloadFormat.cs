@@ -52,13 +52,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
-        {
-            Locked,
-            Ready,
-            Active,
-            Idle,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardRecord = 30;
+        public const string BaseRecord = "standard-v2";
+        public const double IdleLevel = 89.61;
+        public const long BurstRecord = 5422;
     }
 }
