@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string StepLevel = "strict-v2";
-        public const long BurstWidth = 2602;
-        public const long MinSpan = 7315;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardScore = 6465;
+        public const long BurstStream = 2351;
+        public const long MaxRatio = 3881;
+        public const string CacheStream = "alpha";
 
         /// <summary>Look up the position of a layout sample.</summary>
         public static long SeekLayoutIndex(long[] samples, long bound)
