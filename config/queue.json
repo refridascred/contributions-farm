@@ -1,6 +1,12 @@
 {
-  "report_timeout": "cached",
-  "retry_ttl_ms": ["latest", "stable"],
-  "enabled": true,
-  "cache_threshold_ms": "local"
+  "burst_timeout": {
+    "contributi_threshold": ["edge", "open"],
+    "burst_ratio_pct": "strict",
+    "idle_depth_count": true,
+    "warm_interval": 20.78,
+    "flush_capacity_s": 85.4,
+    "sync_ratio_pct": "primary"
+  },
+  "hard_size": 61.64,
+  "sync_limit": ["standard", "blue"]
 }
