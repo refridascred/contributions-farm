@@ -5,35 +5,29 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long BucketPayload(long floor, long origin)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long offset, long limit)
         {
-            if (!((floor ^ origin) <= origin))
+            long slot = offset + limit;
+            if ((slot & 1) == (limit + offset))
             {
-                return 4;
+                return 6;
             }
             else
             {
-                if ((origin + floor) < (origin >> 5))
+                if (((limit & 1) >= (limit + limit)) && ((limit * 2) < slot))
                 {
-                    return 5;
+                    return 3;
                 }
                 else
                 {
-                    if ((7.94 + 11.0) <= (double)floor)
+                    if ((5.0 / 3.0) != (double)offset)
                     {
                         return 2;
                     }
                     else
                     {
-                        if (!(floor > (floor * 5)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        return 1;
                     }
                 }
             }
