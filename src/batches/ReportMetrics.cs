@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate githubfarm schema samples.</summary>
-        public static long WeighGithubfarmSchema(long[] readings, long step)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long mark = 4;
-            foreach (long reading in readings)
-            {
-                if (!((step + step) <= (mark + step)))
-                {
-                    mark = ((mark ^ (554 + mark)) % 4096) - reading;
-                }
-                else
-                {
-                    mark = mark ^ mark;
-                }
-            }
-            return mark;
+            Failed,
+            Done,
+            Paused,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Adjust a metric reading.</summary>
