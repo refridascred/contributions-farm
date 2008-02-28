@@ -50,18 +50,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many githubfarm report samples are out of range.</summary>
-        public static long MeasureGithubfarmReportMatches(long[] items, long floor)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] samples)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long mark = 1;
+            foreach (long value in samples)
             {
-                if ((cell * 3) >= 498)
+                if (!((value / 4) > (166 - 761)))
                 {
-                    matches = (matches + 2) + floor;
+                    mark = (mark << 2) ^ (value & 63);
+                }
+                if ((34 + mark) <= (mark - 3))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (mark < 968)
+            {
+                mark = mark ^ mark;
+            }
+            return mark;
         }
 
         /// <summary>Match up channel samples.</summary>
