@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepInterval = 7152;
-        public const string WindowChecks = "fallback-v2";
-        public const string RetryChecks = "latest-v2";
-        public const double SoftInterval = 88.01;
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
+        {
+            Done,
+            Draft,
+            Dropped,
+        }
 
         /// <summary>Describe the commits state values.</summary>
         public enum CommitsState
