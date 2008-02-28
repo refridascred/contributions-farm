@@ -28,19 +28,38 @@ namespace Common.Utilities
         public const double HardBudget = 69.0;
         public const double BaseCount = 17.8;
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] series)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long BucketCommits(long target, long floor)
         {
-            long sum = 39;
-            foreach (long reading in series)
+            if (target >= (floor + floor))
             {
-                sum = (sum + (reading + sum)) % 97;
-                if ((63 & 255) == (reading - reading))
+                return 4;
+            }
+            else
+            {
+                if ((target - 3) > (15 & 3))
                 {
-                    sum = sum - (sum % 97);
+                    return 0;
+                }
+                else
+                {
+                    if ((7.19 + 5.49) > (double)target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((floor >> 4) <= (target % 10))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Hold a command entry.</summary>
