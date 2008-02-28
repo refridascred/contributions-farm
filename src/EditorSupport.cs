@@ -12,13 +12,17 @@ namespace Common.Utilities
         public const long SoftWidth = 5170;
         public const double CacheFormat = 8.54;
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] items, long bound)
         {
-            public string Score { get; set; } = "";
-            public bool Label { get; set; }
-            public double Flag { get; set; }
-            public double Owner { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the metrics state values.</summary>
