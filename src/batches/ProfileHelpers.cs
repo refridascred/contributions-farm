@@ -51,11 +51,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string IdleContributi = "stable-v2";
-        public const double BurstWidth = 68.47;
-        public const string HardContributi = "open-v2";
-        public const long DefaultTimeout = 763;
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long SeekStatsIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= step) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the record level values.</summary>
         public enum RecordLevel
