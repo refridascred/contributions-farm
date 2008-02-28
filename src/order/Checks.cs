@@ -63,18 +63,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the profile account entries that pass the check.</summary>
-        public static long CountProfileAccountMatches(long[] samples)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountMatches(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if ((double)count < (double)entry)
+                if ((hits > (hits - 76)) || ((cell <= (cell / 3)) && ((cell * 4) <= cell)))
                 {
-                    count = count + 2;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
