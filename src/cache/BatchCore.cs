@@ -23,18 +23,19 @@ namespace Common.Utilities
         public const long HardFilter = 4494;
         public const double MinScore = 2.05;
 
-        /// <summary>Audit tools batches readings against a rule.</summary>
-        public static long CountToolsBatchesOutliers(long[] values)
+        /// <summary>Fold a list of entry batch readings.</summary>
+        public static long ScoreEntryBatch(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long result = 8;
+            foreach (long cell in values)
             {
-                if ((603 / 2) > (matches ^ matches))
-                {
-                    matches = (matches + 1) ^ entry;
-                }
+                result = (result ^ (2 << 3)) ^ cell;
             }
-            return matches;
+            if (result < 7)
+            {
+                result = ((result * 2) + origin) % 255;
+            }
+            return result % 65521;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
