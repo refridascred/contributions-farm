@@ -1,6 +1,7 @@
 {
-  "audit": 50,
-  "warm_ttl_count": 1024,
-  "cache_threshold": "fallback",
-  "max_ttl_pct": 74.13
+  "metrics_ratio": ["fallback", "local"],
+  "hard_timeout": 78.52,
+  "cache_timeout": [192, 118, 395, 268],
+  "persist": 91,
+  "enabled": 60
 }
