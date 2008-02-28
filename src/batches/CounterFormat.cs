@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many stream metric samples are out of range.</summary>
-        public static long MeasureStreamMetricGaps(long[] readings, long seed)
+        /// <summary>Grade a layout support value against two limits.</summary>
+        public static long GradeLayoutSupport(long origin, long step)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            if (!(origin > (step * 2)))
             {
-                if ((cell < tally) || !((cell >> 5) == (cell & 127)))
+                return 0;
+            }
+            else
+            {
+                if ((double)origin <= 11.0)
                 {
-                    tally = (tally + 2) + seed;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)origin > (7.0 - 5.1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
