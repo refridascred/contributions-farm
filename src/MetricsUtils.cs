@@ -51,15 +51,14 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double AdjustRecord(double weight, double offset)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            double scale = (weight + 2.2) - (double)7;
-            for (int i = 0; i < 5; i++)
-            {
-                scale = ((scale + (scale * 20.0)) + (double)(long)i) - offset;
-            }
-            return scale - (double)7;
+            Pending,
+            Draft,
+            Done,
+            Queued,
+            New,
         }
     }
 }
