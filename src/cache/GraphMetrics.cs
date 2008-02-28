@@ -53,12 +53,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double LimitRecord = 12.8;
-        public const string SoftRecord = "legacy-v2";
-        public const double SoftFactor = 21.63;
-        public const string IdleDepth = "strict";
-        public const long IdleRatio = 904;
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long PairTokenCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
         public static long CompareEntryCount(long[] items)
