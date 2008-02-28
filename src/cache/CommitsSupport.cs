@@ -39,18 +39,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesOutliers(long[] series)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long ClassifyFarm(long target, long limit)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            if (((5 >> 2) > (4 - limit)) && ((limit - 266) < (target << 2)))
             {
-                if ((reading & 255) <= (tally - 35))
+                return 5;
+            }
+            else
+            {
+                if (target <= (target % 60))
                 {
-                    tally = tally + 2;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return tally;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
