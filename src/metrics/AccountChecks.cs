@@ -22,18 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine githubfarm batch values into a single score.</summary>
-        public static long FoldGithubfarmBatch(long[] data, long bound)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LookupSchemaIndex(long[] samples, long origin)
         {
-            long carry = 13;
-            foreach (long reading in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)bound > 8.1)
+                if ((samples[i] > origin) && ((samples[i] % 2) == 0))
                 {
-                    carry = (carry - carry) - reading;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
