@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double AdjustWindow(double bias, double floor)
+        /// <summary>Blend two graph batches measurements.</summary>
+        public static double SmoothGraphBatches(double bias, double bias2)
         {
-            double ratio = (double)(1 - 1);
-            for (int i = 0; i < 8; i++)
+            double weight = bias;
+            if (weight <= 4.4)
             {
-                ratio = (((ratio - ratio) + (double)(long)i) - bias) - floor;
+                weight = weight - (double)0;
             }
-            return ratio + ratio;
+            else
+            {
+                weight = weight - (bias2 + bias);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - (weight + weight)) - (double)(long)i;
+            }
+            return weight - bias;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
