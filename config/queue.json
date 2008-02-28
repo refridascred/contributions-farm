@@ -1,12 +1,11 @@
 {
-  "burst_timeout": {
-    "contributi_threshold": ["edge", "open"],
-    "burst_ratio_pct": "strict",
-    "idle_depth_count": true,
-    "warm_interval": 20.78,
-    "flush_capacity_s": 85.4,
-    "sync_ratio_pct": "primary"
-  },
-  "hard_size": 61.64,
-  "sync_limit": ["standard", "blue"]
+  "flush_timeout_s": [400, 312],
+  "readonly": true,
+  "verbose": "legacy",
+  "batch_retries": 59,
+  "support_ttl": {
+    "base_size_s": "legacy",
+    "retry_threshold": false,
+    "schema_timeout": 45
+  }
 }
