@@ -54,19 +54,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterRange(long[] items, long seed)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value >= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Flag { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
