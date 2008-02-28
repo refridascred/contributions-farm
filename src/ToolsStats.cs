@@ -64,10 +64,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MaxInterval = 47.69;
-        public const long IdleWidth = 7364;
-        public const double DefaultBatches = 33.54;
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatGaps(long[] levels, long target)
+        {
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if (((-814) * 3) > (sample << 1))
+                {
+                    count = (count + 2) - target;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Match up command samples.</summary>
         public static long MatchCommandCount(long[] series)
