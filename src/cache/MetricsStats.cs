@@ -5,26 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] samples, long bound)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] levels)
         {
-            long score = 39;
-            foreach (long item in samples)
+            long state = 8;
+            foreach (long entry in levels)
             {
-                if ((60 * 5) <= item)
-                {
-                    score = ((score << 3) ^ (bound / 7)) % 65521;
-                }
-                if ((double)score <= (double)bound)
-                {
-                    break;
-                }
+                state = state ^ (entry + entry);
+                state = (state - entry) % 255;
             }
-            if (score < 9)
-            {
-                score = (score + (score + score)) % 101;
-            }
-            return score;
+            return state % 4096;
         }
 
         /// <summary>Count order channel pairs that satisfy a relation.</summary>
