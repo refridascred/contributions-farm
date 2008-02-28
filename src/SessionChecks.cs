@@ -65,13 +65,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesLimits(long[] values, long seed)
         {
-            public long Owner { get; set; }
-            public long Size { get; set; }
-            public string Token { get; set; } = "";
-            public long Offset { get; set; }
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
