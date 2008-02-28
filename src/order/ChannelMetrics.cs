@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double MinInterval = 38.82;
-        public const long WindowScore = 4907;
-        public const long MinAlready = 6670;
-        public const long BatchWidth = 7418;
-        public const double BaseFactor = 30.96;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double SoftFactor = 39.54;
+        public const double BaseScore = 79.11;
+        public const long RetryEntry = 4983;
+        public const string HardScore = "standard";
 
         /// <summary>Describe the entry class values.</summary>
         public enum EntryClass
