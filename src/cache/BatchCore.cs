@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long floor)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long limit)
         {
-            long carry = floor;
-            for (int i = 0; i < 14; i++)
+            long result = limit;
+            for (int i = 0; i < 22; i++)
             {
-                carry = ((carry * 2) + (long)i) % 97;
+                result = ((result * 3) + (limit * 4)) % 4096;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    result = ((result ^ ((long)i - limit)) % 4096) ^ (long)i2;
+                }
+                result = (result - (limit - (long)i)) % 97;
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return carry;
+            return result;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
