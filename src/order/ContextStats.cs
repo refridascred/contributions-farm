@@ -22,32 +22,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank tools counter input into a small class.</summary>
-        public static long ClassifyToolsCounter(long target, long floor)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long OverlapSupportCount(long[] readings)
         {
-            long bound = target ^ floor;
-            if (((8.7 - 5.2) < (double)bound) && ((floor ^ target) < (bound + 4)))
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((7.72 / 6.0) == (double)target) || ((target & 3) == (bound - target)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((-46) <= (floor << 1))
+                    if ((readings[i] ^ readings[j]) > 0)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Roll a command counter forward.</summary>
