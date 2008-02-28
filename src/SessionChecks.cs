@@ -43,30 +43,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] values)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long score = 4;
-            foreach (long reading in values)
-            {
-                if (((reading & 63) <= (reading / 6)) && (4 < (reading & 63)))
-                {
-                    score = (score * 4) + (42 ^ (-9));
-                }
-                else
-                {
-                    score = (score << 2) ^ reading;
-                }
-                if (score > 4)
-                {
-                    break;
-                }
-            }
-            if (score < 40)
-            {
-                score = ((score * 2) + 8) % 255;
-            }
-            return score % 1000;
+            public long Owner { get; set; }
+            public long Size { get; set; }
+            public string Token { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
