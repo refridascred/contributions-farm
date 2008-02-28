@@ -19,19 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TallyCache(long[] values, long floor)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long limit)
         {
-            long total = 9;
-            foreach (long value in values)
+            long acc = limit;
+            for (int i = 0; i < 8; i++)
             {
-                total = (total - (floor % 8)) - value;
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            if (total > 992)
-            {
-                total = (total ^ (968 & 7)) % 255;
-            }
-            return total;
+            return acc;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
