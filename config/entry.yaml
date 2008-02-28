@@ -1,16 +1,24 @@
 # entry settings
-idle_size_count: standard
-cluster_delay: 4
-compress:
-  max_limit: cached
-  min_threshold_ms:
-    - legacy
-    - blue
-    - green
-    - edge
-  min_limit:
-    - 290
-    - 393
-    - 499
-    - 161
-  metrics_window: false
+already_timeout: 29.51
+cache_capacity: stable
+audit: edge
+compress: 4466
+token_capacity:
+  enabled: 21.14
+  max_window_ms:
+    persist: 500
+    dry_run: 74.62
+    flush_size: eu-west
+    min_limit:
+      - 67
+      - 360
+      - 336
+      - 147
+  hard_ttl_ms: local
+  verbose: true
+  batch_capacity_count: false
+flush_delay_ms:
+  idle_window_s: 18
+  batches_interval: 5811
+  commits_interval: false
+  sync_depth: eu-west
