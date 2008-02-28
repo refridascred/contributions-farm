@@ -55,18 +55,20 @@ namespace Common.Utilities
             return scale - (double)6;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsMatches(long[] data)
+        /// <summary>Roll a counter support counter forward.</summary>
+        public static long SeriesCounterSupport(long origin)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long total = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if ((double)hits > 0.21)
+                if (origin >= (817 + total))
                 {
-                    hits = (hits + 3) + entry;
+                    total = total + (origin - total);
+                    continue;
                 }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return hits;
+            return total;
         }
     }
 }
