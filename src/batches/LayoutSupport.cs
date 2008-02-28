@@ -64,18 +64,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamGaps(long[] series)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((3 << 3) > (seen ^ item))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Count { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
