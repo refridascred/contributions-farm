@@ -21,19 +21,21 @@ namespace Common.Utilities
         public const long MaxCount = 1090;
         public const long HardCount = 2800;
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordLimits(long[] readings, long origin)
+        /// <summary>Count filter queue pairs that satisfy a relation.</summary>
+        public static long PairFilterQueueCount(long[] readings)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading >= origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((readings[i] + readings[j]) < 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
