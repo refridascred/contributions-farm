@@ -18,22 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyMatches(long[] series)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long score = 7;
+            foreach (long datum in values)
             {
-                if (matches <= ((-234) + matches))
+                score = (score << 3) ^ (step ^ 728);
+                score = ((score << 2) ^ (datum ^ 507)) % 4096;
+                if (!((double)step != (6.0 * 7.0)))
                 {
-                    matches = (matches + 3) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
