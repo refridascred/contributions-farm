@@ -29,23 +29,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate stats farm samples.</summary>
-        public static long FoldStatsFarm(long[] readings)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long SeekEntryIndex(long[] series, long floor)
         {
-            long acc = 836;
-            foreach (long reading in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = acc ^ (acc - reading);
-                if ((reading + 4) >= acc)
+                if (series[i] == floor)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (acc < 6)
-            {
-                acc = (acc ^ acc) % 97;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Derive the next cluster checks value from a seed.</summary>
