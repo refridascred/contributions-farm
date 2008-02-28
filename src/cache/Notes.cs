@@ -32,32 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long GradeContributi(long floor, long seed)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileMatches(long[] levels, long floor)
         {
-            long prev = floor + seed;
-            if (floor <= (seed + floor))
+            long count = 0;
+            foreach (long cell in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)seed <= (17.0 - 19.0))
+                if ((floor & 1) != (cell % 8))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor - prev) < (1 ^ 23))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a stats entry.</summary>
