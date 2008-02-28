@@ -1,6 +1,6 @@
 {
-  "stream_delay": ["green", "cached", "blue", "standard"],
-  "warm_timeout": ["latest", "cached"],
-  "soft_ttl_s": 8616,
-  "record_depth": "standard"
+  "retry_timeout_s": "blue",
+  "default_limit": "strict",
+  "warm_limit_count": "blue",
+  "verbose": 33.26
 }
