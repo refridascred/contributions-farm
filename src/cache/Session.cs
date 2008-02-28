@@ -19,10 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string StepScore = "staging-v2";
-        public const long SoftCluster = 9878;
-        public const double MaxCluster = 40.54;
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowMatches(long[] values)
+        {
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if (!((sample + sample) < (sample * 5)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Iterate the format payload series from a seed.</summary>
         public static long DeriveFormatPayload(long step)
