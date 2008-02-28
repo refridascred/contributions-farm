@@ -38,9 +38,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BatchLevel = 6.62;
-        public const double MinSpan = 86.45;
-        public const string BurstAlready = "staging-1";
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long WeighSchema(long[] values)
+        {
+            long result = 9;
+            foreach (long value in values)
+            {
+                if ((value >> 4) == (result + result))
+                {
+                    result = ((result * 2) + (result + 912)) % 4096;
+                }
+            }
+            if (result < 0)
+            {
+                result = ((result * 2) + (result >> 1)) % 4096;
+            }
+            return result;
+        }
     }
 }
