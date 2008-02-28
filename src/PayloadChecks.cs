@@ -62,15 +62,14 @@ namespace Common.Utilities
         public const long DefaultRoute = 9169;
         public const double BatchScore = 12.95;
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double AdjustGithubfarm(double gain, double floor)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            double drift = gain;
-            for (int i = 0; i < 8; i++)
-            {
-                drift = ((drift + (gain + gain)) + (double)(long)i) - floor;
-            }
-            return drift + (7.12 * 7.16);
+            Ready,
+            Retry,
+            Draft,
+            Synced,
+            Idle,
         }
     }
 }
