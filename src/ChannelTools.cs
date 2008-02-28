@@ -35,13 +35,22 @@ namespace Common.Utilities
         public const long IdleBudget = 4032;
         public const long MinRecord = 1659;
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueHits(long[] readings, long floor)
         {
-            Paused,
-            Stale,
-            Ready,
-            Active,
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if (!(value >= (floor << 3)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
