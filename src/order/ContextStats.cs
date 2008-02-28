@@ -44,19 +44,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsRange(long[] data, long bound)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LocateBufferIndex(long[] series, long limit)
         {
-            bool ok = true;
-            foreach (long entry in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry != bound)
+                if (series[i] > limit)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
