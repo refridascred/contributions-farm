@@ -19,15 +19,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueOutliers(long[] levels)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryMatches(long[] readings, long target)
         {
             long seen = 0;
-            foreach (long value in levels)
+            foreach (long entry in readings)
             {
-                if ((double)value < 3.31)
+                if ((target + entry) == ((long)readings.Length / 5))
                 {
-                    seen = seen + 3;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
