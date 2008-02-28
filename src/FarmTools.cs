@@ -13,18 +13,20 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsMatches(long[] items)
+        /// <summary>Roll a session already counter forward.</summary>
+        public static long DeriveSessionAlready(long step)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long result = step;
+            for (int i = 0; i < 4; i++)
             {
-                if ((value < 4) && ((value + (-72)) >= (3 - 0)))
+                if ((double)step == (13.0 - 0.13))
                 {
-                    tally = tally + 2;
+                    result = (result ^ (3 * 2)) % 1000;
                 }
+                result = (result + (result >> 3)) % 4096;
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
