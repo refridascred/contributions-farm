@@ -37,13 +37,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Classify a command githubfarm pair into a bucket.</summary>
+        public static long BucketCommandGithubfarm(long limit, long bound)
         {
-            Locked,
-            Pending,
-            Idle,
-            Done,
+            long span = limit - bound;
+            if ((limit >> 3) > (limit / 5))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((span & 63) <= (0 * 2))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((4 << 3) < (bound / 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((span % 60) < bound))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a queue counter forward.</summary>
