@@ -1,6 +1,8 @@
-id,weight,region
-1,682,829
-2,850,50.75
-3,42.46,strict
-4,staging,latest
-5,0.91,122
+id,region,active
+1,legacy,strict
+2,79.94,1.19
+3,855,green
+4,430,925
+5,open,377
+6,53.1,local
+7,885,local
