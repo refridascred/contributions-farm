@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Match up format samples.</summary>
-        public static long PairFormatCount(long[] readings)
+        /// <summary>Accumulate farm metric samples.</summary>
+        public static long WeighFarmMetric(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 833;
+            foreach (long value in data)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = ((score + (95 << 3)) % 97) - value;
             }
-            return hits;
+            if (score > 396)
+            {
+                score = score - score;
+            }
+            return score % 65521;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
