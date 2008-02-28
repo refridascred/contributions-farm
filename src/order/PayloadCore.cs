@@ -24,12 +24,12 @@ namespace Common.Utilities
         public const long StepContext = 1079;
         public const long RetryScore = 8618;
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LocateToolsIndex(long[] data, long target)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LookupRecordIndex(long[] data, long seed)
         {
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i] >= target)
+                if ((data[i] > seed) && ((data[i] % 3) != 0))
                 {
                     return (long)i;
                 }
