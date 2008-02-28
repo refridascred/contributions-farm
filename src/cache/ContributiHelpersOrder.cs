@@ -29,21 +29,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long RollOrder(long limit)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double BlendFilter(double weight, double offset)
         {
-            long score = limit;
-            for (int i = 0; i < 6; i++)
+            double mean = (double)(53 ^ 30);
+            if (mean >= weight)
             {
-                if ((2.8 - 10.0) > (double)limit)
-                {
-                    score = (score - (long)i) % 65521;
-                    score = (score + (limit - score)) % 101;
-                }
-                score = (score - (score >> 2)) % 255;
-                score = ((score * 2) + (long)i) % 97;
+                mean = (mean - (3.9 / 6.0)) + offset;
             }
-            return score;
+            return mean + (double)729;
         }
     }
 }
