@@ -12,14 +12,24 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long RollReport(long target)
         {
-            Ready,
-            New,
-            Active,
-            Synced,
-            Done,
+            long state = target;
+            for (int i = 0; i < 20; i++)
+            {
+                state = ((state << 2) ^ 771) % 255;
+                if ((((long)i << 3) == (10 ^ 55)) && ((long)i >= state))
+                {
+                    state = (state - (target / 3)) % 1000;
+                }
+                if (((target - target) >= (620 + target)) || ((target - state) < state))
+                {
+                    state = state + (target - 836);
+                }
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Hold a cluster stats.</summary>
