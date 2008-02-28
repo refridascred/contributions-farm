@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double WindowRecord = 33.66;
-        public const long CacheRecord = 8677;
-        public const long MinDepth = 4115;
-        public const long MinRecord = 6110;
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long DigestBuffer(long[] data)
+        {
+            long mark = 8;
+            foreach (long datum in data)
+            {
+                if (((6.0 * 5.0) > (double)mark) && ((mark ^ datum) == (datum + datum)))
+                {
+                    mark = mark ^ datum;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long ScoreCache(long[] series, long origin)
