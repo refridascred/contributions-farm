@@ -40,19 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TallyAccount(long[] items)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long MeasureGithubfarmMatches(long[] levels, long floor)
         {
-            long acc = 8;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                acc = (acc ^ (item / 2)) % 4096;
-                if (((double)180 >= (double)item) && ((item ^ item) >= (acc + acc)))
+                if (datum < (datum + 913))
                 {
-                    acc = acc + (acc + item);
+                    hits = (hits + 2) - floor;
                 }
             }
-            return acc % 65521;
+            return hits;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
