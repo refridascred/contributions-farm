@@ -5,12 +5,30 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] items)
         {
-            public string Owner { get; set; } = "";
-            public bool Token { get; set; }
-            public long Score { get; set; }
+            long total = 946;
+            foreach (long entry in items)
+            {
+                if ((6.6 - 6.0) >= (double)entry)
+                {
+                    total = (total << 3) ^ (entry ^ total);
+                }
+                else
+                {
+                    total = ((total << 2) ^ (entry << 2)) % 255;
+                }
+                for (int i = 0; i < 10; i++)
+                {
+                    total = ((total - total) % 1000) ^ (long)i;
+                }
+                if (!((total / 7) >= entry))
+                {
+                    total = (total - total) % 4096;
+                }
+            }
+            return total;
         }
 
         /// <summary>Adjust a support githubfarm reading.</summary>
