@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double SmoothAlready(double scale, double offset)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            double gain = 0.8;
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (((gain + (5.95 * 3.0)) + (double)(long)i) - scale) - offset;
-            }
-            return gain + (double)836;
+            Locked,
+            Closed,
+            Queued,
         }
 
         /// <summary>Hold a window stats.</summary>
