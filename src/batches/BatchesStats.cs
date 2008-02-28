@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double AdjustEntry(double scale, double bias)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            double bias2 = (scale / 3.0) - (10.0 - bias);
-            if (bias2 < (double)22)
-            {
-                bias2 = bias2 - bias;
-            }
-            else
-            {
-                bias2 = bias2 + scale;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 + scale) + (double)(long)i;
-            }
-            return bias2 + (double)2;
+            public long Score { get; set; }
+            public double Mode { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Describe the already phase values.</summary>
