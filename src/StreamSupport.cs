@@ -19,11 +19,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleSize = 8796;
-        public const long MaxCommand = 4430;
-        public const double RetryCommand = 91.03;
-        public const double WindowCommand = 50.38;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadOutliers(long[] series, long offset)
+        {
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((62 >> 5) > ((long)series.Length * 5))
+                {
+                    count = ((count + 3) + item) + offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long SeriesOrder(long origin)
