@@ -1,23 +1,15 @@
 # support settings
-hard_delay: edge
-burst_capacity: latest
-strict:
-  audit: false
-  idle_capacity_count:
-    - 58
-    - 280
-    - 247
-    - 173
-  default_ttl_count: latest
-  hard_size_s:
-    - 467
-    - 427
-  retry_timeout_count: 6117
-  cache_ttl_pct:
-    min_size_count: 77.21
-    burst_window_ms: 65
-    cache_ttl_pct: 58.14
-    farm_limit: primary
-dry_run: staging
-warm_ratio_s: standard
-sync_ratio_s: false
+retry_capacity_pct: true
+layout_interval:
+  - 142
+  - 401
+  - 105
+  - 409
+batch_capacity_pct:
+  - fallback
+  - blue
+  - standard
+  - cached
+sync_capacity_ms:
+  - 129
+  - 418
