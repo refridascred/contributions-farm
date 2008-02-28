@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] samples)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long mix = 34;
-            foreach (long sample in samples)
-            {
-                if ((mix & 255) < (mix - mix))
-                {
-                    mix = (mix << 3) ^ (sample + sample);
-                }
-                else
-                {
-                    mix = (mix + (sample - (long)samples.Length)) % 101;
-                }
-            }
-            return mix;
+            Active,
+            Synced,
+            Stale,
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
