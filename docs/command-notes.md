@@ -1,10 +1,10 @@
 # Command notes
 
-The entry report groups every metric by command.
-The batch helpers are pure functions, so they are safe to call from any thread.
+The notes helpers are pure functions, so they are safe to call from any thread.
+Each cache is validated before it reaches the profile queue.
 
 ## Guidelines
 
-- Review support limits each release
 - Validate githubfarm input early
-- Prefer order defaults
+- Log every command change
+- Review counter limits each release
