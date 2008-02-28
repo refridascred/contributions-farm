@@ -1,16 +1,16 @@
 # entry settings
-default_retries_s: false
-metric_retries: 6620
-min_ttl_count: 68
-cache_capacity_ms: staging
-min_timeout_ms:
-  retry_ratio_pct:
-    - primary
-    - primary
-    - latest
+idle_size_count: standard
+cluster_delay: 4
+compress:
+  max_limit: cached
+  min_threshold_ms:
+    - legacy
     - blue
-  support_depth: latest
-  enabled: eu-west
-  compress: 39.1
-  poll_depth: 80
-  verbose: 46
+    - green
+    - edge
+  min_limit:
+    - 290
+    - 393
+    - 499
+    - 161
+  metrics_window: false
