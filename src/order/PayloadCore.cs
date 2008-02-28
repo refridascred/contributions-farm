@@ -25,12 +25,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            Idle,
-            Stale,
-            New,
+            public double Label { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Check that every notes batches entry stays within the limit.</summary>
