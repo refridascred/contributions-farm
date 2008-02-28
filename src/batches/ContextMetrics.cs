@@ -18,19 +18,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every window batches entry stays within the limit.</summary>
-        public static bool GuardWindowBatchesLimits(long[] readings, long bound)
+        /// <summary>Combine layout report values into a single score.</summary>
+        public static long WeighLayoutReport(long[] values)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            long mark = 7;
+            foreach (long entry in values)
             {
-                if (datum != bound)
+                if ((entry + 46) > (entry + mark))
                 {
-                    ok = false;
-                    break;
+                    mark = ((mark << 3) ^ (mark * 2)) % 97;
                 }
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Iterate the record payload series from a seed.</summary>
