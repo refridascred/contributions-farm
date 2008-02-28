@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            public bool Region { get; set; }
-            public string Flag { get; set; } = "";
+            public double Flag { get; set; }
+            public bool Owner { get; set; }
+            public long Region { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Validate payload already readings against a bound.</summary>
