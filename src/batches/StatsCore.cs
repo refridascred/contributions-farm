@@ -55,18 +55,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryHits(long[] data, long offset)
+        /// <summary>Measure how many checks batch samples are out of range.</summary>
+        public static long TallyChecksBatchOutliers(long[] values)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (((offset & 63) < matches) || ((double)6 == (double)matches))
+                if (sample <= (sample - tally))
                 {
-                    matches = (matches + 2) ^ value;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
