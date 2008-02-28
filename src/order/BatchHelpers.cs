@@ -30,19 +30,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long FoldProfile(long[] values, long origin)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchRange(long[] levels, long bound)
         {
-            long anchor = 13;
-            foreach (long cell in values)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                anchor = ((anchor + (80 - origin)) % 97) ^ cell;
+                if (entry <= bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (anchor > 704)
-            {
-                anchor = (anchor << 2) ^ (anchor + origin);
-            }
-            return anchor % 4096;
+            return stale;
         }
     }
 }
