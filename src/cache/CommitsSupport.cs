@@ -16,21 +16,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long PairRouteCount(long[] levels)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] items, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 99;
+            foreach (long item in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((long)items.Length ^ item) != (floor >> 4))
                 {
-                    if ((levels[i] + levels[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (score ^ (item + 4)) % 101;
+                }
+                else
+                {
+                    score = (score - item) % 1000;
                 }
             }
-            return tally;
+            return score % 97;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
