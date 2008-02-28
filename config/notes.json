@@ -1,6 +1,12 @@
 {
-  "batch_limit_s": false,
-  "cache_limit_count": 60,
-  "route_limit": 178,
-  "sync_threshold_ms": 50.35
+  "persist": {
+    "hard_window": "cached",
+    "session_capacity": true,
+    "stream_ttl": "strict",
+    "strict": 250,
+    "token_limit": 86.46,
+    "base_retries_s": "green"
+  },
+  "default_capacity_pct": "eu-west",
+  "base_depth_count": 78.85
 }
