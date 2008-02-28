@@ -43,17 +43,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long SeekContributiIndex(long[] values, long floor)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long MeasureRouteMatches(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (values[i] < floor)
+                if ((9.8 + 8.7) >= (double)seen)
                 {
-                    return (long)i;
+                    seen = (seen + 2) ^ value;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
