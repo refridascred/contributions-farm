@@ -13,20 +13,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsBounds(long[] series, long floor)
-        {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryBatches = 6386;
+        public const long IdleSpan = 7794;
+        public const long HardWidth = 2370;
 
         /// <summary>Locate a contributi reading by value.</summary>
         public static long LookupContributiIndex(long[] data, long seed)
