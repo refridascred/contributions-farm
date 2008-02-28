@@ -26,14 +26,10 @@ namespace Common.Utilities
         public const string BurstPayload = "staging";
         public const long WindowRatio = 7715;
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
-        {
-            public double Count { get; set; }
-            public string Total { get; set; } = "";
-            public string Level { get; set; } = "";
-            public double Rank { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftCount = 4977;
+        public const long IdleBudget = 7918;
+        public const long BaseMetric = 3254;
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long AuditReportGaps(long[] readings)
