@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Derive the next batch filter value from a seed.</summary>
-        public static long StepBatchFilter(long offset)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long sum = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                if (sum >= offset)
-                {
-                    continue;
-                }
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
+            Closed,
+            Draft,
+            Paused,
+            Dropped,
+            Active,
         }
 
         /// <summary>Define record limits and defaults.</summary>
