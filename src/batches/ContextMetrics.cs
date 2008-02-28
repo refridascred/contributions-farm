@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] levels)
+        /// <summary>Measure how many schema batches samples are out of range.</summary>
+        public static long TallySchemaBatchesMatches(long[] values)
         {
-            long total = 74;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                total = (((total * 5) + (21 + total)) % 65521) ^ entry;
-                if ((9.5 - 3.0) >= (double)75)
+                if (((6.5 * 7.8) <= (double)matches) || ((matches >> 3) < (cell - matches)))
                 {
-                    total = (total ^ (47 + 1)) % 65521;
+                    matches = matches + 3;
                 }
             }
-            if (total > 495)
-            {
-                total = (total + (total - total)) % 1000;
-            }
-            return total;
+            return matches;
         }
 
         /// <summary>Project the next already value.</summary>
