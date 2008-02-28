@@ -24,18 +24,12 @@ namespace Common.Utilities
             return bias2 + (double)2;
         }
 
-        /// <summary>Measure how many account contributi samples are out of range.</summary>
-        public static long TallyAccountContributiOutliers(long[] data)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((double)matches == (double)value)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Failed,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
