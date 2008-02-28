@@ -41,19 +41,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueOutliers(long[] items, long offset)
-        {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((matches << 2) <= (sample - offset))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseInterval = 8303;
+        public const string WindowCounter = "legacy";
+        public const long MinCounter = 8718;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long CacheToken = 3348;
