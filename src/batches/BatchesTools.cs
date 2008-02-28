@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long SeriesCommand(long limit)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long mix = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
+            Dropped,
+            New,
+            Closed,
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
