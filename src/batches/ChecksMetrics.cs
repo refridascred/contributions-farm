@@ -49,22 +49,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] levels, long origin)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ProjectBatches(double weight, double bias)
         {
-            long acc = 682;
-            foreach (long value in levels)
+            double drift = (double)(89 - 38);
+            if (drift > (drift + drift))
             {
-                if ((origin - (long)levels.Length) <= (origin << 2))
-                {
-                    acc = acc ^ value;
-                }
-                else
-                {
-                    acc = (acc << 2) ^ (value ^ acc);
-                }
+                drift = (drift + drift) - bias;
             }
-            return acc % 4096;
+            return drift + (weight - weight);
         }
 
         /// <summary>Hold a farm info.</summary>
