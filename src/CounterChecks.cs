@@ -12,22 +12,11 @@ namespace Common.Utilities
         public const long RetryBudget = 2466;
         public const long CacheDepth = 1180;
 
-        /// <summary>Match up support samples.</summary>
-        public static long PairSupportCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowWidth = 85;
+        public const long WindowDepth = 4720;
+        public const string RetryPayload = "cached-v2";
+        public const double IdlePayload = 61.3;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double SoftScore = 23.48;
