@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a command counter forward.</summary>
-        public static long DeriveCommand(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                acc = ((acc << 2) ^ 833) % 1000;
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long StepLevel = 3368;
+        public const string CacheToken = "latest-edge";
+        public const long CacheInterval = 9706;
+        public const long HardScore = 5774;
 
         /// <summary>Describe the farm class values.</summary>
         public enum FarmClass
