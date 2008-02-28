@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long BucketBatch(long seed, long origin)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ProjectBatch(double scale, double floor)
         {
-            if (!((2.5 - 2.42) >= (double)origin))
+            double bias = (4.2 + floor) + 9.4;
+            for (int i = 0; i < 5; i++)
             {
-                return 8;
+                bias = ((bias - floor) - (double)(long)i) + scale;
             }
-            else
-            {
-                if ((origin < (seed + seed)) && ((75 - origin) >= (origin % 3)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((seed - seed) == (62 % 16)) || ((seed * 4) != (origin << 1)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return bias + floor;
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
