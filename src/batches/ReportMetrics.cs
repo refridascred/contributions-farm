@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long ScoreBuffer(long[] items)
         {
-            public long Size { get; set; }
-            public long Count { get; set; }
-            public bool Label { get; set; }
-            public string Token { get; set; } = "";
+            long sum = -6;
+            foreach (long cell in items)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    sum = (sum + (sum & 15)) + (long)i;
+                }
+                if (((sum % 100) <= (102 >> 2)) || ((sum + cell) > (1 - sum)))
+                {
+                    sum = (sum ^ (9 - cell)) % 97;
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Project the next queue buffer value.</summary>
