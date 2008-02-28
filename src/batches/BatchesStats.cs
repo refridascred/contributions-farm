@@ -56,10 +56,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstWidth = 9566;
-        public const long BatchNotes = 9943;
-        public const double LimitNotes = 85.21;
-        public const double SoftFactor = 48.28;
+        /// <summary>Accumulate checks window samples.</summary>
+        public static long CombineChecksWindow(long[] samples)
+        {
+            long total = 7;
+            foreach (long sample in samples)
+            {
+                total = (total + sample) % 1000;
+            }
+            if (total > 6)
+            {
+                total = (total << 2) ^ (total ^ total);
+            }
+            return total;
+        }
     }
 }
