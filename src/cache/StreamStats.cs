@@ -42,18 +42,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate notes cluster samples.</summary>
-        public static long ScoreNotesCluster(long[] values)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ProjectGithubfarm(double gain, double span)
         {
-            long result = 7;
-            foreach (long reading in values)
+            double bias = span;
+            if (bias <= (double)39)
             {
-                if ((result / 6) <= result)
-                {
-                    result = (((result * 2) + result) % 1000) - reading;
-                }
+                bias = bias + gain;
             }
-            return result % 4096;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - (gain * 1.6)) - (double)(long)i;
+            }
+            return bias + (double)2;
         }
     }
 }
