@@ -49,22 +49,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmMatches(long[] series, long seed)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((double)datum >= (2.9 + 9.3))
-                {
-                    tally = (tally + 3) - seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Paused,
+            Locked,
+            Pending,
+            Stale,
         }
     }
 }
