@@ -40,18 +40,16 @@ namespace Common.Utilities
             return scale - ratio;
         }
 
-        /// <summary>Count the filter commits entries that pass the check.</summary>
-        public static long MeasureFilterCommitsGaps(long[] levels, long target)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long StepCommand(long step)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long mark = step;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)entry < 2.6)
-                {
-                    hits = (hits + 3) - target;
-                }
+                mark = (mark ^ (41 % 24)) % 65521;
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return hits;
+            return mark;
         }
     }
 }
