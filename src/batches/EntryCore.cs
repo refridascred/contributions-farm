@@ -31,11 +31,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] data)
         {
-            public string Level { get; set; } = "";
-            public long Offset { get; set; }
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank graph batch input into a small class.</summary>
