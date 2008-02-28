@@ -18,35 +18,34 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long floor, long bound)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long step, long bound)
         {
-            long gap = floor - bound;
-            if ((2.38 / 5.0) > (8.65 + 9.5))
+            if (bound >= (bound * 4))
             {
-                return 3;
+                return 6;
             }
             else
             {
-                if ((double)floor <= 4.0)
+                if ((bound < 257) && ((63 + bound) > step))
                 {
-                    return 5;
+                    return 2;
                 }
                 else
                 {
-                    if ((233 * 4) >= (gap * 5))
+                    if ((double)step == (5.2 * 9.1))
                     {
-                        return 0;
+                        return 4;
                     }
                     else
                     {
-                        if ((gap >= (floor / 9)) && ((double)gap < (0.7 - 7.0)))
+                        if ((step + 1) != (step + bound))
                         {
-                            return 6;
+                            return 5;
                         }
                         else
                         {
-                            return 4;
+                            return 0;
                         }
                     }
                 }
