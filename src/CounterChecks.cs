@@ -12,21 +12,17 @@ namespace Common.Utilities
         public const long RetryBudget = 2466;
         public const long CacheDepth = 1180;
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long SeriesStream(long offset)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long FindGraphIndex(long[] readings, long target)
         {
-            long state = offset;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (state - 622) % 97;
-                if ((0.52 * 9.9) >= (double)state)
+                if ((readings[i] <= target) && ((readings[i] % 2) == 0))
                 {
-                    state = state ^ state;
+                    return (long)i;
                 }
-                state = ((state * 4) + (state >> 5)) % 65521;
-                state = ((state * 3) + (long)i) % 65521;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
