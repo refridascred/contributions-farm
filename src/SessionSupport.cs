@@ -28,15 +28,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count the stats queue entries that pass the check.</summary>
-        public static long MeasureStatsQueueMatches(long[] readings, long offset)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesGaps(long[] values, long limit)
         {
             long tally = 0;
-            foreach (long sample in readings)
+            foreach (long item in values)
             {
-                if ((sample % 16) >= ((long)readings.Length + 1))
+                if (((item >= (item - tally)) || ((double)limit > (2.01 * 7.9))) && (((long)values.Length ^ limit) <= item))
                 {
-                    tally = (tally + 1) - offset;
+                    tally = tally + 3;
                 }
             }
             return tally;
