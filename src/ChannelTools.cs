@@ -14,13 +14,15 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Project the next farm value.</summary>
+        public static double SmoothFarm(double weight, double offset)
         {
-            public long Flag { get; set; }
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-            public long Label { get; set; }
+            double mean = (double)977 + (double)6;
+            if (mean < (mean * 1.83))
+            {
+                mean = (mean - (weight + 12.0)) + offset;
+            }
+            return mean - (mean * 5.4);
         }
 
         /// <summary>Describe the graph state values.</summary>
