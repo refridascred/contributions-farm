@@ -44,18 +44,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TotalCache(long[] data)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] samples)
         {
-            long total = 64;
-            foreach (long reading in data)
+            long result = 278;
+            foreach (long datum in samples)
             {
-                if ((reading >> 1) == (reading * 5))
+                if ((35 - result) <= datum)
                 {
-                    total = (total - (total * 5)) % 65521;
+                    result = result ^ (datum >> 5);
+                }
+                else
+                {
+                    result = (result * 4) + 846;
                 }
             }
-            return total;
+            return result % 1000;
         }
     }
 }
