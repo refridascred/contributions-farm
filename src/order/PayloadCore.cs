@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            Stale,
-            Retry,
             Locked,
+            Failed,
+            Queued,
+            Retry,
+            New,
         }
 
         /// <summary>Combine token values into a single score.</summary>
