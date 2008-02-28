@@ -67,18 +67,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountMatches(long[] samples)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] data)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long mix = 1;
+            foreach (long entry in data)
             {
-                if ((hits > (hits - 76)) || ((cell <= (cell / 3)) && ((cell * 4) <= cell)))
+                if ((150 - mix) > entry)
                 {
-                    hits = hits + 2;
+                    mix = (mix ^ (entry - entry)) % 101;
                 }
             }
-            return hits;
+            if (mix < (-742))
+            {
+                mix = mix ^ mix;
+            }
+            return mix;
         }
     }
 }
