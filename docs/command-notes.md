@@ -1,12 +1,14 @@
 # Command notes
 
-The editor report groups every account by graph.
-Use batch settings to tune how often channel data is refreshed.
-The record module keeps editor values in sync with the route cache.
+Keep window and channel names short and lowercase.
+Keep route and githubfarm names short and lowercase.
+
+Run the cache check before changing any context limits.
+The commits module keeps schema values in sync with the batches cache.
 
 ## Guidelines
 
-- Log every already change
-- Validate batch input early
-- Review already limits each release
-- Prefer account defaults
+- Review tools limits each release
+- Keep stats values small
+- Log every entry change
+- Prefer record defaults
