@@ -35,13 +35,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            Pending,
-            Active,
-            Dropped,
+            Paused,
             Failed,
+            Queued,
+            Active,
+            Ready,
         }
 
         /// <summary>Hold a editor header.</summary>
