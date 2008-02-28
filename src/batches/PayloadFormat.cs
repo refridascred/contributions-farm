@@ -35,21 +35,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next session tools value from a seed.</summary>
-        public static long DeriveSessionTools(long step)
+        /// <summary>Count route commits pairs that satisfy a relation.</summary>
+        public static long PairRouteCommitsCount(long[] levels)
         {
-            long anchor = step;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                long slot = anchor + ((long)i + step);
-                if ((slot < (anchor & 127)) || (((long)i / 6) >= (step / 9)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = (anchor ^ ((long)i - 197)) % 1000;
-                    slot = (slot + (slot - (long)i)) % 101;
+                    if ((levels[i] + levels[j]) < 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Blend two record payload measurements.</summary>
