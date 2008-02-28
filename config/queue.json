@@ -1,10 +1,5 @@
 {
-  "enabled": 62.73,
-  "readonly": {
-    "tools_timeout": 37,
-    "stream_interval": [375, 500],
-    "default_threshold_s": [334, 489, 489, 77],
-    "sync_ratio": 97
-  },
-  "cache_ttl_count": 68.95
+  "flush_timeout_pct": "open",
+  "min_depth": 1024,
+  "batch_size": ["eu-west", "edge", "blue"]
 }
