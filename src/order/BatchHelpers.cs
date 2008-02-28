@@ -26,16 +26,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long DigestTools(long[] readings, long origin)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long MatchCacheCount(long[] items)
         {
-            long acc = 57;
-            foreach (long cell in readings)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = (((acc << 2) ^ (62 + origin)) % 101) + cell;
-                acc = (acc * 2) + (acc + 95);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return acc;
+            return count;
         }
     }
 }
