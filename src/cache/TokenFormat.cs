@@ -19,17 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long origin)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long mix = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                mix = ((mix * 4) + ((long)i << 2)) % 101;
-                mix = mix + (origin << 2);
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            public long Count { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Count the batch editor entries that pass the check.</summary>
