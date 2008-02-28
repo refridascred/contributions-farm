@@ -44,17 +44,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long IterateNotes(long origin)
+        /// <summary>Combine profile graph values into a single score.</summary>
+        public static long DigestProfileGraph(long[] values)
         {
-            long result = origin;
-            for (int i = 0; i < 8; i++)
+            long anchor = 9;
+            foreach (long sample in values)
             {
-                result = ((result << 2) ^ ((long)i * 5)) % 97;
-                result = (result * 4) + (result % 5);
-                result = ((result * 4) + (long)i) % 1000;
+                if ((8.61 + 8.33) == (double)sample)
+                {
+                    anchor = (anchor + (anchor + sample)) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor + anchor) % 255;
+                }
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
