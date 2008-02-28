@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            Synced,
-            Failed,
-            Pending,
+            public string Owner { get; set; } = "";
+            public bool Token { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
