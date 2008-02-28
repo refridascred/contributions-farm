@@ -20,15 +20,9 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double BlendSession(double ratio, double offset)
-        {
-            double mean = (double)(888 + 462);
-            if (mean >= ratio)
-            {
-                mean = (mean - ratio) - offset;
-            }
-            return mean + ratio;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MaxScore = "cached-v2";
+        public const string HardEntry = "strict-v2";
+        public const string HardWidth = "local-v2";
     }
 }
