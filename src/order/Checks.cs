@@ -41,18 +41,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountOutliers(long[] readings)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long OverlapNotesCount(long[] values)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((97 << 1) < sample)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((values[i] + values[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define token limits and defaults.</summary>
