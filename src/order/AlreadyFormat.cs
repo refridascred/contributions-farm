@@ -29,22 +29,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricGaps(long[] items)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountHits(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if ((5.7 - 0.46) != (double)datum)
+                if ((double)seen >= 1.09)
                 {
-                    matches = matches + 1;
+                    seen = ((seen + 3) + sample) + seed;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
