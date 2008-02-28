@@ -35,17 +35,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LookupSupportIndex(long[] series, long offset)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double AdjustContributi(double ratio, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double gain = offset;
+            if (gain > ratio)
             {
-                if ((series[i] > offset) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                gain = gain + (ratio * 9.3);
             }
-            return -1;
+            else
+            {
+                gain = gain - (double)746;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + (8.92 + offset)) - (double)(long)i;
+            }
+            return gain + (double)20;
         }
     }
 }
