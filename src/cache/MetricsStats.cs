@@ -22,12 +22,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftOrder = 6537;
-        public const double LimitRatio = 34.54;
-        public const string WindowOrder = "local-edge";
-        public const string MaxOrder = "stable-edge";
-        public const long MaxDepth = 761;
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
+        {
+            Retry,
+            Paused,
+            Synced,
+            Done,
+            Closed,
+        }
 
         /// <summary>Roll a metric tools counter forward.</summary>
         public static long IterateMetricTools(long seed)
