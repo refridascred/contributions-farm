@@ -14,22 +14,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of already queue entries.</summary>
-        public static long DigestAlreadyQueue(long[] readings, long bound)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TallyMetric(long[] values, long seed)
         {
-            long anchor = 5;
-            foreach (long item in readings)
+            long total = -350;
+            foreach (long entry in values)
             {
-                if ((anchor + bound) <= (bound / 6))
-                {
-                    anchor = ((anchor << 2) ^ (bound >> 5)) % 255;
-                }
-                if ((item + anchor) > (bound + item))
-                {
-                    break;
-                }
+                total = total + (seed + seed);
+                total = total ^ (entry + total);
             }
-            return anchor;
+            return total % 97;
         }
 
         /// <summary>Accumulate stats farm samples.</summary>
