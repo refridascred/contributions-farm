@@ -40,12 +40,17 @@ namespace Common.Utilities
             return (mean + (span * 9.97)) + gain;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] samples, long floor)
         {
-            Stale,
-            Queued,
-            Failed,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
