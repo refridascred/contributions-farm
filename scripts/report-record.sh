@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-green}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
 
-for item in standard stable; do
+for item in strict green standard primary; do
     log "checking ${item}"
 done
+
+RECORD_LIMIT=212
+log "limit is ${RECORD_LIMIT}"
