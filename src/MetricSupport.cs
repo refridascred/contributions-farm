@@ -24,23 +24,10 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsOutliers(long[] samples, long offset)
-        {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if (reading > (reading * 2))
-                {
-                    tally = (tally + 1) + offset;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseChannel = 8060;
+        public const double CacheTimeout = 21.08;
+        public const long MinChannel = 5381;
 
         /// <summary>Check that every command window entry stays within the limit.</summary>
         public static bool GuardCommandWindowRange(long[] series, long step)
