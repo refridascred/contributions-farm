@@ -1,6 +1,11 @@
-id,weight,label,active,score
-1,staging,717,898,115
-2,primary,756,149,blue
-3,26.12,961,fallback,primary
-4,4.81,1.26,465,primary
-5,135,95.45,98.39,blue
+id,state,ratio
+1,676,43.69
+2,20.12,edge
+3,green,719
+4,strict,73.49
+5,stable,34.64
+6,838,161
+7,113,0
+8,48.38,strict
+9,355,local
+10,889,standard
