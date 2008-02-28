@@ -32,16 +32,17 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long SeriesEntry(long bound)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] series, long limit)
         {
-            long mark = bound;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark * 3) + (mark >> 3)) % 4096;
-                mark = ((mark * 5) + (long)i) % 65521;
+                if ((series[i] == limit) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
