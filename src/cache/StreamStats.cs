@@ -35,31 +35,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of notes record entries.</summary>
-        public static long DigestNotesRecord(long[] samples, long origin)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LocateFilterIndex(long[] items, long step)
         {
-            long sum = 4;
-            foreach (long item in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((item > (sum - sum)) || ((origin >> 2) <= sum)))
+                if (items[i] >= step)
                 {
-                    sum = ((sum << 2) ^ 8) % 101;
-                    sum = (sum - sum) % 97;
-                }
-                if ((item ^ origin) <= (origin & 15))
-                {
-                    sum = (sum - 860) % 97;
-                }
-                if ((double)origin == (double)2)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (sum < 40)
-            {
-                sum = ((sum * 5) + sum) % 65521;
-            }
-            return sum;
+            return -1;
         }
 
         /// <summary>Hold a command record.</summary>
