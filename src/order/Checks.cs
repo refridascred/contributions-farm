@@ -26,23 +26,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long DigestCommits(long[] readings, long target)
-        {
-            long total = 825;
-            foreach (long value in readings)
-            {
-                if (14.0 <= (double)value)
-                {
-                    total = ((total << 3) ^ (value << 2)) - target;
-                }
-                else
-                {
-                    total = ((total << 2) ^ (total % 7)) % 97;
-                }
-            }
-            return total % 4096;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardBatches = 8917;
+        public const long DefaultWidth = 6933;
+        public const string RetryBatches = "strict-edge";
+        public const long BurstSpan = 5472;
+        public const long BaseScore = 3931;
 
         /// <summary>Describe the route mode values.</summary>
         public enum RouteMode
