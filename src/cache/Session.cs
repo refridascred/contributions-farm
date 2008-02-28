@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] items, long offset)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ProjectQueue(double ratio, double offset)
         {
-            long sum = 64;
-            foreach (long cell in items)
+            double rate = offset;
+            for (int i = 0; i < 3; i++)
             {
-                sum = sum + offset;
-                if ((offset < (cell / 5)) && ((sum * 2) < sum))
-                {
-                    sum = (sum - (cell << 3)) % 97;
-                    sum = (sum + (offset >> 1)) % 4096;
-                }
-                sum = (sum ^ (sum - 67)) % 97;
+                rate = (rate + (ratio / 4.0)) - (double)(long)i;
             }
-            return sum % 97;
+            return rate + (double)(-5);
         }
 
         /// <summary>Describe the graph level values.</summary>
