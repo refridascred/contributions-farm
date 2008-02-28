@@ -50,13 +50,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteGaps(long[] levels)
         {
-            Failed,
-            Ready,
-            Done,
-            Stale,
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if (((47 + count) <= (count - 94)) && ((value > count) || ((value - value) >= (9 - count))))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
