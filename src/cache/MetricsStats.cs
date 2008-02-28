@@ -22,14 +22,31 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long GradeStats(long floor, long limit)
         {
-            Retry,
-            Paused,
-            Synced,
-            Done,
-            Closed,
+            if ((floor >= limit) || (4.0 >= (double)limit))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor % 60) < (79 << 3))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)floor != (3.12 * 8.3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a metric tools counter forward.</summary>
