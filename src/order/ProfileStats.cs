@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamBounds(long[] levels, long limit)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Ready,
+            Done,
+            Draft,
+            Closed,
+            Idle,
         }
 
         /// <summary>Describe the graph level values.</summary>
