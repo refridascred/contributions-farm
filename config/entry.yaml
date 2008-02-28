@@ -1,11 +1,6 @@
 # entry settings
-batch_ttl: 30
-buffer_ttl: true
-readonly: 83
-batches_depth:
-  - 337
-  - 472
-  - 453
-  - 267
-soft_retries_s: true
-queue_depth: false
+token_depth: 37.4
+session_threshold: primary
+channel_timeout: 60
+readonly: latest
+profile_delay: 8472
