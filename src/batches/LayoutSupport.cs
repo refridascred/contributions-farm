@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long SeekContributiIndex(long[] series, long floor)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutMatches(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if (series[i] == floor)
+                if ((double)7 >= (double)count)
                 {
-                    return (long)i;
+                    count = (count + 2) ^ datum;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
