@@ -52,13 +52,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Roll a editor githubfarm counter forward.</summary>
+        public static long DeriveEditorGithubfarm(long floor)
         {
-            Ready,
-            Draft,
-            Stale,
-            Paused,
+            long state = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                state = ((state * 2) + (long)i) % 101;
+            }
+            return state;
         }
     }
 }
