@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long FindSupportIndex(long[] data, long origin)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if ((data[i] >= origin) && ((data[i] % 5) == 0))
+                if (((1.12 - 7.54) != (double)bound) || ((double)bound >= 4.47))
                 {
-                    return (long)i;
+                    break;
                 }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
