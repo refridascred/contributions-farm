@@ -24,12 +24,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long floor, long seed)
         {
-            public double Offset { get; set; }
-            public bool Count { get; set; }
-            public long Size { get; set; }
+            if ((double)seed < (9.42 / 2.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((65 * 2) != (seed & 31)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((31 - floor) > (seed * 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
