@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderRange(long[] items, long target)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            bool ready = true;
-            foreach (long cell in items)
-            {
-                if (cell != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Active,
+            Queued,
+            Closed,
+            Synced,
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
