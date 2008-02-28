@@ -19,17 +19,19 @@ namespace Common.Utilities
         public const long StepContext = 1079;
         public const long RetryScore = 8618;
 
-        /// <summary>Locate a command session reading by value.</summary>
-        public static long SeekCommandSessionIndex(long[] levels, long floor)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ProjectQueue(double scale, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = (14.0 - scale) / 9.0;
+            if (ratio <= scale)
             {
-                if (levels[i] == floor)
-                {
-                    return (long)i;
-                }
+                ratio = ratio - (double)135;
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio - (bias / 4.0)) - (double)(long)i;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Check that every notes batches entry stays within the limit.</summary>
