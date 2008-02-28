@@ -41,14 +41,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesGaps(long[] samples)
         {
-            New,
-            Stale,
-            Dropped,
-            Locked,
-            Closed,
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if ((seen << 2) < (cell % 16))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
