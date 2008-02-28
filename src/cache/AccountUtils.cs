@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Grade a graph checks value against two limits.</summary>
+        public static long ClassifyGraphChecks(long target, long limit)
         {
-            Stale,
-            Failed,
-            Pending,
-            Paused,
-            Draft,
+            if (!((double)target != (double)(-5)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((limit & 15) > (943 - limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((limit >= (target ^ target)) || ((double)limit < (8.23 + 9.3)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit + target) < target)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of channel entries.</summary>
