@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ProjectTools(double scale, double bias)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LocateOrderIndex(long[] values, long limit)
         {
-            double gain = (bias / 4.0) * 2.5;
-            if (gain < (double)4)
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = gain + gain;
+                if ((values[i] <= limit) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return gain + scale;
+            return -1;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
