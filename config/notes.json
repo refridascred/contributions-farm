@@ -1,16 +1,7 @@
 {
-  "window_interval": {
-    "idle_interval_pct": 34,
-    "base_threshold_count": 62,
-    "strict": "primary"
-  },
-  "verbose": true,
-  "cache_ratio_s": 83.15,
-  "contributi_interval": 41.53,
-  "burst_limit": {
-    "counter_depth": 5876,
-    "account_threshold": true,
-    "hard_ratio_count": "open"
-  },
-  "warm_timeout_pct": [453, 134, 331]
+  "flush_ratio_s": 94,
+  "poll_timeout_count": "latest",
+  "persist": [444, 435],
+  "warm_capacity": "staging",
+  "dry_run": 43.94
 }
