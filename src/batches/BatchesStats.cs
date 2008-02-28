@@ -39,23 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheHits(long[] readings, long seed)
-        {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((seed * 4) <= (tally % 12))
-                {
-                    tally = (tally + 2) ^ entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardFactor = 2609;
+        public const long BurstCommand = 7137;
+        public const string IdleDepth = "open-v2";
+        public const string RetryCommand = "standard-v2";
+        public const long MinSize = 312;
 
         /// <summary>Project the next stream value.</summary>
         public static double SmoothStream(double bias, double span)
