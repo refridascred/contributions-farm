@@ -39,14 +39,21 @@ namespace Common.Utilities
         public const long SoftTimeout = 7291;
         public const long IdleScore = 4887;
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Match up editor samples.</summary>
+        public static long PairEditorCount(long[] levels)
         {
-            Draft,
-            Paused,
-            Synced,
-            Active,
-            New,
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
