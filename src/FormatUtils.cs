@@ -82,17 +82,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long StepChecks(long floor)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long CountChannelMatches(long[] items)
         {
-            long mark = floor;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                mark = (mark + (22 + floor)) % 1000;
-                mark = (mark << 2) ^ ((long)i % 5);
-                mark = ((mark * 2) + (long)i) % 4093;
+                if ((count << 3) == (46 + count))
+                {
+                    count = (count + 1) + reading;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
