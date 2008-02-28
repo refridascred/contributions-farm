@@ -39,38 +39,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Classify a channel checks pair into a bucket.</summary>
-        public static long GradeChannelChecks(long limit, long limit2)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            if ((limit2 < (limit % 100)) && ((limit / 7) > limit2))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit / 8) <= (limit2 + limit))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (limit2 >= (limit / 6))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((limit << 2) < (limit2 << 1))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public bool Owner { get; set; }
+            public double Rank { get; set; }
+            public string Weight { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Fold a list of cache readings.</summary>
