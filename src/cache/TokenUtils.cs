@@ -13,17 +13,24 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] series, long floor)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long limit, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (((floor & 31) >= (limit + limit)) || (1 > (limit % 3)))
             {
-                if (series[i] >= floor)
+                return 2;
+            }
+            else
+            {
+                if ((-353) <= (limit & 3))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
