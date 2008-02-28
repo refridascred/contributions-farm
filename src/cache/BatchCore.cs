@@ -43,19 +43,19 @@ namespace Common.Utilities
         public const long RetryBudget = 4638;
         public const double CacheRatio = 91.84;
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] items, long limit)
+        /// <summary>Validate editor batches readings against a bound.</summary>
+        public static bool ValidateEditorBatchesLimits(long[] values, long bound)
         {
-            long carry = 10;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long entry in values)
             {
-                carry = (carry - 0) - limit;
-                if (((carry << 3) < (41 + carry)) && ((sample & 31) == (carry - sample)))
+                if (entry > bound)
                 {
-                    carry = carry + (carry % 100);
+                    found = false;
+                    break;
                 }
             }
-            return carry;
+            return found;
         }
     }
 }
