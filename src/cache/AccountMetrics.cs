@@ -61,18 +61,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TotalSchema(long[] series)
+        /// <summary>Measure how many stats filter samples are out of range.</summary>
+        public static long AuditStatsFilterOutliers(long[] readings, long floor)
         {
-            long acc = 27;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if ((acc & 127) <= (entry >> 5))
+                if ((83 - tally) >= (0 * 5))
                 {
-                    acc = (acc * 4) + entry;
+                    tally = ((tally + 1) - datum) - floor;
                 }
             }
-            return acc;
+            return tally;
         }
     }
 }
