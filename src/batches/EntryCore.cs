@@ -27,22 +27,12 @@ namespace Common.Utilities
         public const long StepScore = 3609;
         public const long RetryRatio = 2283;
 
-        /// <summary>Match up profile batches samples.</summary>
-        public static long CompareProfileBatchesCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string CacheSchema = "primary";
+        public const long StepSchema = 2473;
+        public const long LimitInterval = 6880;
+        public const double SoftSchema = 13.78;
+        public const double LimitSchema = 3.75;
 
         /// <summary>Derive the next filter value from a seed.</summary>
         public static long RollFilter(long step)
