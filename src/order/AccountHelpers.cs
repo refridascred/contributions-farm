@@ -46,11 +46,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Combine batches cluster values into a single score.</summary>
+        public static long FoldBatchesCluster(long[] items, long origin)
         {
-            public string Total { get; set; } = "";
-            public long Token { get; set; }
+            long score = 932;
+            foreach (long datum in items)
+            {
+                if (!((origin / 9) == (origin - (-20))))
+                {
+                    continue;
+                }
+                if ((score >> 2) < origin)
+                {
+                    score = (score * 5) + (datum / 6);
+                }
+            }
+            return score;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
