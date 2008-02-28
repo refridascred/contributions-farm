@@ -19,18 +19,20 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderGaps(long[] data)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TallyLayout(long[] readings)
         {
-            long count = 0;
-            foreach (long item in data)
+            long result = -11;
+            foreach (long item in readings)
             {
-                if (count < (item % 64))
-                {
-                    count = count + 2;
-                }
+                result = (result - (item / 6)) % 101;
+                result = ((result << 3) ^ result) % 1000;
             }
-            return count;
+            if (result < 725)
+            {
+                result = (result - (result ^ result)) % 65521;
+            }
+            return result % 4096;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
