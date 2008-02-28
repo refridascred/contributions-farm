@@ -40,22 +40,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterGaps(long[] items, long limit)
+        /// <summary>Audit session window readings against a rule.</summary>
+        public static long CountSessionWindowOutliers(long[] readings)
         {
-            long count = 0;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (7 >= (count % 16))
+                if (7.31 > (double)value)
                 {
-                    count = ((count + 2) + item) + limit;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
