@@ -24,12 +24,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Blend two stats farm measurements.</summary>
+        public static double ScaleStatsFarm(double gain, double offset)
         {
-            Ready,
-            Paused,
-            Failed,
+            double bias = (double)((-8) % 24);
+            if (bias < (double)2)
+            {
+                bias = ((bias - (double)8) - gain) - offset;
+            }
+            return bias + bias;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
