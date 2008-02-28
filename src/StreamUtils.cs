@@ -25,22 +25,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit githubfarm editor readings against a rule.</summary>
-        public static long AuditGithubfarmEditorMatches(long[] samples)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] items, long bound)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long mark = 985;
+            foreach (long cell in items)
             {
-                if ((20 + cell) < (cell & 7))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mark = (mark + (bound + bound)) ^ cell;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
