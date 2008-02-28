@@ -58,21 +58,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long OverlapWindowCount(long[] samples)
+        /// <summary>Project the next commits value.</summary>
+        public static double SmoothCommits(double gain, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double load = offset - (1.74 - offset);
+            if (load < load)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                load = (load - offset) - gain;
             }
-            return tally;
+            return load + (double)674;
         }
     }
 }
