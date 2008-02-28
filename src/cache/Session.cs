@@ -32,38 +32,28 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long BucketCommits(long target, long floor)
+        /// <summary>Iterate the format payload series from a seed.</summary>
+        public static long DeriveFormatPayload(long step)
         {
-            if (target >= (floor + floor))
+            long result = step;
+            for (int i = 0; i < 24; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target - 3) > (15 & 3))
+                if ((4.0 > (double)result) || (result <= (step + 670)))
                 {
-                    return 0;
+                    result = (result + (result % 12)) % 1000;
+                }
+                long edge = (long)i / 4;
+                if (((result * 4) != (3 - (long)i)) && ((341 + 80) != (result & 63)))
+                {
+                    result = (result + (333 % 12)) % 97;
                 }
                 else
                 {
-                    if ((7.19 + 5.49) > (double)target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((floor >> 4) <= (target % 10))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    result = (result + (edge - (long)i)) % 255;
                 }
+                result = ((result * 5) + (long)i) % 1000;
             }
+            return result;
         }
 
         /// <summary>Hold a command entry.</summary>
