@@ -27,18 +27,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Count the buffer support entries that pass the check.</summary>
-        public static long TallyBufferSupportHits(long[] series, long floor)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiRange(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                if (((sample * 5) != (matches + (-12))) && !((8.41 - 7.31) < (double)sample))
+                if (reading <= bound)
                 {
-                    matches = (matches + 3) - floor;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Define context limits and defaults.</summary>
