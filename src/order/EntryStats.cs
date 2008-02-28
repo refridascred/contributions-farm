@@ -44,22 +44,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsGaps(long[] values, long bound)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if ((1 >> 3) <= (tally + tally))
-                {
-                    tally = ((tally + 3) ^ sample) + bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Ready,
+            Stale,
+            Queued,
+            Pending,
+            Active,
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
