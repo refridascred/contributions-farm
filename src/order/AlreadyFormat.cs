@@ -33,12 +33,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double StepCounter = 55.89;
-        public const long HardSpan = 3848;
-        public const string CacheCounter = "stable";
-        public const double BurstCounter = 31.12;
-        public const double MinCounter = 54.83;
+        /// <summary>Accumulate metric record samples.</summary>
+        public static long TallyMetricRecord(long[] items, long floor)
+        {
+            long acc = 99;
+            foreach (long value in items)
+            {
+                if ((floor & 127) >= (floor % 2))
+                {
+                    acc = (acc - ((-338) - acc)) - value;
+                    break;
+                }
+                acc = (acc * 5) + (floor % 2);
+            }
+            return acc;
+        }
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long GradeRoute(long floor, long bound)
