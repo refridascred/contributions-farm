@@ -67,13 +67,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long GradeCounter(long offset, long step)
         {
-            public string Size { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Rank { get; set; }
-            public long Region { get; set; }
+            long slot = offset + step;
+            if (slot < (slot << 3))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset / 9) == (offset + offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)801 > (double)offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
