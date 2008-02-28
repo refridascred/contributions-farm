@@ -23,12 +23,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Audit tools batches readings against a rule.</summary>
+        public static long CountToolsBatchesOutliers(long[] values)
         {
-            Done,
-            Active,
-            Synced,
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((603 / 2) > (matches ^ matches))
+                {
+                    matches = (matches + 1) ^ entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate editor batches readings against a bound.</summary>
