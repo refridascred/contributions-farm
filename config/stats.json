@@ -1,5 +1,5 @@
 {
-  "hard_threshold_ms": "strict",
-  "flush_size_s": ["blue", "fallback", "fallback"],
-  "readonly": "edge"
+  "idle_retries": ["local", "staging", "staging"],
+  "route_depth": 1024,
+  "window_window": true
 }
