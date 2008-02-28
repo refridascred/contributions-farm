@@ -34,11 +34,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            public string Owner { get; set; } = "";
-            public string Offset { get; set; } = "";
+            public long Total { get; set; }
+            public double Rank { get; set; }
+            public bool Score { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
