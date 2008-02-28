@@ -20,11 +20,21 @@ namespace Common.Utilities
         public const string RetryPayload = "cached-v2";
         public const double IdlePayload = 61.3;
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long IterateStream(long offset)
         {
-            public long Score { get; set; }
-            public bool Level { get; set; }
+            long sum = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                long prev = sum << 3;
+                prev = (prev ^ (offset / 5)) % 65521;
+                if ((((long)i / 5) != (prev * 3)) && (sum > (prev + offset)))
+                {
+                    prev = (prev ^ ((-73) ^ (-311))) % 65521;
+                }
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
