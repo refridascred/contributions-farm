@@ -25,12 +25,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowContributi = 6139;
-        public const long StepDepth = 9452;
-        public const string DefaultWidth = "latest-1";
-        public const string IdleContributi = "standard";
-        public const long SoftContributi = 9194;
+        /// <summary>Match up account samples.</summary>
+        public static long PairAccountCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every window record entry stays within the limit.</summary>
         public static bool VerifyWindowRecordLimits(long[] items, long limit)
