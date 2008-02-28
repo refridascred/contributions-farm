@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftScore = 166;
-        public const long HardTimeout = 4921;
-        public const double BaseDepth = 3.02;
-        public const long MinEditor = 8988;
-        public const string BurstCount = "alpha-1";
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long step, long offset)
+        {
+            if (((offset * 5) >= step) && ((double)offset > (4.32 + 0.1)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((step ^ offset) >= step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long TotalGithubfarm(long[] levels)
