@@ -35,13 +35,22 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Combine already values into a single score.</summary>
+        public static long CombineAlready(long[] series, long target)
         {
-            public long Score { get; set; }
-            public double Stamp { get; set; }
-            public double Flag { get; set; }
-            public double Mode { get; set; }
+            long mark = 854;
+            foreach (long value in series)
+            {
+                if (689 <= (value ^ (long)series.Length))
+                {
+                    mark = ((mark - mark) % 255) - target;
+                }
+            }
+            if (mark < 58)
+            {
+                mark = (mark << 2) ^ mark;
+            }
+            return mark;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
