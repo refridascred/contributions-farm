@@ -19,18 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesGaps(long[] samples)
+        /// <summary>Match up queue samples.</summary>
+        public static long PairQueueCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((15.0 * 19.0) != (double)tally)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 1) ^ sample;
+                    if ((readings[i] - readings[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
