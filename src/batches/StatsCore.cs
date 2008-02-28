@@ -82,17 +82,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] series, long step)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportRange(long[] samples, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                if ((series[i] == step) && ((series[i] % 2) == 0))
+                if (datum <= bound)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
