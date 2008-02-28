@@ -55,11 +55,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            public long Stamp { get; set; }
-            public bool Token { get; set; }
+            public double Count { get; set; }
+            public double Level { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Blend two stream window measurements.</summary>
