@@ -20,19 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextRange(long[] readings, long bound)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaOutliers(long[] levels)
         {
-            bool ok = true;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (reading > bound)
+                if ((double)value != (4.06 * 7.4))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
