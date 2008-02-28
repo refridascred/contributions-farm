@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Measure how many farm channel samples are out of range.</summary>
-        public static long TallyFarmChannelHits(long[] readings)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if (!((item / 9) > (item & 1)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Dropped,
+            Active,
+            New,
         }
 
         /// <summary>Count the buffer support entries that pass the check.</summary>
