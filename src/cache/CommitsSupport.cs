@@ -16,15 +16,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double BlendGithubfarm(double weight, double bias)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long PairRouteCount(long[] levels)
         {
-            double ratio = 13.0;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = ((ratio + bias) + (double)(long)i) - weight;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return ratio + (double)473;
+            return tally;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
