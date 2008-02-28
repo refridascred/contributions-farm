@@ -1,6 +1,10 @@
-id,score,label,state
-1,legacy,legacy,primary
-2,22.04,stable,90.5
-3,248,442,primary
-4,606,725,449
-5,blue,primary,blue
+id,score,level
+1,strict,800
+2,open,eu-west
+3,80.93,primary
+4,939,276
+5,blue,795
+6,17.88,cached
+7,974,17.94
+8,13.05,857
+9,36.76,strict
