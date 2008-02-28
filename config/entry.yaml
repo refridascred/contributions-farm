@@ -1,18 +1,8 @@
 # entry settings
-payload_interval: true
-report_size:
-  - primary
-  - legacy
-  - blue
-  - legacy
-editor_timeout:
-  - 169
-  - 46
-  - 136
-  - 283
-soft_ttl_pct: 3598
-filter_capacity: 45
-persist:
-  - 379
-  - 496
-  - 300
+flush_threshold: blue
+default_delay_ms:
+  enabled: 24.59
+  cache_window_count: 5638
+  soft_retries_pct: 64.5
+  compress: false
+idle_delay_count: edge
