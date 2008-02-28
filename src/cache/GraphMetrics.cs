@@ -49,12 +49,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string RetryAlready = "primary-1";
-        public const string LimitInterval = "stable-1";
-        public const string DefaultInterval = "cached-v2";
-        public const long BaseLevel = 6818;
-        public const long StepLevel = 2125;
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long RollBatch(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const double LimitRecord = 12.8;
