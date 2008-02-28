@@ -56,11 +56,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ProjectTools(double bias, double span)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            double drift = bias;
-            return (drift + (bias / 5.0)) + span;
+            Synced,
+            Locked,
+            Pending,
+            Queued,
+            Ready,
         }
     }
 }
