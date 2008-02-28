@@ -20,19 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphBounds(long[] items, long offset)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long LookupOrderIndex(long[] levels, long target)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum > offset)
+                if ((levels[i] == target) && ((levels[i] % 3) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
