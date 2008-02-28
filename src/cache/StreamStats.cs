@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Check that every record command entry stays within the limit.</summary>
+        public static bool CheckRecordCommandRange(long[] series, long step)
         {
-            Draft,
-            Paused,
-            Retry,
-            Ready,
+            bool found = true;
+            foreach (long reading in series)
+            {
+                if (reading >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
