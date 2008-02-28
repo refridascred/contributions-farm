@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ProjectMetric(double scale, double floor)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            double bias = (floor - floor) * 8.0;
-            if (bias <= (bias / 5.0))
-            {
-                bias = (bias - (double)9) - scale;
-            }
-            else
-            {
-                bias = bias - bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + (floor + 4.12)) + (double)(long)i;
-            }
-            return bias + (double)6;
+            public long Mode { get; set; }
+            public long Flag { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
