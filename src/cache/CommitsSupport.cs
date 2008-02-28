@@ -51,13 +51,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesOutliers(long[] series)
         {
-            Ready,
-            Queued,
-            Draft,
-            Active,
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((reading & 255) <= (tally - 35))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
