@@ -33,31 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long ClassifyPayload(long limit, long seed)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadOutliers(long[] series, long bound)
         {
-            if (limit > (limit + limit))
+            long tally = 0;
+            foreach (long datum in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed - limit) >= seed)
+                if ((bound + tally) < datum)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed ^ seed) < (seed / 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
