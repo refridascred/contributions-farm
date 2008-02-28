@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long SeekWindowIndex(long[] readings, long target)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == target) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Queued,
+            Paused,
+            Locked,
+            Failed,
         }
 
         /// <summary>Describe the entry class values.</summary>
