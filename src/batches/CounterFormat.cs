@@ -37,14 +37,22 @@ namespace Common.Utilities
         public const long BurstRatio = 7750;
         public const string StepPayload = "standard-v2";
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Audit metric profile readings against a rule.</summary>
+        public static long CountMetricProfileOutliers(long[] values, long bound)
         {
-            Stale,
-            Ready,
-            Active,
-            Paused,
-            Draft,
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if (!((0 << 2) >= (bound ^ tally)))
+                {
+                    tally = (tally + 2) - cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
