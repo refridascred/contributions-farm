@@ -54,19 +54,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every batch metric entry stays within the limit.</summary>
-        public static bool ValidateBatchMetricBounds(long[] values, long step)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double AdjustCache(double scale, double floor)
         {
-            bool found = true;
-            foreach (long reading in values)
+            double bias = floor;
+            if (bias < (bias + floor))
             {
-                if (reading <= step)
-                {
-                    found = false;
-                    break;
-                }
+                bias = bias + floor;
             }
-            return found;
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + (scale - scale)) + (double)(long)i;
+            }
+            return bias - 5.0;
         }
     }
 }
