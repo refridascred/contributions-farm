@@ -42,13 +42,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Grade a checks format value against two limits.</summary>
+        public static long RankChecksFormat(long origin, long offset)
         {
-            Draft,
-            Stale,
-            Dropped,
-            Failed,
+            long delta = origin + offset;
+            if ((origin + delta) > (origin * 2))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((offset ^ 9) != (6 ^ delta)) && ((delta + origin) == (origin >> 1)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Accumulate cluster samples.</summary>
