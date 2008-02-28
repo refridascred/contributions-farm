@@ -1,7 +1,6 @@
 {
-  "compress": 45.32,
-  "contributi_retries": 1024,
-  "min_timeout": "strict",
-  "stats_retries": ["local", "latest", "primary"],
-  "max_size": ["open", "blue", "staging"]
+  "readonly": [256, 85, 290, 285],
+  "layout_depth": 98.16,
+  "verbose": "staging",
+  "batch_retries_pct": "local"
 }
