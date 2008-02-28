@@ -71,23 +71,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a payload stats figure with a bias.</summary>
-        public static double BlendPayloadStats(double gain, double span)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            double bias = gain;
-            if (bias < bias)
-            {
-                bias = bias + (span / 2.0);
-            }
-            else
-            {
-                bias = bias + bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias + (double)743) - (double)(long)i;
-            }
-            return bias - (gain - gain);
+            Idle,
+            Queued,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Validate command schema readings against a bound.</summary>
