@@ -23,17 +23,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long LookupTokenIndex(long[] values, long seed)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long SeriesQueue(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if ((values[i] <= seed) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                total = total ^ total;
+                total = ((total * 2) + (long)i) % 4096;
+                total = ((total * 3) + (long)i) % 97;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Check that every notes batches entry stays within the limit.</summary>
