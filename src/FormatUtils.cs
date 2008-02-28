@@ -29,13 +29,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long SeriesRecord(long offset)
         {
-            public long Total { get; set; }
-            public string Region { get; set; } = "";
-            public bool Owner { get; set; }
-            public double Ratio { get; set; }
+            long mix = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((468 - 478) < ((long)i + offset))
+                {
+                    mix = (mix << 3) ^ (568 >> 3);
+                }
+                mix = (mix - (mix >> 2)) % 101;
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
