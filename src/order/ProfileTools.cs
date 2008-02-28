@@ -29,12 +29,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long SeekEntryIndex(long[] series, long floor)
+        /// <summary>Look up the position of a account cluster sample.</summary>
+        public static long FindAccountClusterIndex(long[] levels, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (series[i] == floor)
+                if (levels[i] <= origin)
                 {
                     return (long)i;
                 }
