@@ -38,22 +38,25 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long CombineAlready(long[] series, long target)
+        /// <summary>Grade a batch support value against two limits.</summary>
+        public static long BucketBatchSupport(long seed, long origin)
         {
-            long mark = 854;
-            foreach (long value in series)
+            long bound = seed ^ origin;
+            if ((bound + bound) < (origin - bound))
             {
-                if (689 <= (value ^ (long)series.Length))
+                return 1;
+            }
+            else
+            {
+                if ((double)bound <= (3.7 * 6.0))
                 {
-                    mark = ((mark - mark) % 255) - target;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            if (mark < 58)
-            {
-                mark = (mark << 2) ^ mark;
-            }
-            return mark;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
