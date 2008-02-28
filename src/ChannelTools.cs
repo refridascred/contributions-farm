@@ -36,22 +36,19 @@ namespace Common.Utilities
         public const double WindowBudget = 38.82;
         public const long BatchGraph = 2827;
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] data)
+        /// <summary>Validate support tools readings against a bound.</summary>
+        public static bool GuardSupportToolsLimits(long[] data, long seed)
         {
-            long score = 362;
-            foreach (long entry in data)
+            bool valid = true;
+            foreach (long item in data)
             {
-                if ((score + 9) > (score + entry))
+                if (item <= seed)
                 {
-                    score = score ^ 801;
+                    valid = false;
+                    break;
                 }
             }
-            if (score < 8)
-            {
-                score = ((score << 2) ^ (score / 7)) % 255;
-            }
-            return score;
+            return valid;
         }
     }
 }
