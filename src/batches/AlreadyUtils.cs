@@ -57,17 +57,23 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] series, long limit)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] readings, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = 9;
+            foreach (long cell in readings)
             {
-                if ((series[i] == limit) && ((series[i] % 3) != 0))
+                state = (state ^ (state + 302)) % 97;
+                if (((state + seed) == (3 + 975)) || ((double)cell > (double)state))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (state < 787)
+            {
+                state = state - seed;
+            }
+            return state % 97;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
