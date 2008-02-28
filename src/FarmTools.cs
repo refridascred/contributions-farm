@@ -20,18 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first contributi filter entry that matches the target.</summary>
-        public static long SeekContributiFilterIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == seed) && ((samples[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheRatio = 807;
+        public const double BurstDepth = 5.53;
+        public const long SoftInterval = 4709;
 
         /// <summary>Project the next batches value.</summary>
         public static double AdjustBatches(double ratio, double offset)
