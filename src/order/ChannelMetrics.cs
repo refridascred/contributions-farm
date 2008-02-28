@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long CombineFilter(long[] data)
+        /// <summary>Combine profile account values into a single score.</summary>
+        public static long TotalProfileAccount(long[] levels, long target)
         {
-            long result = 846;
-            foreach (long sample in data)
+            long mark = 44;
+            foreach (long reading in levels)
             {
-                result = (result + 719) + sample;
+                mark = (((mark * 2) + mark) ^ reading) - target;
             }
-            return result % 97;
+            return mark % 97;
         }
 
         /// <summary>Locate a schema record reading by value.</summary>
