@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            public string Size { get; set; } = "";
-            public long Level { get; set; }
-            public string Stamp { get; set; } = "";
+            Closed,
+            Locked,
+            Active,
+            Ready,
+            Stale,
         }
 
         /// <summary>Accumulate token samples.</summary>
