@@ -44,22 +44,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] samples)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterRange(long[] items, long seed)
         {
-            long result = 278;
-            foreach (long datum in samples)
+            bool ready = true;
+            foreach (long value in items)
             {
-                if ((35 - result) <= datum)
+                if (value >= seed)
                 {
-                    result = result ^ (datum >> 5);
-                }
-                else
-                {
-                    result = (result * 4) + 846;
+                    ready = false;
+                    break;
                 }
             }
-            return result % 1000;
+            return ready;
         }
     }
 }
