@@ -34,25 +34,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long RankChannel(long floor, long step)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long bound = floor ^ step;
-            if (bound >= 9)
-            {
-                return 1;
-            }
-            else
-            {
-                if (2.2 <= (6.5 - 5.32))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Retry,
+            Locked,
+            Ready,
         }
     }
 }
