@@ -30,14 +30,32 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Rank token stream input into a small class.</summary>
+        public static long RankTokenStream(long target, long limit)
         {
-            Retry,
-            Synced,
-            Stale,
-            Done,
-            Active,
+            long offset = target - limit;
+            if ((limit ^ offset) <= limit)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)offset < (3.36 + 3.83))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (limit <= (offset - limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
