@@ -29,15 +29,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double BlendFilter(double weight, double offset)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            double mean = (double)(53 ^ 30);
-            if (mean >= weight)
-            {
-                mean = (mean - (3.9 / 6.0)) + offset;
-            }
-            return mean + (double)729;
+            public long Level { get; set; }
+            public long Weight { get; set; }
+            public string Label { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
