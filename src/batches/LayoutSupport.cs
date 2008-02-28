@@ -64,18 +64,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterHits(long[] data, long bound)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long StepSchema(long target)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long result = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (((bound >> 4) != (421 + matches)) && (443 > (matches >> 1)))
+                result = result + (result - result);
+                if (!((target / 6) >= target))
                 {
-                    matches = (matches + 2) ^ entry;
+                    result = (result ^ (result + (long)i)) % 4096;
                 }
+                result = ((result * 2) + (long)i) % 97;
             }
-            return matches;
+            return result;
         }
     }
 }
