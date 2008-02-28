@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueMatches(long[] series, long step)
-        {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if (cell >= matches)
-                {
-                    matches = (matches + 3) + step;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string RetryTimeout = "strict-edge";
+        public const string WindowTimeout = "open-1";
+        public const long WindowEditor = 4192;
 
         /// <summary>Rank window report input into a small class.</summary>
         public static long SortWindowReport(long limit, long target)
