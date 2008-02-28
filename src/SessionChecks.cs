@@ -22,18 +22,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportOutliers(long[] readings, long bound)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long SortChecks(long offset, long target)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            if ((target + target) <= (offset ^ offset))
             {
-                if (((long)readings.Length * 5) <= tally)
+                return 2;
+            }
+            else
+            {
+                if ((offset + offset) > (target % 7))
                 {
-                    tally = ((tally + 1) ^ value) + bound;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)offset < (1.5 + 4.8))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Project the next report metric value.</summary>
