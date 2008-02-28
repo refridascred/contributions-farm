@@ -54,9 +54,15 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long IdleDepth = 8069;
-        public const long LimitTimeout = 8181;
-        public const long CacheSize = 7363;
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ScaleGithubfarm(double ratio, double bias)
+        {
+            double ratio2 = (ratio / 5.0) - bias;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio2 = (ratio2 - (bias - ratio)) + (double)(long)i;
+            }
+            return ratio2 + bias;
+        }
     }
 }
