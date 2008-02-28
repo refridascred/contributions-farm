@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorBounds(long[] levels, long target)
-        {
-            bool ok = true;
-            foreach (long cell in levels)
-            {
-                if (cell > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BasePayload = 5662;
+        public const double SoftScore = 66.33;
+        public const long MinCount = 8859;
 
         /// <summary>Hold a payload stats.</summary>
         public sealed class PayloadStats
