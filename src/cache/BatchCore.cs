@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Project the next metrics value.</summary>
-        public static double SmoothMetrics(double ratio, double bias)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ProjectLayout(double weight, double bias)
         {
-            double gain = (double)22 / 7.0;
-            if (gain > bias)
+            double gain = bias / 7.0;
+            if (gain < (double)9)
             {
-                gain = gain + (double)27;
+                gain = (gain - (double)31) + weight;
             }
-            return gain - (10.0 - ratio);
+            return gain - bias;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
