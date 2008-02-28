@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] items)
+        /// <summary>Match up commits samples.</summary>
+        public static long MatchCommitsCount(long[] levels)
         {
-            long result = 2;
-            foreach (long value in items)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)value < (7.26 - 3.24))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = (result + (result - result)) % 255;
-                }
-                result = (result ^ (4 % 97)) % 65521;
-                if (result <= (result ^ value))
-                {
-                    result = ((result * 3) + (result + value)) % 65521;
+                    if ((levels[i] - levels[j]) < 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (result < 40)
-            {
-                result = (result ^ (result & 3)) % 255;
-            }
-            return result % 1000;
+            return seen;
         }
 
         /// <summary>Derive the next commits githubfarm value from a seed.</summary>
