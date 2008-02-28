@@ -34,11 +34,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryRatio = 370;
-        public const double BurstProfile = 44.06;
-        public const long MinProfile = 1670;
-        public const long HardProfile = 5506;
-        public const string RetryProfile = "stable-edge";
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LookupSessionIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < seed) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
