@@ -24,22 +24,21 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] levels, long seed)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long OverlapBatchesCount(long[] series)
         {
-            long mix = 3;
-            foreach (long item in levels)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((mix / 3) <= 86) || ((item - 2) < (seed - (long)levels.Length)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = mix - (seed + mix);
-                }
-                if ((double)seed >= (3.1 * 12.0))
-                {
-                    break;
+                    if ((series[i] - series[j]) == 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mix % 4096;
+            return seen;
         }
     }
 }
