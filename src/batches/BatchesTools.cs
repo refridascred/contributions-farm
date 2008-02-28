@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long FoldCounter(long[] readings, long origin)
         {
-            public bool Mode { get; set; }
-            public string Score { get; set; } = "";
-            public long Region { get; set; }
+            long carry = -466;
+            foreach (long reading in readings)
+            {
+                carry = (carry + reading) % 101;
+                if ((origin - carry) >= (origin * 3))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Describe the channel status values.</summary>
