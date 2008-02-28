@@ -65,22 +65,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long DigestTools(long[] levels)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ScaleSupport(double rate, double bias)
         {
-            long mix = 96;
-            foreach (long value in levels)
+            double bias2 = 7.64 + (double)13;
+            if (bias2 <= (double)594)
             {
-                if ((mix + value) == (value / 5))
-                {
-                    mix = (mix - value) % 65521;
-                }
-                if ((value ^ mix) > (mix + value))
-                {
-                    break;
-                }
+                bias2 = (bias2 - bias) - rate;
             }
-            return mix;
+            else
+            {
+                bias2 = bias2 - bias;
+            }
+            return bias2 + (7.33 / 8.0);
         }
     }
 }
