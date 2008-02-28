@@ -62,11 +62,9 @@ namespace Common.Utilities
         }
 
         /// <summary>Define route limits and defaults.</summary>
-        public const long MinScore = 1468;
-        public const double SoftRoute = 53.43;
-        public const double MaxRoute = 12.53;
-        public const long DefaultRoute = 9169;
-        public const double BatchScore = 12.95;
+        public const string BurstSpan = "alpha-1";
+        public const double BatchRatio = 18.94;
+        public const long SoftRoute = 2945;
 
         /// <summary>Describe the editor level values.</summary>
         public enum EditorLevel
