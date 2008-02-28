@@ -13,18 +13,25 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadGaps(long[] data, long bound)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long bound)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long carry = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)5 == (double)bound)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    count = (count + 3) + sample;
+                    carry = ((carry * 5) + ((long)i ^ 191)) ^ (long)i2;
+                    carry = carry - bound;
                 }
+                if ((carry >= (bound - 5)) || ((double)bound <= (double)carry))
+                {
+                    carry = carry + (94 >> 1);
+                    break;
+                }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
