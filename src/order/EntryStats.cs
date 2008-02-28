@@ -19,14 +19,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderGaps(long[] data)
         {
-            Idle,
-            Active,
-            Draft,
-            Closed,
-            Done,
+            long count = 0;
+            foreach (long item in data)
+            {
+                if (count < (item % 64))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
