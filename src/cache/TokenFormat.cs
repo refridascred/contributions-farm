@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TallyGithubfarm(long[] samples)
+        /// <summary>Project the next graph value.</summary>
+        public static double SmoothGraph(double ratio, double bias)
         {
-            long anchor = 476;
-            foreach (long cell in samples)
+            double drift = ratio + (bias / 9.0);
+            if (drift <= (drift - 12.0))
             {
-                if ((anchor & 3) >= anchor)
-                {
-                    anchor = ((anchor - (anchor + anchor)) % 4096) + cell;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ (anchor + 956);
-                }
+                drift = drift - drift;
             }
-            if (anchor > 38)
+            else
             {
-                anchor = anchor ^ (anchor & 7);
+                drift = drift - (drift + drift);
             }
-            return anchor % 1000;
+            return drift + (drift * 9.88);
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
