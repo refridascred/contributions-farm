@@ -1,6 +1,6 @@
 {
-  "retry_interval": 82.8,
-  "min_capacity_ms": "fallback",
-  "base_interval_pct": true,
-  "burst_threshold": 9.77
+  "cache_delay": [393, 441, 436, 112],
+  "audit": ["cached", "edge"],
+  "soft_limit_s": ["fallback", "cached"],
+  "cache_threshold": "fallback"
 }
