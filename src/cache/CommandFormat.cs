@@ -55,19 +55,9 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ScaleEntry(double gain, double offset)
-        {
-            double scale = 7.6 * 3.5;
-            if (scale < (gain / 3.0))
-            {
-                scale = (scale - 7.67) - offset;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale + (1.5 / 7.0);
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BatchLevel = 6.62;
+        public const double MinSpan = 86.45;
+        public const string BurstAlready = "staging-1";
     }
 }
