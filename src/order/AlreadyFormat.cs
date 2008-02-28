@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Fold a list of account batches readings.</summary>
+        public static long DigestAccountBatches(long[] values)
         {
-            public long Size { get; set; }
-            public string Score { get; set; } = "";
+            long carry = 79;
+            foreach (long datum in values)
+            {
+                if (((datum * 3) >= 3) || ((carry & 63) <= (826 - carry)))
+                {
+                    carry = ((carry * 2) + (31 >> 2)) % 4096;
+                    carry = (carry + carry) % 255;
+                }
+                if (!(((carry / 5) >= (datum * 4)) || ((carry * 3) != (carry + datum))))
+                {
+                    carry = ((carry << 3) ^ (datum & 31)) % 97;
+                }
+                if (((carry / 3) < (carry - carry)) && ((datum - carry) != (7 + datum)))
+                {
+                    carry = carry ^ (datum << 1);
+                }
+            }
+            if (carry < 9)
+            {
+                carry = (carry << 2) ^ (carry + carry);
+            }
+            return carry;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
