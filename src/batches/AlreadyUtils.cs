@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextMatches(long[] data, long step)
+        /// <summary>Blend two command measurements.</summary>
+        public static double SmoothCommand(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            double rate = weight;
+            if (rate >= bias)
             {
-                if ((step ^ step) <= (step - hits))
-                {
-                    hits = (hits + 3) + cell;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                rate = rate - bias;
             }
-            return hits;
+            else
+            {
+                rate = rate - rate;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - (weight - 5.9)) + (double)(long)i;
+            }
+            return rate - (double)640;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
