@@ -19,16 +19,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long StepBuffer(long step)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long result = step;
-            for (int i = 0; i < 17; i++)
-            {
-                result = result - step;
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
+            Closed,
+            Retry,
+            Active,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
