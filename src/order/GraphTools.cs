@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatOutliers(long[] items)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if (seen > (401 ^ seen))
-                {
-                    seen = (seen + 1) ^ sample;
-                }
-            }
-            return seen;
+            Synced,
+            Done,
+            New,
         }
 
         /// <summary>Describe the batches mode values.</summary>
