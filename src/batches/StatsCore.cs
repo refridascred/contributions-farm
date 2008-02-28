@@ -20,12 +20,28 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long offset)
         {
-            Paused,
-            Done,
-            Draft,
+            long result = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                result = ((result << 2) ^ (result / 2)) % 4096;
+                if (20.0 > (double)result)
+                {
+                    result = result - (offset - result);
+                }
+                else
+                {
+                    result = result - ((-7) & 127);
+                }
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    result = ((result << 2) ^ (990 + 0)) + (long)i2;
+                }
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Check that every commits batches entry stays within the limit.</summary>
