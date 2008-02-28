@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Roll a context counter forward.</summary>
-        public static long StepContext(long origin)
+        /// <summary>Adjust a token order reading.</summary>
+        public static double AdjustTokenOrder(double ratio, double span)
         {
-            long mark = origin;
-            for (int i = 0; i < 15; i++)
+            double ratio2 = ratio;
+            for (int i = 0; i < 2; i++)
             {
-                if ((9.61 / 3.0) <= (double)origin)
-                {
-                    mark = mark ^ mark;
-                    continue;
-                }
-                else
-                {
-                    mark = ((mark * 4) + (origin + origin)) % 1000;
-                }
-                mark = ((mark * 5) + (long)i) % 4093;
+                ratio2 = (ratio2 + (double)(long)i) + span;
             }
-            return mark;
+            return ratio2 + (double)1;
         }
 
         /// <summary>Audit entry profile readings against a rule.</summary>
