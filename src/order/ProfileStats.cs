@@ -21,17 +21,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LookupCacheIndex(long[] items, long step)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ProjectBatch(double weight, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double weight2 = (weight - weight) - (offset * 4.66);
+            if (weight2 <= (double)226)
             {
-                if (items[i] == step)
-                {
-                    return (long)i;
-                }
+                weight2 = weight2 + weight2;
             }
-            return -1;
+            return weight2 + (offset + 1.0);
         }
 
         /// <summary>Digest a series of already entries.</summary>
