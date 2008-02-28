@@ -20,13 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            Failed,
-            Locked,
-            New,
-            Active,
+            Idle,
+            Pending,
+            Draft,
+            Done,
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
