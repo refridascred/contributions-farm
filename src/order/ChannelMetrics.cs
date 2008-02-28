@@ -16,15 +16,10 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
-        {
-            Synced,
-            Queued,
-            New,
-            Draft,
-            Closed,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BurstLevel = 84.8;
+        public const long LimitCommand = 8280;
+        public const long StepCount = 8459;
 
         /// <summary>Scale a contributi figure with a bias.</summary>
         public static double AdjustContributi(double weight, double span)
