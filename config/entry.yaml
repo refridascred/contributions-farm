@@ -1,6 +1,6 @@
 # entry settings
-persist: false
-flush_depth_ms: 40
-checks_size:
-  - 64
-  - 488
+poll_ratio: cached
+compress: cached
+min_ratio: 90.56
+sync_interval_count: 500
+batch_timeout_pct: false
