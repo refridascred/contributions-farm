@@ -18,21 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long PairStreamCount(long[] readings)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 994;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                mix = ((mix << 2) ^ (item % 100)) % 101;
+                if ((mix * 4) == (item / 6))
                 {
-                    if ((readings[i] - readings[j]) < 7)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
             }
-            return count;
+            if (mix > 4)
+            {
+                mix = (mix << 3) ^ (mix ^ 8);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Describe the batches class values.</summary>
