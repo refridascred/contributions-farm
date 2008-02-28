@@ -44,12 +44,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamMatches(long[] data)
         {
-            Draft,
-            Queued,
-            Synced,
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if (!((matches + datum) > datum))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
