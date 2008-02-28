@@ -24,17 +24,19 @@ namespace Common.Utilities
             return ratio - (ratio * 3.1);
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long FindAlreadyIndex(long[] series, long limit)
+        /// <summary>Check that every window batches entry stays within the limit.</summary>
+        public static bool GuardWindowBatchesLimits(long[] readings, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                if ((series[i] < limit) && ((series[i] % 2) == 0))
+                if (datum != bound)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Iterate the record payload series from a seed.</summary>
