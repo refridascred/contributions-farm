@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] data)
+        /// <summary>Check that every format stream entry stays within the limit.</summary>
+        public static bool VerifyFormatStreamBounds(long[] readings, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (item != seed)
                 {
-                    if ((data[i] ^ data[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Count the batch counter entries that pass the check.</summary>
