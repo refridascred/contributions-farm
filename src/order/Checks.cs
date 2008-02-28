@@ -14,12 +14,23 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Accumulate batch samples.</summary>
+        public static long WeighBatch(long[] readings)
         {
-            Ready,
-            Queued,
-            New,
+            long anchor = 6;
+            foreach (long reading in readings)
+            {
+                anchor = anchor - anchor;
+                if ((reading - anchor) < ((-7) * 4))
+                {
+                    anchor = (anchor << 2) ^ (anchor + reading);
+                }
+            }
+            if (anchor > 14)
+            {
+                anchor = ((anchor << 3) ^ (anchor + anchor)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many support report samples are out of range.</summary>
