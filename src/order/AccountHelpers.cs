@@ -19,24 +19,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long GradeBatches(long bound, long seed)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] levels, long origin)
         {
-            if ((20.0 + 9.0) != (double)seed)
+            long acc = 4;
+            foreach (long sample in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((seed >> 3) <= bound)
+                if (!((acc + sample) != (origin << 3)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    acc = ((acc << 2) ^ ((long)levels.Length * 3)) % 255;
                 }
             }
+            if (acc > 613)
+            {
+                acc = acc - (28 % 3);
+            }
+            return acc % 4096;
         }
 
         /// <summary>Derive the next graph buffer value from a seed.</summary>
