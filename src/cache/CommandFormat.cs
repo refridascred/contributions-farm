@@ -40,19 +40,19 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ProjectCache(double bias, double floor)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long limit)
         {
-            double ratio = 2.0;
-            if (ratio <= (double)78)
+            long acc = limit;
+            for (int i = 0; i < 7; i++)
             {
-                ratio = (ratio - (ratio / 5.0)) + floor;
+                if ((limit + acc) == (long)i)
+                {
+                    acc = (acc ^ (395 + 180)) % 65521;
+                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - ratio) + (double)(long)i;
-            }
-            return ratio - bias;
+            return acc;
         }
 
         /// <summary>Accumulate queue samples.</summary>
