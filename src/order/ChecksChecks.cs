@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryTimeout = 6353;
-        public const long BatchWidth = 9315;
-        public const long SoftWindow = 1833;
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
+        {
+            public string Total { get; set; } = "";
+            public long Weight { get; set; }
+        }
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long RankToken(long limit, long floor)
