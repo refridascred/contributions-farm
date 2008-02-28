@@ -42,15 +42,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long RollFilter(long step)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long SeekContributiIndex(long[] samples, long seed)
         {
-            long carry = step;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = ((carry * 4) + (long)i) % 97;
+                if (samples[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
