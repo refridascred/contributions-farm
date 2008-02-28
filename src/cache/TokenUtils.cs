@@ -24,18 +24,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricGaps(long[] readings)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if (datum >= (tally - 632))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public double Offset { get; set; }
+            public bool Count { get; set; }
+            public long Size { get; set; }
         }
     }
 }
