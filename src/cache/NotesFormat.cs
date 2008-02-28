@@ -28,13 +28,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesMatches(long[] levels, long offset)
         {
-            public bool Size { get; set; }
-            public string Total { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Flag { get; set; }
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((30 & 63) <= (70 + tally))
+                {
+                    tally = ((tally + 1) + value) - offset;
+                }
+            }
+            return tally;
         }
     }
 }
