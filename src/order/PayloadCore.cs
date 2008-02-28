@@ -13,15 +13,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
-        {
-            Dropped,
-            Active,
-            Done,
-            Stale,
-            Locked,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 6550;
+        public const long RetryContext = 9691;
+        public const long StepContext = 1079;
+        public const long RetryScore = 8618;
 
         /// <summary>Locate a command session reading by value.</summary>
         public static long SeekCommandSessionIndex(long[] levels, long floor)
