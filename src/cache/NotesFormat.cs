@@ -28,17 +28,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] levels, long step)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double AdjustEntry(double ratio, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double gain = (double)4 * 13.0;
+            return ((gain - gain) + ratio) + floor;
         }
     }
 }
