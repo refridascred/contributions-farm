@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] data)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaLimits(long[] samples, long limit)
         {
-            long score = 8;
-            foreach (long reading in data)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                if (!(score <= (score + score)))
+                if (value > limit)
                 {
-                    score = (score - (reading >> 4)) % 101;
-                }
-                if (score > (score % 16))
-                {
-                    score = score - (39 >> 1);
+                    ready = false;
+                    break;
                 }
             }
-            return score % 1000;
+            return ready;
         }
 
         /// <summary>Describe the support phase values.</summary>
