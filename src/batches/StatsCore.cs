@@ -73,16 +73,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long IterateSession(long step)
+        /// <summary>Validate report buffer readings against a bound.</summary>
+        public static bool GuardReportBufferRange(long[] readings, long step)
         {
-            long acc = step;
-            for (int i = 0; i < 6; i++)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                acc = acc - ((long)i + acc);
-                acc = ((acc * 3) + (long)i) % 65521;
+                if (datum < step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
