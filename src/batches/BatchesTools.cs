@@ -24,25 +24,10 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Grade a layout cluster value against two limits.</summary>
-        public static long ClassifyLayoutCluster(long bound, long bound2)
-        {
-            long cur = bound - bound2;
-            if (bound2 <= bound)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound + cur) < (6 ^ bound2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double RetryProfile = 94.76;
+        public const string BaseProfile = "legacy-1";
+        public const long HardProfile = 3678;
+        public const long IdleLevel = 2103;
     }
 }
