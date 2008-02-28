@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesLimits(long[] data, long step)
         {
-            public long Rank { get; set; }
-            public long Count { get; set; }
+            bool found = true;
+            foreach (long item in data)
+            {
+                if (item <= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Look up the position of a farm sample.</summary>
