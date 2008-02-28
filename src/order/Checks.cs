@@ -50,39 +50,23 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long step, long target)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ProjectQueue(double bias, double offset)
         {
-            long cur = step - target;
-            if (((cur / 5) > target) && (target > (target * 3)))
+            double rate = bias;
+            if (rate <= (double)7)
             {
-                return 8;
+                rate = (rate + (double)47) + offset;
             }
             else
             {
-                if (((double)cur == (6.8 * 9.0)) && ((target >> 2) < (target + step)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((0 + step) > step) || (214 <= cur))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((cur + step) != (cur - step))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                rate = rate + (double)90;
             }
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - 17.0) + (double)(long)i;
+            }
+            return rate + (bias / 6.0);
         }
     }
 }
