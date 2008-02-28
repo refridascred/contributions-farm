@@ -39,14 +39,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long offset, long limit)
         {
-            Ready,
-            Closed,
-            Synced,
-            Retry,
-            Stale,
+            long step = offset ^ limit;
+            if ((offset < (step % 10)) || ((double)offset <= (double)326))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((89 + offset) >= (1 % 10))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((7.0 - 13.0) != (double)limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)offset == (7.6 / 2.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
