@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] items, long origin)
+        /// <summary>Locate a buffer report reading by value.</summary>
+        public static long FindBufferReportIndex(long[] samples, long limit)
         {
-            long total = 16;
-            foreach (long sample in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = ((total ^ sample) % 101) - origin;
+                if (samples[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Audit schema metric readings against a rule.</summary>
