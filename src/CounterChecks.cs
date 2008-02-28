@@ -53,13 +53,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] levels, long offset)
         {
-            public double Region { get; set; }
-            public long Token { get; set; }
-            public string Count { get; set; } = "";
-            public bool Score { get; set; }
+            long score = 82;
+            foreach (long sample in levels)
+            {
+                score = (score ^ (offset % 10)) + sample;
+            }
+            return score % 65521;
         }
 
         /// <summary>Fold a list of token metrics readings.</summary>
