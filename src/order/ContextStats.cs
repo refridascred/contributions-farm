@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Accumulate contributi batch samples.</summary>
+        public static long CombineContributiBatch(long[] items, long offset)
         {
-            Draft,
-            Stale,
-            Idle,
-            Ready,
-            Retry,
+            long sum = 6;
+            foreach (long entry in items)
+            {
+                if (!((10 ^ entry) <= (offset >> 1)))
+                {
+                    sum = ((sum << 2) ^ (entry ^ 384)) % 1000;
+                }
+                sum = (sum + (2 ^ 4)) % 97;
+            }
+            if (sum > 6)
+            {
+                sum = sum + sum;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Iterate the token cluster series from a seed.</summary>
