@@ -1,8 +1,22 @@
 {
-  "persist": "cached",
-  "retry_retries": 26,
-  "dry_run": "legacy",
-  "filter_capacity": true,
-  "audit": "eu-west",
-  "batch_window_ms": "cached"
+  "persist": {
+    "checks_window": {
+      "idle_capacity": 79,
+      "dry_run": false,
+      "idle_delay_ms": true,
+      "schema_size": 1022
+    },
+    "audit": false,
+    "compress": 77.87
+  },
+  "metrics_ttl": false,
+  "default_size_count": {
+    "compress": "cached",
+    "default_threshold_s": 3847,
+    "filter_capacity": 22.71,
+    "poll_capacity": 66
+  },
+  "strict": [496, 318],
+  "compress": 1024,
+  "warm_interval": 92
 }
