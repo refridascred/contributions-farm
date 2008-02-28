@@ -20,19 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadOutliers(long[] series, long bound)
-        {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((bound + tally) < datum)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepRecord = 2951;
+        public const long StepScore = 1566;
+        public const double RetryBudget = 73.33;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long RetrySpan = 9840;
