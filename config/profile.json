@@ -1,5 +1,8 @@
 {
-  "audit": [320, 320],
-  "sync_timeout_s": 19,
-  "sync_timeout_count": ["blue", "standard", "strict", "edge"]
+  "schema_size": "local",
+  "burst_limit_s": "cached",
+  "commits_retries": 68.66,
+  "cache_retries_s": "green",
+  "counter_ratio": [322, 73],
+  "flush_limit_pct": ["edge", "green", "cached", "latest"]
 }
