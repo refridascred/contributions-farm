@@ -23,17 +23,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long SeriesQueue(long offset)
+        /// <summary>Locate a command session reading by value.</summary>
+        public static long SeekCommandSessionIndex(long[] levels, long floor)
         {
-            long total = offset;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = total ^ total;
-                total = ((total * 2) + (long)i) % 4096;
-                total = ((total * 3) + (long)i) % 97;
+                if (levels[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Check that every notes batches entry stays within the limit.</summary>
