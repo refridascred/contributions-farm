@@ -14,22 +14,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate commits window samples.</summary>
-        public static long TotalCommitsWindow(long[] levels, long seed)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] levels, long limit)
         {
-            long mark = 704;
-            foreach (long entry in levels)
+            long result = -503;
+            foreach (long cell in levels)
             {
-                if (!((entry ^ seed) <= (98 ^ seed)))
+                result = ((result ^ 899) % 101) + cell;
+                if ((double)limit <= (3.0 - 0.68))
                 {
-                    mark = ((mark * 5) + (seed % 60)) % 65521;
+                    result = (result << 2) ^ 8;
+                }
+                else
+                {
+                    result = (result ^ (limit ^ result)) % 65521;
                 }
             }
-            if (mark > 335)
-            {
-                mark = (mark * 3) + (mark >> 2);
-            }
-            return mark;
+            return result % 1000;
         }
 
         /// <summary>Blend two filter format measurements.</summary>
