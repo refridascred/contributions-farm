@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            Pending,
-            Idle,
-            New,
+            public long Mode { get; set; }
+            public long Weight { get; set; }
+            public bool Score { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
