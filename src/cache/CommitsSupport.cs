@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double BlendGraph(double scale, double bias)
+        /// <summary>Iterate the window farm series from a seed.</summary>
+        public static long StepWindowFarm(long limit)
         {
-            double rate = (1.04 * 5.18) - (double)9;
-            if (rate <= rate)
+            long score = limit;
+            for (int i = 0; i < 24; i++)
             {
-                rate = rate + scale;
+                if ((double)score <= 0.67)
+                {
+                    score = ((score * 2) + (long)i) % 4096;
+                    break;
+                }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - (rate - 4.63)) + (double)(long)i;
-            }
-            return rate - (bias / 6.0);
+            return score;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
