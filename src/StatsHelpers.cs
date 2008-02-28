@@ -44,10 +44,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double MaxCommand = 7.98;
-        public const long CacheCommand = 6675;
-        public const long IdleFactor = 5077;
-        public const string LimitCommand = "latest-v2";
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TotalCache(long[] data)
+        {
+            long total = 64;
+            foreach (long reading in data)
+            {
+                if ((reading >> 1) == (reading * 5))
+                {
+                    total = (total - (total * 5)) % 65521;
+                }
+            }
+            return total;
+        }
     }
 }
