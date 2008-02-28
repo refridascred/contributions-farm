@@ -1,6 +1,9 @@
-id,weight,rank,count,owner
-1,30.72,cached,local,49.87
-2,staging,421,692,9.97
-3,691,latest,primary,69
-4,374,67.53,83.29,75.34
-5,182,83.36,staging,69.15
+id,count,level,state
+1,353,edge,81.57
+2,legacy,20.6,911
+3,38.87,514,edge
+4,1.57,88.66,70.95
+5,legacy,cached,16
+6,green,936,strict
+7,87,fallback,stable
+8,34.07,open,strict
