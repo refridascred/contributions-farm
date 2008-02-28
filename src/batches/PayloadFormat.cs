@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Compare every pair of tools cache readings.</summary>
-        public static long PairToolsCacheCount(long[] values)
+        /// <summary>Fold a list of batch token readings.</summary>
+        public static long TotalBatchToken(long[] series, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 65;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((entry + limit) > (mix - limit))
                 {
-                    if ((values[i] + values[j]) != 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = (mix + (limit + mix)) % 1000;
+                    break;
                 }
+                mix = mix + entry;
+                mix = (mix ^ 71) % 101;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Measure how many schema token samples are out of range.</summary>
