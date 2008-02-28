@@ -24,11 +24,19 @@ namespace Common.Utilities
             return rate - (double)640;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseSize = 6754;
-        public const string MinChannel = "strict-edge";
-        public const long CacheSize = 6327;
-        public const long SoftChannel = 4047;
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesHits(long[] data, long offset)
+        {
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (!((offset << 1) <= (count ^ reading)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a editor header.</summary>
         public sealed class EditorHeader
