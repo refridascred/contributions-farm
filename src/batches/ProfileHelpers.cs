@@ -58,11 +58,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftBudget = 4184;
-        public const long HardCounter = 7699;
-        public const double LimitTimeout = 86.76;
-        public const long BurstCounter = 6704;
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
+        {
+            Retry,
+            Stale,
+            Active,
+            Queued,
+            Closed,
+        }
 
         /// <summary>Count the cache editor entries that pass the check.</summary>
         public static long TallyCacheEditorMatches(long[] samples)
