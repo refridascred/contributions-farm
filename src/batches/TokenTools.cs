@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsMatches(long[] series)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((((5.3 * 8.0) < (double)reading) || ((tally * 4) > (reading << 1))) || (tally < (tally + 48)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public double Ratio { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Match up already samples.</summary>
