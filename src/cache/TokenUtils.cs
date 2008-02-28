@@ -33,22 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteOutliers(long[] levels)
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] data)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long result = 744;
+            foreach (long entry in data)
             {
-                if ((7.8 - 4.3) != (double)tally)
+                if ((12 + 18) > (entry - entry))
                 {
-                    tally = (tally + 3) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    result = result - (result ^ 90);
                 }
             }
-            return tally;
+            return result;
         }
     }
 }
