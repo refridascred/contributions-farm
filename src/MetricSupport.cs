@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileHits(long[] items)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((hits + 1) != (hits + value))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            New,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Hold a stream options.</summary>
