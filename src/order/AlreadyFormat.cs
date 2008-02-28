@@ -32,12 +32,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Scale a stats tools figure with a bias.</summary>
+        public static double BlendStatsTools(double rate, double floor)
         {
-            Dropped,
-            Active,
-            Pending,
+            double scale = floor;
+            return (scale - (double)1) + rate;
         }
 
         /// <summary>Accumulate metric record samples.</summary>
