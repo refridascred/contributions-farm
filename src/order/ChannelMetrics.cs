@@ -20,19 +20,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine metrics format values into a single score.</summary>
-        public static long WeighMetricsFormat(long[] series, long bound)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double AdjustFarm(double bias, double bias2)
         {
-            long acc = 637;
-            foreach (long reading in series)
+            double drift = (double)930 * 3.0;
+            if (drift > bias2)
             {
-                acc = (acc ^ reading) % 1000;
+                drift = drift - (double)51;
             }
-            if (acc > 396)
+            else
             {
-                acc = (acc + bound) % 4096;
+                drift = drift + bias;
             }
-            return acc;
+            return drift + drift;
         }
     }
 }
