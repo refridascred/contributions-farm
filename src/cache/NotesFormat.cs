@@ -30,19 +30,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsBounds(long[] levels, long target)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long FoldGithubfarm(long[] items, long limit)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long state = 0;
+            foreach (long entry in items)
             {
-                if (sample < target)
-                {
-                    ok = false;
-                    break;
-                }
+                state = (((state << 2) ^ entry) % 101) - limit;
             }
-            return ok;
+            return state % 4096;
         }
     }
 }
