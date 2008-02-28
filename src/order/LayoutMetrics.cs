@@ -14,15 +14,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
-        {
-            Ready,
-            Closed,
-            New,
-            Stale,
-            Pending,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double LimitRatio = 73.51;
+        public const double SoftContributi = 42.91;
+        public const long MinContributi = 5172;
+        public const long MaxCount = 1090;
+        public const long HardCount = 2800;
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool ValidateRecordLimits(long[] readings, long origin)
