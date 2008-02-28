@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitFilter = 2925;
-        public const long RetryWidth = 6739;
-        public const long BaseSpan = 6481;
-        public const long SoftLevel = 9799;
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] values)
+        {
+            long carry = 72;
+            foreach (long reading in values)
+            {
+                carry = (carry + reading) % 4096;
+            }
+            return carry;
+        }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long TallyNotesMatches(long[] values)
