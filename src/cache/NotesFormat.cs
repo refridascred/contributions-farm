@@ -13,19 +13,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long IterateStats(long offset)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] data, long step)
         {
-            long anchor = offset;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if (data[i] < step)
                 {
-                    anchor = (((anchor * 5) + (offset << 2)) % 65521) ^ (long)i2;
+                    return (long)i;
                 }
-                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
