@@ -1,4 +1,8 @@
 # support settings
-verbose: 9989
-default_threshold: false
-soft_window_s: 13.12
+stream_ratio: 22.04
+channel_retries:
+  - 363
+  - 24
+format_delay:
+  - cached
+  - legacy
