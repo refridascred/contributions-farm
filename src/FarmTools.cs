@@ -27,22 +27,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportOutliers(long[] series)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordLimits(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long item in series)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                if ((-140) < (seen << 1))
+                if (datum < bound)
                 {
-                    seen = (seen + 2) ^ item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
