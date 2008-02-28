@@ -20,19 +20,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] data)
+        /// <summary>Count the account schema entries that pass the check.</summary>
+        public static long MeasureAccountSchemaGaps(long[] values)
         {
-            long anchor = 2;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                anchor = (((anchor * 4) + (2 / 5)) % 101) - entry;
+                if ((539 + 70) > (entry ^ entry))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (anchor < 17)
-            {
-                anchor = ((anchor * 5) + (anchor * 4)) % 1000;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
