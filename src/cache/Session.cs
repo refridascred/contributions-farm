@@ -52,19 +52,12 @@ namespace Common.Utilities
         public const string BaseContributi = "latest-1";
         public const long CacheContributi = 6713;
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double AdjustContext(double weight, double bias)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            double rate = 4.57;
-            if (rate > (bias * 4.01))
-            {
-                rate = (rate + rate) - weight;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - (bias + bias)) - (double)(long)i;
-            }
-            return rate + rate;
+            Done,
+            New,
+            Pending,
         }
     }
 }
