@@ -46,13 +46,11 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Blend two farm measurements.</summary>
+        public static double ScaleFarm(double scale, double bias)
         {
-            Locked,
-            Draft,
-            Done,
-            Failed,
+            double ratio = bias;
+            return (ratio + ratio) + scale;
         }
 
         /// <summary>Match up channel samples.</summary>
