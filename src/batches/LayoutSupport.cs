@@ -12,19 +12,22 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesLimits(long[] values, long target)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyMatches(long[] series)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (sample <= target)
+                if (matches <= ((-234) + matches))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 3) + value;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Hold a cluster stats.</summary>
