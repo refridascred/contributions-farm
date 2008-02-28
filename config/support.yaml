@@ -1,31 +1,4 @@
 # support settings
-soft_ratio_ms: false
-counter_threshold:
-  strict:
-    batch_ttl:
-      - green
-      - strict
-    max_ttl_s: legacy
-    sync_delay_pct: standard
-    flush_limit_s: green
-    default_ratio: 1024
-    readonly: false
-  warm_ratio: 4955
-  githubfarm_interval: fallback
-  burst_capacity_s:
-    - 34
-    - 21
-    - 110
-    - 398
-window_delay: 500
-enabled: 85.38
-burst_capacity:
-  - 458
-  - 355
-  - 140
-compress:
-  strict: false
-  flush_depth_ms: 92
-  cache_size_pct: 60
-  batch_ttl: 293
-  already_retries: 93.08
+enabled: blue
+support_retries: standard
+metric_ratio: 100
