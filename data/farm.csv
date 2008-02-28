@@ -1,10 +1,6 @@
-id,level,owner,rank
-1,98.57,468,75.46
-2,primary,340,blue
-3,983,720,613
-4,28,19.03,primary
-5,strict,611,94.09
-6,506,standard,standard
-7,245,88.0,standard
-8,632,623,6.7
-9,81.06,755,edge
+id,score,label,state
+1,legacy,legacy,primary
+2,22.04,stable,90.5
+3,248,442,primary
+4,606,725,449
+5,blue,primary,blue
