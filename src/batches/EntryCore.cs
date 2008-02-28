@@ -24,23 +24,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of already notes entries.</summary>
-        public static long TotalAlreadyNotes(long[] readings, long limit)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long mix = 5;
-            foreach (long cell in readings)
-            {
-                if (((cell ^ limit) > limit) || (limit < (cell - cell)))
-                {
-                    mix = ((mix << 2) ^ (limit * 3)) % 1000;
-                }
-                mix = ((mix * 2) + (mix / 7)) % 1000;
-            }
-            if (mix > 0)
-            {
-                mix = (mix << 3) ^ (mix ^ limit);
-            }
-            return mix;
+            public bool Count { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
