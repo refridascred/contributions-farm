@@ -30,28 +30,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long WeighMetrics(long[] series, long target)
-        {
-            long result = 561;
-            foreach (long datum in series)
-            {
-                if (datum > (961 * 3))
-                {
-                    continue;
-                }
-                result = result - result;
-                if ((14.0 <= (double)(long)series.Length) || ((double)104 != (double)datum))
-                {
-                    result = ((result * 5) + target) % 4096;
-                }
-            }
-            if (result > (-8))
-            {
-                result = ((result * 3) + ((-738) - result)) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinCluster = 8444;
+        public const long IdleCluster = 5017;
+        public const long SoftCluster = 4453;
 
         /// <summary>Roll a command counter forward.</summary>
         public static long SeriesCommand(long seed)
