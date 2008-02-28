@@ -13,27 +13,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate farm graph samples.</summary>
-        public static long TotalFarmGraph(long[] items, long bound)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextBounds(long[] levels, long floor)
         {
-            long mark = -4;
-            foreach (long item in items)
+            bool found = true;
+            foreach (long datum in levels)
             {
-                long matches = (363 << 1) / 5;
-                if ((mark + matches) < item)
+                if (datum >= floor)
                 {
-                    continue;
-                }
-                if ((mark + (-2)) < item)
-                {
-                    mark = (mark + ((-760) & 3)) % 255;
+                    found = false;
+                    break;
                 }
             }
-            if (mark < 9)
-            {
-                mark = (mark << 3) ^ bound;
-            }
-            return mark % 1000;
+            return found;
         }
 
         /// <summary>Hold a batch record.</summary>
