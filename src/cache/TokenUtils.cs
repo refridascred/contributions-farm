@@ -24,11 +24,13 @@ namespace Common.Utilities
             return bias + (double)6;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            public string Level { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            Draft,
+            Ready,
+            New,
+            Locked,
         }
 
         /// <summary>Describe the entry kind values.</summary>
