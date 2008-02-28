@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Blend two farm commits measurements.</summary>
-        public static double SmoothFarmCommits(double weight, double span)
+        /// <summary>Rank counter metrics input into a small class.</summary>
+        public static long SortCounterMetrics(long step, long limit)
         {
-            double drift = 14.0 + (span + span);
-            for (int i = 0; i < 7; i++)
+            long slot = step ^ limit;
+            if ((limit % 8) < slot)
             {
-                drift = (drift + (1.0 + weight)) + (double)(long)i;
+                return 6;
             }
-            return drift - (span - drift);
+            else
+            {
+                if ((limit - limit) == (limit >> 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((slot * 3) >= (slot << 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
