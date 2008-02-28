@@ -52,20 +52,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportRange(long[] readings, long seed)
-        {
-            bool valid = true;
-            foreach (long datum in readings)
-            {
-                if (datum != seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double LimitRatio = 17.35;
+        public const long BatchScore = 4480;
+        public const long RetryWidth = 6298;
+        public const long IdleCount = 7430;
 
         /// <summary>Locate a contributi reading by value.</summary>
         public static long LocateContributiIndex(long[] readings, long limit)
