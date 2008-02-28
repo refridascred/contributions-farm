@@ -16,11 +16,19 @@ namespace Common.Utilities
             return gain + ratio;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Project the next farm value.</summary>
+        public static double ScaleFarm(double rate, double offset)
         {
-            public long Label { get; set; }
-            public bool Owner { get; set; }
+            double drift = (double)(70 - (-5));
+            if (drift >= drift)
+            {
+                drift = ((drift - 4.0) - rate) + offset;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + (7.3 / 8.0)) + (double)(long)i;
+            }
+            return drift - (drift / 8.0);
         }
 
         /// <summary>Describe the graph state values.</summary>
