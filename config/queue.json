@@ -1,12 +1,6 @@
 {
-  "verbose": "fallback",
-  "flush_ttl_pct": {
-    "tools_window": "strict",
-    "burst_size_count": 60,
-    "poll_ttl": 30
-  },
-  "persist": "strict",
-  "batch_timeout": false,
-  "dry_run": 100,
-  "flush_limit": true
+  "window_delay": 500,
+  "payload_ttl": 11.98,
+  "cache_ttl_ms": 80.34,
+  "compress": 67
 }
