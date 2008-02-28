@@ -57,14 +57,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Blend two layout payload measurements.</summary>
+        public static double SmoothLayoutPayload(double scale, double floor)
         {
-            Active,
-            Done,
-            Retry,
-            New,
-            Dropped,
+            double gain = (floor + floor) * 0.3;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = ((gain + (gain / 8.0)) + (double)(long)i) - scale;
+            }
+            return gain - (gain * 8.97);
         }
     }
 }
