@@ -18,12 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LookupToolsIndex(long[] data, long limit)
         {
-            Locked,
-            Closed,
-            Queued,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Combine editor metrics values into a single score.</summary>
