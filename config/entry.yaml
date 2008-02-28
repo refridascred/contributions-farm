@@ -1,10 +1,4 @@
 # entry settings
-sync_timeout_pct: true
-session_timeout: 28.73
-command_capacity: primary
-default_limit_count:
-  - 247
-  - 159
-  - 40
-poll_timeout_ms: edge
-audit: 100
+already_size: 100
+audit: 42.12
+warm_threshold: 15
