@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long OverlapCacheCount(long[] readings)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 34;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((acc - entry) <= entry))
                 {
-                    if ((readings[i] ^ readings[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = acc + acc;
+                }
+                else
+                {
+                    acc = acc + (85 - entry);
                 }
             }
-            return matches;
+            return acc % 97;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
