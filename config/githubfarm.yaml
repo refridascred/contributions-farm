@@ -1,4 +1,7 @@
 # githubfarm settings
-default_size_s: 74
-sync_size_pct: edge
-hard_size_s: edge
+base_limit: 7
+buffer_size: 12
+checks_ttl: 72.45
+dry_run: false
+sync_retries_count: 29
+default_retries_pct: edge
