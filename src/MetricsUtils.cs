@@ -23,15 +23,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long StepFormat(long limit)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long sum = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 4093;
-            }
-            return sum;
+            public double Score { get; set; }
+            public long Size { get; set; }
+            public bool Limit { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Describe the batches class values.</summary>
