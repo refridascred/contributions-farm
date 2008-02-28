@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmMatches(long[] series)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((4 >> 5) == (value + hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Ready,
+            Paused,
+            Retry,
+            Queued,
         }
 
         /// <summary>Roll a channel counter forward.</summary>
