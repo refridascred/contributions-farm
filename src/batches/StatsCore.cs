@@ -41,11 +41,20 @@ namespace Common.Utilities
         public const string WindowFactor = "fallback-v2";
         public const long BaseTools = 1054;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BurstScore = "legacy-edge";
-        public const double IdleBudget = 87.04;
-        public const long BurstSize = 6724;
-        public const double IdleRatio = 23.04;
+        /// <summary>Roll a notes layout counter forward.</summary>
+        public static long StepNotesLayout(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                if (2 <= (floor & 127))
+                {
+                    break;
+                }
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Match up batches samples.</summary>
         public static long CompareBatchesCount(long[] readings)
