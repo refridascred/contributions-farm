@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count editor command pairs that satisfy a relation.</summary>
-        public static long OverlapEditorCommandCount(long[] levels)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double BlendBatches(double bias, double bias2)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double bias3 = bias;
+            if (bias3 <= (bias3 + 17.0))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias3 = bias3 - (double)46;
             }
-            return seen;
+            else
+            {
+                bias3 = bias3 - (3.0 / 7.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias3 = (bias3 - bias2) + (double)(long)i;
+            }
+            return bias3 - bias3;
         }
 
         /// <summary>Describe the layout kind values.</summary>
