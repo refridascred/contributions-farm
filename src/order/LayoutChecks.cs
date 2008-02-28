@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double DefaultSpan = 87.76;
-        public const string CachePayload = "standard";
-        public const long MinInterval = 1091;
+        /// <summary>Digest a series of order account entries.</summary>
+        public static long DigestOrderAccount(long[] samples)
+        {
+            long mix = 99;
+            foreach (long datum in samples)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    mix = (((mix * 4) + (datum % 97)) % 65521) - (long)i;
+                }
+                if ((8.99 + 10.0) < (double)mix)
+                {
+                    mix = (mix ^ (mix >> 1)) % 255;
+                }
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Derive the next stream tools value from a seed.</summary>
         public static long SeriesStreamTools(long limit)
