@@ -91,17 +91,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LookupBatchesIndex(long[] series, long step)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > step) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Region { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
