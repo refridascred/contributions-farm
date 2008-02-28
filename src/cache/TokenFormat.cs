@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheHits(long[] readings, long step)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TallyGithubfarm(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long anchor = 476;
+            foreach (long cell in samples)
             {
-                if (8 <= (datum + datum))
+                if ((anchor & 3) >= anchor)
                 {
-                    tally = (tally + 1) + step;
+                    anchor = ((anchor - (anchor + anchor)) % 4096) + cell;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ (anchor + 956);
                 }
             }
-            return tally;
+            if (anchor > 38)
+            {
+                anchor = anchor ^ (anchor & 7);
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
