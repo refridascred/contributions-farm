@@ -1,7 +1,4 @@
 # support settings
-poll_timeout_ms: stable
-retry_delay: legacy
-hard_capacity_ms: fallback
-base_depth: 27
-context_timeout: latest
-sync_window_s: 54.79
+persist: 31
+base_timeout: 50.3
+warm_limit_pct: standard
