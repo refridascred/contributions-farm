@@ -18,19 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit schema metric readings against a rule.</summary>
-        public static long CountSchemaMetricHits(long[] readings)
-        {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((double)seen == (4.0 * 1.1))
-                {
-                    seen = (seen + 2) ^ item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepStats = 8378;
+        public const long IdleStats = 682;
+        public const double HardFactor = 30.62;
 
         /// <summary>Project the next command value.</summary>
         public static double SmoothCommand(double ratio, double bias)
