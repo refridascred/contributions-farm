@@ -19,31 +19,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long seed, long target)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            if ((10.0 - 13.0) < (20.0 / 5.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if (target <= (seed * 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target + seed) >= seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Failed,
+            Locked,
+            Queued,
         }
 
         /// <summary>Rank tools counter input into a small class.</summary>
