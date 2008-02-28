@@ -35,15 +35,22 @@ namespace Common.Utilities
         public const long IdleBudget = 4032;
         public const long MinRecord = 1659;
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long StepMetrics(long origin)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] data)
         {
-            long result = origin;
-            for (int i = 0; i < 22; i++)
+            long score = 362;
+            foreach (long entry in data)
             {
-                result = ((result * 5) + (long)i) % 97;
+                if ((score + 9) > (score + entry))
+                {
+                    score = score ^ 801;
+                }
             }
-            return result;
+            if (score < 8)
+            {
+                score = ((score << 2) ^ (score / 7)) % 255;
+            }
+            return score;
         }
     }
 }
