@@ -43,19 +43,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate account commits readings against a bound.</summary>
-        public static bool ValidateAccountCommitsLimits(long[] items, long floor)
+        /// <summary>Adjust a farm contributi reading.</summary>
+        public static double AdjustFarmContributi(double rate, double bias)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            double rate2 = bias * 9.5;
+            if (rate2 >= 5.73)
             {
-                if (datum > floor)
-                {
-                    valid = false;
-                    break;
-                }
+                rate2 = (rate2 + (rate2 / 5.0)) + rate;
             }
-            return valid;
+            return rate2 + bias;
         }
 
         /// <summary>Project the next batches value.</summary>
