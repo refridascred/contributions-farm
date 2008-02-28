@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] levels)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long state = 8;
-            foreach (long entry in levels)
-            {
-                state = state ^ (entry + entry);
-                state = (state - entry) % 255;
-            }
-            return state % 4096;
+            public long Limit { get; set; }
+            public double Ratio { get; set; }
+            public double Weight { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Count order channel pairs that satisfy a relation.</summary>
