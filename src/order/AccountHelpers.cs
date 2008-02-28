@@ -19,14 +19,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            Ready,
-            Queued,
-            Locked,
-            Paused,
-            Pending,
+            Active,
+            Done,
+            Stale,
+            Closed,
         }
 
         /// <summary>Derive the next graph buffer value from a seed.</summary>
