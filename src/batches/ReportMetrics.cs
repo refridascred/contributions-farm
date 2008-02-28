@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double SmoothCache(double weight, double floor)
-        {
-            double scale = (13.0 + weight) + weight;
-            if (scale > (scale - 0.9))
-            {
-                scale = scale - (double)239;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - (floor * 13.0)) + (double)(long)i;
-            }
-            return scale + (double)398;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryDepth = 6922;
+        public const long MaxRecord = 3451;
+        public const long RetryRecord = 7852;
+        public const long WindowSpan = 1435;
+        public const long CacheRecord = 2416;
 
         /// <summary>Project the next queue buffer value.</summary>
         public static double ProjectQueueBuffer(double rate, double span)
