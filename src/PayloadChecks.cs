@@ -27,20 +27,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiRange(long[] series, long bound)
-        {
-            bool ready = true;
-            foreach (long reading in series)
-            {
-                if (reading <= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long StepRecord = 8211;
+        public const long HardLevel = 4792;
+        public const long CacheRecord = 7832;
+        public const double WindowRecord = 71.81;
 
         /// <summary>Define context limits and defaults.</summary>
         public const double CacheBudget = 89.14;
