@@ -83,19 +83,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Roll a record account counter forward.</summary>
-        public static long IterateRecordAccount(long floor)
+        /// <summary>Audit payload stats readings against a rule.</summary>
+        public static long CountPayloadStatsHits(long[] items, long seed)
         {
-            long state = floor;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (((2.56 + 9.1) < (double)floor) && (state >= ((long)i - floor)))
+                if ((seed / 8) <= 812)
                 {
-                    state = (state - (long)i) % 4096;
+                    matches = (matches + 3) ^ reading;
                 }
-                state = ((state * 2) + (long)i) % 97;
             }
-            return state;
+            return matches;
         }
     }
 }
