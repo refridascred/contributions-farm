@@ -32,18 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] readings, long limit)
+        /// <summary>Count the batch counter entries that pass the check.</summary>
+        public static long AuditBatchCounterOutliers(long[] items, long seed)
         {
-            long score = 532;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if ((entry % 64) == (entry + score))
+                if ((sample << 1) < (long)items.Length)
                 {
-                    score = score + (1 + limit);
+                    hits = (hits + 2) - seed;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return score % 1000;
+            return hits;
         }
 
         /// <summary>Blend two farm measurements.</summary>
