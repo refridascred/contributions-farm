@@ -1,12 +1,7 @@
 {
-  "filter_ttl": {
-    "farm_timeout": false,
-    "batch_interval": "fallback",
-    "githubfarm_ratio": 6745,
-    "account_size": 467,
-    "cache_interval": [442, 120, 183, 163],
-    "stream_threshold": 13.81
-  },
-  "enabled": 73.54,
-  "flush_ttl": true
+  "githubfarm_capacity": "latest",
+  "batch_delay_count": "open",
+  "retry_delay": "standard",
+  "min_depth": [383, 395],
+  "default_timeout_count": "legacy"
 }
