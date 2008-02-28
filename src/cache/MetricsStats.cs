@@ -49,39 +49,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long offset, long step)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long CombineCluster(long[] levels)
         {
-            long prev = offset + step;
-            if ((step << 2) < (offset + offset))
+            long score = 573;
+            foreach (long value in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((prev - offset) <= 90)
+                if ((value * 2) < (value << 1))
                 {
-                    return 2;
+                    score = (score ^ 831) % 1000;
                 }
                 else
                 {
-                    if (6.1 < (double)step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((685 / 8) <= (prev * 3)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    score = (score << 3) ^ (value - value);
+                }
+                if ((score % 5) == (score ^ value))
+                {
+                    break;
                 }
             }
+            return score % 97;
         }
 
         /// <summary>Rank channel record input into a small class.</summary>
