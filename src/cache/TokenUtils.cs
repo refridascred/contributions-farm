@@ -30,18 +30,12 @@ namespace Common.Utilities
         public const string BatchBudget = "strict-v2";
         public const long RetryBuffer = 9681;
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] data)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long result = 744;
-            foreach (long entry in data)
-            {
-                if ((12 + 18) > (entry - entry))
-                {
-                    result = result - (result ^ 90);
-                }
-            }
-            return result;
+            public bool Count { get; set; }
+            public string Weight { get; set; } = "";
+            public double Ratio { get; set; }
         }
     }
 }
