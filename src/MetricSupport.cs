@@ -19,11 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultFilter = 3305;
-        public const long WindowFilter = 8493;
-        public const double MinLevel = 12.47;
-        public const long CacheInterval = 4287;
+        /// <summary>Audit schema metric readings against a rule.</summary>
+        public static long CountSchemaMetricHits(long[] readings)
+        {
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((double)seen == (4.0 * 1.1))
+                {
+                    seen = (seen + 2) ^ item;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the report kind values.</summary>
         public enum ReportKind
