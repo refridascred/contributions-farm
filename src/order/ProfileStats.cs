@@ -59,12 +59,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
-        {
-            Locked,
-            Failed,
-            Dropped,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetrySize = 7854;
+        public const long BurstTimeout = 7811;
+        public const double MinWidth = 97.64;
     }
 }
