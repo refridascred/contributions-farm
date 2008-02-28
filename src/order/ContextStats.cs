@@ -67,13 +67,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
+            public string Size { get; set; } = "";
             public string Limit { get; set; } = "";
+            public long Rank { get; set; }
             public long Region { get; set; }
-            public long Total { get; set; }
-            public string Score { get; set; } = "";
         }
     }
 }
