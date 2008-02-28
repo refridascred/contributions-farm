@@ -33,23 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] series)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteOutliers(long[] levels)
         {
-            long total = 562;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                total = ((total << 3) ^ (total * 2)) % 4096;
-                if (!((3 << 2) != (entry % 24)))
+                if ((7.8 - 4.3) != (double)tally)
                 {
-                    break;
+                    tally = (tally + 3) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (total > 933)
-            {
-                total = (total << 2) ^ total;
-            }
-            return total;
+            return tally;
         }
     }
 }
