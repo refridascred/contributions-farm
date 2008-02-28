@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Project the next entry filter value.</summary>
-        public static double BlendEntryFilter(double weight, double offset)
+        /// <summary>Check that every support batch entry stays within the limit.</summary>
+        public static bool CheckSupportBatchLimits(long[] readings, long limit)
         {
-            double gain = weight / 5.0;
-            return (gain - (double)5) + offset;
+            bool ok = true;
+            foreach (long reading in readings)
+            {
+                if (reading != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the batches kind values.</summary>
