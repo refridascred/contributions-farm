@@ -46,19 +46,15 @@ namespace Common.Utilities
         public const string RetryCommand = "standard-v2";
         public const long MinSize = 312;
 
-        /// <summary>Project the next stream value.</summary>
-        public static double SmoothStream(double bias, double span)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double BlendCommits(double ratio, double bias)
         {
-            double load = span;
-            if (load >= (double)35)
+            double drift = bias;
+            for (int i = 0; i < 4; i++)
             {
-                load = (load + span) + bias;
+                drift = ((drift - (double)8) + (double)(long)i) - ratio;
             }
-            else
-            {
-                load = load - (load - 7.83);
-            }
-            return load + (1.3 * 0.4);
+            return drift + bias;
         }
     }
 }
