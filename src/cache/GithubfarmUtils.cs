@@ -28,22 +28,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the batch cache entries that pass the check.</summary>
-        public static long AuditBatchCacheMatches(long[] levels, long step)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryGaps(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if ((12.0 * 5.0) <= (double)step)
+                if ((item % 3) != (item << 2))
                 {
-                    tally = (tally + 1) ^ reading;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Count the schema checks entries that pass the check.</summary>
