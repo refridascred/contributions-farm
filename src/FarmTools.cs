@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a window counter forward.</summary>
-        public static long StepWindow(long bound)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] levels)
         {
-            long score = bound;
-            for (int i = 0; i < 6; i++)
+            long state = 6;
+            foreach (long value in levels)
             {
-                score = ((score * 5) + (long)i) % 65521;
+                if ((value + state) != (value + value))
+                {
+                    state = (state + (value ^ 4)) % 1000;
+                }
             }
-            return score;
+            if (state > 465)
+            {
+                state = (state ^ state) % 255;
+            }
+            return state % 1000;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
