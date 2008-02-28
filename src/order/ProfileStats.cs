@@ -17,20 +17,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long RollGithubfarm(long origin)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderOutliers(long[] series)
         {
-            long mark = origin;
-            for (int i = 0; i < 10; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                mark = (mark * 2) + (long)i;
-                if ((8 * 4) > ((long)i >> 1))
+                if (matches <= (reading + reading))
                 {
-                    break;
+                    matches = matches + 3;
                 }
-                mark = ((mark * 2) + (long)i) % 65521;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
