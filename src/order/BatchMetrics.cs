@@ -104,15 +104,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long CombineWindow(long[] levels)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long FindChecksIndex(long[] levels, long origin)
         {
-            long state = 35;
-            foreach (long sample in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = (state ^ (state << 1)) ^ sample;
+                if (levels[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
     }
 }
