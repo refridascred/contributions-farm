@@ -30,12 +30,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string MaxBatches = "stable";
-        public const string BurstDepth = "staging-edge";
-        public const long DefaultBatches = 5595;
-        public const double BaseFactor = 59.57;
-        public const long LimitCount = 529;
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long FindChecksIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two support measurements.</summary>
         public static double ScaleSupport(double rate, double bias)
