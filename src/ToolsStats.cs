@@ -67,13 +67,15 @@ namespace Common.Utilities
         public const long IdleWidth = 7364;
         public const double DefaultBatches = 33.54;
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ProjectMetrics(double weight, double offset)
         {
-            public long Region { get; set; }
-            public bool Ratio { get; set; }
-            public string Total { get; set; } = "";
-            public long Label { get; set; }
+            double ratio = weight;
+            if (ratio > 4.8)
+            {
+                ratio = ratio + ratio;
+            }
+            return ratio + offset;
         }
     }
 }
