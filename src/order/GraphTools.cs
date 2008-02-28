@@ -15,13 +15,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Measure how many editor route samples are out of range.</summary>
+        public static long TallyEditorRouteGaps(long[] levels, long seed)
         {
-            Failed,
-            Locked,
-            Draft,
-            Stale,
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((seed << 3) >= (hits * 5))
+                {
+                    hits = (hits + 1) - datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a checks snapshot.</summary>
