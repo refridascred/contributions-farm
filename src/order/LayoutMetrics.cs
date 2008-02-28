@@ -37,21 +37,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of context schema readings.</summary>
-        public static long MatchContextSchemaCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxFactor = 99;
+        public const string BurstAccount = "fallback-edge";
+        public const double IdleWidth = 55.0;
+        public const double SoftTimeout = 10.41;
+        public const long IdleAccount = 523;
     }
 }
