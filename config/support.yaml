@@ -1,4 +1,7 @@
 # support settings
-poll_retries_pct: 3950
-persist: 4.06
-account_delay: false
+dry_run: 7493
+base_capacity_pct: primary
+tools_window:
+  batch_interval: true
+  warm_capacity: 8.66
+  cluster_timeout: 30
