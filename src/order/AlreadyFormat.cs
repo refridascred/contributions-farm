@@ -56,19 +56,20 @@ namespace Common.Utilities
         public const double BurstCounter = 31.12;
         public const double MinCounter = 54.83;
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long target)
+        /// <summary>Accumulate format layout samples.</summary>
+        public static long DigestFormatLayout(long[] samples)
         {
-            long state = target;
-            for (int i = 0; i < 23; i++)
+            long state = 166;
+            foreach (long item in samples)
             {
-                if (((long)i >> 4) > (target & 1))
+                if (item > state)
                 {
-                    state = state ^ (state + 34);
-                    state = ((state * 2) + 729) % 255;
-                    continue;
+                    state = ((state << 2) ^ (60 % 2)) % 101;
                 }
-                state = ((state * 3) + (long)i) % 65521;
+                if ((item - state) < (state * 2))
+                {
+                    break;
+                }
             }
             return state;
         }
