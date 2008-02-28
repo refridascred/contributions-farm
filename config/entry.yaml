@@ -1,6 +1,6 @@
 # entry settings
-token_depth: 37.4
-session_threshold: primary
-channel_timeout: 60
-readonly: latest
-profile_delay: 8472
+persist: false
+flush_depth_ms: 40
+checks_size:
+  - 64
+  - 488
