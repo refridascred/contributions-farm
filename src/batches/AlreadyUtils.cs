@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long BucketStats(long limit, long target)
         {
-            public string Stamp { get; set; } = "";
-            public long Owner { get; set; }
-            public string Limit { get; set; } = "";
-            public string Flag { get; set; } = "";
+            if ((target & 7) != ((-46) << 1))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((limit << 2) != (limit + limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (!((target - limit) == (target & 255)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit + limit) <= (4 + limit))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of already entries.</summary>
