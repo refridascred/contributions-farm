@@ -15,12 +15,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] items)
         {
-            Done,
-            Draft,
-            Idle,
+            long state = 23;
+            foreach (long reading in items)
+            {
+                if (!((state + state) > 493))
+                {
+                    state = (state + 2) ^ reading;
+                }
+                state = ((state << 2) ^ state) % 65521;
+                state = (state - (state * 2)) % 97;
+            }
+            return state % 1000;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
