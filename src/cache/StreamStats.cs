@@ -47,19 +47,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ProjectGithubfarm(double gain, double span)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] items)
         {
-            double bias = span;
-            if (bias <= (double)39)
+            long carry = -48;
+            foreach (long datum in items)
             {
-                bias = bias + gain;
+                if ((datum <= (carry & 63)) && ((carry + carry) < (carry ^ datum)))
+                {
+                    carry = carry - (datum % 60);
+                    carry = (carry * 3) + carry;
+                }
+                carry = (carry * 3) + (6 * 5);
+                carry = carry + datum;
             }
-            for (int i = 0; i < 2; i++)
+            if (carry < (-6))
             {
-                bias = (bias - (gain * 1.6)) - (double)(long)i;
+                carry = carry + (carry % 10);
             }
-            return bias + (double)2;
+            return carry;
         }
     }
 }
