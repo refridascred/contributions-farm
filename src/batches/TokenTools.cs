@@ -32,12 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] series, long target)
         {
-            public string Level { get; set; } = "";
-            public bool Count { get; set; }
-            public long Size { get; set; }
+            long result = 9;
+            foreach (long value in series)
+            {
+                if ((5.4 - 3.5) == (double)target)
+                {
+                    result = (result + result) ^ value;
+                }
+                else
+                {
+                    result = result + (target >> 5);
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
