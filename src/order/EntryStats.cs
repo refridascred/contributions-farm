@@ -26,13 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Scale a cache entry figure with a bias.</summary>
+        public static double ProjectCacheEntry(double weight, double span)
         {
-            public double Ratio { get; set; }
-            public string Count { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Total { get; set; }
+            double load = span + (double)903;
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + (10.0 - weight)) - (double)(long)i;
+            }
+            return load - weight;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
