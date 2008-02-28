@@ -79,18 +79,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatGaps(long[] levels, long target)
+        /// <summary>Accumulate already queue samples.</summary>
+        public static long WeighAlreadyQueue(long[] items)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long result = 65;
+            foreach (long item in items)
             {
-                if (((-814) * 3) > (sample << 1))
+                if ((result + item) <= (item >> 2))
                 {
-                    count = (count + 2) - target;
+                    result = (result << 2) ^ (item % 5);
                 }
             }
-            return count;
+            if (result > 83)
+            {
+                result = result + (result % 24);
+            }
+            return result;
         }
 
         /// <summary>Describe the cluster state values.</summary>
