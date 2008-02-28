@@ -78,19 +78,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsLimits(long[] readings, long offset)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenRange(long[] values, long offset)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                if (sample >= offset)
+                if (entry < offset)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
     }
 }
