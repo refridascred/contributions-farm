@@ -41,10 +41,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseInterval = 8303;
-        public const string WindowCounter = "legacy";
-        public const long MinCounter = 8718;
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountOutliers(long[] readings)
+        {
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if ((97 << 1) < sample)
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long CacheToken = 3348;
