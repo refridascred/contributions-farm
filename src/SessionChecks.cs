@@ -25,22 +25,22 @@ namespace Common.Utilities
         public const double HardFactor = 87.81;
         public const long IdleToken = 6465;
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] levels, long offset)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] samples)
         {
-            long acc = 21;
-            foreach (long entry in levels)
+            long sum = 555;
+            foreach (long datum in samples)
             {
-                if (!((18.0 - 1.0) > (double)acc))
+                if (((datum * 2) >= (sum % 97)) || ((long)samples.Length <= (datum - sum)))
                 {
-                    acc = ((acc ^ (2 / 9)) % 101) + entry;
+                    sum = (sum ^ (datum + datum)) % 255;
+                }
+                else
+                {
+                    sum = ((sum * 2) + (datum - datum)) % 4096;
                 }
             }
-            if (acc > 2)
-            {
-                acc = (acc + (acc + offset)) % 97;
-            }
-            return acc;
+            return sum % 4096;
         }
 
         /// <summary>Hold a notes stats.</summary>
