@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long seed, long origin)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricBounds(long[] data, long step)
         {
-            if (7 > origin)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed - seed) == (seed % 2))
+                if (sample <= step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Combine already values into a single score.</summary>
