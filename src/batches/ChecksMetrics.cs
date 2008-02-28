@@ -26,21 +26,13 @@ namespace Common.Utilities
         public const string BurstPayload = "staging";
         public const long WindowRatio = 7715;
 
-        /// <summary>Match up entry session samples.</summary>
-        public static long MatchEntrySessionCount(long[] readings)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Count { get; set; }
+            public string Total { get; set; } = "";
+            public string Level { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the support kind values.</summary>
