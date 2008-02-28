@@ -88,17 +88,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first already command entry that matches the target.</summary>
-        public static long FindAlreadyCommandIndex(long[] items, long target)
+        /// <summary>Match up farm samples.</summary>
+        public static long MatchFarmCount(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (items[i] > target)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] + samples[j]) == 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
