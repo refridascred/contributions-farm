@@ -30,19 +30,11 @@ namespace Common.Utilities
             return rate - (bias * 4.85);
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long RollGithubfarm(long limit)
-        {
-            long mark = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                if (((long)i + 141) >= ((long)i - 225))
-                {
-                    mark = mark + (mark - 719);
-                }
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double LimitAccount = 7.58;
+        public const long StepAccount = 2088;
+        public const long BaseAccount = 9715;
+        public const long CacheAccount = 3;
+        public const double BurstSize = 57.87;
     }
 }
