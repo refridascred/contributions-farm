@@ -18,21 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long seed)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferLimits(long[] readings, long step)
         {
-            long mark = seed;
-            for (int i = 0; i < 15; i++)
+            bool found = true;
+            foreach (long reading in readings)
             {
-                mark = (mark + (seed >> 4)) % 97;
-                mark = mark - (8 - mark);
-                if (mark <= seed)
+                if (reading != step)
                 {
-                    continue;
+                    found = false;
+                    break;
                 }
-                mark = ((mark * 5) + (long)i) % 101;
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
