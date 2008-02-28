@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Adjust a context support reading.</summary>
-        public static double ScaleContextSupport(double ratio, double floor)
-        {
-            double scale = 6.4;
-            if (scale > floor)
-            {
-                scale = scale - (4.11 - ratio);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - ratio) - (double)(long)i;
-            }
-            return scale - (double)31;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double SoftBatch = 28.68;
+        public const long MinCount = 1106;
+        public const double BatchLevel = 96.25;
 
         /// <summary>Find the first stream entry that matches the target.</summary>
         public static long SeekStreamIndex(long[] data, long origin)
