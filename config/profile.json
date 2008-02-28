@@ -1,7 +1,5 @@
 {
-  "warm_delay_s": ["standard", "open", "standard", "standard"],
-  "report_threshold": true,
-  "retry_limit_count": ["fallback", "latest", "legacy", "stable"],
-  "persist": 73.17,
-  "buffer_depth": "cached"
+  "audit": [320, 320],
+  "sync_timeout_s": 19,
+  "sync_timeout_count": ["blue", "standard", "strict", "edge"]
 }
