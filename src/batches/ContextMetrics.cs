@@ -67,12 +67,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
-        {
-            public long Token { get; set; }
-            public double Limit { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double HardLayout = 6.27;
+        public const long BatchDepth = 355;
+        public const double BatchScore = 26.85;
+        public const string MinFactor = "primary-edge";
     }
 }
