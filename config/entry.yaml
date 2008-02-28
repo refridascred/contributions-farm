@@ -1,31 +1,18 @@
 # entry settings
-queue_window: 1024
-editor_ratio:
-  warm_window_ms: 3056
-  layout_retries: 5433
-  cache_capacity_ms: staging
-  max_capacity_s: strict
-soft_limit_s:
-  cache_threshold: blue
-  counter_capacity: 11
-  poll_ratio: true
-  min_threshold_ms: true
-  retry_limit:
-    metric_limit: 1199
-    persist: cached
-    context_ratio: 93
-sync_window: latest
-batch_limit: 3237
-cache_threshold_pct:
-  cache_ratio: 61.1
-  dry_run: 1.68
-  warm_ratio: false
-  base_limit: 1024
-  soft_interval_pct: 94.02
-  hard_capacity_pct:
-    soft_limit_s: 86
-    idle_threshold:
-      - primary
-      - strict
-      - fallback
-    min_size_pct: 8.59
+dry_run:
+  - fallback
+  - primary
+  - green
+  - eu-west
+verbose: false
+compress:
+  - 439
+  - 139
+  - 15
+  - 405
+sync_capacity:
+  - edge
+  - edge
+  - latest
+  - cached
+max_ttl_ms: 55.68
