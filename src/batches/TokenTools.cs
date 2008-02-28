@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank command session input into a small class.</summary>
-        public static long GradeCommandSession(long origin, long offset)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutBounds(long[] series, long seed)
         {
-            if ((origin + offset) == (offset + origin))
+            bool found = true;
+            foreach (long value in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)origin <= (8.74 * 8.6))
+                if (value >= seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (314 >= (offset >> 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Match up already samples.</summary>
