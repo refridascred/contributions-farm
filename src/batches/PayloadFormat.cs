@@ -52,12 +52,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            Stale,
-            Queued,
-            Dropped,
+            Locked,
+            Ready,
+            Active,
+            Idle,
         }
     }
 }
