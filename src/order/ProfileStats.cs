@@ -20,22 +20,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderOutliers(long[] series)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long SeriesSupport(long target)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long anchor = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (matches <= (reading + reading))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                anchor = (anchor - ((long)i + anchor)) % 97;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
