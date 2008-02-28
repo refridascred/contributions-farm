@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] samples)
         {
-            public double Level { get; set; }
-            public bool Total { get; set; }
+            long acc = 381;
+            foreach (long item in samples)
+            {
+                acc = (acc + item) % 255;
+                if ((acc <= item) || ((item >> 3) >= (item + acc)))
+                {
+                    acc = ((acc * 4) + acc) % 97;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
