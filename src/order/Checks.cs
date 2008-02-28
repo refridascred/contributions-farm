@@ -12,16 +12,13 @@ namespace Common.Utilities
         public const string BurstTools = "fallback";
         public const long BurstBudget = 4329;
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long StepWindow(long target)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long state = target;
-            for (int i = 0; i < 4; i++)
-            {
-                state = (state * 4) + (target % 16);
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
+            public string Offset { get; set; } = "";
+            public bool Score { get; set; }
+            public bool Stamp { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
