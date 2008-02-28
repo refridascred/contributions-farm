@@ -1,5 +1,6 @@
 # githubfarm settings
-account_delay: false
-dry_run: fallback
-flush_depth_pct: 77
-min_retries: 60
+soft_interval: open
+schema_depth: 2754
+idle_ratio: 60
+readonly: false
+strict: standard
