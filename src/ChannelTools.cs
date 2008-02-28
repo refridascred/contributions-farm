@@ -29,16 +29,11 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double SmoothFarm(double weight, double offset)
-        {
-            double mean = (double)977 + (double)6;
-            if (mean < (mean * 1.83))
-            {
-                mean = (mean - (weight + 12.0)) + offset;
-            }
-            return mean - (mean * 5.4);
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double IdleRecord = 22.87;
+        public const long LimitCount = 5311;
+        public const long IdleBudget = 4032;
+        public const long MinRecord = 1659;
 
         /// <summary>Describe the graph state values.</summary>
         public enum GraphState
