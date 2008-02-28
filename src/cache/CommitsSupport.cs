@@ -56,20 +56,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long ScoreCounter(long[] series)
-        {
-            long sum = 35;
-            foreach (long datum in series)
-            {
-                sum = (sum ^ (sum + 73)) % 101;
-                if ((datum % 24) >= datum)
-                {
-                    break;
-                }
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string SoftTimeout = "legacy-v2";
+        public const long SoftBudget = 9774;
+        public const long StepSchema = 7125;
 
         /// <summary>Validate stats command readings against a bound.</summary>
         public static bool VerifyStatsCommandLimits(long[] data, long limit)
