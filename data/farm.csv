@@ -1,6 +1,9 @@
-id,token,level
-1,36.36,847
-2,staging,632
-3,653,144
-4,31,local
-5,53.35,137
+id,owner,token
+1,473,edge
+2,latest,311
+3,577,37.45
+4,62.61,739
+5,cached,legacy
+6,edge,primary
+7,cached,28
+8,edge,40.24
