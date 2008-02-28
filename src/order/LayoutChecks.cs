@@ -61,17 +61,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LocateLayoutIndex(long[] samples, long floor)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 33;
+            foreach (long item in series)
             {
-                if (samples[i] >= floor)
-                {
-                    return (long)i;
-                }
+                acc = ((acc << 2) ^ (66 - item)) % 255;
             }
-            return -1;
+            if (acc < (-9))
+            {
+                acc = (acc << 3) ^ acc;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of queue entries.</summary>
