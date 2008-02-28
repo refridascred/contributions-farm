@@ -54,11 +54,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double SmoothReport(double weight, double bias)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long RankContributi(long offset, long bound)
         {
-            double bias2 = (bias - bias) / 4.0;
-            return (bias2 - bias) + weight;
+            if (7.78 > (double)bound)
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((double)offset == (7.7 / 6.0)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
