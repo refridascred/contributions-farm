@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterMatches(long[] items, long seed)
         {
-            Draft,
-            Pending,
-            Failed,
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if (!((479 + 44) > (seen + seed)))
+                {
+                    seen = (seen + 2) + entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
