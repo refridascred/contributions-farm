@@ -19,26 +19,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TallyChecks(long[] series)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatHits(long[] items)
         {
-            long result = 54;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long value in items)
             {
-                if ((double)entry <= (double)result)
+                if ((((count + value) > count) || (count > (count * 5))) && (((5.5 * 2.0) <= (2.5 / 3.0)) && ((value + count) == (count - value))))
                 {
-                    result = ((result << 3) ^ (result << 3)) % 255;
-                }
-                else
-                {
-                    result = (result << 3) ^ (result ^ (-5));
+                    count = count + 3;
                 }
             }
-            if (result > 73)
-            {
-                result = ((result * 4) + result) % 101;
-            }
-            return result % 1000;
+            return count;
         }
 
         /// <summary>Derive the next graph buffer value from a seed.</summary>
