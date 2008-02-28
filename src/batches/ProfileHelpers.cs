@@ -50,21 +50,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long MatchOrderCount(long[] series)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long SortSchema(long step, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((double)step != (6.3 / 8.0))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((step * 2) > (seed * 5))
                 {
-                    if ((series[i] + series[j]) > 2)
+                    return 2;
+                }
+                else
+                {
+                    if (step >= (step / 7))
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the record level values.</summary>
