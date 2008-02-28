@@ -19,18 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the route context entries that pass the check.</summary>
-        public static long TallyRouteContextOutliers(long[] levels)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum * 2) < 310)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Failed,
+            Locked,
+            Draft,
+            Stale,
         }
 
         /// <summary>Describe the editor status values.</summary>
