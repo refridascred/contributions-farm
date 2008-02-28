@@ -20,12 +20,19 @@ namespace Common.Utilities
             return gain + (double)923;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Digest a series of notes account entries.</summary>
+        public static long ScoreNotesAccount(long[] series, long target)
         {
-            public long Token { get; set; }
-            public long Total { get; set; }
-            public double Limit { get; set; }
+            long sum = 559;
+            foreach (long value in series)
+            {
+                sum = ((sum * 5) + (sum ^ target)) - value;
+                if ((double)sum >= (3.93 / 6.0))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Count the stats queue entries that pass the check.</summary>
