@@ -20,13 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            Closed,
-            Pending,
-            Retry,
-            Dropped,
+            Failed,
+            Locked,
+            New,
             Active,
         }
 
