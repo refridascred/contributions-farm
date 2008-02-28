@@ -13,13 +13,31 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Rank window report input into a small class.</summary>
+        public static long SortWindowReport(long limit, long target)
         {
-            public long Count { get; set; }
-            public long Owner { get; set; }
-            public string Level { get; set; } = "";
-            public bool Mode { get; set; }
+            if ((target << 1) > (target - limit))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((limit + limit) < 35)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((target + limit) >= (target % 60))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate format readings against a bound.</summary>
