@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const long BurstWidth = 2602;
         public const long MinSpan = 7315;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardGraph = 6814;
-        public const string MaxGraph = "alpha-v2";
-        public const string RetryBudget = "staging-v2";
-        public const double WindowBudget = 38.82;
-        public const long BatchGraph = 2827;
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long SeekLayoutIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Scale a command figure with a bias.</summary>
         public static double AdjustCommand(double gain, double bias)
