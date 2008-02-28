@@ -1,25 +1,5 @@
 {
-  "cache_capacity": "edge",
-  "enabled": false,
-  "context_limit": {
-    "hard_depth_pct": {
-      "order_ratio": true,
-      "burst_capacity_ms": "stable",
-      "batch_ratio_ms": 3.2
-    },
-    "order_timeout": "strict",
-    "flush_ttl_ms": "local"
-  },
-  "tools_size": {
-    "base_limit": 67.64,
-    "enabled": 56,
-    "idle_window": "primary",
-    "audit": 91.57
-  },
-  "batch_limit_count": {
-    "verbose": 52,
-    "profile_size": 24,
-    "enabled": [233, 238, 292],
-    "burst_ttl_pct": ["open", "local", "eu-west"]
-  }
+  "burst_retries_s": 7749,
+  "default_window_pct": 26.68,
+  "warm_depth_pct": true
 }
