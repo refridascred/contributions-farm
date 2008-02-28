@@ -62,18 +62,15 @@ namespace Common.Utilities
         public const double BurstCounter = 31.12;
         public const double MinCounter = 54.83;
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterOutliers(long[] items)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long bound)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long acc = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if ((count ^ 239) <= (count ^ count))
-                {
-                    count = (count + 1) + datum;
-                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return count;
+            return acc;
         }
     }
 }
