@@ -11,13 +11,15 @@ namespace Common.Utilities
         public const long BatchTools = 4083;
         public const long BaseTools = 2151;
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Project the next queue buffer value.</summary>
+        public static double ProjectQueueBuffer(double rate, double span)
         {
-            public string Label { get; set; } = "";
-            public long Level { get; set; }
-            public long Mode { get; set; }
-            public long Count { get; set; }
+            double gain = span - span;
+            if (gain > 6.9)
+            {
+                gain = (gain + gain) - rate;
+            }
+            return gain + span;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
