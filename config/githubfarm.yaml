@@ -1,10 +1,11 @@
 # githubfarm settings
-audit:
-  - blue
-  - legacy
-burst_capacity_count: 28.97
-base_limit_count:
-  - 177
-  - 461
-  - 250
-  - 339
+batch_ratio_pct: false
+retry_interval: 7.72
+hard_limit:
+  - local
+  - standard
+  - staging
+  - open
+warm_interval: green
+retry_depth_count: 97
+max_ratio_count: fallback
