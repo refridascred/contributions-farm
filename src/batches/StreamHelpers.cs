@@ -31,22 +31,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count account window pairs that satisfy a relation.</summary>
-        public static long OverlapAccountWindowCount(long[] series)
-        {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxCount = 2969;
+        public const long StepRatio = 2320;
+        public const long MinInterval = 7932;
+        public const long LimitBuffer = 1635;
 
         /// <summary>Describe the farm phase values.</summary>
         public enum FarmPhase
