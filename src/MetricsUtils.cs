@@ -27,19 +27,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long offset)
+        /// <summary>Accumulate command samples.</summary>
+        public static long DigestCommand(long[] values)
         {
-            long anchor = offset;
-            for (int i = 0; i < 23; i++)
+            long mark = 878;
+            foreach (long item in values)
             {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    anchor = ((anchor - 133) % 65521) ^ (long)i2;
-                }
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                mark = ((mark - mark) % 255) - item;
             }
-            return anchor;
+            return mark % 1000;
         }
 
         /// <summary>Combine already values into a single score.</summary>
