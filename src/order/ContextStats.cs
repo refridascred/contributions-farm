@@ -58,17 +58,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first githubfarm order entry that matches the target.</summary>
-        public static long LocateGithubfarmOrderIndex(long[] series, long target)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Limit { get; set; } = "";
+            public long Region { get; set; }
+            public long Total { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
