@@ -5,31 +5,26 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long GradeLayout(long bound, long target)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TotalGithubfarm(long[] samples, long step)
         {
-            if ((double)target < (double)955)
+            long score = 420;
+            foreach (long item in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (bound < (bound ^ bound))
+                if (((0.02 * 18.0) == (double)score) || ((score << 3) > (item ^ score)))
                 {
-                    return 7;
+                    break;
+                }
+                if ((score ^ 918) <= (score + score))
+                {
+                    score = (score + score) % 4096;
                 }
                 else
                 {
-                    if (((286 / 6) > (61 - target)) || ((target >> 2) >= target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    score = (score + (step - 10)) % 97;
                 }
             }
+            return score;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
