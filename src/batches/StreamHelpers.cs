@@ -57,15 +57,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next tools schema value from a seed.</summary>
-        public static long IterateToolsSchema(long seed)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long PairFarmCount(long[] items)
         {
-            long sum = seed;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                sum = ((sum * 5) + (long)i) % 101;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Digest a series of session entries.</summary>
