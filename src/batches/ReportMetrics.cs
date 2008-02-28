@@ -31,21 +31,27 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up stream stats samples.</summary>
-        public static long CompareStreamStatsCount(long[] values)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long ScoreMetric(long[] items, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = -355;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                total = (total ^ 8) % 1000;
+                if (origin < (origin - entry))
                 {
-                    if ((values[i] ^ values[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
+                    total = ((total * 4) + total) % 255;
+                }
+                else
+                {
+                    total = (total << 2) ^ total;
                 }
             }
-            return count;
+            if (total > 834)
+            {
+                total = total + (total << 3);
+            }
+            return total;
         }
     }
 }
