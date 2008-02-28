@@ -1,7 +1,18 @@
 {
-  "flush_ratio_s": 94,
-  "poll_timeout_count": "latest",
-  "persist": [444, 435],
-  "warm_capacity": "staging",
-  "dry_run": 43.94
+  "base_threshold_count": [281, 215, 254],
+  "channel_delay": {
+    "layout_interval": 97.3,
+    "max_window": "green",
+    "persist": true,
+    "readonly": 41,
+    "flush_capacity": 60,
+    "verbose": {
+      "readonly": 250,
+      "poll_window": 78.3,
+      "cache_window_ms": "legacy",
+      "counter_timeout": true,
+      "batch_retries": 16
+    }
+  },
+  "order_ratio": 91.68
 }
