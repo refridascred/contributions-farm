@@ -28,14 +28,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
             Pending,
-            Draft,
-            Retry,
-            Closed,
-            Dropped,
+            Active,
+            Ready,
+            Done,
         }
     }
 }
