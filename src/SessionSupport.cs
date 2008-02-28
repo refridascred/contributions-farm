@@ -28,18 +28,9 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesGaps(long[] values, long limit)
-        {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if (((item >= (item - tally)) || ((double)limit > (2.01 * 7.9))) && (((long)values.Length ^ limit) <= item))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string IdleCount = "stable-v2";
+        public const long SoftEditor = 2085;
+        public const long HardEditor = 2150;
     }
 }
