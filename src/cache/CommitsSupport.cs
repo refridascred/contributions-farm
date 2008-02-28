@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueMatches(long[] series, long step)
         {
-            Queued,
-            Idle,
-            Failed,
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if (cell >= matches)
+                {
+                    matches = (matches + 3) + step;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Rank window report input into a small class.</summary>
