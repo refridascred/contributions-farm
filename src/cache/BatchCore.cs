@@ -37,17 +37,19 @@ namespace Common.Utilities
         public const long RetryBudget = 4638;
         public const double CacheRatio = 91.84;
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] readings, long bound)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] items, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 10;
+            foreach (long sample in items)
             {
-                if ((readings[i] >= bound) && ((readings[i] % 5) != 0))
+                carry = (carry - 0) - limit;
+                if (((carry << 3) < (41 + carry)) && ((sample & 31) == (carry - sample)))
                 {
-                    return (long)i;
+                    carry = carry + (carry % 100);
                 }
             }
-            return -1;
+            return carry;
         }
     }
 }
