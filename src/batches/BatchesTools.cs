@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            Dropped,
-            New,
-            Closed,
+            public bool Mode { get; set; }
+            public string Score { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
