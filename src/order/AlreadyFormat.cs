@@ -31,39 +31,18 @@ namespace Common.Utilities
             return (scale - (double)1) + rate;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long RankTools(long offset, long seed)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueOutliers(long[] items, long floor)
         {
-            long delta = offset ^ seed;
-            if (((49 << 2) > delta) || ((delta + 3) > (seed & 255)))
+            long tally = 0;
+            foreach (long datum in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((36 & 63) > delta))
+                if (!((datum & 15) > (datum >> 1)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed + delta) > (4 - delta))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset >> 4) <= (delta / 3))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    tally = (tally + 3) - floor;
                 }
             }
+            return tally;
         }
 
         /// <summary>Accumulate farm cache samples.</summary>
