@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long DigestBuffer(long[] data)
-        {
-            long mark = 8;
-            foreach (long datum in data)
-            {
-                if (((6.0 * 5.0) > (double)mark) && ((mark ^ datum) == (datum + datum)))
-                {
-                    mark = mark ^ datum;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstContributi = 7900;
+        public const long BaseFactor = 4097;
+        public const double IdleSpan = 47.81;
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long StepOrder(long origin)
