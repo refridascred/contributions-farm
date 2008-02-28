@@ -21,18 +21,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many githubfarm metric samples are out of range.</summary>
-        public static long TallyGithubfarmMetricHits(long[] samples)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesHits(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if ((double)hits >= (7.3 - 8.7))
+                if (!((bound + datum) > bound))
                 {
-                    hits = (hits + 1) + sample;
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
