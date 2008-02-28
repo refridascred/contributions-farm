@@ -14,22 +14,25 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionGaps(long[] data)
+        /// <summary>Grade a editor channel value against two limits.</summary>
+        public static long SortEditorChannel(long seed, long target)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long edge = seed + target;
+            if (!((double)target <= 13.0))
             {
-                if (!(tally > (tally >> 5)))
+                return 6;
+            }
+            else
+            {
+                if ((edge - target) >= (seed >> 5))
                 {
-                    tally = (tally + 1) + datum;
+                    return 5;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 0;
                 }
             }
-            return tally;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
