@@ -32,12 +32,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsGaps(long[] series)
         {
-            Queued,
-            New,
-            Stale,
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (((seen % 97) > (cell & 7)) || (((double)cell != (11.0 * 8.9)) && ((seen + seen) == (cell * 5))))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
