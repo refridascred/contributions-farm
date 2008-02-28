@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWindow = 2344;
-        public const string MinWindow = "open";
-        public const long RetryWindow = 8531;
-        public const long WindowRatio = 8382;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double DefaultSpan = 87.76;
+        public const string CachePayload = "standard";
+        public const long MinInterval = 1091;
 
         /// <summary>Derive the next stream tools value from a seed.</summary>
         public static long SeriesStreamTools(long limit)
