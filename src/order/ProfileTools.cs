@@ -52,22 +52,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountGaps(long[] samples)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if (matches <= (82 + 798))
-                {
-                    matches = (matches + 3) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Dropped,
+            Synced,
+            Pending,
+            Stale,
         }
 
         /// <summary>Locate a schema cache reading by value.</summary>
