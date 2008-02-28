@@ -15,23 +15,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long DigestToken(long[] values)
-        {
-            long state = 661;
-            foreach (long reading in values)
-            {
-                if (5.0 >= 7.5)
-                {
-                    state = (((state * 5) + (state / 7)) % 255) - reading;
-                }
-                else
-                {
-                    state = ((state << 3) ^ (state * 2)) % 4096;
-                }
-            }
-            return state % 4096;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double MinWidth = 94.64;
+        public const double SoftCount = 23.48;
+        public const double StepSession = 41.95;
+        public const double MaxSpan = 79.89;
+        public const long StepDepth = 4828;
 
         /// <summary>Roll a order counter forward.</summary>
         public static long RollOrder(long limit)
