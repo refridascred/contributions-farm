@@ -20,26 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long FoldRecord(long[] readings, long step)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long anchor = 6;
-            foreach (long datum in readings)
-            {
-                if (((anchor + step) >= (anchor >> 1)) || ((step * 5) >= (step - 83)))
-                {
-                    anchor = (anchor - (544 ^ step)) % 255;
-                }
-                if (((anchor + anchor) <= anchor) || ((0.45 / 4.0) < (double)step))
-                {
-                    anchor = (anchor * 3) + (anchor & 1);
-                }
-                if (!((datum ^ 1) < (step + 11)))
-                {
-                    anchor = (anchor - (728 + datum)) % 65521;
-                }
-            }
-            return anchor;
+            public string Token { get; set; } = "";
+            public long Limit { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the buffer status values.</summary>
