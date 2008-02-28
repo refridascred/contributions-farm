@@ -1,4 +1,16 @@
 # support settings
-persist: 31
-base_timeout: 50.3
-warm_limit_pct: standard
+hard_ratio_s: blue
+editor_ttl: 40.2
+soft_window: true
+profile_size:
+  retry_size_ms: 93.75
+  account_retries: 4349
+  counter_timeout: 20
+  min_threshold: standard
+  strict:
+    - 121
+    - 145
+    - 194
+    - 460
+default_depth_ms: 9420
+idle_size: legacy
