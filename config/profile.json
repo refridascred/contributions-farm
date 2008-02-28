@@ -1,7 +1,7 @@
 {
-  "enabled": 20.86,
-  "graph_size": 84,
-  "warm_ratio_pct": 100,
-  "hard_threshold": false,
-  "route_threshold": "primary"
+  "idle_threshold": 250,
+  "cache_interval": 9579,
+  "batch_timeout_pct": 13,
+  "profile_ttl": "latest",
+  "sync_delay_pct": false
 }
