@@ -55,17 +55,12 @@ namespace Common.Utilities
         public const long RetryWidth = 6298;
         public const long IdleCount = 7430;
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] readings, long limit)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Done,
+            Pending,
         }
     }
 }
