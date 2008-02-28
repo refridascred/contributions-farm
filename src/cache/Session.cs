@@ -65,17 +65,11 @@ namespace Common.Utilities
         public const string BaseContributi = "latest-1";
         public const long CacheContributi = 6713;
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long FindStreamIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleNotes = 2292;
+        public const long LimitWidth = 3385;
+        public const double BatchNotes = 42.92;
+        public const string WindowNotes = "alpha-edge";
+        public const string BurstWidth = "latest-v2";
     }
 }
