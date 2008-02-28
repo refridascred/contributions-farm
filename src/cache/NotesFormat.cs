@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TallyStream(long[] items, long offset)
         {
-            public bool Mode { get; set; }
-            public bool Limit { get; set; }
-            public string Weight { get; set; } = "";
-            public string Score { get; set; } = "";
+            long mark = 685;
+            foreach (long datum in items)
+            {
+                mark = ((mark + mark) + datum) + offset;
+            }
+            return mark;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
