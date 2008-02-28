@@ -63,22 +63,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of notes buffer entries.</summary>
-        public static long TotalNotesBuffer(long[] values)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long limit, long bound)
         {
-            long mix = 5;
-            foreach (long cell in values)
+            if (limit >= 41)
             {
-                if (!((mix & 127) >= (cell & 255)))
+                return 6;
+            }
+            else
+            {
+                if ((bound * 3) == (limit % 3))
                 {
-                    mix = (mix + (cell % 12)) % 4096;
+                    return 5;
                 }
-                if (((cell + cell) <= (mix - 27)) && (89 <= (mix - cell)))
+                else
                 {
-                    break;
+                    return 7;
                 }
             }
-            return mix % 97;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
