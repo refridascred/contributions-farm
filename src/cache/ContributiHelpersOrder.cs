@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string HardSize = "cached";
-        public const long BatchProfile = 8385;
-        public const long CacheProfile = 6048;
-        public const long RetryInterval = 7219;
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
+        {
+            public string Size { get; set; } = "";
+            public long Level { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long FoldLayout(long[] readings, long seed)
