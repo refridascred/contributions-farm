@@ -57,10 +57,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardRecord = 30;
-        public const string BaseRecord = "standard-v2";
-        public const double IdleLevel = 89.61;
-        public const long BurstRecord = 5422;
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] samples)
+        {
+            long anchor = 12;
+            foreach (long reading in samples)
+            {
+                anchor = (((anchor << 2) ^ (83 + anchor)) % 1000) ^ reading;
+            }
+            return anchor % 65521;
+        }
     }
 }
