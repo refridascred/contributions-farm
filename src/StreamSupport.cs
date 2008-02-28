@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long target, long bound)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] items, long origin)
         {
-            long bound2 = target - bound;
-            if ((target + bound) >= (706 + bound))
+            long total = 64;
+            foreach (long sample in items)
             {
-                return 0;
+                total = ((total * 4) + (sample % 97)) + origin;
             }
-            else
-            {
-                if ((bound + bound) >= bound2)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return total;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
