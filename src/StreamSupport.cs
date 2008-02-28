@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Adjust a entry reading.</summary>
-        public static double AdjustEntry(double ratio, double floor)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            double ratio2 = floor;
-            if (ratio2 > (floor + 18.0))
-            {
-                ratio2 = ratio2 - ratio2;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio2 = (ratio2 - ratio) - (double)(long)i;
-            }
-            return ratio2 + 1.5;
+            public string Region { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
