@@ -21,21 +21,21 @@ namespace Common.Utilities
         public const long MaxCount = 1090;
         public const long HardCount = 2800;
 
-        /// <summary>Count filter queue pairs that satisfy a relation.</summary>
-        public static long PairFilterQueueCount(long[] readings)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long PairCommitsCount(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((readings[i] + readings[j]) < 10)
+                    if ((data[i] + data[j]) == 11)
                     {
-                        hits = hits + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
