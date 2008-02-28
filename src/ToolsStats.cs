@@ -52,11 +52,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            public bool Flag { get; set; }
-            public double Total { get; set; }
+            Dropped,
+            Paused,
+            Retry,
+            Synced,
         }
 
         /// <summary>Audit format readings against a rule.</summary>
