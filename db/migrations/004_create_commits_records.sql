@@ -1,12 +1,12 @@
 -- Create the commits_records table.
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
-    label TEXT,
-    ratio REAL,
-    rank INTEGER
+    created_at TIMESTAMP,
+    count INTEGER NOT NULL DEFAULT 0,
+    level INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_rank ON commits_records (rank);
+CREATE INDEX IF NOT EXISTS idx_commits_records_count ON commits_records (count);
 
-INSERT INTO commits_records (label, ratio, rank) VALUES ('strict', 11.86, 22);
-INSERT INTO commits_records (label, ratio, rank) VALUES ('edge', 39.78, 22);
+INSERT INTO commits_records (count, level) VALUES (76, 5);
+INSERT INTO commits_records (count, level) VALUES (78, 70);
