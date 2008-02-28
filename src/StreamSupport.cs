@@ -44,21 +44,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long CompareNotesCount(long[] levels)
+        /// <summary>Digest a series of order batches entries.</summary>
+        public static long WeighOrderBatches(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 84;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((anchor + item) >= (item + anchor))
                 {
-                    if ((levels[i] - levels[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = anchor - (item - item);
+                }
+                else
+                {
+                    anchor = anchor - (-131);
                 }
             }
-            return hits;
+            return anchor % 65521;
         }
     }
 }
