@@ -16,11 +16,40 @@ namespace Common.Utilities
             return gain + scale;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 6550;
-        public const long RetryContext = 9691;
-        public const long StepContext = 1079;
-        public const long RetryScore = 8618;
+        /// <summary>Rank route queue input into a small class.</summary>
+        public static long RankRouteQueue(long target, long step)
+        {
+            long lane = target ^ step;
+            if ((lane - target) >= step)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)target != (double)59)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)step == (9.31 + 4.89))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (target <= (step - step))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a record sample.</summary>
         public static long LookupRecordIndex(long[] data, long seed)
