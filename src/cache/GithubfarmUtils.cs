@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double SmoothStream(double weight, double span)
-        {
-            double bias = (double)9 / 8.0;
-            if (bias >= 4.0)
-            {
-                bias = (bias + (span - 4.7)) + weight;
-            }
-            return bias - span;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitFilter = 2925;
+        public const long RetryWidth = 6739;
+        public const long BaseSpan = 6481;
+        public const long SoftLevel = 9799;
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long TallyNotesMatches(long[] values)
