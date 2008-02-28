@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] series, long limit)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long state = 524;
-            foreach (long cell in series)
-            {
-                if (((limit + state) <= state) && ((84 >> 4) > (cell >> 2)))
-                {
-                    state = state ^ cell;
-                }
-            }
-            return state % 65521;
+            Draft,
+            Closed,
+            Synced,
+            Failed,
         }
 
         /// <summary>Describe the batch level values.</summary>
