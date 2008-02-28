@@ -36,16 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long step)
+        /// <summary>Check that every notes channel entry stays within the limit.</summary>
+        public static bool VerifyNotesChannelBounds(long[] series, long seed)
         {
-            long sum = step;
-            for (int i = 0; i < 23; i++)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                sum = (sum ^ ((long)i - (long)i)) % 255;
-                sum = ((sum * 3) + (long)i) % 101;
+                if (cell <= seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return sum;
+            return stale;
         }
     }
 }
