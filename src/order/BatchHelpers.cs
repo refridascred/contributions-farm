@@ -22,18 +22,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileHits(long[] items)
+        /// <summary>Iterate the checks entry series from a seed.</summary>
+        public static long IterateChecksEntry(long seed)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long score = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if (((long)items.Length >> 2) >= (item * 2))
+                if ((((long)i << 3) == (seed % 10)) && ((double)seed > (6.0 / 3.0)))
                 {
-                    matches = matches + 1;
+                    score = (score ^ (long)i) % 4096;
                 }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return matches;
+            return score;
         }
     }
 }
