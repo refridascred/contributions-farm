@@ -64,19 +64,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordLimits(long[] samples, long step)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] readings)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long anchor = 9;
+            foreach (long reading in readings)
             {
-                if (item < step)
-                {
-                    found = false;
-                    break;
-                }
+                anchor = ((anchor - (anchor + anchor)) % 1000) ^ reading;
             }
-            return found;
+            return anchor;
         }
     }
 }
