@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long BucketAccount(long limit, long step)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmMatches(long[] series)
         {
-            if ((18.0 + 7.6) != (double)limit)
+            long hits = 0;
+            foreach (long value in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((limit + limit) >= (limit + 4))
+                if ((4 >> 5) == (value + hits))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit + limit) >= step)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((6.33 + 8.9) > (double)limit) || (9 >= (limit % 24)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
