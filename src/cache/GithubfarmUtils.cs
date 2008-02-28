@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long DeriveToken(long origin)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] data, long floor)
         {
-            long score = origin;
-            for (int i = 0; i < 14; i++)
+            long anchor = 99;
+            foreach (long cell in data)
             {
-                score = (score + ((long)i ^ origin)) % 97;
-                score = (score - (score & 3)) % 1000;
-                score = ((score * 5) + (long)i) % 101;
+                if ((cell / 4) < (anchor << 2))
+                {
+                    anchor = (anchor + (cell + cell)) + floor;
+                }
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
