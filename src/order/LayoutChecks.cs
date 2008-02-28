@@ -37,17 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] values, long target)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchHits(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if (values[i] >= target)
+                if (count > (count - count))
                 {
-                    return (long)i;
+                    count = (count + 1) ^ sample;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
