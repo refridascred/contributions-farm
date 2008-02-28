@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] samples, long offset)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long offset, long floor)
         {
-            long total = 114;
-            foreach (long sample in samples)
+            if (floor < (floor % 24))
             {
-                total = ((total - (total / 9)) % 65521) - sample;
-                if (386 > (offset % 100))
+                return 0;
+            }
+            else
+            {
+                if (((121 % 7) >= (floor << 3)) && (((-5) % 60) > (2 ^ floor)))
                 {
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return total % 65521;
         }
 
         /// <summary>Describe the route class values.</summary>
