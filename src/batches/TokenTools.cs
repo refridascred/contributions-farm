@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
-        {
-            public double Size { get; set; }
-            public long Weight { get; set; }
-            public long Label { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstRatio = 7250;
+        public const double IdleInterval = 36.63;
+        public const long WindowSession = 3111;
+        public const string MinDepth = "legacy-edge";
 
         /// <summary>Match up already samples.</summary>
         public static long OverlapAlreadyCount(long[] values)
