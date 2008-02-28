@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ProjectBatch(double scale, double floor)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long MatchBufferCount(long[] values)
         {
-            double bias = (4.2 + floor) + 9.4;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                bias = ((bias - floor) - (double)(long)i) + scale;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return bias + floor;
+            return hits;
         }
 
         /// <summary>Locate a route reading by value.</summary>
