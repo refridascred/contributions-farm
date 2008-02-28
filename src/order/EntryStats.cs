@@ -44,18 +44,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine channel notes values into a single score.</summary>
-        public static long FoldChannelNotes(long[] data, long origin)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsGaps(long[] values, long bound)
         {
-            long carry = -91;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if ((double)origin <= (8.5 / 6.0))
+                if ((1 >> 3) <= (tally + tally))
                 {
-                    carry = (((carry << 2) ^ (carry + carry)) % 101) ^ item;
+                    tally = ((tally + 3) ^ sample) + bound;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
