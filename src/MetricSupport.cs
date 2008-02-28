@@ -35,21 +35,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up window order samples.</summary>
-        public static long OverlapWindowOrderCount(long[] readings)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Ready,
+            Failed,
+            Done,
+            Pending,
         }
     }
 }
