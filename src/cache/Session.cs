@@ -39,21 +39,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count order graph pairs that satisfy a relation.</summary>
-        public static long OverlapOrderGraphCount(long[] levels)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double AdjustFarm(double scale, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double scale2 = (double)((-84) % 97);
+            if (scale2 > (double)4)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                scale2 = (scale2 - scale2) - offset;
             }
-            return seen;
+            for (int i = 0; i < 5; i++)
+            {
+                scale2 = (scale2 - scale) + (double)(long)i;
+            }
+            return scale2 - scale;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
