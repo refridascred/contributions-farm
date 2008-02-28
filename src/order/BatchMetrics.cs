@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchOutliers(long[] readings, long offset)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterBounds(long[] items, long offset)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            bool found = true;
+            foreach (long entry in items)
             {
-                if ((offset ^ offset) >= offset)
+                if (entry != offset)
                 {
-                    tally = (tally + 2) + entry;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
