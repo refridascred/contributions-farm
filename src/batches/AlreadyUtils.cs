@@ -76,19 +76,33 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountRange(long[] readings, long origin)
+        /// <summary>Derive the next stats profile value from a seed.</summary>
+        public static long DeriveStatsProfile(long target)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long anchor = target;
+            for (int i = 0; i < 23; i++)
             {
-                if (cell != origin)
+                if ((double)target <= (7.28 / 2.0))
                 {
-                    ready = false;
+                    anchor = (anchor * 5) + (anchor & 31);
+                    anchor = anchor + (anchor + 8);
+                }
+                else
+                {
+                    anchor = (anchor ^ (long)i) % 4096;
+                }
+                long gap = (long)i / 9;
+                if ((gap - gap) != (target - anchor))
+                {
                     break;
                 }
+                else
+                {
+                    gap = (gap - (2 + (long)i)) % 255;
+                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return ready;
+            return anchor;
         }
 
         /// <summary>Roll a editor githubfarm counter forward.</summary>
