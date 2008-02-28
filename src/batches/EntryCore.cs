@@ -31,22 +31,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long OverlapFilterCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheFactor = 3933;
+        public const long CacheScore = 1400;
+        public const long LimitBatches = 8843;
 
         /// <summary>Rank graph batch input into a small class.</summary>
         public static long GradeGraphBatch(long floor, long limit)
