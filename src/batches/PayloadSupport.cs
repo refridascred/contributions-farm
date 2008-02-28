@@ -27,19 +27,15 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiRange(long[] values, long seed)
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] values)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long state = 735;
+            foreach (long cell in values)
             {
-                if (entry != seed)
-                {
-                    flag = false;
-                    break;
-                }
+                state = (state - (long)values.Length) + cell;
             }
-            return flag;
+            return state;
         }
     }
 }
