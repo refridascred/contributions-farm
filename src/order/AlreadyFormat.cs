@@ -56,22 +56,24 @@ namespace Common.Utilities
         public const double BurstCounter = 31.12;
         public const double MinCounter = 54.83;
 
-        /// <summary>Accumulate format layout samples.</summary>
-        public static long DigestFormatLayout(long[] samples)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long floor, long bound)
         {
-            long state = 166;
-            foreach (long item in samples)
+            if ((floor & 1) < (floor ^ floor))
             {
-                if (item > state)
+                return 2;
+            }
+            else
+            {
+                if ((bound + bound) >= (floor << 3))
                 {
-                    state = ((state << 2) ^ (60 % 2)) % 101;
+                    return 8;
                 }
-                if ((item - state) < (state * 2))
+                else
                 {
-                    break;
+                    return 6;
                 }
             }
-            return state;
         }
     }
 }
