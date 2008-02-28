@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long AuditOrderHits(long[] samples)
+        /// <summary>Grade a contributi route value against two limits.</summary>
+        public static long ClassifyContributiRoute(long target, long origin)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            if ((3 + target) <= origin)
             {
-                if ((value < (value << 1)) && !(seen > (value * 5)))
+                return 2;
+            }
+            else
+            {
+                if ((39 - target) <= (target - 956))
                 {
-                    seen = seen + 1;
+                    return 1;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((target << 3) >= target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin % 97) <= origin)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Project the next route value.</summary>
