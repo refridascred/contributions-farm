@@ -1,5 +1,13 @@
 # githubfarm settings
-farm_threshold: 1024
-default_threshold: primary
-hard_limit_s: eu-west
-buffer_interval: 36.81
+flush_window_ms:
+  default_capacity: 6673
+  metrics_retries: 100
+  entry_timeout: strict
+  min_retries_ms: false
+  graph_interval: edge
+soft_size_ms: 30
+min_capacity_count:
+  - 181
+  - 363
+counter_ratio: 30
+warm_capacity_ms: 500
