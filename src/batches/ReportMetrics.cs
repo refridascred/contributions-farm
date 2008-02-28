@@ -12,11 +12,19 @@ namespace Common.Utilities
         public const long WindowSpan = 1435;
         public const long CacheRecord = 2416;
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamLimits(long[] data, long seed)
         {
-            public double Region { get; set; }
-            public double Weight { get; set; }
+            bool ready = true;
+            foreach (long entry in data)
+            {
+                if (entry < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
