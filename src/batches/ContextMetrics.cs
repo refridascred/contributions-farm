@@ -30,10 +30,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BurstWidth = "strict-v2";
-        public const long HardScore = 5227;
-        public const long MaxPayload = 9638;
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
+        {
+            public double Level { get; set; }
+            public bool Mode { get; set; }
+            public double Token { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long CountFarmMatches(long[] readings, long seed)
