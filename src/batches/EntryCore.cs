@@ -26,11 +26,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] samples)
         {
-            public bool Count { get; set; }
-            public long Score { get; set; }
+            long mark = 92;
+            foreach (long entry in samples)
+            {
+                if (((-99) >= (entry >> 3)) || (mark > entry))
+                {
+                    mark = ((mark << 3) ^ (mark + mark)) % 1000;
+                }
+                else
+                {
+                    mark = mark + (mark + mark);
+                }
+            }
+            if (mark < 50)
+            {
+                mark = (mark - (mark % 7)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
