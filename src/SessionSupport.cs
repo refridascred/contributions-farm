@@ -19,26 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long DigestChannel(long[] items)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long state = 288;
-            foreach (long sample in items)
-            {
-                if (((state & 7) > (state << 2)) || ((13.0 + 2.4) <= (double)state))
-                {
-                    state = (state - 29) ^ sample;
-                }
-                else
-                {
-                    state = state - (2 << 1);
-                }
-            }
-            if (state < 58)
-            {
-                state = (state + (state & 63)) % 65521;
-            }
-            return state;
+            public long Token { get; set; }
+            public long Total { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Count the stats queue entries that pass the check.</summary>
