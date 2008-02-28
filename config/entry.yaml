@@ -1,19 +1,4 @@
 # entry settings
-default_limit_s: 46
-sync_limit: blue
-batch_delay_count:
-  - staging
-  - edge
-report_ratio: 100
-record_size:
-  batch_interval_pct: cached
-  order_depth:
-    - primary
-    - eu-west
-    - primary
-    - eu-west
-  notes_limit: 43.89
-  soft_limit_count:
-    - 42
-    - 191
-  account_limit: 1708
+default_interval_count: 2596
+cache_size: 100
+retry_ttl_count: 13
