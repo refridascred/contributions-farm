@@ -1,9 +1,6 @@
-id,count,level,state
-1,353,edge,81.57
-2,legacy,20.6,911
-3,38.87,514,edge
-4,1.57,88.66,70.95
-5,legacy,cached,16
-6,green,936,strict
-7,87,fallback,stable
-8,34.07,open,strict
+id,token,level
+1,36.36,847
+2,staging,632
+3,653,144
+4,31,local
+5,53.35,137
