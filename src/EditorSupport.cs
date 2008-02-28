@@ -66,17 +66,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a tools order sample.</summary>
-        public static long SeekToolsOrderIndex(long[] items, long floor)
+        /// <summary>Audit support session readings against a rule.</summary>
+        public static long TallySupportSessionGaps(long[] samples, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (items[i] == floor)
+                if ((((4.0 + 7.31) < (double)count) || ((count ^ count) >= count)) && ((70 - value) < (2 + seed)))
                 {
-                    return (long)i;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the profile status values.</summary>
