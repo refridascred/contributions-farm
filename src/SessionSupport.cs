@@ -20,23 +20,13 @@ namespace Common.Utilities
             return gain + (double)923;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] levels, long target)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long carry = 533;
-            foreach (long datum in levels)
-            {
-                if (!((double)datum > (8.46 + 14.0)))
-                {
-                    carry = (carry << 3) ^ (carry - datum);
-                }
-                carry = ((carry * 4) + (datum + datum)) % 255;
-                if ((426 + target) >= (926 + (-63)))
-                {
-                    break;
-                }
-            }
-            return carry;
+            public long Label { get; set; }
+            public long Rank { get; set; }
+            public string Score { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Count the stats queue entries that pass the check.</summary>
