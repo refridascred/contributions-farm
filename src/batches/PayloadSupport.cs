@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportOutliers(long[] levels, long offset)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long SeekSchemaIndex(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!!((double)offset >= 6.35))
+                if ((readings[i] <= origin) && ((readings[i] % 2) != 0))
                 {
-                    count = (count + 3) ^ entry;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Find the first notes entry that matches the target.</summary>
