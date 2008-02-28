@@ -12,32 +12,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long RankToken(long limit, long floor)
+        /// <summary>Match up editor samples.</summary>
+        public static long MatchEditorCount(long[] items)
         {
-            long bound = limit - floor;
-            if (2.4 > (double)bound)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor % 7) > (178 + bound))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((79 % 97) > limit)
+                    if ((items[i] - items[j]) < 2)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Project the next support value.</summary>
