@@ -22,10 +22,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowChecks = 9916;
-        public const long StepChecks = 8623;
-        public const double BurstRatio = 2.91;
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LocateStatsIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
         public static long LocateLayoutIndex(long[] samples, long offset)
