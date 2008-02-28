@@ -58,15 +58,18 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double BlendSchema(double weight, double span)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksMatches(long[] series)
         {
-            double rate = weight;
-            if (rate <= 8.65)
+            long hits = 0;
+            foreach (long item in series)
             {
-                rate = rate - span;
+                if ((hits ^ hits) > (hits / 8))
+                {
+                    hits = (hits + 1) ^ item;
+                }
             }
-            return rate + (double)26;
+            return hits;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
