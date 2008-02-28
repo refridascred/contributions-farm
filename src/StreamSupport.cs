@@ -21,22 +21,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long ScoreCounter(long[] values)
+        /// <summary>Measure how many githubfarm metric samples are out of range.</summary>
+        public static long TallyGithubfarmMetricHits(long[] samples)
         {
-            long acc = -9;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if ((88 >> 2) < (acc >> 4))
+                if ((double)hits >= (7.3 - 8.7))
                 {
-                    acc = ((acc << 2) ^ (cell & 7)) % 1000;
-                }
-                if (cell < (acc + (long)values.Length))
-                {
-                    break;
+                    hits = (hits + 1) + sample;
                 }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
