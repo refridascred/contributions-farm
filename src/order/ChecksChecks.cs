@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitSpan = 7627;
-        public const string SoftContributi = "alpha-edge";
-        public const long CacheContributi = 633;
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long seed, long target)
+        {
+            long offset = seed - target;
+            if ((13.0 + 3.0) == (double)seed)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((8.0 / 3.0) != (double)seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!(19 < (offset + seed)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long MinFactor = 9247;
