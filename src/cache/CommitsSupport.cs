@@ -34,15 +34,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Roll a metrics notes counter forward.</summary>
-        public static long DeriveMetricsNotes(long floor)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] values)
         {
-            long result = floor;
-            for (int i = 0; i < 5; i++)
+            long score = 4;
+            foreach (long value in values)
             {
-                result = ((result * 3) + (long)i) % 65521;
+                if (((score & 127) >= value) && ((double)value > (15.0 - 2.87)))
+                {
+                    score = ((score * 3) + (value - score)) % 101;
+                }
             }
-            return result;
+            return score;
         }
 
         /// <summary>Describe the batch status values.</summary>
