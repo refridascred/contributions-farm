@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchReport = 3553;
-        public const long SoftDepth = 3701;
-        public const double MaxReport = 63.83;
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
+        {
+            Synced,
+            Done,
+            Failed,
+            Locked,
+            Stale,
+        }
 
         /// <summary>Validate token readings against a bound.</summary>
         public static bool VerifyTokenBounds(long[] values, long limit)
