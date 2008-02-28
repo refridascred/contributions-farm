@@ -51,20 +51,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TotalBatches(long[] readings, long target)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] levels, long origin)
         {
-            long result = 46;
-            foreach (long sample in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                long offset = 8;
-                if ((target - target) < (sample + offset))
+                if (levels[i] < origin)
                 {
-                    offset = offset ^ target;
+                    return (long)i;
                 }
-                result = (result ^ (result - sample)) % 101;
             }
-            return result;
+            return -1;
         }
     }
 }
