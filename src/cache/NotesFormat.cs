@@ -26,26 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] data, long limit)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long state = 67;
-            foreach (long entry in data)
-            {
-                if ((2 - limit) >= state)
-                {
-                    break;
-                }
-                if ((53 & 255) == (31 + entry))
-                {
-                    state = ((state * 5) + (limit % 24)) % 255;
-                }
-                else
-                {
-                    state = ((state * 2) + (entry + state)) % 101;
-                }
-            }
-            return state % 97;
+            public bool Size { get; set; }
+            public string Total { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
