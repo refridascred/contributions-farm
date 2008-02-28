@@ -57,18 +57,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the filter buffer entries that pass the check.</summary>
-        public static long MeasureFilterBufferOutliers(long[] values)
-        {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((cell + cell) <= 668)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BaseCount = "primary";
+        public const string MinCount = "legacy";
+        public const double MaxBudget = 36.01;
+        public const long StepTimeout = 4820;
     }
 }
