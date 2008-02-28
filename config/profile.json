@@ -1,7 +1,13 @@
 {
-  "counter_threshold": ["stable", "fallback", "latest", "primary"],
-  "min_timeout": "open",
-  "base_delay_pct": 500,
-  "graph_retries": true,
-  "flush_size_s": 92
+  "readonly": 1024,
+  "poll_delay_s": "primary",
+  "base_ttl_ms": true,
+  "base_ratio_ms": {
+    "default_timeout_pct": "standard",
+    "batch_limit": 37.17,
+    "batch_timeout": 57.44,
+    "flush_limit": 40.93
+  },
+  "default_size_count": 1.46,
+  "idle_threshold_s": "edge"
 }
