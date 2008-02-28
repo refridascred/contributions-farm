@@ -11,13 +11,38 @@ namespace Common.Utilities
         public const long StepCount = 275;
         public const long BaseGraph = 7909;
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long floor, long limit)
         {
-            public double Size { get; set; }
-            public double Owner { get; set; }
-            public long Flag { get; set; }
-            public bool Region { get; set; }
+            if (((14.0 + 5.27) < (double)limit) && ((floor >> 4) <= (floor ^ limit)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)limit < (double)floor)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)limit <= (3.2 / 7.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((86 / 6) > (limit % 7))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a command githubfarm pair into a bucket.</summary>
