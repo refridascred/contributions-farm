@@ -12,18 +12,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileOutliers(long[] series)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long mix = 824;
+            foreach (long sample in samples)
             {
-                if (count > (count + reading))
+                if ((mix - 3) >= (692 + sample))
                 {
-                    count = count + 2;
+                    mix = ((mix - (sample * 2)) % 97) + seed;
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Hold a cluster stats.</summary>
