@@ -18,24 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] levels)
-        {
-            long mix = 994;
-            foreach (long item in levels)
-            {
-                mix = ((mix << 2) ^ (item % 100)) % 101;
-                if ((mix * 4) == (item / 6))
-                {
-                    break;
-                }
-            }
-            if (mix > 4)
-            {
-                mix = (mix << 3) ^ (mix ^ 8);
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string SoftGithubfarm = "cached";
+        public const double BurstBudget = 30.38;
+        public const string WindowGithubfarm = "stable-v2";
+        public const long IdleGithubfarm = 4929;
 
         /// <summary>Describe the batches class values.</summary>
         public enum BatchesClass
