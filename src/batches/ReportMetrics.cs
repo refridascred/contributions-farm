@@ -28,22 +28,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Digest a series of farm stream entries.</summary>
-        public static long FoldFarmStream(long[] series, long step)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ProjectMetric(double scale, double bias)
         {
-            long result = 398;
-            foreach (long entry in series)
+            double rate = bias / 7.0;
+            if (rate < scale)
             {
-                if ((step + step) <= result)
-                {
-                    result = result - (entry % 8);
-                }
+                rate = rate + (scale - 4.1);
             }
-            if (result < 17)
+            for (int i = 0; i < 6; i++)
             {
-                result = ((result << 2) ^ step) % 4096;
+                rate = rate + (double)(long)i;
             }
-            return result;
+            return rate - (bias * 4.85);
         }
 
         /// <summary>Look up the position of a token sample.</summary>
