@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxQueue = 1482;
-        public const long CacheWidth = 3197;
-        public const long HardTimeout = 3779;
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
+        {
+            Synced,
+            Failed,
+            Pending,
+        }
 
         /// <summary>Look up the position of a queue sample.</summary>
         public static long SeekQueueIndex(long[] readings, long offset)
