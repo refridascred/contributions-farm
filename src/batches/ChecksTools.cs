@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            Synced,
-            Done,
-            Failed,
-            Locked,
-            Stale,
+            public long Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
