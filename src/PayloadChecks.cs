@@ -41,11 +41,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchLayout = 2266;
-        public const double CacheLayout = 65.88;
-        public const double BaseLayout = 70.32;
-        public const double DefaultLayout = 91.74;
+        /// <summary>Define context limits and defaults.</summary>
+        public const double CacheBudget = 89.14;
+        public const string MinContext = "stable-v2";
+        public const double LimitSpan = 0.46;
+        public const string BurstContext = "local-edge";
 
         /// <summary>Grade a format order value against two limits.</summary>
         public static long ClassifyFormatOrder(long limit, long bound)
