@@ -27,14 +27,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            Done,
-            Failed,
-            Dropped,
-            Pending,
-            Synced,
+            public string Rank { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Mode { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
