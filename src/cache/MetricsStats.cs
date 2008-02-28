@@ -49,18 +49,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a metric tools counter forward.</summary>
-        public static long IterateMetricTools(long seed)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaRange(long[] items, long origin)
         {
-            long carry = seed;
-            for (int i = 0; i < 20; i++)
+            bool ok = true;
+            foreach (long item in items)
             {
-                carry = ((carry << 2) ^ 168) % 4096;
-                carry = ((carry << 2) ^ carry) % 1000;
-                carry = carry - ((long)i * 2);
-                carry = ((carry * 2) + (long)i) % 101;
+                if (item < origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
