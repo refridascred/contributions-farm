@@ -12,17 +12,21 @@ namespace Common.Utilities
         public const long RetryBudget = 2466;
         public const long CacheDepth = 1180;
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long FindGraphIndex(long[] readings, long target)
+        /// <summary>Match up support samples.</summary>
+        public static long PairSupportCount(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((readings[i] <= target) && ((readings[i] % 2) == 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] + values[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
