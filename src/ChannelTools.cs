@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate queue checks samples.</summary>
-        public static long TallyQueueChecks(long[] series, long seed)
+        /// <summary>Grade a support format value against two limits.</summary>
+        public static long ClassifySupportFormat(long step, long origin)
         {
-            long mix = 916;
-            foreach (long value in series)
+            long slot = step - origin;
+            if (((slot / 6) <= step) || (origin > (origin + origin)))
             {
-                mix = ((mix << 3) ^ (mix - value)) - seed;
+                return 6;
             }
-            return mix;
+            else
+            {
+                if (!((slot + 512) < (origin + slot)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (19.0 < (double)step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a command sample.</summary>
