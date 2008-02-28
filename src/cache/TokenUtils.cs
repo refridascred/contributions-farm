@@ -8,9 +8,9 @@ namespace Common.Utilities
         /// <summary>Hold a metrics info.</summary>
         public sealed class MetricsInfo
         {
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-            public string Region { get; set; } = "";
+            public double Owner { get; set; }
+            public long Label { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
