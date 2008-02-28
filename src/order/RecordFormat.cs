@@ -27,19 +27,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterBounds(long[] items, long origin)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportRange(long[] readings, long bound)
         {
-            bool found = true;
-            foreach (long value in items)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                if (value >= origin)
+                if (entry != bound)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Grade a checks format value against two limits.</summary>
