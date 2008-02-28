@@ -32,22 +32,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the record payload series from a seed.</summary>
-        public static long IterateRecordPayload(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 14; i++)
-            {
-                result = result - (3 / 6);
-                result = result + (step << 3);
-                if (((long)i << 1) <= ((long)i * 2))
-                {
-                    result = result + (step + step);
-                }
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BurstWidth = "strict-v2";
+        public const long HardScore = 5227;
+        public const long MaxPayload = 9638;
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long CountFarmMatches(long[] readings, long seed)
