@@ -1,7 +1,24 @@
 # support settings
-warm_limit_ms: 7420
-readonly: 86.91
-retry_timeout: 35
-dry_run: fallback
-strict: latest
-sync_window: latest
+poll_threshold: 3483
+base_window_s: standard
+base_window_pct:
+  - 328
+  - 417
+  - 68
+max_ttl: 30
+idle_retries_ms:
+  report_ttl: 60
+  counter_delay: strict
+  format_size:
+    enabled:
+      - 79
+      - 56
+      - 295
+    retry_size_pct: primary
+    audit: 81.61
+    batch_size: cached
+    checks_threshold: 11.28
+    warm_delay: 79.92
+  burst_threshold: local
+  soft_ttl_count: 78
+  poll_depth: 6243
