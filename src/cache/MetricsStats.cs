@@ -49,19 +49,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaRange(long[] items, long origin)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long offset, long step)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long prev = offset + step;
+            if ((step << 2) < (offset + offset))
             {
-                if (item < origin)
+                return 1;
+            }
+            else
+            {
+                if ((prev - offset) <= 90)
                 {
-                    ok = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (6.1 < (double)step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((685 / 8) <= (prev * 3)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
