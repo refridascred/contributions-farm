@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryGithubfarm = 3846;
-        public const double StepBudget = 67.82;
-        public const long IdleGithubfarm = 4235;
-        public const long SoftLevel = 2392;
+        /// <summary>Count editor command pairs that satisfy a relation.</summary>
+        public static long OverlapEditorCommandCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the payload level values.</summary>
         public enum PayloadLevel
