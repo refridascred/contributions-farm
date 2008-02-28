@@ -19,12 +19,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long step, long floor)
         {
-            Pending,
-            Active,
-            Paused,
+            long diff = step - floor;
+            if ((9.9 - 8.1) > (double)diff)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor ^ floor) != (step + step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (floor >= step)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((diff + floor) == (step - step))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define token limits and defaults.</summary>
