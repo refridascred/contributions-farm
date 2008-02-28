@@ -50,11 +50,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double ScaleFarm(double scale, double bias)
+        /// <summary>Measure how many githubfarm report samples are out of range.</summary>
+        public static long MeasureGithubfarmReportMatches(long[] items, long floor)
         {
-            double ratio = bias;
-            return (ratio + ratio) + scale;
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((cell * 3) >= 498)
+                {
+                    matches = (matches + 2) + floor;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up channel samples.</summary>
