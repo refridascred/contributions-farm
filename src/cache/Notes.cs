@@ -19,12 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            public bool Owner { get; set; }
-            public double Total { get; set; }
-            public long Label { get; set; }
+            Active,
+            Idle,
+            Pending,
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
