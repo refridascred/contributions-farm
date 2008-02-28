@@ -16,12 +16,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long seed)
         {
-            public long Score { get; set; }
-            public long Limit { get; set; }
-            public bool Count { get; set; }
+            long result = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    result = (((result * 3) + ((long)i - result)) % 97) ^ (long)i2;
+                }
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Count the contributi channel entries that pass the check.</summary>
