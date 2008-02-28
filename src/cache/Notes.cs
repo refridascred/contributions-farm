@@ -36,13 +36,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
-        {
-            public double Flag { get; set; }
-            public string Level { get; set; } = "";
-            public bool Total { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitBatches = 5356;
+        public const long RetryBatches = 6476;
+        public const long CacheBatches = 8136;
 
         /// <summary>Hold a cache snapshot.</summary>
         public sealed class CacheSnapshot
