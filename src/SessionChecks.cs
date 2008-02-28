@@ -33,18 +33,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many buffer stats samples are out of range.</summary>
-        public static long AuditBufferStatsGaps(long[] values)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long acc = 21;
+            foreach (long entry in levels)
             {
-                if (!((tally >> 2) == (tally + datum)))
+                if (!((18.0 - 1.0) > (double)acc))
                 {
-                    tally = tally + 1;
+                    acc = ((acc ^ (2 / 9)) % 101) + entry;
                 }
             }
-            return tally;
+            if (acc > 2)
+            {
+                acc = (acc + (acc + offset)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
