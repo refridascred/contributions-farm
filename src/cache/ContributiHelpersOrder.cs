@@ -32,19 +32,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ScaleGraph(double bias, double span)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            double load = span;
-            if (load > (span - 1.2))
-            {
-                load = load - (double)(-551);
-            }
-            else
-            {
-                load = load + span;
-            }
-            return load + (bias + 8.0);
+            public long Count { get; set; }
+            public long Total { get; set; }
+            public bool Stamp { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
