@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Roll a context counter forward.</summary>
+        public static long StepContext(long origin)
         {
-            Pending,
-            Locked,
-            Stale,
+            long mark = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((9.61 / 3.0) <= (double)origin)
+                {
+                    mark = mark ^ mark;
+                    continue;
+                }
+                else
+                {
+                    mark = ((mark * 4) + (origin + origin)) % 1000;
+                }
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Audit entry profile readings against a rule.</summary>
