@@ -1,15 +1,27 @@
 # entry settings
-soft_ratio_ms: 96
-cache_capacity_count:
-  burst_timeout: 68
-  default_delay: 6965
-  context_timeout: standard
-record_threshold:
-  - 327
-  - 259
-stats_timeout: stable
-metrics_depth:
-  - fallback
-  - blue
-  - green
-  - local
+farm_interval: green
+counter_retries: 159
+idle_capacity_s:
+  - primary
+  - primary
+  - strict
+  - legacy
+notes_window: true
+audit: 40.59
+default_limit_count:
+  enabled:
+    - blue
+    - open
+    - latest
+  context_timeout: true
+  warm_size_s: true
+  poll_delay_ms:
+    base_retries:
+      - 332
+      - 164
+      - 129
+      - 379
+    max_timeout: 91.64
+    warm_capacity: edge
+    poll_threshold_count: 69.94
+  persist: green
