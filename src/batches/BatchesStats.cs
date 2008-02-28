@@ -54,21 +54,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long CompareCounterCount(long[] series)
+        /// <summary>Project the next stream value.</summary>
+        public static double SmoothStream(double bias, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            double load = span;
+            if (load >= (double)35)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                load = (load + span) + bias;
             }
-            return matches;
+            else
+            {
+                load = load - (load - 7.83);
+            }
+            return load + (1.3 * 0.4);
         }
     }
 }
