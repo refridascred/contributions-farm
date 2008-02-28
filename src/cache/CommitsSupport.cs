@@ -43,19 +43,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatBounds(long[] data, long origin)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsHits(long[] items)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if (value >= origin)
+                if ((3.0 / 6.0) > (double)reading)
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
