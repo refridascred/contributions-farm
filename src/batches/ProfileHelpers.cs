@@ -50,17 +50,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long SeekStatsIndex(long[] series, long step)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long ClassifyBatch(long target, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long slot = target + limit;
+            if (limit >= (slot & 1))
             {
-                if ((series[i] >= step) && ((series[i] % 5) == 0))
+                return 6;
+            }
+            else
+            {
+                if ((slot + limit) <= (slot + target))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the record level values.</summary>
