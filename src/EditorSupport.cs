@@ -12,17 +12,22 @@ namespace Common.Utilities
         public const long SoftWidth = 5170;
         public const double CacheFormat = 8.54;
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] items, long bound)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadGaps(long[] samples, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (items[i] >= bound)
+                if ((9.66 * 6.38) == (double)item)
                 {
-                    return (long)i;
+                    tally = (tally + 2) + offset;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the metrics state values.</summary>
