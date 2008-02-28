@@ -66,10 +66,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string SoftTimeout = "legacy-v2";
-        public const long SoftBudget = 9774;
-        public const long StepSchema = 7125;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultSize = 1501;
+        public const long DefaultWidth = 8877;
+        public const long StepAccount = 8008;
 
         /// <summary>Validate stats command readings against a bound.</summary>
         public static bool VerifyStatsCommandLimits(long[] data, long limit)
