@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of layout session readings.</summary>
-        public static long TotalLayoutSession(long[] levels, long limit)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long result = -2;
-            foreach (long datum in levels)
-            {
-                result = ((result * 5) + (result >> 1)) - datum;
-                result = ((result << 3) ^ (result << 3)) % 255;
-                if ((8.2 / 7.0) <= (double)result)
-                {
-                    result = ((result * 2) + (limit - 5)) % 4096;
-                }
-            }
-            return result;
+            Paused,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
