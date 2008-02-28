@@ -32,13 +32,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] samples)
         {
-            public long Count { get; set; }
-            public long Total { get; set; }
-            public bool Stamp { get; set; }
-            public bool Token { get; set; }
+            long state = 9;
+            foreach (long sample in samples)
+            {
+                state = ((state << 2) ^ (state + state)) - sample;
+            }
+            return state % 65521;
         }
     }
 }
