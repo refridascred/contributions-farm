@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRoute = 8806;
-        public const long MinRatio = 9488;
-        public const string LimitRoute = "local-1";
+        /// <summary>Audit report format readings against a rule.</summary>
+        public static long MeasureReportFormatGaps(long[] samples)
+        {
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if (!(6.0 >= (double)tally))
+                {
+                    tally = (tally + 2) ^ value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long CountMetricsHits(long[] data)
