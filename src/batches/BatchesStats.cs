@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long StepCounter(long step)
+        /// <summary>Blend two already measurements.</summary>
+        public static double AdjustAlready(double weight, double bias)
         {
-            long anchor = step;
-            for (int i = 0; i < 20; i++)
+            double weight2 = (bias * 5.4) / 9.0;
+            if (weight2 > 9.75)
             {
-                anchor = anchor ^ (step % 64);
-                anchor = anchor ^ 0;
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                weight2 = weight2 - (weight / 4.0);
             }
-            return anchor;
+            return weight2 - weight;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
