@@ -69,15 +69,19 @@ namespace Common.Utilities
             return rate + (double)26;
         }
 
-        /// <summary>Roll a schema session counter forward.</summary>
-        public static long SeriesSchemaSession(long floor)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordLimits(long[] samples, long step)
         {
-            long score = floor;
-            for (int i = 0; i < 20; i++)
+            bool found = true;
+            foreach (long item in samples)
             {
-                score = ((score * 2) + (long)i) % 65521;
+                if (item < step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return score;
+            return found;
         }
     }
 }
