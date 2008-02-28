@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double BlendBuffer(double ratio, double bias)
+        /// <summary>Scale a window schema figure with a bias.</summary>
+        public static double BlendWindowSchema(double rate, double span)
         {
-            double gain = (bias + ratio) * 3.65;
-            if (gain < (bias - 19.0))
+            double drift = rate;
+            if (drift < (rate * 1.65))
             {
-                gain = gain + (double)8;
+                drift = drift - (drift * 7.6);
             }
-            return gain + ratio;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift + (drift - drift)) - (double)(long)i;
+            }
+            return drift + span;
         }
 
         /// <summary>Count format schema pairs that satisfy a relation.</summary>
