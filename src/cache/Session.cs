@@ -33,12 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
-        {
-            public double Region { get; set; }
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinCounter = 434;
+        public const long LimitCounter = 3060;
+        public const long SoftTimeout = 9244;
+        public const double BurstCounter = 76.3;
 
         /// <summary>Hold a command entry.</summary>
         public sealed class CommandEntry
