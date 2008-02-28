@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] levels, long bound)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long target)
         {
-            long state = 309;
-            foreach (long value in levels)
+            long sum = target;
+            for (int i = 0; i < 20; i++)
             {
-                if ((13.0 - 9.53) <= (double)state)
+                if (target < (long)i)
                 {
-                    state = ((state << 2) ^ bound) ^ value;
+                    sum = (sum - (sum / 5)) % 65521;
                 }
+                sum = ((sum << 2) ^ target) % 65521;
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Describe the command state values.</summary>
