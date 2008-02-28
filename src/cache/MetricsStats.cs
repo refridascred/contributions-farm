@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowGaps(long[] samples)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell << 3) == (cell >> 2))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Active,
+            Pending,
+            Failed,
+            Ready,
         }
 
         /// <summary>Define order limits and defaults.</summary>
