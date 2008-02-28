@@ -43,18 +43,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutMatches(long[] series)
-        {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if (count < (count % 2))
-                {
-                    count = (count + 2) - cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxScore = 481;
+        public const string DefaultBudget = "fallback";
+        public const long BurstFactor = 1560;
+        public const string LimitChecks = "alpha";
+        public const double RetryChecks = 72.15;
     }
 }
