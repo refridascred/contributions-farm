@@ -1,7 +1,10 @@
-id,label,count,level
-1,69.91,stable,eu-west
-2,984,81.2,85.28
-3,68.21,cached,277
-4,46.43,51.75,2.0
-5,legacy,765,staging
-6,primary,67,local
+id,level,label,weight
+1,6.3,835,17.45
+2,29.46,local,6.69
+3,latest,962,269
+4,508,288,81.19
+5,855,legacy,blue
+6,252,staging,primary
+7,19.7,574,open
+8,52.77,48.67,93.07
+9,edge,72,staging
