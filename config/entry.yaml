@@ -1,6 +1,26 @@
 # entry settings
-default_depth: 1024
-profile_ttl: staging
-enabled: 500
-verbose: 30
-schema_threshold: cached
+idle_depth:
+  - 145
+  - 251
+hard_limit_count:
+  min_retries: false
+  cache_delay_s: legacy
+  burst_interval_ms:
+    - 83
+    - 47
+  enabled: stable
+  base_ratio_s:
+    - legacy
+    - latest
+    - local
+batch_capacity: legacy
+hard_ratio: 78
+flush_delay_count:
+  batch_timeout_ms: false
+  burst_ttl_count: local
+  batch_retries: 100
+  warm_window: 49.22
+  min_capacity_ms:
+    - 229
+    - 186
+  warm_size_count: true
