@@ -55,19 +55,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the editor filter entries that pass the check.</summary>
-        public static long AuditEditorFilterOutliers(long[] series, long target)
-        {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((value + (-6)) < (value & 3))
-                {
-                    count = (count + 2) - target;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double StepCounter = 55.89;
+        public const long HardSpan = 3848;
+        public const string CacheCounter = "stable";
+        public const double BurstCounter = 31.12;
+        public const double MinCounter = 54.83;
 
         /// <summary>Describe the githubfarm level values.</summary>
         public enum GithubfarmLevel
