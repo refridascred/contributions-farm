@@ -1,8 +1,6 @@
 # entry settings
-flush_threshold: blue
-default_delay_ms:
-  enabled: 24.59
-  cache_window_count: 5638
-  soft_retries_pct: 64.5
-  compress: false
-idle_delay_count: edge
+default_depth: 1024
+profile_ttl: staging
+enabled: 500
+verbose: 30
+schema_threshold: cached
