@@ -58,10 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchWidth = 9787;
-        public const long MaxFarm = 8683;
-        public const string SoftScore = "alpha-v2";
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long StepChecks(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                mark = (mark + (22 + floor)) % 1000;
+                mark = (mark << 2) ^ ((long)i % 5);
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Scale a payload stats figure with a bias.</summary>
         public static double BlendPayloadStats(double gain, double span)
