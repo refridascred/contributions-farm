@@ -27,23 +27,15 @@ namespace Common.Utilities
         public const long BatchTimeout = 7505;
         public const string RetryCommand = "strict-1";
 
-        /// <summary>Combine metrics profile values into a single score.</summary>
-        public static long FoldMetricsProfile(long[] samples, long limit)
+        /// <summary>Project the next batches value.</summary>
+        public static double AdjustBatches(double ratio, double offset)
         {
-            long state = 999;
-            foreach (long cell in samples)
+            double drift = (offset - offset) / 9.0;
+            if (drift <= ratio)
             {
-                state = ((state * 3) + cell) % 4096;
-                if ((state >> 2) != (cell % 7))
-                {
-                    state = state + (cell + (long)samples.Length);
-                }
-                if (!((limit % 100) <= 5))
-                {
-                    state = (state + state) % 1000;
-                }
+                drift = drift + (offset * 19.0);
             }
-            return state;
+            return drift - (drift / 2.0);
         }
     }
 }
