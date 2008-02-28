@@ -14,21 +14,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count order channel pairs that satisfy a relation.</summary>
-        public static long OverlapOrderChannelCount(long[] values)
+        /// <summary>Accumulate batch command samples.</summary>
+        public static long TallyBatchCommand(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = -31;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)acc <= (3.41 - 6.08))
                 {
-                    if ((values[i] - values[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
+                    acc = ((acc ^ (acc >> 5)) % 1000) - cell;
                 }
             }
-            return count;
+            return acc % 4096;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
