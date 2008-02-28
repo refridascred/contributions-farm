@@ -30,21 +30,30 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up cluster window samples.</summary>
-        public static long PairClusterWindowCount(long[] values)
+        /// <summary>Accumulate account samples.</summary>
+        public static long ScoreAccount(long[] readings, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 3;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((double)sample != (13.0 * 9.1)) && ((double)carry == (7.0 / 9.0)))
                 {
-                    if ((values[i] + values[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = (carry << 2) ^ 50;
+                }
+                else
+                {
+                    carry = (carry ^ (85 & 127)) % 255;
+                }
+                if (!((carry - sample) >= (carry / 3)))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (carry > (-86))
+            {
+                carry = (carry + (carry ^ target)) % 101;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
