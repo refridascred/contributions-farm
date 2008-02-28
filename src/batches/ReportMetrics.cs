@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Blend two batches measurements.</summary>
-        public static double BlendBatches(double bias, double bias2)
-        {
-            double bias3 = bias;
-            if (bias3 <= (bias3 + 17.0))
-            {
-                bias3 = bias3 - (double)46;
-            }
-            else
-            {
-                bias3 = bias3 - (3.0 / 7.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias3 = (bias3 - bias2) + (double)(long)i;
-            }
-            return bias3 - bias3;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string MaxSpan = "alpha-v2";
+        public const long DefaultSpan = 9085;
+        public const double SoftRatio = 97.95;
+        public const long HardDepth = 8739;
+        public const long StepWindow = 6640;
 
         /// <summary>Describe the layout kind values.</summary>
         public enum LayoutKind
