@@ -1,8 +1,7 @@
 {
-  "farm_timeout": "open",
-  "buffer_ttl": "stable",
-  "base_size_count": 45,
-  "dry_run": ["standard", "local", "legacy"],
-  "editor_size": 23,
-  "persist": ["edge", "fallback"]
+  "stream_capacity": [431, 451, 206, 334],
+  "idle_threshold_ms": "latest",
+  "batch_interval_s": "fallback",
+  "soft_size_s": ["fallback", "cached", "cached"],
+  "farm_size": "stable"
 }
