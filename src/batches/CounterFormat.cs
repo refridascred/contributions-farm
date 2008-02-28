@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TallyTools(long[] series)
         {
-            Active,
-            Synced,
-            Stale,
+            long acc = 9;
+            foreach (long sample in series)
+            {
+                acc = acc - sample;
+            }
+            if (acc < 750)
+            {
+                acc = ((acc * 4) + (acc - acc)) % 255;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
