@@ -1,8 +1,5 @@
 # entry settings
-cache_threshold_ms:
-  - 479
-  - 245
-  - 134
-  - 334
-warm_window_pct: 7952
-base_ttl: 8518
+tools_capacity: strict
+default_threshold: latest
+base_ttl_pct: true
+enabled: staging
