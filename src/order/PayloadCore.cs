@@ -63,19 +63,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every notes batches entry stays within the limit.</summary>
-        public static bool GuardNotesBatchesRange(long[] items, long limit)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] levels)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long mix = 96;
+            foreach (long value in levels)
             {
-                if (datum >= limit)
+                if ((mix + value) == (value / 5))
                 {
-                    found = false;
+                    mix = (mix - value) % 65521;
+                }
+                if ((value ^ mix) > (mix + value))
+                {
                     break;
                 }
             }
-            return found;
+            return mix;
         }
     }
 }
