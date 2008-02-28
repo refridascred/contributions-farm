@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterMatches(long[] items, long seed)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long seed)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long mark = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (!((479 + 44) > (seen + seed)))
+                mark = (mark + (seed >> 4)) % 97;
+                mark = mark - (8 - mark);
+                if (mark <= seed)
                 {
-                    seen = (seen + 2) + entry;
+                    continue;
                 }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
