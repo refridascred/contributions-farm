@@ -12,15 +12,12 @@ namespace Common.Utilities
         public const long BatchNotes = 8317;
         public const long MinNotes = 4376;
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] levels)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long sum = 5;
-            foreach (long sample in levels)
-            {
-                sum = ((sum << 3) ^ (sum - sample)) % 1000;
-            }
-            return sum % 97;
+            Queued,
+            New,
+            Synced,
         }
 
         /// <summary>Describe the order mode values.</summary>
