@@ -23,15 +23,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] samples)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long state = 9;
-            foreach (long sample in samples)
-            {
-                state = ((state << 2) ^ (state + state)) - sample;
-            }
-            return state % 65521;
+            public string Score { get; set; } = "";
+            public bool Flag { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
