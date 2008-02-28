@@ -28,12 +28,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryBudget = 4947;
-        public const double MaxSpan = 6.61;
-        public const string MaxDepth = "primary-1";
-        public const string BatchBudget = "strict-v2";
-        public const long RetryBuffer = 9681;
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] samples, long offset)
+        {
+            long carry = 85;
+            foreach (long item in samples)
+            {
+                if ((offset - item) == (item + carry))
+                {
+                    carry = ((carry << 3) ^ (433 * 4)) % 255;
+                }
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long CountMetricGaps(long[] readings)
