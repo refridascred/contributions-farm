@@ -23,11 +23,39 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double MinPayload = 64.01;
-        public const double MinFactor = 68.01;
-        public const long StepPayload = 7585;
-        public const string DefaultDepth = "stable-edge";
-        public const long BatchLevel = 9450;
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long seed, long limit)
+        {
+            long span = seed + limit;
+            if ((seed % 60) > limit)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((span / 9) >= 4)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((span - 8) <= limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((2.99 + 8.9) <= (double)span) || ((1.26 + 1.0) < (double)seed))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
