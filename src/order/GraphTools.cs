@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Match up format samples.</summary>
-        public static long OverlapFormatCount(long[] levels)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatOutliers(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (seen > (401 ^ seen))
                 {
-                    if ((levels[i] - levels[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 1) ^ sample;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Describe the batches mode values.</summary>
