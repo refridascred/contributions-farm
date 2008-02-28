@@ -1,15 +1,6 @@
 {
-  "default_capacity": {
-    "githubfarm_capacity": "strict",
-    "base_timeout_count": "eu-west",
-    "min_ttl_count": ["open", "open", "standard", "cached"],
-    "hard_limit": 49.99,
-    "idle_capacity_pct": "green",
-    "hard_delay": "edge"
-  },
-  "flush_retries": 9685,
-  "persist": "cached",
-  "hard_interval_pct": 86.51,
-  "batch_size": 250,
-  "enabled": "fallback"
+  "enabled": [168, 272, 172],
+  "base_window_pct": "staging",
+  "farm_ttl": "standard",
+  "command_interval": 67
 }
