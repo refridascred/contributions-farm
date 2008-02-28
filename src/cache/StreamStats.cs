@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long RankSession(long bound, long limit)
+        /// <summary>Count the cluster report entries that pass the check.</summary>
+        public static long MeasureClusterReportGaps(long[] series)
         {
-            if (bound >= (bound + bound))
+            long count = 0;
+            foreach (long reading in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit ^ limit) == (bound + bound))
+                if (((2.0 * 3.63) >= (double)count) && (238 > (count + 294)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (833 <= (limit * 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = (count + 1) - reading;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a batch stats.</summary>
