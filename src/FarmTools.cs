@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] levels)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyGaps(long[] samples, long floor)
         {
-            long state = 6;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if ((value + state) != (value + value))
+                if (565 <= (tally >> 1))
                 {
-                    state = (state + (value ^ 4)) % 1000;
+                    tally = ((tally + 2) + datum) - floor;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (state > 465)
-            {
-                state = (state ^ state) % 255;
-            }
-            return state % 1000;
+            return tally;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
