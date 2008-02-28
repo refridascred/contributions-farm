@@ -27,15 +27,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long DigestChannel(long[] series)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long acc = 711;
-            foreach (long value in series)
-            {
-                acc = (acc << 2) ^ (acc + value);
-            }
-            return acc;
+            public long Mode { get; set; }
+            public string Token { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a record options.</summary>
