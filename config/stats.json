@@ -1,20 +1,5 @@
 {
-  "hard_ratio": 100,
-  "batch_limit": true,
-  "soft_retries": "primary",
-  "cache_window_pct": true,
-  "warm_capacity": {
-    "base_delay_count": 60,
-    "verbose": "primary",
-    "poll_interval_ms": true,
-    "compress": 46.15,
-    "base_window_pct": 21.14,
-    "session_interval": {
-      "queue_size": "eu-west",
-      "idle_retries": ["staging", "blue", "edge", "standard"],
-      "sync_interval": true,
-      "flush_window_count": 500
-    }
-  },
-  "poll_window_pct": "legacy"
+  "route_depth": "staging",
+  "channel_retries": [429, 357, 446, 121],
+  "cache_ratio": ["stable", "strict"]
 }
