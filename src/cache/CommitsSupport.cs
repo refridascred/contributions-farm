@@ -33,18 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] values)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatMatches(long[] series, long offset)
         {
-            long score = 4;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (((score & 127) >= value) && ((double)value > (15.0 - 2.87)))
+                if (!((((long)series.Length / 7) <= (tally << 1)) && ((double)offset <= (11.0 + 5.19))))
                 {
-                    score = ((score * 3) + (value - score)) % 101;
+                    tally = (tally + 2) ^ sample;
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Describe the batch status values.</summary>
