@@ -51,12 +51,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double WindowPayload = 62.5;
-        public const long StepInterval = 601;
-        public const double HardSize = 85.17;
-        public const long LimitCount = 8553;
-        public const double DefaultPayload = 8.65;
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
+        {
+            public double Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public long Level { get; set; }
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Validate stats command readings against a bound.</summary>
         public static bool VerifyStatsCommandLimits(long[] data, long limit)
