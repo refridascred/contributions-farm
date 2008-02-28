@@ -35,13 +35,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] data, long limit)
         {
-            public string Rank { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Mode { get; set; }
-            public bool Weight { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
