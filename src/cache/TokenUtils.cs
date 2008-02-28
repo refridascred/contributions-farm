@@ -29,19 +29,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next report account value.</summary>
-        public static double AdjustReportAccount(double rate, double bias)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferRange(long[] values, long step)
         {
-            double scale = (double)(79 / 3);
-            if (scale >= scale)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                scale = (scale + (rate / 9.0)) - bias;
+                if (datum > step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + rate) + (double)(long)i;
-            }
-            return scale - (scale - scale);
+            return flag;
         }
     }
 }
