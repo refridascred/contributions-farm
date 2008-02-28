@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long SeekSupportIndex(long[] series, long bound)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepInterval = 7152;
+        public const string WindowChecks = "fallback-v2";
+        public const string RetryChecks = "latest-v2";
+        public const double SoftInterval = 88.01;
 
         /// <summary>Describe the commits state values.</summary>
         public enum CommitsState
