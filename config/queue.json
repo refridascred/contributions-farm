@@ -1,6 +1,7 @@
 {
-  "compress": false,
-  "dry_run": 73.64,
-  "batch_depth_pct": "legacy",
-  "flush_interval_ms": true
+  "idle_retries_ms": "fallback",
+  "enabled": 50,
+  "flush_retries_s": 27,
+  "compress": [323, 258],
+  "retry_limit_s": true
 }
