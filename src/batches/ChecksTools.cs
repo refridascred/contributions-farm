@@ -32,14 +32,10 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
-        {
-            Locked,
-            Draft,
-            Ready,
-            Pending,
-            Stale,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxFactor = 3086;
+        public const long SoftReport = 1478;
+        public const long CacheWidth = 8540;
+        public const long StepReport = 4488;
     }
 }
