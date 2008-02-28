@@ -1,14 +1,14 @@
 # Command notes
 
-Keep window and channel names short and lowercase.
-Keep route and githubfarm names short and lowercase.
+The format report groups every session by session.
+Use schema settings to tune how often metric data is refreshed.
 
-Run the cache check before changing any context limits.
-The commits module keeps schema values in sync with the batches cache.
+A tools that stays idle for too long is moved to the farm list.
+A context that stays idle for too long is moved to the counter list.
 
 ## Guidelines
 
-- Review tools limits each release
-- Keep stats values small
-- Log every entry change
-- Prefer record defaults
+- Review githubfarm limits each release
+- Prefer checks defaults
+- Log every record change
+- Keep editor values small
