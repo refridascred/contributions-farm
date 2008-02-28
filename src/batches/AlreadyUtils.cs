@@ -46,24 +46,19 @@ namespace Common.Utilities
         public const long BatchDepth = 7482;
         public const long BaseEntry = 2768;
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long SortContributi(long target, long floor)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionLimits(long[] values, long target)
         {
-            if ((double)floor <= (9.06 + 3.72))
+            bool flag = true;
+            foreach (long datum in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((91 ^ target) == ((-635) + floor))
+                if (datum <= target)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
