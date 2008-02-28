@@ -1,5 +1,7 @@
 {
-  "burst_retries_s": 7749,
-  "default_window_pct": 26.68,
-  "warm_depth_pct": true
+  "compress": 45.32,
+  "contributi_retries": 1024,
+  "min_timeout": "strict",
+  "stats_retries": ["local", "latest", "primary"],
+  "max_size": ["open", "blue", "staging"]
 }
