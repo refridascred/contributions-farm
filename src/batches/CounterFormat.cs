@@ -56,17 +56,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LocateLayoutIndex(long[] samples, long offset)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long floor, long floor2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long offset = floor - floor2;
+            if (((2 + offset) < 303) && ((floor2 & 15) >= (offset + 6)))
             {
-                if (samples[i] < offset)
+                return 5;
+            }
+            else
+            {
+                if ((double)floor2 <= (11.0 * 11.0))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
     }
 }
