@@ -13,16 +13,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Iterate the account profile series from a seed.</summary>
-        public static long RollAccountProfile(long limit)
+        /// <summary>Project the next filter value.</summary>
+        public static double BlendFilter(double ratio, double bias)
         {
-            long acc = limit;
-            for (int i = 0; i < 21; i++)
+            double bias2 = bias;
+            if (bias2 <= ratio)
             {
-                acc = ((acc << 2) ^ (limit >> 3)) % 4096;
-                acc = ((acc * 2) + (long)i) % 101;
+                bias2 = bias2 - 4.0;
             }
-            return acc;
+            return bias2 - (double)2;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
