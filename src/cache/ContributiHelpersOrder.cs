@@ -15,12 +15,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleTools = 3935;
-        public const double MaxTools = 75.01;
-        public const string HardSpan = "open";
-        public const long MinTools = 9347;
-        public const long RetryTools = 635;
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferGaps(long[] series, long limit)
+        {
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (0 > (sample / 9))
+                {
+                    seen = (seen + 3) - limit;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a order counter forward.</summary>
         public static long RollOrder(long limit)
