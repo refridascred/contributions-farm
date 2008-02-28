@@ -1,5 +1,5 @@
 {
-  "record_capacity": 8715,
-  "support_retries": true,
-  "max_threshold": 17.07
+  "default_delay": "primary",
+  "hard_ttl_pct": false,
+  "soft_ttl_s": "latest"
 }
