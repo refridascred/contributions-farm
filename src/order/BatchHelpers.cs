@@ -13,21 +13,22 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long OverlapFarmCount(long[] readings)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TallyLayout(long[] levels, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 768;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((9.9 / 9.0) > (double)mix) || ((double)seed < (6.0 - 8.09)))
                 {
-                    if ((readings[i] + readings[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
+                    mix = ((mix * 4) + (25 * 3)) % 255;
+                }
+                if (!(1.8 <= (double)mix))
+                {
+                    mix = (mix ^ (item >> 2)) % 4096;
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
