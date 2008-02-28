@@ -64,12 +64,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LocateLayoutIndex(long[] samples, long floor)
         {
-            New,
-            Stale,
-            Draft,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
