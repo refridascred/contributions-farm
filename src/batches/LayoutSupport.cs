@@ -12,17 +12,22 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Look up the position of a context tools sample.</summary>
-        public static long SeekContextToolsIndex(long[] readings, long origin)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowOutliers(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if ((readings[i] < origin) && ((readings[i] % 5) == 0))
+                if ((tally + 3) < entry)
                 {
-                    return (long)i;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a cluster stats.</summary>
