@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine cluster stats values into a single score.</summary>
-        public static long TallyClusterStats(long[] items, long origin)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorBounds(long[] levels, long target)
         {
-            long state = -37;
-            foreach (long value in items)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                if ((state * 2) < state)
+                if (cell > target)
                 {
-                    state = (state ^ (state / 9)) % 65521;
-                }
-                if ((92 - value) > (origin / 8))
-                {
+                    ok = false;
                     break;
                 }
             }
-            if (state > 82)
-            {
-                state = state + (origin / 6);
-            }
-            return state;
+            return ok;
         }
 
         /// <summary>Hold a payload stats.</summary>
