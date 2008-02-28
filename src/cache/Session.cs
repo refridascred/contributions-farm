@@ -36,11 +36,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MinCounter = 434;
-        public const long LimitCounter = 3060;
-        public const long SoftTimeout = 9244;
-        public const double BurstCounter = 76.3;
+        /// <summary>Count order graph pairs that satisfy a relation.</summary>
+        public static long OverlapOrderGraphCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a command entry.</summary>
         public sealed class CommandEntry
