@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            public string Ratio { get; set; } = "";
-            public long Rank { get; set; }
-            public long Count { get; set; }
+            public string Flag { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Offset { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
