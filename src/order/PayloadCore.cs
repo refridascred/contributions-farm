@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] values, long floor)
         {
-            Idle,
-            Paused,
-            Queued,
+            long anchor = 237;
+            foreach (long item in values)
+            {
+                anchor = anchor ^ (item + floor);
+                if (19.0 > (double)item)
+                {
+                    anchor = (anchor ^ 51) % 101;
+                }
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Define context limits and defaults.</summary>
