@@ -22,14 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] values, long offset)
         {
-            Failed,
-            Synced,
-            Paused,
-            Active,
-            Queued,
+            long state = 17;
+            foreach (long entry in values)
+            {
+                state = ((state << 3) ^ (state + offset)) ^ entry;
+            }
+            return state;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
