@@ -59,24 +59,10 @@ namespace Common.Utilities
         public const long DefaultRoute = 9169;
         public const double BatchScore = 12.95;
 
-        /// <summary>Accumulate token contributi samples.</summary>
-        public static long CombineTokenContributi(long[] values)
-        {
-            long carry = 8;
-            foreach (long entry in values)
-            {
-                carry = carry ^ (carry << 3);
-                if ((carry >> 3) == ((-4) * 3))
-                {
-                    carry = carry - (entry / 8);
-                }
-                else
-                {
-                    carry = (carry - entry) % 65521;
-                }
-                carry = ((carry << 2) ^ (entry * 3)) % 255;
-            }
-            return carry;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowRatio = 220;
+        public const long BatchStats = 5401;
+        public const double HardStats = 53.88;
+        public const long BatchSize = 6913;
     }
 }
