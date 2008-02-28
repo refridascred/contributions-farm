@@ -64,11 +64,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterHits(long[] data, long bound)
         {
-            public bool Total { get; set; }
-            public double Level { get; set; }
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if (((bound >> 4) != (421 + matches)) && (443 > (matches >> 1)))
+                {
+                    matches = (matches + 2) ^ entry;
+                }
+            }
+            return matches;
         }
     }
 }
