@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next format value.</summary>
-        public static double AdjustFormat(double gain, double bias)
-        {
-            double scale = 0.7 - (double)4;
-            if (scale > (double)887)
-            {
-                scale = scale + bias;
-            }
-            else
-            {
-                scale = scale - scale;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - gain) + (double)(long)i;
-            }
-            return scale - scale;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinSize = 3434;
+        public const string CacheBudget = "fallback-1";
+        public const long SoftDepth = 3343;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long BaseChannel = 8060;
