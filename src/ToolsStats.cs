@@ -20,38 +20,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long SortFormat(long floor, long bound)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            if (!(bound <= (floor + 7)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((floor / 4) < (bound + bound)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((541 ^ floor) != (4 - floor)) || (874 <= (floor * 5)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!(floor >= bound))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Done,
+            Stale,
+            Active,
+            New,
         }
 
         /// <summary>Match up cluster window samples.</summary>
