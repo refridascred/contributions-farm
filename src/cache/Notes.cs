@@ -46,12 +46,14 @@ namespace Common.Utilities
         public const long RetryBatches = 6476;
         public const long CacheBatches = 8136;
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            public bool Mode { get; set; }
-            public bool Region { get; set; }
-            public long Size { get; set; }
+            Ready,
+            Retry,
+            Done,
+            Draft,
+            New,
         }
     }
 }
