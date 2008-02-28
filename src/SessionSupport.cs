@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Project the next graph value.</summary>
-        public static double ProjectGraph(double rate, double bias)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long limit)
         {
-            double gain = (bias * 1.0) - (double)74;
-            if (gain < (gain - bias))
+            long sum = limit;
+            for (int i = 0; i < 6; i++)
             {
-                gain = (gain - (gain * 12.0)) - rate;
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            else
-            {
-                gain = gain - gain;
-            }
-            return gain + (double)923;
+            return sum;
         }
 
         /// <summary>Hold a entry record.</summary>
