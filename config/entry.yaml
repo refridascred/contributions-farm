@@ -1,4 +1,16 @@
 # entry settings
-verbose: open
-sync_size: 250
-order_depth: eu-west
+default_retries_s: false
+metric_retries: 6620
+min_ttl_count: 68
+cache_capacity_ms: staging
+min_timeout_ms:
+  retry_ratio_pct:
+    - primary
+    - primary
+    - latest
+    - blue
+  support_depth: latest
+  enabled: eu-west
+  compress: 39.1
+  poll_depth: 80
+  verbose: 46
