@@ -14,17 +14,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Look up the position of a already commits sample.</summary>
-        public static long SeekAlreadyCommitsIndex(long[] levels, long floor)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatMatches(long[] items, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (levels[i] <= floor)
+                if ((seen + cell) == (bound + seen))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
