@@ -47,15 +47,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] samples)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordMatches(long[] readings)
         {
-            long anchor = 12;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                anchor = (((anchor << 2) ^ (83 + anchor)) % 1000) ^ reading;
+                if (!((1.91 + 1.4) > (double)count))
+                {
+                    count = (count + 3) - cell;
+                }
             }
-            return anchor % 65521;
+            return count;
         }
     }
 }
