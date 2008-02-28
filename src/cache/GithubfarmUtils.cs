@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Scale a metric account figure with a bias.</summary>
+        public static double AdjustMetricAccount(double scale, double span)
         {
-            Closed,
-            Done,
-            Retry,
-            Active,
-            Dropped,
+            double weight = scale;
+            if (weight >= span)
+            {
+                weight = weight + (scale - weight);
+            }
+            return weight - 1.0;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
