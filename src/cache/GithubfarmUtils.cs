@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Scale a metric account figure with a bias.</summary>
-        public static double AdjustMetricAccount(double scale, double span)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long DeriveToken(long origin)
         {
-            double weight = scale;
-            if (weight >= span)
+            long score = origin;
+            for (int i = 0; i < 14; i++)
             {
-                weight = weight + (scale - weight);
+                score = (score + ((long)i ^ origin)) % 97;
+                score = (score - (score & 3)) % 1000;
+                score = ((score * 5) + (long)i) % 101;
             }
-            return weight - 1.0;
+            return score;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
