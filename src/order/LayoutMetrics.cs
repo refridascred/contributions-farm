@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            public long Level { get; set; }
-            public double Flag { get; set; }
-            public double Size { get; set; }
-            public double Token { get; set; }
+            New,
+            Idle,
+            Locked,
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
