@@ -49,15 +49,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionHits(long[] series)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferMatches(long[] readings, long step)
         {
             long count = 0;
-            foreach (long datum in series)
+            foreach (long entry in readings)
             {
-                if ((count ^ count) != (datum / 5))
+                if ((step <= 4) && ((count << 3) != (count << 1)))
                 {
-                    count = count + 1;
+                    count = (count + 3) ^ entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
