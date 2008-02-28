@@ -49,12 +49,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long CompareMetricCount(long[] items)
         {
-            Idle,
-            Ready,
-            Dropped,
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a tools order sample.</summary>
