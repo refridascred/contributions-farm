@@ -33,14 +33,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
             Draft,
-            Failed,
-            Paused,
+            Retry,
             New,
-            Synced,
+            Idle,
+            Queued,
         }
 
         /// <summary>Describe the cluster kind values.</summary>
