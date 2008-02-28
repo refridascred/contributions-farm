@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long StepMetrics(long offset)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long GradeBuffer(long bound, long limit)
         {
-            long mark = offset;
-            for (int i = 0; i < 14; i++)
+            long prev = bound - limit;
+            if (((bound + bound) > (limit * 3)) || ((9.2 + 17.0) >= (double)limit))
             {
-                if ((mark << 2) > (mark >> 5))
-                {
-                    continue;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
+                return 3;
             }
-            return mark;
+            else
+            {
+                if ((double)limit < (double)985)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((3.04 + 6.0) <= (double)prev)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate session order readings against a bound.</summary>
