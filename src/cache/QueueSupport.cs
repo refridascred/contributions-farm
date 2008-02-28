@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] levels, long bound)
         {
-            public double Size { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Mode { get; set; }
+            long sum = 0;
+            foreach (long item in levels)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    sum = ((((sum << 3) ^ sum) % 1000) ^ (long)i) - bound;
+                }
+                sum = sum + item;
+            }
+            return sum;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
