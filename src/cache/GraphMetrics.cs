@@ -56,16 +56,12 @@ namespace Common.Utilities
         public const long BaseLevel = 6818;
         public const long StepLevel = 2125;
 
-        /// <summary>Derive the next payload buffer value from a seed.</summary>
-        public static long StepPayloadBuffer(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 10; i++)
-            {
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double LimitRecord = 12.8;
+        public const string SoftRecord = "legacy-v2";
+        public const double SoftFactor = 21.63;
+        public const string IdleDepth = "strict";
+        public const long IdleRatio = 904;
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long WeighChannel(long[] data)
