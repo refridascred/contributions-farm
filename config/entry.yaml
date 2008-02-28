@@ -1,24 +1,22 @@
 # entry settings
-already_timeout: 29.51
-cache_capacity: stable
-audit: edge
-compress: 4466
-token_capacity:
-  enabled: 21.14
-  max_window_ms:
-    persist: 500
-    dry_run: 74.62
-    flush_size: eu-west
-    min_limit:
-      - 67
-      - 360
-      - 336
-      - 147
-  hard_ttl_ms: local
-  verbose: true
-  batch_capacity_count: false
-flush_delay_ms:
-  idle_window_s: 18
-  batches_interval: 5811
-  commits_interval: false
-  sync_depth: eu-west
+report_retries:
+  default_timeout: eu-west
+  compress: green
+  audit:
+    poll_threshold_s:
+      - 77
+      - 298
+      - 389
+      - 365
+    command_window:
+      - 362
+      - 12
+    enabled: 74.5
+  enabled: 60
+command_limit: legacy
+retry_ttl:
+  - 360
+  - 140
+  - 292
+  - 134
+poll_interval_s: standard
