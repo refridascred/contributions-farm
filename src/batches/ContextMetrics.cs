@@ -67,9 +67,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double HardCount = 22.02;
-        public const long BurstTools = 3954;
-        public const long DefaultTools = 8036;
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
+        {
+            public long Token { get; set; }
+            public double Limit { get; set; }
+            public bool Score { get; set; }
+        }
     }
 }
