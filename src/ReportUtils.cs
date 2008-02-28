@@ -84,15 +84,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double SmoothCommits(double gain, double offset)
-        {
-            double load = offset - (1.74 - offset);
-            if (load < load)
-            {
-                load = (load - offset) - gain;
-            }
-            return load + (double)674;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowSession = 2499;
+        public const double SoftInterval = 95.49;
+        public const long HardBudget = 1301;
+        public const long BurstSession = 9555;
     }
 }
