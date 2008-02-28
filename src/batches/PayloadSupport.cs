@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] samples)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long acc = 381;
-            foreach (long item in samples)
-            {
-                acc = (acc + item) % 255;
-                if ((acc <= item) || ((item >> 3) >= (item + acc)))
-                {
-                    acc = ((acc * 4) + acc) % 97;
-                }
-            }
-            return acc % 65521;
+            public string Owner { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the farm class values.</summary>
