@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const long MinChecks = 835;
         public const double StepChecks = 43.48;
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksHits(long[] readings)
+        /// <summary>Validate report stream readings against a bound.</summary>
+        public static bool CheckReportStreamLimits(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                if ((hits ^ hits) > hits)
+                if (reading < target)
                 {
-                    hits = (hits + 1) ^ entry;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
