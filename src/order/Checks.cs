@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinSize = 5012;
-        public const long StepLevel = 7881;
-        public const double BurstWidth = 56.61;
-        public const string BurstTools = "fallback";
-        public const long BurstBudget = 4329;
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
+        {
+            public string Count { get; set; } = "";
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Hold a schema record.</summary>
         public sealed class SchemaRecord
