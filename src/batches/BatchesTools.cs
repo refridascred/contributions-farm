@@ -24,10 +24,13 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double RetryProfile = 94.76;
-        public const string BaseProfile = "legacy-1";
-        public const long HardProfile = 3678;
-        public const long IdleLevel = 2103;
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
+        {
+            public long Region { get; set; }
+            public long Size { get; set; }
+            public long Weight { get; set; }
+            public long Total { get; set; }
+        }
     }
 }
