@@ -23,19 +23,22 @@ namespace Common.Utilities
         public const long HardFilter = 4494;
         public const double MinScore = 2.05;
 
-        /// <summary>Fold a list of entry batch readings.</summary>
-        public static long ScoreEntryBatch(long[] values, long origin)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] values, long floor)
         {
-            long result = 8;
-            foreach (long cell in values)
+            long anchor = 65;
+            foreach (long datum in values)
             {
-                result = (result ^ (2 << 3)) ^ cell;
+                if ((floor - 702) == (anchor + 0))
+                {
+                    anchor = ((anchor + anchor) % 255) ^ datum;
+                }
             }
-            if (result < 7)
+            if (anchor > 9)
             {
-                result = ((result * 2) + origin) % 255;
+                anchor = ((anchor << 3) ^ (anchor - 5)) % 65521;
             }
-            return result % 65521;
+            return anchor % 65521;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
