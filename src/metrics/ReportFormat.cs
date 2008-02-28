@@ -32,13 +32,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            public double Total { get; set; }
-            public long Rank { get; set; }
-            public bool Ratio { get; set; }
-            public bool Label { get; set; }
+            Dropped,
+            Stale,
+            Failed,
+            Pending,
         }
 
         /// <summary>Rank already booking input into a small class.</summary>
