@@ -13,16 +13,14 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long FoldLayout(long[] readings, long seed)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            long result = 35;
-            foreach (long entry in readings)
-            {
-                result = (((result << 3) ^ ((long)readings.Length + seed)) % 65521) - entry;
-                result = (result << 2) ^ (seed - seed);
-            }
-            return result;
+            Synced,
+            Active,
+            Idle,
+            Retry,
+            Done,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
