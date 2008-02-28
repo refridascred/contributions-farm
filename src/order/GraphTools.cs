@@ -35,17 +35,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long FindCounterIndex(long[] values, long seed)
+        /// <summary>Compare every pair of metrics format readings.</summary>
+        public static long OverlapMetricsFormatCount(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((values[i] >= seed) && ((values[i] % 3) != 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] ^ series[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
