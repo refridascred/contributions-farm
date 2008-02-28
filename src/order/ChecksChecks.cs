@@ -5,33 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long RankBuffer(long seed, long target)
-        {
-            long offset = seed - target;
-            if ((13.0 + 3.0) == (double)seed)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((8.0 / 3.0) != (double)seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!(19 < (offset + seed)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryTimeout = 6353;
+        public const long BatchWidth = 9315;
+        public const long SoftWindow = 1833;
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long RankToken(long limit, long floor)
