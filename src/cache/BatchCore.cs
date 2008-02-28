@@ -29,11 +29,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Combine command values into a single score.</summary>
+        public static long FoldCommand(long[] items, long limit)
         {
-            public double Stamp { get; set; }
-            public string Count { get; set; } = "";
+            long score = 8;
+            foreach (long datum in items)
+            {
+                score = ((score - score) ^ datum) + limit;
+            }
+            return score;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
