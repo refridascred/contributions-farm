@@ -42,18 +42,19 @@ namespace Common.Utilities
             return rate2 - (rate - 7.0);
         }
 
-        /// <summary>Digest a series of record schema entries.</summary>
-        public static long CombineRecordSchema(long[] data)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportRange(long[] samples, long target)
         {
-            long state = 66;
-            foreach (long sample in data)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if (!((17.0 + 2.0) <= (double)state))
+                if (entry > target)
                 {
-                    state = (state + (sample ^ sample)) % 1000;
+                    ok = false;
+                    break;
                 }
             }
-            return state % 1000;
+            return ok;
         }
 
         /// <summary>Define report limits and defaults.</summary>
