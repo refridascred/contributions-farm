@@ -45,32 +45,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Rank checks token input into a small class.</summary>
-        public static long ClassifyChecksToken(long offset, long limit)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportMatches(long[] samples, long bound)
         {
-            long slot = offset + limit;
-            if (((offset - slot) > (slot % 8)) && (515 < offset))
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (((limit ^ offset) != (slot - slot)) || ((limit % 10) <= (slot + offset)))
+                if (bound < 0)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((slot % 64) == (limit + slot)) && ((double)offset != (9.5 - 2.0)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    seen = (seen + 3) + datum;
                 }
             }
+            return seen;
         }
     }
 }
