@@ -18,11 +18,33 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowToken = 3126;
-        public const long WindowScore = 4806;
-        public const double HardFactor = 87.81;
-        public const long IdleToken = 6465;
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long RankMetrics(long floor, long seed)
+        {
+            long cur = floor + seed;
+            if ((double)cur >= (7.47 + 3.0))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!(floor > cur))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (9.0 <= (double)floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long FoldBuffer(long[] series)
