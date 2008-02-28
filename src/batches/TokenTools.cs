@@ -11,12 +11,15 @@ namespace Common.Utilities
         public const long WindowSession = 3111;
         public const string MinDepth = "legacy-edge";
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Scale a cluster window figure with a bias.</summary>
+        public static double AdjustClusterWindow(double bias, double bias2)
         {
-            public long Label { get; set; }
-            public string Rank { get; set; } = "";
-            public long Mode { get; set; }
+            double bias3 = bias2;
+            if (bias3 >= (bias2 / 7.0))
+            {
+                bias3 = (bias3 - (bias3 - bias3)) + bias;
+            }
+            return bias3 + bias3;
         }
 
         /// <summary>Define context limits and defaults.</summary>
