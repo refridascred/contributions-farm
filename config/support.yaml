@@ -1,7 +1,7 @@
 # support settings
-dry_run: 7493
-base_capacity_pct: primary
-tools_window:
-  batch_interval: true
-  warm_capacity: 8.66
-  cluster_timeout: 30
+warm_limit_ms: 7420
+readonly: 86.91
+retry_timeout: 35
+dry_run: fallback
+strict: latest
+sync_window: latest
