@@ -16,35 +16,34 @@ namespace Common.Utilities
             return gain + scale;
         }
 
-        /// <summary>Rank route queue input into a small class.</summary>
-        public static long RankRouteQueue(long target, long step)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long ClassifyCounter(long target, long floor)
         {
-            long lane = target ^ step;
-            if ((lane - target) >= step)
+            if (((target / 7) > (target + floor)) && (target > (floor - floor)))
             {
-                return 7;
+                return 8;
             }
             else
             {
-                if ((double)target != (double)59)
+                if ((floor & 127) >= (target * 5))
                 {
-                    return 5;
+                    return 7;
                 }
                 else
                 {
-                    if ((double)step == (9.31 + 4.89))
+                    if ((double)floor >= (7.7 - 17.0))
                     {
-                        return 2;
+                        return 0;
                     }
                     else
                     {
-                        if (target <= (step - step))
+                        if ((1.4 + 2.94) <= (double)target)
                         {
-                            return 0;
+                            return 1;
                         }
                         else
                         {
-                            return 4;
+                            return 2;
                         }
                     }
                 }
