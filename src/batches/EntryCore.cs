@@ -64,18 +64,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphHits(long[] series, long bound)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueHits(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if ((bound & 7) >= (bound >> 1))
+                if ((5.26 - 5.1) > (double)matches)
                 {
-                    count = (count + 3) ^ value;
+                    matches = ((matches + 3) ^ datum) + floor;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
