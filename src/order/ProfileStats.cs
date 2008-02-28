@@ -12,13 +12,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            Idle,
-            Pending,
-            Draft,
-            Done,
+            Paused,
+            Ready,
+            Locked,
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
