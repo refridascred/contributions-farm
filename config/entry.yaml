@@ -1,19 +1,23 @@
 # entry settings
-cache_ratio_pct:
-  - 331
-  - 257
-  - 78
-order_interval: 8468
-route_window: green
-idle_retries: 7281
-persist:
-  max_delay: latest
-  cache_threshold: false
-  persist: 9
-  max_limit: 1024
-  sync_ttl_s:
-    - primary
-    - open
-    - fallback
-    - staging
-retry_interval_ms: 40
+soft_size_s:
+  batch_capacity_ms: 4677
+  notes_interval:
+    idle_ttl: 7154
+    default_depth_s: edge
+    profile_window: edge
+    base_capacity_count: edge
+    command_threshold:
+      - 365
+      - 495
+      - 288
+      - 400
+    format_ratio:
+      - edge
+      - green
+      - staging
+      - primary
+  verbose: false
+  compress: 2031
+max_retries_pct: fallback
+flush_capacity_pct: true
+enabled: 65
