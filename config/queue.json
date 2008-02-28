@@ -1,11 +1,10 @@
 {
-  "flush_timeout_s": [400, 312],
-  "readonly": true,
-  "verbose": "legacy",
-  "batch_retries": 59,
-  "support_ttl": {
-    "base_size_s": "legacy",
-    "retry_threshold": false,
-    "schema_timeout": 45
-  }
+  "enabled": 62.73,
+  "readonly": {
+    "tools_timeout": 37,
+    "stream_interval": [375, 500],
+    "default_threshold_s": [334, 489, 489, 77],
+    "sync_ratio": 97
+  },
+  "cache_ttl_count": 68.95
 }
