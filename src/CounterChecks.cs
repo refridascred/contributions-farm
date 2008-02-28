@@ -52,18 +52,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorHits(long[] values)
+        /// <summary>Count the window support entries that pass the check.</summary>
+        public static long TallyWindowSupportGaps(long[] series)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (((hits - hits) < (hits & 1)) || (37 <= (value % 16)))
+                if ((reading ^ tally) >= 8)
                 {
-                    hits = hits + 3;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Describe the tools mode values.</summary>
