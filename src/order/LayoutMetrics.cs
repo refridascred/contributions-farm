@@ -14,10 +14,19 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleScore = 2629;
-        public const string IdleProfile = "strict-edge";
-        public const long LimitProfile = 4023;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionHits(long[] data)
+        {
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if (hits <= (-445))
+                {
+                    hits = (hits + 1) + item;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
         public static long PairCommitsCount(long[] data)
