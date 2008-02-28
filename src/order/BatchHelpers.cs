@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
-        {
-            public string Size { get; set; } = "";
-            public string Count { get; set; } = "";
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double SoftDepth = 55.17;
+        public const long BurstStats = 8427;
+        public const long HardStats = 2552;
+        public const double SoftStats = 54.0;
+        public const long CacheStats = 9635;
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long TallyLayout(long[] levels, long seed)
