@@ -19,21 +19,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of already counter readings.</summary>
-        public static long PairAlreadyCounterCount(long[] levels)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Synced,
+            Active,
+            Done,
         }
 
         /// <summary>Grade a payload report value against two limits.</summary>
