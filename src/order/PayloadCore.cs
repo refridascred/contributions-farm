@@ -19,38 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long ClassifyCounter(long target, long floor)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            if (((target / 7) > (target + floor)) && (target > (floor - floor)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor & 127) >= (target * 5))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)floor >= (7.7 - 17.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((1.4 + 2.94) <= (double)target)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Done,
+            Closed,
         }
 
         /// <summary>Look up the position of a record sample.</summary>
