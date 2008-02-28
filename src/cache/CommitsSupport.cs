@@ -63,19 +63,21 @@ namespace Common.Utilities
         public const long HardMetrics = 576;
         public const long CacheMetrics = 8126;
 
-        /// <summary>Validate stats command readings against a bound.</summary>
-        public static bool VerifyStatsCommandLimits(long[] data, long limit)
+        /// <summary>Compare every pair of githubfarm context readings.</summary>
+        public static long OverlapGithubfarmContextCount(long[] data)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum <= limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((data[i] + data[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
