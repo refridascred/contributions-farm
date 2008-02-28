@@ -1,11 +1,12 @@
 # githubfarm settings
-batch_ratio_pct: false
-retry_interval: 7.72
-hard_limit:
-  - local
-  - standard
-  - staging
+burst_retries_ms:
+  - latest
   - open
-warm_interval: green
-retry_depth_count: 97
-max_ratio_count: fallback
+  - eu-west
+burst_delay: 34
+default_size_ms:
+  burst_delay_pct: 24
+  verbose: 30
+  hard_capacity: 65.9
+strict: 70
+githubfarm_limit: standard
