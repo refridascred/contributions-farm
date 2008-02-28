@@ -55,13 +55,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            public double Owner { get; set; }
-            public string Offset { get; set; } = "";
-            public long Level { get; set; }
-            public double Stamp { get; set; }
+            Queued,
+            New,
+            Pending,
+            Active,
         }
 
         /// <summary>Validate stats command readings against a bound.</summary>
