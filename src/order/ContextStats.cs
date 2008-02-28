@@ -13,29 +13,28 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long step, long seed)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long GradeChannel(long seed, long target)
         {
-            long prev = step - seed;
-            if ((prev + step) != (3 - 36))
+            if ((10.0 - 13.0) < (20.0 / 5.0))
             {
-                return 0;
+                return 6;
             }
             else
             {
-                if (prev < (step - step))
+                if (target <= (seed * 2))
                 {
-                    return 6;
+                    return 4;
                 }
                 else
                 {
-                    if ((seed - seed) <= (21 * 5))
+                    if ((target + seed) >= seed)
                     {
-                        return 8;
+                        return 0;
                     }
                     else
                     {
-                        return 3;
+                        return 8;
                     }
                 }
             }
