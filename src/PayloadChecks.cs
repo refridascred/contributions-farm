@@ -47,38 +47,18 @@ namespace Common.Utilities
         public const double LimitSpan = 0.46;
         public const string BurstContext = "local-edge";
 
-        /// <summary>Grade a format order value against two limits.</summary>
-        public static long ClassifyFormatOrder(long limit, long bound)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowHits(long[] samples)
         {
-            if (bound > (bound ^ limit))
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (849 < (bound + limit))
+                if (datum >= (datum * 5))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (bound >= (limit + bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)limit >= (5.39 / 8.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define route limits and defaults.</summary>
