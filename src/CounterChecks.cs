@@ -19,10 +19,16 @@ namespace Common.Utilities
         public const string RetryPayload = "cached-v2";
         public const double IdlePayload = 61.3;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchScore = 9622;
-        public const string CacheInterval = "fallback-v2";
-        public const string StepLayout = "primary-1";
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TotalTools(long[] items, long origin)
+        {
+            long state = 33;
+            foreach (long reading in items)
+            {
+                state = ((((state << 3) ^ state) % 97) - reading) - origin;
+            }
+            return state % 1000;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long IdleTimeout = 7526;
