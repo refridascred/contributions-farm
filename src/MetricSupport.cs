@@ -33,13 +33,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Project the next command value.</summary>
+        public static double SmoothCommand(double ratio, double bias)
         {
-            Done,
-            Pending,
-            Dropped,
-            Ready,
+            double scale = ratio;
+            if (scale >= bias)
+            {
+                scale = scale + scale;
+            }
+            else
+            {
+                scale = scale - (1.9 - 0.53);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + (scale - 10.0)) + (double)(long)i;
+            }
+            return scale + 5.54;
         }
     }
 }
