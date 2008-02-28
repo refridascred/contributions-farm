@@ -64,11 +64,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            public long Count { get; set; }
-            public long Owner { get; set; }
+            public bool Total { get; set; }
+            public double Level { get; set; }
         }
     }
 }
