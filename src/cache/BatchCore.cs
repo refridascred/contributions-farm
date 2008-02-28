@@ -36,12 +36,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleScore = 5986;
-        public const long LimitBatches = 2684;
-        public const long CacheBatches = 7998;
-        public const long RetryBudget = 4638;
-        public const double CacheRatio = 91.84;
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
+        {
+            Done,
+            Active,
+            Synced,
+        }
 
         /// <summary>Validate editor batches readings against a bound.</summary>
         public static bool ValidateEditorBatchesLimits(long[] values, long bound)
