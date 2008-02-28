@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a commits notes counter forward.</summary>
-        public static long StepCommitsNotes(long bound)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long mark = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                mark = (mark + (long)i) % 101;
-                if ((double)bound <= (3.8 + 9.16))
-                {
-                    mark = (mark + (mark & 3)) % 101;
-                }
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
+            public long Size { get; set; }
+            public string Total { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Fold a list of stream readings.</summary>
