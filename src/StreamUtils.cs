@@ -58,26 +58,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] levels)
+        /// <summary>Grade a githubfarm format value against two limits.</summary>
+        public static long GradeGithubfarmFormat(long step, long origin)
         {
-            long mix = 941;
-            foreach (long reading in levels)
+            long step2 = step - origin;
+            if ((origin % 64) > (step % 16))
             {
-                if ((double)mix == (7.8 / 4.0))
+                return 7;
+            }
+            else
+            {
+                if ((step2 - step2) > origin)
                 {
-                    mix = (mix ^ mix) % 1000;
+                    return 1;
                 }
                 else
                 {
-                    mix = (mix + (mix + reading)) % 1000;
+                    return 8;
                 }
             }
-            if (mix > 81)
-            {
-                mix = (mix - (mix - mix)) % 255;
-            }
-            return mix;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
