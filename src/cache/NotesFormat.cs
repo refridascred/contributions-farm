@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            public string Count { get; set; } = "";
-            public double Owner { get; set; }
-            public double Limit { get; set; }
+            Queued,
+            Closed,
+            Active,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
