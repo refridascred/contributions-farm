@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] items)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long state = -39;
-            foreach (long item in items)
-            {
-                if (item <= (state & 127))
-                {
-                    state = (state ^ item) % 255;
-                }
-            }
-            return state % 97;
+            Draft,
+            Done,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
