@@ -33,12 +33,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstSize = 3074;
-        public const long HardReport = 4069;
-        public const long BurstReport = 8953;
-        public const string BaseReport = "legacy-1";
-        public const long StepCount = 7233;
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
+        {
+            Stale,
+            Idle,
+            Queued,
+        }
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long MeasureQueueOutliers(long[] items, long offset)
