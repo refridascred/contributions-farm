@@ -50,13 +50,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamGaps(long[] series)
         {
-            public long Owner { get; set; }
-            public string Count { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public long Rank { get; set; }
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((3 << 3) > (seen ^ item))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
