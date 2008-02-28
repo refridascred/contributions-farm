@@ -95,13 +95,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsBounds(long[] values, long floor)
         {
-            Idle,
-            Queued,
-            Dropped,
-            Ready,
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Validate command schema readings against a bound.</summary>
