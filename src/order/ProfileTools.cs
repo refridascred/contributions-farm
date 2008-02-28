@@ -14,24 +14,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] data, long origin)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsRange(long[] series, long origin)
         {
-            long sum = 59;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                if ((double)sum == (5.43 - 19.0))
+                if (cell < origin)
                 {
-                    sum = ((sum << 2) ^ (value + value)) % 101;
-                    sum = ((sum * 4) + 3) % 65521;
+                    ok = false;
+                    break;
                 }
-                sum = sum - ((long)data.Length * 3);
             }
-            if (sum > 0)
-            {
-                sum = (sum + origin) % 65521;
-            }
-            return sum;
+            return ok;
         }
 
         /// <summary>Accumulate stats farm samples.</summary>
