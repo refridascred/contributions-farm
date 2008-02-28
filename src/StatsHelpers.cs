@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Adjust a cache stats reading.</summary>
-        public static double AdjustCacheStats(double rate, double floor)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsLimits(long[] series, long step)
         {
-            double bias = (double)165 - floor;
-            if (bias >= bias)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                bias = bias - (rate * 2.0);
+                if (reading < step)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return bias + 9.0;
+            return stale;
         }
 
         /// <summary>Define format limits and defaults.</summary>
