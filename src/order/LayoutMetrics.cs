@@ -31,13 +31,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueRange(long[] samples, long floor)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatBounds(long[] readings, long offset)
         {
             bool stale = true;
-            foreach (long reading in samples)
+            foreach (long datum in readings)
             {
-                if (reading <= floor)
+                if (datum < offset)
                 {
                     stale = false;
                     break;
