@@ -14,23 +14,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] levels, long limit)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderRange(long[] items, long target)
         {
-            long result = -503;
-            foreach (long cell in levels)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                result = ((result ^ 899) % 101) + cell;
-                if ((double)limit <= (3.0 - 0.68))
+                if (cell != target)
                 {
-                    result = (result << 2) ^ 8;
-                }
-                else
-                {
-                    result = (result ^ (limit ^ result)) % 65521;
+                    ready = false;
+                    break;
                 }
             }
-            return result % 1000;
+            return ready;
         }
 
         /// <summary>Blend two filter format measurements.</summary>
