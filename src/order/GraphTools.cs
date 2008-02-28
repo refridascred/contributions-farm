@@ -64,18 +64,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long DigestEditor(long[] data, long origin)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long mark = 2;
-            foreach (long entry in data)
-            {
-                if ((origin > (origin + origin)) || (573 > entry))
-                {
-                    mark = (mark - (entry & 127)) % 65521;
-                }
-            }
-            return mark;
+            public double Weight { get; set; }
+            public bool Flag { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Roll a record command counter forward.</summary>
