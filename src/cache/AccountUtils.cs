@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowTimeout = 734;
-        public const long WindowAlready = 9285;
-        public const double RetryDepth = 38.89;
-        public const string DefaultAlready = "fallback-1";
+        /// <summary>Rank route input into a small class.</summary>
+        public static long SortRoute(long offset, long target)
+        {
+            if ((target << 1) < offset)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((offset % 97) == (44 ^ target))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)offset != (18.0 / 2.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((target + target) < (offset * 4)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long DigestChannel(long[] values)
