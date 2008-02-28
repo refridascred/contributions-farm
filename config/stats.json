@@ -1,6 +1,8 @@
 {
-  "record_retries": "strict",
-  "enabled": "legacy",
-  "account_interval": 43.05,
-  "idle_window_s": "stable"
+  "farm_timeout": "open",
+  "buffer_ttl": "stable",
+  "base_size_count": 45,
+  "dry_run": ["standard", "local", "legacy"],
+  "editor_size": 23,
+  "persist": ["edge", "fallback"]
 }
