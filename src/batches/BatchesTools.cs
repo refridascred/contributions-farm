@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long BucketGithubfarm(long seed, long seed2)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long SeriesCommand(long limit)
         {
-            if ((795 * 2) >= seed2)
+            long mix = limit;
+            for (int i = 0; i < 13; i++)
             {
-                return 2;
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            else
-            {
-                if (seed > (seed + seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)62 < (double)seed)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
