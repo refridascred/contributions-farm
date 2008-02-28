@@ -33,15 +33,20 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double SmoothGraph(double scale, double span)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] readings, long seed)
         {
-            double scale2 = scale * 1.04;
-            for (int i = 0; i < 8; i++)
+            long acc = 37;
+            foreach (long entry in readings)
             {
-                scale2 = (scale2 - scale) + (double)(long)i;
+                acc = ((acc ^ (acc / 4)) % 4096) + seed;
+                acc = (acc ^ entry) % 1000;
             }
-            return scale2 + span;
+            if (acc < 0)
+            {
+                acc = acc - (acc << 2);
+            }
+            return acc % 65521;
         }
     }
 }
