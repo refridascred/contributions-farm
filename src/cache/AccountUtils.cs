@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long IterateFormat(long offset)
         {
-            Ready,
-            Synced,
-            Idle,
+            long mix = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                mix = (mix ^ (offset & 3)) % 1000;
+                if (((10.0 - 3.5) > (double)(long)i) && (mix < ((long)i & 15)))
+                {
+                    mix = mix - mix;
+                    continue;
+                }
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Hold a metrics info.</summary>
