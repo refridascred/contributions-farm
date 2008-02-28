@@ -13,10 +13,16 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryBatches = 6386;
-        public const long IdleSpan = 7794;
-        public const long HardWidth = 2370;
+        /// <summary>Adjust a support githubfarm reading.</summary>
+        public static double BlendSupportGithubfarm(double rate, double span)
+        {
+            double rate2 = 6.2;
+            if (rate2 >= (double)9)
+            {
+                rate2 = (rate2 + rate2) - span;
+            }
+            return rate2 - (rate - 7.0);
+        }
 
         /// <summary>Digest a series of record schema entries.</summary>
         public static long CombineRecordSchema(long[] data)
