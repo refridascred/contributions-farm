@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long AuditRouteGaps(long[] levels)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutLimits(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if (((781 - reading) < (reading & 7)) || ((54 & 15) > reading))
+                if (reading <= bound)
                 {
-                    count = count + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Describe the order mode values.</summary>
