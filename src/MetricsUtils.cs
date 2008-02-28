@@ -34,19 +34,24 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long RollProfile(long offset)
+        /// <summary>Grade a queue record value against two limits.</summary>
+        public static long BucketQueueRecord(long bound, long limit)
         {
-            long anchor = offset;
-            for (int i = 0; i < 19; i++)
+            if ((double)limit <= 5.5)
             {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    anchor = ((anchor + (anchor - 9)) % 1000) - (long)i2;
-                }
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                return 4;
             }
-            return anchor;
+            else
+            {
+                if ((limit * 2) != (limit % 64))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Blend two layout payload measurements.</summary>
