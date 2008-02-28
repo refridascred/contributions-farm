@@ -68,18 +68,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksMatches(long[] series)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((hits ^ hits) > (hits / 8))
-                {
-                    hits = (hits + 1) ^ item;
-                }
-            }
-            return hits;
+            New,
+            Stale,
+            Draft,
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
