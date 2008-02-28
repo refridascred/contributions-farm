@@ -19,15 +19,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ScaleMetric(double bias, double floor)
-        {
-            double mean = 8.2;
-            if (mean <= (floor - bias))
-            {
-                mean = mean - (floor - floor);
-            }
-            return mean + (double)31;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double IdleLevel = 19.8;
+        public const long BaseInterval = 5857;
+        public const string BaseSpan = "cached-1";
+        public const long MinContext = 2680;
+        public const double StepContext = 75.44;
     }
 }
