@@ -1,18 +1,6 @@
 {
-  "sync_window_count": 72,
-  "strict": 2060,
-  "sync_capacity": {
-    "burst_size_ms": {
-      "max_interval_ms": ["primary", "latest", "strict", "stable"],
-      "retry_limit_ms": 43.82,
-      "min_limit_pct": "eu-west",
-      "soft_threshold_s": 97.32,
-      "verbose": "edge",
-      "poll_timeout_count": 500
-    },
-    "burst_threshold_count": 978,
-    "persist": "standard",
-    "checks_threshold": 2828
-  },
-  "sync_limit": 5.56
+  "burst_interval_count": "stable",
+  "flush_timeout_count": true,
+  "enabled": "open",
+  "stream_ttl": 28.21
 }
