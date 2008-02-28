@@ -31,21 +31,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Compare every pair of metrics format readings.</summary>
-        public static long OverlapMetricsFormatCount(long[] series)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueRange(long[] data, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (sample <= floor)
                 {
-                    if ((series[i] ^ series[j]) != 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
