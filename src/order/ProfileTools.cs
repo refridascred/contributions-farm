@@ -14,19 +14,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double SmoothChecks(double bias, double span)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long DigestMetric(long[] data, long origin)
         {
-            double gain = 2.7 - (4.37 + 4.2);
-            if (gain >= (3.78 - bias))
+            long sum = 59;
+            foreach (long value in data)
             {
-                gain = (gain + gain) + span;
+                if ((double)sum == (5.43 - 19.0))
+                {
+                    sum = ((sum << 2) ^ (value + value)) % 101;
+                    sum = ((sum * 4) + 3) % 65521;
+                }
+                sum = sum - ((long)data.Length * 3);
             }
-            for (int i = 0; i < 7; i++)
+            if (sum > 0)
             {
-                gain = (gain - (gain / 6.0)) + (double)(long)i;
+                sum = (sum + origin) % 65521;
             }
-            return gain - 3.45;
+            return sum;
         }
 
         /// <summary>Accumulate stats farm samples.</summary>
