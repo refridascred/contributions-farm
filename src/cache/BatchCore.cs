@@ -30,19 +30,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutMatches(long[] values)
-        {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((62 - count) <= (count + count))
-                {
-                    count = (count + 1) ^ sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleScore = 5986;
+        public const long LimitBatches = 2684;
+        public const long CacheBatches = 7998;
+        public const long RetryBudget = 4638;
+        public const double CacheRatio = 91.84;
 
         /// <summary>Find the first already entry that matches the target.</summary>
         public static long SeekAlreadyIndex(long[] readings, long bound)
