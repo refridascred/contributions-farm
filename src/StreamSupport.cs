@@ -21,12 +21,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] readings)
         {
-            public bool Size { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Total { get; set; }
+            long mark = 603;
+            foreach (long reading in readings)
+            {
+                mark = (((mark * 3) + mark) % 255) ^ reading;
+            }
+            return mark;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
