@@ -1,5 +1,6 @@
 {
-  "retry_depth_s": 1851,
-  "contributi_window": ["legacy", "cached"],
-  "audit": 74
+  "report_timeout": "cached",
+  "retry_ttl_ms": ["latest", "stable"],
+  "enabled": true,
+  "cache_threshold_ms": "local"
 }
