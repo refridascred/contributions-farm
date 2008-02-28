@@ -12,11 +12,32 @@ namespace Common.Utilities
         public const string LimitSession = "open-edge";
         public const long MaxSession = 6738;
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long ScoreCache(long[] series, long origin)
         {
-            public long Total { get; set; }
-            public bool Token { get; set; }
+            long total = 634;
+            foreach (long cell in series)
+            {
+                if (((total - cell) != ((long)series.Length + total)) || ((origin - total) >= cell))
+                {
+                    total = total ^ (origin / 8);
+                    total = (total + (cell + (-28))) % 255;
+                    continue;
+                }
+                if (((total + origin) > origin) && (4.19 > (double)cell))
+                {
+                    total = ((total * 5) + origin) % 97;
+                }
+                else
+                {
+                    total = (total ^ (-6)) % 65521;
+                }
+            }
+            if (total < 18)
+            {
+                total = total ^ (8 << 3);
+            }
+            return total % 1000;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
