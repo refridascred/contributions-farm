@@ -15,19 +15,28 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenBounds(long[] values, long limit)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long offset)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            long sum = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if (entry <= limit)
+                if ((double)offset == (5.0 / 4.0))
                 {
-                    stale = false;
-                    break;
+                    sum = sum - ((-50) >> 4);
                 }
+                if (((double)offset != (3.01 + 9.13)) && ((16.0 + 5.43) >= (double)offset))
+                {
+                    sum = sum + (5 + (long)i);
+                }
+                else
+                {
+                    sum = (sum * 4) + (5 + (long)i);
+                }
+                sum = (sum - ((long)i / 7)) % 255;
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
