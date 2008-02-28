@@ -5,14 +5,28 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TallyGithubfarm(long[] series, long limit)
         {
-            Failed,
-            Done,
-            Paused,
-            Dropped,
-            Ready,
+            long mark = 8;
+            foreach (long value in series)
+            {
+                mark = mark - value;
+                mark = ((mark << 3) ^ (limit + 18)) % 65521;
+                if (((limit - mark) == (value - 304)) && ((mark % 2) > (limit % 12)))
+                {
+                    mark = ((mark << 3) ^ ((long)series.Length + mark)) % 65521;
+                }
+                if (limit >= (limit + value))
+                {
+                    break;
+                }
+            }
+            if (mark < 805)
+            {
+                mark = (mark << 2) ^ ((long)series.Length % 97);
+            }
+            return mark % 65521;
         }
 
         /// <summary>Adjust a metric reading.</summary>
