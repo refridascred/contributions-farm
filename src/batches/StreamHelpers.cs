@@ -57,11 +57,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double HardSize = 2.75;
-        public const long DefaultSize = 904;
-        public const double HardRoute = 66.18;
-        public const long DefaultRoute = 9123;
+        /// <summary>Derive the next tools schema value from a seed.</summary>
+        public static long IterateToolsSchema(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 14; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Digest a series of session entries.</summary>
         public static long TotalSession(long[] items)
