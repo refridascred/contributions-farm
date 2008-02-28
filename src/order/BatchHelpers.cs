@@ -50,10 +50,31 @@ namespace Common.Utilities
             return ratio + (ratio * 4.0);
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitCounter = 2568;
-        public const long BaseCounter = 1538;
-        public const long StepCounter = 3474;
-        public const long WindowCounter = 3194;
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long bound, long floor)
+        {
+            if ((bound + bound) >= floor)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((82 - floor) > (85 & 63))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor >> 5) > (bound + (-5)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
     }
 }
