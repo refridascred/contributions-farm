@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long SortRoute(long offset, long target)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long FindRecordIndex(long[] items, long bound)
         {
-            if ((target << 1) < offset)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset % 97) == (44 ^ target))
+                if (items[i] >= bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)offset != (18.0 / 2.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((target + target) < (offset * 4)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a metrics info.</summary>
