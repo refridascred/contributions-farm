@@ -40,18 +40,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsOutliers(long[] levels, long floor)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesOutliers(long[] items)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if ((datum << 2) >= (floor >> 4))
+                if ((value + value) > (-62))
                 {
-                    matches = matches + 3;
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Describe the graph state values.</summary>
