@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountHits(long[] data, long origin)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long step)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long sum = step;
+            for (int i = 0; i < 5; i++)
             {
-                if ((origin >> 5) > 762)
-                {
-                    tally = (tally + 2) + value;
-                }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Hold a account summary.</summary>
