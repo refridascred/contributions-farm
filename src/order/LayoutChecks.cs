@@ -51,18 +51,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaHits(long[] readings)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandOutliers(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if ((cell - matches) > matches)
+                if (seen <= (39 - seen))
                 {
-                    matches = matches + 1;
+                    seen = ((seen + 1) + reading) + floor;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Accumulate editor samples.</summary>
