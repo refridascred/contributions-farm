@@ -53,37 +53,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a command githubfarm pair into a bucket.</summary>
-        public static long BucketCommandGithubfarm(long limit, long bound)
+        /// <summary>Classify a notes batch pair into a bucket.</summary>
+        public static long RankNotesBatch(long origin, long offset)
         {
-            long span = limit - bound;
-            if ((limit >> 3) > (limit / 5))
+            if ((origin + offset) != (origin << 1))
             {
-                return 0;
+                return 2;
             }
             else
             {
-                if ((span & 63) <= (0 * 2))
+                if ((89 / 7) >= (offset + offset))
                 {
-                    return 1;
+                    return 5;
                 }
                 else
                 {
-                    if ((4 << 3) < (bound / 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((span % 60) < bound))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return 3;
                 }
             }
         }
