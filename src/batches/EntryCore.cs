@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Locate a order support reading by value.</summary>
-        public static long FindOrderSupportIndex(long[] levels, long bound)
+        /// <summary>Derive the next batch filter value from a seed.</summary>
+        public static long StepBatchFilter(long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if (levels[i] == bound)
+                if (sum >= offset)
                 {
-                    return (long)i;
+                    continue;
                 }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Accumulate window samples.</summary>
