@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Check that every format stream entry stays within the limit.</summary>
-        public static bool VerifyFormatStreamBounds(long[] readings, long seed)
-        {
-            bool ok = true;
-            foreach (long item in readings)
-            {
-                if (item != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftReport = 5978;
+        public const long CacheReport = 2674;
+        public const string BaseSpan = "open";
+        public const double DefaultReport = 83.78;
 
         /// <summary>Count the batch counter entries that pass the check.</summary>
         public static long AuditBatchCounterOutliers(long[] items, long seed)
