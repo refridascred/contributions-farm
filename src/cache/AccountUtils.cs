@@ -5,29 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] data, long limit)
-        {
-            long carry = 7;
-            foreach (long item in data)
-            {
-                if ((item << 1) == (32 - 129))
-                {
-                    carry = ((carry * 5) + (limit - limit)) % 65521;
-                    break;
-                }
-                carry = carry - (limit * 5);
-                if ((6 + carry) == (carry - item))
-                {
-                    carry = (carry * 2) + (16 << 1);
-                }
-                else
-                {
-                    carry = (carry + (limit - limit)) % 255;
-                }
-            }
-            return carry % 97;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinInterval = 9128;
+        public const long WindowProfile = 2736;
+        public const long RetryWidth = 8410;
+        public const string MaxInterval = "strict-edge";
+        public const double IdleProfile = 84.33;
 
         /// <summary>Iterate the counter series from a seed.</summary>
         public static long StepCounter(long target)
