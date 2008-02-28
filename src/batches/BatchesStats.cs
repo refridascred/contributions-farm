@@ -44,12 +44,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardFactor = 2609;
-        public const long BurstCommand = 7137;
-        public const string IdleDepth = "open-v2";
-        public const string RetryCommand = "standard-v2";
-        public const long MinSize = 312;
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
+        {
+            Ready,
+            Retry,
+            Dropped,
+            Queued,
+        }
 
         /// <summary>Describe the editor status values.</summary>
         public enum EditorStatus
