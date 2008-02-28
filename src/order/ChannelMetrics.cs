@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long RollRecord(long seed)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] data)
         {
-            long acc = seed;
-            for (int i = 0; i < 8; i++)
+            long score = 8;
+            foreach (long reading in data)
             {
-                acc = ((acc * 3) + (long)i) % 101;
+                if (!(score <= (score + score)))
+                {
+                    score = (score - (reading >> 4)) % 101;
+                }
+                if (score > (score % 16))
+                {
+                    score = score - (39 >> 1);
+                }
             }
-            return acc;
+            return score % 1000;
         }
 
         /// <summary>Describe the support phase values.</summary>
