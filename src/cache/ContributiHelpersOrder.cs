@@ -11,21 +11,16 @@ namespace Common.Utilities
         public const long CacheProfile = 6048;
         public const long RetryInterval = 7219;
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long MatchReportCount(long[] levels)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long FoldLayout(long[] readings, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 35;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = (((result << 3) ^ ((long)readings.Length + seed)) % 65521) - entry;
+                result = (result << 2) ^ (seed - seed);
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
