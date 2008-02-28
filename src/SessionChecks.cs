@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutOutliers(long[] series, long origin)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((tally > (4 ^ tally)) && !(origin > datum))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Stale,
+            Failed,
+            Locked,
+            Closed,
         }
 
         /// <summary>Digest a series of farm entries.</summary>
