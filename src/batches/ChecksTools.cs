@@ -18,17 +18,22 @@ namespace Common.Utilities
         public const long IdleSpan = 7794;
         public const long HardWidth = 2370;
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LookupContributiIndex(long[] data, long seed)
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] items, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 62;
+            foreach (long entry in items)
             {
-                if ((data[i] < seed) && ((data[i] % 5) != 0))
+                if ((((-695) + mix) != (floor - mix)) || (entry <= (floor - mix)))
                 {
-                    return (long)i;
+                    mix = (mix * 5) + mix;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (920 & 3)) % 1000;
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Check that every notes channel entry stays within the limit.</summary>
