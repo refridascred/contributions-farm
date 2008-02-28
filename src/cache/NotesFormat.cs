@@ -19,17 +19,13 @@ namespace Common.Utilities
         public const double DefaultMetrics = 87.12;
         public const string HardMetrics = "latest-v2";
 
-        /// <summary>Derive the next buffer tools value from a seed.</summary>
-        public static long StepBufferTools(long step)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            long result = step;
-            for (int i = 0; i < 15; i++)
-            {
-                result = (result << 2) ^ step;
-                result = result - (46 & 127);
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
+            Done,
+            Paused,
+            Pending,
+            Retry,
         }
     }
 }
