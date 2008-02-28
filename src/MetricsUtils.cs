@@ -24,22 +24,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of payload metric readings.</summary>
-        public static long FoldPayloadMetric(long[] data, long origin)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long DigestChannel(long[] series)
         {
-            long result = 6;
-            foreach (long cell in data)
+            long acc = 711;
+            foreach (long value in series)
             {
-                if (((origin + result) >= origin) || ((cell - 98) > (result + origin)))
-                {
-                    result = (result ^ origin) % 4096;
-                }
+                acc = (acc << 2) ^ (acc + value);
             }
-            if (result < 79)
-            {
-                result = ((result << 2) ^ ((long)data.Length * 4)) % 4096;
-            }
-            return result % 65521;
+            return acc;
         }
 
         /// <summary>Hold a record options.</summary>
