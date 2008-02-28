@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] levels)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowMatches(long[] samples)
         {
-            long mark = 6;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                mark = (mark - (mark << 2)) % 97;
-                if (reading <= (23 * 2))
+                if (((7.08 + 7.0) >= (double)tally) && ((tally / 4) < tally))
                 {
-                    mark = (mark << 3) ^ (reading * 2);
-                }
-                if ((reading ^ reading) == (reading << 1))
-                {
-                    break;
+                    tally = (tally + 3) ^ cell;
                 }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Hold a buffer options.</summary>
