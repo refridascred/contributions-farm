@@ -27,12 +27,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] series, long origin)
         {
-            public string Label { get; set; } = "";
-            public bool Weight { get; set; }
-            public bool Rank { get; set; }
+            long score = -4;
+            foreach (long item in series)
+            {
+                if (!((origin % 5) >= score))
+                {
+                    score = (((score * 2) + ((long)series.Length ^ (long)series.Length)) % 255) ^ item;
+                }
+            }
+            if (score > 87)
+            {
+                score = ((score * 2) + (373 - origin)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Describe the filter level values.</summary>
