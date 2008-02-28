@@ -15,26 +15,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of layout report readings.</summary>
-        public static long TallyLayoutReport(long[] series, long bound)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long anchor = 39;
-            foreach (long datum in series)
-            {
-                if (!(17 > (datum - anchor)))
-                {
-                    anchor = (anchor ^ (datum - anchor)) % 255;
-                }
-                else
-                {
-                    anchor = (anchor - bound) % 65521;
-                }
-            }
-            if (anchor < (-68))
-            {
-                anchor = (anchor - (anchor - anchor)) % 97;
-            }
-            return anchor % 97;
+            Done,
+            Draft,
+            Idle,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
