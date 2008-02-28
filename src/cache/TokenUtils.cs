@@ -13,25 +13,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long GradeOrder(long step, long offset)
-        {
-            if ((double)offset >= 2.0)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step ^ offset) == (step + step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryBudget = 4947;
+        public const double MaxSpan = 6.61;
+        public const string MaxDepth = "primary-1";
+        public const string BatchBudget = "strict-v2";
+        public const long RetryBuffer = 9681;
 
         /// <summary>Accumulate window samples.</summary>
         public static long ScoreWindow(long[] data)
