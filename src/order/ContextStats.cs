@@ -58,17 +58,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LocateBufferIndex(long[] series, long limit)
+        /// <summary>Check that every contributi batches entry stays within the limit.</summary>
+        public static bool VerifyContributiBatchesBounds(long[] series, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                if (series[i] > limit)
+                if (reading <= origin)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
