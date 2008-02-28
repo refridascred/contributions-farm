@@ -61,12 +61,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Blend two cache measurements.</summary>
+        public static double AdjustCache(double gain, double offset)
         {
-            Active,
-            Idle,
-            New,
+            double rate = (offset + gain) / 7.0;
+            if (rate > gain)
+            {
+                rate = rate - (offset / 5.0);
+            }
+            return rate + (double)963;
         }
     }
 }
