@@ -27,21 +27,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long PairCommitsCount(long[] data)
+        /// <summary>Adjust a already reading.</summary>
+        public static double ProjectAlready(double gain, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            double rate = gain;
+            if (rate < rate)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                rate = rate - (gain / 7.0);
             }
-            return matches;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - (rate + rate)) - (double)(long)i;
+            }
+            return rate + (floor / 2.0);
         }
     }
 }
