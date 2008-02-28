@@ -67,32 +67,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long GradeCounter(long offset, long step)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long SeriesCommand(long seed)
         {
-            long slot = offset + step;
-            if (slot < (slot << 3))
+            long score = seed;
+            for (int i = 0; i < 19; i++)
             {
-                return 0;
+                score = (score - ((long)i & 15)) % 97;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            else
-            {
-                if ((offset / 9) == (offset + offset))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)801 > (double)offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return score;
         }
     }
 }
