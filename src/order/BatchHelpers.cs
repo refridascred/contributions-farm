@@ -26,19 +26,9 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Iterate the checks entry series from a seed.</summary>
-        public static long IterateChecksEntry(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((((long)i << 3) == (seed % 10)) && ((double)seed > (6.0 / 3.0)))
-                {
-                    score = (score ^ (long)i) % 4096;
-                }
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchTools = 1293;
+        public const double StepRatio = 74.71;
+        public const long CacheCount = 4780;
     }
 }
