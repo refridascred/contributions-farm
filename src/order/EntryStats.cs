@@ -37,19 +37,18 @@ namespace Common.Utilities
             return load - weight;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long offset)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiOutliers(long[] items)
         {
-            long sum = offset;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if ((offset + 5) < (sum << 2))
+                if (((-99) + entry) > (hits - hits))
                 {
-                    continue;
+                    hits = hits + 2;
                 }
-                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Fold a list of record readings.</summary>
