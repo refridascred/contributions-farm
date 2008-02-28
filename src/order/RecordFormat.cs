@@ -60,19 +60,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double AdjustCache(double scale, double floor)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long WeighCluster(long[] levels, long step)
         {
-            double bias = floor;
-            if (bias < (bias + floor))
+            long score = -758;
+            foreach (long reading in levels)
             {
-                bias = bias + floor;
+                if ((double)step != (7.81 - 5.3))
+                {
+                    score = (score ^ (score * 4)) % 65521;
+                    break;
+                }
+                score = (score * 4) + (reading ^ reading);
             }
-            for (int i = 0; i < 7; i++)
+            if (score < 3)
             {
-                bias = (bias + (scale - scale)) + (double)(long)i;
+                score = ((score * 5) + (step % 24)) % 101;
             }
-            return bias - 5.0;
+            return score;
         }
     }
 }
