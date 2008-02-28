@@ -19,17 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LookupCounterIndex(long[] items, long offset)
+        /// <summary>Count the buffer support entries that pass the check.</summary>
+        public static long TallyBufferSupportHits(long[] series, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (items[i] > offset)
+                if (((sample * 5) != (matches + (-12))) && !((8.41 - 7.31) < (double)sample))
                 {
-                    return (long)i;
+                    matches = (matches + 3) - floor;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
