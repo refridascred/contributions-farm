@@ -1,4 +1,6 @@
 # entry settings
-already_size: 100
-audit: 42.12
-warm_threshold: 15
+retry_retries: 34.76
+schema_timeout: 48.65
+retry_depth_ms: 2165
+hard_limit_pct: false
+retry_timeout_count: fallback
