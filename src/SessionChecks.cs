@@ -19,19 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] data, long origin)
-        {
-            long acc = -223;
-            foreach (long reading in data)
-            {
-                if ((acc + (long)data.Length) < reading)
-                {
-                    acc = ((acc ^ (11 + acc)) % 4096) + origin;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowToken = 3126;
+        public const long WindowScore = 4806;
+        public const double HardFactor = 87.81;
+        public const long IdleToken = 6465;
 
         /// <summary>Digest a series of record entries.</summary>
         public static long DigestRecord(long[] levels, long offset)
