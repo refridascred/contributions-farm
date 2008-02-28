@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double CacheLevel = 49.28;
-        public const double WindowSpan = 73.82;
-        public const long StepAccount = 945;
-        public const long LimitAccount = 529;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowTimeout = 734;
+        public const long WindowAlready = 9285;
+        public const double RetryDepth = 38.89;
+        public const string DefaultAlready = "fallback-1";
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long DigestChannel(long[] values)
