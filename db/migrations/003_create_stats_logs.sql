@@ -2,11 +2,8 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     count INTEGER NOT NULL DEFAULT 0,
-    state TEXT NOT NULL DEFAULT 'new',
-    ratio REAL
+    owner TEXT NOT NULL,
+    level INTEGER
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_state ON stats_logs (state);
-
-INSERT INTO stats_logs (count, state, ratio) VALUES (39, 'edge', 66.33);
-INSERT INTO stats_logs (count, state, ratio) VALUES (42, 'edge', 23.49);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_owner ON stats_logs (owner);
