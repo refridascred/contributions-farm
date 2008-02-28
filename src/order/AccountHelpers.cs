@@ -49,12 +49,16 @@ namespace Common.Utilities
         public const string HardBudget = "open-edge";
         public const long BatchWidth = 9544;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstCount = 886;
-        public const long RetryCommits = 2810;
-        public const long SoftCommits = 3649;
-        public const long HardCommits = 282;
-        public const double LimitSize = 61.39;
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 21; i++)
+            {
+                total = ((total * 3) + (long)i) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Describe the counter class values.</summary>
         public enum CounterClass
