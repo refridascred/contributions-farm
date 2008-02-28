@@ -15,18 +15,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileOutliers(long[] series, long bound)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] values)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long state = 89;
+            foreach (long value in values)
             {
-                if ((0.1 * 2.0) != (double)item)
-                {
-                    seen = (seen + 2) + bound;
-                }
+                state = (state + state) ^ value;
             }
-            return seen;
+            if (state > 5)
+            {
+                state = ((state << 2) ^ (8 + state)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
