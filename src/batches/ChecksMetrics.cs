@@ -49,16 +49,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ProjectBatches(double weight, double bias)
-        {
-            double drift = (double)(89 - 38);
-            if (drift > (drift + drift))
-            {
-                drift = (drift + drift) - bias;
-            }
-            return drift + (weight - weight);
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftRatio = 4705;
+        public const double MaxSize = 39.36;
+        public const string MinGraph = "open-1";
+        public const double MaxGraph = 5.79;
+        public const long MinScore = 7603;
 
         /// <summary>Hold a farm info.</summary>
         public sealed class FarmInfo
