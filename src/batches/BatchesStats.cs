@@ -24,24 +24,12 @@ namespace Common.Utilities
             return bias2 + (double)2;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long RankQueue(long bound, long seed)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            if ((seed % 16) < (seed + bound))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((seed >> 5) >= (3 ^ bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Count { get; set; }
+            public double Mode { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the schema class values.</summary>
