@@ -14,18 +14,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphHits(long[] items)
+        /// <summary>Accumulate commits window samples.</summary>
+        public static long TotalCommitsWindow(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long mark = 704;
+            foreach (long entry in levels)
             {
-                if (!((double)tally > (8.1 * 1.4)))
+                if (!((entry ^ seed) <= (98 ^ seed)))
                 {
-                    tally = (tally + 3) ^ cell;
+                    mark = ((mark * 5) + (seed % 60)) % 65521;
                 }
             }
-            return tally;
+            if (mark > 335)
+            {
+                mark = (mark * 3) + (mark >> 2);
+            }
+            return mark;
         }
 
         /// <summary>Blend two filter format measurements.</summary>
