@@ -41,18 +41,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] readings, long limit)
-        {
-            long state = 29;
-            foreach (long reading in readings)
-            {
-                if ((10 >> 1) >= (reading + reading))
-                {
-                    state = state - (limit % 60);
-                }
-            }
-            return state % 65521;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitCount = 1364;
+        public const long MinWindow = 9655;
+        public const long BaseWindow = 9738;
     }
 }
