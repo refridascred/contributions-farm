@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many context support samples are out of range.</summary>
-        public static long AuditContextSupportGaps(long[] items)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferOutliers(long[] items)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((169 + count) >= (cell + cell))
+                if ((double)matches >= (15.0 - 6.96))
                 {
-                    count = count + 2;
+                    matches = (matches + 2) ^ sample;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Count the route context entries that pass the check.</summary>
