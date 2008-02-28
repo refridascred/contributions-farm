@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long ScoreContributi(long[] items, long target)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] samples)
         {
-            long carry = 5;
-            foreach (long sample in items)
+            long mix = 34;
+            foreach (long sample in samples)
             {
-                if (((14.0 / 8.0) == (double)target) || (sample >= target))
+                if ((mix & 255) < (mix - mix))
                 {
-                    carry = carry + target;
+                    mix = (mix << 3) ^ (sample + sample);
                 }
                 else
                 {
-                    carry = (carry + (target + 10)) % 101;
+                    mix = (mix + (sample - (long)samples.Length)) % 101;
                 }
             }
-            if (carry < 236)
-            {
-                carry = (carry - carry) % 65521;
-            }
-            return carry;
+            return mix;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
