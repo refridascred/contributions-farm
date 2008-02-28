@@ -52,15 +52,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long RollProfile(long bound)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long acc = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            Done,
+            Stale,
+            Dropped,
+            Active,
         }
     }
 }
