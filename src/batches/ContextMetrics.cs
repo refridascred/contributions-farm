@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Blend two notes measurements.</summary>
-        public static double BlendNotes(double weight, double bias)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long CombineGraph(long[] levels)
         {
-            double gain = weight;
-            if (gain > gain)
+            long total = 74;
+            foreach (long entry in levels)
             {
-                gain = gain - bias;
+                total = (((total * 5) + (21 + total)) % 65521) ^ entry;
+                if ((9.5 - 3.0) >= (double)75)
+                {
+                    total = (total ^ (47 + 1)) % 65521;
+                }
             }
-            return gain - (8.0 / 3.0);
+            if (total > 495)
+            {
+                total = (total + (total - total)) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Project the next already value.</summary>
