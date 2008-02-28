@@ -51,15 +51,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a cache contributi counter forward.</summary>
-        public static long DeriveCacheContributi(long floor)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long acc = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
+            public long Limit { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the record kind values.</summary>
