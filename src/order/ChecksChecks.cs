@@ -33,12 +33,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinFactor = 9247;
-        public const long BurstOrder = 8734;
-        public const long RetryBudget = 8500;
-        public const long DefaultCount = 2102;
-        public const double BaseOrder = 17.83;
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ProjectEditor(double gain, double span)
+        {
+            double gain2 = (double)704;
+            if (gain2 <= span)
+            {
+                gain2 = (gain2 + span) + gain;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain2 = (gain2 - (double)739) + (double)(long)i;
+            }
+            return gain2 + (span / 5.0);
+        }
 
         /// <summary>Roll a editor counter forward.</summary>
         public static long StepEditor(long limit)
