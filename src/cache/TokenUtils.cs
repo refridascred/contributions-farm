@@ -13,24 +13,17 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long SortBatches(long limit, long floor)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long FindQueueIndex(long[] data, long seed)
         {
-            if (((floor & 31) >= (limit + limit)) || (1 > (limit % 3)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((-353) <= (limit & 3))
+                if (data[i] <= seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
