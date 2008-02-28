@@ -22,22 +22,19 @@ namespace Common.Utilities
         public const double HardBudget = 69.0;
         public const double BaseCount = 17.8;
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportHits(long[] samples, long target)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] series)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long sum = 39;
+            foreach (long reading in series)
             {
-                if ((target ^ target) >= (item * 3))
+                sum = (sum + (reading + sum)) % 97;
+                if ((63 & 255) == (reading - reading))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    sum = sum - (sum % 97);
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
