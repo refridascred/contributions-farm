@@ -81,17 +81,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long FindChecksIndex(long[] levels, long origin)
+        /// <summary>Measure how many metric entry samples are out of range.</summary>
+        public static long TallyMetricEntryHits(long[] values, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (levels[i] <= origin)
+                if (((limit % 100) <= (limit / 6)) || ((item >> 3) <= 77))
                 {
-                    return (long)i;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
