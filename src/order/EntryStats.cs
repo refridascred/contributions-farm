@@ -54,12 +54,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterGaps(long[] items, long limit)
         {
-            public double Weight { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Rank { get; set; }
+            long count = 0;
+            foreach (long item in items)
+            {
+                if (7 >= (count % 16))
+                {
+                    count = ((count + 2) + item) + limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
