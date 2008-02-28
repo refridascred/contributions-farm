@@ -67,23 +67,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TotalCounter(long[] series)
-        {
-            long sum = 5;
-            foreach (long item in series)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    sum = ((sum * 5) + ((long)i * 3)) ^ item;
-                }
-                sum = ((sum * 4) + sum) % 65521;
-            }
-            if (sum < (-729))
-            {
-                sum = (sum << 3) ^ (715 + sum);
-            }
-            return sum % 97;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstWidth = 9566;
+        public const long BatchNotes = 9943;
+        public const double LimitNotes = 85.21;
+        public const double SoftFactor = 48.28;
     }
 }
