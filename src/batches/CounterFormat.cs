@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double CacheBatches = 61.6;
-        public const long RetryLevel = 8164;
-        public const long IdleBatches = 6958;
-        public const long LimitLevel = 1262;
-        public const string StepBatches = "latest-v2";
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long IterateMetric(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                long prev = state;
+                prev = (prev * 5) + (seed - (long)i);
+                if ((seed < (prev >> 5)) || ((seed - seed) > state))
+                {
+                    continue;
+                }
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Match up batch samples.</summary>
         public static long OverlapBatchCount(long[] samples)
