@@ -23,11 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterBounds(long[] values, long offset)
         {
-            public double Region { get; set; }
-            public long Score { get; set; }
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
