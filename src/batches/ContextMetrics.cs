@@ -30,13 +30,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            public double Level { get; set; }
-            public bool Mode { get; set; }
-            public double Token { get; set; }
-            public bool Offset { get; set; }
+            public long Offset { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
