@@ -56,15 +56,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a record command counter forward.</summary>
-        public static long SeriesRecordCommand(long limit)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long acc = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
+            public long Region { get; set; }
+            public long Token { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
