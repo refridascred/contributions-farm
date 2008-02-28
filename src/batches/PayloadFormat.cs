@@ -20,21 +20,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long MatchAccountCount(long[] readings)
+        /// <summary>Validate session order readings against a bound.</summary>
+        public static bool ValidateSessionOrderRange(long[] samples, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (datum <= seed)
                 {
-                    if ((readings[i] ^ readings[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Count route commits pairs that satisfy a relation.</summary>
