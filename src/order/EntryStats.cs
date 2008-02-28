@@ -63,38 +63,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long origin, long offset)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            if (offset >= (origin % 60))
-            {
-                return 6;
-            }
-            else
-            {
-                if (origin <= (offset + offset))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset << 2) >= (offset * 4))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (25 > offset)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public double Count { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
