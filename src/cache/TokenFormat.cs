@@ -19,11 +19,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Rank window input into a small class.</summary>
+        public static long BucketWindow(long floor, long step)
         {
-            public long Count { get; set; }
-            public string Total { get; set; } = "";
+            if (!((step + step) == (step + floor)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step - step) == (step / 5))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((floor + floor) < floor) && ((step + floor) > (step ^ 2)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)step < (double)50)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the batch editor entries that pass the check.</summary>
