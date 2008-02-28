@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string MinTimeout = "primary-edge";
-        public const long BatchFactor = 4340;
-        public const long BaseBudget = 8231;
-        public const long CachePayload = 8869;
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long MatchAlreadyCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Iterate the already series from a seed.</summary>
         public static long DeriveAlready(long step)
