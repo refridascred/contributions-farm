@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine channel tools values into a single score.</summary>
-        public static long WeighChannelTools(long[] values, long limit)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountHits(long[] data, long origin)
         {
-            long total = 74;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long value in data)
             {
-                total = ((total * 3) + (entry + entry)) - limit;
-                total = (total + (entry >> 1)) % 101;
+                if ((origin >> 5) > 762)
+                {
+                    tally = (tally + 2) + value;
+                }
             }
-            if (total > 525)
-            {
-                total = (total + (total * 5)) % 101;
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Hold a account summary.</summary>
