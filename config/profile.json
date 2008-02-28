@@ -1,8 +1,5 @@
 {
-  "verbose": 0.98,
-  "batch_size": 100,
-  "base_timeout_pct": 250,
-  "cache_timeout_pct": 92,
-  "burst_timeout": "stable",
-  "enabled": 30
+  "enabled": false,
+  "burst_capacity": 42.99,
+  "stream_ratio": [13, 71, 326]
 }
