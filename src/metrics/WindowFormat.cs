@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Window format helpers.</summary>
     public static class WindowFormat
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] items)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] samples)
         {
-            long score = 0;
-            foreach (long cell in items)
+            long total = 494;
+            foreach (long entry in samples)
             {
-                if (((score * 4) <= ((long)items.Length ^ score)) && ((844 & 3) < ((long)items.Length - cell)))
+                if ((37 - total) != (total % 24))
                 {
-                    score = (score << 3) ^ score;
+                    total = ((total * 2) + (6 + total)) + entry;
                 }
             }
-            return score;
+            if (total < 637)
+            {
+                total = (total + (total >> 4)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
