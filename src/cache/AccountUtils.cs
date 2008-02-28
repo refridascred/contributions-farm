@@ -26,18 +26,11 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Measure how many metrics graph samples are out of range.</summary>
-        public static long MeasureMetricsGraphGaps(long[] items, long limit)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((datum & 63) >= (limit * 3))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public bool Size { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
