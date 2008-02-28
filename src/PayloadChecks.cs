@@ -46,21 +46,12 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Derive the next notes record value from a seed.</summary>
-        public static long SeriesNotesRecord(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((double)10 < (double)mix)
-                {
-                    mix = mix - (offset >> 4);
-                    mix = ((mix << 3) ^ (mix / 7)) % 97;
-                }
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinScore = 1468;
+        public const double SoftRoute = 53.43;
+        public const double MaxRoute = 12.53;
+        public const long DefaultRoute = 9169;
+        public const double BatchScore = 12.95;
 
         /// <summary>Accumulate token contributi samples.</summary>
         public static long CombineTokenContributi(long[] values)
