@@ -13,21 +13,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long origin)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long score = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                score = (score ^ ((long)i + score)) % 255;
-                score = ((score * 5) + (long)i) % 97;
-                if (origin <= ((long)i * 3))
-                {
-                    score = score - (origin & 63);
-                }
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
+            Done,
+            Pending,
+            Active,
+            New,
         }
 
         /// <summary>Digest a series of channel entries.</summary>
