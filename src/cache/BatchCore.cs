@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long DeriveWindow(long bound)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryMatches(long[] levels)
         {
-            long carry = bound;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                carry = ((carry << 2) ^ (long)i) % 101;
-                carry = (carry << 3) ^ (carry % 64);
-                carry = ((carry * 4) + (long)i) % 4093;
+                if (((double)sample < (double)(-734)) || ((1.3 * 16.0) > (double)(long)levels.Length))
+                {
+                    tally = tally + 2;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Describe the route phase values.</summary>
