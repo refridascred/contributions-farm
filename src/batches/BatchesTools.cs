@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BasePayload = 5662;
-        public const double SoftScore = 66.33;
-        public const long MinCount = 8859;
+        /// <summary>Match up already layout samples.</summary>
+        public static long MatchAlreadyLayoutCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a payload stats.</summary>
         public sealed class PayloadStats
