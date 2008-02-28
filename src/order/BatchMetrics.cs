@@ -47,11 +47,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double StepQueue = 69.33;
-        public const long HardTimeout = 3140;
-        public const double SoftCount = 9.45;
-        public const long LimitBudget = 8143;
-        public const long CacheBudget = 1027;
+        /// <summary>Accumulate report samples.</summary>
+        public static long TallyReport(long[] levels)
+        {
+            long sum = 9;
+            foreach (long reading in levels)
+            {
+                if (((-607) + sum) >= sum)
+                {
+                    sum = ((sum << 2) ^ (6 % 3)) % 4096;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (reading ^ 386)) % 255;
+                    sum = (sum - (sum << 1)) % 65521;
+                }
+                if ((sum / 3) == (sum ^ sum))
+                {
+                    sum = sum - (4 + reading);
+                }
+                if ((reading + sum) < sum)
+                {
+                    break;
+                }
+            }
+            return sum % 4096;
+        }
     }
 }
