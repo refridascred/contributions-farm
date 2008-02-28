@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferLimits(long[] readings, long step)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            bool found = true;
-            foreach (long reading in readings)
-            {
-                if (reading != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Score { get; set; }
+            public string Count { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a batches snapshot.</summary>
