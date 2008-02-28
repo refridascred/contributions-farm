@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Find the first order notes entry that matches the target.</summary>
-        public static long FindOrderNotesIndex(long[] series, long offset)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= offset) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Offset { get; set; } = "";
+            public long Flag { get; set; }
+            public double Region { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Describe the order mode values.</summary>
