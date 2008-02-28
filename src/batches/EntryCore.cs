@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long RankFilter(long bound, long seed)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long delta = bound - seed;
-            if (!(delta > (seed ^ bound)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed - 659) >= (bound & 15))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public bool Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Iterate the account profile series from a seed.</summary>
