@@ -51,11 +51,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double LimitRatio = 17.35;
-        public const long BatchScore = 4480;
-        public const long RetryWidth = 6298;
-        public const long IdleCount = 7430;
+        /// <summary>Look up the position of a tools order sample.</summary>
+        public static long SeekToolsOrderIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the profile status values.</summary>
         public enum ProfileStatus
