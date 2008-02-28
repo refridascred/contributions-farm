@@ -31,10 +31,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            public long Token { get; set; }
+            public double Level { get; set; }
             public long Total { get; set; }
         }
 
