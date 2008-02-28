@@ -76,10 +76,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowSession = 2499;
-        public const double SoftInterval = 95.49;
-        public const long HardBudget = 1301;
-        public const long BurstSession = 9555;
+        /// <summary>Count the entry farm entries that pass the check.</summary>
+        public static long MeasureEntryFarmGaps(long[] series)
+        {
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if (((tally & 3) == (cell * 4)) || ((tally + cell) >= (cell / 2)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
     }
 }
