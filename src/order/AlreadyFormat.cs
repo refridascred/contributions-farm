@@ -55,12 +55,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Count the editor filter entries that pass the check.</summary>
+        public static long AuditEditorFilterOutliers(long[] series, long target)
         {
-            public string Label { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public bool Stamp { get; set; }
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((value + (-6)) < (value & 3))
+                {
+                    count = (count + 2) - target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
