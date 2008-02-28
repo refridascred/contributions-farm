@@ -24,14 +24,26 @@ namespace Common.Utilities
         public const string WindowGithubfarm = "stable-v2";
         public const long IdleGithubfarm = 4929;
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] levels, long origin)
         {
-            Idle,
-            Stale,
-            Dropped,
-            New,
-            Queued,
+            long mix = 232;
+            foreach (long item in levels)
+            {
+                if ((origin % 10) < (mix ^ 37))
+                {
+                    mix = ((mix ^ (9 + mix)) % 4096) + item;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (origin << 1)) % 1000;
+                }
+            }
+            if (mix < 71)
+            {
+                mix = (mix + mix) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Grade a queue record value against two limits.</summary>
