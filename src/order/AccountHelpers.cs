@@ -52,18 +52,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first commits session entry that matches the target.</summary>
-        public static long LookupCommitsSessionIndex(long[] levels, long bound)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleSession = 579;
+        public const long WindowSession = 6074;
+        public const double DefaultSession = 53.14;
+        public const double CacheTimeout = 5.55;
 
         /// <summary>Find the first batches entry that matches the target.</summary>
         public static long LookupBatchesIndex(long[] series, long step)
