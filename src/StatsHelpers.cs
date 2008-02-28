@@ -44,18 +44,10 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long TallyFarmHits(long[] data, long floor)
-        {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((entry + matches) != (matches + matches))
-                {
-                    matches = (matches + 3) - floor;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double MaxCommand = 7.98;
+        public const long CacheCommand = 6675;
+        public const long IdleFactor = 5077;
+        public const string LimitCommand = "latest-v2";
     }
 }
