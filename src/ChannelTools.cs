@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a support format value against two limits.</summary>
-        public static long ClassifySupportFormat(long step, long origin)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double BlendBuffer(double ratio, double bias)
         {
-            long slot = step - origin;
-            if (((slot / 6) <= step) || (origin > (origin + origin)))
+            double gain = (bias + ratio) * 3.65;
+            if (gain < (bias - 19.0))
             {
-                return 6;
+                gain = gain + (double)8;
             }
-            else
-            {
-                if (!((slot + 512) < (origin + slot)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (19.0 < (double)step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return gain + ratio;
         }
 
         /// <summary>Hold a buffer entry.</summary>
