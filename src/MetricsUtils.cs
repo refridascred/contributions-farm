@@ -55,25 +55,15 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long target, long bound)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double AdjustRecord(double weight, double offset)
         {
-            long span = target ^ bound;
-            if (span >= (9 << 2))
+            double scale = (weight + 2.2) - (double)7;
+            for (int i = 0; i < 5; i++)
             {
-                return 8;
+                scale = ((scale + (scale * 20.0)) + (double)(long)i) - offset;
             }
-            else
-            {
-                if ((3.9 + 9.0) <= (double)span)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return scale - (double)7;
         }
     }
 }
