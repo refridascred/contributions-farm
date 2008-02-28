@@ -1,7 +1,9 @@
-id,score,count,region,ratio
-1,standard,31.12,primary,793
-2,614,888,567,10.81
-3,946,67.9,open,58.13
-4,521,41.64,125,cached
-5,710,684,440,859
-6,strict,702,44.47,657
+id,level,score,count,owner
+1,80.84,724,559,local
+2,staging,3.56,22.63,23.55
+3,64.66,12.26,47.37,latest
+4,87.85,eu-west,green,open
+5,470,eu-west,55,local
+6,blue,5.94,152,34
+7,681,798,937,962
+8,81,83.25,42.57,staging
