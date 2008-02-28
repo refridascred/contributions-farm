@@ -30,12 +30,19 @@ namespace Common.Utilities
         public const long BaseStream = 4098;
         public const long IdleSize = 1124;
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesBounds(long[] values, long target)
         {
-            Queued,
-            Failed,
-            Pending,
+            bool valid = true;
+            foreach (long entry in values)
+            {
+                if (entry != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
