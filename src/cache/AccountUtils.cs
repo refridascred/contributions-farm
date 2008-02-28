@@ -39,23 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double BlendProfile(double weight, double offset)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            double ratio = offset;
-            if (ratio > (double)91)
-            {
-                ratio = (ratio - (double)81) - weight;
-            }
-            else
-            {
-                ratio = ratio - (offset / 7.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - (offset * 2.0)) - (double)(long)i;
-            }
-            return ratio - (5.42 - 0.5);
+            public double Rank { get; set; }
+            public bool Stamp { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
