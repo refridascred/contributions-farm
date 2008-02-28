@@ -1,13 +1,5 @@
 {
-  "base_retries": 3236,
-  "min_ratio": "fallback",
-  "command_window": false,
-  "verbose": 72.17,
-  "idle_threshold_count": true,
-  "metric_ttl": {
-    "hard_retries_ms": 71.94,
-    "poll_delay_s": 24.73,
-    "batch_capacity_s": 82,
-    "min_ratio_s": true
-  }
+  "flush_capacity": "latest",
+  "sync_timeout": 32,
+  "audit": "latest"
 }
