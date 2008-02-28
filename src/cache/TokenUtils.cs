@@ -28,18 +28,16 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] samples, long offset)
+        /// <summary>Derive the next commits githubfarm value from a seed.</summary>
+        public static long DeriveCommitsGithubfarm(long offset)
         {
-            long carry = 85;
-            foreach (long item in samples)
+            long state = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if ((offset - item) == (item + carry))
-                {
-                    carry = ((carry << 3) ^ (433 * 4)) % 255;
-                }
+                state = state - (759 - offset);
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return carry % 4096;
+            return state;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
