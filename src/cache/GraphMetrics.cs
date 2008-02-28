@@ -29,12 +29,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] levels, long bound)
+        /// <summary>Locate a order channel reading by value.</summary>
+        public static long SeekOrderChannelIndex(long[] values, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (levels[i] >= bound)
+                if ((values[i] < target) && ((values[i] % 3) != 0))
                 {
                     return (long)i;
                 }
