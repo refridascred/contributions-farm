@@ -91,19 +91,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Check that every schema batch entry stays within the limit.</summary>
-        public static bool ValidateSchemaBatchLimits(long[] samples, long offset)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionRange(long[] readings, long step)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                if (sample <= offset)
+                if (value < step)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
