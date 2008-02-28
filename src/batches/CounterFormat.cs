@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
-        {
-            public double Stamp { get; set; }
-            public long Token { get; set; }
-            public double Offset { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double CacheBatches = 61.6;
+        public const long RetryLevel = 8164;
+        public const long IdleBatches = 6958;
+        public const long LimitLevel = 1262;
+        public const string StepBatches = "latest-v2";
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long TallyFormatMatches(long[] items, long bound)
