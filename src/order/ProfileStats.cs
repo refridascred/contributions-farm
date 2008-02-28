@@ -68,18 +68,39 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many already cluster samples are out of range.</summary>
-        public static long MeasureAlreadyClusterOutliers(long[] samples)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long origin, long step)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long offset = origin - step;
+            if ((925 >> 1) > step)
             {
-                if (((sample * 4) < (seen + sample)) && !((5 + sample) != (sample >> 1)))
+                return 4;
+            }
+            else
+            {
+                if ((offset << 3) <= (origin * 5))
                 {
-                    seen = seen + 2;
+                    return 6;
+                }
+                else
+                {
+                    if ((origin / 2) < ((-70) % 16))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (step >= origin)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
