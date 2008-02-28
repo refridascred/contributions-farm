@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long MatchBufferCount(long[] values)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long RollCluster(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
