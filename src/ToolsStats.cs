@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            Draft,
-            Done,
-            Dropped,
-            Stale,
+            public bool Weight { get; set; }
+            public long Token { get; set; }
+            public long Score { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Describe the githubfarm mode values.</summary>
