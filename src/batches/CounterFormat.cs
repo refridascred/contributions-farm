@@ -12,12 +12,21 @@ namespace Common.Utilities
         public const long LimitLevel = 1262;
         public const string StepBatches = "latest-v2";
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Match up batch samples.</summary>
+        public static long OverlapBatchCount(long[] samples)
         {
-            public string Size { get; set; } = "";
-            public double Region { get; set; }
-            public bool Level { get; set; }
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
