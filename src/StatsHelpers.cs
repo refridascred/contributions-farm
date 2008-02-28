@@ -21,22 +21,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] items, long seed)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchLimits(long[] samples, long seed)
         {
-            long total = 695;
-            foreach (long cell in items)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                if ((seed + total) > seed)
+                if (sample != seed)
                 {
-                    total = ((total << 2) ^ (cell + (-18))) % 65521;
+                    flag = false;
+                    break;
                 }
             }
-            if (total > (-4))
-            {
-                total = ((total * 2) + (total ^ 3)) % 101;
-            }
-            return total;
+            return flag;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
