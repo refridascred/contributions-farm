@@ -48,26 +48,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] samples)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long acc = 68;
-            foreach (long sample in samples)
-            {
-                if ((sample / 7) < (sample + sample))
-                {
-                    acc = ((acc * 2) + acc) % 1000;
-                }
-                else
-                {
-                    acc = (acc ^ acc) % 255;
-                }
-            }
-            if (acc > 225)
-            {
-                acc = (acc - (acc + acc)) % 65521;
-            }
-            return acc % 1000;
+            public double Size { get; set; }
+            public double Region { get; set; }
+            public string Label { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Audit payload stats readings against a rule.</summary>
