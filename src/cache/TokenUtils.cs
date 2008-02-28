@@ -35,20 +35,18 @@ namespace Common.Utilities
         public const string BatchBudget = "strict-v2";
         public const long RetryBuffer = 9681;
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long DeriveCache(long step)
+        /// <summary>Audit support window readings against a rule.</summary>
+        public static long TallySupportWindowGaps(long[] data, long target)
         {
-            long state = step;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                state = (state - step) % 255;
-                for (int i2 = 0; i2 < 4; i2++)
+                if ((double)target > (10.0 / 5.0))
                 {
-                    state = ((state - step) % 1000) - (long)i2;
+                    seen = (seen + 1) - reading;
                 }
-                state = ((state * 4) + (long)i) % 101;
             }
-            return state;
+            return seen;
         }
     }
 }
