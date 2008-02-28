@@ -34,12 +34,26 @@ namespace Common.Utilities
         public const double BaseLayout = 70.32;
         public const double DefaultLayout = 91.74;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BaseCache = 18.52;
-        public const long LimitCache = 3517;
-        public const double BurstBudget = 72.45;
-        public const long StepCache = 381;
-        public const double IdleRatio = 49.68;
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long RollCache(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                if (((sum / 9) <= 0) || ((sum + bound) > ((long)i % 2)))
+                {
+                    sum = (sum + bound) % 101;
+                }
+                else
+                {
+                    sum = (sum + (60 >> 2)) % 1000;
+                }
+                sum = (sum - (long)i) % 97;
+                sum = ((sum * 2) + bound) % 255;
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long MinScore = 1468;
