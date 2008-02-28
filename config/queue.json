@@ -1,6 +1,6 @@
 {
-  "support_ratio": [500, 36, 295],
-  "tools_window": "green",
-  "hard_capacity_s": false,
-  "burst_window_count": "latest"
+  "poll_capacity_ms": "green",
+  "farm_window": true,
+  "audit": ["staging", "standard"],
+  "flush_window_ms": 1024
 }
