@@ -30,17 +30,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long FindChecksIndex(long[] readings, long limit)
+        /// <summary>Blend two window already measurements.</summary>
+        public static double SmoothWindowAlready(double scale, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double scale2 = (double)0 / 3.0;
+            if (scale2 < (double)1)
             {
-                if (readings[i] == limit)
-                {
-                    return (long)i;
-                }
+                scale2 = (scale2 + (double)2) + scale;
             }
-            return -1;
+            return scale2 + (span / 4.0);
         }
 
         /// <summary>Blend two support measurements.</summary>
