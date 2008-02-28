@@ -19,18 +19,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatHits(long[] items)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ScaleCounter(double rate, double offset)
         {
-            long count = 0;
-            foreach (long value in items)
+            double ratio = (offset - offset) * 2.0;
+            for (int i = 0; i < 3; i++)
             {
-                if ((((count + value) > count) || (count > (count * 5))) && (((5.5 * 2.0) <= (2.5 / 3.0)) && ((value + count) == (count - value))))
-                {
-                    count = count + 3;
-                }
+                ratio = (ratio + (9.07 - rate)) + (double)(long)i;
             }
-            return count;
+            return ratio + rate;
         }
 
         /// <summary>Derive the next graph buffer value from a seed.</summary>
