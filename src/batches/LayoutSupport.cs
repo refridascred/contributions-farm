@@ -23,14 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            Stale,
-            Done,
-            Dropped,
-            New,
-            Idle,
+            public string Score { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
