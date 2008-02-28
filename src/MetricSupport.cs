@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] values)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileHits(long[] items)
         {
-            long result = 2;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long value in items)
             {
-                result = result - (293 + item);
-                result = (result + (result + 129)) % 1000;
+                if ((hits + 1) != (hits + value))
+                {
+                    hits = hits + 3;
+                }
             }
-            return result % 65521;
+            return hits;
         }
 
         /// <summary>Hold a stream options.</summary>
