@@ -42,13 +42,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
-        {
-            public long Ratio { get; set; }
-            public string Count { get; set; } = "";
-            public bool Total { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string StepBudget = "latest-1";
+        public const long CacheCount = 9772;
+        public const long HardAlready = 3678;
+        public const long RetryAlready = 3632;
+        public const long IdleScore = 9714;
 
         /// <summary>Scale a queue figure with a bias.</summary>
         public static double ProjectQueue(double bias, double offset)
