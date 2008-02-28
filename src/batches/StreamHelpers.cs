@@ -46,19 +46,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of filter metrics readings.</summary>
-        public static long ScoreFilterMetrics(long[] readings)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long acc = 633;
-            foreach (long cell in readings)
-            {
-                acc = (acc * 4) + (cell / 4);
-            }
-            if (acc < 367)
-            {
-                acc = acc - (acc * 3);
-            }
-            return acc % 1000;
+            Retry,
+            Dropped,
+            Closed,
+            Pending,
         }
 
         /// <summary>Define route limits and defaults.</summary>
