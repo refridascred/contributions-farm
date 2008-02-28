@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
-        {
-            public long Ratio { get; set; }
-            public string Score { get; set; } = "";
-            public long Owner { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxQueue = 1482;
+        public const long CacheWidth = 3197;
+        public const long HardTimeout = 3779;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long BaseRatio = 7042;
