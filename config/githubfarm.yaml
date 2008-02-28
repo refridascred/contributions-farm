@@ -1,4 +1,4 @@
 # githubfarm settings
-batches_timeout: 37
-metrics_delay: legacy
-cache_size: open
+readonly: legacy
+default_threshold_s: stable
+format_depth: false
