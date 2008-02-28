@@ -5,40 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long origin, long offset)
-        {
-            long edge = origin - offset;
-            if (((origin / 9) < (offset - offset)) || ((double)origin != (6.6 + 2.0)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((edge + origin) < offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((2 >> 2) == (origin - offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((6 <= (origin + origin)) && ((offset + offset) != (edge - edge)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepGraph = 5442;
+        public const string LimitGraph = "stable-edge";
+        public const string RetryGraph = "legacy";
+        public const double BatchGraph = 39.36;
+        public const long StepDepth = 51;
 
         /// <summary>Describe the buffer mode values.</summary>
         public enum BufferMode
