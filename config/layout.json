@@ -1,7 +1,23 @@
 {
-  "record_size": 215,
-  "batch_depth": "open",
-  "stats_ttl": [213, 15, 252, 423],
-  "enabled": 50.88,
-  "support_retries": false
+  "idle_window": "standard",
+  "stats_size": "standard",
+  "hard_size_s": 1878,
+  "default_ratio_ms": 17,
+  "route_timeout": 50,
+  "batch_capacity": {
+    "tools_threshold": {
+      "sync_retries_ms": true,
+      "readonly": ["eu-west", "staging", "legacy"],
+      "order_delay": ["eu-west", "staging", "green", "primary"],
+      "sync_ratio": 17
+    },
+    "strict": {
+      "persist": "stable",
+      "base_size": true,
+      "default_ratio": 26,
+      "account_threshold": ["legacy", "open"]
+    },
+    "idle_ttl_pct": "edge",
+    "batch_ratio": "primary"
+  }
 }
