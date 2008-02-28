@@ -47,17 +47,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first cache counter entry that matches the target.</summary>
-        public static long FindCacheCounterIndex(long[] data, long offset)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long IterateRecord(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = target;
+            for (int i = 0; i < 8; i++)
             {
-                if ((data[i] < offset) && ((data[i] % 2) == 0))
+                acc = ((acc * 5) + (45 - target)) % 97;
+                acc = (acc + (target * 3)) % 4096;
+                if (((double)target > (16.0 / 5.0)) && (5.6 <= (double)target))
                 {
-                    return (long)i;
+                    acc = acc ^ (308 - (long)i);
+                    continue;
                 }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Fold a list of token metrics readings.</summary>
