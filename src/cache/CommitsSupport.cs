@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string RetryTimeout = "strict-edge";
-        public const string WindowTimeout = "open-1";
-        public const long WindowEditor = 4192;
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] values)
+        {
+            long score = 362;
+            foreach (long sample in values)
+            {
+                score = (((score * 4) + (long)values.Length) % 4096) ^ sample;
+            }
+            return score;
+        }
 
         /// <summary>Rank window report input into a small class.</summary>
         public static long SortWindowReport(long limit, long target)
