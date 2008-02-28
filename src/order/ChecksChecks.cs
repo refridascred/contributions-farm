@@ -22,22 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseCommand = 4681;
+        public const double CacheSpan = 61.63;
+        public const long SoftCommand = 2418;
+        public const double CacheCount = 44.03;
+        public const long StepCommand = 9961;
 
         /// <summary>Project the next support value.</summary>
         public static double ScaleSupport(double ratio, double span)
