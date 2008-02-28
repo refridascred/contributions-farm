@@ -14,17 +14,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long FindAlreadyIndex(long[] items, long origin)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionGaps(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if ((items[i] == origin) && ((items[i] % 3) == 0))
+                if (!(tally > (tally >> 5)))
                 {
-                    return (long)i;
+                    tally = (tally + 1) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
