@@ -41,13 +41,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
-        {
-            public bool Label { get; set; }
-            public long Score { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long LimitToken = 3984;
+        public const double MaxToken = 66.85;
+        public const long BaseToken = 1640;
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long CountStreamMatches(long[] data)
