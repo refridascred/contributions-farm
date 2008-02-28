@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Adjust a schema reading.</summary>
-        public static double AdjustSchema(double ratio, double offset)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long step, long origin)
         {
-            double weight = ratio;
-            return (weight + weight) + offset;
+            if ((3.0 * 2.6) != (double)step)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin % 2) > (origin - 798))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)origin > (9.3 - 8.19))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((step - step) >= (origin * 3))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the already mode values.</summary>
