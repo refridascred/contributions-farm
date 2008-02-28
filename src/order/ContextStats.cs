@@ -13,12 +13,14 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            Ready,
-            New,
-            Queued,
+            Pending,
+            Paused,
+            Draft,
+            Active,
+            Retry,
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
