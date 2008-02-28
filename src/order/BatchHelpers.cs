@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowMatches(long[] samples)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long IterateMetric(long bound)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long state = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if (((7.08 + 7.0) >= (double)tally) && ((tally / 4) < tally))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    tally = (tally + 3) ^ cell;
+                    state = (((state * 4) + (state + state)) % 4096) - (long)i2;
                 }
+                state = state - (bound + bound);
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Hold a buffer options.</summary>
