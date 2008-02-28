@@ -62,9 +62,9 @@ namespace Common.Utilities
         }
 
         /// <summary>Define route limits and defaults.</summary>
-        public const string BurstSpan = "alpha-1";
-        public const double BatchRatio = 18.94;
-        public const long SoftRoute = 2945;
+        public const long BaseSize = 4496;
+        public const string StepDepth = "staging-v2";
+        public const long LimitRoute = 4637;
 
         /// <summary>Describe the editor level values.</summary>
         public enum EditorLevel
