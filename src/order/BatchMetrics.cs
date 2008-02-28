@@ -102,31 +102,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TallyReport(long[] levels)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long CombineWindow(long[] levels)
         {
-            long sum = 9;
-            foreach (long reading in levels)
+            long state = 35;
+            foreach (long sample in levels)
             {
-                if (((-607) + sum) >= sum)
-                {
-                    sum = ((sum << 2) ^ (6 % 3)) % 4096;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (reading ^ 386)) % 255;
-                    sum = (sum - (sum << 1)) % 65521;
-                }
-                if ((sum / 3) == (sum ^ sum))
-                {
-                    sum = sum - (4 + reading);
-                }
-                if ((reading + sum) < sum)
-                {
-                    break;
-                }
+                state = (state ^ (state << 1)) ^ sample;
             }
-            return sum % 4096;
+            return state;
         }
     }
 }
