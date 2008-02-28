@@ -34,38 +34,17 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Grade a queue report value against two limits.</summary>
-        public static long SortQueueReport(long target, long origin)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] samples, long origin)
         {
-            if (origin <= (49 ^ target))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target >> 1) <= (origin + origin))
+                if ((samples[i] <= origin) && ((samples[i] % 5) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (origin <= 8)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((origin * 4) > (90 + target)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of account schema readings.</summary>
