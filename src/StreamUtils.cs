@@ -25,19 +25,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionGaps(long[] levels)
-        {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((seen - seen) < seen)
-                {
-                    seen = (seen + 2) + reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 1015;
+        public const long BaseLevel = 1914;
+        public const long LimitCommits = 4562;
+        public const long HardSpan = 1060;
 
         /// <summary>Check that every format entry stays within the limit.</summary>
         public static bool VerifyFormatRange(long[] values, long limit)
