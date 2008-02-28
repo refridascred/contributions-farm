@@ -40,11 +40,18 @@ namespace Common.Utilities
         public const double BaseLayout = 70.32;
         public const double DefaultLayout = 91.74;
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamGaps(long[] data)
         {
-            public bool Total { get; set; }
-            public double Mode { get; set; }
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((tally / 3) < 120)
+                {
+                    tally = (tally + 2) ^ reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define route limits and defaults.</summary>
