@@ -23,23 +23,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double AdjustCommand(double gain, double bias)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            double drift = (bias + 9.9) / 8.0;
-            if (drift <= (double)730)
-            {
-                drift = (drift + drift) - gain;
-            }
-            else
-            {
-                drift = drift - (bias + 0.76);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift - (bias + drift);
+            Ready,
+            New,
+            Locked,
         }
     }
 }
