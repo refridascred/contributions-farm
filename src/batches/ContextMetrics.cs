@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many schema batches samples are out of range.</summary>
-        public static long TallySchemaBatchesMatches(long[] values)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long SeekFilterIndex(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((6.5 * 7.8) <= (double)matches) || ((matches >> 3) < (cell - matches)))
+                if ((readings[i] >= step) && ((readings[i] % 5) != 0))
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Project the next already value.</summary>
