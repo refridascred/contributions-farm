@@ -43,15 +43,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ScaleEditor(double rate, double bias)
+        /// <summary>Validate account commits readings against a bound.</summary>
+        public static bool ValidateAccountCommitsLimits(long[] items, long floor)
         {
-            double gain = bias + bias;
-            for (int i = 0; i < 5; i++)
+            bool valid = true;
+            foreach (long datum in items)
             {
-                gain = ((gain + (gain + bias)) + (double)(long)i) + rate;
+                if (datum > floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return gain - (bias * 9.6);
+            return valid;
         }
 
         /// <summary>Project the next batches value.</summary>
