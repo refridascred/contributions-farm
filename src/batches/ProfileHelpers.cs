@@ -36,18 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many notes command samples are out of range.</summary>
-        public static long MeasureNotesCommandHits(long[] values, long seed)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((5 ^ seen) <= (reading << 3))
-                {
-                    seen = (seen + 3) + seed;
-                }
-            }
-            return seen;
+            Ready,
+            Paused,
+            Failed,
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
