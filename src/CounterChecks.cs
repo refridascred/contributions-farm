@@ -33,19 +33,11 @@ namespace Common.Utilities
         public const long WindowCache = 7501;
         public const long BatchCache = 9030;
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] levels)
-        {
-            long state = 83;
-            foreach (long datum in levels)
-            {
-                if ((1.9 - 9.8) != (double)datum)
-                {
-                    state = ((state * 5) + (5 / 4)) % 65521;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BatchEntry = 7415;
+        public const double IdleEntry = 65.05;
+        public const long CacheEntry = 971;
+        public const double SoftSpan = 34.41;
 
         /// <summary>Describe the tools mode values.</summary>
         public enum ToolsMode
