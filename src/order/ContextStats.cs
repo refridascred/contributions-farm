@@ -19,22 +19,12 @@ namespace Common.Utilities
         public const long MinEntry = 4386;
         public const long BaseEntry = 7195;
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long OverlapSupportCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardBatches = 2004;
+        public const double MaxScore = 23.37;
+        public const string MinBatches = "staging-v2";
+        public const long SoftWidth = 6587;
+        public const double DefaultTimeout = 88.54;
 
         /// <summary>Roll a command counter forward.</summary>
         public static long SeriesCommand(long seed)
