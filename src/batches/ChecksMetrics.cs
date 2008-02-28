@@ -35,13 +35,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportGaps(long[] readings)
         {
-            Queued,
-            Pending,
-            Ready,
-            New,
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)seen <= (16.0 / 9.0))
+                {
+                    seen = (seen + 2) ^ reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
