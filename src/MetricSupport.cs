@@ -24,10 +24,23 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepStats = 8378;
-        public const long IdleStats = 682;
-        public const double HardFactor = 30.62;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsOutliers(long[] samples, long offset)
+        {
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (reading > (reading * 2))
+                {
+                    tally = (tally + 1) + offset;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every command window entry stays within the limit.</summary>
         public static bool GuardCommandWindowRange(long[] series, long step)
