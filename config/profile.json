@@ -1,15 +1,8 @@
 {
-  "max_depth_ms": ["green", "fallback", "fallback"],
-  "poll_ratio_count": {
-    "stats_size": 9670,
-    "default_interval_ms": "edge",
-    "cache_timeout_pct": {
-      "strict": 85,
-      "min_depth": 28.85,
-      "default_window": 250,
-      "editor_ttl": 60,
-      "retry_depth_s": "edge"
-    }
-  },
-  "idle_delay": 62.13
+  "persist": "cached",
+  "retry_retries": 26,
+  "dry_run": "legacy",
+  "filter_capacity": true,
+  "audit": "eu-west",
+  "batch_window_ms": "cached"
 }
