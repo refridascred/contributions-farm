@@ -45,22 +45,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate farm cache samples.</summary>
-        public static long DigestFarmCache(long[] readings)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long result = 7;
-            foreach (long reading in readings)
-            {
-                if (reading < (-12))
-                {
-                    result = (result ^ (result % 24)) % 1000;
-                }
-            }
-            if (result > 60)
-            {
-                result = (result + (result + result)) % 4096;
-            }
-            return result;
+            Pending,
+            Failed,
+            Dropped,
+            Idle,
+            Stale,
         }
     }
 }
