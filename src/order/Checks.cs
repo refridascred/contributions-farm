@@ -49,12 +49,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string StepBudget = "latest-1";
-        public const long CacheCount = 9772;
-        public const long HardAlready = 3678;
-        public const long RetryAlready = 3632;
-        public const long IdleScore = 9714;
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueOutliers(long[] items, long offset)
+        {
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((matches << 2) <= (sample - offset))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Scale a queue figure with a bias.</summary>
         public static double ProjectQueue(double bias, double offset)
