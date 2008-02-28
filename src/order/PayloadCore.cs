@@ -23,11 +23,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LookupTokenIndex(long[] values, long seed)
         {
-            public double Label { get; set; }
-            public bool Total { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= seed) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every notes batches entry stays within the limit.</summary>
