@@ -33,11 +33,33 @@ namespace Common.Utilities
         public const long CacheRecord = 7832;
         public const double WindowRecord = 71.81;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double CacheBudget = 89.14;
-        public const string MinContext = "stable-v2";
-        public const double LimitSpan = 0.46;
-        public const string BurstContext = "local-edge";
+        /// <summary>Classify a route editor pair into a bucket.</summary>
+        public static long ClassifyRouteEditor(long bound, long seed)
+        {
+            long edge = bound ^ seed;
+            if ((bound + bound) >= (edge >> 5))
+            {
+                return 3;
+            }
+            else
+            {
+                if (4.0 > (double)bound)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((bound & 31) <= (bound + bound)) && ((seed << 2) != (bound - edge)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long AuditOrderHits(long[] levels)
