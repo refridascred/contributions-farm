@@ -22,9 +22,23 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MaxScore = "cached-v2";
-        public const string HardEntry = "strict-v2";
-        public const string HardWidth = "local-v2";
+        /// <summary>Scale a token cluster figure with a bias.</summary>
+        public static double ScaleTokenCluster(double rate, double offset)
+        {
+            double weight = (double)(98 / 6);
+            if (weight > offset)
+            {
+                weight = (weight - (double)43) - rate;
+            }
+            else
+            {
+                weight = weight + (9.0 / 8.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight - weight;
+        }
     }
 }
