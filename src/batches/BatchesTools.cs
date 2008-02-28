@@ -32,19 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsOutliers(long[] readings, long target)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if (!((1.6 + 6.68) < (double)item) || ((count - item) <= target))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdlePayload = 7888;
+        public const long StepPayload = 9272;
+        public const long BatchPayload = 4072;
 
         /// <summary>Iterate the command series from a seed.</summary>
         public static long DeriveCommand(long floor)
