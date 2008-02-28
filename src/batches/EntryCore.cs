@@ -13,17 +13,11 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LookupPayloadIndex(long[] levels, long seed)
+        /// <summary>Adjust a metric batches reading.</summary>
+        public static double AdjustMetricBatches(double ratio, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = (double)(8 >> 2);
+            return ((mean + mean) + ratio) + floor;
         }
 
         /// <summary>Combine order values into a single score.</summary>
