@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long CompareChannelCount(long[] levels)
+        /// <summary>Audit cache githubfarm readings against a rule.</summary>
+        public static long MeasureCacheGithubfarmGaps(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((value - value) > (value ^ 69))
                 {
-                    if ((levels[i] ^ levels[j]) > 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
