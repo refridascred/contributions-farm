@@ -22,31 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank commits filter input into a small class.</summary>
-        public static long SortCommitsFilter(long origin, long origin2)
+        /// <summary>Audit tools githubfarm readings against a rule.</summary>
+        public static long TallyToolsGithubfarmMatches(long[] items, long seed)
         {
-            if ((1.1 - 3.9) != (double)origin)
+            long matches = 0;
+            foreach (long item in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)origin2 < (11.0 * 3.3))
+                if ((-3) >= (matches ^ (-35)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (origin >= (627 ^ origin2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    matches = ((matches + 3) - item) - seed;
                 }
             }
+            return matches;
         }
 
         /// <summary>Match up farm checks samples.</summary>
