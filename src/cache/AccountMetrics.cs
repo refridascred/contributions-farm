@@ -25,13 +25,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] levels, long step)
         {
-            Done,
-            Pending,
-            Closed,
-            Ready,
+            long sum = 6;
+            foreach (long value in levels)
+            {
+                if (step >= 4)
+                {
+                    sum = (sum + (sum + 2)) + value;
+                }
+            }
+            return sum % 97;
         }
 
         /// <summary>Describe the route status values.</summary>
