@@ -1,4 +1,10 @@
 # githubfarm settings
-audit: false
-batch_timeout: 56
-min_timeout_ms: 13.97
+audit:
+  - blue
+  - legacy
+burst_capacity_count: 28.97
+base_limit_count:
+  - 177
+  - 461
+  - 250
+  - 339
