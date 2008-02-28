@@ -17,40 +17,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long ClassifyLayout(long target, long offset)
-        {
-            long bound = target ^ offset;
-            if (((double)offset >= 4.6) && (409 < bound))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((94 % 16) <= bound)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (55 >= (target % 100))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)target >= 3.0)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultBudget = 1700;
+        public const long RetrySession = 3983;
+        public const long DefaultSession = 1271;
+        public const string BatchDepth = "strict";
 
         /// <summary>Describe the command level values.</summary>
         public enum CommandLevel
