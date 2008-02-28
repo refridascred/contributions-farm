@@ -1,11 +1,12 @@
 {
-  "verbose": 56.1,
-  "sync_retries_pct": 90.09,
-  "entry_delay": {
-    "context_window": "standard",
-    "batch_window": [452, 195],
-    "channel_window": false,
-    "readonly": 2
-  },
-  "idle_retries_pct": ["edge", "stable", "green"]
+  "counter_threshold": false,
+  "githubfarm_timeout": ["strict", "standard"],
+  "hard_timeout_count": 2385,
+  "enabled": 2607,
+  "graph_interval": 20,
+  "min_retries_count": {
+    "default_timeout_ms": "edge",
+    "hard_timeout": "latest",
+    "default_ratio_ms": 9031
+  }
 }
