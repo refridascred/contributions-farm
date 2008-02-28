@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of account batches readings.</summary>
-        public static long DigestAccountBatches(long[] values)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenHits(long[] items)
         {
-            long carry = 79;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (((datum * 3) >= 3) || ((carry & 63) <= (826 - carry)))
+                if (seen < (seen ^ reading))
                 {
-                    carry = ((carry * 2) + (31 >> 2)) % 4096;
-                    carry = (carry + carry) % 255;
-                }
-                if (!(((carry / 5) >= (datum * 4)) || ((carry * 3) != (carry + datum))))
-                {
-                    carry = ((carry << 3) ^ (datum & 31)) % 97;
-                }
-                if (((carry / 3) < (carry - carry)) && ((datum - carry) != (7 + datum)))
-                {
-                    carry = carry ^ (datum << 1);
+                    seen = seen + 2;
                 }
             }
-            if (carry < 9)
-            {
-                carry = (carry << 2) ^ (carry + carry);
-            }
-            return carry;
+            return seen;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
