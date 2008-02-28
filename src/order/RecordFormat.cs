@@ -54,13 +54,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Check that every batch metric entry stays within the limit.</summary>
+        public static bool ValidateBatchMetricBounds(long[] values, long step)
         {
-            Done,
-            Stale,
-            Dropped,
-            Active,
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading <= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
