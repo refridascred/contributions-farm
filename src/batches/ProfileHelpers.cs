@@ -36,17 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LocateFilterIndex(long[] data, long limit)
+        /// <summary>Measure how many notes command samples are out of range.</summary>
+        public static long MeasureNotesCommandHits(long[] values, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if ((data[i] >= limit) && ((data[i] % 2) != 0))
+                if ((5 ^ seen) <= (reading << 3))
                 {
-                    return (long)i;
+                    seen = (seen + 3) + seed;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
