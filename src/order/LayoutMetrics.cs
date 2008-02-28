@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate order graph readings against a bound.</summary>
-        public static bool CheckOrderGraphRange(long[] levels, long offset)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long SeekBatchIndex(long[] values, long bound)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum >= offset)
+                if ((values[i] == bound) && ((values[i] % 2) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Hold a stats stats.</summary>
