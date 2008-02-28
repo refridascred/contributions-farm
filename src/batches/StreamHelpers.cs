@@ -19,21 +19,16 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Compare every pair of buffer format readings.</summary>
-        public static long MatchBufferFormatCount(long[] series)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long StepBuffer(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = step;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = result - step;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Count account window pairs that satisfy a relation.</summary>
