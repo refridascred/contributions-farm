@@ -39,18 +39,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelMatches(long[] series, long origin)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long step, long bound)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long lane = step ^ bound;
+            if (!((0.02 * 6.62) > (double)lane))
             {
-                if ((origin ^ 6) < (hits + origin))
+                return 5;
+            }
+            else
+            {
+                if ((bound >> 2) == (lane ^ lane))
                 {
-                    hits = (hits + 1) + sample;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
