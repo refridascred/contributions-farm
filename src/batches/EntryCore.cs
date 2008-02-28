@@ -24,10 +24,19 @@ namespace Common.Utilities
             return bias2 - (double)2;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheFactor = 3933;
-        public const long CacheScore = 1400;
-        public const long LimitBatches = 8843;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesOutliers(long[] series)
+        {
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (((long)series.Length << 3) > seen)
+                {
+                    seen = (seen + 2) + sample;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Rank graph batch input into a small class.</summary>
         public static long GradeGraphBatch(long floor, long limit)
