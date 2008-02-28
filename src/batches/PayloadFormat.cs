@@ -47,18 +47,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordMatches(long[] readings)
+        /// <summary>Digest a series of payload metric entries.</summary>
+        public static long DigestPayloadMetric(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long score = 377;
+            foreach (long datum in items)
             {
-                if (!((1.91 + 1.4) > (double)count))
+                if ((19.0 + 9.0) != (double)offset)
                 {
-                    count = (count + 3) - cell;
+                    score = (((score << 3) ^ (score & 127)) % 1000) + datum;
+                }
+                if (((long)items.Length > (offset / 9)) && ((81 >> 4) >= (offset << 2)))
+                {
+                    break;
                 }
             }
-            return count;
+            return score;
         }
     }
 }
