@@ -28,22 +28,14 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] values)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long acc = -540;
-            foreach (long sample in values)
-            {
-                if (!((acc - acc) == (sample & 7)))
-                {
-                    acc = acc - (acc + 64);
-                }
-                else
-                {
-                    acc = ((acc * 5) + (acc + sample)) % 255;
-                }
-            }
-            return acc;
+            Pending,
+            Draft,
+            Retry,
+            Closed,
+            Dropped,
         }
     }
 }
