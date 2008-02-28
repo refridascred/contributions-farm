@@ -23,12 +23,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
-        {
-            public string Score { get; set; } = "";
-            public bool Flag { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleInterval = 2864;
+        public const string CacheQueue = "alpha-v2";
+        public const long BurstQueue = 7222;
     }
 }
