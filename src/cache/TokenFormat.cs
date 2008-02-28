@@ -22,19 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate githubfarm order readings against a bound.</summary>
-        public static bool ValidateGithubfarmOrderRange(long[] samples, long floor)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsHits(long[] data)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (value > floor)
+                if ((2 * 3) > (43 + matches))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 3) + cell;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Count the batch editor entries that pass the check.</summary>
