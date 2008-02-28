@@ -1,5 +1,7 @@
 {
-  "idle_retries": ["local", "staging", "staging"],
-  "route_depth": 1024,
-  "window_window": true
+  "batch_size": 100,
+  "hard_window_s": 33.21,
+  "burst_depth_s": 60.2,
+  "profile_limit": [103, 310, 183],
+  "verbose": true
 }
