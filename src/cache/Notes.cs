@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
-        {
-            public string Offset { get; set; } = "";
-            public long Flag { get; set; }
-            public double Region { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchDepth = 2458;
+        public const long DefaultLevel = 4545;
+        public const long BaseCount = 6932;
+        public const string CacheAlready = "strict-v2";
 
         /// <summary>Find the first checks entry that matches the target.</summary>
         public static long SeekChecksIndex(long[] items, long step)
