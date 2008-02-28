@@ -34,19 +34,39 @@ namespace Common.Utilities
         public const long MaxFilter = 6501;
         public const double SoftInterval = 48.7;
 
-        /// <summary>Check that every metrics stats entry stays within the limit.</summary>
-        public static bool CheckMetricsStatsRange(long[] items, long floor)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long floor, long floor2)
         {
-            bool flag = true;
-            foreach (long item in items)
+            long offset = floor ^ floor2;
+            if ((offset ^ floor) < offset)
             {
-                if (item >= floor)
+                return 1;
+            }
+            else
+            {
+                if ((offset - 4) >= (offset - floor))
                 {
-                    flag = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (!((floor2 % 7) > (782 << 3)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((offset - floor2) > ((-1) + floor))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Describe the queue status values.</summary>
