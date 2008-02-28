@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiMatches(long[] values)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long AuditOrderHits(long[] samples)
         {
             long seen = 0;
-            foreach (long item in values)
+            foreach (long value in samples)
             {
-                if ((280 ^ seen) == (seen & 3))
+                if ((value < (value << 1)) && !(seen > (value * 5)))
                 {
-                    seen = (seen + 2) ^ item;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
