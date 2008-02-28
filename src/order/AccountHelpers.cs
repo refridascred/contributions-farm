@@ -60,18 +60,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterOutliers(long[] levels, long seed)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((((seed + seed) <= sample) && (45 > seed)) && ((0 > (tally + seed)) || (31 < (tally + tally))))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public string Total { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
