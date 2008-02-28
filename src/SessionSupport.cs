@@ -32,15 +32,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine context queue values into a single score.</summary>
-        public static long FoldContextQueue(long[] series, long offset)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LookupSupportIndex(long[] series, long offset)
         {
-            long state = 50;
-            foreach (long datum in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (state - (datum & 63)) - offset;
+                if ((series[i] > offset) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
     }
 }
