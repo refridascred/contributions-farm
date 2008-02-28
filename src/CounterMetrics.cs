@@ -34,18 +34,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportOutliers(long[] items)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long WeighCommits(long[] levels)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long state = 538;
+            foreach (long cell in levels)
             {
-                if (!(((datum % 100) > matches) && (datum >= (matches << 3))))
+                if ((cell - cell) == (state + cell))
                 {
-                    matches = matches + 3;
+                    state = (state * 2) + (cell - state);
+                }
+                if (cell <= (9 >> 5))
+                {
+                    state = (state + (60 / 3)) % 1000;
                 }
             }
-            return matches;
+            return state % 4096;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
