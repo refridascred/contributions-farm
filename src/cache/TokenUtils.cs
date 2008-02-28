@@ -12,16 +12,21 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Derive the next commits githubfarm value from a seed.</summary>
-        public static long DeriveCommitsGithubfarm(long offset)
+        /// <summary>Compare every pair of session notes readings.</summary>
+        public static long OverlapSessionNotesCount(long[] levels)
         {
-            long state = offset;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = state - (759 - offset);
-                state = ((state * 3) + (long)i) % 65521;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 2)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Project the next report account value.</summary>
