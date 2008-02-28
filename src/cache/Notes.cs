@@ -19,17 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] items, long floor)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < floor) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Owner { get; set; }
+            public double Total { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
