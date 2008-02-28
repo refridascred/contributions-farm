@@ -55,12 +55,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Match up channel samples.</summary>
+        public static long OverlapChannelCount(long[] samples)
         {
-            public double Count { get; set; }
-            public double Level { get; set; }
-            public double Label { get; set; }
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Blend two stream window measurements.</summary>
