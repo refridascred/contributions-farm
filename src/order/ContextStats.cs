@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long WeighCounter(long[] levels, long seed)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long carry = 60;
-            foreach (long cell in levels)
-            {
-                carry = carry ^ seed;
-                if (seed > (cell % 5))
-                {
-                    break;
-                }
-            }
-            return carry;
+            public string Mode { get; set; } = "";
+            public bool Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a githubfarm stats.</summary>
