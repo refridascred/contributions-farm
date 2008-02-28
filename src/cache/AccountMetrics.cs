@@ -22,24 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long SortRecord(long bound, long seed)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            if ((seed + seed) > (seed - bound))
-            {
-                return 2;
-            }
-            else
-            {
-                if (0 >= bound)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Done,
+            Pending,
+            Closed,
+            Ready,
         }
 
         /// <summary>Hold a editor options.</summary>
