@@ -1,12 +1,11 @@
 {
-  "hard_limit_count": "standard",
-  "warm_ratio": false,
-  "default_ttl_s": {
-    "warm_window_pct": 100,
-    "sync_retries_pct": "legacy",
-    "cache_ttl": false
+  "hard_interval": {
+    "verbose": "stable",
+    "retry_depth_count": "fallback",
+    "persist": false,
+    "dry_run": 3812,
+    "farm_interval": 5555
   },
-  "graph_limit": [16, 153, 365],
-  "cache_threshold_s": true,
-  "soft_size_count": "cached"
+  "sync_ratio_count": "blue",
+  "flush_limit_ms": 20
 }
