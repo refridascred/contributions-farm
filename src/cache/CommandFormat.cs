@@ -20,17 +20,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long SeekLayoutIndex(long[] readings, long offset)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 2;
+            foreach (long entry in data)
             {
-                if (readings[i] > offset)
-                {
-                    return (long)i;
-                }
+                anchor = (((anchor * 4) + (2 / 5)) % 101) - entry;
             }
-            return -1;
+            if (anchor < 17)
+            {
+                anchor = ((anchor * 5) + (anchor * 4)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a account stats.</summary>
