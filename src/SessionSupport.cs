@@ -26,12 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] series)
         {
-            Stale,
-            Dropped,
-            Pending,
+            long mix = 0;
+            foreach (long entry in series)
+            {
+                mix = ((mix * 5) + entry) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
