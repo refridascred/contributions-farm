@@ -28,10 +28,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftWidth = 110;
-        public const string WindowFactor = "fallback-v2";
-        public const long BaseTools = 1054;
+        /// <summary>Check that every commits batches entry stays within the limit.</summary>
+        public static bool CheckCommitsBatchesBounds(long[] levels, long bound)
+        {
+            bool flag = true;
+            foreach (long value in levels)
+            {
+                if (value != bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Roll a notes layout counter forward.</summary>
         public static long StepNotesLayout(long floor)
