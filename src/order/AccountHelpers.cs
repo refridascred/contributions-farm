@@ -19,22 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamGaps(long[] items, long seed)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((double)cell >= (8.18 * 4.37))
-                {
-                    tally = (tally + 2) - seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Pending,
+            Active,
+            Paused,
         }
 
         /// <summary>Define token limits and defaults.</summary>
