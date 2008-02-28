@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long FindBatchesIndex(long[] items, long origin)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long RankSession(long bound, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (bound >= (bound + bound))
             {
-                if (items[i] < origin)
+                return 8;
+            }
+            else
+            {
+                if ((limit ^ limit) == (bound + bound))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if (833 <= (limit * 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a batch stats.</summary>
