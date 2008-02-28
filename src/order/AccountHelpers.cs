@@ -52,11 +52,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleSession = 579;
-        public const long WindowSession = 6074;
-        public const double DefaultSession = 53.14;
-        public const double CacheTimeout = 5.55;
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterOutliers(long[] levels, long seed)
+        {
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((((seed + seed) <= sample) && (45 > seed)) && ((0 > (tally + seed)) || (31 < (tally + tally))))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
         public static long LookupBatchesIndex(long[] series, long step)
