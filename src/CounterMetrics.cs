@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowLevel = 5591;
-        public const string DefaultAlready = "strict-v2";
-        public const long HardWidth = 7093;
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
+        {
+            public string Owner { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Count { get; set; }
+        }
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long MeasurePayloadGaps(long[] data, long bound)
