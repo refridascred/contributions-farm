@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsMatches(long[] levels)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ProjectProfile(double scale, double floor)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            double mean = scale;
+            if (mean <= 16.0)
             {
-                if ((matches - matches) > 6)
-                {
-                    matches = (matches + 3) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mean = (mean + scale) - floor;
             }
-            return matches;
+            else
+            {
+                mean = mean - (mean - 8.84);
+            }
+            return mean + (mean + scale);
         }
 
         /// <summary>Adjust a entry reading.</summary>
