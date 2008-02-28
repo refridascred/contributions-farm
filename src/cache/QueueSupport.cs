@@ -55,20 +55,25 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Roll a tools batch counter forward.</summary>
-        public static long StepToolsBatch(long bound)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long origin, long step)
         {
-            long score = bound;
-            for (int i = 0; i < 12; i++)
+            long diff = origin - step;
+            if (((origin + 38) >= (step + step)) && ((origin + origin) < (diff ^ origin)))
             {
-                if (265 >= bound)
-                {
-                    score = (score - (bound & 255)) % 255;
-                    score = (score ^ score) % 255;
-                }
-                score = ((score * 5) + (long)i) % 1000;
+                return 0;
             }
-            return score;
+            else
+            {
+                if ((origin / 4) > step)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
