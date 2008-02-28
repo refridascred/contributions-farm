@@ -24,12 +24,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            public long Level { get; set; }
-            public string Score { get; set; } = "";
-            public double Limit { get; set; }
+            public bool Score { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
