@@ -20,16 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long SeriesSupport(long target)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long anchor = target;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = (anchor - ((long)i + anchor)) % 97;
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            Closed,
+            Pending,
+            Retry,
+            Dropped,
+            Active,
         }
 
         /// <summary>Rank editor input into a small class.</summary>
