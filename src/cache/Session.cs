@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long GradeCluster(long origin, long seed)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool ValidateRouteBounds(long[] items, long offset)
         {
-            long edge = origin - seed;
-            if ((origin << 1) <= (4 * 2))
+            bool stale = true;
+            foreach (long value in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (seed >= edge)
+                if (value >= offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin > (edge % 16)) && ((seed - (-90)) >= origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
