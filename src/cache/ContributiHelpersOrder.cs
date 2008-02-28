@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsMatches(long[] data)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long score = 490;
+            foreach (long datum in values)
             {
-                if ((entry * 3) <= (entry % 5))
+                if ((datum + origin) > (858 * 5))
                 {
-                    seen = seen + 1;
+                    score = score - (45 ^ 7);
+                }
+                else
+                {
+                    score = (score - (origin / 6)) % 4096;
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
