@@ -56,21 +56,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up batches samples.</summary>
-        public static long CompareBatchesCount(long[] readings)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Retry,
+            Locked,
+            Draft,
+            New,
+            Ready,
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
