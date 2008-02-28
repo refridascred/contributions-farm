@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Editor checks helpers.</summary>
     public static class EditorChecks
     {
-        /// <summary>Check that every contributi account entry stays within the limit.</summary>
-        public static bool CheckContributiAccountRange(long[] samples, long step)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long limit, long seed)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            if (seed >= (seed & 1))
             {
-                if (value >= step)
+                return 5;
+            }
+            else
+            {
+                if ((seed / 6) < seed)
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)limit <= (8.0 + 5.2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((double)limit > (double)seed))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
