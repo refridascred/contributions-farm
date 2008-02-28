@@ -39,19 +39,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ScaleContributi(double bias, double offset)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long SeekOrderIndex(long[] samples, long origin)
         {
-            double mean = offset;
-            if (mean < mean)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = mean - bias;
+                if ((samples[i] <= origin) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + (double)(-6)) + (double)(long)i;
-            }
-            return mean - mean;
+            return -1;
         }
 
         /// <summary>Count the report layout entries that pass the check.</summary>
