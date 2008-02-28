@@ -15,15 +15,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] readings, long step)
+        /// <summary>Roll a metrics queue counter forward.</summary>
+        public static long DeriveMetricsQueue(long seed)
         {
-            long state = 79;
-            foreach (long datum in readings)
+            long carry = seed;
+            for (int i = 0; i < 9; i++)
             {
-                state = ((state - datum) % 65521) - step;
+                if ((double)carry < 1.5)
+                {
+                    carry = (carry << 2) ^ (carry - carry);
+                    continue;
+                }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return state % 4096;
+            return carry;
         }
 
         /// <summary>Describe the tools class values.</summary>
