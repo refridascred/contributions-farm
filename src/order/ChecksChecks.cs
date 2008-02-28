@@ -33,19 +33,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ProjectEditor(double gain, double span)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long RankToken(long limit, long floor)
         {
-            double gain2 = (double)704;
-            if (gain2 <= span)
+            long bound = limit - floor;
+            if (2.4 > (double)bound)
             {
-                gain2 = (gain2 + span) + gain;
+                return 7;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                gain2 = (gain2 - (double)739) + (double)(long)i;
+                if ((floor % 7) > (178 + bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((79 % 97) > limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return gain2 + (span / 5.0);
         }
 
         /// <summary>Roll a editor counter forward.</summary>
