@@ -34,18 +34,15 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsHits(long[] items)
+        /// <summary>Roll a metrics notes counter forward.</summary>
+        public static long DeriveMetricsNotes(long floor)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long result = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if ((3.0 / 6.0) > (double)reading)
-                {
-                    tally = tally + 2;
-                }
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Describe the batch status values.</summary>
