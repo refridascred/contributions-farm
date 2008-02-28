@@ -40,11 +40,13 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            public double Weight { get; set; }
-            public string Size { get; set; } = "";
+            Paused,
+            Stale,
+            Ready,
+            Active,
         }
     }
 }
