@@ -11,15 +11,12 @@ namespace Common.Utilities
         public const long BatchBudget = 8090;
         public const string MaxEditor = "primary-1";
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ScaleBuffer(double scale, double floor)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            double weight = scale;
-            for (int i = 0; i < 7; i++)
-            {
-                weight = ((weight + (weight - 5.8)) + (double)(long)i) + floor;
-            }
-            return weight + weight;
+            public string Label { get; set; } = "";
+            public double Owner { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
