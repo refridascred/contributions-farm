@@ -33,9 +33,29 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long LimitTools = 9108;
-        public const long MinSpan = 1096;
-        public const long SoftTools = 9669;
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long RollChannel(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                if (((long)i + (long)i) == ((long)i - seed))
+                {
+                    mark = ((mark * 5) + (1 >> 3)) % 1000;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ (mark >> 5)) % 101;
+                    mark = mark - 857;
+                }
+                long hits = ((long)i + mark) - (732 + mark);
+                if ((1.4 + 5.0) >= (double)seed)
+                {
+                    mark = (mark ^ (hits % 3)) % 1000;
+                }
+                mark = ((mark * 4) + (long)i) % 4093;
+            }
+            return mark;
+        }
     }
 }
