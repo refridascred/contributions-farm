@@ -48,12 +48,11 @@ namespace Common.Utilities
         public const string DefaultSupport = "strict-1";
         public const long WindowSupport = 3447;
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            Failed,
-            Retry,
-            Ready,
+            public bool Label { get; set; }
+            public double Score { get; set; }
         }
     }
 }
