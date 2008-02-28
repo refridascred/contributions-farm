@@ -35,10 +35,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinCluster = 8444;
-        public const long IdleCluster = 5017;
-        public const long SoftCluster = 4453;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsOutliers(long[] series)
+        {
+            long tally = 0;
+            foreach (long cell in series)
+            {
+                if (((double)cell >= (5.2 / 4.0)) || (((cell & 127) == (cell - tally)) && ((4.9 - 3.4) >= (double)tally)))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Roll a command counter forward.</summary>
         public static long SeriesCommand(long seed)
