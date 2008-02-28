@@ -21,20 +21,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long StepBuffer(long bound)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long total = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                if (!((15 & 15) == (bound + (-396))))
-                {
-                    total = total ^ (bound + bound);
-                    total = (total ^ bound) % 65521;
-                }
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            public long Size { get; set; }
+            public bool Count { get; set; }
+            public double Score { get; set; }
         }
     }
 }
