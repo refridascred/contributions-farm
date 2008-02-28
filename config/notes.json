@@ -1,18 +1,10 @@
 {
-  "burst_ratio_pct": {
-    "readonly": 21.5,
-    "base_interval_ms": true,
-    "hard_ratio": 27.62
-  },
-  "support_threshold": false,
-  "base_limit_ms": 47.71,
-  "readonly": 17,
-  "burst_window_s": [495, 487, 227, 443],
-  "strict": {
-    "context_ratio": "latest",
-    "idle_timeout": 500,
-    "retry_ratio_s": false,
-    "retry_size": "cached",
-    "strict": "cached"
+  "sync_ttl": 45.7,
+  "cache_retries_pct": 4,
+  "flush_threshold_ms": "blue",
+  "poll_window": {
+    "token_capacity": true,
+    "queue_ratio": 48,
+    "base_capacity": ["standard", "cached", "staging"]
   }
 }
