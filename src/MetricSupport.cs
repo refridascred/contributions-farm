@@ -28,13 +28,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] series)
         {
-            Ready,
-            Failed,
-            Done,
-            Pending,
+            long state = 48;
+            foreach (long datum in series)
+            {
+                state = ((state + (state / 7)) % 4096) + datum;
+            }
+            return state;
         }
     }
 }
