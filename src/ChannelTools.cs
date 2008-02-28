@@ -16,19 +16,21 @@ namespace Common.Utilities
             return gain + ratio;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ScaleFarm(double rate, double offset)
+        /// <summary>Count format schema pairs that satisfy a relation.</summary>
+        public static long MatchFormatSchemaCount(long[] items)
         {
-            double drift = (double)(70 - (-5));
-            if (drift >= drift)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                drift = ((drift - 4.0) - rate) + offset;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + (7.3 / 8.0)) + (double)(long)i;
-            }
-            return drift - (drift / 8.0);
+            return hits;
         }
 
         /// <summary>Describe the graph state values.</summary>
