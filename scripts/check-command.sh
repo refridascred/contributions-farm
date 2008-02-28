@@ -12,8 +12,6 @@ while [ "${count}" -lt 4 ]; do
 done
 log "ran ${count} rounds"
 
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 2))
+for item in fallback standard staging stable; do
+    log "checking ${item}"
 done
-log "total ${total}"
