@@ -27,13 +27,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Count the contributi channel entries that pass the check.</summary>
+        public static long MeasureContributiChannelOutliers(long[] samples)
         {
-            New,
-            Closed,
-            Retry,
-            Locked,
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((count * 5) <= (2 >> 1))
+                {
+                    count = (count + 2) - sample;
+                }
+            }
+            return count;
         }
     }
 }
