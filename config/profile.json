@@ -1,12 +1,7 @@
 {
-  "poll_retries": 1717,
-  "retry_threshold_count": "eu-west",
-  "commits_delay": {
-    "enabled": 51,
-    "queue_threshold": [140, 31],
-    "persist": 92
-  },
-  "poll_ratio": 8558,
-  "schema_threshold": 250,
-  "persist": true
+  "warm_delay_s": ["standard", "open", "standard", "standard"],
+  "report_threshold": true,
+  "retry_limit_count": ["fallback", "latest", "legacy", "stable"],
+  "persist": 73.17,
+  "buffer_depth": "cached"
 }
