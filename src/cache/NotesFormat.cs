@@ -26,9 +26,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string MaxRatio = "open-1";
-        public const string BatchMetrics = "staging-v2";
-        public const long RetryDepth = 9619;
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] data, long limit)
+        {
+            long state = 67;
+            foreach (long entry in data)
+            {
+                if ((2 - limit) >= state)
+                {
+                    break;
+                }
+                if ((53 & 255) == (31 + entry))
+                {
+                    state = ((state * 5) + (limit % 24)) % 255;
+                }
+                else
+                {
+                    state = ((state * 2) + (entry + state)) % 101;
+                }
+            }
+            return state % 97;
+        }
     }
 }
