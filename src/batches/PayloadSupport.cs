@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long origin, long step)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            if ((step + step) <= (origin - step))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((71 / 4) <= origin)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step ^ 7) > (origin + origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((11.0 > (double)step) || ((step << 1) != (2 + origin)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public string Region { get; set; } = "";
+            public long Weight { get; set; }
+            public double Offset { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Describe the farm class values.</summary>
