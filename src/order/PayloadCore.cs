@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] values, long floor)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LookupAlreadyIndex(long[] levels, long seed)
         {
-            long anchor = 237;
-            foreach (long item in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = anchor ^ (item + floor);
-                if (19.0 > (double)item)
+                if (levels[i] == seed)
                 {
-                    anchor = (anchor ^ 51) % 101;
+                    return (long)i;
                 }
             }
-            return anchor % 65521;
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
