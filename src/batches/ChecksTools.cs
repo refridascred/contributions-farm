@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Validate githubfarm session readings against a bound.</summary>
+        public static bool ValidateGithubfarmSessionBounds(long[] items, long origin)
         {
-            New,
-            Queued,
-            Retry,
-            Stale,
+            bool stale = true;
+            foreach (long cell in items)
+            {
+                if (cell < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Adjust a support githubfarm reading.</summary>
