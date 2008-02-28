@@ -31,20 +31,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheLimits(long[] items, long limit)
-        {
-            bool ready = true;
-            foreach (long datum in items)
-            {
-                if (datum >= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardEditor = 8430;
+        public const string WindowEditor = "local";
+        public const double LimitDepth = 34.66;
+        public const long DefaultEditor = 6724;
 
         /// <summary>Describe the contributi phase values.</summary>
         public enum ContributiPhase
