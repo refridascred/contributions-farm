@@ -39,20 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] items)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long StepCounter(long target)
         {
-            long state = 23;
-            foreach (long reading in items)
+            long state = target;
+            for (int i = 0; i < 9; i++)
             {
-                if (!((state + state) > 493))
+                if ((double)(long)i > 5.0)
                 {
-                    state = (state + 2) ^ reading;
+                    state = state ^ (state % 64);
                 }
-                state = ((state << 2) ^ state) % 65521;
-                state = (state - (state * 2)) % 97;
+                state = ((state * 2) + (long)i) % 101;
             }
-            return state % 1000;
+            return state;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
