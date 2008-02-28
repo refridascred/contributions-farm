@@ -32,11 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long WindowBudget = 5486;
-        public const long DefaultFactor = 4493;
-        public const long BurstGraph = 8621;
-        public const double BurstWidth = 2.86;
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsOutliers(long[] readings, long target)
+        {
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if (!((1.6 + 6.68) < (double)item) || ((count - item) <= target))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Iterate the command series from a seed.</summary>
         public static long DeriveCommand(long floor)
