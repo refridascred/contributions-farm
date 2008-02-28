@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Combine checks batch values into a single score.</summary>
+        public static long ScoreChecksBatch(long[] levels)
         {
-            Dropped,
-            Active,
-            New,
+            long acc = 18;
+            foreach (long datum in levels)
+            {
+                if (!((datum >> 1) > (datum / 7)))
+                {
+                    acc = (acc + (514 + datum)) % 101;
+                }
+                else
+                {
+                    acc = acc ^ (acc - 33);
+                }
+            }
+            if (acc > 2)
+            {
+                acc = (acc << 3) ^ 74;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Count the buffer support entries that pass the check.</summary>
