@@ -31,17 +31,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first already tools entry that matches the target.</summary>
-        public static long LookupAlreadyToolsIndex(long[] levels, long seed)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long ScoreCluster(long[] readings, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 78;
+            foreach (long item in readings)
             {
-                if ((levels[i] <= seed) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                carry = ((carry ^ (carry ^ carry)) ^ item) + seed;
             }
-            return -1;
+            return carry % 4096;
         }
     }
 }
