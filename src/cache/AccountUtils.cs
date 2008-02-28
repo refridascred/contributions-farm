@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinLevel = 4321;
-        public const long HardRatio = 8662;
-        public const double IdleStats = 12.47;
+        /// <summary>Define account limits and defaults.</summary>
+        public const double CacheLevel = 49.28;
+        public const double WindowSpan = 73.82;
+        public const long StepAccount = 945;
+        public const long LimitAccount = 529;
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long DigestChannel(long[] values)
