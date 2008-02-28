@@ -1,9 +1,8 @@
 # route settings
-report_retries: 13
-batch_ttl_s: false
-sync_size_pct: 21
-entry_delay: false
-sync_delay_pct: 76.96
-base_threshold_count:
-  - 450
-  - 171
+idle_limit_s: 74.69
+compress: open
+idle_limit_ms:
+  - primary
+  - cached
+  - fallback
+commits_ttl: 250
