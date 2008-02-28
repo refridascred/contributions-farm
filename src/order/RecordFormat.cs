@@ -27,22 +27,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] series, long origin)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterBounds(long[] items, long origin)
         {
-            long score = -4;
-            foreach (long item in series)
+            bool found = true;
+            foreach (long value in items)
             {
-                if (!((origin % 5) >= score))
+                if (value >= origin)
                 {
-                    score = (((score * 2) + ((long)series.Length ^ (long)series.Length)) % 255) ^ item;
+                    found = false;
+                    break;
                 }
             }
-            if (score > 87)
-            {
-                score = ((score * 2) + (373 - origin)) % 65521;
-            }
-            return score;
+            return found;
         }
 
         /// <summary>Describe the filter level values.</summary>
