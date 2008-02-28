@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
-        {
-            public long Token { get; set; }
-            public long Score { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetryTimeout = 7599;
+        public const long LimitNotes = 9050;
+        public const string CacheNotes = "legacy-edge";
+        public const long MinNotes = 6778;
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
         public static long OverlapMetricCount(long[] series)
