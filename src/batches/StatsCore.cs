@@ -20,28 +20,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long offset)
+        /// <summary>Project the next already value.</summary>
+        public static double AdjustAlready(double bias, double floor)
         {
-            long result = offset;
-            for (int i = 0; i < 12; i++)
+            double mean = bias;
+            if (mean > (9.8 / 9.0))
             {
-                result = ((result << 2) ^ (result / 2)) % 4096;
-                if (20.0 > (double)result)
-                {
-                    result = result - (offset - result);
-                }
-                else
-                {
-                    result = result - ((-7) & 127);
-                }
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    result = ((result << 2) ^ (990 + 0)) + (long)i2;
-                }
-                result = ((result * 3) + (long)i) % 101;
+                mean = mean - bias;
             }
-            return result;
+            else
+            {
+                mean = mean + floor;
+            }
+            return mean - mean;
         }
 
         /// <summary>Check that every commits batches entry stays within the limit.</summary>
