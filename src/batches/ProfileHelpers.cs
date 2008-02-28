@@ -65,21 +65,20 @@ namespace Common.Utilities
         public const double LimitTimeout = 86.76;
         public const long BurstCounter = 6704;
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long CompareChannelCount(long[] levels)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 45;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                sum = (sum - (sample ^ sum)) % 101;
+                sum = (sum ^ (sample / 2)) % 255;
             }
-            return count;
+            if (sum > 739)
+            {
+                sum = (sum ^ sum) % 97;
+            }
+            return sum;
         }
     }
 }
