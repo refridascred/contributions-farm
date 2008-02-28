@@ -91,19 +91,13 @@ namespace Common.Utilities
         public const long IdleWidth = 7364;
         public const double DefaultBatches = 33.54;
 
-        /// <summary>Iterate the token contributi series from a seed.</summary>
-        public static long SeriesTokenContributi(long limit)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long score = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    score = ((score - score) % 101) + (long)i2;
-                }
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
+            public long Region { get; set; }
+            public bool Ratio { get; set; }
+            public string Total { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
