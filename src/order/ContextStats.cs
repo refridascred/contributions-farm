@@ -13,14 +13,32 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long step, long seed)
         {
-            Pending,
-            Paused,
-            Draft,
-            Active,
-            Retry,
+            long prev = step - seed;
+            if ((prev + step) != (3 - 36))
+            {
+                return 0;
+            }
+            else
+            {
+                if (prev < (step - step))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed - seed) <= (21 * 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
