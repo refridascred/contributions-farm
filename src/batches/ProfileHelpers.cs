@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit report format readings against a rule.</summary>
-        public static long MeasureReportFormatGaps(long[] samples)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if (!(6.0 >= (double)tally))
-                {
-                    tally = (tally + 2) ^ value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
