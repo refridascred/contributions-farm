@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            Active,
-            Queued,
-            Closed,
-            Synced,
+            public long Ratio { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Match up record samples.</summary>
