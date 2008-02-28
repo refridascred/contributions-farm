@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LookupAlreadyIndex(long[] levels, long seed)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Stale,
+            Active,
         }
 
         /// <summary>Define context limits and defaults.</summary>
