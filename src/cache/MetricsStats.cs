@@ -38,12 +38,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Match up layout samples.</summary>
+        public static long CompareLayoutCount(long[] readings)
         {
-            public double Rank { get; set; }
-            public double Owner { get; set; }
-            public long Weight { get; set; }
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
