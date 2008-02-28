@@ -63,17 +63,18 @@ namespace Common.Utilities
         public const double HardRoute = 66.18;
         public const long DefaultRoute = 9123;
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] values, long seed)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TotalSession(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 6;
+            foreach (long datum in items)
             {
-                if (values[i] <= seed)
+                if (!((274 + 63) < (mark - mark)))
                 {
-                    return (long)i;
+                    mark = (((mark << 3) ^ (mark << 3)) % 255) ^ datum;
                 }
             }
-            return -1;
+            return mark;
         }
     }
 }
