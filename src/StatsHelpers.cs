@@ -45,13 +45,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            public double Limit { get; set; }
-            public long Label { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Weight { get; set; }
+            public bool Flag { get; set; }
+            public long Mode { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Accumulate cache samples.</summary>
