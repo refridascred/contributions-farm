@@ -19,13 +19,21 @@ namespace Common.Utilities
         public const string RetryPayload = "cached-v2";
         public const double IdlePayload = 61.3;
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long MatchPayloadCount(long[] levels)
         {
-            public long Region { get; set; }
-            public double Size { get; set; }
-            public long Offset { get; set; }
-            public long Count { get; set; }
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
