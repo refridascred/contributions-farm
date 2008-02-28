@@ -55,22 +55,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long CombineBatch(long[] data, long seed)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long sum = 14;
-            foreach (long entry in data)
-            {
-                if (((3.73 / 7.0) < (double)entry) || ((6.6 - 6.74) >= (double)sum))
-                {
-                    sum = (sum * 2) + entry;
-                }
-                if ((56 >= (seed / 8)) && ((double)entry < (7.6 - 5.4)))
-                {
-                    break;
-                }
-            }
-            return sum % 4096;
+            Failed,
+            Ready,
+            Done,
+            Stale,
         }
     }
 }
