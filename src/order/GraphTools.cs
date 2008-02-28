@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long seed)
+        /// <summary>Measure how many context support samples are out of range.</summary>
+        public static long AuditContextSupportGaps(long[] items)
         {
-            long sum = seed;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                sum = ((sum * 5) + (long)i) % 1000;
+                if ((169 + count) >= (cell + cell))
+                {
+                    count = count + 2;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
