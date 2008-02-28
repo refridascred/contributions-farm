@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ProjectProfile(double scale, double floor)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long MatchAccountCount(long[] readings)
         {
-            double mean = scale;
-            if (mean <= 16.0)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = (mean + scale) - floor;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - (mean - 8.84);
-            }
-            return mean + (mean + scale);
+            return count;
         }
 
         /// <summary>Adjust a entry reading.</summary>
