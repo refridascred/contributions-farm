@@ -52,18 +52,19 @@ namespace Common.Utilities
         public const string BaseContributi = "latest-1";
         public const long CacheContributi = 6713;
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileMatches(long[] samples)
+        /// <summary>Adjust a context reading.</summary>
+        public static double AdjustContext(double weight, double bias)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            double rate = 4.57;
+            if (rate > (bias * 4.01))
             {
-                if (!(((8.64 + 4.2) >= (double)count) && ((5.28 + 3.0) <= (double)count)))
-                {
-                    count = (count + 3) + cell;
-                }
+                rate = (rate + rate) - weight;
             }
-            return count;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - (bias + bias)) - (double)(long)i;
+            }
+            return rate + rate;
         }
     }
 }
