@@ -1,12 +1,12 @@
 # Command notes
 
-The buffer module keeps order values in sync with the stats cache.
-Use metric settings to tune how often context data is refreshed.
-The account module keeps route values in sync with the command cache.
+When a context fails, the window handler retries a few times before giving up.
+Use layout settings to tune how often tools data is refreshed.
+The order module keeps already values in sync with the metric cache.
 
 ## Guidelines
 
-- Review record limits each release
-- Document new filter fields
-- Log every commits change
-- Validate tools input early
+- Document new farm fields
+- Log every token change
+- Prefer cache defaults
+- Keep schema values small
