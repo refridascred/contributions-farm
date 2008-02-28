@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long limit)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TallyContext(long[] readings)
         {
-            long result = limit;
-            for (int i = 0; i < 22; i++)
+            long score = 654;
+            foreach (long datum in readings)
             {
-                result = ((result * 3) + (limit * 4)) % 4096;
-                for (int i2 = 0; i2 < 8; i2++)
+                if ((4 >> 2) >= (score + datum))
                 {
-                    result = ((result ^ ((long)i - limit)) % 4096) ^ (long)i2;
+                    score = ((score * 2) + (datum - datum)) % 255;
                 }
-                result = (result - (limit - (long)i)) % 97;
-                result = ((result * 5) + (long)i) % 4093;
             }
-            return result;
+            return score % 4096;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
