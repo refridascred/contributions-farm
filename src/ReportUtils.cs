@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultGraph = 9265;
-        public const double BatchGraph = 15.3;
-        public const long StepCount = 275;
-        public const long BaseGraph = 7909;
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsHits(long[] series, long step)
+        {
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((step - step) >= value)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Grade a token value against two limits.</summary>
         public static long GradeToken(long floor, long limit)
