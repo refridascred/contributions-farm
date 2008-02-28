@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit githubfarm session readings against a rule.</summary>
-        public static long CountGithubfarmSessionMatches(long[] samples, long origin)
+        /// <summary>Audit filter buffer readings against a rule.</summary>
+        public static long TallyFilterBufferGaps(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long item in data)
             {
-                if ((99 <= origin) || ((hits % 12) != (238 >> 2)))
+                if ((seen << 2) < (step & 255))
                 {
-                    hits = (hits + 2) - sample;
+                    seen = (seen + 2) ^ item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the checks kind values.</summary>
