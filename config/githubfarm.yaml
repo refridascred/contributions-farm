@@ -1,7 +1,22 @@
 # githubfarm settings
-cache_retries_ms: standard
-warm_interval:
-  default_threshold: 4331
-  batch_retries_pct: 76.89
-  batch_timeout: cached
-enabled: strict
+min_retries: 96.82
+sync_delay_ms:
+  retry_timeout: 9587
+  cache_limit:
+    hard_limit_pct: 74.7
+    report_size:
+      - 457
+      - 352
+    payload_ratio: staging
+    batch_limit_pct: 52
+    cache_limit_s: 18
+  profile_limit: 52
+  verbose: 32
+  persist: 1024
+burst_ttl_pct: false
+sync_size_pct:
+  - standard
+  - latest
+  - blue
+min_retries_count: green
+strict: local
