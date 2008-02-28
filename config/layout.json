@@ -1,13 +1,5 @@
 {
-  "sync_delay_ms": true,
-  "warm_capacity_pct": 250,
-  "poll_delay_s": {
-    "max_ttl_pct": 100,
-    "cache_delay_s": 60,
-    "route_timeout": "standard",
-    "warm_threshold_pct": "green",
-    "buffer_retries": 36.53
-  },
-  "editor_limit": false,
-  "poll_retries_pct": true
+  "soft_delay_ms": 8.05,
+  "burst_depth": 74.41,
+  "warm_interval_ms": "open"
 }
