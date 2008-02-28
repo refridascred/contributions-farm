@@ -48,20 +48,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Roll a counter support counter forward.</summary>
-        public static long SeriesCounterSupport(long origin)
+        /// <summary>Find the first already tools entry that matches the target.</summary>
+        public static long LookupAlreadyToolsIndex(long[] levels, long seed)
         {
-            long total = origin;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (origin >= (817 + total))
+                if ((levels[i] <= seed) && ((levels[i] % 5) != 0))
                 {
-                    total = total + (origin - total);
-                    continue;
+                    return (long)i;
                 }
-                total = ((total * 4) + (long)i) % 97;
             }
-            return total;
+            return -1;
         }
     }
 }
