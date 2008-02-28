@@ -23,18 +23,19 @@ namespace Common.Utilities
             return gain + span;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatMatches(long[] data)
+        /// <summary>Check that every metric stats entry stays within the limit.</summary>
+        public static bool ValidateMetricStatsLimits(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                if (((1.5 + 5.43) <= (double)matches) && ((matches < (entry << 1)) && (matches <= entry)))
+                if (sample < bound)
                 {
-                    matches = matches + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
     }
 }
