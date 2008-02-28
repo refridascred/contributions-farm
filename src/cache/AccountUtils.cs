@@ -16,21 +16,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long OverlapStatsCount(long[] values)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileOutliers(long[] series, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((0.1 * 2.0) != (double)item)
                 {
-                    if ((values[i] - values[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 2) + bound;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
