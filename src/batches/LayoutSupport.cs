@@ -12,17 +12,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long SeekBatchIndex(long[] items, long step)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileOutliers(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if ((items[i] < step) && ((items[i] % 5) != 0))
+                if (count > (count + reading))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a cluster stats.</summary>
