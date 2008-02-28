@@ -34,18 +34,22 @@ namespace Common.Utilities
         public const double BaseLayout = 70.32;
         public const double DefaultLayout = 91.74;
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamGaps(long[] data)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] values)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long result = 993;
+            foreach (long sample in values)
             {
-                if ((tally / 3) < 120)
+                if ((5.0 / 4.0) != (double)result)
                 {
-                    tally = (tally + 2) ^ reading;
+                    result = (result ^ sample) % 101;
+                }
+                if ((result - 163) != (9 / 7))
+                {
+                    break;
                 }
             }
-            return tally;
+            return result % 65521;
         }
 
         /// <summary>Define route limits and defaults.</summary>
