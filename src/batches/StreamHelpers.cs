@@ -65,18 +65,17 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TotalSession(long[] items)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] series, long limit)
         {
-            long mark = 6;
-            foreach (long datum in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((274 + 63) < (mark - mark)))
+                if (series[i] <= limit)
                 {
-                    mark = (((mark << 3) ^ (mark << 3)) % 255) ^ datum;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
     }
 }
