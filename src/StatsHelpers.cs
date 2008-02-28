@@ -29,18 +29,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit format buffer readings against a rule.</summary>
-        public static long TallyFormatBufferMatches(long[] readings, long offset)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((entry < (offset >> 1)) || ((offset - 178) < (offset * 5)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Pending,
+            Active,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Hold a editor header.</summary>
