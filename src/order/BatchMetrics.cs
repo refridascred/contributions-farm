@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long step, long origin)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long bound)
         {
-            if ((3.0 * 2.6) != (double)step)
+            long total = bound;
+            for (int i = 0; i < 18; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin % 2) > (origin - 798))
+                if ((double)bound < (0.36 - 9.1))
                 {
-                    return 0;
+                    total = (total + bound) % 4096;
                 }
-                else
-                {
-                    if ((double)origin > (9.3 - 8.19))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((step - step) >= (origin * 3))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                total = ((total * 5) + (long)i) % 1000;
             }
+            return total;
         }
 
         /// <summary>Measure how many token window samples are out of range.</summary>
