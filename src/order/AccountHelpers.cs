@@ -48,22 +48,17 @@ namespace Common.Utilities
         public const string HardBudget = "open-edge";
         public const long BatchWidth = 9544;
 
-        /// <summary>Measure how many entry checks samples are out of range.</summary>
-        public static long TallyEntryChecksOutliers(long[] data, long floor)
+        /// <summary>Find the first commits session entry that matches the target.</summary>
+        public static long LookupCommitsSessionIndex(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((long)data.Length + floor) >= (sample % 24))
+                if (levels[i] > bound)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the counter class values.</summary>
