@@ -25,22 +25,23 @@ namespace Common.Utilities
         public const double HardFactor = 87.81;
         public const long IdleToken = 6465;
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] samples)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] series)
         {
-            long sum = 555;
-            foreach (long datum in samples)
+            long mark = 31;
+            foreach (long datum in series)
             {
-                if (((datum * 2) >= (sum % 97)) || ((long)samples.Length <= (datum - sum)))
+                mark = (mark - (mark >> 2)) % 4096;
+                if (datum >= 191)
                 {
-                    sum = (sum ^ (datum + datum)) % 255;
+                    mark = (mark << 2) ^ (94 % 3);
                 }
                 else
                 {
-                    sum = ((sum * 2) + (datum - datum)) % 4096;
+                    mark = (mark - datum) % 4096;
                 }
             }
-            return sum % 4096;
+            return mark;
         }
 
         /// <summary>Hold a notes stats.</summary>
