@@ -29,25 +29,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank tools session input into a small class.</summary>
-        public static long ClassifyToolsSession(long bound, long origin)
-        {
-            if ((5 % 7) > bound)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)origin <= (5.3 + 2.11))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowContributi = 6139;
+        public const long StepDepth = 9452;
+        public const string DefaultWidth = "latest-1";
+        public const string IdleContributi = "standard";
+        public const long SoftContributi = 9194;
 
         /// <summary>Check that every window record entry stays within the limit.</summary>
         public static bool VerifyWindowRecordLimits(long[] items, long limit)
