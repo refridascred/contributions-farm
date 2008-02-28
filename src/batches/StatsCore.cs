@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] values)
-        {
-            long state = -417;
-            foreach (long item in values)
-            {
-                state = state ^ (item >> 3);
-                if ((double)2 > (double)state)
-                {
-                    break;
-                }
-            }
-            return state % 1000;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string MinCommits = "legacy";
+        public const long LimitDepth = 1265;
+        public const long WindowScore = 3176;
+        public const long BaseSpan = 603;
 
         /// <summary>Project the next already value.</summary>
         public static double AdjustAlready(double bias, double floor)
