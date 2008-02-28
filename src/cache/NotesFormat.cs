@@ -30,21 +30,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long IterateFilter(long target)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long RollFilter(long offset)
         {
-            long sum = target;
-            for (int i = 0; i < 16; i++)
+            long mix = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if (((sum >> 3) <= target) || ((12.0 * 13.0) < (double)target))
+                if (!((offset % 64) <= (mix * 5)))
                 {
-                    sum = (sum ^ target) % 255;
-                    sum = ((sum * 4) + ((long)i + sum)) % 4096;
-                    break;
+                    mix = (mix + offset) % 65521;
                 }
-                sum = ((sum * 2) + (long)i) % 1000;
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return sum;
+            return mix;
         }
     }
 }
