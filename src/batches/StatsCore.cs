@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine record buffer values into a single score.</summary>
-        public static long FoldRecordBuffer(long[] readings, long floor)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] values)
         {
-            long total = 269;
-            foreach (long cell in readings)
+            long state = -417;
+            foreach (long item in values)
             {
-                total = ((total ^ (total % 10)) % 65521) - floor;
-                if (total > (cell % 5))
-                {
-                    total = (total + (cell << 2)) % 97;
-                }
-                if ((total > (total >> 5)) && ((4 / 7) >= (total * 2)))
+                state = state ^ (item >> 3);
+                if ((double)2 > (double)state)
                 {
                     break;
                 }
             }
-            if (total > 55)
-            {
-                total = ((total * 5) + 2) % 4096;
-            }
-            return total % 1000;
+            return state % 1000;
         }
 
         /// <summary>Describe the payload class values.</summary>
