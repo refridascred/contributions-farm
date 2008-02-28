@@ -11,15 +11,11 @@ namespace Common.Utilities
         public const long MinChecks = 835;
         public const double StepChecks = 43.48;
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long IterateBatches(long origin)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long sum = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
+            public double Region { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Iterate the checks entry series from a seed.</summary>
