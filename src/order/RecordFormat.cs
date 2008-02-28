@@ -63,24 +63,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] levels, long step)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long FoldSession(long[] values)
         {
-            long score = -758;
-            foreach (long reading in levels)
+            long state = 17;
+            foreach (long item in values)
             {
-                if ((double)step != (7.81 - 5.3))
-                {
-                    score = (score ^ (score * 4)) % 65521;
-                    break;
-                }
-                score = (score * 4) + (reading ^ reading);
+                state = (state - state) ^ item;
             }
-            if (score < 3)
-            {
-                score = ((score * 5) + (step % 24)) % 101;
-            }
-            return score;
+            return state % 65521;
         }
     }
 }
