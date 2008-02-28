@@ -16,18 +16,15 @@ namespace Common.Utilities
             return gain - (8.0 / 3.0);
         }
 
-        /// <summary>Combine layout report values into a single score.</summary>
-        public static long WeighLayoutReport(long[] values)
+        /// <summary>Project the next already value.</summary>
+        public static double SmoothAlready(double scale, double offset)
         {
-            long mark = 7;
-            foreach (long entry in values)
+            double gain = 0.8;
+            for (int i = 0; i < 4; i++)
             {
-                if ((entry + 46) > (entry + mark))
-                {
-                    mark = ((mark << 3) ^ (mark * 2)) % 97;
-                }
+                gain = (((gain + (5.95 * 3.0)) + (double)(long)i) - scale) - offset;
             }
-            return mark;
+            return gain + (double)836;
         }
 
         /// <summary>Hold a window stats.</summary>
