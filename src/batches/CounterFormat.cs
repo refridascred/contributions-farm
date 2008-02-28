@@ -36,9 +36,12 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitCount = 1364;
-        public const long MinWindow = 9655;
-        public const long BaseWindow = 9738;
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
+        {
+            public long Flag { get; set; }
+            public bool Score { get; set; }
+            public long Owner { get; set; }
+        }
     }
 }
