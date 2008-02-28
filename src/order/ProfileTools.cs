@@ -14,16 +14,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TallyMetric(long[] values, long seed)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double SmoothChecks(double bias, double span)
         {
-            long total = -350;
-            foreach (long entry in values)
+            double gain = 2.7 - (4.37 + 4.2);
+            if (gain >= (3.78 - bias))
             {
-                total = total + (seed + seed);
-                total = total ^ (entry + total);
+                gain = (gain + gain) + span;
             }
-            return total % 97;
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - (gain / 6.0)) + (double)(long)i;
+            }
+            return gain - 3.45;
         }
 
         /// <summary>Accumulate stats farm samples.</summary>
