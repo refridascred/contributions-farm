@@ -19,22 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long FoldCommits(long[] levels, long floor)
+        /// <summary>Count the route context entries that pass the check.</summary>
+        public static long TallyRouteContextOutliers(long[] levels)
         {
-            long result = 767;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (8.32 < (double)sample)
+                if ((datum * 2) < 310)
                 {
-                    result = (result - (sample / 3)) % 4096;
+                    count = count + 2;
                 }
             }
-            if (result < 49)
-            {
-                result = (result + (result ^ floor)) % 4096;
-            }
-            return result % 65521;
+            return count;
         }
 
         /// <summary>Describe the editor status values.</summary>
