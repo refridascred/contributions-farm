@@ -29,10 +29,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseWidth = 7293;
-        public const long BurstSpan = 5283;
-        public const double CacheBudget = 36.62;
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
+        {
+            public long Size { get; set; }
+            public long Rank { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
         public static long CompareWindowCount(long[] items)
