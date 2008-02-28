@@ -35,15 +35,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double SmoothMetrics(double bias, double bias2)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamMatches(long[] levels, long seed)
         {
-            double weight = bias2;
-            if (weight >= (bias / 2.0))
+            long tally = 0;
+            foreach (long value in levels)
             {
-                weight = weight - (bias / 3.0);
+                if (((8.6 / 8.0) >= (double)seed) || ((tally ^ value) < value))
+                {
+                    tally = tally + 3;
+                }
             }
-            return weight - bias2;
+            return tally;
         }
     }
 }
