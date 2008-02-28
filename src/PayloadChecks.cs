@@ -20,15 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaOutliers(long[] levels)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutGaps(long[] data)
         {
             long matches = 0;
-            foreach (long value in levels)
+            foreach (long item in data)
             {
-                if ((double)value != (4.06 * 7.4))
+                if ((double)matches == (double)item)
                 {
-                    matches = matches + 1;
+                    matches = matches + 2;
                 }
             }
             return matches;
