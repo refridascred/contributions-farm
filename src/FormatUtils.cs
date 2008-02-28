@@ -24,21 +24,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Iterate the session notes series from a seed.</summary>
-        public static long StepSessionNotes(long target)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long carry = target;
-            for (int i = 0; i < 20; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    carry = ((carry ^ 2) % 101) ^ (long)i2;
-                }
-                carry = (carry + (target - target)) % 101;
-                carry = (carry + (long)i) % 4096;
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
+            Idle,
+            Draft,
+            Dropped,
+            Active,
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
