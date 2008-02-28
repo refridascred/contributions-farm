@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutBounds(long[] series, long seed)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsMatches(long[] series)
         {
-            bool found = true;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (value >= seed)
+                if ((((5.3 * 8.0) < (double)reading) || ((tally * 4) > (reading << 1))) || (tally < (tally + 48)))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Match up already samples.</summary>
