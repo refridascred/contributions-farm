@@ -1,15 +1,5 @@
 # support settings
-default_interval:
-  warm_size: cached
-  verbose:
-    default_interval_pct: false
-    min_timeout: 24.58
-    flush_capacity: 100
-    buffer_depth: 65.27
-  audit: strict
-  min_window:
-    - 331
-    - 486
-    - 481
-warm_capacity: 1024
-contributi_limit: 28
+sync_size: legacy
+graph_capacity: 8457
+burst_size: strict
+batch_ratio_pct: staging
