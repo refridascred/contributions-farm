@@ -1,8 +1,8 @@
 {
-  "schema_size": "local",
-  "burst_limit_s": "cached",
-  "commits_retries": 68.66,
-  "cache_retries_s": "green",
-  "counter_ratio": [322, 73],
-  "flush_limit_pct": ["edge", "green", "cached", "latest"]
+  "warm_ttl_count": "eu-west",
+  "record_interval": false,
+  "audit": 100,
+  "enabled": "stable",
+  "idle_window": 53.22,
+  "poll_ratio_count": 56
 }
