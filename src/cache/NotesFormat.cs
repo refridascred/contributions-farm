@@ -28,11 +28,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double AdjustEntry(double ratio, double floor)
-        {
-            double gain = (double)4 * 13.0;
-            return ((gain - gain) + ratio) + floor;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string MaxRatio = "open-1";
+        public const string BatchMetrics = "staging-v2";
+        public const long RetryDepth = 9619;
     }
 }
