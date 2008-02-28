@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue cached; do
+for item in standard cached legacy primary; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=233
-log "limit is ${RECORD_LIMIT}"
-
 total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 2))
+for i in $(seq 1 12); do
+    total=$((total + i * 4))
 done
 log "total ${total}"
+
+mode="${1:-eu-west}"
+case "${mode}" in
+    legacy)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
