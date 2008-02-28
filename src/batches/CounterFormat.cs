@@ -22,38 +22,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long target, long step)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long SeriesPayload(long target)
         {
-            if ((target <= (target % 5)) && ((12.0 / 3.0) > (double)step))
+            long result = target;
+            for (int i = 0; i < 8; i++)
             {
-                return 3;
+                result = ((result * 2) + (long)i) % 101;
             }
-            else
-            {
-                if ((double)step < 2.7)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target < (step ^ step)) && ((double)target == (9.08 * 3.0)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)target == (1.55 - 0.6))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
