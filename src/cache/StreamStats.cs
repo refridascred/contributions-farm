@@ -46,21 +46,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long CompareContextCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 10)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheInterval = 4114;
+        public const long StepCluster = 825;
+        public const string IdleLevel = "primary";
+        public const long IdleCluster = 1734;
+        public const string BaseCluster = "fallback-v2";
     }
 }
