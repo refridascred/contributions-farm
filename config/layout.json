@@ -1,5 +1,18 @@
 {
-  "session_timeout": 1024,
-  "context_threshold": "latest",
-  "base_delay": 165
+  "burst_limit_count": "open",
+  "cache_window_pct": 15.51,
+  "soft_depth_s": false,
+  "cache_delay_ms": {
+    "tools_ratio": "staging",
+    "min_ttl_s": 25.13,
+    "batch_capacity_s": 1024,
+    "schema_retries": 500,
+    "idle_ratio_pct": {
+      "schema_threshold": false,
+      "poll_capacity_count": "stable",
+      "compress": "staging"
+    },
+    "cache_ttl_count": 8433
+  },
+  "dry_run": ["edge", "strict", "blue"]
 }
