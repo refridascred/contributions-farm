@@ -33,19 +33,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many support report samples are out of range.</summary>
-        public static long TallySupportReportMatches(long[] readings, long offset)
-        {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if (offset >= (value & 7))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstSize = 3074;
+        public const long HardReport = 4069;
+        public const long BurstReport = 8953;
+        public const string BaseReport = "legacy-1";
+        public const long StepCount = 7233;
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long MeasureQueueOutliers(long[] items, long offset)
