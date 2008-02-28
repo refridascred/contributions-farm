@@ -24,18 +24,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the queue profile entries that pass the check.</summary>
-        public static long AuditQueueProfileOutliers(long[] samples)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsRange(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            bool ready = true;
+            foreach (long value in data)
             {
-                if (!(90 > seen))
+                if (value < target)
                 {
-                    seen = (seen + 3) ^ value;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
