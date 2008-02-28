@@ -66,15 +66,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of editor command entries.</summary>
-        public static long TotalEditorCommand(long[] items, long bound)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsLimits(long[] readings, long offset)
         {
-            long carry = 77;
-            foreach (long cell in items)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                carry = ((carry + (cell ^ (long)items.Length)) % 4096) + bound;
+                if (sample >= offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return carry;
+            return ready;
         }
     }
 }
