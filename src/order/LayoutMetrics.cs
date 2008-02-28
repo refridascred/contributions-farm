@@ -21,12 +21,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            public string Token { get; set; } = "";
+            public long Score { get; set; }
             public long Limit { get; set; }
-            public long Rank { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the editor state values.</summary>
