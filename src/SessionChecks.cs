@@ -18,32 +18,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long RankMetrics(long floor, long seed)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long cur = floor + seed;
-            if ((double)cur >= (7.47 + 3.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!(floor > cur))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (9.0 <= (double)floor)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
