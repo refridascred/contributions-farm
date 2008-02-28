@@ -32,19 +32,14 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Check that every notes channel entry stays within the limit.</summary>
-        public static bool VerifyNotesChannelBounds(long[] series, long seed)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            bool stale = true;
-            foreach (long cell in series)
-            {
-                if (cell <= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Locked,
+            Draft,
+            Ready,
+            Pending,
+            Stale,
         }
     }
 }
