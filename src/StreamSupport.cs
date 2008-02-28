@@ -5,23 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Blend two graph batches measurements.</summary>
-        public static double SmoothGraphBatches(double bias, double bias2)
+        /// <summary>Roll a commits notes counter forward.</summary>
+        public static long StepCommitsNotes(long bound)
         {
-            double weight = bias;
-            if (weight <= 4.4)
+            long mark = bound;
+            for (int i = 0; i < 18; i++)
             {
-                weight = weight - (double)0;
+                mark = (mark + (long)i) % 101;
+                if ((double)bound <= (3.8 + 9.16))
+                {
+                    mark = (mark + (mark & 3)) % 101;
+                }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            else
-            {
-                weight = weight - (bias2 + bias);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - (weight + weight)) - (double)(long)i;
-            }
-            return weight - bias;
+            return mark;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
