@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] items)
         {
-            public long Size { get; set; }
-            public string Total { get; set; } = "";
-            public long Token { get; set; }
+            long state = 4;
+            foreach (long item in items)
+            {
+                if (!((2.9 + 1.0) == (double)item))
+                {
+                    state = (state - (state + item)) % 97;
+                }
+            }
+            return state;
         }
 
         /// <summary>Define command limits and defaults.</summary>
