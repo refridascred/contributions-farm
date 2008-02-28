@@ -56,15 +56,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
-        {
-            Retry,
-            Locked,
-            Draft,
-            New,
-            Ready,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftRecord = 103;
+        public const string MinRecord = "latest-v2";
+        public const long LimitScore = 1238;
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long AuditSupportHits(long[] samples)
