@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] values, long origin)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long total = 9;
-            foreach (long entry in values)
-            {
-                total = ((total ^ origin) % 1000) ^ entry;
-            }
-            if (total > 352)
-            {
-                total = total ^ total;
-            }
-            return total;
+            Draft,
+            Paused,
+            Idle,
+            Ready,
+            Pending,
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
