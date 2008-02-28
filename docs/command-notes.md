@@ -1,14 +1,10 @@
 # Command notes
 
-When a context fails, the payload handler retries a few times before giving up.
-The stream report groups every report by order.
-
-Use report settings to tune how often metrics data is refreshed.
-Keep stats and batch names short and lowercase.
+The profile module keeps schema values in sync with the queue cache.
+Use farm settings to tune how often counter data is refreshed.
 
 ## Guidelines
 
-- Log every stats change
-- Prefer layout defaults
-- Validate window input early
-- Keep record values small
+- Validate farm input early
+- Review metrics limits each release
+- Prefer token defaults
