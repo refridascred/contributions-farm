@@ -42,22 +42,14 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] values)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long carry = 0;
-            foreach (long sample in values)
-            {
-                if ((sample & 63) >= carry)
-                {
-                    carry = ((carry << 3) ^ (474 - sample)) % 97;
-                }
-            }
-            if (carry < 27)
-            {
-                carry = (carry << 3) ^ ((long)values.Length >> 3);
-            }
-            return carry;
+            New,
+            Queued,
+            Draft,
+            Locked,
+            Active,
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
