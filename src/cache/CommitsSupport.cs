@@ -16,31 +16,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank window report input into a small class.</summary>
-        public static long SortWindowReport(long limit, long target)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double BlendGithubfarm(double weight, double bias)
         {
-            if ((target << 1) > (target - limit))
+            double ratio = 13.0;
+            for (int i = 0; i < 4; i++)
             {
-                return 2;
+                ratio = ((ratio + bias) + (double)(long)i) - weight;
             }
-            else
-            {
-                if ((limit + limit) < 35)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target + limit) >= (target % 60))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return ratio + (double)473;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
