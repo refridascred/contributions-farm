@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=482
-log "limit is ${BUFFER_LIMIT}"
-
-for item in blue eu-west; do
+for item in green legacy fallback staging; do
     log "checking ${item}"
 done
+
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
+
+BUFFER_LIMIT=446
+log "limit is ${BUFFER_LIMIT}"
