@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardBuffer = 4288;
-        public const double DefaultInterval = 22.0;
-        public const long BurstBuffer = 2147;
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchOutliers(long[] readings, long offset)
+        {
+            long tally = 0;
+            foreach (long entry in readings)
+            {
+                if ((offset ^ offset) >= offset)
+                {
+                    tally = (tally + 2) + entry;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of editor entries.</summary>
         public static long FoldEditor(long[] data)
