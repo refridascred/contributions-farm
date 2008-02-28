@@ -40,21 +40,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count route commits pairs that satisfy a relation.</summary>
-        public static long PairRouteCommitsCount(long[] levels)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteGaps(long[] samples, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)datum != (6.8 + 4.4))
                 {
-                    if ((levels[i] + levels[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 3) + origin;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
