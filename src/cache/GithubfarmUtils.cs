@@ -28,22 +28,14 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryGaps(long[] readings)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((item % 3) != (item << 2))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Failed,
+            Locked,
+            New,
+            Draft,
+            Stale,
         }
 
         /// <summary>Count the schema checks entries that pass the check.</summary>
