@@ -1,30 +1,25 @@
 # support settings
-readonly:
-  - 86
-  - 318
-verbose: legacy
-buffer_size: 4124
-account_ttl:
-  - fallback
-  - eu-west
-  - primary
-  - green
-soft_limit_s:
-  warm_interval_pct: stable
-  base_size_s:
-    base_threshold: 3064
-    max_window_pct:
-      - standard
-      - staging
-      - fallback
-      - primary
-    farm_retries:
-      - green
-      - green
-    strict: 250
-    sync_size_pct: 30.81
-    idle_timeout:
+default_window_count:
+  poll_window: 63
+  readonly: 96.19
+  audit: green
+  max_limit: true
+  hard_retries_count: 84.51
+  min_capacity_ms:
+    stream_capacity: open
+    schema_retries: false
+    idle_window_s:
       - legacy
-      - local
-  max_ttl_pct: false
-metric_delay: 100
+      - open
+      - edge
+    verbose: false
+    payload_delay: 6073
+    stream_retries:
+      - primary
+      - staging
+      - cached
+burst_interval: 7115
+flush_capacity: stable
+record_interval: cached
+persist: false
+soft_capacity_ms: 690
