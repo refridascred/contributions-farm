@@ -32,19 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextBounds(long[] levels, long floor)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            bool found = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Stamp { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Describe the schema class values.</summary>
