@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long MatchQueueCount(long[] readings)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long origin, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long edge = origin - offset;
+            if (((origin / 9) < (offset - offset)) || ((double)origin != (6.6 + 2.0)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((edge + origin) < offset)
                 {
-                    if ((readings[i] - readings[j]) < 8)
+                    return 0;
+                }
+                else
+                {
+                    if ((2 >> 2) == (origin - offset))
                     {
-                        tally = tally + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((6 <= (origin + origin)) && ((offset + offset) != (edge - edge)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
