@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] levels, long seed)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenRange(long[] series, long floor)
         {
-            long mix = 0;
-            foreach (long sample in levels)
+            bool flag = true;
+            foreach (long datum in series)
             {
-                if (mix < (mix % 10))
+                if (datum <= floor)
                 {
-                    continue;
-                }
-                if (((17.0 / 9.0) <= (double)sample) && (((-10) + sample) >= (2 % 64)))
-                {
-                    mix = ((mix + 43) % 65521) - seed;
+                    flag = false;
+                    break;
                 }
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Hold a stream options.</summary>
