@@ -22,20 +22,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long step)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long SortEntry(long offset, long target)
         {
-            long mark = step;
-            for (int i = 0; i < 12; i++)
+            if (191 < target)
             {
-                mark = mark ^ (mark + (long)i);
-                if ((double)mark != (1.92 * 6.9))
-                {
-                    mark = (mark ^ (step + (long)i)) % 1000;
-                }
-                mark = ((mark * 4) + (long)i) % 4093;
+                return 6;
             }
-            return mark;
+            else
+            {
+                if (!((offset >> 3) == (2 - target)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset >> 3) >= (offset + offset))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up farm checks samples.</summary>
