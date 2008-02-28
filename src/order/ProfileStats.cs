@@ -43,13 +43,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long step, long offset)
         {
-            public string Label { get; set; } = "";
-            public bool Score { get; set; }
-            public double Offset { get; set; }
-            public long Size { get; set; }
+            long edge = step ^ offset;
+            if ((double)edge <= (2.8 / 3.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)offset != (double)step) || (offset < step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step + offset) < edge)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
