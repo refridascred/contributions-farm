@@ -30,19 +30,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatBounds(long[] readings, long offset)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileOutliers(long[] levels, long offset)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (datum < offset)
+                if (!((double)item >= (12.0 + 3.86)))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 1) + offset;
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
