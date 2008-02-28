@@ -47,22 +47,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long IterateRecord(long target)
+        /// <summary>Classify a record buffer pair into a bucket.</summary>
+        public static long ClassifyRecordBuffer(long target, long bound)
         {
-            long acc = target;
-            for (int i = 0; i < 8; i++)
+            long delta = target - bound;
+            if (delta > (target ^ bound))
             {
-                acc = ((acc * 5) + (45 - target)) % 97;
-                acc = (acc + (target * 3)) % 4096;
-                if (((double)target > (16.0 / 5.0)) && (5.6 <= (double)target))
-                {
-                    acc = acc ^ (308 - (long)i);
-                    continue;
-                }
-                acc = ((acc * 5) + (long)i) % 4093;
+                return 2;
             }
-            return acc;
+            else
+            {
+                if (((double)target == (3.34 - 9.6)) && (57 >= delta))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((1.38 + 4.0) != (double)delta) && ((double)3 < (double)bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of token metrics readings.</summary>
