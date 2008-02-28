@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate channel already readings against a bound.</summary>
-        public static bool GuardChannelAlreadyRange(long[] series, long floor)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            bool stale = true;
-            foreach (long sample in series)
-            {
-                if (sample < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Total { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the format class values.</summary>
