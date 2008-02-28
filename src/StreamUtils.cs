@@ -79,10 +79,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxSchema = 4671;
-        public const long RetryLevel = 646;
-        public const long BurstSchema = 1934;
-        public const long RetryRatio = 8021;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleBuffer = 2829;
+        public const long BaseRatio = 5407;
+        public const long CacheBuffer = 114;
+        public const long BatchCount = 2705;
     }
 }
