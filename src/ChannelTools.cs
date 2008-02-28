@@ -46,15 +46,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long limit)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long total = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                total = ((total * 2) + (long)i) % 1000;
-            }
-            return total;
+            public double Weight { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
