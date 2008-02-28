@@ -19,19 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheLimits(long[] samples, long target)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowBounds(long[] values, long floor)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if (item <= target)
+                if (datum <= floor)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Classify a command githubfarm pair into a bucket.</summary>
