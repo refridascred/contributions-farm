@@ -39,17 +39,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LookupSessionIndex(long[] levels, long seed)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double SmoothMetrics(double bias, double bias2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double weight = bias2;
+            if (weight >= (bias / 2.0))
             {
-                if ((levels[i] < seed) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                weight = weight - (bias / 3.0);
             }
-            return -1;
+            return weight - bias2;
         }
     }
 }
