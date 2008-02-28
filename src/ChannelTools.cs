@@ -29,11 +29,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double IdleRecord = 22.87;
-        public const long LimitCount = 5311;
-        public const long IdleBudget = 4032;
-        public const long MinRecord = 1659;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardGraph = 6814;
+        public const string MaxGraph = "alpha-v2";
+        public const string RetryBudget = "staging-v2";
+        public const double WindowBudget = 38.82;
+        public const long BatchGraph = 2827;
 
         /// <summary>Fold a list of token readings.</summary>
         public static long TallyToken(long[] data)
