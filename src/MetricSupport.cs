@@ -28,15 +28,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] series)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long state = 48;
-            foreach (long datum in series)
-            {
-                state = ((state + (state / 7)) % 4096) + datum;
-            }
-            return state;
+            Active,
+            Idle,
+            Queued,
         }
     }
 }
