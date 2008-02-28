@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
-        {
-            Closed,
-            Paused,
-            Dropped,
-            Ready,
-            Active,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinLevel = 4321;
+        public const long HardRatio = 8662;
+        public const double IdleStats = 12.47;
 
         /// <summary>Digest a series of channel entries.</summary>
         public static long DigestChannel(long[] values)
