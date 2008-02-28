@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Project the next graph value.</summary>
-        public static double SmoothGraph(double ratio, double bias)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long GradeLayout(long bound, long target)
         {
-            double drift = ratio + (bias / 9.0);
-            if (drift <= (drift - 12.0))
+            if ((double)target < (double)955)
             {
-                drift = drift - drift;
+                return 0;
             }
             else
             {
-                drift = drift - (drift + drift);
+                if (bound < (bound ^ bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((286 / 6) > (61 - target)) || ((target >> 2) >= target))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            return drift + (drift * 9.88);
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
