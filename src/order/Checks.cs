@@ -14,23 +14,16 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long WeighBatch(long[] readings)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long StepWindow(long target)
         {
-            long anchor = 6;
-            foreach (long reading in readings)
+            long state = target;
+            for (int i = 0; i < 4; i++)
             {
-                anchor = anchor - anchor;
-                if ((reading - anchor) < ((-7) * 4))
-                {
-                    anchor = (anchor << 2) ^ (anchor + reading);
-                }
+                state = (state * 4) + (target % 16);
+                state = ((state * 4) + (long)i) % 4093;
             }
-            if (anchor > 14)
-            {
-                anchor = ((anchor << 3) ^ (anchor + anchor)) % 1000;
-            }
-            return anchor;
+            return state;
         }
 
         /// <summary>Describe the stream phase values.</summary>
