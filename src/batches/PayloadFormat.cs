@@ -33,18 +33,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteGaps(long[] samples, long origin)
+        /// <summary>Project the next report value.</summary>
+        public static double AdjustReport(double gain, double span)
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((double)datum != (6.8 + 4.4))
-                {
-                    hits = (hits + 3) + origin;
-                }
-            }
-            return hits;
+            double mean = 17.0;
+            return (mean + (span * 9.97)) + gain;
         }
 
         /// <summary>Digest a series of payload metric entries.</summary>
