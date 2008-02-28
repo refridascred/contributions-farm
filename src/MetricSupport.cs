@@ -25,12 +25,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            Active,
-            Idle,
-            Queued,
+            Done,
+            Pending,
+            Dropped,
+            Ready,
         }
     }
 }
