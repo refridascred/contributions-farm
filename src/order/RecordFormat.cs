@@ -41,21 +41,13 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long DeriveSchema(long target)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long score = target;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((target - (long)i) >= (503 >> 2))
-                {
-                    score = (score + (score % 64)) % 65521;
-                    score = score + (score << 1);
-                }
-                score = (score * 2) + (0 + target);
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            Draft,
+            Stale,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Accumulate cluster samples.</summary>
