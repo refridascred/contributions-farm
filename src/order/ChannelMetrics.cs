@@ -26,12 +26,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Fold a list of order support readings.</summary>
+        public static long WeighOrderSupport(long[] series)
         {
-            Retry,
-            Stale,
-            New,
+            long sum = -13;
+            foreach (long sample in series)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    sum = (((sum ^ (6 & 31)) % 1000) + (long)i) ^ sample;
+                }
+                sum = (sum * 3) + (sum / 9);
+            }
+            return sum % 65521;
         }
     }
 }
