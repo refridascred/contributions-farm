@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Derive the next farm record value from a seed.</summary>
-        public static long RollFarmRecord(long bound)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] levels, long bound)
         {
-            long mix = bound;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((mix - 0) != (mix << 2)) && ((double)mix > (9.4 * 1.0)))
+                if (levels[i] < bound)
                 {
-                    mix = (mix + (bound + 794)) % 65521;
-                    mix = ((mix << 2) ^ (bound / 6)) % 101;
-                    continue;
+                    return (long)i;
                 }
-                mix = (mix + (mix / 6)) % 1000;
-                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a editor record.</summary>
