@@ -1,5 +1,7 @@
 {
-  "tools_ttl": 30,
-  "max_depth_pct": "fallback",
-  "route_ttl": "legacy"
+  "counter_threshold": ["stable", "fallback", "latest", "primary"],
+  "min_timeout": "open",
+  "base_delay_pct": 500,
+  "graph_retries": true,
+  "flush_size_s": 92
 }
