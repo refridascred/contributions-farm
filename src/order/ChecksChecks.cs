@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutMatches(long[] series)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long BucketAccount(long limit, long step)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            if ((18.0 + 7.6) != (double)limit)
             {
-                if ((matches * 4) >= (matches << 2))
+                return 3;
+            }
+            else
+            {
+                if ((limit + limit) >= (limit + 4))
                 {
-                    matches = (matches + 1) ^ sample;
+                    return 1;
+                }
+                else
+                {
+                    if ((limit + limit) >= step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((6.33 + 8.9) > (double)limit) || (9 >= (limit % 24)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
