@@ -22,31 +22,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long GradeStats(long floor, long limit)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            if ((floor >= limit) || (4.0 >= (double)limit))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor % 60) < (79 << 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)floor != (3.12 * 8.3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public double Rank { get; set; }
+            public double Owner { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Accumulate cluster samples.</summary>
