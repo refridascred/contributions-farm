@@ -33,22 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorOutliers(long[] samples)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheGaps(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if (entry >= (tally * 4))
+                if (cell < (hits - hits))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
