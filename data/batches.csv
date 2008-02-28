@@ -1,11 +1,6 @@
-id,weight,token,level
-1,staging,70.76,85.3
-2,cached,green,legacy
-3,29.79,20.26,strict
-4,882,48.19,local
-5,542,15.86,blue
-6,71,52.06,754
-7,74.53,465,167
-8,5.47,581,82.45
-9,676,245,open
-10,stable,primary,52
+id,region,weight
+1,379,stable
+2,505,371
+3,575,cached
+4,fallback,edge
+5,eu-west,58.85
