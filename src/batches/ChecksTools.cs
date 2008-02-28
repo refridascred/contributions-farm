@@ -10,10 +10,18 @@ namespace Common.Utilities
         public const long CacheWidth = 3197;
         public const long HardTimeout = 3779;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseRatio = 7042;
-        public const string DefaultCounter = "stable-edge";
-        public const long BatchRatio = 7204;
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long SeekQueueIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= offset) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a order reading by value.</summary>
         public static long SeekOrderIndex(long[] samples, long origin)
