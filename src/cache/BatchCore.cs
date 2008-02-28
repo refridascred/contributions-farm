@@ -30,15 +30,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long FoldCommand(long[] items, long limit)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutMatches(long[] values)
         {
-            long score = 8;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long sample in values)
             {
-                score = ((score - score) ^ datum) + limit;
+                if ((62 - count) <= (count + count))
+                {
+                    count = (count + 1) ^ sample;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
