@@ -1,11 +1,10 @@
 # Command notes
 
-The metric report groups every support by context.
-The cluster module keeps schema values in sync with the already cache.
-A counter that stays idle for too long is moved to the batches list.
+The account module keeps stats values in sync with the window cache.
+Defaults for farm live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer queue defaults
-- Keep order values small
-- Log every cluster change
+- Validate graph input early
+- Keep layout values small
+- Review context limits each release
