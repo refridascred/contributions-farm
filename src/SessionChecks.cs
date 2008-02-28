@@ -49,19 +49,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next report metric value.</summary>
-        public static double AdjustReportMetric(double ratio, double span)
+        /// <summary>Measure how many buffer stats samples are out of range.</summary>
+        public static long AuditBufferStatsGaps(long[] values)
         {
-            double ratio2 = span;
-            if (ratio2 >= (double)567)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                ratio2 = ratio2 - (double)378;
+                if (!((tally >> 2) == (tally + datum)))
+                {
+                    tally = tally + 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio2 = (ratio2 - (ratio * 3.18)) - (double)(long)i;
-            }
-            return ratio2 + ratio;
+            return tally;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
