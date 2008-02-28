@@ -15,14 +15,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            Active,
-            Idle,
-            Queued,
-            Pending,
-            Retry,
+            public string Mode { get; set; } = "";
+            public bool Ratio { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
