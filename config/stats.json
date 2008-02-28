@@ -1,9 +1,12 @@
 {
-  "idle_delay_ms": {
-    "batch_capacity": "open",
-    "report_timeout": ["fallback", "eu-west", "strict"],
-    "strict": true
-  },
-  "persist": 95.55,
-  "flush_ratio": 5931
+  "readonly": 79,
+  "enabled": 100,
+  "batch_ratio": 35.07,
+  "flush_delay_pct": 91.71,
+  "stats_retries": 27,
+  "persist": {
+    "enabled": "strict",
+    "sync_ratio_s": false,
+    "record_threshold": "latest"
+  }
 }
