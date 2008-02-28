@@ -1,12 +1,12 @@
 {
-  "counter_threshold": false,
-  "githubfarm_timeout": ["strict", "standard"],
-  "hard_timeout_count": 2385,
-  "enabled": 2607,
-  "graph_interval": 20,
-  "min_retries_count": {
-    "default_timeout_ms": "edge",
-    "hard_timeout": "latest",
-    "default_ratio_ms": 9031
-  }
+  "hard_limit_count": "standard",
+  "warm_ratio": false,
+  "default_ttl_s": {
+    "warm_window_pct": 100,
+    "sync_retries_pct": "legacy",
+    "cache_ttl": false
+  },
+  "graph_limit": [16, 153, 365],
+  "cache_threshold_s": true,
+  "soft_size_count": "cached"
 }
