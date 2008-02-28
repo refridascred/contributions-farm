@@ -16,21 +16,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count channel cluster pairs that satisfy a relation.</summary>
-        public static long CompareChannelClusterCount(long[] readings)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Offset { get; set; }
+            public string Size { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Combine command values into a single score.</summary>
