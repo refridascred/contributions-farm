@@ -1,7 +1,16 @@
 {
-  "base_window_count": false,
-  "max_delay_ms": 100,
-  "tools_depth": 33,
-  "queue_capacity": 11.4,
-  "metric_threshold": "blue"
+  "burst_size_pct": 94.96,
+  "retry_capacity_pct": {
+    "order_interval": "cached",
+    "idle_window_ms": ["staging", "eu-west", "standard"],
+    "hard_ttl": true,
+    "channel_size": {
+      "already_capacity": 4353,
+      "sync_retries_count": "staging",
+      "report_capacity": 59
+    }
+  },
+  "contributi_limit": "blue",
+  "channel_size": "strict",
+  "min_delay": "fallback"
 }
