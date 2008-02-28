@@ -33,16 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultFormat = 9711;
+        public const long MaxRatio = 9726;
+        public const long WindowFormat = 2816;
+        public const double RetryRatio = 76.55;
+        public const long LimitFormat = 6347;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long BatchFactor = 9000;
