@@ -14,19 +14,25 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsRange(long[] series, long origin)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long seed)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            long score = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if (cell < origin)
+                if ((score % 12) != (seed + 49))
                 {
-                    ok = false;
-                    break;
+                    score = (score + seed) % 4096;
+                    score = ((score * 4) + (score - (-91))) % 255;
                 }
+                else
+                {
+                    score = (score - (score >> 5)) % 97;
+                    score = (score ^ seed) % 97;
+                }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
