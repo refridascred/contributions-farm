@@ -34,17 +34,14 @@ namespace Common.Utilities
             return (mean + (span * 9.97)) + gain;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] samples, long floor)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Done,
+            Locked,
+            Closed,
+            Queued,
         }
     }
 }
