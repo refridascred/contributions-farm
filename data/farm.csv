@@ -1,6 +1,6 @@
-id,token,score,level
-1,58.47,792,edge
-2,288,green,617
-3,cached,edge,70.04
-4,cached,local,63.24
-5,45.2,82,75.26
+id,weight,rank,count,owner
+1,30.72,cached,local,49.87
+2,staging,421,692,9.97
+3,691,latest,primary,69
+4,374,67.53,83.29,75.34
+5,182,83.36,staging,69.15
