@@ -50,11 +50,20 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double HardScore = 82.62;
-        public const long WindowScore = 9239;
-        public const string HardFormat = "staging-v2";
-        public const string RetryRatio = "legacy-1";
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double SmoothLayout(double bias, double floor)
+        {
+            double load = bias;
+            if (load >= (floor / 5.0))
+            {
+                load = load - (double)450;
+            }
+            else
+            {
+                load = load + (load * 19.0);
+            }
+            return load - floor;
+        }
 
         /// <summary>Describe the stream status values.</summary>
         public enum StreamStatus
