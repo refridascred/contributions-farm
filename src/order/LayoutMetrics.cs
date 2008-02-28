@@ -31,18 +31,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the contributi channel entries that pass the check.</summary>
-        public static long MeasureContributiChannelOutliers(long[] samples)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueRange(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            bool stale = true;
+            foreach (long reading in samples)
             {
-                if ((count * 5) <= (2 >> 1))
+                if (reading <= floor)
                 {
-                    count = (count + 2) - sample;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
     }
 }
