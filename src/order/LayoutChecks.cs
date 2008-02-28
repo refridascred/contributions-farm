@@ -51,19 +51,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine filter metric values into a single score.</summary>
-        public static long DigestFilterMetric(long[] readings, long floor)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaHits(long[] readings)
         {
-            long mix = 647;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                mix = (((mix << 3) ^ (reading % 16)) % 1000) - floor;
+                if ((cell - matches) > matches)
+                {
+                    matches = matches + 1;
+                }
             }
-            if (mix < 91)
-            {
-                mix = (mix + (mix >> 5)) % 101;
-            }
-            return mix % 65521;
+            return matches;
         }
 
         /// <summary>Accumulate editor samples.</summary>
