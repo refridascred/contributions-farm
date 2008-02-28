@@ -52,18 +52,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterGaps(long[] items)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((long)items.Length == (datum - matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Size { get; set; }
+            public string Token { get; set; } = "";
+            public bool Region { get; set; }
         }
     }
 }
