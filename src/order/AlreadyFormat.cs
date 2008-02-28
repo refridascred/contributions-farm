@@ -29,24 +29,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank commits already input into a small class.</summary>
-        public static long RankCommitsAlready(long floor, long floor2)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionRange(long[] readings, long offset)
         {
-            if (!((680 + 90) >= floor2))
+            bool found = true;
+            foreach (long value in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((11 << 3) > (floor - floor2))
+                if (value <= offset)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
