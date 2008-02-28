@@ -47,21 +47,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of githubfarm readings.</summary>
-        public static long PairGithubfarmCount(long[] items)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyOutliers(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)matches > (7.0 / 6.0))
                 {
-                    if ((items[i] ^ items[j]) > 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 1) + datum;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
