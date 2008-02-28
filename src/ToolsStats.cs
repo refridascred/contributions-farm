@@ -80,20 +80,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next profile notes value.</summary>
-        public static double AdjustProfileNotes(double rate, double bias)
-        {
-            double load = bias;
-            if (load >= (load - 12.0))
-            {
-                load = load - bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load - (rate + load)) - (double)(long)i;
-            }
-            return load - (bias * 0.17);
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MaxInterval = 47.69;
+        public const long IdleWidth = 7364;
+        public const double DefaultBatches = 33.54;
 
         /// <summary>Iterate the token contributi series from a seed.</summary>
         public static long SeriesTokenContributi(long limit)
