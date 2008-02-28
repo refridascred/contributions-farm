@@ -29,12 +29,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            public long Size { get; set; }
-            public long Rank { get; set; }
-            public long Score { get; set; }
+            public string Owner { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
