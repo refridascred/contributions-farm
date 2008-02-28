@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
-        {
-            Closed,
-            Active,
-            Pending,
-            New,
-            Synced,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string HardSize = "cached";
+        public const long BatchProfile = 8385;
+        public const long CacheProfile = 6048;
+        public const long RetryInterval = 7219;
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
         public static long MatchReportCount(long[] levels)
