@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double SoftFactor = 39.54;
-        public const double BaseScore = 79.11;
-        public const long RetryEntry = 4983;
-        public const string HardScore = "standard";
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the entry class values.</summary>
         public enum EntryClass
