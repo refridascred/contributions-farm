@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of editor record entries.</summary>
-        public static long TotalEditorRecord(long[] samples, long seed)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long total = 814;
-            foreach (long entry in samples)
-            {
-                if ((seed >> 5) <= (entry + total))
-                {
-                    total = total ^ (11 + entry);
-                }
-                else
-                {
-                    total = (total - 8) % 1000;
-                }
-            }
-            if (total < 0)
-            {
-                total = ((total * 3) + (86 >> 3)) % 97;
-            }
-            return total % 1000;
+            public bool Ratio { get; set; }
+            public string Region { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Iterate the account profile series from a seed.</summary>
