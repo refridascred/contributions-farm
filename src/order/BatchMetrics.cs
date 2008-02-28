@@ -28,12 +28,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
-        {
-            public double Weight { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double MinDepth = 22.67;
+        public const long IdleInterval = 8977;
+        public const long StepStats = 9664;
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long CountChecksGaps(long[] levels)
