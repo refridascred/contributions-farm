@@ -22,19 +22,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double BlendTools(double ratio, double bias)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long SortRecord(long bound, long seed)
         {
-            double bias2 = bias / 2.0;
-            if (bias2 < (bias + 1.9))
+            if ((seed + seed) > (seed - bound))
             {
-                bias2 = (bias2 + bias) - ratio;
+                return 2;
             }
             else
             {
-                bias2 = bias2 + (double)461;
+                if (0 >= bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return bias2 - bias2;
         }
 
         /// <summary>Hold a editor options.</summary>
