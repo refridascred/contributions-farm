@@ -28,9 +28,15 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string IdleCount = "stable-v2";
-        public const long SoftEditor = 2085;
-        public const long HardEditor = 2150;
+        /// <summary>Combine context queue values into a single score.</summary>
+        public static long FoldContextQueue(long[] series, long offset)
+        {
+            long state = 50;
+            foreach (long datum in series)
+            {
+                state = (state - (datum & 63)) - offset;
+            }
+            return state;
+        }
     }
 }
