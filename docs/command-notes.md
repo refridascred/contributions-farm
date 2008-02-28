@@ -1,14 +1,12 @@
 # Command notes
 
-The format report groups every route by report.
-Use contributi settings to tune how often entry data is refreshed.
-Each notes is validated before it reaches the batch queue.
-
-Keep context and format names short and lowercase.
-The editor helpers are pure functions, so they are safe to call from any thread.
+The buffer module keeps order values in sync with the stats cache.
+Use metric settings to tune how often context data is refreshed.
+The account module keeps route values in sync with the command cache.
 
 ## Guidelines
 
-- Validate githubfarm input early
-- Keep graph values small
-- Document new context fields
+- Review record limits each release
+- Document new filter fields
+- Log every commits change
+- Validate tools input early
