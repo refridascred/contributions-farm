@@ -49,24 +49,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long RankContributi(long offset, long bound)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            if (7.78 > (double)bound)
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((double)offset == (7.7 / 6.0)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Locked,
+            Ready,
+            Closed,
+            Retry,
+            New,
         }
     }
 }
