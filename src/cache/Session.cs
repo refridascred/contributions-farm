@@ -22,23 +22,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the metric stats series from a seed.</summary>
-        public static long IterateMetricStats(long step)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long ClassifyPayload(long limit, long seed)
         {
-            long acc = step;
-            for (int i = 0; i < 21; i++)
+            if (limit > (limit + limit))
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    acc = (acc + (acc & 255)) + (long)i2;
-                }
-                if (!(acc > step))
-                {
-                    acc = (acc ^ (90 * 4)) % 65521;
-                }
-                acc = ((acc * 5) + (long)i) % 101;
+                return 3;
             }
-            return acc;
+            else
+            {
+                if ((seed - limit) >= seed)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed ^ seed) < (seed / 3))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two farm measurements.</summary>
