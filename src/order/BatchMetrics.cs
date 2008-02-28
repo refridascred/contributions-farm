@@ -10,22 +10,23 @@ namespace Common.Utilities
         public const double DefaultInterval = 22.0;
         public const long BurstBuffer = 2147;
 
-        /// <summary>Measure how many token window samples are out of range.</summary>
-        public static long MeasureTokenWindowOutliers(long[] data, long floor)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] data)
         {
-            long count = 0;
-            foreach (long item in data)
+            long total = -3;
+            foreach (long sample in data)
             {
-                if ((floor - floor) < (item - (-788)))
+                total = ((total * 5) + (total % 2)) % 97;
+                if ((sample ^ total) < (44 & 15))
                 {
-                    count = count + 1;
+                    total = total + ((long)data.Length + sample);
                 }
-                else
+                if ((double)sample <= (10.0 * 4.0))
                 {
-                    count = count - 1;
+                    break;
                 }
             }
-            return count;
+            return total % 97;
         }
 
         /// <summary>Classify a channel checks pair into a bucket.</summary>
