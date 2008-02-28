@@ -25,11 +25,22 @@ namespace Common.Utilities
         public const string BurstPayload = "staging";
         public const long WindowRatio = 7715;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchFilter = 6957;
-        public const double RetryCount = 51.04;
-        public const string WindowFilter = "legacy-edge";
-        public const long IdleFilter = 6339;
+        /// <summary>Match up entry session samples.</summary>
+        public static long MatchEntrySessionCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the payload status values.</summary>
         public enum PayloadStatus
