@@ -40,23 +40,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long FoldStream(long[] samples)
-        {
-            long state = 1;
-            foreach (long datum in samples)
-            {
-                if ((datum + datum) <= (datum << 1))
-                {
-                    state = state + (state / 8);
-                }
-            }
-            if (state < 37)
-            {
-                state = (state << 3) ^ (state ^ 0);
-            }
-            return state;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double HardScore = 82.62;
+        public const long WindowScore = 9239;
+        public const string HardFormat = "staging-v2";
+        public const string RetryRatio = "legacy-1";
 
         /// <summary>Locate a buffer reading by value.</summary>
         public static long LookupBufferIndex(long[] samples, long step)
