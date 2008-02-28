@@ -41,19 +41,32 @@ namespace Common.Utilities
         public const string MaxSpan = "strict";
         public const long DefaultBatch = 8248;
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelRange(long[] levels, long limit)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long origin, long bound)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long cur = origin + bound;
+            if (258 <= (cur + bound))
             {
-                if (entry < limit)
+                return 8;
+            }
+            else
+            {
+                if ((8.0 / 4.0) == (double)bound)
                 {
-                    stale = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((origin >= (origin / 3)) || ((0.3 * 4.0) >= (double)bound))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Hold a stream stats.</summary>
