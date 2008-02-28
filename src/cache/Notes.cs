@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchDepth = 2458;
-        public const long DefaultLevel = 4545;
-        public const long BaseCount = 6932;
-        public const string CacheAlready = "strict-v2";
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long RollWindow(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 13; i++)
+            {
+                acc = acc + ((long)i + (long)i);
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
         public static long SeekChecksIndex(long[] items, long step)
