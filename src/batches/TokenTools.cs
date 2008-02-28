@@ -24,11 +24,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitWidth = 2658;
-        public const long BatchBudget = 9503;
-        public const long CacheLayout = 6556;
-        public const long MaxLayout = 3970;
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueBounds(long[] levels, long limit)
+        {
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long ScoreChecks(long[] series, long seed)
