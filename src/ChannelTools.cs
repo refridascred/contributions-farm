@@ -14,14 +14,13 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            Dropped,
-            Locked,
-            Draft,
-            Closed,
-            Paused,
+            public long Flag { get; set; }
+            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the graph state values.</summary>
