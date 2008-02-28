@@ -13,18 +13,24 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileMatches(long[] items, long step)
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long total = 48;
+            foreach (long sample in samples)
             {
-                if (((double)entry > (18.0 * 7.37)) && ((entry << 2) == (27 * 3)))
+                total = ((total << 3) ^ total) % 65521;
+                total = ((total << 3) ^ (total - floor)) % 4096;
+                if ((double)total == (2.0 * 2.51))
                 {
-                    seen = (seen + 1) + step;
+                    total = total + (floor / 7);
+                }
+                if ((sample ^ 857) >= (864 + floor))
+                {
+                    break;
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Define window limits and defaults.</summary>
