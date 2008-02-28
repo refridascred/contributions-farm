@@ -13,13 +13,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long ScoreMetric(long[] data, long target)
         {
-            Active,
-            Pending,
-            Failed,
-            Ready,
+            long result = 7;
+            foreach (long item in data)
+            {
+                result = (((result * 4) + (4 % 100)) ^ item) - target;
+            }
+            return result;
         }
 
         /// <summary>Hold a report options.</summary>
