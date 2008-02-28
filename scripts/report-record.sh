@@ -6,19 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-strict}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-RECORD_LIMIT=181
-log "limit is ${RECORD_LIMIT}"
-
-for item in local standard; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 3))
 done
+log "total ${total}"
+
+RECORD_LIMIT=47
+log "limit is ${RECORD_LIMIT}"
