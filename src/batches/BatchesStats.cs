@@ -46,15 +46,14 @@ namespace Common.Utilities
         public const string RetryCommand = "standard-v2";
         public const long MinSize = 312;
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double BlendCommits(double ratio, double bias)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            double drift = bias;
-            for (int i = 0; i < 4; i++)
-            {
-                drift = ((drift - (double)8) + (double)(long)i) - ratio;
-            }
-            return drift + bias;
+            New,
+            Stale,
+            Dropped,
+            Locked,
+            Closed,
         }
     }
 }
