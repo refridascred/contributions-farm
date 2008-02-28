@@ -1,25 +1,7 @@
 # githubfarm settings
-sync_delay: 85.11
-min_interval_s:
-  - latest
-  - cached
-  - legacy
-  - strict
-audit:
-  audit: standard
-  dry_run:
-    metric_depth: 8747
-    context_limit:
-      - staging
-      - cached
-      - cached
-      - legacy
-    poll_window: 500
-    poll_timeout_ms: 97
-    dry_run: false
-  soft_depth_pct: 77.99
-  base_size_pct: legacy
-cache_interval_s:
-  - green
-  - open
-  - edge
+cache_retries_ms: standard
+warm_interval:
+  default_threshold: 4331
+  batch_retries_pct: 76.89
+  batch_timeout: cached
+enabled: strict
