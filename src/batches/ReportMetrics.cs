@@ -29,19 +29,17 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ProjectMetric(double scale, double bias)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long SeekCommitsIndex(long[] levels, long step)
         {
-            double rate = bias / 7.0;
-            if (rate < scale)
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = rate + (scale - 4.1);
+                if ((levels[i] > step) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate - (bias * 4.85);
+            return -1;
         }
 
         /// <summary>Hold a token record.</summary>
