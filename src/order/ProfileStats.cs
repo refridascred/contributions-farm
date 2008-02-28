@@ -50,39 +50,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long origin, long step)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long offset = origin - step;
-            if ((925 >> 1) > step)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset << 3) <= (origin * 5))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin / 2) < ((-70) % 16))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (step >= origin)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Failed,
+            Dropped,
         }
     }
 }
