@@ -1,6 +1,8 @@
-id,weight,state
-1,618,edge
-2,stable,strict
-3,817,637
-4,980,local
-5,94,staging
+id,count,active,region
+1,fallback,fallback,965
+2,63.73,373,486
+3,925,670,579
+4,467,458,67.25
+5,primary,50.93,blue
+6,258,76.35,eu-west
+7,655,937,strict
