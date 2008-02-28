@@ -1,16 +1,10 @@
 # entry settings
-audit: 58
-token_limit:
-  idle_delay_ms: 48.04
-  max_interval: 250
-  verbose: true
-base_capacity_pct: 7622
-enabled: local
-sync_depth:
-  default_threshold_count: false
-  payload_capacity: true
-  layout_ttl:
-    - 250
-    - 367
-  burst_window: 60
-metric_capacity: 65.96
+audit: 5061
+poll_delay_s:
+  - green
+  - strict
+  - legacy
+batches_limit: open
+batch_limit_count: true
+compress: 11.1
+report_window: true
