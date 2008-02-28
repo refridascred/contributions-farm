@@ -72,24 +72,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long limit, long bound)
+        /// <summary>Compare every pair of already route readings.</summary>
+        public static long CompareAlreadyRouteCount(long[] series)
         {
-            if (limit >= 41)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound * 3) == (limit % 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    if ((series[i] - series[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
