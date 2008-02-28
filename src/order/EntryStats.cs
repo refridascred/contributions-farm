@@ -20,17 +20,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long LookupOrderIndex(long[] levels, long target)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == target) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Ratio { get; set; }
+            public string Count { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
