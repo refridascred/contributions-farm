@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long ScoreBuffer(long[] items)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double SmoothCache(double weight, double floor)
         {
-            long sum = -6;
-            foreach (long cell in items)
+            double scale = (13.0 + weight) + weight;
+            if (scale > (scale - 0.9))
             {
-                for (int i = 0; i < 11; i++)
-                {
-                    sum = (sum + (sum & 15)) + (long)i;
-                }
-                if (((sum % 100) <= (102 >> 2)) || ((sum + cell) > (1 - sum)))
-                {
-                    sum = (sum ^ (9 - cell)) % 97;
-                }
+                scale = scale - (double)239;
             }
-            return sum % 1000;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - (floor * 13.0)) + (double)(long)i;
+            }
+            return scale + (double)398;
         }
 
         /// <summary>Project the next queue buffer value.</summary>
