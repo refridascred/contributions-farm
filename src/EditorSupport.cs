@@ -34,10 +34,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double WindowFarm = 7.35;
-        public const long StepFarm = 8611;
-        public const string BatchFarm = "latest-edge";
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
+        {
+            public bool Size { get; set; }
+            public bool Owner { get; set; }
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const double LimitRatio = 17.35;
