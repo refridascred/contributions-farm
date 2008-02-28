@@ -24,31 +24,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long ClassifyReport(long floor, long seed)
+        /// <summary>Project the next report account value.</summary>
+        public static double AdjustReportAccount(double rate, double bias)
         {
-            if ((double)seed < (9.42 / 2.0))
+            double scale = (double)(79 / 3);
+            if (scale >= scale)
             {
-                return 2;
+                scale = (scale + (rate / 9.0)) - bias;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if (!((65 * 2) != (seed & 31)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((31 - floor) > (seed * 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                scale = (scale + rate) + (double)(long)i;
             }
+            return scale - (scale - scale);
         }
     }
 }
