@@ -56,17 +56,24 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LookupNotesIndex(long[] items, long origin)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long SortProfile(long offset, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((3 & 31) != (target & 1))
             {
-                if ((items[i] <= origin) && ((items[i] % 3) != 0))
+                return 1;
+            }
+            else
+            {
+                if ((4.0 / 6.0) <= (double)offset)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
     }
 }
