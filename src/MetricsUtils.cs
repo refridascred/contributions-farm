@@ -42,12 +42,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long RetryTimeout = 7488;
-        public const long HardSize = 6721;
-        public const string MaxSupport = "cached-1";
-        public const string DefaultSupport = "strict-1";
-        public const long WindowSupport = 3447;
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long RollProfile(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    anchor = ((anchor + (anchor - 9)) % 1000) - (long)i2;
+                }
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool CheckReportLimits(long[] series, long bound)
