@@ -57,12 +57,14 @@ namespace Common.Utilities
         public const string HardContributi = "open-v2";
         public const long DefaultTimeout = 763;
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            public long Flag { get; set; }
-            public double Size { get; set; }
-            public long Label { get; set; }
+            Synced,
+            Paused,
+            Active,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
