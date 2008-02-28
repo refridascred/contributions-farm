@@ -64,16 +64,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long step)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long acc = step;
-            for (int i = 0; i < 19; i++)
-            {
-                acc = ((acc * 4) + (acc + (long)i)) % 255;
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            public long Token { get; set; }
+            public long Count { get; set; }
+            public double Flag { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Count the entry farm entries that pass the check.</summary>
