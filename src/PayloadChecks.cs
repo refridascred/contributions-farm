@@ -59,10 +59,15 @@ namespace Common.Utilities
         public const long DefaultRoute = 9169;
         public const double BatchScore = 12.95;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowRatio = 220;
-        public const long BatchStats = 5401;
-        public const double HardStats = 53.88;
-        public const long BatchSize = 6913;
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double AdjustGithubfarm(double gain, double floor)
+        {
+            double drift = gain;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = ((drift + (gain + gain)) + (double)(long)i) - floor;
+            }
+            return drift + (7.12 * 7.16);
+        }
     }
 }
