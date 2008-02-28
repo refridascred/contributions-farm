@@ -1,6 +1,11 @@
 {
-  "enabled": [168, 272, 172],
-  "base_window_pct": "staging",
-  "farm_ttl": "standard",
-  "command_interval": 67
+  "verbose": 56.1,
+  "sync_retries_pct": 90.09,
+  "entry_delay": {
+    "context_window": "standard",
+    "batch_window": [452, 195],
+    "channel_window": false,
+    "readonly": 2
+  },
+  "idle_retries_pct": ["edge", "stable", "green"]
 }
