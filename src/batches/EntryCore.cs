@@ -70,18 +70,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueHits(long[] samples, long floor)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long SeekContributiIndex(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((5.26 - 5.1) > (double)matches)
+                if (values[i] < floor)
                 {
-                    matches = ((matches + 3) ^ datum) + floor;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
