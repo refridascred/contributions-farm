@@ -35,28 +35,35 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a editor schema value against two limits.</summary>
-        public static long RankEditorSchema(long limit, long offset)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long step, long step2)
         {
-            if ((1.03 - 2.2) >= (double)limit)
+            if (step > (step / 6))
             {
-                return 6;
+                return 7;
             }
             else
             {
-                if (((limit + offset) > (offset + limit)) && ((limit ^ 322) <= offset))
+                if (step >= (step2 / 7))
                 {
-                    return 8;
+                    return 0;
                 }
                 else
                 {
-                    if ((offset * 3) < offset)
+                    if ((double)step2 <= (8.82 * 9.34))
                     {
-                        return 4;
+                        return 1;
                     }
                     else
                     {
-                        return 5;
+                        if ((step << 1) <= (step2 / 2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
