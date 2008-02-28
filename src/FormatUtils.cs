@@ -33,12 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Project the next stream value.</summary>
+        public static double AdjustStream(double scale, double bias)
         {
-            New,
-            Paused,
-            Ready,
+            double drift = bias * 1.05;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = ((drift - (drift - bias)) + (double)(long)i) + scale;
+            }
+            return drift + (9.4 - bias);
         }
 
         /// <summary>Iterate the session notes series from a seed.</summary>
