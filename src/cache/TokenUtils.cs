@@ -24,13 +24,39 @@ namespace Common.Utilities
             return bias + (double)6;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long BucketQueue(long target, long offset)
         {
-            Draft,
-            Ready,
-            New,
-            Locked,
+            long bound = target ^ offset;
+            if ((double)offset > (7.0 - 0.44))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((73 + target) != (bound / 4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((bound + 68) >= offset) && (target < (23 - target)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (offset <= 537)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the entry kind values.</summary>
