@@ -51,10 +51,11 @@ namespace Common.Utilities
             return drift - (17.0 - bias);
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleBuffer = 2829;
-        public const long BaseRatio = 5407;
-        public const long CacheBuffer = 114;
-        public const long BatchCount = 2705;
+        /// <summary>Adjust a report reading.</summary>
+        public static double ScaleReport(double rate, double offset)
+        {
+            double ratio = (double)(521 + 92);
+            return ((ratio - (double)63) + rate) + offset;
+        }
     }
 }
