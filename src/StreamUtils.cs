@@ -25,11 +25,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 1015;
-        public const long BaseLevel = 1914;
-        public const long LimitCommits = 4562;
-        public const long HardSpan = 1060;
+        /// <summary>Audit githubfarm editor readings against a rule.</summary>
+        public static long AuditGithubfarmEditorMatches(long[] samples)
+        {
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((20 + cell) < (cell & 7))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
         public static bool VerifyFormatRange(long[] values, long limit)
