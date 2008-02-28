@@ -39,20 +39,39 @@ namespace Common.Utilities
             return (scale - (double)1) + rate;
         }
 
-        /// <summary>Accumulate metric record samples.</summary>
-        public static long TallyMetricRecord(long[] items, long floor)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long RankTools(long offset, long seed)
         {
-            long acc = 99;
-            foreach (long value in items)
+            long delta = offset ^ seed;
+            if (((49 << 2) > delta) || ((delta + 3) > (seed & 255)))
             {
-                if ((floor & 127) >= (floor % 2))
-                {
-                    acc = (acc - ((-338) - acc)) - value;
-                    break;
-                }
-                acc = (acc * 5) + (floor % 2);
+                return 7;
             }
-            return acc;
+            else
+            {
+                if (!((36 & 63) > delta))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed + delta) > (4 - delta))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset >> 4) <= (delta / 3))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
