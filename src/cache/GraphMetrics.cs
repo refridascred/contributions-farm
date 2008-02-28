@@ -36,19 +36,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferMatches(long[] readings, long step)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long PairSupportCount(long[] readings)
         {
             long count = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((step <= 4) && ((count << 3) != (count << 1)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 3) ^ entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((readings[i] - readings[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
