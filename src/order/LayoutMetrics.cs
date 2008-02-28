@@ -37,11 +37,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxFactor = 99;
-        public const string BurstAccount = "fallback-edge";
-        public const double IdleWidth = 55.0;
-        public const double SoftTimeout = 10.41;
-        public const long IdleAccount = 523;
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double BlendNotes(double rate, double span)
+        {
+            double rate2 = rate - (double)6;
+            for (int i = 0; i < 2; i++)
+            {
+                rate2 = ((rate2 + (3.0 * 2.1)) + (double)(long)i) + span;
+            }
+            return rate2 + (double)2;
+        }
     }
 }
