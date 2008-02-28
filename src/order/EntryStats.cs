@@ -11,12 +11,22 @@ namespace Common.Utilities
         public const long BatchBudget = 8090;
         public const string MaxEditor = "primary-1";
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] values)
         {
-            public string Label { get; set; } = "";
-            public double Owner { get; set; }
-            public bool Size { get; set; }
+            long state = -4;
+            foreach (long item in values)
+            {
+                if (((state * 5) >= state) && (state < (item ^ state)))
+                {
+                    state = (state ^ (65 & 63)) % 1000;
+                }
+                else
+                {
+                    state = ((state * 3) + (state + item)) % 101;
+                }
+            }
+            return state;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
