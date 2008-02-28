@@ -29,25 +29,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long floor, long floor2)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordMatches(long[] items, long step)
         {
-            long offset = floor - floor2;
-            if (((2 + offset) < 303) && ((floor2 & 15) >= (offset + 6)))
+            long tally = 0;
+            foreach (long cell in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)floor2 <= (11.0 * 11.0))
+                if ((tally + tally) <= (46 + tally))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
+                    tally = ((tally + 2) ^ cell) + step;
                 }
             }
+            return tally;
         }
     }
 }
