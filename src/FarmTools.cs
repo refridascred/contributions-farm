@@ -20,12 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string HardCommand = "primary";
-        public const long RetryInterval = 9919;
-        public const long StepCommand = 1522;
-        public const long BatchTimeout = 7505;
-        public const string RetryCommand = "strict-1";
+        /// <summary>Find the first contributi filter entry that matches the target.</summary>
+        public static long SeekContributiFilterIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == seed) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next batches value.</summary>
         public static double AdjustBatches(double ratio, double offset)
