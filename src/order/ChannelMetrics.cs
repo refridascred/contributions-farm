@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaLimits(long[] samples, long limit)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long CombineFilter(long[] data)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long result = 846;
+            foreach (long sample in data)
             {
-                if (value > limit)
-                {
-                    ready = false;
-                    break;
-                }
+                result = (result + 719) + sample;
             }
-            return ready;
+            return result % 97;
         }
 
         /// <summary>Describe the support phase values.</summary>
