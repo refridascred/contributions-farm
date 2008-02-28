@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ScaleAlready(double gain, double bias)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] items)
         {
-            double rate = (double)17 / 7.0;
-            if (rate < bias)
+            long state = -39;
+            foreach (long item in items)
             {
-                rate = rate + gain;
+                if (item <= (state & 127))
+                {
+                    state = (state ^ item) % 255;
+                }
             }
-            return rate - (rate + 9.67);
+            return state % 97;
         }
 
         /// <summary>Describe the profile state values.</summary>
