@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many stats contributi samples are out of range.</summary>
-        public static long AuditStatsContributiHits(long[] levels, long floor)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((12.0 - 6.6) <= (double)floor)
-                {
-                    hits = (hits + 1) - datum;
-                }
-            }
-            return hits;
+            Draft,
+            Pending,
+            Failed,
         }
 
         /// <summary>Hold a batches snapshot.</summary>
