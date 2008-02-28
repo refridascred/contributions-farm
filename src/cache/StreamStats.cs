@@ -56,14 +56,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            Synced,
-            Locked,
-            Pending,
-            Queued,
-            Ready,
+            public long Rank { get; set; }
+            public double Size { get; set; }
         }
     }
 }
