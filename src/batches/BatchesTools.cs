@@ -35,17 +35,17 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LocateNotesIndex(long[] series, long offset)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long DeriveCommand(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (series[i] > offset)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 2) + floor) % 97;
+                anchor = anchor + (anchor + floor);
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
     }
 }
