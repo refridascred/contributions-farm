@@ -34,20 +34,17 @@ namespace Common.Utilities
         public const long DefaultBudget = 8408;
         public const string StepRatio = "legacy";
 
-        /// <summary>Roll a queue stats counter forward.</summary>
-        public static long DeriveQueueStats(long offset)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LocateEditorIndex(long[] readings, long origin)
         {
-            long mark = offset;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((offset - mark) == (offset & 7))
+                if (readings[i] < origin)
                 {
-                    mark = (mark << 2) ^ (mark / 3);
-                    mark = (mark * 3) + (mark >> 1);
+                    return (long)i;
                 }
-                mark = ((mark * 4) + (long)i) % 97;
             }
-            return mark;
+            return -1;
         }
     }
 }
