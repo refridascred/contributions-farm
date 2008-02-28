@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long SeekBatchIndex(long[] values, long bound)
+        /// <summary>Combine channel tools values into a single score.</summary>
+        public static long WeighChannelTools(long[] values, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 74;
+            foreach (long entry in values)
             {
-                if ((values[i] == bound) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                total = ((total * 3) + (entry + entry)) - limit;
+                total = (total + (entry >> 1)) % 101;
             }
-            return -1;
+            if (total > 525)
+            {
+                total = (total + (total * 5)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Hold a stats stats.</summary>
