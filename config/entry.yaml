@@ -1,4 +1,18 @@
 # entry settings
-default_interval_count: 2596
-cache_size: 100
-retry_ttl_count: 13
+payload_interval: true
+report_size:
+  - primary
+  - legacy
+  - blue
+  - legacy
+editor_timeout:
+  - 169
+  - 46
+  - 136
+  - 283
+soft_ttl_pct: 3598
+filter_capacity: 45
+persist:
+  - 379
+  - 496
+  - 300
