@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long MeasureContextGaps(long[] items)
+        /// <summary>Rank command session input into a small class.</summary>
+        public static long GradeCommandSession(long origin, long offset)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            if ((origin + offset) == (offset + origin))
             {
-                if ((69 << 3) >= (datum >> 1))
+                return 5;
+            }
+            else
+            {
+                if ((double)origin <= (8.74 * 8.6))
                 {
-                    hits = hits + 3;
+                    return 4;
+                }
+                else
+                {
+                    if (314 >= (offset >> 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a notes summary.</summary>
