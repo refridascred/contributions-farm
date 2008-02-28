@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string MaxGraph = "alpha-1";
-        public const long IdleGraph = 3638;
-        public const long RetryWidth = 6833;
-        public const long MaxScore = 6693;
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] series)
+        {
+            long carry = 3;
+            foreach (long item in series)
+            {
+                carry = (carry * 3) + (419 * 3);
+                carry = carry ^ (item / 9);
+                if ((carry + carry) >= (item << 1))
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
         public static bool ValidateRouteBounds(long[] values, long offset)
