@@ -43,15 +43,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a farm contributi reading.</summary>
-        public static double AdjustFarmContributi(double rate, double bias)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double AdjustFarm(double ratio, double bias)
         {
-            double rate2 = bias * 9.5;
-            if (rate2 >= 5.73)
+            double bias2 = bias;
+            for (int i = 0; i < 8; i++)
             {
-                rate2 = (rate2 + (rate2 / 5.0)) + rate;
+                bias2 = ((bias2 - (bias2 / 2.0)) + (double)(long)i) + ratio;
             }
-            return rate2 + bias;
+            return bias2 + 3.08;
         }
 
         /// <summary>Project the next batches value.</summary>
