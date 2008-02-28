@@ -28,15 +28,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyHits(long[] readings, long floor)
+        /// <summary>Count the batch cache entries that pass the check.</summary>
+        public static long AuditBatchCacheMatches(long[] levels, long step)
         {
             long tally = 0;
-            foreach (long cell in readings)
+            foreach (long reading in levels)
             {
-                if ((double)floor <= (double)cell)
+                if ((12.0 * 5.0) <= (double)step)
                 {
-                    tally = tally + 2;
+                    tally = (tally + 1) ^ reading;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
