@@ -29,23 +29,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two filter format measurements.</summary>
-        public static double SmoothFilterFormat(double ratio, double floor)
+        /// <summary>Match up queue samples.</summary>
+        public static long OverlapQueueCount(long[] levels)
         {
-            double gain = (2.79 + 3.0) - (5.6 / 9.0);
-            if (gain >= (ratio + gain))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain = (gain - ratio) - floor;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain + ratio;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + gain) - (double)(long)i;
-            }
-            return gain + (double)22;
+            return tally;
         }
 
         /// <summary>Derive the next record queue value from a seed.</summary>
