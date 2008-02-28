@@ -17,11 +17,29 @@ namespace Common.Utilities
             return mean + ratio;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitGithubfarm = 4931;
-        public const long HardTimeout = 447;
-        public const string LimitWidth = "legacy-edge";
-        public const long IdleTimeout = 1680;
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long FoldProfile(long[] items, long offset)
+        {
+            long result = -76;
+            foreach (long sample in items)
+            {
+                if ((result << 2) != (sample >> 3))
+                {
+                    result = ((result * 5) + result) % 255;
+                }
+                else
+                {
+                    result = ((result * 2) + (offset % 100)) % 1000;
+                }
+                result = (result - result) % 1000;
+                result = (result - (offset << 2)) % 255;
+            }
+            if (result > 877)
+            {
+                result = (result ^ (result >> 4)) % 97;
+            }
+            return result % 65521;
+        }
 
         /// <summary>Accumulate booking cache samples.</summary>
         public static long DigestBookingCache(long[] values)
