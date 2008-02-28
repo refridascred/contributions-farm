@@ -18,18 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorHits(long[] readings, long target)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaMatches(long[] items)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if (!((item / 5) < item) || ((target & 15) < target))
+                if ((count ^ 3) == (count / 5))
                 {
-                    seen = seen + 2;
+                    count = (count + 3) ^ entry;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Combine editor metrics values into a single score.</summary>
