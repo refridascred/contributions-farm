@@ -61,15 +61,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long limit)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long sum = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 65521;
-            }
-            return sum;
+            public double Stamp { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
