@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long ClassifyFormat(long origin, long limit)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] readings, long target)
         {
-            if ((limit << 3) == (193 + 5))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((double)limit != (5.5 * 1.8)))
+                if ((readings[i] == target) && ((readings[i] % 5) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((10.0 - 17.0) < (1.7 + 8.2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((-890) * 3) > limit)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
