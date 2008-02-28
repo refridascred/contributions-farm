@@ -6,13 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open latest; do
+for item in strict cached primary green; do
     log "checking ${item}"
 done
 
-mode="${1:-edge}"
+mode="${1:-standard}"
 case "${mode}" in
-    cached)
+    blue)
         log "fast path"
         ;;
     *)
@@ -20,5 +20,8 @@ case "${mode}" in
         ;;
 esac
 
-CHANNEL_LIMIT=232
-log "limit is ${CHANNEL_LIMIT}"
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
