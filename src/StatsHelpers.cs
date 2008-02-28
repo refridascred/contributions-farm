@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Adjust a cache stats reading.</summary>
+        public static double AdjustCacheStats(double rate, double floor)
         {
-            public long Label { get; set; }
-            public bool Ratio { get; set; }
-            public double Weight { get; set; }
-            public bool Rank { get; set; }
+            double bias = (double)165 - floor;
+            if (bias >= bias)
+            {
+                bias = bias - (rate * 2.0);
+            }
+            return bias + 9.0;
         }
 
         /// <summary>Define format limits and defaults.</summary>
