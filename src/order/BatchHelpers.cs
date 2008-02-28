@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long IterateMetric(long bound)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long TallyContributiMatches(long[] values)
         {
-            long state = bound;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                if ((280 ^ seen) == (seen & 3))
                 {
-                    state = (((state * 4) + (state + state)) % 4096) - (long)i2;
+                    seen = (seen + 2) ^ item;
                 }
-                state = state - (bound + bound);
-                state = ((state * 4) + (long)i) % 4093;
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Hold a buffer options.</summary>
