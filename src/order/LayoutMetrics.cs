@@ -14,12 +14,10 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double LimitRatio = 73.51;
-        public const double SoftContributi = 42.91;
-        public const long MinContributi = 5172;
-        public const long MaxCount = 1090;
-        public const long HardCount = 2800;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleScore = 2629;
+        public const string IdleProfile = "strict-edge";
+        public const long LimitProfile = 4023;
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
         public static long PairCommitsCount(long[] data)
