@@ -42,15 +42,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next cluster checks value from a seed.</summary>
-        public static long RollClusterChecks(long origin)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long total = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
+            public long Weight { get; set; }
+            public long Owner { get; set; }
+            public long Level { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Locate a schema cache reading by value.</summary>
