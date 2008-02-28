@@ -11,22 +11,19 @@ namespace Common.Utilities
         public const long BatchBudget = 8090;
         public const string MaxEditor = "primary-1";
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] values)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphBounds(long[] items, long offset)
         {
-            long state = -4;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long datum in items)
             {
-                if (((state * 5) >= state) && (state < (item ^ state)))
+                if (datum > offset)
                 {
-                    state = (state ^ (65 & 63)) % 1000;
-                }
-                else
-                {
-                    state = ((state * 3) + (state + item)) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Derive the next entry value from a seed.</summary>
