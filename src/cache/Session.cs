@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double IdleGithubfarm = 60.31;
-        public const double RetryGithubfarm = 49.7;
-        public const string SoftGithubfarm = "standard-edge";
-        public const double LimitGithubfarm = 93.29;
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long GradeCluster(long origin, long seed)
+        {
+            long edge = origin - seed;
+            if ((origin << 1) <= (4 * 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if (seed >= edge)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin > (edge % 16)) && ((seed - (-90)) >= origin))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a payload value against two limits.</summary>
         public static long ClassifyPayload(long limit, long seed)
