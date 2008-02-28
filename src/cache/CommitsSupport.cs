@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Iterate the window farm series from a seed.</summary>
-        public static long StepWindowFarm(long limit)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            long score = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((double)score <= 0.67)
-                {
-                    score = ((score * 2) + (long)i) % 4096;
-                    break;
-                }
-                score = ((score * 2) + (long)i) % 4093;
-            }
-            return score;
+            public long Token { get; set; }
+            public long Score { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
