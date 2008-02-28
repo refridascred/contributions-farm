@@ -1,10 +1,6 @@
-id,level,label,weight
-1,6.3,835,17.45
-2,29.46,local,6.69
-3,latest,962,269
-4,508,288,81.19
-5,855,legacy,blue
-6,252,staging,primary
-7,19.7,574,open
-8,52.77,48.67,93.07
-9,edge,72,staging
+id,owner,score,weight
+1,81.68,755,cached
+2,61,39.45,staging
+3,985,180,latest
+4,438,59.97,913
+5,83.4,608,strict
