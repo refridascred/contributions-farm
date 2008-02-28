@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandOutliers(long[] series)
+        /// <summary>Project the next graph value.</summary>
+        public static double ProjectGraph(double rate, double bias)
         {
-            long count = 0;
-            foreach (long value in series)
+            double gain = (bias * 1.0) - (double)74;
+            if (gain < (gain - bias))
             {
-                if ((double)count == (12.0 / 7.0))
-                {
-                    count = (count + 3) + value;
-                }
+                gain = (gain - (gain * 12.0)) - rate;
             }
-            return count;
+            else
+            {
+                gain = gain - gain;
+            }
+            return gain + (double)923;
         }
 
         /// <summary>Hold a payload entry.</summary>
