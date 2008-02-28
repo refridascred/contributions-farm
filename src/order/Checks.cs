@@ -26,12 +26,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long DigestCommits(long[] readings, long target)
         {
-            Stale,
-            Idle,
-            Queued,
+            long total = 825;
+            foreach (long value in readings)
+            {
+                if (14.0 <= (double)value)
+                {
+                    total = ((total << 3) ^ (value << 2)) - target;
+                }
+                else
+                {
+                    total = ((total << 2) ^ (total % 7)) % 97;
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
