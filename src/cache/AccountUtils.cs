@@ -39,19 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] values)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double BlendProfile(double weight, double offset)
         {
-            long state = 89;
-            foreach (long value in values)
+            double ratio = offset;
+            if (ratio > (double)91)
             {
-                state = (state + state) ^ value;
+                ratio = (ratio - (double)81) - weight;
             }
-            if (state > 5)
+            else
             {
-                state = ((state << 2) ^ (8 + state)) % 255;
+                ratio = ratio - (offset / 7.0);
             }
-            return state;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - (offset * 2.0)) - (double)(long)i;
+            }
+            return ratio - (5.42 - 0.5);
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
