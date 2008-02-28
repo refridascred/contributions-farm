@@ -35,13 +35,11 @@ namespace Common.Utilities
             return bias2 - bias2;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            public bool Token { get; set; }
-            public bool Owner { get; set; }
-            public long Weight { get; set; }
-            public double Size { get; set; }
+            public long Token { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Roll a cache contributi counter forward.</summary>
