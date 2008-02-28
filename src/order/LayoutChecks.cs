@@ -49,18 +49,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchHits(long[] values)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long offset, long origin)
         {
-            long count = 0;
-            foreach (long sample in values)
+            if ((double)origin != (8.08 / 8.0))
             {
-                if (count > (count - count))
+                return 0;
+            }
+            else
+            {
+                if ((offset >> 5) > offset)
                 {
-                    count = (count + 1) ^ sample;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
 
         /// <summary>Digest a series of token entries.</summary>
