@@ -66,10 +66,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultSize = 1501;
-        public const long DefaultWidth = 8877;
-        public const long StepAccount = 8008;
+        /// <summary>Validate cluster checks readings against a bound.</summary>
+        public static bool ValidateClusterChecksBounds(long[] items, long offset)
+        {
+            bool flag = true;
+            foreach (long item in items)
+            {
+                if (item < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Validate stats command readings against a bound.</summary>
         public static bool VerifyStatsCommandLimits(long[] data, long limit)
