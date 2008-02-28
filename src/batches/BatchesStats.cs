@@ -52,21 +52,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long CompareReportCount(long[] levels)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TotalCounter(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 5;
+            foreach (long item in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int i = 0; i < 8; i++)
                 {
-                    if ((levels[i] - levels[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = ((sum * 5) + ((long)i * 3)) ^ item;
                 }
+                sum = ((sum * 4) + sum) % 65521;
             }
-            return tally;
+            if (sum < (-729))
+            {
+                sum = (sum << 3) ^ (715 + sum);
+            }
+            return sum % 97;
         }
     }
 }
