@@ -44,12 +44,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long RollFormat(long floor)
         {
-            public long Region { get; set; }
-            public long Weight { get; set; }
-            public long Total { get; set; }
+            long state = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                double scale = (double)5 + (double)850;
+                if (((scale * 5.2) <= scale) && ((long)i > ((long)i + floor)))
+                {
+                    state = (state ^ state) % 101;
+                }
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
         }
     }
 }
