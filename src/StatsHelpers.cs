@@ -14,20 +14,11 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterRange(long[] series, long origin)
-        {
-            bool found = true;
-            foreach (long item in series)
-            {
-                if (item < origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double BaseFormat = 48.32;
+        public const long MinFormat = 7478;
+        public const long LimitFormat = 8166;
+        public const long RetryFormat = 1055;
 
         /// <summary>Describe the account mode values.</summary>
         public enum AccountMode
