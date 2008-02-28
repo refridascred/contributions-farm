@@ -27,12 +27,21 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string LimitLevel = "latest-v2";
-        public const string SoftBatches = "staging-1";
-        public const long CacheFactor = 2458;
-        public const long DefaultBudget = 8408;
-        public const string StepRatio = "legacy";
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long DeriveCommand(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((4.0 + 2.15) < (double)offset)
+                {
+                    anchor = anchor + (offset ^ 73);
+                }
+                anchor = anchor + offset;
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Look up the position of a editor sample.</summary>
         public static long LocateEditorIndex(long[] readings, long origin)
