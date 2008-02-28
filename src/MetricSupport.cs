@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Locate a buffer report reading by value.</summary>
-        public static long FindBufferReportIndex(long[] samples, long limit)
+        /// <summary>Project the next format value.</summary>
+        public static double AdjustFormat(double gain, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double scale = 0.7 - (double)4;
+            if (scale > (double)887)
             {
-                if (samples[i] > limit)
-                {
-                    return (long)i;
-                }
+                scale = scale + bias;
             }
-            return -1;
+            else
+            {
+                scale = scale - scale;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - gain) + (double)(long)i;
+            }
+            return scale - scale;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
