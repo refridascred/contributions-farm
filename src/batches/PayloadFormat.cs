@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long FindChecksIndex(long[] series, long floor)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long StepMetrics(long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if ((series[i] < floor) && ((series[i] % 3) == 0))
+                if ((mark << 2) > (mark >> 5))
                 {
-                    return (long)i;
+                    continue;
                 }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
