@@ -15,20 +15,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a metrics queue counter forward.</summary>
-        public static long DeriveMetricsQueue(long seed)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long carry = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((double)carry < 1.5)
-                {
-                    carry = (carry << 2) ^ (carry - carry);
-                    continue;
-                }
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
+            Dropped,
+            Active,
+            Done,
+            Stale,
+            Locked,
         }
 
         /// <summary>Describe the tools class values.</summary>
