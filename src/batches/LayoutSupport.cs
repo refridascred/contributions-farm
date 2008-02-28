@@ -38,17 +38,15 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long SeekReportIndex(long[] samples, long origin)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if ((samples[i] <= origin) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Fold a list of account schema readings.</summary>
