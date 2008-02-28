@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutMatches(long[] samples)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsOutliers(long[] items)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if ((double)7 >= (double)count)
+                if (hits > item)
                 {
-                    count = (count + 2) ^ datum;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Describe the notes level values.</summary>
