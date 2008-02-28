@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsMatches(long[] data)
         {
-            Closed,
-            Locked,
-            Active,
-            Ready,
-            Stale,
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((entry * 3) <= (entry % 5))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
