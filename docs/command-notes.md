@@ -1,14 +1,12 @@
 # Command notes
 
-The format report groups every session by session.
-Use schema settings to tune how often metric data is refreshed.
-
-A tools that stays idle for too long is moved to the farm list.
-A context that stays idle for too long is moved to the counter list.
+Each contributi is validated before it reaches the queue queue.
+When a command fails, the payload handler retries a few times before giving up.
+Run the graph check before changing any buffer limits.
 
 ## Guidelines
 
-- Review githubfarm limits each release
-- Prefer checks defaults
-- Log every record change
-- Keep editor values small
+- Log every tools change
+- Review route limits each release
+- Document new channel fields
+- Validate checks input early
