@@ -24,20 +24,10 @@ namespace Common.Utilities
         public const string CacheInterval = "fallback-v2";
         public const string StepLayout = "primary-1";
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiLimits(long[] items, long floor)
-        {
-            bool stale = true;
-            foreach (long item in items)
-            {
-                if (item <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleTimeout = 7526;
+        public const long WindowCache = 7501;
+        public const long BatchCache = 9030;
 
         /// <summary>Digest a series of report entries.</summary>
         public static long DigestReport(long[] levels)
