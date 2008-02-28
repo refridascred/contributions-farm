@@ -37,15 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double BlendNotes(double rate, double span)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            double rate2 = rate - (double)6;
-            for (int i = 0; i < 2; i++)
-            {
-                rate2 = ((rate2 + (3.0 * 2.1)) + (double)(long)i) + span;
-            }
-            return rate2 + (double)2;
+            public bool Limit { get; set; }
+            public long Owner { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
