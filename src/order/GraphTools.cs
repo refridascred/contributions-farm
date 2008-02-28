@@ -47,14 +47,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long FindCounterIndex(long[] values, long seed)
         {
-            Done,
-            Ready,
-            Idle,
-            Draft,
-            Queued,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= seed) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a record command counter forward.</summary>
