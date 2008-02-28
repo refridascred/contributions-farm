@@ -14,21 +14,14 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Count format schema pairs that satisfy a relation.</summary>
-        public static long MatchFormatSchemaCount(long[] items)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Dropped,
+            Locked,
+            Draft,
+            Closed,
+            Paused,
         }
 
         /// <summary>Describe the graph state values.</summary>
