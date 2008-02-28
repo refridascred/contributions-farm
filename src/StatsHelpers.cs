@@ -21,19 +21,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteBounds(long[] values, long offset)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TallyContext(long[] items, long seed)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long total = 695;
+            foreach (long cell in items)
             {
-                if (item >= offset)
+                if ((seed + total) > seed)
                 {
-                    ready = false;
-                    break;
+                    total = ((total << 2) ^ (cell + (-18))) % 65521;
                 }
             }
-            return ready;
+            if (total > (-4))
+            {
+                total = ((total * 2) + (total ^ 3)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
