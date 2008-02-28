@@ -1,21 +1,8 @@
 {
-  "base_capacity_count": {
-    "idle_retries_ms": {
-      "soft_retries": 30,
-      "idle_interval_ms": 5547,
-      "queue_retries": 0.77,
-      "verbose": [484, 176, 331, 141],
-      "dry_run": "fallback",
-      "default_depth_pct": ["staging", "edge", "latest", "strict"]
-    },
-    "cache_ttl": true,
-    "cache_ratio_ms": true,
-    "burst_size": [243, 476, 342, 86],
-    "burst_timeout": "cached"
-  },
-  "audit": "strict",
-  "sync_ttl_ms": 71,
-  "default_capacity_pct": ["fallback", "eu-west"],
-  "flush_timeout": 4216,
-  "soft_delay": 84.78
+  "poll_size": 100,
+  "compress": 500,
+  "cache_capacity": false,
+  "enabled": ["cached", "stable", "green"],
+  "readonly": 4708,
+  "audit": 22.18
 }
