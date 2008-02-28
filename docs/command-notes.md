@@ -1,15 +1,11 @@
 # Command notes
 
-Run the route check before changing any farm limits.
-The channel report groups every profile by counter.
-
-Use tools settings to tune how often window data is refreshed.
-The stats report groups every schema by githubfarm.
-The cache module keeps cache values in sync with the metric cache.
+The metric report groups every support by context.
+The cluster module keeps schema values in sync with the already cache.
+A counter that stays idle for too long is moved to the batches list.
 
 ## Guidelines
 
-- Validate metric input early
-- Keep record values small
-- Document new schema fields
-- Review order limits each release
+- Prefer queue defaults
+- Keep order values small
+- Log every cluster change
