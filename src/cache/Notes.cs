@@ -31,19 +31,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatRange(long[] readings, long step)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long GradeContributi(long floor, long seed)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            long prev = floor + seed;
+            if (floor <= (seed + floor))
             {
-                if (datum <= step)
+                return 4;
+            }
+            else
+            {
+                if ((double)seed <= (17.0 - 19.0))
                 {
-                    found = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((floor - prev) < (1 ^ 23))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Hold a stats entry.</summary>
