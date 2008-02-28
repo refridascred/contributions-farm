@@ -1,22 +1,5 @@
 # githubfarm settings
-min_retries: 96.82
-sync_delay_ms:
-  retry_timeout: 9587
-  cache_limit:
-    hard_limit_pct: 74.7
-    report_size:
-      - 457
-      - 352
-    payload_ratio: staging
-    batch_limit_pct: 52
-    cache_limit_s: 18
-  profile_limit: 52
-  verbose: 32
-  persist: 1024
-burst_ttl_pct: false
-sync_size_pct:
-  - standard
-  - latest
-  - blue
-min_retries_count: green
-strict: local
+farm_threshold: 1024
+default_threshold: primary
+hard_limit_s: eu-west
+buffer_interval: 36.81
