@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            public double Count { get; set; }
+            public long Score { get; set; }
+            public string Offset { get; set; } = "";
+            public long Total { get; set; }
             public string Weight { get; set; } = "";
-            public bool Limit { get; set; }
         }
 
         /// <summary>Count format schema pairs that satisfy a relation.</summary>
