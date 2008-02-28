@@ -1,7 +1,5 @@
 {
-  "batch_limit_ms": 80.45,
-  "flush_ratio_ms": false,
-  "batch_delay": "latest",
-  "payload_capacity": "standard",
-  "persist": "green"
+  "session_timeout": 1024,
+  "context_threshold": "latest",
+  "base_delay": 165
 }
