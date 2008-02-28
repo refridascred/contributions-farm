@@ -36,19 +36,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatRange(long[] values, long limit)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            bool valid = true;
-            foreach (long datum in values)
-            {
-                if (datum < limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Ready,
+            Paused,
+            Closed,
+            Active,
         }
 
         /// <summary>Grade a githubfarm format value against two limits.</summary>
