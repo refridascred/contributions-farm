@@ -1,6 +1,7 @@
-id,active,label,owner
-1,76.28,0.22,94
-2,primary,open,22.5
-3,strict,653,edge
-4,346,primary,latest
-5,20.63,67.24,blue
+id,state,rank,count
+1,standard,963,49.86
+2,0.38,279,58.01
+3,302,126,7.86
+4,418,standard,160
+5,standard,803,862
+6,162,local,standard
