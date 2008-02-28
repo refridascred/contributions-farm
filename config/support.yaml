@@ -1,15 +1,5 @@
 # support settings
-retry_capacity_pct: true
-layout_interval:
-  - 142
-  - 401
-  - 105
-  - 409
-batch_capacity_pct:
-  - fallback
-  - blue
-  - standard
-  - cached
-sync_capacity_ms:
-  - 129
-  - 418
+audit: false
+retry_timeout_count: 92
+batch_ratio: 81
+cache_window: true
