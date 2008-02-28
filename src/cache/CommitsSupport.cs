@@ -16,22 +16,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] items, long floor)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long OverlapMetricCount(long[] series)
         {
-            long score = 99;
-            foreach (long item in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((long)items.Length ^ item) != (floor >> 4))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = (score ^ (item + 4)) % 101;
-                }
-                else
-                {
-                    score = (score - item) % 1000;
+                    if ((series[i] + series[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score % 97;
+            return tally;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
