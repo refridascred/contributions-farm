@@ -72,21 +72,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of already route readings.</summary>
-        public static long CompareAlreadyRouteCount(long[] series)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] samples, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 99;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((score ^ bound) <= (16 - bound))
                 {
-                    if ((series[i] - series[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (((score << 3) ^ ((long)samples.Length << 2)) % 255) + reading;
                 }
             }
-            return hits;
+            if (score > 9)
+            {
+                score = score ^ (bound << 1);
+            }
+            return score % 97;
         }
 
         /// <summary>Check that every schema batch entry stays within the limit.</summary>
