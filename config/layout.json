@@ -1,5 +1,7 @@
 {
-  "soft_delay_ms": 8.05,
-  "burst_depth": 74.41,
-  "warm_interval_ms": "open"
+  "batch_limit_ms": 80.45,
+  "flush_ratio_ms": false,
+  "batch_delay": "latest",
+  "payload_capacity": "standard",
+  "persist": "green"
 }
