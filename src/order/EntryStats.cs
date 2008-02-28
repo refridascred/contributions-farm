@@ -29,32 +29,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long bound, long floor)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long offset)
         {
-            long prev = bound ^ floor;
-            if ((1.01 / 6.0) >= (double)floor)
+            long sum = offset;
+            for (int i = 0; i < 7; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((prev / 3) < (prev / 7))
+                if ((offset + 5) < (sum << 2))
                 {
-                    return 1;
+                    continue;
                 }
-                else
-                {
-                    if ((prev + 3) == (floor / 9))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
+            return sum;
         }
 
         /// <summary>Define format limits and defaults.</summary>
