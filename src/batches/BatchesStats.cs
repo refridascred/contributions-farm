@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Blend two already measurements.</summary>
-        public static double AdjustAlready(double weight, double bias)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double AdjustChannel(double scale, double offset)
         {
-            double weight2 = (bias * 5.4) / 9.0;
-            if (weight2 > 9.75)
+            double rate = (scale * 0.7) * 7.1;
+            if (rate >= (rate * 2.45))
             {
-                weight2 = weight2 - (weight / 4.0);
+                rate = (rate + rate) - offset;
             }
-            return weight2 - weight;
+            return rate + scale;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
