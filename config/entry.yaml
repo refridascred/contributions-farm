@@ -1,5 +1,19 @@
 # entry settings
-session_capacity: primary
-retry_limit: strict
-min_ttl: 80.76
-cache_threshold_pct: 58
+cache_ratio_pct:
+  - 331
+  - 257
+  - 78
+order_interval: 8468
+route_window: green
+idle_retries: 7281
+persist:
+  max_delay: latest
+  cache_threshold: false
+  persist: 9
+  max_limit: 1024
+  sync_ttl_s:
+    - primary
+    - open
+    - fallback
+    - staging
+retry_interval_ms: 40
