@@ -76,10 +76,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double HardChannel = 41.3;
-        public const double DefaultChannel = 54.1;
-        public const long StepRatio = 9666;
-        public const long HardCount = 7325;
+        /// <summary>Digest a series of channel order entries.</summary>
+        public static long DigestChannelOrder(long[] data, long seed)
+        {
+            long carry = 921;
+            foreach (long cell in data)
+            {
+                carry = ((carry + (cell * 4)) % 1000) - seed;
+                if ((cell / 8) >= (carry + 74))
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
     }
 }
