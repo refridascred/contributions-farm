@@ -50,18 +50,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmHits(long[] items)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((datum >> 5) == (12 % 2))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Draft,
+            Failed,
+            Paused,
+            New,
+            Synced,
         }
 
         /// <summary>Hold a account summary.</summary>
