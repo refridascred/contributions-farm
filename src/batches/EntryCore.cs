@@ -44,22 +44,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesHits(long[] data)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long RollFilter(long step)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long carry = step;
+            for (int i = 0; i < 7; i++)
             {
-                if ((5.0 - 0.2) != (double)matches)
-                {
-                    matches = (matches + 2) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Find the first contributi entry that matches the target.</summary>
