@@ -55,12 +55,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            public double Total { get; set; }
-            public long Token { get; set; }
-            public long Ratio { get; set; }
+            Done,
+            Locked,
+            Pending,
+            Dropped,
+            Closed,
         }
     }
 }
