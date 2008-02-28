@@ -15,12 +15,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string CacheRecord = "alpha-v2";
-        public const double HardRecord = 20.16;
-        public const long HardRatio = 2214;
-        public const long StepScore = 3609;
-        public const long RetryRatio = 2283;
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
+        {
+            Failed,
+            Synced,
+            Paused,
+            Active,
+            Queued,
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const string CacheSchema = "primary";
