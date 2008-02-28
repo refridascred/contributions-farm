@@ -20,10 +20,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long HardBudget = 293;
-        public const long BatchLevel = 8791;
-        public const long MinWidth = 7560;
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] values)
+        {
+            long total = 56;
+            foreach (long item in values)
+            {
+                total = ((total * 2) + (total + total)) % 65521;
+                total = (total << 2) ^ (total << 1);
+                if ((double)item < (1.1 - 6.0))
+                {
+                    total = (total + (total + item)) % 101;
+                }
+                else
+                {
+                    total = (total - item) % 4096;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Classify a notes batch pair into a bucket.</summary>
         public static long RankNotesBatch(long origin, long offset)
