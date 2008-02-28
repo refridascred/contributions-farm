@@ -107,19 +107,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate command schema readings against a bound.</summary>
-        public static bool VerifyCommandSchemaBounds(long[] levels, long seed)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            bool ok = true;
-            foreach (long cell in levels)
-            {
-                if (cell != seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Mode { get; set; } = "";
+            public double Region { get; set; }
+            public double Size { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
