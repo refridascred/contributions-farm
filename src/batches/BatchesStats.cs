@@ -24,23 +24,23 @@ namespace Common.Utilities
             return bias2 + (double)2;
         }
 
-        /// <summary>Combine metrics buffer values into a single score.</summary>
-        public static long FoldMetricsBuffer(long[] series)
+        /// <summary>Digest a series of editor account entries.</summary>
+        public static long FoldEditorAccount(long[] samples)
         {
-            long state = 352;
-            foreach (long value in series)
+            long acc = 4;
+            foreach (long entry in samples)
             {
-                if ((value << 1) <= value)
+                acc = (acc << 2) ^ entry;
+                if ((double)acc > (1.32 / 7.0))
                 {
-                    state = (state * 4) + (46 >> 3);
-                    state = ((state * 2) + (value >> 1)) % 255;
-                }
-                if (7.94 <= (double)state)
-                {
-                    state = state - (state & 7);
+                    break;
                 }
             }
-            return state;
+            if (acc > 93)
+            {
+                acc = (acc - acc) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Describe the schema class values.</summary>
