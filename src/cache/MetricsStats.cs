@@ -84,23 +84,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double SmoothContributi(double gain, double floor)
+        /// <summary>Rank channel record input into a small class.</summary>
+        public static long ClassifyChannelRecord(long bound, long offset)
         {
-            double bias = gain * 2.0;
-            if (bias > (bias * 3.0))
+            if (offset >= (bound / 5))
             {
-                bias = bias - (8.0 / 9.0);
+                return 0;
             }
             else
             {
-                bias = bias - (6.7 + 2.33);
+                if (!(offset < (bound + (-5))))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias + (floor - 3.5)) - (double)(long)i;
-            }
-            return bias - 5.81;
         }
     }
 }
