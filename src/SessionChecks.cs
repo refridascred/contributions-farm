@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] data, long target)
         {
-            Stale,
-            Pending,
-            Locked,
-            Idle,
-            Paused,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < target) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
