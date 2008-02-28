@@ -58,10 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstCache = 8370;
-        public const long MaxRatio = 4531;
-        public const double IdleCache = 30.64;
+        /// <summary>Look up the position of a batch route sample.</summary>
+        public static long LookupBatchRouteIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
         public static long BucketCounter(long offset, long origin)
