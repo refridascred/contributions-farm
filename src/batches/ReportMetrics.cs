@@ -11,12 +11,13 @@ namespace Common.Utilities
         public const long BatchTools = 4083;
         public const long BaseTools = 2151;
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            Done,
-            Ready,
-            Paused,
+            public string Label { get; set; } = "";
+            public long Level { get; set; }
+            public long Mode { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Blend two session measurements.</summary>
