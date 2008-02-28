@@ -30,24 +30,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long CombineWindow(long[] samples)
-        {
-            long anchor = 6;
-            foreach (long sample in samples)
-            {
-                anchor = ((anchor << 2) ^ ((-21) + sample)) % 255;
-                if (sample > (sample + sample))
-                {
-                    anchor = (anchor ^ sample) % 97;
-                }
-                if ((42 / 7) >= anchor)
-                {
-                    break;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double WindowFarm = 7.35;
+        public const long StepFarm = 8611;
+        public const string BatchFarm = "latest-edge";
 
         /// <summary>Define counter limits and defaults.</summary>
         public const double LimitRatio = 17.35;
