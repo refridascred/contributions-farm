@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryTimeout = 7599;
-        public const long LimitNotes = 9050;
-        public const string CacheNotes = "legacy-edge";
-        public const long MinNotes = 6778;
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] samples, long offset)
+        {
+            long total = 114;
+            foreach (long sample in samples)
+            {
+                total = ((total - (total / 9)) % 65521) - sample;
+                if (386 > (offset % 100))
+                {
+                    break;
+                }
+            }
+            return total % 65521;
+        }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
         public static long OverlapMetricCount(long[] series)
