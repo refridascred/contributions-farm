@@ -37,13 +37,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Accumulate metric account samples.</summary>
+        public static long ScoreMetricAccount(long[] data, long origin)
         {
-            public long Size { get; set; }
-            public double Label { get; set; }
-            public bool Limit { get; set; }
-            public string Offset { get; set; } = "";
+            long acc = 0;
+            foreach (long item in data)
+            {
+                long edge = (acc + item) - acc;
+                acc = (acc ^ (edge - acc)) % 65521;
+                if ((double)item != (4.0 + 8.66))
+                {
+                    acc = ((acc << 2) ^ (item - origin)) % 4096;
+                }
+            }
+            return acc;
         }
     }
 }
