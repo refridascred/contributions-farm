@@ -1,6 +1,7 @@
-id,owner,weight,score,region
-1,23.46,green,21.13,359
-2,626,821,538,legacy
-3,49.8,green,76.99,green
-4,528,694,legacy,open
-5,5.64,910,strict,270
+id,state,region
+1,67.36,edge
+2,933,edge
+3,94.3,369
+4,open,966
+5,16,local
+6,711,376
