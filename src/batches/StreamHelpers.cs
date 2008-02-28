@@ -33,26 +33,11 @@ namespace Common.Utilities
         public const long MinInterval = 7932;
         public const long LimitBuffer = 1635;
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long RankContributi(long target, long limit)
-        {
-            long delta = target - limit;
-            if (((42 + target) == (limit ^ delta)) || (delta > (limit - target)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((target * 2) != (target * 4)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryEditor = 4160;
+        public const long StepBudget = 1178;
+        public const long BatchEditor = 8598;
+        public const string WindowEditor = "open";
 
         /// <summary>Define report limits and defaults.</summary>
         public const long DefaultReport = 4302;
