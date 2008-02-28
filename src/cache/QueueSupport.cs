@@ -31,11 +31,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowStats = 6732;
-        public const long CacheSpan = 8358;
-        public const long IdleLevel = 5986;
-        public const string BatchStats = "primary-edge";
-        public const long StepStats = 2650;
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long SeekMetricIndex(long[] readings, long bound)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < bound) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
