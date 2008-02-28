@@ -33,17 +33,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LookupCommandIndex(long[] series, long limit)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long ClassifyAlready(long seed, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long next = seed ^ target;
+            if (((next << 1) <= (target / 5)) && ((double)next < (13.0 / 4.0)))
             {
-                if ((series[i] > limit) && ((series[i] % 5) == 0))
+                return 4;
+            }
+            else
+            {
+                if ((seed - next) <= (next + next))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((target - next) > (target * 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((target & 127) >= next) || ((target ^ seed) > target))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a tools entry.</summary>
