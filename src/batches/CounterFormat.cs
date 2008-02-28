@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const long LimitLevel = 1262;
         public const string StepBatches = "latest-v2";
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatMatches(long[] items, long bound)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((seen + cell) == (bound + seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public string Size { get; set; } = "";
+            public double Region { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
