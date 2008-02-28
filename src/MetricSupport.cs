@@ -13,10 +13,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseChannel = 8060;
-        public const double CacheTimeout = 21.08;
-        public const long MinChannel = 5381;
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
+        {
+            Ready,
+            Locked,
+            Dropped,
+            Idle,
+            Stale,
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const double MinPayload = 64.01;
