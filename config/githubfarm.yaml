@@ -1,6 +1,5 @@
 # githubfarm settings
-strict: open
-cache_threshold: false
-context_threshold: 44
-min_limit_ms: cached
-base_limit_ms: staging
+account_delay: false
+dry_run: fallback
+flush_depth_pct: 77
+min_retries: 60
