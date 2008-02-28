@@ -27,17 +27,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LocateFilterIndex(long[] items, long step)
+        /// <summary>Match up record samples.</summary>
+        public static long MatchRecordCount(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (items[i] >= step)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] + data[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Roll a batches commits counter forward.</summary>
