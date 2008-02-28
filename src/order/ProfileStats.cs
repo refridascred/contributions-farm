@@ -52,9 +52,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetrySize = 7854;
-        public const long BurstTimeout = 7811;
-        public const double MinWidth = 97.64;
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
+        {
+            public string Label { get; set; } = "";
+            public bool Score { get; set; }
+            public double Offset { get; set; }
+            public long Size { get; set; }
+        }
     }
 }
