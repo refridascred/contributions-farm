@@ -22,22 +22,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many schema token samples are out of range.</summary>
-        public static long CountSchemaTokenMatches(long[] samples)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((((0.7 / 6.0) == (double)seen) && (reading < seen)) && ((seen - reading) > (seen & 31)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Weight { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
