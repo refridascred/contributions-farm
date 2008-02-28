@@ -51,17 +51,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next graph batches value from a seed.</summary>
-        public static long DeriveGraphBatches(long limit)
+        /// <summary>Project the next support value.</summary>
+        public static double BlendSupport(double weight, double bias)
         {
-            long carry = limit;
-            for (int i = 0; i < 16; i++)
+            double ratio = bias;
+            if (ratio < (double)64)
             {
-                carry = ((carry << 2) ^ limit) % 101;
-                carry = ((carry * 4) + (limit >> 5)) % 97;
-                carry = ((carry * 5) + (long)i) % 65521;
+                ratio = (ratio + (double)34) - weight;
             }
-            return carry;
+            return ratio + (double)2;
         }
     }
 }
