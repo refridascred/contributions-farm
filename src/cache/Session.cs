@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmOutliers(long[] values, long seed)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsLimits(long[] data, long offset)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            bool ok = true;
+            foreach (long value in data)
             {
-                if ((tally <= (datum / 4)) && ((tally - datum) >= (tally + datum)))
+                if (value != offset)
                 {
-                    tally = (tally + 1) + seed;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
