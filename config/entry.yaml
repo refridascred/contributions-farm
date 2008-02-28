@@ -1,5 +1,21 @@
 # entry settings
-tools_capacity: strict
-default_threshold: latest
-base_ttl_pct: true
-enabled: staging
+idle_threshold:
+  - 297
+  - 29
+order_retries:
+  - legacy
+  - strict
+  - stable
+verbose: local
+profile_window: 60
+format_timeout: 24
+channel_interval:
+  cache_size: 78
+  persist:
+    - local
+    - strict
+    - blue
+  filter_retries: 8
+  graph_timeout: 5.99
+  compress: false
+  order_delay: 44.54
