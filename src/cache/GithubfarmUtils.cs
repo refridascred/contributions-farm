@@ -63,18 +63,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportMatches(long[] samples, long bound)
+        /// <summary>Count the schema checks entries that pass the check.</summary>
+        public static long CountSchemaChecksHits(long[] values)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (bound < 0)
+                if ((12 - 165) >= value)
                 {
-                    seen = (seen + 3) + datum;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
