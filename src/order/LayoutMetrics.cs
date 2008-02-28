@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Validate order graph readings against a bound.</summary>
+        public static bool CheckOrderGraphRange(long[] levels, long offset)
         {
-            New,
-            Idle,
-            Locked,
+            bool valid = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
