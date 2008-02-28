@@ -1,7 +1,12 @@
 {
-  "idle_threshold": 250,
-  "cache_interval": 9579,
-  "batch_timeout_pct": 13,
-  "profile_ttl": "latest",
-  "sync_delay_pct": false
+  "poll_retries": 1717,
+  "retry_threshold_count": "eu-west",
+  "commits_delay": {
+    "enabled": 51,
+    "queue_threshold": [140, 31],
+    "persist": 92
+  },
+  "poll_ratio": 8558,
+  "schema_threshold": 250,
+  "persist": true
 }
