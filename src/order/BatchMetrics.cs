@@ -63,10 +63,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double MinDepth = 22.67;
-        public const long IdleInterval = 8977;
-        public const long StepStats = 9664;
+        /// <summary>Digest a series of notes buffer entries.</summary>
+        public static long TotalNotesBuffer(long[] values)
+        {
+            long mix = 5;
+            foreach (long cell in values)
+            {
+                if (!((mix & 127) >= (cell & 255)))
+                {
+                    mix = (mix + (cell % 12)) % 4096;
+                }
+                if (((cell + cell) <= (mix - 27)) && (89 <= (mix - cell)))
+                {
+                    break;
+                }
+            }
+            return mix % 97;
+        }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long CountChecksGaps(long[] levels)
