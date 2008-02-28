@@ -24,12 +24,28 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardBatches = 2004;
-        public const double MaxScore = 23.37;
-        public const string MinBatches = "staging-v2";
-        public const long SoftWidth = 6587;
-        public const double DefaultTimeout = 88.54;
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long WeighMetrics(long[] series, long target)
+        {
+            long result = 561;
+            foreach (long datum in series)
+            {
+                if (datum > (961 * 3))
+                {
+                    continue;
+                }
+                result = result - result;
+                if ((14.0 <= (double)(long)series.Length) || ((double)104 != (double)datum))
+                {
+                    result = ((result * 5) + target) % 4096;
+                }
+            }
+            if (result > (-8))
+            {
+                result = ((result * 3) + ((-738) - result)) % 1000;
+            }
+            return result;
+        }
 
         /// <summary>Roll a command counter forward.</summary>
         public static long SeriesCommand(long seed)
