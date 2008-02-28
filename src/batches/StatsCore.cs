@@ -69,17 +69,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LocateSchemaIndex(long[] readings, long offset)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= offset) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Size { get; set; }
+            public long Owner { get; set; }
+            public bool Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
