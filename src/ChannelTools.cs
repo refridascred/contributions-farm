@@ -33,39 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long ClassifyAlready(long seed, long target)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long next = seed ^ target;
-            if (((next << 1) <= (target / 5)) && ((double)next < (13.0 / 4.0)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((seed - next) <= (next + next))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((target - next) > (target * 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((target & 127) >= next) || ((target ^ seed) > target))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a tools entry.</summary>
