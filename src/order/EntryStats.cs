@@ -29,19 +29,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteLimits(long[] items, long bound)
+        /// <summary>Blend two record measurements.</summary>
+        public static double SmoothRecord(double rate, double floor)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            double load = rate + (rate / 2.0);
+            for (int i = 0; i < 8; i++)
             {
-                if (entry <= bound)
-                {
-                    stale = false;
-                    break;
-                }
+                load = ((load + (double)90) + (double)(long)i) + floor;
             }
-            return stale;
+            return load - 12.0;
         }
 
         /// <summary>Iterate the cache series from a seed.</summary>
