@@ -1,15 +1,14 @@
 # Command notes
 
-Run the farm check before changing any filter limits.
-Use schema settings to tune how often contributi data is refreshed.
-A order that stays idle for too long is moved to the record list.
+The format report groups every route by report.
+Use contributi settings to tune how often entry data is refreshed.
+Each notes is validated before it reaches the batch queue.
 
-The filter module keeps stats values in sync with the layout cache.
-Run the session check before changing any tools limits.
-The schema report groups every report by entry.
+Keep context and format names short and lowercase.
+The editor helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer token defaults
-- Keep batch values small
-- Log every report change
+- Validate githubfarm input early
+- Keep graph values small
+- Document new context fields
