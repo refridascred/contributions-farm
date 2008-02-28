@@ -44,20 +44,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long RollFormat(long floor)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] readings, long bound)
         {
-            long state = floor;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                double scale = (double)5 + (double)850;
-                if (((scale * 5.2) <= scale) && ((long)i > ((long)i + floor)))
+                if ((readings[i] >= bound) && ((readings[i] % 5) != 0))
                 {
-                    state = (state ^ state) % 101;
+                    return (long)i;
                 }
-                state = ((state * 2) + (long)i) % 65521;
             }
-            return state;
+            return -1;
         }
     }
 }
