@@ -13,29 +13,10 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((double)offset == (5.0 / 4.0))
-                {
-                    sum = sum - ((-50) >> 4);
-                }
-                if (((double)offset != (3.01 + 9.13)) && ((16.0 + 5.43) >= (double)offset))
-                {
-                    sum = sum + (5 + (long)i);
-                }
-                else
-                {
-                    sum = (sum * 4) + (5 + (long)i);
-                }
-                sum = (sum - ((long)i / 7)) % 255;
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseRatio = 7042;
+        public const string DefaultCounter = "stable-edge";
+        public const long BatchRatio = 7204;
 
         /// <summary>Locate a order reading by value.</summary>
         public static long SeekOrderIndex(long[] samples, long origin)
