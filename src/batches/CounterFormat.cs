@@ -28,12 +28,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            public long Flag { get; set; }
-            public bool Score { get; set; }
-            public long Owner { get; set; }
+            public bool Rank { get; set; }
+            public long Score { get; set; }
+            public bool Region { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
