@@ -33,19 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate session order readings against a bound.</summary>
-        public static bool ValidateSessionOrderRange(long[] samples, long seed)
+        /// <summary>Measure how many schema token samples are out of range.</summary>
+        public static long CountSchemaTokenMatches(long[] samples)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (datum <= seed)
+                if ((((0.7 / 6.0) == (double)seen) && (reading < seen)) && ((seen - reading) > (seen & 31)))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Count route commits pairs that satisfy a relation.</summary>
