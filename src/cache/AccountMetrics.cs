@@ -60,18 +60,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long SeekMetricsIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long StepRatio = 8745;
+        public const long BaseAccount = 9603;
+        public const long StepTimeout = 5281;
+        public const double BurstAccount = 40.42;
 
         /// <summary>Accumulate schema samples.</summary>
         public static long TotalSchema(long[] series)
