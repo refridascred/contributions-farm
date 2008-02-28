@@ -76,34 +76,10 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Derive the next stats profile value from a seed.</summary>
-        public static long DeriveStatsProfile(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((double)target <= (7.28 / 2.0))
-                {
-                    anchor = (anchor * 5) + (anchor & 31);
-                    anchor = anchor + (anchor + 8);
-                }
-                else
-                {
-                    anchor = (anchor ^ (long)i) % 4096;
-                }
-                long gap = (long)i / 9;
-                if ((gap - gap) != (target - anchor))
-                {
-                    break;
-                }
-                else
-                {
-                    gap = (gap - (2 + (long)i)) % 255;
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryEntry = 7154;
+        public const long BatchDepth = 7482;
+        public const long BaseEntry = 2768;
 
         /// <summary>Roll a editor githubfarm counter forward.</summary>
         public static long DeriveEditorGithubfarm(long floor)
