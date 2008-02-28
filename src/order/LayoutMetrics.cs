@@ -27,11 +27,10 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            Pending,
-            Active,
+            Idle,
             Ready,
             Done,
         }
