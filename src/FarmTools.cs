@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit cache githubfarm readings against a rule.</summary>
-        public static long MeasureCacheGithubfarmGaps(long[] levels)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((value - value) > (value ^ 69))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Stale,
+            Locked,
+            Paused,
+            New,
+            Retry,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
