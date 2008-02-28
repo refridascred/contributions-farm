@@ -1,14 +1,17 @@
 # githubfarm settings
-idle_capacity_count: 9469
-retry_ratio_pct:
-  - 361
-  - 206
-  - 63
-  - 124
-idle_depth_pct: stable
-default_interval_ms:
-  - stable
-  - primary
-  - edge
-  - fallback
-retry_threshold_s: edge
+soft_ttl: primary
+strict: 3.91
+soft_interval_pct:
+  base_window_ms: true
+  command_capacity:
+    - 152
+    - 12
+    - 255
+    - 52
+  profile_size: 67.65
+  graph_ttl: 5376
+  sync_interval_s: strict
+  hard_capacity: 42.48
+hard_retries: edge
+metric_interval: fallback
+compress: true
