@@ -31,18 +31,18 @@ namespace Common.Utilities
         public const long IdleBudget = 7918;
         public const long BaseMetric = 3254;
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportGaps(long[] readings)
+        /// <summary>Accumulate checks report samples.</summary>
+        public static long WeighChecksReport(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long result = 28;
+            foreach (long sample in values)
             {
-                if ((double)seen <= (16.0 / 9.0))
+                if ((origin << 3) < (sample + sample))
                 {
-                    seen = (seen + 2) ^ reading;
+                    result = (result ^ (result << 3)) % 97;
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
