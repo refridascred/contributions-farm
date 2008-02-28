@@ -1,10 +1,6 @@
-id,score,region
-1,local,739
-2,746,green
-3,56.4,stable
-4,legacy,888
-5,4.92,58.95
-6,485,60.68
-7,237,294
-8,319,stable
-9,398,cached
+id,state,count
+1,650,224
+2,74.33,58.52
+3,49.9,standard
+4,365,81.51
+5,500,71.38
