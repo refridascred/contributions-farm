@@ -49,22 +49,39 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryGaps(long[] readings)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long step, long target)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long cur = step - target;
+            if (((cur / 5) > target) && (target > (target * 3)))
             {
-                if ((entry + entry) >= (matches >> 4))
+                return 8;
+            }
+            else
+            {
+                if (((double)cur == (6.8 * 9.0)) && ((target >> 2) < (target + step)))
                 {
-                    matches = matches + 1;
+                    return 1;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (((0 + step) > step) || (214 <= cur))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((cur + step) != (cur - step))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
