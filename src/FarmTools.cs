@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryRange(long[] data, long step)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long StepWindow(long bound)
         {
-            bool stale = true;
-            foreach (long cell in data)
+            long score = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if (cell < step)
-                {
-                    stale = false;
-                    break;
-                }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return stale;
+            return score;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
