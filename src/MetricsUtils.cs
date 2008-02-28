@@ -27,12 +27,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphHits(long[] levels, long limit)
         {
-            public long Mode { get; set; }
-            public string Token { get; set; } = "";
-            public bool Flag { get; set; }
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((limit / 5) < (limit + limit))
+                {
+                    count = (count + 2) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine already values into a single score.</summary>
