@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-for item in open legacy cached primary; do
+for item in primary stable cached; do
     log "checking ${item}"
 done
+
+RECORD_LIMIT=162
+log "limit is ${RECORD_LIMIT}"
