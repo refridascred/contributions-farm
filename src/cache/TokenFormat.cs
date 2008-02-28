@@ -43,26 +43,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] items)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long anchor = 675;
-            foreach (long cell in items)
-            {
-                if ((anchor % 16) != (cell + anchor))
-                {
-                    anchor = (anchor * 4) + cell;
-                }
-                else
-                {
-                    anchor = ((anchor * 3) + (776 << 1)) % 65521;
-                }
-            }
-            if (anchor < 727)
-            {
-                anchor = anchor + (anchor >> 1);
-            }
-            return anchor;
+            New,
+            Idle,
+            Queued,
         }
     }
 }
