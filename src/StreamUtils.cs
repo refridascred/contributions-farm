@@ -63,11 +63,11 @@ namespace Common.Utilities
             return drift - 4.33;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ScaleReport(double rate, double offset)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            double ratio = (double)(521 + 92);
-            return ((ratio - (double)63) + rate) + offset;
+            public bool Level { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
