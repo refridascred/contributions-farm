@@ -32,20 +32,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine schema cache values into a single score.</summary>
-        public static long DigestSchemaCache(long[] samples, long offset)
-        {
-            long mark = 6;
-            foreach (long value in samples)
-            {
-                mark = ((mark * 3) + (value / 2)) % 255;
-            }
-            if (mark > 83)
-            {
-                mark = (mark * 2) + (offset + mark);
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftOrder = 6537;
+        public const double LimitRatio = 34.54;
+        public const string WindowOrder = "local-edge";
+        public const string MaxOrder = "stable-edge";
+        public const long MaxDepth = 761;
 
         /// <summary>Roll a metric tools counter forward.</summary>
         public static long IterateMetricTools(long seed)
