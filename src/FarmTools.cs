@@ -15,11 +15,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstEntry = 3550;
-        public const double CacheScore = 2.07;
-        public const double MinEntry = 53.32;
-        public const long MaxEntry = 3739;
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] readings)
+        {
+            long anchor = 3;
+            foreach (long datum in readings)
+            {
+                anchor = (anchor + ((-57) >> 1)) ^ datum;
+            }
+            return anchor;
+        }
 
         /// <summary>Combine metrics profile values into a single score.</summary>
         public static long FoldMetricsProfile(long[] samples, long limit)
