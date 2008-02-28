@@ -14,25 +14,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long RollRecord(long seed)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long score = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((score % 12) != (seed + 49))
-                {
-                    score = (score + seed) % 4096;
-                    score = ((score * 4) + (score - (-91))) % 255;
-                }
-                else
-                {
-                    score = (score - (score >> 5)) % 97;
-                    score = (score ^ seed) % 97;
-                }
-                score = ((score * 4) + (long)i) % 101;
-            }
-            return score;
+            public long Weight { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
