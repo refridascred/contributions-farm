@@ -22,14 +22,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long RankQueue(long origin, long limit)
         {
-            Synced,
-            Done,
-            Active,
-            Ready,
-            Dropped,
+            long lane = origin + limit;
+            if (5.92 >= (double)origin)
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((426 % 3) < (limit - lane)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Project the next editor value.</summary>
