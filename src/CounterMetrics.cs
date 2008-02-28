@@ -22,18 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteHits(long[] data)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((((entry * 4) < (3 - entry)) && (entry >= (841 + matches))) && !(matches <= (matches - matches)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Locked,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
