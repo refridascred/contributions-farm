@@ -52,21 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long MatchMetricsCount(long[] samples)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionBounds(long[] samples, long step)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (value < step)
                 {
-                    if ((samples[i] + samples[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
     }
 }
