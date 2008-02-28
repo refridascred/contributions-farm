@@ -30,18 +30,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatMatches(long[] series, long offset)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if (!((((long)series.Length / 7) <= (tally << 1)) && ((double)offset <= (11.0 + 5.19))))
-                {
-                    tally = (tally + 2) ^ sample;
-                }
-            }
-            return tally;
+            Pending,
+            Draft,
+            Paused,
+            Queued,
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
