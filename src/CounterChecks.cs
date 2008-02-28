@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BurstWidth = 0.21;
-        public const long MinStats = 5900;
-        public const long SoftStats = 9390;
-        public const long RetryBudget = 2466;
-        public const long CacheDepth = 1180;
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
+        {
+            Pending,
+            Idle,
+            New,
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long WindowWidth = 85;
