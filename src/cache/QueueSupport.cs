@@ -31,21 +31,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long PairPayloadCount(long[] readings)
-        {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowStats = 6732;
+        public const long CacheSpan = 8358;
+        public const long IdleLevel = 5986;
+        public const string BatchStats = "primary-edge";
+        public const long StepStats = 2650;
     }
 }
