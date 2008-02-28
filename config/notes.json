@@ -1,7 +1,6 @@
 {
-  "layout_threshold": 24.18,
-  "cache_threshold": 83.72,
-  "burst_threshold_pct": ["open", "primary"],
-  "report_limit": false,
-  "compress": "cached"
+  "stream_delay": ["green", "cached", "blue", "standard"],
+  "warm_timeout": ["latest", "cached"],
+  "soft_ttl_s": 8616,
+  "record_depth": "standard"
 }
