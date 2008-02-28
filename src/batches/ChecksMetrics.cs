@@ -19,10 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepWidth = 4020;
-        public const long BaseRatio = 4256;
-        public const double IdleDepth = 39.59;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultInterval = 888;
+        public const long StepScore = 2561;
+        public const string BurstPayload = "staging";
+        public const long WindowRatio = 7715;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long BatchFilter = 6957;
