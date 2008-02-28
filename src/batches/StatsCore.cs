@@ -49,23 +49,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many checks batch samples are out of range.</summary>
-        public static long TallyChecksBatchOutliers(long[] values)
-        {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if (sample <= (sample - tally))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BurstScore = "legacy-edge";
+        public const double IdleBudget = 87.04;
+        public const long BurstSize = 6724;
+        public const double IdleRatio = 23.04;
 
         /// <summary>Validate report buffer readings against a bound.</summary>
         public static bool GuardReportBufferRange(long[] readings, long step)
