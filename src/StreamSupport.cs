@@ -13,15 +13,20 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] readings)
+        /// <summary>Combine stats graph values into a single score.</summary>
+        public static long CombineStatsGraph(long[] readings, long offset)
         {
-            long mark = 603;
+            long sum = 9;
             foreach (long reading in readings)
             {
-                mark = (((mark * 3) + mark) % 255) ^ reading;
+                if ((sum + reading) > reading)
+                {
+                    sum = ((sum ^ (sum * 2)) % 65521) - offset;
+                }
+                sum = (sum << 3) ^ (reading + sum);
+                sum = (sum * 2) + (5 + sum);
             }
-            return mark;
+            return sum % 65521;
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
