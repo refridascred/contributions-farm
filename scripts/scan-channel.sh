@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest eu-west; do
-    log "checking ${item}"
-done
-
-CHANNEL_LIMIT=32
+CHANNEL_LIMIT=202
 log "limit is ${CHANNEL_LIMIT}"
+
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
