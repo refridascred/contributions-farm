@@ -43,15 +43,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many queue record samples are out of range.</summary>
-        public static long MeasureQueueRecordMatches(long[] levels)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long OverlapBatchCount(long[] data)
         {
             long seen = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (seen <= (entry << 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((data[i] - data[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
