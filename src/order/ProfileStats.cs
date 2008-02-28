@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long DeriveChecks(long limit)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamBounds(long[] levels, long limit)
         {
-            long carry = limit;
-            for (int i = 0; i < 16; i++)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                carry = carry + (carry << 2);
-                carry = ((carry * 4) + (long)i) % 101;
+                if (sample >= limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
