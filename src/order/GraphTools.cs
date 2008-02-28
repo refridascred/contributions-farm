@@ -22,17 +22,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] items, long target)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > target) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Region { get; set; }
+            public string Label { get; set; } = "";
+            public bool Weight { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Compare every pair of metrics format readings.</summary>
