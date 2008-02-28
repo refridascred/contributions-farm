@@ -67,15 +67,25 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ScaleEntry(double bias, double offset)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long StepRoute(long floor)
         {
-            double drift = (double)(222 ^ 41);
-            for (int i = 0; i < 4; i++)
+            long score = floor;
+            for (int i = 0; i < 21; i++)
             {
-                drift = (((drift + (3.5 * 3.6)) + (double)(long)i) + bias) + offset;
+                if (!((floor & 3) >= (long)i))
+                {
+                    score = score - (score / 7);
+                }
+                else
+                {
+                    score = score + (long)i;
+                    score = score ^ score;
+                }
+                score = (score + (4 ^ (long)i)) % 4096;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return drift + (drift * 6.35);
+            return score;
         }
     }
 }
