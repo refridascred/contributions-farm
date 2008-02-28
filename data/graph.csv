@@ -1,11 +1,6 @@
-id,level
-1,470
-2,strict
-3,47.63
-4,270
-5,91.31
-6,32.66
-7,2.64
-8,450
-9,68.21
-10,local
+id,owner,weight,score,region
+1,23.46,green,21.13,359
+2,626,821,538,legacy
+3,49.8,green,76.99,green
+4,528,694,legacy,open
+5,5.64,910,strict,270
