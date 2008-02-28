@@ -16,18 +16,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesHits(long[] series, long target)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long MatchContextCount(long[] levels)
         {
-            long count = 0;
-            foreach (long entry in series)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry > target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 2;
+                    if ((levels[i] ^ levels[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the command level values.</summary>
