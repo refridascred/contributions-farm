@@ -35,18 +35,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the graph filter entries that pass the check.</summary>
-        public static long MeasureGraphFilterOutliers(long[] series)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ScaleSession(double bias, double floor)
         {
-            long hits = 0;
-            foreach (long value in series)
+            double ratio = bias;
+            for (int i = 0; i < 8; i++)
             {
-                if ((hits << 1) < (hits / 2))
-                {
-                    hits = (hits + 1) - value;
-                }
+                ratio = (ratio + (7.92 * 3.4)) + (double)(long)i;
             }
-            return hits;
+            return ratio + floor;
         }
     }
 }
