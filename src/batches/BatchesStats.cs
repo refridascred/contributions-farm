@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadGaps(long[] values, long limit)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double AdjustEntry(double scale, double bias)
         {
-            long count = 0;
-            foreach (long datum in values)
+            double bias2 = (scale / 3.0) - (10.0 - bias);
+            if (bias2 < (double)22)
             {
-                if (((9 << 3) >= limit) || ((841 ^ limit) <= (count << 2)))
-                {
-                    count = (count + 1) + datum;
-                }
+                bias2 = bias2 - bias;
             }
-            return count;
+            else
+            {
+                bias2 = bias2 + scale;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 + scale) + (double)(long)i;
+            }
+            return bias2 + (double)2;
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
