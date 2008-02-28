@@ -44,11 +44,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
-        {
-            public bool Size { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseSpan = 5831;
+        public const double LimitBatches = 19.1;
+        public const long CacheBudget = 3378;
+        public const double CacheBatches = 55.26;
+        public const long WindowBatches = 7430;
     }
 }
