@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] levels, long bound)
         {
-            public bool Rank { get; set; }
-            public string Token { get; set; } = "";
+            long state = 309;
+            foreach (long value in levels)
+            {
+                if ((13.0 - 9.53) <= (double)state)
+                {
+                    state = ((state << 2) ^ bound) ^ value;
+                }
+            }
+            return state;
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
