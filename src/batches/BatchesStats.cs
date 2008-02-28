@@ -43,21 +43,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of payload layout readings.</summary>
-        public static long OverlapPayloadLayoutCount(long[] levels)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long SortGithubfarm(long floor, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long edge = floor ^ limit;
+            if ((limit * 3) < limit)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (limit > (floor - edge))
                 {
-                    if ((levels[i] - levels[j]) > 18)
+                    return 5;
+                }
+                else
+                {
+                    if ((4.7 - 19.0) >= (double)floor)
                     {
-                        seen = seen + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)floor >= (9.38 / 4.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
