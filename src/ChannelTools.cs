@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a window schema figure with a bias.</summary>
-        public static double BlendWindowSchema(double rate, double span)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            double drift = rate;
-            if (drift < (rate * 1.65))
-            {
-                drift = drift - (drift * 7.6);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift + (drift - drift)) - (double)(long)i;
-            }
-            return drift + span;
+            public double Count { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Count format schema pairs that satisfy a relation.</summary>
