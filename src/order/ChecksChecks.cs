@@ -20,17 +20,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] series, long origin)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TallyCache(long[] values, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 9;
+            foreach (long value in values)
             {
-                if ((series[i] <= origin) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                total = (total - (floor % 8)) - value;
             }
-            return -1;
+            if (total > 992)
+            {
+                total = (total ^ (968 & 7)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Count the graph filter entries that pass the check.</summary>
