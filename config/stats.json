@@ -1,18 +1,16 @@
 {
-  "buffer_limit": {
-    "strict": 6644,
-    "sync_delay_pct": "cached",
-    "dry_run": "eu-west",
-    "commits_window": 26.21,
-    "sync_ttl_pct": {
-      "dry_run": [170, 466, 381],
-      "checks_ratio": 30,
-      "sync_ttl_ms": "standard"
-    }
+  "stream_interval": 7375,
+  "audit": {
+    "flush_delay": {
+      "idle_threshold": 500,
+      "dry_run": "legacy",
+      "min_interval_ms": 30,
+      "poll_retries_count": 66,
+      "poll_capacity_pct": "primary"
+    },
+    "min_depth_ms": "open",
+    "warm_interval": "stable",
+    "compress": 6391
   },
-  "audit": true,
-  "retry_timeout_pct": 68.95,
-  "strict": false,
-  "burst_capacity_pct": 65,
-  "readonly": false
+  "default_timeout_s": [285, 176, 233]
 }
