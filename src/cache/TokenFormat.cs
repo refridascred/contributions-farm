@@ -34,18 +34,21 @@ namespace Common.Utilities
         public const long DefaultBudget = 8408;
         public const string StepRatio = "legacy";
 
-        /// <summary>Count the batch editor entries that pass the check.</summary>
-        public static long AuditBatchEditorOutliers(long[] items, long step)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] data)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((tally + (long)items.Length) < (long)items.Length))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = ((tally + 3) - sample) - step;
+                    if ((data[i] + data[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
