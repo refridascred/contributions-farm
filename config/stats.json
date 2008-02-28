@@ -1,8 +1,9 @@
 {
-  "sync_size_count": false,
-  "base_threshold_ms": "cached",
-  "cache_interval": "primary",
-  "route_delay": 14,
-  "idle_delay_s": 20,
-  "cache_interval_pct": false
+  "idle_delay_ms": {
+    "batch_capacity": "open",
+    "report_timeout": ["fallback", "eu-west", "strict"],
+    "strict": true
+  },
+  "persist": 95.55,
+  "flush_ratio": 5931
 }
