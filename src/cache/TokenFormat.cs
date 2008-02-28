@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelMatches(long[] items)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheHits(long[] readings, long step)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if ((9.0 * 2.0) == (double)matches)
+                if (8 <= (datum + datum))
                 {
-                    matches = (matches + 3) + item;
+                    tally = (tally + 1) + step;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
