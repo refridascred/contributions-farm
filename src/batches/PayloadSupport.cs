@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Blend two token measurements.</summary>
+        public static double BlendToken(double bias, double bias2)
         {
-            public string Owner { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Token { get; set; }
+            double ratio = bias;
+            if (ratio < bias2)
+            {
+                ratio = ratio - (double)9;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Describe the farm class values.</summary>
