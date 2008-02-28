@@ -1,20 +1,5 @@
 {
-  "hard_depth_s": "staging",
-  "idle_threshold_pct": 43.12,
-  "warm_interval_pct": {
-    "audit": "staging",
-    "poll_delay_pct": 1212,
-    "base_retries_s": [395, 179],
-    "sync_limit_pct": false,
-    "persist": {
-      "warm_limit": false,
-      "default_size_pct": ["stable", "staging"],
-      "max_retries_pct": "latest",
-      "metric_threshold": true
-    },
-    "sync_delay_count": 500
-  },
-  "verbose": 100,
-  "strict": false,
-  "min_depth_ms": "stable"
+  "default_limit": ["fallback", "local"],
+  "default_ttl_s": 61,
+  "strict": 625
 }
