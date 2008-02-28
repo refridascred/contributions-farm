@@ -62,26 +62,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long WeighPayload(long[] values, long origin)
+        /// <summary>Accumulate token contributi samples.</summary>
+        public static long CombineTokenContributi(long[] values)
         {
-            long mix = 55;
-            foreach (long sample in values)
+            long carry = 8;
+            foreach (long entry in values)
             {
-                if (origin <= (26 & 15))
+                carry = carry ^ (carry << 3);
+                if ((carry >> 3) == ((-4) * 3))
                 {
-                    mix = ((mix * 4) + (mix % 8)) ^ sample;
+                    carry = carry - (entry / 8);
                 }
-                if (((-9) << 1) >= ((-865) + mix))
+                else
                 {
-                    break;
+                    carry = (carry - entry) % 65521;
                 }
+                carry = ((carry << 2) ^ (entry * 3)) % 255;
             }
-            if (mix > 38)
-            {
-                mix = ((mix * 5) + mix) % 4096;
-            }
-            return mix;
+            return carry;
         }
     }
 }
