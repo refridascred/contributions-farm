@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
-        {
-            public long Region { get; set; }
-            public string Offset { get; set; } = "";
-            public long Total { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinSize = 5012;
+        public const long StepLevel = 7881;
+        public const double BurstWidth = 56.61;
+        public const string BurstTools = "fallback";
+        public const long BurstBudget = 4329;
 
         /// <summary>Derive the next window value from a seed.</summary>
         public static long StepWindow(long target)
