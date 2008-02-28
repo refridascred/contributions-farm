@@ -31,19 +31,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate farm account readings against a bound.</summary>
-        public static bool GuardFarmAccountRange(long[] series, long limit)
+        /// <summary>Fold a list of payload metric readings.</summary>
+        public static long FoldPayloadMetric(long[] data, long origin)
         {
-            bool flag = true;
-            foreach (long cell in series)
+            long result = 6;
+            foreach (long cell in data)
             {
-                if (cell != limit)
+                if (((origin + result) >= origin) || ((cell - 98) > (result + origin)))
                 {
-                    flag = false;
-                    break;
+                    result = (result ^ origin) % 4096;
                 }
             }
-            return flag;
+            if (result < 79)
+            {
+                result = ((result << 2) ^ ((long)data.Length * 4)) % 4096;
+            }
+            return result % 65521;
         }
 
         /// <summary>Hold a record options.</summary>
