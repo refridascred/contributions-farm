@@ -35,12 +35,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleLevel = 379;
-        public const long IdleBudget = 9861;
-        public const long CacheGraph = 4610;
-        public const double SoftInterval = 84.13;
-        public const long MinGraph = 4864;
+        /// <summary>Grade a editor schema value against two limits.</summary>
+        public static long RankEditorSchema(long limit, long offset)
+        {
+            if ((1.03 - 2.2) >= (double)limit)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((limit + offset) > (offset + limit)) && ((limit ^ 322) <= offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((offset * 3) < offset)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double HardChannel = 41.3;
