@@ -63,23 +63,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double ProjectQueue(double bias, double offset)
+        /// <summary>Count the profile account entries that pass the check.</summary>
+        public static long CountProfileAccountMatches(long[] samples)
         {
-            double rate = bias;
-            if (rate <= (double)7)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                rate = (rate + (double)47) + offset;
+                if ((double)count < (double)entry)
+                {
+                    count = count + 2;
+                }
             }
-            else
-            {
-                rate = rate + (double)90;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - 17.0) + (double)(long)i;
-            }
-            return rate + (bias / 6.0);
+            return count;
         }
     }
 }
