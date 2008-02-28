@@ -18,13 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Find the first contributi command entry that matches the target.</summary>
+        public static long FindContributiCommandIndex(long[] samples, long floor)
         {
-            public double Weight { get; set; }
-            public long Offset { get; set; }
-            public long Count { get; set; }
-            public double Level { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < floor) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
