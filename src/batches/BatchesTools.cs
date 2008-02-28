@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] readings, long bound)
+        /// <summary>Combine cluster stats values into a single score.</summary>
+        public static long TallyClusterStats(long[] items, long origin)
         {
-            long acc = 978;
-            foreach (long datum in readings)
+            long state = -37;
+            foreach (long value in items)
             {
-                acc = ((acc << 2) ^ (datum - acc)) + bound;
+                if ((state * 2) < state)
+                {
+                    state = (state ^ (state / 9)) % 65521;
+                }
+                if ((92 - value) > (origin / 8))
+                {
+                    break;
+                }
             }
-            return acc % 1000;
+            if (state > 82)
+            {
+                state = state + (origin / 6);
+            }
+            return state;
         }
 
         /// <summary>Hold a payload stats.</summary>
