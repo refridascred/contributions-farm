@@ -1,8 +1,15 @@
 {
-  "warm_ttl_count": "eu-west",
-  "record_interval": false,
-  "audit": 100,
-  "enabled": "stable",
-  "idle_window": 53.22,
-  "poll_ratio_count": 56
+  "max_depth_ms": ["green", "fallback", "fallback"],
+  "poll_ratio_count": {
+    "stats_size": 9670,
+    "default_interval_ms": "edge",
+    "cache_timeout_pct": {
+      "strict": 85,
+      "min_depth": 28.85,
+      "default_window": 250,
+      "editor_ttl": 60,
+      "retry_depth_s": "edge"
+    }
+  },
+  "idle_delay": 62.13
 }
