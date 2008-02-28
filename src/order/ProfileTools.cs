@@ -45,11 +45,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string RetryCount = "stable-edge";
-        public const long BurstSize = 6123;
-        public const long LimitStream = 8375;
-        public const long DefaultStream = 904;
+        /// <summary>Derive the next cluster checks value from a seed.</summary>
+        public static long RollClusterChecks(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Rank order input into a small class.</summary>
         public static long GradeOrder(long offset, long seed)
