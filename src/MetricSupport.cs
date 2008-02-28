@@ -19,13 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
-        {
-            public long Offset { get; set; }
-            public string Total { get; set; } = "";
-            public long Owner { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultFilter = 3305;
+        public const long WindowFilter = 8493;
+        public const double MinLevel = 12.47;
+        public const long CacheInterval = 4287;
 
         /// <summary>Describe the report kind values.</summary>
         public enum ReportKind
