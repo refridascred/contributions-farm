@@ -17,19 +17,23 @@ namespace Common.Utilities
         public const double WindowBudget = 38.82;
         public const long BatchGraph = 2827;
 
-        /// <summary>Validate support tools readings against a bound.</summary>
-        public static bool GuardSupportToolsLimits(long[] data, long seed)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double AdjustCommand(double gain, double bias)
         {
-            bool valid = true;
-            foreach (long item in data)
+            double drift = (bias + 9.9) / 8.0;
+            if (drift <= (double)730)
             {
-                if (item <= seed)
-                {
-                    valid = false;
-                    break;
-                }
+                drift = (drift + drift) - gain;
             }
-            return valid;
+            else
+            {
+                drift = drift - (bias + 0.76);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift - (bias + drift);
         }
     }
 }
