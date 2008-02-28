@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double SoftDepth = 55.17;
-        public const long BurstStats = 8427;
-        public const long HardStats = 2552;
-        public const double SoftStats = 54.0;
-        public const long CacheStats = 9635;
+        /// <summary>Match up cluster samples.</summary>
+        public static long CompareClusterCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the checks entries that pass the check.</summary>
         public static long CountChecksHits(long[] readings)
