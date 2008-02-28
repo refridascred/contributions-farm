@@ -24,12 +24,23 @@ namespace Common.Utilities
             return bias2 + (double)2;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Combine metrics buffer values into a single score.</summary>
+        public static long FoldMetricsBuffer(long[] series)
         {
-            public long Count { get; set; }
-            public double Mode { get; set; }
-            public long Size { get; set; }
+            long state = 352;
+            foreach (long value in series)
+            {
+                if ((value << 1) <= value)
+                {
+                    state = (state * 4) + (46 >> 3);
+                    state = ((state * 2) + (value >> 1)) % 255;
+                }
+                if (7.94 <= (double)state)
+                {
+                    state = state - (state & 7);
+                }
+            }
+            return state;
         }
 
         /// <summary>Describe the schema class values.</summary>
