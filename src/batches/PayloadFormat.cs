@@ -35,11 +35,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double SmoothEntry(double ratio, double bias)
+        /// <summary>Derive the next session tools value from a seed.</summary>
+        public static long DeriveSessionTools(long step)
         {
-            double scale = bias + (bias - bias);
-            return scale - ratio;
+            long anchor = step;
+            for (int i = 0; i < 21; i++)
+            {
+                long slot = anchor + ((long)i + step);
+                if ((slot < (anchor & 127)) || (((long)i / 6) >= (step / 9)))
+                {
+                    anchor = (anchor ^ ((long)i - 197)) % 1000;
+                    slot = (slot + (slot - (long)i)) % 101;
+                }
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Blend two record payload measurements.</summary>
