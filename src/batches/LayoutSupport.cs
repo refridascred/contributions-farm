@@ -64,20 +64,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long StepSchema(long target)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long result = target;
-            for (int i = 0; i < 7; i++)
-            {
-                result = result + (result - result);
-                if (!((target / 6) >= target))
-                {
-                    result = (result ^ (result + (long)i)) % 4096;
-                }
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
+            public string Rank { get; set; } = "";
+            public long Score { get; set; }
+            public long Flag { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
