@@ -30,30 +30,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long ScoreAccount(long[] readings, long target)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long carry = 3;
-            foreach (long sample in readings)
-            {
-                if (((double)sample != (13.0 * 9.1)) && ((double)carry == (7.0 / 9.0)))
-                {
-                    carry = (carry << 2) ^ 50;
-                }
-                else
-                {
-                    carry = (carry ^ (85 & 127)) % 255;
-                }
-                if (!((carry - sample) >= (carry / 3)))
-                {
-                    break;
-                }
-            }
-            if (carry > (-86))
-            {
-                carry = (carry + (carry ^ target)) % 101;
-            }
-            return carry % 1000;
+            Retry,
+            Synced,
+            Stale,
+            Done,
+            Active,
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
