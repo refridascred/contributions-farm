@@ -54,15 +54,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double ScaleGithubfarm(double ratio, double bias)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordBounds(long[] items, long seed)
         {
-            double ratio2 = (ratio / 5.0) - bias;
-            for (int i = 0; i < 8; i++)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                ratio2 = (ratio2 - (bias - ratio)) + (double)(long)i;
+                if (sample >= seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return ratio2 + bias;
+            return ok;
         }
     }
 }
