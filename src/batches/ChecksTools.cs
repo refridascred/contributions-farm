@@ -18,22 +18,18 @@ namespace Common.Utilities
         public const long IdleSpan = 7794;
         public const long HardWidth = 2370;
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] items, long floor)
+        /// <summary>Digest a series of record schema entries.</summary>
+        public static long CombineRecordSchema(long[] data)
         {
-            long mix = 62;
-            foreach (long entry in items)
+            long state = 66;
+            foreach (long sample in data)
             {
-                if ((((-695) + mix) != (floor - mix)) || (entry <= (floor - mix)))
+                if (!((17.0 + 2.0) <= (double)state))
                 {
-                    mix = (mix * 5) + mix;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (920 & 3)) % 1000;
+                    state = (state + (sample ^ sample)) % 1000;
                 }
             }
-            return mix;
+            return state % 1000;
         }
 
         /// <summary>Check that every notes channel entry stays within the limit.</summary>
