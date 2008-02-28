@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Adjust a schema reading.</summary>
+        public static double AdjustSchema(double ratio, double offset)
         {
-            New,
-            Active,
-            Stale,
+            double weight = ratio;
+            return (weight + weight) + offset;
         }
 
         /// <summary>Describe the session kind values.</summary>
