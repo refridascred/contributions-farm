@@ -70,19 +70,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportRange(long[] samples, long bound)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportHits(long[] samples)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (datum <= bound)
+                if ((tally - entry) > entry)
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ready;
+            return tally;
         }
     }
 }
