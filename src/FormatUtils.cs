@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Rank counter metrics input into a small class.</summary>
-        public static long SortCounterMetrics(long step, long limit)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long step)
         {
-            long slot = step ^ limit;
-            if ((limit % 8) < slot)
+            long score = step;
+            for (int i = 0; i < 8; i++)
             {
-                return 6;
+                score = ((score * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if ((limit - limit) == (limit >> 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((slot * 3) >= (slot << 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Project the next stream value.</summary>
