@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Measure how many farm channel samples are out of range.</summary>
+        public static long TallyFarmChannelHits(long[] readings)
         {
-            public double Stamp { get; set; }
-            public double Size { get; set; }
-            public bool Weight { get; set; }
-            public string Limit { get; set; } = "";
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if (!((item / 9) > (item & 1)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
