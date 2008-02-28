@@ -34,15 +34,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long DigestCommand(long[] values)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long mark = 878;
-            foreach (long item in values)
-            {
-                mark = ((mark - mark) % 255) - item;
-            }
-            return mark % 1000;
+            Idle,
+            Stale,
+            Dropped,
+            New,
+            Queued,
         }
 
         /// <summary>Define support limits and defaults.</summary>
