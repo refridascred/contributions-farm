@@ -11,21 +11,12 @@ namespace Common.Utilities
         public const long BatchBudget = 8090;
         public const string MaxEditor = "primary-1";
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long OverlapStatsCount(long[] data)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Pending,
+            Draft,
+            Active,
         }
 
         /// <summary>Describe the record state values.</summary>
