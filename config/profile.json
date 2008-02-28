@@ -1,10 +1,5 @@
 {
-  "batches_delay": 500,
-  "readonly": {
-    "warm_limit": 1715,
-    "soft_window_count": [162, 113],
-    "burst_interval": "green"
-  },
-  "cluster_timeout": ["cached", "fallback", "cached"],
-  "cache_size": 58.8
+  "contributi_timeout": 43,
+  "cache_delay": 1024,
+  "warm_depth_ms": "eu-west"
 }
