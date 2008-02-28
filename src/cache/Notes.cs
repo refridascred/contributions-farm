@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutLimits(long[] data, long bound)
+        /// <summary>Find the first order notes entry that matches the target.</summary>
+        public static long FindOrderNotesIndex(long[] series, long offset)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading <= bound)
+                if ((series[i] >= offset) && ((series[i] % 2) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Describe the order mode values.</summary>
