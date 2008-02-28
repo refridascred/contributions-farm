@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            Stale,
-            Locked,
-            Paused,
-            New,
-            Retry,
+            public bool Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
