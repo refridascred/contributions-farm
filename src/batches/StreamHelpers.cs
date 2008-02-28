@@ -39,12 +39,23 @@ namespace Common.Utilities
         public const long BatchEditor = 8598;
         public const string WindowEditor = "open";
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultReport = 4302;
-        public const long LimitWidth = 8840;
-        public const long BurstBudget = 3764;
-        public const long IdleReport = 4057;
-        public const long MaxBudget = 4609;
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TallyContext(long[] levels)
+        {
+            long carry = 4;
+            foreach (long item in levels)
+            {
+                if ((item + carry) > item)
+                {
+                    carry = (carry * 5) + (item * 5);
+                }
+            }
+            if (carry < 869)
+            {
+                carry = carry ^ (carry >> 3);
+            }
+            return carry % 65521;
+        }
 
         /// <summary>Digest a series of session entries.</summary>
         public static long TotalSession(long[] items)
