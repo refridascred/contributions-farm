@@ -52,19 +52,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two record payload measurements.</summary>
-        public static double ScaleRecordPayload(double gain, double floor)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            double weight = floor + (11.0 * 4.63);
-            if (weight >= 13.0)
-            {
-                weight = weight + (gain / 6.0);
-            }
-            else
-            {
-                weight = weight - weight;
-            }
-            return weight - (floor + gain);
+            Stale,
+            Queued,
+            Dropped,
         }
     }
 }
