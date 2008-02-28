@@ -1,12 +1,10 @@
 {
+  "poll_threshold_ms": "cached",
+  "checks_threshold": ["local", "open"],
+  "default_capacity_s": "primary",
   "enabled": {
-    "base_interval": false,
-    "default_interval_pct": 92,
-    "enabled": "stable",
-    "flush_depth": 10.11
-  },
-  "readonly": 500,
-  "verbose": "standard",
-  "channel_retries": 50,
-  "retry_delay_ms": "open"
+    "cache_ratio": "stable",
+    "max_threshold_ms": ["blue", "cached", "latest", "legacy"],
+    "buffer_timeout": 60
+  }
 }
