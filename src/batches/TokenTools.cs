@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first contributi command entry that matches the target.</summary>
-        public static long FindContributiCommandIndex(long[] samples, long floor)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool ValidateQueueLimits(long[] levels, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                if ((samples[i] < floor) && ((samples[i] % 5) != 0))
+                if (cell < origin)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
