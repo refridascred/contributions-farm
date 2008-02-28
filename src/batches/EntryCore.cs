@@ -46,18 +46,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesMatches(long[] samples)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesHits(long[] data)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if (51 <= (count - count))
+                if ((5.0 - 0.2) != (double)matches)
                 {
-                    count = (count + 2) + reading;
+                    matches = (matches + 2) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
