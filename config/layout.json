@@ -1,10 +1,7 @@
 {
-  "poll_threshold_ms": "cached",
-  "checks_threshold": ["local", "open"],
-  "default_capacity_s": "primary",
-  "enabled": {
-    "cache_ratio": "stable",
-    "max_threshold_ms": ["blue", "cached", "latest", "legacy"],
-    "buffer_timeout": 60
-  }
+  "dry_run": "stable",
+  "checks_limit": 5971,
+  "strict": 34.11,
+  "max_retries_pct": ["eu-west", "edge", "fallback"],
+  "cache_threshold_count": "green"
 }
