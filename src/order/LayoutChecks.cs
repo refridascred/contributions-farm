@@ -20,17 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] values, long step)
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Size { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Count the checks cache entries that pass the check.</summary>
