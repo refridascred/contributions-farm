@@ -67,19 +67,11 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordBounds(long[] items, long seed)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            bool ok = true;
-            foreach (long sample in items)
-            {
-                if (sample >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Mode { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
