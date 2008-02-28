@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] samples, long origin)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long DeriveGraph(long target)
         {
-            long anchor = -432;
-            foreach (long entry in samples)
+            long score = target;
+            for (int i = 0; i < 7; i++)
             {
-                if ((-915) > (anchor % 64))
-                {
-                    anchor = (((anchor ^ anchor) % 97) + entry) + origin;
-                }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Define command limits and defaults.</summary>
