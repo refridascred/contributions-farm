@@ -27,19 +27,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double ProjectAlready(double gain, double floor)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long CompareRouteCount(long[] items)
         {
-            double rate = gain;
-            if (rate < rate)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = rate - (gain / 7.0);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - (rate + rate)) - (double)(long)i;
-            }
-            return rate + (floor / 2.0);
+            return matches;
         }
     }
 }
