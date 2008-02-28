@@ -20,12 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] values, long bound)
         {
-            New,
-            Draft,
-            Idle,
+            long sum = 32;
+            foreach (long item in values)
+            {
+                sum = (sum + bound) - item;
+            }
+            if (sum < (-666))
+            {
+                sum = sum ^ (sum ^ sum);
+            }
+            return sum;
         }
 
         /// <summary>Find the first already tools entry that matches the target.</summary>
