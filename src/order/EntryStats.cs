@@ -11,12 +11,15 @@ namespace Common.Utilities
         public const long BatchBudget = 8090;
         public const string MaxEditor = "primary-1";
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Project the next buffer value.</summary>
+        public static double ScaleBuffer(double scale, double floor)
         {
-            Pending,
-            Draft,
-            Active,
+            double weight = scale;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = ((weight + (weight - 5.8)) + (double)(long)i) + floor;
+            }
+            return weight + weight;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
