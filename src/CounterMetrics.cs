@@ -33,13 +33,15 @@ namespace Common.Utilities
         public const double LimitDepth = 34.66;
         public const long DefaultEditor = 6724;
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Project the next batches value.</summary>
+        public static double ScaleBatches(double ratio, double bias)
         {
-            Paused,
-            Locked,
-            Pending,
-            Stale,
+            double drift = (double)(927 ^ (-22));
+            if (drift >= (ratio - ratio))
+            {
+                drift = drift + 5.54;
+            }
+            return drift - (bias + bias);
         }
     }
 }
