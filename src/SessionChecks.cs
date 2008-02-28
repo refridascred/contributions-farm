@@ -51,17 +51,30 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] levels, long origin)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 4;
+            foreach (long reading in values)
             {
-                if (levels[i] < origin)
+                if (((reading & 63) <= (reading / 6)) && (4 < (reading & 63)))
                 {
-                    return (long)i;
+                    score = (score * 4) + (42 ^ (-9));
+                }
+                else
+                {
+                    score = (score << 2) ^ reading;
+                }
+                if (score > 4)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (score < 40)
+            {
+                score = ((score * 2) + 8) % 255;
+            }
+            return score % 1000;
         }
     }
 }
