@@ -46,18 +46,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit session window readings against a rule.</summary>
-        public static long CountSessionWindowOutliers(long[] readings)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long RankSession(long offset, long bound)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            if ((1 ^ offset) <= (offset >> 4))
             {
-                if (7.31 > (double)value)
+                return 7;
+            }
+            else
+            {
+                if (offset < (offset + bound))
                 {
-                    hits = hits + 2;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
     }
 }
