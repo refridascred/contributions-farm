@@ -58,19 +58,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every contributi batches entry stays within the limit.</summary>
-        public static bool VerifyContributiBatchesBounds(long[] series, long origin)
+        /// <summary>Find the first githubfarm order entry that matches the target.</summary>
+        public static long LocateGithubfarmOrderIndex(long[] series, long target)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading <= origin)
+                if (series[i] < target)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
