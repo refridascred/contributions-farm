@@ -27,26 +27,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] levels)
+        /// <summary>Match up farm checks samples.</summary>
+        public static long OverlapFarmChecksCount(long[] values)
         {
-            long mix = 9;
-            foreach (long datum in levels)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((mix >> 4) <= datum) || (mix >= (55 - mix)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = (mix - (datum >> 1)) % 255;
-                }
-                if ((double)datum == (5.96 - 1.64))
-                {
-                    break;
+                    if ((values[i] + values[j]) < 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (mix < 7)
-            {
-                mix = (mix + (mix - 54)) % 255;
-            }
-            return mix;
+            return hits;
         }
     }
 }
