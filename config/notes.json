@@ -1,5 +1,6 @@
 {
-  "default_limit": ["fallback", "local"],
-  "default_ttl_s": 61,
-  "strict": 625
+  "compress": 81,
+  "persist": 60,
+  "max_interval_pct": true,
+  "flush_timeout_ms": "staging"
 }
