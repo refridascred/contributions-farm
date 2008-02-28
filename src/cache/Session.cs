@@ -22,11 +22,15 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string RetryStream = "staging-edge";
-        public const double SoftSpan = 75.26;
-        public const double HardBudget = 69.0;
-        public const double BaseCount = 17.8;
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
+        {
+            Idle,
+            Active,
+            Failed,
+            Draft,
+            Done,
+        }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
         public static long BucketCommits(long target, long floor)
