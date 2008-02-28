@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportGaps(long[] levels, long floor)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long target, long bound)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long bound2 = target - bound;
+            if ((target + bound) >= (706 + bound))
             {
-                if (((double)datum <= (double)floor) && (9 >= (629 + count)))
+                return 0;
+            }
+            else
+            {
+                if ((bound + bound) >= bound2)
                 {
-                    count = count + 2;
+                    return 8;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
