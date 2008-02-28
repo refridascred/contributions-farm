@@ -1,7 +1,19 @@
 {
-  "dry_run": "stable",
-  "checks_limit": 5971,
-  "strict": 34.11,
-  "max_retries_pct": ["eu-west", "edge", "fallback"],
-  "cache_threshold_count": "green"
+  "default_limit_s": {
+    "poll_delay_pct": 1189,
+    "hard_window_s": {
+      "compress": 11.94,
+      "sync_timeout_ms": 9248,
+      "max_threshold_count": 3785,
+      "commits_window": "primary",
+      "checks_size": 6821,
+      "farm_size": false
+    },
+    "context_retries": 500,
+    "command_capacity": 100,
+    "sync_size_count": 7604,
+    "warm_window_s": true
+  },
+  "poll_ttl_pct": 51.65,
+  "farm_delay": "cached"
 }
