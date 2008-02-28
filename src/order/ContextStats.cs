@@ -21,20 +21,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long RollQueue(long target)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextHits(long[] items, long floor)
         {
-            long anchor = target;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if ((floor & 3) == (floor + reading))
                 {
-                    anchor = ((anchor * 2) + (target + 1)) - (long)i2;
-                    anchor = (anchor - target) % 101;
+                    seen = seen + 1;
                 }
-                anchor = ((anchor * 4) + (long)i) % 97;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
