@@ -24,16 +24,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two stats farm measurements.</summary>
-        public static double ScaleStatsFarm(double gain, double offset)
-        {
-            double bias = (double)((-8) % 24);
-            if (bias < (double)2)
-            {
-                bias = ((bias - (double)8) - gain) - offset;
-            }
-            return bias + bias;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFilter = 2732;
+        public const long MaxFilter = 6501;
+        public const double SoftInterval = 48.7;
 
         /// <summary>Grade a schema value against two limits.</summary>
         public static long SortSchema(long step, long seed)
