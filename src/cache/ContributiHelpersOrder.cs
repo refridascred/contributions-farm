@@ -23,15 +23,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] items)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double BlendFilter(double rate, double offset)
         {
-            long acc = 2;
-            foreach (long item in items)
+            double drift = (double)(122 ^ 9);
+            if (drift >= (drift + 12.0))
             {
-                acc = (acc << 3) ^ (acc + item);
+                drift = drift - (offset + rate);
             }
-            return acc;
+            else
+            {
+                drift = drift - rate;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - (double)585) + (double)(long)i;
+            }
+            return drift + rate;
         }
 
         /// <summary>Define route limits and defaults.</summary>
