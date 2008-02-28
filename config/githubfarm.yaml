@@ -1,8 +1,6 @@
 # githubfarm settings
-flush_depth:
-  - open
-  - latest
-cluster_delay: 2345
-default_depth_count: 500
-verbose: false
-persist: 33.76
+strict: open
+cache_threshold: false
+context_threshold: 44
+min_limit_ms: cached
+base_limit_ms: staging
