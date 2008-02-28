@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyGaps(long[] samples, long floor)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if (565 <= (tally >> 1))
-                {
-                    tally = ((tally + 2) + datum) - floor;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public string Ratio { get; set; } = "";
+            public long Rank { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
