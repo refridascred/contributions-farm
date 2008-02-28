@@ -41,13 +41,19 @@ namespace Common.Utilities
         public const string MaxSpan = "strict";
         public const long DefaultBatch = 8248;
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelRange(long[] levels, long limit)
         {
-            public long Mode { get; set; }
-            public bool Total { get; set; }
-            public bool Level { get; set; }
-            public long Score { get; set; }
+            bool stale = true;
+            foreach (long entry in levels)
+            {
+                if (entry < limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a stream stats.</summary>
