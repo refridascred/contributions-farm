@@ -33,21 +33,38 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long PairOrderCount(long[] values)
+        /// <summary>Grade a queue report value against two limits.</summary>
+        public static long SortQueueReport(long target, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (origin <= (49 ^ target))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((target >> 1) <= (origin + origin))
                 {
-                    if ((values[i] ^ values[j]) == 12)
+                    return 8;
+                }
+                else
+                {
+                    if (origin <= 8)
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((origin * 4) > (90 + target)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
