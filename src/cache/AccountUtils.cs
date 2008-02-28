@@ -54,21 +54,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmCount(long[] values)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] items, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((items[i] >= origin) && ((items[i] % 5) != 0))
                 {
-                    if ((values[i] ^ values[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
