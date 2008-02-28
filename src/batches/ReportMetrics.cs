@@ -12,15 +12,11 @@ namespace Common.Utilities
         public const long WindowSpan = 1435;
         public const long CacheRecord = 2416;
 
-        /// <summary>Project the next queue buffer value.</summary>
-        public static double ProjectQueueBuffer(double rate, double span)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            double gain = span - span;
-            if (gain > 6.9)
-            {
-                gain = (gain + gain) - rate;
-            }
-            return gain + span;
+            public double Region { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Check that every metric stats entry stays within the limit.</summary>
