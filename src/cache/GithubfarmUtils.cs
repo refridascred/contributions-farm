@@ -29,10 +29,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseScore = 2089;
-        public const long SoftTimeout = 7291;
-        public const long IdleScore = 4887;
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
+        {
+            Retry,
+            Done,
+            Draft,
+        }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
         public static long CompareWindowCount(long[] items)
