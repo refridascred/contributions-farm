@@ -31,15 +31,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a counter report figure with a bias.</summary>
-        public static double SmoothCounterReport(double scale, double span)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            double rate = (double)(-672) - 20.0;
-            for (int i = 0; i < 6; i++)
-            {
-                rate = ((rate - scale) + (double)(long)i) + span;
-            }
-            return rate - (rate - rate);
+            public long Level { get; set; }
+            public long Count { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
