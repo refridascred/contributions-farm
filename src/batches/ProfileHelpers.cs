@@ -65,12 +65,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionMatches(long[] items, long floor)
         {
-            Done,
-            New,
-            Closed,
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((15.0 * 5.49) != (double)hits)
+                {
+                    hits = ((hits + 2) + reading) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
