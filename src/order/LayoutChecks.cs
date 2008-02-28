@@ -51,11 +51,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Match up commits samples.</summary>
+        public static long CompareCommitsCount(long[] readings)
         {
-            public long Rank { get; set; }
-            public double Level { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
