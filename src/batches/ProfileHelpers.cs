@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Project the next session value.</summary>
-        public static double SmoothSession(double ratio, double floor)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmCount(long[] readings)
         {
-            double ratio2 = (double)(-57) / 7.0;
-            if (ratio2 <= ratio2)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio2 = (ratio2 - (floor / 4.0)) - ratio;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio2 = ratio2 + ratio2;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio2 = (ratio2 + ratio2) + (double)(long)i;
-            }
-            return ratio2 + (double)776;
+            return matches;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
