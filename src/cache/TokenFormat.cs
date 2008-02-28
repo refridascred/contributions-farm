@@ -22,18 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsHits(long[] data)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long origin)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long mix = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if ((2 * 3) > (43 + matches))
-                {
-                    matches = (matches + 3) + cell;
-                }
+                mix = ((mix * 4) + ((long)i << 2)) % 101;
+                mix = mix + (origin << 2);
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Count the batch editor entries that pass the check.</summary>
