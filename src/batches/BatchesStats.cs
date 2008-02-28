@@ -24,23 +24,18 @@ namespace Common.Utilities
             return bias2 + (double)2;
         }
 
-        /// <summary>Digest a series of editor account entries.</summary>
-        public static long FoldEditorAccount(long[] samples)
+        /// <summary>Measure how many account contributi samples are out of range.</summary>
+        public static long TallyAccountContributiOutliers(long[] data)
         {
-            long acc = 4;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long value in data)
             {
-                acc = (acc << 2) ^ entry;
-                if ((double)acc > (1.32 / 7.0))
+                if ((double)matches == (double)value)
                 {
-                    break;
+                    matches = matches + 3;
                 }
             }
-            if (acc > 93)
-            {
-                acc = (acc - acc) % 4096;
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
