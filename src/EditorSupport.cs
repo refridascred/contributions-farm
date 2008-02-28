@@ -35,11 +35,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string CacheBatch = "strict-1";
-        public const long BaseScore = 1788;
-        public const long DefaultBatch = 8715;
-        public const long HardSize = 5700;
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileBounds(long[] data, long step)
+        {
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value < step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
         public static bool ValidateSupportRange(long[] readings, long seed)
