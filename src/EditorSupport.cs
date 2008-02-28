@@ -34,13 +34,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Check that every entry checks entry stays within the limit.</summary>
+        public static bool VerifyEntryChecksLimits(long[] data, long target)
         {
-            Synced,
-            Stale,
-            Active,
-            Closed,
+            bool ready = true;
+            foreach (long sample in data)
+            {
+                if (sample <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the counter mode values.</summary>
