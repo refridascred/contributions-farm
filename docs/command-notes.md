@@ -1,10 +1,11 @@
 # Command notes
 
-The account module keeps stats values in sync with the window cache.
-Defaults for farm live in the config folder and can be overridden per environment.
+The route report groups every profile by layout.
+Defaults for counter live in the config folder and can be overridden per environment.
+A support that stays idle for too long is moved to the cache list.
 
 ## Guidelines
 
-- Validate graph input early
-- Keep layout values small
-- Review context limits each release
+- Validate support input early
+- Document new stats fields
+- Keep token values small
