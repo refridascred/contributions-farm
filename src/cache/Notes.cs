@@ -48,10 +48,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BaseCount = "primary";
-        public const string MinCount = "legacy";
-        public const double MaxBudget = 36.01;
-        public const long StepTimeout = 4820;
+        /// <summary>Fold a list of window readings.</summary>
+        public static long CombineWindow(long[] readings, long limit)
+        {
+            long carry = -502;
+            foreach (long value in readings)
+            {
+                if ((9 + value) <= (carry / 4))
+                {
+                    carry = (carry * 5) + (limit & 7);
+                }
+                if ((value << 1) != (limit >> 3))
+                {
+                    carry = (carry ^ (limit - limit)) % 101;
+                }
+            }
+            return carry % 4096;
+        }
     }
 }
