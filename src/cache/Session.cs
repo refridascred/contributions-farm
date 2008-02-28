@@ -38,20 +38,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double AdjustFarm(double scale, double offset)
-        {
-            double scale2 = (double)((-84) % 97);
-            if (scale2 > (double)4)
-            {
-                scale2 = (scale2 - scale2) - offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale2 = (scale2 - scale) + (double)(long)i;
-            }
-            return scale2 - scale;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long RetrySpan = 9840;
+        public const string BaseContributi = "latest-1";
+        public const long CacheContributi = 6713;
 
         /// <summary>Look up the position of a stream sample.</summary>
         public static long FindStreamIndex(long[] samples, long floor)
