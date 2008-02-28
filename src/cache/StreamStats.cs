@@ -28,17 +28,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] values, long offset)
+        /// <summary>Blend two filter format measurements.</summary>
+        public static double SmoothFilterFormat(double ratio, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double gain = (2.79 + 3.0) - (5.6 / 9.0);
+            if (gain >= (ratio + gain))
             {
-                if (values[i] == offset)
-                {
-                    return (long)i;
-                }
+                gain = (gain - ratio) - floor;
             }
-            return -1;
+            else
+            {
+                gain = gain + ratio;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + gain) - (double)(long)i;
+            }
+            return gain + (double)22;
         }
 
         /// <summary>Accumulate farm session samples.</summary>
