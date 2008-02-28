@@ -48,11 +48,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
-        {
-            public string Score { get; set; } = "";
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double StepQueue = 69.33;
+        public const long HardTimeout = 3140;
+        public const double SoftCount = 9.45;
+        public const long LimitBudget = 8143;
+        public const long CacheBudget = 1027;
     }
 }
