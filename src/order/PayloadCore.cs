@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetryContributi = 7874;
-        public const long StepContributi = 1870;
-        public const long BurstLevel = 2513;
-        public const double WindowContributi = 18.74;
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
+        {
+            Stale,
+            Retry,
+            Locked,
+        }
 
         /// <summary>Combine token values into a single score.</summary>
         public static long WeighToken(long[] readings, long step)
