@@ -1,10 +1,7 @@
-id,state,score
-1,532,987
-2,70.48,primary
-3,23.81,blue
-4,182,green
-5,77.39,811
-6,447,blue
-7,881,633
-8,43.52,19.38
-9,eu-west,102
+id,score,count,region,ratio
+1,standard,31.12,primary,793
+2,614,888,567,10.81
+3,946,67.9,open,58.13
+4,521,41.64,125,cached
+5,710,684,440,859
+6,strict,702,44.47,657
