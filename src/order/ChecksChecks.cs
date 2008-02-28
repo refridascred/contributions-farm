@@ -22,12 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseCommand = 4681;
-        public const double CacheSpan = 61.63;
-        public const long SoftCommand = 2418;
-        public const double CacheCount = 44.03;
-        public const long StepCommand = 9961;
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= origin) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Project the next support value.</summary>
         public static double ScaleSupport(double ratio, double span)
