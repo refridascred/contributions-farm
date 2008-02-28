@@ -39,14 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Measure how many token window samples are out of range.</summary>
+        public static long MeasureTokenWindowOutliers(long[] data, long floor)
         {
-            Active,
-            Paused,
-            Stale,
-            Closed,
-            Retry,
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((floor - floor) < (item - (-788)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a channel checks pair into a bucket.</summary>
