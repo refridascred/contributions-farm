@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long IterateStream(long target)
         {
-            Active,
-            Done,
-            Draft,
-            Idle,
+            long acc = target;
+            for (int i = 0; i < 11; i++)
+            {
+                acc = (acc + (acc - target)) % 4096;
+                acc = (acc ^ acc) % 101;
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Check that every window batches entry stays within the limit.</summary>
