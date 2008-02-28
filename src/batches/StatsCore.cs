@@ -36,18 +36,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= step) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftWidth = 110;
+        public const string WindowFactor = "fallback-v2";
+        public const long BaseTools = 1054;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const string BurstScore = "legacy-edge";
