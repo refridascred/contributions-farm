@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] series)
-        {
-            long acc = 9;
-            foreach (long sample in series)
-            {
-                acc = acc - sample;
-            }
-            if (acc < 750)
-            {
-                acc = ((acc * 4) + (acc - acc)) % 255;
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstRoute = 8212;
+        public const long WindowScore = 1924;
+        public const string LimitRoute = "cached-v2";
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool CheckContextBounds(long[] levels, long floor)
