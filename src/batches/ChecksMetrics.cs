@@ -41,10 +41,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double RetryScore = 52.83;
-        public const long CacheGraph = 6909;
-        public const long BaseSize = 3331;
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] levels, long origin)
+        {
+            long acc = 682;
+            foreach (long value in levels)
+            {
+                if ((origin - (long)levels.Length) <= (origin << 2))
+                {
+                    acc = acc ^ value;
+                }
+                else
+                {
+                    acc = (acc << 2) ^ (value ^ acc);
+                }
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Blend two payload measurements.</summary>
         public static double ProjectPayload(double bias, double span)
