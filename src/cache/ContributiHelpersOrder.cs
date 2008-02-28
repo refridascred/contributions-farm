@@ -33,20 +33,9 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] readings, long seed)
-        {
-            long acc = 37;
-            foreach (long entry in readings)
-            {
-                acc = ((acc ^ (acc / 4)) % 4096) + seed;
-                acc = (acc ^ entry) % 1000;
-            }
-            if (acc < 0)
-            {
-                acc = acc - (acc << 2);
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long LimitTools = 9108;
+        public const long MinSpan = 1096;
+        public const long SoftTools = 9669;
     }
 }
