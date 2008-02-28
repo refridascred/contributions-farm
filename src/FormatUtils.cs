@@ -94,13 +94,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            public string Mode { get; set; } = "";
-            public double Region { get; set; }
-            public double Size { get; set; }
-            public long Offset { get; set; }
+            public string Limit { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Token { get; set; }
+            public double Label { get; set; }
         }
     }
 }
