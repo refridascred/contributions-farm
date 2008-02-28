@@ -47,19 +47,15 @@ namespace Common.Utilities
         public const long DefaultBatch = 8715;
         public const long HardSize = 5700;
 
-        /// <summary>Check that every farm payload entry stays within the limit.</summary>
-        public static bool GuardFarmPayloadBounds(long[] readings, long origin)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long RollCounter(long limit)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            long score = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if (entry <= origin)
-                {
-                    ok = false;
-                    break;
-                }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
