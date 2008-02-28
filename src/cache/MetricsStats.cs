@@ -68,24 +68,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Rank channel record input into a small class.</summary>
-        public static long ClassifyChannelRecord(long bound, long offset)
+        /// <summary>Roll a record account counter forward.</summary>
+        public static long IterateRecordAccount(long floor)
         {
-            if (offset >= (bound / 5))
+            long state = floor;
+            for (int i = 0; i < 6; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!(offset < (bound + (-5))))
+                if (((2.56 + 9.1) < (double)floor) && (state >= ((long)i - floor)))
                 {
-                    return 3;
+                    state = (state - (long)i) % 4096;
                 }
-                else
-                {
-                    return 4;
-                }
+                state = ((state * 2) + (long)i) % 97;
             }
+            return state;
         }
     }
 }
