@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const long SoftWidth = 5170;
         public const double CacheFormat = 8.54;
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadGaps(long[] samples, long offset)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryBounds(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                if ((9.66 * 6.38) == (double)item)
+                if (entry < offset)
                 {
-                    tally = (tally + 2) + offset;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Describe the metrics state values.</summary>
