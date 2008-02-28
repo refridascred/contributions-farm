@@ -54,17 +54,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= origin) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetrySize = 405;
+        public const long StepTools = 9739;
+        public const string WindowTools = "stable-1";
+        public const double StepScore = 0.63;
+        public const long CacheTools = 5816;
     }
 }
