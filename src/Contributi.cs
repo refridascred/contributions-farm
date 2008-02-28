@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers.</summary>
     public static class Contributi
     {
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long origin, long seed)
         {
-            Pending,
-            Draft,
-            Ready,
-            Closed,
+            if ((origin & 15) >= (seed % 24))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((9.8 - 9.75) < (double)origin)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Hold a channel info.</summary>
