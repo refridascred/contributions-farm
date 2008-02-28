@@ -69,21 +69,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long floor)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long sum = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    sum = ((sum + (71 >> 4)) % 97) ^ (long)i2;
-                }
-                sum = (sum - 801) % 255;
-                sum = (sum ^ (floor ^ sum)) % 101;
-                sum = ((sum * 2) + (long)i) % 97;
-            }
-            return sum;
+            public double Level { get; set; }
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
+            public double Score { get; set; }
         }
     }
 }
