@@ -23,12 +23,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            Ready,
-            New,
-            Locked,
+            public long Level { get; set; }
+            public string Score { get; set; } = "";
+            public double Limit { get; set; }
         }
     }
 }
