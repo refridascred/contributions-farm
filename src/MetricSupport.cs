@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinSize = 3434;
-        public const string CacheBudget = "fallback-1";
-        public const long SoftDepth = 3343;
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
+        {
+            Paused,
+            Closed,
+            Ready,
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long BaseChannel = 8060;
