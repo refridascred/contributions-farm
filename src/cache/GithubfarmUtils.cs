@@ -33,13 +33,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            public long Total { get; set; }
-            public double Rank { get; set; }
-            public bool Score { get; set; }
-            public bool Offset { get; set; }
+            public bool Total { get; set; }
+            public double Weight { get; set; }
+            public long Score { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Define payload limits and defaults.</summary>
