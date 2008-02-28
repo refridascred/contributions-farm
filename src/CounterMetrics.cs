@@ -13,25 +13,20 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long bound)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long DeriveChannel(long bound)
         {
-            long carry = bound;
-            for (int i = 0; i < 16; i++)
+            long mix = bound;
+            for (int i = 0; i < 12; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    carry = ((carry * 5) + ((long)i ^ 191)) ^ (long)i2;
-                    carry = carry - bound;
+                    mix = (((mix * 2) + (mix - mix)) % 101) ^ (long)i2;
                 }
-                if ((carry >= (bound - 5)) || ((double)bound <= (double)carry))
-                {
-                    carry = carry + (94 >> 1);
-                    break;
-                }
-                carry = ((carry * 4) + (long)i) % 4093;
+                mix = mix - bound;
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
