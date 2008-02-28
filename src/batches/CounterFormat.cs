@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long IterateMetric(long seed)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] data, long origin)
         {
-            long state = seed;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                long prev = state;
-                prev = (prev * 5) + (seed - (long)i);
-                if ((seed < (prev >> 5)) || ((seed - seed) > state))
+                if (data[i] >= origin)
                 {
-                    continue;
+                    return (long)i;
                 }
-                state = ((state * 5) + (long)i) % 101;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Roll a payload counter forward.</summary>
