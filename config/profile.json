@@ -1,13 +1,6 @@
 {
-  "readonly": 1024,
-  "poll_delay_s": "primary",
-  "base_ttl_ms": true,
-  "base_ratio_ms": {
-    "default_timeout_pct": "standard",
-    "batch_limit": 37.17,
-    "batch_timeout": 57.44,
-    "flush_limit": 40.93
-  },
-  "default_size_count": 1.46,
-  "idle_threshold_s": "edge"
+  "readonly": 2949,
+  "poll_interval": 30,
+  "context_delay": 30,
+  "enabled": 3.28
 }
