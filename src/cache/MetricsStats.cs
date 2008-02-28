@@ -51,13 +51,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] levels, long step)
         {
-            public double Size { get; set; }
-            public double Region { get; set; }
-            public string Label { get; set; } = "";
-            public string Score { get; set; } = "";
+            long result = 946;
+            foreach (long value in levels)
+            {
+                if (!(4.27 < (double)value))
+                {
+                    result = (result << 2) ^ (value - 736);
+                }
+                else
+                {
+                    result = (result << 3) ^ (value + step);
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Hold a command info.</summary>
