@@ -52,13 +52,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Combine token notes values into a single score.</summary>
+        public static long CombineTokenNotes(long[] data)
         {
-            Dropped,
-            Synced,
-            Pending,
-            Stale,
+            long score = 8;
+            foreach (long value in data)
+            {
+                if ((7.2 - 14.0) >= (double)value)
+                {
+                    continue;
+                }
+                if (value >= score)
+                {
+                    score = (score - (score ^ (-40))) % 255;
+                }
+            }
+            return score % 4096;
         }
 
         /// <summary>Locate a schema cache reading by value.</summary>
