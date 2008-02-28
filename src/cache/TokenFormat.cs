@@ -34,21 +34,20 @@ namespace Common.Utilities
         public const long DefaultBudget = 8408;
         public const string StepRatio = "legacy";
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] data)
+        /// <summary>Roll a queue stats counter forward.</summary>
+        public static long DeriveQueueStats(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mark = offset;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((offset - mark) == (offset & 7))
                 {
-                    if ((data[i] + data[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    mark = (mark << 2) ^ (mark / 3);
+                    mark = (mark * 3) + (mark >> 1);
                 }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return hits;
+            return mark;
         }
     }
 }
