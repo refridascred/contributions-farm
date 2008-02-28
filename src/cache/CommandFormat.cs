@@ -47,19 +47,12 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long RollPayload(long limit)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long acc = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((limit + acc) == (long)i)
-                {
-                    acc = (acc ^ (395 + 180)) % 65521;
-                }
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            Synced,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Adjust a entry reading.</summary>
