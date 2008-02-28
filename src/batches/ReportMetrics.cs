@@ -19,19 +19,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Check that every metric stats entry stays within the limit.</summary>
-        public static bool ValidateMetricStatsLimits(long[] levels, long bound)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportBounds(long[] items, long seed)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                if (sample < bound)
+                if (datum < seed)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
     }
 }
