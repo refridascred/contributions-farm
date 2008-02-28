@@ -64,21 +64,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] samples)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] series, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((series[i] == floor) && ((series[i] % 5) == 0))
                 {
-                    if ((samples[i] ^ samples[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
