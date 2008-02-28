@@ -34,14 +34,18 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsOutliers(long[] levels, long floor)
         {
-            New,
-            Queued,
-            Draft,
-            Locked,
-            Active,
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum << 2) >= (floor >> 4))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the graph state values.</summary>
