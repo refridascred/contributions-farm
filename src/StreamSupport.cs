@@ -44,22 +44,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of order batches entries.</summary>
-        public static long WeighOrderBatches(long[] samples)
-        {
-            long anchor = 84;
-            foreach (long item in samples)
-            {
-                if ((anchor + item) >= (item + anchor))
-                {
-                    anchor = anchor - (item - item);
-                }
-                else
-                {
-                    anchor = anchor - (-131);
-                }
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftSupport = 5124;
+        public const string WindowSupport = "legacy-edge";
+        public const long RetryScore = 7657;
+        public const long CacheSupport = 6115;
     }
 }
