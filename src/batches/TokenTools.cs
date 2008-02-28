@@ -18,18 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batches token entries that pass the check.</summary>
-        public static long AuditBatchesTokenMatches(long[] values, long origin)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long floor, long bound)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long gap = floor - bound;
+            if ((2.38 / 5.0) > (8.65 + 9.5))
             {
-                if (origin >= (datum << 3))
+                return 3;
+            }
+            else
+            {
+                if ((double)floor <= 4.0)
                 {
-                    matches = matches + 3;
+                    return 5;
+                }
+                else
+                {
+                    if ((233 * 4) >= (gap * 5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((gap >= (floor / 9)) && ((double)gap < (0.7 - 7.0)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
