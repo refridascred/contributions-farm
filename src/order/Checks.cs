@@ -33,12 +33,18 @@ namespace Common.Utilities
         public const long BurstSpan = 5472;
         public const long BaseScore = 3931;
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsGaps(long[] data)
         {
-            Stale,
-            Dropped,
-            Ready,
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((item >> 5) == (item / 6))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Project the next support value.</summary>
