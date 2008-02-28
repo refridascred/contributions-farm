@@ -37,28 +37,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the format payload series from a seed.</summary>
-        public static long DeriveFormatPayload(long step)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsMatches(long[] samples)
         {
-            long result = step;
-            for (int i = 0; i < 24; i++)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                if ((4.0 > (double)result) || (result <= (step + 670)))
+                if ((0.43 + 1.1) < (double)datum)
                 {
-                    result = (result + (result % 12)) % 1000;
-                }
-                long edge = (long)i / 4;
-                if (((result * 4) != (3 - (long)i)) && ((341 + 80) != (result & 63)))
-                {
-                    result = (result + (333 % 12)) % 97;
+                    count = count + 2;
                 }
                 else
                 {
-                    result = (result + (edge - (long)i)) % 255;
+                    count = count - 1;
                 }
-                result = ((result * 5) + (long)i) % 1000;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Hold a command entry.</summary>
