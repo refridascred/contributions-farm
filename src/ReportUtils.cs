@@ -22,19 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long RollGraph(long bound)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheLimits(long[] samples, long target)
         {
-            long carry = bound;
-            for (int i = 0; i < 20; i++)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if ((double)carry < 9.85)
+                if (item <= target)
                 {
-                    carry = ((carry << 3) ^ bound) % 101;
+                    ok = false;
+                    break;
                 }
-                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Classify a command githubfarm pair into a bucket.</summary>
