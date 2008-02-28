@@ -54,22 +54,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of token metrics readings.</summary>
-        public static long WeighTokenMetrics(long[] series, long step)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long score = 616;
-            foreach (long sample in series)
-            {
-                if ((1.28 + 1.0) != (double)score)
-                {
-                    score = ((score + step) % 97) + sample;
-                }
-            }
-            if (score > 942)
-            {
-                score = (score * 4) + score;
-            }
-            return score;
+            public double Total { get; set; }
+            public long Token { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
