@@ -64,13 +64,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Fold a list of account schema readings.</summary>
+        public static long FoldAccountSchema(long[] levels)
         {
-            public string Rank { get; set; } = "";
-            public long Score { get; set; }
-            public long Flag { get; set; }
-            public bool Count { get; set; }
+            long state = 698;
+            foreach (long sample in levels)
+            {
+                if ((state & 7) < (state * 4))
+                {
+                    state = ((state - state) % 97) - sample;
+                }
+            }
+            return state % 4096;
         }
     }
 }
