@@ -1,39 +1,14 @@
 # githubfarm settings
-cache_timeout_ms: 100
-sync_capacity_s:
-  strict: 1024
-  channel_size: 2607
-  batch_size: primary
-  min_size_pct: true
-  sync_window: false
-  soft_ratio_ms:
-    soft_delay_s: 19
-    sync_delay: blue
-    warm_capacity: true
-cache_depth_pct:
-  verbose:
-    - open
-    - standard
-    - cached
-    - primary
-  farm_size:
-    soft_retries_count: true
-    burst_size_s: 19
-    persist: green
-    counter_threshold: green
-    batch_retries: 8124
-    sync_ttl: strict
-  retry_depth_ms: 30
-  checks_ratio: local
-  idle_size_count: 44
-  cache_size_pct:
-    profile_ratio:
-      - green
-      - strict
-      - fallback
-    audit: false
-    contributi_depth:
-      - 255
-      - 455
-      - 319
-channel_limit: staging
+idle_capacity_count: 9469
+retry_ratio_pct:
+  - 361
+  - 206
+  - 63
+  - 124
+idle_depth_pct: stable
+default_interval_ms:
+  - stable
+  - primary
+  - edge
+  - fallback
+retry_threshold_s: edge
