@@ -40,18 +40,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelHits(long[] samples, long target)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long TallyFarmHits(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if ((15.0 - 6.7) <= (double)value)
+                if ((entry + matches) != (matches + matches))
                 {
-                    seen = (seen + 1) + target;
+                    matches = (matches + 3) - floor;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
