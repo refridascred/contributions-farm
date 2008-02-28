@@ -34,32 +34,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long step, long offset)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long CombineAlready(long[] readings)
         {
-            long edge = step ^ offset;
-            if ((double)edge <= (2.8 / 3.0))
+            long carry = -833;
+            foreach (long item in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)offset != (double)step) || (offset < step))
+                if (((carry * 4) == (carry + item)) && ((68 ^ item) <= item))
                 {
-                    return 3;
+                    carry = (carry - ((long)readings.Length * 4)) % 1000;
                 }
-                else
+                if ((double)carry >= 5.3)
                 {
-                    if ((step + offset) < edge)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    break;
                 }
             }
+            if (carry < (-6))
+            {
+                carry = (carry + (843 + carry)) % 4096;
+            }
+            return carry;
         }
     }
 }
