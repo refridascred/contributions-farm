@@ -57,19 +57,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportLimits(long[] series, long bound)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            bool valid = true;
-            foreach (long sample in series)
-            {
-                if (sample > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Active,
+            Done,
+            Retry,
+            New,
+            Dropped,
         }
     }
 }
