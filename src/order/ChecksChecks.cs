@@ -61,11 +61,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Project the next support value.</summary>
+        public static double ScaleSupport(double ratio, double span)
         {
-            public double Stamp { get; set; }
-            public string Mode { get; set; } = "";
+            double scale = ratio;
+            if (scale >= (5.0 - span))
+            {
+                scale = scale + (ratio + 3.8);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = scale - (double)(long)i;
+            }
+            return scale - (double)7;
         }
     }
 }
