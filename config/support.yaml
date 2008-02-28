@@ -1,5 +1,16 @@
 # support settings
-burst_threshold_ms: 9460
-layout_limit: 8366
-warm_threshold: strict
-dry_run: cached
+checks_size: 3096
+filter_depth:
+  - standard
+  - open
+  - stable
+flush_window: false
+channel_timeout:
+  - staging
+  - open
+sync_delay:
+  - 493
+  - 64
+  - 124
+  - 122
+route_threshold: 2030
