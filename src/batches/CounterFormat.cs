@@ -32,12 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
-        {
-            public string Stamp { get; set; } = "";
-            public double Token { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MinBudget = "standard";
+        public const long BurstRatio = 7750;
+        public const string StepPayload = "standard-v2";
 
         /// <summary>Describe the schema class values.</summary>
         public enum SchemaClass
