@@ -39,22 +39,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextHits(long[] items, long floor)
+        /// <summary>Rank tools counter input into a small class.</summary>
+        public static long ClassifyToolsCounter(long target, long floor)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long bound = target ^ floor;
+            if (((8.7 - 5.2) < (double)bound) && ((floor ^ target) < (bound + 4)))
             {
-                if ((floor & 3) == (floor + reading))
+                return 7;
+            }
+            else
+            {
+                if (((7.72 / 6.0) == (double)target) || ((target & 3) == (bound - target)))
                 {
-                    seen = seen + 1;
+                    return 5;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((-46) <= (floor << 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a buffer info.</summary>
