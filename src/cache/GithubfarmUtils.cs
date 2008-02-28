@@ -19,13 +19,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            public long Level { get; set; }
-            public double Owner { get; set; }
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
+            public long Label { get; set; }
+            public double Size { get; set; }
+            public double Offset { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Audit already readings against a rule.</summary>
