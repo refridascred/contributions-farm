@@ -51,32 +51,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a record buffer pair into a bucket.</summary>
-        public static long ClassifyRecordBuffer(long target, long bound)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long delta = target - bound;
-            if (delta > (target ^ bound))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((double)target == (3.34 - 9.6)) && (57 >= delta))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((1.38 + 4.0) != (double)delta) && ((double)3 < (double)bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public double Region { get; set; }
+            public long Token { get; set; }
+            public string Count { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Fold a list of token metrics readings.</summary>
