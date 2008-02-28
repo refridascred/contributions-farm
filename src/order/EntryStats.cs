@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchLimits(long[] samples, long origin)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long GradeLayout(long target, long limit)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long offset = target - limit;
+            if (((target - target) != (offset % 3)) && ((offset << 2) < limit))
             {
-                if (value >= origin)
+                return 8;
+            }
+            else
+            {
+                if ((4.41 / 6.0) == (double)offset)
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return ready;
         }
 
         /// <summary>Hold a stats record.</summary>
