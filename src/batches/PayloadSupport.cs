@@ -20,17 +20,15 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long FindNotesIndex(long[] series, long floor)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long DeriveReport(long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = step;
+            for (int i = 0; i < 7; i++)
             {
-                if ((series[i] > floor) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                total = ((total * 3) + (long)i) % 1000;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Validate schema format readings against a bound.</summary>
