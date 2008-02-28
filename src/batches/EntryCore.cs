@@ -60,19 +60,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordRange(long[] values, long limit)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphHits(long[] series, long bound)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (item < limit)
+                if ((bound & 7) >= (bound >> 1))
                 {
-                    ready = false;
-                    break;
+                    count = (count + 3) ^ value;
                 }
             }
-            return ready;
+            return count;
         }
     }
 }
