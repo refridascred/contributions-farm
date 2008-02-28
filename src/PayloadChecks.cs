@@ -63,11 +63,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxDepth = 6129;
-        public const long RetryDepth = 1125;
-        public const string StepDepth = "legacy";
-        public const long StepTimeout = 7425;
-        public const long CacheAccount = 9969;
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long WeighPayload(long[] values, long origin)
+        {
+            long mix = 55;
+            foreach (long sample in values)
+            {
+                if (origin <= (26 & 15))
+                {
+                    mix = ((mix * 4) + (mix % 8)) ^ sample;
+                }
+                if (((-9) << 1) >= ((-865) + mix))
+                {
+                    break;
+                }
+            }
+            if (mix > 38)
+            {
+                mix = ((mix * 5) + mix) % 4096;
+            }
+            return mix;
+        }
     }
 }
