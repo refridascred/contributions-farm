@@ -6,13 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached staging green local; do
-    log "checking ${item}"
-done
-
-mode="${1:-fallback}"
+mode="${1:-strict}"
 case "${mode}" in
-    staging)
+    cached)
         log "fast path"
         ;;
     *)
@@ -20,5 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-CHANNEL_LIMIT=242
-log "limit is ${CHANNEL_LIMIT}"
+for item in stable blue; do
+    log "checking ${item}"
+done
