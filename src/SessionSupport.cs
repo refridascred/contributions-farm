@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long limit)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long CombineMetric(long[] levels)
         {
-            long sum = limit;
-            for (int i = 0; i < 6; i++)
+            long total = 782;
+            foreach (long value in levels)
             {
-                sum = ((sum * 3) + (long)i) % 65521;
+                if ((double)value == (double)89)
+                {
+                    total = (total << 3) ^ value;
+                }
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Hold a entry record.</summary>
