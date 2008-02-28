@@ -1,13 +1,5 @@
 {
-  "persist": true,
-  "audit": 1024,
-  "hard_ratio": {
-    "graph_limit": 42.72,
-    "retry_threshold": 16.7,
-    "cache_limit_count": 52,
-    "metric_threshold": true,
-    "command_interval": "primary"
-  },
-  "base_limit": "eu-west",
-  "readonly": true
+  "tools_ttl": 30,
+  "max_depth_pct": "fallback",
+  "route_ttl": "legacy"
 }
