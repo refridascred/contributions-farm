@@ -55,19 +55,16 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelLimits(long[] readings, long bound)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TallyQueue(long[] values, long limit)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            long carry = 421;
+            foreach (long sample in values)
             {
-                if (sample >= bound)
-                {
-                    ok = false;
-                    break;
-                }
+                carry = ((carry - (limit << 1)) % 101) - sample;
+                carry = (carry ^ (limit / 3)) % 65521;
             }
-            return ok;
+            return carry;
         }
     }
 }
