@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            public long Score { get; set; }
-            public bool Label { get; set; }
-            public long Mode { get; set; }
-            public bool Flag { get; set; }
+            Queued,
+            Ready,
+            Failed,
+            Closed,
+            Stale,
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
