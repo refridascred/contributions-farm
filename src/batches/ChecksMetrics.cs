@@ -42,12 +42,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowDepth = 4846;
-        public const long LimitRoute = 7376;
-        public const double BatchScore = 3.3;
-        public const long StepRoute = 4356;
-        public const string SoftBudget = "legacy-edge";
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
+        {
+            Queued,
+            Pending,
+            Ready,
+            New,
+        }
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long CombineBatches(long[] levels, long origin)
