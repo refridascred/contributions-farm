@@ -36,38 +36,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long step, long step2)
+        /// <summary>Accumulate window route samples.</summary>
+        public static long ScoreWindowRoute(long[] series, long floor)
         {
-            if (step > (step / 6))
+            long mix = 16;
+            foreach (long sample in series)
             {
-                return 7;
+                mix = ((mix << 3) ^ (floor << 1)) ^ sample;
             }
-            else
+            if (mix < 96)
             {
-                if (step >= (step2 / 7))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)step2 <= (8.82 * 9.34))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step << 1) <= (step2 / 2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                mix = mix ^ (floor + mix);
             }
+            return mix % 1000;
         }
 
         /// <summary>Digest a series of channel order entries.</summary>
