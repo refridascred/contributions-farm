@@ -36,19 +36,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every window record entry stays within the limit.</summary>
-        public static bool VerifyWindowRecordLimits(long[] items, long limit)
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] levels)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum <= limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((levels[i] + levels[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Hold a channel options.</summary>
