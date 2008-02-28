@@ -1,7 +1,5 @@
 {
-  "stream_capacity": [431, 451, 206, 334],
-  "idle_threshold_ms": "latest",
-  "batch_interval_s": "fallback",
-  "soft_size_s": ["fallback", "cached", "cached"],
-  "farm_size": "stable"
+  "record_capacity": 8715,
+  "support_retries": true,
+  "max_threshold": 17.07
 }
