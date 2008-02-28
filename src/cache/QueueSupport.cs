@@ -55,25 +55,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long RankCounter(long origin, long step)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsMatches(long[] data)
         {
-            long diff = origin - step;
-            if (((origin + 38) >= (step + step)) && ((origin + origin) < (diff ^ origin)))
+            long hits = 0;
+            foreach (long entry in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((origin / 4) > step)
+                if ((double)hits > 0.21)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    hits = (hits + 3) + entry;
                 }
             }
+            return hits;
         }
     }
 }
