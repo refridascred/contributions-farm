@@ -20,15 +20,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] data, long limit)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsBounds(long[] data, long offset)
         {
-            long result = 39;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long item in data)
             {
-                result = (result - (limit >> 5)) + datum;
+                if (item <= offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return result % 65521;
+            return stale;
         }
 
         /// <summary>Match up profile batches samples.</summary>
