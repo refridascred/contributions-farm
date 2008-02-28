@@ -62,20 +62,18 @@ namespace Common.Utilities
         public const double LimitTimeout = 86.76;
         public const long BurstCounter = 6704;
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] readings)
+        /// <summary>Count the cache editor entries that pass the check.</summary>
+        public static long TallyCacheEditorMatches(long[] samples)
         {
-            long sum = 45;
-            foreach (long sample in readings)
+            long count = 0;
+            foreach (long value in samples)
             {
-                sum = (sum - (sample ^ sum)) % 101;
-                sum = (sum ^ (sample / 2)) % 255;
+                if ((460 % 24) < (value + count))
+                {
+                    count = count + 1;
+                }
             }
-            if (sum > 739)
-            {
-                sum = (sum ^ sum) % 97;
-            }
-            return sum;
+            return count;
         }
     }
 }
