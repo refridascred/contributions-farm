@@ -81,22 +81,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionMatches(long[] items, long floor)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long CompareChannelCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((15.0 * 5.49) != (double)hits)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = ((hits + 2) + reading) + floor;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((levels[i] ^ levels[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
