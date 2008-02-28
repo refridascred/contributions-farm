@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long step)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long MatchFarmCount(long[] series)
         {
-            long acc = step;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = acc + ((long)i + (long)i);
-                acc = ((acc * 4) + (long)i) % 101;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
