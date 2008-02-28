@@ -78,19 +78,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenRange(long[] values, long offset)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportBounds(long[] readings, long bound)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if (entry < offset)
+                if (entry > bound)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
     }
 }
