@@ -19,39 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long BucketWindow(long floor, long step)
-        {
-            if (!((step + step) == (step + floor)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step - step) == (step / 5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((floor + floor) < floor) && ((step + floor) > (step ^ 2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)step < (double)50)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string LimitLevel = "latest-v2";
+        public const string SoftBatches = "staging-1";
+        public const long CacheFactor = 2458;
+        public const long DefaultBudget = 8408;
+        public const string StepRatio = "legacy";
 
         /// <summary>Count the batch editor entries that pass the check.</summary>
         public static long AuditBatchEditorOutliers(long[] items, long step)
