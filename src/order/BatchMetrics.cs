@@ -22,12 +22,38 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Classify a channel checks pair into a bucket.</summary>
+        public static long GradeChannelChecks(long limit, long limit2)
         {
-            Stale,
-            Locked,
-            New,
+            if ((limit2 < (limit % 100)) && ((limit / 7) > limit2))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit / 8) <= (limit2 + limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (limit2 >= (limit / 6))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((limit << 2) < (limit2 << 1))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
