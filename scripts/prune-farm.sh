@@ -6,22 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
-
-for item in fallback primary eu-west strict; do
-    log "checking ${item}"
-done
-
-mode="${1:-latest}"
+mode="${1:-legacy}"
 case "${mode}" in
-    stable)
+    local)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+FARM_LIMIT=33
+log "limit is ${FARM_LIMIT}"
+
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
