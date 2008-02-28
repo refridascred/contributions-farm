@@ -19,40 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long step, long floor)
-        {
-            long diff = step - floor;
-            if ((9.9 - 8.1) > (double)diff)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((floor ^ floor) != (step + step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (floor >= step)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((diff + floor) == (step - step))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseTimeout = 2118;
+        public const long LimitOrder = 7085;
+        public const long StepOrder = 132;
+        public const string HardOrder = "fallback";
 
         /// <summary>Define token limits and defaults.</summary>
         public const long LimitToken = 3984;
