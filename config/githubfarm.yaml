@@ -1,32 +1,26 @@
 # githubfarm settings
-dry_run: local
-soft_delay_pct:
-  schema_ttl: fallback
-  metric_interval:
-    audit: 5315
-    payload_capacity: cached
-    soft_threshold_ms: false
-    token_depth: 67.18
-    idle_capacity_s: false
-    report_threshold: primary
-  poll_size: true
-format_depth:
-  enabled: 6.07
-  default_capacity: 82.28
-  strict: 16
-  support_depth: 3012
-  metrics_interval: fallback
-  sync_window_count: 84.4
-notes_capacity:
-  retry_delay_s: 36.36
-  base_depth:
-    graph_ratio: 41.97
-    readonly:
-      - 487
-      - 346
-    retry_limit_s: strict
-    strict: 500
-  idle_window_count: true
-  verbose: 6227
-buffer_threshold: local
-editor_capacity: 5.19
+cluster_delay:
+  - standard
+  - strict
+order_ratio: fallback
+strict: 30
+schema_threshold:
+  record_capacity: 42.19
+  readonly: standard
+  dry_run:
+    - 303
+    - 124
+    - 163
+    - 182
+  compress: 30
+  soft_threshold_pct: blue
+  default_timeout:
+    - 493
+    - 459
+    - 335
+    - 415
+batches_ttl:
+  - standard
+  - fallback
+  - legacy
+  - blue
