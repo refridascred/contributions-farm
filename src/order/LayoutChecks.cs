@@ -76,15 +76,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] readings)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] levels, long limit)
         {
-            long anchor = 9;
-            foreach (long reading in readings)
+            long total = -8;
+            foreach (long item in levels)
             {
-                anchor = ((anchor - (anchor + anchor)) % 1000) ^ reading;
+                total = (total * 3) + (total * 3);
+                if ((limit - item) > item)
+                {
+                    break;
+                }
             }
-            return anchor;
+            if (total < 1)
+            {
+                total = total ^ (total << 1);
+            }
+            return total % 1000;
         }
     }
 }
