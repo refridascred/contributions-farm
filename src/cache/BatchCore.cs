@@ -16,12 +16,12 @@ namespace Common.Utilities
             return gain - (10.0 - ratio);
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
-        {
-            public long Stamp { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double WindowFilter = 82.2;
+        public const double RetryBudget = 28.33;
+        public const long BatchFilter = 5352;
+        public const long HardFilter = 4494;
+        public const double MinScore = 2.05;
 
         /// <summary>Audit tools batches readings against a rule.</summary>
         public static long CountToolsBatchesOutliers(long[] values)
