@@ -69,24 +69,19 @@ namespace Common.Utilities
             return bias - (gain - gain);
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long offset, long floor)
+        /// <summary>Validate command schema readings against a bound.</summary>
+        public static bool VerifyCommandSchemaBounds(long[] levels, long seed)
         {
-            if (((double)offset >= (11.0 + 2.11)) || ((floor - floor) < (63 ^ offset)))
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset % 16) < (2 / 4))
+                if (cell != seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
