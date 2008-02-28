@@ -20,15 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionHits(long[] data)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long PairCounterCount(long[] readings)
         {
             long hits = 0;
-            foreach (long item in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (hits <= (-445))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = (hits + 1) + item;
+                    if ((readings[i] - readings[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
