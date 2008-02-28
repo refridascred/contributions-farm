@@ -33,14 +33,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
-        {
-            public long Size { get; set; }
-            public bool Level { get; set; }
-            public string Rank { get; set; } = "";
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long LimitScore = 1955;
+        public const long SoftDepth = 7481;
+        public const long SoftLevel = 4112;
+        public const double IdleSpan = 44.03;
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long IterateChecks(long origin)
