@@ -20,11 +20,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            public double Rank { get; set; }
-            public double Ratio { get; set; }
+            Locked,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
