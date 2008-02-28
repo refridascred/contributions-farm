@@ -29,15 +29,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double SmoothRecord(double rate, double floor)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesMatches(long[] values, long limit)
         {
-            double load = rate + (rate / 2.0);
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                load = ((load + (double)90) + (double)(long)i) + floor;
+                if ((matches - limit) == (0 - 6))
+                {
+                    matches = (matches + 1) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return load - 12.0;
+            return matches;
         }
 
         /// <summary>Define format limits and defaults.</summary>
