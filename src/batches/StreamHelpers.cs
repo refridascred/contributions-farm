@@ -57,21 +57,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long PairFarmCount(long[] items)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphGaps(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((value - value) <= value) || (((3.0 + 2.8) <= (double)hits) || ((18.0 * 5.13) < (double)hits)))
                 {
-                    if ((items[i] ^ items[j]) < 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Digest a series of session entries.</summary>
