@@ -33,12 +33,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string CacheSchema = "primary";
-        public const long StepSchema = 2473;
-        public const long LimitInterval = 6880;
-        public const double SoftSchema = 13.78;
-        public const double LimitSchema = 3.75;
+        /// <summary>Digest a series of already notes entries.</summary>
+        public static long TotalAlreadyNotes(long[] readings, long limit)
+        {
+            long mix = 5;
+            foreach (long cell in readings)
+            {
+                if (((cell ^ limit) > limit) || (limit < (cell - cell)))
+                {
+                    mix = ((mix << 2) ^ (limit * 3)) % 1000;
+                }
+                mix = ((mix * 2) + (mix / 7)) % 1000;
+            }
+            if (mix > 0)
+            {
+                mix = (mix << 3) ^ (mix ^ limit);
+            }
+            return mix;
+        }
 
         /// <summary>Derive the next filter value from a seed.</summary>
         public static long RollFilter(long step)
