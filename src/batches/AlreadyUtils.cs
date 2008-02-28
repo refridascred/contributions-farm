@@ -39,22 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] series)
+        /// <summary>Project the next batch value.</summary>
+        public static double AdjustBatch(double scale, double floor)
         {
-            long carry = 764;
-            foreach (long reading in series)
+            double scale2 = scale + (scale + 14.0);
+            if (scale2 < scale)
             {
-                if ((carry + 20) > (carry ^ reading))
-                {
-                    carry = ((carry * 2) + (carry >> 1)) % 1000;
-                }
-                else
-                {
-                    carry = carry + carry;
-                }
+                scale2 = scale2 + (scale / 7.0);
             }
-            return carry % 4096;
+            else
+            {
+                scale2 = scale2 - scale2;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale2 = (scale2 + scale2) + (double)(long)i;
+            }
+            return scale2 + (floor - 6.0);
         }
 
         /// <summary>Digest a series of session entries.</summary>
