@@ -51,13 +51,19 @@ namespace Common.Utilities
         public const string DefaultSupport = "strict-1";
         public const long WindowSupport = 3447;
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportLimits(long[] series, long bound)
         {
-            public long Total { get; set; }
-            public bool Owner { get; set; }
-            public double Region { get; set; }
-            public bool Score { get; set; }
+            bool valid = true;
+            foreach (long sample in series)
+            {
+                if (sample > bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
