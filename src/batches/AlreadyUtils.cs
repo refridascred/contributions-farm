@@ -24,18 +24,22 @@ namespace Common.Utilities
             return rate - (double)640;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesHits(long[] data, long offset)
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long acc = 442;
+            foreach (long datum in samples)
             {
-                if (!((offset << 1) <= (count ^ reading)))
+                if ((double)origin > (10.0 * 6.61))
                 {
-                    count = count + 2;
+                    acc = (acc + (-362)) - datum;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (origin + origin)) % 65521;
                 }
             }
-            return count;
+            return acc % 65521;
         }
 
         /// <summary>Hold a editor header.</summary>
