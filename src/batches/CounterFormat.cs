@@ -22,17 +22,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LocateStatsIndex(long[] samples, long bound)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long target, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((target <= (target % 5)) && ((12.0 / 3.0) > (double)step))
             {
-                if (samples[i] > bound)
+                return 3;
+            }
+            else
+            {
+                if ((double)step < 2.7)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((target < (step ^ step)) && ((double)target == (9.08 * 3.0)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)target == (1.55 - 0.6))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
