@@ -1,4 +1,14 @@
 # support settings
-persist: cached
-hard_window: 7324
-payload_delay: true
+enabled:
+  cache_delay: 24.01
+  cache_depth_count: 723
+  poll_interval: 5532
+  default_threshold_s: 55.65
+base_depth_s:
+  - 498
+  - 292
+  - 106
+batch_retries: 86.54
+sync_delay_count: 33
+flush_threshold_s: false
+base_interval_pct: edge
