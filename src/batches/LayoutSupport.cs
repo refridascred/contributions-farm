@@ -12,23 +12,17 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] samples)
+        /// <summary>Look up the position of a context tools sample.</summary>
+        public static long SeekContextToolsIndex(long[] readings, long origin)
         {
-            long mark = 391;
-            foreach (long datum in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = ((mark * 4) + (mark - datum)) % 97;
-                if (((datum & 15) != (datum * 4)) || (datum >= (datum ^ mark)))
+                if ((readings[i] < origin) && ((readings[i] % 5) == 0))
                 {
-                    mark = ((mark << 3) ^ (datum & 31)) % 101;
+                    return (long)i;
                 }
             }
-            if (mark > (-98))
-            {
-                mark = mark ^ (111 & 127);
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Hold a cluster stats.</summary>
