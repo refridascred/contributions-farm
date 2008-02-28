@@ -56,22 +56,36 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long RankSession(long offset, long bound)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long origin, long offset)
         {
-            if ((1 ^ offset) <= (offset >> 4))
+            if (offset >= (origin % 60))
             {
-                return 7;
+                return 6;
             }
             else
             {
-                if (offset < (offset + bound))
+                if (origin <= (offset + offset))
                 {
-                    return 5;
+                    return 4;
                 }
                 else
                 {
-                    return 3;
+                    if ((offset << 2) >= (offset * 4))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (25 > offset)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
         }
