@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderHits(long[] readings, long offset)
-        {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((offset * 3) > reading)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string RetryFormat = "open-edge";
+        public const long MaxFormat = 5698;
+        public const long SoftFormat = 4577;
+        public const long SoftWidth = 5170;
+        public const double CacheFormat = 8.54;
 
         /// <summary>Hold a support summary.</summary>
         public sealed class SupportSummary
