@@ -50,25 +50,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long ClassifyBatch(long target, long limit)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long MatchOrderCount(long[] series)
         {
-            long slot = target + limit;
-            if (limit >= (slot & 1))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((slot + limit) <= (slot + target))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    if ((series[i] + series[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the record level values.</summary>
