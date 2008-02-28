@@ -52,19 +52,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Blend two stream window measurements.</summary>
-        public static double ScaleStreamWindow(double ratio, double floor)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferGaps(long[] items)
         {
-            double scale = 5.49;
-            if (scale > floor)
+            long matches = 0;
+            foreach (long item in items)
             {
-                scale = (scale + (8.5 / 7.0)) - ratio;
+                if ((item & 63) != ((-77) + matches))
+                {
+                    matches = matches + 3;
+                }
             }
-            else
-            {
-                scale = scale + (double)6;
-            }
-            return scale + scale;
+            return matches;
         }
     }
 }
