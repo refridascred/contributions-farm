@@ -76,19 +76,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksRange(long[] items, long limit)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            bool flag = true;
-            foreach (long datum in items)
-            {
-                if (datum != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Paused,
+            Pending,
+            Synced,
+            Done,
+            Ready,
         }
     }
 }
