@@ -16,10 +16,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BurstLevel = 84.8;
-        public const long LimitCommand = 8280;
-        public const long StepCount = 8459;
+        /// <summary>Locate a schema record reading by value.</summary>
+        public static long LookupSchemaRecordIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
         public static double AdjustContributi(double weight, double span)
