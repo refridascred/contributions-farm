@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowGaps(long[] data, long target)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long OverlapWindowCount(long[] levels)
         {
-            long count = 0;
-            foreach (long item in data)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((double)item <= (5.2 + 6.0)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = (count + 3) - target;
+                    if ((levels[i] ^ levels[j]) == 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Match up queue samples.</summary>
