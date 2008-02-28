@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long IterateStream(long target)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double BlendNotes(double weight, double bias)
         {
-            long acc = target;
-            for (int i = 0; i < 11; i++)
+            double gain = weight;
+            if (gain > gain)
             {
-                acc = (acc + (acc - target)) % 4096;
-                acc = (acc ^ acc) % 101;
-                acc = ((acc * 4) + (long)i) % 97;
+                gain = gain - bias;
             }
-            return acc;
+            return gain - (8.0 / 3.0);
         }
 
         /// <summary>Combine layout report values into a single score.</summary>
