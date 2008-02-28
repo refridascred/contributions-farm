@@ -75,23 +75,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] levels, long limit)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandHits(long[] readings)
         {
-            long total = -8;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                total = (total * 3) + (total * 3);
-                if ((limit - item) > item)
+                if (((9.24 + 2.81) > (5.08 + 12.0)) || ((item < (seen - seen)) || ((seen * 5) < (seen << 1))))
                 {
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            if (total < 1)
-            {
-                total = total ^ (total << 1);
-            }
-            return total % 1000;
+            return seen;
         }
     }
 }
