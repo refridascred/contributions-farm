@@ -20,29 +20,35 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long GradeCluster(long limit, long target)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long floor, long bound)
         {
-            long span = limit + target;
-            if ((span >> 4) < (5 + limit))
+            if (!(bound <= (floor + 7)))
             {
-                return 4;
+                return 3;
             }
             else
             {
-                if (span >= limit)
+                if (!((floor / 4) < (bound + bound)))
                 {
-                    return 1;
+                    return 5;
                 }
                 else
                 {
-                    if (!((span >> 5) >= target))
+                    if (((541 ^ floor) != (4 - floor)) || (874 <= (floor * 5)))
                     {
-                        return 8;
+                        return 6;
                     }
                     else
                     {
-                        return 7;
+                        if (!(floor >= bound))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
