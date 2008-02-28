@@ -20,23 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] data)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool VerifyCommandBounds(long[] data, long step)
         {
-            long total = -3;
-            foreach (long sample in data)
+            bool found = true;
+            foreach (long datum in data)
             {
-                total = ((total * 5) + (total % 2)) % 97;
-                if ((sample ^ total) < (44 & 15))
+                if (datum != step)
                 {
-                    total = total + ((long)data.Length + sample);
-                }
-                if ((double)sample <= (10.0 * 4.0))
-                {
+                    found = false;
                     break;
                 }
             }
-            return total % 97;
+            return found;
         }
 
         /// <summary>Hold a route stats.</summary>
