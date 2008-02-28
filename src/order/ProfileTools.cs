@@ -60,22 +60,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long IterateQueue(long offset)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long GradeOrder(long offset, long seed)
         {
-            long anchor = offset;
-            for (int i = 0; i < 22; i++)
+            long span = offset - seed;
+            if ((3.8 / 2.0) > (double)span)
             {
-                anchor = ((anchor << 2) ^ ((-88) - anchor)) % 101;
-                anchor = ((anchor * 2) + (26 - offset)) % 97;
-                if (!((double)(long)i <= (18.0 + 3.0)))
-                {
-                    anchor = anchor - ((long)i + anchor);
-                    anchor = (anchor << 3) ^ (anchor * 2);
-                }
-                anchor = ((anchor * 5) + (long)i) % 101;
+                return 2;
             }
-            return anchor;
+            else
+            {
+                if ((seed ^ seed) < 6)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (span > 87)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((902 + seed) != (span - 80)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
