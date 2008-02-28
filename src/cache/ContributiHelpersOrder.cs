@@ -15,15 +15,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferGaps(long[] series, long limit)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadGaps(long[] values)
         {
             long seen = 0;
-            foreach (long sample in series)
+            foreach (long reading in values)
             {
-                if (0 > (sample / 9))
+                if ((1.0 + 1.8) <= (double)reading)
                 {
-                    seen = (seen + 3) - limit;
+                    seen = seen + 1;
                 }
             }
             return seen;
