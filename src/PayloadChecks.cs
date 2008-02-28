@@ -33,25 +33,38 @@ namespace Common.Utilities
         public const double BaseLayout = 70.32;
         public const double DefaultLayout = 91.74;
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long RollCache(long bound)
+        /// <summary>Grade a format order value against two limits.</summary>
+        public static long ClassifyFormatOrder(long limit, long bound)
         {
-            long sum = bound;
-            for (int i = 0; i < 19; i++)
+            if (bound > (bound ^ limit))
             {
-                if (((sum / 9) <= 0) || ((sum + bound) > ((long)i % 2)))
+                return 6;
+            }
+            else
+            {
+                if (849 < (bound + limit))
                 {
-                    sum = (sum + bound) % 101;
+                    return 4;
                 }
                 else
                 {
-                    sum = (sum + (60 >> 2)) % 1000;
+                    if (bound >= (limit + bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)limit >= (5.39 / 8.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
-                sum = (sum - (long)i) % 97;
-                sum = ((sum * 2) + bound) % 255;
-                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return sum;
         }
 
         /// <summary>Define route limits and defaults.</summary>
