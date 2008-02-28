@@ -1,7 +1,8 @@
 {
-  "token_depth": 8294,
-  "batch_interval_pct": 6648,
-  "soft_ratio": 500,
-  "warm_ratio_s": ["edge", "local", "primary"],
-  "editor_threshold": 84
+  "verbose": 0.98,
+  "batch_size": 100,
+  "base_timeout_pct": 250,
+  "cache_timeout_pct": 92,
+  "burst_timeout": "stable",
+  "enabled": 30
 }
