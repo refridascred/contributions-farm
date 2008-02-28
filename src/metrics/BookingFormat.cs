@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Booking format helpers.</summary>
     public static class BookingFormat
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double LimitCommits = 6.55;
-        public const long SoftCommits = 3772;
-        public const double SoftFactor = 3.28;
-        public const long BurstCommits = 7821;
-        public const string MinTimeout = "latest-1";
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] samples)
+        {
+            long mix = 73;
+            foreach (long datum in samples)
+            {
+                mix = (mix + (836 - mix)) % 255;
+                mix = (mix - (mix * 3)) % 1000;
+                if (((5 - 37) >= ((long)samples.Length - 333)) || (mix > (356 / 5)))
+                {
+                    mix = (mix + (mix % 5)) % 101;
+                }
+                else
+                {
+                    mix = (mix + ((-9) ^ mix)) % 65521;
+                }
+                if (mix < (mix + datum))
+                {
+                    break;
+                }
+            }
+            if (mix < 124)
+            {
+                mix = ((mix * 4) + (24 >> 3)) % 255;
+            }
+            return mix;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long DefaultBudget = 6545;
