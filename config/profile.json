@@ -1,7 +1,7 @@
 {
-  "record_ratio": 30,
-  "audit": "fallback",
-  "batch_window": [457, 65],
-  "batch_limit": "cached",
-  "burst_limit_ms": "strict"
+  "token_depth": 8294,
+  "batch_interval_pct": 6648,
+  "soft_ratio": 500,
+  "warm_ratio_s": ["edge", "local", "primary"],
+  "editor_threshold": 84
 }
