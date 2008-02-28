@@ -29,18 +29,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long AuditMetricOutliers(long[] series)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long ClassifyEditor(long bound, long floor)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long prev = bound ^ floor;
+            if ((1.01 / 6.0) >= (double)floor)
             {
-                if ((hits ^ hits) < item)
+                return 3;
+            }
+            else
+            {
+                if ((prev / 3) < (prev / 7))
                 {
-                    hits = hits + 2;
+                    return 1;
+                }
+                else
+                {
+                    if ((prev + 3) == (floor / 9))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define format limits and defaults.</summary>
