@@ -50,17 +50,10 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long SeekGithubfarmIndex(long[] samples, long step)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftCount = 1206;
+        public const double StepFactor = 89.18;
+        public const double MaxChannel = 54.92;
+        public const long CacheRatio = 589;
     }
 }
