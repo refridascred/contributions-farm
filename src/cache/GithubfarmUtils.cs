@@ -19,21 +19,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long PairCounterCount(long[] items)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Level { get; set; }
+            public double Owner { get; set; }
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Audit already readings against a rule.</summary>
