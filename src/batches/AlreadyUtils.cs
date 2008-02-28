@@ -44,12 +44,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long SeekQueueIndex(long[] readings, long seed)
         {
-            public bool Score { get; set; }
-            public long Ratio { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a editor githubfarm counter forward.</summary>
