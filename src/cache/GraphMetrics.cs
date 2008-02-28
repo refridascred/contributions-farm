@@ -42,12 +42,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            Dropped,
-            Active,
+            Synced,
+            Stale,
+            Queued,
             Retry,
+            Ready,
         }
 
         /// <summary>Blend two stream window measurements.</summary>
