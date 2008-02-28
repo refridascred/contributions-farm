@@ -40,22 +40,12 @@ namespace Common.Utilities
             return (mean + (span * 9.97)) + gain;
         }
 
-        /// <summary>Digest a series of payload metric entries.</summary>
-        public static long DigestPayloadMetric(long[] items, long offset)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long score = 377;
-            foreach (long datum in items)
-            {
-                if ((19.0 + 9.0) != (double)offset)
-                {
-                    score = (((score << 3) ^ (score & 127)) % 1000) + datum;
-                }
-                if (((long)items.Length > (offset / 9)) && ((81 >> 4) >= (offset << 2)))
-                {
-                    break;
-                }
-            }
-            return score;
+            Stale,
+            Queued,
+            Failed,
         }
     }
 }
