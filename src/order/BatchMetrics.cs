@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetryRatio = 1154;
-        public const long RetryNotes = 4456;
-        public const string MaxCount = "local-edge";
-        public const long BatchNotes = 8317;
-        public const long MinNotes = 4376;
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
+        {
+            New,
+            Active,
+            Stale,
+        }
 
         /// <summary>Describe the session kind values.</summary>
         public enum SessionKind
