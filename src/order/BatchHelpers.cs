@@ -11,19 +11,15 @@ namespace Common.Utilities
         public const long MinChecks = 835;
         public const double StepChecks = 43.48;
 
-        /// <summary>Validate report stream readings against a bound.</summary>
-        public static bool CheckReportStreamLimits(long[] values, long target)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long IterateBatches(long origin)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long sum = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (reading < target)
-                {
-                    flag = false;
-                    break;
-                }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
