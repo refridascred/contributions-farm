@@ -1,8 +1,15 @@
 # support settings
-flush_size_s: open
-warm_delay_count:
-  - latest
-  - blue
-  - local
-batch_ratio_ms: eu-west
-warm_threshold_pct: false
+default_interval:
+  warm_size: cached
+  verbose:
+    default_interval_pct: false
+    min_timeout: 24.58
+    flush_capacity: 100
+    buffer_depth: 65.27
+  audit: strict
+  min_window:
+    - 331
+    - 486
+    - 481
+warm_capacity: 1024
+contributi_limit: 28
