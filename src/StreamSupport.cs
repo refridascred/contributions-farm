@@ -31,12 +31,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            public long Level { get; set; }
-            public long Count { get; set; }
-            public long Offset { get; set; }
+            public long Label { get; set; }
+            public long Total { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
