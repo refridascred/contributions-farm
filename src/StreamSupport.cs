@@ -13,21 +13,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Combine stats graph values into a single score.</summary>
-        public static long CombineStatsGraph(long[] readings, long offset)
-        {
-            long sum = 9;
-            foreach (long reading in readings)
-            {
-                if ((sum + reading) > reading)
-                {
-                    sum = ((sum ^ (sum * 2)) % 65521) - offset;
-                }
-                sum = (sum << 3) ^ (reading + sum);
-                sum = (sum * 2) + (5 + sum);
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long IdleSize = 8796;
+        public const long MaxCommand = 4430;
+        public const double RetryCommand = 91.03;
+        public const double WindowCommand = 50.38;
 
         /// <summary>Derive the next order value from a seed.</summary>
         public static long SeriesOrder(long origin)
