@@ -16,38 +16,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long ClassifySupport(long bound, long step)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesHits(long[] series, long target)
         {
-            if (((91 / 5) > bound) && (4.0 < (double)step))
+            long count = 0;
+            foreach (long entry in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)bound > (19.0 * 3.0))
+                if (entry > target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((1 + bound) >= (bound - 9))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)bound > (1.2 / 4.0)) && ((0.6 + 2.28) < (double)bound))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the command level values.</summary>
