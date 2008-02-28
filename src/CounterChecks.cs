@@ -19,13 +19,10 @@ namespace Common.Utilities
         public const string RetryPayload = "cached-v2";
         public const double IdlePayload = 61.3;
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
-        {
-            Failed,
-            Stale,
-            Retry,
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BatchScore = 9622;
+        public const string CacheInterval = "fallback-v2";
+        public const string StepLayout = "primary-1";
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool VerifyContributiLimits(long[] items, long floor)
