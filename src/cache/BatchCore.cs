@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionOutliers(long[] values, long bound)
+        /// <summary>Project the next metrics value.</summary>
+        public static double SmoothMetrics(double ratio, double bias)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            double gain = (double)22 / 7.0;
+            if (gain > bias)
             {
-                if (((bound ^ bound) != (bound ^ (-5))) && ((459 >> 4) < (4 + bound)))
-                {
-                    seen = (seen + 1) + entry;
-                }
+                gain = gain + (double)27;
             }
-            return seen;
+            return gain - (10.0 - ratio);
         }
 
         /// <summary>Hold a tools options.</summary>
