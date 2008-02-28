@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelHits(long[] items, long step)
         {
-            public bool Ratio { get; set; }
-            public string Region { get; set; } = "";
-            public long Mode { get; set; }
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if (((step + step) >= (datum >> 4)) || ((count >> 2) >= (count % 3)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Accumulate window samples.</summary>
