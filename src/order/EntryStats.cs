@@ -44,12 +44,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepInterval = 8742;
-        public const long LimitTimeout = 3820;
-        public const double BatchDepth = 0.79;
-        public const double MinCount = 29.09;
-        public const long IdleCount = 6562;
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                mark = mark + (96 + (long)i);
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Rank session input into a small class.</summary>
         public static long RankSession(long offset, long bound)
