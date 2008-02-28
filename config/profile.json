@@ -1,16 +1,5 @@
 {
-  "burst_size_pct": 94.96,
-  "retry_capacity_pct": {
-    "order_interval": "cached",
-    "idle_window_ms": ["staging", "eu-west", "standard"],
-    "hard_ttl": true,
-    "channel_size": {
-      "already_capacity": 4353,
-      "sync_retries_count": "staging",
-      "report_capacity": 59
-    }
-  },
-  "contributi_limit": "blue",
-  "channel_size": "strict",
-  "min_delay": "fallback"
+  "entry_retries": "fallback",
+  "token_threshold": ["primary", "eu-west"],
+  "min_capacity_ms": false
 }
