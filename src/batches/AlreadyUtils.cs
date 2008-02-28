@@ -30,14 +30,12 @@ namespace Common.Utilities
         public const long CacheSize = 6327;
         public const long SoftChannel = 4047;
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            Idle,
-            Draft,
-            Ready,
-            New,
-            Queued,
+            public double Flag { get; set; }
+            public string Level { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Define format limits and defaults.</summary>
