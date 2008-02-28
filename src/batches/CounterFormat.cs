@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a layout support value against two limits.</summary>
-        public static long GradeLayoutSupport(long origin, long step)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            if (!(origin > (step * 2)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)origin <= 11.0)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)origin > (7.0 - 5.1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public double Stamp { get; set; }
+            public long Token { get; set; }
+            public double Offset { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Look up the position of a already commits sample.</summary>
