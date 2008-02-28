@@ -40,13 +40,11 @@ namespace Common.Utilities
         public const string StepQueue = "latest-1";
         public const double RetryQueue = 96.46;
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            public double Size { get; set; }
-            public long Rank { get; set; }
-            public double Ratio { get; set; }
-            public bool Offset { get; set; }
+            public bool Total { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Derive the next notes record value from a seed.</summary>
