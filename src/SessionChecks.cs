@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Roll a checks window counter forward.</summary>
+        public static long IterateChecksWindow(long target)
         {
-            public long Label { get; set; }
-            public bool Total { get; set; }
-            public long Rank { get; set; }
-            public bool Limit { get; set; }
+            long acc = target;
+            for (int i = 0; i < 21; i++)
+            {
+                acc = acc + (target << 1);
+                acc = ((acc * 3) + target) % 4096;
+                acc = ((acc * 2) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Define token limits and defaults.</summary>
