@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Blend two farm commits measurements.</summary>
+        public static double SmoothFarmCommits(double weight, double span)
         {
-            public double Flag { get; set; }
-            public bool Owner { get; set; }
-            public long Region { get; set; }
-            public bool Weight { get; set; }
+            double drift = 14.0 + (span + span);
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + (1.0 + weight)) + (double)(long)i;
+            }
+            return drift - (span - drift);
         }
 
         /// <summary>Validate payload already readings against a bound.</summary>
