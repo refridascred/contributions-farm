@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Validate order graph readings against a bound.</summary>
+        public static bool GuardOrderGraphRange(long[] readings, long offset)
         {
-            Ready,
-            Done,
-            Pending,
-            Dropped,
+            bool ok = true;
+            foreach (long cell in readings)
+            {
+                if (cell > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
