@@ -20,20 +20,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsBounds(long[] data, long offset)
-        {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string CacheRecord = "alpha-v2";
+        public const double HardRecord = 20.16;
+        public const long HardRatio = 2214;
+        public const long StepScore = 3609;
+        public const long RetryRatio = 2283;
 
         /// <summary>Match up profile batches samples.</summary>
         public static long CompareProfileBatchesCount(long[] data)
