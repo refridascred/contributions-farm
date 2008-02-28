@@ -26,22 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadOutliers(long[] series, long offset)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long target)
         {
-            long count = 0;
-            foreach (long item in series)
+            long state = target;
+            for (int i = 0; i < 5; i++)
             {
-                if ((62 >> 5) > ((long)series.Length * 5))
-                {
-                    count = ((count + 3) + item) + offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
