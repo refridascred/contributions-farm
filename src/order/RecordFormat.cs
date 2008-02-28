@@ -60,11 +60,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long CacheSize = 9140;
-        public const string StepSpan = "alpha";
-        public const long HardCache = 6049;
-        public const long LimitSpan = 2119;
-        public const long MaxWidth = 7130;
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long RollProfile(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
+        }
     }
 }
