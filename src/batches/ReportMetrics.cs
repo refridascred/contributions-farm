@@ -30,27 +30,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long ScoreMetric(long[] items, long origin)
+        /// <summary>Blend two session measurements.</summary>
+        public static double BlendSession(double ratio, double offset)
         {
-            long total = -355;
-            foreach (long entry in items)
+            double mean = (double)(888 + 462);
+            if (mean >= ratio)
             {
-                total = (total ^ 8) % 1000;
-                if (origin < (origin - entry))
-                {
-                    total = ((total * 4) + total) % 255;
-                }
-                else
-                {
-                    total = (total << 2) ^ total;
-                }
+                mean = (mean - ratio) - offset;
             }
-            if (total > 834)
-            {
-                total = total + (total << 3);
-            }
-            return total;
+            return mean + ratio;
         }
     }
 }
