@@ -59,15 +59,21 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double ProjectPayload(double bias, double span)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long floor)
         {
-            double rate = bias;
-            for (int i = 0; i < 2; i++)
+            long sum = floor;
+            for (int i = 0; i < 15; i++)
             {
-                rate = (rate + span) + (double)(long)i;
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    sum = ((sum + (71 >> 4)) % 97) ^ (long)i2;
+                }
+                sum = (sum - 801) % 255;
+                sum = (sum ^ (floor ^ sum)) % 101;
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return rate - (span + bias);
+            return sum;
         }
     }
 }
