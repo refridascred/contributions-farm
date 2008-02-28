@@ -6,21 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-blue}"
-case "${mode}" in
-    cached)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
 total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 5))
+for i in $(seq 1 10); do
+    total=$((total + i * 2))
 done
 log "total ${total}"
 
-BUFFER_LIMIT=55
-log "limit is ${BUFFER_LIMIT}"
+for item in standard open local fallback; do
+    log "checking ${item}"
+done
