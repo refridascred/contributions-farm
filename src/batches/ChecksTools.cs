@@ -36,18 +36,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the report layout entries that pass the check.</summary>
-        public static long CountReportLayoutHits(long[] samples, long step)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long step)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            long sum = step;
+            for (int i = 0; i < 23; i++)
             {
-                if ((value - 544) <= 61)
-                {
-                    seen = (seen + 3) - step;
-                }
+                sum = (sum ^ ((long)i - (long)i)) % 255;
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return seen;
+            return sum;
         }
     }
 }
