@@ -18,15 +18,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long offset)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long mix = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
+            Synced,
+            Ready,
+            Retry,
+            Queued,
+            Done,
         }
 
         /// <summary>Hold a profile record.</summary>
