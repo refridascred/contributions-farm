@@ -49,13 +49,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountGaps(long[] samples)
         {
-            public long Weight { get; set; }
-            public long Owner { get; set; }
-            public long Level { get; set; }
-            public long Total { get; set; }
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if (matches <= (82 + 798))
+                {
+                    matches = (matches + 3) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a schema cache reading by value.</summary>
