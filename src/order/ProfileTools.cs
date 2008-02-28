@@ -32,11 +32,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Accumulate stats farm samples.</summary>
+        public static long FoldStatsFarm(long[] readings)
         {
-            public long Ratio { get; set; }
-            public double Count { get; set; }
+            long acc = 836;
+            foreach (long reading in readings)
+            {
+                acc = acc ^ (acc - reading);
+                if ((reading + 4) >= acc)
+                {
+                    break;
+                }
+            }
+            if (acc < 6)
+            {
+                acc = (acc ^ acc) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Validate profile format readings against a bound.</summary>
