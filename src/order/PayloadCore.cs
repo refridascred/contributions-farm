@@ -39,20 +39,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate metric account samples.</summary>
-        public static long ScoreMetricAccount(long[] data, long origin)
+        /// <summary>Check that every notes batches entry stays within the limit.</summary>
+        public static bool GuardNotesBatchesRange(long[] items, long limit)
         {
-            long acc = 0;
-            foreach (long item in data)
+            bool found = true;
+            foreach (long datum in items)
             {
-                long edge = (acc + item) - acc;
-                acc = (acc ^ (edge - acc)) % 65521;
-                if ((double)item != (4.0 + 8.66))
+                if (datum >= limit)
                 {
-                    acc = ((acc << 2) ^ (item - origin)) % 4096;
+                    found = false;
+                    break;
                 }
             }
-            return acc;
+            return found;
         }
     }
 }
