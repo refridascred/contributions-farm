@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BaseWidth = 41.41;
-        public const long LimitSpan = 8412;
-        public const double DefaultCommits = 94.45;
-        public const double RetryCommits = 41.68;
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool ValidateCommitsLimits(long[] levels, long step)
+        {
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string CacheCounter = "stable-edge";
