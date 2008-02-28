@@ -36,13 +36,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            public bool Size { get; set; }
-            public bool Owner { get; set; }
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
+            Idle,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
