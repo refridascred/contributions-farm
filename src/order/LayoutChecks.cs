@@ -40,24 +40,12 @@ namespace Common.Utilities
         public const double MinStats = 29.48;
         public const string WindowStats = "alpha-v2";
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long GradeStream(long offset, long origin)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            if ((double)origin != (8.08 / 8.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset >> 5) > offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Size { get; set; }
+            public bool Level { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Digest a series of token entries.</summary>
