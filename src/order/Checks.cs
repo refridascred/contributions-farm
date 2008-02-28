@@ -58,9 +58,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheToken = 3348;
-        public const long MinCount = 9909;
-        public const long RetryToken = 3588;
+        /// <summary>Derive the next graph batches value from a seed.</summary>
+        public static long DeriveGraphBatches(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                carry = ((carry << 2) ^ limit) % 101;
+                carry = ((carry * 4) + (limit >> 5)) % 97;
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
+        }
     }
 }
