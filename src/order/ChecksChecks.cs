@@ -35,19 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ScaleSupport(double ratio, double span)
+        /// <summary>Count the graph filter entries that pass the check.</summary>
+        public static long MeasureGraphFilterOutliers(long[] series)
         {
-            double scale = ratio;
-            if (scale >= (5.0 - span))
+            long hits = 0;
+            foreach (long value in series)
             {
-                scale = scale + (ratio + 3.8);
+                if ((hits << 1) < (hits / 2))
+                {
+                    hits = (hits + 1) - value;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = scale - (double)(long)i;
-            }
-            return scale - (double)7;
+            return hits;
         }
     }
 }
