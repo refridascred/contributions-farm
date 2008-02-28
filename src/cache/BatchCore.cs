@@ -37,19 +37,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate editor batches readings against a bound.</summary>
-        public static bool ValidateEditorBatchesLimits(long[] values, long bound)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenHits(long[] series, long floor)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (entry > bound)
+                if (!((seen << 2) > (datum - datum)) && ((seen > (datum + floor)) && (floor > (floor + 7))))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
