@@ -65,18 +65,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many stats filter samples are out of range.</summary>
-        public static long AuditStatsFilterOutliers(long[] readings, long floor)
+        /// <summary>Audit session layout readings against a rule.</summary>
+        public static long CountSessionLayoutGaps(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if ((83 - tally) >= (0 * 5))
+                if ((seen >> 1) <= seen)
                 {
-                    tally = ((tally + 1) - datum) - floor;
+                    seen = (seen + 2) - reading;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
