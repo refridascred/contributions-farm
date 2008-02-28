@@ -29,17 +29,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a account cluster sample.</summary>
-        public static long FindAccountClusterIndex(long[] levels, long origin)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long step, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (((double)floor > (7.66 * 6.24)) && ((step % 12) != (floor + 2)))
             {
-                if (levels[i] <= origin)
+                return 6;
+            }
+            else
+            {
+                if ((floor + floor) <= 1)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a batch record.</summary>
