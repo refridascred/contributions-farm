@@ -24,13 +24,14 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            Idle,
             Draft,
+            Failed,
+            Ready,
             Dropped,
-            Active,
+            Paused,
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
