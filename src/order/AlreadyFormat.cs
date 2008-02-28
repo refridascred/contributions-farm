@@ -29,19 +29,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionRange(long[] readings, long offset)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            bool found = true;
-            foreach (long value in readings)
-            {
-                if (value <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Dropped,
+            Active,
+            Pending,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
