@@ -12,17 +12,16 @@ namespace Common.Utilities
         public const string MaxQueue = "cached-edge";
         public const long BatchQueue = 4872;
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long origin)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long RollFilter(long limit)
         {
-            long anchor = origin;
-            for (int i = 0; i < 13; i++)
+            long sum = limit;
+            for (int i = 0; i < 21; i++)
             {
-                anchor = ((anchor * 2) + (anchor % 12)) % 65521;
-                anchor = (anchor - ((long)i << 3)) % 101;
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                sum = (sum - 337) % 255;
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Scale a stats tools figure with a bias.</summary>
