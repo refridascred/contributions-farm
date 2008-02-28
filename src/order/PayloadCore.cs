@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            Locked,
-            Failed,
+            Idle,
+            Paused,
             Queued,
-            Retry,
-            New,
         }
 
         /// <summary>Describe the order class values.</summary>
