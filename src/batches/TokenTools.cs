@@ -39,11 +39,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double IdleLevel = 19.8;
-        public const long BaseInterval = 5857;
-        public const string BaseSpan = "cached-1";
-        public const long MinContext = 2680;
-        public const double StepContext = 75.44;
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
+        {
+            Ready,
+            Closed,
+            Synced,
+            Retry,
+            Stale,
+        }
     }
 }
