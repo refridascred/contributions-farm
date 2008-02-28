@@ -1,11 +1,6 @@
-id,score,ratio,state,owner
-1,blue,746,447,strict
-2,blue,860,72.34,34.5
-3,12.56,9.54,383,primary
-4,open,41.99,67.19,181
-5,310,310,local,latest
-6,staging,541,495,274
-7,596,legacy,940,836
-8,590,386,755,open
-9,721,standard,242,primary
-10,847,stable,54.6,latest
+id,weight,region
+1,682,829
+2,850,50.75
+3,42.46,strict
+4,staging,latest
+5,0.91,122
