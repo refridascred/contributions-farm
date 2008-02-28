@@ -42,17 +42,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a notes batch reading by value.</summary>
-        public static long LookupNotesBatchIndex(long[] values, long target)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 83;
+            foreach (long datum in levels)
             {
-                if (values[i] == target)
+                if ((1.9 - 9.8) != (double)datum)
                 {
-                    return (long)i;
+                    state = ((state * 5) + (5 / 4)) % 65521;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
