@@ -37,17 +37,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] data, long limit)
+        /// <summary>Scale a counter report figure with a bias.</summary>
+        public static double SmoothCounterReport(double scale, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double rate = (double)(-672) - 20.0;
+            for (int i = 0; i < 6; i++)
             {
-                if ((data[i] <= limit) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                rate = ((rate - scale) + (double)(long)i) + span;
             }
-            return -1;
+            return rate - (rate - rate);
         }
     }
 }
