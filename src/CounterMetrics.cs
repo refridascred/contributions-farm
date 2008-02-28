@@ -34,22 +34,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long WeighCommits(long[] levels)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long StepBuffer(long seed)
         {
-            long state = 538;
-            foreach (long cell in levels)
+            long result = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if ((cell - cell) == (state + cell))
+                if ((double)0 != (double)result)
                 {
-                    state = (state * 2) + (cell - state);
+                    continue;
                 }
-                if (cell <= (9 >> 5))
+                else
                 {
-                    state = (state + (60 / 3)) % 1000;
+                    result = result - (52 / 3);
                 }
+                result = ((result * 2) + (long)i) % 97;
             }
-            return state % 4096;
+            return result;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
