@@ -19,15 +19,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ScaleCounter(double rate, double offset)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueOutliers(long[] levels)
         {
-            double ratio = (offset - offset) * 2.0;
-            for (int i = 0; i < 3; i++)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                ratio = (ratio + (9.07 - rate)) + (double)(long)i;
+                if ((double)value < 3.31)
+                {
+                    seen = seen + 3;
+                }
             }
-            return ratio + rate;
+            return seen;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
