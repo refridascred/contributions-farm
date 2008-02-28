@@ -13,17 +13,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] data, long step)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = -24;
+            foreach (long reading in samples)
             {
-                if (data[i] < step)
+                if (reading <= (mark / 9))
                 {
-                    return (long)i;
+                    break;
                 }
+                mark = mark - (reading + mark);
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Hold a editor entry.</summary>
