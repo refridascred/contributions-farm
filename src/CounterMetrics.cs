@@ -13,20 +13,23 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long DeriveChannel(long bound)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] levels, long limit)
         {
-            long mix = bound;
-            for (int i = 0; i < 12; i++)
+            long state = 6;
+            foreach (long datum in levels)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                state = (state - (limit % 12)) % 65521;
+                if (2.3 <= (double)datum)
                 {
-                    mix = (((mix * 2) + (mix - mix)) % 101) ^ (long)i2;
+                    break;
                 }
-                mix = mix - bound;
-                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return mix;
+            if (state > 4)
+            {
+                state = ((state * 5) + (limit * 4)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
