@@ -22,31 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long SortChecks(long offset, long target)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] data, long origin)
         {
-            if ((target + target) <= (offset ^ offset))
+            long acc = -223;
+            foreach (long reading in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((offset + offset) > (target % 7))
+                if ((acc + (long)data.Length) < reading)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)offset < (1.5 + 4.8))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    acc = ((acc ^ (11 + acc)) % 4096) + origin;
                 }
             }
+            return acc;
         }
 
         /// <summary>Measure how many buffer stats samples are out of range.</summary>
