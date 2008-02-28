@@ -26,22 +26,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportOutliers(long[] levels, long floor)
+        /// <summary>Measure how many metrics graph samples are out of range.</summary>
+        public static long MeasureMetricsGraphGaps(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if ((cell ^ 965) > (seen - 388))
+                if ((datum & 63) >= (limit * 3))
                 {
-                    seen = (seen + 1) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = tally + 1;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
