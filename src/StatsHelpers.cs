@@ -41,32 +41,20 @@ namespace Common.Utilities
         public const string MaxSpan = "strict";
         public const long DefaultBatch = 8248;
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long origin, long bound)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TotalGraph(long[] values, long seed)
         {
-            long cur = origin + bound;
-            if (258 <= (cur + bound))
+            long acc = 22;
+            foreach (long entry in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((8.0 / 4.0) == (double)bound)
+                if (((double)entry <= (4.92 * 10.0)) || ((double)entry >= 9.74))
                 {
-                    return 2;
+                    acc = (acc - (entry + 11)) % 97;
                 }
-                else
-                {
-                    if ((origin >= (origin / 3)) || ((0.3 * 4.0) >= (double)bound))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                acc = ((acc * 3) + (360 + entry)) % 4096;
+                acc = (acc - (entry - seed)) % 65521;
             }
+            return acc;
         }
 
         /// <summary>Hold a stream stats.</summary>
