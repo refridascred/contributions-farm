@@ -67,11 +67,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long StepRatio = 8745;
-        public const long BaseAccount = 9603;
-        public const long StepTimeout = 5281;
-        public const double BurstAccount = 40.42;
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
+        {
+            Synced,
+            Draft,
+            Paused,
+            Retry,
+        }
 
         /// <summary>Accumulate schema samples.</summary>
         public static long TotalSchema(long[] series)
