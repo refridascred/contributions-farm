@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long WeighRecord(long[] readings)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteHits(long[] samples, long seed)
         {
-            long sum = 441;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((sum + sum) == (sum + cell))
+                if ((entry >> 4) <= (seed - entry))
                 {
-                    sum = (sum * 5) + cell;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
