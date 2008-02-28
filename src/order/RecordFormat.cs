@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long StepAccount(long offset)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long FindSupportIndex(long[] data, long origin)
         {
-            long mark = offset;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if ((data[i] >= origin) && ((data[i] % 5) == 0))
                 {
-                    mark = ((mark + (long)i) % 97) - (long)i2;
+                    return (long)i;
                 }
-                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Measure how many stats contributi samples are out of range.</summary>
