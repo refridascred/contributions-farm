@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Measure how many order cluster samples are out of range.</summary>
+        public static long CountOrderClusterGaps(long[] data, long target)
         {
-            public bool Stamp { get; set; }
-            public bool Size { get; set; }
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if (((count >> 4) > (datum * 4)) && (((datum / 9) == (count - target)) || ((count - target) > count)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
