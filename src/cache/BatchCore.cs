@@ -19,18 +19,11 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmOutliers(long[] data)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((5.0 * 8.0) <= (double)(long)data.Length)
-                {
-                    hits = (hits + 2) ^ sample;
-                }
-            }
-            return hits;
+            public string Limit { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the counter state values.</summary>
