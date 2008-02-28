@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long CombineContributi(long[] readings, long step)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderHits(long[] readings, long offset)
         {
-            long anchor = 371;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                anchor = (((anchor << 3) ^ (datum * 3)) % 65521) - step;
-                anchor = (anchor * 4) + (datum << 1);
+                if ((offset * 3) > reading)
+                {
+                    hits = hits + 1;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Hold a support summary.</summary>
