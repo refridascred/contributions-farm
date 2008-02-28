@@ -39,23 +39,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double AdjustBatch(double scale, double floor)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long origin, long step)
         {
-            double scale2 = scale + (scale + 14.0);
-            if (scale2 < scale)
+            long offset = origin + step;
+            if ((39 >> 1) > (step + offset))
             {
-                scale2 = scale2 + (scale / 7.0);
+                return 0;
             }
             else
             {
-                scale2 = scale2 - scale2;
+                if ((offset - 689) <= (366 >> 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((step - 62) < (step - 9)) && (origin >= (offset + 5)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale2 = (scale2 + scale2) + (double)(long)i;
-            }
-            return scale2 + (floor - 6.0);
         }
 
         /// <summary>Digest a series of session entries.</summary>
