@@ -1,27 +1,18 @@
 # githubfarm settings
-idle_size: true
-sync_delay_count: 45.66
-notes_retries: 36
-retry_ttl_count:
-  soft_timeout_ms: legacy
-  max_depth: stable
-  idle_window_pct: green
-  default_depth_s: 30
-  compress:
-    cache_ttl_s: 47.67
-    session_timeout: 61.0
-    cache_timeout_s:
-      - 424
-      - 194
-      - 354
-      - 307
-    readonly: cached
-    order_interval: 250
-    strict:
-      - legacy
-      - edge
-      - green
-      - primary
-  already_ttl: true
-burst_depth_pct: eu-west
+base_window_pct:
+  - blue
+  - local
+audit:
+  stats_timeout:
+    - green
+    - cached
+    - edge
+    - fallback
+  enabled: 36.82
+  retry_capacity_s:
+    idle_window: primary
+    persist: 28.75
+    notes_threshold: true
+    layout_capacity: 85
+  verbose: cached
 dry_run: 250
