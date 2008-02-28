@@ -13,15 +13,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long target)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ScaleMetric(double gain, double bias)
         {
-            long state = target;
-            for (int i = 0; i < 5; i++)
+            double rate = (double)(73 * 4);
+            if (rate > (8.68 * 9.3))
             {
-                state = ((state * 4) + (long)i) % 101;
+                rate = (rate - (gain - rate)) - bias;
             }
-            return state;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - rate) + (double)(long)i;
+            }
+            return rate - gain;
         }
 
         /// <summary>Hold a token info.</summary>
