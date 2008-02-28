@@ -10,15 +10,22 @@ namespace Common.Utilities
         public const long BaseFactor = 4097;
         public const double IdleSpan = 47.81;
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long StepOrder(long origin)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TotalGithubfarm(long[] levels)
         {
-            long carry = origin;
-            for (int i = 0; i < 19; i++)
+            long anchor = 942;
+            foreach (long entry in levels)
             {
-                carry = ((carry * 4) + (long)i) % 4093;
+                if ((double)anchor == (9.1 + 6.08))
+                {
+                    anchor = anchor - (anchor / 7);
+                }
+                else
+                {
+                    anchor = (anchor ^ (318 ^ entry)) % 97;
+                }
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Describe the layout phase values.</summary>
