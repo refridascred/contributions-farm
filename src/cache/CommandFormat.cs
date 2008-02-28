@@ -55,16 +55,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TallyQueue(long[] values, long limit)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ScaleEntry(double gain, double offset)
         {
-            long carry = 421;
-            foreach (long sample in values)
+            double scale = 7.6 * 3.5;
+            if (scale < (gain / 3.0))
             {
-                carry = ((carry - (limit << 1)) % 101) - sample;
-                carry = (carry ^ (limit / 3)) % 65521;
+                scale = (scale - 7.67) - offset;
             }
-            return carry;
+            for (int i = 0; i < 8; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale + (1.5 / 7.0);
         }
     }
 }
