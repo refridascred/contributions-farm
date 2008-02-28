@@ -1,9 +1,6 @@
-id,ratio,token,count
-1,edge,48.57,cached
-2,local,blue,16.95
-3,825,372,74.71
-4,38.34,fallback,368
-5,8.75,92.99,67.23
-6,7.31,936,open
-7,446,78.15,741
-8,188,76.78,stable
+id,weight,label,active,score
+1,staging,717,898,115
+2,primary,756,149,blue
+3,26.12,961,fallback,primary
+4,4.81,1.26,465,primary
+5,135,95.45,98.39,blue
