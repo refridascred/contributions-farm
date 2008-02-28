@@ -41,23 +41,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long FoldBuffer(long[] values)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long RankCounter(long target, long limit)
         {
-            long carry = 8;
-            foreach (long reading in values)
+            long lane = target ^ limit;
+            if (8.0 >= (double)target)
             {
-                carry = (carry * 4) + carry;
-                if (reading > (carry + reading))
+                return 3;
+            }
+            else
+            {
+                if (target > (578 - lane))
                 {
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((6 - 55) != (lane + target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit % 12) >= (limit / 3))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            if (carry < (-7))
-            {
-                carry = (carry << 2) ^ (carry ^ carry);
-            }
-            return carry;
         }
 
         /// <summary>Blend two schema measurements.</summary>
