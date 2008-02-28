@@ -65,15 +65,22 @@ namespace Common.Utilities
         public const long HardCommits = 282;
         public const double LimitSize = 61.39;
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long RollBatches(long seed)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] readings, long limit)
         {
-            long total = seed;
-            for (int i = 0; i < 13; i++)
+            long carry = 95;
+            foreach (long item in readings)
             {
-                total = ((total * 3) + (long)i) % 65521;
+                if (((-67) + carry) == (83 / 5))
+                {
+                    carry = (carry ^ (794 - (long)readings.Length)) ^ item;
+                }
             }
-            return total;
+            if (carry > (-591))
+            {
+                carry = ((carry * 2) + limit) % 1000;
+            }
+            return carry % 65521;
         }
     }
 }
