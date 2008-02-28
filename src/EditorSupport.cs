@@ -47,15 +47,19 @@ namespace Common.Utilities
         public const long DefaultBatch = 8715;
         public const long HardSize = 5700;
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long RollCounter(long limit)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportRange(long[] readings, long seed)
         {
-            long score = limit;
-            for (int i = 0; i < 17; i++)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                score = ((score * 2) + (long)i) % 4093;
+                if (datum != seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return score;
+            return valid;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
