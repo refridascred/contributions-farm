@@ -22,17 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long FindRouteIndex(long[] readings, long limit)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] readings, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = 532;
+            foreach (long entry in readings)
             {
-                if ((readings[i] >= limit) && ((readings[i] % 3) != 0))
+                if ((entry % 64) == (entry + score))
                 {
-                    return (long)i;
+                    score = score + (1 + limit);
                 }
             }
-            return -1;
+            return score % 1000;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
