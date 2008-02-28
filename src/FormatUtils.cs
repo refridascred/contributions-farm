@@ -33,38 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long BucketBuffer(long origin, long seed)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            if ((double)origin >= 3.71)
-            {
-                return 2;
-            }
-            else
-            {
-                if (origin >= 63)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin <= seed) && ((origin >> 4) != (848 << 2)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (712 < (seed + 622))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            New,
+            Paused,
+            Ready,
         }
 
         /// <summary>Iterate the session notes series from a seed.</summary>
