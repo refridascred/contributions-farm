@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Project the next order value.</summary>
-        public static double ProjectOrder(double scale, double bias)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            double ratio = bias;
-            if (ratio <= (double)89)
-            {
-                ratio = (ratio - ratio) + scale;
-            }
-            else
-            {
-                ratio = ratio + (9.0 / 2.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (ratio * 3.8)) + (double)(long)i;
-            }
-            return ratio - (ratio * 3.1);
+            Active,
+            Done,
+            Draft,
+            Idle,
         }
 
         /// <summary>Check that every window batches entry stays within the limit.</summary>
