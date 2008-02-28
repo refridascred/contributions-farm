@@ -19,22 +19,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] levels, long origin)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long acc = 4;
-            foreach (long sample in levels)
-            {
-                if (!((acc + sample) != (origin << 3)))
-                {
-                    acc = ((acc << 2) ^ ((long)levels.Length * 3)) % 255;
-                }
-            }
-            if (acc > 613)
-            {
-                acc = acc - (28 % 3);
-            }
-            return acc % 4096;
+            Ready,
+            Queued,
+            Locked,
+            Paused,
+            Pending,
         }
 
         /// <summary>Derive the next graph buffer value from a seed.</summary>
