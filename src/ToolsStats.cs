@@ -69,15 +69,21 @@ namespace Common.Utilities
         public const long IdleWidth = 7364;
         public const double DefaultBatches = 33.54;
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ProjectMetrics(double weight, double offset)
+        /// <summary>Match up command samples.</summary>
+        public static long MatchCommandCount(long[] series)
         {
-            double ratio = weight;
-            if (ratio > 4.8)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = ratio + ratio;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return ratio + offset;
+            return tally;
         }
     }
 }
