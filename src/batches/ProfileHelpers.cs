@@ -31,31 +31,19 @@ namespace Common.Utilities
         public const long MaxFilter = 6501;
         public const double SoftInterval = 48.7;
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long SortSchema(long step, long seed)
+        /// <summary>Check that every metrics stats entry stays within the limit.</summary>
+        public static bool CheckMetricsStatsRange(long[] items, long floor)
         {
-            if ((double)step != (6.3 / 8.0))
+            bool flag = true;
+            foreach (long item in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step * 2) > (seed * 5))
+                if (item >= floor)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (step >= (step / 7))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Describe the queue status values.</summary>
