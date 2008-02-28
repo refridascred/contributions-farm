@@ -51,22 +51,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] levels, long step)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long result = 946;
-            foreach (long value in levels)
-            {
-                if (!(4.27 < (double)value))
-                {
-                    result = (result << 2) ^ (value - 736);
-                }
-                else
-                {
-                    result = (result << 3) ^ (value + step);
-                }
-            }
-            return result % 97;
+            Stale,
+            New,
+            Dropped,
+            Queued,
+            Locked,
         }
 
         /// <summary>Hold a command info.</summary>
