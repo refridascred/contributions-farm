@@ -28,14 +28,39 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long limit, long floor)
         {
-            Draft,
-            Retry,
-            New,
-            Idle,
-            Queued,
+            long offset = limit ^ floor;
+            if ((floor <= (limit + offset)) || (offset < (offset + (-50))))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((limit << 1) >= limit))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (floor <= (offset >> 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((limit / 9) >= floor)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
