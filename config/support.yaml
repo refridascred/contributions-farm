@@ -1,8 +1,4 @@
 # support settings
-hard_size_count:
-  - green
-  - strict
-  - edge
-cache_size_pct: 0.99
-metrics_delay: false
-poll_timeout_count: fallback
+persist: cached
+hard_window: 7324
+payload_delay: true
