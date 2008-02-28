@@ -38,16 +38,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next record queue value from a seed.</summary>
-        public static long DeriveRecordQueue(long step)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long score = step;
-            for (int i = 0; i < 18; i++)
-            {
-                score = (score - (step / 7)) % 4096;
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
+            public bool Stamp { get; set; }
+            public long Owner { get; set; }
+            public long Score { get; set; }
         }
     }
 }
