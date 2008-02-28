@@ -27,12 +27,13 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            Idle,
-            Ready,
-            Done,
+            New,
+            Closed,
+            Retry,
+            Locked,
         }
     }
 }
