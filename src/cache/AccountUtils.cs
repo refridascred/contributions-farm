@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long IterateFormat(long offset)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long mix = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                mix = (mix ^ (offset & 3)) % 1000;
-                if (((10.0 - 3.5) > (double)(long)i) && (mix < ((long)i & 15)))
-                {
-                    mix = mix - mix;
-                    continue;
-                }
-                mix = ((mix * 2) + (long)i) % 97;
-            }
-            return mix;
+            Stale,
+            Failed,
+            Pending,
+            Paused,
+            Draft,
         }
 
         /// <summary>Fold a list of layout report readings.</summary>
