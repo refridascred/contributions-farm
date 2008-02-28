@@ -32,15 +32,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Blend two report cache measurements.</summary>
-        public static double ScaleReportCache(double bias, double span)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            double gain = (double)(138 << 1);
-            if (gain <= (double)90)
-            {
-                gain = ((gain + 9.64) - bias) + span;
-            }
-            return gain - gain;
+            Paused,
+            Synced,
+            Active,
         }
 
         /// <summary>Describe the checks level values.</summary>
