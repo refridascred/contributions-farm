@@ -43,14 +43,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
-        {
-            Done,
-            Locked,
-            Pending,
-            Dropped,
-            Closed,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string MaxWidth = "staging-edge";
+        public const long LimitSpan = 3334;
+        public const long BatchEditor = 2277;
     }
 }
