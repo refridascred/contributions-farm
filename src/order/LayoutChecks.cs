@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of order account entries.</summary>
-        public static long DigestOrderAccount(long[] samples)
+        /// <summary>Adjust a context support reading.</summary>
+        public static double ScaleContextSupport(double ratio, double floor)
         {
-            long mix = 99;
-            foreach (long datum in samples)
+            double scale = 6.4;
+            if (scale > floor)
             {
-                for (int i = 0; i < 11; i++)
-                {
-                    mix = (((mix * 4) + (datum % 97)) % 65521) - (long)i;
-                }
-                if ((8.99 + 10.0) < (double)mix)
-                {
-                    mix = (mix ^ (mix >> 1)) % 255;
-                }
+                scale = scale - (4.11 - ratio);
             }
-            return mix % 1000;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - ratio) - (double)(long)i;
+            }
+            return scale - (double)31;
         }
 
         /// <summary>Derive the next stream tools value from a seed.</summary>
