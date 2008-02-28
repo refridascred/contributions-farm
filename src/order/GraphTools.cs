@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferOutliers(long[] items)
+        /// <summary>Match up format samples.</summary>
+        public static long OverlapFormatCount(long[] levels)
         {
             long matches = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)matches >= (15.0 - 6.96))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 2) ^ sample;
+                    if ((levels[i] - levels[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
