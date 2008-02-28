@@ -24,18 +24,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileMatches(long[] levels, long floor)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((floor & 1) != (cell % 8))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Ready,
+            Active,
+            Closed,
         }
 
         /// <summary>Measure how many entry queue samples are out of range.</summary>
