@@ -1,6 +1,6 @@
 {
-  "batch_interval_count": "stable",
-  "poll_ttl_ms": "primary",
-  "burst_timeout_s": 98,
-  "command_delay": 94.99
+  "hard_interval_ms": [287, 44, 153, 442],
+  "sync_ttl": false,
+  "already_interval": 60,
+  "checks_interval": 30
 }
