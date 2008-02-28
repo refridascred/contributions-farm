@@ -28,19 +28,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool ValidateCacheBounds(long[] items, long floor)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LookupQueueIndex(long[] values, long offset)
         {
-            bool valid = true;
-            foreach (long item in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item != floor)
+                if (values[i] == offset)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Accumulate farm session samples.</summary>
