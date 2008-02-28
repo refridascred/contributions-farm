@@ -29,18 +29,19 @@ namespace Common.Utilities
         public const long IdleStats = 682;
         public const double HardFactor = 30.62;
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long MeasureRouteGaps(long[] values)
+        /// <summary>Check that every command window entry stays within the limit.</summary>
+        public static bool GuardCommandWindowRange(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                if ((seen ^ seen) >= datum)
+                if (datum != step)
                 {
-                    seen = seen + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
