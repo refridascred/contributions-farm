@@ -23,18 +23,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many filter cache samples are out of range.</summary>
-        public static long AuditFilterCacheHits(long[] samples, long target)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading * 5) == (reading - 2))
-                {
-                    seen = (seen + 3) - target;
-                }
-            }
-            return seen;
+            Stale,
+            Ready,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Digest a series of batches entries.</summary>
