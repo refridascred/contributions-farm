@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a metric channel pair into a bucket.</summary>
-        public static long GradeMetricChannel(long bound, long floor)
+        /// <summary>Look up the position of a report schema sample.</summary>
+        public static long LocateReportSchemaIndex(long[] levels, long step)
         {
-            long step = bound ^ floor;
-            if (((bound >> 5) < (step << 3)) && ((floor >> 2) < (floor - floor)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)floor < (1.1 / 7.0))
+                if (levels[i] <= step)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
