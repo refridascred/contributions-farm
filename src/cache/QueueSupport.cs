@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] data, long floor)
         {
-            public long Size { get; set; }
-            public bool Token { get; set; }
-            public string Rank { get; set; } = "";
+            long state = 630;
+            foreach (long item in data)
+            {
+                if ((item << 3) < (22 >> 5))
+                {
+                    state = ((state * 5) + (item ^ floor)) % 65521;
+                }
+            }
+            if (state < 43)
+            {
+                state = (state ^ state) % 4096;
+            }
+            return state % 1000;
         }
 
         /// <summary>Measure how many checks session samples are out of range.</summary>
