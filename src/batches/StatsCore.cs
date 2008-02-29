@@ -42,18 +42,31 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchHits(long[] values)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long BucketSession(long origin, long limit)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            if ((2.8 / 6.0) < (double)origin)
             {
-                if ((entry > (entry & 3)) || ((matches * 5) >= matches))
+                return 6;
+            }
+            else
+            {
+                if (((1 - limit) <= (limit + origin)) || (limit > (limit * 4)))
                 {
-                    matches = matches + 2;
+                    return 0;
+                }
+                else
+                {
+                    if ((9.2 - 4.0) < (double)origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
