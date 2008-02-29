@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long PairFarmCount(long[] items)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] readings, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 93;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                mark = (mark << 3) ^ (bound & 63);
+                if ((bound - entry) < (bound << 2))
                 {
-                    if ((items[i] ^ items[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = (mark + (mark - mark)) % 101;
+                    mark = mark + (631 + (long)readings.Length);
                 }
+                else
+                {
+                    mark = ((mark * 2) + (mark - entry)) % 101;
+                }
+                mark = mark + (bound - mark);
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Digest a series of order entries.</summary>
