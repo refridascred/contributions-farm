@@ -33,23 +33,13 @@ namespace Common.Utilities
             return mean + (4.0 * 7.77);
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double SmoothBuffer(double ratio, double bias)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            double mean = bias;
-            if (mean <= (double)19)
-            {
-                mean = mean + (bias + mean);
-            }
-            else
-            {
-                mean = mean + (double)(-416);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + (double)836) + (double)(long)i;
-            }
-            return mean - ratio;
+            public bool Score { get; set; }
+            public bool Region { get; set; }
+            public long Limit { get; set; }
+            public long Total { get; set; }
         }
     }
 }
