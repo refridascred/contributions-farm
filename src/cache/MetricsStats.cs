@@ -52,21 +52,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up notes stream samples.</summary>
-        public static long OverlapNotesStreamCount(long[] levels)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 53;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = ((mix << 2) ^ (5 / 5)) - entry;
             }
-            return hits;
+            return mix;
         }
     }
 }
