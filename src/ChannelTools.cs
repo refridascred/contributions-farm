@@ -22,12 +22,12 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] samples, long limit)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long FindRecordIndex(long[] values, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (samples[i] > limit)
+                if (values[i] > step)
                 {
                     return (long)i;
                 }
