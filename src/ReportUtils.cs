@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BurstInterval = 41.02;
-        public const double BurstTimeout = 22.53;
-        public const long MinInterval = 348;
-        public const long IdleGraph = 3522;
-        public const double CacheBudget = 89.99;
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long BucketGraph(long offset, long seed)
+        {
+            long delta = offset - seed;
+            if ((delta ^ seed) <= delta)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((delta - delta) < (seed + offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Hold a format header.</summary>
         public sealed class FormatHeader
