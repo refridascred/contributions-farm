@@ -14,25 +14,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long RankFormat(long limit, long offset)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long prev = limit ^ offset;
-            if ((offset / 7) < (50 + prev))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!(prev >= (prev % 3)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Closed,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
