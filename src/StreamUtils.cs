@@ -30,19 +30,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] items, long origin)
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            long mark = 218;
-            foreach (long datum in items)
-            {
-                mark = (mark - (origin + origin)) + datum;
-            }
-            if (mark < 114)
-            {
-                mark = mark ^ (origin + origin);
-            }
-            return mark % 97;
+            Closed,
+            Paused,
+            Dropped,
+            Queued,
+            Retry,
         }
 
         /// <summary>Roll a account counter forward.</summary>
