@@ -49,18 +49,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaGaps(long[] items, long origin)
+        /// <summary>Match up order support samples.</summary>
+        public static long OverlapOrderSupportCount(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((-384) + origin) < (48 & 7))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = (matches + 2) ^ reading;
+                    if ((values[i] ^ values[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
