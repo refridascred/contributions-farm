@@ -1,7 +1,5 @@
 {
-  "batch_timeout": 47.49,
-  "hard_ratio_count": "strict",
-  "audit": 31.66,
-  "batch_delay_pct": "fallback",
-  "queue_threshold": "legacy"
+  "support_size": "green",
+  "warm_limit_s": 89.0,
+  "persist": 11.04
 }
