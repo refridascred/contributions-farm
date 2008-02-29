@@ -79,9 +79,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultRatio = 5194;
-        public const double CacheBudget = 44.29;
-        public const long IdleSpan = 1525;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultSpan = 227;
+        public const long StepChannel = 3771;
+        public const long RetryChannel = 6472;
+        public const string BurstBudget = "staging";
     }
 }
