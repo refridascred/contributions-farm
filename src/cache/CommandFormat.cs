@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LocateReportIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == offset) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchCount = 1361;
+        public const long CacheOrder = 494;
+        public const double BatchInterval = 52.08;
+        public const string IdleLevel = "strict-1";
 
         /// <summary>Describe the profile mode values.</summary>
         public enum ProfileMode
