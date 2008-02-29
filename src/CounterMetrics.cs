@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many checks buffer samples are out of range.</summary>
-        public static long MeasureChecksBufferGaps(long[] levels)
-        {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if (!((seen << 3) <= seen))
-                {
-                    seen = (seen + 2) + reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BaseFactor = 62.21;
+        public const string StepScore = "latest-v2";
+        public const long HardFarm = 1756;
+        public const double BatchCount = 33.42;
+        public const long MaxFarm = 210;
 
         /// <summary>Iterate the token series from a seed.</summary>
         public static long DeriveToken(long offset)
