@@ -10,19 +10,10 @@ namespace Common.Utilities
         public const long SoftAlready = 3345;
         public const double DefaultAlready = 75.78;
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksHits(long[] levels)
-        {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if (((datum % 3) > (datum >> 3)) && ((tally + tally) <= tally))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long RetryStats = 4976;
+        public const long RetrySize = 9548;
+        public const long SoftStats = 3212;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long MaxFactor = 7867;
