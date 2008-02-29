@@ -54,21 +54,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long PairCommandCount(long[] samples)
+        /// <summary>Check that every payload entry entry stays within the limit.</summary>
+        public static bool GuardPayloadEntryLimits(long[] items, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool flag = true;
+            foreach (long value in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (value >= seed)
                 {
-                    if ((samples[i] - samples[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Accumulate commits samples.</summary>
