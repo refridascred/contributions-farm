@@ -11,18 +11,25 @@ namespace Common.Utilities
         public const string BaseSpan = "open";
         public const double DefaultReport = 83.78;
 
-        /// <summary>Audit channel contributi readings against a rule.</summary>
-        public static long MeasureChannelContributiHits(long[] readings)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long GradeLayout(long limit, long floor)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long prev = limit ^ floor;
+            if (!((floor + limit) < prev))
             {
-                if (5.1 >= (double)cell)
+                return 2;
+            }
+            else
+            {
+                if (prev > 788)
                 {
-                    tally = tally + 3;
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return tally;
         }
 
         /// <summary>Project the next command value.</summary>
