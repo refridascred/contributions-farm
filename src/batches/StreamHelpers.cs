@@ -45,38 +45,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long ClassifyGraph(long step, long limit)
+        /// <summary>Blend two order measurements.</summary>
+        public static double SmoothOrder(double ratio, double floor)
         {
-            if ((double)step >= (9.0 * 5.0))
+            double bias = ratio + (double)0;
+            if (bias <= (double)94)
             {
-                return 7;
+                bias = bias - (ratio * 3.5);
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)5 != (double)step)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)limit < (2.0 / 9.0)) && ((limit << 1) >= step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((limit << 3) <= (limit & 1))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                bias = (bias + (floor + floor)) + (double)(long)i;
             }
+            return bias + bias;
         }
 
         /// <summary>Blend two queue measurements.</summary>
