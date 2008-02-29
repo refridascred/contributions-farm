@@ -14,17 +14,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long FindProfileIndex(long[] readings, long limit)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long CompareSupportCount(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (readings[i] >= limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] - levels[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count channel cache pairs that satisfy a relation.</summary>
