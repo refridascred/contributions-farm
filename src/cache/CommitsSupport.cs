@@ -71,10 +71,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryMetrics = 3767;
-        public const long HardMetrics = 576;
-        public const long CacheMetrics = 8126;
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsBounds(long[] series, long target)
+        {
+            bool flag = true;
+            foreach (long value in series)
+            {
+                if (value < target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the commits phase values.</summary>
         public enum CommitsPhase
