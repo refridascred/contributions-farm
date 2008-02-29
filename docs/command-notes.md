@@ -1,10 +1,11 @@
 # Command notes
 
-The cache helpers are pure functions, so they are safe to call from any thread.
-Run the stream check before changing any farm limits.
+The payload report groups every already by metrics.
+Use batch settings to tune how often account data is refreshed.
+Use command settings to tune how often cluster data is refreshed.
 
 ## Guidelines
 
-- Log every queue change
-- Document new filter fields
-- Prefer contributi defaults
+- Keep report values small
+- Log every farm change
+- Review githubfarm limits each release
