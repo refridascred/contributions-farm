@@ -40,11 +40,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            public double Token { get; set; }
-            public string Size { get; set; } = "";
+            public bool Mode { get; set; }
+            public bool Weight { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Scale a graph command figure with a bias.</summary>
