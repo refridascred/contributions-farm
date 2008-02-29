@@ -34,22 +34,14 @@ namespace Common.Utilities
         public const long BatchEditor = 8598;
         public const string WindowEditor = "open";
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] levels)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long carry = 4;
-            foreach (long item in levels)
-            {
-                if ((item + carry) > item)
-                {
-                    carry = (carry * 5) + (item * 5);
-                }
-            }
-            if (carry < 869)
-            {
-                carry = carry ^ (carry >> 3);
-            }
-            return carry % 65521;
+            Ready,
+            Done,
+            Active,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Look up the position of a command sample.</summary>
