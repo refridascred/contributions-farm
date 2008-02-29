@@ -18,10 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseInterval = 6215;
-        public const long BatchSpan = 8687;
-        public const long LimitScore = 139;
+        /// <summary>Define format limits and defaults.</summary>
+        public const string HardScore = "local-v2";
+        public const long BaseRatio = 4772;
+        public const long WindowBudget = 3524;
+        public const string BaseTimeout = "stable-v2";
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long WeighFilter(long[] items, long step)
