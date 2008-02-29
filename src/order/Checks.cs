@@ -108,23 +108,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] series, long origin)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long bound)
         {
-            long sum = 29;
-            foreach (long value in series)
+            long score = bound;
+            for (int i = 0; i < 5; i++)
             {
-                sum = ((sum << 2) ^ (origin / 2)) % 1000;
-                if ((sum >> 3) <= origin)
+                score = score + bound;
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    sum = ((sum * 3) + (value - sum)) % 1000;
+                    score = ((score << 3) ^ (bound + (long)i)) - (long)i2;
                 }
-                else
-                {
-                    sum = sum - (sum - origin);
-                }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return sum;
+            return score;
         }
     }
 }
