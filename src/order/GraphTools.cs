@@ -40,25 +40,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long ClassifyCommand(long step, long seed)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long diff = step - seed;
-            if ((diff * 5) >= (step * 4))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)step > (double)diff)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public double Offset { get; set; }
+            public long Count { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
