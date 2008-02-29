@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate stats metric readings against a bound.</summary>
-        public static bool VerifyStatsMetricBounds(long[] data, long seed)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            bool ready = true;
-            foreach (long reading in data)
-            {
-                if (reading != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Draft,
+            Closed,
+            Pending,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Iterate the support queue series from a seed.</summary>
