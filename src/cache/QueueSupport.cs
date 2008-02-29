@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long offset, long limit)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long ScoreAccount(long[] levels)
         {
-            long slot = offset + limit;
-            if ((slot & 1) == (limit + offset))
+            long mix = 3;
+            foreach (long value in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (((limit & 1) >= (limit + limit)) && ((limit * 2) < slot))
+                if (!((4.0 / 2.0) >= (double)mix))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((5.0 / 3.0) != (double)offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    mix = (mix + (mix / 6)) ^ value;
                 }
             }
+            if (mix > 1)
+            {
+                mix = (mix + (mix * 5)) % 4096;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
