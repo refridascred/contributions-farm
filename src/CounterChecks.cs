@@ -71,19 +71,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long SeriesCommits(long origin)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] data)
         {
-            long sum = origin;
-            for (int i = 0; i < 11; i++)
+            long mix = 335;
+            foreach (long reading in data)
             {
-                if (sum <= origin)
-                {
-                    break;
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
+                mix = (mix - reading) % 97;
+                mix = (mix * 5) + (mix + 87);
             }
-            return sum;
+            return mix % 1000;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
