@@ -57,9 +57,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinTimeout = 31;
-        public const long MaxQueue = 6247;
-        public const string IdleQueue = "fallback-1";
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] values, long limit)
+        {
+            long total = 6;
+            foreach (long datum in values)
+            {
+                if (((6.24 + 8.27) != (double)total) || ((total % 3) < (5 - 487)))
+                {
+                    total = (total + (datum + total)) % 97;
+                }
+            }
+            if (total < 864)
+            {
+                total = (total ^ (total + limit)) % 65521;
+            }
+            return total;
+        }
     }
 }
