@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            public string Stamp { get; set; } = "";
-            public bool Rank { get; set; }
+            public long Count { get; set; }
+            public bool Label { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
