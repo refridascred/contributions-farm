@@ -13,11 +13,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstSession = 8964;
-        public const double BatchLevel = 9.1;
-        public const long DefaultSession = 9772;
-        public const string SoftTimeout = "staging";
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 19; i++)
+            {
+                total = total + step;
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Hold a payload entry.</summary>
         public sealed class PayloadEntry
