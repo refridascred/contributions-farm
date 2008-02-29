@@ -51,17 +51,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long SeekAlreadyIndex(long[] values, long origin)
+        /// <summary>Count the account token entries that pass the check.</summary>
+        public static long MeasureAccountTokenHits(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (values[i] <= origin)
+                if ((double)298 != (double)cell)
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define account limits and defaults.</summary>
