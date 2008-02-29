@@ -93,18 +93,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cache editor entries that pass the check.</summary>
-        public static long TallyCacheEditorMatches(long[] samples)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((460 % 24) < (value + count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Count { get; set; } = "";
+            public bool Rank { get; set; }
         }
     }
 }
