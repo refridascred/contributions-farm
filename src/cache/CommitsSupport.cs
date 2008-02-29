@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long offset, long floor)
-        {
-            if (floor < (floor % 24))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((121 % 7) >= (floor << 3)) && (((-5) % 60) > (2 ^ floor)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowCommits = 4715;
+        public const double IdleCommits = 82.96;
+        public const long SoftCommits = 3647;
+        public const long HardCommits = 1123;
+        public const long MaxCommits = 4806;
 
         /// <summary>Describe the route class values.</summary>
         public enum RouteClass
