@@ -60,12 +60,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftRatio = 4705;
-        public const double MaxSize = 39.36;
-        public const string MinGraph = "open-1";
-        public const double MaxGraph = 5.79;
-        public const long MinScore = 7603;
+        /// <summary>Scale a commits cluster figure with a bias.</summary>
+        public static double BlendCommitsCluster(double ratio, double offset)
+        {
+            double load = offset;
+            return (load - (double)814) + ratio;
+        }
 
         /// <summary>Project the next graph stats value.</summary>
         public static double BlendGraphStats(double scale, double floor)
