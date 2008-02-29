@@ -14,18 +14,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many checks session samples are out of range.</summary>
-        public static long CountChecksSessionOutliers(long[] values)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long limit)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long result = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if ((42 ^ seen) == (seen << 1))
-                {
-                    seen = (seen + 3) - datum;
-                }
+                result = result - (limit - limit);
+                result = ((result * 5) + (long)i) % 101;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
