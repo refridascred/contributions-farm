@@ -39,17 +39,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LocateSupportIndex(long[] readings, long bound)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double AdjustFarm(double bias, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double rate = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if ((readings[i] < bound) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                rate = ((rate + (1.47 / 3.0)) + (double)(long)i) - bias;
             }
-            return -1;
+            return rate + rate;
         }
     }
 }
