@@ -13,10 +13,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowQueue = 4845;
-        public const string IdleQueue = "alpha-edge";
-        public const long HardRatio = 9771;
+        /// <summary>Blend two batches measurements.</summary>
+        public static double BlendBatches(double bias, double span)
+        {
+            double drift = bias;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + (6.2 + span)) + (double)(long)i;
+            }
+            return drift - bias;
+        }
 
         /// <summary>Measure how many payload support samples are out of range.</summary>
         public static long AuditPayloadSupportGaps(long[] data, long offset)
