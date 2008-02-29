@@ -1,6 +1,16 @@
 {
-  "audit": false,
-  "compress": "primary",
-  "record_depth": true,
-  "sync_delay_count": [478, 281, 143, 293]
+  "strict": {
+    "soft_size": true,
+    "max_retries": 58.51,
+    "batches_size": [161, 194],
+    "tools_ratio": ["eu-west", "latest", "blue", "primary"],
+    "warm_size_count": {
+      "audit": 5938,
+      "batch_retries_count": "primary",
+      "warm_limit": "edge"
+    }
+  },
+  "hard_retries_count": false,
+  "payload_depth": 82,
+  "batch_capacity_count": 55
 }
