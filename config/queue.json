@@ -1,5 +1,8 @@
 {
-  "enabled": 77.28,
-  "order_capacity": "fallback",
-  "idle_retries_s": [271, 17, 317]
+  "batches_ratio": "strict",
+  "base_window_count": 68.26,
+  "token_limit": 1024,
+  "notes_timeout": "strict",
+  "batch_window_pct": "strict",
+  "filter_delay": 30
 }
