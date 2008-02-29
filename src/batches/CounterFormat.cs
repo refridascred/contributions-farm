@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsGaps(long[] levels)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterMatches(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if (sample > 91)
+                if ((seed & 127) == ((-3) / 5))
                 {
-                    count = count + 2;
+                    hits = (hits + 3) + datum;
                 }
                 else
                 {
-                    count = count - 1;
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Measure how many filter cache samples are out of range.</summary>
