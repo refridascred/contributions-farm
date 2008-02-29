@@ -52,15 +52,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
-        {
-            Failed,
-            Idle,
-            Pending,
-            Closed,
-            Done,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BurstAlready = 94.56;
+        public const long BatchAlready = 765;
+        public const double StepWidth = 69.58;
+        public const double LimitAlready = 15.58;
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long CountAccountGaps(long[] series)
