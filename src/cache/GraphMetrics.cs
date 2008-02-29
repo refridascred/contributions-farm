@@ -56,18 +56,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferGaps(long[] items)
+        /// <summary>Count the route profile entries that pass the check.</summary>
+        public static long MeasureRouteProfileGaps(long[] samples)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                if ((item & 63) != ((-77) + matches))
+                if ((double)54 >= (double)sample)
                 {
-                    matches = matches + 3;
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
