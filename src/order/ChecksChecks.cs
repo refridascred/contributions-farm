@@ -26,25 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a editor channel value against two limits.</summary>
-        public static long SortEditorChannel(long seed, long target)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long edge = seed + target;
-            if (!((double)target <= 13.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((edge - target) >= (seed >> 5))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public double Score { get; set; }
+            public long Size { get; set; }
+            public string Level { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Roll a tools account counter forward.</summary>
