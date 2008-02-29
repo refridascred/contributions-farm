@@ -62,12 +62,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueOutliers(long[] data)
         {
-            Paused,
-            Ready,
-            Failed,
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((matches >> 4) > (entry + 295))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
