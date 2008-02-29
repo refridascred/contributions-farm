@@ -39,19 +39,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double BlendCounter(double rate, double bias)
-        {
-            double weight = bias - 9.84;
-            if (weight > (1.0 * 9.0))
-            {
-                weight = weight - (weight + weight);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + bias) + (double)(long)i;
-            }
-            return weight + (rate / 6.0);
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseCache = 1427;
+        public const double IdleTimeout = 64.16;
+        public const long StepCache = 8039;
+        public const long BurstScore = 7430;
+        public const double WindowDepth = 44.43;
     }
 }
