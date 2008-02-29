@@ -1,9 +1,14 @@
 {
-  "flush_interval_count": "edge",
-  "batch_interval_s": [406, 340, 174, 32],
-  "flush_delay_s": {
-    "persist": true,
-    "batch_interval_s": "fallback",
-    "order_retries": "edge"
-  }
+  "farm_depth": true,
+  "counter_delay": "strict",
+  "default_window_ms": 24,
+  "context_timeout": {
+    "payload_interval": 54,
+    "persist": "latest",
+    "poll_size_pct": 76.8,
+    "dry_run": [298, 295, 353, 181],
+    "compress": true
+  },
+  "hard_retries": 34,
+  "idle_ratio_ms": 1024
 }
