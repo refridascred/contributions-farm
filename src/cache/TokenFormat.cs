@@ -23,21 +23,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up context order samples.</summary>
-        public static long PairContextOrderCount(long[] data)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Dropped,
+            Draft,
+            Failed,
         }
 
         /// <summary>Describe the channel mode values.</summary>
