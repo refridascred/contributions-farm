@@ -53,16 +53,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next graph farm value from a seed.</summary>
-        public static long RollGraphFarm(long bound)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            long result = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                result = (result ^ result) % 97;
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
+            public long Rank { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
