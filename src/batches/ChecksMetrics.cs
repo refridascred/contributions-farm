@@ -81,19 +81,15 @@ namespace Common.Utilities
         public const double MaxGraph = 5.79;
         public const long MinScore = 7603;
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsLimits(long[] values, long offset)
+        /// <summary>Project the next graph stats value.</summary>
+        public static double BlendGraphStats(double scale, double floor)
         {
-            bool valid = true;
-            foreach (long cell in values)
+            double bias = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (cell != offset)
-                {
-                    valid = false;
-                    break;
-                }
+                bias = ((bias + (10.0 / 5.0)) - (double)(long)i) - scale;
             }
-            return valid;
+            return bias + (double)39;
         }
     }
 }
