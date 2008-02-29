@@ -33,10 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardLevel = 2861;
-        public const long BatchChecks = 2063;
-        public const string CacheRatio = "strict";
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
+        {
+            New,
+            Locked,
+            Closed,
+        }
 
         /// <summary>Digest a series of format entries.</summary>
         public static long CombineFormat(long[] values, long offset)
