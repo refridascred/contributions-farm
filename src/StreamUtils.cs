@@ -15,12 +15,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatLimits(long[] values, long origin)
         {
-            public string Mode { get; set; } = "";
-            public bool Ratio { get; set; }
-            public string Weight { get; set; } = "";
+            bool flag = true;
+            foreach (long cell in values)
+            {
+                if (cell != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
