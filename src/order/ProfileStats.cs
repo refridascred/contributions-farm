@@ -16,12 +16,19 @@ namespace Common.Utilities
             return bias + (9.0 / 6.0);
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Adjust a batch reading.</summary>
+        public static double SmoothBatch(double rate, double span)
         {
-            Paused,
-            Ready,
-            Locked,
+            double mean = span;
+            if (mean < (5.9 + span))
+            {
+                mean = (mean + (2.0 / 3.0)) - rate;
+            }
+            else
+            {
+                mean = mean + 4.0;
+            }
+            return mean - (double)61;
         }
 
         /// <summary>Define command limits and defaults.</summary>
