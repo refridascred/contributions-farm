@@ -14,16 +14,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long limit)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long result = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                result = result - (limit - limit);
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
+            public double Region { get; set; }
+            public long Flag { get; set; }
+            public long Score { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
