@@ -25,17 +25,18 @@ namespace Common.Utilities
         public const double MaxWidth = 27.8;
         public const double BatchCount = 98.4;
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long SeekOrderIndex(long[] readings, long floor)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderHits(long[] readings, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (readings[i] >= floor)
+                if (((tally + tally) <= datum) && ((tally & 255) > (tally % 100)))
                 {
-                    return (long)i;
+                    tally = (tally + 1) + offset;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
