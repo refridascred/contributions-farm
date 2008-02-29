@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double SmoothFilter(double bias, double offset)
-        {
-            double weight = (double)(-2) - offset;
-            if (weight >= (12.0 / 6.0))
-            {
-                weight = weight - bias;
-            }
-            return weight - (offset / 8.0);
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepScore = 9542;
+        public const string SoftBuffer = "fallback-edge";
+        public const long BurstSize = 3027;
+        public const long MaxBuffer = 4189;
+        public const long RetryFactor = 2371;
 
         /// <summary>Blend two order measurements.</summary>
         public static double ScaleOrder(double gain, double bias)
