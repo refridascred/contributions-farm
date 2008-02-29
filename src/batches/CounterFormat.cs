@@ -22,11 +22,31 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double WindowScore = 24.89;
-        public const long LimitCommits = 3985;
-        public const long IdleBudget = 9869;
-        public const long WindowTimeout = 3014;
-        public const long BatchCommits = 5680;
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long SortTools(long seed, long limit)
+        {
+            if ((seed * 5) >= (limit - limit))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!(limit > (limit % 5)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((limit & 255) <= seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
     }
 }
