@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long SeekReportIndex(long[] items, long limit)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenBounds(long[] items, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long item in items)
             {
-                if ((items[i] <= limit) && ((items[i] % 3) == 0))
+                if (item > floor)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Iterate the queue session series from a seed.</summary>
