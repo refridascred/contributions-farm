@@ -33,13 +33,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            Done,
-            New,
-            Draft,
-            Idle,
+            public long Label { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
