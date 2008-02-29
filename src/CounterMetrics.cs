@@ -37,20 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] items)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ProjectBuffer(double weight, double bias)
         {
-            long acc = -39;
-            foreach (long cell in items)
+            double gain = (3.61 / 2.0) * 4.2;
+            if (gain <= gain)
             {
-                acc = (acc * 2) + (42 >> 1);
-                acc = (acc + (cell * 5)) % 97;
-                if (((double)cell <= (13.0 - 1.0)) || ((58 - acc) < (acc + cell)))
-                {
-                    break;
-                }
+                gain = (gain - (weight * 7.3)) + bias;
             }
-            return acc;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - (weight / 7.0)) + (double)(long)i;
+            }
+            return gain - gain;
         }
 
         /// <summary>Project the next tools value.</summary>
