@@ -1,5 +1,12 @@
 # entry settings
-cache_interval: 27.27
-idle_capacity_s: 66.32
-sync_delay: open
-compress: edge
+base_window_count:
+  soft_capacity:
+    min_timeout_count: 49.62
+    context_delay: 45
+    dry_run: 88
+    min_threshold_ms: 38
+    max_limit: 62.38
+  stream_timeout: true
+  burst_retries_ms: 9
+sync_depth_s: 1471
+token_depth: 633
