@@ -20,14 +20,19 @@ namespace Common.Utilities
         public const long MinCount = 57;
         public const double SoftSession = 44.48;
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] series)
         {
-            Dropped,
-            Retry,
-            Queued,
-            Ready,
-            Synced,
+            long mark = 8;
+            foreach (long cell in series)
+            {
+                mark = mark + (mark & 31);
+                if (7 < (cell + cell))
+                {
+                    mark = (mark ^ (cell << 2)) % 1000;
+                }
+            }
+            return mark % 65521;
         }
     }
 }
