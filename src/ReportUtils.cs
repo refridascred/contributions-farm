@@ -61,9 +61,14 @@ namespace Common.Utilities
             return rate - (3.52 - 9.7);
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstFarm = 3425;
-        public const string IdleFarm = "fallback";
-        public const long SoftFarm = 3429;
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
+        {
+            Locked,
+            Pending,
+            Ready,
+            Synced,
+            Dropped,
+        }
     }
 }
