@@ -37,16 +37,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long origin)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long StepToken(long step)
         {
-            long anchor = origin;
+            long result = step;
             for (int i = 0; i < 23; i++)
             {
-                anchor = (anchor + anchor) % 1000;
-                anchor = ((anchor * 3) + (long)i) % 97;
+                result = result ^ (result << 1);
+                for (int i3 = 0; i3 < 7; i3++)
+                {
+                    result = ((result ^ step) % 97) - (long)i3;
+                }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return result;
         }
     }
 }
