@@ -36,18 +36,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Measure how many already queue samples are out of range.</summary>
-        public static long TallyAlreadyQueueOutliers(long[] data, long offset)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryBounds(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                if ((long)data.Length >= (offset - offset))
+                if (entry >= bound)
                 {
-                    tally = (tally + 2) + datum;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
