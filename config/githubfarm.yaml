@@ -1,5 +1,8 @@
 # githubfarm settings
-strict: green
-min_timeout_pct: false
-sync_ttl: stable
-cluster_ratio: 250
+retry_interval: green
+persist: 98
+min_timeout:
+  sync_capacity: 1024
+  persist: blue
+  idle_window_s: 3570
+readonly: 35.46
