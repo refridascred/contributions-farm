@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] values, long seed)
         {
-            public long Score { get; set; }
-            public string Owner { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Token { get; set; }
+            long acc = 253;
+            foreach (long entry in values)
+            {
+                if ((entry ^ entry) < entry)
+                {
+                    acc = ((acc - (entry - entry)) % 65521) - seed;
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Blend two profile measurements.</summary>
