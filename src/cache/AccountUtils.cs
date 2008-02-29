@@ -16,12 +16,12 @@ namespace Common.Utilities
         public const double MinLayout = 43.84;
         public const long IdleLevel = 8290;
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            public long Score { get; set; }
-            public bool Flag { get; set; }
-            public double Token { get; set; }
+            public bool Region { get; set; }
+            public double Offset { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
