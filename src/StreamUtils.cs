@@ -45,17 +45,15 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LookupReportIndex(long[] items, long origin)
+        /// <summary>Derive the next support command value from a seed.</summary>
+        public static long SeriesSupportCommand(long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if ((items[i] > origin) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
