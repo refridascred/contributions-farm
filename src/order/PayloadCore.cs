@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandMatches(long[] readings)
         {
-            public long Weight { get; set; }
-            public long Mode { get; set; }
-            public double Owner { get; set; }
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)hits <= (8.0 + 0.3))
+                {
+                    hits = (hits + 1) + reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define record limits and defaults.</summary>
