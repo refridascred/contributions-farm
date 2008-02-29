@@ -40,12 +40,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderOutliers(long[] items)
         {
-            public bool Mode { get; set; }
-            public bool Weight { get; set; }
-            public long Ratio { get; set; }
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (matches <= (matches - matches))
+                {
+                    matches = (matches + 3) + datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a graph command figure with a bias.</summary>
