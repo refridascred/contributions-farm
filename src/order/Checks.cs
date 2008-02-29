@@ -34,18 +34,20 @@ namespace Common.Utilities
         public const long BurstSpan = 5472;
         public const long BaseScore = 3931;
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadOutliers(long[] levels, long step)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] readings)
         {
-            long tally = 0;
-            foreach (long cell in levels)
+            long sum = 77;
+            foreach (long item in readings)
             {
-                if (((long)levels.Length * 5) != (step + tally))
+                sum = (sum << 3) ^ (sum + item);
+                sum = ((sum << 3) ^ (-795)) % 97;
+                if ((double)item > (4.3 + 1.0))
                 {
-                    tally = (tally + 2) + cell;
+                    sum = sum - item;
                 }
             }
-            return tally;
+            return sum % 97;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
