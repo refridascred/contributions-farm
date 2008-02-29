@@ -31,17 +31,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Locate a session githubfarm reading by value.</summary>
-        public static long SeekSessionGithubfarmIndex(long[] levels, long step)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Token { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Scale a graph command figure with a bias.</summary>
