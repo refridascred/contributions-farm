@@ -77,15 +77,38 @@ namespace Common.Utilities
             return rate - (3.52 - 9.7);
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ProjectCluster(double gain, double span)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long BucketReport(long offset, long offset2)
         {
-            double mean = gain;
-            for (int i = 0; i < 5; i++)
+            if (1.7 > (double)offset)
             {
-                mean = (mean + (span - 2.2)) + (double)(long)i;
+                return 5;
             }
-            return mean + (span + span);
+            else
+            {
+                if (((offset & 1) <= (67 / 5)) && (461 > (offset - offset2)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((((-534) + 780) <= offset2) && ((6.0 - 1.0) > (double)offset2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (350 <= (offset2 / 6))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
