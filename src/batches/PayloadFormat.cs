@@ -19,20 +19,10 @@ namespace Common.Utilities
         public const long SoftGithubfarm = 3412;
         public const long DefaultCount = 335;
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] readings, long offset)
-        {
-            long anchor = 211;
-            foreach (long entry in readings)
-            {
-                anchor = (((anchor << 2) ^ (entry + 891)) % 255) + offset;
-            }
-            if (anchor < 114)
-            {
-                anchor = (anchor - anchor) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardLevel = 2861;
+        public const long BatchChecks = 2063;
+        public const string CacheRatio = "strict";
 
         /// <summary>Blend two channel measurements.</summary>
         public static double SmoothChannel(double gain, double span)
