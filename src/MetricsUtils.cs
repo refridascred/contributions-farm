@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long target, long bound)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            if (((double)bound >= (0.92 / 3.0)) && ((target - bound) < (bound ^ 5)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((bound + bound) <= (5 ^ target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound ^ bound) > (target & 127))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((5.7 - 1.44) <= (double)bound)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Synced,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Describe the stream mode values.</summary>
