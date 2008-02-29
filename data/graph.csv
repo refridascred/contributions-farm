@@ -1,7 +1,7 @@
-id,region,token,owner
-1,staging,76.62,13.05
-2,4.57,957,228
-3,755,strict,49.69
-4,36.85,14,23.51
-5,468,226,680
-6,cached,12.34,349
+id,rank,count,region,token
+1,91.25,fallback,blue,532
+2,345,staging,edge,59.16
+3,281,111,679,90.15
+4,cached,946,open,strict
+5,627,primary,758,open
+6,132,legacy,877,50
