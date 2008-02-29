@@ -73,14 +73,15 @@ namespace Common.Utilities
             return rate - (3.52 - 9.7);
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] samples, long seed)
         {
-            Locked,
-            Pending,
-            Ready,
-            Synced,
-            Dropped,
+            long state = 75;
+            foreach (long value in samples)
+            {
+                state = (((state ^ (state + state)) % 97) - value) - seed;
+            }
+            return state;
         }
     }
 }
