@@ -20,25 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] values)
-        {
-            long total = 56;
-            foreach (long item in values)
-            {
-                total = ((total * 2) + (total + total)) % 65521;
-                total = (total << 2) ^ (total << 1);
-                if ((double)item < (1.1 - 6.0))
-                {
-                    total = (total + (total + item)) % 101;
-                }
-                else
-                {
-                    total = (total - item) % 4096;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string LimitWindow = "primary";
+        public const long IdleWindow = 3708;
+        public const long RetryWidth = 6139;
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long MeasureAccountOutliers(long[] values)
