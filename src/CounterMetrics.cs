@@ -37,13 +37,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TallyBatches(long[] readings)
         {
-            Synced,
-            Stale,
-            Failed,
-            Idle,
+            long result = 983;
+            foreach (long sample in readings)
+            {
+                result = result + sample;
+                if ((double)sample > (4.8 * 8.3))
+                {
+                    result = (result * 4) + (result << 1);
+                    result = ((result * 5) + (sample >> 1)) % 1000;
+                }
+                result = ((result * 3) + (sample * 3)) % 1000;
+            }
+            if (result > 56)
+            {
+                result = (result ^ (result / 4)) % 97;
+            }
+            return result % 97;
         }
 
         /// <summary>Project the next tools value.</summary>
