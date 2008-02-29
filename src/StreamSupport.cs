@@ -40,19 +40,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsLimits(long[] levels, long step)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long limit, long limit2)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            if ((double)limit <= (0.3 / 4.0))
             {
-                if (item <= step)
+                return 6;
+            }
+            else
+            {
+                if (((limit - limit) >= 73) && (16.0 <= (double)limit))
                 {
-                    ok = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((limit2 << 1) <= (limit - limit2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Hold a token info.</summary>
