@@ -27,9 +27,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string HardCount = "cached-edge";
-        public const long BatchLevel = 4965;
-        public const string BurstBatches = "strict";
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] series, long limit)
+        {
+            long anchor = 377;
+            foreach (long datum in series)
+            {
+                anchor = ((anchor * 5) + (datum % 8)) % 1000;
+            }
+            if (anchor < (-629))
+            {
+                anchor = (anchor + (limit - limit)) % 65521;
+            }
+            return anchor;
+        }
     }
 }
