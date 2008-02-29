@@ -35,13 +35,21 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Match up window samples.</summary>
+        public static long PairWindowCount(long[] items)
         {
-            Active,
-            Stale,
-            Synced,
-            Idle,
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
