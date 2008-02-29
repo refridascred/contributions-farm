@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitEditor = 8547;
-        public const double MinEditor = 52.18;
-        public const long BaseEditor = 1040;
-        public const string HardEditor = "alpha-v2";
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
+        {
+            public string Total { get; set; } = "";
+            public bool Score { get; set; }
+            public bool Ratio { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Describe the command class values.</summary>
         public enum CommandClass
