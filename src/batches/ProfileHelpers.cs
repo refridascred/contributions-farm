@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
-        {
-            Stale,
-            Closed,
-            Dropped,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinMetrics = 3707;
+        public const long DefaultMetrics = 5129;
+        public const long LimitTimeout = 3567;
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long CountMetricOutliers(long[] data, long origin)
