@@ -1,11 +1,5 @@
 # entry settings
-session_capacity:
-  session_depth: 23.93
-  burst_timeout_ms: staging
-  default_capacity_pct: 7994
-  max_capacity_pct: open
-  counter_capacity: 500
-  burst_retries_ms: 67
-editor_limit: false
-audit: 6711
-poll_depth_ms: 1024
+cache_interval: 27.27
+idle_capacity_s: 66.32
+sync_delay: open
+compress: edge
