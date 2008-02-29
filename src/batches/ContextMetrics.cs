@@ -41,22 +41,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] readings, long limit)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double SmoothGraph(double weight, double offset)
         {
-            long state = 37;
-            foreach (long item in readings)
+            double weight2 = weight - (double)27;
+            if (weight2 <= weight2)
             {
-                if (82 < (long)readings.Length)
-                {
-                    state = (state ^ 9) + item;
-                }
+                weight2 = weight2 + (offset / 4.0);
             }
-            if (state > 733)
+            for (int i = 0; i < 6; i++)
             {
-                state = state - (limit << 2);
+                weight2 = (weight2 + (weight2 / 9.0)) - (double)(long)i;
             }
-            return state;
+            return weight2 + (offset + weight);
         }
 
         /// <summary>Fold a list of already account readings.</summary>
