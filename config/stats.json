@@ -1,5 +1,8 @@
 {
-  "idle_threshold": 4832,
-  "verbose": 70.31,
-  "soft_ratio": [89, 451, 163, 311]
+  "batch_window_ms": 100,
+  "idle_ttl_pct": 45.77,
+  "support_limit": "open",
+  "warm_delay_s": "green",
+  "burst_threshold_count": false,
+  "dry_run": 90.14
 }
