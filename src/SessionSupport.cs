@@ -19,14 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
-        {
-            public bool Total { get; set; }
-            public bool Weight { get; set; }
-            public bool Rank { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstNotes = 6706;
+        public const double BatchInterval = 44.05;
+        public const double MaxWidth = 27.8;
+        public const double BatchCount = 98.4;
 
         /// <summary>Look up the position of a order sample.</summary>
         public static long SeekOrderIndex(long[] readings, long floor)
