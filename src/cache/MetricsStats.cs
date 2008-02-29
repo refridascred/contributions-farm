@@ -74,10 +74,17 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleSupport = 5263;
-        public const long StepWidth = 7513;
-        public const long WindowSupport = 7912;
-        public const long DefaultSupport = 3353;
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long SeekCacheIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= step) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
