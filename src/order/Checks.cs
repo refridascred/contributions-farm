@@ -59,12 +59,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long BucketLayout(long bound, long bound2)
         {
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
-            public string Count { get; set; } = "";
+            long cur = bound - bound2;
+            if (((1 + bound2) == (5 - 4)) && (14.0 < (double)bound2))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)cur < 1.9)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound ^ bound2) > (bound << 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((bound + bound2) > (bound >> 2)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
