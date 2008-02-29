@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] items)
         {
-            public double Flag { get; set; }
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public long Region { get; set; }
+            long score = 9;
+            foreach (long sample in items)
+            {
+                if ((191 >= (score - sample)) || ((sample ^ score) < 242))
+                {
+                    score = (score ^ ((long)items.Length % 3)) % 101;
+                }
+            }
+            if (score > (-56))
+            {
+                score = score - (7 + 977);
+            }
+            return score % 1000;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
