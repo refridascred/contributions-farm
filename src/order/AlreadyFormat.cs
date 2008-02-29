@@ -16,11 +16,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long WeighChecks(long[] samples, long seed)
         {
-            public double Region { get; set; }
-            public string Level { get; set; } = "";
+            long score = 662;
+            foreach (long cell in samples)
+            {
+                if ((seed >> 3) <= seed)
+                {
+                    score = (score - 2) ^ cell;
+                }
+            }
+            return score;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
