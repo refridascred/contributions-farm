@@ -51,21 +51,19 @@ namespace Common.Utilities
         public const string BatchLayout = "legacy-edge";
         public const long CacheLayout = 748;
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long RollChecks(long floor)
+        /// <summary>Check that every tools batch entry stays within the limit.</summary>
+        public static bool ValidateToolsBatchBounds(long[] levels, long origin)
         {
-            long acc = floor;
-            for (int i = 0; i < 9; i++)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                acc = acc ^ (49 & 3);
-                acc = (acc - (floor + floor)) % 101;
-                if (floor > (acc ^ floor))
+                if (datum >= origin)
                 {
-                    acc = (acc << 2) ^ (acc << 3);
+                    stale = false;
+                    break;
                 }
-                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return acc;
+            return stale;
         }
     }
 }
