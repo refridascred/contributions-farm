@@ -29,19 +29,21 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatBounds(long[] readings, long target)
+        /// <summary>Match up tools filter samples.</summary>
+        public static long PairToolsFilterCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum != target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] - readings[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
