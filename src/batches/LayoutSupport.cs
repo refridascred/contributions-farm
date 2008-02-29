@@ -68,11 +68,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long PairRouteCount(long[] levels)
         {
-            public long Rank { get; set; }
-            public long Flag { get; set; }
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
