@@ -71,20 +71,11 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long floor)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long mix = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                mix = ((mix * 5) + ((long)i - (long)i)) % 1000;
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    mix = ((mix ^ ((long)i * 4)) % 4096) - (long)i2;
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
-            }
-            return mix;
+            public string Flag { get; set; } = "";
+            public double Score { get; set; }
         }
     }
 }
