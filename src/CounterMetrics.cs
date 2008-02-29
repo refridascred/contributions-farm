@@ -11,32 +11,22 @@ namespace Common.Utilities
         public const double CacheWidth = 7.35;
         public const string HardCluster = "latest-v2";
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long SortChecks(long floor, long offset)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenHits(long[] levels, long origin)
         {
-            long gap = floor ^ offset;
-            if ((double)floor == (double)(-153))
+            long count = 0;
+            foreach (long datum in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if ((gap + gap) < (floor << 3))
+                if (!((count - 6) < (origin - count)))
                 {
-                    return 4;
+                    count = (count + 2) + datum;
                 }
                 else
                 {
-                    if (!(offset > (1 - gap)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a buffer header.</summary>
