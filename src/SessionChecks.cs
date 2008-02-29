@@ -65,11 +65,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseCache = 1427;
-        public const double IdleTimeout = 64.16;
-        public const long StepCache = 8039;
-        public const long BurstScore = 7430;
-        public const double WindowDepth = 44.43;
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
+        {
+            Stale,
+            Closed,
+            Paused,
+        }
     }
 }
