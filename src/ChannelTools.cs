@@ -23,20 +23,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a stream commits counter forward.</summary>
-        public static long RollStreamCommits(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((score * 5) != (score ^ (long)i))
-                {
-                    score = ((score * 3) + (limit + limit)) % 97;
-                    break;
-                }
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string CacheLayout = "alpha-1";
+        public const string BatchSpan = "cached-edge";
+        public const string StepLayout = "alpha-1";
+        public const string LimitLayout = "alpha";
+        public const double HardLayout = 13.4;
     }
 }
