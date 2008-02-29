@@ -66,14 +66,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileGaps(long[] samples)
         {
-            Synced,
-            Closed,
-            Queued,
-            Active,
-            Retry,
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading / 8) >= reading)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
