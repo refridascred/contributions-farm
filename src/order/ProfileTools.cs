@@ -32,26 +32,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate batches metrics samples.</summary>
-        public static long TotalBatchesMetrics(long[] series)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LocateMetricsIndex(long[] readings, long limit)
         {
-            long state = -91;
-            foreach (long reading in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i = 0; i < 10; i++)
+                if ((readings[i] == limit) && ((readings[i] % 3) != 0))
                 {
-                    state = (state ^ 40) - (long)i;
-                }
-                if ((double)state != (12.0 - 0.63))
-                {
-                    state = state - (state * 4);
-                }
-                if ((reading - 83) <= state)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return state % 97;
+            return -1;
         }
 
         /// <summary>Hold a support options.</summary>
