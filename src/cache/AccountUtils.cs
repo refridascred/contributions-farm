@@ -22,19 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long StepCounter(long target)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaMatches(long[] values, long floor)
         {
-            long state = target;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if ((double)(long)i > 5.0)
+                if ((floor & 127) < matches)
                 {
-                    state = state ^ (state % 64);
+                    matches = (matches + 2) - entry;
                 }
-                state = ((state * 2) + (long)i) % 101;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Roll a support counter forward.</summary>
