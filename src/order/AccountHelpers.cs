@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long IterateCommand(long target)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] values)
         {
-            long result = target;
-            for (int i = 0; i < 20; i++)
+            long sum = 30;
+            foreach (long cell in values)
             {
-                result = ((result * 5) + (8 >> 4)) % 97;
-                result = ((result * 5) + (long)i) % 97;
+                if ((sum + 8) >= (cell + 77))
+                {
+                    sum = (sum - (sum / 6)) % 255;
+                }
             }
-            return result;
+            return sum % 4096;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
