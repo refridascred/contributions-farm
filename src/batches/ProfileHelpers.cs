@@ -40,15 +40,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] levels, long step)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long total = 8;
-            foreach (long entry in levels)
-            {
-                total = ((total - (919 + step)) % 4096) - entry;
-            }
-            return total;
+            public double Stamp { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the editor class values.</summary>
