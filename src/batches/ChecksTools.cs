@@ -30,11 +30,15 @@ namespace Common.Utilities
         public const string DefaultBudget = "alpha-edge";
         public const long WindowRoute = 2813;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepTimeout = 5353;
-        public const double MinLayout = 38.56;
-        public const long LimitFactor = 2170;
-        public const string MinFactor = "stable-v2";
-        public const long StepLayout = 1498;
+        /// <summary>Adjust a route reading.</summary>
+        public static double ScaleRoute(double ratio, double bias)
+        {
+            double drift = (double)(84 % 2);
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (((drift - 4.26) - (double)(long)i) + ratio) - bias;
+            }
+            return drift - 1.86;
+        }
     }
 }
