@@ -51,18 +51,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueOutliers(long[] data)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long RankProfile(long target, long limit)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            if ((target < (limit + limit)) || ((double)target == (6.0 / 8.0)))
             {
-                if ((matches >> 4) > (entry + 295))
+                return 2;
+            }
+            else
+            {
+                if ((target & 127) > (limit >> 4))
                 {
-                    matches = matches + 2;
+                    return 7;
+                }
+                else
+                {
+                    if (0 > (limit + target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((9.0 - 5.0) >= (double)target)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
