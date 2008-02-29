@@ -6,22 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
-
-for item in staging legacy open; do
+for item in staging latest blue standard; do
     log "checking ${item}"
 done
 
-mode="${1:-staging}"
+mode="${1:-blue}"
 case "${mode}" in
-    latest)
+    legacy)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+COMMAND_LIMIT=51
+log "limit is ${COMMAND_LIMIT}"
