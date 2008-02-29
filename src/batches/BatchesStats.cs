@@ -38,32 +38,18 @@ namespace Common.Utilities
         public const string DefaultFactor = "fallback-edge";
         public const double StepBuffer = 26.25;
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long limit, long floor)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterMatches(long[] series)
         {
-            long next = limit - floor;
-            if ((670 + floor) <= next)
+            long count = 0;
+            foreach (long reading in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((-929) <= limit)
+                if ((count >> 3) >= (reading + reading))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((9.0 + 8.7) != (double)floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
     }
 }
