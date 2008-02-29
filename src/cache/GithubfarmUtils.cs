@@ -38,18 +38,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the schema checks entries that pass the check.</summary>
-        public static long CountSchemaChecksHits(long[] values)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((12 - 165) >= value)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Stale,
+            Locked,
+            Active,
+            Paused,
+            Pending,
         }
     }
 }
