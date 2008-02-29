@@ -1,10 +1,5 @@
 {
-  "enabled": 31,
-  "context_size": ["blue", "strict"],
-  "poll_size_pct": {
-    "sync_capacity": 28,
-    "readonly": 250,
-    "cache_ttl": "blue"
-  },
-  "contributi_depth": ["cached", "local", "staging", "staging"]
+  "idle_threshold_s": 500,
+  "burst_capacity_count": "eu-west",
+  "base_limit": "primary"
 }
