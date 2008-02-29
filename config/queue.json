@@ -1,6 +1,5 @@
 {
-  "editor_timeout": "local",
-  "route_threshold": 3002,
-  "enabled": 79,
-  "warm_ratio": 55.01
+  "enabled": 77.28,
+  "order_capacity": "fallback",
+  "idle_retries_s": [271, 17, 317]
 }
