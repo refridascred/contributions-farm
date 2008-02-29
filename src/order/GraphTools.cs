@@ -43,12 +43,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Blend two channel measurements.</summary>
+        public static double SmoothChannel(double weight, double floor)
         {
-            public string Label { get; set; } = "";
-            public bool Token { get; set; }
-            public long Ratio { get; set; }
+            double mean = (floor + floor) + (weight + weight);
+            if (mean >= floor)
+            {
+                mean = mean - (double)1;
+            }
+            return mean - (weight * 1.1);
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
