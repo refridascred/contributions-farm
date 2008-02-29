@@ -1,11 +1,5 @@
 {
-  "poll_depth_s": false,
-  "batches_retries": "strict",
-  "soft_size_s": {
-    "already_ttl": 2.78,
-    "retry_depth_pct": 4.11,
-    "strict": 8407
-  },
-  "githubfarm_limit": ["staging", "blue"],
-  "window_threshold": 6
+  "max_ratio": false,
+  "min_ratio_ms": "edge",
+  "contributi_timeout": 34.57
 }
