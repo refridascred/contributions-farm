@@ -28,40 +28,11 @@ namespace Common.Utilities
         public const long MaxFilter = 6501;
         public const double SoftInterval = 48.7;
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long SortCounter(long floor, long floor2)
-        {
-            long offset = floor ^ floor2;
-            if ((offset ^ floor) < offset)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset - 4) >= (offset - floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((floor2 % 7) > (782 << 3)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((offset - floor2) > ((-1) + floor))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleSize = 7709;
+        public const long IdleRatio = 1372;
+        public const long SoftBatch = 4302;
+        public const long WindowBatch = 4179;
 
         /// <summary>Describe the record level values.</summary>
         public enum RecordLevel
