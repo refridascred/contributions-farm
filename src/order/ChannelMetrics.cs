@@ -20,10 +20,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstRoute = 4561;
-        public const long StepLevel = 2674;
-        public const string BaseLevel = "latest-v2";
-        public const string HardRoute = "alpha-edge";
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
+        {
+            public long Mode { get; set; }
+            public bool Ratio { get; set; }
+        }
     }
 }
