@@ -22,19 +22,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowLimits(long[] samples, long step)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            bool flag = true;
-            foreach (long item in samples)
-            {
-                if (item > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Queued,
+            Active,
+            Pending,
+            Dropped,
         }
     }
 }
