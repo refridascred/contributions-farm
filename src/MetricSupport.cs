@@ -13,14 +13,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long CombinePayload(long[] values, long bound)
         {
-            Ready,
-            Locked,
-            Dropped,
-            Idle,
-            Stale,
+            long acc = 645;
+            foreach (long entry in values)
+            {
+                if (!(bound < (entry / 4)))
+                {
+                    acc = acc + (bound / 9);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
