@@ -13,11 +13,32 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long RankFilter(long floor, long limit)
         {
-            public string Size { get; set; } = "";
-            public long Offset { get; set; }
+            long gap = floor + limit;
+            if ((floor << 1) > (limit + floor))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((10.0 / 4.0) <= (double)limit))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((double)gap < (8.55 * 6.0)) || (2.92 <= (double)floor))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a window info.</summary>
