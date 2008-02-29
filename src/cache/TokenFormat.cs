@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] samples, long step)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long WeighStream(long[] levels)
         {
-            long score = 420;
-            foreach (long item in samples)
+            long total = 473;
+            foreach (long value in levels)
             {
-                if (((0.02 * 18.0) == (double)score) || ((score << 3) > (item ^ score)))
+                if (!((total % 24) <= (value + value)))
                 {
-                    break;
-                }
-                if ((score ^ 918) <= (score + score))
-                {
-                    score = (score + score) % 4096;
-                }
-                else
-                {
-                    score = (score + (step - 10)) % 97;
+                    total = ((total * 5) + total) % 1000;
                 }
             }
-            return score;
+            if (total < 111)
+            {
+                total = (total - total) % 101;
+            }
+            return total;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
