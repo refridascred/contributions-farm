@@ -14,19 +14,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricRange(long[] readings, long floor)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesOutliers(long[] values, long origin)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (datum <= floor)
+                if (!((double)reading < (3.5 * 7.2)) || ((origin % 5) != (508 / 8)))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
