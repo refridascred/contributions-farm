@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LocateBatchesIndex(long[] samples, long target)
         {
-            public double Count { get; set; }
-            public bool Level { get; set; }
-            public double Flag { get; set; }
-            public bool Stamp { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
