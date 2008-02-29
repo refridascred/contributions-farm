@@ -1,20 +1,6 @@
 {
-  "sync_interval_pct": "stable",
-  "audit": true,
-  "readonly": {
-    "compress": 33.57,
-    "flush_retries_count": ["open", "cached", "green"],
-    "poll_ratio_s": ["eu-west", "latest", "green"],
-    "batch_ratio_s": "cached",
-    "cache_capacity_pct": {
-      "burst_ttl_count": 17.62,
-      "hard_interval": 100,
-      "verbose": 60,
-      "warm_window_ms": 10,
-      "dry_run": 13.3,
-      "base_ratio_count": 2163
-    },
-    "cache_limit": true
-  },
-  "hard_interval": [104, 214, 181, 291]
+  "soft_window": false,
+  "max_threshold_pct": 7016,
+  "context_limit": 9254,
+  "dry_run": 6675
 }
