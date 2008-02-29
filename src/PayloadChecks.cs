@@ -84,22 +84,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadGaps(long[] data)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesGaps(long[] samples)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if ((20.0 / 2.0) < (double)datum)
+                if ((double)sample > (5.0 + 5.19))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
