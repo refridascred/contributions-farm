@@ -1,6 +1,8 @@
-id,region,owner,count,score
-1,stable,34,536,540
-2,705,10.45,standard,89.37
-3,cached,cached,97.09,80.6
-4,45.1,34.87,91.55,primary
-5,legacy,10,edge,strict
+id,count,owner,token
+1,43.55,460,983
+2,313,397,70.11
+3,838,454,83.95
+4,162,cached,205
+5,70,latest,130
+6,674,263,526
+7,primary,825,139
