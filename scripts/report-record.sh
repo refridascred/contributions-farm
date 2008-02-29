@@ -6,13 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary eu-west cached; do
-    log "checking ${item}"
-done
-
-mode="${1:-eu-west}"
+mode="${1:-strict}"
 case "${mode}" in
-    staging)
+    standard)
         log "fast path"
         ;;
     *)
@@ -20,5 +16,8 @@ case "${mode}" in
         ;;
 esac
 
-RECORD_LIMIT=440
-log "limit is ${RECORD_LIMIT}"
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
