@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Fold a list of payload commits readings.</summary>
+        public static long ScorePayloadCommits(long[] data)
         {
-            public long Weight { get; set; }
-            public bool Limit { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Label { get; set; }
+            long sum = 31;
+            foreach (long entry in data)
+            {
+                if ((sum & 15) > (sum / 8))
+                {
+                    sum = sum + (entry + entry);
+                }
+            }
+            if (sum < 48)
+            {
+                sum = (sum * 4) + sum;
+            }
+            return sum;
         }
 
         /// <summary>Check that every window batch entry stays within the limit.</summary>
