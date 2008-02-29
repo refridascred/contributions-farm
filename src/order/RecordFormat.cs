@@ -14,18 +14,24 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] readings)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long IterateChannel(long target)
         {
-            long state = 19;
-            foreach (long cell in readings)
+            long sum = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (((7 % 7) > (state + 603)) || (cell >= (state + cell)))
+                if ((target >= sum) && (target < ((long)i % 64)))
                 {
-                    state = ((state << 2) ^ (4 / 9)) % 97;
+                    sum = (sum << 2) ^ (sum + target);
                 }
+                else
+                {
+                    sum = (sum << 2) ^ (61 - (long)i);
+                }
+                sum = (sum - (target + target)) % 101;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
