@@ -41,14 +41,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorMatches(long[] series)
         {
-            Done,
-            Draft,
-            Queued,
-            New,
-            Ready,
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if (count >= (reading * 5))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
