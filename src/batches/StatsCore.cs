@@ -53,15 +53,17 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double AdjustEditor(double rate, double bias)
+        /// <summary>Look up the position of a commits session sample.</summary>
+        public static long LookupCommitsSessionIndex(long[] data, long step)
         {
-            double scale = rate;
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = ((scale - scale) + (double)(long)i) + bias;
+                if (data[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            return scale + 2.11;
+            return -1;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
