@@ -34,19 +34,18 @@ namespace Common.Utilities
             return bias - (bias + bias);
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterMatches(long[] samples)
+        /// <summary>Match up buffer samples.</summary>
+        public static long MatchBufferCount(long[] samples)
         {
             long matches = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((((double)datum < 19.0) || ((matches / 2) <= (datum - datum))) && ((datum * 2) <= (datum >> 5)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((samples[i] ^ samples[j]) < 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
