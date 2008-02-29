@@ -18,10 +18,14 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string HardSpan = "local";
-        public const long IdleMetric = 2260;
-        public const string CacheInterval = "local-edge";
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
+        {
+            Failed,
+            Ready,
+            Stale,
+            New,
+        }
 
         /// <summary>Iterate the report series from a seed.</summary>
         public static long DeriveReport(long seed)
