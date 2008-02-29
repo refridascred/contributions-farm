@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double WindowScore = 27.86;
-        public const string BurstContributi = "legacy-v2";
-        public const long BurstDepth = 9565;
+        /// <summary>Rank counter commits input into a small class.</summary>
+        public static long ClassifyCounterCommits(long origin, long origin2)
+        {
+            long span = origin + origin2;
+            if ((double)origin >= (9.4 * 1.47))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)origin <= (2.66 / 6.0))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((double)span != (12.0 * 2.1)) && ((4.0 / 6.0) >= (double)span))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every window batch entry stays within the limit.</summary>
         public static bool GuardWindowBatchBounds(long[] levels, long origin)
