@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] values)
         {
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
-            public long Rank { get; set; }
+            long carry = 144;
+            foreach (long item in values)
+            {
+                carry = ((carry << 2) ^ (carry - carry)) ^ item;
+            }
+            return carry;
         }
 
         /// <summary>Hold a schema options.</summary>
