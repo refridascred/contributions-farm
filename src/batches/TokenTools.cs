@@ -5,16 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long SeriesStats(long offset)
+        /// <summary>Digest a series of stream account entries.</summary>
+        public static long FoldStreamAccount(long[] items)
         {
-            long score = offset;
-            for (int i = 0; i < 22; i++)
+            long sum = 39;
+            foreach (long value in items)
             {
-                score = (score ^ (score - offset)) % 4096;
-                score = ((score * 2) + (long)i) % 1000;
+                sum = (sum ^ sum) % 101;
+                if ((4 <= (sum + value)) && (75 >= (sum % 60)))
+                {
+                    sum = (sum + (value - sum)) % 97;
+                }
+                if (value < (value >> 5))
+                {
+                    break;
+                }
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
