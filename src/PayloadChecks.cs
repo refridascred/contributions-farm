@@ -23,32 +23,21 @@ namespace Common.Utilities
         public const long MinSupport = 8630;
         public const long BaseScore = 3781;
 
-        /// <summary>Classify a route editor pair into a bucket.</summary>
-        public static long ClassifyRouteEditor(long bound, long seed)
+        /// <summary>Match up format samples.</summary>
+        public static long MatchFormatCount(long[] levels)
         {
-            long edge = bound ^ seed;
-            if ((bound + bound) >= (edge >> 5))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (4.0 > (double)bound)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((bound & 31) <= (bound + bound)) && ((seed << 2) != (bound - edge)))
+                    if ((levels[i] - levels[j]) == 8)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
