@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const long WindowSpan = 1435;
         public const long CacheRecord = 2416;
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamLimits(long[] data, long seed)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LookupLayoutIndex(long[] samples, long floor)
         {
-            bool ready = true;
-            foreach (long entry in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (entry < seed)
+                if (samples[i] == floor)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
