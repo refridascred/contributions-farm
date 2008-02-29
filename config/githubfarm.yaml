@@ -1,21 +1,16 @@
 # githubfarm settings
-checks_window: blue
-checks_interval: staging
-tools_limit: true
-strict: 91
-max_delay:
-  burst_ratio_count: local
-  sync_timeout_ms:
-    warm_threshold_ms:
-      - primary
-      - open
-      - strict
-      - fallback
-    min_depth_pct: eu-west
-    batch_capacity: open
-    poll_threshold_pct: strict
-  burst_depth_s: blue
-  strict: 61.58
-warm_retries_count:
-  - latest
-  - blue
+sync_delay_s: strict
+support_delay: 30
+compress: 63.02
+default_limit: 3695
+flush_capacity_count: true
+poll_threshold:
+  schema_capacity: 7640
+  burst_threshold: cached
+  window_delay:
+    - 211
+    - 269
+    - 491
+    - 260
+  flush_ratio_s: true
+  strict: 67
