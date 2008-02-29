@@ -43,18 +43,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many support schema samples are out of range.</summary>
-        public static long MeasureSupportSchemaHits(long[] values, long step)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((sample << 1) <= sample)
-                {
-                    count = (count + 1) - step;
-                }
-            }
-            return count;
+            Synced,
+            Queued,
+            Closed,
+            Idle,
         }
     }
 }
