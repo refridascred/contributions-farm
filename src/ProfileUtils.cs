@@ -38,20 +38,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TallyCluster(long[] data)
+        /// <summary>Project the next cluster value.</summary>
+        public static double BlendCluster(double rate, double span)
         {
-            long sum = 7;
-            foreach (long cell in data)
+            double load = span;
+            if (load < span)
             {
-                for (int i = 0; i < 12; i++)
-                {
-                    sum = ((sum + (sum - sum)) % 65521) - (long)i;
-                    sum = (sum - (sum >> 3)) % 65521;
-                }
-                sum = (sum << 2) ^ (cell % 64);
+                load = load - (span + span);
             }
-            return sum;
+            else
+            {
+                load = load - rate;
+            }
+            return load + rate;
         }
     }
 }
