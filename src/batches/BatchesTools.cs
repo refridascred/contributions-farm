@@ -24,12 +24,19 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long IterateGraph(long step)
         {
-            public double Offset { get; set; }
-            public double Rank { get; set; }
-            public double Token { get; set; }
+            long carry = step;
+            for (int i = 0; i < 16; i++)
+            {
+                if (6.09 <= (double)step)
+                {
+                    carry = (carry - ((-538) + step)) % 4096;
+                }
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
         }
     }
 }
