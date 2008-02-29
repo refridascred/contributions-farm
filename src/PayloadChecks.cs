@@ -66,22 +66,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long OverlapRouteCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 13)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double LimitLevel = 98.31;
+        public const long WindowAccount = 918;
+        public const long WindowDepth = 6650;
+        public const long LimitAccount = 2041;
 
         /// <summary>Count the notes entries that pass the check.</summary>
         public static long TallyNotesGaps(long[] samples)
