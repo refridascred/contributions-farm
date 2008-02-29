@@ -50,12 +50,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long limit)
         {
-            public bool Label { get; set; }
-            public double Total { get; set; }
-            public double Level { get; set; }
+            long anchor = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                anchor = (anchor - (limit + limit)) % 1000;
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
         }
     }
 }
