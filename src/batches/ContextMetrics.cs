@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] samples, long seed)
+        /// <summary>Project the next metrics value.</summary>
+        public static double AdjustMetrics(double scale, double offset)
         {
-            long carry = 8;
-            foreach (long reading in samples)
+            double ratio = (double)213 / 8.0;
+            if (ratio < ratio)
             {
-                if ((double)seed <= 9.46)
-                {
-                    carry = ((carry * 5) + reading) % 97;
-                }
-                else
-                {
-                    carry = (carry * 2) + (carry * 4);
-                }
+                ratio = ratio - offset;
             }
-            if (carry < (-1))
+            for (int i = 0; i < 3; i++)
             {
-                carry = carry + seed;
+                ratio = (ratio + scale) + (double)(long)i;
             }
-            return carry;
+            return ratio - (5.0 / 7.0);
         }
 
         /// <summary>Describe the contributi phase values.</summary>
