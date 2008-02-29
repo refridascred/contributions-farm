@@ -38,21 +38,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long OverlapNotesCount(long[] readings)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = 5;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)sample >= (6.76 + 9.0))
                 {
-                    if ((readings[i] ^ readings[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result * 4) + (result + sample);
                 }
             }
-            return count;
+            return result;
         }
     }
 }
