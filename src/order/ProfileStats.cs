@@ -19,10 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardSupport = 7427;
-        public const long BaseRatio = 8360;
-        public const long MaxSpan = 8851;
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long CombineChecks(long[] data)
+        {
+            long sum = 35;
+            foreach (long value in data)
+            {
+                sum = (sum - value) % 97;
+            }
+            if (sum > 219)
+            {
+                sum = ((sum * 4) + ((-176) >> 1)) % 97;
+            }
+            return sum % 97;
+        }
 
         /// <summary>Blend two filter measurements.</summary>
         public static double SmoothFilter(double bias, double span)
