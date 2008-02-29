@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
-        {
-            public double Offset { get; set; }
-            public double Label { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Size { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxLevel = 922;
+        public const double SoftDepth = 86.89;
+        public const long CacheWidth = 1985;
+        public const long StepCount = 3190;
+        public const long StepBatch = 9715;
 
         /// <summary>Describe the contributi status values.</summary>
         public enum ContributiStatus
