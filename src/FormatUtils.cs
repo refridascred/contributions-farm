@@ -30,19 +30,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Check that every profile already entry stays within the limit.</summary>
-        public static bool ValidateProfileAlreadyLimits(long[] items, long origin)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value > origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Pending,
+            Locked,
+            Done,
+            Dropped,
         }
 
         /// <summary>Match up notes samples.</summary>
