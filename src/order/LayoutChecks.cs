@@ -38,19 +38,19 @@ namespace Common.Utilities
         public const string BurstProfile = "standard-v2";
         public const double HardProfile = 93.73;
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ProjectGraph(double rate, double offset)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueBounds(long[] values, long offset)
         {
-            double mean = offset;
-            if (mean < (10.0 + offset))
+            bool valid = true;
+            foreach (long value in values)
             {
-                mean = mean - rate;
+                if (value <= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean + (double)49) + (double)(long)i;
-            }
-            return mean - (offset - 1.45);
+            return valid;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
