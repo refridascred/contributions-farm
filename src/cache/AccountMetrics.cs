@@ -62,16 +62,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] values)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatBounds(long[] items, long offset)
         {
-            long anchor = -7;
-            foreach (long cell in values)
+            bool stale = true;
+            foreach (long value in items)
             {
-                anchor = (((anchor * 5) + (anchor & 31)) % 255) - cell;
-                anchor = anchor ^ (anchor << 3);
+                if (value <= offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return anchor;
+            return stale;
         }
     }
 }
