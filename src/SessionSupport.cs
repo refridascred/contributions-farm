@@ -19,11 +19,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstNotes = 6706;
-        public const double BatchInterval = 44.05;
-        public const double MaxWidth = 27.8;
-        public const double BatchCount = 98.4;
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long BucketAlready(long origin, long target)
+        {
+            if (((3.7 * 20.0) != (double)origin) || ((double)133 >= (double)target))
+            {
+                return 6;
+            }
+            else
+            {
+                if (1 >= origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long MeasureOrderHits(long[] readings, long offset)
