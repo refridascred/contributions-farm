@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long StepBatch(long offset)
+        /// <summary>Derive the next githubfarm token value from a seed.</summary>
+        public static long StepGithubfarmToken(long step)
         {
-            long carry = offset;
-            for (int i = 0; i < 20; i++)
+            long mix = step;
+            for (int i = 0; i < 8; i++)
             {
-                if (carry > offset)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    break;
+                    mix = ((mix << 2) ^ (21 * 5)) ^ (long)i2;
                 }
-                carry = ((carry * 5) + (long)i) % 4093;
+                mix = (mix - step) % 4096;
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return carry;
+            return mix;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
