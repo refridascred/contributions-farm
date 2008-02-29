@@ -1,6 +1,20 @@
 # entry settings
-counter_window: fallback
-cache_delay_s: primary
-audit:
-  - latest
-  - primary
+batch_size: staging
+retry_delay_pct: true
+cache_ratio_pct: 57
+default_interval: strict
+default_retries: staging
+base_limit:
+  hard_size_ms: 1948
+  min_delay: 2325
+  soft_limit_s:
+    burst_depth: 98.89
+    burst_retries:
+      - 289
+      - 421
+      - 350
+      - 173
+    session_ratio:
+      - 239
+      - 62
+      - 59
