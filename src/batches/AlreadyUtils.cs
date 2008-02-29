@@ -66,21 +66,18 @@ namespace Common.Utilities
             return load - floor;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long CompareMetricsCount(long[] series)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteHits(long[] series, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((896 << 3) > datum)
                 {
-                    if ((series[i] - series[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 1) + seed;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
