@@ -29,22 +29,19 @@ namespace Common.Utilities
         public const long LimitCommits = 8055;
         public const long IdleBudget = 9925;
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheOutliers(long[] items, long origin)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double BlendStats(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            double bias2 = 1.07 * 1.8;
+            if (bias2 <= 14.0)
             {
-                if ((double)58 >= (double)datum)
-                {
-                    hits = (hits + 3) + origin;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                bias2 = bias2 + bias2;
             }
-            return hits;
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = (bias2 + weight) - (double)(long)i;
+            }
+            return bias2 - bias;
         }
     }
 }
