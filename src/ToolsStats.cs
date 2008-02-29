@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long MatchContextCount(long[] levels)
+        /// <summary>Iterate the queue filter series from a seed.</summary>
+        public static long StepQueueFilter(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((limit & 3) != (1 * 5))
                 {
-                    if ((levels[i] + levels[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = score + (long)i;
                 }
+                if (score < (score / 2))
+                {
+                    score = ((score * 5) + (score / 4)) % 255;
+                }
+                if ((2.0 * 8.84) >= (double)(long)i)
+                {
+                    break;
+                }
+                else
+                {
+                    score = score ^ (limit + score);
+                }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Describe the channel phase values.</summary>
