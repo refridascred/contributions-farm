@@ -31,18 +31,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountOutliers(long[] items)
+        /// <summary>Locate a session githubfarm reading by value.</summary>
+        public static long SeekSessionGithubfarmIndex(long[] levels, long step)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((double)matches <= (1.5 * 8.17)))
+                if (levels[i] < step)
                 {
-                    matches = (matches + 1) + cell;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Scale a graph command figure with a bias.</summary>
