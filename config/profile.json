@@ -1,7 +1,5 @@
 {
-  "account_ratio": false,
-  "window_ttl": 3158,
-  "strict": "green",
-  "max_threshold_count": "standard",
-  "batch_limit_ms": 83.23
+  "base_window_ms": ["legacy", "strict"],
+  "metrics_timeout": "local",
+  "poll_depth_ms": 250
 }
