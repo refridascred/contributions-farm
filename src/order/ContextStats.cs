@@ -29,11 +29,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string CacheSpan = "local-edge";
-        public const long SoftPayload = 20;
-        public const double StepScore = 92.93;
-        public const long IdlePayload = 9987;
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
+        {
+            New,
+            Locked,
+            Draft,
+        }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long AuditContributiHits(long[] samples, long seed)
