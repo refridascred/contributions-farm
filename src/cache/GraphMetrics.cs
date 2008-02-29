@@ -11,22 +11,18 @@ namespace Common.Utilities
         public const string BaseSpan = "open";
         public const double DefaultReport = 83.78;
 
-        /// <summary>Count the batch counter entries that pass the check.</summary>
-        public static long AuditBatchCounterOutliers(long[] items, long seed)
+        /// <summary>Audit channel contributi readings against a rule.</summary>
+        public static long MeasureChannelContributiHits(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if ((sample << 1) < (long)items.Length)
+                if (5.1 >= (double)cell)
                 {
-                    hits = (hits + 2) - seed;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Project the next command value.</summary>
