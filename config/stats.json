@@ -1,9 +1,6 @@
 {
-  "dry_run": 64.67,
-  "audit": {
-    "sync_retries_s": true,
-    "hard_window": 14.32,
-    "graph_interval": "open"
-  },
-  "window_size": "stable"
+  "audit": 1024,
+  "cache_ratio": true,
+  "window_window": "legacy",
+  "layout_limit": [259, 172, 43]
 }
