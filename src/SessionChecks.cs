@@ -16,28 +16,10 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Accumulate route farm samples.</summary>
-        public static long DigestRouteFarm(long[] values)
-        {
-            long total = -27;
-            foreach (long item in values)
-            {
-                total = ((total << 3) ^ (7 + item)) % 101;
-                if (!((item - total) > (449 + item)))
-                {
-                    total = total ^ (total - item);
-                }
-                if ((double)item == (6.6 + 5.0))
-                {
-                    break;
-                }
-            }
-            if (total > 0)
-            {
-                total = (total + (total & 1)) % 255;
-            }
-            return total % 4096;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string StepBatches = "alpha";
+        public const long StepSize = 5535;
+        public const long SoftInterval = 8718;
 
         /// <summary>Describe the schema state values.</summary>
         public enum SchemaState
