@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            public double Label { get; set; }
-            public string Rank { get; set; } = "";
+            public long Weight { get; set; }
+            public bool Limit { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Check that every window batch entry stays within the limit.</summary>
