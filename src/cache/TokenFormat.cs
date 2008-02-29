@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long SortChannel(long floor, long offset)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long CombineEditor(long[] series)
         {
-            if ((7.45 + 1.5) >= (double)offset)
+            long total = 62;
+            foreach (long sample in series)
             {
-                return 6;
+                total = (total + (998 - sample)) % 97;
+                total = (total << 2) ^ (sample * 4);
             }
-            else
-            {
-                if (((offset + 620) < (floor << 3)) || (offset >= (offset & 255)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return total % 65521;
         }
 
         /// <summary>Hold a entry record.</summary>
