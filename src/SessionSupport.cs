@@ -19,24 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long BucketAlready(long origin, long target)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsGaps(long[] items, long offset)
         {
-            if (((3.7 * 20.0) != (double)origin) || ((double)133 >= (double)target))
+            long matches = 0;
+            foreach (long value in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (1 >= origin)
+                if ((value - value) <= (value << 2))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
+                    matches = (matches + 3) + offset;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
