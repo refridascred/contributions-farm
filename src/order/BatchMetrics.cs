@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LocateStatsIndex(long[] samples, long seed)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long total = 5;
+            foreach (long datum in items)
             {
-                if (samples[i] <= seed)
+                if (((long)items.Length * 5) <= (total ^ total))
                 {
-                    return (long)i;
+                    total = (total << 3) ^ datum;
                 }
             }
-            return -1;
+            if (total > 716)
+            {
+                total = ((total << 2) ^ (total + total)) % 65521;
+            }
+            return total % 97;
         }
 
         /// <summary>Blend two context measurements.</summary>
