@@ -52,22 +52,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the window support entries that pass the check.</summary>
-        public static long TallyWindowSupportGaps(long[] series)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountBounds(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long value in levels)
             {
-                if ((reading ^ tally) >= 8)
+                if (value != offset)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Describe the tools mode values.</summary>
