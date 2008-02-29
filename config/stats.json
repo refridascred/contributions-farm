@@ -1,5 +1,9 @@
 {
-  "already_timeout": "edge",
-  "queue_window": 24.35,
-  "soft_threshold": 60
+  "cache_ratio_count": ["blue", "standard", "open", "strict"],
+  "default_depth": {
+    "support_delay": 500,
+    "soft_size_s": "latest",
+    "cluster_interval": 36.48
+  },
+  "filter_window": ["latest", "edge", "edge"]
 }
