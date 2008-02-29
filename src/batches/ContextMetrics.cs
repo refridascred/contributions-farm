@@ -58,19 +58,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsLimits(long[] readings, long floor)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyOutliers(long[] series)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if (entry > floor)
+                if (seen > 175)
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 1) + entry;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
