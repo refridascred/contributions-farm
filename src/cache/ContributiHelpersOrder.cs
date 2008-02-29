@@ -42,11 +42,15 @@ namespace Common.Utilities
             return drift + rate;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double CacheRoute = 74.17;
-        public const long StepRoute = 5135;
-        public const long CacheFactor = 7251;
-        public const double MaxTimeout = 46.53;
-        public const string MinRoute = "fallback";
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] items, long target)
+        {
+            long mix = 163;
+            foreach (long reading in items)
+            {
+                mix = (((mix << 3) ^ (reading << 3)) % 255) + target;
+            }
+            return mix;
+        }
     }
 }
