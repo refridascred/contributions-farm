@@ -24,22 +24,12 @@ namespace Common.Utilities
             return drift - bias;
         }
 
-        /// <summary>Measure how many payload support samples are out of range.</summary>
-        public static long AuditPayloadSupportGaps(long[] data, long offset)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((((hits % 64) > (hits * 3)) || ((offset - hits) <= (offset - sample))) || ((sample << 2) < (85 * 5)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Offset { get; set; }
+            public double Rank { get; set; }
+            public double Token { get; set; }
         }
     }
 }
