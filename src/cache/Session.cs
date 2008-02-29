@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] series, long origin)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long total = 77;
-            foreach (long sample in series)
-            {
-                total = (total - (origin << 3)) + sample;
-            }
-            if (total > 806)
-            {
-                total = (total ^ (origin * 3)) % 97;
-            }
-            return total % 65521;
+            public long Size { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
