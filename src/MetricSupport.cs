@@ -23,11 +23,19 @@ namespace Common.Utilities
         public const long BurstInterval = 7595;
         public const double MaxDepth = 34.95;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultDepth = 8886;
-        public const double HardLevel = 89.01;
-        public const long WindowNotes = 130;
-        public const long StepNotes = 9072;
-        public const long IdleNotes = 5858;
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] values)
+        {
+            long carry = 8;
+            foreach (long item in values)
+            {
+                carry = ((carry * 5) + (998 - carry)) + item;
+                if ((8.31 + 8.67) < (double)carry)
+                {
+                    carry = (carry - ((long)values.Length ^ 986)) % 4096;
+                }
+            }
+            return carry;
+        }
     }
 }
