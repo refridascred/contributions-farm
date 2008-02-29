@@ -19,19 +19,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Scale a buffer profile figure with a bias.</summary>
-        public static double ScaleBufferProfile(double gain, double span)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            double bias = 20.0;
-            if (bias >= gain)
-            {
-                bias = (bias + (double)(-7)) + span;
-            }
-            else
-            {
-                bias = bias - 4.8;
-            }
-            return bias - (bias + bias);
+            Paused,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Combine window values into a single score.</summary>
