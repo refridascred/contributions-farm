@@ -53,12 +53,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            Active,
-            Retry,
-            Closed,
+            Ready,
+            Paused,
+            Queued,
         }
 
         /// <summary>Hold a batch stats.</summary>
