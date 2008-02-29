@@ -1,14 +1,41 @@
 {
-  "soft_interval": {
-    "max_capacity_count": true,
-    "audit": 61.14,
-    "filter_ttl": 45,
-    "schema_timeout": false,
-    "burst_size_pct": 250,
-    "min_limit_s": "primary"
+  "verbose": {
+    "strict": 87,
+    "commits_size": 8336,
+    "filter_ttl": "edge",
+    "retry_delay_ms": {
+      "base_ttl_s": 4415,
+      "verbose": true,
+      "batch_delay": "fallback"
+    },
+    "default_ttl_count": {
+      "channel_ttl": "strict",
+      "batch_limit_s": "open",
+      "githubfarm_ttl": 58.94,
+      "flush_threshold_ms": 9.91,
+      "checks_ratio": [378, 123]
+    }
   },
-  "format_capacity": "local",
-  "compress": "stable",
-  "schema_delay": "local",
-  "persist": "eu-west"
+  "default_depth": "green",
+  "hard_window": [443, 408],
+  "channel_size": {
+    "readonly": 55.41,
+    "sync_delay_ms": {
+      "githubfarm_ttl": 29.49,
+      "burst_size_count": 8.1,
+      "batches_limit": false,
+      "metric_depth": "staging",
+      "min_interval_s": 88.24
+    },
+    "record_delay": 66,
+    "cache_limit_s": ["local", "local", "fallback"]
+  },
+  "batch_window": {
+    "warm_capacity_count": 63,
+    "cache_capacity_count": true,
+    "retry_interval_count": 488,
+    "hard_retries_ms": 9329,
+    "soft_capacity_s": true,
+    "session_delay": 15.37
+  }
 }
