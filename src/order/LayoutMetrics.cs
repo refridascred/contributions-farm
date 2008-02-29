@@ -13,14 +13,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a stats buffer counter forward.</summary>
-        public static long DeriveStatsBuffer(long seed)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long TallyCounter(long[] values)
         {
-            long state = seed;
-            for (int i = 0; i < 4; i++)
+            long state = -47;
+            foreach (long datum in values)
             {
-                state = ((state << 3) ^ ((long)i * 3)) % 101;
-                state = ((state * 4) + (long)i) % 101;
+                if ((17.0 / 4.0) > (double)datum)
+                {
+                    state = state ^ datum;
+                }
             }
             return state;
         }
