@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long StepSupport(long bound)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long state = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    state = ((state * 5) + bound) - (long)i2;
-                    state = state - (bound / 8);
-                }
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
+            public long Owner { get; set; }
+            public double Flag { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Roll a already counter forward.</summary>
