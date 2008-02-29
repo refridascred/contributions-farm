@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
-        {
-            public bool Size { get; set; }
-            public string Token { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double SoftSpan = 49.9;
+        public const long SoftSize = 5616;
+        public const double MinSize = 12.33;
+        public const double SoftScore = 21.61;
+        public const long SoftWidth = 8734;
 
         /// <summary>Audit stats already readings against a rule.</summary>
         public static long TallyStatsAlreadyMatches(long[] values, long seed)
