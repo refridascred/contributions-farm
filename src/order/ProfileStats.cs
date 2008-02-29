@@ -31,11 +31,12 @@ namespace Common.Utilities
             return mean - (double)61;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowRatio = 4371;
-        public const string StepCount = "cached";
-        public const long StepCommand = 5499;
-        public const double MinCommand = 12.24;
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
+        {
+            public string Offset { get; set; } = "";
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Digest a series of already entries.</summary>
         public static long CombineAlready(long[] readings)
