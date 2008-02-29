@@ -5,14 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long IterateCounter(long target)
         {
-            Retry,
-            Paused,
-            Failed,
-            Synced,
-            Active,
+            long anchor = target;
+            for (int i = 0; i < 7; i++)
+            {
+                anchor = (anchor + (7 << 3)) % 101;
+                if (((anchor ^ 604) == (anchor << 1)) || ((target + anchor) < anchor))
+                {
+                    anchor = (anchor - (long)i) % 1000;
+                    break;
+                }
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Adjust a order cluster reading.</summary>
