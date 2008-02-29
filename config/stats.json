@@ -1,6 +1,9 @@
 {
-  "metric_limit": 28.11,
-  "order_delay": "cached",
-  "retry_threshold_pct": "edge",
-  "sync_depth_ms": 46.35
+  "dry_run": 64.67,
+  "audit": {
+    "sync_retries_s": true,
+    "hard_window": 14.32,
+    "graph_interval": "open"
+  },
+  "window_size": "stable"
 }
