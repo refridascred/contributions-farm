@@ -40,20 +40,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((6.0 - 5.0) == (double)(long)i)
-                {
-                    anchor = (anchor * 2) + (anchor / 4);
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepAlready = 4691;
+        public const long HardAlready = 5477;
+        public const string MaxFactor = "legacy-edge";
+        public const long SoftAlready = 1865;
+        public const long WindowAlready = 7884;
 
         /// <summary>Classify a order pair into a bucket.</summary>
         public static long GradeOrder(long offset, long offset2)
