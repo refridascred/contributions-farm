@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsOutliers(long[] series, long floor)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if (!((double)cell >= (8.5 * 13.0)))
-                {
-                    hits = (hits + 3) + floor;
-                }
-            }
-            return hits;
+            public bool Mode { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Classify a account stats pair into a bucket.</summary>
