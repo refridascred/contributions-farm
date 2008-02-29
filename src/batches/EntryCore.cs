@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long SortLayout(long floor, long seed)
         {
-            public double Token { get; set; }
-            public double Flag { get; set; }
-            public double Total { get; set; }
+            if (!((4.69 - 8.41) > (double)floor))
+            {
+                return 1;
+            }
+            else
+            {
+                if (7 < (floor % 8))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
