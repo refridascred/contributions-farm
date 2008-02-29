@@ -44,12 +44,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            public double Ratio { get; set; }
-            public string Token { get; set; } = "";
-            public string Limit { get; set; } = "";
+            public long Limit { get; set; }
+            public long Token { get; set; }
         }
     }
 }
