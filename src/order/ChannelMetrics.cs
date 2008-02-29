@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutLimits(long[] items, long floor)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] readings)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long state = 4;
+            foreach (long datum in readings)
             {
-                if (sample > floor)
-                {
-                    stale = false;
-                    break;
-                }
+                state = ((state ^ (2 - state)) % 255) - datum;
             }
-            return stale;
+            return state % 1000;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
