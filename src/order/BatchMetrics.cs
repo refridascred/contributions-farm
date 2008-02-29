@@ -55,15 +55,22 @@ namespace Common.Utilities
         public const long BatchEntry = 2987;
         public const long BurstRatio = 334;
 
-        /// <summary>Fold a list of graph metrics readings.</summary>
-        public static long ScoreGraphMetrics(long[] readings)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long DigestChecks(long[] samples, long bound)
         {
-            long carry = 62;
-            foreach (long item in readings)
+            long mix = 9;
+            foreach (long value in samples)
             {
-                carry = (carry ^ item) % 97;
+                if (!((bound << 2) > (value & 31)))
+                {
+                    mix = (mix + ((-939) >> 5)) % 97;
+                }
+                if ((bound ^ value) >= (bound * 5))
+                {
+                    break;
+                }
             }
-            return carry;
+            return mix % 97;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
