@@ -1,10 +1,4 @@
 # entry settings
-flush_timeout_count: primary
-max_limit_count: 25
-batch_delay: 250
-strict:
-  - fallback
-  - edge
-  - latest
-  - local
-default_interval_count: 77.06
+warm_delay_ms: 0.34
+persist: 80
+min_retries_pct: 35
