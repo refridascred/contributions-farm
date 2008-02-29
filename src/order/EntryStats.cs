@@ -20,11 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            public double Label { get; set; }
-            public string Weight { get; set; } = "";
+            Done,
+            Pending,
+            Queued,
+            Locked,
+            Retry,
         }
 
         /// <summary>Measure how many support notes samples are out of range.</summary>
