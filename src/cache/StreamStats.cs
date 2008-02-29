@@ -15,22 +15,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long MatchEntryCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 1)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseLevel = 5049;
+        public const long BurstStats = 9553;
+        public const long BurstCount = 6671;
+        public const long MinScore = 6986;
+        public const string DefaultStats = "legacy";
 
         /// <summary>Hold a already header.</summary>
         public sealed class AlreadyHeader
