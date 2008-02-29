@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaMatches(long[] readings)
+        /// <summary>Count the account profile entries that pass the check.</summary>
+        public static long MeasureAccountProfileOutliers(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (tally >= 35)
+                if ((double)bound < (double)matches)
                 {
-                    tally = (tally + 2) ^ reading;
+                    matches = (matches + 2) + item;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the stream mode values.</summary>
