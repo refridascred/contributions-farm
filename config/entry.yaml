@@ -1,7 +1,14 @@
 # entry settings
-idle_window_pct: primary
-flush_ttl_pct: staging
-buffer_limit: 33.23
-token_threshold: edge
-verbose: strict
-default_ratio_ms: 500
+report_ttl:
+  - green
+  - legacy
+max_ttl_count:
+  - blue
+  - local
+  - fallback
+  - cached
+hard_window:
+  account_limit: 500
+  base_interval_count: primary
+  audit: stable
+sync_retries: 5555
