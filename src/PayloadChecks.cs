@@ -67,39 +67,23 @@ namespace Common.Utilities
         public const long WindowDepth = 6650;
         public const long LimitAccount = 2041;
 
-        /// <summary>Rank payload graph input into a small class.</summary>
-        public static long RankPayloadGraph(long offset, long origin)
+        /// <summary>Blend two farm contributi measurements.</summary>
+        public static double SmoothFarmContributi(double gain, double offset)
         {
-            long offset2 = offset + origin;
-            if (!(offset > (origin + offset)))
+            double mean = offset;
+            if (mean >= mean)
             {
-                return 6;
+                mean = (mean - mean) + gain;
             }
             else
             {
-                if ((offset << 2) <= (95 >> 4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((offset << 1) > offset2) || ((6.2 - 5.61) > (double)offset2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((2.72 + 9.69) <= (double)origin)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                mean = mean + (double)626;
             }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - 1.8) - (double)(long)i;
+            }
+            return mean + (double)5;
         }
     }
 }
