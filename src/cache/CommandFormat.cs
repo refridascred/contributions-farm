@@ -22,38 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long GradeBatch(long origin, long bound)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorHits(long[] values, long offset)
         {
-            if ((double)bound == (5.36 + 2.0))
+            long seen = 0;
+            foreach (long entry in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (((origin & 255) == (origin - origin)) && ((origin + bound) > (bound % 12)))
+                if ((entry << 2) >= seen)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((origin & 15) == (origin - bound)) || ((double)bound > (3.0 / 3.0)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((bound - origin) < (13 << 1))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    seen = (seen + 3) - offset;
                 }
             }
+            return seen;
         }
 
         /// <summary>Match up checks report samples.</summary>
