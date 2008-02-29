@@ -1,17 +1,5 @@
 {
-  "soft_capacity_s": [46, 423, 475, 458],
-  "format_depth": "legacy",
-  "batches_threshold": [444, 53, 358, 170],
-  "verbose": "strict",
-  "retry_retries": {
-    "sync_size_count": ["staging", "latest", "staging"],
-    "tools_depth": 100,
-    "dry_run": 32.75
-  },
-  "readonly": {
-    "soft_threshold_ms": "latest",
-    "readonly": false,
-    "metrics_ttl": "standard",
-    "strict": "cached"
-  }
+  "hard_window_s": 8.23,
+  "burst_capacity": 519,
+  "flush_delay": "strict"
 }
