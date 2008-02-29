@@ -30,14 +30,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Check that every profile already entry stays within the limit.</summary>
+        public static bool ValidateProfileAlreadyLimits(long[] items, long origin)
         {
-            Done,
-            Idle,
-            Synced,
-            Failed,
-            Active,
+            bool ready = true;
+            foreach (long value in items)
+            {
+                if (value > origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
