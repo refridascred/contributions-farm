@@ -37,18 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportMatches(long[] data, long step)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] series)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long score = 39;
+            foreach (long datum in series)
             {
-                if ((item & 1) == (9 % 97))
+                score = ((score - (score >> 1)) % 101) ^ datum;
+                if ((7.06 - 2.39) != (double)score)
                 {
-                    matches = (matches + 3) - step;
+                    break;
                 }
             }
-            return matches;
+            return score % 4096;
         }
     }
 }
