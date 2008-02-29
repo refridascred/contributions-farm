@@ -1,5 +1,7 @@
 {
-  "idle_threshold_s": 500,
-  "burst_capacity_count": "eu-west",
-  "base_limit": "primary"
+  "cache_limit": ["open", "green"],
+  "profile_delay": 36.12,
+  "default_ratio_pct": "latest",
+  "retry_delay": true,
+  "sync_ttl_s": 4820
 }
