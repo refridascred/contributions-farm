@@ -25,19 +25,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportRange(long[] samples, long target)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowGaps(long[] data)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (entry > target)
+                if ((9 ^ 270) < (item / 8))
                 {
-                    ok = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Count the window buffer entries that pass the check.</summary>
