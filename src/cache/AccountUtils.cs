@@ -22,18 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaMatches(long[] values, long floor)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LocateCommitsIndex(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((floor & 127) < matches)
+                if (samples[i] < bound)
                 {
-                    matches = (matches + 2) - entry;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a stats summary.</summary>
