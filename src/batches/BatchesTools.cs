@@ -20,13 +20,13 @@ namespace Common.Utilities
             return scale2 + (double)9;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            Locked,
-            Idle,
+            Pending,
             Synced,
-            New,
+            Active,
+            Locked,
         }
 
         /// <summary>Describe the session state values.</summary>
