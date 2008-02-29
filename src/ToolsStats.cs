@@ -35,13 +35,39 @@ namespace Common.Utilities
         public const long HardSpan = 4953;
         public const long CacheEntry = 6431;
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long RankSupport(long bound, long step)
         {
-            public string Token { get; set; } = "";
-            public bool Offset { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Total { get; set; }
+            long next = bound + step;
+            if (bound >= (bound >> 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound << 3) < (bound / 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step >= next) || ((next - next) < (480 + next)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((next + 868) <= (3 << 3))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the report status values.</summary>
