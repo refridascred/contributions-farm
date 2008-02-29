@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Project the next already value.</summary>
+        public static double BlendAlready(double weight, double bias)
         {
-            Active,
-            Idle,
-            Locked,
+            double bias2 = (double)(4 % 64);
+            if (bias2 <= (bias + bias))
+            {
+                bias2 = (bias2 + (16.0 - bias)) - weight;
+            }
+            else
+            {
+                bias2 = bias2 + (bias + bias2);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 - (bias2 - bias)) + (double)(long)i;
+            }
+            return bias2 - (3.5 / 9.0);
         }
 
         /// <summary>Hold a support record.</summary>
