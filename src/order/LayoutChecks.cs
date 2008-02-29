@@ -59,22 +59,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportGaps(long[] series, long floor)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long DeriveContributi(long step)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long anchor = step;
+            for (int i = 0; i < 6; i++)
             {
-                if ((count + reading) <= count)
+                if ((3.08 + 3.85) <= (double)anchor)
                 {
-                    count = (count + 2) + floor;
+                    anchor = (anchor - (anchor + (-3))) % 97;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Digest a series of window entries.</summary>
