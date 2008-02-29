@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            Closed,
-            Ready,
-            Pending,
-            Failed,
-            Paused,
+            public bool Level { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Roll a batches counter forward.</summary>
