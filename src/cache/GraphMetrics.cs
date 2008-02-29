@@ -44,12 +44,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchBounds(long[] readings, long floor)
         {
-            public string Size { get; set; } = "";
-            public double Score { get; set; }
-            public long Offset { get; set; }
+            bool flag = true;
+            foreach (long entry in readings)
+            {
+                if (entry > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
