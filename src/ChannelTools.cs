@@ -33,17 +33,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long FindRecordIndex(long[] values, long step)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] items, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 363;
+            foreach (long entry in items)
             {
-                if (values[i] > step)
-                {
-                    return (long)i;
-                }
+                total = (((total << 3) ^ (6 - 90)) ^ entry) + origin;
             }
-            return -1;
+            if (total < 219)
+            {
+                total = ((total * 3) + (7 / 6)) % 101;
+            }
+            return total;
         }
     }
 }
