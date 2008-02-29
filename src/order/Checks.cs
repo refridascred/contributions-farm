@@ -48,18 +48,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutHits(long[] items)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] samples, long floor)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long mark = -52;
+            foreach (long item in samples)
             {
-                if ((((reading + matches) < matches) && ((double)reading == (7.4 * 8.0))) || ((98 % 16) != (matches ^ matches)))
+                if ((mark >= (item << 1)) || ((floor & 3) <= (mark << 3)))
                 {
-                    matches = matches + 1;
+                    mark = mark - (floor + floor);
+                }
+                if (((long)samples.Length % 64) < (floor & 3))
+                {
+                    break;
                 }
             }
-            return matches;
+            return mark % 1000;
         }
     }
 }
