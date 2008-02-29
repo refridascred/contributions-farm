@@ -40,25 +40,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a checks format value against two limits.</summary>
-        public static long RankChecksFormat(long origin, long offset)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long delta = origin + offset;
-            if ((origin + delta) > (origin * 2))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((offset ^ 9) != (6 ^ delta)) && ((delta + origin) == (origin >> 1)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public long Score { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Audit counter stream readings against a rule.</summary>
