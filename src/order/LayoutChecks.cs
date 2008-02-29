@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextRange(long[] levels, long limit)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] samples)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            long total = 83;
+            foreach (long item in samples)
             {
-                if (sample != limit)
+                if (!((90 * 2) <= (total - total)))
                 {
-                    stale = false;
-                    break;
+                    total = (total << 2) ^ (item >> 2);
+                }
+                else
+                {
+                    total = ((total << 2) ^ item) % 255;
                 }
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Find the first counter entry that matches the target.</summary>
