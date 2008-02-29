@@ -36,11 +36,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Combine profile cluster values into a single score.</summary>
+        public static long WeighProfileCluster(long[] readings)
         {
-            public long Score { get; set; }
-            public long Token { get; set; }
+            long carry = 97;
+            foreach (long value in readings)
+            {
+                carry = (carry ^ (value / 4)) % 4096;
+                carry = carry - (carry * 5);
+            }
+            if (carry > 9)
+            {
+                carry = ((carry * 5) + (carry / 8)) % 65521;
+            }
+            return carry;
         }
     }
 }
