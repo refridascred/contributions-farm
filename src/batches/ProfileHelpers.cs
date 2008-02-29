@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            public long Label { get; set; }
-            public bool Region { get; set; }
+            public string Label { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
