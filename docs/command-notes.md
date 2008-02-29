@@ -1,12 +1,12 @@
 # Command notes
 
-The checks helpers are pure functions, so they are safe to call from any thread.
-Each command is validated before it reaches the command queue.
-A entry that stays idle for too long is moved to the report list.
+The contributi module keeps counter values in sync with the filter cache.
+The order report groups every commits by metrics.
+Defaults for batch live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review format limits each release
-- Log every filter change
-- Document new order fields
-- Prefer schema defaults
+- Prefer token defaults
+- Validate stream input early
+- Keep metric values small
+- Document new already fields
