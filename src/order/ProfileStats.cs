@@ -19,19 +19,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double SmoothBatch(double rate, double span)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long GradeGraph(long origin, long origin2)
         {
-            double mean = span;
-            if (mean < (5.9 + span))
+            long bound = origin ^ origin2;
+            if (bound >= (bound - 4))
             {
-                mean = (mean + (2.0 / 3.0)) - rate;
+                return 7;
             }
             else
             {
-                mean = mean + 4.0;
+                if (((286 ^ origin) >= (bound & 3)) && ((9.3 + 4.83) > (double)bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((origin & 3) != (origin2 ^ bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((origin - 820) <= (origin2 + origin2)) || ((origin + 354) == (bound + 267)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return mean - (double)61;
         }
 
         /// <summary>Hold a batch summary.</summary>
