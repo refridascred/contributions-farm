@@ -15,18 +15,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryGaps(long[] levels, long bound)
+        /// <summary>Count the record stream entries that pass the check.</summary>
+        public static long CountRecordStreamOutliers(long[] levels)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if ((2 - bound) >= (hits << 1))
+                if ((entry + tally) != (tally + 7))
                 {
-                    hits = (hits + 1) + datum;
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
