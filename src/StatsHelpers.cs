@@ -51,21 +51,12 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long PairWindowCount(long[] samples)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Draft,
+            Locked,
+            Retry,
         }
     }
 }
