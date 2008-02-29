@@ -1,7 +1,4 @@
 # support settings
-githubfarm_ttl:
-  - 302
-  - 301
-filter_retries: 250
-filter_capacity: 73.04
-soft_window_pct: 9411
+idle_retries_pct: true
+max_capacity_s: 4298
+dry_run: staging
