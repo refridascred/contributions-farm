@@ -25,16 +25,19 @@ namespace Common.Utilities
         public const double CacheCounter = 64.96;
         public const double MaxLevel = 80.09;
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long seed)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandRange(long[] values, long bound)
         {
-            long carry = seed;
-            for (int i = 0; i < 20; i++)
+            bool valid = true;
+            foreach (long value in values)
             {
-                carry = (carry - seed) % 97;
-                carry = ((carry * 4) + (long)i) % 4093;
+                if (value <= bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Hold a buffer summary.</summary>
