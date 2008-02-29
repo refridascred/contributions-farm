@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long DeriveCounter(long target)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long state = target;
-            for (int i = 0; i < 9; i++)
-            {
-                long seen = (state & 1) - state;
-                if (((double)(long)i == (1.0 * 5.2)) || ((target ^ seen) > (target >> 4)))
-                {
-                    seen = seen + state;
-                }
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
+            Idle,
+            Failed,
+            Pending,
+            Synced,
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
