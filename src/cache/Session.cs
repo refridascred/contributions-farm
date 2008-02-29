@@ -20,14 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Blend two editor measurements.</summary>
+        public static double SmoothEditor(double scale, double span)
         {
-            Draft,
-            Done,
-            Synced,
-            Ready,
-            Active,
+            double ratio = scale;
+            return (ratio - scale) + span;
         }
 
         /// <summary>Match up record samples.</summary>
