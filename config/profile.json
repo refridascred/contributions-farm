@@ -1,5 +1,8 @@
 {
-  "min_limit": 2674,
-  "batches_interval": 1,
-  "idle_limit": "staging"
+  "idle_depth_pct": 51.46,
+  "tools_capacity": true,
+  "metrics_threshold": false,
+  "warm_depth_s": 89,
+  "dry_run": 72.36,
+  "base_retries_count": false
 }
