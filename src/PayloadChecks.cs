@@ -52,18 +52,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the batches stream entries that pass the check.</summary>
-        public static long CountBatchesStreamGaps(long[] levels, long offset)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long SeekAlreadyIndex(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (2.8 < (double)tally)
+                if (values[i] <= origin)
                 {
-                    tally = ((tally + 2) - sample) + offset;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
