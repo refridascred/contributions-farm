@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long MatchStatsCount(long[] levels)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] samples, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 2;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                sum = ((sum * 2) + (659 ^ reading)) % 4096;
+                if ((target < (reading * 2)) || (sum > target))
                 {
-                    if ((levels[i] + levels[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = (sum << 2) ^ (sum - (-55));
+                }
+                if (264 <= target)
+                {
+                    break;
                 }
             }
-            return seen;
+            return sum % 65521;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
