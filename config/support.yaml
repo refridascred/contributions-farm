@@ -1,12 +1,22 @@
 # support settings
-default_window: 3570
-sync_window_ms:
-  hard_ttl_s: 48.2
-  dry_run: 9901
-  hard_delay_ms: 26
-format_timeout:
-  entry_ttl: edge
-  account_capacity: fallback
-  persist: 500
-  burst_retries_s: 1024
-  idle_delay_count: 7181
+warm_depth:
+  - 333
+  - 292
+  - 185
+flush_interval_ms:
+  editor_limit: open
+  poll_threshold_count:
+    default_depth_ms: staging
+    sync_retries: fallback
+    base_depth_pct: false
+    verbose: open
+    batch_capacity_pct: 250
+  sync_size_count: local
+  min_timeout_pct: green
+  poll_ttl:
+    - standard
+    - latest
+    - staging
+    - strict
+base_timeout_s: 49
+stats_threshold: 95.55
