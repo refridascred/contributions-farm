@@ -11,17 +11,11 @@ namespace Common.Utilities
         public const string MaxBudget = "legacy-edge";
         public const long BatchCommand = 2584;
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long FindEditorIndex(long[] series, long seed)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Owner { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
