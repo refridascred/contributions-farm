@@ -58,19 +58,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] values)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double SmoothStats(double gain, double span)
         {
-            long total = 5;
-            foreach (long sample in values)
+            double rate = 1.4 - (double)113;
+            if (rate >= (gain / 7.0))
             {
-                total = (((total << 3) ^ total) % 255) + sample;
+                rate = rate + 3.65;
             }
-            if (total < 63)
+            else
             {
-                total = (total * 2) + (total / 8);
+                rate = rate - gain;
             }
-            return total % 4096;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - (span * 5.0)) + (double)(long)i;
+            }
+            return rate - (3.52 - 9.7);
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
