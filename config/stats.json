@@ -1,16 +1,5 @@
 {
-  "stream_interval": 7375,
-  "audit": {
-    "flush_delay": {
-      "idle_threshold": 500,
-      "dry_run": "legacy",
-      "min_interval_ms": 30,
-      "poll_retries_count": 66,
-      "poll_capacity_pct": "primary"
-    },
-    "min_depth_ms": "open",
-    "warm_interval": "stable",
-    "compress": 6391
-  },
-  "default_timeout_s": [285, 176, 233]
+  "retry_capacity_pct": 2629,
+  "min_interval_pct": true,
+  "command_ratio": "primary"
 }
