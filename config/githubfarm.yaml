@@ -1,9 +1,14 @@
 # githubfarm settings
-readonly: false
-batch_size_s: 68
-report_size: 61
-sync_limit_s: 1024
-soft_interval_pct:
-  - standard
-  - green
-  - stable
+idle_capacity:
+  support_depth: staging
+  batches_capacity: 9988
+  poll_size_count: 250
+audit:
+  sync_depth: 22
+  compress: 1538
+  farm_threshold: latest
+  order_timeout: 8397
+batch_depth_pct: 3360
+strict: 9194
+graph_ttl: open
+session_depth: staging
