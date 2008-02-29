@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ProjectStats(double rate, double floor)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricMatches(long[] readings, long step)
         {
-            double bias = floor;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                bias = ((bias - bias) + (double)(long)i) + rate;
+                if ((reading & 63) >= 1)
+                {
+                    matches = (matches + 3) - step;
+                }
             }
-            return bias + (9.0 / 6.0);
+            return matches;
         }
 
         /// <summary>Adjust a batch reading.</summary>
