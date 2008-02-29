@@ -14,38 +14,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Classify a checks account pair into a bucket.</summary>
-        public static long ClassifyChecksAccount(long seed, long target)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LookupStreamIndex(long[] data, long seed)
         {
-            if (123 > (seed - seed))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed > target) || (((-561) - seed) == (target << 2)))
+                if (data[i] == seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed - target) <= target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (seed <= (seed >> 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Roll a window counter forward.</summary>
