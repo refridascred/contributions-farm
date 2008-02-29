@@ -38,11 +38,18 @@ namespace Common.Utilities
             return scale2 + (span / 4.0);
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaMatches(long[] series)
         {
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if (((hits + hits) >= hits) && !((item / 7) >= (hits / 7)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
