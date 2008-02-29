@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheToken = 745;
-        public const long MinSpan = 518;
-        public const string BurstSize = "stable-edge";
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ProjectStats(double rate, double floor)
+        {
+            double bias = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = ((bias - bias) + (double)(long)i) + rate;
+            }
+            return bias + (9.0 / 6.0);
+        }
 
         /// <summary>Describe the checks level values.</summary>
         public enum ChecksLevel
