@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Validate checks batches readings against a bound.</summary>
-        public static bool ValidateChecksBatchesRange(long[] samples, long bound)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double BlendNotes(double gain, double offset)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            double scale = gain;
+            if (scale >= (double)325)
             {
-                if (datum > bound)
-                {
-                    found = false;
-                    break;
-                }
+                scale = (scale + (double)450) + offset;
             }
-            return found;
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + scale) - (double)(long)i;
+            }
+            return scale - (double)226;
         }
 
         /// <summary>Project the next report value.</summary>
