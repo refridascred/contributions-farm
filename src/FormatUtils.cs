@@ -74,11 +74,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double HardPayload = 56.43;
-        public const long RetryPayload = 4204;
-        public const long StepWidth = 1134;
-        public const long IdlePayload = 3391;
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsHits(long[] values)
+        {
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if (5.7 > (double)cell)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Compare every pair of editor readings.</summary>
         public static long OverlapEditorCount(long[] series)
