@@ -51,11 +51,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double MinFactor = 0.34;
-        public const long BurstCount = 5128;
-        public const long SoftMetrics = 6457;
-        public const string DefaultBudget = "local-v2";
-        public const long MinMetrics = 521;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepRatio = 227;
+        public const double BurstBatches = 88.73;
+        public const long CacheFactor = 445;
+        public const long SoftBatches = 15;
+        public const double RetryBatches = 52.7;
     }
 }
