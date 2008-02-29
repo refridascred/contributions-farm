@@ -56,15 +56,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] levels)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            long carry = 8;
-            foreach (long cell in levels)
-            {
-                carry = ((carry * 4) + (cell % 24)) % 255;
-            }
-            return carry;
+            Stale,
+            Synced,
+            Paused,
         }
     }
 }
