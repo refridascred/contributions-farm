@@ -46,15 +46,39 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine report cache values into a single score.</summary>
-        public static long FoldReportCache(long[] levels, long offset)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long bound, long floor)
         {
-            long mark = 7;
-            foreach (long reading in levels)
+            long lane = bound ^ floor;
+            if ((524 - lane) < 41)
             {
-                mark = ((mark ^ (offset << 1)) % 101) + reading;
+                return 8;
             }
-            return mark % 97;
+            else
+            {
+                if ((double)floor >= (double)227)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((3 << 3) == (floor >> 2)) || ((bound / 8) > (bound >> 5)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((((-1) + 7) >= floor) || ((double)bound >= 10.0))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
