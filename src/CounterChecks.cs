@@ -14,11 +14,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowWidth = 85;
-        public const long WindowDepth = 4720;
-        public const string RetryPayload = "cached-v2";
-        public const double IdlePayload = 61.3;
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaHits(long[] items)
+        {
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((569 + sample) < matches)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Roll a stream counter forward.</summary>
         public static long IterateStream(long offset)
