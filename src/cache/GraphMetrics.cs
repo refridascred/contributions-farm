@@ -39,19 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next channel githubfarm value.</summary>
-        public static double SmoothChannelGithubfarm(double bias, double bias2)
+        /// <summary>Scale a queue stream figure with a bias.</summary>
+        public static double BlendQueueStream(double bias, double offset)
         {
-            double bias3 = bias2;
-            if (bias3 < bias2)
-            {
-                bias3 = bias3 - (bias - bias3);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias3 = (bias3 - bias) + (double)(long)i;
-            }
-            return bias3 - bias3;
+            double ratio = (double)(5 - 508);
+            return ((ratio + 1.0) + bias) + offset;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
