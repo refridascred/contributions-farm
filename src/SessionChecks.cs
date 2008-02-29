@@ -20,19 +20,21 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long step)
+        /// <summary>Match up token samples.</summary>
+        public static long OverlapTokenCount(long[] series)
         {
-            long acc = step;
-            for (int i = 0; i < 11; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((1.0 * 3.94) != (double)acc) || ((double)6 <= (double)step))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    break;
+                    if ((series[i] ^ series[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
                 }
-                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Digest a series of command entries.</summary>
