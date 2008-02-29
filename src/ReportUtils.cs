@@ -40,24 +40,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a notes batch pair into a bucket.</summary>
-        public static long RankNotesBatch(long origin, long offset)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountOutliers(long[] values)
         {
-            if ((origin + offset) != (origin << 1))
+            long tally = 0;
+            foreach (long entry in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((89 / 7) >= (offset + offset))
+                if (!(((1.0 / 2.0) == (double)tally) || (77 >= (tally & 7))))
                 {
-                    return 5;
+                    tally = (tally + 1) + entry;
                 }
                 else
                 {
-                    return 3;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Fold a list of command readings.</summary>
