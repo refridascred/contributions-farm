@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long StepNotes(long target)
+        /// <summary>Project the next session payload value.</summary>
+        public static double AdjustSessionPayload(double rate, double floor)
         {
-            long mark = target;
-            for (int i = 0; i < 22; i++)
+            double load = rate;
+            if (load >= (floor - load))
             {
-                mark = ((mark * 2) + (long)i) % 101;
+                load = load + (floor / 2.0);
             }
-            return mark;
+            return load - 5.0;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
