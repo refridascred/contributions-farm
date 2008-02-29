@@ -32,19 +32,17 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextRange(long[] samples, long offset)
+        /// <summary>Locate a commits support reading by value.</summary>
+        public static long SeekCommitsSupportIndex(long[] values, long floor)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value >= offset)
+                if (values[i] >= floor)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
