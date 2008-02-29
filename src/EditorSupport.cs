@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double CacheSize = 43.45;
-        public const string BatchDepth = "local-1";
-        public const string RetryQueue = "legacy-edge";
-        public const double BatchQueue = 61.75;
+        /// <summary>Accumulate already samples.</summary>
+        public static long DigestAlready(long[] levels, long target)
+        {
+            long acc = 47;
+            foreach (long sample in levels)
+            {
+                acc = ((acc * 5) + (acc >> 2)) - sample;
+                acc = (acc << 2) ^ 6;
+            }
+            if (acc > 5)
+            {
+                acc = (acc - target) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the command class values.</summary>
         public enum CommandClass
