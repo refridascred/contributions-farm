@@ -33,14 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] data, long offset)
         {
-            Closed,
-            Paused,
-            Dropped,
-            Queued,
-            Retry,
+            long total = 587;
+            foreach (long reading in data)
+            {
+                if ((double)offset != (2.0 * 6.37))
+                {
+                    total = ((total << 3) ^ (reading * 4)) % 65521;
+                }
+            }
+            if (total < 78)
+            {
+                total = (total << 3) ^ offset;
+            }
+            return total;
         }
 
         /// <summary>Roll a account counter forward.</summary>
