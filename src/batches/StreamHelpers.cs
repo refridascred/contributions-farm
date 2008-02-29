@@ -27,18 +27,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long CombineContributi(long[] items, long bound)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamMatches(long[] data)
         {
-            long anchor = 735;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if ((1.3 * 3.8) == (double)anchor)
+                if ((hits ^ hits) > (cell + cell))
                 {
-                    anchor = ((((anchor * 5) + (long)items.Length) % 101) + sample) + bound;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
