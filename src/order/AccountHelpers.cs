@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long IterateBatch(long target)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long mix = target;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((mix - mix) <= (target >> 3))
-                {
-                    mix = ((mix << 3) ^ ((long)i << 1)) % 4096;
-                }
-                else
-                {
-                    mix = (mix ^ (459 + (long)i)) % 255;
-                }
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
+            public double Limit { get; set; }
+            public long Count { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
