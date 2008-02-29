@@ -37,16 +37,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the metrics record series from a seed.</summary>
-        public static long StepMetricsRecord(long step)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long bound)
         {
-            long mark = step;
-            for (int i = 0; i < 20; i++)
+            long carry = bound;
+            for (int i = 0; i < 10; i++)
             {
-                mark = ((mark * 5) + (step ^ step)) % 97;
-                mark = ((mark * 2) + (long)i) % 65521;
+                carry = carry + (carry / 6);
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return mark;
+            return carry;
         }
     }
 }
