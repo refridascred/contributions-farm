@@ -43,12 +43,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double AdjustMetric(double bias, double offset)
-        {
-            double drift = bias;
-            return (drift + 17.0) + offset;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string LimitSize = "fallback-1";
+        public const long MaxMetrics = 7958;
+        public const double MinWidth = 21.48;
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long RankStats(long seed, long floor)
