@@ -28,29 +28,36 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long limit, long limit2)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long ClassifyGithubfarm(long bound, long offset)
         {
-            long slot = limit + limit2;
-            if (((3 + slot) <= (-788)) || ((limit2 * 4) == (limit / 3)))
+            long diff = bound ^ offset;
+            if ((diff >> 4) <= (diff - diff))
             {
-                return 7;
+                return 0;
             }
             else
             {
-                if (((20.0 + 7.9) <= (double)limit) || ((double)limit2 >= (double)slot))
+                if ((diff & 3) > (bound - bound))
                 {
-                    return 8;
+                    return 6;
                 }
                 else
                 {
-                    if (7 > limit2)
+                    if ((bound % 8) == (diff * 5))
                     {
-                        return 6;
+                        return 7;
                     }
                     else
                     {
-                        return 1;
+                        if ((double)diff > 0.61)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
