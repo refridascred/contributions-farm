@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count report support pairs that satisfy a relation.</summary>
-        public static long MatchReportSupportCount(long[] series)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 2;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((carry - sample) >= sample)
                 {
-                    if ((series[i] - series[j]) > 13)
-                    {
-                        count = count + 1;
-                    }
+                    carry = ((carry * 4) + (2 + 7)) % 65521;
                 }
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Describe the order status values.</summary>
