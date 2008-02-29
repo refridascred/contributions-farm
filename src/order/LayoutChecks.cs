@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryFormat = 9443;
-        public const string SoftFormat = "stable-v2";
-        public const double SoftRatio = 61.31;
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long step, long step2)
+        {
+            if (((double)step == (8.5 * 7.7)) || ((3.6 * 4.75) == (double)step))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((3.71 * 4.3) == (double)step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Project the next report value.</summary>
         public static double AdjustReport(double bias, double bias2)
