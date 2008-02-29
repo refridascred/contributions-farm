@@ -84,14 +84,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadGaps(long[] data)
         {
-            Ready,
-            Retry,
-            Draft,
-            Synced,
-            Idle,
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((20.0 / 2.0) < (double)datum)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
