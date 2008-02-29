@@ -60,18 +60,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionOutliers(long[] samples)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileBounds(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                if (((16 % 97) <= (matches + matches)) && !(38 <= (entry % 5)))
+                if (value <= floor)
                 {
-                    matches = matches + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
