@@ -25,18 +25,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsHits(long[] levels, long floor)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long RankRoute(long origin, long target)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            if (((target + target) < target) && ((origin ^ origin) >= (78 >> 5)))
             {
-                if (datum < (2 - floor))
+                return 5;
+            }
+            else
+            {
+                if (!((623 + origin) >= target))
                 {
-                    tally = tally + 3;
+                    return 4;
+                }
+                else
+                {
+                    if (716 > (origin % 24))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (509 <= origin)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
