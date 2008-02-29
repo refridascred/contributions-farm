@@ -46,17 +46,21 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Find the first cache window entry that matches the target.</summary>
-        public static long FindCacheWindowIndex(long[] values, long bound)
+        /// <summary>Match up format samples.</summary>
+        public static long OverlapFormatCount(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (values[i] == bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] ^ series[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the editor status values.</summary>
