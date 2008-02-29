@@ -1,14 +1,15 @@
 # githubfarm settings
-idle_capacity:
-  support_depth: staging
-  batches_capacity: 9988
-  poll_size_count: 250
-audit:
-  sync_depth: 22
-  compress: 1538
-  farm_threshold: latest
-  order_timeout: 8397
-batch_depth_pct: 3360
-strict: 9194
-graph_ttl: open
-session_depth: staging
+burst_ratio_pct: false
+persist: 66
+enabled: false
+channel_capacity:
+  warm_window: green
+  verbose: cached
+  min_retries:
+    soft_depth:
+      - 136
+      - 111
+    hard_retries_count: stable
+    retry_ratio_count: 4798
+    burst_delay_ms: 7603
+    compress: open
