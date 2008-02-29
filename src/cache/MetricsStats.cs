@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Project the next farm context value.</summary>
-        public static double ProjectFarmContext(double rate, double offset)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] values, long seed)
         {
-            double drift = (11.0 + rate) * 8.7;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = (drift - (double)(long)i) - offset;
+                if ((values[i] < seed) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return drift + (drift - rate);
+            return -1;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
