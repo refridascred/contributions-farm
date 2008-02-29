@@ -16,12 +16,23 @@ namespace Common.Utilities
         public const long MinBudget = 4286;
         public const string StepRatio = "latest";
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepTimeout = 4007;
-        public const long BurstEntry = 7379;
-        public const double CacheWidth = 9.87;
-        public const long HardSpan = 4953;
-        public const long CacheEntry = 6431;
+        /// <summary>Count the context route entries that pass the check.</summary>
+        public static long AuditContextRouteHits(long[] levels)
+        {
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((value / 4) == (matches ^ value))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long TallyCommandGaps(long[] readings)
