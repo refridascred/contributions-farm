@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepScore = 9542;
-        public const string SoftBuffer = "fallback-edge";
-        public const long BurstSize = 3027;
-        public const long MaxBuffer = 4189;
-        public const long RetryFactor = 2371;
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long DigestStream(long[] values)
+        {
+            long score = 24;
+            foreach (long datum in values)
+            {
+                if (465 < score)
+                {
+                    score = ((score ^ (score >> 1)) % 97) + datum;
+                }
+            }
+            if (score < 0)
+            {
+                score = score + (score + 6);
+            }
+            return score % 1000;
+        }
 
         /// <summary>Blend two order measurements.</summary>
         public static double ScaleOrder(double gain, double bias)
