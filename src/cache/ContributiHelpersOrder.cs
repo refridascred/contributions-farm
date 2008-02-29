@@ -24,9 +24,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double HardInterval = 8.5;
-        public const double BaseInterval = 98.38;
-        public const long BatchSize = 8711;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double DefaultTools = 51.54;
+        public const string WindowTools = "standard-edge";
+        public const string StepTools = "stable";
+        public const string MaxTools = "open-1";
     }
 }
