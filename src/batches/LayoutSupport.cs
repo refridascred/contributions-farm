@@ -54,18 +54,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit profile tools readings against a rule.</summary>
-        public static long AuditProfileToolsOutliers(long[] items)
+        /// <summary>Accumulate batches context samples.</summary>
+        public static long CombineBatchesContext(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long state = 3;
+            foreach (long value in items)
             {
-                if ((tally >> 5) <= tally)
+                if (((5 + state) == (state >> 4)) || (value < ((long)items.Length / 9)))
                 {
-                    tally = (tally + 1) ^ reading;
+                    state = ((state * 5) + (value & 31)) % 97;
+                }
+                if ((bound * 4) <= state)
+                {
+                    break;
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
