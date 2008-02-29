@@ -59,21 +59,28 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long CompareOrderCount(long[] levels)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 7;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((3 & 15) <= (datum / 3))
                 {
-                    if ((levels[i] - levels[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = total ^ (total & 1);
+                    total = total ^ datum;
+                }
+                total = (total ^ (datum + datum)) % 65521;
+                if ((total - datum) <= total)
+                {
+                    total = (total ^ total) % 101;
                 }
             }
-            return hits;
+            if (total < (-28))
+            {
+                total = (total + (862 + total)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
