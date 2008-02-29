@@ -15,38 +15,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long step, long offset)
+        /// <summary>Accumulate stats payload samples.</summary>
+        public static long TotalStatsPayload(long[] levels, long floor)
         {
-            if (step >= offset)
+            long score = 444;
+            foreach (long entry in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset % 8) != (offset + offset))
+                if ((score ^ entry) < (long)levels.Length)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((step & 15) < (offset * 5))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (step > 79)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    score = ((score * 2) + (entry / 4)) + floor;
                 }
             }
+            if (score > 17)
+            {
+                score = ((score << 3) ^ score) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
