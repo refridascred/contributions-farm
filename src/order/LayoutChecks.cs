@@ -67,22 +67,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandHits(long[] readings)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamLimits(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                if (((9.24 + 2.81) > (5.08 + 12.0)) || ((item < (seen - seen)) || ((seen * 5) < (seen << 1))))
+                if (datum != seed)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
