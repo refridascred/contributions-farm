@@ -1,5 +1,8 @@
 {
-  "base_window_ms": ["legacy", "strict"],
-  "metrics_timeout": "local",
-  "poll_depth_ms": 250
+  "window_ratio": 77,
+  "warm_ratio_pct": 250,
+  "stats_window": "legacy",
+  "flush_ttl": "latest",
+  "format_depth": "staging",
+  "githubfarm_limit": false
 }
