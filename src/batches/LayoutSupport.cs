@@ -47,18 +47,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of account schema readings.</summary>
-        public static long FoldAccountSchema(long[] levels)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool ValidateRecordRange(long[] values, long offset)
         {
-            long state = 698;
-            foreach (long sample in levels)
+            bool ready = true;
+            foreach (long item in values)
             {
-                if ((state & 7) < (state * 4))
+                if (item < offset)
                 {
-                    state = ((state - state) % 97) - sample;
+                    ready = false;
+                    break;
                 }
             }
-            return state % 4096;
+            return ready;
         }
     }
 }
