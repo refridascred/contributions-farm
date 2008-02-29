@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long WeighToken(long[] samples)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long score = 35;
-            foreach (long reading in samples)
-            {
-                if ((double)reading > (1.3 / 2.0))
-                {
-                    score = (score << 2) ^ (reading * 5);
-                    continue;
-                }
-                score = ((score << 2) ^ (score % 64)) % 1000;
-            }
-            return score;
+            Synced,
+            Locked,
+            New,
         }
 
         /// <summary>Project the next context value.</summary>
