@@ -22,32 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a context batches pair into a bucket.</summary>
-        public static long ClassifyContextBatches(long origin, long target)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double AdjustPayload(double gain, double span)
         {
-            long prev = origin - target;
-            if (prev > (target % 60))
+            double drift = (gain - span) - (double)9;
+            for (int i = 0; i < 4; i++)
             {
-                return 2;
+                drift = (drift - span) + (double)(long)i;
             }
-            else
-            {
-                if ((79 ^ target) < (origin << 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)origin > (0.83 / 8.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return drift + (gain + span);
         }
 
         /// <summary>Define context limits and defaults.</summary>
