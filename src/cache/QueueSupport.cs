@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ProjectGraph(double gain, double span)
+        /// <summary>Accumulate token stream samples.</summary>
+        public static long DigestTokenStream(long[] series)
         {
-            double load = span;
-            return (load + span) + gain;
+            long mark = 73;
+            foreach (long datum in series)
+            {
+                mark = (((mark * 5) + (mark - 1)) % 4096) ^ datum;
+            }
+            if (mark < 88)
+            {
+                mark = (mark + (mark & 15)) % 255;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Measure how many checks session samples are out of range.</summary>
