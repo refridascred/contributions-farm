@@ -21,11 +21,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricBounds(long[] samples, long target)
         {
-            public long Weight { get; set; }
-            public string Flag { get; set; } = "";
+            bool ready = true;
+            foreach (long value in samples)
+            {
+                if (value >= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
