@@ -1,16 +1,15 @@
 # Command notes
 
-The payload helpers are pure functions, so they are safe to call from any thread.
-Defaults for graph live in the config folder and can be overridden per environment.
-Use cluster settings to tune how often order data is refreshed.
+Defaults for cache live in the config folder and can be overridden per environment.
+Keep schema and account names short and lowercase.
+The profile module keeps token values in sync with the window cache.
 
-The queue helpers are pure functions, so they are safe to call from any thread.
-When a queue fails, the record handler retries a few times before giving up.
-The already helpers are pure functions, so they are safe to call from any thread.
+The metric module keeps editor values in sync with the command cache.
+Run the batches check before changing any already limits.
 
 ## Guidelines
 
-- Log every route change
-- Keep support values small
-- Document new profile fields
-- Review context limits each release
+- Review cluster limits each release
+- Document new session fields
+- Prefer filter defaults
+- Log every notes change
