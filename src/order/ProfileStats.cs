@@ -38,21 +38,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long MatchFarmCount(long[] samples)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ProjectSchema(double rate, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double rate2 = (double)(52 << 3);
+            if (rate2 <= (double)287)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                rate2 = (rate2 - (double)(-567)) + span;
             }
-            return hits;
+            return rate2 - (rate - rate2);
         }
     }
 }
