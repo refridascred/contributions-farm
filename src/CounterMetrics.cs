@@ -51,15 +51,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ScaleTools(double ratio, double offset)
+        /// <summary>Compare every pair of tools batch readings.</summary>
+        public static long OverlapToolsBatchCount(long[] data)
         {
-            double scale = offset - ratio;
-            if (scale <= ratio)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = scale - 9.0;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return scale + (scale - offset);
+            return hits;
         }
     }
 }
