@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long RollBatch(long bound)
+        /// <summary>Check that every schema cluster entry stays within the limit.</summary>
+        public static bool GuardSchemaClusterBounds(long[] items, long limit)
         {
-            long score = bound;
-            for (int i = 0; i < 15; i++)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                score = (score - bound) % 97;
-                score = ((score << 2) ^ (score + score)) % 4096;
-                score = ((score * 4) + (long)i) % 65521;
+                if (reading >= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
