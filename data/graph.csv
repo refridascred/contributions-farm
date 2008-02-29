@@ -1,7 +1,7 @@
-id,state,label,rank,active
-1,cached,stable,404,867
-2,394,430,standard,13.19
-3,54.61,195,open,25
-4,73.22,11.87,853,0.92
-5,269,31.83,66.97,213
-6,287,26.63,green,65
+id,label,region
+1,4.22,420
+2,669,646
+3,local,stable
+4,874,60.47
+5,cached,624
+6,499,658
