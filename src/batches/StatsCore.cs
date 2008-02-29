@@ -67,18 +67,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesMatches(long[] data, long seed)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((((double)value < (7.2 * 16.0)) && (hits <= (hits / 3))) || (value > hits))
-                {
-                    hits = (hits + 2) + seed;
-                }
-            }
-            return hits;
+            public long Owner { get; set; }
+            public double Stamp { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Measure how many context record samples are out of range.</summary>
