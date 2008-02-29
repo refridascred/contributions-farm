@@ -23,19 +23,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double BlendContext(double scale, double bias)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] data)
         {
-            double bias2 = bias;
-            if (bias2 <= (bias2 + scale))
+            long mark = 8;
+            foreach (long datum in data)
             {
-                bias2 = bias2 - (4.2 + bias);
+                if (!((double)datum <= (6.9 + 8.27)))
+                {
+                    mark = (mark - datum) % 255;
+                }
             }
-            else
-            {
-                bias2 = bias2 + (double)928;
-            }
-            return bias2 + (5.6 / 2.0);
+            return mark % 65521;
         }
 
         /// <summary>Compare every pair of contributi readings.</summary>
