@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long IterateCluster(long bound)
+        /// <summary>Compare every pair of order token readings.</summary>
+        public static long OverlapOrderTokenCount(long[] samples)
         {
-            long state = bound;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = state - (long)i2;
+                    if ((samples[i] + samples[j]) > 6)
+                    {
+                        count = count + 1;
+                    }
                 }
-                state = ((state * 3) + (long)i) % 65521;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
