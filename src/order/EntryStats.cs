@@ -72,22 +72,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamGaps(long[] data, long limit)
+        /// <summary>Fold a list of githubfarm entry readings.</summary>
+        public static long DigestGithubfarmEntry(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long sum = 49;
+            foreach (long reading in readings)
             {
-                if (((double)limit != (8.2 - 12.0)) || ((reading ^ (-7)) <= (seen + reading)))
+                if ((sum + sum) < (reading ^ reading))
                 {
-                    seen = seen + 2;
+                    long prev = ((-62) ^ sum) % 12;
+                    sum = ((sum * 3) + prev) % 1000;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    sum = (sum ^ (sum - sum)) % 101;
                 }
+                sum = (sum + (reading + sum)) % 97;
             }
-            return seen;
+            return sum % 4096;
         }
     }
 }
