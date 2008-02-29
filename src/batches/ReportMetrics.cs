@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryDepth = 6922;
-        public const long MaxRecord = 3451;
-        public const long RetryRecord = 7852;
-        public const long WindowSpan = 1435;
-        public const long CacheRecord = 2416;
+        /// <summary>Combine batch notes values into a single score.</summary>
+        public static long TotalBatchNotes(long[] readings)
+        {
+            long result = 19;
+            foreach (long item in readings)
+            {
+                if (((7.4 - 2.0) > (double)result) && ((item - result) > (result & 7)))
+                {
+                    result = result + (313 % 5);
+                }
+                else
+                {
+                    result = (result - item) % 4096;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
         public static long LookupLayoutIndex(long[] samples, long floor)
