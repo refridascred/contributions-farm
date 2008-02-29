@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionOutliers(long[] samples, long seed)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterBounds(long[] series, long bound)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if (((425 + tally) >= (seed + entry)) && (((entry * 3) != (seed << 3)) || ((tally - seed) >= seed)))
+                if (sample != bound)
                 {
-                    tally = tally + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
