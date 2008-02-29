@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Derive the next route record value from a seed.</summary>
+        public static long StepRouteRecord(long limit)
         {
-            public long Offset { get; set; }
-            public string Stamp { get; set; } = "";
+            long state = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
