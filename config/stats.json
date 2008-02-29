@@ -1,8 +1,6 @@
 {
-  "min_depth_s": "eu-west",
-  "batches_ratio": true,
-  "cluster_depth": ["legacy", "edge", "blue"],
-  "min_delay_count": [155, 451, 79],
-  "base_window_ms": "blue",
-  "min_limit": 500
+  "retry_depth": true,
+  "batch_ratio_pct": 83.77,
+  "sync_threshold_ms": [300, 422, 365],
+  "batch_size_count": "blue"
 }
