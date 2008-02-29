@@ -34,13 +34,15 @@ namespace Common.Utilities
         public const long SoftBatch = 4302;
         public const long WindowBatch = 4179;
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Digest a series of command order entries.</summary>
+        public static long FoldCommandOrder(long[] data)
         {
-            Draft,
-            Dropped,
-            Locked,
-            Failed,
+            long result = 90;
+            foreach (long sample in data)
+            {
+                result = (((result * 2) + (result / 5)) % 255) - sample;
+            }
+            return result;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
