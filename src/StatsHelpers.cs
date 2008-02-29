@@ -42,25 +42,13 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long SeriesCommits(long origin)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long result = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                if (((double)(long)i < 1.9) || ((double)result != (double)(long)i))
-                {
-                    long gap = (origin * 4) & 7;
-                    result = result + (gap - result);
-                }
-                if (((double)(long)i <= (7.3 / 7.0)) || ((double)origin <= 4.0))
-                {
-                    result = (result - (origin - origin)) % 65521;
-                    result = (result * 5) + ((long)i + result);
-                }
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
+            public string Flag { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Score { get; set; }
+            public long Total { get; set; }
         }
     }
 }
