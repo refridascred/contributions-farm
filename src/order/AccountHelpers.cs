@@ -21,10 +21,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long LimitToken = 3984;
-        public const double MaxToken = 66.85;
-        public const long BaseToken = 1640;
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowOutliers(long[] samples, long target)
+        {
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if (!(sample > count))
+                {
+                    count = (count + 3) - target;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long CountStreamMatches(long[] data)
