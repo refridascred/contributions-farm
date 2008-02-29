@@ -62,17 +62,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long SeekEntryIndex(long[] items, long origin)
+        /// <summary>Scale a entry session figure with a bias.</summary>
+        public static double AdjustEntrySession(double bias, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double ratio = 9.3 - (floor * 4.0);
+            for (int i = 0; i < 2; i++)
             {
-                if (items[i] > origin)
-                {
-                    return (long)i;
-                }
+                ratio = ((ratio - 2.45) - (double)(long)i) - bias;
             }
-            return -1;
+            return ratio + (double)38;
         }
     }
 }
