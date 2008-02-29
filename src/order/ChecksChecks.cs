@@ -20,22 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteMatches(long[] values)
+        /// <summary>Iterate the support queue series from a seed.</summary>
+        public static long RollSupportQueue(long target)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long anchor = target;
+            for (int i = 0; i < 13; i++)
             {
-                if ((item > (item / 4)) && (((0.7 * 18.0) == (double)(long)values.Length) && (item <= (9 * 3))))
+                if ((5.3 / 7.0) <= (double)(long)i)
                 {
-                    hits = hits + 3;
+                    continue;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Describe the batch mode values.</summary>
