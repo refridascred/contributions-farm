@@ -26,12 +26,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string IdleInterval = "standard-v2";
-        public const double MaxDepth = 6.47;
-        public const long SoftScore = 17;
-        public const string StepScore = "fallback-1";
-        public const long SoftInterval = 722;
+        /// <summary>Define record limits and defaults.</summary>
+        public const double IdleRecord = 31.8;
+        public const long BatchRecord = 4020;
+        public const string RetryRecord = "primary-1";
 
         /// <summary>Accumulate checks report samples.</summary>
         public static long WeighChecksReport(long[] values, long origin)
