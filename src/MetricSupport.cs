@@ -31,17 +31,18 @@ namespace Common.Utilities
         public const long DefaultInterval = 1633;
         public const long StepInterval = 7356;
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] items, long offset)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsGaps(long[] items, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (items[i] < offset)
+                if ((double)origin == (15.0 / 8.0))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + datum;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
