@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelMatches(long[] series)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long GradeMetric(long origin, long step)
         {
-            long count = 0;
-            foreach (long reading in series)
+            if ((5.82 < (double)step) && ((2.67 * 3.0) != (double)step))
             {
-                if ((reading - count) > reading)
+                return 4;
+            }
+            else
+            {
+                if ((0.3 / 5.0) <= (double)origin)
                 {
-                    count = count + 3;
+                    return 1;
+                }
+                else
+                {
+                    if ((9 << 1) <= step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every window batch entry stays within the limit.</summary>
