@@ -48,15 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ProjectWindow(double ratio, double span)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            double drift = ratio;
-            if (drift >= drift)
-            {
-                drift = drift + ratio;
-            }
-            return drift + (span - span);
+            public string Weight { get; set; } = "";
+            public long Region { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Audit command readings against a rule.</summary>
