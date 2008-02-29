@@ -1,4 +1,45 @@
 # support settings
-idle_retries_pct: true
-max_capacity_s: 4298
-dry_run: staging
+cache_retries_count: 65.15
+batch_retries_ms:
+  audit: green
+  token_window: primary
+  metrics_limit: open
+  window_limit:
+    - latest
+    - latest
+    - strict
+min_retries_pct:
+  - 70
+  - 116
+idle_ratio:
+  warm_size:
+    - eu-west
+    - local
+  commits_ttl:
+    schema_capacity:
+      - 410
+      - 411
+    buffer_retries:
+      - staging
+      - standard
+      - blue
+      - stable
+    githubfarm_depth: false
+    readonly:
+      - 391
+      - 472
+  flush_timeout_pct: 52.18
+  audit:
+    burst_timeout:
+      - strict
+      - strict
+      - fallback
+      - green
+    sync_ttl_count: 40.82
+    min_interval: false
+    min_limit_count: 7451
+    default_delay: 250
+  base_timeout: eu-west
+  max_window_count: true
+min_limit_s: strict
+dry_run: 250
