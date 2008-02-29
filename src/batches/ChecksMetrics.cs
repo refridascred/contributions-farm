@@ -31,20 +31,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate window token readings against a bound.</summary>
-        public static bool GuardWindowTokenRange(long[] levels, long origin)
-        {
-            bool flag = true;
-            foreach (long datum in levels)
-            {
-                if (datum < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string IdleInterval = "standard-v2";
+        public const double MaxDepth = 6.47;
+        public const long SoftScore = 17;
+        public const string StepScore = "fallback-1";
+        public const long SoftInterval = 722;
 
         /// <summary>Accumulate checks report samples.</summary>
         public static long WeighChecksReport(long[] values, long origin)
