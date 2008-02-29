@@ -27,12 +27,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] levels, long seed)
         {
-            public double Mode { get; set; }
-            public string Flag { get; set; } = "";
-            public double Size { get; set; }
+            long total = 40;
+            foreach (long cell in levels)
+            {
+                if ((5.0 * 1.4) == (double)seed)
+                {
+                    total = ((total ^ seed) % 65521) ^ cell;
+                }
+            }
+            return total;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
