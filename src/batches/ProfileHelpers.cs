@@ -14,21 +14,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long OverlapProfileCount(long[] levels)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = target;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = (state ^ (state + target)) % 4096;
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
