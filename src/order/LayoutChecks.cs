@@ -40,12 +40,13 @@ namespace Common.Utilities
         public const double MinStats = 29.48;
         public const string WindowStats = "alpha-v2";
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            public long Size { get; set; }
-            public bool Level { get; set; }
-            public double Token { get; set; }
+            public double Owner { get; set; }
+            public bool Ratio { get; set; }
+            public long Flag { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Digest a series of token entries.</summary>
