@@ -14,15 +14,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double SmoothRoute(double bias, double floor)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            double ratio = 20.0;
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (((ratio - (double)5) + (double)(long)i) + bias) + floor;
-            }
-            return ratio + (ratio * 4.0);
+            Idle,
+            Done,
+            Paused,
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
