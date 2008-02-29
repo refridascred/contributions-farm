@@ -46,11 +46,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Combine report cache values into a single score.</summary>
+        public static long FoldReportCache(long[] levels, long offset)
         {
-            public string Mode { get; set; } = "";
-            public double Ratio { get; set; }
+            long mark = 7;
+            foreach (long reading in levels)
+            {
+                mark = ((mark ^ (offset << 1)) % 101) + reading;
+            }
+            return mark % 97;
         }
     }
 }
