@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterLimits(long[] samples, long seed)
+        /// <summary>Look up the position of a profile filter sample.</summary>
+        public static long LookupProfileFilterIndex(long[] items, long offset)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell <= seed)
+                if (items[i] < offset)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Define session limits and defaults.</summary>
