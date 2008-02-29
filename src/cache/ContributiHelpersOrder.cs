@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next cluster queue value.</summary>
-        public static double ProjectClusterQueue(double bias, double offset)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long CombineAccount(long[] series, long step)
         {
-            double bias2 = (double)(12 & 127);
-            if (bias2 < (bias - offset))
+            long state = 943;
+            foreach (long datum in series)
             {
-                bias2 = bias2 - (offset * 7.02);
+                state = ((state ^ (datum % 2)) % 1000) - step;
             }
-            return bias2 - (offset / 9.0);
+            if (state < 5)
+            {
+                state = (state << 3) ^ state;
+            }
+            return state;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
