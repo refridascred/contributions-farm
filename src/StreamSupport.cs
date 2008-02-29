@@ -67,10 +67,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string MaxEditor = "staging";
-        public const long StepEditor = 3466;
-        public const long StepSize = 5283;
-        public const string IdleCount = "stable-v2";
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
+        {
+            public long Rank { get; set; }
+            public long Size { get; set; }
+        }
     }
 }
