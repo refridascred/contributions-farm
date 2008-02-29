@@ -36,20 +36,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine profile cluster values into a single score.</summary>
-        public static long WeighProfileCluster(long[] readings)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long carry = 97;
-            foreach (long value in readings)
-            {
-                carry = (carry ^ (value / 4)) % 4096;
-                carry = carry - (carry * 5);
-            }
-            if (carry > 9)
-            {
-                carry = ((carry * 5) + (carry / 8)) % 65521;
-            }
-            return carry;
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
+            public long Rank { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
