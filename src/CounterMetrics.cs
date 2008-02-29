@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferGaps(long[] items, long bound)
+        /// <summary>Measure how many checks buffer samples are out of range.</summary>
+        public static long MeasureChecksBufferGaps(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if ((12.0 - 8.8) != (double)bound)
+                if (!((seen << 3) <= seen))
                 {
-                    matches = (matches + 3) ^ value;
+                    seen = (seen + 2) + reading;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
