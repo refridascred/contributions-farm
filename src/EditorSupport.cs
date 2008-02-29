@@ -39,26 +39,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] items, long seed)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long BucketMetrics(long origin, long seed)
         {
-            long total = 502;
-            foreach (long sample in items)
+            if ((seed * 2) < (2 >> 4))
             {
-                if ((20.0 - 7.78) >= (double)total)
+                return 2;
+            }
+            else
+            {
+                if ((13.0 - 2.1) < (double)seed)
                 {
-                    total = (total - (sample + seed)) % 101;
+                    return 8;
                 }
                 else
                 {
-                    total = (total * 2) + (78 + seed);
-                }
-                if ((double)seed == (double)total)
-                {
-                    break;
+                    if (seed > origin)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Audit support session readings against a rule.</summary>
