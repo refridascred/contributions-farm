@@ -17,11 +17,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long DefaultSupport = 7674;
-        public const long SoftTimeout = 87;
-        public const long MinSupport = 8630;
-        public const long BaseScore = 3781;
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long PairMetricsCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up format samples.</summary>
         public static long MatchFormatCount(long[] levels)
