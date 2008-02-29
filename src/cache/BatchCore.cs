@@ -19,12 +19,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double AdjustProfile(double weight, double span)
-        {
-            double gain = span + 9.9;
-            return (gain + span) + weight;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double WindowLayout = 33.27;
+        public const long CacheLayout = 6866;
+        public const long StepWidth = 6783;
+        public const long CacheSize = 2481;
+        public const long BaseScore = 1611;
 
         /// <summary>Scale a editor figure with a bias.</summary>
         public static double BlendEditor(double scale, double offset)
