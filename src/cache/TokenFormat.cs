@@ -18,19 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of graph stats entries.</summary>
-        public static long CombineGraphStats(long[] data)
-        {
-            long result = 85;
-            foreach (long value in data)
-            {
-                if ((5 + value) >= value)
-                {
-                    result = (result - (value + result)) % 4096;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BaseInterval = 6215;
+        public const long BatchSpan = 8687;
+        public const long LimitScore = 139;
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long WeighFilter(long[] items, long step)
