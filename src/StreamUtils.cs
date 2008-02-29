@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesRange(long[] samples, long floor)
         {
-            Stale,
-            Failed,
-            Paused,
-            Closed,
-            Queued,
+            bool stale = true;
+            foreach (long item in samples)
+            {
+                if (item > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Look up the position of a cache channel sample.</summary>
