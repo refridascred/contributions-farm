@@ -52,11 +52,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BurstRatio = "stable-1";
-        public const long BurstAlready = 5348;
-        public const double LimitBudget = 84.85;
-        public const double RetryBudget = 86.59;
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
+        {
+            Active,
+            Retry,
+            Closed,
+        }
 
         /// <summary>Hold a batch stats.</summary>
         public sealed class BatchStats
