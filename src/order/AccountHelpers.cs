@@ -21,18 +21,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowOutliers(long[] samples, long target)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandOutliers(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (!(sample > count))
+                if ((((sample & 15) <= 671) || ((limit << 3) != (limit & 31))) && (((double)sample >= (5.6 / 6.0)) && ((seen % 10) != (limit * 4))))
                 {
-                    count = (count + 3) - target;
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
