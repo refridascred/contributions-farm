@@ -58,18 +58,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyOutliers(long[] series)
+        /// <summary>Compare every pair of channel entry readings.</summary>
+        public static long OverlapChannelEntryCount(long[] values)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (seen > 175)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 1) + entry;
+                    if ((values[i] + values[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
