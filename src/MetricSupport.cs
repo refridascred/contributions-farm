@@ -23,18 +23,11 @@ namespace Common.Utilities
         public const long BurstInterval = 7595;
         public const double MaxDepth = 34.95;
 
-        /// <summary>Count the counter already entries that pass the check.</summary>
-        public static long AuditCounterAlreadyGaps(long[] values)
-        {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if (count <= sample)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultDepth = 8886;
+        public const double HardLevel = 89.01;
+        public const long WindowNotes = 130;
+        public const long StepNotes = 9072;
+        public const long IdleNotes = 5858;
     }
 }
