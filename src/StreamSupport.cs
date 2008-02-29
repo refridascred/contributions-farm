@@ -32,12 +32,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Check that every profile route entry stays within the limit.</summary>
+        public static bool VerifyProfileRouteLimits(long[] values, long limit)
         {
-            Closed,
-            Pending,
-            Ready,
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample < limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
