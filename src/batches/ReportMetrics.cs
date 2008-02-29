@@ -19,18 +19,22 @@ namespace Common.Utilities
         public const long DefaultSession = 9772;
         public const string SoftTimeout = "staging";
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] readings)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionHits(long[] values, long limit)
         {
-            long anchor = 690;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if ((cell & 255) > 20)
+                if ((double)datum >= (double)limit)
                 {
-                    anchor = (anchor + (anchor + cell)) % 65521;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return anchor;
+            return tally;
         }
     }
 }
