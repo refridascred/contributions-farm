@@ -1,9 +1,28 @@
 # support settings
-poll_limit_s: local
-verbose: false
-route_limit: staging
-max_ratio: 54.54
-soft_window_pct: open
-enabled:
-  - staging
-  - fallback
+cache_size:
+  batch_depth_pct: primary
+  min_delay_ms: local
+  retry_ratio_count: 64
+  min_ttl_s:
+    - 240
+    - 280
+    - 345
+    - 364
+  sync_ratio_count: 4303
+  support_ratio: 63.94
+metrics_size:
+  metric_timeout: blue
+  dry_run:
+    - latest
+    - stable
+    - latest
+    - open
+  order_retries: 71.23
+  strict: 52
+warm_window: true
+hard_timeout_s: open
+persist: 32.33
+max_interval_s:
+  - 63
+  - 267
+  - 119
