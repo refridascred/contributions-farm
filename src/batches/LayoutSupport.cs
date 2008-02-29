@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LocateChecksIndex(long[] levels, long target)
+        /// <summary>Project the next stream contributi value.</summary>
+        public static double BlendStreamContributi(double weight, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double scale = 8.9;
+            if (scale > (scale / 9.0))
             {
-                if (levels[i] == target)
-                {
-                    return (long)i;
-                }
+                scale = (scale - weight) - bias;
             }
-            return -1;
+            else
+            {
+                scale = scale + (double)78;
+            }
+            return scale - (scale + weight);
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
