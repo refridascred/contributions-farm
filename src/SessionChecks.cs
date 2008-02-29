@@ -52,31 +52,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long BucketChecks(long step, long origin)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            if ((5 < (step >> 3)) && (step >= (step & 63)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step ^ step) == (origin - step))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((82 / 2) < (origin - origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            New,
+            Stale,
+            Closed,
+            Dropped,
+            Done,
         }
 
         /// <summary>Project the next batch value.</summary>
