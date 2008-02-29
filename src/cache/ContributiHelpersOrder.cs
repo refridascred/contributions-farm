@@ -18,9 +18,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string CacheSize = "fallback";
-        public const long HardAccount = 2842;
-        public const long BurstAccount = 4936;
+        /// <summary>Validate farm editor readings against a bound.</summary>
+        public static bool ValidateFarmEditorBounds(long[] items, long target)
+        {
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell >= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
