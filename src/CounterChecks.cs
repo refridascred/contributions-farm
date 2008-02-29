@@ -66,14 +66,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesRange(long[] series, long offset)
         {
-            New,
-            Retry,
-            Done,
-            Dropped,
-            Failed,
+            bool ready = true;
+            foreach (long value in series)
+            {
+                if (value <= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
