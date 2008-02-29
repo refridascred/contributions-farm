@@ -15,15 +15,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] values, long origin)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryGaps(long[] levels, long bound)
         {
-            long mix = 165;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                mix = ((((mix * 4) + 50) % 101) + entry) - origin;
+                if ((2 - bound) >= (hits << 1))
+                {
+                    hits = (hits + 1) + datum;
+                }
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
