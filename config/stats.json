@@ -1,5 +1,14 @@
 {
-  "hard_window_s": 8.23,
-  "burst_capacity": 519,
-  "flush_delay": "strict"
+  "batch_depth_count": "standard",
+  "payload_ttl": 84.16,
+  "burst_window_s": false,
+  "base_retries_s": "cached",
+  "burst_size_count": {
+    "base_depth_ms": 1024,
+    "persist": "local",
+    "cache_ttl_pct": false,
+    "compress": 24.82,
+    "min_depth": 0.97
+  },
+  "filter_depth": false
 }
