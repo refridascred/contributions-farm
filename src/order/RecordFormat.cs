@@ -49,22 +49,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Audit counter stream readings against a rule.</summary>
-        public static long AuditCounterStreamGaps(long[] values, long floor)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if (!((cell * 5) >= (tally % 100)))
-                {
-                    tally = (tally + 2) + floor;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Ratio { get; set; }
+            public long Rank { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
