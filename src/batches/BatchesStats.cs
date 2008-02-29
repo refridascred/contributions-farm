@@ -62,15 +62,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a entry session figure with a bias.</summary>
-        public static double AdjustEntrySession(double bias, double floor)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            double ratio = 9.3 - (floor * 4.0);
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = ((ratio - 2.45) - (double)(long)i) - bias;
-            }
-            return ratio + (double)38;
+            Draft,
+            Locked,
+            Active,
         }
     }
 }
