@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine batch notes values into a single score.</summary>
-        public static long TotalBatchNotes(long[] readings)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportHits(long[] data)
         {
-            long result = 19;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (((7.4 - 2.0) > (double)result) && ((item - result) > (result & 7)))
+                if (((-58) & 255) > (item - item))
                 {
-                    result = result + (313 % 5);
-                }
-                else
-                {
-                    result = (result - item) % 4096;
+                    matches = matches + 2;
                 }
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Adjust a payload reading.</summary>
