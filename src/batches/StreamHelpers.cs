@@ -86,17 +86,10 @@ namespace Common.Utilities
             return load + (double)74;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double RetryInterval = 41.56;
+        public const double IdleRoute = 85.4;
+        public const long DefaultLevel = 4621;
+        public const double CacheRoute = 66.65;
     }
 }
