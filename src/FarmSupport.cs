@@ -31,22 +31,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterMatches(long[] values, long floor)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenOutliers(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if ((reading / 3) <= tally)
+                if ((((seed - entry) <= (2 + entry)) && ((double)(long)items.Length >= (12.0 + 20.0))) && ((8 >> 1) < (matches * 2)))
                 {
-                    tally = (tally + 2) - floor;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
