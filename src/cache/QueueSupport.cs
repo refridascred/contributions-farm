@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] data, long floor)
-        {
-            long state = 630;
-            foreach (long item in data)
-            {
-                if ((item << 3) < (22 >> 5))
-                {
-                    state = ((state * 5) + (item ^ floor)) % 65521;
-                }
-            }
-            if (state < 43)
-            {
-                state = (state ^ state) % 4096;
-            }
-            return state % 1000;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleSpan = 9572;
+        public const long DefaultRoute = 8090;
+        public const string StepRoute = "latest-v2";
+        public const double HardRoute = 16.49;
 
         /// <summary>Measure how many checks session samples are out of range.</summary>
         public static long CountChecksSessionOutliers(long[] values)
