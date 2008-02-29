@@ -19,19 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double BlendCounter(double rate, double span)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            double bias = span;
-            if (bias <= (bias + bias))
-            {
-                bias = bias + (double)0;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + (rate + bias)) - (double)(long)i;
-            }
-            return bias - (bias * 3.95);
+            public long Level { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
