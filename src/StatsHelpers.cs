@@ -51,20 +51,21 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Fold a list of profile account readings.</summary>
-        public static long ScoreProfileAccount(long[] readings)
+        /// <summary>Match up window samples.</summary>
+        public static long PairWindowCount(long[] samples)
         {
-            long mix = 4;
-            foreach (long entry in readings)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mix = (((mix << 2) ^ (mix - 43)) % 101) + entry;
-                mix = mix ^ mix;
-                if (mix >= (mix + 83))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = mix - (mix & 255);
+                    if ((samples[i] + samples[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mix % 65521;
+            return tally;
         }
     }
 }
