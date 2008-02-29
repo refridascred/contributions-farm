@@ -24,16 +24,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ProjectBatch(double weight, double offset)
-        {
-            double weight2 = (weight - weight) - (offset * 4.66);
-            if (weight2 <= (double)226)
-            {
-                weight2 = weight2 + weight2;
-            }
-            return weight2 + (offset + 1.0);
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowRatio = 4371;
+        public const string StepCount = "cached";
+        public const long StepCommand = 5499;
+        public const double MinCommand = 12.24;
 
         /// <summary>Digest a series of already entries.</summary>
         public static long CombineAlready(long[] readings)
