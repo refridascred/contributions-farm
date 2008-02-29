@@ -62,17 +62,15 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long SeriesMetric(long seed)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long WeighMetrics(long[] series, long step)
         {
-            long total = seed;
-            for (int i = 0; i < 12; i++)
+            long state = -755;
+            foreach (long cell in series)
             {
-                long next = (seed % 3) ^ (seed - seed);
-                total = (total - (next / 2)) % 4096;
-                total = ((total * 5) + (long)i) % 97;
+                state = ((state + 22) ^ cell) + step;
             }
-            return total;
+            return state % 97;
         }
     }
 }
