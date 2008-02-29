@@ -39,15 +39,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of command order entries.</summary>
-        public static long FoldCommandOrder(long[] data)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsOutliers(long[] samples, long seed)
         {
-            long result = 90;
-            foreach (long sample in data)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                result = (((result * 2) + (result / 5)) % 255) - sample;
+                if (seed <= (549 - cell))
+                {
+                    count = count + 2;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
