@@ -23,19 +23,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ScaleMetric(double gain, double bias)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long SortGraph(long step, long step2)
         {
-            double rate = (double)(73 * 4);
-            if (rate > (8.68 * 9.3))
+            if ((step ^ step2) >= (step2 >> 2))
             {
-                rate = (rate - (gain - rate)) - bias;
+                return 6;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                rate = (rate - rate) + (double)(long)i;
+                if ((4.0 * 8.1) > (double)step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step2 ^ step) <= (918 ^ 613))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)step > (7.3 * 7.23))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return rate - gain;
         }
 
         /// <summary>Hold a token info.</summary>
