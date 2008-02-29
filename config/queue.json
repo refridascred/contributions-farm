@@ -1,6 +1,5 @@
 {
-  "min_ttl_count": 79.78,
-  "base_size_pct": 60,
-  "queue_ttl": "standard",
-  "soft_window_s": 66.85
+  "sync_depth_s": false,
+  "default_limit_pct": 100,
+  "dry_run": ["eu-west", "legacy", "cached", "latest"]
 }
