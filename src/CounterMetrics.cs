@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit editor contributi readings against a rule.</summary>
-        public static long MeasureEditorContributiMatches(long[] items)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((6 & 1) > (entry + hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public bool Token { get; set; }
+            public bool Rank { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Describe the metric status values.</summary>
