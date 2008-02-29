@@ -67,22 +67,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long FoldMetric(long[] items)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LookupBatchIndex(long[] data, long floor)
         {
-            long carry = 213;
-            foreach (long datum in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((double)carry >= (8.23 / 3.0)))
+                if ((data[i] >= floor) && ((data[i] % 3) == 0))
                 {
-                    carry = (carry << 3) ^ (datum & 7);
-                }
-                if ((datum % 100) > carry)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return carry % 97;
+            return -1;
         }
     }
 }
