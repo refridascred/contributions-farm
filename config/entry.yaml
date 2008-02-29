@@ -1,12 +1,19 @@
 # entry settings
-base_window_count:
-  soft_capacity:
-    min_timeout_count: 49.62
-    context_delay: 45
-    dry_run: 88
-    min_threshold_ms: 38
-    max_limit: 62.38
-  stream_timeout: true
-  burst_retries_ms: 9
-sync_depth_s: 1471
-token_depth: 633
+record_ratio: true
+base_window_ms:
+  idle_limit_count: true
+  readonly: false
+  record_threshold: 100
+  base_depth_s:
+    - 102
+    - 299
+    - 48
+  hard_delay_pct: strict
+  flush_ratio_s:
+    - legacy
+    - legacy
+    - strict
+sync_size_count: 8422
+report_size: 1466
+metric_size: false
+max_timeout_s: staging
