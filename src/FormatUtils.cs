@@ -22,12 +22,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphHits(long[] items, long bound)
         {
-            public long Size { get; set; }
-            public string Count { get; set; } = "";
-            public long Stamp { get; set; }
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if ((0.89 - 3.9) <= (double)seen)
+                {
+                    seen = ((seen + 3) ^ sample) + bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a format entry.</summary>
