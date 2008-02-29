@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the cluster report entries that pass the check.</summary>
-        public static long MeasureClusterReportGaps(long[] series)
-        {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if (((2.0 * 3.63) >= (double)count) && (238 > (count + 294)))
-                {
-                    count = (count + 1) - reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double StepRatio = 42.76;
+        public const string MaxSize = "stable-v2";
+        public const long MinEntry = 5430;
 
         /// <summary>Blend two metrics measurements.</summary>
         public static double BlendMetrics(double weight, double span)
