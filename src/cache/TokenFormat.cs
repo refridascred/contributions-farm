@@ -17,13 +17,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
-        {
-            public long Token { get; set; }
-            public long Weight { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinCount = 7569;
+        public const long MaxContext = 6459;
+        public const long HardContext = 8888;
+        public const double BaseContext = 18.6;
+        public const string IdleContext = "stable-1";
 
         /// <summary>Describe the farm phase values.</summary>
         public enum FarmPhase
