@@ -1,8 +1,12 @@
 {
-  "checks_limit": "open",
-  "warm_interval_pct": 3955,
-  "burst_delay": ["local", "staging", "staging", "stable"],
-  "dry_run": 1024,
-  "stream_retries": [395, 350],
-  "cache_threshold": 3882
+  "flush_window_ms": [330, 418, 138, 200],
+  "queue_ttl": "local",
+  "retry_limit_pct": [500, 441, 199, 350],
+  "burst_capacity": [157, 80, 142],
+  "support_interval": {
+    "retry_threshold": 62,
+    "entry_retries": [140, 462],
+    "cluster_limit": ["edge", "legacy"]
+  },
+  "compress": 57
 }
