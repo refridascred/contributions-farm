@@ -32,14 +32,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            Draft,
-            Paused,
-            Active,
-            Idle,
-            New,
+            public long Rank { get; set; }
+            public string Weight { get; set; } = "";
+            public long Count { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Hold a window entry.</summary>
