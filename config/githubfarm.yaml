@@ -1,4 +1,8 @@
 # githubfarm settings
-min_depth_count: false
-poll_delay_pct: edge
-soft_size_count: eu-west
+enabled: true
+default_limit_count:
+  - blue
+  - latest
+  - cached
+  - edge
+batch_retries_s: 1702
