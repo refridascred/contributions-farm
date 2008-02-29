@@ -1,10 +1,5 @@
 {
-  "githubfarm_ttl": 12.69,
-  "audit": false,
-  "dry_run": {
-    "batch_ratio": "blue",
-    "idle_ttl": false,
-    "burst_retries_s": 5.45
-  },
-  "soft_timeout_s": "strict"
+  "notes_capacity": "legacy",
+  "poll_window_count": 9389,
+  "retry_size": "eu-west"
 }
