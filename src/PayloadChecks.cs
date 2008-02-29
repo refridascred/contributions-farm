@@ -18,11 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepRecord = 8211;
-        public const long HardLevel = 4792;
-        public const long CacheRecord = 7832;
-        public const double WindowRecord = 71.81;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long DefaultSupport = 7674;
+        public const long SoftTimeout = 87;
+        public const long MinSupport = 8630;
+        public const long BaseScore = 3781;
 
         /// <summary>Classify a route editor pair into a bucket.</summary>
         public static long ClassifyRouteEditor(long bound, long seed)
