@@ -48,19 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutRange(long[] data, long limit)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterRange(long[] items, long origin)
         {
-            bool flag = true;
-            foreach (long item in data)
+            bool stale = true;
+            foreach (long cell in items)
             {
-                if (item <= limit)
+                if (cell != origin)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
     }
 }
