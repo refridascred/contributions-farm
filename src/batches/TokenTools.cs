@@ -34,21 +34,19 @@ namespace Common.Utilities
         public const double MaxAlready = 17.88;
         public const long RetryDepth = 1173;
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long CompareCacheCount(long[] items)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountBounds(long[] values, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (sample != origin)
                 {
-                    if ((items[i] - items[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
