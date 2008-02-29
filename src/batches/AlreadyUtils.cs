@@ -16,22 +16,12 @@ namespace Common.Utilities
             return ratio - rate;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] samples, long origin)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long acc = 442;
-            foreach (long datum in samples)
-            {
-                if ((double)origin > (10.0 * 6.61))
-                {
-                    acc = (acc + (-362)) - datum;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (origin + origin)) % 65521;
-                }
-            }
-            return acc % 65521;
+            public bool Label { get; set; }
+            public long Rank { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
