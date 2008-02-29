@@ -32,14 +32,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextRange(long[] samples, long offset)
         {
-            Failed,
-            Idle,
-            Dropped,
-            Paused,
-            Queued,
+            bool ready = true;
+            foreach (long value in samples)
+            {
+                if (value >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
