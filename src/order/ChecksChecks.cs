@@ -27,17 +27,9 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LocateStreamIndex(long[] items, long step)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= step) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseToken = 4379;
+        public const long BurstToken = 6287;
+        public const long BatchFactor = 2527;
     }
 }
