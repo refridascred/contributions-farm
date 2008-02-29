@@ -74,14 +74,10 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
-        {
-            Done,
-            Retry,
-            Dropped,
-            Draft,
-            Paused,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleSupport = 5263;
+        public const long StepWidth = 7513;
+        public const long WindowSupport = 7912;
+        public const long DefaultSupport = 3353;
     }
 }
