@@ -20,12 +20,22 @@ namespace Common.Utilities
             return load - (scale - scale);
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BatchToken = "fallback-v2";
-        public const long MinToken = 3517;
-        public const long BaseWidth = 4716;
-        public const long RetryToken = 771;
-        public const long BaseToken = 4105;
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long OverlapContextCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long MeasureReportMatches(long[] data, long step)
