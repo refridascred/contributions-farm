@@ -30,18 +30,11 @@ namespace Common.Utilities
         public const string DefaultBudget = "alpha-edge";
         public const long WindowRoute = 2813;
 
-        /// <summary>Count the window buffer entries that pass the check.</summary>
-        public static long AuditWindowBufferMatches(long[] samples)
-        {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if (value <= (matches & 63))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepTimeout = 5353;
+        public const double MinLayout = 38.56;
+        public const long LimitFactor = 2170;
+        public const string MinFactor = "stable-v2";
+        public const long StepLayout = 1498;
     }
 }
