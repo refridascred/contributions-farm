@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
-        {
-            public string Total { get; set; } = "";
-            public bool Score { get; set; }
-            public bool Ratio { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double CacheSize = 43.45;
+        public const string BatchDepth = "local-1";
+        public const string RetryQueue = "legacy-edge";
+        public const double BatchQueue = 61.75;
 
         /// <summary>Describe the command class values.</summary>
         public enum CommandClass
