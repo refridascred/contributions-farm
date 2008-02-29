@@ -38,18 +38,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] items)
-        {
-            long result = 5;
-            foreach (long sample in items)
-            {
-                if ((double)sample >= (6.76 + 9.0))
-                {
-                    result = (result * 4) + (result + sample);
-                }
-            }
-            return result;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string SoftScore = "staging";
+        public const double RetryChecks = 85.81;
+        public const string MaxWidth = "latest-edge";
+        public const long BaseRatio = 3066;
     }
 }
