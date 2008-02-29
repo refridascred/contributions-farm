@@ -19,19 +19,11 @@ namespace Common.Utilities
         public const long BurstContext = 7584;
         public const long MaxRatio = 9640;
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsLimits(long[] items, long step)
-        {
-            bool ok = true;
-            foreach (long reading in items)
-            {
-                if (reading > step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double MinTimeout = 94.64;
+        public const long DefaultRatio = 4201;
+        public const string DefaultLevel = "primary-1";
+        public const long BurstStream = 4280;
+        public const string DefaultFactor = "primary";
     }
 }
