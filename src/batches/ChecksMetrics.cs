@@ -23,22 +23,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Accumulate stats payload samples.</summary>
-        public static long TotalStatsPayload(long[] levels, long floor)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountBounds(long[] items, long seed)
         {
-            long score = 444;
-            foreach (long entry in levels)
+            bool ok = true;
+            foreach (long cell in items)
             {
-                if ((score ^ entry) < (long)levels.Length)
+                if (cell <= seed)
                 {
-                    score = ((score * 2) + (entry / 4)) + floor;
+                    ok = false;
+                    break;
                 }
             }
-            if (score > 17)
-            {
-                score = ((score << 3) ^ score) % 4096;
-            }
-            return score;
+            return ok;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
