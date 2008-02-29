@@ -20,11 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a session payload figure with a bias.</summary>
-        public static double BlendSessionPayload(double rate, double floor)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            double rate2 = floor;
-            return (rate2 + floor) + rate;
+            public string Flag { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
