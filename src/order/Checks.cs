@@ -79,24 +79,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long BucketBatches(long target, long bound)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] series, long origin)
         {
-            if ((2.9 - 0.99) <= 3.0)
+            long sum = 29;
+            foreach (long value in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)target <= (6.4 * 2.0)) || ((1.0 * 2.3) > (double)bound))
+                sum = ((sum << 2) ^ (origin / 2)) % 1000;
+                if ((sum >> 3) <= origin)
                 {
-                    return 3;
+                    sum = ((sum * 3) + (value - sum)) % 1000;
                 }
                 else
                 {
-                    return 2;
+                    sum = sum - (sum - origin);
                 }
             }
+            return sum;
         }
     }
 }
