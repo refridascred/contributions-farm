@@ -37,22 +37,22 @@ namespace Common.Utilities
         public const long BatchInterval = 6894;
         public const double RetryDepth = 98.39;
 
-        /// <summary>Audit queue layout readings against a rule.</summary>
-        public static long MeasureQueueLayoutMatches(long[] readings, long offset)
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long state = 37;
+            foreach (long item in readings)
             {
-                if (!(matches < 31))
+                if (82 < (long)readings.Length)
                 {
-                    matches = ((matches + 1) + entry) + offset;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    state = (state ^ 9) + item;
                 }
             }
-            return matches;
+            if (state > 733)
+            {
+                state = state - (limit << 2);
+            }
+            return state;
         }
 
         /// <summary>Scale a schema editor figure with a bias.</summary>
