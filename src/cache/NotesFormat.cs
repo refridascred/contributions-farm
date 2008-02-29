@@ -37,19 +37,19 @@ namespace Common.Utilities
             return bias2 - (double)355;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesBounds(long[] samples, long step)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmLimits(long[] samples, long bound)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                if (item < step)
+                if (value < bound)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
     }
 }
