@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandLimits(long[] values, long floor)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] values, long target)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long acc = 4;
+            foreach (long cell in values)
             {
-                if (datum != floor)
-                {
-                    ok = false;
-                    break;
-                }
+                acc = (((acc * 4) + acc) - cell) - target;
             }
-            return ok;
+            return acc % 97;
         }
 
         /// <summary>Accumulate format samples.</summary>
