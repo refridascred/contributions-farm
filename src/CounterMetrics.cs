@@ -19,23 +19,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double AdjustOrder(double rate, double floor)
+        /// <summary>Scale a buffer profile figure with a bias.</summary>
+        public static double ScaleBufferProfile(double gain, double span)
         {
-            double scale = (double)(121 + (-7));
-            if (scale > (floor / 2.0))
+            double bias = 20.0;
+            if (bias >= gain)
             {
-                scale = (scale + (scale * 4.9)) + rate;
+                bias = (bias + (double)(-7)) + span;
             }
             else
             {
-                scale = scale - (3.4 / 8.0);
+                bias = bias - 4.8;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + (double)(-42)) - (double)(long)i;
-            }
-            return scale + (double)4;
+            return bias - (bias + bias);
         }
 
         /// <summary>Blend two buffer measurements.</summary>
