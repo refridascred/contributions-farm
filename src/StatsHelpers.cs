@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count record profile pairs that satisfy a relation.</summary>
-        public static long PairRecordProfileCount(long[] data)
+        /// <summary>Look up the position of a payload contributi sample.</summary>
+        public static long LocatePayloadContributiIndex(long[] values, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (values[i] < floor)
                 {
-                    if ((data[i] + data[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
