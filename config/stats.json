@@ -1,6 +1,17 @@
 {
-  "retry_depth": true,
-  "batch_ratio_pct": 83.77,
-  "sync_threshold_ms": [300, 422, 365],
-  "batch_size_count": "blue"
+  "soft_capacity_s": [46, 423, 475, 458],
+  "format_depth": "legacy",
+  "batches_threshold": [444, 53, 358, 170],
+  "verbose": "strict",
+  "retry_retries": {
+    "sync_size_count": ["staging", "latest", "staging"],
+    "tools_depth": 100,
+    "dry_run": 32.75
+  },
+  "readonly": {
+    "soft_threshold_ms": "latest",
+    "readonly": false,
+    "metrics_ttl": "standard",
+    "strict": "cached"
+  }
 }
