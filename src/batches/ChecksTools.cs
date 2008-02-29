@@ -16,19 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate account profile readings against a bound.</summary>
-        public static bool ValidateAccountProfileBounds(long[] samples, long target)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksHits(long[] levels)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (datum != target)
+                if (((datum % 3) > (datum >> 3)) && ((tally + tally) <= tally))
                 {
-                    flag = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
