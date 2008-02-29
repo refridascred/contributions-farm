@@ -16,11 +16,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultSession = 9468;
-        public const long LimitRatio = 7572;
-        public const long BaseFactor = 5989;
-        public const double BaseInterval = 79.95;
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long bound, long seed)
+        {
+            long prev = bound ^ seed;
+            if (((double)bound < (6.4 / 4.0)) || ((prev - 44) != (prev % 100)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!(prev <= (bound >> 4)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long AuditToolsHits(long[] readings, long origin)
