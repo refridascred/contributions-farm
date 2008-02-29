@@ -40,19 +40,19 @@ namespace Common.Utilities
         public const string BaseSession = "latest";
         public const double RetryCount = 55.69;
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool ValidateCacheLimits(long[] data, long floor)
+        /// <summary>Derive the next order already value from a seed.</summary>
+        public static long RollOrderAlready(long seed)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long mark = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (reading >= floor)
+                if (!(5.19 > (double)(long)i))
                 {
-                    stale = false;
-                    break;
+                    continue;
                 }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
