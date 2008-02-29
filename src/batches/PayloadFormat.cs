@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Roll a order buffer counter forward.</summary>
-        public static long DeriveOrderBuffer(long step)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long score = step;
-            for (int i = 0; i < 17; i++)
-            {
-                score = (score * 2) + (score + step);
-                score = (score << 2) ^ (step * 4);
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
+            Stale,
+            Dropped,
+            Draft,
+            Paused,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
