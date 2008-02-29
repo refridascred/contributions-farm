@@ -47,19 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsBounds(long[] series, long target)
+        /// <summary>Count the contributi format entries that pass the check.</summary>
+        public static long TallyContributiFormatOutliers(long[] readings)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (value < target)
+                if ((count << 3) > (-6))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 1) + cell;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
