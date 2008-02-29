@@ -22,19 +22,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportLimits(long[] values, long origin)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry <= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Failed,
+            Idle,
+            Dropped,
+            Paused,
+            Queued,
         }
     }
 }
