@@ -30,10 +30,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double RetryFactor = 28.91;
-        public const long HardRatio = 8443;
-        public const string HardWidth = "primary-edge";
-        public const long BurstGithubfarm = 6916;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheHits(long[] items, long offset)
+        {
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if ((6 + 78) < (cell ^ count))
+                {
+                    count = (count + 1) + offset;
+                }
+            }
+            return count;
+        }
     }
 }
