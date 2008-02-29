@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            Stale,
-            Failed,
-            Locked,
+            Dropped,
+            Retry,
+            Synced,
+            Draft,
+            New,
         }
 
         /// <summary>Hold a queue entry.</summary>
