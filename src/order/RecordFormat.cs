@@ -67,11 +67,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleWidth = 7290;
-        public const string SoftNotes = "primary-1";
-        public const double BaseFactor = 47.89;
-        public const long MinNotes = 3121;
-        public const long WindowNotes = 9443;
+        /// <summary>Audit counter stream readings against a rule.</summary>
+        public static long AuditCounterStreamGaps(long[] values, long floor)
+        {
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if (!((cell * 5) >= (tally % 100)))
+                {
+                    tally = (tally + 2) + floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
