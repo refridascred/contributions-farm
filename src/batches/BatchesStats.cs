@@ -33,19 +33,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate githubfarm counter readings against a bound.</summary>
-        public static bool GuardGithubfarmCounterLimits(long[] series, long step)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long StepAccount(long target)
         {
-            bool ok = true;
-            foreach (long value in series)
+            long total = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (value <= step)
-                {
-                    ok = false;
-                    break;
-                }
+                total = (total * 5) + total;
+                total = ((total * 2) + (long)i) % 101;
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Roll a format entry counter forward.</summary>
