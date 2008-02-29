@@ -12,13 +12,39 @@ namespace Common.Utilities
         public const long StepCount = 3190;
         public const long StepBatch = 9715;
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Classify a account stats pair into a bucket.</summary>
+        public static long GradeAccountStats(long floor, long offset)
         {
-            Failed,
-            Pending,
-            Queued,
-            Idle,
+            long diff = floor + offset;
+            if ((diff * 3) <= (offset % 64))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)offset >= (2.2 + 2.2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((offset >> 3) >= (offset & 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (floor <= (offset + diff))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the editor state values.</summary>
