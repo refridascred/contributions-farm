@@ -1,11 +1,5 @@
 # support settings
-min_interval_s: 41.87
-dry_run:
-  - staging
-  - latest
-  - primary
-verbose:
-  - 395
-  - 132
-  - 398
-  - 191
+flush_size: 68.26
+channel_ratio: true
+warm_threshold: 31.56
+strict: 8
