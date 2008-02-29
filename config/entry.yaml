@@ -1,14 +1,18 @@
 # entry settings
-audit:
-  persist: standard
-  poll_size_count: 38
-  soft_retries: green
-  default_depth_ms: 42.79
-  already_ttl:
-    - 4
-    - 381
-  compress: eu-west
-flush_threshold_pct: 1721
-window_interval: 34.39
-max_capacity_pct: open
-burst_limit_ms: strict
+cache_depth_pct: open
+hard_delay_count: 15
+max_size_ms:
+  batch_delay:
+    - 365
+    - 400
+    - 469
+  support_depth:
+    idle_delay_ms: 31.86
+    retry_timeout: 42.89
+    dry_run: 9565
+  dry_run:
+    dry_run: false
+    sync_ratio_ms: stable
+    retry_interval_count: fallback
+    support_ratio: 100
+    idle_delay_pct: 60
