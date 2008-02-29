@@ -61,15 +61,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many layout batches samples are out of range.</summary>
-        public static long TallyLayoutBatchesOutliers(long[] values, long limit)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long MatchBatchCount(long[] data)
         {
             long seen = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((seen < (limit ^ 9)) && ((long)values.Length != (seen % 2)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 1) - cell;
+                    if ((data[i] - data[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
