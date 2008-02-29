@@ -26,19 +26,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next format report value from a seed.</summary>
-        public static long RollFormatReport(long origin)
+        /// <summary>Roll a format entry counter forward.</summary>
+        public static long IterateFormatEntry(long offset)
         {
-            long anchor = origin;
-            for (int i = 0; i < 6; i++)
+            long sum = offset;
+            for (int i = 0; i < 15; i++)
             {
-                if ((double)(long)i == (9.0 * 7.6))
-                {
-                    anchor = anchor ^ (origin & 7);
-                }
-                anchor = ((anchor * 4) + (long)i) % 101;
+                sum = (sum * 3) + (206 % 7);
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
