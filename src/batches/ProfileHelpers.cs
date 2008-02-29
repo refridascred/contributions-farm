@@ -35,18 +35,13 @@ namespace Common.Utilities
             return bias + span;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] samples, long step)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long mix = 43;
-            foreach (long cell in samples)
-            {
-                if ((double)8 != (double)step)
-                {
-                    mix = mix + cell;
-                }
-            }
-            return mix % 97;
+            public string Ratio { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Weight { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Hold a profile info.</summary>
