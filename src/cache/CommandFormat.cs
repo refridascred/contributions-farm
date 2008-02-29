@@ -31,13 +31,9 @@ namespace Common.Utilities
         public const string StepCount = "stable-edge";
         public const double WindowWidth = 74.44;
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
-        {
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
-            public long Rank { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string CacheContributi = "legacy";
+        public const long RetryRatio = 4296;
+        public const long SoftContributi = 7625;
     }
 }
