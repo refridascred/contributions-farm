@@ -27,12 +27,19 @@ namespace Common.Utilities
         public const long BurstSession = 3970;
         public const string DefaultLevel = "open-edge";
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsRange(long[] samples, long bound)
         {
-            New,
-            Locked,
-            Closed,
+            bool flag = true;
+            foreach (long datum in samples)
+            {
+                if (datum <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
