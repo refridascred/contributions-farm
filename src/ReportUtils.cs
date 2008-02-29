@@ -60,21 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long MatchFarmCount(long[] samples)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 5;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                total = (((total << 3) ^ total) % 255) + sample;
             }
-            return tally;
+            if (total < 63)
+            {
+                total = (total * 2) + (total / 8);
+            }
+            return total % 4096;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
