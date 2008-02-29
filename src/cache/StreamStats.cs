@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Look up the position of a record layout sample.</summary>
-        public static long SeekRecordLayoutIndex(long[] data, long seed)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long IterateProfile(long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 19; i++)
             {
-                if ((data[i] >= seed) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc << 2) ^ (acc - bound)) % 65521;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
