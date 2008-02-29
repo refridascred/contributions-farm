@@ -31,9 +31,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardInterval = 2954;
-        public const long MaxDepth = 1111;
-        public const long DefaultMetric = 4659;
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
+        {
+            public string Score { get; set; } = "";
+            public double Ratio { get; set; }
+        }
     }
 }
