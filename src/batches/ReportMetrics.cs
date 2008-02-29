@@ -13,11 +13,24 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ProjectPayload(double rate, double floor)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long origin, long step)
         {
-            double load = floor;
-            return (load + (load * 9.0)) + rate;
+            if (((double)699 >= (double)step) && (step >= (step - step)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((147 & 127) > (step * 4)) || ((step - step) >= origin))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Hold a layout snapshot.</summary>
