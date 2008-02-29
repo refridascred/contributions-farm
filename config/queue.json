@@ -1,6 +1,8 @@
 {
-  "flush_delay": 2073,
-  "compress": 86.46,
-  "hard_delay": ["edge", "strict"],
-  "warm_limit": "stable"
+  "batch_size_ms": 78.69,
+  "already_window": "green",
+  "sync_delay": true,
+  "audit": "green",
+  "schema_window": false,
+  "batches_window": 250
 }
