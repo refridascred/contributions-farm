@@ -35,20 +35,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long step)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long score = step;
-            for (int i = 0; i < 6; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    score = (score + score) ^ (long)i2;
-                }
-                score = ((score << 3) ^ (score + step)) % 101;
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
+            public bool Rank { get; set; }
+            public string Label { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
