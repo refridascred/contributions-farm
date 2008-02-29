@@ -80,9 +80,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitWidth = 7570;
-        public const long DefaultContributi = 3833;
-        public const string CacheRatio = "fallback-edge";
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
+        {
+            Locked,
+            Ready,
+            Stale,
+            Failed,
+        }
     }
 }
