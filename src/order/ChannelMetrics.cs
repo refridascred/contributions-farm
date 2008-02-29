@@ -35,24 +35,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank payload filter input into a small class.</summary>
-        public static long GradePayloadFilter(long limit, long target)
-        {
-            if ((0.86 > (double)limit) || (limit < (limit ^ limit)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target & 3) == (277 * 5))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string SoftCluster = "primary-1";
+        public const long HardDepth = 2939;
+        public const long BatchCluster = 5946;
+        public const long LimitCluster = 8534;
+        public const double BurstRatio = 71.33;
     }
 }
