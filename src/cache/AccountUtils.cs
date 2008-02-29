@@ -10,16 +10,10 @@ namespace Common.Utilities
         public const long CacheEntry = 3641;
         public const long MaxEntry = 8433;
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long IterateSupport(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepCount = 1834;
+        public const long WindowScore = 3275;
+        public const long IdleCommits = 9915;
 
         /// <summary>Hold a route entry.</summary>
         public sealed class RouteEntry
