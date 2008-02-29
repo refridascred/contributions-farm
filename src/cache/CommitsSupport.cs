@@ -43,14 +43,13 @@ namespace Common.Utilities
         public const long BatchSpan = 1293;
         public const long StepNotes = 9316;
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
             Ready,
-            Dropped,
-            New,
-            Pending,
-            Idle,
+            Paused,
+            Queued,
+            Failed,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
