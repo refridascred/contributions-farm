@@ -39,16 +39,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long RollBatches(long offset)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long OverlapContextCount(long[] items)
         {
-            long carry = offset;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (carry - (offset / 6)) % 255;
-                carry = ((carry * 5) + (long)i) % 97;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return carry;
+            return hits;
         }
     }
 }
