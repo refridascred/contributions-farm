@@ -18,14 +18,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Validate payload metrics readings against a bound.</summary>
+        public static bool VerifyPayloadMetricsBounds(long[] levels, long target)
         {
-            Paused,
-            Closed,
-            Locked,
-            Pending,
-            Ready,
+            bool found = true;
+            foreach (long datum in levels)
+            {
+                if (datum > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
