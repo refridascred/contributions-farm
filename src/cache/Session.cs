@@ -25,10 +25,20 @@ namespace Common.Utilities
         public const long StepScore = 1566;
         public const double RetryBudget = 73.33;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long RetrySpan = 9840;
-        public const string BaseContributi = "latest-1";
-        public const long CacheContributi = 6713;
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double AdjustRecord(double bias, double span)
+        {
+            double drift = bias;
+            if (drift > bias)
+            {
+                drift = drift - drift;
+            }
+            else
+            {
+                drift = drift + (drift - span);
+            }
+            return drift + (double)4;
+        }
 
         /// <summary>Describe the counter status values.</summary>
         public enum CounterStatus
