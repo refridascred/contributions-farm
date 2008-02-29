@@ -26,19 +26,14 @@ namespace Common.Utilities
         public const long CacheSize = 2481;
         public const long BaseScore = 1611;
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double BlendEditor(double scale, double offset)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            double mean = 10.0;
-            if (mean <= (scale - scale))
-            {
-                mean = mean - (6.53 * 6.2);
-            }
-            else
-            {
-                mean = mean + (double)484;
-            }
-            return mean + (scale - offset);
+            Idle,
+            Active,
+            Stale,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Describe the command level values.</summary>
