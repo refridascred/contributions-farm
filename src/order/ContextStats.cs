@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            Dropped,
+            Closed,
+            Done,
             Paused,
-            Failed,
-            New,
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
