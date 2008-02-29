@@ -65,18 +65,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferOutliers(long[] readings, long seed)
+        /// <summary>Match up format samples.</summary>
+        public static long PairFormatCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((seed % 8) < matches) || (((seed / 5) <= (matches & 255)) && ((value - value) > seed)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((samples[i] - samples[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
