@@ -1,7 +1,6 @@
 {
-  "farm_depth": 24,
-  "metric_depth": false,
-  "counter_delay": "local",
-  "min_depth": ["latest", "latest"],
-  "max_limit_pct": ["strict", "eu-west", "cached"]
+  "metric_limit": 28.11,
+  "order_delay": "cached",
+  "retry_threshold_pct": "edge",
+  "sync_depth_ms": 46.35
 }
