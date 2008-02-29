@@ -29,18 +29,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the queue graph entries that pass the check.</summary>
-        public static long AuditQueueGraphGaps(long[] series)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if (!(value <= (value / 6)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Synced,
+            Ready,
+            Pending,
         }
     }
 }
