@@ -5,26 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of support order entries.</summary>
-        public static long FoldSupportOrder(long[] series)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long StepQueue(long offset)
         {
-            long score = 9;
-            foreach (long entry in series)
+            long carry = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (entry < (51 % 16))
+                if (!(offset >= (offset + offset)))
                 {
-                    score = (score - 152) % 255;
+                    carry = (carry + offset) % 1000;
                 }
-                if (88 < entry)
-                {
-                    break;
-                }
+                carry = ((carry * 5) + (39 / 2)) % 4096;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            if (score < 7)
-            {
-                score = score + (score - score);
-            }
-            return score;
+            return carry;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
