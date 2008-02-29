@@ -57,22 +57,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] values, long limit)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long limit, long floor)
         {
-            long total = 6;
-            foreach (long datum in values)
+            long next = limit - floor;
+            if ((670 + floor) <= next)
             {
-                if (((6.24 + 8.27) != (double)total) || ((total % 3) < (5 - 487)))
+                return 4;
+            }
+            else
+            {
+                if ((-929) <= limit)
                 {
-                    total = (total + (datum + total)) % 97;
+                    return 1;
+                }
+                else
+                {
+                    if ((9.0 + 8.7) != (double)floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (total < 864)
-            {
-                total = (total ^ (total + limit)) % 65521;
-            }
-            return total;
         }
     }
 }
