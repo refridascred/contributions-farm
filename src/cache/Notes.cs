@@ -34,12 +34,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            public string Flag { get; set; } = "";
-            public long Size { get; set; }
-            public long Weight { get; set; }
+            Retry,
+            Active,
+            Draft,
+            Synced,
+            Closed,
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
