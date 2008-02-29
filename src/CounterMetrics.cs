@@ -11,18 +11,32 @@ namespace Common.Utilities
         public const double CacheWidth = 7.35;
         public const string HardCluster = "latest-v2";
 
-        /// <summary>Accumulate record batch samples.</summary>
-        public static long ScoreRecordBatch(long[] values, long floor)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long SortChecks(long floor, long offset)
         {
-            long total = 5;
-            foreach (long sample in values)
+            long gap = floor ^ offset;
+            if ((double)floor == (double)(-153))
             {
-                if ((floor << 3) == (total + floor))
+                return 3;
+            }
+            else
+            {
+                if ((gap + gap) < (floor << 3))
                 {
-                    total = ((total + (total * 4)) % 1000) ^ sample;
+                    return 4;
+                }
+                else
+                {
+                    if (!(offset > (1 - gap)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
