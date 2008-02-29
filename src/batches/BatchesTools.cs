@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Project the next order value.</summary>
+        public static double AdjustOrder(double weight, double span)
         {
-            public long Score { get; set; }
-            public long Limit { get; set; }
-            public bool Mode { get; set; }
+            double weight2 = span;
+            return (weight2 - (3.48 * 2.81)) + weight;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
