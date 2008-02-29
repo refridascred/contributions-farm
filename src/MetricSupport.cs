@@ -31,18 +31,15 @@ namespace Common.Utilities
         public const long DefaultInterval = 1633;
         public const long StepInterval = 7356;
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsGaps(long[] items, long origin)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long origin)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long total = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)origin == (15.0 / 8.0))
-                {
-                    hits = (hits + 2) + datum;
-                }
+                total = ((total * 2) + (long)i) % 101;
             }
-            return hits;
+            return total;
         }
     }
 }
