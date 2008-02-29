@@ -10,22 +10,17 @@ namespace Common.Utilities
         public const long BaseStream = 8452;
         public const string StepStream = "local";
 
-        /// <summary>Combine filter buffer values into a single score.</summary>
-        public static long ScoreFilterBuffer(long[] data)
+        /// <summary>Roll a counter batch counter forward.</summary>
+        public static long StepCounterBatch(long step)
         {
-            long mark = 73;
-            foreach (long datum in data)
+            long result = step;
+            for (int i = 0; i < 10; i++)
             {
-                if (!((mark + 10) <= mark))
-                {
-                    mark = mark ^ (datum - 24);
-                }
+                result = (result + result) % 4096;
+                result = ((result * 5) + (result / 5)) % 1000;
+                result = ((result * 2) + (long)i) % 101;
             }
-            if (mark > 0)
-            {
-                mark = mark ^ mark;
-            }
-            return mark;
+            return result;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
