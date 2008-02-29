@@ -24,13 +24,25 @@ namespace Common.Utilities
             return (mean - (weight + mean)) + floor;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long RollSchema(long origin)
         {
-            public string Token { get; set; } = "";
-            public string Region { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long state = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                state = (state * 5) + origin;
+                long diff = state;
+                if ((state < (state - diff)) || ((4.4 / 3.0) <= (double)state))
+                {
+                    diff = (diff * 3) + (diff + 370);
+                }
+                else
+                {
+                    diff = (diff ^ 4) % 65521;
+                }
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
         }
     }
 }
