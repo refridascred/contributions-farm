@@ -43,21 +43,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long PairMetricCount(long[] values)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] readings, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 1;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)reading != (10.0 - 4.9))
                 {
-                    if ((values[i] + values[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = ((acc * 2) + (long)readings.Length) - step;
                 }
             }
-            return tally;
+            return acc % 1000;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
