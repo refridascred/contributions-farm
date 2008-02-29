@@ -20,22 +20,12 @@ namespace Common.Utilities
             return load - (scale - scale);
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long OverlapContextCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxTimeout = 6725;
+        public const string HardProfile = "standard-v2";
+        public const long StepBudget = 8952;
+        public const long DefaultInterval = 1633;
+        public const long StepInterval = 7356;
 
         /// <summary>Locate a graph reading by value.</summary>
         public static long LookupGraphIndex(long[] items, long offset)
