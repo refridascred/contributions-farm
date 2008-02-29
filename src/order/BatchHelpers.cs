@@ -50,31 +50,19 @@ namespace Common.Utilities
             return ratio + (ratio * 4.0);
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long bound, long floor)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamBounds(long[] levels, long target)
         {
-            if ((bound + bound) >= floor)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((82 - floor) > (85 & 63))
+                if (sample <= target)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor >> 5) > (bound + (-5)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
