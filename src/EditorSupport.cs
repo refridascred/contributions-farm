@@ -29,13 +29,32 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long limit, long limit2)
         {
-            New,
-            Active,
-            Draft,
-            Failed,
+            long slot = limit + limit2;
+            if (((3 + slot) <= (-788)) || ((limit2 * 4) == (limit / 3)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((20.0 + 7.9) <= (double)limit) || ((double)limit2 >= (double)slot))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (7 > limit2)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the batches mode values.</summary>
