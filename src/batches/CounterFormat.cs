@@ -37,13 +37,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] data)
         {
-            Done,
-            Locked,
-            Idle,
-            Draft,
+            long mark = 32;
+            foreach (long reading in data)
+            {
+                mark = (mark ^ (reading % 24)) % 65521;
+                if (mark > (8 >> 1))
+                {
+                    mark = (mark << 2) ^ ((-18) >> 4);
+                }
+            }
+            if (mark > (-412))
+            {
+                mark = mark - (mark + mark);
+            }
+            return mark % 4096;
         }
     }
 }
