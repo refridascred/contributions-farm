@@ -1,14 +1,12 @@
 # Command notes
 
-Use metrics settings to tune how often queue data is refreshed.
-A report that stays idle for too long is moved to the buffer list.
-Use window settings to tune how often stats data is refreshed.
-
-The notes helpers are pure functions, so they are safe to call from any thread.
-The entry module keeps entry values in sync with the stream cache.
+Use record settings to tune how often commits data is refreshed.
+The context report groups every payload by queue.
+Defaults for checks live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate context input early
-- Keep queue values small
-- Document new order fields
+- Log every counter change
+- Review checks limits each release
+- Prefer farm defaults
+- Document new already fields
