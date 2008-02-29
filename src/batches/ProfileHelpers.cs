@@ -63,31 +63,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long seed, long origin)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            if ((origin * 5) != (origin * 4))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed + seed) >= seed)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((seed & 31) < (seed << 3)) && ((origin ^ seed) >= (seed * 5)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Draft,
+            Dropped,
+            Locked,
+            Failed,
         }
 
         /// <summary>Audit session readings against a rule.</summary>
