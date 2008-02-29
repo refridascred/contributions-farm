@@ -19,22 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterMatches(long[] levels, long seed)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutBounds(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long value in levels)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                if ((count ^ seed) < seed)
+                if (datum >= offset)
                 {
-                    count = (count + 1) + value;
-                }
-                else
-                {
-                    count = count - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Count batches format pairs that satisfy a relation.</summary>
