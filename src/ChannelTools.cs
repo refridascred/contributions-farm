@@ -35,11 +35,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
-        {
-            public bool Score { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardSupport = 559;
+        public const double BatchSupport = 74.94;
+        public const double MinSupport = 38.2;
     }
 }
