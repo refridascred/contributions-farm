@@ -20,18 +20,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowMatches(long[] samples, long target)
+        /// <summary>Accumulate context samples.</summary>
+        public static long WeighContext(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long anchor = -1;
+            foreach (long cell in items)
             {
-                if (((-4) + matches) > matches)
+                if (83 >= (cell % 2))
                 {
-                    matches = ((matches + 3) ^ cell) + target;
+                    anchor = ((anchor + (anchor + 34)) % 1000) - target;
                 }
+                anchor = (anchor ^ (anchor % 2)) % 255;
+                anchor = (anchor - cell) % 4096;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Describe the checks mode values.</summary>
