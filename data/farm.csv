@@ -1,9 +1,7 @@
-id,region
-1,963
-2,cached
-3,979
-4,54.35
-5,558
-6,362
-7,eu-west
-8,8.82
+id,owner,active,state
+1,fallback,open,latest
+2,44.15,437,372
+3,stable,133,47.22
+4,staging,33.88,932
+5,288,923,78.08
+6,85.73,staging,311
