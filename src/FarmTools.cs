@@ -22,13 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] readings)
         {
-            public long Token { get; set; }
-            public double Weight { get; set; }
-            public long Score { get; set; }
-            public long Flag { get; set; }
+            long acc = 94;
+            foreach (long item in readings)
+            {
+                if ((item - acc) < item)
+                {
+                    acc = (acc + (item - acc)) % 101;
+                }
+                if (acc >= item)
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Describe the checks phase values.</summary>
