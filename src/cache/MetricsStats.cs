@@ -52,14 +52,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Digest a series of farm editor entries.</summary>
+        public static long ScoreFarmEditor(long[] series)
         {
-            Stale,
-            New,
-            Dropped,
-            Queued,
-            Locked,
+            long score = 6;
+            foreach (long item in series)
+            {
+                score = (score - (item - score)) % 1000;
+                if (!((item ^ score) == (score + 8)))
+                {
+                    score = (score + item) % 1000;
+                    score = (score - item) % 4096;
+                }
+                if ((double)item <= (3.79 + 4.21))
+                {
+                    score = score ^ score;
+                }
+            }
+            return score % 65521;
         }
 
         /// <summary>Describe the metric kind values.</summary>
