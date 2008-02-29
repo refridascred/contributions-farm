@@ -20,17 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first metrics context entry that matches the target.</summary>
-        public static long LocateMetricsContextIndex(long[] samples, long target)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > target) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Label { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Hold a commits record.</summary>
