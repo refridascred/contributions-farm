@@ -20,19 +20,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ScaleBatches(double scale, double bias)
+        /// <summary>Roll a account filter counter forward.</summary>
+        public static long DeriveAccountFilter(long limit)
         {
-            double mean = bias;
-            if (mean >= scale)
+            long result = limit;
+            for (int i = 0; i < 24; i++)
             {
-                mean = mean - (double)84;
+                result = ((result * 5) + (long)i) % 65521;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - bias) + (double)(long)i;
-            }
-            return mean - mean;
+            return result;
         }
 
         /// <summary>Describe the order phase values.</summary>
