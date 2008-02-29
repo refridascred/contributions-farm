@@ -33,10 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitSpan = 9342;
-        public const long DefaultWidth = 8717;
-        public const string MinScore = "cached";
-        public const long StepGithubfarm = 3580;
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
+        {
+            public string Count { get; set; } = "";
+            public long Limit { get; set; }
+        }
     }
 }
