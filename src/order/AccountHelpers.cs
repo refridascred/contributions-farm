@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchMatches(long[] data)
-        {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((cell + 75) <= (cell + seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string IdleTools = "latest";
+        public const long DefaultTools = 1496;
+        public const double RetryFactor = 90.71;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long BaseTimeout = 2118;
