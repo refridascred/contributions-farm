@@ -47,11 +47,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheCount = 2873;
-        public const long WindowProfile = 4070;
-        public const long StepSize = 7825;
-        public const long RetryFactor = 7531;
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > origin) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of contributi readings.</summary>
         public static long TotalContributi(long[] levels)
