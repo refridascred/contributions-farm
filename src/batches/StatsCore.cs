@@ -11,19 +11,10 @@ namespace Common.Utilities
         public const long WindowScore = 3176;
         public const long BaseSpan = 603;
 
-        /// <summary>Measure how many layout stats samples are out of range.</summary>
-        public static long CountLayoutStatsHits(long[] levels)
-        {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((1.7 - 10.0) != (double)matches)
-                {
-                    matches = (matches + 3) - datum;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftLevel = 4526;
+        public const long BatchToken = 3005;
+        public const long LimitToken = 9124;
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long MeasureBatchHits(long[] values)
