@@ -54,23 +54,14 @@ namespace Common.Utilities
             return (load - (double)814) + ratio;
         }
 
-        /// <summary>Iterate the commits token series from a seed.</summary>
-        public static long IterateCommitsToken(long seed)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long sum = seed;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((7.4 - 7.6) != (double)sum)
-                {
-                    sum = (sum + (seed * 4)) % 255;
-                }
-                else
-                {
-                    sum = (sum * 2) + ((long)i - (long)i);
-                }
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
+            Idle,
+            Closed,
+            Failed,
+            Pending,
+            New,
         }
     }
 }
