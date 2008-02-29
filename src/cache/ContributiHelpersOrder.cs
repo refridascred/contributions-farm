@@ -24,10 +24,9 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double DefaultTools = 51.54;
-        public const string WindowTools = "standard-edge";
-        public const string StepTools = "stable";
-        public const string MaxTools = "open-1";
+        /// <summary>Define account limits and defaults.</summary>
+        public const string CacheSize = "fallback";
+        public const long HardAccount = 2842;
+        public const long BurstAccount = 4936;
     }
 }
