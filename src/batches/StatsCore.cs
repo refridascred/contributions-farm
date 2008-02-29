@@ -42,31 +42,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long BucketSession(long origin, long limit)
+        /// <summary>Count the queue payload entries that pass the check.</summary>
+        public static long TallyQueuePayloadMatches(long[] levels)
         {
-            if ((2.8 / 6.0) < (double)origin)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (((1 - limit) <= (limit + origin)) || (limit > (limit * 4)))
+                if (9.6 >= (double)reading)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((9.2 - 4.0) < (double)origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
