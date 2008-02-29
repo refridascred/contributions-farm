@@ -28,11 +28,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double MinTimeout = 94.64;
-        public const long DefaultRatio = 4201;
-        public const string DefaultLevel = "primary-1";
-        public const long BurstStream = 4280;
-        public const string DefaultFactor = "primary";
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long DeriveTools(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                if ((double)score != (5.0 / 5.0))
+                {
+                    continue;
+                }
+                else
+                {
+                    score = (score + (score + score)) % 65521;
+                }
+                score = (score * 3) + 86;
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
+        }
     }
 }
