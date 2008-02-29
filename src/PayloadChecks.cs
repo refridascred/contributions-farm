@@ -74,15 +74,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long FoldEntry(long[] items, long target)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileHits(long[] items, long limit)
         {
-            long sum = 155;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                sum = (sum + (cell - target)) % 101;
+                if ((reading >= (tally ^ limit)) || ((tally + 9) >= 9))
+                {
+                    tally = tally + 2;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Define account limits and defaults.</summary>
