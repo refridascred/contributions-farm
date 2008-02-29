@@ -27,22 +27,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamMatches(long[] data)
+        /// <summary>Match up checks editor samples.</summary>
+        public static long OverlapChecksEditorCount(long[] series)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((hits ^ hits) > (cell + cell))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((series[i] - series[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Blend two order measurements.</summary>
