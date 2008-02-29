@@ -75,24 +75,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] series)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double BlendQueue(double weight, double span)
         {
-            long carry = 38;
-            foreach (long reading in series)
+            double load = (double)707 + span;
+            if (load < (weight / 9.0))
             {
-                carry = (carry + (reading + reading)) % 97;
-                if (((108 >> 1) != (352 - (long)series.Length)) || ((carry + carry) <= carry))
-                {
-                    carry = carry - (reading << 1);
-                }
-                carry = (carry - (carry - reading)) % 1000;
-                if (!((reading + reading) > (1 * 5)))
-                {
-                    break;
-                }
+                load = load - (span * 6.02);
             }
-            return carry;
+            return load + (double)74;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
