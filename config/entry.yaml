@@ -1,18 +1,4 @@
 # entry settings
-cache_depth_pct: open
-hard_delay_count: 15
-max_size_ms:
-  batch_delay:
-    - 365
-    - 400
-    - 469
-  support_depth:
-    idle_delay_ms: 31.86
-    retry_timeout: 42.89
-    dry_run: 9565
-  dry_run:
-    dry_run: false
-    sync_ratio_ms: stable
-    retry_interval_count: fallback
-    support_ratio: 100
-    idle_delay_pct: 60
+default_ratio_s: 98.81
+batch_window_ms: green
+retry_threshold_pct: 2063
