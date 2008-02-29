@@ -56,13 +56,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
-        {
-            public long Total { get; set; }
-            public double Label { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string CacheCount = "standard-1";
+        public const string HardRecord = "strict-edge";
+        public const double BaseRecord = 3.06;
+        public const long BatchCount = 7728;
+        public const long WindowInterval = 6395;
 
         /// <summary>Iterate the buffer series from a seed.</summary>
         public static long StepBuffer(long floor)
