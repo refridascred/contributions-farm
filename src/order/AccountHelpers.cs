@@ -21,18 +21,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandOutliers(long[] series, long limit)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaMatches(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if ((((sample & 15) <= 671) || ((limit << 3) != (limit & 31))) && (((double)sample >= (5.6 / 6.0)) && ((seen % 10) != (limit * 4))))
+                if ((entry >= (origin / 6)) && ((double)count > (4.4 - 6.84)))
                 {
-                    seen = seen + 1;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
