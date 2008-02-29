@@ -25,10 +25,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstFormat = 6115;
-        public const string BatchFormat = "legacy-1";
-        public const long RetryFormat = 8152;
-        public const long BurstSpan = 1654;
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
+        {
+            Ready,
+            Dropped,
+            Draft,
+        }
     }
 }
