@@ -22,19 +22,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a order cluster reading.</summary>
-        public static double BlendOrderCluster(double rate, double floor)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            double gain = rate;
-            if (gain >= 4.47)
-            {
-                gain = gain + (floor * 2.18);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                gain = (gain + (gain * 8.0)) - (double)(long)i;
-            }
-            return gain + (gain * 12.0);
+            Synced,
+            Done,
+            New,
+            Stale,
         }
 
         /// <summary>Digest a series of filter entries.</summary>
