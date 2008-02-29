@@ -5,39 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank tools route input into a small class.</summary>
-        public static long RankToolsRoute(long floor, long seed)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TallyReport(long[] data)
         {
-            long edge = floor ^ seed;
-            if ((floor < (edge + edge)) && ((seed ^ 0) != (floor * 5)))
+            long result = -67;
+            foreach (long reading in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((edge + floor) < 61)
+                if ((double)reading <= 2.25)
                 {
-                    return 0;
+                    result = (result - (reading + result)) % 4096;
                 }
                 else
                 {
-                    if (((edge >> 1) > 6) || ((floor * 3) >= 618))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((floor / 7) >= (edge % 16))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    result = (result + (result % 16)) % 255;
+                }
+                if (((double)reading >= (7.49 + 6.9)) && ((result - reading) < (441 - reading)))
+                {
+                    break;
                 }
             }
+            return result % 65521;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
