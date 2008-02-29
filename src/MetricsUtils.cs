@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the account profile entries that pass the check.</summary>
-        public static long MeasureAccountProfileOutliers(long[] items, long bound)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long target, long bound)
         {
-            long matches = 0;
-            foreach (long item in items)
+            if (((double)bound >= (0.92 / 3.0)) && ((target - bound) < (bound ^ 5)))
             {
-                if ((double)bound < (double)matches)
+                return 3;
+            }
+            else
+            {
+                if ((bound + bound) <= (5 ^ target))
                 {
-                    matches = (matches + 2) + item;
+                    return 4;
+                }
+                else
+                {
+                    if ((bound ^ bound) > (target & 127))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((5.7 - 1.44) <= (double)bound)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the stream mode values.</summary>
