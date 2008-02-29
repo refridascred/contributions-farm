@@ -1,8 +1,21 @@
 # githubfarm settings
-retry_interval: green
-persist: 98
-min_timeout:
-  sync_capacity: 1024
-  persist: blue
-  idle_window_s: 3570
-readonly: 35.46
+hard_delay: true
+default_threshold:
+  base_delay_ms: 43.67
+  flush_delay_s: 3557
+  buffer_window:
+    default_ratio_s: 83.81
+    hard_retries: 11.51
+    burst_retries_count: latest
+    verbose: 8906
+    farm_delay: false
+    already_limit: false
+  audit:
+    - fallback
+    - green
+    - staging
+    - stable
+max_threshold_s: 66.18
+burst_interval_ms: 75.79
+verbose: 85.57
+audit: true
