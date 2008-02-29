@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsOutliers(long[] items)
-        {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if (hits > item)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleBatches = 3586;
+        public const long BurstBatches = 4275;
+        public const long IdleWidth = 4872;
+        public const string HardInterval = "primary";
+        public const long CacheBatches = 9265;
 
         /// <summary>Hold a graph snapshot.</summary>
         public sealed class GraphSnapshot
