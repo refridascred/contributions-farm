@@ -34,18 +34,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesGaps(long[] samples, long offset)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((((double)hits >= (9.7 + 6.43)) || ((long)samples.Length >= offset)) || ((2.75 + 0.21) == (double)offset))
-                {
-                    hits = (hits + 2) ^ value;
-                }
-            }
-            return hits;
+            public double Weight { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Describe the batches status values.</summary>
