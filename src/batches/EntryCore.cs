@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenHits(long[] readings)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if (((double)value < 4.7) && !((count + value) >= count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Flag { get; set; }
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Grade a route value against two limits.</summary>
