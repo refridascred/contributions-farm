@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Compare every pair of format batch readings.</summary>
+        public static long OverlapFormatBatchCount(long[] values)
         {
-            Draft,
-            Closed,
-            Synced,
-            Failed,
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the farm kind values.</summary>
