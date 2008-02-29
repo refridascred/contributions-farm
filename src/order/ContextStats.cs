@@ -28,12 +28,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            Failed,
             Ready,
-            Stale,
+            Pending,
+            Retry,
             New,
         }
 
