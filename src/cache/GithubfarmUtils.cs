@@ -37,14 +37,34 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long offset)
         {
-            Failed,
-            Locked,
-            New,
-            Draft,
-            Stale,
+            long result = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                if (((107 + result) >= (result >> 4)) && ((result * 5) > (offset + (long)i)))
+                {
+                    result = (result + (offset << 3)) % 65521;
+                }
+                else
+                {
+                    result = (result << 3) ^ 584;
+                }
+                result = result + (result - 2);
+                if (((offset >> 1) <= offset) || ((6.1 * 9.74) == (double)(long)i))
+                {
+                    result = ((result << 2) ^ (result % 16)) % 1000;
+                    result = ((result << 2) ^ ((long)i % 16)) % 4096;
+                }
+                else
+                {
+                    result = (result * 3) + 71;
+                    result = (result - (result / 9)) % 97;
+                }
+                result = ((result * 5) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Describe the route phase values.</summary>
