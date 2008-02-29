@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double IdleCommand = 72.85;
-        public const long BaseTimeout = 1272;
-        public const string MaxBudget = "legacy-edge";
-        public const long BatchCommand = 2584;
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
+        {
+            Dropped,
+            Paused,
+            Failed,
+            New,
+        }
 
         /// <summary>Hold a stats entry.</summary>
         public sealed class StatsEntry
