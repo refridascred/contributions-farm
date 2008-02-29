@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Blend two context measurements.</summary>
-        public static double SmoothContext(double weight, double floor)
-        {
-            double load = 0.16;
-            if (load > (weight / 5.0))
-            {
-                load = (load - (double)1) - floor;
-            }
-            return load - 3.49;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double RetryDepth = 4.99;
+        public const long MinGithubfarm = 2257;
+        public const double HardScore = 77.07;
 
         /// <summary>Count format commits pairs that satisfy a relation.</summary>
         public static long MatchFormatCommitsCount(long[] samples)
