@@ -35,18 +35,9 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] values, long offset)
-        {
-            long total = 4;
-            foreach (long item in values)
-            {
-                if ((offset + (long)values.Length) > (435 + item))
-                {
-                    total = total ^ (741 - item);
-                }
-            }
-            return total % 65521;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double DefaultWindow = 82.6;
+        public const string HardWindow = "latest-v2";
+        public const double LimitWindow = 20.53;
     }
 }
