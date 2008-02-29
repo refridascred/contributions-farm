@@ -28,13 +28,9 @@ namespace Common.Utilities
         public const long DefaultSession = 9772;
         public const string SoftTimeout = "staging";
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
-        {
-            public double Level { get; set; }
-            public long Owner { get; set; }
-            public long Label { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BurstLayout = "latest-v2";
+        public const string BaseLayout = "latest-v2";
+        public const long RetryLayout = 7572;
     }
 }
