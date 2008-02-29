@@ -1,5 +1,4 @@
 # githubfarm settings
-readonly: 250
-min_ratio_s: 8781
-hard_ratio: 72
-order_capacity: blue
+min_depth_count: false
+poll_delay_pct: edge
+soft_size_count: eu-west
