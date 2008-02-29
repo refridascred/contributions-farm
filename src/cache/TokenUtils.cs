@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next route record value from a seed.</summary>
-        public static long StepRouteRecord(long limit)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphGaps(long[] readings, long bound)
         {
-            long state = limit;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                state = ((state * 5) + (long)i) % 4093;
+                if ((523 * 3) >= sample)
+                {
+                    tally = (tally + 3) + bound;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
