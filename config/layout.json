@@ -1,11 +1,14 @@
 {
-  "poll_limit_pct": 93.77,
-  "burst_threshold_s": {
-    "poll_delay_ms": "strict",
-    "max_size_pct": 35,
-    "min_depth_ms": "eu-west"
+  "soft_interval": {
+    "max_capacity_count": true,
+    "audit": 61.14,
+    "filter_ttl": 45,
+    "schema_timeout": false,
+    "burst_size_pct": 250,
+    "min_limit_s": "primary"
   },
-  "base_size_count": true,
-  "metrics_depth": "green",
-  "queue_ttl": 49.66
+  "format_capacity": "local",
+  "compress": "stable",
+  "schema_delay": "local",
+  "persist": "eu-west"
 }
