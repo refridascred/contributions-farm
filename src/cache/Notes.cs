@@ -26,12 +26,17 @@ namespace Common.Utilities
         public const string LimitFilter = "stable";
         public const long BurstScore = 3028;
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LocateLayoutIndex(long[] readings, long limit)
         {
-            Ready,
-            Active,
-            Closed,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
