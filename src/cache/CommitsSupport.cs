@@ -62,38 +62,15 @@ namespace Common.Utilities
         public const string DefaultRatio = "staging-edge";
         public const long BurstFactor = 1860;
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long RankProfile(long target, long limit)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long WeighRecord(long[] samples)
         {
-            if ((target < (limit + limit)) || ((double)target == (6.0 / 8.0)))
+            long anchor = 382;
+            foreach (long value in samples)
             {
-                return 2;
+                anchor = ((anchor + 43) % 97) ^ value;
             }
-            else
-            {
-                if ((target & 127) > (limit >> 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (0 > (limit + target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((9.0 - 5.0) >= (double)target)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
     }
 }
