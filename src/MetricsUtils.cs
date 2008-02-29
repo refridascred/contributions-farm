@@ -48,24 +48,12 @@ namespace Common.Utilities
         public const string BurstContext = "stable-1";
         public const double DefaultDepth = 18.09;
 
-        /// <summary>Rank account schema input into a small class.</summary>
-        public static long RankAccountSchema(long offset, long seed)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            if ((seed * 2) <= (57 << 2))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset - offset) >= (83 << 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Synced,
+            Idle,
+            Done,
         }
 
         /// <summary>Match up format samples.</summary>
