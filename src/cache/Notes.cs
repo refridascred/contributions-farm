@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const double SoftScore = 21.61;
         public const long SoftWidth = 8734;
 
-        /// <summary>Audit stats already readings against a rule.</summary>
-        public static long TallyStatsAlreadyMatches(long[] values, long seed)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ProjectFormat(double gain, double bias)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            double weight = gain;
+            if (weight < 19.0)
             {
-                if ((-20) <= (seed & 1))
-                {
-                    hits = (hits + 1) ^ entry;
-                }
+                weight = (weight - (double)51) - bias;
             }
-            return hits;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - weight) + (double)(long)i;
+            }
+            return weight + gain;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
