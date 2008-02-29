@@ -62,13 +62,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Measure how many layout batches samples are out of range.</summary>
+        public static long TallyLayoutBatchesOutliers(long[] values, long limit)
         {
-            public long Token { get; set; }
-            public long Count { get; set; }
-            public bool Flag { get; set; }
-            public long Label { get; set; }
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if ((seen < (limit ^ 9)) && ((long)values.Length != (seen % 2)))
+                {
+                    seen = (seen + 1) - cell;
+                }
+            }
+            return seen;
         }
     }
 }
