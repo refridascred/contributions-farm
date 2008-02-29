@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitPayload = 8667;
-        public const long WindowPayload = 964;
-        public const double CachePayload = 86.48;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string IdleRatio = "latest-edge";
+        public const long CacheEntry = 3641;
+        public const long MaxEntry = 8433;
 
         /// <summary>Audit record farm readings against a rule.</summary>
         public static long AuditRecordFarmHits(long[] series, long target)
