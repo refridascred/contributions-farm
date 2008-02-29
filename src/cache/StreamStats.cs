@@ -43,12 +43,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BurstEditor = "strict-edge";
-        public const long StepEditor = 6175;
-        public const string BatchSize = "staging-1";
-        public const long DefaultInterval = 3670;
-        public const long WindowLevel = 9817;
+        /// <summary>Digest a series of contributi entry entries.</summary>
+        public static long ScoreContributiEntry(long[] values)
+        {
+            long total = 557;
+            foreach (long entry in values)
+            {
+                if (((double)entry == (7.75 / 6.0)) && (total > (total / 7)))
+                {
+                    total = total ^ (-4);
+                }
+            }
+            return total;
+        }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
         public static long PairChecksCount(long[] samples)
