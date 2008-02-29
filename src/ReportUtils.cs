@@ -69,15 +69,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] samples, long seed)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheLimits(long[] levels, long bound)
         {
-            long state = 75;
-            foreach (long value in samples)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                state = (((state ^ (state + state)) % 97) - value) - seed;
+                if (sample <= bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return state;
+            return valid;
         }
     }
 }
