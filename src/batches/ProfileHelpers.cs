@@ -14,13 +14,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long SeriesAlready(long target)
         {
-            New,
-            Ready,
-            Failed,
-            Closed,
+            long mark = target;
+            for (int i = 0; i < 19; i++)
+            {
+                mark = mark + ((long)i ^ 670);
+                if ((double)target <= 8.81)
+                {
+                    mark = mark + (mark * 5);
+                }
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Match up command samples.</summary>
