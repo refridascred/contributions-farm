@@ -23,38 +23,22 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long RankRoute(long origin, long target)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsOutliers(long[] series, long bound)
         {
-            if (((target + target) < target) && ((origin ^ origin) >= (78 >> 5)))
+            long seen = 0;
+            foreach (long value in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((623 + origin) >= target))
+                if ((seen & 255) == ((-67) ^ bound))
                 {
-                    return 4;
+                    seen = (seen + 3) + value;
                 }
                 else
                 {
-                    if (716 > (origin % 24))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (509 <= origin)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a metric summary.</summary>
