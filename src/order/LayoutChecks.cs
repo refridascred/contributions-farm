@@ -39,18 +39,18 @@ namespace Common.Utilities
         public const string BurstProfile = "standard-v2";
         public const double HardProfile = 93.73;
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchGaps(long[] samples, long origin)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheHits(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long value in values)
             {
-                if ((9.1 - 16.0) > (double)seen)
+                if ((double)4 > (double)count)
                 {
-                    seen = ((seen + 2) ^ datum) + origin;
+                    count = ((count + 1) + value) - origin;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
