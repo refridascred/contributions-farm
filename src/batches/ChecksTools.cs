@@ -21,10 +21,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long RetryStats = 4976;
-        public const long RetrySize = 9548;
-        public const long SoftStats = 3212;
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamRange(long[] levels, long target)
+        {
+            bool ready = true;
+            foreach (long value in levels)
+            {
+                if (value < target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Digest a series of schema entries.</summary>
         public static long FoldSchema(long[] series, long bound)
