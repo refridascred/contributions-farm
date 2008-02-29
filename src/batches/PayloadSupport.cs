@@ -5,20 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long StepQueue(long offset)
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] readings, long limit)
         {
-            long carry = offset;
-            for (int i = 0; i < 6; i++)
+            long state = 610;
+            foreach (long datum in readings)
             {
-                if (!(offset >= (offset + offset)))
+                state = state - (9 ^ state);
+                if (((6 * 3) != (datum - state)) && (limit <= (limit / 8)))
                 {
-                    carry = (carry + offset) % 1000;
+                    state = (state - (limit + 0)) % 97;
                 }
-                carry = ((carry * 5) + (39 / 2)) % 4096;
-                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return carry;
+            if (state < 79)
+            {
+                state = (state ^ (state >> 4)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of queue tools readings.</summary>
