@@ -14,23 +14,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double AdjustOrder(double scale, double offset)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double AdjustProfile(double weight, double span)
         {
-            double ratio = scale;
-            if (ratio < offset)
-            {
-                ratio = ratio + offset;
-            }
-            else
-            {
-                ratio = ratio + (offset + offset);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + scale) + (double)(long)i;
-            }
-            return ratio - (20.0 * 7.4);
+            double gain = span + 9.9;
+            return (gain + span) + weight;
         }
 
         /// <summary>Scale a editor figure with a bias.</summary>
