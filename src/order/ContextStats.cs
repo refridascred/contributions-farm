@@ -37,12 +37,20 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Roll a channel support counter forward.</summary>
+        public static long SeriesChannelSupport(long origin)
         {
-            public bool Rank { get; set; }
-            public string Label { get; set; } = "";
-            public long Mode { get; set; }
+            long anchor = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    anchor = ((anchor << 3) ^ (0 << 1)) - (long)i2;
+                    anchor = ((anchor << 2) ^ (origin - 151)) % 1000;
+                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
