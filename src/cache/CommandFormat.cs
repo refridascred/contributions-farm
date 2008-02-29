@@ -22,18 +22,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorHits(long[] values, long offset)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long GradeChannel(long limit, long step)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            if ((step + 45) <= limit)
             {
-                if ((entry << 2) >= seen)
+                return 2;
+            }
+            else
+            {
+                if ((limit + limit) >= step)
                 {
-                    seen = (seen + 3) - offset;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return seen;
         }
 
         /// <summary>Match up checks report samples.</summary>
