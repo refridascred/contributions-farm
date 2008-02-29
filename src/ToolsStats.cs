@@ -85,12 +85,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            Failed,
-            Retry,
+            Pending,
+            Dropped,
             Stale,
+            Paused,
         }
     }
 }
