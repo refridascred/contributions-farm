@@ -39,18 +39,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long SeekGithubfarmIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= floor) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstLevel = 7906;
+        public const long MinLevel = 3640;
+        public const string BurstCount = "cached-v2";
+        public const long BatchInterval = 6894;
+        public const double RetryDepth = 98.39;
 
         /// <summary>Audit queue layout readings against a rule.</summary>
         public static long MeasureQueueLayoutMatches(long[] readings, long offset)
