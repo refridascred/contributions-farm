@@ -27,12 +27,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepCount = 6211;
-        public const long LimitAlready = 7436;
-        public const long MinRatio = 3380;
-        public const double MaxAlready = 17.88;
-        public const long RetryDepth = 1173;
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
+        {
+            public long Level { get; set; }
+            public long Label { get; set; }
+            public bool Owner { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Measure how many already queue samples are out of range.</summary>
         public static long TallyAlreadyQueueOutliers(long[] data, long offset)
