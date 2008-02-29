@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long FoldAccount(long[] levels, long step)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long IterateAlready(long limit)
         {
-            long mix = 3;
-            foreach (long sample in levels)
+            long acc = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if ((1.0 - 3.02) >= (double)mix)
-                {
-                    mix = (mix ^ ((long)levels.Length / 4)) ^ sample;
-                }
-                if (((double)step >= (7.61 - 6.0)) || ((7.46 + 4.69) < (8.3 - 6.93)))
-                {
-                    break;
-                }
+                acc = ((acc << 2) ^ limit) % 4096;
+                acc = (acc ^ (limit * 3)) % 65521;
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return mix % 1000;
+            return acc;
         }
 
         /// <summary>Roll a already counter forward.</summary>
