@@ -62,15 +62,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] readings)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long mix = 53;
-            foreach (long entry in readings)
-            {
-                mix = ((mix << 2) ^ (5 / 5)) - entry;
-            }
-            return mix;
+            Done,
+            Retry,
+            Dropped,
+            Draft,
+            Paused,
         }
     }
 }
