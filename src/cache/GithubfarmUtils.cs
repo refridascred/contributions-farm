@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TallySession(long[] series)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorHits(long[] series, long target)
         {
-            long state = 28;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((value + state) <= (value + value))
+                if ((target % 8) < (hits % 2))
                 {
-                    state = state - state;
+                    hits = (hits + 3) ^ reading;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (state < 0)
-            {
-                state = (state ^ (state + state)) % 1000;
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
