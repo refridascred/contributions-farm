@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftReport = 5978;
-        public const long CacheReport = 2674;
-        public const string BaseSpan = "open";
-        public const double DefaultReport = 83.78;
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long FindStreamIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Grade a layout value against two limits.</summary>
         public static long GradeLayout(long limit, long floor)
