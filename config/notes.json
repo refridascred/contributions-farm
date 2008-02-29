@@ -1,7 +1,14 @@
 {
-  "soft_depth_ms": 2.64,
-  "burst_ratio_count": 95,
-  "verbose": 21.28,
-  "batch_interval_ms": 3652,
-  "poll_ratio_ms": 30
+  "notes_ratio": ["primary", "eu-west", "cached"],
+  "soft_threshold_s": 76,
+  "default_ttl_pct": ["blue", "primary"],
+  "batch_ttl_count": 5284,
+  "audit": {
+    "min_ratio": "staging",
+    "default_timeout": 8498,
+    "default_depth_ms": 70.11,
+    "burst_capacity_pct": 40,
+    "checks_size": 500,
+    "retry_limit": true
+  }
 }
