@@ -1,12 +1,14 @@
 # entry settings
-sync_window: true
-format_timeout: 2.3
-burst_threshold: false
-channel_ratio:
-  - local
-  - latest
-base_delay_s:
-  - legacy
-  - legacy
-  - cached
-  - staging
+audit:
+  persist: standard
+  poll_size_count: 38
+  soft_retries: green
+  default_depth_ms: 42.79
+  already_ttl:
+    - 4
+    - 381
+  compress: eu-west
+flush_threshold_pct: 1721
+window_interval: 34.39
+max_capacity_pct: open
+burst_limit_ms: strict
