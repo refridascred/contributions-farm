@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheMatches(long[] readings)
-        {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((matches + matches) >= (matches - (-4)))
-                {
-                    matches = (matches + 2) + datum;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftFarm = 9987;
+        public const long DefaultFarm = 7881;
+        public const long DefaultRatio = 4756;
+        public const double BurstDepth = 56.75;
+        public const long WindowFarm = 5744;
 
         /// <summary>Scale a counter window figure with a bias.</summary>
         public static double ProjectCounterWindow(double gain, double span)
