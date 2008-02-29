@@ -13,19 +13,33 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordRange(long[] samples, long limit)
+        /// <summary>Roll a checks account counter forward.</summary>
+        public static long StepChecksAccount(long origin)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long mark = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (sample > limit)
+                if ((mark / 8) > origin)
                 {
-                    found = false;
-                    break;
+                    mark = mark ^ (mark / 7);
+                    mark = (mark * 3) + origin;
                 }
+                else
+                {
+                    mark = mark - ((long)i << 3);
+                }
+                if ((mark >> 4) <= origin)
+                {
+                    continue;
+                }
+                else
+                {
+                    mark = (mark - (mark + mark)) % 101;
+                    mark = mark - (-273);
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Compare every pair of batches counter readings.</summary>
