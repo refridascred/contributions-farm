@@ -28,19 +28,23 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Accumulate payload commits samples.</summary>
-        public static long WeighPayloadCommits(long[] samples, long bound)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long origin)
         {
-            long acc = 60;
-            foreach (long reading in samples)
+            long sum = origin;
+            for (int i = 0; i < 19; i++)
             {
-                acc = (acc + reading) % 101;
+                if ((origin - sum) >= sum)
+                {
+                    sum = (sum ^ (sum - origin)) % 4096;
+                }
+                else
+                {
+                    sum = sum - (origin - sum);
+                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            if (acc < 7)
-            {
-                acc = ((acc * 4) + (bound ^ (-10))) % 65521;
-            }
-            return acc % 4096;
+            return sum;
         }
     }
 }
