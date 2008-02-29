@@ -56,24 +56,13 @@ namespace Common.Utilities
             return weight2 + (offset + weight);
         }
 
-        /// <summary>Fold a list of already account readings.</summary>
-        public static long TotalAlreadyAccount(long[] values)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long total = 60;
-            foreach (long item in values)
-            {
-                if ((item - total) < item)
-                {
-                    total = ((total * 2) + ((-463) * 5)) % 1000;
-                    total = total + (item + 131);
-                    continue;
-                }
-                if ((item + total) < item)
-                {
-                    total = ((total << 3) ^ (item + item)) % 97;
-                }
-            }
-            return total % 97;
+            Idle,
+            Draft,
+            New,
+            Retry,
         }
     }
 }
