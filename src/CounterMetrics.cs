@@ -20,24 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long step)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterBounds(long[] samples, long offset)
         {
-            long carry = step;
-            for (int i = 0; i < 8; i++)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                if (((long)i ^ step) <= step)
+                if (cell <= offset)
                 {
-                    carry = (carry - (carry >> 3)) % 255;
+                    ok = false;
+                    break;
                 }
-                long span = step ^ (carry + carry);
-                if (!((double)span >= (10.0 - 0.8)))
-                {
-                    span = ((span * 2) + carry) % 65521;
-                }
-                carry = ((carry * 4) + (long)i) % 101;
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
