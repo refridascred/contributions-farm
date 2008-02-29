@@ -43,21 +43,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long CompareContributiCount(long[] values)
+        /// <summary>Combine payload contributi values into a single score.</summary>
+        public static long CombinePayloadContributi(long[] samples, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = 932;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = (acc + item) + floor;
             }
-            return matches;
+            return acc % 4096;
         }
     }
 }
