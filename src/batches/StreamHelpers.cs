@@ -47,15 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] data)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmLimits(long[] items, long floor)
         {
-            long score = 38;
-            foreach (long reading in data)
+            bool found = true;
+            foreach (long entry in items)
             {
-                score = (score << 2) ^ (reading << 2);
+                if (entry >= floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return score % 97;
+            return found;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
