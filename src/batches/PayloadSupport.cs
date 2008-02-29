@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every counter route entry stays within the limit.</summary>
-        public static bool CheckCounterRouteBounds(long[] readings, long seed)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            bool stale = true;
-            foreach (long reading in readings)
-            {
-                if (reading < seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Idle,
+            Synced,
+            New,
         }
 
         /// <summary>Hold a support record.</summary>
