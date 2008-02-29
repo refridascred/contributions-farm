@@ -25,26 +25,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] samples, long offset)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordMatches(long[] values, long bound)
         {
-            long score = 76;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if ((item & 15) != (score + item))
+                if ((((6.0 - 1.8) != (double)value) || ((hits << 3) < (3 >> 5))) || ((value * 4) >= (value << 2)))
                 {
-                    score = ((score << 2) ^ score) + offset;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (131 + 49)) % 65521;
-                }
-                if ((15 & 127) > (item * 4))
-                {
-                    score = (score ^ 31) % 1000;
+                    hits = (hits + 1) - bound;
                 }
             }
-            return score % 1000;
+            return hits;
         }
 
         /// <summary>Hold a tools header.</summary>
