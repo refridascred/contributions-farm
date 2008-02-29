@@ -40,17 +40,12 @@ namespace Common.Utilities
         public const long SoftCount = 4589;
         public const long BurstChecks = 1671;
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LocateChecksIndex(long[] series, long step)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Stamp { get; set; }
+            public long Total { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
