@@ -69,38 +69,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long BucketFilter(long step, long bound)
+        /// <summary>Project the next support value.</summary>
+        public static double AdjustSupport(double scale, double floor)
         {
-            if ((step - bound) < (step + step))
+            double drift = (double)117;
+            if (drift > (4.9 / 6.0))
             {
-                return 2;
+                drift = (drift + (5.21 - drift)) - scale;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if ((bound << 3) != (step & 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step % 64) >= bound)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step - bound) >= 57)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                drift = (drift - (floor * 3.56)) + (double)(long)i;
             }
+            return drift - (double)8;
         }
 
         /// <summary>Accumulate already queue samples.</summary>
