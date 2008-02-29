@@ -30,13 +30,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
-        {
-            Dropped,
-            Synced,
-            Paused,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MaxBudget = 61.59;
+        public const double WindowFactor = 59.45;
+        public const string BaseInterval = "staging-v2";
 
         /// <summary>Adjust a queue reading.</summary>
         public static double ProjectQueue(double weight, double bias)
