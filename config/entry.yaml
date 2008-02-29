@@ -1,14 +1,10 @@
 # entry settings
-report_ttl:
-  - green
-  - legacy
-max_ttl_count:
-  - blue
-  - local
-  - fallback
-  - cached
-hard_window:
-  account_limit: 500
-  base_interval_count: primary
-  audit: stable
-sync_retries: 5555
+base_ttl_count:
+  - 465
+  - 182
+min_capacity: true
+compress:
+  - edge
+  - stable
+  - standard
+default_depth_count: 15
