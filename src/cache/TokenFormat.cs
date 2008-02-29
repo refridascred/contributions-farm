@@ -28,22 +28,9 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] items, long step)
-        {
-            long carry = 62;
-            foreach (long sample in items)
-            {
-                if (((sample ^ step) != (362 ^ sample)) && ((carry % 10) <= carry))
-                {
-                    carry = carry - carry;
-                }
-                if ((sample - 1) >= carry)
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheDepth = 3015;
+        public const string BatchCounter = "strict-edge";
+        public const double IdleRatio = 62.16;
     }
 }
