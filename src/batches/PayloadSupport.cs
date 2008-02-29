@@ -14,18 +14,38 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenHits(long[] data)
+        /// <summary>Classify a checks account pair into a bucket.</summary>
+        public static long ClassifyChecksAccount(long seed, long target)
         {
-            long matches = 0;
-            foreach (long value in data)
+            if (123 > (seed - seed))
             {
-                if (((value < (matches >> 1)) && (matches > (value ^ matches))) || (matches <= (matches - value)))
+                return 3;
+            }
+            else
+            {
+                if ((seed > target) || (((-561) - seed) == (target << 2)))
                 {
-                    matches = matches + 2;
+                    return 1;
+                }
+                else
+                {
+                    if ((seed - target) <= target)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (seed <= (seed >> 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Digest a series of filter order entries.</summary>
