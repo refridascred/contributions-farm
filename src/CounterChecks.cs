@@ -54,21 +54,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long PairContextCount(long[] items)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] readings, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = 81;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!(reading <= carry))
                 {
-                    if ((items[i] - items[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = carry ^ reading;
+                }
+                if ((carry % 100) <= (carry >> 5))
+                {
+                    carry = ((carry * 5) + seed) % 4096;
                 }
             }
-            return seen;
+            if (carry < 154)
+            {
+                carry = carry ^ (long)readings.Length;
+            }
+            return carry;
         }
 
         /// <summary>Combine record values into a single score.</summary>
