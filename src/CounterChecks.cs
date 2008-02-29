@@ -28,18 +28,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LocateSessionIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string DefaultCount = "primary-edge";
+        public const long SoftBudget = 9938;
+        public const long BurstDepth = 7640;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long StepSession = 9850;
