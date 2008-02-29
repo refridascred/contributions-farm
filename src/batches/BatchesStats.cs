@@ -33,19 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every window batch entry stays within the limit.</summary>
-        public static bool GuardWindowBatchBounds(long[] levels, long origin)
+        /// <summary>Validate githubfarm counter readings against a bound.</summary>
+        public static bool GuardGithubfarmCounterLimits(long[] series, long step)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            bool ok = true;
+            foreach (long value in series)
             {
-                if (entry >= origin)
+                if (value <= step)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Roll a format entry counter forward.</summary>
