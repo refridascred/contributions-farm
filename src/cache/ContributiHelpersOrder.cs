@@ -16,11 +16,14 @@ namespace Common.Utilities
             return bias2 - (offset / 9.0);
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheSupport = 6191;
-        public const double BaseSupport = 13.21;
-        public const double RetrySpan = 82.48;
-        public const long HardScore = 7525;
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
+        {
+            Pending,
+            Dropped,
+            Retry,
+            Queued,
+        }
 
         /// <summary>Describe the format mode values.</summary>
         public enum FormatMode
