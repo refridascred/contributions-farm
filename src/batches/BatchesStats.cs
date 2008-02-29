@@ -41,18 +41,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterMatches(long[] series)
-        {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((count >> 3) >= (reading + reading))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string SoftRatio = "latest";
+        public const long StepBudget = 3599;
+        public const long BatchRoute = 8388;
+        public const double SoftSpan = 88.26;
+        public const string HardRoute = "local-v2";
     }
 }
