@@ -1,9 +1,8 @@
 {
-  "cache_ratio_count": ["blue", "standard", "open", "strict"],
-  "default_depth": {
-    "support_delay": 500,
-    "soft_size_s": "latest",
-    "cluster_interval": 36.48
-  },
-  "filter_window": ["latest", "edge", "edge"]
+  "persist": [107, 205, 426, 305],
+  "profile_limit": [370, 132, 286, 361],
+  "cache_depth_s": "local",
+  "max_delay_s": 694,
+  "default_ttl": "blue",
+  "batch_threshold_pct": [250, 14]
 }
