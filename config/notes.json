@@ -1,5 +1,15 @@
 {
-  "poll_delay": "blue",
-  "editor_ttl": "eu-west",
-  "default_delay_ms": [88, 410, 398, 105]
+  "sync_delay_s": "fallback",
+  "flush_retries_pct": "fallback",
+  "sync_ratio_count": ["eu-west", "local", "legacy"],
+  "burst_interval_s": 55.13,
+  "compress": ["eu-west", "blue", "standard", "cached"],
+  "flush_ttl": {
+    "enabled": 8,
+    "compress": 7824,
+    "soft_timeout_pct": 36.93,
+    "sync_ratio": "green",
+    "batch_interval": "cached",
+    "report_limit": true
+  }
 }
