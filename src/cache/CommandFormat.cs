@@ -24,19 +24,15 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsLimits(long[] series, long step)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long IteratePayload(long target)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long state = target;
+            for (int i = 0; i < 5; i++)
             {
-                if (value <= step)
-                {
-                    flag = false;
-                    break;
-                }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Match up checks report samples.</summary>
