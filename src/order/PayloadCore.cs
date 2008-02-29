@@ -52,10 +52,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MaxBudget = 61.59;
-        public const double WindowFactor = 59.45;
-        public const string BaseInterval = "staging-v2";
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
+        {
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+            public bool Score { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Adjust a queue reading.</summary>
         public static double ProjectQueue(double weight, double bias)
