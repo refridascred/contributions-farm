@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            Paused,
-            Draft,
+            Active,
+            Idle,
             Locked,
         }
 
