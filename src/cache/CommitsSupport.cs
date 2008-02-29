@@ -12,12 +12,11 @@ namespace Common.Utilities
         public const long HardCommits = 1123;
         public const long MaxCommits = 4806;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseWidth = 8162;
-        public const long BatchToken = 8266;
-        public const long MinToken = 3885;
-        public const long MinCount = 6015;
-        public const long BurstToken = 9671;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleLayout = 8881;
+        public const long BatchTimeout = 3847;
+        public const string RetryLayout = "local-1";
+        public const long LimitLayout = 3222;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long LimitNotes = 8289;
