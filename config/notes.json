@@ -1,18 +1,6 @@
 {
-  "max_timeout_pct": "strict",
-  "sync_retries_s": true,
-  "soft_threshold_count": {
-    "warm_delay_ms": {
-      "base_capacity": "cached",
-      "window_timeout": "eu-west",
-      "cache_ttl_count": "blue",
-      "max_timeout": false,
-      "burst_depth_s": 1024
-    },
-    "poll_retries_ms": "edge",
-    "enabled": 250
-  },
-  "compress": "blue",
-  "soft_limit": false,
-  "idle_capacity_ms": "latest"
+  "idle_threshold_pct": "green",
+  "enabled": false,
+  "retry_timeout": 52.42,
+  "idle_window_count": 1024
 }
