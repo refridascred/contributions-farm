@@ -1,5 +1,6 @@
 # entry settings
-hard_size: true
-tools_ratio: 656
-retry_depth_ms: strict
-burst_ttl: 81.04
+cache_ratio_ms: staging
+compress: local
+flush_limit_pct: false
+enabled: 250
+max_retries_s: standard
