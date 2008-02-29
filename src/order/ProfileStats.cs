@@ -54,11 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Blend two filter measurements.</summary>
+        public static double SmoothFilter(double bias, double span)
         {
-            public string Offset { get; set; } = "";
-            public long Ratio { get; set; }
+            double scale = (double)(53 ^ 712);
+            for (int i = 0; i < 3; i++)
+            {
+                scale = ((scale - bias) + (double)(long)i) + span;
+            }
+            return scale + (double)5;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
