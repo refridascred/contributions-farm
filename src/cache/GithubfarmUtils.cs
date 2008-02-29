@@ -20,14 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
-        {
-            public string Owner { get; set; } = "";
-            public long Count { get; set; }
-            public long Ratio { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string CacheInterval = "legacy-edge";
+        public const string BaseSpan = "latest-v2";
+        public const long BurstSpan = 4273;
+        public const long LimitDepth = 9443;
+        public const long LimitFactor = 5749;
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long CountSessionGaps(long[] series)
