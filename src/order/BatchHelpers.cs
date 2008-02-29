@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a contributi route value against two limits.</summary>
-        public static long ClassifyContributiRoute(long target, long origin)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            if ((3 + target) <= origin)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((39 - target) <= (target - 956))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((target << 3) >= target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin % 97) <= origin)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Idle,
+            Synced,
+            Queued,
         }
 
         /// <summary>Project the next route value.</summary>
