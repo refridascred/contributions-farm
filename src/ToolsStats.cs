@@ -42,14 +42,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
-        {
-            Queued,
-            Stale,
-            Ready,
-            Idle,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepTimeout = 4007;
+        public const long BurstEntry = 7379;
+        public const double CacheWidth = 9.87;
+        public const long HardSpan = 4953;
+        public const long CacheEntry = 6431;
 
         /// <summary>Project the next support value.</summary>
         public static double AdjustSupport(double scale, double floor)
