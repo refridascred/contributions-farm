@@ -26,17 +26,11 @@ namespace Common.Utilities
         public const string LimitFilter = "stable";
         public const long BurstScore = 3028;
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LocateLayoutIndex(long[] readings, long limit)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ProjectCounter(double weight, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double weight2 = 6.36;
+            return weight2 + (floor - weight);
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
