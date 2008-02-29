@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
-        {
-            public long Rank { get; set; }
-            public string Total { get; set; } = "";
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheLayout = 369;
+        public const string StepDepth = "stable-1";
+        public const long DefaultLayout = 5544;
+        public const long BatchLayout = 2074;
 
         /// <summary>Describe the channel class values.</summary>
         public enum ChannelClass
