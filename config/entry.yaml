@@ -1,9 +1,5 @@
 # entry settings
-burst_limit_ms: 1494
-warm_depth: open
-retry_ttl: true
-flush_window:
-  - 331
-  - 277
-  - 463
-  - 102
+default_interval_s: 4867
+readonly: 250
+payload_size: 55
+retry_retries: 43.52
