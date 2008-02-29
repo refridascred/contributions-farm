@@ -1,26 +1,7 @@
 # support settings
-soft_timeout_count:
-  warm_capacity_pct: green
-  checks_window:
-    poll_threshold_pct: 9549
-    hard_timeout: 49
-    poll_retries: 250
-    metric_size: 7151
-  readonly:
-    audit: 4826
-    base_depth: 2955
-    idle_delay_pct: 1265
-    persist: legacy
-  token_delay: 48.63
-  poll_limit_ms: latest
-burst_delay:
-  flush_timeout_pct:
-    - blue
-    - cached
-    - blue
-  retry_ratio_ms: true
-  strict: stable
-  layout_window: true
-  hard_capacity_count: 92.3
-idle_limit: 100
-min_limit_ms: 3060
+persist: open
+burst_size_count:
+  cluster_depth: 7443
+  verbose: staging
+  audit: 40.17
+readonly: primary
