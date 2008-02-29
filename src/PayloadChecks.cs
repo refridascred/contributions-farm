@@ -57,15 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileHits(long[] items, long limit)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long MatchReportCount(long[] values)
         {
             long tally = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((reading >= (tally ^ limit)) || ((tally + 9) >= 9))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 2;
+                    if ((values[i] + values[j]) > 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
