@@ -54,13 +54,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ProjectChecks(double weight, double floor)
         {
-            public double Total { get; set; }
-            public double Region { get; set; }
-            public bool Flag { get; set; }
-            public long Token { get; set; }
+            double load = weight;
+            if (load > (double)958)
+            {
+                load = load - (8.2 + 8.4);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + weight) + (double)(long)i;
+            }
+            return load - (floor + weight);
         }
 
         /// <summary>Define window limits and defaults.</summary>
