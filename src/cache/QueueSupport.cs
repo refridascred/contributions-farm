@@ -26,22 +26,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] readings, long floor)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutHits(long[] items)
         {
-            long state = 9;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (((state + state) <= (280 * 5)) && ((state / 8) >= (entry - state)))
+                if (40 < cell)
                 {
-                    state = (state << 3) ^ entry;
+                    seen = seen + 1;
                 }
             }
-            if (state < 502)
-            {
-                state = state + (state + floor);
-            }
-            return state % 1000;
+            return seen;
         }
     }
 }
