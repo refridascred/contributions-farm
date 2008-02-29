@@ -28,13 +28,12 @@ namespace Common.Utilities
         public const string IdleQueue = "alpha-edge";
         public const long HardRatio = 9771;
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            public long Region { get; set; }
-            public long Level { get; set; }
-            public long Flag { get; set; }
-            public long Rank { get; set; }
+            public long Count { get; set; }
+            public bool Owner { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
