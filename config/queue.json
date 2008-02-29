@@ -1,9 +1,5 @@
 {
-  "layout_interval": [15, 229],
-  "readonly": 9787,
-  "cache_capacity_pct": {
-    "base_depth_count": true,
-    "poll_depth_ms": 686,
-    "retry_size_count": ["strict", "blue"]
-  }
+  "profile_limit": false,
+  "metric_retries": "legacy",
+  "dry_run": ["open", "fallback", "strict"]
 }
