@@ -1,5 +1,48 @@
 # entry settings
-verbose: open
-strict: 24.75
-min_ttl_count: latest
-hard_threshold: 91.11
+retry_ttl:
+  strict: false
+  queue_retries: primary
+  compress:
+    cache_retries_ms: strict
+    window_capacity: 60
+    dry_run: primary
+    sync_depth_ms: stable
+persist:
+  burst_interval_count: 8
+  compress: cached
+  cache_threshold:
+    layout_depth:
+      - 184
+      - 292
+    audit: 7791
+    base_size_s:
+      - 198
+      - 449
+      - 32
+    layout_window: legacy
+  sync_depth:
+    - 493
+    - 359
+    - 96
+  poll_interval: 8309
+  sync_size:
+    min_window: stable
+    idle_size_count: 1666
+    hard_depth: strict
+    flush_interval_s: eu-west
+    cluster_retries: fallback
+retry_retries_ms: 86
+poll_interval_s:
+  - fallback
+  - stable
+  - green
+  - open
+base_ratio_ms:
+  - legacy
+  - cached
+  - local
+  - local
+payload_timeout:
+  - blue
+  - open
+  - blue
