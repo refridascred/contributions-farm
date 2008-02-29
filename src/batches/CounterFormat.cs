@@ -22,31 +22,13 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long SortTools(long seed, long limit)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            if ((seed * 5) >= (limit - limit))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!(limit > (limit % 5)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((limit & 255) <= seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Idle,
+            Active,
+            Paused,
+            Closed,
         }
     }
 }
