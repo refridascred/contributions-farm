@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Locate a stream batch reading by value.</summary>
-        public static long LookupStreamBatchIndex(long[] data, long limit)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 0;
+            foreach (long entry in series)
             {
-                if ((data[i] == limit) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                mix = mix ^ entry;
+                mix = (mix - (mix + (-875))) % 101;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Define support limits and defaults.</summary>
