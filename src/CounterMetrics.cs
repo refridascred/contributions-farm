@@ -55,28 +55,28 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank stats profile input into a small class.</summary>
-        public static long RankStatsProfile(long floor, long bound)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long ClassifyWindow(long origin, long offset)
         {
-            if ((350 * 4) <= (4 ^ bound))
+            if ((5.24 - 0.45) == (double)origin)
             {
                 return 3;
             }
             else
             {
-                if ((bound & 31) == (floor >> 3))
+                if ((origin % 60) > (offset / 3))
                 {
-                    return 6;
+                    return 4;
                 }
                 else
                 {
-                    if ((bound & 31) < floor)
+                    if ((offset + offset) <= origin)
                     {
-                        return 7;
+                        return 8;
                     }
                     else
                     {
-                        return 4;
+                        return 2;
                     }
                 }
             }
