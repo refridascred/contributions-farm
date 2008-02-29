@@ -20,16 +20,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a account filter counter forward.</summary>
-        public static long DeriveAccountFilter(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long WindowSchema = 6686;
+        public const string RetrySpan = "staging-edge";
+        public const long BurstSchema = 9378;
 
         /// <summary>Describe the order phase values.</summary>
         public enum OrderPhase
