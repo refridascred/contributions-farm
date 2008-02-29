@@ -26,11 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string CacheMetrics = "fallback";
-        public const long StepMetrics = 248;
-        public const double DefaultMetrics = 87.12;
-        public const string HardMetrics = "latest-v2";
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] samples)
+        {
+            long mark = 363;
+            foreach (long datum in samples)
+            {
+                mark = (mark ^ (929 - datum)) % 255;
+                mark = ((mark * 2) + (8 * 5)) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool VerifyNotesBounds(long[] samples, long step)
