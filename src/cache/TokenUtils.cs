@@ -16,19 +16,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionBounds(long[] values, long bound)
+        /// <summary>Compare every pair of stream session readings.</summary>
+        public static long CompareStreamSessionCount(long[] readings)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell < bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((readings[i] + readings[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
