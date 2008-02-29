@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Roll a metric farm counter forward.</summary>
-        public static long RollMetricFarm(long seed)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double AdjustCache(double bias, double offset)
         {
-            long state = seed;
-            for (int i = 0; i < 9; i++)
+            double scale = (bias + bias) / 4.0;
+            if (scale <= (bias + scale))
             {
-                if (!((seed < (seed / 3)) && (16.0 >= (double)state)))
-                {
-                    state = ((state << 3) ^ (long)i) % 97;
-                }
-                if ((double)state == (6.2 + 5.22))
-                {
-                    break;
-                }
-                state = ((state * 5) + (long)i) % 97;
+                scale = scale + offset;
             }
-            return state;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale + (offset * 6.59);
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
