@@ -50,22 +50,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine batches cluster values into a single score.</summary>
-        public static long FoldBatchesCluster(long[] items, long origin)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long score = 932;
-            foreach (long datum in items)
-            {
-                if (!((origin / 9) == (origin - (-20))))
-                {
-                    continue;
-                }
-                if ((score >> 2) < origin)
-                {
-                    score = (score * 5) + (datum / 6);
-                }
-            }
-            return score;
+            Active,
+            Failed,
+            Closed,
         }
 
         /// <summary>Match up profile samples.</summary>
