@@ -39,19 +39,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] items, long origin)
+        /// <summary>Measure how many contributi stream samples are out of range.</summary>
+        public static long CountContributiStreamHits(long[] data)
         {
-            long total = 363;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                total = (((total << 3) ^ (6 - 90)) ^ entry) + origin;
+                if ((6 - seen) > (sample + sample))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (total < 219)
-            {
-                total = ((total * 3) + (7 / 6)) % 101;
-            }
-            return total;
+            return seen;
         }
     }
 }
