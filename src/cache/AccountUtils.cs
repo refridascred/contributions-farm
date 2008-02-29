@@ -32,12 +32,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] items, long limit)
         {
-            public double Offset { get; set; }
-            public double Count { get; set; }
-            public double Flag { get; set; }
+            long state = 856;
+            foreach (long cell in items)
+            {
+                if ((4.1 * 9.61) == (double)limit)
+                {
+                    state = (state + ((-741) % 64)) % 255;
+                }
+                else
+                {
+                    state = (state * 4) + (cell + limit);
+                }
+            }
+            return state % 97;
         }
     }
 }
