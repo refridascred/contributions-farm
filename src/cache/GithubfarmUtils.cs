@@ -52,17 +52,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long FindBatchesIndex(long[] series, long offset)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long SeriesMetric(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if (series[i] < offset)
-                {
-                    return (long)i;
-                }
+                long next = (seed % 3) ^ (seed - seed);
+                total = (total - (next / 2)) % 4096;
+                total = ((total * 5) + (long)i) % 97;
             }
-            return -1;
+            return total;
         }
     }
 }
