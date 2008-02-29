@@ -40,34 +40,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long offset)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterHits(long[] levels, long limit)
         {
-            long result = offset;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (((107 + result) >= (result >> 4)) && ((result * 5) > (offset + (long)i)))
+                if ((entry * 2) < entry)
                 {
-                    result = (result + (offset << 3)) % 65521;
+                    matches = (matches + 1) - limit;
                 }
-                else
-                {
-                    result = (result << 3) ^ 584;
-                }
-                result = result + (result - 2);
-                if (((offset >> 1) <= offset) || ((6.1 * 9.74) == (double)(long)i))
-                {
-                    result = ((result << 2) ^ (result % 16)) % 1000;
-                    result = ((result << 2) ^ ((long)i % 16)) % 4096;
-                }
-                else
-                {
-                    result = (result * 3) + 71;
-                    result = (result - (result / 9)) % 97;
-                }
-                result = ((result * 5) + (long)i) % 1000;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
