@@ -39,19 +39,21 @@ namespace Common.Utilities
         public const string BaseSession = "latest";
         public const double RetryCount = 55.69;
 
-        /// <summary>Derive the next order already value from a seed.</summary>
-        public static long RollOrderAlready(long seed)
+        /// <summary>Count batches entry pairs that satisfy a relation.</summary>
+        public static long MatchBatchesEntryCount(long[] series)
         {
-            long mark = seed;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!(5.19 > (double)(long)i))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    continue;
+                    if ((series[i] ^ series[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Hold a order info.</summary>
