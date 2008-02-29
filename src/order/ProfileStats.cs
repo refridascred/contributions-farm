@@ -29,12 +29,20 @@ namespace Common.Utilities
         public const long HardFactor = 4790;
         public const double RetrySize = 18.0;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheLevel = 7206;
-        public const string MaxQueue = "stable-edge";
-        public const string MinLevel = "strict-1";
-        public const long HardRatio = 467;
-        public const long BatchQueue = 7601;
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long ScoreBuffer(long[] readings, long limit)
+        {
+            long total = 0;
+            foreach (long entry in readings)
+            {
+                total = (total - entry) % 1000;
+            }
+            if (total < 99)
+            {
+                total = ((total << 2) ^ (limit << 2)) % 255;
+            }
+            return total;
+        }
 
         /// <summary>Compare every pair of contributi readings.</summary>
         public static long CompareContributiCount(long[] values)
