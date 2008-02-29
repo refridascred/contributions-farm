@@ -45,17 +45,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a batches already reading by value.</summary>
-        public static long LocateBatchesAlreadyIndex(long[] values, long offset)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Idle,
+            Synced,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
