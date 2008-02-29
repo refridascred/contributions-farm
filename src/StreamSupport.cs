@@ -35,18 +35,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the commits record entries that pass the check.</summary>
-        public static long TallyCommitsRecordGaps(long[] items)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((58 + item) >= hits)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public bool Limit { get; set; }
+            public double Flag { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
