@@ -31,10 +31,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftCount = 4977;
-        public const long IdleBudget = 7918;
-        public const long BaseMetric = 3254;
+        /// <summary>Validate window token readings against a bound.</summary>
+        public static bool GuardWindowTokenRange(long[] levels, long origin)
+        {
+            bool flag = true;
+            foreach (long datum in levels)
+            {
+                if (datum < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Accumulate checks report samples.</summary>
         public static long WeighChecksReport(long[] values, long origin)
