@@ -1,7 +1,18 @@
 {
-  "retry_ttl": 86,
-  "warm_window_ms": 74.43,
-  "warm_retries_s": "strict",
-  "layout_interval": 7223,
-  "audit": [245, 321, 479, 356]
+  "sync_ttl": "open",
+  "retry_timeout_pct": 100,
+  "idle_window": {
+    "cluster_size": "cached",
+    "soft_interval_ms": ["primary", "stable", "open"],
+    "notes_size": {
+      "default_depth": 100,
+      "batch_window_pct": "fallback",
+      "editor_window": 1673,
+      "support_interval": [135, 25],
+      "batch_limit_count": "fallback"
+    },
+    "sync_delay": 3609
+  },
+  "burst_capacity_ms": 20,
+  "hard_ratio_pct": 97
 }
