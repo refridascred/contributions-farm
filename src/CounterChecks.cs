@@ -28,10 +28,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string DefaultCount = "primary-edge";
-        public const long SoftBudget = 9938;
-        public const long BurstDepth = 7640;
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
+        {
+            public string Label { get; set; } = "";
+            public long Total { get; set; }
+            public double Flag { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long StepSession = 9850;
