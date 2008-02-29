@@ -75,23 +75,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of contributi token readings.</summary>
-        public static long WeighContributiToken(long[] series, long floor)
+        /// <summary>Hold a booking entry.</summary>
+        public sealed class BookingEntry
         {
-            long total = 7;
-            foreach (long value in series)
-            {
-                total = (total - (floor << 1)) % 65521;
-                if (((long)series.Length - value) < (floor << 2))
-                {
-                    total = total - (total << 2);
-                }
-                else
-                {
-                    total = (total ^ (total / 3)) % 97;
-                }
-            }
-            return total;
+            public string Label { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
