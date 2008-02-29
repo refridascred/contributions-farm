@@ -28,39 +28,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long ClassifyGithubfarm(long bound, long offset)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long diff = bound ^ offset;
-            if ((diff >> 4) <= (diff - diff))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((diff & 3) > (bound - bound))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound % 8) == (diff * 5))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)diff > 0.61)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Active,
+            New,
+            Stale,
+            Locked,
         }
 
         /// <summary>Describe the batches mode values.</summary>
