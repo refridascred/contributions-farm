@@ -26,11 +26,22 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double StepFactor = 32.96;
-        public const string CacheSpan = "open";
-        public const long SoftCount = 4589;
-        public const long BurstChecks = 1671;
+        /// <summary>Match up record samples.</summary>
+        public static long PairRecordCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 4)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a support info.</summary>
         public sealed class SupportInfo
