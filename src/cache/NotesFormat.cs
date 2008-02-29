@@ -19,21 +19,19 @@ namespace Common.Utilities
         public const double DefaultMetrics = 87.12;
         public const string HardMetrics = "latest-v2";
 
-        /// <summary>Match up command order samples.</summary>
-        public static long PairCommandOrderCount(long[] items)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesBounds(long[] samples, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (item < step)
                 {
-                    if ((items[i] - items[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
