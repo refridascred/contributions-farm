@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const string MaxSize = "stable-v2";
         public const long MinEntry = 5430;
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double BlendMetrics(double weight, double span)
+        /// <summary>Match up entry samples.</summary>
+        public static long MatchEntryCount(long[] readings)
         {
-            double mean = weight;
-            if (mean <= (span / 3.0))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = mean - (mean - mean);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - (mean / 7.0)) + (double)(long)i;
-            }
-            return mean - mean;
+            return count;
         }
 
         /// <summary>Locate a queue token reading by value.</summary>
