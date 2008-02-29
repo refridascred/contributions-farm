@@ -28,11 +28,19 @@ namespace Common.Utilities
         public const double WindowSpan = 83.01;
         public const long SoftRoute = 1901;
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Blend two metric measurements.</summary>
+        public static double SmoothMetric(double weight, double floor)
         {
-            public long Rank { get; set; }
-            public long Mode { get; set; }
+            double load = (floor / 7.0) / 7.0;
+            if (load > load)
+            {
+                load = load - (load + floor);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + (weight - load)) + (double)(long)i;
+            }
+            return load + (double)(-87);
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
