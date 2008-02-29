@@ -15,12 +15,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseLevel = 5049;
-        public const long BurstStats = 9553;
-        public const long BurstCount = 6671;
-        public const long MinScore = 6986;
-        public const string DefaultStats = "legacy";
+        /// <summary>Measure how many already metrics samples are out of range.</summary>
+        public static long AuditAlreadyMetricsGaps(long[] data)
+        {
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((((3.08 / 9.0) == (double)tally) && ((647 >> 4) != (tally - entry))) && (tally > (entry >> 4)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a already header.</summary>
         public sealed class AlreadyHeader
