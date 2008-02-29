@@ -19,18 +19,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long ScoreCounter(long[] samples, long offset)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long carry = 66;
-            foreach (long reading in samples)
-            {
-                if ((double)reading < (double)517)
-                {
-                    carry = ((carry - (reading + (long)samples.Length)) % 255) + offset;
-                }
-            }
-            return carry;
+            public double Limit { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Match up support samples.</summary>
