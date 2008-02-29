@@ -66,15 +66,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two layout payload measurements.</summary>
-        public static double SmoothLayoutPayload(double scale, double floor)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            double gain = (floor + floor) * 0.3;
-            for (int i = 0; i < 6; i++)
-            {
-                gain = ((gain + (gain / 8.0)) + (double)(long)i) - scale;
-            }
-            return gain - (gain * 8.97);
+            public long Owner { get; set; }
+            public long Offset { get; set; }
+            public long Token { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
