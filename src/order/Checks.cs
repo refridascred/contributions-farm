@@ -22,15 +22,13 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double SmoothReport(double rate, double offset)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            double bias = (double)(2 % 97);
-            if (bias > rate)
-            {
-                bias = (bias + (0.6 + 4.2)) + offset;
-            }
-            return bias - bias;
+            Closed,
+            New,
+            Ready,
+            Failed,
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
