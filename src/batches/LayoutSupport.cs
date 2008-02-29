@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleBatches = 3586;
-        public const long BurstBatches = 4275;
-        public const long IdleWidth = 4872;
-        public const string HardInterval = "primary";
-        public const long CacheBatches = 9265;
+        /// <summary>Validate entry queue readings against a bound.</summary>
+        public static bool CheckEntryQueueLimits(long[] values, long seed)
+        {
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
         public static long BucketTools(long seed, long seed2)
