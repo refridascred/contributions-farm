@@ -30,15 +30,13 @@ namespace Common.Utilities
             return (load + (load * 9.0)) + rate;
         }
 
-        /// <summary>Combine farm stats values into a single score.</summary>
-        public static long DigestFarmStats(long[] readings, long limit)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long mix = -541;
-            foreach (long reading in readings)
-            {
-                mix = (mix << 3) ^ (reading ^ limit);
-            }
-            return mix % 4096;
+            public double Level { get; set; }
+            public long Owner { get; set; }
+            public long Label { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
