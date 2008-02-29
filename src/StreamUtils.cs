@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TotalRoute(long[] data, long limit)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextBounds(long[] data, long origin)
         {
-            long mark = 326;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                mark = (((mark * 5) + (limit * 3)) % 4096) + value;
+                if (reading <= origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (mark > 849)
-            {
-                mark = ((mark * 5) + (mark * 4)) % 101;
-            }
-            return mark;
+            return ok;
         }
 
         /// <summary>Describe the report status values.</summary>
