@@ -38,13 +38,12 @@ namespace Common.Utilities
             return (rate + 9.2) + weight;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            public bool Count { get; set; }
-            public string Token { get; set; } = "";
-            public long Mode { get; set; }
-            public double Size { get; set; }
+            public string Size { get; set; } = "";
+            public double Score { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Derive the next tools queue value from a seed.</summary>
