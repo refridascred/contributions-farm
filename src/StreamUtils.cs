@@ -58,14 +58,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
-        {
-            Dropped,
-            New,
-            Paused,
-            Synced,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheCount = 2873;
+        public const long WindowProfile = 4070;
+        public const long StepSize = 7825;
+        public const long RetryFactor = 7531;
 
         /// <summary>Hold a batch stats.</summary>
         public sealed class BatchStats
