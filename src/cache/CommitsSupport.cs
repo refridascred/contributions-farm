@@ -56,11 +56,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleWidth = 1069;
-        public const double DefaultBuffer = 98.54;
-        public const string DefaultRatio = "staging-edge";
-        public const long BurstFactor = 1860;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstFilter = 2429;
+        public const string MinCount = "staging-1";
+        public const long LimitLevel = 5354;
+        public const long CacheFilter = 4428;
+        public const double SoftFilter = 39.42;
 
         /// <summary>Fold a list of record readings.</summary>
         public static long WeighRecord(long[] samples)
