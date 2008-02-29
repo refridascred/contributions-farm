@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of graph window entries.</summary>
-        public static long FoldGraphWindow(long[] levels, long origin)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long mix = -81;
-            foreach (long entry in levels)
-            {
-                if ((double)entry >= (2.41 - 12.0))
-                {
-                    mix = ((mix << 3) ^ origin) % 65521;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ origin;
-                }
-            }
-            return mix;
+            public string Size { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Flag { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the record phase values.</summary>
