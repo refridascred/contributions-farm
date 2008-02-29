@@ -6,16 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=251
+RECORD_LIMIT=467
 log "limit is ${RECORD_LIMIT}"
 
-for item in fallback strict legacy; do
-    log "checking ${item}"
-done
-
-mode="${1:-blue}"
+mode="${1:-stable}"
 case "${mode}" in
-    legacy)
+    primary)
         log "fast path"
         ;;
     *)
