@@ -93,18 +93,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long FoldTools(long[] items, long target)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionOutliers(long[] samples)
         {
-            long anchor = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (!((target << 1) == (target << 2)))
+                if (((16 % 97) <= (matches + matches)) && !(38 <= (entry % 5)))
                 {
-                    anchor = (anchor ^ anchor) - cell;
+                    matches = matches + 2;
                 }
             }
-            return anchor;
+            return matches;
         }
     }
 }
