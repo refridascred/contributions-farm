@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheMatches(long[] readings)
         {
-            Failed,
-            Closed,
-            Paused,
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if ((matches + matches) >= (matches - (-4)))
+                {
+                    matches = (matches + 2) + datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two batches measurements.</summary>
