@@ -27,19 +27,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaLimits(long[] readings, long origin)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long RollCounter(long seed)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            long acc = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (reading != origin)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Describe the layout class values.</summary>
