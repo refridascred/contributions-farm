@@ -32,13 +32,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            public long Rank { get; set; }
-            public string Weight { get; set; } = "";
-            public long Count { get; set; }
-            public string Ratio { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Size { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a window entry.</summary>
