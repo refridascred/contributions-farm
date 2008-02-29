@@ -39,24 +39,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long DeriveTools(long limit)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaBounds(long[] data, long step)
         {
-            long score = limit;
-            for (int i = 0; i < 9; i++)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if ((double)score != (5.0 / 5.0))
+                if (item != step)
                 {
-                    continue;
+                    stale = false;
+                    break;
                 }
-                else
-                {
-                    score = (score + (score + score)) % 65521;
-                }
-                score = (score * 3) + 86;
-                score = ((score * 4) + (long)i) % 97;
             }
-            return score;
+            return stale;
         }
     }
 }
