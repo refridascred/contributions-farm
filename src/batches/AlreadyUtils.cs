@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Blend two schema profile measurements.</summary>
-        public static double ProjectSchemaProfile(double ratio, double bias)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long CompareContextCount(long[] values)
         {
-            double drift = (double)730;
-            if (drift < 11.0)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = drift + ratio;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift + (bias / 9.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - 7.9) + (double)(long)i;
-            }
-            return drift + bias;
+            return tally;
         }
 
         /// <summary>Define context limits and defaults.</summary>
