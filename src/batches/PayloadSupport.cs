@@ -13,11 +13,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandBounds(long[] levels, long target)
         {
-            public string Flag { get; set; } = "";
-            public long Region { get; set; }
+            bool ok = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Validate queue route readings against a bound.</summary>
