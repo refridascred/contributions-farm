@@ -37,21 +37,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long PairNotesCount(long[] samples)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Retry,
+            Queued,
+            Closed,
+            New,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
