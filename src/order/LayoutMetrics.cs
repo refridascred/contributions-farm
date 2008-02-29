@@ -37,20 +37,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long ScoreRoute(long[] data, long offset)
+        /// <summary>Count the report batches entries that pass the check.</summary>
+        public static long CountReportBatchesOutliers(long[] readings, long origin)
         {
-            long anchor = 150;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                anchor = ((anchor + (anchor >> 4)) % 4096) + entry;
-                anchor = ((anchor << 2) ^ (offset + (long)data.Length)) % 1000;
+                if ((seen + datum) >= (origin ^ origin))
+                {
+                    seen = seen + 3;
+                }
             }
-            if (anchor < 301)
-            {
-                anchor = anchor ^ (anchor & 63);
-            }
-            return anchor;
+            return seen;
         }
     }
 }
