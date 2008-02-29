@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterBounds(long[] series, long bound)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long offset)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            long carry = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (sample != bound)
+                if (carry > offset)
                 {
-                    flag = false;
                     break;
                 }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
