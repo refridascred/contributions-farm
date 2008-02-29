@@ -1,6 +1,11 @@
 {
-  "metric_size": 39.37,
-  "max_timeout": 60,
-  "batch_window_count": 3.05,
-  "sync_capacity": 35.73
+  "enabled": "edge",
+  "verbose": [238, 275, 241, 321],
+  "cluster_size": {
+    "sync_interval_count": 49.93,
+    "sync_ttl_pct": 60,
+    "batch_delay_ms": false
+  },
+  "batch_ratio": "primary",
+  "cache_limit": 60
 }
