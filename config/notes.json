@@ -1,6 +1,13 @@
 {
-  "poll_capacity_count": "green",
-  "context_timeout": "latest",
-  "default_delay_count": true,
-  "idle_timeout_s": 500
+  "hard_window_s": "staging",
+  "sync_timeout": "local",
+  "audit": 37.13,
+  "poll_interval_ms": "edge",
+  "cache_timeout": {
+    "burst_capacity_pct": "fallback",
+    "warm_size_s": 74.93,
+    "schema_interval": 59.25,
+    "contributi_depth": "stable"
+  },
+  "warm_delay_s": 4903
 }
