@@ -13,15 +13,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] samples, long limit)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long anchor = 3;
-            foreach (long cell in samples)
-            {
-                anchor = (((anchor * 3) + (limit % 60)) % 97) - cell;
-            }
-            return anchor;
+            Failed,
+            Idle,
+            Retry,
+            Ready,
         }
 
         /// <summary>Describe the session state values.</summary>
