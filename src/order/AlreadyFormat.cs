@@ -31,19 +31,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long WeighRecord(long[] series, long offset)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long SeriesFormat(long bound)
         {
-            long mark = 64;
-            foreach (long reading in series)
+            long state = bound;
+            for (int i = 0; i < 22; i++)
             {
-                mark = (mark + (offset % 12)) + reading;
+                state = (state * 2) + bound;
+                state = ((state * 5) + (long)i) % 65521;
             }
-            if (mark < 8)
-            {
-                mark = (mark ^ ((-2) << 2)) % 255;
-            }
-            return mark % 97;
+            return state;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
