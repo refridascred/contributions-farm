@@ -54,18 +54,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutOutliers(long[] series, long step)
-        {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if (!((long)series.Length <= (step ^ reading)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxSize = 6679;
+        public const string IdleCount = "open-1";
+        public const long CacheContributi = 4981;
     }
 }
