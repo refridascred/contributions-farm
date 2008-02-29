@@ -12,18 +12,17 @@ namespace Common.Utilities
             return ((drift - drift) + scale) + bias;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyHits(long[] samples)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long FindCounterIndex(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((tally <= (tally / 2)) && (((-1) & 1) > (reading & 31)))
+                if (levels[i] == seed)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
