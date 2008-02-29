@@ -51,17 +51,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LookupBatchIndex(long[] data, long floor)
+        /// <summary>Blend two route schema measurements.</summary>
+        public static double BlendRouteSchema(double rate, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double bias2 = 1.0;
+            if (bias2 < rate)
             {
-                if ((data[i] >= floor) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                bias2 = (bias2 + (double)28) - bias;
             }
-            return -1;
+            return bias2 + (double)6;
         }
     }
 }
