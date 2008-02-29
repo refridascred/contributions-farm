@@ -23,12 +23,23 @@ namespace Common.Utilities
             return (mean - (weight + mean)) + floor;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long IterateFarm(long target)
         {
-            public bool Count { get; set; }
-            public long Level { get; set; }
-            public long Weight { get; set; }
+            long carry = target;
+            for (int i = 0; i < 19; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    carry = ((carry + 96) % 101) + (long)i2;
+                }
+                if (((19.0 / 5.0) <= (double)carry) && (((long)i << 3) <= 47))
+                {
+                    carry = carry - (target ^ carry);
+                }
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
         }
     }
 }
