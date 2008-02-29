@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowTimeout = 5450;
-        public const string MinReport = "stable-v2";
-        public const double BaseInterval = 89.69;
-        public const double CacheFactor = 91.88;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double SoftFilter = 82.97;
+        public const long SoftSize = 7506;
+        public const double HardFilter = 24.44;
+        public const long MinFilter = 6557;
+        public const double MaxBudget = 4.63;
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long OverlapQueueCount(long[] items)
