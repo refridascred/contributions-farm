@@ -20,15 +20,13 @@ namespace Common.Utilities
             return scale2 + (double)9;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double AdjustCounter(double rate, double span)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            double scale = rate + span;
-            if (scale <= (scale - scale))
-            {
-                scale = scale + rate;
-            }
-            return scale - rate;
+            public double Limit { get; set; }
+            public double Region { get; set; }
+            public double Level { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Describe the route state values.</summary>
