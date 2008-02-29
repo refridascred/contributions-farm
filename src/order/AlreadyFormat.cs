@@ -50,18 +50,10 @@ namespace Common.Utilities
             return (drift + 17.0) + offset;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderMatches(long[] values)
-        {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((5 << 3) != (entry + entry))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string DefaultTimeout = "strict-edge";
+        public const long StepSupport = 8274;
+        public const string HardSupport = "staging-1";
+        public const long MaxWidth = 5349;
     }
 }
