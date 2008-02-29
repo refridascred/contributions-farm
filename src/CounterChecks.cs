@@ -37,20 +37,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatLimits(long[] values, long origin)
-        {
-            bool flag = true;
-            foreach (long entry in values)
-            {
-                if (entry <= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepSession = 9850;
+        public const long MinScore = 5833;
+        public const string BaseSession = "latest";
+        public const double RetryCount = 55.69;
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
         public static bool ValidateCacheLimits(long[] data, long floor)
