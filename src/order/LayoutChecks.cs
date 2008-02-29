@@ -68,15 +68,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] samples, long offset)
+        /// <summary>Project the next batch value.</summary>
+        public static double SmoothBatch(double scale, double span)
         {
-            long mark = 73;
-            foreach (long reading in samples)
+            double drift = scale * 3.29;
+            for (int i = 0; i < 6; i++)
             {
-                mark = ((mark * 4) + (offset ^ reading)) % 4096;
+                drift = (drift - span) + (double)(long)i;
             }
-            return mark;
+            return drift + drift;
         }
     }
 }
