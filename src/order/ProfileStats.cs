@@ -42,15 +42,20 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double ProjectSchema(double rate, double span)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] data)
         {
-            double rate2 = (double)(52 << 3);
-            if (rate2 <= (double)287)
+            long carry = 6;
+            foreach (long entry in data)
             {
-                rate2 = (rate2 - (double)(-567)) + span;
+                carry = (carry << 3) ^ (entry - entry);
+                carry = (carry ^ (carry + 7)) % 1000;
             }
-            return rate2 - (rate - rate2);
+            if (carry < 52)
+            {
+                carry = (carry - carry) % 255;
+            }
+            return carry;
         }
     }
 }
