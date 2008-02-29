@@ -1,5 +1,12 @@
 {
-  "strict": "primary",
-  "retry_ttl": 13,
-  "default_depth_s": true
+  "idle_limit_s": {
+    "commits_depth": 27.97,
+    "flush_window": false,
+    "warm_interval_s": "blue",
+    "commits_retries": ["latest", "primary", "eu-west", "staging"],
+    "enabled": [199, 435, 362, 84]
+  },
+  "commits_window": 500,
+  "context_depth": 14.73,
+  "audit": "latest"
 }
