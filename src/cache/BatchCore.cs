@@ -15,12 +15,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double WindowFilter = 82.2;
-        public const double RetryBudget = 28.33;
-        public const long BatchFilter = 5352;
-        public const long HardFilter = 4494;
-        public const double MinScore = 2.05;
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
+        {
+            Ready,
+            Retry,
+            Stale,
+        }
 
         /// <summary>Fold a list of support readings.</summary>
         public static long TotalSupport(long[] samples, long bound)
