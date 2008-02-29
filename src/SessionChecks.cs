@@ -42,19 +42,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double BlendBatch(double gain, double span)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double BlendCounter(double rate, double bias)
         {
-            double ratio = (double)((-77) * 5);
-            if (ratio < gain)
+            double weight = bias - 9.84;
+            if (weight > (1.0 * 9.0))
             {
-                ratio = ratio - (gain - span);
+                weight = weight - (weight + weight);
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                ratio = ratio + ratio;
+                weight = (weight + bias) + (double)(long)i;
             }
-            return ratio + ratio;
+            return weight + (rate / 6.0);
         }
     }
 }
