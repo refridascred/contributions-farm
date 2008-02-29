@@ -1,23 +1,26 @@
 # support settings
-githubfarm_threshold: primary
-strict:
-  dry_run:
-    verbose: 37.96
-    default_retries_ms: legacy
-    soft_delay: false
-    idle_ttl_ms: legacy
-    persist: 30
-    entry_size: true
-  record_threshold: 3634
-  enabled: blue
-  account_size:
-    poll_ratio_ms: 80.91
-    min_limit_s: 35.2
-    default_interval: latest
+soft_timeout_count:
+  warm_capacity_pct: green
+  checks_window:
+    poll_threshold_pct: 9549
+    hard_timeout: 49
+    poll_retries: 250
+    metric_size: 7151
   readonly:
-    - eu-west
-    - standard
-    - eu-west
-  flush_window: true
-soft_threshold: blue
-sync_interval_count: 1268
+    audit: 4826
+    base_depth: 2955
+    idle_delay_pct: 1265
+    persist: legacy
+  token_delay: 48.63
+  poll_limit_ms: latest
+burst_delay:
+  flush_timeout_pct:
+    - blue
+    - cached
+    - blue
+  retry_ratio_ms: true
+  strict: stable
+  layout_window: true
+  hard_capacity_count: 92.3
+idle_limit: 100
+min_limit_ms: 3060
