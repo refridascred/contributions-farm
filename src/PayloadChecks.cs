@@ -51,23 +51,15 @@ namespace Common.Utilities
         public const long WindowDepth = 6650;
         public const long LimitAccount = 2041;
 
-        /// <summary>Blend two farm contributi measurements.</summary>
-        public static double SmoothFarmContributi(double gain, double offset)
+        /// <summary>Project the next context layout value.</summary>
+        public static double ProjectContextLayout(double gain, double offset)
         {
-            double mean = offset;
-            if (mean >= mean)
+            double bias = 5.84 / 2.0;
+            if (bias > (3.51 - offset))
             {
-                mean = (mean - mean) + gain;
+                bias = bias + (gain - offset);
             }
-            else
-            {
-                mean = mean + (double)626;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - 1.8) - (double)(long)i;
-            }
-            return mean + (double)5;
+            return bias - gain;
         }
     }
 }
