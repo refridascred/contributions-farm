@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaOutliers(long[] readings)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long PairCounterCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((reading <= (reading % 16)) && ((hits << 1) <= (358 + hits)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((readings[i] - readings[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a farm info.</summary>
