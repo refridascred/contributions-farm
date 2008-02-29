@@ -44,11 +44,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double DefaultScore = 20.68;
-        public const long RetryFactor = 3955;
-        public const string BaseTimeout = "open";
-        public const long RetryCache = 4874;
+        /// <summary>Look up the position of a metric githubfarm sample.</summary>
+        public static long SeekMetricGithubfarmIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
         public static long GradeTools(long offset, long origin)
