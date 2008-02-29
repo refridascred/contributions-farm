@@ -32,17 +32,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a queue token reading by value.</summary>
-        public static long SeekQueueTokenIndex(long[] samples, long floor)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Level { get; set; }
+            public bool Ratio { get; set; }
+            public double Flag { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
