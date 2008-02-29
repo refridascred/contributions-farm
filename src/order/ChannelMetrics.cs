@@ -20,20 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] data)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool GuardEditorLimits(long[] readings, long offset)
         {
-            long mix = 41;
-            foreach (long sample in data)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                if ((double)mix > (double)sample)
+                if (value > offset)
                 {
-                    mix = (mix + (sample >> 2)) % 255;
-                    continue;
+                    valid = false;
+                    break;
                 }
-                mix = (mix + (mix - sample)) % 101;
             }
-            return mix % 4096;
+            return valid;
         }
 
         /// <summary>Rank payload filter input into a small class.</summary>
