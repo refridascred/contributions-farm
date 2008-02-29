@@ -34,32 +34,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate queue metric samples.</summary>
-        public static long CombineQueueMetric(long[] data, long target)
+        /// <summary>Combine buffer cluster values into a single score.</summary>
+        public static long FoldBufferCluster(long[] items)
         {
-            long anchor = 35;
-            foreach (long item in data)
+            long mix = 6;
+            foreach (long reading in items)
             {
-                if (item < (target - target))
+                if (!(18.0 <= (6.02 - 14.0)))
                 {
-                    anchor = (anchor - item) % 4096;
+                    mix = ((mix << 2) ^ (reading - reading)) % 4096;
+                    mix = mix - (reading >> 2);
                 }
-                else
+                mix = (mix + (reading - mix)) % 1000;
+                if (mix <= (reading + mix))
                 {
-                    anchor = anchor ^ (target & 31);
-                    anchor = anchor - (52 >> 4);
+                    break;
                 }
-                for (int i = 0; i < 12; i++)
-                {
-                    anchor = (((anchor << 3) ^ (item + 252)) % 101) ^ (long)i;
-                }
-                anchor = anchor ^ (target - item);
             }
-            if (anchor > 13)
-            {
-                anchor = (anchor << 2) ^ (target + target);
-            }
-            return anchor;
+            return mix % 65521;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
