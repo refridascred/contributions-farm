@@ -1,7 +1,14 @@
 {
-  "sync_threshold_ms": "cached",
-  "soft_ratio_pct": ["green", "strict", "cached"],
-  "audit": "eu-west",
-  "retry_depth_pct": [234, 492, 458, 217],
-  "enabled": 23.51
+  "record_threshold": {
+    "compress": 1.61,
+    "verbose": "standard",
+    "account_window": ["strict", "edge", "latest"],
+    "persist": 20,
+    "enabled": "legacy",
+    "commits_size": "green"
+  },
+  "hard_ttl_pct": 3699,
+  "readonly": 30,
+  "flush_window": true,
+  "verbose": 55.78
 }
