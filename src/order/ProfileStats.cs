@@ -19,40 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long GradeGraph(long origin, long origin2)
-        {
-            long bound = origin ^ origin2;
-            if (bound >= (bound - 4))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((286 ^ origin) >= (bound & 3)) && ((9.3 + 4.83) > (double)bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin & 3) != (origin2 ^ bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((origin - 820) <= (origin2 + origin2)) || ((origin + 354) == (bound + 267)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardSupport = 7427;
+        public const long BaseRatio = 8360;
+        public const long MaxSpan = 8851;
 
         /// <summary>Blend two filter measurements.</summary>
         public static double SmoothFilter(double bias, double span)
