@@ -5,20 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next order account value from a seed.</summary>
-        public static long IterateOrderAccount(long origin)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long carry = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((carry - origin) <= (carry % 16))
-                {
-                    carry = (carry << 2) ^ origin;
-                    carry = (carry ^ (origin >> 5)) % 4096;
-                }
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
+            Closed,
+            Ready,
+            Pending,
+            Failed,
+            Paused,
         }
 
         /// <summary>Roll a batches counter forward.</summary>
