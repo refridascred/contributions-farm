@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinCount = 8098;
-        public const long BaseRoute = 4006;
-        public const long MaxRoute = 5951;
-        public const double MaxWidth = 15.42;
-        public const string BaseSize = "strict-edge";
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
+        {
+            public long Weight { get; set; }
+            public string Offset { get; set; } = "";
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Grade a support value against two limits.</summary>
         public static long ClassifySupport(long target, long floor)
