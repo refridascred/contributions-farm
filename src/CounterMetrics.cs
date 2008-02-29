@@ -29,11 +29,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            public bool Label { get; set; }
-            public bool Limit { get; set; }
+            Synced,
+            Stale,
+            Failed,
+            Idle,
         }
 
         /// <summary>Project the next tools value.</summary>
