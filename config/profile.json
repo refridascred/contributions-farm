@@ -1,5 +1,9 @@
 {
-  "dry_run": "strict",
-  "default_threshold_pct": "stable",
-  "retry_capacity": 88.45
+  "min_limit_pct": {
+    "retry_limit": 42,
+    "cache_retries_count": 252,
+    "order_retries": 6084
+  },
+  "poll_ratio_s": 100,
+  "enabled": 90.4
 }
