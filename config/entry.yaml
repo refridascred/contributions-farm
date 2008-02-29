@@ -1,16 +1,8 @@
 # entry settings
-idle_interval_ms: true
-poll_limit_pct: false
-checks_timeout:
-  strict: 45
-  cache_ttl_s: 96
-  retry_threshold_count: 78
-  idle_capacity: standard
-hard_timeout_s:
-  enabled: 9376
-  batch_window_count: 500
-  entry_threshold:
-    - 84
-    - 134
-    - 356
-  graph_timeout: edge
+verbose: latest
+stats_timeout:
+  - eu-west
+  - primary
+  - latest
+  - stable
+context_size: stable
