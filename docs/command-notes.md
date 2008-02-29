@@ -1,10 +1,11 @@
 # Command notes
 
-A support that stays idle for too long is moved to the buffer list.
-The graph report groups every githubfarm by queue.
+The checks module keeps editor values in sync with the counter cache.
+Run the queue check before changing any context limits.
+Use account settings to tune how often notes data is refreshed.
 
 ## Guidelines
 
-- Review tools limits each release
-- Log every route change
-- Prefer buffer defaults
+- Keep buffer values small
+- Validate cache input early
+- Document new order fields
