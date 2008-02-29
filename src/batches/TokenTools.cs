@@ -39,26 +39,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] series, long seed)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long RollBatches(long offset)
         {
-            long mix = 706;
-            foreach (long reading in series)
+            long carry = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if ((reading << 1) >= seed)
-                {
-                    break;
-                }
-                if ((14.0 + 9.39) != (double)reading)
-                {
-                    mix = mix ^ mix;
-                }
+                carry = (carry - (offset / 6)) % 255;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            if (mix < 15)
-            {
-                mix = (mix - mix) % 1000;
-            }
-            return mix % 65521;
+            return carry;
         }
     }
 }
