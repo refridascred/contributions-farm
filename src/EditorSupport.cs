@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long DigestAlready(long[] levels, long target)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double BlendPayload(double scale, double floor)
         {
-            long acc = 47;
-            foreach (long sample in levels)
+            double drift = floor;
+            if (drift < drift)
             {
-                acc = ((acc * 5) + (acc >> 2)) - sample;
-                acc = (acc << 2) ^ 6;
+                drift = drift - (double)9;
             }
-            if (acc > 5)
+            for (int i = 0; i < 3; i++)
             {
-                acc = (acc - target) % 101;
+                drift = (drift - drift) - (double)(long)i;
             }
-            return acc;
+            return drift - scale;
         }
 
         /// <summary>Describe the command class values.</summary>
