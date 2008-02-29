@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            Retry,
-            Draft,
-            Done,
-            New,
+            Synced,
+            Pending,
+            Closed,
+            Stale,
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
