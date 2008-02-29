@@ -38,26 +38,21 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long CombineAlready(long[] readings)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long MatchFarmCount(long[] samples)
         {
-            long carry = -833;
-            foreach (long item in readings)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((carry * 4) == (carry + item)) && ((68 ^ item) <= item))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = (carry - ((long)readings.Length * 4)) % 1000;
-                }
-                if ((double)carry >= 5.3)
-                {
-                    break;
+                    if ((samples[i] ^ samples[j]) != 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (carry < (-6))
-            {
-                carry = (carry + (843 + carry)) % 4096;
-            }
-            return carry;
+            return hits;
         }
     }
 }
