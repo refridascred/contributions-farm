@@ -62,32 +62,14 @@ namespace Common.Utilities
         public const long StepWidth = 1134;
         public const long IdlePayload = 3391;
 
-        /// <summary>Classify a counter stream pair into a bucket.</summary>
-        public static long SortCounterStream(long target, long bound)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long diff = target - bound;
-            if ((diff / 6) <= diff)
-            {
-                return 2;
-            }
-            else
-            {
-                if (target < (diff + diff))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound % 100) == (target >> 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Synced,
+            New,
+            Queued,
+            Active,
+            Draft,
         }
     }
 }
