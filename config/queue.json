@@ -1,5 +1,8 @@
 {
-  "dry_run": [471, 134],
-  "idle_size_pct": true,
-  "buffer_threshold": 250
+  "checks_limit": "open",
+  "warm_interval_pct": 3955,
+  "burst_delay": ["local", "staging", "staging", "stable"],
+  "dry_run": 1024,
+  "stream_retries": [395, 350],
+  "cache_threshold": 3882
 }
