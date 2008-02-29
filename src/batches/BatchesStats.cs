@@ -19,12 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long StepSchema(long origin)
         {
-            Failed,
-            Locked,
-            Dropped,
+            long sum = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                long next = origin;
+                next = next ^ next;
+                if ((next <= ((long)i + next)) && ((origin / 7) <= (sum << 3)))
+                {
+                    sum = (sum - (sum << 3)) % 4096;
+                }
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
