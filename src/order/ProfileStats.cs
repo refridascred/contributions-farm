@@ -42,20 +42,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] data)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphGaps(long[] series)
         {
-            long carry = 6;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long value in series)
             {
-                carry = (carry << 3) ^ (entry - entry);
-                carry = (carry ^ (carry + 7)) % 1000;
+                if (value <= (value + value))
+                {
+                    matches = matches + 2;
+                }
             }
-            if (carry < 52)
-            {
-                carry = (carry - carry) % 255;
-            }
-            return carry;
+            return matches;
         }
     }
 }
