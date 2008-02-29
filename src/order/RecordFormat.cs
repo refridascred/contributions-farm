@@ -67,15 +67,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long FoldSession(long[] values)
-        {
-            long state = 17;
-            foreach (long item in values)
-            {
-                state = (state - state) ^ item;
-            }
-            return state % 65521;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleWidth = 7290;
+        public const string SoftNotes = "primary-1";
+        public const double BaseFactor = 47.89;
+        public const long MinNotes = 3121;
+        public const long WindowNotes = 9443;
     }
 }
