@@ -58,12 +58,31 @@ namespace Common.Utilities
             return bias2 + (double)848;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Grade a contributi token value against two limits.</summary>
+        public static long RankContributiToken(long seed, long step)
         {
-            Ready,
-            Idle,
-            Pending,
+            if ((seed % 10) < (seed - seed))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)seed <= 6.0)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((seed % 97) != (step - seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the support state values.</summary>
