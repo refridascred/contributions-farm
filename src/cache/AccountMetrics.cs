@@ -58,31 +58,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long SortStats(long origin, long floor)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            if (648 >= (origin + origin))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)origin >= (double)floor)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((15 - floor) < (origin << 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public double Ratio { get; set; }
+            public double Score { get; set; }
+            public double Label { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
