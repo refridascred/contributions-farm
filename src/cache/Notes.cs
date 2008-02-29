@@ -26,18 +26,13 @@ namespace Common.Utilities
             return weight2 + (floor - weight);
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsMatches(long[] readings, long step)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((long)readings.Length == (hits << 3))
-                {
-                    hits = ((hits + 1) + datum) - step;
-                }
-            }
-            return hits;
+            public long Region { get; set; }
+            public long Label { get; set; }
+            public long Count { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
