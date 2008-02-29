@@ -1,7 +1,9 @@
-id,label,region
-1,4.22,420
-2,669,646
-3,local,stable
-4,874,60.47
-5,cached,624
-6,499,658
+id,token,active,owner
+1,latest,46.44,704
+2,latest,157,88.11
+3,cached,5.69,legacy
+4,23,380,green
+5,860,468,391
+6,8,0.08,421
+7,edge,44.49,445
+8,826,40.12,57.51
