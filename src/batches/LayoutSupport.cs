@@ -80,19 +80,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate record notes readings against a bound.</summary>
-        public static bool ValidateRecordNotesRange(long[] values, long bound)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountGaps(long[] series)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if (datum >= bound)
+                if ((seen ^ seen) >= seen)
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 1) + item;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Define window limits and defaults.</summary>
