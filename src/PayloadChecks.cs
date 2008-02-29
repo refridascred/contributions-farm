@@ -71,18 +71,18 @@ namespace Common.Utilities
         public const long WindowDepth = 6650;
         public const long LimitAccount = 2041;
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesGaps(long[] samples)
+        /// <summary>Measure how many already githubfarm samples are out of range.</summary>
+        public static long AuditAlreadyGithubfarmHits(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if ((double)sample > (5.0 + 5.19))
+                if (!((datum + 926) >= (count - datum)))
                 {
-                    seen = seen + 2;
+                    count = count + 2;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
