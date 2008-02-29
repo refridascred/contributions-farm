@@ -50,10 +50,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double HardBuffer = 71.51;
-        public const long BaseInterval = 2260;
-        public const long HardLevel = 4822;
-        public const long IdleFactor = 7312;
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
+        {
+            public bool Label { get; set; }
+            public double Total { get; set; }
+            public double Level { get; set; }
+        }
     }
 }
