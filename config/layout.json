@@ -1,9 +1,15 @@
 {
-  "strict": "primary",
-  "soft_timeout": {
-    "tools_capacity": true,
-    "stats_interval": "eu-west",
-    "cache_depth_ms": [335, 5, 78, 214]
+  "retry_ratio": "eu-west",
+  "route_ratio": 73.48,
+  "idle_delay_pct": {
+    "graph_delay": {
+      "strict": 500,
+      "retry_threshold_pct": "standard",
+      "flush_interval": true,
+      "githubfarm_ratio": "open"
+    },
+    "cache_capacity_pct": "latest",
+    "tools_limit": "strict"
   },
-  "flush_delay_s": 33
+  "command_limit": 30
 }
