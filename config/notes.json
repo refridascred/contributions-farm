@@ -1,7 +1,5 @@
 {
-  "base_interval": 92.89,
-  "commits_depth": "legacy",
-  "max_size": [172, 465],
-  "readonly": "stable",
-  "enabled": 8063
+  "default_capacity_s": 39,
+  "metric_timeout": 31.39,
+  "flush_limit_count": 4070
 }
