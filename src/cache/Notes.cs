@@ -26,13 +26,21 @@ namespace Common.Utilities
             return weight2 + (floor - weight);
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Match up support samples.</summary>
+        public static long PairSupportCount(long[] values)
         {
-            public long Region { get; set; }
-            public long Label { get; set; }
-            public long Count { get; set; }
-            public long Ratio { get; set; }
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
