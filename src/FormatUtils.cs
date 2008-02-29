@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long origin)
         {
-            public bool Region { get; set; }
-            public double Score { get; set; }
+            long state = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((origin + origin) == (state >> 5))
+                {
+                    state = state ^ 19;
+                    state = (state + (long)i) % 101;
+                    continue;
+                }
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Hold a counter record.</summary>
