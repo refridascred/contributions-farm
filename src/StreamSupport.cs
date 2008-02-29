@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of commits route entries.</summary>
-        public static long FoldCommitsRoute(long[] levels)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricBounds(long[] values, long step)
         {
-            long result = 7;
-            foreach (long entry in levels)
+            bool found = true;
+            foreach (long cell in values)
             {
-                if (!((double)result >= (9.3 + 6.0)))
+                if (cell <= step)
                 {
-                    result = ((result * 3) + result) % 97;
-                }
-                else
-                {
-                    result = ((result << 3) ^ (entry >> 1)) % 101;
-                    result = ((result << 2) ^ (entry / 4)) % 101;
-                }
-                if ((entry >> 5) >= (entry >> 1))
-                {
-                    result = result - (entry + entry);
+                    found = false;
+                    break;
                 }
             }
-            if (result > (-79))
-            {
-                result = result + (result / 4);
-            }
-            return result;
+            return found;
         }
 
         /// <summary>Check that every profile route entry stays within the limit.</summary>
