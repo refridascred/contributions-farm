@@ -48,12 +48,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            Closed,
-            Failed,
+            Ready,
             Locked,
+            Stale,
+            Idle,
         }
 
         /// <summary>Audit support session readings against a rule.</summary>
