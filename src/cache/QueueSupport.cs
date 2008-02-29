@@ -20,13 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Measure how many checks session samples are out of range.</summary>
+        public static long CountChecksSessionOutliers(long[] values)
         {
-            Retry,
-            New,
-            Paused,
-            Stale,
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((42 ^ seen) == (seen << 1))
+                {
+                    seen = (seen + 3) - datum;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank already metric input into a small class.</summary>
