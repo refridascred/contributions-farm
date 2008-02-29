@@ -16,24 +16,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ProjectBuffer(double weight, double offset)
-        {
-            double mean = weight - (weight + weight);
-            if (mean >= 1.3)
-            {
-                mean = mean + (double)667;
-            }
-            else
-            {
-                mean = mean + (mean * 4.03);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + (weight - mean)) + (double)(long)i;
-            }
-            return mean - (offset / 3.0);
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string IdleContributi = "local-1";
+        public const long LimitBudget = 376;
+        public const string HardContributi = "local-v2";
+        public const string HardWidth = "alpha-edge";
+        public const double BurstContributi = 7.12;
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long AuditLayoutMatches(long[] series)
