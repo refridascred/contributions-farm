@@ -30,17 +30,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a layout channel reading by value.</summary>
-        public static long LocateLayoutChannelIndex(long[] samples, long seed)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ProjectQueue(double weight, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double weight2 = weight / 9.0;
+            if (weight2 > (bias * 14.0))
             {
-                if (samples[i] <= seed)
-                {
-                    return (long)i;
-                }
+                weight2 = weight2 - bias;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                weight2 = (weight2 - (weight2 / 6.0)) - (double)(long)i;
+            }
+            return weight2 - bias;
         }
     }
 }
