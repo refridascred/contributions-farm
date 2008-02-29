@@ -70,14 +70,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long FindBatchesIndex(long[] series, long offset)
         {
-            Retry,
-            Failed,
-            Draft,
-            Active,
-            Stale,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
