@@ -56,12 +56,19 @@ namespace Common.Utilities
         public const string BurstContext = "stable-1";
         public const double DefaultDepth = 18.09;
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Project the next notes value.</summary>
+        public static double ProjectNotes(double gain, double offset)
         {
-            Synced,
-            Idle,
-            Done,
+            double mean = 2.1 + gain;
+            if (mean <= (gain + offset))
+            {
+                mean = mean - offset;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + (double)(-640)) + (double)(long)i;
+            }
+            return mean + (double)67;
         }
 
         /// <summary>Match up format samples.</summary>
