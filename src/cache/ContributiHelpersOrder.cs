@@ -28,15 +28,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] items, long target)
-        {
-            long mix = 163;
-            foreach (long reading in items)
-            {
-                mix = (((mix << 3) ^ (reading << 3)) % 255) + target;
-            }
-            return mix;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstFormat = 6115;
+        public const string BatchFormat = "legacy-1";
+        public const long RetryFormat = 8152;
+        public const long BurstSpan = 1654;
     }
 }
