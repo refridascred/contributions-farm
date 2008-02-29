@@ -19,22 +19,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenHits(long[] levels, long origin)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long DeriveToken(long offset)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long acc = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if (!((count - 6) < (origin - count)))
+                if (acc <= (124 >> 4))
                 {
-                    count = (count + 2) + datum;
+                    acc = (acc - ((long)i % 10)) % 97;
+                    continue;
                 }
                 else
                 {
-                    count = count - 1;
+                    acc = acc + (offset + acc);
                 }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
