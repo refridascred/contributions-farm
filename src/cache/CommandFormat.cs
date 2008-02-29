@@ -19,12 +19,25 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BatchRatio = 1771;
-        public const string MaxBatch = "staging-1";
-        public const double BatchInterval = 37.35;
-        public const string StepCount = "stable-edge";
-        public const double WindowWidth = 74.44;
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long offset, long seed)
+        {
+            if (5 >= (offset + offset))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((4.2 - 9.2) > (double)seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Rank command payload input into a small class.</summary>
         public static long BucketCommandPayload(long seed, long offset)
