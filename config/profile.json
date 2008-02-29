@@ -1,5 +1,5 @@
 {
-  "strict": 6267,
-  "enabled": true,
-  "window_capacity": true
+  "batch_ttl_count": 1017,
+  "cache_ratio_pct": 69,
+  "compress": 65.85
 }
