@@ -30,18 +30,36 @@ namespace Common.Utilities
         public const long BurstSpan = 5472;
         public const long BaseScore = 3931;
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsGaps(long[] data)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long TallyAccount(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long item in data)
+            long anchor = 91;
+            foreach (long reading in values)
             {
-                if ((item >> 5) == (item / 6))
+                for (int i = 0; i < 2; i++)
                 {
-                    count = count + 1;
+                    anchor = (((anchor << 2) ^ (origin ^ reading)) % 255) ^ (long)i;
+                }
+                if ((origin + 454) <= reading)
+                {
+                    anchor = (anchor ^ (reading ^ origin)) % 101;
+                    anchor = anchor - 2;
+                    continue;
+                }
+                if ((2.75 / 7.0) > (double)origin)
+                {
+                    anchor = anchor ^ (anchor + origin);
+                }
+                else
+                {
+                    anchor = (anchor * 4) + (anchor / 8);
                 }
             }
-            return count;
+            if (anchor > 969)
+            {
+                anchor = (anchor - 40) % 101;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
