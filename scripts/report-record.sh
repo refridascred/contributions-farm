@@ -6,16 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge strict; do
+for item in green legacy; do
     log "checking ${item}"
 done
 
-mode="${1:-standard}"
+mode="${1:-fallback}"
 case "${mode}" in
-    legacy)
+    eu-west)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+RECORD_LIMIT=138
+log "limit is ${RECORD_LIMIT}"
