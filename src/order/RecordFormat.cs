@@ -53,11 +53,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            public long Ratio { get; set; }
-            public double Mode { get; set; }
+            Closed,
+            Queued,
+            Stale,
         }
 
         /// <summary>Locate a tools reading by value.</summary>
