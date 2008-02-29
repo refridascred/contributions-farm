@@ -21,15 +21,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] series)
+        /// <summary>Project the next context value.</summary>
+        public static double AdjustContext(double bias, double bias2)
         {
-            long mix = 0;
-            foreach (long entry in series)
+            double weight = bias2;
+            if (weight < (double)(-9))
             {
-                mix = ((mix * 5) + entry) % 255;
+                weight = weight + bias2;
             }
-            return mix;
+            else
+            {
+                weight = weight + (bias + weight);
+            }
+            return weight + bias2;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
