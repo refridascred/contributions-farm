@@ -1,8 +1,8 @@
-id,ratio,weight,token,state
-1,87.99,843,4.1,cached
-2,109,80.51,staging,21.47
-3,fallback,81.07,746,standard
-4,open,902,598,666
-5,open,840,standard,33.38
-6,408,664,797,96.73
-7,50.18,open,79.32,58.29
+id,label,token,ratio,score
+1,63.8,763,550,strict
+2,87.28,local,83.04,24.59
+3,stable,stable,509,staging
+4,4.83,36.51,894,legacy
+5,eu-west,719,36.94,937
+6,standard,157,80.23,42.48
+7,59.1,168,eu-west,807
