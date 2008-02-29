@@ -27,24 +27,14 @@ namespace Common.Utilities
         public const long BatchSpan = 1293;
         public const long StepNotes = 9316;
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long ClassifyFarm(long target, long limit)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            if (((5 >> 2) > (4 - limit)) && ((limit - 266) < (target << 2)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (target <= (target % 60))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Ready,
+            Dropped,
+            New,
+            Pending,
+            Idle,
         }
 
         /// <summary>Count the contributi format entries that pass the check.</summary>
