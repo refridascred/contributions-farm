@@ -20,10 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheScore = 5444;
-        public const double CacheCounter = 64.96;
-        public const double MaxLevel = 80.09;
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueOutliers(long[] levels)
+        {
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if (!((value & 7) != (tally / 8)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
         public static bool ValidateCommandRange(long[] values, long bound)
