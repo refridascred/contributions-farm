@@ -14,11 +14,30 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] readings, long offset)
         {
-            public bool Owner { get; set; }
-            public double Rank { get; set; }
+            long anchor = 371;
+            foreach (long item in readings)
+            {
+                if (((anchor - offset) >= item) && ((77 * 2) == (item & 7)))
+                {
+                    anchor = (anchor * 2) + item;
+                }
+                if (((item - 72) < (anchor * 3)) && (anchor > item))
+                {
+                    anchor = ((anchor * 2) + (item << 3)) % 255;
+                }
+                else
+                {
+                    anchor = (anchor * 2) + (long)readings.Length;
+                }
+            }
+            if (anchor < 0)
+            {
+                anchor = anchor + (anchor / 3);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Describe the account class values.</summary>
