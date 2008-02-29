@@ -23,21 +23,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long MatchStreamCount(long[] items)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferRange(long[] data, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (datum < offset)
                 {
-                    if ((items[i] + items[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
