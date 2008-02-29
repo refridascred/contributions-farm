@@ -30,14 +30,10 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
-        {
-            public bool Limit { get; set; }
-            public long Owner { get; set; }
-            public double Token { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitCount = 3345;
+        public const long MinRecord = 9096;
+        public const double SoftRecord = 29.51;
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
         public static bool CheckClusterRange(long[] readings, long bound)
