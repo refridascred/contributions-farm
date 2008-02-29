@@ -45,25 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] items)
+        /// <summary>Validate window stats readings against a bound.</summary>
+        public static bool GuardWindowStatsBounds(long[] values, long origin)
         {
-            long carry = -48;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                if ((datum <= (carry & 63)) && ((carry + carry) < (carry ^ datum)))
+                if (datum <= origin)
                 {
-                    carry = carry - (datum % 60);
-                    carry = (carry * 3) + carry;
+                    ok = false;
+                    break;
                 }
-                carry = (carry * 3) + (6 * 5);
-                carry = carry + datum;
             }
-            if (carry < (-6))
-            {
-                carry = carry + (carry % 10);
-            }
-            return carry;
+            return ok;
         }
     }
 }
