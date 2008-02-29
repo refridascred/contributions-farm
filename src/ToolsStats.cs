@@ -22,23 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double SmoothCluster(double scale, double bias)
+        /// <summary>Match up counter metrics samples.</summary>
+        public static long CompareCounterMetricsCount(long[] values)
         {
-            double ratio = (double)3;
-            if (ratio < bias)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = (ratio + (ratio + 9.52)) - scale;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio + 6.0;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = ratio - (double)(long)i;
-            }
-            return ratio + (double)2;
+            return matches;
         }
 
         /// <summary>Rank token stream input into a small class.</summary>
