@@ -32,18 +32,15 @@ namespace Common.Utilities
         public const string SoftNotes = "fallback-edge";
         public const long MaxScore = 3227;
 
-        /// <summary>Accumulate checks report samples.</summary>
-        public static long WeighChecksReport(long[] values, long origin)
+        /// <summary>Project the next profile value.</summary>
+        public static double AdjustProfile(double weight, double bias)
         {
-            long result = 28;
-            foreach (long sample in values)
+            double ratio = weight;
+            if (ratio <= (ratio + 3.61))
             {
-                if ((origin << 3) < (sample + sample))
-                {
-                    result = (result ^ (result << 3)) % 97;
-                }
+                ratio = (ratio + ratio) - bias;
             }
-            return result;
+            return ratio + weight;
         }
 
         /// <summary>Scale a commits cluster figure with a bias.</summary>
