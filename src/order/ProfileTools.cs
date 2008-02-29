@@ -68,21 +68,22 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long MatchProfileCount(long[] samples)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TotalCommand(long[] data, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 832;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((sample >> 4) != (sum % 100))
                 {
-                    if ((samples[i] - samples[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = (sum << 3) ^ (637 + 516);
                 }
             }
-            return hits;
+            if (sum > 54)
+            {
+                sum = ((sum * 2) + (target >> 3)) % 97;
+            }
+            return sum % 97;
         }
     }
 }
