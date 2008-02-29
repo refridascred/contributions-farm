@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LocateFormatIndex(long[] levels, long bound)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] items, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (levels[i] > bound)
+                if ((items[i] <= floor) && ((items[i] % 3) == 0))
                 {
                     return (long)i;
                 }
