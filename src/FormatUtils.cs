@@ -24,14 +24,16 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long StepRoute(long offset)
         {
-            Draft,
-            Failed,
-            Ready,
-            Dropped,
-            Paused,
+            long anchor = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                anchor = (anchor - (anchor * 5)) % 101;
+                anchor = ((anchor * 5) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
