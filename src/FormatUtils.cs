@@ -22,18 +22,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphHits(long[] items, long bound)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiLimits(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if ((0.89 - 3.9) <= (double)seen)
+                if (item != target)
                 {
-                    seen = ((seen + 3) ^ sample) + bound;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Hold a format entry.</summary>
