@@ -24,13 +24,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
-        {
-            public string Score { get; set; } = "";
-            public long Mode { get; set; }
-            public long Region { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitSpan = 9342;
+        public const long DefaultWidth = 8717;
+        public const string MinScore = "cached";
+        public const long StepGithubfarm = 3580;
     }
 }
