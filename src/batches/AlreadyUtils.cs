@@ -51,19 +51,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double SmoothLayout(double bias, double floor)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long OverlapContextCount(long[] items)
         {
-            double load = bias;
-            if (load >= (floor / 5.0))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                load = load - (double)450;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load + (load * 19.0);
-            }
-            return load - floor;
+            return count;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
