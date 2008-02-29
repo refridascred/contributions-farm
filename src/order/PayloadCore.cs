@@ -21,15 +21,13 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Blend two window already measurements.</summary>
-        public static double SmoothWindowAlready(double scale, double span)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            double scale2 = (double)0 / 3.0;
-            if (scale2 < (double)1)
-            {
-                scale2 = (scale2 + (double)2) + scale;
-            }
-            return scale2 + (span / 4.0);
+            public bool Limit { get; set; }
+            public long Owner { get; set; }
+            public double Token { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
