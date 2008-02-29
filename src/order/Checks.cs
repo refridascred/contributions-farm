@@ -13,31 +13,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Classify a cache channel pair into a bucket.</summary>
-        public static long BucketCacheChannel(long floor, long seed)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            if ((floor / 3) < (seed + floor))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor + floor) >= seed)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (seed < (floor & 63))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public bool Region { get; set; }
+            public long Offset { get; set; }
+            public long Limit { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Audit record readings against a rule.</summary>
