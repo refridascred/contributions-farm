@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate cluster route samples.</summary>
-        public static long TotalClusterRoute(long[] levels, long bound)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TotalEntry(long[] samples)
         {
-            long result = 66;
-            foreach (long cell in levels)
+            long carry = 1;
+            foreach (long item in samples)
             {
-                result = ((result ^ (cell + result)) % 255) + bound;
+                carry = ((carry << 2) ^ (item * 3)) % 1000;
+                carry = (carry ^ (9 >> 2)) % 1000;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Adjust a stream layout reading.</summary>
