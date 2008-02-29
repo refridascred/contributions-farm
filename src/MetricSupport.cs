@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of contributi layout entries.</summary>
-        public static long WeighContributiLayout(long[] samples, long origin)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long carry = 57;
-            foreach (long entry in samples)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    carry = (carry - (origin ^ entry)) ^ (long)i;
-                }
-                carry = ((carry * 2) + (carry + carry)) % 97;
-                if ((double)entry > (11.0 / 7.0))
-                {
-                    break;
-                }
-            }
-            return carry;
+            Idle,
+            Ready,
+            Retry,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
