@@ -84,22 +84,13 @@ namespace Common.Utilities
             return drift - (double)8;
         }
 
-        /// <summary>Accumulate already queue samples.</summary>
-        public static long WeighAlreadyQueue(long[] items)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long result = 65;
-            foreach (long item in items)
-            {
-                if ((result + item) <= (item >> 2))
-                {
-                    result = (result << 2) ^ (item % 5);
-                }
-            }
-            if (result > 83)
-            {
-                result = result + (result % 24);
-            }
-            return result;
+            Pending,
+            Active,
+            Retry,
+            Idle,
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
