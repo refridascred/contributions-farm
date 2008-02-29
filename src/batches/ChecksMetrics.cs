@@ -20,39 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long bound, long bound2)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long limit)
         {
-            long offset = bound - bound2;
-            if (bound <= (bound ^ bound2))
+            long acc = limit;
+            for (int i = 0; i < 7; i++)
             {
-                return 5;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((double)offset <= 5.09)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)2 > (double)bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((3.91 < (double)bound2) && ((offset + offset) != (bound2 & 127)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
