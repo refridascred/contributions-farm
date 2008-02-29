@@ -23,31 +23,15 @@ namespace Common.Utilities
         public const long IdleMetric = 2260;
         public const string CacheInterval = "local-edge";
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long limit, long origin)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long DeriveReport(long seed)
         {
-            if ((origin + origin) >= (959 >> 1))
+            long total = seed;
+            for (int i = 0; i < 16; i++)
             {
-                return 5;
+                total = ((total * 5) + (long)i) % 97;
             }
-            else
-            {
-                if ((origin / 4) >= (origin + origin))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((origin ^ origin) <= 994) || (limit < (origin & 31)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return total;
         }
     }
 }
