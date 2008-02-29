@@ -1,21 +1,5 @@
 {
-  "compress": {
-    "enabled": {
-      "verbose": false,
-      "retry_retries": 100,
-      "notes_size": 62.19,
-      "editor_capacity": 68.83
-    },
-    "retry_ratio": {
-      "retry_capacity": "cached",
-      "dry_run": 8314,
-      "batch_ttl": 89.58
-    },
-    "default_ttl_ms": 98,
-    "verbose": "stable",
-    "persist": [489, 317],
-    "order_delay": [390, 146, 497, 65]
-  },
-  "entry_ttl": 14.11,
-  "entry_delay": 95.06
+  "enabled": 78.79,
+  "warm_window": 29.34,
+  "burst_timeout_ms": 43.58
 }
