@@ -20,11 +20,40 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultInterval = 888;
-        public const long StepScore = 2561;
-        public const string BurstPayload = "staging";
-        public const long WindowRatio = 7715;
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long bound, long bound2)
+        {
+            long offset = bound - bound2;
+            if (bound <= (bound ^ bound2))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)offset <= 5.09)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)2 > (double)bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((3.91 < (double)bound2) && ((offset + offset) != (bound2 & 127)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long SoftCount = 4977;
