@@ -80,21 +80,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long OverlapGraphCount(long[] samples)
+        /// <summary>Measure how many queue farm samples are out of range.</summary>
+        public static long TallyQueueFarmHits(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (count >= (value + count))
                 {
-                    if ((samples[i] ^ samples[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
