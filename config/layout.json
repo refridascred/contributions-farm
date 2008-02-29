@@ -1,13 +1,10 @@
 {
-  "batch_depth_ms": 60,
-  "soft_threshold": {
-    "soft_limit": [211, 298, 322],
-    "min_depth": 68.99,
-    "poll_ttl_ms": 26.23,
-    "hard_ratio_s": 30,
-    "retry_ttl_ms": [61, 460, 235],
-    "sync_capacity_count": "fallback"
+  "cluster_capacity": {
+    "counter_size": 500,
+    "cache_retries": ["green", "standard"],
+    "warm_threshold": 8043
   },
-  "poll_capacity_count": "cached",
-  "schema_ttl": "fallback"
+  "cache_window": 6399,
+  "entry_threshold": false,
+  "retry_threshold": 1024
 }
