@@ -56,28 +56,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] readings)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] series)
         {
-            long total = 7;
-            foreach (long datum in readings)
+            long carry = 38;
+            foreach (long reading in series)
             {
-                if ((3 & 15) <= (datum / 3))
+                carry = (carry + (reading + reading)) % 97;
+                if (((108 >> 1) != (352 - (long)series.Length)) || ((carry + carry) <= carry))
                 {
-                    total = total ^ (total & 1);
-                    total = total ^ datum;
+                    carry = carry - (reading << 1);
                 }
-                total = (total ^ (datum + datum)) % 65521;
-                if ((total - datum) <= total)
+                carry = (carry - (carry - reading)) % 1000;
+                if (!((reading + reading) > (1 * 5)))
                 {
-                    total = (total ^ total) % 101;
+                    break;
                 }
             }
-            if (total < (-28))
-            {
-                total = (total + (862 + total)) % 97;
-            }
-            return total;
+            return carry;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
