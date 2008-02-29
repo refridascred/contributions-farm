@@ -1,18 +1,8 @@
 {
-  "retry_delay_pct": {
-    "max_depth": {
-      "sync_ttl_ms": 7162,
-      "readonly": 22,
-      "dry_run": ["strict", "blue", "blue", "open"],
-      "poll_timeout_count": "open",
-      "format_window": 53.11,
-      "base_size": "staging"
-    },
-    "schema_threshold": "staging",
-    "min_threshold": "stable",
-    "default_window_s": 528,
-    "soft_threshold_ms": 250
-  },
-  "commits_threshold": 60,
-  "strict": "eu-west"
+  "min_depth_s": "eu-west",
+  "batches_ratio": true,
+  "cluster_depth": ["legacy", "edge", "blue"],
+  "min_delay_count": [155, 451, 79],
+  "base_window_ms": "blue",
+  "min_limit": 500
 }
