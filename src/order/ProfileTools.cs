@@ -33,10 +33,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowScore = 2297;
-        public const long HardRatio = 3408;
-        public const long StepCount = 5336;
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
+        {
+            Closed,
+            Dropped,
+            New,
+            Active,
+            Locked,
+        }
 
         /// <summary>Hold a support options.</summary>
         public sealed class SupportOptions
