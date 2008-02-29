@@ -1,7 +1,8 @@
 {
-  "channel_depth": 16,
-  "window_depth": ["cached", "edge"],
-  "hard_interval_ms": 32,
-  "verbose": "latest",
-  "dry_run": 98
+  "dry_run": "stable",
+  "compress": 97,
+  "soft_size_pct": 72.97,
+  "max_ratio_count": 30,
+  "poll_ttl": true,
+  "warm_delay": "primary"
 }
