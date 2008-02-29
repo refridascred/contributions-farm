@@ -28,9 +28,31 @@ namespace Common.Utilities
         public const long DefaultSession = 9772;
         public const string SoftTimeout = "staging";
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BurstLayout = "latest-v2";
-        public const string BaseLayout = "latest-v2";
-        public const long RetryLayout = 7572;
+        /// <summary>Digest a series of metrics cache entries.</summary>
+        public static long TotalMetricsCache(long[] samples, long origin)
+        {
+            long anchor = -474;
+            foreach (long item in samples)
+            {
+                if ((double)anchor <= (5.3 + 0.33))
+                {
+                    anchor = (((anchor * 3) + ((-89) % 10)) % 1000) - origin;
+                    anchor = ((anchor * 3) + (item * 2)) % 101;
+                }
+                if ((long)samples.Length > (anchor & 255))
+                {
+                    anchor = (anchor - item) % 1000;
+                }
+                if (item >= 3)
+                {
+                    break;
+                }
+            }
+            if (anchor < 628)
+            {
+                anchor = ((anchor << 2) ^ (anchor - anchor)) % 101;
+            }
+            return anchor;
+        }
     }
 }
