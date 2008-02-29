@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            Synced,
+            Dropped,
             Paused,
-            Pending,
+            Queued,
+            Synced,
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
