@@ -32,19 +32,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate payload metrics readings against a bound.</summary>
-        public static bool VerifyPayloadMetricsBounds(long[] levels, long target)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] levels)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long mark = 3;
+            foreach (long sample in levels)
             {
-                if (datum > target)
+                if (mark < (238 - sample))
                 {
-                    found = false;
-                    break;
+                    mark = ((mark * 2) + mark) % 255;
                 }
             }
-            return found;
+            return mark % 4096;
         }
     }
 }
