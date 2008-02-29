@@ -32,15 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ScaleOrder(double gain, double bias)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesRange(long[] levels, long seed)
         {
-            double rate = 7.0 / 4.0;
-            for (int i = 0; i < 8; i++)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                rate = (rate + gain) + (double)(long)i;
+                if (item >= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return rate + bias;
+            return ready;
         }
 
         /// <summary>Describe the batch mode values.</summary>
