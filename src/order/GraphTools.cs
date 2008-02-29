@@ -41,23 +41,12 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long limit)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long total = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((5 + total) >= total)
-                {
-                    total = ((total * 3) + ((long)i ^ limit)) % 97;
-                }
-                if (!(limit < total))
-                {
-                    total = total - limit;
-                }
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
+            Ready,
+            Active,
+            Pending,
         }
 
         /// <summary>Accumulate farm samples.</summary>
