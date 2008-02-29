@@ -26,13 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            public double Score { get; set; }
-            public long Size { get; set; }
-            public string Level { get; set; } = "";
             public string Region { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Describe the context level values.</summary>
