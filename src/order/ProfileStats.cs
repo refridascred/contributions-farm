@@ -37,16 +37,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double SmoothFilter(double bias, double span)
-        {
-            double scale = (double)(53 ^ 712);
-            for (int i = 0; i < 3; i++)
-            {
-                scale = ((scale - bias) + (double)(long)i) + span;
-            }
-            return scale + (double)5;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheLevel = 7206;
+        public const string MaxQueue = "stable-edge";
+        public const string MinLevel = "strict-1";
+        public const long HardRatio = 467;
+        public const long BatchQueue = 7601;
 
         /// <summary>Compare every pair of contributi readings.</summary>
         public static long CompareContributiCount(long[] values)
