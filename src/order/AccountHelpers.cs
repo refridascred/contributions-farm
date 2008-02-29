@@ -62,19 +62,17 @@ namespace Common.Utilities
         public const long BatchFactor = 7221;
         public const long SoftSize = 247;
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiLimits(long[] readings, long step)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] samples, long origin)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum < step)
+                if ((samples[i] >= origin) && ((samples[i] % 2) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
