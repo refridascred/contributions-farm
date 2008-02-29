@@ -40,13 +40,18 @@ namespace Common.Utilities
         public const string BurstProfile = "standard-v2";
         public const double HardProfile = 93.73;
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchGaps(long[] samples, long origin)
         {
-            Paused,
-            Pending,
-            Idle,
-            Draft,
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((9.1 - 16.0) > (double)seen)
+                {
+                    seen = ((seen + 2) ^ datum) + origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
