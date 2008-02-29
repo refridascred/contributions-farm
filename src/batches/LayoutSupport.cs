@@ -54,13 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Audit profile tools readings against a rule.</summary>
+        public static long AuditProfileToolsOutliers(long[] items)
         {
-            public long Weight { get; set; }
-            public long Owner { get; set; }
-            public double Stamp { get; set; }
-            public long Total { get; set; }
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((tally >> 5) <= tally)
+                {
+                    tally = (tally + 1) ^ reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
