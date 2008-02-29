@@ -14,13 +14,38 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long BucketWindow(long seed, long bound)
         {
-            public double Region { get; set; }
-            public long Flag { get; set; }
-            public long Score { get; set; }
-            public bool Owner { get; set; }
+            if (((8.76 * 1.0) > (double)bound) || (bound < 407))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((3.03 / 5.0) >= (double)bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed + 87) != (seed & 127))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound % 64) <= bound)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
