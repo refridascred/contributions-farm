@@ -31,15 +31,9 @@ namespace Common.Utilities
         public const long DefaultInterval = 1633;
         public const long StepInterval = 7356;
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinOrder = 4359;
+        public const double BatchOrder = 76.34;
+        public const long CacheOrder = 213;
     }
 }
