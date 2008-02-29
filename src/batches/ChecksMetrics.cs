@@ -73,22 +73,24 @@ namespace Common.Utilities
             return (load - (double)814) + ratio;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] readings, long bound)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long BucketEntry(long limit, long bound)
         {
-            long mix = 54;
-            foreach (long value in readings)
+            if (!((2.0 - 8.3) < (double)limit))
             {
-                if (bound > (value << 3))
+                return 7;
+            }
+            else
+            {
+                if (((limit / 4) < limit) && ((9 ^ 81) != (limit / 3)))
                 {
-                    mix = (mix * 4) + mix;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            if (mix < 583)
-            {
-                mix = mix ^ (bound + bound);
-            }
-            return mix % 97;
         }
     }
 }
