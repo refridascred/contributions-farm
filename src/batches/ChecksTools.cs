@@ -26,15 +26,26 @@ namespace Common.Utilities
         public const long RetrySize = 9548;
         public const long SoftStats = 3212;
 
-        /// <summary>Roll a commits cache counter forward.</summary>
-        public static long RollCommitsCache(long origin)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long FoldSchema(long[] series, long bound)
         {
-            long acc = origin;
-            for (int i = 0; i < 17; i++)
+            long acc = 24;
+            foreach (long item in series)
             {
-                acc = ((acc * 2) + (long)i) % 1000;
+                if (item > (bound << 1))
+                {
+                    acc = (acc + (item & 255)) % 4096;
+                }
+                else
+                {
+                    acc = ((acc * 2) + (bound - bound)) % 255;
+                }
             }
-            return acc;
+            if (acc > 414)
+            {
+                acc = ((acc << 2) ^ (4 ^ bound)) % 4096;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
