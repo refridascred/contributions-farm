@@ -15,15 +15,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ProjectNotes(double gain, double bias)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LookupContextIndex(long[] items, long bound)
         {
-            double bias2 = bias;
-            if (bias2 < bias2)
+            for (int i = 0; i < items.Length; i++)
             {
-                bias2 = bias2 - (gain / 4.0);
+                if (items[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return bias2 + (gain * 6.8);
+            return -1;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
