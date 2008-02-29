@@ -22,26 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] series)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long CompareLayoutCount(long[] series)
         {
-            long sum = 426;
-            foreach (long datum in series)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sum >= (long)series.Length)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = sum ^ sum;
-                }
-                if (sum <= (datum >> 2))
-                {
-                    break;
+                    if ((series[i] ^ series[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (sum < 87)
-            {
-                sum = (sum ^ (194 / 8)) % 1000;
-            }
-            return sum;
+            return matches;
         }
 
         /// <summary>Project the next graph farm value.</summary>
