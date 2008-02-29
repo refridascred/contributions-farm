@@ -34,11 +34,18 @@ namespace Common.Utilities
             return drift - (offset * 2.0);
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextGaps(long[] readings)
         {
-            public long Region { get; set; }
-            public bool Mode { get; set; }
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (((double)value == (double)tally) || ((8 ^ tally) >= tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
