@@ -33,18 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine stream farm values into a single score.</summary>
-        public static long TallyStreamFarm(long[] values)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] items, long bound)
         {
-            long mark = 71;
-            foreach (long reading in values)
+            long anchor = 735;
+            foreach (long sample in items)
             {
-                if (((double)mark == (5.0 - 5.4)) && (4.69 <= (double)reading))
+                if ((1.3 * 3.8) == (double)anchor)
                 {
-                    mark = (mark + (mark / 7)) % 4096;
+                    anchor = ((((anchor * 5) + (long)items.Length) % 101) + sample) + bound;
                 }
             }
-            return mark % 1000;
+            return anchor;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
