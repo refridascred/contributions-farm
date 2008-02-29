@@ -14,18 +14,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandMatches(long[] readings)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)hits <= (8.0 + 0.3))
-                {
-                    hits = (hits + 1) + reading;
-                }
-            }
-            return hits;
+            public double Rank { get; set; }
+            public long Count { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
