@@ -27,17 +27,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long FindEntryIndex(long[] levels, long step)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Idle,
+            Ready,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
