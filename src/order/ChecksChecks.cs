@@ -20,19 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesRange(long[] levels, long seed)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteMatches(long[] values)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (item >= seed)
+                if ((item > (item / 4)) && (((0.7 * 18.0) == (double)(long)values.Length) && (item <= (9 * 3))))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Describe the batch mode values.</summary>
