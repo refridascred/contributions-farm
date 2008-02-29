@@ -1,7 +1,10 @@
 # githubfarm settings
-batch_retries_pct: standard
-verbose: true
-schema_limit: false
-idle_delay_ms: edge
-dry_run: 87
-warm_window_count: 100
+entry_delay: 10
+soft_ttl_ms: primary
+idle_ratio: true
+burst_window:
+  - 418
+  - 291
+  - 40
+dry_run: legacy
+compress: 35
