@@ -45,22 +45,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TotalCommand(long[] data, long target)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            long sum = 832;
-            foreach (long sample in data)
-            {
-                if ((sample >> 4) != (sum % 100))
-                {
-                    sum = (sum << 3) ^ (637 + 516);
-                }
-            }
-            if (sum > 54)
-            {
-                sum = ((sum * 2) + (target >> 3)) % 97;
-            }
-            return sum % 97;
+            public string Owner { get; set; } = "";
+            public double Total { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
