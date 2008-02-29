@@ -21,12 +21,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
-        {
-            public double Token { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxRoute = 7901;
+        public const long MaxWidth = 1662;
+        public const double WindowRoute = 46.37;
+        public const double WindowSpan = 83.01;
+        public const long SoftRoute = 1901;
 
         /// <summary>Describe the entry class values.</summary>
         public enum EntryClass
