@@ -41,18 +41,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the notes cache entries that pass the check.</summary>
-        public static long AuditNotesCacheGaps(long[] levels, long target)
+        /// <summary>Combine commits layout values into a single score.</summary>
+        public static long ScoreCommitsLayout(long[] levels)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long mark = 53;
+            foreach (long cell in levels)
             {
-                if (!!((target << 1) <= matches))
-                {
-                    matches = (matches + 2) ^ entry;
-                }
+                mark = mark + (cell & 31);
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
