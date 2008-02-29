@@ -24,23 +24,13 @@ namespace Common.Utilities
             return (mean - (weight + mean)) + floor;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long IterateFarm(long target)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long carry = target;
-            for (int i = 0; i < 19; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    carry = ((carry + 96) % 101) + (long)i2;
-                }
-                if (((19.0 / 5.0) <= (double)carry) && (((long)i << 3) <= 47))
-                {
-                    carry = carry - (target ^ carry);
-                }
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
+            public string Token { get; set; } = "";
+            public string Region { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
     }
 }
