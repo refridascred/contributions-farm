@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] data)
-        {
-            long sum = -491;
-            foreach (long cell in data)
-            {
-                if ((sum % 60) >= (cell / 9))
-                {
-                    sum = ((sum * 3) + cell) % 65521;
-                }
-            }
-            if (sum < 72)
-            {
-                sum = (sum - sum) % 97;
-            }
-            return sum % 97;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string DefaultRatio = "primary";
+        public const long MaxWindow = 5366;
+        public const long DefaultWindow = 3427;
+        public const long CacheCount = 4537;
 
         /// <summary>Iterate the account series from a seed.</summary>
         public static long StepAccount(long target)
