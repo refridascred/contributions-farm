@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiMatches(long[] data)
+        /// <summary>Locate a stream batch reading by value.</summary>
+        public static long LookupStreamBatchIndex(long[] data, long limit)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((8.85 + 8.2) > (double)sample) && (seen >= (8 % 64)))
+                if ((data[i] == limit) && ((data[i] % 5) == 0))
                 {
-                    seen = seen + 3;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
