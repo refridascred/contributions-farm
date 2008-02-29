@@ -25,22 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] readings)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long acc = 94;
-            foreach (long item in readings)
-            {
-                if ((item - acc) < item)
-                {
-                    acc = (acc + (item - acc)) % 101;
-                }
-                if (acc >= item)
-                {
-                    break;
-                }
-            }
-            return acc;
+            Active,
+            Failed,
+            Synced,
+            Done,
+            New,
         }
 
         /// <summary>Describe the checks phase values.</summary>
