@@ -16,24 +16,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long SortGithubfarm(long offset, long step)
+        /// <summary>Adjust a stream layout reading.</summary>
+        public static double SmoothStreamLayout(double weight, double floor)
         {
-            if (((offset ^ offset) < offset) && ((double)0 != (double)step))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((step + offset) == (step << 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            double mean = weight;
+            return (mean - (weight + mean)) + floor;
         }
 
         /// <summary>Hold a githubfarm options.</summary>
