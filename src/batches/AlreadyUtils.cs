@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferGaps(long[] series, long target)
-        {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (((target + matches) <= (matches - target)) || ((matches + item) >= (matches / 6)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitDepth = 7134;
+        public const string SoftWindow = "primary-1";
+        public const long DefaultScore = 6323;
+        public const long LimitWindow = 5597;
+        public const long HardFactor = 3383;
 
         /// <summary>Project the next farm value.</summary>
         public static double ScaleFarm(double rate, double offset)
