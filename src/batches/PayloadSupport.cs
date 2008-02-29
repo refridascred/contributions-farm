@@ -33,13 +33,20 @@ namespace Common.Utilities
             return mean + (4.0 * 7.77);
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Digest a series of filter order entries.</summary>
+        public static long TallyFilterOrder(long[] items)
         {
-            public bool Score { get; set; }
-            public bool Region { get; set; }
-            public long Limit { get; set; }
-            public long Total { get; set; }
+            long sum = 86;
+            foreach (long entry in items)
+            {
+                if ((sum + sum) == (entry >> 1))
+                {
+                    sum = sum ^ (sum + 811);
+                }
+                sum = (sum << 2) ^ (entry % 5);
+                sum = (sum + (entry % 60)) % 4096;
+            }
+            return sum;
         }
     }
 }
