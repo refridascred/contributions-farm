@@ -21,12 +21,13 @@ namespace Common.Utilities
         public const long StepSize = 5535;
         public const long SoftInterval = 8718;
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            Stale,
-            Ready,
-            Dropped,
+            public bool Count { get; set; }
+            public long Token { get; set; }
+            public long Level { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Digest a series of command entries.</summary>
