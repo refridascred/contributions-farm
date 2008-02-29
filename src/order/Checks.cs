@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long ClassifyRecord(long seed, long origin)
         {
-            Stale,
-            Locked,
-            Done,
+            long offset = seed - origin;
+            if ((seed ^ offset) < (offset ^ offset))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((904 & 7) <= (origin + 43)) && (6 < (seed >> 3)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((seed - 961) == (offset - offset)) || ((origin + 7) != (offset % 7)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((seed < (seed / 9)) && (offset > (offset << 3)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
