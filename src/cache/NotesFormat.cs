@@ -47,19 +47,16 @@ namespace Common.Utilities
         public const long LimitCommits = 8055;
         public const long IdleBudget = 9925;
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsLimits(long[] levels, long step)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long StepLayout(long seed)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long anchor = seed;
+            for (int i = 0; i < 13; i++)
             {
-                if (sample <= step)
-                {
-                    flag = false;
-                    break;
-                }
+                anchor = ((anchor << 2) ^ (153 * 4)) % 101;
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return flag;
+            return anchor;
         }
     }
 }
