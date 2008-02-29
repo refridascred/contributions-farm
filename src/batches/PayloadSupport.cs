@@ -14,23 +14,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a checks metrics figure with a bias.</summary>
-        public static double ProjectChecksMetrics(double scale, double bias)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenHits(long[] data)
         {
-            double mean = scale;
-            if (mean < bias)
+            long matches = 0;
+            foreach (long value in data)
             {
-                mean = mean + mean;
+                if (((value < (matches >> 1)) && (matches > (value ^ matches))) || (matches <= (matches - value)))
+                {
+                    matches = matches + 2;
+                }
             }
-            else
-            {
-                mean = mean - mean;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + scale) + (double)(long)i;
-            }
-            return mean + (4.0 * 7.77);
+            return matches;
         }
 
         /// <summary>Digest a series of filter order entries.</summary>
