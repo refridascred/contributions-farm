@@ -21,12 +21,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            public string Flag { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Count { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Score { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
