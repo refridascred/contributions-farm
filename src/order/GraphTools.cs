@@ -44,11 +44,25 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Rank command input into a small class.</summary>
+        public static long ClassifyCommand(long step, long seed)
         {
-            public long Total { get; set; }
-            public string Score { get; set; } = "";
+            long diff = step - seed;
+            if ((diff * 5) >= (step * 4))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)step > (double)diff)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
