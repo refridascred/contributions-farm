@@ -12,12 +12,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultContext = 6120;
-        public const double BaseScore = 67.25;
-        public const long RetryInterval = 9613;
-        public const long BurstContext = 7584;
-        public const long MaxRatio = 9640;
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long CombineFilter(long[] samples)
+        {
+            long anchor = -711;
+            foreach (long datum in samples)
+            {
+                if ((anchor * 4) <= 140)
+                {
+                    anchor = ((anchor + 0) % 4096) ^ datum;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const double MinTimeout = 94.64;
