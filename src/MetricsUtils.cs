@@ -19,11 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string SoftGithubfarm = "cached";
-        public const double BurstBudget = 30.38;
-        public const string WindowGithubfarm = "stable-v2";
-        public const long IdleGithubfarm = 4929;
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
+        {
+            Idle,
+            Draft,
+            New,
+            Retry,
+        }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
         public static long MatchSchemaCount(long[] levels)
