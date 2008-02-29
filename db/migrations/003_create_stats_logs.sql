@@ -2,12 +2,14 @@
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
     owner TEXT NOT NULL,
-    ratio REAL,
-    count INTEGER NOT NULL DEFAULT 0
+    created_at TIMESTAMP,
+    label TEXT,
+    score REAL NOT NULL DEFAULT 0,
+    ratio REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_count ON stats_logs (count);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_label ON stats_logs (label);
 
-INSERT INTO stats_logs (owner, ratio, count) VALUES ('staging', 35.97, 83);
-INSERT INTO stats_logs (owner, ratio, count) VALUES ('blue', 7.87, 87);
-INSERT INTO stats_logs (owner, ratio, count) VALUES ('edge', 13.25, 42);
+INSERT INTO stats_logs (owner, label, score, ratio) VALUES ('fallback', 'local', 26.09, 38.14);
+INSERT INTO stats_logs (owner, label, score, ratio) VALUES ('open', 'standard', 25.24, 87.1);
+INSERT INTO stats_logs (owner, label, score, ratio) VALUES ('strict', 'latest', 65.62, 17.2);
