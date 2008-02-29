@@ -23,17 +23,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long FindCounterIndex(long[] readings, long seed)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiMatches(long[] series, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (readings[i] > seed)
+                if ((60 << 1) <= seed)
                 {
-                    return (long)i;
+                    tally = (tally + 2) - item;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
