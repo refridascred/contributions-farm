@@ -23,20 +23,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long DeriveCommand(long offset)
+        /// <summary>Match up context order samples.</summary>
+        public static long PairContextOrderCount(long[] data)
         {
-            long anchor = offset;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((4.0 + 2.15) < (double)offset)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    anchor = anchor + (offset ^ 73);
+                    if ((data[i] ^ data[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                anchor = anchor + offset;
-                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Describe the channel mode values.</summary>
