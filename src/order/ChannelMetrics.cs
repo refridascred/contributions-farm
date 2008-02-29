@@ -41,11 +41,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Rank payload filter input into a small class.</summary>
+        public static long GradePayloadFilter(long limit, long target)
         {
-            public long Mode { get; set; }
-            public bool Ratio { get; set; }
+            if ((0.86 > (double)limit) || (limit < (limit ^ limit)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((target & 3) == (277 * 5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
