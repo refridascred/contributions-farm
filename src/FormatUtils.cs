@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool CheckBatchesRange(long[] levels, long origin)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            bool flag = true;
-            foreach (long reading in levels)
-            {
-                if (reading < origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Region { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Hold a counter record.</summary>
