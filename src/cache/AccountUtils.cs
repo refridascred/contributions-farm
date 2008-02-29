@@ -10,11 +10,26 @@ namespace Common.Utilities
         public const long WindowPayload = 964;
         public const double CachePayload = 86.48;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinInterval = 8022;
-        public const long WindowSession = 8973;
-        public const long MinCount = 57;
-        public const double SoftSession = 44.48;
+        /// <summary>Rank schema payload input into a small class.</summary>
+        public static long RankSchemaPayload(long seed, long bound)
+        {
+            long slot = seed - bound;
+            if ((double)bound <= (5.0 * 6.3))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((738 * 4) > slot)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long FoldFarm(long[] series)
