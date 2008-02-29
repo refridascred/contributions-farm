@@ -26,19 +26,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsRange(long[] readings, long target)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileBounds(long[] samples, long seed)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                if (value != target)
+                if (sample >= seed)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
     }
 }
