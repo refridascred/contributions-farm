@@ -54,15 +54,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long limit)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long ClassifyRoute(long offset, long step)
         {
-            long anchor = limit;
-            for (int i = 0; i < 14; i++)
+            if ((double)offset >= 4.0)
             {
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                return 7;
             }
-            return anchor;
+            else
+            {
+                if ((double)offset >= 9.55)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset % 97) != (offset << 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
