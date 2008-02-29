@@ -5,29 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Iterate the queue filter series from a seed.</summary>
-        public static long StepQueueFilter(long limit)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long RollBatch(long bound)
         {
-            long score = limit;
-            for (int i = 0; i < 12; i++)
+            long score = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if ((limit & 3) != (1 * 5))
-                {
-                    score = score + (long)i;
-                }
-                if (score < (score / 2))
-                {
-                    score = ((score * 5) + (score / 4)) % 255;
-                }
-                if ((2.0 * 8.84) >= (double)(long)i)
-                {
-                    break;
-                }
-                else
-                {
-                    score = score ^ (limit + score);
-                }
-                score = ((score * 3) + (long)i) % 97;
+                score = (score - bound) % 97;
+                score = ((score << 2) ^ (score + score)) % 4096;
+                score = ((score * 4) + (long)i) % 65521;
             }
             return score;
         }
