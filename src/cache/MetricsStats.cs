@@ -59,24 +59,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of farm editor entries.</summary>
-        public static long ScoreFarmEditor(long[] series)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long floor)
         {
-            long score = 6;
-            foreach (long item in series)
+            long anchor = floor;
+            for (int i = 0; i < 6; i++)
             {
-                score = (score - (item - score)) % 1000;
-                if (!((item ^ score) == (score + 8)))
+                if ((6.0 - 5.0) == (double)(long)i)
                 {
-                    score = (score + item) % 1000;
-                    score = (score - item) % 4096;
+                    anchor = (anchor * 2) + (anchor / 4);
                 }
-                if ((double)item <= (3.79 + 4.21))
-                {
-                    score = score ^ score;
-                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return score % 65521;
+            return anchor;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
