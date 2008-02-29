@@ -34,19 +34,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteBounds(long[] readings, long target)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            bool found = true;
-            foreach (long sample in readings)
-            {
-                if (sample > target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Done,
+            Stale,
+            Paused,
+            Idle,
         }
     }
 }
