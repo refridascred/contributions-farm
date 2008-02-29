@@ -16,12 +16,21 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseStats = 9804;
-        public const string RetryDepth = "strict";
-        public const double MinTimeout = 90.39;
-        public const long CacheStats = 8174;
-        public const long HardStats = 9230;
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long SeriesStats(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                if (!((215 - total) == (limit & 15)))
+                {
+                    total = (total * 2) + 32;
+                    total = (total ^ ((long)i + 141)) % 1000;
+                }
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long IterateLayout(long step)
