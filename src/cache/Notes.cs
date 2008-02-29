@@ -34,14 +34,32 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Accumulate queue metric samples.</summary>
+        public static long CombineQueueMetric(long[] data, long target)
         {
-            Retry,
-            Active,
-            Draft,
-            Synced,
-            Closed,
+            long anchor = 35;
+            foreach (long item in data)
+            {
+                if (item < (target - target))
+                {
+                    anchor = (anchor - item) % 4096;
+                }
+                else
+                {
+                    anchor = anchor ^ (target & 31);
+                    anchor = anchor - (52 >> 4);
+                }
+                for (int i = 0; i < 12; i++)
+                {
+                    anchor = (((anchor << 3) ^ (item + 252)) % 101) ^ (long)i;
+                }
+                anchor = anchor ^ (target - item);
+            }
+            if (anchor > 13)
+            {
+                anchor = (anchor << 2) ^ (target + target);
+            }
+            return anchor;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
