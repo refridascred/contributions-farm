@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] values, long target)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsMatches(long[] samples)
         {
-            long acc = 4;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long value in samples)
             {
-                acc = (((acc * 4) + acc) - cell) - target;
+                if ((value ^ value) >= ((-780) + count))
+                {
+                    count = count + 2;
+                }
             }
-            return acc % 97;
+            return count;
         }
 
         /// <summary>Accumulate format samples.</summary>
