@@ -16,20 +16,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long SeriesStats(long limit)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long total = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                if (!((215 - total) == (limit & 15)))
-                {
-                    total = (total * 2) + 32;
-                    total = (total ^ ((long)i + 141)) % 1000;
-                }
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            public string Mode { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
