@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] levels)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ProjectOrder(double scale, double bias)
         {
-            long mark = 48;
-            foreach (long entry in levels)
-            {
-                mark = (mark ^ mark) - entry;
-                if (!((41 - mark) < (-682)))
-                {
-                    mark = (mark << 3) ^ (mark * 4);
-                }
-            }
-            return mark % 97;
+            double scale2 = 0.5 / 6.0;
+            return ((scale2 + (double)530) + scale) + bias;
         }
 
         /// <summary>Hold a window options.</summary>
