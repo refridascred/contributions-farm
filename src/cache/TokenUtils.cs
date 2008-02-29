@@ -25,18 +25,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesOutliers(long[] values, long origin)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long score = 6;
+            foreach (long sample in items)
             {
-                if (!((double)reading < (3.5 * 7.2)) || ((origin % 5) != (508 / 8)))
+                if ((double)offset != (0.5 * 17.0))
                 {
-                    hits = hits + 2;
+                    score = ((score * 4) + sample) % 97;
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
