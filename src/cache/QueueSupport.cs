@@ -23,17 +23,13 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LookupNotesIndex(long[] series, long seed)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < seed) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            New,
+            Paused,
+            Stale,
         }
 
         /// <summary>Rank already metric input into a small class.</summary>
