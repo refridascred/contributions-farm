@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] series)
+        /// <summary>Count record profile pairs that satisfy a relation.</summary>
+        public static long PairRecordProfileCount(long[] data)
         {
-            long carry = 3;
-            foreach (long item in series)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = (carry * 3) + (419 * 3);
-                carry = carry ^ (item / 9);
-                if ((carry + carry) >= (item << 1))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    break;
+                    if ((data[i] + data[j]) == 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
