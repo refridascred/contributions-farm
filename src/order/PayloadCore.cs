@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] items)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long carry = 2;
-            foreach (long sample in items)
-            {
-                if ((carry - sample) >= sample)
-                {
-                    carry = ((carry * 4) + (2 + 7)) % 65521;
-                }
-            }
-            return carry;
+            Stale,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Hold a counter options.</summary>
