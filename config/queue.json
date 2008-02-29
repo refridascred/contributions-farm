@@ -1,11 +1,6 @@
 {
-  "checks_size": {
-    "stats_threshold": false,
-    "hard_delay_s": 16,
-    "idle_limit_s": "green",
-    "hard_window": 95.57,
-    "batches_limit": 3.82
-  },
-  "base_ratio_count": 41.87,
-  "burst_threshold": 75
+  "min_ttl_count": 79.78,
+  "base_size_pct": 60,
+  "queue_ttl": "standard",
+  "soft_window_s": 66.85
 }
