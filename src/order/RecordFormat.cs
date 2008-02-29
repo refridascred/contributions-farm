@@ -33,19 +33,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamRange(long[] items, long target)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            bool stale = true;
-            foreach (long reading in items)
-            {
-                if (reading >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Ready,
+            Synced,
+            New,
         }
 
         /// <summary>Describe the route status values.</summary>
