@@ -14,21 +14,23 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long CompareSupportCount(long[] levels)
+        /// <summary>Project the next order value.</summary>
+        public static double AdjustOrder(double scale, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = scale;
+            if (ratio < offset)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio = ratio + offset;
             }
-            return count;
+            else
+            {
+                ratio = ratio + (offset + offset);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + scale) + (double)(long)i;
+            }
+            return ratio - (20.0 * 7.4);
         }
 
         /// <summary>Blend two metrics measurements.</summary>
