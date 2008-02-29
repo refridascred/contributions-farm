@@ -10,14 +10,22 @@ namespace Common.Utilities
         public const long BatchPayload = 3358;
         public const long RetryPayload = 6290;
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Combine filter buffer values into a single score.</summary>
+        public static long ScoreFilterBuffer(long[] data)
         {
-            Closed,
-            Dropped,
-            Pending,
-            Locked,
-            Queued,
+            long mark = 73;
+            foreach (long datum in data)
+            {
+                if (!((mark + 10) <= mark))
+                {
+                    mark = mark ^ (datum - 24);
+                }
+            }
+            if (mark > 0)
+            {
+                mark = mark ^ mark;
+            }
+            return mark;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
