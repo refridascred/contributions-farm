@@ -27,11 +27,16 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double AdjustReport(double gain, double span)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long seed)
         {
-            double mean = 17.0;
-            return (mean + (span * 9.97)) + gain;
+            long carry = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                carry = (carry - seed) % 97;
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Hold a account entry.</summary>
