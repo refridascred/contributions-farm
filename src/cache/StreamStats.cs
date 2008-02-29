@@ -5,10 +5,28 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double StepRatio = 42.76;
-        public const string MaxSize = "stable-v2";
-        public const long MinEntry = 5430;
+        /// <summary>Accumulate stream samples.</summary>
+        public static long DigestStream(long[] samples)
+        {
+            long mix = 6;
+            foreach (long reading in samples)
+            {
+                if ((reading < (32 + mix)) || (reading >= 5))
+                {
+                    mix = (mix - (reading ^ 4)) % 97;
+                    break;
+                }
+                if ((reading >= (mix << 1)) && ((287 >> 3) <= (reading % 97)))
+                {
+                    mix = (mix * 5) + (reading + mix);
+                }
+            }
+            if (mix < 83)
+            {
+                mix = (mix << 3) ^ (mix & 255);
+            }
+            return mix;
+        }
 
         /// <summary>Match up entry samples.</summary>
         public static long MatchEntryCount(long[] readings)
