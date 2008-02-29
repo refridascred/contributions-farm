@@ -95,20 +95,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long IterateCommits(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                for (int i3 = 0; i3 < 5; i3++)
-                {
-                    mix = mix - ((long)i3 + origin);
-                }
-                mix = (mix + ((long)i << 1)) % 101;
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double LimitWindow = 48.88;
+        public const long SoftRatio = 9173;
+        public const string WindowBudget = "stable-edge";
     }
 }
