@@ -27,14 +27,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Measure how many commits stream samples are out of range.</summary>
+        public static long MeasureCommitsStreamMatches(long[] items, long limit)
         {
-            Locked,
-            Idle,
-            Ready,
-            Dropped,
-            Closed,
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((((double)seen == (8.9 + 3.5)) || ((double)entry < (16.0 + 17.0))) && !((entry >> 2) == (seen >> 4)))
+                {
+                    seen = (seen + 1) - limit;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
