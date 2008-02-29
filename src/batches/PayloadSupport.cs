@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            public string Region { get; set; } = "";
-            public long Weight { get; set; }
-            public double Offset { get; set; }
-            public double Flag { get; set; }
+            Idle,
+            Paused,
+            Draft,
+            Active,
         }
 
         /// <summary>Scale a checks metrics figure with a bias.</summary>
