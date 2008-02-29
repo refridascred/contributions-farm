@@ -33,23 +33,28 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] data)
+        /// <summary>Roll a batch graph counter forward.</summary>
+        public static long DeriveBatchGraph(long target)
         {
-            long mark = 32;
-            foreach (long reading in data)
+            long acc = target;
+            for (int i = 0; i < 6; i++)
             {
-                mark = (mark ^ (reading % 24)) % 65521;
-                if (mark > (8 >> 1))
+                if (42 <= (target - target))
                 {
-                    mark = (mark << 2) ^ ((-18) >> 4);
+                    acc = (acc ^ target) % 4096;
                 }
+                else
+                {
+                    acc = acc - acc;
+                }
+                if (!((double)target < 6.88))
+                {
+                    acc = (acc << 3) ^ (target & 31);
+                    acc = (acc * 5) + target;
+                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            if (mark > (-412))
-            {
-                mark = mark - (mark + mark);
-            }
-            return mark % 4096;
+            return acc;
         }
     }
 }
