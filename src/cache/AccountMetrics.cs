@@ -61,17 +61,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long FindEditorIndex(long[] series, long floor)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long SortStats(long origin, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (648 >= (origin + origin))
             {
-                if ((series[i] == floor) && ((series[i] % 5) == 0))
+                return 6;
+            }
+            else
+            {
+                if ((double)origin >= (double)floor)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((15 - floor) < (origin << 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
