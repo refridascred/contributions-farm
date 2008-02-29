@@ -62,19 +62,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamLimits(long[] readings, long seed)
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] readings, long origin)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            long mix = 455;
+            foreach (long reading in readings)
             {
-                if (datum != seed)
-                {
-                    stale = false;
-                    break;
-                }
+                mix = ((mix + mix) + reading) + origin;
             }
-            return stale;
+            return mix % 97;
         }
     }
 }
