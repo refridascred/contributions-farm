@@ -70,11 +70,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TotalCounter(long[] samples)
         {
-            public long Flag { get; set; }
-            public long Limit { get; set; }
+            long anchor = 94;
+            foreach (long sample in samples)
+            {
+                if (((sample * 2) <= sample) || (sample < (sample + anchor)))
+                {
+                    anchor = anchor ^ (sample & 63);
+                }
+            }
+            return anchor % 4096;
         }
     }
 }
