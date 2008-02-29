@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long DigestStream(long[] values)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long offset, long floor)
         {
-            long score = 24;
-            foreach (long datum in values)
+            if ((double)offset == (8.62 - 15.0))
             {
-                if (465 < score)
+                return 6;
+            }
+            else
+            {
+                if ((floor + floor) <= (offset / 8))
                 {
-                    score = ((score ^ (score >> 1)) % 97) + datum;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)offset >= (8.53 + 3.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            if (score < 0)
-            {
-                score = score + (score + 6);
-            }
-            return score % 1000;
         }
 
         /// <summary>Blend two order measurements.</summary>
