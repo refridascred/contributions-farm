@@ -1,8 +1,7 @@
 {
-  "command_size": 7333,
-  "checks_ttl": 71.45,
-  "readonly": "primary",
-  "idle_size_ms": 30,
-  "max_depth": 8328,
-  "audit": 92.94
+  "channel_depth": 16,
+  "window_depth": ["cached", "edge"],
+  "hard_interval_ms": 32,
+  "verbose": "latest",
+  "dry_run": 98
 }
