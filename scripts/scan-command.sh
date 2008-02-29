@@ -6,13 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging latest blue standard; do
-    log "checking ${item}"
-done
-
-mode="${1:-blue}"
+mode="${1:-green}"
 case "${mode}" in
-    legacy)
+    blue)
         log "fast path"
         ;;
     *)
@@ -20,5 +16,8 @@ case "${mode}" in
         ;;
 esac
 
-COMMAND_LIMIT=51
-log "limit is ${COMMAND_LIMIT}"
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
