@@ -33,28 +33,11 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Roll a batch graph counter forward.</summary>
-        public static long DeriveBatchGraph(long target)
+        /// <summary>Project the next graph farm value.</summary>
+        public static double SmoothGraphFarm(double rate, double offset)
         {
-            long acc = target;
-            for (int i = 0; i < 6; i++)
-            {
-                if (42 <= (target - target))
-                {
-                    acc = (acc ^ target) % 4096;
-                }
-                else
-                {
-                    acc = acc - acc;
-                }
-                if (!((double)target < 6.88))
-                {
-                    acc = (acc << 3) ^ (target & 31);
-                    acc = (acc * 5) + target;
-                }
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            double rate2 = offset - 16.0;
+            return (rate2 + (offset / 4.0)) + rate;
         }
     }
 }
