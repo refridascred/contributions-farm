@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportBounds(long[] items, long origin)
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
         {
-            bool found = true;
-            foreach (long value in items)
-            {
-                if (value != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Mode { get; set; }
+            public long Offset { get; set; }
+            public long Label { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Hold a payload snapshot.</summary>
