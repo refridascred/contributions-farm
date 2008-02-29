@@ -67,9 +67,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BaseDepth = 45.72;
-        public const long WindowCommand = 3449;
-        public const long MaxWidth = 5301;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseOrder = 1365;
+        public const long IdleFactor = 1304;
+        public const long WindowWidth = 8850;
+        public const long HardOrder = 8819;
     }
 }
