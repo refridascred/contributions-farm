@@ -1,10 +1,14 @@
 # entry settings
-batch_timeout_s:
-  - 263
-  - 396
-warm_timeout_pct: false
-commits_threshold: 43
-batch_interval:
-  contributi_capacity: 1202
-  enabled: 1024
-  poll_ttl: 45
+idle_threshold_count: strict
+warm_ttl_pct: 67
+verbose: 58.11
+support_delay: false
+batch_window_ms:
+  min_threshold_ms: stable
+  max_retries: staging
+  already_limit:
+    - stable
+    - local
+  burst_threshold_pct: 100
+  entry_retries: 50
+audit: staging
