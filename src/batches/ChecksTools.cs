@@ -41,26 +41,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long FoldSchema(long[] series, long bound)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long FindToolsIndex(long[] series, long seed)
         {
-            long acc = 24;
-            foreach (long item in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item > (bound << 1))
+                if (series[i] >= seed)
                 {
-                    acc = (acc + (item & 255)) % 4096;
-                }
-                else
-                {
-                    acc = ((acc * 2) + (bound - bound)) % 255;
+                    return (long)i;
                 }
             }
-            if (acc > 414)
-            {
-                acc = ((acc << 2) ^ (4 ^ bound)) % 4096;
-            }
-            return acc % 4096;
+            return -1;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
