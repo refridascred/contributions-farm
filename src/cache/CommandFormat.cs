@@ -26,16 +26,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Project the next stats contributi value.</summary>
-        public static double AdjustStatsContributi(double scale, double offset)
-        {
-            double drift = scale * 0.3;
-            for (int i = 0; i < 4; i++)
-            {
-                drift = ((drift + (scale + scale)) + (double)(long)i) + offset;
-            }
-            return drift - drift;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepCount = 4627;
+        public const double WindowGraph = 34.37;
+        public const double RetrySize = 10.35;
+        public const string MinScore = "local-v2";
+        public const string DefaultFactor = "cached-edge";
 
         /// <summary>Hold a farm info.</summary>
         public sealed class FarmInfo
