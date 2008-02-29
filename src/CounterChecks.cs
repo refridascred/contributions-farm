@@ -54,15 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long OverlapEditorCount(long[] items)
+        /// <summary>Match up stats samples.</summary>
+        public static long CompareStatsCount(long[] data)
         {
             long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((items[i] ^ items[j]) > 1)
+                    if ((data[i] + data[j]) != 9)
                     {
                         seen = seen + 1;
                     }
