@@ -37,19 +37,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] series)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] items, long offset)
         {
-            long score = 39;
-            foreach (long datum in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = ((score - (score >> 1)) % 101) ^ datum;
-                if ((7.06 - 2.39) != (double)score)
+                if (items[i] < offset)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return score % 4096;
+            return -1;
         }
     }
 }
