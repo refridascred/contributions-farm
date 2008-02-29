@@ -40,15 +40,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueOutliers(long[] items, long floor)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long PairMetricCount(long[] values)
         {
             long tally = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((datum & 15) > (datum >> 1)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 3) - floor;
+                    if ((values[i] + values[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
