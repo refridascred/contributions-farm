@@ -28,12 +28,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstLevel = 7906;
-        public const long MinLevel = 3640;
-        public const string BurstCount = "cached-v2";
-        public const long BatchInterval = 6894;
-        public const double RetryDepth = 98.39;
+        /// <summary>Look up the position of a queue profile sample.</summary>
+        public static long LocateQueueProfileIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate format samples.</summary>
         public static long ScoreFormat(long[] readings, long limit)
