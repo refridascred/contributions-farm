@@ -19,11 +19,33 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long LimitScore = 1955;
-        public const long SoftDepth = 7481;
-        public const long SoftLevel = 4112;
-        public const double IdleSpan = 44.03;
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long RankCounter(long bound, long floor)
+        {
+            long delta = bound - floor;
+            if ((delta <= (floor ^ floor)) || ((double)bound >= (6.0 * 11.0)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)delta != (0.1 * 15.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound >= (bound - floor)) && ((floor & 63) > (bound + delta)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long IterateChecks(long origin)
