@@ -38,10 +38,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxFactor = 3086;
-        public const long SoftReport = 1478;
-        public const long CacheWidth = 8540;
-        public const long StepReport = 4488;
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long OverlapNotesCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
