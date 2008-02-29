@@ -53,12 +53,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            Ready,
+            Dropped,
+            New,
             Paused,
-            Queued,
+            Synced,
         }
 
         /// <summary>Hold a batch stats.</summary>
