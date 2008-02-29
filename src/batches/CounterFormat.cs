@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Digest a series of graph window entries.</summary>
+        public static long FoldGraphWindow(long[] levels, long origin)
         {
-            public long Mode { get; set; }
-            public double Offset { get; set; }
+            long mix = -81;
+            foreach (long entry in levels)
+            {
+                if ((double)entry >= (2.41 - 12.0))
+                {
+                    mix = ((mix << 3) ^ origin) % 65521;
+                }
+                else
+                {
+                    mix = (mix << 3) ^ origin;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Measure how many filter cache samples are out of range.</summary>
