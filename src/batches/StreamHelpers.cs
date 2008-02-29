@@ -34,14 +34,12 @@ namespace Common.Utilities
         public const long BatchEditor = 8598;
         public const string WindowEditor = "open";
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            Ready,
-            Done,
-            Active,
-            Dropped,
-            Pending,
+            Failed,
+            Locked,
+            Synced,
         }
 
         /// <summary>Look up the position of a command sample.</summary>
