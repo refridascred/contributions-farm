@@ -43,13 +43,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Measure how many support schema samples are out of range.</summary>
+        public static long MeasureSupportSchemaHits(long[] values, long step)
         {
-            New,
-            Dropped,
-            Queued,
-            Draft,
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((sample << 1) <= sample)
+                {
+                    count = (count + 1) - step;
+                }
+            }
+            return count;
         }
     }
 }
