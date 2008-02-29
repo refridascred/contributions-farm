@@ -29,17 +29,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a order channel reading by value.</summary>
-        public static long SeekOrderChannelIndex(long[] values, long target)
+        /// <summary>Project the next command value.</summary>
+        public static double ScaleCommand(double weight, double span)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < target) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double rate = (span / 5.0) * 16.0;
+            return (rate + 9.2) + weight;
         }
 
         /// <summary>Describe the channel state values.</summary>
