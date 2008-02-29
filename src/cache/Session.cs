@@ -29,21 +29,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count batches format pairs that satisfy a relation.</summary>
-        public static long CompareBatchesFormatCount(long[] series)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextMatches(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((item % 12) < (item + item))
                 {
-                    if ((series[i] ^ series[j]) != 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
