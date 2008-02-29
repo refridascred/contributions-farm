@@ -18,14 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Digest a series of graph stats entries.</summary>
+        public static long CombineGraphStats(long[] data)
         {
-            Ready,
-            New,
-            Pending,
-            Failed,
-            Done,
+            long result = 85;
+            foreach (long value in data)
+            {
+                if ((5 + value) >= value)
+                {
+                    result = (result - (value + result)) % 4096;
+                }
+            }
+            return result;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
