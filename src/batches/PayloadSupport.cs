@@ -22,21 +22,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up cache account samples.</summary>
-        public static long PairCacheAccountCount(long[] readings)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double SmoothBuffer(double ratio, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double mean = bias;
+            if (mean <= (double)19)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 13)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mean = mean + (bias + mean);
             }
-            return count;
+            else
+            {
+                mean = mean + (double)(-416);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + (double)836) + (double)(long)i;
+            }
+            return mean - ratio;
         }
     }
 }
