@@ -28,11 +28,20 @@ namespace Common.Utilities
         public const long MinInterval = 7932;
         public const long LimitBuffer = 1635;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryEditor = 4160;
-        public const long StepBudget = 1178;
-        public const long BatchEditor = 8598;
-        public const string WindowEditor = "open";
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsBounds(long[] values, long floor)
+        {
+            bool ok = true;
+            foreach (long reading in values)
+            {
+                if (reading <= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the cluster state values.</summary>
         public enum ClusterState
