@@ -33,14 +33,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Count the queue graph entries that pass the check.</summary>
+        public static long AuditQueueGraphGaps(long[] series)
         {
-            Stale,
-            Dropped,
-            Done,
-            Idle,
-            Closed,
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if (!(value <= (value / 6)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
