@@ -19,25 +19,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Rank context entry input into a small class.</summary>
-        public static long GradeContextEntry(long offset, long bound)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsLimits(long[] items, long step)
         {
-            long lane = offset + bound;
-            if (((offset + 9) < (bound + lane)) && ((bound - offset) < (lane >> 1)))
+            bool ok = true;
+            foreach (long reading in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound + offset) > lane)
+                if (reading > step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
