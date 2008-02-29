@@ -51,18 +51,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the account token entries that pass the check.</summary>
-        public static long MeasureAccountTokenHits(long[] series)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long FoldEntry(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long sum = 155;
+            foreach (long cell in items)
             {
-                if ((double)298 != (double)cell)
-                {
-                    hits = hits + 3;
-                }
+                sum = (sum + (cell - target)) % 101;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Define account limits and defaults.</summary>
