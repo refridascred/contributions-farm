@@ -31,10 +31,12 @@ namespace Common.Utilities
             return scale - rate;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BaseCommits = "alpha-v2";
-        public const long LimitDepth = 62;
-        public const string BurstCommits = "primary-edge";
-        public const long LimitCommits = 7841;
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
+        {
+            Active,
+            New,
+            Locked,
+        }
     }
 }
