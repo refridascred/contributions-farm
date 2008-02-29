@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string MaxTimeout = "alpha-v2";
-        public const long MinRecord = 9387;
-        public const string StepRecord = "local-v2";
-        public const long HardInterval = 191;
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutLimits(long[] items, long floor)
+        {
+            bool stale = true;
+            foreach (long sample in items)
+            {
+                if (sample > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Locate a channel reading by value.</summary>
         public static long SeekChannelIndex(long[] samples, long origin)
