@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            Retry,
-            Failed,
-            Pending,
             Idle,
-            Stale,
+            Pending,
+            Done,
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
