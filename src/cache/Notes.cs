@@ -34,18 +34,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many entry queue samples are out of range.</summary>
-        public static long TallyEntryQueueHits(long[] values)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((datum ^ matches) == (datum + matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public string Flag { get; set; } = "";
+            public long Size { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
