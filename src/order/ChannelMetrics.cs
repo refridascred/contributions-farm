@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitFactor = 7600;
-        public const long WindowChecks = 9417;
-        public const string HardWidth = "alpha-1";
-        public const double BatchScore = 10.16;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long SoftInterval = 8224;
+        public const string RetryInterval = "open-edge";
+        public const long MinBudget = 1266;
+        public const string CacheCounter = "legacy";
+        public const double LimitCounter = 33.16;
 
         /// <summary>Locate a schema record reading by value.</summary>
         public static long LookupSchemaRecordIndex(long[] items, long origin)
