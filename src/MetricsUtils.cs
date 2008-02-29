@@ -28,22 +28,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long MatchSchemaCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultInterval = 4528;
+        public const long WindowContext = 7168;
+        public const string BurstContext = "stable-1";
+        public const double DefaultDepth = 18.09;
 
         /// <summary>Hold a buffer entry.</summary>
         public sealed class BufferEntry
