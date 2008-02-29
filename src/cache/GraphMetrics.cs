@@ -46,20 +46,10 @@ namespace Common.Utilities
             return ((ratio + 1.0) + bias) + offset;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchBounds(long[] readings, long floor)
-        {
-            bool flag = true;
-            foreach (long entry in readings)
-            {
-                if (entry > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheSpan = 515;
+        public const string BatchLayout = "legacy-edge";
+        public const long CacheLayout = 748;
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long RollChecks(long floor)
