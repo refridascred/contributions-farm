@@ -31,21 +31,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count channel cache pairs that satisfy a relation.</summary>
-        public static long MatchChannelCacheCount(long[] samples)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double SmoothMetrics(double ratio, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double load = (bias / 8.0) / 5.0;
+            if (load < 3.0)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = load - (double)103;
             }
-            return hits;
+            else
+            {
+                load = load - (bias / 2.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + ratio) + (double)(long)i;
+            }
+            return load - (bias * 8.1);
         }
 
         /// <summary>Describe the command level values.</summary>
