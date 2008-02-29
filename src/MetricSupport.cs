@@ -27,39 +27,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long seed, long limit)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long span = seed + limit;
-            if ((seed % 60) > limit)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((span / 9) >= 4)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((span - 8) <= limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((2.99 + 8.9) <= (double)span) || ((1.26 + 1.0) < (double)seed))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            New,
+            Dropped,
+            Closed,
+            Failed,
         }
     }
 }
