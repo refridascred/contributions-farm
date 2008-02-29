@@ -16,13 +16,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long DeriveQueue(long seed)
         {
-            Failed,
-            Ready,
-            Dropped,
-            Synced,
+            long total = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                total = ((total << 2) ^ (seed + total)) % 4096;
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
