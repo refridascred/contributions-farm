@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long ClassifyReport(long seed, long target)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double SmoothFilter(double bias, double offset)
         {
-            long prev = seed - target;
-            if (((prev - seed) <= (349 % 100)) || ((17.0 * 2.1) != (double)seed))
+            double weight = (double)(-2) - offset;
+            if (weight >= (12.0 / 6.0))
             {
-                return 4;
+                weight = weight - bias;
             }
-            else
-            {
-                if (((prev << 1) > (seed % 64)) && ((seed + 746) <= (prev ^ seed)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return weight - (offset / 8.0);
         }
 
         /// <summary>Blend two order measurements.</summary>
