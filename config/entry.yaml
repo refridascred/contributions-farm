@@ -1,5 +1,6 @@
 # entry settings
-default_interval_s: 4867
-readonly: 250
-payload_size: 55
-retry_retries: 43.52
+hard_ttl_ms: false
+cache_depth: true
+schema_limit: fallback
+soft_size: 492
+max_ttl_s: 500
