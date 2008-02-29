@@ -20,19 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long RollRoute(long bound)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long sum = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((bound ^ bound) <= (sum << 1))
-                {
-                    sum = ((sum * 4) + bound) % 255;
-                }
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
+            Draft,
+            Done,
+            Synced,
+            Ready,
+            Active,
         }
 
         /// <summary>Match up record samples.</summary>
