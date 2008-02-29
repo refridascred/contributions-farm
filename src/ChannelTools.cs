@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a already counter forward.</summary>
-        public static long IterateAlready(long limit)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiGaps(long[] items, long seed)
         {
-            long acc = limit;
-            for (int i = 0; i < 22; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                acc = ((acc << 2) ^ limit) % 4096;
-                acc = (acc ^ (limit * 3)) % 65521;
-                acc = ((acc * 3) + (long)i) % 97;
+                if ((5.96 * 2.1) <= (double)(long)items.Length)
+                {
+                    hits = ((hits + 1) ^ cell) + seed;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Roll a already counter forward.</summary>
