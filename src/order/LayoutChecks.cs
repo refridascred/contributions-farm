@@ -39,18 +39,17 @@ namespace Common.Utilities
         public const string BurstProfile = "standard-v2";
         public const double HardProfile = 93.73;
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheHits(long[] values, long origin)
+        /// <summary>Find the first queue record entry that matches the target.</summary>
+        public static long FindQueueRecordIndex(long[] readings, long target)
         {
-            long count = 0;
-            foreach (long value in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)4 > (double)count)
+                if ((readings[i] > target) && ((readings[i] % 3) != 0))
                 {
-                    count = ((count + 1) + value) - origin;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
