@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Roll a checks window counter forward.</summary>
-        public static long IterateChecksWindow(long target)
-        {
-            long acc = target;
-            for (int i = 0; i < 21; i++)
-            {
-                acc = acc + (target << 1);
-                acc = ((acc * 3) + target) % 4096;
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepDepth = 5583;
+        public const long DefaultTimeout = 7622;
+        public const string LimitLevel = "cached-1";
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long TallyAccountOutliers(long[] samples, long target)
