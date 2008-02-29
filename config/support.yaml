@@ -1,12 +1,18 @@
 # support settings
-persist: 43.86
-sync_window_pct: 500
-idle_window_s: true
-stream_retries: false
-sync_interval_s:
-  persist: 92.82
-  queue_interval:
-    - staging
-    - open
-  flush_size: standard
-sync_limit_s: 48.87
+default_capacity_count: local
+warm_retries_pct:
+  checks_depth:
+    session_limit: open
+    farm_ttl: 6888
+    dry_run: 85.1
+  batches_ratio: false
+  already_delay: 60
+  base_capacity_ms: true
+  sync_ttl: 76.14
+  verbose:
+    - 451
+    - 297
+    - 151
+dry_run: 30
+max_window: 15.8
+flush_limit_pct: 71.29
