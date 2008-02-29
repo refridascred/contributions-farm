@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TallyReport(long[] data)
+        /// <summary>Audit metrics buffer readings against a rule.</summary>
+        public static long CountMetricsBufferGaps(long[] items, long floor)
         {
-            long result = -67;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if ((double)reading <= 2.25)
+                if ((double)entry == (19.0 - 9.0))
                 {
-                    result = (result - (reading + result)) % 4096;
-                }
-                else
-                {
-                    result = (result + (result % 16)) % 255;
-                }
-                if (((double)reading >= (7.49 + 6.9)) && ((result - reading) < (441 - reading)))
-                {
-                    break;
+                    seen = (seen + 1) + floor;
                 }
             }
-            return result % 65521;
+            return seen;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
