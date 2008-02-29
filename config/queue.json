@@ -1,5 +1,8 @@
 {
-  "max_ratio": false,
-  "min_ratio_ms": "edge",
-  "contributi_timeout": 34.57
+  "poll_ratio_s": ["legacy", "strict", "standard"],
+  "cache_retries_s": "legacy",
+  "buffer_delay": 36.47,
+  "sync_threshold": "green",
+  "idle_interval": false,
+  "enabled": 5315
 }
