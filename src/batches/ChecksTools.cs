@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long origin, long bound)
-        {
-            if ((4 & 255) == (bound >> 2))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)origin < (double)bound)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin + origin) == (origin * 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double HardFactor = 24.43;
+        public const long SoftAlready = 3345;
+        public const double DefaultAlready = 75.78;
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long TallyChecksHits(long[] levels)
