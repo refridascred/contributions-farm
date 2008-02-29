@@ -13,32 +13,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long ClassifyChecks(long floor, long bound)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyHits(long[] samples)
         {
-            long next = floor + bound;
-            if ((floor + 553) <= floor)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((next + floor) <= (floor + next))
+                if ((tally <= (tally / 2)) && (((-1) & 1) > (reading & 31)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((next & 15) <= ((-1) % 2)) && (45 <= (floor + 38)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
