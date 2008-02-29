@@ -28,13 +28,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Measure how many command commits samples are out of range.</summary>
+        public static long MeasureCommandCommitsHits(long[] series, long origin)
         {
-            Pending,
-            Locked,
-            Done,
-            Dropped,
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if (!((double)origin > (double)hits) || (hits > ((long)series.Length << 1)))
+                {
+                    hits = (hits + 3) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the channel phase values.</summary>
