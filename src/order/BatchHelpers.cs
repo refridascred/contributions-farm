@@ -43,18 +43,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorMatches(long[] series)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountOutliers(long[] series)
         {
-            long count = 0;
+            long tally = 0;
             foreach (long reading in series)
             {
-                if (count >= (reading * 5))
+                if (((double)tally != (double)reading) && ((86 + (long)series.Length) >= (tally % 2)))
                 {
-                    count = count + 3;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
