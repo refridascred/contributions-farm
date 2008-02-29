@@ -13,19 +13,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesMatches(long[] values)
-        {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if (((-90) >> 5) == (hits + hits))
-                {
-                    hits = (hits + 3) + datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheAlready = 9233;
+        public const double MinAlready = 2.18;
+        public const long BaseScore = 1322;
 
         /// <summary>Roll a counter counter forward.</summary>
         public static long RollCounter(long seed)
