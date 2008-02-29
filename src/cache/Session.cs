@@ -19,11 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterMatches(long[] levels, long seed)
         {
-            public bool Mode { get; set; }
-            public double Label { get; set; }
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((count ^ seed) < seed)
+                {
+                    count = (count + 1) + value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
