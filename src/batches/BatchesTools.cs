@@ -19,13 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            public long Count { get; set; }
-            public double Mode { get; set; }
-            public double Offset { get; set; }
-            public long Ratio { get; set; }
+            public bool Token { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
