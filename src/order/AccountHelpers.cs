@@ -65,17 +65,14 @@ namespace Common.Utilities
         public const long BatchFactor = 7221;
         public const long SoftSize = 247;
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] samples, long origin)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= origin) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Dropped,
+            Stale,
+            Failed,
+            Ready,
         }
     }
 }
