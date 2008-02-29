@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long floor, long seed)
         {
-            Closed,
-            Draft,
-            Stale,
-            Paused,
-            Active,
+            if ((seed & 255) <= (454 << 1))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((10.0 >= (double)floor) || ((seed % 16) <= floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Accumulate checks support samples.</summary>
