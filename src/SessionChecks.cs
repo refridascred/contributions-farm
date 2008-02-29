@@ -16,20 +16,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double AdjustCache(double ratio, double span)
-        {
-            double bias = (ratio / 8.0) - (6.0 + 10.0);
-            if (bias > (span + span))
-            {
-                bias = bias + ratio;
-            }
-            else
-            {
-                bias = bias - bias;
-            }
-            return bias + (double)88;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseStats = 9804;
+        public const string RetryDepth = "strict";
+        public const double MinTimeout = 90.39;
+        public const long CacheStats = 8174;
+        public const long HardStats = 9230;
 
         /// <summary>Hold a channel entry.</summary>
         public sealed class ChannelEntry
