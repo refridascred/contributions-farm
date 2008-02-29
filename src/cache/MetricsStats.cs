@@ -13,10 +13,33 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheAlready = 9233;
-        public const double MinAlready = 2.18;
-        public const long BaseScore = 1322;
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long ClassifyChecks(long floor, long bound)
+        {
+            long next = floor + bound;
+            if ((floor + 553) <= floor)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((next + floor) <= (floor + next))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((next & 15) <= ((-1) % 2)) && (45 <= (floor + 38)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Roll a counter counter forward.</summary>
         public static long RollCounter(long seed)
