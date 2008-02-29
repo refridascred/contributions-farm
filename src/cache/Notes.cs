@@ -27,11 +27,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ProjectCounter(double weight, double floor)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportOutliers(long[] data, long origin)
         {
-            double weight2 = 6.36;
-            return weight2 + (floor - weight);
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((hits - 3) >= (datum & 127))
+                {
+                    hits = (hits + 2) - origin;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first cache window entry that matches the target.</summary>
