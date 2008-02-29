@@ -32,14 +32,20 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Iterate the token cluster series from a seed.</summary>
+        public static long IterateTokenCluster(long limit)
         {
-            New,
-            Stale,
-            Closed,
-            Dropped,
-            Done,
+            long mix = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                if (!((mix % 2) <= (limit * 2)))
+                {
+                    mix = mix ^ ((long)i ^ (long)i);
+                }
+                mix = (mix << 3) ^ (limit + mix);
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Blend two counter measurements.</summary>
