@@ -34,18 +34,11 @@ namespace Common.Utilities
             return bias - (bias * 3.95);
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double StepFactor = 32.96;
+        public const string CacheSpan = "open";
+        public const long SoftCount = 4589;
+        public const long BurstChecks = 1671;
 
         /// <summary>Locate a checks reading by value.</summary>
         public static long LocateChecksIndex(long[] series, long step)
