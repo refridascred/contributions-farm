@@ -1,18 +1,23 @@
 # support settings
-default_capacity_count: local
-warm_retries_pct:
-  checks_depth:
-    session_limit: open
-    farm_ttl: 6888
-    dry_run: 85.1
-  batches_ratio: false
-  already_delay: 60
-  base_capacity_ms: true
-  sync_ttl: 76.14
-  verbose:
-    - 451
-    - 297
-    - 151
-dry_run: 30
-max_window: 15.8
-flush_limit_pct: 71.29
+githubfarm_threshold: primary
+strict:
+  dry_run:
+    verbose: 37.96
+    default_retries_ms: legacy
+    soft_delay: false
+    idle_ttl_ms: legacy
+    persist: 30
+    entry_size: true
+  record_threshold: 3634
+  enabled: blue
+  account_size:
+    poll_ratio_ms: 80.91
+    min_limit_s: 35.2
+    default_interval: latest
+  readonly:
+    - eu-west
+    - standard
+    - eu-west
+  flush_window: true
+soft_threshold: blue
+sync_interval_count: 1268
