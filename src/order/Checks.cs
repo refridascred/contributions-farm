@@ -44,15 +44,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double BlendSupport(double weight, double bias)
-        {
-            double ratio = bias;
-            if (ratio < (double)64)
-            {
-                ratio = (ratio + (double)34) - weight;
-            }
-            return ratio + (double)2;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxFilter = 2377;
+        public const long StepFilter = 6743;
+        public const long DefaultFilter = 1152;
+        public const string LimitSpan = "standard";
     }
 }
