@@ -26,32 +26,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank already metric input into a small class.</summary>
-        public static long ClassifyAlreadyMetric(long origin, long step)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long diff = origin + step;
-            if ((diff < (origin / 4)) && (846 >= (origin * 2)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step * 5) <= 59)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((origin << 1) > (diff ^ 67)) && (162 <= (step + origin)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public string Flag { get; set; } = "";
+            public string Total { get; set; } = "";
         }
     }
 }
