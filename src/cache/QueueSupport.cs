@@ -26,18 +26,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit record report readings against a rule.</summary>
-        public static long AuditRecordReportMatches(long[] levels)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] readings, long floor)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long state = 9;
+            foreach (long entry in readings)
             {
-                if ((seen - entry) != (entry / 5))
+                if (((state + state) <= (280 * 5)) && ((state / 8) >= (entry - state)))
                 {
-                    seen = seen + 3;
+                    state = (state << 3) ^ entry;
                 }
             }
-            return seen;
+            if (state < 502)
+            {
+                state = state + (state + floor);
+            }
+            return state % 1000;
         }
     }
 }
