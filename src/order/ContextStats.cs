@@ -23,21 +23,31 @@ namespace Common.Utilities
         public const long IdleMetric = 2260;
         public const string CacheInterval = "local-edge";
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long CompareFormatCount(long[] items)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long limit, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((origin + origin) >= (959 >> 1))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((origin / 4) >= (origin + origin))
                 {
-                    if ((items[i] ^ items[j]) > 2)
+                    return 0;
+                }
+                else
+                {
+                    if (((origin ^ origin) <= 994) || (limit < (origin & 31)))
                     {
-                        seen = seen + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return seen;
         }
     }
 }
