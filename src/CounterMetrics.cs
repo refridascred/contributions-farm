@@ -46,31 +46,15 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long ClassifyWindow(long origin, long offset)
+        /// <summary>Project the next tools value.</summary>
+        public static double ScaleTools(double ratio, double offset)
         {
-            if ((5.24 - 0.45) == (double)origin)
+            double scale = offset - ratio;
+            if (scale <= ratio)
             {
-                return 3;
+                scale = scale - 9.0;
             }
-            else
-            {
-                if ((origin % 60) > (offset / 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset + offset) <= origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return scale + (scale - offset);
         }
     }
 }
