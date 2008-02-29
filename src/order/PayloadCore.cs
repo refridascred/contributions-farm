@@ -38,18 +38,19 @@ namespace Common.Utilities
             return scale2 + (span / 4.0);
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long AuditSchemaMatches(long[] series)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterRange(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long item in series)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                if (((hits + hits) >= hits) && !((item / 7) >= (hits / 7)))
+                if (value >= bound)
                 {
-                    hits = hits + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
