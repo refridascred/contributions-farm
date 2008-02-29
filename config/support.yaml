@@ -1,28 +1,12 @@
 # support settings
-cache_size:
-  batch_depth_pct: primary
-  min_delay_ms: local
-  retry_ratio_count: 64
-  min_ttl_s:
-    - 240
-    - 280
-    - 345
-    - 364
-  sync_ratio_count: 4303
-  support_ratio: 63.94
-metrics_size:
-  metric_timeout: blue
-  dry_run:
-    - latest
-    - stable
-    - latest
-    - open
-  order_retries: 71.23
-  strict: 52
-warm_window: true
-hard_timeout_s: open
-persist: 32.33
-max_interval_s:
-  - 63
-  - 267
-  - 119
+default_window: 3570
+sync_window_ms:
+  hard_ttl_s: 48.2
+  dry_run: 9901
+  hard_delay_ms: 26
+format_timeout:
+  entry_ttl: edge
+  account_capacity: fallback
+  persist: 500
+  burst_retries_s: 1024
+  idle_delay_count: 7181
