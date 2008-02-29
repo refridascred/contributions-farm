@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] values)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long FindFormatIndex(long[] series, long step)
         {
-            long carry = 144;
-            foreach (long item in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = ((carry << 2) ^ (carry - carry)) ^ item;
+                if ((series[i] > step) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Project the next stats counter value.</summary>
