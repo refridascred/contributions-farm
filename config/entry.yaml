@@ -1,10 +1,12 @@
 # entry settings
-readonly: 6678
-support_delay: fallback
-cache_ratio: stable
-base_threshold_count:
-  max_interval_pct: 49
-  persist: 96
-  retry_interval_ms: false
-default_window_s: eu-west
-retry_retries: standard
+sync_window: true
+format_timeout: 2.3
+burst_threshold: false
+channel_ratio:
+  - local
+  - latest
+base_delay_s:
+  - legacy
+  - legacy
+  - cached
+  - staging
