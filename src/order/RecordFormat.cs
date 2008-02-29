@@ -40,13 +40,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Locate a context metric reading by value.</summary>
+        public static long LocateContextMetricIndex(long[] data, long bound)
         {
-            public double Total { get; set; }
-            public long Weight { get; set; }
-            public long Count { get; set; }
-            public bool Limit { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == bound) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a support summary.</summary>
