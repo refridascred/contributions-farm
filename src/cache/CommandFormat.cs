@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long SeriesCommits(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchWidth = 1389;
+        public const double BatchCount = 19.53;
+        public const long MaxProfile = 5712;
+        public const long WindowProfile = 4589;
 
         /// <summary>Describe the profile mode values.</summary>
         public enum ProfileMode
