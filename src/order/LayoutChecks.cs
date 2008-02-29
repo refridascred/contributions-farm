@@ -49,19 +49,22 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] series)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportGaps(long[] series, long floor)
         {
-            long acc = 33;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long reading in series)
             {
-                acc = ((acc << 2) ^ (66 - item)) % 255;
+                if ((count + reading) <= count)
+                {
+                    count = (count + 2) + floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (acc < (-9))
-            {
-                acc = (acc << 3) ^ acc;
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
