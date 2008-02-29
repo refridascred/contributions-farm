@@ -1,4 +1,4 @@
 # entry settings
-default_ratio_s: 98.81
-batch_window_ms: green
-retry_threshold_pct: 2063
+max_size_ms: true
+flush_timeout_pct: standard
+burst_limit: standard
