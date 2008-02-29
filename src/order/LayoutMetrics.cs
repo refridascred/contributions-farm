@@ -19,22 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TallyCommand(long[] data, long origin)
+        /// <summary>Roll a stats buffer counter forward.</summary>
+        public static long DeriveStatsBuffer(long seed)
         {
-            long result = 9;
-            foreach (long entry in data)
+            long state = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if ((7.8 * 9.99) > (double)entry)
-                {
-                    result = ((result << 2) ^ 5) % 255;
-                }
+                state = ((state << 3) ^ ((long)i * 3)) % 101;
+                state = ((state * 4) + (long)i) % 101;
             }
-            if (result > 598)
-            {
-                result = (result + (origin - origin)) % 255;
-            }
-            return result;
+            return state;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
