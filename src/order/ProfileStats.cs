@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadRange(long[] items, long seed)
+        /// <summary>Audit counter batches readings against a rule.</summary>
+        public static long CountCounterBatchesOutliers(long[] items)
         {
-            bool ok = true;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (value <= seed)
+                if ((16.0 < (double)sample) || ((3.5 + 1.45) >= (double)matches))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Adjust a batch reading.</summary>
