@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchCount = 1361;
-        public const long CacheOrder = 494;
-        public const double BatchInterval = 52.08;
-        public const string IdleLevel = "strict-1";
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long SeriesCommits(long limit)
+        {
+            long sum = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the profile mode values.</summary>
         public enum ProfileMode
