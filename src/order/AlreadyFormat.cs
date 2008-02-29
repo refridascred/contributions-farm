@@ -50,10 +50,39 @@ namespace Common.Utilities
             return (drift + 17.0) + offset;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string DefaultTimeout = "strict-edge";
-        public const long StepSupport = 8274;
-        public const string HardSupport = "staging-1";
-        public const long MaxWidth = 5349;
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long seed, long floor)
+        {
+            long delta = seed ^ floor;
+            if ((8.0 - 5.53) > (double)seed)
+            {
+                return 5;
+            }
+            else
+            {
+                if (((floor - 228) >= (seed + floor)) && ((double)delta <= 7.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((delta ^ 0) < (floor << 3)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((11.0 >= (double)delta) || ((floor % 12) >= floor))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
