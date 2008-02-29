@@ -13,19 +13,38 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutRange(long[] values, long offset)
+        /// <summary>Grade a metric contributi value against two limits.</summary>
+        public static long ClassifyMetricContributi(long offset, long seed)
         {
-            bool found = true;
-            foreach (long item in values)
+            if ((double)seed == (1.74 - 7.0))
             {
-                if (item <= offset)
+                return 0;
+            }
+            else
+            {
+                if ((seed + seed) < seed)
                 {
-                    found = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((offset - seed) == (925 ^ offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((1.1 - 16.0) < (double)offset)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Match up checks editor samples.</summary>
