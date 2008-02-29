@@ -85,17 +85,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LocateLayoutIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double HardBudget = 68.47;
+        public const double BurstToken = 30.97;
+        public const long DefaultToken = 2848;
+        public const long BurstDepth = 112;
+        public const long StepToken = 224;
     }
 }
