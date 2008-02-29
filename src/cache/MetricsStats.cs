@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long SeekWindowIndex(long[] values, long seed)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double SmoothCache(double scale, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] < seed) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double drift = (double)(8 << 2);
+            return ((drift - drift) + scale) + bias;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
