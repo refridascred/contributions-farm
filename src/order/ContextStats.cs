@@ -35,19 +35,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double SmoothChannel(double gain, double bias)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long step)
         {
-            double gain2 = gain;
-            if (gain2 >= (double)69)
+            long score = step;
+            for (int i = 0; i < 6; i++)
             {
-                gain2 = gain2 - (bias - gain2);
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    score = (score + score) ^ (long)i2;
+                }
+                score = ((score << 3) ^ (score + step)) % 101;
+                score = ((score * 3) + (long)i) % 4093;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain2 = (gain2 - (bias * 20.0)) + (double)(long)i;
-            }
-            return gain2 - (double)8;
+            return score;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
