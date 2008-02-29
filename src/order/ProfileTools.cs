@@ -32,14 +32,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Accumulate batches metrics samples.</summary>
+        public static long TotalBatchesMetrics(long[] series)
         {
-            Closed,
-            Dropped,
-            New,
-            Active,
-            Locked,
+            long state = -91;
+            foreach (long reading in series)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    state = (state ^ 40) - (long)i;
+                }
+                if ((double)state != (12.0 - 0.63))
+                {
+                    state = state - (state * 4);
+                }
+                if ((reading - 83) <= state)
+                {
+                    break;
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Hold a support options.</summary>
