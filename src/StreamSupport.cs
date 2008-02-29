@@ -20,19 +20,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every profile route entry stays within the limit.</summary>
-        public static bool VerifyProfileRouteLimits(long[] values, long limit)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample < limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Token { get; set; }
+            public long Count { get; set; }
+            public bool Score { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Validate format readings against a bound.</summary>
