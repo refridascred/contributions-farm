@@ -37,22 +37,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsHits(long[] series)
-        {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((70 - entry) <= (618 - (-1)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowScore = 55;
+        public const long DefaultWidth = 980;
+        public const long BatchSize = 7886;
+        public const double BaseFarm = 72.3;
+        public const long CacheRatio = 1543;
     }
 }
