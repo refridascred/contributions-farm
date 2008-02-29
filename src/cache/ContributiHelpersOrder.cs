@@ -36,18 +36,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] levels)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long mark = 3;
-            foreach (long sample in levels)
-            {
-                if (mark < (238 - sample))
-                {
-                    mark = ((mark * 2) + mark) % 255;
-                }
-            }
-            return mark % 4096;
+            public bool Count { get; set; }
+            public long Level { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
