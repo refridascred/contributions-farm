@@ -28,10 +28,12 @@ namespace Common.Utilities
         public const double WindowSpan = 83.01;
         public const long SoftRoute = 1901;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstWindow = 3877;
-        public const long DefaultWindow = 2289;
-        public const string MinWindow = "primary-edge";
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
+        {
+            public long Rank { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long CacheNotes = 7680;
