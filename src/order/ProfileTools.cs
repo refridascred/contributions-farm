@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Look up the position of a batch stats sample.</summary>
-        public static long FindBatchStatsIndex(long[] samples, long seed)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double SmoothCommits(double rate, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double scale = bias * 18.0;
+            if (scale > scale)
             {
-                if ((samples[i] == seed) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                scale = scale + 0.6;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + (rate / 8.0)) + (double)(long)i;
+            }
+            return scale - (double)400;
         }
 
         /// <summary>Audit context notes readings against a rule.</summary>
