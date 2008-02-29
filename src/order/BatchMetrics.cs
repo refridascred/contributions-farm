@@ -42,14 +42,22 @@ namespace Common.Utilities
         public const double LimitRatio = 49.68;
         public const long CacheSpan = 1852;
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] readings, long limit)
         {
-            Locked,
-            Pending,
-            Done,
-            Failed,
-            Draft,
+            long score = -389;
+            foreach (long reading in readings)
+            {
+                if ((double)score == (2.99 + 5.0))
+                {
+                    score = (((score * 2) + (reading ^ score)) % 65521) - limit;
+                }
+            }
+            if (score > 145)
+            {
+                score = (score ^ (score + score)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
