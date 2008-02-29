@@ -25,19 +25,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every commits batches entry stays within the limit.</summary>
-        public static bool CheckCommitsBatchesBounds(long[] levels, long bound)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchHits(long[] values)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (value != bound)
+                if ((entry > (entry & 3)) || ((matches * 5) >= matches))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Count the stream support entries that pass the check.</summary>
