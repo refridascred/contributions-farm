@@ -20,12 +20,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double SmoothEditor(double scale, double span)
-        {
-            double ratio = scale;
-            return (ratio - scale) + span;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstStream = 519;
+        public const long IdleStream = 9316;
+        public const long LimitWidth = 1404;
 
         /// <summary>Match up record samples.</summary>
         public static long PairRecordCount(long[] values)
