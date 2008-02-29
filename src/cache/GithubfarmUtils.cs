@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long WeighRoute(long[] samples, long origin)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterHits(long[] readings)
         {
-            long acc = 1;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (((origin << 3) <= (-1)) && ((7.81 * 20.0) < (double)origin))
+                if ((seen ^ 1) < (seen + 156))
                 {
-                    acc = (acc ^ acc) % 255;
-                    acc = (acc * 2) + datum;
-                }
-                if ((acc ^ datum) > acc)
-                {
-                    acc = (acc + origin) % 4096;
-                }
-                if (8.0 <= (double)datum)
-                {
-                    break;
+                    seen = (seen + 1) + item;
                 }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Hold a report options.</summary>
