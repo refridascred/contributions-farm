@@ -1,17 +1,5 @@
 # support settings
-persist:
-  - 402
-  - 42
-  - 335
-readonly:
-  token_delay: 7791
-  format_threshold: open
-  sync_timeout_s: 60
-  sync_threshold: 72.15
-sync_ratio: 6.16
-sync_window_pct:
-  readonly:
-    - strict
-    - green
-  order_interval: open
-  sync_window: edge
+min_limit_s: 4302
+default_ratio: 24
+token_ttl: 87
+min_interval_s: 40.01
