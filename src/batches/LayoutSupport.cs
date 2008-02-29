@@ -54,33 +54,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long RankCounter(long bound, long floor)
-        {
-            long delta = bound - floor;
-            if ((delta <= (floor ^ floor)) || ((double)bound >= (6.0 * 11.0)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)delta != (0.1 * 15.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound >= (bound - floor)) && ((floor & 63) > (bound + delta)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftNotes = 642;
+        public const long IdleNotes = 398;
+        public const double StepInterval = 27.65;
 
         /// <summary>Hold a githubfarm options.</summary>
         public sealed class GithubfarmOptions
