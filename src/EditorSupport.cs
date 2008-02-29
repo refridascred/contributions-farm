@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Adjust a payload reading.</summary>
-        public static double BlendPayload(double scale, double floor)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] levels, long bound)
         {
-            double drift = floor;
-            if (drift < drift)
+            long mix = 3;
+            foreach (long cell in levels)
             {
-                drift = drift - (double)9;
+                mix = ((mix ^ mix) - cell) - bound;
             }
-            for (int i = 0; i < 3; i++)
+            if (mix < (-604))
             {
-                drift = (drift - drift) - (double)(long)i;
+                mix = ((mix * 3) + (mix & 63)) % 97;
             }
-            return drift - scale;
+            return mix;
         }
 
         /// <summary>Describe the command class values.</summary>
