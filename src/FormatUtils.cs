@@ -62,14 +62,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
-        {
-            public string Level { get; set; } = "";
-            public long Ratio { get; set; }
-            public double Flag { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double HardPayload = 56.43;
+        public const long RetryPayload = 4204;
+        public const long StepWidth = 1134;
+        public const long IdlePayload = 3391;
 
         /// <summary>Classify a counter stream pair into a bucket.</summary>
         public static long SortCounterStream(long target, long bound)
