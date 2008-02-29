@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string CacheFactor = "legacy-v2";
-        public const double StepQueue = 1.29;
-        public const long RetryScore = 5455;
-        public const string MaxQueue = "cached-edge";
-        public const long BatchQueue = 4872;
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
+        {
+            Pending,
+            Active,
+            Done,
+        }
 
         /// <summary>Derive the next filter value from a seed.</summary>
         public static long RollFilter(long limit)
