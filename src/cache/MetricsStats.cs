@@ -13,17 +13,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long LookupContextIndex(long[] items, long bound)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesMatches(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (items[i] <= bound)
+                if (((-90) >> 5) == (hits + hits))
                 {
-                    return (long)i;
+                    hits = (hits + 3) + datum;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
