@@ -42,24 +42,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long ClassifyMetrics(long origin, long step)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long FindBatchIndex(long[] data, long limit)
         {
-            if ((872 - 4) == (origin ^ step))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)step < (double)origin)
+                if (data[i] < limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
