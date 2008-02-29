@@ -20,10 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftLevel = 4526;
-        public const long BatchToken = 3005;
-        public const long LimitToken = 9124;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string WindowSpan = "latest-1";
+        public const long WindowProfile = 3331;
+        public const long MaxWidth = 5694;
+        public const double LimitProfile = 47.73;
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long MeasureBatchHits(long[] values)
