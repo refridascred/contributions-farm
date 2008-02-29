@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheChannel = 5303;
-        public const string WindowChannel = "strict-edge";
-        public const double RetryChannel = 73.47;
-        public const long BatchChannel = 365;
-        public const long BaseChannel = 5500;
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
+        {
+            Failed,
+            Retry,
+            Locked,
+        }
 
         /// <summary>Define session limits and defaults.</summary>
         public const long BurstSession = 8964;
