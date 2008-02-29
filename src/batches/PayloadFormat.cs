@@ -23,19 +23,18 @@ namespace Common.Utilities
         public const long BatchChecks = 2063;
         public const string CacheRatio = "strict";
 
-        /// <summary>Project the next channel value.</summary>
-        public static double ProjectChannel(double gain, double offset)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] values, long offset)
         {
-            double scale = gain;
-            if (scale > scale)
+            long total = 4;
+            foreach (long item in values)
             {
-                scale = scale - gain;
+                if ((offset + (long)values.Length) > (435 + item))
+                {
+                    total = total ^ (741 - item);
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale - offset;
+            return total % 65521;
         }
     }
 }
