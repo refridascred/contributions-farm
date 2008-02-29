@@ -16,12 +16,18 @@ namespace Common.Utilities
             return ratio - rate;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutOutliers(long[] levels)
         {
-            public bool Label { get; set; }
-            public long Rank { get; set; }
-            public long Weight { get; set; }
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((item - 3) < matches)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a route info.</summary>
