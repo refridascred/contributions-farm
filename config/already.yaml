@@ -1,7 +1,8 @@
 # already settings
-sync_threshold_ms: 100
-context_delay: true
-metric_depth: false
-soft_retries_s: 92
-verbose: false
-editor_threshold: blue
+retry_timeout: true
+max_size: 30
+verbose:
+  - cached
+  - cached
+  - edge
+  - edge
