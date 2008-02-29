@@ -41,18 +41,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenHits(long[] series, long floor)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (!((seen << 2) > (datum - datum)) && ((seen > (datum + floor)) && (floor > (floor + 7))))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
