@@ -39,22 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long DigestNotes(long[] samples, long offset)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long carry = -77;
-            foreach (long datum in samples)
-            {
-                if (((6.7 - 1.2) <= (double)datum) || ((3.85 - 0.2) == (double)datum))
-                {
-                    carry = ((carry - (0 + datum)) % 255) - offset;
-                }
-                else
-                {
-                    carry = carry - (datum << 1);
-                }
-            }
-            return carry;
+            public bool Label { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
