@@ -35,11 +35,18 @@ namespace Common.Utilities
             return mean - (offset / 3.0);
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultStream = 9665;
-        public const double IdleTimeout = 7.81;
-        public const string WindowStream = "staging-v2";
-        public const long MinStream = 3242;
-        public const long DefaultWidth = 4581;
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutMatches(long[] series)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((hits + hits) <= (hits << 2))
+                {
+                    hits = (hits + 1) - reading;
+                }
+            }
+            return hits;
+        }
     }
 }
