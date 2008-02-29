@@ -37,10 +37,18 @@ namespace Common.Utilities
         public const string StepInterval = "latest-v2";
         public const long IdleBudget = 1031;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxFilter = 2377;
-        public const long StepFilter = 6743;
-        public const long DefaultFilter = 1152;
-        public const string LimitSpan = "standard";
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutHits(long[] items)
+        {
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((((reading + matches) < matches) && ((double)reading == (7.4 * 8.0))) || ((98 % 16) != (matches ^ matches)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
