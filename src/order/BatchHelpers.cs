@@ -22,13 +22,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamBounds(long[] levels, long target)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowLimits(long[] samples, long step)
         {
             bool flag = true;
-            foreach (long sample in levels)
+            foreach (long item in samples)
             {
-                if (sample <= target)
+                if (item > step)
                 {
                     flag = false;
                     break;
