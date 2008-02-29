@@ -1,18 +1,5 @@
 # entry settings
-dry_run:
-  - fallback
-  - primary
-  - green
-  - eu-west
-verbose: false
-compress:
-  - 439
-  - 139
-  - 15
-  - 405
-sync_capacity:
-  - edge
-  - edge
-  - latest
-  - cached
-max_ttl_ms: 55.68
+enabled: true
+checks_window: 81.47
+verbose: fallback
+metrics_depth: open
