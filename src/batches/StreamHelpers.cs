@@ -86,31 +86,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long DeriveFormat(long step)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmLimits(long[] readings, long offset)
         {
-            long score = step;
-            for (int i = 0; i < 11; i++)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                if ((double)score <= 9.0)
+                if (entry != offset)
                 {
-                    continue;
-                }
-                else
-                {
-                    score = (score ^ step) % 1000;
-                }
-                if (!(step >= (4 / 7)))
-                {
+                    stale = false;
                     break;
                 }
-                else
-                {
-                    score = (score << 3) ^ (long)i;
-                }
-                score = ((score * 5) + (long)i) % 97;
             }
-            return score;
+            return stale;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
