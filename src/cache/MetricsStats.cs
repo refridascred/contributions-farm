@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Project the next farm context value.</summary>
+        public static double ProjectFarmContext(double rate, double offset)
         {
-            public long Weight { get; set; }
-            public string Rank { get; set; } = "";
-            public long Mode { get; set; }
+            double drift = (11.0 + rate) * 8.7;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - (double)(long)i) - offset;
+            }
+            return drift + (drift - rate);
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
