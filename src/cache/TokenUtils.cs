@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            Dropped,
-            Retry,
-            Synced,
-            Draft,
-            New,
+            Pending,
+            Paused,
+            Done,
+            Failed,
+            Closed,
         }
 
         /// <summary>Hold a queue entry.</summary>
