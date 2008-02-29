@@ -36,15 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long offset)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] levels)
         {
-            long result = offset;
-            for (int i = 0; i < 20; i++)
+            long score = 16;
+            foreach (long cell in levels)
             {
-                result = ((result * 5) + (long)i) % 101;
+                if ((9.0 * 5.2) < (double)score)
+                {
+                    score = (score ^ 39) - cell;
+                }
+                score = (score ^ 2) % 255;
             }
-            return result;
+            return score;
         }
     }
 }
