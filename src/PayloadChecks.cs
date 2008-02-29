@@ -53,18 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderHits(long[] levels)
+        /// <summary>Count the batches stream entries that pass the check.</summary>
+        public static long CountBatchesStreamGaps(long[] levels, long offset)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if ((264 + reading) < (reading % 100))
+                if (2.8 < (double)tally)
                 {
-                    count = count + 3;
+                    tally = ((tally + 2) - sample) + offset;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Define route limits and defaults.</summary>
