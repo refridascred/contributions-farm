@@ -43,21 +43,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of metrics checks readings.</summary>
-        public static long OverlapMetricsChecksCount(long[] items)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double AdjustMetric(double bias, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double drift = bias;
+            return (drift + 17.0) + offset;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
