@@ -1,21 +1,16 @@
 # entry settings
-default_threshold_ms:
-  - 393
-  - 64
-  - 200
-batch_interval:
-  hard_timeout_pct: 73
-  queue_limit: fallback
-  checks_limit: 54
-  sync_timeout_ms: false
-  batch_retries: 5876
-commits_capacity:
-  - strict
-  - strict
-  - blue
-cache_capacity_count: 100
-poll_limit_count:
-  report_ratio: 250
-  enabled: latest
-  flush_ttl_ms: 3572
-compress: 58
+idle_interval_ms: true
+poll_limit_pct: false
+checks_timeout:
+  strict: 45
+  cache_ttl_s: 96
+  retry_threshold_count: 78
+  idle_capacity: standard
+hard_timeout_s:
+  enabled: 9376
+  batch_window_count: 500
+  entry_threshold:
+    - 84
+    - 134
+    - 356
+  graph_timeout: edge
