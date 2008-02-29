@@ -19,12 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmMatches(long[] data)
         {
-            Closed,
-            Dropped,
-            Paused,
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (((double)tally <= (double)29) || ((tally + sample) <= tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine stream farm values into a single score.</summary>
