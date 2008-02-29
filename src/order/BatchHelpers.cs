@@ -26,16 +26,14 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long target)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long state = target;
-            for (int i = 0; i < 10; i++)
-            {
-                state = state + (target / 2);
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
+            Done,
+            Draft,
+            Queued,
+            New,
+            Ready,
         }
     }
 }
