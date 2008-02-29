@@ -1,8 +1,5 @@
 {
-  "notes_ratio": "blue",
-  "farm_capacity": "blue",
-  "audit": 92,
-  "metrics_threshold": 55,
-  "notes_depth": "edge",
-  "cache_limit_s": true
+  "default_ttl_s": "fallback",
+  "retry_depth_ms": 1024,
+  "retry_ttl": [386, 256, 62, 96]
 }
