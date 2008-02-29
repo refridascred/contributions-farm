@@ -32,19 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long IterateLayout(long offset)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long OverlapEditorCount(long[] data)
         {
-            long sum = offset;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((offset + (long)i) <= (sum * 4))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = (sum - ((-790) + sum)) % 1000;
+                    if ((data[i] ^ data[j]) < 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                sum = ((sum * 4) + (long)i) % 97;
             }
-            return sum;
+            return matches;
         }
     }
 }
