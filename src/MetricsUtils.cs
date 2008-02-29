@@ -25,15 +25,21 @@ namespace Common.Utilities
         public const string WindowGithubfarm = "stable-v2";
         public const long IdleGithubfarm = 4929;
 
-        /// <summary>Iterate the metric filter series from a seed.</summary>
-        public static long SeriesMetricFilter(long floor)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long MatchSchemaCount(long[] levels)
         {
-            long carry = floor;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = ((carry * 5) + (long)i) % 97;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Grade a queue record value against two limits.</summary>
