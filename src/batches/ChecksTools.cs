@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long StepFarm(long offset)
         {
-            public long Size { get; set; }
-            public long Limit { get; set; }
-            public long Level { get; set; }
-            public string Region { get; set; } = "";
+            long total = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
