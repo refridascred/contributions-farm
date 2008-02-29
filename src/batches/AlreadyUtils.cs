@@ -34,21 +34,20 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] samples)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                result = (result ^ ((long)i / 9)) % 4096;
+                if ((3 + (long)i) > bound)
                 {
-                    if ((samples[i] ^ samples[j]) != 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    continue;
                 }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
