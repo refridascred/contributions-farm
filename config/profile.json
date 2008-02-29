@@ -1,13 +1,7 @@
 {
-  "sync_depth_s": "stable",
-  "batch_retries": {
-    "batches_ttl": ["cached", "green"],
-    "commits_ttl": true,
-    "layout_threshold": [479, 143, 243],
-    "soft_size_ms": [163, 279, 44]
-  },
-  "window_delay": 37,
-  "metric_ratio": 89.3,
-  "strict": 500,
-  "sync_threshold_count": [184, 278]
+  "account_ratio": false,
+  "window_ttl": 3158,
+  "strict": "green",
+  "max_threshold_count": "standard",
+  "batch_limit_ms": 83.23
 }
