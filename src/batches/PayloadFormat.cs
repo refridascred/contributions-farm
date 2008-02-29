@@ -18,10 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseChannel = 5486;
-        public const double RetryBudget = 20.96;
-        public const long LimitScore = 7218;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepGithubfarm = 2964;
+        public const long SoftGithubfarm = 3412;
+        public const long DefaultCount = 335;
 
         /// <summary>Fold a list of context readings.</summary>
         public static long DigestContext(long[] readings, long offset)
