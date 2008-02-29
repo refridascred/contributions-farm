@@ -59,12 +59,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxInterval = 599;
-        public const double LimitProfile = 8.22;
-        public const double CacheDepth = 66.61;
-        public const long MaxProfile = 2445;
-        public const double StepProfile = 90.64;
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long AuditCommandMatches(long[] data)
