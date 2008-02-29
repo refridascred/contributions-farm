@@ -22,11 +22,18 @@ namespace Common.Utilities
         public const long LimitLevel = 6831;
         public const long WindowChannel = 1747;
 
-        /// <summary>Project the next command value.</summary>
-        public static double ScaleCommand(double weight, double span)
+        /// <summary>Audit entry layout readings against a rule.</summary>
+        public static long AuditEntryLayoutMatches(long[] items)
         {
-            double rate = (span / 5.0) * 16.0;
-            return (rate + 9.2) + weight;
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if (datum <= (datum ^ count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a notes summary.</summary>
