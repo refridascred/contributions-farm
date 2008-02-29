@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterHits(long[] readings)
+        /// <summary>Derive the next queue editor value from a seed.</summary>
+        public static long RollQueueEditor(long bound)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long mark = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if ((seen ^ 1) < (seen + 156))
+                mark = ((mark << 3) ^ bound) % 1000;
+                mark = (mark ^ (bound - bound)) % 255;
+                if (!(mark < (bound & 15)))
                 {
-                    seen = (seen + 1) + item;
+                    mark = mark - (mark % 24);
                 }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Hold a report options.</summary>
