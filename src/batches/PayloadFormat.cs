@@ -20,12 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
-        {
-            public string Token { get; set; } = "";
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string CacheSession = "standard-edge";
+        public const long HardSession = 9990;
+        public const long StepSession = 7801;
+        public const long BurstSession = 3970;
+        public const string DefaultLevel = "open-edge";
 
         /// <summary>Describe the metrics mode values.</summary>
         public enum MetricsMode
