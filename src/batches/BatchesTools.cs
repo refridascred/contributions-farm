@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] levels)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long acc = 34;
-            foreach (long entry in levels)
-            {
-                if (!((acc - entry) <= entry))
-                {
-                    acc = acc + acc;
-                }
-                else
-                {
-                    acc = acc + (85 - entry);
-                }
-            }
-            return acc % 97;
+            Failed,
+            Closed,
+            Paused,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
