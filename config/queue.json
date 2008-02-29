@@ -1,8 +1,7 @@
 {
-  "batches_ratio": "strict",
-  "base_window_count": 68.26,
-  "token_limit": 1024,
-  "notes_timeout": "strict",
-  "batch_window_pct": "strict",
-  "filter_delay": 30
+  "batch_timeout": 47.49,
+  "hard_ratio_count": "strict",
+  "audit": 31.66,
+  "batch_delay_pct": "fallback",
+  "queue_threshold": "legacy"
 }
