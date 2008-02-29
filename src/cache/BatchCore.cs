@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            Ready,
-            Locked,
-            Draft,
-            Idle,
+            Queued,
+            Failed,
+            New,
+            Closed,
+            Pending,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
