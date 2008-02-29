@@ -31,10 +31,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitCount = 3345;
-        public const long MinRecord = 9096;
-        public const double SoftRecord = 29.51;
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
+        {
+            Dropped,
+            Done,
+            Queued,
+            Pending,
+        }
 
         /// <summary>Classify a batch editor pair into a bucket.</summary>
         public static long ClassifyBatchEditor(long offset, long offset2)
