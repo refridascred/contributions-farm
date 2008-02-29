@@ -1,5 +1,12 @@
 {
-  "default_ttl_s": "fallback",
-  "retry_depth_ms": 1024,
-  "retry_ttl": [386, 256, 62, 96]
+  "stream_capacity": true,
+  "enabled": true,
+  "batch_retries_ms": "eu-west",
+  "readonly": false,
+  "buffer_threshold": 52,
+  "payload_delay": {
+    "batch_timeout": [241, 77, 93],
+    "checks_retries": true,
+    "readonly": "open"
+  }
 }
