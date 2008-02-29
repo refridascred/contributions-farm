@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long StepFarm(long offset)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesLimits(long[] levels, long floor)
         {
-            long total = offset;
-            for (int i = 0; i < 4; i++)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                total = ((total * 5) + (long)i) % 97;
+                if (datum < floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
