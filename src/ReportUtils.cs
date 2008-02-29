@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesLimits(long[] items, long origin)
+        /// <summary>Measure how many format context samples are out of range.</summary>
+        public static long CountFormatContextGaps(long[] items)
         {
-            bool flag = true;
+            long tally = 0;
             foreach (long datum in items)
             {
-                if (datum > origin)
+                if ((tally & 15) > (tally - 4))
                 {
-                    flag = false;
-                    break;
+                    tally = (tally + 3) - datum;
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Define window limits and defaults.</summary>
