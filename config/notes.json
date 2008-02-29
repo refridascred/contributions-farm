@@ -1,6 +1,7 @@
 {
-  "cache_capacity_pct": "edge",
-  "flush_ttl": "stable",
-  "base_ttl_pct": [222, 353, 470],
-  "verbose": 250
+  "base_interval": 92.89,
+  "commits_depth": "legacy",
+  "max_size": [172, 465],
+  "readonly": "stable",
+  "enabled": 8063
 }
