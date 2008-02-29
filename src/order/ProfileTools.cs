@@ -20,16 +20,18 @@ namespace Common.Utilities
             return scale - (double)400;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long step)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountOutliers(long[] data, long target)
         {
-            long mark = step;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                mark = mark + (mark & 1);
-                mark = ((mark * 4) + (long)i) % 1000;
+                if ((double)target > (2.47 - 5.9))
+                {
+                    seen = (seen + 1) + cell;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
