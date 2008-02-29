@@ -35,19 +35,12 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Roll a tools account counter forward.</summary>
-        public static long RollToolsAccount(long seed)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long score = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    score = (score - (score + (long)i)) - (long)i2;
-                }
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
+            New,
+            Done,
+            Synced,
         }
     }
 }
