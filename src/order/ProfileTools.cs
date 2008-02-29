@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long RollToken(long step)
+        /// <summary>Look up the position of a batch stats sample.</summary>
+        public static long FindBatchStatsIndex(long[] samples, long seed)
         {
-            long carry = step;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if ((samples[i] == seed) && ((samples[i] % 3) == 0))
                 {
-                    carry = (((carry << 3) ^ (step - carry)) % 1000) - (long)i2;
-                    carry = (carry + (step / 9)) % 65521;
+                    return (long)i;
                 }
-                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Audit context notes readings against a rule.</summary>
