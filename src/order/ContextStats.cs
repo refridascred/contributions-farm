@@ -29,25 +29,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long BucketAlready(long origin, long seed)
-        {
-            if ((2 + origin) <= origin)
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((origin + origin) > (origin - seed)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string CacheSpan = "local-edge";
+        public const long SoftPayload = 20;
+        public const double StepScore = 92.93;
+        public const long IdlePayload = 9987;
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long RankCounter(long bound, long floor)
