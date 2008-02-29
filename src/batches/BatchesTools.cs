@@ -20,13 +20,19 @@ namespace Common.Utilities
             return scale2 + (double)9;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchBounds(long[] values, long step)
         {
-            Pending,
-            Synced,
-            Active,
-            Locked,
+            bool valid = true;
+            foreach (long entry in values)
+            {
+                if (entry <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the session state values.</summary>
