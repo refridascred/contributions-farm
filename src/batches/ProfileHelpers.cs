@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long DeriveCounter(long target)
         {
-            public string Label { get; set; } = "";
-            public long Score { get; set; }
+            long state = target;
+            for (int i = 0; i < 9; i++)
+            {
+                long seen = (state & 1) - state;
+                if (((double)(long)i == (1.0 * 5.2)) || ((target ^ seen) > (target >> 4)))
+                {
+                    seen = seen + state;
+                }
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
