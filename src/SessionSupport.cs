@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long floor, long seed)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long RollBuffer(long bound)
         {
-            if ((seed + seed) <= (floor + 850))
+            long sum = bound;
+            for (int i = 0; i < 21; i++)
             {
-                return 2;
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if (floor <= 41)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor + 69) <= 616)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
