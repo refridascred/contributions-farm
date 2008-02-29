@@ -1,7 +1,11 @@
 # support settings
-persist: open
-burst_size_count:
-  cluster_depth: 7443
-  verbose: staging
-  audit: 40.17
-readonly: primary
+min_interval_s: 41.87
+dry_run:
+  - staging
+  - latest
+  - primary
+verbose:
+  - 395
+  - 132
+  - 398
+  - 191
