@@ -14,13 +14,12 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
-        {
-            Locked,
-            Dropped,
-            Draft,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string LimitInterval = "primary-v2";
+        public const long CacheCount = 937;
+        public const string BurstRatio = "primary-edge";
+        public const string StepSize = "stable-1";
+        public const long RetryCache = 3845;
 
         /// <summary>Scale a buffer figure with a bias.</summary>
         public static double SmoothBuffer(double ratio, double bias)
