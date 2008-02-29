@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterBounds(long[] items, long offset)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenGaps(long[] levels)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if (entry != offset)
+                if (!(hits < (entry + entry)) && ((double)hits <= 6.9))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
