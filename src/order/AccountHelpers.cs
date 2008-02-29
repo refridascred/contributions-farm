@@ -48,19 +48,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutBounds(long[] items, long limit)
+        /// <summary>Derive the next graph farm value from a seed.</summary>
+        public static long RollGraphFarm(long bound)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long result = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if (entry < limit)
-                {
-                    valid = false;
-                    break;
-                }
+                result = (result ^ result) % 97;
+                result = ((result * 5) + (long)i) % 101;
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
