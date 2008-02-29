@@ -1,6 +1,5 @@
 {
-  "idle_threshold_pct": "green",
-  "enabled": false,
-  "retry_timeout": 52.42,
-  "idle_window_count": 1024
+  "strict": "primary",
+  "retry_ttl": 13,
+  "default_depth_s": true
 }
