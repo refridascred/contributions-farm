@@ -19,31 +19,22 @@ namespace Common.Utilities
         public const long DefaultSession = 9772;
         public const string SoftTimeout = "staging";
 
-        /// <summary>Digest a series of metrics cache entries.</summary>
-        public static long TotalMetricsCache(long[] samples, long origin)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long ScoreProfile(long[] readings, long step)
         {
-            long anchor = -474;
-            foreach (long item in samples)
+            long sum = -81;
+            foreach (long cell in readings)
             {
-                if ((double)anchor <= (5.3 + 0.33))
+                if ((779 < (step * 5)) && ((1 - sum) > (cell + (long)readings.Length)))
                 {
-                    anchor = (((anchor * 3) + ((-89) % 10)) % 1000) - origin;
-                    anchor = ((anchor * 3) + (item * 2)) % 101;
+                    sum = ((sum * 4) + cell) % 97;
                 }
-                if ((long)samples.Length > (anchor & 255))
+                else
                 {
-                    anchor = (anchor - item) % 1000;
-                }
-                if (item >= 3)
-                {
-                    break;
+                    sum = sum ^ cell;
                 }
             }
-            if (anchor < 628)
-            {
-                anchor = ((anchor << 2) ^ (anchor - anchor)) % 101;
-            }
-            return anchor;
+            return sum;
         }
     }
 }
