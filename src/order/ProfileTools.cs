@@ -21,21 +21,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] series)
+        /// <summary>Audit context notes readings against a rule.</summary>
+        public static long TallyContextNotesHits(long[] series)
         {
-            long state = 256;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if ((9.0 < (double)entry) && ((entry + state) == (entry - entry)))
+                if (78 < (tally + value))
                 {
-                    state = state ^ state;
-                    state = ((state * 5) + state) % 4096;
+                    tally = tally + 1;
                 }
-                state = (state << 2) ^ ((long)series.Length << 3);
-                state = (state * 5) + (24 ^ entry);
             }
-            return state % 65521;
+            return tally;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
