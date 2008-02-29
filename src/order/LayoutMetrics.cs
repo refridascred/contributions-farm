@@ -37,18 +37,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the report batches entries that pass the check.</summary>
-        public static long CountReportBatchesOutliers(long[] readings, long origin)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long IterateLayout(long offset)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long sum = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if ((seen + datum) >= (origin ^ origin))
+                if ((offset + (long)i) <= (sum * 4))
                 {
-                    seen = seen + 3;
+                    sum = (sum - ((-790) + sum)) % 1000;
                 }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return seen;
+            return sum;
         }
     }
 }
