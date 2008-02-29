@@ -20,19 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterBounds(long[] samples, long offset)
+        /// <summary>Accumulate record batch samples.</summary>
+        public static long ScoreRecordBatch(long[] values, long floor)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long total = 5;
+            foreach (long sample in values)
             {
-                if (cell <= offset)
+                if ((floor << 3) == (total + floor))
                 {
-                    ok = false;
-                    break;
+                    total = ((total + (total * 4)) % 1000) ^ sample;
                 }
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
