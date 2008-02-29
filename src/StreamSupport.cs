@@ -67,12 +67,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Validate farm route readings against a bound.</summary>
+        public static bool GuardFarmRouteBounds(long[] series, long origin)
         {
-            public long Label { get; set; }
-            public long Total { get; set; }
-            public bool Limit { get; set; }
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
