@@ -15,11 +15,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string HardScore = "local-v2";
-        public const long BaseRatio = 4772;
-        public const long WindowBudget = 3524;
-        public const string BaseTimeout = "stable-v2";
+        /// <summary>Adjust a order cluster reading.</summary>
+        public static double BlendOrderCluster(double rate, double floor)
+        {
+            double gain = rate;
+            if (gain >= 4.47)
+            {
+                gain = gain + (floor * 2.18);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain + (gain * 8.0)) - (double)(long)i;
+            }
+            return gain + (gain * 12.0);
+        }
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long WeighFilter(long[] items, long step)
