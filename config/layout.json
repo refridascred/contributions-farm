@@ -1,6 +1,8 @@
 {
-  "soft_capacity_ms": 100,
-  "default_limit": false,
-  "burst_capacity_ms": false,
-  "contributi_size": 75.3
+  "notes_ratio": "blue",
+  "farm_capacity": "blue",
+  "audit": 92,
+  "metrics_threshold": 55,
+  "notes_depth": "edge",
+  "cache_limit_s": true
 }
