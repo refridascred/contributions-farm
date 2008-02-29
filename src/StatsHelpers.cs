@@ -38,10 +38,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string IdleBatch = "staging-v2";
-        public const string MaxSpan = "strict";
-        public const long DefaultBatch = 8248;
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsHits(long[] items)
+        {
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (((0.15 / 9.0) == (double)reading) || (9 < (reading % 7)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate graph samples.</summary>
         public static long TotalGraph(long[] values, long seed)
