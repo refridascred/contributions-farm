@@ -70,13 +70,17 @@ namespace Common.Utilities
             return drift - (double)8;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Locate a queue graph reading by value.</summary>
+        public static long LookupQueueGraphIndex(long[] levels, long limit)
         {
-            Pending,
-            Active,
-            Retry,
-            Idle,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= limit) && ((levels[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
