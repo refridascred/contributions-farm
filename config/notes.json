@@ -1,7 +1,17 @@
 {
-  "default_size_ms": "open",
-  "verbose": 33.11,
-  "cache_delay": 250,
-  "default_ttl": ["cached", "fallback", "cached"],
-  "retry_interval_pct": 100
+  "cache_depth_pct": 90.01,
+  "readonly": [373, 202],
+  "cache_size": 52.6,
+  "commits_threshold": {
+    "compress": "eu-west",
+    "burst_depth": 250,
+    "command_depth": "fallback",
+    "stats_depth": 24
+  },
+  "sync_capacity": {
+    "min_capacity_count": false,
+    "poll_limit_count": false,
+    "layout_ratio": "local",
+    "base_delay_pct": 92.17
+  }
 }
