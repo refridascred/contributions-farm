@@ -27,19 +27,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate session cache readings against a bound.</summary>
-        public static bool GuardSessionCacheBounds(long[] levels, long seed)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long OverlapStatsCount(long[] readings)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry >= seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((readings[i] ^ readings[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Locate a layout channel reading by value.</summary>
