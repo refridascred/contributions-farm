@@ -33,11 +33,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string CacheLayout = "alpha-1";
-        public const string BatchSpan = "cached-edge";
-        public const string StepLayout = "alpha-1";
-        public const string LimitLayout = "alpha";
-        public const double HardLayout = 13.4;
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
+        {
+            Stale,
+            Dropped,
+            Done,
+            Idle,
+            Closed,
+        }
     }
 }
