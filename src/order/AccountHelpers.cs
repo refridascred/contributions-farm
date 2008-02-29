@@ -57,13 +57,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
-        {
-            Draft,
-            Closed,
-            Active,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchRecord = 4758;
+        public const long BatchFactor = 7221;
+        public const long SoftSize = 247;
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool CheckContributiLimits(long[] readings, long step)
