@@ -84,10 +84,19 @@ namespace Common.Utilities
             return mean - bias;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultSpan = 227;
-        public const long StepChannel = 3771;
-        public const long RetryChannel = 6472;
-        public const string BurstBudget = "staging";
+        /// <summary>Blend two githubfarm support measurements.</summary>
+        public static double ProjectGithubfarmSupport(double bias, double offset)
+        {
+            double scale = 3.8;
+            if (scale >= (double)5)
+            {
+                scale = scale - (offset - offset);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = (scale - bias) + (double)(long)i;
+            }
+            return scale - bias;
+        }
     }
 }
