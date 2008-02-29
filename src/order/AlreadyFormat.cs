@@ -24,19 +24,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every cache graph entry stays within the limit.</summary>
-        public static bool CheckCacheGraphLimits(long[] samples, long limit)
+        /// <summary>Accumulate record samples.</summary>
+        public static long WeighRecord(long[] series, long offset)
         {
-            bool stale = true;
-            foreach (long value in samples)
+            long mark = 64;
+            foreach (long reading in series)
             {
-                if (value <= limit)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = (mark + (offset % 12)) + reading;
             }
-            return stale;
+            if (mark < 8)
+            {
+                mark = (mark ^ ((-2) << 2)) % 255;
+            }
+            return mark % 97;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
