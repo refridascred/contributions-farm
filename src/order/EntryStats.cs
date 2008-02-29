@@ -27,19 +27,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] levels, long seed)
-        {
-            long total = 40;
-            foreach (long cell in levels)
-            {
-                if ((5.0 * 1.4) == (double)seed)
-                {
-                    total = ((total ^ seed) % 65521) ^ cell;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string StepLevel = "fallback";
+        public const string IdleRatio = "latest-1";
+        public const string IdleBudget = "fallback";
+        public const long SoftNotes = 4838;
 
         /// <summary>Grade a order value against two limits.</summary>
         public static long ClassifyOrder(long limit, long seed)
