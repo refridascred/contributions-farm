@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long BucketCache(long seed, long floor)
-        {
-            if (seed <= (seed ^ floor))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed << 2) != (floor - floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxChannel = 4146;
+        public const double SoftFactor = 84.7;
+        public const double BatchCount = 5.01;
+        public const string BatchWidth = "open-1";
+        public const string WindowSpan = "primary";
 
         /// <summary>Describe the farm mode values.</summary>
         public enum FarmMode
