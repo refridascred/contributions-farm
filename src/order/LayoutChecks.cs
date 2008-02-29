@@ -60,15 +60,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double SmoothBatch(double scale, double span)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            double drift = scale * 3.29;
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - span) + (double)(long)i;
-            }
-            return drift + drift;
+            public bool Mode { get; set; }
+            public long Region { get; set; }
+            public long Score { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
