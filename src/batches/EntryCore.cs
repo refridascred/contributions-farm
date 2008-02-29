@@ -65,18 +65,23 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandMatches(long[] data)
+        /// <summary>Project the next checks value.</summary>
+        public static double ScaleChecks(double scale, double bias)
         {
-            long seen = 0;
-            foreach (long value in data)
+            double mean = 9.0;
+            if (mean > (3.94 / 4.0))
             {
-                if (!((double)value == (2.4 / 4.0)))
-                {
-                    seen = seen + 3;
-                }
+                mean = (mean + (double)(-52)) + scale;
             }
-            return seen;
+            else
+            {
+                mean = mean - (bias / 6.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean - bias;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
