@@ -28,38 +28,17 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long GradeBatch(long seed, long offset)
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long SeekOrderIndex(long[] readings, long floor)
         {
-            if (offset < (seed ^ seed))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((offset + offset) > seed)
+                if (readings[i] >= floor)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (offset > seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (seed <= (offset >> 2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
