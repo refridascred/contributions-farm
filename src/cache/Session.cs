@@ -25,21 +25,17 @@ namespace Common.Utilities
         public const long IdleStream = 9316;
         public const long LimitWidth = 1404;
 
-        /// <summary>Match up record samples.</summary>
-        public static long PairRecordCount(long[] values)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long IterateAlready(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = (state + (bound + state)) % 4096;
+                state = (state ^ bound) % 101;
+                state = ((state * 3) + (long)i) % 101;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Locate a support reading by value.</summary>
