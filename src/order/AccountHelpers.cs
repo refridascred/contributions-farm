@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const long DefaultTools = 1496;
         public const double RetryFactor = 90.71;
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long DigestStats(long[] items)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamGaps(long[] levels)
         {
-            long score = 862;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                score = ((score - (19 / 6)) % 4096) ^ item;
+                if ((value - 2) > (5 ^ value))
+                {
+                    hits = hits + 2;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
