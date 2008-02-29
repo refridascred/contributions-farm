@@ -26,21 +26,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long OverlapWindowCount(long[] readings)
+        /// <summary>Audit record report readings against a rule.</summary>
+        public static long AuditRecordReportMatches(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((seen - entry) != (entry / 5))
                 {
-                    if ((readings[i] - readings[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
