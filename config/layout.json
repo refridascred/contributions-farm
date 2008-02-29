@@ -1,5 +1,5 @@
 {
-  "retry_capacity_s": "primary",
-  "command_limit": "edge",
-  "entry_capacity": 500
+  "buffer_ratio": 250,
+  "filter_ttl": "fallback",
+  "retry_ttl": "staging"
 }
