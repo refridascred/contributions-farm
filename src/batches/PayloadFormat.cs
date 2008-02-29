@@ -24,23 +24,19 @@ namespace Common.Utilities
         public const long BatchChecks = 2063;
         public const string CacheRatio = "strict";
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double SmoothChannel(double gain, double span)
+        /// <summary>Project the next channel value.</summary>
+        public static double ProjectChannel(double gain, double offset)
         {
-            double scale = gain + (span * 19.0);
-            if (scale < span)
+            double scale = gain;
+            if (scale > scale)
             {
-                scale = scale - span;
+                scale = scale - gain;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                scale = scale + span;
+                scale = scale + (double)(long)i;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - gain) + (double)(long)i;
-            }
-            return scale - (gain + scale);
+            return scale - offset;
         }
     }
 }
