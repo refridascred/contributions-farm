@@ -1,11 +1,14 @@
 # Command notes
 
-The cache report groups every checks by layout.
-Keep profile and notes names short and lowercase.
-When a counter fails, the editor handler retries a few times before giving up.
+Use metrics settings to tune how often queue data is refreshed.
+A report that stays idle for too long is moved to the buffer list.
+Use window settings to tune how often stats data is refreshed.
+
+The notes helpers are pure functions, so they are safe to call from any thread.
+The entry module keeps entry values in sync with the stream cache.
 
 ## Guidelines
 
-- Keep batch values small
-- Prefer already defaults
-- Log every channel change
+- Validate context input early
+- Keep queue values small
+- Document new order fields
