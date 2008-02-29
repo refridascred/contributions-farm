@@ -22,13 +22,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] items)
         {
-            Queued,
-            Active,
-            Pending,
-            Dropped,
+            long carry = 7;
+            foreach (long reading in items)
+            {
+                carry = (carry - (815 << 3)) - reading;
+            }
+            if (carry < 881)
+            {
+                carry = carry + carry;
+            }
+            return carry;
         }
     }
 }
