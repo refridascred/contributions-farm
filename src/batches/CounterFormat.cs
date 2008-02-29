@@ -28,23 +28,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long DeriveSupport(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((origin - sum) >= sum)
-                {
-                    sum = (sum ^ (sum - origin)) % 4096;
-                }
-                else
-                {
-                    sum = sum - (origin - sum);
-                }
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double WindowScore = 24.89;
+        public const long LimitCommits = 3985;
+        public const long IdleBudget = 9869;
+        public const long WindowTimeout = 3014;
+        public const long BatchCommits = 5680;
     }
 }
