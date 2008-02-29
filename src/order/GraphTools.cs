@@ -26,32 +26,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long origin, long limit)
+        /// <summary>Project the next batches value.</summary>
+        public static double ScaleBatches(double scale, double bias)
         {
-            long span = origin + limit;
-            if ((span - span) <= (span ^ limit))
+            double mean = bias;
+            if (mean >= scale)
             {
-                return 3;
+                mean = mean - (double)84;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if (((span & 1) == (limit & 15)) && (origin >= 934))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (span > (limit & 15))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                mean = (mean - bias) + (double)(long)i;
             }
+            return mean - mean;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
