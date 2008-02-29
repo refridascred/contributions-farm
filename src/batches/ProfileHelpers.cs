@@ -23,10 +23,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftFilter = 2732;
-        public const long MaxFilter = 6501;
-        public const double SoftInterval = 48.7;
+        /// <summary>Match up command samples.</summary>
+        public static long PairCommandCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate tools samples.</summary>
         public static long CombineTools(long[] levels, long step)
