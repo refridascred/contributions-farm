@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            Pending,
-            Paused,
-            Done,
-            Failed,
-            Closed,
+            public long Size { get; set; }
+            public bool Total { get; set; }
+            public long Score { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a queue entry.</summary>
