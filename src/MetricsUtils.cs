@@ -54,21 +54,12 @@ namespace Common.Utilities
             return mean + (double)67;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long PairFormatCount(long[] samples)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Closed,
+            Pending,
+            Ready,
         }
     }
 }
