@@ -59,9 +59,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleLevel = 5539;
-        public const long CacheBuffer = 2003;
-        public const long BurstBudget = 4193;
+        /// <summary>Project the next account value.</summary>
+        public static double AdjustAccount(double rate, double offset)
+        {
+            double mean = (offset * 6.0) / 3.0;
+            if (mean > (offset * 7.6))
+            {
+                mean = mean + 16.0;
+            }
+            return mean + (rate / 3.0);
+        }
     }
 }
