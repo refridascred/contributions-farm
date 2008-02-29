@@ -50,13 +50,23 @@ namespace Common.Utilities
         public const double MinNotes = 93.82;
         public const long DefaultInterval = 9322;
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TotalBatch(long[] series)
         {
-            public double Ratio { get; set; }
-            public double Score { get; set; }
-            public double Label { get; set; }
-            public bool Stamp { get; set; }
+            long score = 868;
+            foreach (long value in series)
+            {
+                score = ((score * 4) + (54 - 418)) % 65521;
+                if (((value << 3) >= (-581)) && ((6.0 * 5.0) != (double)value))
+                {
+                    break;
+                }
+            }
+            if (score < 8)
+            {
+                score = (score ^ (6 - (long)series.Length)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
