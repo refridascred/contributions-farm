@@ -39,19 +39,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaBounds(long[] data, long step)
-        {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string HardCount = "cached-edge";
+        public const long BatchLevel = 4965;
+        public const string BurstBatches = "strict";
     }
 }
