@@ -40,10 +40,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string SoftScore = "staging";
-        public const double RetryChecks = 85.81;
-        public const string MaxWidth = "latest-edge";
-        public const long BaseRatio = 3066;
+        /// <summary>Count the window buffer entries that pass the check.</summary>
+        public static long AuditWindowBufferMatches(long[] samples)
+        {
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (value <= (matches & 63))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
     }
 }
