@@ -1,4 +1,23 @@
 # githubfarm settings
-hard_capacity: 1024
-cache_ttl_ms: fallback
-burst_ratio: 3626
+default_size_s: primary
+strict:
+  flush_limit_ms: 9536
+  soft_size: 83.12
+  poll_timeout_count: local
+  poll_interval_s:
+    - 390
+    - 276
+    - 76
+  warm_interval_pct: 5639
+idle_capacity_count:
+  burst_size_count: 83.4
+  audit: 1024
+  metric_delay: 58.32
+  hard_delay_ms: 29
+  channel_delay:
+    - 279
+    - 386
+    - 229
+    - 25
+  cache_timeout: legacy
+warm_delay_ms: true
