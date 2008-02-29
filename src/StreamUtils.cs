@@ -30,19 +30,16 @@ namespace Common.Utilities
         public const long BaseStream = 4098;
         public const long IdleSize = 1124;
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesBounds(long[] values, long target)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long target)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long total = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (entry != target)
-                {
-                    valid = false;
-                    break;
-                }
+                total = (total - (target - (long)i)) % 1000;
+                total = ((total * 2) + (long)i) % 101;
             }
-            return valid;
+            return total;
         }
 
         /// <summary>Project the next editor value.</summary>
