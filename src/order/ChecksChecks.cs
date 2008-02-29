@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstScore = 4083;
-        public const long IdleBudget = 4296;
-        public const long MinTimeout = 9504;
-        public const long StepCache = 3266;
-        public const long CacheDepth = 4784;
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long ClassifyReport(long seed, long target)
+        {
+            long prev = seed - target;
+            if (((prev - seed) <= (349 % 100)) || ((17.0 * 2.1) != (double)seed))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((prev << 1) > (seed % 64)) && ((seed + 746) <= (prev ^ seed)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Grade a editor channel value against two limits.</summary>
         public static long SortEditorChannel(long seed, long target)
