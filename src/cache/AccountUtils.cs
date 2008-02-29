@@ -15,12 +15,12 @@ namespace Common.Utilities
         public const long WindowScore = 3275;
         public const long IdleCommits = 9915;
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            public bool Region { get; set; }
-            public double Offset { get; set; }
-            public long Flag { get; set; }
+            Locked,
+            Pending,
+            Ready,
         }
     }
 }
