@@ -33,23 +33,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] items)
-        {
-            long carry = -788;
-            foreach (long entry in items)
-            {
-                if ((4.1 - 9.0) == (double)entry)
-                {
-                    carry = carry ^ (5 + carry);
-                }
-                else
-                {
-                    carry = (carry ^ (carry ^ entry)) % 65521;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowScore = 2297;
+        public const long HardRatio = 3408;
+        public const long StepCount = 5336;
 
         /// <summary>Combine token notes values into a single score.</summary>
         public static long CombineTokenNotes(long[] data)
