@@ -1,9 +1,4 @@
 # githubfarm settings
-enabled: eu-west
-contributi_timeout:
-  - latest
-  - legacy
-retry_limit_s: 6465
-default_ratio: 1024
-persist: 100
-batch_window_pct: 100
+idle_threshold_count: 76
+soft_delay: stable
+default_limit_ms: 34
