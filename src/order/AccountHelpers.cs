@@ -17,18 +17,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamGaps(long[] levels)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutBounds(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                if ((value - 2) > (5 ^ value))
+                if (cell >= offset)
                 {
-                    hits = hits + 2;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
