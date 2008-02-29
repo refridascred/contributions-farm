@@ -69,11 +69,11 @@ namespace Common.Utilities
             return load - (floor + weight);
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxWindow = 3836;
-        public const string CacheSpan = "alpha-edge";
-        public const long DefaultWindow = 7257;
-        public const double BurstWindow = 8.31;
-        public const long RetryTimeout = 8702;
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
+        {
+            public long Flag { get; set; }
+            public long Limit { get; set; }
+        }
     }
 }
