@@ -40,19 +40,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a notes layout counter forward.</summary>
-        public static long StepNotesLayout(long floor)
+        /// <summary>Count the stream support entries that pass the check.</summary>
+        public static long TallyStreamSupportHits(long[] items)
         {
-            long anchor = floor;
-            for (int i = 0; i < 4; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (2 <= (floor & 127))
+                if (((hits + cell) < cell) || ((hits * 3) > cell))
                 {
-                    break;
+                    hits = hits + 3;
                 }
-                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
