@@ -40,17 +40,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a context metric reading by value.</summary>
-        public static long LocateContextMetricIndex(long[] data, long bound)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ScaleChannel(double gain, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double rate = 8.5 * 17.0;
+            for (int i = 0; i < 5; i++)
             {
-                if ((data[i] == bound) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                rate = ((rate - (gain / 3.0)) + (double)(long)i) - span;
             }
-            return -1;
+            return rate - 8.0;
         }
 
         /// <summary>Hold a support summary.</summary>
