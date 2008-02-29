@@ -26,12 +26,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepCount = 4627;
-        public const double WindowGraph = 34.37;
-        public const double RetrySize = 10.35;
-        public const string MinScore = "local-v2";
-        public const string DefaultFactor = "cached-edge";
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long MatchChecksCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a farm info.</summary>
         public sealed class FarmInfo
