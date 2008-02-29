@@ -22,11 +22,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxCount = 2969;
-        public const long StepRatio = 2320;
-        public const long MinInterval = 7932;
-        public const long LimitBuffer = 1635;
+        /// <summary>Combine stream farm values into a single score.</summary>
+        public static long TallyStreamFarm(long[] values)
+        {
+            long mark = 71;
+            foreach (long reading in values)
+            {
+                if (((double)mark == (5.0 - 5.4)) && (4.69 <= (double)reading))
+                {
+                    mark = (mark + (mark / 7)) % 4096;
+                }
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool ValidateStatsBounds(long[] values, long floor)
