@@ -19,12 +19,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            Paused,
-            Done,
-            Closed,
+            public long Weight { get; set; }
+            public long Mode { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Blend two window already measurements.</summary>
