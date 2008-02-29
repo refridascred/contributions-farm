@@ -59,12 +59,17 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long SeekGraphIndex(long[] items, long floor)
         {
-            public string Owner { get; set; } = "";
-            public double Total { get; set; }
-            public long Rank { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
