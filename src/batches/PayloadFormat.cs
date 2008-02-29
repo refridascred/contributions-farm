@@ -38,16 +38,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long StepRecord(long limit)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double SmoothChannel(double gain, double span)
         {
-            long mix = limit;
-            for (int i = 0; i < 21; i++)
+            double scale = gain + (span * 19.0);
+            if (scale < span)
             {
-                mix = (mix + 48) % 255;
-                mix = ((mix * 4) + (long)i) % 101;
+                scale = scale - span;
             }
-            return mix;
+            else
+            {
+                scale = scale + span;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - gain) + (double)(long)i;
+            }
+            return scale - (gain + scale);
         }
     }
 }
