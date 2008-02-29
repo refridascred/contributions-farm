@@ -49,15 +49,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long DeriveReport(long seed)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long total = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            public string Mode { get; set; } = "";
+            public double Ratio { get; set; }
         }
     }
 }
