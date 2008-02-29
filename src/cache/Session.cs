@@ -54,12 +54,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long limit)
         {
-            Done,
-            New,
-            Pending,
+            long anchor = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
         }
     }
 }
