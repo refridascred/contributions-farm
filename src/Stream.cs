@@ -20,31 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long BucketCommits(long origin, long origin2)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long DeriveFilter(long limit)
         {
-            if (((double)origin2 > (5.71 + 18.0)) && ((864 + origin) >= origin))
+            long acc = limit;
+            for (int i = 0; i < 21; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((origin - origin2) > ((-755) - 27)) || ((origin + 38) < origin))
+                if ((double)(long)i != (6.5 + 9.9))
                 {
-                    return 2;
+                    acc = (acc - (602 % 8)) % 101;
                 }
-                else
-                {
-                    if (((double)origin2 < (13.0 / 6.0)) || ((8.0 / 8.0) < (double)origin2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
+                acc = ((acc * 4) + (long)i) % 101;
             }
+            return acc;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
