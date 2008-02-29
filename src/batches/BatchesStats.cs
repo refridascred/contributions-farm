@@ -28,11 +28,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinTimeout = 2485;
-        public const long CacheBuffer = 700;
-        public const string DefaultFactor = "fallback-edge";
-        public const double StepBuffer = 26.25;
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LookupRouteIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long MeasureCounterMatches(long[] series)
