@@ -20,26 +20,12 @@ namespace Common.Utilities
             return ((mean + mean) + ratio) + floor;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] samples)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long mark = 92;
-            foreach (long entry in samples)
-            {
-                if (((-99) >= (entry >> 3)) || (mark > entry))
-                {
-                    mark = ((mark << 3) ^ (mark + mark)) % 1000;
-                }
-                else
-                {
-                    mark = mark + (mark + mark);
-                }
-            }
-            if (mark < 50)
-            {
-                mark = (mark - (mark % 7)) % 1000;
-            }
-            return mark;
+            New,
+            Pending,
+            Paused,
         }
 
         /// <summary>Accumulate schema samples.</summary>
