@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long MatchAlreadyCount(long[] values)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long BucketCache(long seed, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (seed <= (seed ^ floor))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((seed << 2) != (floor - floor))
                 {
-                    if ((values[i] + values[j]) != 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
