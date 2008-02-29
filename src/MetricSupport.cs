@@ -27,13 +27,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long MeasureReportMatches(long[] data, long step)
         {
-            New,
-            Dropped,
-            Closed,
-            Failed,
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if ((item & 1) == (9 % 97))
+                {
+                    matches = (matches + 3) - step;
+                }
+            }
+            return matches;
         }
     }
 }
