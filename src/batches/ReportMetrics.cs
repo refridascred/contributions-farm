@@ -20,25 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long origin, long step)
-        {
-            if (((double)699 >= (double)step) && (step >= (step - step)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((147 & 127) > (step * 4)) || ((step - step) >= origin))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstSession = 8964;
+        public const double BatchLevel = 9.1;
+        public const long DefaultSession = 9772;
+        public const string SoftTimeout = "staging";
 
         /// <summary>Hold a layout snapshot.</summary>
         public sealed class LayoutSnapshot
