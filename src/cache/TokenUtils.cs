@@ -27,19 +27,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] series, long limit)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long anchor = 377;
-            foreach (long datum in series)
-            {
-                anchor = ((anchor * 5) + (datum % 8)) % 1000;
-            }
-            if (anchor < (-629))
-            {
-                anchor = (anchor + (limit - limit)) % 65521;
-            }
-            return anchor;
+            Idle,
+            Closed,
+            Failed,
         }
     }
 }
