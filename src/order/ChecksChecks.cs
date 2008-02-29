@@ -26,11 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Blend two order measurements.</summary>
+        public static double ScaleOrder(double gain, double bias)
         {
-            public string Region { get; set; } = "";
-            public long Weight { get; set; }
+            double rate = 7.0 / 4.0;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + gain) + (double)(long)i;
+            }
+            return rate + bias;
         }
 
         /// <summary>Describe the context level values.</summary>
