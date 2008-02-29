@@ -20,11 +20,27 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string WindowSpan = "latest-1";
-        public const long WindowProfile = 3331;
-        public const long MaxWidth = 5694;
-        public const double LimitProfile = 47.73;
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long DigestBuffer(long[] samples)
+        {
+            long mark = 298;
+            foreach (long value in samples)
+            {
+                if ((13.0 * 8.1) == (double)mark)
+                {
+                    mark = mark ^ (mark / 9);
+                }
+                else
+                {
+                    mark = (mark + (value + 987)) % 97;
+                }
+                if (!(mark > (mark << 1)))
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Audit batch readings against a rule.</summary>
         public static long MeasureBatchHits(long[] values)
