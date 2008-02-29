@@ -25,14 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
-        {
-            Stale,
-            Paused,
-            Draft,
-            Closed,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchInterval = 3417;
+        public const long SoftWidth = 5641;
+        public const double BurstFactor = 58.95;
+        public const long IdleTimeout = 6299;
+        public const long HardStream = 6053;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long MaxInterval = 599;
