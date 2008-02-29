@@ -1,14 +1,10 @@
 {
-  "farm_depth": true,
-  "counter_delay": "strict",
-  "default_window_ms": 24,
-  "context_timeout": {
-    "payload_interval": 54,
-    "persist": "latest",
-    "poll_size_pct": 76.8,
-    "dry_run": [298, 295, 353, 181],
-    "compress": true
+  "githubfarm_ttl": 12.69,
+  "audit": false,
+  "dry_run": {
+    "batch_ratio": "blue",
+    "idle_ttl": false,
+    "burst_retries_s": 5.45
   },
-  "hard_retries": 34,
-  "idle_ratio_ms": 1024
+  "soft_timeout_s": "strict"
 }
