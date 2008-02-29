@@ -22,18 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit tools githubfarm readings against a rule.</summary>
-        public static long TallyToolsGithubfarmMatches(long[] items, long seed)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if ((-3) >= (matches ^ (-35)))
-                {
-                    matches = ((matches + 3) - item) - seed;
-                }
-            }
-            return matches;
+            public long Token { get; set; }
+            public double Weight { get; set; }
+            public long Score { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the checks phase values.</summary>
