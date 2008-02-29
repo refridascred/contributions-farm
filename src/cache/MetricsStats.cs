@@ -52,20 +52,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] series, long limit)
+        /// <summary>Match up notes stream samples.</summary>
+        public static long OverlapNotesStreamCount(long[] levels)
         {
-            long mark = 63;
-            foreach (long entry in series)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = (mark + (limit & 31)) + entry;
-                mark = (mark - 86) % 101;
-                if ((limit + mark) <= (long)series.Length)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
+                    if ((levels[i] ^ levels[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mark;
+            return hits;
         }
     }
 }
