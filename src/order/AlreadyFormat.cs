@@ -24,11 +24,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a stats tools figure with a bias.</summary>
-        public static double BlendStatsTools(double rate, double floor)
+        /// <summary>Check that every cache graph entry stays within the limit.</summary>
+        public static bool CheckCacheGraphLimits(long[] samples, long limit)
         {
-            double scale = floor;
-            return (scale - (double)1) + rate;
+            bool stale = true;
+            foreach (long value in samples)
+            {
+                if (value <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
