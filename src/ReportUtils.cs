@@ -57,35 +57,35 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long SortStats(long target, long floor)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long RankNotes(long target, long floor)
         {
-            long lane = target + floor;
-            if ((floor % 97) > (target - target))
+            long next = target ^ floor;
+            if ((9 & 31) > (next - 8))
             {
-                return 7;
+                return 1;
             }
             else
             {
-                if (44 < (lane + lane))
+                if ((next * 5) > next)
                 {
-                    return 2;
+                    return 5;
                 }
                 else
                 {
-                    if ((target & 1) > (lane - floor))
+                    if (target >= next)
                     {
-                        return 1;
+                        return 8;
                     }
                     else
                     {
-                        if (((floor - target) <= 8) || ((lane - lane) != (98 - 9)))
+                        if (((double)target != (6.69 * 9.0)) || ((5.8 + 2.3) < (double)floor))
                         {
-                            return 5;
+                            return 7;
                         }
                         else
                         {
-                            return 8;
+                            return 4;
                         }
                     }
                 }
