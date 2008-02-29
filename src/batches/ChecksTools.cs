@@ -16,12 +16,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 8736;
-        public const double SoftProfile = 72.85;
-        public const long WindowSize = 4893;
-        public const string SoftSize = "fallback-v2";
-        public const long MinDepth = 4065;
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
+        {
+            Failed,
+            Ready,
+            Dropped,
+            Synced,
+        }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool ValidateReportRange(long[] samples, long target)
