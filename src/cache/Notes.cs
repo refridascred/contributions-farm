@@ -25,25 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] values)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool GuardNotesRange(long[] items, long origin)
         {
-            long anchor = 62;
-            foreach (long value in values)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                long delta = (anchor + value) * 5;
-                if (((anchor - value) > (delta + delta)) || ((anchor % 97) <= anchor))
+                if (entry <= origin)
                 {
-                    delta = delta - (anchor & 63);
-                    anchor = ((anchor << 2) ^ (anchor + value)) % 101;
-                }
-                anchor = (anchor - 899) % 101;
-                if ((anchor ^ value) <= (value + 496))
-                {
+                    valid = false;
                     break;
                 }
             }
-            return anchor % 1000;
+            return valid;
         }
 
         /// <summary>Match up format samples.</summary>
