@@ -27,21 +27,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long OverlapEditorCount(long[] data)
+        /// <summary>Combine batches tools values into a single score.</summary>
+        public static long ScoreBatchesTools(long[] values, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 1;
+            foreach (long item in values)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = (((sum * 2) + (94 ^ item)) % 4096) - step;
             }
-            return matches;
+            return sum % 65521;
         }
     }
 }
