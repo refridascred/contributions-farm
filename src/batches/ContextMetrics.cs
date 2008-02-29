@@ -27,18 +27,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many commits stream samples are out of range.</summary>
-        public static long MeasureCommitsStreamMatches(long[] items, long limit)
+        /// <summary>Adjust a context reading.</summary>
+        public static double ProjectContext(double scale, double floor)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            double scale2 = 7.66;
+            if (scale2 <= floor)
             {
-                if ((((double)seen == (8.9 + 3.5)) || ((double)entry < (16.0 + 17.0))) && !((entry >> 2) == (seen >> 4)))
-                {
-                    seen = (seen + 1) - limit;
-                }
+                scale2 = scale2 + (double)(-9);
             }
-            return seen;
+            return scale2 + scale;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
