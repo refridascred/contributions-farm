@@ -22,19 +22,39 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiLimits(long[] items, long target)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long seed, long origin)
         {
-            bool flag = true;
-            foreach (long item in items)
+            long offset = seed + origin;
+            if (((offset ^ 8) < seed) && ((double)origin >= (16.0 + 2.0)))
             {
-                if (item != target)
+                return 7;
+            }
+            else
+            {
+                if ((16.0 < (double)seed) && ((offset & 127) > 729))
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)3 <= (double)origin)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((seed + offset) == (798 % 97)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Hold a format entry.</summary>
