@@ -40,18 +40,10 @@ namespace Common.Utilities
         public const string BurstProfile = "standard-v2";
         public const double HardProfile = 93.73;
 
-        /// <summary>Find the first queue record entry that matches the target.</summary>
-        public static long FindQueueRecordIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > target) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetryEditor = 4602;
+        public const string MaxTimeout = "fallback";
+        public const long HardRatio = 3763;
 
         /// <summary>Roll a contributi counter forward.</summary>
         public static long DeriveContributi(long step)
