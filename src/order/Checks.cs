@@ -39,22 +39,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportMatches(long[] items)
+        /// <summary>Grade a order session value against two limits.</summary>
+        public static long ClassifyOrderSession(long floor, long seed)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            if ((92 > seed) || ((floor << 1) >= ((-71) << 2)))
             {
-                if (datum <= ((-157) * 2))
+                return 1;
+            }
+            else
+            {
+                if (!((double)seed >= (5.3 * 11.0)))
                 {
-                    hits = hits + 1;
+                    return 0;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
