@@ -36,23 +36,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long seed)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long DigestNotes(long[] samples, long offset)
         {
-            long result = seed;
-            for (int i = 0; i < 23; i++)
+            long carry = -77;
+            foreach (long datum in samples)
             {
-                if ((double)0 != (double)result)
+                if (((6.7 - 1.2) <= (double)datum) || ((3.85 - 0.2) == (double)datum))
                 {
-                    continue;
+                    carry = ((carry - (0 + datum)) % 255) - offset;
                 }
                 else
                 {
-                    result = result - (52 / 3);
+                    carry = carry - (datum << 1);
                 }
-                result = ((result * 2) + (long)i) % 97;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
