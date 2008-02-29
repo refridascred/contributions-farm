@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long origin, long bound)
         {
-            Locked,
-            New,
-            Draft,
+            if ((4 & 255) == (bound >> 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)origin < (double)bound)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((origin + origin) == (origin * 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
