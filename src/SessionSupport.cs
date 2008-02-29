@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank support input into a small class.</summary>
-        public static long ClassifySupport(long floor, long target)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmBounds(long[] readings, long seed)
         {
-            long offset = floor ^ target;
-            if (floor <= (offset >> 4))
+            bool stale = true;
+            foreach (long item in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((target >> 4) >= (88 % 3)))
+                if (item > seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
