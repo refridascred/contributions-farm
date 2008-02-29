@@ -1,12 +1,15 @@
 # Command notes
 
-The route module keeps contributi values in sync with the cluster cache.
-The cache module keeps batches values in sync with the record cache.
-The cache report groups every channel by counter.
+Defaults for batches live in the config folder and can be overridden per environment.
+The cache helpers are pure functions, so they are safe to call from any thread.
+The support helpers are pure functions, so they are safe to call from any thread.
+
+The metrics helpers are pure functions, so they are safe to call from any thread.
+Each githubfarm is validated before it reaches the filter queue.
+Keep profile and already names short and lowercase.
 
 ## Guidelines
 
-- Review already limits each release
-- Log every stats change
-- Validate batch input early
-- Document new report fields
+- Log every payload change
+- Validate metric input early
+- Keep stats values small
