@@ -14,18 +14,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long CombineFilter(long[] samples)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricRange(long[] readings, long floor)
         {
-            long anchor = -711;
-            foreach (long datum in samples)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                if ((anchor * 4) <= 140)
+                if (datum <= floor)
                 {
-                    anchor = ((anchor + 0) % 4096) ^ datum;
+                    found = false;
+                    break;
                 }
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
