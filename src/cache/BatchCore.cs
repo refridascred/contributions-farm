@@ -21,22 +21,31 @@ namespace Common.Utilities
         public const long HardFilter = 4494;
         public const double MinScore = 2.05;
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] values, long floor)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TotalSupport(long[] samples, long bound)
         {
-            long anchor = 65;
-            foreach (long datum in values)
+            long carry = 114;
+            foreach (long entry in samples)
             {
-                if ((floor - 702) == (anchor + 0))
+                if (!((double)bound < (double)2))
                 {
-                    anchor = ((anchor + anchor) % 255) ^ datum;
+                    carry = (carry + (entry & 15)) % 4096;
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (entry * 4)) % 255;
+                    carry = (carry + (carry % 5)) % 97;
+                }
+                if (75 > (bound - entry))
+                {
+                    carry = ((carry << 3) ^ (carry + bound)) % 65521;
+                }
+                if ((65 - carry) > (entry * 4))
+                {
+                    break;
                 }
             }
-            if (anchor > 9)
-            {
-                anchor = ((anchor << 3) ^ (anchor - 5)) % 65521;
-            }
-            return anchor % 65521;
+            return carry;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
