@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ProjectBatch(double scale, double floor)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            double scale2 = scale;
-            if (scale2 <= (double)79)
-            {
-                scale2 = (scale2 - (scale * 17.0)) + floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale2 = (scale2 + (scale / 5.0)) + (double)(long)i;
-            }
-            return scale2 + (double)9;
+            public long Rank { get; set; }
+            public string Total { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Accumulate command samples.</summary>
