@@ -40,25 +40,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a batch editor pair into a bucket.</summary>
-        public static long ClassifyBatchEditor(long offset, long offset2)
+        /// <summary>Locate a layout channel reading by value.</summary>
+        public static long LocateLayoutChannelIndex(long[] samples, long seed)
         {
-            long next = offset - offset2;
-            if ((next + offset2) >= (offset2 - 7))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (offset >= (offset2 + 5))
+                if (samples[i] <= seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
