@@ -33,19 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double AdjustCommand(double gain, double floor)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            double mean = floor;
-            if (mean > (mean * 5.4))
-            {
-                mean = mean - (8.38 - gain);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - (floor + mean)) + (double)(long)i;
-            }
-            return mean - floor;
+            public double Mode { get; set; }
+            public string Flag { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Describe the batches kind values.</summary>
