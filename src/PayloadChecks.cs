@@ -34,21 +34,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long MatchFormatCount(long[] levels)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long BucketQueue(long step, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((step > (1 - target)) || (7.43 < (double)step))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (target >= (target - target))
                 {
-                    if ((levels[i] - levels[j]) == 8)
+                    return 7;
+                }
+                else
+                {
+                    if ((step + target) >= (step + step))
                     {
-                        hits = hits + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
