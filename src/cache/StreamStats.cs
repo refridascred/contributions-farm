@@ -43,18 +43,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of contributi entry entries.</summary>
-        public static long ScoreContributiEntry(long[] values)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowOutliers(long[] items)
         {
-            long total = 557;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (((double)entry == (7.75 / 6.0)) && (total > (total / 7)))
+                if ((value < (tally ^ value)) && ((value <= (tally ^ value)) && ((27 - tally) != (tally >> 3))))
                 {
-                    total = total ^ (-4);
+                    tally = tally + 3;
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
