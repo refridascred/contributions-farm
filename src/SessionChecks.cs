@@ -18,38 +18,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long origin, long step)
+        /// <summary>Accumulate metric channel samples.</summary>
+        public static long ScoreMetricChannel(long[] items, long origin)
         {
-            if ((1.1 * 6.6) > (double)step)
+            long acc = 9;
+            foreach (long reading in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((4.52 / 8.0) <= (double)origin)
+                if ((acc - acc) < (reading - reading))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((step ^ step) > (origin & 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((origin << 1) > (step + 7)) && ((12.0 - 7.94) <= (double)origin))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    acc = (acc + ((-6) ^ origin)) % 255;
                 }
             }
+            return acc % 65521;
         }
 
         /// <summary>Describe the filter status values.</summary>
