@@ -1,6 +1,6 @@
 {
-  "notes_limit": "blue",
-  "notes_ttl": "eu-west",
-  "soft_limit_pct": "primary",
-  "idle_threshold": ["fallback", "latest", "primary", "staging"]
+  "metric_size": 39.37,
+  "max_timeout": 60,
+  "batch_window_count": 3.05,
+  "sync_capacity": 35.73
 }
