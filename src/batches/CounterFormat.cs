@@ -39,11 +39,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next graph farm value.</summary>
-        public static double SmoothGraphFarm(double rate, double offset)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsHits(long[] series)
         {
-            double rate2 = offset - 16.0;
-            return (rate2 + (offset / 4.0)) + rate;
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((70 - entry) <= (618 - (-1)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
