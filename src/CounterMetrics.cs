@@ -21,22 +21,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] items)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long acc = 4;
-            foreach (long cell in items)
-            {
-                if (((acc - cell) > acc) || (48 < acc))
-                {
-                    acc = ((acc << 2) ^ (acc + cell)) % 97;
-                }
-                else
-                {
-                    acc = acc ^ (-6);
-                }
-            }
-            return acc;
+            public long Rank { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
