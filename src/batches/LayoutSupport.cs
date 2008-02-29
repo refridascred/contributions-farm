@@ -76,21 +76,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count metric metrics pairs that satisfy a relation.</summary>
-        public static long CompareMetricMetricsCount(long[] data)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LocateLayoutIndex(long[] items, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (items[i] < target)
                 {
-                    if ((data[i] + data[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
