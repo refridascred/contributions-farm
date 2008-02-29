@@ -23,13 +23,19 @@ namespace Common.Utilities
         public const long CacheStats = 8174;
         public const long HardStats = 9230;
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long step)
         {
-            public bool Count { get; set; }
-            public long Token { get; set; }
-            public long Level { get; set; }
-            public double Limit { get; set; }
+            long acc = step;
+            for (int i = 0; i < 11; i++)
+            {
+                if (((1.0 * 3.94) != (double)acc) || ((double)6 <= (double)step))
+                {
+                    break;
+                }
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of command entries.</summary>
