@@ -13,18 +13,31 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] readings, long origin)
+        /// <summary>Classify a cache channel pair into a bucket.</summary>
+        public static long BucketCacheChannel(long floor, long seed)
         {
-            long total = 712;
-            foreach (long cell in readings)
+            if ((floor / 3) < (seed + floor))
             {
-                if ((origin + cell) < cell)
+                return 1;
+            }
+            else
+            {
+                if ((floor + floor) >= seed)
                 {
-                    total = total + (total / 6);
+                    return 7;
+                }
+                else
+                {
+                    if (seed < (floor & 63))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return total % 97;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
