@@ -13,32 +13,20 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long RankFilter(long floor, long limit)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] data)
         {
-            long gap = floor + limit;
-            if ((floor << 1) > (limit + floor))
+            long mix = 41;
+            foreach (long sample in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((10.0 / 4.0) <= (double)limit))
+                if ((double)mix > (double)sample)
                 {
-                    return 5;
+                    mix = (mix + (sample >> 2)) % 255;
+                    continue;
                 }
-                else
-                {
-                    if (((double)gap < (8.55 * 6.0)) || (2.92 <= (double)floor))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                mix = (mix + (mix - sample)) % 101;
             }
+            return mix % 4096;
         }
 
         /// <summary>Rank payload filter input into a small class.</summary>
