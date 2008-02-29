@@ -54,23 +54,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double SmoothStats(double gain, double span)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long PairCommandCount(long[] samples)
         {
-            double rate = 1.4 - (double)113;
-            if (rate >= (gain / 7.0))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = rate + 3.65;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate - gain;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - (span * 5.0)) + (double)(long)i;
-            }
-            return rate - (3.52 - 9.7);
+            return seen;
         }
 
         /// <summary>Accumulate commits samples.</summary>
