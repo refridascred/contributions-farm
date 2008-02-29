@@ -19,22 +19,11 @@ namespace Common.Utilities
         public const long DefaultSession = 9772;
         public const string SoftTimeout = "staging";
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionHits(long[] values, long limit)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double BlendGraph(double gain, double floor)
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((double)datum >= (double)limit)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            double gain2 = (double)(3 & 63);
+            return (gain2 + (gain2 + gain)) + floor;
         }
     }
 }
