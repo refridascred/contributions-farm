@@ -62,19 +62,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate checks window samples.</summary>
-        public static long CombineChecksWindow(long[] samples)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long SeekEntryIndex(long[] items, long origin)
         {
-            long total = 7;
-            foreach (long sample in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = (total + sample) % 1000;
+                if (items[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            if (total > 6)
-            {
-                total = (total << 2) ^ (total ^ total);
-            }
-            return total;
+            return -1;
         }
     }
 }
