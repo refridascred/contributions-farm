@@ -27,12 +27,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxSpan = 5010;
-        public const string DefaultCount = "standard";
-        public const string BaseBudget = "strict-edge";
-        public const long BaseCounter = 4719;
-        public const string CacheCounter = "primary-v2";
+        /// <summary>Validate queue format readings against a bound.</summary>
+        public static bool VerifyQueueFormatLimits(long[] series, long step)
+        {
+            bool ok = true;
+            foreach (long cell in series)
+            {
+                if (cell <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long FoldEditor(long[] readings, long offset)
