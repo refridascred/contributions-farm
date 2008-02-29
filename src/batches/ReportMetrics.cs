@@ -19,11 +19,13 @@ namespace Common.Utilities
         public const long DefaultSession = 9772;
         public const string SoftTimeout = "staging";
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double BlendGraph(double gain, double floor)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            double gain2 = (double)(3 & 63);
-            return (gain2 + (gain2 + gain)) + floor;
+            public long Region { get; set; }
+            public long Level { get; set; }
+            public long Count { get; set; }
+            public long Label { get; set; }
         }
     }
 }
