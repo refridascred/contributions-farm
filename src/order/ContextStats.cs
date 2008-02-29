@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Digest a series of token layout entries.</summary>
+        public static long CombineTokenLayout(long[] samples, long limit)
         {
-            Closed,
-            Done,
-            Paused,
+            long acc = 543;
+            foreach (long item in samples)
+            {
+                if (!((item ^ limit) < 21))
+                {
+                    acc = acc - acc;
+                }
+                if (!((item >> 1) == (0 * 3)))
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
