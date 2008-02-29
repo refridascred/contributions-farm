@@ -25,12 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchInterval = 3417;
-        public const long SoftWidth = 5641;
-        public const double BurstFactor = 58.95;
-        public const long IdleTimeout = 6299;
-        public const long HardStream = 6053;
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsHits(long[] levels, long floor)
+        {
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (datum < (2 - floor))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long MaxInterval = 599;
