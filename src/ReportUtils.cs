@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long BucketGraph(long offset, long seed)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long ClassifyPayload(long seed, long origin)
         {
-            long delta = offset - seed;
-            if ((delta ^ seed) <= delta)
+            long span = seed - origin;
+            if ((span - (-607)) <= (span - 597))
             {
-                return 8;
+                return 2;
             }
             else
             {
-                if ((delta - delta) < (seed + offset))
+                if (((seed & 127) < seed) || ((double)seed < (7.94 + 3.0)))
                 {
-                    return 2;
+                    return 6;
                 }
                 else
                 {
-                    return 4;
+                    return 0;
                 }
             }
         }
