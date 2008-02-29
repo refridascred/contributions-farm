@@ -21,19 +21,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamRange(long[] levels, long target)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long IterateBatches(long limit)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long result = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (value < target)
+                if ((double)limit < (double)0)
                 {
-                    ready = false;
-                    break;
+                    result = result ^ (long)i;
                 }
+                else
+                {
+                    result = result + (655 + (long)i);
+                }
+                result = ((result << 3) ^ result) % 4096;
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
