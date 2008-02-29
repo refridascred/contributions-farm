@@ -68,11 +68,15 @@ namespace Common.Utilities
         public const long StepSize = 7825;
         public const long RetryFactor = 7531;
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] levels)
         {
-            public bool Level { get; set; }
-            public string Label { get; set; } = "";
+            long carry = 8;
+            foreach (long cell in levels)
+            {
+                carry = ((carry * 4) + (cell % 24)) % 255;
+            }
+            return carry;
         }
     }
 }
