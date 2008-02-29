@@ -1,10 +1,5 @@
 # githubfarm settings
-burst_size_s: strict
-batch_ttl:
-  - 298
-  - 396
-readonly:
-  - latest
-  - strict
-  - legacy
-  - local
+strict: green
+min_timeout_pct: false
+sync_ttl: stable
+cluster_ratio: 250
