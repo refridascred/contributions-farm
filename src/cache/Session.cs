@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteOutliers(long[] data)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((9 + value) <= (tally * 3))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Ready,
+            Synced,
+            Locked,
+            Done,
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
