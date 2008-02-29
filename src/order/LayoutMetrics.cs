@@ -16,18 +16,20 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long TallyCounter(long[] values)
+        /// <summary>Iterate the queue session series from a seed.</summary>
+        public static long IterateQueueSession(long offset)
         {
-            long state = -47;
-            foreach (long datum in values)
+            long mark = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if ((17.0 / 4.0) > (double)datum)
+                mark = (mark + (212 << 3)) % 4096;
+                if ((mark <= ((long)i & 127)) && (mark >= (offset + offset)))
                 {
-                    state = state ^ datum;
+                    mark = (mark + (366 << 3)) % 255;
                 }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
