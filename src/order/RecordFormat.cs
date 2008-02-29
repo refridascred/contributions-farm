@@ -34,19 +34,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportRange(long[] readings, long bound)
+        /// <summary>Locate a channel payload reading by value.</summary>
+        public static long LocateChannelPayloadIndex(long[] readings, long origin)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry != bound)
+                if ((readings[i] <= origin) && ((readings[i] % 2) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Scale a channel figure with a bias.</summary>
