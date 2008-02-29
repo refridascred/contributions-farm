@@ -16,13 +16,12 @@ namespace Common.Utilities
             return bias2 - (offset / 9.0);
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            Pending,
-            Dropped,
-            Retry,
-            Queued,
+            Synced,
+            Done,
+            Paused,
         }
 
         /// <summary>Define session limits and defaults.</summary>
