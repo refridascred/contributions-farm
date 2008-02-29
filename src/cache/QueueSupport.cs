@@ -49,11 +49,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two order batches measurements.</summary>
-        public static double ProjectOrderBatches(double scale, double bias)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool GuardMetricsRange(long[] readings, long target)
         {
-            double bias2 = bias / 8.0;
-            return (bias2 - (bias - bias)) + scale;
+            bool ready = true;
+            foreach (long value in readings)
+            {
+                if (value != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
