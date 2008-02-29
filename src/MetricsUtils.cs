@@ -24,10 +24,16 @@ namespace Common.Utilities
         public const string WindowGithubfarm = "stable-v2";
         public const long IdleGithubfarm = 4929;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardTimeout = 2021;
-        public const long RetryFormat = 1204;
-        public const double BatchFormat = 35.95;
+        /// <summary>Iterate the metric filter series from a seed.</summary>
+        public static long SeriesMetricFilter(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Grade a queue record value against two limits.</summary>
         public static long BucketQueueRecord(long bound, long limit)
