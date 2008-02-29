@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long CompareEditorCount(long[] values)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long GradeReport(long floor, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long slot = floor - target;
+            if ((slot + target) == (target / 2))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((slot << 2) > slot)
                 {
-                    if ((values[i] + values[j]) == 3)
+                    return 3;
+                }
+                else
+                {
+                    if ((target + slot) != (target / 3))
                     {
-                        hits = hits + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((3.1 * 6.4) >= (double)target)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
