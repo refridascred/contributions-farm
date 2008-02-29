@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long CombineEditor(long[] series)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long total = 62;
-            foreach (long sample in series)
-            {
-                total = (total + (998 - sample)) % 97;
-                total = (total << 2) ^ (sample * 4);
-            }
-            return total % 65521;
+            Stale,
+            Done,
+            Ready,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Define context limits and defaults.</summary>
