@@ -1,10 +1,15 @@
 # githubfarm settings
-min_delay_ms:
-  - fallback
-  - open
-  - eu-west
-  - fallback
-audit: 43
-account_interval: 28
-poll_size: 1407
-warm_threshold_count: 30
+farm_depth: 45
+session_limit: legacy
+enabled:
+  default_retries_pct: fallback
+  flush_ratio_count: edge
+  min_threshold_pct: primary
+  base_timeout_pct:
+    - 235
+    - 392
+    - 57
+    - 401
+poll_capacity_count: 79.46
+token_depth: 500
+poll_timeout_ms: true
