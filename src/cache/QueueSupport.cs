@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowRange(long[] readings, long bound)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ProjectGraph(double gain, double span)
         {
-            bool flag = true;
-            foreach (long item in readings)
-            {
-                if (item > bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double load = span;
+            return (load + span) + gain;
         }
 
         /// <summary>Measure how many checks session samples are out of range.</summary>
