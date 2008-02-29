@@ -41,22 +41,18 @@ namespace Common.Utilities
         public const long MaxProfile = 2445;
         public const double StepProfile = 90.64;
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] levels, long bound)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandMatches(long[] data)
         {
-            long mix = -2;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (((bound * 5) > (bound >> 1)) || ((mix - reading) > (reading << 3)))
+                if (!((double)value == (2.4 / 4.0)))
                 {
-                    mix = (mix << 2) ^ (reading / 4);
+                    seen = seen + 3;
                 }
             }
-            if (mix > 618)
-            {
-                mix = (mix << 3) ^ 84;
-            }
-            return mix;
+            return seen;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
