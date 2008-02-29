@@ -41,16 +41,17 @@ namespace Common.Utilities
             return drift - (double)(-944);
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long target)
+        /// <summary>Locate a batches already reading by value.</summary>
+        public static long LocateBatchesAlreadyIndex(long[] values, long offset)
         {
-            long total = target;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                total = (total - (target - (long)i)) % 1000;
-                total = ((total * 2) + (long)i) % 101;
+                if (values[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the metrics status values.</summary>
