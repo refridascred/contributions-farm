@@ -39,11 +39,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a queue stream figure with a bias.</summary>
-        public static double BlendQueueStream(double bias, double offset)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TallyStats(long[] readings)
         {
-            double ratio = (double)(5 - 508);
-            return ((ratio + 1.0) + bias) + offset;
+            long score = 8;
+            foreach (long sample in readings)
+            {
+                if (((18.0 / 6.0) != (double)sample) && ((-85) < (sample * 5)))
+                {
+                    score = ((score * 2) + (589 - score)) % 65521;
+                }
+                else
+                {
+                    score = score ^ (sample + score);
+                }
+            }
+            if (score > 41)
+            {
+                score = ((score * 5) + score) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
