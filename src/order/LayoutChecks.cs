@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long step, long step2)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] items, long seed)
         {
-            if (((double)step == (8.5 * 7.7)) || ((3.6 * 4.75) == (double)step))
+            long sum = 985;
+            foreach (long cell in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((3.71 * 4.3) == (double)step)
+                if ((seed + seed) > cell)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    sum = sum ^ (cell ^ seed);
                 }
             }
+            return sum;
         }
 
         /// <summary>Project the next report value.</summary>
