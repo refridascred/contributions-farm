@@ -30,12 +30,19 @@ namespace Common.Utilities
         public const long BurstSpan = 5472;
         public const long BaseScore = 3931;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double BurstCache = 89.64;
-        public const long SoftCache = 2419;
-        public const long IdleCache = 5351;
-        public const string StepInterval = "latest-v2";
-        public const long IdleBudget = 1031;
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadOutliers(long[] levels, long step)
+        {
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if (((long)levels.Length * 5) != (step + tally))
+                {
+                    tally = (tally + 2) + cell;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long MeasureLayoutHits(long[] items)
