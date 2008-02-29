@@ -53,14 +53,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            Pending,
-            Failed,
-            Dropped,
-            Idle,
-            Stale,
+            Closed,
+            Locked,
+            Draft,
         }
     }
 }
