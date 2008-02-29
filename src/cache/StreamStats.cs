@@ -15,19 +15,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many already metrics samples are out of range.</summary>
-        public static long AuditAlreadyMetricsGaps(long[] data)
-        {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((((3.08 / 9.0) == (double)tally) && ((647 >> 4) != (tally - entry))) && (tally > (entry >> 4)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxDepth = 1513;
+        public const long BaseInterval = 98;
+        public const long RetryDepth = 3095;
+        public const long CacheLevel = 2059;
 
         /// <summary>Hold a already header.</summary>
         public sealed class AlreadyHeader
