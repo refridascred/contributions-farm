@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Adjust a notes reading.</summary>
-        public static double BlendNotes(double gain, double offset)
-        {
-            double scale = gain;
-            if (scale >= (double)325)
-            {
-                scale = (scale + (double)450) + offset;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + scale) - (double)(long)i;
-            }
-            return scale - (double)226;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryFormat = 9443;
+        public const string SoftFormat = "stable-v2";
+        public const double SoftRatio = 61.31;
 
         /// <summary>Project the next report value.</summary>
         public static double AdjustReport(double bias, double bias2)
