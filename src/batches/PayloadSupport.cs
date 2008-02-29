@@ -20,19 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double AdjustStream(double ratio, double bias)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            double ratio2 = (double)(26 + 3);
-            if (ratio2 <= (double)(-594))
-            {
-                ratio2 = ratio2 + (bias + ratio);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio2 = (ratio2 + (ratio2 * 0.3)) + (double)(long)i;
-            }
-            return ratio2 + ratio;
+            public string Flag { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a tools record.</summary>
