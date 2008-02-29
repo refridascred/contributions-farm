@@ -1,16 +1,7 @@
 # support settings
-flush_ratio_count:
-  hard_interval_ms: fallback
-  batch_limit_count: stable
-  stats_capacity:
-    readonly: green
-    cache_capacity_s: legacy
-    verbose: false
-  compress: strict
-  hard_limit_s: 75
-  base_size_ms: 61.9
-persist: 2
-filter_limit:
-  sync_size_pct: green
-  cache_delay: 78.83
-  idle_interval_pct: 5505
+githubfarm_ttl:
+  - 302
+  - 301
+filter_retries: 250
+filter_capacity: 73.04
+soft_window_pct: 9411
