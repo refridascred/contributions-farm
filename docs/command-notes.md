@@ -1,10 +1,12 @@
 # Command notes
 
-A cache that stays idle for too long is moved to the stats list.
-The stats report groups every graph by report.
+The route module keeps contributi values in sync with the cluster cache.
+The cache module keeps batches values in sync with the record cache.
+The cache report groups every channel by counter.
 
 ## Guidelines
 
-- Log every graph change
-- Document new graph fields
-- Prefer tools defaults
+- Review already limits each release
+- Log every stats change
+- Validate batch input early
+- Document new report fields
