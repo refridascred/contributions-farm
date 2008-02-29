@@ -42,18 +42,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the queue payload entries that pass the check.</summary>
-        public static long TallyQueuePayloadMatches(long[] levels)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long ClassifyMetrics(long origin, long step)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            if ((872 - 4) == (origin ^ step))
             {
-                if (9.6 >= (double)reading)
+                return 7;
+            }
+            else
+            {
+                if ((double)step < (double)origin)
                 {
-                    seen = seen + 3;
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
