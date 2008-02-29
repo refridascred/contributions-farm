@@ -39,15 +39,39 @@ namespace Common.Utilities
         public const string SoftNotes = "fallback-edge";
         public const long MaxScore = 3227;
 
-        /// <summary>Project the next profile value.</summary>
-        public static double AdjustProfile(double weight, double bias)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long origin, long target)
         {
-            double ratio = weight;
-            if (ratio <= (ratio + 3.61))
+            long delta = origin ^ target;
+            if (!((double)origin >= 2.39))
             {
-                ratio = (ratio + ratio) - bias;
+                return 8;
             }
-            return ratio + weight;
+            else
+            {
+                if (0 <= delta)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((delta - target) < (origin + delta))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((delta - target) <= target)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine context values into a single score.</summary>
