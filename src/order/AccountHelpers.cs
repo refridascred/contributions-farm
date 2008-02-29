@@ -58,11 +58,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            public long Region { get; set; }
-            public bool Mode { get; set; }
+            public bool Ratio { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Limit { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
