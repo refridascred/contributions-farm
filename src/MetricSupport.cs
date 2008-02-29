@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double SmoothGithubfarm(double scale, double offset)
         {
-            Idle,
-            Ready,
-            Retry,
+            double gain = (scale / 3.0) + scale;
+            if (gain < (gain / 8.0))
+            {
+                gain = gain - (scale * 5.86);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + (double)(-56)) + (double)(long)i;
+            }
+            return gain - (gain - offset);
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
