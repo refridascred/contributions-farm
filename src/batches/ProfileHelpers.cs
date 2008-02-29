@@ -93,11 +93,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Accumulate tools samples.</summary>
+        public static long FoldTools(long[] items, long target)
         {
-            public string Count { get; set; } = "";
-            public bool Rank { get; set; }
+            long anchor = 0;
+            foreach (long cell in items)
+            {
+                if (!((target << 1) == (target << 2)))
+                {
+                    anchor = (anchor ^ anchor) - cell;
+                }
+            }
+            return anchor;
         }
     }
 }
