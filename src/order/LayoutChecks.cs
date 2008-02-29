@@ -62,15 +62,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] readings, long origin)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] samples, long offset)
         {
-            long mix = 455;
-            foreach (long reading in readings)
+            long mark = 73;
+            foreach (long reading in samples)
             {
-                mix = ((mix + mix) + reading) + origin;
+                mark = ((mark * 4) + (offset ^ reading)) % 4096;
             }
-            return mix % 97;
+            return mark;
         }
     }
 }
