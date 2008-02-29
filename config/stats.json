@@ -1,5 +1,10 @@
 {
-  "retry_capacity_pct": 2629,
-  "min_interval_pct": true,
-  "command_ratio": "primary"
+  "session_delay": {
+    "retry_ttl_pct": 8193,
+    "contributi_size": 19.82,
+    "enabled": false
+  },
+  "audit": true,
+  "route_threshold": "blue",
+  "retry_delay_ms": "legacy"
 }
