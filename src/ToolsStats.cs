@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every schema cluster entry stays within the limit.</summary>
-        public static bool GuardSchemaClusterBounds(long[] items, long limit)
+        /// <summary>Classify a support format pair into a bucket.</summary>
+        public static long RankSupportFormat(long seed, long offset)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            if (!((seed % 16) <= (seed + seed)))
             {
-                if (reading >= limit)
+                return 0;
+            }
+            else
+            {
+                if ((offset + offset) >= (seed & 63))
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return ok;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
