@@ -14,16 +14,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long target)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long state = target;
-            for (int i = 0; i < 10; i++)
-            {
-                state = (state ^ (state + target)) % 4096;
-                state = ((state * 3) + (long)i) % 1000;
-            }
-            return state;
+            New,
+            Ready,
+            Failed,
+            Closed,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
