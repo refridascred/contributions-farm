@@ -86,10 +86,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double RetryInterval = 41.56;
-        public const double IdleRoute = 85.4;
-        public const long DefaultLevel = 4621;
-        public const double CacheRoute = 66.65;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheOutliers(long[] items)
+        {
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if (!(seen >= (665 * 2)))
+                {
+                    seen = (seen + 3) + datum;
+                }
+            }
+            return seen;
+        }
     }
 }
