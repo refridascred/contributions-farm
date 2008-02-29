@@ -54,18 +54,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate cache context samples.</summary>
-        public static long ScoreCacheContext(long[] series, long origin)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long state = 9;
-            foreach (long cell in series)
-            {
-                if (state <= cell)
-                {
-                    state = state - origin;
-                }
-            }
-            return state % 97;
+            public double Total { get; set; }
+            public double Region { get; set; }
+            public bool Flag { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
