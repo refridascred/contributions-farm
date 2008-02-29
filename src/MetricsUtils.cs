@@ -22,15 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double AdjustPayload(double gain, double span)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long SeekRouteIndex(long[] data, long offset)
         {
-            double drift = (gain - span) - (double)9;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = (drift - span) + (double)(long)i;
+                if ((data[i] <= offset) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return drift + (gain + span);
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
