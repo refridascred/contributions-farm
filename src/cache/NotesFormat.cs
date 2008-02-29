@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Rank report input into a small class.</summary>
-        public static long GradeReport(long floor, long target)
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double bias, double span)
         {
-            long slot = floor - target;
-            if ((slot + target) == (target / 2))
+            double weight = bias;
+            for (int i = 0; i < 2; i++)
             {
-                return 1;
+                weight = ((weight - 3.34) + (double)(long)i) + span;
             }
-            else
-            {
-                if ((slot << 2) > slot)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((target + slot) != (target / 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((3.1 * 6.4) >= (double)target)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return weight + 6.0;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
