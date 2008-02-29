@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long target, long limit)
+        /// <summary>Look up the position of a account editor sample.</summary>
+        public static long SeekAccountEditorIndex(long[] samples, long target)
         {
-            long lane = target ^ limit;
-            if ((lane / 8) < limit)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((6.97 - 15.0) < (double)limit)
+                if (samples[i] <= target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
