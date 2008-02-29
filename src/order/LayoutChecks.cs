@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] items, long seed)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextRange(long[] levels, long limit)
         {
-            long sum = 985;
-            foreach (long cell in items)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                if ((seed + seed) > cell)
+                if (sample != limit)
                 {
-                    sum = sum ^ (cell ^ seed);
+                    stale = false;
+                    break;
                 }
             }
-            return sum;
+            return stale;
         }
 
         /// <summary>Project the next report value.</summary>
