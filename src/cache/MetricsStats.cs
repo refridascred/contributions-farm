@@ -51,17 +51,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long SeekGraphIndex(long[] data, long bound)
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] series, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 63;
+            foreach (long entry in series)
             {
-                if ((data[i] < bound) && ((data[i] % 5) == 0))
+                mark = (mark + (limit & 31)) + entry;
+                mark = (mark - 86) % 101;
+                if ((limit + mark) <= (long)series.Length)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return mark;
         }
     }
 }
