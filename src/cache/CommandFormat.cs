@@ -56,10 +56,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BurstInterval = 65.27;
-        public const long MaxCommits = 4411;
-        public const long StepCommits = 4244;
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
+        {
+            public long Total { get; set; }
+            public double Label { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Accumulate window samples.</summary>
         public static long FoldWindow(long[] items)
