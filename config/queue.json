@@ -1,7 +1,6 @@
 {
-  "order_interval": 70.44,
-  "max_limit_count": 79,
-  "dry_run": "standard",
-  "base_ttl": ["open", "primary"],
-  "batch_retries_s": false
+  "editor_timeout": "local",
+  "route_threshold": 3002,
+  "enabled": 79,
+  "warm_ratio": 55.01
 }
