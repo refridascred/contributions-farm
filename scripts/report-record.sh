@@ -6,12 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=217
-log "limit is ${RECORD_LIMIT}"
+for item in edge strict; do
+    log "checking ${item}"
+done
 
-mode="${1:-eu-west}"
+mode="${1:-standard}"
 case "${mode}" in
-    edge)
+    legacy)
         log "fast path"
         ;;
     *)
