@@ -26,11 +26,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long OverlapWindowCount(long[] readings)
         {
-            public string Flag { get; set; } = "";
-            public string Total { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
