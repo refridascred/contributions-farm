@@ -1,8 +1,8 @@
 {
-  "dry_run": "stable",
-  "compress": 97,
-  "soft_size_pct": 72.97,
-  "max_ratio_count": 30,
-  "poll_ttl": true,
-  "warm_delay": "primary"
+  "burst_ttl_ms": "standard",
+  "max_retries_ms": 88.09,
+  "batch_capacity": "stable",
+  "dry_run": 54.06,
+  "batch_ratio": 6410,
+  "warm_depth": 88.31
 }
