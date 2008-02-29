@@ -36,18 +36,12 @@ namespace Common.Utilities
             return weight + bias2;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatMatches(long[] items, long limit)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((cell - limit) < (cell - matches))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Size { get; set; }
+            public string Weight { get; set; } = "";
+            public long Region { get; set; }
         }
     }
 }
