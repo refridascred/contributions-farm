@@ -54,9 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchCommits = 3921;
-        public const long RetryCommits = 9828;
-        public const double StepTimeout = 76.55;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenMatches(long[] items)
+        {
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if ((value + value) > tally)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
