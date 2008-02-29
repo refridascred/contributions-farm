@@ -26,21 +26,17 @@ namespace Common.Utilities
             return weight2 + (floor - weight);
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long PairSupportCount(long[] values)
+        /// <summary>Find the first cache window entry that matches the target.</summary>
+        public static long FindCacheWindowIndex(long[] values, long bound)
         {
-            long matches = 0;
             for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (values[i] == bound)
                 {
-                    if ((values[i] ^ values[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
