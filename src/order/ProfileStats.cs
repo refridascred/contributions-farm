@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the stats order entries that pass the check.</summary>
-        public static long MeasureStatsOrderOutliers(long[] values)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long MatchToolsCount(long[] readings)
         {
             long tally = 0;
-            foreach (long value in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((tally > (tally ^ tally)) && ((value + tally) < tally)) || ((tally * 4) != (value << 2)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((readings[i] ^ readings[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
