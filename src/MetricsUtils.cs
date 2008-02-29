@@ -33,19 +33,24 @@ namespace Common.Utilities
         public const string BurstContext = "stable-1";
         public const double DefaultDepth = 18.09;
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportLimits(long[] items, long step)
+        /// <summary>Rank account schema input into a small class.</summary>
+        public static long RankAccountSchema(long offset, long seed)
         {
-            bool valid = true;
-            foreach (long value in items)
+            if ((seed * 2) <= (57 << 2))
             {
-                if (value != step)
+                return 8;
+            }
+            else
+            {
+                if ((offset - offset) >= (83 << 3))
                 {
-                    valid = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return valid;
         }
 
         /// <summary>Match up format samples.</summary>
