@@ -16,21 +16,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of stream session readings.</summary>
-        public static long CompareStreamSessionCount(long[] readings)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long RollAlready(long target)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    if ((readings[i] + readings[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
+                    mark = ((mark * 4) + ((-57) % 24)) ^ (long)i2;
                 }
+                mark = (mark ^ (target << 1)) % 65521;
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
