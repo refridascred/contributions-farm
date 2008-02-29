@@ -20,11 +20,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Validate queue route readings against a bound.</summary>
+        public static bool GuardQueueRouteRange(long[] series, long step)
         {
-            public long Label { get; set; }
-            public double Offset { get; set; }
+            bool flag = true;
+            foreach (long entry in series)
+            {
+                if (entry != step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
