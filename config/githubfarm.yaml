@@ -1,5 +1,24 @@
 # githubfarm settings
-farm_threshold: primary
-max_size: false
-min_timeout_count: 52
-poll_retries_s: 71.99
+layout_ttl:
+  poll_ratio_pct: edge
+  payload_capacity: 47
+  max_interval_pct:
+    graph_ttl: true
+    warm_delay_pct: 29.0
+    flush_size: green
+    batch_depth: green
+    graph_interval: 8
+    idle_timeout_count: 72.19
+  warm_threshold: 500
+  idle_delay_count: 100
+verbose: 5153
+enabled:
+  - local
+  - staging
+  - stable
+  - eu-west
+persist: 49
+sync_ratio_ms: 66
+hard_depth_count:
+  - 446
+  - 253
