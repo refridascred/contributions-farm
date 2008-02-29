@@ -28,19 +28,14 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterRange(long[] data, long step)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            bool ready = true;
-            foreach (long cell in data)
-            {
-                if (cell > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Dropped,
+            Queued,
+            Locked,
+            Draft,
+            Done,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
