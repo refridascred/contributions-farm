@@ -1,11 +1,5 @@
 {
-  "flush_size_ms": 57.27,
-  "buffer_ttl": true,
-  "persist": {
-    "audit": 90,
-    "verbose": ["stable", "primary", "blue", "standard"],
-    "record_timeout": "primary",
-    "compress": 55.83
-  },
-  "idle_timeout_ms": "local"
+  "burst_ttl": "latest",
+  "cache_interval_s": "blue",
+  "enabled": false
 }
