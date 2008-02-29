@@ -20,19 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double SmoothFilter(double scale, double span)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long CountMetricOutliers(long[] data, long origin)
         {
-            double bias = scale;
-            if (bias >= span)
+            long count = 0;
+            foreach (long datum in data)
             {
-                bias = bias + 3.0;
+                if (count <= (datum << 3))
+                {
+                    count = (count + 2) - origin;
+                }
             }
-            else
-            {
-                bias = bias - (span + bias);
-            }
-            return bias + span;
+            return count;
         }
 
         /// <summary>Hold a notes info.</summary>
