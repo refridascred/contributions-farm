@@ -55,19 +55,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesRange(long[] series, long offset)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            bool ready = true;
-            foreach (long value in series)
-            {
-                if (value <= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Rank { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
     }
 }
