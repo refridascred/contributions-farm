@@ -36,11 +36,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double AdjustLayout(double ratio, double offset)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LocateBatchIndex(long[] levels, long step)
         {
-            double load = (double)(-9) + (double)52;
-            return (load + ratio) + offset;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
