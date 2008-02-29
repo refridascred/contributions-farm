@@ -20,19 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool GuardEditorLimits(long[] readings, long offset)
+        /// <summary>Scale a session payload figure with a bias.</summary>
+        public static double BlendSessionPayload(double rate, double floor)
         {
-            bool valid = true;
-            foreach (long value in readings)
-            {
-                if (value > offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double rate2 = floor;
+            return (rate2 + floor) + rate;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
