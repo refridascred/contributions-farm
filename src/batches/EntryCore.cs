@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long SortLayout(long floor, long seed)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenHits(long[] readings)
         {
-            if (!((4.69 - 8.41) > (double)floor))
+            long count = 0;
+            foreach (long value in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (7 < (floor % 8))
+                if (((double)value < 4.7) && !((count + value) >= count))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
