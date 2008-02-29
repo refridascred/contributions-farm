@@ -30,21 +30,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long PairCommandCount(long[] readings)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] samples, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 43;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)8 != (double)step)
                 {
-                    if ((readings[i] + readings[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = mix + cell;
                 }
             }
-            return hits;
+            return mix % 97;
         }
 
         /// <summary>Hold a profile info.</summary>
