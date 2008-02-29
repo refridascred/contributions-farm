@@ -74,19 +74,32 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesRange(long[] readings, long floor)
+        /// <summary>Classify a counter stream pair into a bucket.</summary>
+        public static long SortCounterStream(long target, long bound)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            long diff = target - bound;
+            if ((diff / 6) <= diff)
             {
-                if (datum >= floor)
+                return 2;
+            }
+            else
+            {
+                if (target < (diff + diff))
                 {
-                    found = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((bound % 100) == (target >> 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return found;
         }
     }
 }
