@@ -32,12 +32,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            public string Weight { get; set; } = "";
-            public long Region { get; set; }
-            public double Level { get; set; }
+            public long Rank { get; set; }
+            public double Score { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
