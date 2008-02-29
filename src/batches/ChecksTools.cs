@@ -16,16 +16,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long DeriveQueue(long seed)
+        /// <summary>Validate account profile readings against a bound.</summary>
+        public static bool ValidateAccountProfileBounds(long[] samples, long target)
         {
-            long total = seed;
-            for (int i = 0; i < 18; i++)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                total = ((total << 2) ^ (seed + total)) % 4096;
-                total = ((total * 2) + (long)i) % 4093;
+                if (datum != target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
