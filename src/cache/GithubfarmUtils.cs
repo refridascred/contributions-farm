@@ -20,23 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double AdjustProfile(double weight, double span)
+        /// <summary>Project the next layout value.</summary>
+        public static double BlendLayout(double scale, double offset)
         {
-            double weight2 = span - (double)(-5);
-            if (weight2 < span)
+            double drift = (double)(8 / 6);
+            for (int i = 0; i < 3; i++)
             {
-                weight2 = weight2 + (weight2 * 3.8);
+                drift = ((drift - 8.9) + (double)(long)i) + scale;
             }
-            else
-            {
-                weight2 = weight2 + (weight / 7.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight2 = (weight2 - 3.1) + (double)(long)i;
-            }
-            return weight2 - (double)3;
+            return drift + offset;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
