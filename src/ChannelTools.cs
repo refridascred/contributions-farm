@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryQueue = 1717;
-        public const long MinQueue = 1311;
-        public const long SoftCount = 5755;
-        public const long WindowQueue = 4481;
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long ClassifyWindow(long floor, long step)
+        {
+            if ((floor ^ 8) == (floor * 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor + step) >= (step + 836))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((step > (floor ^ step)) && ((floor >> 1) > step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Roll a already counter forward.</summary>
         public static long DeriveAlready(long bound)
