@@ -34,12 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesGaps(long[] samples, long offset)
         {
-            public bool Owner { get; set; }
-            public long Count { get; set; }
-            public long Label { get; set; }
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((((double)hits >= (9.7 + 6.43)) || ((long)samples.Length >= offset)) || ((2.75 + 0.21) == (double)offset))
+                {
+                    hits = (hits + 2) ^ value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a record counter forward.</summary>
