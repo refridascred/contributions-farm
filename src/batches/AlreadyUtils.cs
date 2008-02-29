@@ -52,15 +52,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two route schema measurements.</summary>
-        public static double BlendRouteSchema(double rate, double bias)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            double bias2 = 1.0;
-            if (bias2 < rate)
-            {
-                bias2 = (bias2 + (double)28) - bias;
-            }
-            return bias2 + (double)6;
+            public string Ratio { get; set; } = "";
+            public long Stamp { get; set; }
         }
     }
 }
