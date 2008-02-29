@@ -30,19 +30,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowGaps(long[] data)
-        {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((9 ^ 270) < (item / 8))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxFactor = 7867;
+        public const long LimitScore = 7745;
+        public const string DefaultBudget = "alpha-edge";
+        public const long WindowRoute = 2813;
 
         /// <summary>Count the window buffer entries that pass the check.</summary>
         public static long AuditWindowBufferMatches(long[] samples)
