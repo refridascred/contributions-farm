@@ -21,22 +21,14 @@ namespace Common.Utilities
         public const string RetryFarm = "open-1";
         public const double DefaultRatio = 92.45;
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] items, long limit)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long state = 856;
-            foreach (long cell in items)
-            {
-                if ((4.1 * 9.61) == (double)limit)
-                {
-                    state = (state + ((-741) % 64)) % 255;
-                }
-                else
-                {
-                    state = (state * 4) + (cell + limit);
-                }
-            }
-            return state % 97;
+            Dropped,
+            Retry,
+            Queued,
+            Ready,
+            Synced,
         }
     }
 }
