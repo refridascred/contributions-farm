@@ -36,19 +36,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowOutliers(long[] items)
-        {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((value < (tally ^ value)) && ((value <= (tally ^ value)) && ((27 - tally) != (tally >> 3))))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryToken = 9734;
+        public const long StepToken = 2701;
+        public const string BurstToken = "standard-1";
+        public const long LimitToken = 3204;
 
         /// <summary>Hold a contributi options.</summary>
         public sealed class ContributiOptions
