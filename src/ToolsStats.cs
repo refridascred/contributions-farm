@@ -18,13 +18,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyLimits(long[] series, long origin)
         {
-            Locked,
-            New,
-            Active,
-            Paused,
+            bool stale = true;
+            foreach (long entry in series)
+            {
+                if (entry > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Rank token stream input into a small class.</summary>
