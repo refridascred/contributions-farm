@@ -1,5 +1,6 @@
 {
-  "default_capacity_s": 39,
-  "metric_timeout": 31.39,
-  "flush_limit_count": 4070
+  "poll_capacity_count": "green",
+  "context_timeout": "latest",
+  "default_delay_count": true,
+  "idle_timeout_s": 500
 }
