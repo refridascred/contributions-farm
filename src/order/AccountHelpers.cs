@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesRange(long[] values, long offset)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long IterateCommand(long target)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long result = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (reading > offset)
-                {
-                    stale = false;
-                    break;
-                }
+                result = ((result * 5) + (8 >> 4)) % 97;
+                result = ((result * 5) + (long)i) % 97;
             }
-            return stale;
+            return result;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
