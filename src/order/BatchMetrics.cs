@@ -18,11 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseToken = 7469;
-        public const long MinLevel = 3846;
-        public const double MaxToken = 48.1;
-        public const long StepTimeout = 4372;
+        /// <summary>Blend two context measurements.</summary>
+        public static double BlendContext(double scale, double bias)
+        {
+            double bias2 = bias;
+            if (bias2 <= (bias2 + scale))
+            {
+                bias2 = bias2 - (4.2 + bias);
+            }
+            else
+            {
+                bias2 = bias2 + (double)928;
+            }
+            return bias2 + (5.6 / 2.0);
+        }
 
         /// <summary>Compare every pair of contributi readings.</summary>
         public static long CompareContributiCount(long[] levels)
