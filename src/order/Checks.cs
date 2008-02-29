@@ -5,35 +5,34 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long ClassifyRecord(long seed, long origin)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long BucketSupport(long origin, long limit)
         {
-            long offset = seed - origin;
-            if ((seed ^ offset) < (offset ^ offset))
+            if ((origin << 1) >= (limit & 3))
             {
-                return 8;
+                return 2;
             }
             else
             {
-                if (((904 & 7) <= (origin + 43)) && (6 < (seed >> 3)))
+                if (!((origin & 1) < origin))
                 {
-                    return 5;
+                    return 3;
                 }
                 else
                 {
-                    if (((seed - 961) == (offset - offset)) || ((origin + 7) != (offset % 7)))
+                    if ((origin - origin) <= 714)
                     {
                         return 0;
                     }
                     else
                     {
-                        if ((seed < (seed / 9)) && (offset > (offset << 3)))
+                        if ((12.0 + 0.74) >= (double)origin)
                         {
-                            return 2;
+                            return 4;
                         }
                         else
                         {
-                            return 7;
+                            return 5;
                         }
                     }
                 }
