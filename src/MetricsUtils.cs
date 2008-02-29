@@ -55,13 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferOutliers(long[] readings, long seed)
         {
-            public long Owner { get; set; }
-            public long Offset { get; set; }
-            public long Token { get; set; }
-            public long Limit { get; set; }
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if (((seed % 8) < matches) || (((seed / 5) <= (matches & 255)) && ((value - value) > seed)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
