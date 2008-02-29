@@ -21,22 +21,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamOutliers(long[] levels)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry + entry) < count)
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Ratio { get; set; }
+            public long Mode { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Check that every payload entry entry stays within the limit.</summary>
