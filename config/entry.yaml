@@ -1,6 +1,6 @@
 # entry settings
-cache_ratio_ms: staging
-compress: local
-flush_limit_pct: false
-enabled: 250
-max_retries_s: standard
+base_depth_ms: strict
+account_threshold: 500
+profile_timeout: 1003
+strict: true
+retry_delay: 98.88
