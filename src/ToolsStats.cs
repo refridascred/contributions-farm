@@ -40,32 +40,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank token stream input into a small class.</summary>
-        public static long RankTokenStream(long target, long limit)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long offset = target - limit;
-            if ((limit ^ offset) <= limit)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)offset < (3.36 + 3.83))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (limit <= (offset - limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Queued,
+            Stale,
+            Ready,
+            Idle,
         }
 
         /// <summary>Project the next support value.</summary>
