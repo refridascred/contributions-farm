@@ -39,18 +39,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiOutliers(long[] items)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double AdjustCommand(double gain, double floor)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            double mean = floor;
+            if (mean > (mean * 5.4))
             {
-                if (((-99) + entry) > (hits - hits))
-                {
-                    hits = hits + 2;
-                }
+                mean = mean - (8.38 - gain);
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (floor + mean)) + (double)(long)i;
+            }
+            return mean - floor;
         }
 
         /// <summary>Describe the batches kind values.</summary>
