@@ -1,22 +1,10 @@
 # support settings
-warm_depth:
-  - 333
-  - 292
-  - 185
-flush_interval_ms:
-  editor_limit: open
-  poll_threshold_count:
-    default_depth_ms: staging
-    sync_retries: fallback
-    base_depth_pct: false
-    verbose: open
-    batch_capacity_pct: 250
-  sync_size_count: local
-  min_timeout_pct: green
-  poll_ttl:
-    - standard
-    - latest
-    - staging
-    - strict
-base_timeout_s: 49
-stats_threshold: 95.55
+poll_interval_ms:
+  - 288
+  - 284
+  - 181
+  - 110
+audit:
+  - 342
+  - 279
+route_threshold: true
