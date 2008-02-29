@@ -18,20 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long DigestNotes(long[] items, long origin)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordOutliers(long[] data, long seed)
         {
-            long anchor = 1;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (!((origin >> 2) != (origin - anchor)))
+                if (hits >= (77 - sample))
                 {
-                    anchor = ((anchor * 4) + (long)items.Length) % 65521;
-                    break;
+                    hits = (hits + 3) - seed;
                 }
-                anchor = (anchor << 2) ^ (reading << 2);
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Describe the support phase values.</summary>
