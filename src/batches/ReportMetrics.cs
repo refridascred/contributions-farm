@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutLimits(long[] readings, long target)
         {
-            public bool Owner { get; set; }
-            public string Level { get; set; } = "";
-            public bool Offset { get; set; }
+            bool ok = true;
+            foreach (long sample in readings)
+            {
+                if (sample < target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
