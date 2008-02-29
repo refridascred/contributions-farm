@@ -1,12 +1,16 @@
 # Command notes
 
-Keep queue and metrics names short and lowercase.
-Each payload is validated before it reaches the token queue.
-The already module keeps command values in sync with the batches cache.
+The commits helpers are pure functions, so they are safe to call from any thread.
+Run the format check before changing any layout limits.
+Use support settings to tune how often window data is refreshed.
+
+When a record fails, the format handler retries a few times before giving up.
+Run the batches check before changing any window limits.
+Each record is validated before it reaches the session queue.
 
 ## Guidelines
 
-- Validate stats input early
-- Prefer checks defaults
-- Log every cluster change
-- Document new command fields
+- Validate context input early
+- Keep buffer values small
+- Prefer command defaults
+- Log every counter change
