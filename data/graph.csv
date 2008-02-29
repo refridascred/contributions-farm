@@ -1,9 +1,7 @@
-id,active,level,state,owner
-1,46.83,47.02,382,10
-2,blue,39.1,23.38,latest
-3,37.72,open,fallback,98.44
-4,339,edge,382,eu-west
-5,133,628,stable,green
-6,14.47,203,51,eu-west
-7,121,edge,54.92,legacy
-8,393,577,eu-west,stable
+id,level,owner
+1,50.25,345
+2,105,938
+3,open,21.88
+4,primary,761
+5,67.77,strict
+6,27.58,66.31
