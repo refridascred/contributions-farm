@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ProjectLayout(double weight, double bias)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricLimits(long[] readings, long step)
         {
-            double gain = bias / 7.0;
-            if (gain < (double)9)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                gain = (gain - (double)31) + weight;
+                if (value != step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return gain - bias;
+            return flag;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
