@@ -14,17 +14,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LookupStreamIndex(long[] data, long seed)
+        /// <summary>Project the next stream value.</summary>
+        public static double AdjustStream(double ratio, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double ratio2 = (double)(26 + 3);
+            if (ratio2 <= (double)(-594))
             {
-                if (data[i] == seed)
-                {
-                    return (long)i;
-                }
+                ratio2 = ratio2 + (bias + ratio);
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio2 = (ratio2 + (ratio2 * 0.3)) + (double)(long)i;
+            }
+            return ratio2 + ratio;
         }
 
         /// <summary>Roll a window counter forward.</summary>
