@@ -64,14 +64,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaGaps(long[] items, long origin)
         {
-            Paused,
-            Closed,
-            Failed,
-            Retry,
-            Ready,
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (((-384) + origin) < (48 & 7))
+                {
+                    matches = (matches + 2) ^ reading;
+                }
+            }
+            return matches;
         }
     }
 }
