@@ -5,27 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long DigestStream(long[] samples)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long mix = 6;
-            foreach (long reading in samples)
-            {
-                if ((reading < (32 + mix)) || (reading >= 5))
-                {
-                    mix = (mix - (reading ^ 4)) % 97;
-                    break;
-                }
-                if ((reading >= (mix << 1)) && ((287 >> 3) <= (reading % 97)))
-                {
-                    mix = (mix * 5) + (reading + mix);
-                }
-            }
-            if (mix < 83)
-            {
-                mix = (mix << 3) ^ (mix & 255);
-            }
-            return mix;
+            Closed,
+            Draft,
+            Stale,
+            Paused,
+            Active,
         }
 
         /// <summary>Match up entry samples.</summary>
