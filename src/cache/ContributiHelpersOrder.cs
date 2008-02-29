@@ -23,12 +23,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            public string Rank { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Stamp { get; set; }
+            Draft,
+            Synced,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Fold a list of payload readings.</summary>
