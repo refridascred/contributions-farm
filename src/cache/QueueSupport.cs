@@ -54,18 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenMatches(long[] items)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaMatches(long[] levels, long limit)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((value + value) > tally)
+                if (limit >= (limit + limit))
                 {
-                    tally = tally + 1;
+                    hits = (hits + 2) ^ cell;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
