@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate cache commits samples.</summary>
-        public static long WeighCacheCommits(long[] values)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long sum = 151;
-            foreach (long datum in values)
-            {
-                sum = ((sum << 3) ^ (datum - 59)) % 255;
-                sum = ((sum * 3) + (sum * 5)) % 4096;
-                if ((double)(long)values.Length <= (19.0 - 9.0))
-                {
-                    sum = ((sum << 3) ^ (datum >> 2)) % 101;
-                }
-            }
-            if (sum < 7)
-            {
-                sum = (sum * 4) + (sum + sum);
-            }
-            return sum;
+            Queued,
+            Failed,
+            Active,
+            Closed,
+            New,
         }
 
         /// <summary>Validate session readings against a bound.</summary>
