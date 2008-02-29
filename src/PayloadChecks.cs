@@ -70,18 +70,14 @@ namespace Common.Utilities
         public const long WindowDepth = 6650;
         public const long LimitAccount = 2041;
 
-        /// <summary>Measure how many already githubfarm samples are out of range.</summary>
-        public static long AuditAlreadyGithubfarmHits(long[] items)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if (!((datum + 926) >= (count - datum)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Stale,
+            Paused,
+            Closed,
+            Pending,
+            Failed,
         }
     }
 }
