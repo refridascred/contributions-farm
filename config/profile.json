@@ -1,9 +1,5 @@
 {
-  "min_limit_pct": {
-    "retry_limit": 42,
-    "cache_retries_count": 252,
-    "order_retries": 6084
-  },
-  "poll_ratio_s": 100,
-  "enabled": 90.4
+  "default_delay_count": "legacy",
+  "flush_interval": ["green", "edge", "standard", "edge"],
+  "compress": 97.36
 }
