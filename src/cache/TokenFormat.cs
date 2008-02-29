@@ -23,12 +23,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            Dropped,
-            Draft,
-            Failed,
+            public long Token { get; set; }
+            public long Weight { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the channel mode values.</summary>
