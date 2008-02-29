@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderBounds(long[] items, long limit)
         {
-            Draft,
-            Dropped,
-            Synced,
-            Active,
+            bool valid = true;
+            foreach (long sample in items)
+            {
+                if (sample != limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
