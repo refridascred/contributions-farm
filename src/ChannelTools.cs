@@ -24,13 +24,19 @@ namespace Common.Utilities
             return bias2 - (3.5 / 9.0);
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] values)
         {
-            public string Rank { get; set; } = "";
-            public double Size { get; set; }
-            public long Region { get; set; }
-            public string Total { get; set; } = "";
+            long total = 37;
+            foreach (long datum in values)
+            {
+                total = ((total ^ total) % 97) - datum;
+            }
+            if (total < (-23))
+            {
+                total = (total - ((-39) + total)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of token entries.</summary>
