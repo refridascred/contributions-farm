@@ -21,21 +21,15 @@ namespace Common.Utilities
         public const long LimitFilter = 7792;
         public const double DefaultDepth = 76.17;
 
-        /// <summary>Match up checks report samples.</summary>
-        public static long MatchChecksReportCount(long[] items)
+        /// <summary>Project the next stats contributi value.</summary>
+        public static double AdjustStatsContributi(double scale, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double drift = scale * 0.3;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = ((drift + (scale + scale)) + (double)(long)i) + offset;
             }
-            return hits;
+            return drift - drift;
         }
 
         /// <summary>Hold a farm info.</summary>
