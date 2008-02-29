@@ -1,10 +1,11 @@
 # Command notes
 
-Keep command and cluster names short and lowercase.
-Keep stream and window names short and lowercase.
+The cache report groups every checks by layout.
+Keep profile and notes names short and lowercase.
+When a counter fails, the editor handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every profile change
-- Validate schema input early
-- Prefer layout defaults
+- Keep batch values small
+- Prefer already defaults
+- Log every channel change
