@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every checks record entry stays within the limit.</summary>
-        public static bool CheckChecksRecordLimits(long[] data, long offset)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LocateRouteIndex(long[] readings, long limit)
         {
-            bool ready = true;
-            foreach (long value in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value != offset)
+                if ((readings[i] == limit) && ((readings[i] % 3) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
