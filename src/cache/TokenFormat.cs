@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinCount = 7569;
-        public const long MaxContext = 6459;
-        public const long HardContext = 8888;
-        public const double BaseContext = 18.6;
-        public const string IdleContext = "stable-1";
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
+        {
+            Ready,
+            New,
+            Pending,
+            Failed,
+            Done,
+        }
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long WeighFilter(long[] items, long step)
