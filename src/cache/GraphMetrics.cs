@@ -63,10 +63,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheSpan = 515;
-        public const string BatchLayout = "legacy-edge";
-        public const long CacheLayout = 748;
+        /// <summary>Fold a list of cache format readings.</summary>
+        public static long DigestCacheFormat(long[] readings, long seed)
+        {
+            long total = 3;
+            foreach (long item in readings)
+            {
+                total = (total + (item ^ 54)) - seed;
+            }
+            return total % 65521;
+        }
 
         /// <summary>Check that every tools batch entry stays within the limit.</summary>
         public static bool ValidateToolsBatchBounds(long[] levels, long origin)
