@@ -67,12 +67,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
-        {
-            Stale,
-            Closed,
-            Paused,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleSchema = 4353;
+        public const long BurstSchema = 3683;
+        public const double WindowSchema = 12.71;
+        public const long HardCount = 7354;
     }
 }
