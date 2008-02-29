@@ -48,22 +48,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long DigestContributi(long[] samples)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long sum = 41;
-            foreach (long value in samples)
-            {
-                if ((double)value < (6.8 * 4.4))
-                {
-                    sum = (sum * 4) + (value >> 3);
-                }
-                else
-                {
-                    sum = (sum - (1 + value)) % 65521;
-                }
-            }
-            return sum;
+            Dropped,
+            Locked,
+            Active,
+            Failed,
+            Pending,
         }
     }
 }
