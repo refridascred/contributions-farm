@@ -1,8 +1,18 @@
 {
-  "cache_ratio": "latest",
-  "compress": [469, 418],
-  "idle_ratio_count": "eu-west",
-  "min_window": "fallback",
-  "flush_depth_s": "strict",
-  "checks_ratio": [48, 339]
+  "cache_timeout_count": 30,
+  "poll_delay": 57.96,
+  "idle_depth_ms": 500,
+  "default_size_pct": {
+    "default_size": 31.9,
+    "payload_size": {
+      "batch_threshold_pct": ["staging", "strict"],
+      "report_timeout": 9347,
+      "cache_limit": 99,
+      "schema_capacity": 72.37,
+      "poll_depth_ms": "strict",
+      "persist": "legacy"
+    },
+    "layout_depth": 4450
+  },
+  "flush_retries_count": "cached"
 }
