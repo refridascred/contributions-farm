@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Rank counter commits input into a small class.</summary>
-        public static long ClassifyCounterCommits(long origin, long origin2)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] data)
         {
-            long span = origin + origin2;
-            if ((double)origin >= (9.4 * 1.47))
+            long sum = -491;
+            foreach (long cell in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)origin <= (2.66 / 6.0))
+                if ((sum % 60) >= (cell / 9))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((double)span != (12.0 * 2.1)) && ((4.0 / 6.0) >= (double)span))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    sum = ((sum * 3) + cell) % 65521;
                 }
             }
+            if (sum < 72)
+            {
+                sum = (sum - sum) % 97;
+            }
+            return sum % 97;
         }
 
         /// <summary>Iterate the account series from a seed.</summary>
