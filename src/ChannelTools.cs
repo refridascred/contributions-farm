@@ -23,9 +23,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardSupport = 559;
-        public const double BatchSupport = 74.94;
-        public const double MinSupport = 38.2;
+        /// <summary>Roll a stream commits counter forward.</summary>
+        public static long RollStreamCommits(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((score * 5) != (score ^ (long)i))
+                {
+                    score = ((score * 3) + (limit + limit)) % 97;
+                    break;
+                }
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
+        }
     }
 }
