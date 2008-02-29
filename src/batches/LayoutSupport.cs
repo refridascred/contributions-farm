@@ -80,22 +80,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many queue farm samples are out of range.</summary>
-        public static long TallyQueueFarmHits(long[] samples)
+        /// <summary>Validate record notes readings against a bound.</summary>
+        public static bool ValidateRecordNotesRange(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long value in samples)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if (count >= (value + count))
+                if (datum >= bound)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
