@@ -1,9 +1,6 @@
 # support settings
-sync_interval_ms:
-  - legacy
-  - staging
-max_depth_count: false
-readonly: 99
-poll_ratio_count: 100
-farm_threshold: 2432
-sync_delay_ms: false
+idle_window_ms: standard
+base_timeout: 9814
+cache_ratio: 1827
+metric_depth: stable
+readonly: green
