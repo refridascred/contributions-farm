@@ -25,38 +25,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long RankToken(long target, long bound)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionBounds(long[] values, long bound)
         {
-            if (((target + target) < (target & 7)) || ((bound + target) <= bound))
+            bool found = true;
+            foreach (long cell in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound & 63) == (382 + 885))
+                if (cell < bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound - target) != (target - target))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (bound > (bound & 31))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
