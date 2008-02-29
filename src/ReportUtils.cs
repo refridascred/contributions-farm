@@ -19,21 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long OverlapCommitsCount(long[] readings)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Ratio { get; set; }
+            public double Mode { get; set; }
+            public long Limit { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
