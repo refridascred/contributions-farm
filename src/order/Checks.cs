@@ -13,13 +13,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] readings, long origin)
         {
-            public string Offset { get; set; } = "";
-            public bool Score { get; set; }
-            public bool Stamp { get; set; }
-            public long Level { get; set; }
+            long total = 712;
+            foreach (long cell in readings)
+            {
+                if ((origin + cell) < cell)
+                {
+                    total = total + (total / 6);
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
