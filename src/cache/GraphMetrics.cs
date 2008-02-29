@@ -15,12 +15,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxChannel = 4235;
-        public const string IdleChannel = "fallback-edge";
-        public const double BurstChannel = 77.35;
-        public const long LimitLevel = 6831;
-        public const long WindowChannel = 1747;
+        /// <summary>Check that every support cache entry stays within the limit.</summary>
+        public static bool GuardSupportCacheLimits(long[] readings, long floor)
+        {
+            bool ok = true;
+            foreach (long sample in readings)
+            {
+                if (sample < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Audit entry layout readings against a rule.</summary>
         public static long AuditEntryLayoutMatches(long[] items)
