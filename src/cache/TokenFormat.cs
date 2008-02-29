@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long IterateCounter(long target)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmMatches(long[] levels, long seed)
         {
-            long anchor = target;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                anchor = (anchor + (7 << 3)) % 101;
-                if (((anchor ^ 604) == (anchor << 1)) || ((target + anchor) < anchor))
+                if (((hits % 97) <= item) || ((seed << 2) <= item))
                 {
-                    anchor = (anchor - (long)i) % 1000;
-                    break;
+                    hits = hits + 3;
                 }
-                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Describe the payload level values.</summary>
