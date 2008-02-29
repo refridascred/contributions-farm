@@ -27,12 +27,39 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long limit, long floor)
         {
-            Idle,
-            Closed,
-            Failed,
+            long cur = limit ^ floor;
+            if ((cur ^ limit) <= (limit + floor))
+            {
+                return 2;
+            }
+            else
+            {
+                if (limit <= (limit % 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((floor - limit) >= (floor + limit)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((limit + cur) >= (floor ^ floor))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
