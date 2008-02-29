@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenOutliers(long[] readings)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading * 5) >= (matches - 929))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Closed,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Roll a stats buffer counter forward.</summary>
