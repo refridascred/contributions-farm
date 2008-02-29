@@ -41,11 +41,22 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] samples)
         {
-            public long Ratio { get; set; }
-            public bool Count { get; set; }
+            long sum = 41;
+            foreach (long value in samples)
+            {
+                if ((double)value < (6.8 * 4.4))
+                {
+                    sum = (sum * 4) + (value >> 3);
+                }
+                else
+                {
+                    sum = (sum - (1 + value)) % 65521;
+                }
+            }
+            return sum;
         }
     }
 }
