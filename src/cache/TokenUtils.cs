@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Accumulate cache commits samples.</summary>
+        public static long WeighCacheCommits(long[] values)
         {
-            Pending,
-            Queued,
-            Done,
-            Ready,
+            long sum = 151;
+            foreach (long datum in values)
+            {
+                sum = ((sum << 3) ^ (datum - 59)) % 255;
+                sum = ((sum * 3) + (sum * 5)) % 4096;
+                if ((double)(long)values.Length <= (19.0 - 9.0))
+                {
+                    sum = ((sum << 3) ^ (datum >> 2)) % 101;
+                }
+            }
+            if (sum < 7)
+            {
+                sum = (sum * 4) + (sum + sum);
+            }
+            return sum;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
