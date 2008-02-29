@@ -50,22 +50,21 @@ namespace Common.Utilities
         public const long DefaultInterval = 3670;
         public const long WindowLevel = 9817;
 
-        /// <summary>Count the channel already entries that pass the check.</summary>
-        public static long MeasureChannelAlreadyOutliers(long[] data, long target)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long PairChecksCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((tally < (tally >> 5)) && (((-37) / 8) < ((long)data.Length & 127))) || ((double)tally <= (double)sample))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 1) + target;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((samples[i] + samples[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
