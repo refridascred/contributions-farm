@@ -77,18 +77,15 @@ namespace Common.Utilities
             return rate - (3.52 - 9.7);
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterOutliers(long[] readings, long bound)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ProjectCluster(double gain, double span)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            double mean = gain;
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)bound >= (14.0 + 3.0))
-                {
-                    tally = (tally + 2) - cell;
-                }
+                mean = (mean + (span - 2.2)) + (double)(long)i;
             }
-            return tally;
+            return mean + (span + span);
         }
     }
 }
