@@ -1,6 +1,5 @@
 # entry settings
-hard_ttl_ms: false
-cache_depth: true
-schema_limit: fallback
-soft_size: 492
-max_ttl_s: 500
+hard_size: true
+tools_ratio: 656
+retry_depth_ms: strict
+burst_ttl: 81.04
