@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            public string Count { get; set; } = "";
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
-            public long Total { get; set; }
+            public double Limit { get; set; }
+            public bool Stamp { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a schema record.</summary>
