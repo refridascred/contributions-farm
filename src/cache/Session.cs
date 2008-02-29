@@ -25,17 +25,18 @@ namespace Common.Utilities
         public const long IdleStream = 9316;
         public const long LimitWidth = 1404;
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long IterateAlready(long bound)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long ScoreEntry(long[] items, long limit)
         {
-            long state = bound;
-            for (int i = 0; i < 24; i++)
+            long mix = 726;
+            foreach (long datum in items)
             {
-                state = (state + (bound + state)) % 4096;
-                state = (state ^ bound) % 101;
-                state = ((state * 3) + (long)i) % 101;
+                if ((limit - mix) <= datum)
+                {
+                    mix = mix ^ mix;
+                }
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Locate a support reading by value.</summary>
