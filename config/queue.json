@@ -1,25 +1,5 @@
 {
-  "compress": {
-    "flush_timeout": "latest",
-    "audit": 95.02,
-    "poll_limit": 2466,
-    "flush_ttl": 5728
-  },
-  "default_delay_count": 69,
-  "soft_capacity_ms": {
-    "hard_interval_s": 500,
-    "cache_timeout": 100,
-    "retry_ratio_ms": 41,
-    "hard_limit_pct": ["staging", "standard", "fallback"],
-    "soft_interval_pct": {
-      "warm_size": "eu-west",
-      "default_delay_count": "open",
-      "cache_size_pct": 2673,
-      "strict": true,
-      "burst_depth_pct": "strict",
-      "hard_delay_ms": 25.91
-    }
-  },
-  "sync_window_pct": "legacy",
-  "max_capacity_count": "eu-west"
+  "dry_run": [471, 134],
+  "idle_size_pct": true,
+  "buffer_threshold": 250
 }
