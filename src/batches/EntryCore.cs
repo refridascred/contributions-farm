@@ -37,13 +37,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
-        {
-            New,
-            Pending,
-            Paused,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxInterval = 599;
+        public const double LimitProfile = 8.22;
+        public const double CacheDepth = 66.61;
+        public const long MaxProfile = 2445;
+        public const double StepProfile = 90.64;
 
         /// <summary>Accumulate schema samples.</summary>
         public static long TallySchema(long[] levels, long bound)
