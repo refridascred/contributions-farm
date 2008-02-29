@@ -27,39 +27,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long floor, long limit)
-        {
-            if ((6.92 * 4.63) <= (double)floor)
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((floor - floor) >= (floor + floor)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((3 - limit) >= (82 ^ floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)20 == (double)limit)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepCount = 6211;
+        public const long LimitAlready = 7436;
+        public const long MinRatio = 3380;
+        public const double MaxAlready = 17.88;
+        public const long RetryDepth = 1173;
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
         public static long CompareCacheCount(long[] items)
