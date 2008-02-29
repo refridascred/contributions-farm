@@ -13,22 +13,16 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenMatches(long[] samples)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long IterateCache(long seed)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long result = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if ((datum + datum) >= datum)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                result = ((result * 4) + (long)i) % 97;
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
