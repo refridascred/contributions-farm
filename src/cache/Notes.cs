@@ -14,17 +14,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Derive the next format cluster value from a seed.</summary>
-        public static long StepFormatCluster(long origin)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long score = origin;
-            for (int i = 0; i < 17; i++)
-            {
-                score = ((score << 2) ^ (origin + origin)) % 97;
-                score = (score * 5) + ((long)i * 5);
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
+            Active,
+            New,
+            Draft,
+            Synced,
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
