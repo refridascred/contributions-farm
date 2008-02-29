@@ -44,19 +44,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool CheckStreamLimits(long[] readings, long floor)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueOutliers(long[] series)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long item in series)
             {
-                if (reading < floor)
+                if (((-365) + item) >= (40 + hits))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
