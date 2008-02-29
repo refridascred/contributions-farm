@@ -25,18 +25,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] items, long offset)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long RankToken(long target, long bound)
         {
-            long score = 6;
-            foreach (long sample in items)
+            if (((target + target) < (target & 7)) || ((bound + target) <= bound))
             {
-                if ((double)offset != (0.5 * 17.0))
+                return 5;
+            }
+            else
+            {
+                if ((bound & 63) == (382 + 885))
                 {
-                    score = ((score * 4) + sample) % 97;
+                    return 3;
+                }
+                else
+                {
+                    if ((bound - target) != (target - target))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (bound > (bound & 31))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
