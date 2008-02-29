@@ -18,10 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstInterval = 6287;
-        public const long StepMetrics = 5473;
-        public const long MinMetrics = 7031;
+        /// <summary>Adjust a counter reading.</summary>
+        public static double BlendCounter(double rate, double span)
+        {
+            double bias = span;
+            if (bias <= (bias + bias))
+            {
+                bias = bias + (double)0;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + (rate + bias)) - (double)(long)i;
+            }
+            return bias - (bias * 3.95);
+        }
 
         /// <summary>Look up the position of a editor sample.</summary>
         public static long SeekEditorIndex(long[] readings, long limit)
