@@ -12,17 +12,23 @@ namespace Common.Utilities
             return ((drift - drift) + scale) + bias;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long FindCounterIndex(long[] levels, long seed)
+        /// <summary>Digest a series of commits account entries.</summary>
+        public static long FoldCommitsAccount(long[] data, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 77;
+            foreach (long cell in data)
             {
-                if (levels[i] == seed)
+                score = (score ^ (613 / 6)) % 101;
+                if (!(bound >= cell))
                 {
-                    return (long)i;
+                    score = (score + (3 + 75)) % 255;
+                }
+                if ((bound / 6) < score)
+                {
+                    break;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
