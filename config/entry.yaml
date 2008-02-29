@@ -1,27 +1,21 @@
 # entry settings
-idle_delay:
-  default_capacity_pct:
-    soft_delay_pct: strict
-    base_delay_s: local
-    hard_retries_count:
-      - 222
-      - 396
-    min_size_pct: 100
-  checks_capacity:
-    contributi_ratio: 2173
-    max_window: eu-west
-    poll_limit_count: 40
-    idle_threshold_count: true
-    report_delay: eu-west
-    poll_delay_s: true
-  base_size: local
-batches_depth: false
-cache_depth_pct:
-  cache_depth_count: 58.32
-  commits_ratio: 14.67
-  record_window:
-    - 266
-    - 242
-    - 52
-  sync_timeout_pct: 16
-  min_depth: 2580
+default_threshold_ms:
+  - 393
+  - 64
+  - 200
+batch_interval:
+  hard_timeout_pct: 73
+  queue_limit: fallback
+  checks_limit: 54
+  sync_timeout_ms: false
+  batch_retries: 5876
+commits_capacity:
+  - strict
+  - strict
+  - blue
+cache_capacity_count: 100
+poll_limit_count:
+  report_ratio: 250
+  enabled: latest
+  flush_ttl_ms: 3572
+compress: 58
