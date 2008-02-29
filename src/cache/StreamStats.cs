@@ -57,21 +57,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long PairChecksCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double HardBuffer = 71.51;
+        public const long BaseInterval = 2260;
+        public const long HardLevel = 4822;
+        public const long IdleFactor = 7312;
     }
 }
