@@ -19,19 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderRange(long[] values, long limit)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long RollRoute(long bound)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long sum = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if (entry > limit)
+                if ((bound ^ bound) <= (sum << 1))
                 {
-                    found = false;
-                    break;
+                    sum = ((sum * 4) + bound) % 255;
                 }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Match up record samples.</summary>
