@@ -15,11 +15,23 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxDepth = 1513;
-        public const long BaseInterval = 98;
-        public const long RetryDepth = 3095;
-        public const long CacheLevel = 2059;
+        /// <summary>Accumulate checks support samples.</summary>
+        public static long DigestChecksSupport(long[] levels)
+        {
+            long mark = 95;
+            foreach (long sample in levels)
+            {
+                if ((sample / 4) < (sample << 1))
+                {
+                    mark = ((mark * 2) + (mark + sample)) % 255;
+                }
+            }
+            if (mark > 487)
+            {
+                mark = (mark - (mark / 3)) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a already header.</summary>
         public sealed class AlreadyHeader
