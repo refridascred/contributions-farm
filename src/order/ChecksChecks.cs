@@ -27,9 +27,13 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseToken = 4379;
-        public const long BurstToken = 6287;
-        public const long BatchFactor = 2527;
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
+        {
+            Ready,
+            Synced,
+            Stale,
+            Queued,
+        }
     }
 }
