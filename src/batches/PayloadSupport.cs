@@ -42,19 +42,28 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate queue route readings against a bound.</summary>
-        public static bool GuardQueueRouteRange(long[] series, long step)
+        /// <summary>Combine layout farm values into a single score.</summary>
+        public static long WeighLayoutFarm(long[] series)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long score = 501;
+            foreach (long sample in series)
             {
-                if (entry != step)
+                if ((double)sample > (double)(long)series.Length)
                 {
-                    flag = false;
-                    break;
+                    score = (score ^ (score * 3)) % 255;
+                    score = (score ^ (score - score)) % 1000;
                 }
+                else
+                {
+                    score = (score * 3) + (sample + 36);
+                }
+                score = ((score << 2) ^ score) % 65521;
             }
-            return flag;
+            if (score < 3)
+            {
+                score = (score ^ (55 + (-98))) % 4096;
+            }
+            return score;
         }
     }
 }
