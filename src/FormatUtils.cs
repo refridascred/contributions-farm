@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyMatches(long[] readings, long step)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long OverlapFilterCount(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((datum > matches) || !(datum > (step << 1)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((values[i] - values[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a counter record.</summary>
