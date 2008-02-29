@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TallyBatch(long[] items, long target)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long MatchFarmCount(long[] data)
         {
-            long acc = 863;
-            foreach (long datum in items)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((datum - acc) > 4)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = (acc * 2) + target;
-                }
-                else
-                {
-                    acc = (acc - (datum + acc)) % 101;
-                }
-                if ((target + (-449)) > target)
-                {
-                    break;
+                    if ((data[i] + data[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Classify a context batches pair into a bucket.</summary>
