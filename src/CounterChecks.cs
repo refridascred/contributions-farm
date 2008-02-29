@@ -71,19 +71,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] readings, long bound)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] samples, long step)
         {
-            long acc = 103;
-            foreach (long datum in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = (acc << 2) ^ bound;
-                if (((7.45 * 0.8) == (double)datum) || ((5.1 - 4.3) == (double)datum))
+                if (samples[i] <= step)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Match up layout samples.</summary>
