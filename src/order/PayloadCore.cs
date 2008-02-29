@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            public bool Count { get; set; }
-            public double Ratio { get; set; }
-            public string Flag { get; set; } = "";
+            Retry,
+            Draft,
+            Done,
+            New,
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
