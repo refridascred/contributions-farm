@@ -45,9 +45,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxSize = 6679;
-        public const string IdleCount = "open-1";
-        public const long CacheContributi = 4981;
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
+        {
+            public long Score { get; set; }
+            public long Token { get; set; }
+        }
     }
 }
