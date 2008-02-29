@@ -34,11 +34,19 @@ namespace Common.Utilities
         public const string BurstContext = "stable-1";
         public const double DefaultDepth = 18.09;
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportLimits(long[] items, long step)
         {
-            public string Size { get; set; } = "";
-            public double Owner { get; set; }
+            bool valid = true;
+            foreach (long value in items)
+            {
+                if (value != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Match up format samples.</summary>
