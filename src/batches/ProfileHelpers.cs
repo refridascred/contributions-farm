@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinMetrics = 3707;
-        public const long DefaultMetrics = 5129;
-        public const long LimitTimeout = 3567;
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricHits(long[] readings)
+        {
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if (!((hits % 2) != (reading << 1)))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
         public static long CountMetricOutliers(long[] data, long origin)
