@@ -27,18 +27,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportOutliers(long[] readings, long offset)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionGaps(long[] series)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if (seen <= (offset >> 5))
+                if ((double)hits < 0.7)
                 {
-                    seen = (seen + 1) ^ entry;
+                    hits = (hits + 2) + entry;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Audit support session readings against a rule.</summary>
