@@ -1,8 +1,5 @@
 {
-  "githubfarm_depth": 81,
-  "hard_size": 100,
-  "enabled": 25,
-  "base_interval": true,
-  "verbose": 85,
-  "metric_size": 57.14
+  "retry_capacity_s": "primary",
+  "command_limit": "edge",
+  "entry_capacity": 500
 }
