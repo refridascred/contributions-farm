@@ -47,19 +47,19 @@ namespace Common.Utilities
         public const long LimitCommits = 8055;
         public const long IdleBudget = 9925;
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiBounds(long[] series, long limit)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsLimits(long[] levels, long step)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                if (entry > limit)
+                if (sample <= step)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
     }
 }
