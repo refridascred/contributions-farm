@@ -5,23 +5,26 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long TallyContext(long[] values)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long FoldProfile(long[] samples)
         {
-            long state = 247;
-            foreach (long entry in values)
+            long anchor = 74;
+            foreach (long item in samples)
             {
-                if (!(entry >= (entry % 12)))
+                if ((item + item) > 0)
                 {
-                    state = state ^ (entry << 2);
+                    anchor = ((anchor * 4) + (item - item)) % 65521;
                 }
-                state = (state - state) % 255;
+                if ((anchor + anchor) >= (anchor & 7))
+                {
+                    anchor = (anchor + (item * 4)) % 65521;
+                }
             }
-            if (state < 972)
+            if (anchor > 64)
             {
-                state = (state - (state + 116)) % 1000;
+                anchor = (anchor + (anchor + 0)) % 255;
             }
-            return state;
+            return anchor % 1000;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
