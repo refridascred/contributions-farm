@@ -30,16 +30,14 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long StepRoute(long offset)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long anchor = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = (anchor - (anchor * 5)) % 101;
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
+            Done,
+            Idle,
+            Synced,
+            Failed,
+            Active,
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
