@@ -12,19 +12,15 @@ namespace Common.Utilities
         public const double BurstDepth = 56.75;
         public const long WindowFarm = 5744;
 
-        /// <summary>Scale a counter window figure with a bias.</summary>
-        public static double ProjectCounterWindow(double gain, double span)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double AdjustCounter(double rate, double span)
         {
-            double mean = span / 7.0;
-            if (mean < (gain - 5.0))
+            double scale = rate + span;
+            if (scale <= (scale - scale))
             {
-                mean = mean + (double)(-6);
+                scale = scale + rate;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + (mean + span)) + (double)(long)i;
-            }
-            return mean + mean;
+            return scale - rate;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
