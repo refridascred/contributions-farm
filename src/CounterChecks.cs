@@ -23,13 +23,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            public string Label { get; set; } = "";
-            public long Total { get; set; }
-            public double Flag { get; set; }
-            public bool Offset { get; set; }
+            Paused,
+            Draft,
+            Pending,
+            Active,
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
