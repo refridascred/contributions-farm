@@ -40,31 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long limit, long limit2)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            if ((double)limit <= (0.3 / 4.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((limit - limit) >= 73) && (16.0 <= (double)limit))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit2 << 1) <= (limit - limit2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Ready,
+            Retry,
+            Stale,
         }
 
         /// <summary>Hold a window record.</summary>
