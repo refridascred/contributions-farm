@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterMatches(long[] items, long step)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((0 - (long)items.Length) < (count + 25))
-                {
-                    count = ((count + 1) - sample) - step;
-                }
-            }
-            return count;
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a schema options.</summary>
