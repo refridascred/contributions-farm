@@ -61,38 +61,9 @@ namespace Common.Utilities
             return rate - (3.52 - 9.7);
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long BucketReport(long offset, long offset2)
-        {
-            if (1.7 > (double)offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((offset & 1) <= (67 / 5)) && (461 > (offset - offset2)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((((-534) + 780) <= offset2) && ((6.0 - 1.0) > (double)offset2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (350 <= (offset2 / 6))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstFarm = 3425;
+        public const string IdleFarm = "fallback";
+        public const long SoftFarm = 3429;
     }
 }
