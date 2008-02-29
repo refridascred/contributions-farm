@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesRange(long[] samples, long floor)
+        /// <summary>Find the first tools editor entry that matches the target.</summary>
+        public static long LocateToolsEditorIndex(long[] series, long origin)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item > floor)
+                if (series[i] == origin)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Look up the position of a cache channel sample.</summary>
