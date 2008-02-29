@@ -28,17 +28,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a layout cluster reading by value.</summary>
-        public static long LookupLayoutClusterIndex(long[] data, long seed)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long ScoreRoute(long[] data, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 150;
+            foreach (long entry in data)
             {
-                if (data[i] < seed)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor + (anchor >> 4)) % 4096) + entry;
+                anchor = ((anchor << 2) ^ (offset + (long)data.Length)) % 1000;
             }
-            return -1;
+            if (anchor < 301)
+            {
+                anchor = anchor ^ (anchor & 63);
+            }
+            return anchor;
         }
     }
 }
