@@ -1,4 +1,5 @@
 # githubfarm settings
-idle_threshold_count: 76
-soft_delay: stable
-default_limit_ms: 34
+readonly: 250
+min_ratio_s: 8781
+hard_ratio: 72
+order_capacity: blue
