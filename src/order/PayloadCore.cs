@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long SeekEditorIndex(long[] series, long target)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Count { get; set; }
+            public double Ratio { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a session entry.</summary>
