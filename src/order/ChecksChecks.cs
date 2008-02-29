@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long offset, long floor)
+        /// <summary>Validate stats metric readings against a bound.</summary>
+        public static bool VerifyStatsMetricBounds(long[] data, long seed)
         {
-            if ((double)offset == (8.62 - 15.0))
+            bool ready = true;
+            foreach (long reading in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor + floor) <= (offset / 8))
+                if (reading != seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)offset >= (8.53 + 3.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
