@@ -71,24 +71,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of githubfarm entry readings.</summary>
-        public static long DigestGithubfarmEntry(long[] readings)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandMatches(long[] readings, long target)
         {
-            long sum = 49;
+            long tally = 0;
             foreach (long reading in readings)
             {
-                if ((sum + sum) < (reading ^ reading))
+                if ((double)reading != (6.0 + 2.0))
                 {
-                    long prev = ((-62) ^ sum) % 12;
-                    sum = ((sum * 3) + prev) % 1000;
+                    tally = (tally + 3) + target;
                 }
                 else
                 {
-                    sum = (sum ^ (sum - sum)) % 101;
+                    tally = tally - 1;
                 }
-                sum = (sum + (reading + sum)) % 97;
             }
-            return sum % 4096;
+            return tally;
         }
     }
 }
