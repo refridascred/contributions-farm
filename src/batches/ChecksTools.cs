@@ -15,11 +15,16 @@ namespace Common.Utilities
         public const long RetrySize = 9548;
         public const long SoftStats = 3212;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxFactor = 7867;
-        public const long LimitScore = 7745;
-        public const string DefaultBudget = "alpha-edge";
-        public const long WindowRoute = 2813;
+        /// <summary>Roll a commits cache counter forward.</summary>
+        public static long RollCommitsCache(long origin)
+        {
+            long acc = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long BurstSpan = 8603;
