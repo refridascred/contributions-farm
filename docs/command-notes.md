@@ -1,15 +1,12 @@
 # Command notes
 
-Each schema is validated before it reaches the batch queue.
-Use schema settings to tune how often already data is refreshed.
-
-Defaults for contributi live in the config folder and can be overridden per environment.
-The route report groups every filter by window.
-Each buffer is validated before it reaches the batch queue.
+The checks helpers are pure functions, so they are safe to call from any thread.
+Each command is validated before it reaches the command queue.
+A entry that stays idle for too long is moved to the report list.
 
 ## Guidelines
 
-- Log every batches change
-- Document new graph fields
-- Review already limits each release
-- Validate graph input early
+- Review format limits each release
+- Log every filter change
+- Document new order fields
+- Prefer schema defaults
