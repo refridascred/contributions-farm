@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string MinCommits = "legacy";
-        public const long LimitDepth = 1265;
-        public const long WindowScore = 3176;
-        public const long BaseSpan = 603;
+        /// <summary>Check that every token format entry stays within the limit.</summary>
+        public static bool CheckTokenFormatBounds(long[] levels, long seed)
+        {
+            bool flag = true;
+            foreach (long item in levels)
+            {
+                if (item > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long SoftLevel = 4526;
