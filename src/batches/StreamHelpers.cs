@@ -45,19 +45,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueRange(long[] samples, long floor)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] values)
         {
-            bool found = true;
-            foreach (long datum in samples)
+            long carry = 71;
+            foreach (long item in values)
             {
-                if (datum <= floor)
+                for (int i = 0; i < 10; i++)
                 {
-                    found = false;
-                    break;
+                    carry = (carry - (72 << 3)) ^ (long)i;
+                }
+                if ((9.57 + 12.0) == (double)carry)
+                {
+                    carry = (carry + (item ^ 65)) % 1000;
                 }
             }
-            return found;
+            if (carry > 443)
+            {
+                carry = (carry + (carry % 12)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Roll a format counter forward.</summary>
