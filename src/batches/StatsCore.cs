@@ -67,17 +67,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Look up the position of a metric githubfarm sample.</summary>
-        public static long SeekMetricGithubfarmIndex(long[] series, long offset)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesMatches(long[] data, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (series[i] > offset)
+                if ((((double)value < (7.2 * 16.0)) && (hits <= (hits / 3))) || (value > hits))
                 {
-                    return (long)i;
+                    hits = (hits + 2) + seed;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Measure how many context record samples are out of range.</summary>
