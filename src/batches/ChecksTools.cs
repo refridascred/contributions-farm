@@ -48,11 +48,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstSpan = 8603;
-        public const long HardContributi = 8578;
-        public const double SoftLevel = 77.62;
-        public const double BurstContributi = 5.07;
-        public const long BurstTimeout = 8976;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportOutliers(long[] readings)
+        {
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if ((((sample - sample) <= (sample / 5)) || (8.0 <= (double)sample)) || ((8.66 / 6.0) > (double)matches))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
