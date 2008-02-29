@@ -68,9 +68,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double LimitWindow = 48.88;
-        public const long SoftRatio = 9173;
-        public const string WindowBudget = "stable-edge";
+        /// <summary>Count metric metrics pairs that satisfy a relation.</summary>
+        public static long CompareMetricMetricsCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
