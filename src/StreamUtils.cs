@@ -26,22 +26,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] data, long offset)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double AdjustLayout(double scale, double bias)
         {
-            long total = 587;
-            foreach (long reading in data)
+            double drift = bias / 3.0;
+            if (drift < (double)858)
             {
-                if ((double)offset != (2.0 * 6.37))
-                {
-                    total = ((total << 3) ^ (reading * 4)) % 65521;
-                }
+                drift = (drift + (drift / 5.0)) + scale;
             }
-            if (total < 78)
+            for (int i = 0; i < 2; i++)
             {
-                total = (total << 3) ^ offset;
+                drift = (drift - drift) + (double)(long)i;
             }
-            return total;
+            return drift - (double)(-944);
         }
 
         /// <summary>Roll a account counter forward.</summary>
