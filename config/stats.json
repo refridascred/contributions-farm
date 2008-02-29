@@ -1,17 +1,7 @@
 {
-  "verbose": 19.44,
-  "compress": "latest",
-  "githubfarm_window": {
-    "batches_ratio": 60,
-    "base_limit_ms": "local",
-    "base_depth": "legacy",
-    "burst_timeout_s": 250,
-    "retry_depth": 46
-  },
-  "min_size_ms": {
-    "flush_ratio_count": 250,
-    "layout_capacity": 2820,
-    "hard_limit_s": 500
-  },
-  "max_threshold_ms": false
+  "farm_depth": 24,
+  "metric_depth": false,
+  "counter_delay": "local",
+  "min_depth": ["latest", "latest"],
+  "max_limit_pct": ["strict", "eu-west", "cached"]
 }
