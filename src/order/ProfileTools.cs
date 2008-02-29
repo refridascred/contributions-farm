@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double SmoothCommits(double rate, double bias)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchOutliers(long[] levels, long limit)
         {
-            double scale = bias * 18.0;
-            if (scale > scale)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                scale = scale + 0.6;
+                if ((double)item > (double)limit)
+                {
+                    seen = seen + 3;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale + (rate / 8.0)) + (double)(long)i;
-            }
-            return scale - (double)400;
+            return seen;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
