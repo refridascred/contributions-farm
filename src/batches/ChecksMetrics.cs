@@ -20,15 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long limit)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] values, long origin)
         {
-            long acc = limit;
-            for (int i = 0; i < 7; i++)
+            long mix = 165;
+            foreach (long entry in values)
             {
-                acc = ((acc * 3) + (long)i) % 101;
+                mix = ((((mix * 4) + 50) % 101) + entry) - origin;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
