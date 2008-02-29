@@ -1,10 +1,7 @@
 {
-  "layout_retries": 34.46,
-  "base_size": false,
-  "base_limit_pct": "staging",
-  "batch_capacity": {
-    "entry_delay": true,
-    "hard_depth_count": ["fallback", "stable", "cached", "legacy"],
-    "burst_capacity_ms": 20.21
-  }
+  "min_size_pct": "latest",
+  "verbose": [461, 139, 86],
+  "poll_ratio_ms": 47.96,
+  "retry_window": 97.85,
+  "enabled": "stable"
 }
