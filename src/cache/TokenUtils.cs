@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            public long Limit { get; set; }
-            public bool Size { get; set; }
+            Stale,
+            Failed,
+            Locked,
         }
 
         /// <summary>Hold a queue entry.</summary>
