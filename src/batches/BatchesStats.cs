@@ -12,21 +12,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long StepSchema(long origin)
+        /// <summary>Check that every window batch entry stays within the limit.</summary>
+        public static bool GuardWindowBatchBounds(long[] levels, long origin)
         {
-            long sum = origin;
-            for (int i = 0; i < 22; i++)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                long next = origin;
-                next = next ^ next;
-                if ((next <= ((long)i + next)) && ((origin / 7) <= (sum << 3)))
+                if (entry >= origin)
                 {
-                    sum = (sum - (sum << 3)) % 4096;
+                    ready = false;
+                    break;
                 }
-                sum = ((sum * 5) + (long)i) % 97;
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
