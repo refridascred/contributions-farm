@@ -12,24 +12,11 @@ namespace Common.Utilities
             return ((drift - drift) + scale) + bias;
         }
 
-        /// <summary>Digest a series of commits account entries.</summary>
-        public static long FoldCommitsAccount(long[] data, long bound)
-        {
-            long score = 77;
-            foreach (long cell in data)
-            {
-                score = (score ^ (613 / 6)) % 101;
-                if (!(bound >= cell))
-                {
-                    score = (score + (3 + 75)) % 255;
-                }
-                if ((bound / 6) < score)
-                {
-                    break;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultSession = 9468;
+        public const long LimitRatio = 7572;
+        public const long BaseFactor = 5989;
+        public const double BaseInterval = 79.95;
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long AuditToolsHits(long[] readings, long origin)
