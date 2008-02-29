@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
-        {
-            Locked,
-            Active,
-            Queued,
-            Synced,
-            New,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinCount = 8098;
+        public const long BaseRoute = 4006;
+        public const long MaxRoute = 5951;
+        public const double MaxWidth = 15.42;
+        public const string BaseSize = "strict-edge";
 
         /// <summary>Grade a support value against two limits.</summary>
         public static long ClassifySupport(long target, long floor)
