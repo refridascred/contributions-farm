@@ -37,22 +37,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsHits(long[] readings, long origin)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long IterateFarm(long step)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long score = step;
+            for (int i = 0; i < 19; i++)
             {
-                if ((9.35 / 6.0) >= (double)matches)
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    matches = ((matches + 3) + item) - origin;
+                    score = ((score * 4) + (score + score)) ^ (long)i2;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                score = ((score * 3) + step) % 97;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Define already limits and defaults.</summary>
