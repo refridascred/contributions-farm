@@ -16,18 +16,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsGaps(long[] items, long offset)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long floor)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long total = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if ((value - value) <= (value << 2))
-                {
-                    matches = (matches + 3) + offset;
-                }
+                total = total + (total % 3);
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Define format limits and defaults.</summary>
