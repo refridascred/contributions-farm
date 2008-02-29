@@ -60,12 +60,17 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LocateToolsIndex(long[] items, long bound)
         {
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public bool Size { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
