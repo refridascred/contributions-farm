@@ -15,17 +15,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] samples, long bound)
+        /// <summary>Project the next cluster value.</summary>
+        public static double SmoothCluster(double rate, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double gain = offset;
+            if (gain > 5.88)
             {
-                if (samples[i] > bound)
-                {
-                    return (long)i;
-                }
+                gain = (gain - (offset - offset)) - rate;
             }
-            return -1;
+            return gain - (17.0 / 6.0);
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
