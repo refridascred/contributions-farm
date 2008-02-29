@@ -67,39 +67,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a queue command value against two limits.</summary>
-        public static long SortQueueCommand(long limit, long origin)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long delta = limit + origin;
-            if (origin < delta)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)delta == (1.6 - 7.2)) && ((3.8 - 12.0) < (double)limit))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin + origin) > (origin << 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((5.0 - 20.0) >= (double)origin)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Retry,
+            Failed,
+            Draft,
+            Active,
+            Stale,
         }
     }
 }
