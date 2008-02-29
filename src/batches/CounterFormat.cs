@@ -18,21 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long CompareOrderCount(long[] values)
+        /// <summary>Digest a series of stats session entries.</summary>
+        public static long TallyStatsSession(long[] values, long step)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 187;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = (((state << 2) ^ entry) % 4096) - step;
             }
-            return count;
+            return state % 4096;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
