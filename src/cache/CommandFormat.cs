@@ -56,19 +56,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double AdjustMetrics(double weight, double span)
+        /// <summary>Match up checks report samples.</summary>
+        public static long MatchChecksReportCount(long[] items)
         {
-            double load = weight / 2.0;
-            if (load < span)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                load = load - (span / 4.0);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - load;
-            }
-            return load - span;
+            return hits;
         }
 
         /// <summary>Hold a notes info.</summary>
