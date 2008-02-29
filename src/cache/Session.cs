@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool ValidateRouteBounds(long[] items, long offset)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamBounds(long[] readings, long limit)
         {
-            bool stale = true;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                if (value >= offset)
+                if (entry >= limit)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Define record limits and defaults.</summary>
