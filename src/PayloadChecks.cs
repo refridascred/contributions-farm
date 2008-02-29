@@ -30,18 +30,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferMatches(long[] readings, long floor)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long carry = -4;
+            foreach (long datum in levels)
             {
-                if ((hits << 2) <= cell)
+                if ((datum + datum) <= 7)
                 {
-                    hits = (hits + 1) - floor;
+                    carry = carry ^ (53 + datum);
                 }
             }
-            return hits;
+            if (carry > 15)
+            {
+                carry = (carry << 2) ^ (carry + carry);
+            }
+            return carry;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
