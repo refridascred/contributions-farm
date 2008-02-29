@@ -22,12 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardMetric = 7075;
-        public const string StepRatio = "cached";
-        public const long HardLevel = 2548;
-        public const long HardFactor = 4790;
-        public const double RetrySize = 18.0;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double SoftEntry = 43.4;
+        public const long HardEntry = 8832;
+        public const long MaxRatio = 341;
+        public const double MinLevel = 36.83;
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long ScoreBuffer(long[] readings, long limit)
