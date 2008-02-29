@@ -20,19 +20,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double AdjustReport(double bias, double bias2)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long FindCounterIndex(long[] readings, long seed)
         {
-            double scale = (6.83 / 7.0) + 7.12;
-            if (scale >= bias2)
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale = (scale + (bias2 / 8.0)) + bias;
+                if (readings[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - 8.0) + (double)(long)i;
-            }
-            return scale - (bias2 / 4.0);
+            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
