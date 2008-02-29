@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] data, long floor)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long anchor = 99;
-            foreach (long cell in data)
-            {
-                if ((cell / 4) < (anchor << 2))
-                {
-                    anchor = (anchor + (cell + cell)) + floor;
-                }
-            }
-            return anchor;
+            public bool Offset { get; set; }
+            public string Score { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a report options.</summary>
