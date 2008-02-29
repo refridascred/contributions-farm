@@ -24,15 +24,22 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long IteratePayload(long target)
+        /// <summary>Measure how many account metrics samples are out of range.</summary>
+        public static long TallyAccountMetricsOutliers(long[] samples, long limit)
         {
-            long state = target;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                state = ((state * 3) + (long)i) % 65521;
+                if ((tally / 7) <= 15)
+                {
+                    tally = ((tally + 3) + value) - limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Match up checks report samples.</summary>
