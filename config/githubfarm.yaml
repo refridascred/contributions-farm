@@ -1,10 +1,9 @@
 # githubfarm settings
-retry_threshold: standard
-compress: true
-batches_capacity: cached
-schema_delay: 3148
-audit:
-  - fallback
-  - fallback
-  - strict
-  - latest
+readonly: false
+batch_size_s: 68
+report_size: 61
+sync_limit_s: 1024
+soft_interval_pct:
+  - standard
+  - green
+  - stable
