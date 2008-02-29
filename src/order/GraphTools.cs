@@ -43,19 +43,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueRange(long[] data, long floor)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            bool ok = true;
-            foreach (long sample in data)
-            {
-                if (sample <= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Label { get; set; } = "";
+            public bool Token { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
