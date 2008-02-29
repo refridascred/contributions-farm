@@ -36,11 +36,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryToken = 9734;
-        public const long StepToken = 2701;
-        public const string BurstToken = "standard-1";
-        public const long LimitToken = 3204;
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
+        {
+            Retry,
+            Locked,
+            Active,
+            Done,
+            New,
+        }
 
         /// <summary>Hold a contributi options.</summary>
         public sealed class ContributiOptions
