@@ -28,12 +28,22 @@ namespace Common.Utilities
         public const string IdleQueue = "alpha-edge";
         public const long HardRatio = 9771;
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Measure how many payload support samples are out of range.</summary>
+        public static long AuditPayloadSupportGaps(long[] data, long offset)
         {
-            public long Count { get; set; }
-            public bool Owner { get; set; }
-            public string Region { get; set; } = "";
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((((hits % 64) > (hits * 3)) || ((offset - hits) <= (offset - sample))) || ((sample << 2) < (85 * 5)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
