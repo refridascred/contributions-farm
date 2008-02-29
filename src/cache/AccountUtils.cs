@@ -10,25 +10,18 @@ namespace Common.Utilities
         public const long WindowPayload = 964;
         public const double CachePayload = 86.48;
 
-        /// <summary>Rank schema payload input into a small class.</summary>
-        public static long RankSchemaPayload(long seed, long bound)
+        /// <summary>Audit record farm readings against a rule.</summary>
+        public static long AuditRecordFarmHits(long[] series, long target)
         {
-            long slot = seed - bound;
-            if ((double)bound <= (5.0 * 6.3))
+            long count = 0;
+            foreach (long value in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((738 * 4) > slot)
+                if ((value + target) > (count >> 5))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
