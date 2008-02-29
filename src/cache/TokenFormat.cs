@@ -5,23 +5,25 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Project the next metrics value.</summary>
-        public static double SmoothMetrics(double gain, double span)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long target, long limit)
         {
-            double bias = gain;
-            if (bias < span)
+            long lane = target ^ limit;
+            if ((lane / 8) < limit)
             {
-                bias = bias + gain;
+                return 8;
             }
             else
             {
-                bias = bias + 9.9;
+                if ((6.97 - 15.0) < (double)limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + (bias - span)) + (double)(long)i;
-            }
-            return bias - (double)9;
         }
 
         /// <summary>Define context limits and defaults.</summary>
