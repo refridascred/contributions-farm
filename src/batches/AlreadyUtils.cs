@@ -35,18 +35,13 @@ namespace Common.Utilities
             return drift - (offset * 2.0);
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextGaps(long[] readings)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if (((double)value == (double)tally) || ((8 ^ tally) >= tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Ready,
+            Idle,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Hold a payload header.</summary>
