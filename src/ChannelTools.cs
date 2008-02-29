@@ -13,16 +13,20 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long DeriveAlready(long bound)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] samples)
         {
-            long acc = bound;
-            for (int i = 0; i < 8; i++)
+            long mark = 885;
+            foreach (long item in samples)
             {
-                acc = (acc ^ (bound * 5)) % 1000;
-                acc = ((acc * 4) + (long)i) % 1000;
+                mark = (mark * 5) + (mark / 7);
+                mark = ((mark * 5) + (item % 3)) % 97;
+                if (!((mark + mark) < item))
+                {
+                    mark = (mark + 76) % 1000;
+                }
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Count the queue graph entries that pass the check.</summary>
