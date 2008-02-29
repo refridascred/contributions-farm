@@ -44,17 +44,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long SeekSupportIndex(long[] items, long origin)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionGaps(long[] values, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long item in values)
             {
-                if (items[i] >= origin)
+                if ((item / 5) == (44 / 4))
                 {
-                    return (long)i;
+                    count = (count + 1) + seed;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
