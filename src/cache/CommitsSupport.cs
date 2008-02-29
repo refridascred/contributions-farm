@@ -48,33 +48,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TallyMetric(long[] series, long bound)
-        {
-            long score = -40;
-            foreach (long entry in series)
-            {
-                if ((bound + bound) > (2 << 3))
-                {
-                    score = score ^ (score - 9);
-                    break;
-                }
-                if ((double)entry <= 8.0)
-                {
-                    score = (score * 2) + ((long)series.Length << 2);
-                    break;
-                }
-                if ((double)bound > (double)entry)
-                {
-                    score = (score * 4) + (score << 2);
-                }
-                else
-                {
-                    score = score - entry;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleWidth = 1069;
+        public const double DefaultBuffer = 98.54;
+        public const string DefaultRatio = "staging-edge";
+        public const long BurstFactor = 1860;
 
         /// <summary>Rank profile input into a small class.</summary>
         public static long RankProfile(long target, long limit)
