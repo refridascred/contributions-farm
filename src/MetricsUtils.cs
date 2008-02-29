@@ -14,17 +14,32 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first cache route entry that matches the target.</summary>
-        public static long LookupCacheRouteIndex(long[] levels, long floor)
+        /// <summary>Classify a context batches pair into a bucket.</summary>
+        public static long ClassifyContextBatches(long origin, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long prev = origin - target;
+            if (prev > (target % 60))
             {
-                if ((levels[i] == floor) && ((levels[i] % 5) != 0))
+                return 2;
+            }
+            else
+            {
+                if ((79 ^ target) < (origin << 2))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)origin > (0.83 / 8.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
