@@ -35,14 +35,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
-        {
-            public bool Owner { get; set; }
-            public double Rank { get; set; }
-            public string Weight { get; set; } = "";
-            public double Limit { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleSchema = 9117;
+        public const string StepSchema = "alpha-1";
+        public const long BatchScore = 8818;
+        public const double LimitRatio = 49.68;
+        public const long CacheSpan = 1852;
 
         /// <summary>Describe the payload class values.</summary>
         public enum PayloadClass
