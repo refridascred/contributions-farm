@@ -22,16 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of stats session entries.</summary>
-        public static long TallyStatsSession(long[] values, long step)
-        {
-            long state = 187;
-            foreach (long entry in values)
-            {
-                state = (((state << 2) ^ entry) % 4096) - step;
-            }
-            return state % 4096;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheRatio = 4440;
+        public const long BatchChannel = 8216;
+        public const long BatchScore = 7133;
+        public const long SoftSpan = 6813;
 
         /// <summary>Project the next graph farm value.</summary>
         public static double SmoothGraphFarm(double rate, double offset)
