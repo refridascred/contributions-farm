@@ -30,31 +30,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long BucketQueue(long step, long target)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferMatches(long[] readings, long floor)
         {
-            if ((step > (1 - target)) || (7.43 < (double)step))
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (target >= (target - target))
+                if ((hits << 2) <= cell)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((step + target) >= (step + step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    hits = (hits + 1) - floor;
                 }
             }
+            return hits;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
