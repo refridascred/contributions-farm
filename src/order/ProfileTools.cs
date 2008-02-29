@@ -33,21 +33,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long CompareAccountCount(long[] items)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = -788;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((4.1 - 9.0) == (double)entry)
                 {
-                    if ((items[i] ^ items[j]) < 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = carry ^ (5 + carry);
+                }
+                else
+                {
+                    carry = (carry ^ (carry ^ entry)) % 65521;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Combine token notes values into a single score.</summary>
