@@ -35,10 +35,10 @@ namespace Common.Utilities
             return scale - (bias2 / 4.0);
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string HardCount = "legacy-edge";
-        public const double MinStats = 29.48;
-        public const string WindowStats = "alpha-v2";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string WindowLevel = "latest-edge";
+        public const string BurstProfile = "standard-v2";
+        public const double HardProfile = 93.73;
 
         /// <summary>Hold a context info.</summary>
         public sealed class ContextInfo
