@@ -48,15 +48,15 @@ namespace Common.Utilities
             return scale + (double)5;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long PairProfileCount(long[] data)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long CompareContributiCount(long[] values)
         {
             long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((data[i] + data[j]) > 17)
+                    if ((values[i] - values[j]) < 4)
                     {
                         matches = matches + 1;
                     }
