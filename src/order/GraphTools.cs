@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowWidth = 4840;
-        public const long BatchEditor = 5973;
-        public const long LimitEditor = 4078;
-        public const long WindowSize = 2317;
-        public const double BurstFactor = 25.12;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BatchFarm = 97.35;
+        public const long BurstLevel = 2320;
+        public const long BaseSpan = 9719;
+        public const long BurstCount = 1454;
+        public const long WindowFarm = 5898;
 
         /// <summary>Describe the commits phase values.</summary>
         public enum CommitsPhase
