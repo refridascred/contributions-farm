@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long RollToken(long step)
         {
-            Idle,
-            Ready,
-            Locked,
-            Draft,
+            long carry = step;
+            for (int i = 0; i < 14; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    carry = (((carry << 3) ^ (step - carry)) % 1000) - (long)i2;
+                    carry = (carry + (step / 9)) % 65521;
+                }
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Hold a order info.</summary>
