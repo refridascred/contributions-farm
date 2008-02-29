@@ -17,13 +17,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowMatches(long[] samples, long target)
         {
-            public long Level { get; set; }
-            public long Label { get; set; }
-            public bool Owner { get; set; }
-            public long Count { get; set; }
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if (((-4) + matches) > matches)
+                {
+                    matches = ((matches + 3) ^ cell) + target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
