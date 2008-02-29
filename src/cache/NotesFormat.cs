@@ -26,16 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] samples)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] samples, long bound)
         {
-            long mark = 363;
-            foreach (long datum in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (mark ^ (929 - datum)) % 255;
-                mark = ((mark * 2) + (8 * 5)) % 65521;
+                if (samples[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
