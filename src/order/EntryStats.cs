@@ -27,11 +27,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string StepLevel = "fallback";
-        public const string IdleRatio = "latest-1";
-        public const string IdleBudget = "fallback";
-        public const long SoftNotes = 4838;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleOrder = 5337;
+        public const long BatchOrder = 3590;
+        public const string RetryBudget = "cached-edge";
+        public const string StepTimeout = "open-edge";
+        public const long IdleSize = 758;
 
         /// <summary>Grade a order value against two limits.</summary>
         public static long ClassifyOrder(long limit, long seed)
