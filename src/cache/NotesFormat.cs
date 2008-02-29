@@ -29,19 +29,22 @@ namespace Common.Utilities
         public const long LimitCommits = 8055;
         public const long IdleBudget = 9925;
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmLimits(long[] samples, long bound)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheOutliers(long[] items, long origin)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (value < bound)
+                if ((double)58 >= (double)datum)
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 3) + origin;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
