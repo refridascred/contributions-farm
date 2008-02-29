@@ -49,12 +49,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            public bool Ratio { get; set; }
-            public long Rank { get; set; }
-            public string Label { get; set; } = "";
+            public long Limit { get; set; }
+            public long Owner { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
