@@ -46,18 +46,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderHits(long[] readings, long offset)
-        {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if (((tally + tally) <= datum) && ((tally & 255) > (tally % 100)))
-                {
-                    tally = (tally + 1) + offset;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string HardSize = "stable-edge";
+        public const long BurstSize = 1316;
+        public const long MaxFormat = 9504;
+        public const long BaseFormat = 7704;
+        public const long IdleFormat = 74;
     }
 }
