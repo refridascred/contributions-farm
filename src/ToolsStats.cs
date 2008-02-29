@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Classify a support format pair into a bucket.</summary>
-        public static long RankSupportFormat(long seed, long offset)
-        {
-            if (!((seed % 16) <= (seed + seed)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset + offset) >= (seed & 63))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowTimeout = 5450;
+        public const string MinReport = "stable-v2";
+        public const double BaseInterval = 89.69;
+        public const double CacheFactor = 91.88;
 
         /// <summary>Compare every pair of tools readings.</summary>
         public static long OverlapToolsCount(long[] samples)
