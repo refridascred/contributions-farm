@@ -15,19 +15,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatLimits(long[] values, long origin)
+        /// <summary>Look up the position of a cache channel sample.</summary>
+        public static long FindCacheChannelIndex(long[] series, long bound)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell != origin)
+                if ((series[i] >= bound) && ((series[i] % 2) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Describe the editor mode values.</summary>
