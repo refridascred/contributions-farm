@@ -1,11 +1,10 @@
 # Command notes
 
-The checks module keeps editor values in sync with the counter cache.
-Run the queue check before changing any context limits.
-Use account settings to tune how often notes data is refreshed.
+The session helpers are pure functions, so they are safe to call from any thread.
+When a contributi fails, the cache handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep buffer values small
-- Validate cache input early
 - Document new order fields
+- Review checks limits each release
+- Keep metric values small
