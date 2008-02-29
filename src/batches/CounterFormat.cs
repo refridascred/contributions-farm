@@ -14,20 +14,21 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Derive the next batches checks value from a seed.</summary>
-        public static long DeriveBatchesChecks(long offset)
+        /// <summary>Match up order samples.</summary>
+        public static long CompareOrderCount(long[] values)
         {
-            long mix = offset;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = mix ^ (offset - (long)i);
-                if ((mix + offset) >= (mix / 2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = (mix * 3) + mix;
+                    if ((values[i] + values[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
                 }
-                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
