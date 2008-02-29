@@ -60,19 +60,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordRange(long[] values, long offset)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long IterateCommits(long origin)
         {
-            bool ready = true;
-            foreach (long item in values)
+            long mix = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if (item < offset)
+                for (int i3 = 0; i3 < 5; i3++)
                 {
-                    ready = false;
-                    break;
+                    mix = mix - ((long)i3 + origin);
                 }
+                mix = (mix + ((long)i << 1)) % 101;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return ready;
+            return mix;
         }
     }
 }
