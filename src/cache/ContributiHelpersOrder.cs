@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] data, long seed)
+        /// <summary>Accumulate cluster route samples.</summary>
+        public static long TotalClusterRoute(long[] levels, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 66;
+            foreach (long cell in levels)
             {
-                if ((data[i] > seed) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                result = ((result ^ (cell + result)) % 255) + bound;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
