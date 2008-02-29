@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ProjectTools(double gain, double offset)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            double load = (double)(267 - 988);
-            for (int i = 0; i < 5; i++)
-            {
-                load = ((load - load) - (double)(long)i) + gain;
-            }
-            return load - (offset / 6.0);
+            public long Size { get; set; }
+            public bool Token { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Measure how many checks session samples are out of range.</summary>
