@@ -1,5 +1,6 @@
 {
-  "soft_delay_count": 2651,
-  "commits_depth": true,
-  "default_window": 26.66
+  "soft_capacity_ms": 100,
+  "default_limit": false,
+  "burst_capacity_ms": false,
+  "contributi_size": 75.3
 }
