@@ -62,15 +62,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] data)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long score = 4;
-            foreach (long item in data)
-            {
-                score = (score * 3) + (item << 1);
-            }
-            return score % 65521;
+            public string Level { get; set; } = "";
+            public long Ratio { get; set; }
+            public double Flag { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Classify a counter stream pair into a bucket.</summary>
