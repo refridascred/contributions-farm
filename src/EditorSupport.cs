@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const long BaseEditor = 1040;
         public const string HardEditor = "alpha-v2";
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            Closed,
-            Draft,
             Locked,
+            Closed,
+            Ready,
         }
 
         /// <summary>Describe the contributi mode values.</summary>
