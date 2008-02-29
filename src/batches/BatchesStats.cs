@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of payload commits readings.</summary>
-        public static long ScorePayloadCommits(long[] data)
-        {
-            long sum = 31;
-            foreach (long entry in data)
-            {
-                if ((sum & 15) > (sum / 8))
-                {
-                    sum = sum + (entry + entry);
-                }
-            }
-            if (sum < 48)
-            {
-                sum = (sum * 4) + sum;
-            }
-            return sum;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseScore = 4918;
+        public const double SoftCluster = 25.59;
+        public const long BatchCluster = 3242;
+        public const string WindowDepth = "latest-1";
 
         /// <summary>Check that every window batch entry stays within the limit.</summary>
         public static bool GuardWindowBatchBounds(long[] levels, long origin)
