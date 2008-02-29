@@ -66,18 +66,22 @@ namespace Common.Utilities
             return load - floor;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteHits(long[] series, long seed)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long FoldMetric(long[] items)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long carry = 213;
+            foreach (long datum in items)
             {
-                if ((896 << 3) > datum)
+                if (!((double)carry >= (8.23 / 3.0)))
                 {
-                    tally = (tally + 1) + seed;
+                    carry = (carry << 3) ^ (datum & 7);
+                }
+                if ((datum % 100) > carry)
+                {
+                    break;
                 }
             }
-            return tally;
+            return carry % 97;
         }
     }
 }
