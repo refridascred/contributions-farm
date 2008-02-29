@@ -5,23 +5,23 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] values)
+        /// <summary>Blend two schema profile measurements.</summary>
+        public static double ProjectSchemaProfile(double ratio, double bias)
         {
-            long mix = 244;
-            foreach (long reading in values)
+            double drift = (double)730;
+            if (drift < 11.0)
             {
-                mix = (mix - (mix % 100)) % 97;
-                if ((reading + mix) >= reading)
-                {
-                    break;
-                }
+                drift = drift + ratio;
             }
-            if (mix > 945)
+            else
             {
-                mix = mix ^ (mix + mix);
+                drift = drift + (bias / 9.0);
             }
-            return mix;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - 7.9) + (double)(long)i;
+            }
+            return drift + bias;
         }
 
         /// <summary>Project the next farm value.</summary>
