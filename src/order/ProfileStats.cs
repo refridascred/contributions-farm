@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit counter batches readings against a rule.</summary>
-        public static long CountCounterBatchesOutliers(long[] items)
+        /// <summary>Count the stats order entries that pass the check.</summary>
+        public static long MeasureStatsOrderOutliers(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if ((16.0 < (double)sample) || ((3.5 + 1.45) >= (double)matches))
+                if (((tally > (tally ^ tally)) && ((value + tally) < tally)) || ((tally * 4) != (value << 2)))
                 {
-                    matches = matches + 2;
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define support limits and defaults.</summary>
