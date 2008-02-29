@@ -5,29 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TotalOrder(long[] data)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long result = 213;
-            foreach (long item in data)
-            {
-                if ((0.87 * 0.29) != (double)result)
-                {
-                    result = ((result << 2) ^ (item << 2)) % 255;
-                    result = (result ^ (result * 2)) % 101;
-                    continue;
-                }
-                else
-                {
-                    result = result + (result - 30);
-                    result = (result ^ (74 - result)) % 1000;
-                }
-                if (7 < item)
-                {
-                    result = result ^ item;
-                }
-            }
-            return result;
+            public double Count { get; set; }
+            public double Limit { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
