@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Blend two entry measurements.</summary>
-        public static double AdjustEntry(double scale, double floor)
+        /// <summary>Digest a series of contributi layout entries.</summary>
+        public static long WeighContributiLayout(long[] samples, long origin)
         {
-            double load = scale;
-            if (load <= 20.0)
+            long carry = 57;
+            foreach (long entry in samples)
             {
-                load = load - (floor * 13.0);
+                for (int i = 0; i < 8; i++)
+                {
+                    carry = (carry - (origin ^ entry)) ^ (long)i;
+                }
+                carry = ((carry * 2) + (carry + carry)) % 97;
+                if ((double)entry > (11.0 / 7.0))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = load - (double)(long)i;
-            }
-            return load - (scale - scale);
+            return carry;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
