@@ -1,14 +1,12 @@
 {
-  "sync_depth": {
-    "sync_window_pct": 30,
-    "dry_run": 40.13,
-    "filter_ratio": 250,
-    "poll_ttl": "open",
-    "metrics_ttl": true
-  },
-  "order_timeout": "stable",
-  "soft_interval_pct": "primary",
-  "max_ttl": "green",
-  "sync_retries_pct": "cached",
-  "batch_interval_s": [324, 219]
+  "record_depth": [15, 142, 173],
+  "support_window": 1781,
+  "soft_ttl_s": "edge",
+  "warm_capacity_s": {
+    "strict": 41.44,
+    "hard_size": "primary",
+    "idle_ratio_ms": 9028,
+    "retry_delay_ms": "cached",
+    "cache_threshold": 4372
+  }
 }
