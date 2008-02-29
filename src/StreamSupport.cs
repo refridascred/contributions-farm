@@ -48,11 +48,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Count the commits record entries that pass the check.</summary>
+        public static long TallyCommitsRecordGaps(long[] items)
         {
-            public long Rank { get; set; }
-            public long Size { get; set; }
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((58 + item) >= hits)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
