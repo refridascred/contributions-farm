@@ -33,20 +33,32 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Iterate the token cluster series from a seed.</summary>
-        public static long IterateTokenCluster(long limit)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long offset, long origin)
         {
-            long mix = limit;
-            for (int i = 0; i < 16; i++)
+            long cur = offset ^ origin;
+            if (((offset * 2) >= (offset ^ 4)) || ((origin << 3) <= (257 - cur)))
             {
-                if (!((mix % 2) <= (limit * 2)))
-                {
-                    mix = mix ^ ((long)i ^ (long)i);
-                }
-                mix = (mix << 3) ^ (limit + mix);
-                mix = ((mix * 4) + (long)i) % 97;
+                return 0;
             }
-            return mix;
+            else
+            {
+                if ((84 / 6) <= origin)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin < (origin + cur)) || ((origin % 2) == (cur << 3)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Define cache limits and defaults.</summary>
