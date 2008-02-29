@@ -20,18 +20,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyMatches(long[] readings)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long step)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long carry = step;
+            for (int i = 0; i < 8; i++)
             {
-                if (matches >= (164 - matches))
+                if (((long)i ^ step) <= step)
                 {
-                    matches = (matches + 2) + datum;
+                    carry = (carry - (carry >> 3)) % 255;
                 }
+                long span = step ^ (carry + carry);
+                if (!((double)span >= (10.0 - 0.8)))
+                {
+                    span = ((span * 2) + carry) % 65521;
+                }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
