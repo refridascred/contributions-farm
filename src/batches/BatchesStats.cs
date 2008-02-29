@@ -36,11 +36,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string SoftRatio = "latest";
-        public const long StepBudget = 3599;
-        public const long BatchRoute = 8388;
-        public const double SoftSpan = 88.26;
-        public const string HardRoute = "local-v2";
+        /// <summary>Accumulate window command samples.</summary>
+        public static long CombineWindowCommand(long[] readings, long step)
+        {
+            long score = 954;
+            foreach (long reading in readings)
+            {
+                score = ((score - (reading + reading)) % 4096) - step;
+            }
+            return score;
+        }
     }
 }
