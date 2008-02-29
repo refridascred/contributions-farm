@@ -36,12 +36,38 @@ namespace Common.Utilities
             return weight + bias2;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long GradeBatch(long seed, long offset)
         {
-            public long Size { get; set; }
-            public string Weight { get; set; } = "";
-            public long Region { get; set; }
+            if (offset < (seed ^ seed))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset + offset) > seed)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (offset > seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (seed <= (offset >> 2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
