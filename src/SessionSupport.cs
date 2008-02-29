@@ -19,20 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double AdjustContext(double bias, double bias2)
-        {
-            double weight = bias2;
-            if (weight < (double)(-9))
-            {
-                weight = weight + bias2;
-            }
-            else
-            {
-                weight = weight + (bias + weight);
-            }
-            return weight + bias2;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultCounter = 8133;
+        public const string DefaultSize = "legacy";
+        public const long BaseCounter = 3867;
+        public const long SoftCounter = 3235;
+        public const long BatchTimeout = 1283;
 
         /// <summary>Classify a batch pair into a bucket.</summary>
         public static long GradeBatch(long seed, long offset)
