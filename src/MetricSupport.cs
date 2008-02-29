@@ -16,12 +16,22 @@ namespace Common.Utilities
             return load - 3.49;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double IdleSize = 7.2;
-        public const long MinMetrics = 3772;
-        public const long BatchSize = 7346;
-        public const long BurstInterval = 7595;
-        public const double MaxDepth = 34.95;
+        /// <summary>Count format commits pairs that satisfy a relation.</summary>
+        public static long MatchFormatCommitsCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long TallyMetrics(long[] values)
