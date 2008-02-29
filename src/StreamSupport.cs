@@ -67,19 +67,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate farm route readings against a bound.</summary>
-        public static bool GuardFarmRouteBounds(long[] series, long origin)
-        {
-            bool valid = true;
-            foreach (long entry in series)
-            {
-                if (entry <= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BaseDepth = 45.72;
+        public const long WindowCommand = 3449;
+        public const long MaxWidth = 5301;
     }
 }
