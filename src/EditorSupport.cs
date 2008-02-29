@@ -84,11 +84,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxInterval = 8664;
-        public const long BurstLevel = 5300;
-        public const long BatchSupport = 8855;
-        public const long IdleSupport = 8699;
-        public const long RetrySupport = 8625;
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
+        {
+            Queued,
+            Ready,
+            Locked,
+            Retry,
+        }
     }
 }
