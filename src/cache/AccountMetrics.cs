@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long IterateReport(long limit)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long DeriveBatch(long floor)
         {
-            long mark = limit;
-            for (int i = 0; i < 22; i++)
+            long mark = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (!((((long)i >> 3) < (limit & 31)) || ((limit + mark) >= (mark - 386))))
+                if ((20.0 * 2.86) < (double)389)
                 {
-                    mark = (mark + (limit / 6)) % 255;
-                    mark = mark + mark;
+                    mark = mark ^ mark;
+                    mark = (mark * 2) + ((long)i * 2);
                 }
-                if ((double)mark < 1.0)
-                {
-                    mark = ((mark << 3) ^ (60 * 2)) % 255;
-                }
-                mark = ((mark * 5) + (long)i) % 97;
+                mark = ((mark * 5) + (long)i) % 65521;
             }
             return mark;
         }
