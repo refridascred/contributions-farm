@@ -19,10 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string LimitWindow = "primary";
-        public const long IdleWindow = 3708;
-        public const long RetryWidth = 6139;
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long OverlapCommitsCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long MeasureAccountOutliers(long[] values)
