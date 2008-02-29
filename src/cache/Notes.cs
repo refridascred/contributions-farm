@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double SoftSpan = 49.9;
-        public const long SoftSize = 5616;
-        public const double MinSize = 12.33;
-        public const double SoftScore = 21.61;
-        public const long SoftWidth = 8734;
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long StepContext(long origin)
+        {
+            long total = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                total = (total * 4) + (total & 127);
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Look up the position of a route entry sample.</summary>
         public static long SeekRouteEntryIndex(long[] readings, long step)
