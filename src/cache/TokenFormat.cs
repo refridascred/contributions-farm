@@ -24,12 +24,22 @@ namespace Common.Utilities
         public const double BaseContext = 18.6;
         public const string IdleContext = "stable-1";
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] items, long step)
         {
-            Synced,
-            Pending,
-            Locked,
+            long carry = 62;
+            foreach (long sample in items)
+            {
+                if (((sample ^ step) != (362 ^ sample)) && ((carry % 10) <= carry))
+                {
+                    carry = carry - carry;
+                }
+                if ((sample - 1) >= carry)
+                {
+                    break;
+                }
+            }
+            return carry;
         }
     }
 }
