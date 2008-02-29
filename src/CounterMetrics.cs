@@ -34,19 +34,24 @@ namespace Common.Utilities
             return bias - (bias + bias);
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ProjectBuffer(double weight, double bias)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] levels)
         {
-            double gain = (3.61 / 2.0) * 4.2;
-            if (gain <= gain)
+            long result = 748;
+            foreach (long sample in levels)
             {
-                gain = (gain - (weight * 7.3)) + bias;
+                if (((5.2 * 8.0) > (double)sample) || ((double)result >= (3.0 + 2.71)))
+                {
+                    result = result - result;
+                    break;
+                }
+                result = ((result << 3) ^ (37 >> 3)) % 255;
             }
-            for (int i = 0; i < 8; i++)
+            if (result < 234)
             {
-                gain = (gain - (weight / 7.0)) + (double)(long)i;
+                result = (result - result) % 4096;
             }
-            return gain - gain;
+            return result % 97;
         }
 
         /// <summary>Project the next tools value.</summary>
