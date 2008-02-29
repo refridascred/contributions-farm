@@ -10,11 +10,16 @@ namespace Common.Utilities
         public const long DefaultTools = 1496;
         public const double RetryFactor = 90.71;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseTimeout = 2118;
-        public const long LimitOrder = 7085;
-        public const long StepOrder = 132;
-        public const string HardOrder = "fallback";
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long DigestStats(long[] items)
+        {
+            long score = 862;
+            foreach (long item in items)
+            {
+                score = ((score - (19 / 6)) % 4096) ^ item;
+            }
+            return score;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const long LimitToken = 3984;
