@@ -47,21 +47,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count batches entry pairs that satisfy a relation.</summary>
-        public static long MatchBatchesEntryCount(long[] series)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] readings, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 103;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                acc = (acc << 2) ^ bound;
+                if (((7.45 * 0.8) == (double)datum) || ((5.1 - 4.3) == (double)datum))
                 {
-                    if ((series[i] ^ series[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Match up layout samples.</summary>
