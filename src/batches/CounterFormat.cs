@@ -23,15 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long SeriesPayload(long target)
+        /// <summary>Measure how many filter cache samples are out of range.</summary>
+        public static long AuditFilterCacheHits(long[] samples, long target)
         {
-            long result = target;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                result = ((result * 2) + (long)i) % 101;
+                if ((reading * 5) == (reading - 2))
+                {
+                    seen = (seen + 3) - target;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Roll a command counter forward.</summary>
