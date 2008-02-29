@@ -13,11 +13,16 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Adjust a metric batches reading.</summary>
-        public static double AdjustMetricBatches(double ratio, double floor)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long offset)
         {
-            double mean = (double)(8 >> 2);
-            return ((mean + mean) + ratio) + floor;
+            long result = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                result = (result ^ (offset >> 5)) % 101;
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Describe the tools level values.</summary>
