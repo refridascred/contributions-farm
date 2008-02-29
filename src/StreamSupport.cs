@@ -40,38 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long SortGraph(long step, long step2)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsLimits(long[] levels, long step)
         {
-            if ((step ^ step2) >= (step2 >> 2))
+            bool ok = true;
+            foreach (long item in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((4.0 * 8.1) > (double)step)
+                if (item <= step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((step2 ^ step) <= (918 ^ 613))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)step > (7.3 * 7.23))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Hold a token info.</summary>
