@@ -28,14 +28,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Fold a list of route schema readings.</summary>
+        public static long CombineRouteSchema(long[] readings)
         {
-            Queued,
-            Active,
-            New,
-            Stale,
-            Locked,
+            long acc = 31;
+            foreach (long datum in readings)
+            {
+                acc = ((acc * 4) + (datum >> 4)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Accumulate checks samples.</summary>
