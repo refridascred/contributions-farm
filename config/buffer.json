@@ -1,6 +1,8 @@
 {
-  "poll_threshold": 14.27,
-  "format_interval": true,
-  "flush_limit": 26,
-  "min_limit": "standard"
+  "token_ttl": "blue",
+  "cluster_interval": "blue",
+  "idle_threshold": 100,
+  "profile_capacity": 100,
+  "base_window_s": 49,
+  "strict": [260, 358, 249]
 }
