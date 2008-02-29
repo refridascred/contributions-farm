@@ -1,5 +1,11 @@
 {
-  "notes_capacity": "legacy",
-  "poll_window_count": 9389,
-  "retry_size": "eu-west"
+  "flush_size_ms": 57.27,
+  "buffer_ttl": true,
+  "persist": {
+    "audit": 90,
+    "verbose": ["stable", "primary", "blue", "standard"],
+    "record_timeout": "primary",
+    "compress": 55.83
+  },
+  "idle_timeout_ms": "local"
 }
