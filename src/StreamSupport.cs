@@ -27,12 +27,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool CheckFormatBounds(long[] readings, long target)
         {
-            public bool Limit { get; set; }
-            public double Flag { get; set; }
-            public bool Level { get; set; }
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
