@@ -79,9 +79,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BaseReport = "strict-1";
-        public const long CacheSize = 8266;
-        public const long BaseRatio = 1406;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxInterval = 8664;
+        public const long BurstLevel = 5300;
+        public const long BatchSupport = 8855;
+        public const long IdleSupport = 8699;
+        public const long RetrySupport = 8625;
     }
 }
