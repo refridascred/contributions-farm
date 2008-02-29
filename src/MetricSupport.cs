@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double SmoothGithubfarm(double scale, double offset)
+        /// <summary>Blend two context measurements.</summary>
+        public static double SmoothContext(double weight, double floor)
         {
-            double gain = (scale / 3.0) + scale;
-            if (gain < (gain / 8.0))
+            double load = 0.16;
+            if (load > (weight / 5.0))
             {
-                gain = gain - (scale * 5.86);
+                load = (load - (double)1) - floor;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + (double)(-56)) + (double)(long)i;
-            }
-            return gain - (gain - offset);
+            return load - 3.49;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
