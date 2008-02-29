@@ -49,11 +49,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Describe the editor mode values.</summary>
+        public enum EditorMode
         {
-            public string Limit { get; set; } = "";
-            public bool Weight { get; set; }
+            Active,
+            Paused,
+            Done,
+            Retry,
+            Idle,
         }
     }
 }
