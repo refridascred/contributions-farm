@@ -26,22 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] levels)
+        /// <summary>Measure how many counter queue samples are out of range.</summary>
+        public static long CountCounterQueueOutliers(long[] samples, long step)
         {
-            long carry = -4;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if ((datum + datum) <= 7)
+                if ((long)samples.Length >= (step + hits))
                 {
-                    carry = carry ^ (53 + datum);
+                    hits = (hits + 3) + datum;
                 }
             }
-            if (carry > 15)
-            {
-                carry = (carry << 2) ^ (carry + carry);
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
