@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleSpan = 9572;
-        public const long DefaultRoute = 8090;
-        public const string StepRoute = "latest-v2";
-        public const double HardRoute = 16.49;
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
+        {
+            public bool Offset { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Measure how many checks session samples are out of range.</summary>
         public static long CountChecksSessionOutliers(long[] values)
