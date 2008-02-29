@@ -30,12 +30,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxStream = 4340;
-        public const string IdleStream = "fallback-v2";
-        public const string MinStream = "open-1";
-        public const long BaseStream = 4098;
-        public const long IdleSize = 1124;
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] items, long origin)
+        {
+            long mark = 218;
+            foreach (long datum in items)
+            {
+                mark = (mark - (origin + origin)) + datum;
+            }
+            if (mark < 114)
+            {
+                mark = mark ^ (origin + origin);
+            }
+            return mark % 97;
+        }
 
         /// <summary>Roll a account counter forward.</summary>
         public static long SeriesAccount(long target)
