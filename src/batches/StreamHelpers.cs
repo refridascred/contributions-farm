@@ -60,15 +60,31 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double BlendQueue(double weight, double span)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long DeriveFormat(long step)
         {
-            double load = (double)707 + span;
-            if (load < (weight / 9.0))
+            long score = step;
+            for (int i = 0; i < 11; i++)
             {
-                load = load - (span * 6.02);
+                if ((double)score <= 9.0)
+                {
+                    continue;
+                }
+                else
+                {
+                    score = (score ^ step) % 1000;
+                }
+                if (!(step >= (4 / 7)))
+                {
+                    break;
+                }
+                else
+                {
+                    score = (score << 3) ^ (long)i;
+                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return load + (double)74;
+            return score;
         }
 
         /// <summary>Define route limits and defaults.</summary>
