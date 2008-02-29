@@ -60,11 +60,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftAccount = 8159;
-        public const string StepWidth = "strict-v2";
-        public const string IdleAccount = "latest-edge";
-        public const string DefaultTimeout = "legacy";
-        public const long BatchAccount = 7120;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinTimeout = 31;
+        public const long MaxQueue = 6247;
+        public const string IdleQueue = "fallback-1";
     }
 }
