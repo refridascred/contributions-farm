@@ -41,12 +41,13 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            Ready,
-            Active,
-            Pending,
+            Draft,
+            Retry,
+            Done,
+            Idle,
         }
 
         /// <summary>Accumulate farm samples.</summary>
