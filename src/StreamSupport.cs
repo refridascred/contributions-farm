@@ -67,10 +67,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseOrder = 1365;
-        public const long IdleFactor = 1304;
-        public const long WindowWidth = 8850;
-        public const long HardOrder = 8819;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string MaxEditor = "staging";
+        public const long StepEditor = 3466;
+        public const long StepSize = 5283;
+        public const string IdleCount = "stable-v2";
     }
 }
