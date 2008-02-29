@@ -1,7 +1,7 @@
 {
-  "min_size_pct": "latest",
-  "verbose": [461, 139, 86],
-  "poll_ratio_ms": 47.96,
-  "retry_window": 97.85,
-  "enabled": "stable"
+  "default_threshold_count": true,
+  "entry_size": 60,
+  "max_ratio": "eu-west",
+  "verbose": "strict",
+  "retry_size_s": 35.92
 }
