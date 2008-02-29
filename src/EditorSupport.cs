@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Blend two cache measurements.</summary>
-        public static double AdjustCache(double bias, double offset)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long step)
         {
-            double scale = (bias + bias) / 4.0;
-            if (scale <= (bias + scale))
+            long result = step;
+            for (int i = 0; i < 23; i++)
             {
-                scale = scale + offset;
+                if (!((double)(long)i == (5.89 - 2.0)))
+                {
+                    result = ((result * 2) + step) % 255;
+                    continue;
+                }
+                result = ((result * 5) + (long)i) % 101;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale + (offset * 6.59);
+            return result;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
