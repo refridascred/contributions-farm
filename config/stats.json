@@ -1,8 +1,5 @@
 {
-  "record_ttl": [407, 112, 409, 376],
-  "retry_depth_pct": 30,
-  "min_ratio_count": 8057,
-  "schema_depth": [425, 196],
-  "sync_threshold": 10,
-  "graph_ttl": false
+  "already_timeout": "edge",
+  "queue_window": 24.35,
+  "soft_threshold": 60
 }
