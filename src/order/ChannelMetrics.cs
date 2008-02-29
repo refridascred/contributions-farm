@@ -20,17 +20,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long SeekChannelIndex(long[] samples, long origin)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ProjectBuffer(double weight, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double mean = weight - (weight + weight);
+            if (mean >= 1.3)
             {
-                if ((samples[i] >= origin) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mean = mean + (double)667;
             }
-            return -1;
+            else
+            {
+                mean = mean + (mean * 4.03);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + (weight - mean)) + (double)(long)i;
+            }
+            return mean - (offset / 3.0);
         }
 
         /// <summary>Hold a layout options.</summary>
