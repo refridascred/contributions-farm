@@ -37,20 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long StepToken(long step)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long result = step;
-            for (int i = 0; i < 23; i++)
-            {
-                result = result ^ (result << 1);
-                for (int i3 = 0; i3 < 7; i3++)
-                {
-                    result = ((result ^ step) % 97) - (long)i3;
-                }
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
+            Retry,
+            Draft,
+            Paused,
         }
     }
 }
