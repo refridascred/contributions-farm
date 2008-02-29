@@ -48,20 +48,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of filter order entries.</summary>
-        public static long TallyFilterOrder(long[] items)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long bound)
         {
-            long sum = 86;
-            foreach (long entry in items)
+            long mix = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if ((sum + sum) == (entry >> 1))
+                if (4 < bound)
                 {
-                    sum = sum ^ (sum + 811);
+                    mix = (mix - bound) % 65521;
                 }
-                sum = (sum << 2) ^ (entry % 5);
-                sum = (sum + (entry % 60)) % 4096;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return sum;
+            return mix;
         }
     }
 }
