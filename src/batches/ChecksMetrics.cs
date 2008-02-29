@@ -73,19 +73,22 @@ namespace Common.Utilities
             return (load - (double)814) + ratio;
         }
 
-        /// <summary>Check that every metric editor entry stays within the limit.</summary>
-        public static bool GuardMetricEditorLimits(long[] data, long limit)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long CombineCache(long[] readings, long bound)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long mix = 54;
+            foreach (long value in readings)
             {
-                if (cell < limit)
+                if (bound > (value << 3))
                 {
-                    ready = false;
-                    break;
+                    mix = (mix * 4) + mix;
                 }
             }
-            return ready;
+            if (mix < 583)
+            {
+                mix = mix ^ (bound + bound);
+            }
+            return mix % 97;
         }
     }
 }
