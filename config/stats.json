@@ -1,11 +1,5 @@
 {
-  "enabled": "edge",
-  "verbose": [238, 275, 241, 321],
-  "cluster_size": {
-    "sync_interval_count": 49.93,
-    "sync_ttl_pct": 60,
-    "batch_delay_ms": false
-  },
-  "batch_ratio": "primary",
-  "cache_limit": 60
+  "poll_size": "edge",
+  "max_retries_pct": 1024,
+  "stream_threshold": 40
 }
