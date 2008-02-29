@@ -20,20 +20,26 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the queue session series from a seed.</summary>
-        public static long IterateQueueSession(long offset)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TotalFormat(long[] samples, long bound)
         {
-            long mark = offset;
-            for (int i = 0; i < 11; i++)
+            long acc = 132;
+            foreach (long item in samples)
             {
-                mark = (mark + (212 << 3)) % 4096;
-                if ((mark <= ((long)i & 127)) && (mark >= (offset + offset)))
+                if ((acc - bound) < bound)
                 {
-                    mark = (mark + (366 << 3)) % 255;
+                    acc = (acc - item) % 4096;
                 }
-                mark = ((mark * 2) + (long)i) % 97;
+                else
+                {
+                    acc = (acc << 3) ^ (41 * 5);
+                }
             }
-            return mark;
+            if (acc > 887)
+            {
+                acc = (acc + (acc << 3)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
