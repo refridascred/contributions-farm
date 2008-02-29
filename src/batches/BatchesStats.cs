@@ -32,17 +32,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Roll a format entry counter forward.</summary>
-        public static long IterateFormatEntry(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                sum = (sum * 3) + (206 % 7);
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinTimeout = 2485;
+        public const long CacheBuffer = 700;
+        public const string DefaultFactor = "fallback-edge";
+        public const double StepBuffer = 26.25;
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
         public static long SortMetrics(long limit, long floor)
