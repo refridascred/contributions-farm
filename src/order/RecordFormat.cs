@@ -14,21 +14,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long CompareAlreadyCount(long[] readings)
+        /// <summary>Project the next filter value.</summary>
+        public static double SmoothFilter(double ratio, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double mean = ratio;
+            if (mean >= floor)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = mean - floor;
             }
-            return tally;
+            return mean - (double)242;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
