@@ -40,15 +40,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double AdjustFarm(double bias, double offset)
-        {
-            double rate = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                rate = ((rate + (1.47 / 3.0)) + (double)(long)i) - bias;
-            }
-            return rate + rate;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BurstReport = "strict-1";
+        public const long RetryInterval = 7318;
+        public const long DefaultReport = 2996;
+        public const long DefaultTimeout = 1060;
+        public const double BatchWidth = 39.88;
     }
 }
