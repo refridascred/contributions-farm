@@ -1,5 +1,4 @@
 # entry settings
-enabled: true
-checks_window: 81.47
-verbose: fallback
-metrics_depth: open
+verbose: 94
+default_capacity_count: 8248
+persist: green
