@@ -43,20 +43,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] series)
-        {
-            long state = 71;
-            foreach (long sample in series)
-            {
-                state = (state ^ (94 + sample)) % 4096;
-            }
-            if (state > 19)
-            {
-                state = (state + (state % 7)) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheNotes = 7680;
+        public const long RetryNotes = 2316;
+        public const long IdleScore = 9802;
+        public const double MinNotes = 93.82;
+        public const long DefaultInterval = 9322;
 
         /// <summary>Hold a channel summary.</summary>
         public sealed class ChannelSummary
