@@ -26,19 +26,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileBounds(long[] samples, long seed)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutRange(long[] data, long limit)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            bool flag = true;
+            foreach (long item in data)
             {
-                if (sample >= seed)
+                if (item <= limit)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
     }
 }
