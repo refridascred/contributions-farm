@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyGaps(long[] values)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if (tally < (cell << 1))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Retry,
+            Stale,
+            Active,
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
