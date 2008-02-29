@@ -11,22 +11,10 @@ namespace Common.Utilities
         public const double BaseInterval = 89.69;
         public const double CacheFactor = 91.88;
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long OverlapToolsCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepDepth = 5295;
+        public const long MinBudget = 4286;
+        public const string StepRatio = "latest";
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long StepTimeout = 4007;
