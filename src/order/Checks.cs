@@ -13,14 +13,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
-        {
-            public bool Region { get; set; }
-            public long Offset { get; set; }
-            public long Limit { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultSize = 2142;
+        public const double MinReport = 46.09;
+        public const long LimitReport = 1275;
+        public const string RetryReport = "open-v2";
+        public const long CacheReport = 9362;
 
         /// <summary>Describe the githubfarm status values.</summary>
         public enum GithubfarmStatus
