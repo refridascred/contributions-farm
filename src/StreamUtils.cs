@@ -52,16 +52,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double BlendEditor(double ratio, double floor)
-        {
-            double weight = ratio;
-            if (weight >= 0.8)
-            {
-                weight = (weight - 4.0) + floor;
-            }
-            return weight - 5.85;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BurstRatio = "stable-1";
+        public const long BurstAlready = 5348;
+        public const double LimitBudget = 84.85;
+        public const double RetryBudget = 86.59;
 
         /// <summary>Hold a batch stats.</summary>
         public sealed class BatchStats
