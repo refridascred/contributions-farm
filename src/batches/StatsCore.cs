@@ -30,18 +30,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the stream support entries that pass the check.</summary>
-        public static long TallyStreamSupportHits(long[] items)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long sum = 65;
+            foreach (long cell in readings)
             {
-                if (((hits + cell) < cell) || ((hits * 3) > cell))
-                {
-                    hits = hits + 3;
-                }
+                sum = (((sum ^ (8 % 10)) % 101) ^ cell) - offset;
             }
-            return hits;
+            return sum % 4096;
         }
 
         /// <summary>Look up the position of a metric githubfarm sample.</summary>
