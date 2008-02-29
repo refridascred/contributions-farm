@@ -24,22 +24,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long MatchChecksCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BatchRatio = 1771;
+        public const string MaxBatch = "staging-1";
+        public const double BatchInterval = 37.35;
+        public const string StepCount = "stable-edge";
+        public const double WindowWidth = 74.44;
 
         /// <summary>Hold a schema info.</summary>
         public sealed class SchemaInfo
