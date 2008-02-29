@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
-        {
-            public string Region { get; set; } = "";
-            public long Rank { get; set; }
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long LimitPayload = 8667;
+        public const long WindowPayload = 964;
+        public const double CachePayload = 86.48;
 
         /// <summary>Define session limits and defaults.</summary>
         public const long MinInterval = 8022;
