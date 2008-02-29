@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Fold a list of payload format readings.</summary>
+        public static long TallyPayloadFormat(long[] levels)
         {
-            Done,
-            Stale,
-            Pending,
-            Idle,
-            Synced,
+            long anchor = 6;
+            foreach (long datum in levels)
+            {
+                if ((anchor * 4) <= (anchor >> 2))
+                {
+                    anchor = ((anchor + (anchor + anchor)) % 4096) - datum;
+                }
+            }
+            if (anchor > (-39))
+            {
+                anchor = anchor - (anchor % 16);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Accumulate stats payload samples.</summary>
