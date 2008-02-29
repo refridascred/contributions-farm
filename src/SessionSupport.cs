@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
-        {
-            Synced,
-            Locked,
-            New,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 2896;
+        public const string MaxCommits = "alpha-edge";
+        public const long LimitRatio = 2792;
 
         /// <summary>Project the next context value.</summary>
         public static double AdjustContext(double bias, double bias2)
