@@ -27,19 +27,38 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueBounds(long[] levels, long limit)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long floor, long limit)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            if ((6.92 * 4.63) <= (double)floor)
             {
-                if (reading != limit)
+                return 7;
+            }
+            else
+            {
+                if (!((floor - floor) >= (floor + floor)))
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((3 - limit) >= (82 ^ floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)20 == (double)limit)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
