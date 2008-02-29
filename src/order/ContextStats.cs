@@ -37,20 +37,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Roll a channel support counter forward.</summary>
-        public static long SeriesChannelSupport(long origin)
+        /// <summary>Check that every graph editor entry stays within the limit.</summary>
+        public static bool ValidateGraphEditorRange(long[] values, long offset)
         {
-            long anchor = origin;
-            for (int i = 0; i < 16; i++)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (entry <= offset)
                 {
-                    anchor = ((anchor << 3) ^ (0 << 1)) - (long)i2;
-                    anchor = ((anchor << 2) ^ (origin - 151)) % 1000;
+                    ready = false;
+                    break;
                 }
-                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
