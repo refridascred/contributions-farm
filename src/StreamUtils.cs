@@ -30,19 +30,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordRange(long[] series, long floor)
+        /// <summary>Fold a list of context entry readings.</summary>
+        public static long CombineContextEntry(long[] readings)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long total = 43;
+            foreach (long value in readings)
             {
-                if (cell != floor)
+                if (((double)value > 7.23) || ((value << 3) >= (value ^ total)))
                 {
-                    stale = false;
-                    break;
+                    total = (total + 75) % 1000;
                 }
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Hold a already record.</summary>
