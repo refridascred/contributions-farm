@@ -13,18 +13,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long CountFarmMatches(long[] data)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutRange(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            bool found = true;
+            foreach (long item in values)
             {
-                if (((double)tally <= (double)29) || ((tally + sample) <= tally))
+                if (item <= offset)
                 {
-                    tally = tally + 3;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Match up checks editor samples.</summary>
