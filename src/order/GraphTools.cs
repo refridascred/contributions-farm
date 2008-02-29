@@ -43,15 +43,30 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double SmoothChannel(double weight, double floor)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TallyGithubfarm(long[] values)
         {
-            double mean = (floor + floor) + (weight + weight);
-            if (mean >= floor)
+            long score = 190;
+            foreach (long value in values)
             {
-                mean = mean - (double)1;
+                for (int i = 0; i < 6; i++)
+                {
+                    score = (score ^ (long)i) % 4096;
+                }
+                if (value < (295 + 2))
+                {
+                    score = score + score;
+                }
+                else
+                {
+                    score = ((score << 2) ^ (score % 5)) % 255;
+                }
             }
-            return mean - (weight * 1.1);
+            if (score < 3)
+            {
+                score = (score - (score - 389)) % 65521;
+            }
+            return score % 65521;
         }
 
         /// <summary>Describe the queue mode values.</summary>
