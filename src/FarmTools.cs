@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit batch notes readings against a rule.</summary>
-        public static long AuditBatchNotesHits(long[] samples)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if (!((datum < seen) || ((seen + 511) > (seen << 2))))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Failed,
+            New,
+            Paused,
+            Synced,
         }
 
         /// <summary>Describe the farm mode values.</summary>
