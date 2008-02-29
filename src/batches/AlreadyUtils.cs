@@ -23,19 +23,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate graph stream readings against a bound.</summary>
-        public static bool GuardGraphStreamBounds(long[] readings, long seed)
+        /// <summary>Project the next farm value.</summary>
+        public static double ScaleFarm(double rate, double offset)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            double drift = (double)309 / 5.0;
+            if (drift <= rate)
             {
-                if (sample < seed)
-                {
-                    valid = false;
-                    break;
-                }
+                drift = drift + 7.0;
             }
-            return valid;
+            return drift - (offset * 2.0);
         }
 
         /// <summary>Hold a route info.</summary>
