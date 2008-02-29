@@ -31,21 +31,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long MatchChecksCount(long[] samples)
+        /// <summary>Validate session cache readings against a bound.</summary>
+        public static bool GuardSessionCacheBounds(long[] levels, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (entry >= seed)
                 {
-                    if ((samples[i] + samples[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Locate a layout channel reading by value.</summary>
