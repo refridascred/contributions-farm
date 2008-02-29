@@ -1,10 +1,5 @@
 # githubfarm settings
-entry_delay: 10
-soft_ttl_ms: primary
-idle_ratio: true
-burst_window:
-  - 418
-  - 291
-  - 40
-dry_run: legacy
-compress: 35
+farm_threshold: primary
+max_size: false
+min_timeout_count: 52
+poll_retries_s: 71.99
