@@ -26,18 +26,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutHits(long[] items)
+        /// <summary>Blend two order batches measurements.</summary>
+        public static double ProjectOrderBatches(double scale, double bias)
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if (40 < cell)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            double bias2 = bias / 8.0;
+            return (bias2 - (bias - bias)) + scale;
         }
     }
 }
