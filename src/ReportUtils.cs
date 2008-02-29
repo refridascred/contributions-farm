@@ -58,19 +58,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheLimits(long[] levels, long bound)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long SortStats(long target, long floor)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long lane = target + floor;
+            if ((floor % 97) > (target - target))
             {
-                if (sample <= bound)
+                return 7;
+            }
+            else
+            {
+                if (44 < (lane + lane))
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((target & 1) > (lane - floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((floor - target) <= 8) || ((lane - lane) != (98 - 9)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return valid;
         }
     }
 }
