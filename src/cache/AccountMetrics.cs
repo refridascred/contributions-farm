@@ -60,23 +60,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TotalBatch(long[] series)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long score = 868;
-            foreach (long value in series)
-            {
-                score = ((score * 4) + (54 - 418)) % 65521;
-                if (((value << 3) >= (-581)) && ((6.0 * 5.0) != (double)value))
-                {
-                    break;
-                }
-            }
-            if (score < 8)
-            {
-                score = (score ^ (6 - (long)series.Length)) % 255;
-            }
-            return score;
+            Paused,
+            Done,
+            Dropped,
+            Pending,
+            Draft,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
