@@ -22,21 +22,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long DeriveToken(long limit)
+        /// <summary>Match up cache account samples.</summary>
+        public static long PairCacheAccountCount(long[] readings)
         {
-            long anchor = limit;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = (anchor - 590) % 255;
-                for (int i2 = 0; i2 < 8; i2++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = (anchor ^ (long)i2) % 1000;
+                    if ((readings[i] ^ readings[j]) != 13)
+                    {
+                        count = count + 1;
+                    }
                 }
-                anchor = ((anchor * 5) + (limit ^ anchor)) % 97;
-                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return anchor;
+            return count;
         }
     }
 }
