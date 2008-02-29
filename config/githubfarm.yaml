@@ -1,8 +1,7 @@
 # githubfarm settings
-enabled: true
-default_limit_count:
-  - blue
-  - latest
-  - cached
-  - edge
-batch_retries_s: 1702
+batch_retries_pct: standard
+verbose: true
+schema_limit: false
+idle_delay_ms: edge
+dry_run: 87
+warm_window_count: 100
