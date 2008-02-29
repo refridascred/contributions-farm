@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long ClassifyWindow(long floor, long step)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long RollSession(long target)
         {
-            if ((floor ^ 8) == (floor * 3))
+            long result = target;
+            for (int i = 0; i < 15; i++)
             {
-                return 5;
+                long edge = (result + 72) * 4;
+                result = ((result * 4) + (edge + result)) % 4096;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if ((floor + step) >= (step + 836))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step > (floor ^ step)) && ((floor >> 1) > step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Roll a already counter forward.</summary>
