@@ -19,11 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Scale a counter window figure with a bias.</summary>
+        public static double ProjectCounterWindow(double gain, double span)
         {
-            public bool Token { get; set; }
-            public long Limit { get; set; }
+            double mean = span / 7.0;
+            if (mean < (gain - 5.0))
+            {
+                mean = mean + (double)(-6);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + (mean + span)) + (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
