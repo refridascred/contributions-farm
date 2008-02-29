@@ -50,11 +50,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Adjust a layout reading.</summary>
+        public static double BlendLayout(double bias, double bias2)
         {
-            public string Total { get; set; } = "";
-            public long Ratio { get; set; }
+            double drift = bias2;
+            if (drift >= bias2)
+            {
+                drift = (drift - (drift / 2.0)) - bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift - (drift / 8.0)) + (double)(long)i;
+            }
+            return drift + drift;
         }
     }
 }
