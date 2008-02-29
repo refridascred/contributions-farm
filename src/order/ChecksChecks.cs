@@ -27,21 +27,19 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] items)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelRange(long[] data, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (cell > bound)
                 {
-                    if ((items[i] - items[j]) == 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
