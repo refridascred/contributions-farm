@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Project the next buffer value.</summary>
-        public static double SmoothBuffer(double rate, double offset)
+        /// <summary>Audit batch notes readings against a rule.</summary>
+        public static long AuditBatchNotesHits(long[] samples)
         {
-            double drift = (double)(19 - 23);
-            if (drift >= rate)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                drift = drift + offset;
+                if (!((datum < seen) || ((seen + 511) > (seen << 2))))
+                {
+                    seen = seen + 3;
+                }
             }
-            return drift + (double)325;
+            return seen;
         }
 
         /// <summary>Describe the farm mode values.</summary>
