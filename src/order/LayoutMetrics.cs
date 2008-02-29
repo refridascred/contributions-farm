@@ -19,26 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TotalFormat(long[] samples, long bound)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long FindAlreadyIndex(long[] levels, long target)
         {
-            long acc = 132;
-            foreach (long item in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((acc - bound) < bound)
+                if (levels[i] < target)
                 {
-                    acc = (acc - item) % 4096;
-                }
-                else
-                {
-                    acc = (acc << 3) ^ (41 * 5);
+                    return (long)i;
                 }
             }
-            if (acc > 887)
-            {
-                acc = (acc + (acc << 3)) % 101;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
