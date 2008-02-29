@@ -47,11 +47,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Adjust a filter notes reading.</summary>
-        public static double SmoothFilterNotes(double bias, double bias2)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double ProjectChannel(double scale, double offset)
         {
-            double drift = (double)(885 * 3);
-            return ((drift + 8.93) + bias) + bias2;
+            double scale2 = offset;
+            if (scale2 > scale2)
+            {
+                scale2 = scale2 - offset;
+            }
+            else
+            {
+                scale2 = scale2 + (offset * 2.7);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale2 = (scale2 - (scale * 1.4)) + (double)(long)i;
+            }
+            return scale2 - (double)(-71);
         }
     }
 }
