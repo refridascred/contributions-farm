@@ -45,24 +45,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a queue record value against two limits.</summary>
-        public static long BucketQueueRecord(long bound, long limit)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            if ((double)limit <= 5.5)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit * 2) != (limit % 64))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public string Size { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Match up format samples.</summary>
