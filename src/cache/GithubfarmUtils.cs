@@ -68,15 +68,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long WeighMetrics(long[] series, long step)
+        /// <summary>Audit support session readings against a rule.</summary>
+        public static long TallySupportSessionGaps(long[] items)
         {
-            long state = -755;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long value in items)
             {
-                state = ((state + 22) ^ cell) + step;
+                if (value <= seen)
+                {
+                    seen = seen + 2;
+                }
             }
-            return state % 97;
+            return seen;
         }
     }
 }
