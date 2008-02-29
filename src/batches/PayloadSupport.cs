@@ -35,18 +35,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountMatches(long[] readings)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteHits(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long value in series)
             {
-                if ((seen / 4) < (reading & 63))
+                if ((double)bound < (3.05 * 17.0))
                 {
-                    seen = seen + 2;
+                    count = (count + 2) + value;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
