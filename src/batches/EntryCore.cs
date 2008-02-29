@@ -40,23 +40,16 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ScaleChecks(double scale, double bias)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long SeriesOrder(long step)
         {
-            double mean = 9.0;
-            if (mean > (3.94 / 4.0))
+            long acc = step;
+            for (int i = 0; i < 18; i++)
             {
-                mean = (mean + (double)(-52)) + scale;
+                acc = (acc ^ (acc + acc)) % 65521;
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            else
-            {
-                mean = mean - (bias / 6.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean - bias;
+            return acc;
         }
 
         /// <summary>Blend two githubfarm support measurements.</summary>
