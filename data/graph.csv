@@ -1,8 +1,6 @@
-id,label,token,ratio,score
-1,63.8,763,550,strict
-2,87.28,local,83.04,24.59
-3,stable,stable,509,staging
-4,4.83,36.51,894,legacy
-5,eu-west,719,36.94,937
-6,standard,157,80.23,42.48
-7,59.1,168,eu-west,807
+id,count,level
+1,806,fallback
+2,cached,green
+3,158,461
+4,green,45.8
+5,54.86,46.1
