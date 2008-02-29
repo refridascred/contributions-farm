@@ -1,20 +1,8 @@
 # support settings
-min_retries_count: latest
-warm_interval_s: green
-burst_ttl_s: 39.89
-hard_retries_s: 30
-profile_threshold:
-  soft_limit:
-    - standard
-    - latest
-    - blue
-  min_threshold: 4272
-  audit: 1024
-  warm_limit_count:
-    contributi_delay:
-      - 198
-      - 11
-      - 265
-      - 89
-    readonly: 81
-    soft_timeout_count: 500
+metric_retries: strict
+warm_retries_s: false
+dry_run:
+  - standard
+  - green
+  - edge
+  - edge
