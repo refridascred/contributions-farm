@@ -1,7 +1,8 @@
-id,level,weight,token,label
-1,622,416,899,standard
-2,367,622,369,standard
-3,75.12,16.0,35.03,71.66
-4,29,611,41.84,29.89
-5,eu-west,878,green,strict
-6,153,636,staging,stable
+id,region,count,weight
+1,93,991,185
+2,387,47.3,67.69
+3,318,832,85.53
+4,89.66,20,edge
+5,104,934,stable
+6,90.41,35.98,78.5
+7,528,17.21,strict
