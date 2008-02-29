@@ -12,11 +12,38 @@ namespace Common.Utilities
         public const string HardInterval = "primary";
         public const long CacheBatches = 9265;
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long seed, long seed2)
         {
-            public string Score { get; set; } = "";
-            public long Count { get; set; }
+            if (((seed % 97) <= seed) || ((seed & 63) != (seed2 / 5)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((seed2 * 2) >= (seed - seed)) && (seed < (seed2 >> 5)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed + seed) > (seed2 % 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((254 + seed2) >= (seed2 + seed))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
