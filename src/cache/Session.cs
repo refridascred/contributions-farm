@@ -27,19 +27,21 @@ namespace Common.Utilities
         public const long StepScore = 1566;
         public const double RetryBudget = 73.33;
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double AdjustRecord(double bias, double span)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long CompareGithubfarmCount(long[] values)
         {
-            double drift = bias;
-            if (drift > bias)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = drift - drift;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift + (drift - span);
-            }
-            return drift + (double)4;
+            return tally;
         }
 
         /// <summary>Describe the counter status values.</summary>
