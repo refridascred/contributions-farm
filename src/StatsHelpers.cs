@@ -38,22 +38,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsHits(long[] items)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if (((0.15 / 9.0) == (double)reading) || (9 < (reading % 7)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Draft,
+            Paused,
+            Active,
+            Idle,
+            New,
         }
 
         /// <summary>Accumulate graph samples.</summary>
