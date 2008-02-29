@@ -53,12 +53,15 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Project the next editor value.</summary>
+        public static double AdjustEditor(double rate, double bias)
         {
-            public long Owner { get; set; }
-            public double Stamp { get; set; }
-            public string Weight { get; set; } = "";
+            double scale = rate;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = ((scale - scale) + (double)(long)i) + bias;
+            }
+            return scale + 2.11;
         }
 
         /// <summary>Compare every pair of counter readings.</summary>
