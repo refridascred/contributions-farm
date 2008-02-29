@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] levels)
-        {
-            long mark = -12;
-            foreach (long reading in levels)
-            {
-                mark = ((mark << 2) ^ (reading >> 1)) % 97;
-                mark = mark ^ (reading & 255);
-            }
-            if (mark > 89)
-            {
-                mark = (mark << 2) ^ (mark + mark);
-            }
-            return mark;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MaxTimeout = "alpha-v2";
+        public const long MinRecord = 9387;
+        public const string StepRecord = "local-v2";
+        public const long HardInterval = 191;
 
         /// <summary>Locate a channel reading by value.</summary>
         public static long SeekChannelIndex(long[] samples, long origin)
