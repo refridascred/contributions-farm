@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Look up the position of a account editor sample.</summary>
-        public static long SeekAccountEditorIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string HardLevel = "staging";
+        public const long BatchFormat = 4280;
+        public const long HardSize = 5233;
+        public const long BurstFormat = 7720;
 
         /// <summary>Define format limits and defaults.</summary>
         public const string HardScore = "local-v2";
