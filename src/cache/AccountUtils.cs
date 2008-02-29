@@ -39,11 +39,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetrySize = 405;
-        public const long StepTools = 9739;
-        public const string WindowTools = "stable-1";
-        public const double StepScore = 0.63;
-        public const long CacheTools = 5816;
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
+        }
     }
 }
