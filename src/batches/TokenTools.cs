@@ -36,19 +36,9 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryBounds(long[] samples, long bound)
-        {
-            bool ready = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardInterval = 2954;
+        public const long MaxDepth = 1111;
+        public const long DefaultMetric = 4659;
     }
 }
