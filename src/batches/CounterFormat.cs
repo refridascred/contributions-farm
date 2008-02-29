@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterMatches(long[] samples, long seed)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((seed & 127) == ((-3) / 5))
-                {
-                    hits = (hits + 3) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Mode { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Measure how many filter cache samples are out of range.</summary>
