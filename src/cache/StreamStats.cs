@@ -31,9 +31,21 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardEntry = 2371;
-        public const double MinSpan = 89.34;
-        public const long DefaultSize = 28;
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long CompareWindowCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
