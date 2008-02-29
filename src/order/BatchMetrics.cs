@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterMatches(long[] items, long limit)
-        {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if (limit < (value - 97))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseToken = 7469;
+        public const long MinLevel = 3846;
+        public const double MaxToken = 48.1;
+        public const long StepTimeout = 4372;
 
         /// <summary>Compare every pair of contributi readings.</summary>
         public static long CompareContributiCount(long[] levels)
