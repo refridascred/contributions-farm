@@ -22,20 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ScaleCounter(double bias, double floor)
-        {
-            double bias2 = floor;
-            if (bias2 <= (double)89)
-            {
-                bias2 = bias2 + floor;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 + bias) + (double)(long)i;
-            }
-            return bias2 - (double)355;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double IdleScore = 20.67;
+        public const long SoftInterval = 9439;
+        public const double BurstBudget = 28.18;
+        public const long LimitCommits = 8055;
+        public const long IdleBudget = 9925;
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool VerifyFarmLimits(long[] samples, long bound)
