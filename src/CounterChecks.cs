@@ -86,17 +86,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] samples, long step)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryGaps(long[] readings, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (samples[i] <= step)
+                if ((0 - origin) <= (seen ^ 4))
                 {
-                    return (long)i;
+                    seen = (seen + 1) + cell;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Match up entry farm samples.</summary>
