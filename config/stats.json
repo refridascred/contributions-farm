@@ -1,8 +1,5 @@
 {
-  "persist": [107, 205, 426, 305],
-  "profile_limit": [370, 132, 286, 361],
-  "cache_depth_s": "local",
-  "max_delay_s": 694,
-  "default_ttl": "blue",
-  "batch_threshold_pct": [250, 14]
+  "githubfarm_depth": 100,
+  "soft_threshold_pct": "staging",
+  "base_interval_ms": "strict"
 }
