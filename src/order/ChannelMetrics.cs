@@ -21,13 +21,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long SeekChannelIndex(long[] samples, long origin)
         {
-            public string Stamp { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Score { get; set; }
-            public double Ratio { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= origin) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
