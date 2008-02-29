@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long floor, long seed)
+        /// <summary>Look up the position of a record layout sample.</summary>
+        public static long SeekRecordLayoutIndex(long[] data, long seed)
         {
-            if ((seed & 255) <= (454 << 1))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((10.0 >= (double)floor) || ((seed % 16) <= floor))
+                if ((data[i] >= seed) && ((data[i] % 5) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate checks support samples.</summary>
