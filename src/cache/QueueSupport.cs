@@ -54,18 +54,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaMatches(long[] levels, long limit)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long state = 4;
+            foreach (long item in items)
             {
-                if (limit >= (limit + limit))
+                if (80 <= (state + 91))
                 {
-                    hits = (hits + 2) ^ cell;
+                    state = ((state + (6 ^ 8)) % 65521) + item;
+                }
+                else
+                {
+                    state = state + (state % 60);
                 }
             }
-            return hits;
+            return state;
         }
     }
 }
