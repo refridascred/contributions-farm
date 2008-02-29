@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Project the next session payload value.</summary>
-        public static double AdjustSessionPayload(double rate, double floor)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            double load = rate;
-            if (load >= (floor - load))
-            {
-                load = load + (floor / 2.0);
-            }
-            return load - 5.0;
+            public long Size { get; set; }
+            public long Limit { get; set; }
+            public long Level { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Define profile limits and defaults.</summary>
