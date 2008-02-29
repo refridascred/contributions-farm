@@ -22,14 +22,30 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] samples)
         {
-            Stale,
-            Retry,
-            Locked,
-            Ready,
-            Synced,
+            long carry = 32;
+            foreach (long reading in samples)
+            {
+                if ((reading * 4) >= (reading + reading))
+                {
+                    continue;
+                }
+                if ((reading - (long)samples.Length) < carry)
+                {
+                    carry = (carry * 5) + carry;
+                }
+                if (!((1.95 + 19.0) < (double)reading))
+                {
+                    break;
+                }
+            }
+            if (carry < (-35))
+            {
+                carry = carry - carry;
+            }
+            return carry;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
