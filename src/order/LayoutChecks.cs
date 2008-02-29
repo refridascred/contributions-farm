@@ -72,13 +72,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            public bool Mode { get; set; }
-            public long Region { get; set; }
-            public long Score { get; set; }
-            public double Offset { get; set; }
+            Synced,
+            Closed,
+            Queued,
+            Active,
+            Retry,
         }
     }
 }
