@@ -14,10 +14,18 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultOrder = 7404;
-        public const long SoftTimeout = 2985;
-        public const long BaseLevel = 7768;
+        /// <summary>Derive the next format cluster value from a seed.</summary>
+        public static long StepFormatCluster(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                score = ((score << 2) ^ (origin + origin)) % 97;
+                score = (score * 5) + ((long)i * 5);
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Blend two counter measurements.</summary>
         public static double ProjectCounter(double weight, double floor)
