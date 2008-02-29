@@ -67,14 +67,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long BucketFilter(long step, long bound)
         {
-            Synced,
-            Dropped,
-            Failed,
-            Paused,
-            New,
+            if ((step - bound) < (step + step))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound << 3) != (step & 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step % 64) >= bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step - bound) >= 57)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate already queue samples.</summary>
