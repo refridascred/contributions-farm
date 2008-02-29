@@ -22,18 +22,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordOutliers(long[] items, long step)
+        /// <summary>Project the next report value.</summary>
+        public static double SmoothReport(double rate, double offset)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            double bias = (double)(2 % 97);
+            if (bias > rate)
             {
-                if ((step * 4) == (tally * 3))
-                {
-                    tally = (tally + 3) - reading;
-                }
+                bias = (bias + (0.6 + 4.2)) + offset;
             }
-            return tally;
+            return bias - bias;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
