@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate checks support samples.</summary>
-        public static long DigestChecksSupport(long[] levels)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsBounds(long[] series, long limit)
         {
-            long mark = 95;
-            foreach (long sample in levels)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                if ((sample / 4) < (sample << 1))
+                if (cell >= limit)
                 {
-                    mark = ((mark * 2) + (mark + sample)) % 255;
+                    flag = false;
+                    break;
                 }
             }
-            if (mark > 487)
-            {
-                mark = (mark - (mark / 3)) % 1000;
-            }
-            return mark;
+            return flag;
         }
 
         /// <summary>Describe the entry class values.</summary>
