@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] values)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long IterateBatch(long target)
         {
-            long sum = 30;
-            foreach (long cell in values)
+            long mix = target;
+            for (int i = 0; i < 5; i++)
             {
-                if ((sum + 8) >= (cell + 77))
+                if ((mix - mix) <= (target >> 3))
                 {
-                    sum = (sum - (sum / 6)) % 255;
+                    mix = ((mix << 3) ^ ((long)i << 1)) % 4096;
                 }
+                else
+                {
+                    mix = (mix ^ (459 + (long)i)) % 255;
+                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return sum % 4096;
+            return mix;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
