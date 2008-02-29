@@ -56,12 +56,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string CacheCount = "standard-1";
-        public const string HardRecord = "strict-edge";
-        public const double BaseRecord = 3.06;
-        public const long BatchCount = 7728;
-        public const long WindowInterval = 6395;
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double AdjustMetrics(double weight, double span)
+        {
+            double load = weight / 2.0;
+            if (load < span)
+            {
+                load = load - (span / 4.0);
+            }
+            else
+            {
+                load = load - load;
+            }
+            return load - span;
+        }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
         public static long StepBuffer(long floor)
