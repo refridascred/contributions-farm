@@ -54,19 +54,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionRange(long[] readings, long step)
+        /// <summary>Accumulate cache context samples.</summary>
+        public static long ScoreCacheContext(long[] series, long origin)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long state = 9;
+            foreach (long cell in series)
             {
-                if (value < step)
+                if (state <= cell)
                 {
-                    flag = false;
-                    break;
+                    state = state - origin;
                 }
             }
-            return flag;
+            return state % 97;
         }
 
         /// <summary>Define window limits and defaults.</summary>
