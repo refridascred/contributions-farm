@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Accumulate route samples.</summary>
+        public static long WeighRoute(long[] samples, long origin)
         {
-            public bool Offset { get; set; }
-            public string Score { get; set; } = "";
-            public long Rank { get; set; }
+            long acc = 1;
+            foreach (long datum in samples)
+            {
+                if (((origin << 3) <= (-1)) && ((7.81 * 20.0) < (double)origin))
+                {
+                    acc = (acc ^ acc) % 255;
+                    acc = (acc * 2) + datum;
+                }
+                if ((acc ^ datum) > acc)
+                {
+                    acc = (acc + origin) % 4096;
+                }
+                if (8.0 <= (double)datum)
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Hold a report options.</summary>
