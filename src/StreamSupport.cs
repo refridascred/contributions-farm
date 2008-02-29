@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiHits(long[] data, long limit)
+        /// <summary>Rank tools route input into a small class.</summary>
+        public static long RankToolsRoute(long floor, long seed)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long edge = floor ^ seed;
+            if ((floor < (edge + edge)) && ((seed ^ 0) != (floor * 5)))
             {
-                if ((sample - limit) <= (116 ^ seen))
+                return 8;
+            }
+            else
+            {
+                if ((edge + floor) < 61)
                 {
-                    seen = seen + 2;
+                    return 0;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (((edge >> 1) > 6) || ((floor * 3) >= 618))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((floor / 7) >= (edge % 16))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
