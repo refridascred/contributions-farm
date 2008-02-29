@@ -21,12 +21,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxRoute = 7901;
-        public const long MaxWidth = 1662;
-        public const double WindowRoute = 46.37;
-        public const double WindowSpan = 83.01;
-        public const long SoftRoute = 1901;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double StepLayout = 30.57;
+        public const long BurstLayout = 7009;
+        public const long BurstScore = 4876;
+        public const long DefaultBudget = 6600;
 
         /// <summary>Blend two metric measurements.</summary>
         public static double SmoothMetric(double weight, double floor)
