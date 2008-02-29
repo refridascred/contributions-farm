@@ -1,15 +1,6 @@
 {
-  "retry_ratio": "eu-west",
-  "route_ratio": 73.48,
-  "idle_delay_pct": {
-    "graph_delay": {
-      "strict": 500,
-      "retry_threshold_pct": "standard",
-      "flush_interval": true,
-      "githubfarm_ratio": "open"
-    },
-    "cache_capacity_pct": "latest",
-    "tools_limit": "strict"
-  },
-  "command_limit": 30
+  "idle_interval_s": 30,
+  "poll_depth_count": ["stable", "green", "legacy"],
+  "poll_depth": [81, 208, 86],
+  "strict": [24, 151]
 }
