@@ -31,18 +31,15 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long OverlapContextCount(long[] items)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferMatches(long[] items)
         {
             long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long cell in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((cell ^ (-4)) > (cell / 6))
                 {
-                    if ((items[i] ^ items[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 2;
                 }
             }
             return count;
