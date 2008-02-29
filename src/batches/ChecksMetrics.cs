@@ -54,14 +54,19 @@ namespace Common.Utilities
             return (load - (double)814) + ratio;
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Check that every metric editor entry stays within the limit.</summary>
+        public static bool GuardMetricEditorLimits(long[] data, long limit)
         {
-            Idle,
-            Closed,
-            Failed,
-            Pending,
-            New,
+            bool ready = true;
+            foreach (long cell in data)
+            {
+                if (cell < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
