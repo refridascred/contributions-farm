@@ -25,16 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long offset)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long result = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                result = (result ^ (offset >> 5)) % 101;
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
+            Stale,
+            Paused,
+            Draft,
+            Closed,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
