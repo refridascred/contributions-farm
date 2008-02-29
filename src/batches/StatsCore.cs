@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Check that every token format entry stays within the limit.</summary>
-        public static bool CheckTokenFormatBounds(long[] levels, long seed)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long FindStatsIndex(long[] items, long target)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (item > seed)
+                if ((items[i] < target) && ((items[i] % 5) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
