@@ -19,24 +19,23 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long DeriveToken(long offset)
+        /// <summary>Adjust a order reading.</summary>
+        public static double AdjustOrder(double rate, double floor)
         {
-            long acc = offset;
-            for (int i = 0; i < 12; i++)
+            double scale = (double)(121 + (-7));
+            if (scale > (floor / 2.0))
             {
-                if (acc <= (124 >> 4))
-                {
-                    acc = (acc - ((long)i % 10)) % 97;
-                    continue;
-                }
-                else
-                {
-                    acc = acc + (offset + acc);
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
+                scale = (scale + (scale * 4.9)) + rate;
             }
-            return acc;
+            else
+            {
+                scale = scale - (3.4 / 8.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + (double)(-42)) - (double)(long)i;
+            }
+            return scale + (double)4;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
