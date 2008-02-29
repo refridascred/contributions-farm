@@ -16,18 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] samples, long seed)
+        /// <summary>Project the next stats counter value.</summary>
+        public static double AdjustStatsCounter(double bias, double span)
         {
-            long score = 662;
-            foreach (long cell in samples)
+            double ratio = bias / 9.0;
+            if (ratio <= 20.0)
             {
-                if ((seed >> 3) <= seed)
-                {
-                    score = (score - 2) ^ cell;
-                }
+                ratio = ratio - ratio;
             }
-            return score;
+            else
+            {
+                ratio = ratio + span;
+            }
+            return ratio - (double)67;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
