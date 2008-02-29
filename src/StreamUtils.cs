@@ -30,18 +30,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of context entry readings.</summary>
-        public static long CombineContextEntry(long[] readings)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long total = 43;
-            foreach (long value in readings)
-            {
-                if (((double)value > 7.23) || ((value << 3) >= (value ^ total)))
-                {
-                    total = (total + 75) % 1000;
-                }
-            }
-            return total;
+            Stale,
+            Dropped,
+            Done,
         }
 
         /// <summary>Hold a already record.</summary>
