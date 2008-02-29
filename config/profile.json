@@ -1,8 +1,7 @@
 {
-  "batches_threshold": [56, 178, 492, 8],
-  "warm_delay_s": 44,
-  "contributi_timeout": 30,
-  "cache_threshold_count": "primary",
-  "stats_size": 500,
-  "enabled": 31
+  "route_limit": true,
+  "burst_depth": true,
+  "support_depth": "standard",
+  "audit": ["eu-west", "local", "edge", "blue"],
+  "idle_retries": "green"
 }
