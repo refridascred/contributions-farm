@@ -48,13 +48,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Adjust a window reading.</summary>
+        public static double ProjectWindow(double ratio, double span)
         {
-            public string Weight { get; set; } = "";
-            public long Label { get; set; }
-            public bool Stamp { get; set; }
-            public long Count { get; set; }
+            double drift = ratio;
+            if (drift >= drift)
+            {
+                drift = drift + ratio;
+            }
+            return drift + (span - span);
         }
 
         /// <summary>Audit command readings against a rule.</summary>
