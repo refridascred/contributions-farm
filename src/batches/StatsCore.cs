@@ -55,12 +55,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
-        {
-            public bool Size { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double DefaultScore = 20.68;
+        public const long RetryFactor = 3955;
+        public const string BaseTimeout = "open";
+        public const long RetryCache = 4874;
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long AuditSupportHits(long[] samples)
