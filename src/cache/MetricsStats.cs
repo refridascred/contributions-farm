@@ -31,18 +31,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteHits(long[] levels, long bound)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsHits(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (!(((582 << 3) >= (entry << 2)) || ((2.67 - 11.0) > (5.62 * 2.3))))
+                if ((9.35 / 6.0) >= (double)matches)
                 {
-                    seen = (seen + 2) + bound;
+                    matches = ((matches + 3) + item) - origin;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
