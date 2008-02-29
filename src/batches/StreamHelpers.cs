@@ -44,19 +44,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double SmoothOrder(double ratio, double floor)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueRange(long[] samples, long floor)
         {
-            double bias = ratio + (double)0;
-            if (bias <= (double)94)
+            bool found = true;
+            foreach (long datum in samples)
             {
-                bias = bias - (ratio * 3.5);
+                if (datum <= floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + (floor + floor)) + (double)(long)i;
-            }
-            return bias + bias;
+            return found;
         }
 
         /// <summary>Roll a format counter forward.</summary>
