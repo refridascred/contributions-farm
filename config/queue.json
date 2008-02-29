@@ -1,12 +1,12 @@
 {
-  "flush_window_ms": [330, 418, 138, 200],
-  "queue_ttl": "local",
-  "retry_limit_pct": [500, 441, 199, 350],
-  "burst_capacity": [157, 80, 142],
-  "support_interval": {
-    "retry_threshold": 62,
-    "entry_retries": [140, 462],
-    "cluster_limit": ["edge", "legacy"]
+  "session_window": 95.06,
+  "flush_ttl": {
+    "soft_retries_s": true,
+    "sync_ttl_pct": "latest",
+    "cache_delay": 76,
+    "sync_ratio": [54, 154, 436]
   },
-  "compress": 57
+  "stats_capacity": 4.83,
+  "verbose": 1501,
+  "retry_retries": [387, 472]
 }
