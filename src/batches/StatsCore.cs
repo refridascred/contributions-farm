@@ -18,26 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long DigestBuffer(long[] samples)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferLimits(long[] readings, long limit)
         {
-            long mark = 298;
-            foreach (long value in samples)
+            bool flag = true;
+            foreach (long datum in readings)
             {
-                if ((13.0 * 8.1) == (double)mark)
+                if (datum > limit)
                 {
-                    mark = mark ^ (mark / 9);
-                }
-                else
-                {
-                    mark = (mark + (value + 987)) % 97;
-                }
-                if (!(mark > (mark << 1)))
-                {
+                    flag = false;
                     break;
                 }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
