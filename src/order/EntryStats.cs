@@ -62,15 +62,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double AdjustWindow(double scale, double floor)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamGaps(long[] data, long limit)
         {
-            double scale2 = scale;
-            for (int i = 0; i < 2; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                scale2 = ((scale2 + scale) + (double)(long)i) + floor;
+                if (((double)limit != (8.2 - 12.0)) || ((reading ^ (-7)) <= (seen + reading)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return scale2 + (double)625;
+            return seen;
         }
     }
 }
