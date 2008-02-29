@@ -54,11 +54,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutOutliers(long[] series, long step)
         {
-            public string Flag { get; set; } = "";
-            public double Score { get; set; }
+            long matches = 0;
+            foreach (long reading in series)
+            {
+                if (!((long)series.Length <= (step ^ reading)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
