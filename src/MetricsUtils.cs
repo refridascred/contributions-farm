@@ -14,13 +14,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Find the first cache route entry that matches the target.</summary>
+        public static long LookupCacheRouteIndex(long[] levels, long floor)
         {
-            Idle,
-            Draft,
-            New,
-            Retry,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == floor) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
