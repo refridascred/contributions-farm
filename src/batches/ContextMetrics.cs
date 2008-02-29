@@ -33,18 +33,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine editor metrics values into a single score.</summary>
-        public static long ScoreEditorMetrics(long[] levels)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long SeekGithubfarmIndex(long[] data, long floor)
         {
-            long carry = 837;
-            foreach (long reading in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (3.72 > (double)reading)
+                if ((data[i] >= floor) && ((data[i] % 3) != 0))
                 {
-                    carry = (carry + (carry % 10)) % 255;
+                    return (long)i;
                 }
             }
-            return carry % 97;
+            return -1;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
