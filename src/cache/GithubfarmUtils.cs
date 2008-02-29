@@ -22,13 +22,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long MatchStreamCount(long[] items)
         {
-            public long Label { get; set; }
-            public double Size { get; set; }
-            public double Offset { get; set; }
-            public long Token { get; set; }
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
