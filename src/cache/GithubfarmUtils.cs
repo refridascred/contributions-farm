@@ -54,12 +54,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportOutliers(long[] readings, long offset)
         {
-            public long Ratio { get; set; }
-            public bool Rank { get; set; }
-            public string Size { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if (seen <= (offset >> 5))
+                {
+                    seen = (seen + 1) ^ entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
