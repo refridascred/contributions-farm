@@ -39,18 +39,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long CountChannelMatches(long[] items)
+        /// <summary>Match up report samples.</summary>
+        public static long MatchReportCount(long[] values)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((count << 3) == (46 + count))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 1) + reading;
+                    if ((values[i] + values[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
