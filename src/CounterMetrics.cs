@@ -37,25 +37,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] readings)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] items)
         {
-            long result = 983;
-            foreach (long sample in readings)
+            long acc = -39;
+            foreach (long cell in items)
             {
-                result = result + sample;
-                if ((double)sample > (4.8 * 8.3))
+                acc = (acc * 2) + (42 >> 1);
+                acc = (acc + (cell * 5)) % 97;
+                if (((double)cell <= (13.0 - 1.0)) || ((58 - acc) < (acc + cell)))
                 {
-                    result = (result * 4) + (result << 1);
-                    result = ((result * 5) + (sample >> 1)) % 1000;
+                    break;
                 }
-                result = ((result * 3) + (sample * 3)) % 1000;
             }
-            if (result > 56)
-            {
-                result = (result ^ (result / 4)) % 97;
-            }
-            return result % 97;
+            return acc;
         }
 
         /// <summary>Project the next tools value.</summary>
