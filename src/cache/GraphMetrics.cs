@@ -56,18 +56,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the route profile entries that pass the check.</summary>
-        public static long MeasureRouteProfileGaps(long[] samples)
+        /// <summary>Derive the next tools queue value from a seed.</summary>
+        public static long SeriesToolsQueue(long seed)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long result = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if ((double)54 >= (double)sample)
-                {
-                    count = count + 2;
-                }
+                result = result ^ (seed >> 5);
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return count;
+            return result;
         }
     }
 }
