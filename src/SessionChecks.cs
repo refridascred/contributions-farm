@@ -52,19 +52,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelRange(long[] samples, long offset)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long step, long origin)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            if ((5 < (step >> 3)) && (step >= (step & 63)))
             {
-                if (cell < offset)
+                return 6;
+            }
+            else
+            {
+                if ((step ^ step) == (origin - step))
                 {
-                    stale = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((82 / 2) < (origin - origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Project the next batch value.</summary>
