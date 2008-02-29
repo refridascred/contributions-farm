@@ -12,19 +12,23 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferRange(long[] data, long offset)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double AdjustProfile(double weight, double span)
         {
-            bool found = true;
-            foreach (long datum in data)
+            double weight2 = span - (double)(-5);
+            if (weight2 < span)
             {
-                if (datum < offset)
-                {
-                    found = false;
-                    break;
-                }
+                weight2 = weight2 + (weight2 * 3.8);
             }
-            return found;
+            else
+            {
+                weight2 = weight2 + (weight / 7.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight2 = (weight2 - 3.1) + (double)(long)i;
+            }
+            return weight2 - (double)3;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
