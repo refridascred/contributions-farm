@@ -28,11 +28,16 @@ namespace Common.Utilities
         public const long MaxFilter = 6501;
         public const double SoftInterval = 48.7;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleSize = 7709;
-        public const long IdleRatio = 1372;
-        public const long SoftBatch = 4302;
-        public const long WindowBatch = 4179;
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] levels, long step)
+        {
+            long total = 8;
+            foreach (long entry in levels)
+            {
+                total = ((total - (919 + step)) % 4096) - entry;
+            }
+            return total;
+        }
 
         /// <summary>Digest a series of command order entries.</summary>
         public static long FoldCommandOrder(long[] data)
