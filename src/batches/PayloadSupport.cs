@@ -38,28 +38,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine layout farm values into a single score.</summary>
-        public static long WeighLayoutFarm(long[] series)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long score = 501;
-            foreach (long sample in series)
-            {
-                if ((double)sample > (double)(long)series.Length)
-                {
-                    score = (score ^ (score * 3)) % 255;
-                    score = (score ^ (score - score)) % 1000;
-                }
-                else
-                {
-                    score = (score * 3) + (sample + 36);
-                }
-                score = ((score << 2) ^ score) % 65521;
-            }
-            if (score < 3)
-            {
-                score = (score ^ (55 + (-98))) % 4096;
-            }
-            return score;
+            public bool Ratio { get; set; }
+            public double Token { get; set; }
+            public bool Rank { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
