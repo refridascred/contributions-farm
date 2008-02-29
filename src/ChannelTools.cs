@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long RollSession(long target)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long StepSupport(long bound)
         {
-            long result = target;
-            for (int i = 0; i < 15; i++)
+            long state = bound;
+            for (int i = 0; i < 11; i++)
             {
-                long edge = (result + 72) * 4;
-                result = ((result * 4) + (edge + result)) % 4096;
-                result = ((result * 3) + (long)i) % 1000;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    state = ((state * 5) + bound) - (long)i2;
+                    state = state - (bound / 8);
+                }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Roll a already counter forward.</summary>
