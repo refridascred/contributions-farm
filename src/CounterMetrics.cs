@@ -34,24 +34,22 @@ namespace Common.Utilities
             return bias - (bias + bias);
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] levels)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterMatches(long[] samples)
         {
-            long result = 748;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (((5.2 * 8.0) > (double)sample) || ((double)result >= (3.0 + 2.71)))
+                if ((((double)datum < 19.0) || ((matches / 2) <= (datum - datum))) && ((datum * 2) <= (datum >> 5)))
                 {
-                    result = result - result;
-                    break;
+                    matches = matches + 2;
                 }
-                result = ((result << 3) ^ (37 >> 3)) % 255;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (result < 234)
-            {
-                result = (result - result) % 4096;
-            }
-            return result % 97;
+            return matches;
         }
 
         /// <summary>Project the next tools value.</summary>
