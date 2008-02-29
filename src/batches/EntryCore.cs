@@ -42,21 +42,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count schema queue pairs that satisfy a relation.</summary>
-        public static long CompareSchemaQueueCount(long[] items)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] levels, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = -2;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((bound * 5) > (bound >> 1)) || ((mix - reading) > (reading << 3)))
                 {
-                    if ((items[i] + items[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix << 2) ^ (reading / 4);
                 }
             }
-            return tally;
+            if (mix > 618)
+            {
+                mix = (mix << 3) ^ 84;
+            }
+            return mix;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
