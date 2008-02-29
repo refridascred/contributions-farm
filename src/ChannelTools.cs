@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiGaps(long[] items, long seed)
-        {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((5.96 * 2.1) <= (double)(long)items.Length)
-                {
-                    hits = ((hits + 1) ^ cell) + seed;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryQueue = 1717;
+        public const long MinQueue = 1311;
+        public const long SoftCount = 5755;
+        public const long WindowQueue = 4481;
 
         /// <summary>Roll a already counter forward.</summary>
         public static long DeriveAlready(long bound)
