@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Match up checks samples.</summary>
-        public static long OverlapChecksCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxPayload = 3085;
+        public const long BatchPayload = 3358;
+        public const long RetryPayload = 6290;
 
         /// <summary>Describe the order state values.</summary>
         public enum OrderState
