@@ -47,19 +47,19 @@ namespace Common.Utilities
         public const long LimitCommits = 8055;
         public const long IdleBudget = 9925;
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double BlendStats(double weight, double bias)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiBounds(long[] series, long limit)
         {
-            double bias2 = 1.07 * 1.8;
-            if (bias2 <= 14.0)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                bias2 = bias2 + bias2;
+                if (entry > limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = (bias2 + weight) - (double)(long)i;
-            }
-            return bias2 - bias;
+            return valid;
         }
     }
 }
