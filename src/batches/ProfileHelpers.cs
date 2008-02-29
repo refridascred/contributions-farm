@@ -39,18 +39,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsOutliers(long[] samples, long seed)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if (seed <= (549 - cell))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Failed,
+            Draft,
+            Locked,
+            Synced,
         }
 
         /// <summary>Audit session readings against a rule.</summary>
