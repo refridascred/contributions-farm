@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LocateRouteIndex(long[] readings, long limit)
+        /// <summary>Roll a order buffer counter forward.</summary>
+        public static long DeriveOrderBuffer(long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = step;
+            for (int i = 0; i < 17; i++)
             {
-                if ((readings[i] == limit) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                score = (score * 2) + (score + step);
+                score = (score << 2) ^ (step * 4);
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
