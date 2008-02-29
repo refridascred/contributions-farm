@@ -35,11 +35,11 @@ namespace Common.Utilities
             return mean - (offset / 3.0);
         }
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
-        {
-            public string Count { get; set; } = "";
-            public long Limit { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultStream = 9665;
+        public const double IdleTimeout = 7.81;
+        public const string WindowStream = "staging-v2";
+        public const long MinStream = 3242;
+        public const long DefaultWidth = 4581;
     }
 }
