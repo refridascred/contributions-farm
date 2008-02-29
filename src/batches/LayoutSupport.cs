@@ -53,22 +53,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate batches context samples.</summary>
-        public static long CombineBatchesContext(long[] items, long bound)
+        /// <summary>Classify a farm cluster pair into a bucket.</summary>
+        public static long ClassifyFarmCluster(long origin, long seed)
         {
-            long state = 3;
-            foreach (long value in items)
+            long cur = origin + seed;
+            if (cur <= (96 + seed))
             {
-                if (((5 + state) == (state >> 4)) || (value < ((long)items.Length / 9)))
+                return 6;
+            }
+            else
+            {
+                if (seed >= (origin + origin))
                 {
-                    state = ((state * 5) + (value & 31)) % 97;
+                    return 7;
                 }
-                if ((bound * 4) <= state)
+                else
                 {
-                    break;
+                    if (((double)cur < (7.5 + 4.62)) && (81 > (origin * 2)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return state;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
