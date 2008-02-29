@@ -51,26 +51,9 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] samples, long offset)
-        {
-            long total = 815;
-            foreach (long entry in samples)
-            {
-                if (((double)634 > (double)offset) || ((entry - entry) != (offset * 3)))
-                {
-                    total = (total - entry) % 255;
-                }
-                if ((4 + entry) <= 17)
-                {
-                    break;
-                }
-            }
-            if (total < (-694))
-            {
-                total = ((total << 2) ^ 1) % 4096;
-            }
-            return total;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitWidth = 7570;
+        public const long DefaultContributi = 3833;
+        public const string CacheRatio = "fallback-edge";
     }
 }
