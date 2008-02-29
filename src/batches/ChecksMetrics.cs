@@ -26,10 +26,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double IdleRecord = 31.8;
-        public const long BatchRecord = 4020;
-        public const string RetryRecord = "primary-1";
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowNotes = 2214;
+        public const long HardNotes = 4714;
+        public const string SoftNotes = "fallback-edge";
+        public const long MaxScore = 3227;
 
         /// <summary>Accumulate checks report samples.</summary>
         public static long WeighChecksReport(long[] values, long origin)
