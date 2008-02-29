@@ -22,10 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long StepRecord = 2951;
-        public const long StepScore = 1566;
-        public const double RetryBudget = 73.33;
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
+        {
+            Pending,
+            Retry,
+            Idle,
+        }
 
         /// <summary>Match up githubfarm samples.</summary>
         public static long CompareGithubfarmCount(long[] values)
