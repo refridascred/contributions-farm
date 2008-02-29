@@ -38,14 +38,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Roll a record counter forward.</summary>
+        public static long StepRecord(long limit)
         {
-            Active,
-            Paused,
-            Done,
-            Retry,
-            Idle,
+            long mix = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = (mix + 48) % 255;
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
         }
     }
 }
