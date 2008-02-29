@@ -1,10 +1,5 @@
 {
-  "cluster_capacity": {
-    "counter_size": 500,
-    "cache_retries": ["green", "standard"],
-    "warm_threshold": 8043
-  },
-  "cache_window": 6399,
-  "entry_threshold": false,
-  "retry_threshold": 1024
+  "soft_delay_count": 2651,
+  "commits_depth": true,
+  "default_window": 26.66
 }
