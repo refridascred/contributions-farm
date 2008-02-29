@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] levels)
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] levels)
         {
-            long total = -2;
-            foreach (long entry in levels)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = (total - (entry - entry)) % 255;
-                if (((entry << 2) == (entry - entry)) && (total < (entry / 8)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = (total + entry) % 1000;
-                }
-                if ((entry >> 5) < (entry << 2))
-                {
-                    break;
+                    if ((levels[i] - levels[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
