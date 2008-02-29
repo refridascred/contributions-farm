@@ -1,16 +1,14 @@
 # Command notes
 
-The commits helpers are pure functions, so they are safe to call from any thread.
-Run the format check before changing any layout limits.
-Use support settings to tune how often window data is refreshed.
+The window report groups every schema by counter.
+Defaults for filter live in the config folder and can be overridden per environment.
 
-When a record fails, the format handler retries a few times before giving up.
-Run the batches check before changing any window limits.
-Each record is validated before it reaches the session queue.
+Run the cluster check before changing any batches limits.
+Use contributi settings to tune how often account data is refreshed.
+Defaults for report live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate context input early
-- Keep buffer values small
-- Prefer command defaults
-- Log every counter change
+- Prefer farm defaults
+- Validate already input early
+- Document new cache fields
