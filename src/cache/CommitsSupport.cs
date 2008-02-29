@@ -12,14 +12,12 @@ namespace Common.Utilities
         public const long HardCommits = 1123;
         public const long MaxCommits = 4806;
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
-        {
-            Ready,
-            Locked,
-            Active,
-            Draft,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseWidth = 8162;
+        public const long BatchToken = 8266;
+        public const long MinToken = 3885;
+        public const long MinCount = 6015;
+        public const long BurstToken = 9671;
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long LimitNotes = 8289;
