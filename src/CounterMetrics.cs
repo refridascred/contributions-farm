@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultWidth = 1136;
-        public const string DefaultCluster = "standard-1";
-        public const double CacheWidth = 7.35;
-        public const string HardCluster = "latest-v2";
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
+        {
+            New,
+            Queued,
+            Pending,
+            Ready,
+            Locked,
+        }
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long MeasureTokenHits(long[] levels, long origin)
