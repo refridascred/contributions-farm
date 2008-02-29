@@ -78,11 +78,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
-        {
-            public string Stamp { get; set; } = "";
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BaseReport = "strict-1";
+        public const long CacheSize = 8266;
+        public const long BaseRatio = 1406;
     }
 }
