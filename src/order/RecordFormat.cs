@@ -18,24 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long IterateChannel(long target)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool GuardContributiLimits(long[] samples, long step)
         {
-            long sum = target;
-            for (int i = 0; i < 24; i++)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                if ((target >= sum) && (target < ((long)i % 64)))
+                if (item != step)
                 {
-                    sum = (sum << 2) ^ (sum + target);
+                    ready = false;
+                    break;
                 }
-                else
-                {
-                    sum = (sum << 2) ^ (61 - (long)i);
-                }
-                sum = (sum - (target + target)) % 101;
-                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
