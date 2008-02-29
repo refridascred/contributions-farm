@@ -1,8 +1,17 @@
 {
-  "burst_threshold_s": true,
-  "queue_retries": "local",
-  "min_depth_pct": ["staging", "blue"],
-  "poll_capacity_pct": "latest",
-  "flush_threshold_count": true,
-  "enabled": "stable"
+  "account_delay": 3076,
+  "burst_size_count": 84,
+  "idle_interval_s": 332,
+  "account_capacity": {
+    "cache_ratio_pct": 26.22,
+    "warm_size_ms": 675,
+    "format_delay": {
+      "burst_threshold_s": "latest",
+      "sync_window_pct": [169, 439, 466, 150],
+      "commits_delay": ["staging", "open", "edge", "local"],
+      "schema_retries": 100,
+      "compress": 74.64
+    },
+    "audit": 48
+  }
 }
