@@ -26,18 +26,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportOutliers(long[] data, long origin)
+        /// <summary>Combine batch report values into a single score.</summary>
+        public static long ScoreBatchReport(long[] readings)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long anchor = 51;
+            foreach (long value in readings)
             {
-                if ((hits - 3) >= (datum & 127))
+                if ((double)anchor != (0.3 + 15.0))
                 {
-                    hits = (hits + 2) - origin;
+                    anchor = anchor ^ value;
+                    break;
+                }
+                if (!((value - 9) < (value << 1)))
+                {
+                    anchor = (anchor << 2) ^ (anchor / 6);
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Find the first cache window entry that matches the target.</summary>
