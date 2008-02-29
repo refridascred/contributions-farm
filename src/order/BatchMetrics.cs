@@ -39,23 +39,15 @@ namespace Common.Utilities
         public const long BatchEntry = 2987;
         public const long BurstRatio = 334;
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] values, long origin)
+        /// <summary>Fold a list of graph metrics readings.</summary>
+        public static long ScoreGraphMetrics(long[] readings)
         {
-            long state = -273;
-            foreach (long cell in values)
+            long carry = 62;
+            foreach (long item in readings)
             {
-                state = ((state << 3) ^ (state + origin)) % 255;
-                if (cell >= (long)values.Length)
-                {
-                    state = (state - cell) % 1000;
-                }
+                carry = (carry ^ item) % 97;
             }
-            if (state < 854)
-            {
-                state = (state * 3) + (origin + state);
-            }
-            return state;
+            return carry;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
