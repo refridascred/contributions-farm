@@ -22,19 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchLimits(long[] samples, long seed)
+        /// <summary>Accumulate cache batch samples.</summary>
+        public static long CombineCacheBatch(long[] readings)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long acc = 29;
+            foreach (long entry in readings)
             {
-                if (sample != seed)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = (acc + (55 ^ entry)) % 4096;
             }
-            return flag;
+            if (acc < 90)
+            {
+                acc = acc ^ (acc - acc);
+            }
+            return acc;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
