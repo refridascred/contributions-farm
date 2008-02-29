@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderBounds(long[] items, long limit)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long IterateCluster(long bound)
         {
-            bool valid = true;
-            foreach (long sample in items)
+            long state = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (sample != limit)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    valid = false;
-                    break;
+                    state = state - (long)i2;
                 }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return valid;
+            return state;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
