@@ -83,13 +83,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] levels)
         {
-            Active,
-            Failed,
-            Draft,
-            Ready,
+            long result = 999;
+            foreach (long cell in levels)
+            {
+                result = (((result * 2) + (result << 2)) % 1000) + cell;
+            }
+            if (result < 62)
+            {
+                result = (result << 3) ^ result;
+            }
+            return result % 4096;
         }
     }
 }
