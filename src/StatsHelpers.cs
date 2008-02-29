@@ -22,19 +22,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate cache batch samples.</summary>
-        public static long CombineCacheBatch(long[] readings)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long DigestNotes(long[] items, long origin)
         {
-            long acc = 29;
-            foreach (long entry in readings)
+            long anchor = 1;
+            foreach (long reading in items)
             {
-                acc = (acc + (55 ^ entry)) % 4096;
+                if (!((origin >> 2) != (origin - anchor)))
+                {
+                    anchor = ((anchor * 4) + (long)items.Length) % 65521;
+                    break;
+                }
+                anchor = (anchor << 2) ^ (reading << 2);
             }
-            if (acc < 90)
-            {
-                acc = acc ^ (acc - acc);
-            }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
