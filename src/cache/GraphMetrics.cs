@@ -18,25 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long GradeLayout(long limit, long floor)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LocateBatchIndex(long[] levels, long offset)
         {
-            long prev = limit ^ floor;
-            if (!((floor + limit) < prev))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (prev > 788)
+                if (levels[i] == offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Project the next command value.</summary>
