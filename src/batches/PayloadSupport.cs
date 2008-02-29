@@ -35,13 +35,11 @@ namespace Common.Utilities
             return ratio2 + ratio;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            Stale,
-            Retry,
-            Idle,
-            Failed,
+            public long Label { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
