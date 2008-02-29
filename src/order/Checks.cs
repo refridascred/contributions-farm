@@ -50,22 +50,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TotalLayout(long[] samples, long floor)
+        /// <summary>Scale a graph command figure with a bias.</summary>
+        public static double SmoothGraphCommand(double scale, double offset)
         {
-            long mark = -52;
-            foreach (long item in samples)
+            double bias = offset;
+            if (bias > (double)6)
             {
-                if ((mark >= (item << 1)) || ((floor & 3) <= (mark << 3)))
-                {
-                    mark = mark - (floor + floor);
-                }
-                if (((long)samples.Length % 64) < (floor & 3))
-                {
-                    break;
-                }
+                bias = bias + bias;
             }
-            return mark % 1000;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias - offset) - (double)(long)i;
+            }
+            return bias - scale;
         }
     }
 }
