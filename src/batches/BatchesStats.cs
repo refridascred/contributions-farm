@@ -26,39 +26,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long floor, long limit)
+        /// <summary>Derive the next format report value from a seed.</summary>
+        public static long RollFormatReport(long origin)
         {
-            long edge = floor ^ limit;
-            if ((limit * 3) < limit)
+            long anchor = origin;
+            for (int i = 0; i < 6; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (limit > (floor - edge))
+                if ((double)(long)i == (9.0 * 7.6))
                 {
-                    return 5;
+                    anchor = anchor ^ (origin & 7);
                 }
-                else
-                {
-                    if ((4.7 - 19.0) >= (double)floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)floor >= (9.38 / 4.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
+            return anchor;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
