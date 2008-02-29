@@ -35,9 +35,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double DefaultWindow = 82.6;
-        public const string HardWindow = "latest-v2";
-        public const double LimitWindow = 20.53;
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesHits(long[] series, long seed)
+        {
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((((double)seed <= (4.86 / 8.0)) || (tally > item)) && ((8.0 / 6.0) != (double)tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
     }
 }
