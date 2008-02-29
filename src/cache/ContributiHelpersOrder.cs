@@ -22,12 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricOutliers(long[] readings, long step)
         {
-            Synced,
-            Done,
-            Paused,
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((long)readings.Length >= (250 * 5))
+                {
+                    tally = ((tally + 1) ^ value) + step;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate payload metrics readings against a bound.</summary>
