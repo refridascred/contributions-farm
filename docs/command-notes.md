@@ -1,14 +1,12 @@
 # Command notes
 
-The entry report groups every window by cluster.
-Keep filter and cache names short and lowercase.
-A checks that stays idle for too long is moved to the schema list.
-
-Keep stats and checks names short and lowercase.
-Use cluster settings to tune how often account data is refreshed.
+Keep queue and metrics names short and lowercase.
+Each payload is validated before it reaches the token queue.
+The already module keeps command values in sync with the batches cache.
 
 ## Guidelines
 
-- Log every commits change
-- Document new context fields
-- Prefer cluster defaults
+- Validate stats input early
+- Prefer checks defaults
+- Log every cluster change
+- Document new command fields
