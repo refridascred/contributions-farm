@@ -37,27 +37,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] items)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long mix = 2;
-            foreach (long entry in items)
-            {
-                mix = (mix ^ entry) % 255;
-                if ((double)entry != (8.6 + 2.0))
-                {
-                    mix = mix - (mix + entry);
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (182 + mix)) % 65521;
-                }
-            }
-            if (mix < 6)
-            {
-                mix = (mix ^ (mix << 2)) % 255;
-            }
-            return mix;
+            Synced,
+            Stale,
+            Done,
         }
     }
 }
