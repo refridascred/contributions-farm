@@ -111,12 +111,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long FindCacheIndex(long[] readings, long origin)
         {
-            Retry,
-            Queued,
-            Closed,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
