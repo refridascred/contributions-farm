@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] levels, long target)
         {
-            public bool Flag { get; set; }
-            public long Mode { get; set; }
-            public double Level { get; set; }
-            public long Ratio { get; set; }
+            long state = 9;
+            foreach (long datum in levels)
+            {
+                if ((9.02 / 6.0) < (double)datum)
+                {
+                    state = ((state * 4) + (target * 2)) % 1000;
+                }
+                else
+                {
+                    state = (state - (state & 1)) % 4096;
+                }
+            }
+            return state;
         }
 
         /// <summary>Project the next filter value.</summary>
