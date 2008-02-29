@@ -1,12 +1,8 @@
 {
-  "stream_capacity": true,
-  "enabled": true,
-  "batch_retries_ms": "eu-west",
-  "readonly": false,
-  "buffer_threshold": 52,
-  "payload_delay": {
-    "batch_timeout": [241, 77, 93],
-    "checks_retries": true,
-    "readonly": "open"
-  }
+  "githubfarm_depth": 81,
+  "hard_size": 100,
+  "enabled": 25,
+  "base_interval": true,
+  "verbose": 85,
+  "metric_size": 57.14
 }
