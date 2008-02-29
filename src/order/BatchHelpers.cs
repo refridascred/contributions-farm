@@ -14,22 +14,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] readings)
+        /// <summary>Fold a list of checks contributi readings.</summary>
+        public static long TotalChecksContributi(long[] items, long target)
         {
-            long mix = -119;
-            foreach (long cell in readings)
+            long score = 66;
+            foreach (long value in items)
             {
-                if (!((53 & 63) != (cell >> 1)))
+                score = score - target;
+                if ((value < (score - target)) && ((score - score) > (target << 3)))
                 {
-                    mix = mix + (cell - cell);
+                    score = (score << 3) ^ value;
                 }
+                score = (score ^ (value << 2)) % 255;
             }
-            if (mix < 29)
-            {
-                mix = (mix * 3) + mix;
-            }
-            return mix % 4096;
+            return score;
         }
 
         /// <summary>Locate a commits support reading by value.</summary>
