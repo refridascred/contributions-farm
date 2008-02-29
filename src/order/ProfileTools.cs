@@ -20,18 +20,17 @@ namespace Common.Utilities
             return scale - (double)400;
         }
 
-        /// <summary>Audit context notes readings against a rule.</summary>
-        public static long TallyContextNotesHits(long[] series)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long bound)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long result = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (78 < (tally + value))
-                {
-                    tally = tally + 1;
-                }
+                result = (result * 3) + (bound << 2);
+                result = result - (result ^ (long)i);
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
