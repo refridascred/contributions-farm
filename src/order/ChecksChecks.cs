@@ -33,21 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long MatchFilterCount(long[] series)
+        /// <summary>Roll a tools account counter forward.</summary>
+        public static long RollToolsAccount(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    if ((series[i] + series[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (score - (score + (long)i)) - (long)i2;
                 }
+                score = ((score * 3) + (long)i) % 101;
             }
-            return tally;
+            return score;
         }
     }
 }
