@@ -52,32 +52,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a farm cluster pair into a bucket.</summary>
-        public static long ClassifyFarmCluster(long origin, long seed)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long cur = origin + seed;
-            if (cur <= (96 + seed))
-            {
-                return 6;
-            }
-            else
-            {
-                if (seed >= (origin + origin))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)cur < (7.5 + 4.62)) && (81 > (origin * 2)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Failed,
+            Idle,
+            Pending,
+            Closed,
+            Done,
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
