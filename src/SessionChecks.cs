@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepDepth = 5583;
-        public const long DefaultTimeout = 7622;
-        public const string LimitLevel = "cached-1";
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
+        {
+            New,
+            Synced,
+            Queued,
+            Paused,
+        }
 
         /// <summary>Accumulate route farm samples.</summary>
         public static long DigestRouteFarm(long[] values)
