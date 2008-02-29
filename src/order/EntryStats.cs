@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long GradeLayout(long target, long limit)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesRange(long[] series, long limit)
         {
-            long offset = target - limit;
-            if (((target - target) != (offset % 3)) && ((offset << 2) < limit))
+            bool ok = true;
+            foreach (long reading in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((4.41 / 6.0) == (double)offset)
+                if (reading >= limit)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
