@@ -63,15 +63,11 @@ namespace Common.Utilities
         public const long CacheFilter = 4428;
         public const double SoftFilter = 39.42;
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long WeighRecord(long[] samples)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double ProjectGithubfarm(double scale, double offset)
         {
-            long anchor = 382;
-            foreach (long value in samples)
-            {
-                anchor = ((anchor + 43) % 97) ^ value;
-            }
-            return anchor;
+            double scale2 = 3.49;
+            return ((scale2 + (double)7) + scale) + offset;
         }
     }
 }
