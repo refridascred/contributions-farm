@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Adjust a record reading.</summary>
+        public static double AdjustRecord(double weight, double offset)
         {
-            Pending,
-            Active,
-            Done,
+            double mean = weight;
+            if (mean >= (mean + weight))
+            {
+                mean = mean - (double)883;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - (mean / 3.0)) + (double)(long)i;
+            }
+            return mean - offset;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
