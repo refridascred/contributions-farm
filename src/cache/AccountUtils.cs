@@ -10,11 +10,16 @@ namespace Common.Utilities
         public const long CacheEntry = 3641;
         public const long MaxEntry = 8433;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MinLevel = 5539;
-        public const long LimitTimeout = 7564;
-        public const double MinLayout = 43.84;
-        public const long IdleLevel = 8290;
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long IterateSupport(long floor)
+        {
+            long mark = floor;
+            for (int i = 0; i < 22; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a route entry.</summary>
         public sealed class RouteEntry
