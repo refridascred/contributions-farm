@@ -23,23 +23,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double BlendFilter(double rate, double offset)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            double drift = (double)(122 ^ 9);
-            if (drift >= (drift + 12.0))
-            {
-                drift = drift - (offset + rate);
-            }
-            else
-            {
-                drift = drift - rate;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - (double)585) + (double)(long)i;
-            }
-            return drift + rate;
+            public string Rank { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Fold a list of payload readings.</summary>
