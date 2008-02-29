@@ -28,15 +28,10 @@ namespace Common.Utilities
         public const double WindowSpan = 83.01;
         public const long SoftRoute = 1901;
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
-        {
-            Dropped,
-            Queued,
-            Locked,
-            Draft,
-            Done,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstWindow = 3877;
+        public const long DefaultWindow = 2289;
+        public const string MinWindow = "primary-edge";
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long CacheNotes = 7680;
