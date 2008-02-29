@@ -48,18 +48,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferMatches(long[] items)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((cell ^ (-4)) > (cell / 6))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public double Ratio { get; set; }
+            public long Flag { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Rank support input into a small class.</summary>
