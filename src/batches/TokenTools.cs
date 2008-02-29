@@ -5,26 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] samples)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long SeriesStats(long offset)
         {
-            long score = 669;
-            foreach (long cell in samples)
+            long score = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if ((cell >> 4) > (score & 127))
-                {
-                    score = (score + (score + 8)) % 65521;
-                }
-                else
-                {
-                    score = ((score * 5) + (cell - score)) % 65521;
-                }
-                if ((312 + 0) > (cell + score))
-                {
-                    break;
-                }
+                score = (score ^ (score - offset)) % 4096;
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return score % 4096;
+            return score;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
