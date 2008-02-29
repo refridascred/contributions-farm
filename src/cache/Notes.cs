@@ -26,23 +26,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine batch report values into a single score.</summary>
-        public static long ScoreBatchReport(long[] readings)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] values)
         {
-            long anchor = 51;
-            foreach (long value in readings)
+            long anchor = 62;
+            foreach (long value in values)
             {
-                if ((double)anchor != (0.3 + 15.0))
+                long delta = (anchor + value) * 5;
+                if (((anchor - value) > (delta + delta)) || ((anchor % 97) <= anchor))
                 {
-                    anchor = anchor ^ value;
+                    delta = delta - (anchor & 63);
+                    anchor = ((anchor << 2) ^ (anchor + value)) % 101;
+                }
+                anchor = (anchor - 899) % 101;
+                if ((anchor ^ value) <= (value + 496))
+                {
                     break;
                 }
-                if (!((value - 9) < (value << 1)))
-                {
-                    anchor = (anchor << 2) ^ (anchor / 6);
-                }
             }
-            return anchor;
+            return anchor % 1000;
         }
 
         /// <summary>Find the first cache window entry that matches the target.</summary>
