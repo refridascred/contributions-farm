@@ -12,11 +12,14 @@ namespace Common.Utilities
         public const long HardCommits = 1123;
         public const long MaxCommits = 4806;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleLayout = 8881;
-        public const long BatchTimeout = 3847;
-        public const string RetryLayout = "local-1";
-        public const long LimitLayout = 3222;
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
+        {
+            public string Weight { get; set; } = "";
+            public long Size { get; set; }
+            public string Rank { get; set; } = "";
+            public double Mode { get; set; }
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long LimitNotes = 8289;
