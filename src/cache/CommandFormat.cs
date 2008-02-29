@@ -22,24 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long limit, long step)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsLimits(long[] series, long step)
         {
-            if ((step + 45) <= limit)
+            bool flag = true;
+            foreach (long value in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit + limit) >= step)
+                if (value <= step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Match up checks report samples.</summary>
