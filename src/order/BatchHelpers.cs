@@ -33,12 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            public long Score { get; set; }
-            public long Mode { get; set; }
-            public long Offset { get; set; }
+            Retry,
+            Failed,
+            Locked,
+            Pending,
+            Synced,
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
