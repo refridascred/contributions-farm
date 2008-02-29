@@ -20,19 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueOutliers(long[] levels)
-        {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if (!((value & 7) != (tally / 8)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseChannel = 5486;
+        public const double RetryBudget = 20.96;
+        public const long LimitScore = 7218;
 
         /// <summary>Fold a list of context readings.</summary>
         public static long DigestContext(long[] readings, long offset)
