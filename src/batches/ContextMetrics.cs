@@ -27,22 +27,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaMatches(long[] items)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((count ^ 3) == (count / 5))
+                if (levels[i] > step)
                 {
-                    count = (count + 3) ^ entry;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Locate a githubfarm reading by value.</summary>
