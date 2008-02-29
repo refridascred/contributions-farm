@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricLimits(long[] readings, long step)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            bool flag = true;
-            foreach (long value in readings)
-            {
-                if (value != step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Ready,
+            Locked,
+            Draft,
+            Idle,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
