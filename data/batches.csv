@@ -1,6 +1,8 @@
-id,ratio,region,owner
-1,cached,blue,767
-2,edge,strict,81.98
-3,635,555,green
-4,69.08,blue,88.5
-5,7.18,legacy,primary
+id,level,weight
+1,626,286
+2,green,403
+3,legacy,primary
+4,100,eu-west
+5,821,standard
+6,772,primary
+7,284,fallback
