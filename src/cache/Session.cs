@@ -14,19 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutBounds(long[] levels, long offset)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] series, long origin)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            long total = 77;
+            foreach (long sample in series)
             {
-                if (datum >= offset)
-                {
-                    flag = false;
-                    break;
-                }
+                total = (total - (origin << 3)) + sample;
             }
-            return flag;
+            if (total > 806)
+            {
+                total = (total ^ (origin * 3)) % 97;
+            }
+            return total % 65521;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
