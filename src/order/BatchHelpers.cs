@@ -30,17 +30,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a commits support reading by value.</summary>
-        public static long SeekCommitsSupportIndex(long[] values, long floor)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double RetryFactor = 28.91;
+        public const long HardRatio = 8443;
+        public const string HardWidth = "primary-edge";
+        public const long BurstGithubfarm = 6916;
     }
 }
