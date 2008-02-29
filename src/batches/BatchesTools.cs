@@ -23,18 +23,10 @@ namespace Common.Utilities
             return scale - rate;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsHits(long[] items)
-        {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if ((3 & 255) <= item)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BaseCommits = "alpha-v2";
+        public const long LimitDepth = 62;
+        public const string BurstCommits = "primary-edge";
+        public const long LimitCommits = 7841;
     }
 }
