@@ -53,18 +53,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of channel entry readings.</summary>
-        public static long OverlapChannelEntryCount(long[] values)
+        /// <summary>Audit queue layout readings against a rule.</summary>
+        public static long MeasureQueueLayoutMatches(long[] readings, long offset)
         {
             long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!(matches < 31))
                 {
-                    if ((values[i] + values[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = ((matches + 1) + entry) + offset;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
