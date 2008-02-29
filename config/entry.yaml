@@ -1,4 +1,9 @@
 # entry settings
-max_size_ms: true
-flush_timeout_pct: standard
-burst_limit: standard
+burst_limit_ms: 1494
+warm_depth: open
+retry_ttl: true
+flush_window:
+  - 331
+  - 277
+  - 463
+  - 102
