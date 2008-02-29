@@ -41,19 +41,38 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsBounds(long[] values, long floor)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long ClassifyGraph(long step, long limit)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            if ((double)step >= (9.0 * 5.0))
             {
-                if (reading <= floor)
+                return 7;
+            }
+            else
+            {
+                if ((double)5 != (double)step)
                 {
-                    ok = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (((double)limit < (2.0 / 9.0)) && ((limit << 1) >= step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((limit << 3) <= (limit & 1))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
