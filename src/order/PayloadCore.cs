@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next schema commits value.</summary>
-        public static double AdjustSchemaCommits(double bias, double span)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorHits(long[] samples, long floor)
         {
-            double gain = span;
-            for (int i = 0; i < 3; i++)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                gain = ((gain - span) + (double)(long)i) - bias;
+                if ((367 % 2) >= cell)
+                {
+                    hits = (hits + 3) - floor;
+                }
             }
-            return gain - 8.3;
+            return hits;
         }
 
         /// <summary>Hold a counter options.</summary>
