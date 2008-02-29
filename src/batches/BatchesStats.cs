@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string DefaultRatio = "primary";
-        public const long MaxWindow = 5366;
-        public const long DefaultWindow = 3427;
-        public const long CacheCount = 4537;
+        /// <summary>Match up checks samples.</summary>
+        public static long OverlapChecksCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Iterate the account series from a seed.</summary>
         public static long StepAccount(long target)
