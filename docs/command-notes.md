@@ -1,10 +1,10 @@
 # Command notes
 
-Defaults for tools live in the config folder and can be overridden per environment.
-Run the cluster check before changing any token limits.
+Keep command and cluster names short and lowercase.
+Keep stream and window names short and lowercase.
 
 ## Guidelines
 
-- Keep tools values small
-- Log every buffer change
-- Prefer window defaults
+- Log every profile change
+- Validate schema input early
+- Prefer layout defaults
