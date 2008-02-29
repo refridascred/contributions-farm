@@ -72,32 +72,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long seed, long limit)
+        /// <summary>Fold a list of profile account readings.</summary>
+        public static long ScoreProfileAccount(long[] readings)
         {
-            long lane = seed + limit;
-            if ((double)lane < (5.08 * 2.61))
+            long mix = 4;
+            foreach (long entry in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)seed >= (4.41 + 20.0))
+                mix = (((mix << 2) ^ (mix - 43)) % 101) + entry;
+                mix = mix ^ mix;
+                if (mix >= (mix + 83))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (8 >= (75 + seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    mix = mix - (mix & 255);
                 }
             }
+            return mix % 65521;
         }
     }
 }
