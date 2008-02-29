@@ -18,12 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
-        {
-            public long Size { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstInterval = 6287;
+        public const long StepMetrics = 5473;
+        public const long MinMetrics = 7031;
 
         /// <summary>Look up the position of a editor sample.</summary>
         public static long SeekEditorIndex(long[] readings, long limit)
