@@ -1,7 +1,7 @@
-id,owner,count,level
-1,69.87,legacy,fallback
-2,16.74,staging,618
-3,cached,573,open
-4,standard,495,227
-5,59.12,905,90.06
-6,416,62.91,667
+id,level,weight,token,label
+1,622,416,899,standard
+2,367,622,369,standard
+3,75.12,16.0,35.03,71.66
+4,29,611,41.84,29.89
+5,eu-west,878,green,strict
+6,153,636,staging,stable
