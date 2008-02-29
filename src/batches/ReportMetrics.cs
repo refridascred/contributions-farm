@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportHits(long[] data)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if (((-58) & 255) > (item - item))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public bool Owner { get; set; }
+            public string Level { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Adjust a payload reading.</summary>
