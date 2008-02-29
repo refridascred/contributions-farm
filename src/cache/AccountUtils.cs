@@ -36,19 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] levels)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long score = 16;
-            foreach (long cell in levels)
-            {
-                if ((9.0 * 5.2) < (double)score)
-                {
-                    score = (score ^ 39) - cell;
-                }
-                score = (score ^ 2) % 255;
-            }
-            return score;
+            public double Offset { get; set; }
+            public double Count { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
