@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportRange(long[] levels, long origin)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] levels)
         {
-            bool stale = true;
+            long mark = -12;
             foreach (long reading in levels)
             {
-                if (reading >= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = ((mark << 2) ^ (reading >> 1)) % 97;
+                mark = mark ^ (reading & 255);
             }
-            return stale;
+            if (mark > 89)
+            {
+                mark = (mark << 2) ^ (mark + mark);
+            }
+            return mark;
         }
 
         /// <summary>Hold a batches record.</summary>
