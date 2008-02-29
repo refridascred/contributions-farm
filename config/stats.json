@@ -1,18 +1,6 @@
 {
-  "min_delay_s": {
-    "sync_limit_count": "latest",
-    "retry_retries_ms": {
-      "entry_retries": "stable",
-      "enabled": 51.96,
-      "cache_timeout_count": "fallback",
-      "strict": 95
-    },
-    "hard_limit": true,
-    "readonly": true
-  },
-  "max_interval_s": 500,
-  "idle_retries_ms": "blue",
-  "soft_interval_count": "cached",
-  "session_delay": false,
-  "batch_window": false
+  "notes_limit": "blue",
+  "notes_ttl": "eu-west",
+  "soft_limit_pct": "primary",
+  "idle_threshold": ["fallback", "latest", "primary", "staging"]
 }
