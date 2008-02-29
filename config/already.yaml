@@ -1,4 +1,7 @@
 # already settings
-cache_delay_count: staging
-sync_depth_pct: 250
-default_window: 61.74
+sync_threshold_ms: 100
+context_delay: true
+metric_depth: false
+soft_retries_s: 92
+verbose: false
+editor_threshold: blue
