@@ -99,12 +99,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaBounds(long[] levels, long floor)
         {
-            public double Mode { get; set; }
-            public long Label { get; set; }
-            public long Score { get; set; }
+            bool stale = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
