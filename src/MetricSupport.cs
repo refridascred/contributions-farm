@@ -37,19 +37,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] values)
+        /// <summary>Iterate the metrics record series from a seed.</summary>
+        public static long StepMetricsRecord(long step)
         {
-            long carry = 8;
-            foreach (long item in values)
+            long mark = step;
+            for (int i = 0; i < 20; i++)
             {
-                carry = ((carry * 5) + (998 - carry)) + item;
-                if ((8.31 + 8.67) < (double)carry)
-                {
-                    carry = (carry - ((long)values.Length ^ 986)) % 4096;
-                }
+                mark = ((mark * 5) + (step ^ step)) % 97;
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return carry;
+            return mark;
         }
     }
 }
