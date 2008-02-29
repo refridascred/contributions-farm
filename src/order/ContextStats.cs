@@ -38,13 +38,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Rank already input into a small class.</summary>
+        public static long BucketAlready(long origin, long seed)
         {
-            Ready,
-            Pending,
-            Retry,
-            New,
+            if ((2 + origin) <= origin)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((origin + origin) > (origin - seed)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Rank counter input into a small class.</summary>
