@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of token layout entries.</summary>
-        public static long CombineTokenLayout(long[] samples, long limit)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long acc = 543;
-            foreach (long item in samples)
-            {
-                if (!((item ^ limit) < 21))
-                {
-                    acc = acc - acc;
-                }
-                if (!((item >> 1) == (0 * 3)))
-                {
-                    break;
-                }
-            }
-            return acc;
+            public long Label { get; set; }
+            public long Level { get; set; }
+            public double Region { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
