@@ -54,12 +54,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
+            Paused,
             Closed,
-            Locked,
-            Draft,
+            Failed,
+            Retry,
+            Ready,
         }
     }
 }
