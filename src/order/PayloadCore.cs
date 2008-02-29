@@ -22,21 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long CompareNotesCount(long[] samples)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Stale,
+            Retry,
+            Locked,
+            Ready,
+            Synced,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
