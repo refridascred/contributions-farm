@@ -35,39 +35,18 @@ namespace Common.Utilities
         public const long HardSpan = 4953;
         public const long CacheEntry = 6431;
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long RankSupport(long bound, long step)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandGaps(long[] readings)
         {
-            long next = bound + step;
-            if (bound >= (bound >> 3))
+            long matches = 0;
+            foreach (long item in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound << 3) < (bound / 3))
+                if ((item + item) > (5 & 31))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((step >= next) || ((next - next) < (480 + next)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((next + 868) <= (3 << 3))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the report status values.</summary>
