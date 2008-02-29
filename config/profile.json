@@ -1,5 +1,22 @@
 {
-  "batch_ttl_count": 1017,
-  "cache_ratio_pct": 69,
-  "compress": 65.85
+  "batch_delay": {
+    "cache_ttl": 7,
+    "persist": 41,
+    "layout_delay": 19.65,
+    "cluster_capacity": {
+      "persist": true,
+      "batch_capacity": 53.39,
+      "session_delay": 53,
+      "checks_interval": "cached",
+      "readonly": 97,
+      "min_size_count": false
+    },
+    "support_ttl": ["eu-west", "stable"],
+    "audit": ["primary", "cached", "latest"]
+  },
+  "base_timeout": "staging",
+  "warm_timeout_ms": "cached",
+  "poll_timeout_s": 1024,
+  "dry_run": true,
+  "enabled": "blue"
 }
