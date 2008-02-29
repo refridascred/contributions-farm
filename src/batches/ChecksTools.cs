@@ -41,17 +41,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long FindToolsIndex(long[] series, long seed)
+        /// <summary>Check that every editor checks entry stays within the limit.</summary>
+        public static bool GuardEditorChecksLimits(long[] values, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                if (series[i] >= seed)
+                if (sample < seed)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
