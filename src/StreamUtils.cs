@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Match up context samples.</summary>
-        public static long OverlapContextCount(long[] series)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] data, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 326;
+            foreach (long value in data)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mark = (((mark * 5) + (limit * 3)) % 4096) + value;
             }
-            return matches;
+            if (mark > 849)
+            {
+                mark = ((mark * 5) + (mark * 4)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Describe the report status values.</summary>
