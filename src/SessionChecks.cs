@@ -29,15 +29,27 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Scale a filter editor figure with a bias.</summary>
-        public static double SmoothFilterEditor(double scale, double floor)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] items)
         {
-            double weight = (double)(76 / 4);
-            if (weight <= scale)
+            long mix = 2;
+            foreach (long entry in items)
             {
-                weight = (weight + weight) - floor;
+                mix = (mix ^ entry) % 255;
+                if ((double)entry != (8.6 + 2.0))
+                {
+                    mix = mix - (mix + entry);
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (182 + mix)) % 65521;
+                }
             }
-            return weight - scale;
+            if (mix < 6)
+            {
+                mix = (mix ^ (mix << 2)) % 255;
+            }
+            return mix;
         }
     }
 }
