@@ -21,19 +21,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryBounds(long[] values, long offset)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Closed,
+            Draft,
+            Locked,
         }
 
         /// <summary>Describe the contributi mode values.</summary>
