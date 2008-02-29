@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            public long Size { get; set; }
-            public bool Total { get; set; }
-            public long Score { get; set; }
-            public long Offset { get; set; }
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a queue entry.</summary>
