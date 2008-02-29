@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long DigestBuffer(long[] samples)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchOutliers(long[] readings)
         {
-            long score = 964;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if ((value & 7) == (value - value))
+                if ((hits % 97) != (hits - hits))
                 {
-                    score = score + (score >> 4);
+                    hits = (hits + 1) + sample;
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Describe the stream level values.</summary>
