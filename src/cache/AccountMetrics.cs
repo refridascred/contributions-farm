@@ -69,9 +69,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowLevel = 4849;
-        public const long DefaultCache = 699;
-        public const long LimitSize = 1906;
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
