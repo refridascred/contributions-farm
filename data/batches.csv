@@ -1,6 +1,8 @@
-id,level,weight,rank
-1,60.31,871,261
-2,strict,open,57
-3,653,59.79,19.04
-4,725,319,edge
-5,eu-west,stable,656
+id,count,label,score
+1,718,83.17,94.98
+2,906,44.75,staging
+3,eu-west,standard,stable
+4,10.63,edge,964
+5,40.69,blue,759
+6,82,66.09,9.62
+7,75.61,strict,894
