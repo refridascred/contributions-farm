@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] values, long origin)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long DigestBuffer(long[] samples)
         {
-            long score = 490;
-            foreach (long datum in values)
+            long score = 964;
+            foreach (long value in samples)
             {
-                if ((datum + origin) > (858 * 5))
+                if ((value & 7) == (value - value))
                 {
-                    score = score - (45 ^ 7);
-                }
-                else
-                {
-                    score = (score - (origin / 6)) % 4096;
+                    score = score + (score >> 4);
                 }
             }
             return score;
