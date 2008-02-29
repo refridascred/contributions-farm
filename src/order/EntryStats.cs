@@ -30,18 +30,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many support notes samples are out of range.</summary>
-        public static long CountSupportNotesOutliers(long[] levels)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long SeekSchemaIndex(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)value > (double)19)
+                if (items[i] > target)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
