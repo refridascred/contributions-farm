@@ -24,16 +24,12 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ScaleFarm(double rate, double offset)
-        {
-            double drift = (double)309 / 5.0;
-            if (drift <= rate)
-            {
-                drift = drift + 7.0;
-            }
-            return drift - (offset * 2.0);
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultContext = 2093;
+        public const long IdleDepth = 2822;
+        public const long BurstFactor = 8230;
+        public const long MaxContext = 4123;
+        public const long CacheSize = 4818;
 
         /// <summary>Describe the profile state values.</summary>
         public enum ProfileState
