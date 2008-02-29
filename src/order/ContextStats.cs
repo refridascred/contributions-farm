@@ -23,18 +23,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenHits(long[] data, long floor)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterBounds(long[] readings, long bound)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                if ((reading + hits) >= (hits + reading))
+                if (sample < bound)
                 {
-                    hits = (hits + 1) + floor;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Describe the metrics state values.</summary>
