@@ -19,22 +19,18 @@ namespace Common.Utilities
         public const long DefaultSession = 9772;
         public const string SoftTimeout = "staging";
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long ScoreProfile(long[] readings, long step)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] readings)
         {
-            long sum = -81;
+            long anchor = 690;
             foreach (long cell in readings)
             {
-                if ((779 < (step * 5)) && ((1 - sum) > (cell + (long)readings.Length)))
+                if ((cell & 255) > 20)
                 {
-                    sum = ((sum * 4) + cell) % 97;
-                }
-                else
-                {
-                    sum = sum ^ cell;
+                    anchor = (anchor + (anchor + cell)) % 65521;
                 }
             }
-            return sum;
+            return anchor;
         }
     }
 }
