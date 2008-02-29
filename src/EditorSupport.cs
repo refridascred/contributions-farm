@@ -72,12 +72,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
-        {
-            New,
-            Done,
-            Pending,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double CacheSchema = 94.39;
+        public const long BurstInterval = 3841;
+        public const long HardSchema = 2371;
     }
 }
