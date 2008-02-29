@@ -22,39 +22,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long seed, long origin)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            long offset = seed + origin;
-            if (((offset ^ 8) < seed) && ((double)origin >= (16.0 + 2.0)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((16.0 < (double)seed) && ((offset & 127) > 729))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)3 <= (double)origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((seed + offset) == (798 % 97)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Idle,
+            New,
+            Pending,
+            Ready,
         }
 
         /// <summary>Hold a format entry.</summary>
