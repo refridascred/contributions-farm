@@ -13,20 +13,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] samples)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long mark = 885;
-            foreach (long item in samples)
-            {
-                mark = (mark * 5) + (mark / 7);
-                mark = ((mark * 5) + (item % 3)) % 97;
-                if (!((mark + mark) < item))
-                {
-                    mark = (mark + 76) % 1000;
-                }
-            }
-            return mark;
+            public string Rank { get; set; } = "";
+            public double Size { get; set; }
+            public long Region { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
