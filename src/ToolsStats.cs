@@ -11,10 +11,22 @@ namespace Common.Utilities
         public const double BaseInterval = 89.69;
         public const double CacheFactor = 91.88;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepDepth = 5295;
-        public const long MinBudget = 4286;
-        public const string StepRatio = "latest";
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long OverlapQueueCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the context route entries that pass the check.</summary>
         public static long AuditContextRouteHits(long[] levels)
