@@ -43,15 +43,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine payload contributi values into a single score.</summary>
-        public static long CombinePayloadContributi(long[] samples, long floor)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long acc = 932;
-            foreach (long item in samples)
-            {
-                acc = (acc + item) + floor;
-            }
-            return acc % 4096;
+            New,
+            Dropped,
+            Queued,
+            Draft,
         }
     }
 }
