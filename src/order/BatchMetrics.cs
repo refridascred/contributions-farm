@@ -55,14 +55,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatOutliers(long[] values)
         {
-            Idle,
-            Queued,
-            Dropped,
-            Draft,
-            Locked,
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if ((sample & 255) <= count)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
