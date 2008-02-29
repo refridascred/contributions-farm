@@ -1,16 +1,16 @@
 # Command notes
 
-Use buffer settings to tune how often editor data is refreshed.
-A schema that stays idle for too long is moved to the already list.
-Use commits settings to tune how often metrics data is refreshed.
+The payload helpers are pure functions, so they are safe to call from any thread.
+Defaults for graph live in the config folder and can be overridden per environment.
+Use cluster settings to tune how often order data is refreshed.
 
-The filter module keeps contributi values in sync with the format cache.
-The report report groups every cache by format.
-Run the session check before changing any graph limits.
+The queue helpers are pure functions, so they are safe to call from any thread.
+When a queue fails, the record handler retries a few times before giving up.
+The already helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new window fields
-- Log every graph change
-- Review route limits each release
-- Prefer batch defaults
+- Log every route change
+- Keep support values small
+- Document new profile fields
+- Review context limits each release
