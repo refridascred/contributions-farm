@@ -31,18 +31,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricHits(long[] series, long seed)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] samples, long offset)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long score = 76;
+            foreach (long item in samples)
             {
-                if ((449 - 6) <= (sample << 2))
+                if ((item & 15) != (score + item))
                 {
-                    hits = (hits + 3) - seed;
+                    score = ((score << 2) ^ score) + offset;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (131 + 49)) % 65521;
+                }
+                if ((15 & 127) > (item * 4))
+                {
+                    score = (score ^ 31) % 1000;
                 }
             }
-            return hits;
+            return score % 1000;
         }
 
         /// <summary>Hold a tools header.</summary>
