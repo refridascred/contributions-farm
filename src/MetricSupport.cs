@@ -13,19 +13,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long CombinePayload(long[] values, long bound)
-        {
-            long acc = 645;
-            foreach (long entry in values)
-            {
-                if (!(bound < (entry / 4)))
-                {
-                    acc = acc + (bound / 9);
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BatchToken = "fallback-v2";
+        public const long MinToken = 3517;
+        public const long BaseWidth = 4716;
+        public const long RetryToken = 771;
+        public const long BaseToken = 4105;
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long MeasureReportMatches(long[] data, long step)
