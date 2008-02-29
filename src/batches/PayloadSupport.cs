@@ -18,21 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long PairCounterCount(long[] readings)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ProjectCommits(double bias, double bias2)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double scale = 10.0;
+            if (scale < (1.8 - bias))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
-                }
+                scale = (scale - (double)88) - bias2;
             }
-            return count;
+            else
+            {
+                scale = scale - 7.0;
+            }
+            return scale - (scale - bias);
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
