@@ -24,21 +24,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of queue tools readings.</summary>
-        public static long MatchQueueToolsCount(long[] series)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaOutliers(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((reading <= (reading % 16)) && ((hits << 1) <= (358 + hits)))
                 {
-                    if ((series[i] ^ series[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a farm info.</summary>
