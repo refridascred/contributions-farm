@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const long DefaultLayout = 5544;
         public const long BatchLayout = 2074;
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Validate token report readings against a bound.</summary>
+        public static bool GuardTokenReportLimits(long[] data, long bound)
         {
-            Failed,
-            Idle,
-            Retry,
-            Ready,
+            bool ready = true;
+            foreach (long item in data)
+            {
+                if (item < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Describe the session state values.</summary>
