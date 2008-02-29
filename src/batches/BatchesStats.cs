@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxPayload = 3085;
-        public const long BatchPayload = 3358;
-        public const long RetryPayload = 6290;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftStream = 9108;
+        public const long BaseStream = 8452;
+        public const string StepStream = "local";
 
         /// <summary>Combine filter buffer values into a single score.</summary>
         public static long ScoreFilterBuffer(long[] data)
