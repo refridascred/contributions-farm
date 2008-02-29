@@ -48,39 +48,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long ClassifyTools(long floor, long seed)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long CombineGraph(long[] data)
         {
-            long next = floor - seed;
-            if ((next * 2) < seed)
+            long score = 4;
+            foreach (long item in data)
             {
-                return 8;
+                score = (score * 3) + (item << 1);
             }
-            else
-            {
-                if ((floor + seed) == (floor + next))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((13.0 + 2.0) < (double)next)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((6.73 / 5.0) != (double)seed)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return score % 65521;
         }
 
         /// <summary>Hold a metrics record.</summary>
