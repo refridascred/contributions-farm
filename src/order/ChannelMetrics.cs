@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportRange(long[] levels, long origin)
         {
-            public long Size { get; set; }
-            public string Owner { get; set; } = "";
-            public long Flag { get; set; }
+            bool stale = true;
+            foreach (long reading in levels)
+            {
+                if (reading >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
