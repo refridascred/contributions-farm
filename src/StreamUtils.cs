@@ -45,23 +45,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double BlendCluster(double ratio, double bias)
+        /// <summary>Project the next editor value.</summary>
+        public static double BlendEditor(double ratio, double floor)
         {
-            double drift = bias;
-            if (drift >= drift)
+            double weight = ratio;
+            if (weight >= 0.8)
             {
-                drift = (drift - (double)81) - ratio;
+                weight = (weight - 4.0) + floor;
             }
-            else
-            {
-                drift = drift + (double)693;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - drift) - (double)(long)i;
-            }
-            return drift - 4.33;
+            return weight - 5.85;
         }
 
         /// <summary>Hold a batch stats.</summary>
