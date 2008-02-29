@@ -40,12 +40,21 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long floor)
         {
-            public double Size { get; set; }
-            public long Label { get; set; }
-            public string Limit { get; set; } = "";
+            long acc = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                acc = acc ^ (49 & 3);
+                acc = (acc - (floor + floor)) % 101;
+                if (floor > (acc ^ floor))
+                {
+                    acc = (acc << 2) ^ (acc << 3);
+                }
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
         }
     }
 }
