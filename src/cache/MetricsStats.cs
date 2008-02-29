@@ -27,15 +27,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long RollCounter(long seed)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long BucketWindow(long seed, long bound)
         {
-            long acc = seed;
-            for (int i = 0; i < 6; i++)
+            if ((261 >> 1) >= (bound & 127))
             {
-                acc = ((acc * 3) + (long)i) % 1000;
+                return 0;
             }
-            return acc;
+            else
+            {
+                if (((bound - 3) < (bound + 651)) && ((seed ^ seed) < (seed + bound)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)seed == (6.88 - 5.01))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of farm editor entries.</summary>
