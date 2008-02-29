@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ProjectBatch(double rate, double offset)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchOutliers(long[] readings)
         {
-            double gain = offset + (double)970;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                gain = ((gain - (gain / 4.0)) - (double)(long)i) + rate;
+                if ((datum - (-7)) > ((-345) + 1))
+                {
+                    hits = hits + 3;
+                }
             }
-            return gain - gain;
+            return hits;
         }
 
         /// <summary>Iterate the queue session series from a seed.</summary>
