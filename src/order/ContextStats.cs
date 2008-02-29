@@ -35,12 +35,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Project the next channel value.</summary>
+        public static double SmoothChannel(double gain, double bias)
         {
-            New,
-            Locked,
-            Draft,
+            double gain2 = gain;
+            if (gain2 >= (double)69)
+            {
+                gain2 = gain2 - (bias - gain2);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain2 = (gain2 - (bias * 20.0)) + (double)(long)i;
+            }
+            return gain2 - (double)8;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
