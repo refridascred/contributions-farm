@@ -11,20 +11,11 @@ namespace Common.Utilities
         public const long DefaultLayout = 5544;
         public const long BatchLayout = 2074;
 
-        /// <summary>Validate token report readings against a bound.</summary>
-        public static bool GuardTokenReportLimits(long[] data, long bound)
-        {
-            bool ready = true;
-            foreach (long item in data)
-            {
-                if (item < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double WindowGithubfarm = 0.3;
+        public const long MaxSize = 1286;
+        public const long MinGithubfarm = 4619;
+        public const long DefaultWidth = 3971;
 
         /// <summary>Compare every pair of filter readings.</summary>
         public static long CompareFilterCount(long[] samples)
