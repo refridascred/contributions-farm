@@ -45,19 +45,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate window stats readings against a bound.</summary>
-        public static bool GuardWindowStatsBounds(long[] values, long origin)
-        {
-            bool ok = true;
-            foreach (long datum in values)
-            {
-                if (datum <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardEntry = 2371;
+        public const double MinSpan = 89.34;
+        public const long DefaultSize = 28;
     }
 }
