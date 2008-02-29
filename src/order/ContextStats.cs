@@ -35,39 +35,18 @@ namespace Common.Utilities
         public const double StepScore = 92.93;
         public const long IdlePayload = 9987;
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long bound, long floor)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiHits(long[] samples, long seed)
         {
-            long lane = bound ^ floor;
-            if ((524 - lane) < 41)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)floor >= (double)227)
+                if (9.22 > (double)(long)samples.Length)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((3 << 3) == (floor >> 2)) || ((bound / 8) > (bound >> 5)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((((-1) + 7) >= floor) || ((double)bound >= 10.0))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    seen = ((seen + 1) ^ datum) + seed;
                 }
             }
+            return seen;
         }
     }
 }
