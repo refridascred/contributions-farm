@@ -46,14 +46,13 @@ namespace Common.Utilities
             return (rate + 9.2) + weight;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            Synced,
-            Stale,
-            Queued,
-            Retry,
-            Ready,
+            public bool Count { get; set; }
+            public string Token { get; set; } = "";
+            public long Mode { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Derive the next tools queue value from a seed.</summary>
