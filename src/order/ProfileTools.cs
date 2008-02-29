@@ -20,17 +20,16 @@ namespace Common.Utilities
             return scale - (double)400;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long bound)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long step)
         {
-            long result = bound;
-            for (int i = 0; i < 17; i++)
+            long mark = step;
+            for (int i = 0; i < 23; i++)
             {
-                result = (result * 3) + (bound << 2);
-                result = result - (result ^ (long)i);
-                result = ((result * 5) + (long)i) % 65521;
+                mark = mark + (mark & 1);
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Describe the session phase values.</summary>
