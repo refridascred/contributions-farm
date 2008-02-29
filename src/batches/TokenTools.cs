@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of stream account entries.</summary>
-        public static long FoldStreamAccount(long[] items)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterRange(long[] samples, long floor)
         {
-            long sum = 39;
-            foreach (long value in items)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                sum = (sum ^ sum) % 101;
-                if ((4 <= (sum + value)) && (75 >= (sum % 60)))
+                if (cell >= floor)
                 {
-                    sum = (sum + (value - sum)) % 97;
-                }
-                if (value < (value >> 5))
-                {
+                    ready = false;
                     break;
                 }
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
