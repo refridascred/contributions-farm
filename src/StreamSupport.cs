@@ -40,12 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandGaps(long[] series, long seed)
         {
-            Ready,
-            Retry,
-            Stale,
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((7 << 3) <= (item * 5))
+                {
+                    count = (count + 2) + seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a window record.</summary>
