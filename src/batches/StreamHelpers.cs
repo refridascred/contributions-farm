@@ -47,21 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up checks editor samples.</summary>
-        public static long OverlapChecksEditorCount(long[] series)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 38;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                score = (score << 2) ^ (reading << 2);
             }
-            return seen;
+            return score % 97;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
