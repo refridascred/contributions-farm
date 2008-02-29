@@ -62,12 +62,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
-        {
-            Draft,
-            Locked,
-            Active,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleLevel = 5539;
+        public const long CacheBuffer = 2003;
+        public const long BurstBudget = 4193;
     }
 }
