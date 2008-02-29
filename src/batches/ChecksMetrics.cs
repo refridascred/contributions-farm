@@ -15,18 +15,38 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the record stream entries that pass the check.</summary>
-        public static long CountRecordStreamOutliers(long[] levels)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long step, long offset)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            if (step >= offset)
             {
-                if ((entry + tally) != (tally + 7))
+                return 6;
+            }
+            else
+            {
+                if ((offset % 8) != (offset + offset))
                 {
-                    tally = tally + 1;
+                    return 2;
+                }
+                else
+                {
+                    if ((step & 15) < (offset * 5))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (step > 79)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
