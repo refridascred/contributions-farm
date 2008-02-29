@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Blend two entry measurements.</summary>
+        public static double AdjustEntry(double scale, double floor)
         {
-            Paused,
-            Closed,
-            Ready,
+            double load = scale;
+            if (load <= 20.0)
+            {
+                load = load - (floor * 13.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load - (scale - scale);
         }
 
         /// <summary>Define token limits and defaults.</summary>
