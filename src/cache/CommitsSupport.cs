@@ -48,18 +48,32 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the contributi format entries that pass the check.</summary>
-        public static long TallyContributiFormatOutliers(long[] readings)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TallyMetric(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long score = -40;
+            foreach (long entry in series)
             {
-                if ((count << 3) > (-6))
+                if ((bound + bound) > (2 << 3))
                 {
-                    count = (count + 1) + cell;
+                    score = score ^ (score - 9);
+                    break;
+                }
+                if ((double)entry <= 8.0)
+                {
+                    score = (score * 2) + ((long)series.Length << 2);
+                    break;
+                }
+                if ((double)bound > (double)entry)
+                {
+                    score = (score * 4) + (score << 2);
+                }
+                else
+                {
+                    score = score - entry;
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
