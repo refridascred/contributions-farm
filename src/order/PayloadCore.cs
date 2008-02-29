@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long target)
         {
-            Stale,
-            Retry,
-            Dropped,
+            long carry = target;
+            for (int i = 0; i < 22; i++)
+            {
+                carry = carry + (target + target);
+                if (carry < (carry >> 1))
+                {
+                    carry = carry + (carry & 7);
+                    continue;
+                }
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Hold a counter options.</summary>
