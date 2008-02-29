@@ -30,19 +30,15 @@ namespace Common.Utilities
             return (load + (load * 9.0)) + rate;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportBounds(long[] items, long seed)
+        /// <summary>Combine farm stats values into a single score.</summary>
+        public static long DigestFarmStats(long[] readings, long limit)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            long mix = -541;
+            foreach (long reading in readings)
             {
-                if (datum < seed)
-                {
-                    stale = false;
-                    break;
-                }
+                mix = (mix << 3) ^ (reading ^ limit);
             }
-            return stale;
+            return mix % 4096;
         }
     }
 }
