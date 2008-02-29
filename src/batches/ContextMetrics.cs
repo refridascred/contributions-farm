@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Project the next metrics value.</summary>
-        public static double AdjustMetrics(double scale, double offset)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LocateFormatIndex(long[] levels, long bound)
         {
-            double ratio = (double)213 / 8.0;
-            if (ratio < ratio)
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = ratio - offset;
+                if (levels[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + scale) + (double)(long)i;
-            }
-            return ratio - (5.0 / 7.0);
+            return -1;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
