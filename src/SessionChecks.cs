@@ -18,18 +18,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate metric channel samples.</summary>
-        public static long ScoreMetricChannel(long[] items, long origin)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountOutliers(long[] samples, long target)
         {
-            long acc = 9;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if ((acc - acc) < (reading - reading))
+                if (!(1.7 > (double)target))
                 {
-                    acc = (acc + ((-6) ^ origin)) % 255;
+                    matches = (matches + 3) + value;
                 }
             }
-            return acc % 65521;
+            return matches;
         }
 
         /// <summary>Iterate the token cluster series from a seed.</summary>
