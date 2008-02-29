@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools helpers.</summary>
     public static class Tools
     {
-        /// <summary>Hold a entry header.</summary>
-        public sealed class EntryHeader
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            public double Weight { get; set; }
-            public long Ratio { get; set; }
+            Pending,
+            Dropped,
+            Retry,
+            Draft,
         }
 
         /// <summary>Accumulate filter account samples.</summary>
