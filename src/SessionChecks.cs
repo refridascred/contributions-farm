@@ -16,10 +16,20 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string StepBatches = "alpha";
-        public const long StepSize = 5535;
-        public const long SoftInterval = 8718;
+        /// <summary>Adjust a cache reading.</summary>
+        public static double AdjustCache(double ratio, double span)
+        {
+            double bias = (ratio / 8.0) - (6.0 + 10.0);
+            if (bias > (span + span))
+            {
+                bias = bias + ratio;
+            }
+            else
+            {
+                bias = bias - bias;
+            }
+            return bias + (double)88;
+        }
 
         /// <summary>Hold a channel entry.</summary>
         public sealed class ChannelEntry
