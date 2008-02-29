@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            Closed,
+            Stale,
             Pending,
-            Locked,
+            Queued,
         }
 
         /// <summary>Roll a account counter forward.</summary>
