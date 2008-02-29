@@ -58,13 +58,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            Closed,
-            New,
-            Ready,
-            Failed,
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
