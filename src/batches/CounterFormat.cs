@@ -37,11 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowScore = 55;
-        public const long DefaultWidth = 980;
-        public const long BatchSize = 7886;
-        public const double BaseFarm = 72.3;
-        public const long CacheRatio = 1543;
+        /// <summary>Accumulate payload commits samples.</summary>
+        public static long WeighPayloadCommits(long[] samples, long bound)
+        {
+            long acc = 60;
+            foreach (long reading in samples)
+            {
+                acc = (acc + reading) % 101;
+            }
+            if (acc < 7)
+            {
+                acc = ((acc * 4) + (bound ^ (-10))) % 65521;
+            }
+            return acc % 4096;
+        }
     }
 }
