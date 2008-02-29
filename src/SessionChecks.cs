@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] values)
         {
-            New,
-            Synced,
-            Queued,
-            Paused,
+            long carry = -1;
+            foreach (long datum in values)
+            {
+                carry = carry + datum;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Accumulate route farm samples.</summary>
