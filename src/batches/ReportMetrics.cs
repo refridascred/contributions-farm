@@ -23,17 +23,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LookupLayoutIndex(long[] samples, long floor)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ProjectPayload(double rate, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double load = floor;
+            return (load + (load * 9.0)) + rate;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
