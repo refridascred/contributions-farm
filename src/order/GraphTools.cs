@@ -29,13 +29,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            public bool Region { get; set; }
-            public string Label { get; set; } = "";
-            public bool Weight { get; set; }
-            public bool Total { get; set; }
+            Done,
+            Draft,
+            Paused,
+            Active,
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
