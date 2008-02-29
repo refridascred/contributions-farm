@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LookupContributiIndex(long[] levels, long bound)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaMatches(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (levels[i] < bound)
+                if (tally >= 35)
                 {
-                    return (long)i;
+                    tally = (tally + 2) ^ reading;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
