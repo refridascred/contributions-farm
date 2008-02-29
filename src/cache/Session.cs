@@ -19,12 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            Pending,
-            Retry,
-            Idle,
+            public bool Mode { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Match up githubfarm samples.</summary>
