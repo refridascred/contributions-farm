@@ -19,10 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftCounter = 6271;
-        public const string StepSpan = "strict-v2";
-        public const double WindowScore = 83.33;
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
+        {
+            Dropped,
+            Locked,
+            Done,
+            Ready,
+        }
 
         /// <summary>Derive the next graph value from a seed.</summary>
         public static long IterateGraph(long step)
