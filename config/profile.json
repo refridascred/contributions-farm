@@ -1,7 +1,12 @@
 {
-  "default_threshold_count": true,
-  "entry_size": 60,
-  "max_ratio": "eu-west",
-  "verbose": "strict",
-  "retry_size_s": 35.92
+  "default_limit_pct": 98,
+  "persist": false,
+  "retry_depth_pct": 6.33,
+  "retry_retries_count": true,
+  "warm_size_count": [470, 405, 241],
+  "editor_depth": {
+    "readonly": "legacy",
+    "payload_ratio": true,
+    "cache_interval_s": "primary"
+  }
 }
