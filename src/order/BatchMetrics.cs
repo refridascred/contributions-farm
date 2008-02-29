@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenGaps(long[] levels)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if (!(hits < (entry + entry)) && ((double)hits <= 6.9))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Stamp { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Look up the position of a command sample.</summary>
