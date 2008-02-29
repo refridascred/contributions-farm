@@ -47,15 +47,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ScaleChannel(double gain, double span)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long OverlapGraphCount(long[] levels)
         {
-            double rate = 8.5 * 17.0;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = ((rate - (gain / 3.0)) + (double)(long)i) - span;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return rate - 8.0;
+            return count;
         }
 
         /// <summary>Hold a support summary.</summary>
