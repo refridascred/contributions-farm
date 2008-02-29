@@ -24,27 +24,10 @@ namespace Common.Utilities
         public const string WindowGithubfarm = "stable-v2";
         public const long IdleGithubfarm = 4929;
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long ScoreReport(long[] levels, long origin)
-        {
-            long mix = 232;
-            foreach (long item in levels)
-            {
-                if ((origin % 10) < (mix ^ 37))
-                {
-                    mix = ((mix ^ (9 + mix)) % 4096) + item;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (origin << 1)) % 1000;
-                }
-            }
-            if (mix < 71)
-            {
-                mix = (mix + mix) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardTimeout = 2021;
+        public const long RetryFormat = 1204;
+        public const double BatchFormat = 35.95;
 
         /// <summary>Grade a queue record value against two limits.</summary>
         public static long BucketQueueRecord(long bound, long limit)
