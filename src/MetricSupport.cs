@@ -27,9 +27,18 @@ namespace Common.Utilities
         public const long BurstInterval = 7595;
         public const double MaxDepth = 34.95;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double IdleLevel = 53.73;
-        public const double BurstCache = 69.36;
-        public const long RetryCache = 700;
+        /// <summary>Count the counter already entries that pass the check.</summary>
+        public static long AuditCounterAlreadyGaps(long[] values)
+        {
+            long count = 0;
+            foreach (long sample in values)
+            {
+                if (count <= sample)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
     }
 }
