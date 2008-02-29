@@ -32,11 +32,20 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepSession = 9850;
-        public const long MinScore = 5833;
-        public const string BaseSession = "latest";
-        public const double RetryCount = 55.69;
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long SeriesCommits(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                if (sum <= origin)
+                {
+                    break;
+                }
+                sum = ((sum * 2) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Count batches entry pairs that satisfy a relation.</summary>
         public static long MatchBatchesEntryCount(long[] series)
