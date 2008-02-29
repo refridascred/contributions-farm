@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Compare every pair of format batch readings.</summary>
-        public static long OverlapFormatBatchCount(long[] values)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyGaps(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (tally < (cell << 1))
                 {
-                    if ((values[i] + values[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the farm kind values.</summary>
