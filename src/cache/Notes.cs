@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const double SoftScore = 21.61;
         public const long SoftWidth = 8734;
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ProjectFormat(double gain, double bias)
+        /// <summary>Look up the position of a route entry sample.</summary>
+        public static long SeekRouteEntryIndex(long[] readings, long step)
         {
-            double weight = gain;
-            if (weight < 19.0)
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = (weight - (double)51) - bias;
+                if ((readings[i] == step) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - weight) + (double)(long)i;
-            }
-            return weight + gain;
+            return -1;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
