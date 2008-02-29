@@ -29,13 +29,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyOutliers(long[] data)
         {
-            Done,
-            Draft,
-            Paused,
-            Active,
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if (6 > hits)
+                {
+                    hits = (hits + 1) + sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
