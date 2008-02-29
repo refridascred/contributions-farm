@@ -38,18 +38,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] readings, long step)
+        /// <summary>Compare every pair of metrics checks readings.</summary>
+        public static long OverlapMetricsChecksCount(long[] items)
         {
-            long acc = 1;
-            foreach (long reading in readings)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)reading != (10.0 - 4.9))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = ((acc * 2) + (long)readings.Length) - step;
+                    if ((items[i] - items[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return acc % 1000;
+            return tally;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
