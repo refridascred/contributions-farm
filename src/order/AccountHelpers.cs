@@ -35,18 +35,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamMatches(long[] data)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutBounds(long[] items, long limit)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                if (!((matches + datum) > datum))
+                if (entry < limit)
                 {
-                    matches = matches + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Combine batches cluster values into a single score.</summary>
