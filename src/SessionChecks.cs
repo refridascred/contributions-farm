@@ -47,23 +47,25 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double ProjectChannel(double scale, double offset)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long GradeProfile(long origin, long bound)
         {
-            double scale2 = offset;
-            if (scale2 > scale2)
+            long next = origin ^ bound;
+            if ((2.0 + 0.6) >= (double)bound)
             {
-                scale2 = scale2 - offset;
+                return 6;
             }
             else
             {
-                scale2 = scale2 + (offset * 2.7);
+                if ((bound - 635) > next)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale2 = (scale2 - (scale * 1.4)) + (double)(long)i;
-            }
-            return scale2 - (double)(-71);
         }
     }
 }
