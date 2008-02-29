@@ -40,12 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardBatches = 8917;
-        public const long DefaultWidth = 6933;
-        public const string RetryBatches = "strict-edge";
-        public const long BurstSpan = 5472;
-        public const long BaseScore = 3931;
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordOutliers(long[] items, long step)
+        {
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((step * 4) == (tally * 3))
+                {
+                    tally = (tally + 3) - reading;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long TallyAccountOutliers(long[] items)
