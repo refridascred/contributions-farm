@@ -26,31 +26,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long BucketWindow(long seed, long bound)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteHits(long[] levels, long bound)
         {
-            if ((261 >> 1) >= (bound & 127))
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (((bound - 3) < (bound + 651)) && ((seed ^ seed) < (seed + bound)))
+                if (!(((582 << 3) >= (entry << 2)) || ((2.67 - 11.0) > (5.62 * 2.3))))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)seed == (6.88 - 5.01))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    seen = (seen + 2) + bound;
                 }
             }
+            return seen;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
