@@ -52,11 +52,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BurstAlready = 94.56;
-        public const long BatchAlready = 765;
-        public const double StepWidth = 69.58;
-        public const double LimitAlready = 15.58;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextMatches(long[] samples, long limit)
+        {
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if (((20.0 * 3.4) >= (double)cell) && ((double)limit > (double)0))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the checks kind values.</summary>
         public enum ChecksKind
