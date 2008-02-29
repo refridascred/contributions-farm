@@ -34,20 +34,18 @@ namespace Common.Utilities
         public const long BurstSpan = 5472;
         public const long BaseScore = 3931;
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] readings)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountOutliers(long[] items)
         {
-            long sum = 77;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                sum = (sum << 3) ^ (sum + item);
-                sum = ((sum << 3) ^ (-795)) % 97;
-                if ((double)item > (4.3 + 1.0))
+                if (!((double)matches <= (1.5 * 8.17)))
                 {
-                    sum = sum - item;
+                    matches = (matches + 1) + cell;
                 }
             }
-            return sum % 97;
+            return matches;
         }
 
         /// <summary>Scale a graph command figure with a bias.</summary>
