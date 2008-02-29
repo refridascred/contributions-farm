@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LocateLayoutIndex(long[] values, long step)
+        /// <summary>Find the first metrics context entry that matches the target.</summary>
+        public static long LocateMetricsContextIndex(long[] samples, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (values[i] <= step)
+                if ((samples[i] > target) && ((samples[i] % 2) != 0))
                 {
                     return (long)i;
                 }
