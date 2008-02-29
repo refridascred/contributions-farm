@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LocateBatchIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxChannel = 4235;
+        public const string IdleChannel = "fallback-edge";
+        public const double BurstChannel = 77.35;
+        public const long LimitLevel = 6831;
+        public const long WindowChannel = 1747;
 
         /// <summary>Project the next command value.</summary>
         public static double ScaleCommand(double weight, double span)
