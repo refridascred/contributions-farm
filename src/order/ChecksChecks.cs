@@ -41,15 +41,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ScaleSession(double bias, double floor)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            double ratio = bias;
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + (7.92 * 3.4)) + (double)(long)i;
-            }
-            return ratio + floor;
+            public long Weight { get; set; }
+            public double Ratio { get; set; }
+            public long Offset { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
