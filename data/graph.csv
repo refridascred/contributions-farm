@@ -1,7 +1,9 @@
-id,active,weight
-1,eu-west,edge
-2,44.78,639
-3,268,531
-4,287,local
-5,385,21.8
-6,44.82,edge
+id,level,owner,count
+1,open,477,408
+2,latest,430,open
+3,655,legacy,636
+4,328,46.32,31.05
+5,legacy,526,green
+6,24.03,138,102
+7,965,47.49,771
+8,421,35.17,strict
