@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
-        {
-            Stale,
-            Done,
-            Queued,
-            Idle,
-            Paused,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowWidth = 4840;
+        public const long BatchEditor = 5973;
+        public const long LimitEditor = 4078;
+        public const long WindowSize = 2317;
+        public const double BurstFactor = 25.12;
 
         /// <summary>Measure how many editor route samples are out of range.</summary>
         public static long TallyEditorRouteGaps(long[] levels, long seed)
