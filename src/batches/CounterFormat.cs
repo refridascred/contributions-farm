@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long SeekQueueIndex(long[] data, long seed)
         {
-            public string Size { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Flag { get; set; }
-            public string Label { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up order samples.</summary>
