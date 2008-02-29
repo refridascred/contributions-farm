@@ -59,11 +59,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Rank support input into a small class.</summary>
+        public static long ClassifySupport(long floor, long bound)
         {
-            public string Ratio { get; set; } = "";
-            public long Stamp { get; set; }
+            if ((3 - 2) != (bound + bound))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((478 % 16) >= bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (5.2 > (double)floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((8.5 <= (double)floor) && ((14.0 / 8.0) >= (double)bound))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
