@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string IdleTools = "latest";
-        public const long DefaultTools = 1496;
-        public const double RetryFactor = 90.71;
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesRange(long[] values, long offset)
+        {
+            bool stale = true;
+            foreach (long reading in values)
+            {
+                if (reading > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long TallyStreamGaps(long[] levels)
