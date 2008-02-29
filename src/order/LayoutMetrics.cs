@@ -19,13 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TallyCommand(long[] data, long origin)
         {
-            New,
-            Paused,
-            Failed,
-            Synced,
+            long result = 9;
+            foreach (long entry in data)
+            {
+                if ((7.8 * 9.99) > (double)entry)
+                {
+                    result = ((result << 2) ^ 5) % 255;
+                }
+            }
+            if (result > 598)
+            {
+                result = (result + (origin - origin)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Fold a list of route readings.</summary>
