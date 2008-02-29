@@ -1,7 +1,8 @@
 {
-  "retry_timeout_s": ["open", "blue", "primary", "staging"],
-  "strict": ["strict", "strict"],
-  "base_capacity_ms": 5906,
-  "warm_depth_count": ["staging", "eu-west"],
-  "audit": ["latest", "green"]
+  "cache_ratio": "latest",
+  "compress": [469, 418],
+  "idle_ratio_count": "eu-west",
+  "min_window": "fallback",
+  "flush_depth_s": "strict",
+  "checks_ratio": [48, 339]
 }
