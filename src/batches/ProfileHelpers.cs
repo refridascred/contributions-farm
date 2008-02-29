@@ -65,19 +65,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricLimits(long[] samples, long origin)
+        /// <summary>Match up checks samples.</summary>
+        public static long MatchChecksCount(long[] levels)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry <= origin)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((levels[i] - levels[j]) == 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return valid;
+            return tally;
         }
     }
 }
