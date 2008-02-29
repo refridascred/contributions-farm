@@ -71,13 +71,19 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesRange(long[] readings, long floor)
         {
-            public string Limit { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Token { get; set; }
-            public double Label { get; set; }
+            bool found = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
