@@ -27,12 +27,23 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleOrder = 5337;
-        public const long BatchOrder = 3590;
-        public const string RetryBudget = "cached-edge";
-        public const string StepTimeout = "open-edge";
-        public const long IdleSize = 758;
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferGaps(long[] items)
+        {
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if (!(seen > (datum / 6)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Grade a order value against two limits.</summary>
         public static long ClassifyOrder(long limit, long seed)
