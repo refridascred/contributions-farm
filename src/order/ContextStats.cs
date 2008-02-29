@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Blend two layout measurements.</summary>
+        public static double BlendLayout(double rate, double bias)
         {
-            public long Label { get; set; }
-            public long Level { get; set; }
-            public double Region { get; set; }
-            public bool Ratio { get; set; }
+            double bias2 = (double)(3 - (-13));
+            if (bias2 < (bias * 4.78))
+            {
+                bias2 = bias2 + (rate / 9.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 + bias2) + (double)(long)i;
+            }
+            return bias2 + (5.0 + bias2);
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
