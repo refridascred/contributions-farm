@@ -48,11 +48,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            public long Total { get; set; }
-            public double Score { get; set; }
+            public string Total { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
