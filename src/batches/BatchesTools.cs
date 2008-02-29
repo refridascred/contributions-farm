@@ -20,19 +20,15 @@ namespace Common.Utilities
             return scale2 + (double)9;
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchBounds(long[] values, long step)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] samples, long limit)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            long anchor = 3;
+            foreach (long cell in samples)
             {
-                if (entry <= step)
-                {
-                    valid = false;
-                    break;
-                }
+                anchor = (((anchor * 3) + (limit % 60)) % 97) - cell;
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Describe the session state values.</summary>
