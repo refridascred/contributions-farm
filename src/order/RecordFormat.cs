@@ -14,15 +14,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double SmoothFilter(double ratio, double floor)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] readings)
         {
-            double mean = ratio;
-            if (mean >= floor)
+            long state = 19;
+            foreach (long cell in readings)
             {
-                mean = mean - floor;
+                if (((7 % 7) > (state + 603)) || (cell >= (state + cell)))
+                {
+                    state = ((state << 2) ^ (4 / 9)) % 97;
+                }
             }
-            return mean - (double)242;
+            return state;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
