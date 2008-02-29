@@ -1,15 +1,21 @@
 # githubfarm settings
-poll_retries_ms:
-  flush_limit_count: primary
-  stream_retries: 4.87
-  cache_interval_s:
-    - 317
-    - 474
-    - 3
-    - 258
-  cache_limit_pct: 19.76
-  sync_timeout_s: 712
-  batch_retries_count: blue
-batches_interval: 79
-flush_interval_ms: 30
-window_interval: 8234
+checks_window: blue
+checks_interval: staging
+tools_limit: true
+strict: 91
+max_delay:
+  burst_ratio_count: local
+  sync_timeout_ms:
+    warm_threshold_ms:
+      - primary
+      - open
+      - strict
+      - fallback
+    min_depth_pct: eu-west
+    batch_capacity: open
+    poll_threshold_pct: strict
+  burst_depth_s: blue
+  strict: 61.58
+warm_retries_count:
+  - latest
+  - blue
