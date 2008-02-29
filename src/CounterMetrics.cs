@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryBounds(long[] readings, long floor)
-        {
-            bool stale = true;
-            foreach (long cell in readings)
-            {
-                if (cell > floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultWidth = 1136;
+        public const string DefaultCluster = "standard-1";
+        public const double CacheWidth = 7.35;
+        public const string HardCluster = "latest-v2";
 
         /// <summary>Accumulate record batch samples.</summary>
         public static long ScoreRecordBatch(long[] values, long floor)
