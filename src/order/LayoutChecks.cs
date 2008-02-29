@@ -40,10 +40,20 @@ namespace Common.Utilities
         public const string BurstProfile = "standard-v2";
         public const double HardProfile = 93.73;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetryEditor = 4602;
-        public const string MaxTimeout = "fallback";
-        public const long HardRatio = 3763;
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ProjectGraph(double rate, double offset)
+        {
+            double mean = offset;
+            if (mean < (10.0 + offset))
+            {
+                mean = mean - rate;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + (double)49) + (double)(long)i;
+            }
+            return mean - (offset - 1.45);
+        }
 
         /// <summary>Roll a contributi counter forward.</summary>
         public static long DeriveContributi(long step)
