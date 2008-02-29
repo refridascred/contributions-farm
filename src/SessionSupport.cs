@@ -31,12 +31,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatMatches(long[] items, long limit)
         {
-            Retry,
-            Locked,
-            Ready,
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((cell - limit) < (cell - matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
