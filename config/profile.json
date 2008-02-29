@@ -1,13 +1,5 @@
 {
-  "retry_delay": {
-    "cache_capacity_ms": "open",
-    "token_retries": ["legacy", "latest"],
-    "max_ratio_pct": "cached",
-    "burst_threshold_pct": 66.21,
-    "soft_interval_ms": "edge",
-    "min_size": "green"
-  },
-  "sync_ratio_pct": ["blue", "edge", "open", "fallback"],
-  "schema_timeout": "open",
-  "context_ratio": 91
+  "strict": 6267,
+  "enabled": true,
+  "window_capacity": true
 }
