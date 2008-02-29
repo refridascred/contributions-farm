@@ -70,17 +70,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long SeekRecordIndex(long[] levels, long offset)
+        /// <summary>Scale a schema editor figure with a bias.</summary>
+        public static double ScaleSchemaEditor(double scale, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = 9.9;
+            for (int i = 0; i < 6; i++)
             {
-                if (levels[i] == offset)
-                {
-                    return (long)i;
-                }
+                ratio = ((ratio + floor) - (double)(long)i) - scale;
             }
-            return -1;
+            return ratio + ratio;
         }
     }
 }
