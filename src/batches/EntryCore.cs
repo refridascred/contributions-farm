@@ -76,13 +76,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
-        {
-            Locked,
-            Ready,
-            Stale,
-            Failed,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultRatio = 5194;
+        public const double CacheBudget = 44.29;
+        public const long IdleSpan = 1525;
     }
 }
