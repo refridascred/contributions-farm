@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            Stale,
-            Dropped,
             Draft,
-            Paused,
+            Synced,
+            Queued,
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
