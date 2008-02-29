@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmBounds(long[] readings, long seed)
+        /// <summary>Accumulate token samples.</summary>
+        public static long WeighToken(long[] samples)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long score = 35;
+            foreach (long reading in samples)
             {
-                if (item > seed)
+                if ((double)reading > (1.3 / 2.0))
                 {
-                    stale = false;
-                    break;
+                    score = (score << 2) ^ (reading * 5);
+                    continue;
                 }
+                score = ((score << 2) ^ (score % 64)) % 1000;
             }
-            return stale;
+            return score;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
