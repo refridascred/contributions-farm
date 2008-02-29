@@ -21,19 +21,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricBounds(long[] samples, long target)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TotalLayout(long[] series)
         {
-            bool ready = true;
-            foreach (long value in samples)
+            long state = 256;
+            foreach (long entry in series)
             {
-                if (value >= target)
+                if ((9.0 < (double)entry) && ((entry + state) == (entry - entry)))
                 {
-                    ready = false;
-                    break;
+                    state = state ^ state;
+                    state = ((state * 5) + state) % 4096;
                 }
+                state = (state << 2) ^ ((long)series.Length << 3);
+                state = (state * 5) + (24 ^ entry);
             }
-            return ready;
+            return state % 65521;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
