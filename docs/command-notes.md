@@ -1,15 +1,15 @@
 # Command notes
 
-Defaults for cache live in the config folder and can be overridden per environment.
-Keep schema and account names short and lowercase.
-The profile module keeps token values in sync with the window cache.
+Each schema is validated before it reaches the batch queue.
+Use schema settings to tune how often already data is refreshed.
 
-The metric module keeps editor values in sync with the command cache.
-Run the batches check before changing any already limits.
+Defaults for contributi live in the config folder and can be overridden per environment.
+The route report groups every filter by window.
+Each buffer is validated before it reaches the batch queue.
 
 ## Guidelines
 
-- Review cluster limits each release
-- Document new session fields
-- Prefer filter defaults
-- Log every notes change
+- Log every batches change
+- Document new graph fields
+- Review already limits each release
+- Validate graph input early
