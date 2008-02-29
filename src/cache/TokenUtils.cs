@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
+            Pending,
+            Queued,
+            Done,
+            Ready,
         }
 
         /// <summary>Fold a list of filter readings.</summary>
