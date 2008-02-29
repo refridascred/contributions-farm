@@ -54,32 +54,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long RankFarm(long limit, long origin)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool ValidateCacheLimits(long[] data, long floor)
         {
-            long diff = limit - origin;
-            if ((limit - origin) < (diff + limit))
+            bool stale = true;
+            foreach (long reading in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)limit >= (9.61 - 9.39))
+                if (reading >= floor)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((579 * 3) <= diff)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Describe the tools mode values.</summary>
