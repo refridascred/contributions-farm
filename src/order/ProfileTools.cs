@@ -38,22 +38,11 @@ namespace Common.Utilities
         public const long HardRatio = 3408;
         public const long StepCount = 5336;
 
-        /// <summary>Combine token notes values into a single score.</summary>
-        public static long CombineTokenNotes(long[] data)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long score = 8;
-            foreach (long value in data)
-            {
-                if ((7.2 - 14.0) >= (double)value)
-                {
-                    continue;
-                }
-                if (value >= score)
-                {
-                    score = (score - (score ^ (-40))) % 255;
-                }
-            }
-            return score % 4096;
+            public double Stamp { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Fold a list of command readings.</summary>
