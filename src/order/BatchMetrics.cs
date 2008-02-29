@@ -54,19 +54,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ProjectChecks(double weight, double floor)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long OverlapRecordCount(long[] values)
         {
-            double load = weight;
-            if (load > (double)958)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                load = load - (8.2 + 8.4);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + weight) + (double)(long)i;
-            }
-            return load - (floor + weight);
+            return hits;
         }
 
         /// <summary>Hold a already entry.</summary>
