@@ -76,18 +76,12 @@ namespace Common.Utilities
         public const long HardMetrics = 576;
         public const long CacheMetrics = 8126;
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long DigestContext(long[] samples, long step)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long sum = 589;
-            foreach (long datum in samples)
-            {
-                if ((double)datum != (4.27 - 10.0))
-                {
-                    sum = (sum - step) % 4096;
-                }
-            }
-            return sum;
+            Paused,
+            Ready,
+            Failed,
         }
     }
 }
