@@ -40,11 +40,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            public long Score { get; set; }
-            public bool Token { get; set; }
+            public double Total { get; set; }
+            public long Weight { get; set; }
+            public long Count { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Audit counter stream readings against a rule.</summary>
