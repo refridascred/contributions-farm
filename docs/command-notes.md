@@ -1,10 +1,10 @@
 # Command notes
 
-The session helpers are pure functions, so they are safe to call from any thread.
-When a contributi fails, the cache handler retries a few times before giving up.
+Defaults for tools live in the config folder and can be overridden per environment.
+Run the cluster check before changing any token limits.
 
 ## Guidelines
 
-- Document new order fields
-- Review checks limits each release
-- Keep metric values small
+- Keep tools values small
+- Log every buffer change
+- Prefer window defaults
