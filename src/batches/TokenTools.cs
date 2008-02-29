@@ -31,11 +31,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteBounds(long[] readings, long target)
         {
-            public string Score { get; set; } = "";
-            public double Ratio { get; set; }
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample > target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
