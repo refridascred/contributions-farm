@@ -34,18 +34,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordMatches(long[] items, long step)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long RollCommand(long origin)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long anchor = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if ((tally + tally) <= (46 + tally))
-                {
-                    tally = ((tally + 2) ^ cell) + step;
-                }
+                anchor = (anchor + anchor) % 1000;
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return tally;
+            return anchor;
         }
     }
 }
