@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] items)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long score = 9;
-            foreach (long sample in items)
-            {
-                if ((191 >= (score - sample)) || ((sample ^ score) < 242))
-                {
-                    score = (score ^ ((long)items.Length % 3)) % 101;
-                }
-            }
-            if (score > (-56))
-            {
-                score = score - (7 + 977);
-            }
-            return score % 1000;
+            public long Size { get; set; }
+            public long Label { get; set; }
+            public bool Level { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
