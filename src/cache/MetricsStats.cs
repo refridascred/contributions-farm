@@ -68,17 +68,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long SeekCacheIndex(long[] levels, long step)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long GradeOrder(long offset, long offset2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((offset2 + 973) != (offset2 % 100))
             {
-                if ((levels[i] <= step) && ((levels[i] % 5) != 0))
+                return 2;
+            }
+            else
+            {
+                if (offset2 > (offset - offset2))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
     }
 }
