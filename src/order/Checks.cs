@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            public double Limit { get; set; }
-            public bool Stamp { get; set; }
-            public long Weight { get; set; }
+            Stale,
+            Locked,
+            Done,
         }
 
         /// <summary>Hold a farm info.</summary>
