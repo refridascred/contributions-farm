@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate token stream samples.</summary>
-        public static long DigestTokenStream(long[] series)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ProjectTools(double gain, double offset)
         {
-            long mark = 73;
-            foreach (long datum in series)
+            double load = (double)(267 - 988);
+            for (int i = 0; i < 5; i++)
             {
-                mark = (((mark * 5) + (mark - 1)) % 4096) ^ datum;
+                load = ((load - load) - (double)(long)i) + gain;
             }
-            if (mark < 88)
-            {
-                mark = (mark + (mark & 15)) % 255;
-            }
-            return mark % 65521;
+            return load - (offset / 6.0);
         }
 
         /// <summary>Measure how many checks session samples are out of range.</summary>
