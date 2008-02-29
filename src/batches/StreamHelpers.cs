@@ -113,18 +113,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheOutliers(long[] items)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileHits(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (!(seen >= (665 * 2)))
+                if ((datum + hits) >= (limit / 3))
                 {
-                    seen = (seen + 3) + datum;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
