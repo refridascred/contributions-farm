@@ -20,12 +20,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextMatches(long[] data)
         {
-            Locked,
-            Closed,
-            Ready,
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if (((long)data.Length - 5) > (item + hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of route schema readings.</summary>
