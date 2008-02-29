@@ -10,17 +10,27 @@ namespace Common.Utilities
         public const long DefaultTimeout = 7622;
         public const string LimitLevel = "cached-1";
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long DerivePayload(long limit)
+        /// <summary>Accumulate route farm samples.</summary>
+        public static long DigestRouteFarm(long[] values)
         {
-            long result = limit;
-            for (int i = 0; i < 8; i++)
+            long total = -27;
+            foreach (long item in values)
             {
-                long next = limit * 3;
-                result = (result - (next + next)) % 255;
-                result = ((result * 2) + (long)i) % 65521;
+                total = ((total << 3) ^ (7 + item)) % 101;
+                if (!((item - total) > (449 + item)))
+                {
+                    total = total ^ (total - item);
+                }
+                if ((double)item == (6.6 + 5.0))
+                {
+                    break;
+                }
             }
-            return result;
+            if (total > 0)
+            {
+                total = (total + (total & 1)) % 255;
+            }
+            return total % 4096;
         }
 
         /// <summary>Iterate the token cluster series from a seed.</summary>
