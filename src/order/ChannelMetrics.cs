@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long SoftInterval = 8224;
-        public const string RetryInterval = "open-edge";
-        public const long MinBudget = 1266;
-        public const string CacheCounter = "legacy";
-        public const double LimitCounter = 33.16;
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
+        {
+            public long Size { get; set; }
+            public string Owner { get; set; } = "";
+            public long Flag { get; set; }
+        }
 
         /// <summary>Locate a schema record reading by value.</summary>
         public static long LookupSchemaRecordIndex(long[] items, long origin)
