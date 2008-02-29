@@ -58,18 +58,14 @@ namespace Common.Utilities
         public const double StepWidth = 69.58;
         public const double LimitAlready = 15.58;
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountGaps(long[] series)
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((seen ^ seen) >= seen)
-                {
-                    seen = (seen + 1) + item;
-                }
-            }
-            return seen;
+            New,
+            Stale,
+            Closed,
+            Queued,
+            Draft,
         }
 
         /// <summary>Define window limits and defaults.</summary>
