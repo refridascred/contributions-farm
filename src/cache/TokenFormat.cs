@@ -21,12 +21,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            New,
-            Idle,
-            Queued,
+            Synced,
+            Pending,
+            Locked,
         }
     }
 }
