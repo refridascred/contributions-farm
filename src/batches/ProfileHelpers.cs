@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryRange(long[] samples, long floor)
         {
-            Idle,
-            Failed,
-            Pending,
-            Synced,
+            bool flag = true;
+            foreach (long sample in samples)
+            {
+                if (sample > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
