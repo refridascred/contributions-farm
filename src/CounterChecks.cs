@@ -14,18 +14,13 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaHits(long[] items)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((569 + sample) < matches)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Failed,
+            Pending,
+            Queued,
+            Idle,
         }
 
         /// <summary>Hold a profile options.</summary>
