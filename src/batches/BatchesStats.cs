@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandMatches(long[] values, long bound)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((((0.7 - 9.89) <= (double)count) || ((double)bound < (5.08 - 11.0))) && (((count - bound) != (bound + cell)) && ((count << 2) >= (1 / 9))))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Label { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Roll a schema counter forward.</summary>
