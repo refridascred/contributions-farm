@@ -34,18 +34,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandGaps(long[] readings)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ScaleGraph(double weight, double bias)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            double bias2 = bias;
+            if (bias2 <= (weight - weight))
             {
-                if ((item + item) > (5 & 31))
-                {
-                    matches = matches + 2;
-                }
+                bias2 = bias2 + weight;
             }
-            return matches;
+            return bias2 + (double)848;
         }
 
         /// <summary>Describe the report status values.</summary>
