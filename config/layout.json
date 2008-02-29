@@ -1,5 +1,10 @@
 {
-  "buffer_ratio": 250,
-  "filter_ttl": "fallback",
-  "retry_ttl": "staging"
+  "enabled": 31,
+  "context_size": ["blue", "strict"],
+  "poll_size_pct": {
+    "sync_capacity": 28,
+    "readonly": 250,
+    "cache_ttl": "blue"
+  },
+  "contributi_depth": ["cached", "local", "staging", "staging"]
 }
