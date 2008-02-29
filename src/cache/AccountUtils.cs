@@ -10,19 +10,11 @@ namespace Common.Utilities
         public const long CacheEntry = 3641;
         public const long MaxEntry = 8433;
 
-        /// <summary>Audit record farm readings against a rule.</summary>
-        public static long AuditRecordFarmHits(long[] series, long target)
-        {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((value + target) > (count >> 5))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MinLevel = 5539;
+        public const long LimitTimeout = 7564;
+        public const double MinLayout = 43.84;
+        public const long IdleLevel = 8290;
 
         /// <summary>Hold a account info.</summary>
         public sealed class AccountInfo
