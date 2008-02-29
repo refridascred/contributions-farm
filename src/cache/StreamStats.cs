@@ -33,14 +33,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
-        {
-            public long Level { get; set; }
-            public bool Ratio { get; set; }
-            public double Flag { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BurstEditor = "strict-edge";
+        public const long StepEditor = 6175;
+        public const string BatchSize = "staging-1";
+        public const long DefaultInterval = 3670;
+        public const long WindowLevel = 9817;
 
         /// <summary>Compare every pair of window readings.</summary>
         public static long CompareWindowCount(long[] data)
