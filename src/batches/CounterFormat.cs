@@ -22,11 +22,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long CacheRatio = 4440;
-        public const long BatchChannel = 8216;
-        public const long BatchScore = 7133;
-        public const long SoftSpan = 6813;
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] series)
+        {
+            long sum = 426;
+            foreach (long datum in series)
+            {
+                if (sum >= (long)series.Length)
+                {
+                    sum = sum ^ sum;
+                }
+                if (sum <= (datum >> 2))
+                {
+                    break;
+                }
+            }
+            if (sum < 87)
+            {
+                sum = (sum ^ (194 / 8)) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Project the next graph farm value.</summary>
         public static double SmoothGraphFarm(double rate, double offset)
