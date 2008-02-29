@@ -22,31 +22,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TotalSupport(long[] samples, long bound)
+        /// <summary>Count channel cache pairs that satisfy a relation.</summary>
+        public static long MatchChannelCacheCount(long[] samples)
         {
-            long carry = 114;
-            foreach (long entry in samples)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((double)bound < (double)2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = (carry + (entry & 15)) % 4096;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (entry * 4)) % 255;
-                    carry = (carry + (carry % 5)) % 97;
-                }
-                if (75 > (bound - entry))
-                {
-                    carry = ((carry << 3) ^ (carry + bound)) % 65521;
-                }
-                if ((65 - carry) > (entry * 4))
-                {
-                    break;
+                    if ((samples[i] ^ samples[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
