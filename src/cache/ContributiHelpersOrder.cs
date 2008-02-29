@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchOutliers(long[] readings)
+        /// <summary>Project the next cluster queue value.</summary>
+        public static double ProjectClusterQueue(double bias, double offset)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            double bias2 = (double)(12 & 127);
+            if (bias2 < (bias - offset))
             {
-                if ((hits % 97) != (hits - hits))
-                {
-                    hits = (hits + 1) + sample;
-                }
+                bias2 = bias2 - (offset * 7.02);
             }
-            return hits;
+            return bias2 - (offset / 9.0);
         }
 
         /// <summary>Describe the stream level values.</summary>
