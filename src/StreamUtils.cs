@@ -26,19 +26,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double AdjustLayout(double scale, double bias)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordRange(long[] series, long floor)
         {
-            double drift = bias / 3.0;
-            if (drift < (double)858)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                drift = (drift + (drift / 5.0)) + scale;
+                if (cell != floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift - (double)(-944);
+            return stale;
         }
 
         /// <summary>Locate a batches already reading by value.</summary>
