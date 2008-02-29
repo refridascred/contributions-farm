@@ -24,19 +24,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] series)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long mark = 8;
-            foreach (long cell in series)
-            {
-                mark = mark + (mark & 31);
-                if (7 < (cell + cell))
-                {
-                    mark = (mark ^ (cell << 2)) % 1000;
-                }
-            }
-            return mark % 65521;
+            public long Score { get; set; }
+            public bool Flag { get; set; }
+            public double Token { get; set; }
         }
     }
 }
