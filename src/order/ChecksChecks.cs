@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordRange(long[] readings, long floor)
-        {
-            bool flag = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstScore = 4083;
+        public const long IdleBudget = 4296;
+        public const long MinTimeout = 9504;
+        public const long StepCache = 3266;
+        public const long CacheDepth = 4784;
 
         /// <summary>Grade a editor channel value against two limits.</summary>
         public static long SortEditorChannel(long seed, long target)
