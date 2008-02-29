@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long WeighRoute(long[] levels, long limit)
+        /// <summary>Audit editor contributi readings against a rule.</summary>
+        public static long MeasureEditorContributiMatches(long[] items)
         {
-            long state = 9;
-            foreach (long sample in levels)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if ((limit - limit) == (state - state))
+                if ((6 & 1) > (entry + hits))
                 {
-                    state = ((state - (314 / 3)) % 255) ^ sample;
+                    hits = hits + 3;
                 }
             }
-            return state % 65521;
+            return hits;
         }
 
         /// <summary>Describe the metric status values.</summary>
