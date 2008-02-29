@@ -40,13 +40,13 @@ namespace Common.Utilities
         public const string BurstProfile = "standard-v2";
         public const double HardProfile = 93.73;
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            public double Owner { get; set; }
-            public bool Ratio { get; set; }
-            public long Flag { get; set; }
-            public long Count { get; set; }
+            Paused,
+            Pending,
+            Idle,
+            Draft,
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
