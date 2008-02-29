@@ -34,19 +34,18 @@ namespace Common.Utilities
         public const double MaxAlready = 17.88;
         public const long RetryDepth = 1173;
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountBounds(long[] values, long origin)
+        /// <summary>Measure how many already queue samples are out of range.</summary>
+        public static long TallyAlreadyQueueOutliers(long[] data, long offset)
         {
-            bool stale = true;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (sample != origin)
+                if ((long)data.Length >= (offset - offset))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 2) + datum;
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
