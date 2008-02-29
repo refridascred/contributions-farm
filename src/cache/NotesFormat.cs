@@ -15,15 +15,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double SmoothCluster(double rate, double offset)
+        /// <summary>Project the next counter value.</summary>
+        public static double ScaleCounter(double bias, double floor)
         {
-            double gain = offset;
-            if (gain > 5.88)
+            double bias2 = floor;
+            if (bias2 <= (double)89)
             {
-                gain = (gain - (offset - offset)) - rate;
+                bias2 = bias2 + floor;
             }
-            return gain - (17.0 / 6.0);
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 + bias) + (double)(long)i;
+            }
+            return bias2 - (double)355;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
