@@ -14,12 +14,23 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Scale a checks metrics figure with a bias.</summary>
+        public static double ProjectChecksMetrics(double scale, double bias)
         {
-            Failed,
-            Dropped,
-            Done,
+            double mean = scale;
+            if (mean < bias)
+            {
+                mean = mean + mean;
+            }
+            else
+            {
+                mean = mean - mean;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + scale) + (double)(long)i;
+            }
+            return mean + (4.0 * 7.77);
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
