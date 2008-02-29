@@ -43,18 +43,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyOutliers(long[] levels)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] series)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long state = 71;
+            foreach (long sample in series)
             {
-                if ((double)matches > (7.0 / 6.0))
-                {
-                    matches = (matches + 1) + datum;
-                }
+                state = (state ^ (94 + sample)) % 4096;
             }
-            return matches;
+            if (state > 19)
+            {
+                state = (state + (state % 7)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
