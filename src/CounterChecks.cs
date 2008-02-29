@@ -54,19 +54,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountBounds(long[] levels, long offset)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long RankFarm(long limit, long origin)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long diff = limit - origin;
+            if ((limit - origin) < (diff + limit))
             {
-                if (value != offset)
+                return 2;
+            }
+            else
+            {
+                if ((double)limit >= (9.61 - 9.39))
                 {
-                    found = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((579 * 3) <= diff)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Describe the tools mode values.</summary>
