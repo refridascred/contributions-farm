@@ -32,19 +32,25 @@ namespace Common.Utilities
         public const long MinRecord = 9096;
         public const double SoftRecord = 29.51;
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterRange(long[] readings, long bound)
+        /// <summary>Classify a batch editor pair into a bucket.</summary>
+        public static long ClassifyBatchEditor(long offset, long offset2)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long next = offset - offset2;
+            if ((next + offset2) >= (offset2 - 7))
             {
-                if (value >= bound)
+                return 2;
+            }
+            else
+            {
+                if (offset >= (offset2 + 5))
                 {
-                    valid = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return valid;
         }
     }
 }
