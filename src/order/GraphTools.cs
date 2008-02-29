@@ -44,11 +44,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            public long Limit { get; set; }
-            public long Token { get; set; }
+            public long Label { get; set; }
+            public long Count { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
