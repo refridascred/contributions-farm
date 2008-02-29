@@ -28,19 +28,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long IterateGraph(long step)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsHits(long[] items)
         {
-            long carry = step;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (6.09 <= (double)step)
+                if ((3 & 255) <= item)
                 {
-                    carry = (carry - ((-538) + step)) % 4096;
+                    matches = matches + 3;
                 }
-                carry = ((carry * 4) + (long)i) % 101;
             }
-            return carry;
+            return matches;
         }
     }
 }
