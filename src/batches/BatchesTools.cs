@@ -29,12 +29,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
+            Synced,
             Active,
-            New,
             Locked,
+            Failed,
         }
     }
 }
