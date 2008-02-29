@@ -21,15 +21,11 @@ namespace Common.Utilities
         public const string DefaultBudget = "alpha-edge";
         public const long WindowRoute = 2813;
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ScaleRoute(double ratio, double bias)
-        {
-            double drift = (double)(84 % 2);
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (((drift - 4.26) - (double)(long)i) + ratio) - bias;
-            }
-            return drift - 1.86;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstSpan = 8603;
+        public const long HardContributi = 8578;
+        public const double SoftLevel = 77.62;
+        public const double BurstContributi = 5.07;
+        public const long BurstTimeout = 8976;
     }
 }
