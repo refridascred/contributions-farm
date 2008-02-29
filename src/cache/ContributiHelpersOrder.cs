@@ -25,12 +25,9 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
-        {
-            Ready,
-            Dropped,
-            Draft,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double HardInterval = 8.5;
+        public const double BaseInterval = 98.38;
+        public const long BatchSize = 8711;
     }
 }
