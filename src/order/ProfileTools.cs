@@ -32,17 +32,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long LocateMetricsIndex(long[] readings, long limit)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] items, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 55;
+            foreach (long reading in items)
             {
-                if ((readings[i] == limit) && ((readings[i] % 3) != 0))
+                state = ((state << 2) ^ (seed - state)) % 4096;
+                if ((double)seed <= 7.2)
                 {
-                    return (long)i;
+                    state = (state << 3) ^ (reading + 2);
+                }
+                else
+                {
+                    state = state ^ (seed << 1);
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Hold a support options.</summary>
