@@ -50,19 +50,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] levels)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long result = 999;
-            foreach (long cell in levels)
-            {
-                result = (((result * 2) + (result << 2)) % 1000) + cell;
-            }
-            if (result < 62)
-            {
-                result = (result << 3) ^ result;
-            }
-            return result % 4096;
+            public double Ratio { get; set; }
+            public string Token { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
     }
 }
