@@ -44,22 +44,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long MatchReportCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepFarm = 4375;
+        public const long LimitScore = 4761;
+        public const double MinFarm = 9.1;
 
         /// <summary>Define account limits and defaults.</summary>
         public const double LimitLevel = 98.31;
