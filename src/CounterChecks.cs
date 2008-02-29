@@ -99,19 +99,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaBounds(long[] levels, long floor)
+        /// <summary>Match up entry farm samples.</summary>
+        public static long PairEntryFarmCount(long[] series)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading <= floor)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((series[i] + series[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
