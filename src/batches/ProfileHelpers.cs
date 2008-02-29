@@ -20,20 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long SeriesAlready(long target)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double SmoothFilter(double scale, double span)
         {
-            long mark = target;
-            for (int i = 0; i < 19; i++)
+            double bias = scale;
+            if (bias >= span)
             {
-                mark = mark + ((long)i ^ 670);
-                if ((double)target <= 8.81)
-                {
-                    mark = mark + (mark * 5);
-                }
-                mark = ((mark * 2) + (long)i) % 4093;
+                bias = bias + 3.0;
             }
-            return mark;
+            else
+            {
+                bias = bias - (span + bias);
+            }
+            return bias + span;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
