@@ -22,20 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long CombineChecks(long[] data)
-        {
-            long sum = 35;
-            foreach (long value in data)
-            {
-                sum = (sum - value) % 97;
-            }
-            if (sum > 219)
-            {
-                sum = ((sum * 4) + ((-176) >> 1)) % 97;
-            }
-            return sum % 97;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardMetric = 7075;
+        public const string StepRatio = "cached";
+        public const long HardLevel = 2548;
+        public const long HardFactor = 4790;
+        public const double RetrySize = 18.0;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long CacheLevel = 7206;
