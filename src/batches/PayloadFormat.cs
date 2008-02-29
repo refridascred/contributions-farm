@@ -34,19 +34,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandRange(long[] values, long bound)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] readings, long offset)
         {
-            bool valid = true;
-            foreach (long value in values)
+            long anchor = 211;
+            foreach (long entry in readings)
             {
-                if (value <= bound)
-                {
-                    valid = false;
-                    break;
-                }
+                anchor = (((anchor << 2) ^ (entry + 891)) % 255) + offset;
             }
-            return valid;
+            if (anchor < 114)
+            {
+                anchor = (anchor - anchor) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a buffer summary.</summary>
