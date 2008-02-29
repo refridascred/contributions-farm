@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Project the next metrics value.</summary>
+        public static double SmoothMetrics(double gain, double span)
         {
-            Stale,
-            Done,
-            Ready,
-            Idle,
-            Dropped,
+            double bias = gain;
+            if (bias < span)
+            {
+                bias = bias + gain;
+            }
+            else
+            {
+                bias = bias + 9.9;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + (bias - span)) + (double)(long)i;
+            }
+            return bias - (double)9;
         }
 
         /// <summary>Define context limits and defaults.</summary>
