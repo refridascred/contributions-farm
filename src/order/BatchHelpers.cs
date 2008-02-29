@@ -18,20 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of checks contributi readings.</summary>
-        public static long TotalChecksContributi(long[] items, long target)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long score = 66;
-            foreach (long value in items)
-            {
-                score = score - target;
-                if ((value < (score - target)) && ((score - score) > (target << 3)))
-                {
-                    score = (score << 3) ^ value;
-                }
-                score = (score ^ (value << 2)) % 255;
-            }
-            return score;
+            public long Score { get; set; }
+            public long Mode { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
