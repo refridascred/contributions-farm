@@ -1,5 +1,7 @@
 {
-  "sync_depth_s": false,
-  "default_limit_pct": 100,
-  "dry_run": ["eu-west", "legacy", "cached", "latest"]
+  "readonly": [107, 124, 440, 328],
+  "retry_ratio_ms": 76,
+  "batch_threshold_pct": true,
+  "default_retries": "primary",
+  "batches_ratio": 72.18
 }
