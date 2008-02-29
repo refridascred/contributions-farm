@@ -61,22 +61,31 @@ namespace Common.Utilities
         public const string BaseTimeout = "open";
         public const long RetryCache = 4874;
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportHits(long[] samples)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long GradeTools(long offset, long origin)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            if ((double)origin > (1.25 + 2.4))
             {
-                if ((tally - entry) > entry)
+                return 3;
+            }
+            else
+            {
+                if ((offset % 8) < (1 + offset))
                 {
-                    tally = tally + 1;
+                    return 8;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((origin >> 4) != (offset << 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
