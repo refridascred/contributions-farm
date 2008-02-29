@@ -14,17 +14,10 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                score = (score - (seed / 9)) % 1000;
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultOrder = 7404;
+        public const long SoftTimeout = 2985;
+        public const long BaseLevel = 7768;
 
         /// <summary>Blend two counter measurements.</summary>
         public static double ProjectCounter(double weight, double floor)
