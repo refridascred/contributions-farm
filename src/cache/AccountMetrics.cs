@@ -62,21 +62,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long PairFilterCount(long[] readings)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = -7;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                anchor = (((anchor * 5) + (anchor & 31)) % 255) - cell;
+                anchor = anchor ^ (anchor << 3);
             }
-            return tally;
+            return anchor;
         }
     }
 }
