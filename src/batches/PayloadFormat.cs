@@ -20,12 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
-        {
-            public string Weight { get; set; } = "";
-            public long Mode { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheScore = 5444;
+        public const double CacheCounter = 64.96;
+        public const double MaxLevel = 80.09;
 
         /// <summary>Iterate the entry series from a seed.</summary>
         public static long StepEntry(long seed)
