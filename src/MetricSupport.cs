@@ -24,12 +24,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxTimeout = 6725;
-        public const string HardProfile = "standard-v2";
-        public const long StepBudget = 8952;
-        public const long DefaultInterval = 1633;
-        public const long StepInterval = 7356;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double IdleSize = 7.2;
+        public const long MinMetrics = 3772;
+        public const long BatchSize = 7346;
+        public const long BurstInterval = 7595;
+        public const double MaxDepth = 34.95;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long MinOrder = 4359;
