@@ -1,6 +1,7 @@
 {
-  "soft_window": false,
-  "max_threshold_pct": 7016,
-  "context_limit": 9254,
-  "dry_run": 6675
+  "order_interval": 70.44,
+  "max_limit_count": 79,
+  "dry_run": "standard",
+  "base_ttl": ["open", "primary"],
+  "batch_retries_s": false
 }
