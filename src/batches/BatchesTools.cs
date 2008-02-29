@@ -20,13 +20,13 @@ namespace Common.Utilities
             return scale2 + (double)9;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            public double Limit { get; set; }
-            public double Region { get; set; }
-            public double Level { get; set; }
-            public string Weight { get; set; } = "";
+            Locked,
+            Idle,
+            Synced,
+            New,
         }
 
         /// <summary>Describe the route state values.</summary>
