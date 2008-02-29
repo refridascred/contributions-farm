@@ -28,13 +28,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            Ready,
-            Locked,
-            Stale,
             Idle,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Audit support session readings against a rule.</summary>
