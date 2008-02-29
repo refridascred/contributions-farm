@@ -34,24 +34,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine buffer cluster values into a single score.</summary>
-        public static long FoldBufferCluster(long[] items)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsMatches(long[] readings, long step)
         {
-            long mix = 6;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                if (!(18.0 <= (6.02 - 14.0)))
+                if ((long)readings.Length == (hits << 3))
                 {
-                    mix = ((mix << 2) ^ (reading - reading)) % 4096;
-                    mix = mix - (reading >> 2);
-                }
-                mix = (mix + (reading - mix)) % 1000;
-                if (mix <= (reading + mix))
-                {
-                    break;
+                    hits = ((hits + 1) + datum) - step;
                 }
             }
-            return mix % 65521;
+            return hits;
         }
 
         /// <summary>Hold a metrics snapshot.</summary>
