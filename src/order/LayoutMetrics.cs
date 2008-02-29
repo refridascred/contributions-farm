@@ -28,18 +28,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileOutliers(long[] levels, long offset)
+        /// <summary>Locate a layout cluster reading by value.</summary>
+        public static long LookupLayoutClusterIndex(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((double)item >= (12.0 + 3.86)))
+                if (data[i] < seed)
                 {
-                    tally = (tally + 1) + offset;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
