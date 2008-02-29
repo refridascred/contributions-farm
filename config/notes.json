@@ -1,10 +1,8 @@
 {
-  "already_depth": "stable",
-  "already_window": {
-    "flush_capacity": "local",
-    "layout_size": false,
-    "soft_capacity_ms": 9
-  },
-  "retry_threshold_s": 3965,
-  "verbose": 8041
+  "burst_threshold_s": true,
+  "queue_retries": "local",
+  "min_depth_pct": ["staging", "blue"],
+  "poll_capacity_pct": "latest",
+  "flush_threshold_count": true,
+  "enabled": "stable"
 }
