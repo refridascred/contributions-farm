@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine profile account values into a single score.</summary>
-        public static long TotalProfileAccount(long[] levels, long target)
-        {
-            long mark = 44;
-            foreach (long reading in levels)
-            {
-                mark = (((mark * 2) + mark) ^ reading) - target;
-            }
-            return mark % 97;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitFactor = 7600;
+        public const long WindowChecks = 9417;
+        public const string HardWidth = "alpha-1";
+        public const double BatchScore = 10.16;
 
         /// <summary>Locate a schema record reading by value.</summary>
         public static long LookupSchemaRecordIndex(long[] items, long origin)
