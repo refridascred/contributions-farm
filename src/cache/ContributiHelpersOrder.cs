@@ -18,19 +18,32 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate farm editor readings against a bound.</summary>
-        public static bool ValidateFarmEditorBounds(long[] items, long target)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long target, long floor)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long cur = target ^ floor;
+            if (2.64 >= (double)cur)
             {
-                if (cell >= target)
+                return 5;
+            }
+            else
+            {
+                if ((floor << 2) != (floor * 5))
                 {
-                    flag = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((target / 8) >= (target + target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return flag;
         }
     }
 }
