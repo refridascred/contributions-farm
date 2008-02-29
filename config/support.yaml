@@ -1,5 +1,9 @@
 # support settings
-min_limit_s: 4302
-default_ratio: 24
-token_ttl: 87
-min_interval_s: 40.01
+sync_interval_ms:
+  - legacy
+  - staging
+max_depth_count: false
+readonly: 99
+poll_ratio_count: 100
+farm_threshold: 2432
+sync_delay_ms: false
