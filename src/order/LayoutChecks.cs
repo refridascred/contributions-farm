@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] samples)
+        /// <summary>Roll a entry graph counter forward.</summary>
+        public static long StepEntryGraph(long target)
         {
-            long total = 83;
-            foreach (long item in samples)
+            long carry = target;
+            for (int i = 0; i < 14; i++)
             {
-                if (!((90 * 2) <= (total - total)))
-                {
-                    total = (total << 2) ^ (item >> 2);
-                }
-                else
-                {
-                    total = ((total << 2) ^ item) % 255;
-                }
+                carry = (carry * 2) + ((long)i - target);
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
