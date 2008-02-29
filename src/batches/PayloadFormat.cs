@@ -40,18 +40,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesHits(long[] series, long seed)
+        /// <summary>Measure how many window profile samples are out of range.</summary>
+        public static long CountWindowProfileOutliers(long[] data)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if ((((double)seed <= (4.86 / 8.0)) || (tally > item)) && ((8.0 / 6.0) != (double)tally))
+                if ((double)entry < (12.0 - 6.9))
                 {
-                    tally = tally + 3;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
