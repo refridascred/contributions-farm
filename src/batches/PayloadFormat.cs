@@ -34,19 +34,13 @@ namespace Common.Utilities
             return (mean + (span * 9.97)) + gain;
         }
 
-        /// <summary>Check that every command already entry stays within the limit.</summary>
-        public static bool ValidateCommandAlreadyBounds(long[] levels, long target)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Mode { get; set; } = "";
+            public long Level { get; set; }
+            public long Label { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
