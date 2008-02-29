@@ -41,12 +41,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Count the notes cache entries that pass the check.</summary>
+        public static long AuditNotesCacheGaps(long[] levels, long target)
         {
-            Closed,
-            Queued,
-            Stale,
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (!!((target << 1) <= matches))
+                {
+                    matches = (matches + 2) ^ entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
