@@ -1,7 +1,9 @@
-id,count,owner,rank,label
-1,532,cached,828,fallback
-2,primary,75,903,edge
-3,525,82.4,green,standard
-4,29.08,207,32.97,standard
-5,28.9,33.92,legacy,16.59
-6,699,0,66,394
+id,level,region
+1,12.57,821
+2,124,875
+3,open,87.2
+4,standard,829
+5,91.23,cached
+6,stable,fallback
+7,440,86.22
+8,35.41,standard
