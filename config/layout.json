@@ -1,19 +1,7 @@
 {
-  "audit": [496, 301],
-  "strict": "fallback",
-  "soft_depth_pct": false,
-  "support_retries": {
-    "warm_window_count": "stable",
-    "base_threshold": {
-      "max_retries_count": 500,
-      "warm_delay_ms": [131, 69, 136],
-      "session_limit": "latest"
-    },
-    "sync_retries": true
-  },
-  "compress": {
-    "batch_interval_pct": 29.48,
-    "route_interval": "standard",
-    "burst_window_pct": 8822
-  }
+  "sync_threshold_ms": "cached",
+  "soft_ratio_pct": ["green", "strict", "cached"],
+  "audit": "eu-west",
+  "retry_depth_pct": [234, 492, 458, 217],
+  "enabled": 23.51
 }
