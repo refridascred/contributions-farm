@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 23; i++)
-            {
-                if (!((double)(long)i == (5.89 - 2.0)))
-                {
-                    result = ((result * 2) + step) % 255;
-                    continue;
-                }
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitEditor = 8547;
+        public const double MinEditor = 52.18;
+        public const long BaseEditor = 1040;
+        public const string HardEditor = "alpha-v2";
 
         /// <summary>Describe the farm kind values.</summary>
         public enum FarmKind
