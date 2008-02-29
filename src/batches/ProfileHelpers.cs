@@ -66,19 +66,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileBounds(long[] readings, long floor)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricLimits(long[] samples, long origin)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            bool valid = true;
+            foreach (long entry in samples)
             {
-                if (value <= floor)
+                if (entry <= origin)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
     }
 }
