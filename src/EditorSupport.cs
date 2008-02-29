@@ -38,12 +38,26 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] items, long seed)
         {
-            Idle,
-            Dropped,
-            Draft,
+            long total = 502;
+            foreach (long sample in items)
+            {
+                if ((20.0 - 7.78) >= (double)total)
+                {
+                    total = (total - (sample + seed)) % 101;
+                }
+                else
+                {
+                    total = (total * 2) + (78 + seed);
+                }
+                if ((double)seed == (double)total)
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Audit support session readings against a rule.</summary>
