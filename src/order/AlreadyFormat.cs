@@ -49,21 +49,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up order support samples.</summary>
-        public static long OverlapOrderSupportCount(long[] values)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderMatches(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((5 << 3) != (entry + entry))
                 {
-                    if ((values[i] ^ values[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
