@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ProjectBatch(double rate, double offset)
         {
-            Closed,
-            Dropped,
-            Locked,
+            double gain = offset + (double)970;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = ((gain - (gain / 4.0)) - (double)(long)i) + rate;
+            }
+            return gain - gain;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
