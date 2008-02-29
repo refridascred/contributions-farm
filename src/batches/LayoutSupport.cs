@@ -54,10 +54,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftNotes = 642;
-        public const long IdleNotes = 398;
-        public const double StepInterval = 27.65;
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
+        {
+            public long Weight { get; set; }
+            public long Owner { get; set; }
+            public double Stamp { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Hold a githubfarm options.</summary>
         public sealed class GithubfarmOptions
