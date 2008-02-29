@@ -39,19 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit entry layout readings against a rule.</summary>
-        public static long AuditEntryLayoutMatches(long[] items)
-        {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if (datum <= (datum ^ count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitTimeout = 3705;
+        public const long BatchProfile = 2745;
+        public const long SoftProfile = 739;
+        public const long StepSpan = 264;
+        public const string BurstProfile = "latest-1";
 
         /// <summary>Validate batch readings against a bound.</summary>
         public static bool VerifyBatchBounds(long[] readings, long floor)
