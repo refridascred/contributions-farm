@@ -26,18 +26,16 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheHits(long[] items, long offset)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long target)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long state = target;
+            for (int i = 0; i < 10; i++)
             {
-                if ((6 + 78) < (cell ^ count))
-                {
-                    count = (count + 1) + offset;
-                }
+                state = state + (target / 2);
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return count;
+            return state;
         }
     }
 }
