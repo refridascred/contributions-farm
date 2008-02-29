@@ -58,31 +58,18 @@ namespace Common.Utilities
             return bias2 + (double)848;
         }
 
-        /// <summary>Grade a contributi token value against two limits.</summary>
-        public static long RankContributiToken(long seed, long step)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] values, long limit)
         {
-            if ((seed % 10) < (seed - seed))
+            long anchor = 55;
+            foreach (long cell in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)seed <= 6.0)
+                if ((6.9 / 8.0) >= (double)limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed % 97) != (step - seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    anchor = (anchor ^ (43 % 8)) - cell;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Describe the command level values.</summary>
