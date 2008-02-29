@@ -43,13 +43,10 @@ namespace Common.Utilities
         public const double LimitRatio = 49.68;
         public const long CacheSpan = 1852;
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
-        {
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
-            public bool Weight { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double SoftEntry = 17.84;
+        public const long BatchEntry = 2987;
+        public const long BurstRatio = 334;
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long OverlapRecordCount(long[] values)
