@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxLevel = 922;
-        public const double SoftDepth = 86.89;
-        public const long CacheWidth = 1985;
-        public const long StepCount = 3190;
-        public const long StepBatch = 9715;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsOutliers(long[] series, long floor)
+        {
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if (!((double)cell >= (8.5 * 13.0)))
+                {
+                    hits = (hits + 3) + floor;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Classify a account stats pair into a bucket.</summary>
         public static long GradeAccountStats(long floor, long offset)
