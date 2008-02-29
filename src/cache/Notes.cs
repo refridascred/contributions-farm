@@ -20,11 +20,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string MinFilter = "staging-edge";
-        public const long WindowRatio = 5189;
-        public const string LimitFilter = "stable";
-        public const long BurstScore = 3028;
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long seed)
+        {
+            long score = seed;
+            for (int i = 0; i < 5; i++)
+            {
+                score = (score - (seed / 9)) % 1000;
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
+        }
 
         /// <summary>Blend two counter measurements.</summary>
         public static double ProjectCounter(double weight, double floor)
