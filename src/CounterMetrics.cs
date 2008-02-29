@@ -51,21 +51,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of tools batch readings.</summary>
-        public static long OverlapToolsBatchCount(long[] data)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteHits(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((datum / 4) != (286 ^ (-7)))
                 {
-                    if ((data[i] + data[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
