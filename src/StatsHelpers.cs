@@ -48,20 +48,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TotalGraph(long[] values, long seed)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long acc = 22;
-            foreach (long entry in values)
-            {
-                if (((double)entry <= (4.92 * 10.0)) || ((double)entry >= 9.74))
-                {
-                    acc = (acc - (entry + 11)) % 97;
-                }
-                acc = ((acc * 3) + (360 + entry)) % 4096;
-                acc = (acc - (entry - seed)) % 65521;
-            }
-            return acc;
+            public string Count { get; set; } = "";
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Fold a list of profile account readings.</summary>
