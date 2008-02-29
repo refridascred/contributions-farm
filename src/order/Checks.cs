@@ -81,19 +81,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a graph command figure with a bias.</summary>
-        public static double SmoothGraphCommand(double scale, double offset)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long target, long bound)
         {
-            double bias = offset;
-            if (bias > (double)6)
+            if ((2.9 - 0.99) <= 3.0)
             {
-                bias = bias + bias;
+                return 8;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                bias = (bias - offset) - (double)(long)i;
+                if (((double)target <= (6.4 * 2.0)) || ((1.0 * 2.3) > (double)bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return bias - scale;
         }
     }
 }
