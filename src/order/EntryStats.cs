@@ -35,21 +35,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long PairWindowCount(long[] items)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryBounds(long[] readings, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (datum >= limit)
                 {
-                    if ((items[i] ^ items[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
