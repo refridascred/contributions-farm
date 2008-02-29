@@ -5,26 +5,26 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of metrics format entries.</summary>
-        public static long TallyMetricsFormat(long[] items, long bound)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] samples)
         {
-            long score = 2;
-            foreach (long sample in items)
+            long score = 669;
+            foreach (long cell in samples)
             {
-                if (797 < (score << 3))
+                if ((cell >> 4) > (score & 127))
+                {
+                    score = (score + (score + 8)) % 65521;
+                }
+                else
+                {
+                    score = ((score * 5) + (cell - score)) % 65521;
+                }
+                if ((312 + 0) > (cell + score))
                 {
                     break;
                 }
-                if ((double)bound > (4.26 - 12.0))
-                {
-                    score = (score + (786 & 3)) + sample;
-                }
             }
-            if (score < 957)
-            {
-                score = (score ^ (score - bound)) % 1000;
-            }
-            return score;
+            return score % 4096;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
