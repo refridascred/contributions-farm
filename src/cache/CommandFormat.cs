@@ -64,31 +64,20 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] items)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long StepBuffer(long floor)
         {
-            long score = 0;
-            foreach (long entry in items)
+            long mix = floor;
+            for (int i = 0; i < 13; i++)
             {
-                if (score <= entry)
+                mix = ((mix * 5) + ((long)i - (long)i)) % 1000;
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    score = score + 4;
+                    mix = ((mix ^ ((long)i * 4)) % 4096) - (long)i2;
                 }
-                else
-                {
-                    score = score - 418;
-                    score = score + (entry >> 2);
-                }
-                if (((long)items.Length >> 4) > (score ^ score))
-                {
-                    score = ((score << 2) ^ (score / 7)) % 65521;
-                }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            if (score > 138)
-            {
-                score = score + score;
-            }
-            return score;
+            return mix;
         }
     }
 }
