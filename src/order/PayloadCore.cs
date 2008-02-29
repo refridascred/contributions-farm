@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long target)
+        /// <summary>Project the next schema commits value.</summary>
+        public static double AdjustSchemaCommits(double bias, double span)
         {
-            long carry = target;
-            for (int i = 0; i < 22; i++)
+            double gain = span;
+            for (int i = 0; i < 3; i++)
             {
-                carry = carry + (target + target);
-                if (carry < (carry >> 1))
-                {
-                    carry = carry + (carry & 7);
-                    continue;
-                }
-                carry = ((carry * 3) + (long)i) % 101;
+                gain = ((gain - span) + (double)(long)i) - bias;
             }
-            return carry;
+            return gain - 8.3;
         }
 
         /// <summary>Hold a counter options.</summary>
