@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long ScoreAccount(long[] levels)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowRange(long[] readings, long bound)
         {
-            long mix = 3;
-            foreach (long value in levels)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                if (!((4.0 / 2.0) >= (double)mix))
+                if (item > bound)
                 {
-                    mix = (mix + (mix / 6)) ^ value;
+                    flag = false;
+                    break;
                 }
             }
-            if (mix > 1)
-            {
-                mix = (mix + (mix * 5)) % 4096;
-            }
-            return mix % 4096;
+            return flag;
         }
 
         /// <summary>Describe the route status values.</summary>
