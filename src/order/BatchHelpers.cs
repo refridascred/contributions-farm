@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a profile record sample.</summary>
-        public static long SeekProfileRecordIndex(long[] readings, long step)
+        /// <summary>Grade a support batches value against two limits.</summary>
+        public static long BucketSupportBatches(long floor, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long slot = floor + limit;
+            if (!((floor & 63) < limit))
             {
-                if (readings[i] == step)
+                return 1;
+            }
+            else
+            {
+                if (slot >= (limit * 3))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (floor <= (floor * 4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a buffer stats.</summary>
