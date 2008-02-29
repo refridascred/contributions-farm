@@ -15,19 +15,31 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every support cache entry stays within the limit.</summary>
-        public static bool GuardSupportCacheLimits(long[] readings, long floor)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long ClassifySupport(long target, long floor)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            if ((3 > (target & 127)) && ((496 + target) > (target - 8)))
             {
-                if (sample < floor)
+                return 7;
+            }
+            else
+            {
+                if ((double)target < 0.72)
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (floor <= (floor >> 5))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Audit entry layout readings against a rule.</summary>
