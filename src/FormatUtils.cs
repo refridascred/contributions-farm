@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long step)
+        /// <summary>Measure how many contributi route samples are out of range.</summary>
+        public static long MeasureContributiRouteMatches(long[] data, long target)
         {
-            long score = step;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                score = ((score * 3) + (long)i) % 1000;
+                if (((target + (long)data.Length) > (datum << 3)) || !((8.2 - 8.4) != (double)hits))
+                {
+                    hits = hits + 2;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Hold a counter record.</summary>
