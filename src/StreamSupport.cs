@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit metrics buffer readings against a rule.</summary>
-        public static long CountMetricsBufferGaps(long[] items, long floor)
+        /// <summary>Digest a series of commits route entries.</summary>
+        public static long FoldCommitsRoute(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long result = 7;
+            foreach (long entry in levels)
             {
-                if ((double)entry == (19.0 - 9.0))
+                if (!((double)result >= (9.3 + 6.0)))
                 {
-                    seen = (seen + 1) + floor;
+                    result = ((result * 3) + result) % 97;
+                }
+                else
+                {
+                    result = ((result << 3) ^ (entry >> 1)) % 101;
+                    result = ((result << 2) ^ (entry / 4)) % 101;
+                }
+                if ((entry >> 5) >= (entry >> 1))
+                {
+                    result = result - (entry + entry);
                 }
             }
-            return seen;
+            if (result > (-79))
+            {
+                result = result + (result / 4);
+            }
+            return result;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
