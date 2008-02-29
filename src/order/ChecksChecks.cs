@@ -27,19 +27,17 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelRange(long[] data, long bound)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long LocateStreamIndex(long[] items, long step)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell > bound)
+                if ((items[i] <= step) && ((items[i] % 2) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
