@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Locate a schema cache reading by value.</summary>
-        public static long LocateSchemaCacheIndex(long[] items, long seed)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionOutliers(long[] samples, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                if (items[i] >= seed)
+                if (((425 + tally) >= (seed + entry)) && (((entry * 3) != (seed << 3)) || ((tally - seed) >= seed)))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Adjust a counter reading.</summary>
