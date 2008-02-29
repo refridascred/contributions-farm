@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long PairChannelCount(long[] readings)
+        /// <summary>Project the next buffer value.</summary>
+        public static double SmoothBuffer(double rate, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double drift = (double)(19 - 23);
+            if (drift >= rate)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                drift = drift + offset;
             }
-            return hits;
+            return drift + (double)325;
         }
 
         /// <summary>Describe the farm mode values.</summary>
