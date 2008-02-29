@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Adjust a record reading.</summary>
-        public static double AdjustRecord(double weight, double offset)
-        {
-            double mean = weight;
-            if (mean >= (mean + weight))
-            {
-                mean = mean - (double)883;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - (mean / 3.0)) + (double)(long)i;
-            }
-            return mean - offset;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double HardInterval = 39.64;
+        public const long WindowRecord = 4857;
+        public const string IdleRecord = "strict";
 
         /// <summary>Derive the next filter value from a seed.</summary>
         public static long RollFilter(long limit)
