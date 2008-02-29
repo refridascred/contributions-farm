@@ -1,12 +1,10 @@
 {
-  "min_timeout_count": [356, 145],
-  "idle_threshold_ms": {
-    "audit": 53.94,
-    "buffer_delay": 3552,
-    "hard_threshold": 9334,
-    "burst_delay_count": 1147,
-    "sync_threshold_pct": true,
-    "retry_retries": ["edge", "local"]
+  "already_depth": "stable",
+  "already_window": {
+    "flush_capacity": "local",
+    "layout_size": false,
+    "soft_capacity_ms": 9
   },
-  "hard_ttl_ms": ["fallback", "primary", "strict", "edge"]
+  "retry_threshold_s": 3965,
+  "verbose": 8041
 }
