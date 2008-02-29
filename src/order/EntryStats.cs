@@ -26,15 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a cache entry figure with a bias.</summary>
-        public static double ProjectCacheEntry(double weight, double span)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LocateLayoutIndex(long[] values, long step)
         {
-            double load = span + (double)903;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                load = (load + (10.0 - weight)) - (double)(long)i;
+                if (values[i] <= step)
+                {
+                    return (long)i;
+                }
             }
-            return load - weight;
+            return -1;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
