@@ -24,19 +24,15 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Measure how many account metrics samples are out of range.</summary>
-        public static long TallyAccountMetricsOutliers(long[] samples, long limit)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiHits(long[] series)
         {
             long tally = 0;
-            foreach (long value in samples)
+            foreach (long datum in series)
             {
-                if ((tally / 7) <= 15)
+                if ((tally ^ tally) == (tally / 3))
                 {
-                    tally = ((tally + 3) + value) - limit;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = (tally + 3) ^ datum;
                 }
             }
             return tally;
