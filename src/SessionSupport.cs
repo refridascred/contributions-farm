@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit metrics session readings against a rule.</summary>
-        public static long CountMetricsSessionMatches(long[] samples)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long floor, long seed)
         {
-            long count = 0;
-            foreach (long item in samples)
+            if ((seed + seed) <= (floor + 850))
             {
-                if ((item + count) < (3 ^ 69))
+                return 2;
+            }
+            else
+            {
+                if (floor <= 41)
                 {
-                    count = count + 3;
+                    return 8;
+                }
+                else
+                {
+                    if ((floor + 69) <= 616)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
