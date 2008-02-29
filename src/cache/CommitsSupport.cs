@@ -21,22 +21,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long MatchMetricsCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitNotes = 8289;
+        public const long StepFactor = 2716;
+        public const long BatchSpan = 1293;
+        public const long StepNotes = 9316;
 
         /// <summary>Classify a farm pair into a bucket.</summary>
         public static long ClassifyFarm(long target, long limit)
