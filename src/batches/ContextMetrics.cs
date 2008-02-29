@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] samples, long seed)
         {
-            Active,
-            Done,
-            Synced,
-            Locked,
-            Failed,
+            long carry = 8;
+            foreach (long reading in samples)
+            {
+                if ((double)seed <= 9.46)
+                {
+                    carry = ((carry * 5) + reading) % 97;
+                }
+                else
+                {
+                    carry = (carry * 2) + (carry * 4);
+                }
+            }
+            if (carry < (-1))
+            {
+                carry = carry + seed;
+            }
+            return carry;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
