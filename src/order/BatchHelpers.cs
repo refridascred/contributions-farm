@@ -22,19 +22,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] items)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportLimits(long[] values, long origin)
         {
-            long carry = 7;
-            foreach (long reading in items)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                carry = (carry - (815 << 3)) - reading;
+                if (entry <= origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            if (carry < 881)
-            {
-                carry = carry + carry;
-            }
-            return carry;
+            return stale;
         }
     }
 }
