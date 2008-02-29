@@ -39,13 +39,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricHits(long[] levels)
         {
-            public string Mode { get; set; } = "";
-            public long Level { get; set; }
-            public long Label { get; set; }
-            public double Ratio { get; set; }
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)entry != (1.6 * 6.99))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
