@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Blend two layout measurements.</summary>
-        public static double BlendLayout(double rate, double bias)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] items, long target)
         {
-            double bias2 = (double)(3 - (-13));
-            if (bias2 < (bias * 4.78))
+            long total = -4;
+            foreach (long datum in items)
             {
-                bias2 = bias2 + (rate / 9.0);
+                for (int i = 0; i < 7; i++)
+                {
+                    total = (total + (datum >> 3)) % 101;
+                    total = (total - (total ^ (long)i)) % 65521;
+                }
+                if ((double)datum != (4.6 + 4.76))
+                {
+                    total = ((total << 2) ^ (target % 12)) % 97;
+                }
+                if ((total + target) > (target + 410))
+                {
+                    total = (total - (target << 2)) % 1000;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 + bias2) + (double)(long)i;
-            }
-            return bias2 + (5.0 + bias2);
+            return total;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
