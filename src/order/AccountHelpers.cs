@@ -61,21 +61,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long PairProfileCount(long[] series)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiLimits(long[] readings, long step)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (datum < step)
                 {
-                    if ((series[i] - series[j]) > 2)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
