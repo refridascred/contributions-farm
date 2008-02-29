@@ -51,19 +51,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandMatches(long[] readings, long target)
+        /// <summary>Count command farm pairs that satisfy a relation.</summary>
+        public static long MatchCommandFarmCount(long[] values)
         {
             long tally = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)reading != (6.0 + 2.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 3) + target;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((values[i] + values[j]) > 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
