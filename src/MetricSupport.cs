@@ -20,9 +20,9 @@ namespace Common.Utilities
         public const long BurstInterval = 7595;
         public const double MaxDepth = 34.95;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinOrder = 4359;
-        public const double BatchOrder = 76.34;
-        public const long CacheOrder = 213;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double IdleLevel = 53.73;
+        public const double BurstCache = 69.36;
+        public const long RetryCache = 700;
     }
 }
