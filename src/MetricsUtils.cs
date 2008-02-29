@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] items, long target)
         {
-            Queued,
-            Synced,
-            Retry,
-            Dropped,
+            long acc = 863;
+            foreach (long datum in items)
+            {
+                if ((datum - acc) > 4)
+                {
+                    acc = (acc * 2) + target;
+                }
+                else
+                {
+                    acc = (acc - (datum + acc)) % 101;
+                }
+                if ((target + (-449)) > target)
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Classify a context batches pair into a bucket.</summary>
