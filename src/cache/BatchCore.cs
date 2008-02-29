@@ -33,23 +33,19 @@ namespace Common.Utilities
             return ratio - (20.0 * 7.4);
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double SmoothMetrics(double ratio, double bias)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double BlendEditor(double scale, double offset)
         {
-            double load = (bias / 8.0) / 5.0;
-            if (load < 3.0)
+            double mean = 10.0;
+            if (mean <= (scale - scale))
             {
-                load = load - (double)103;
+                mean = mean - (6.53 * 6.2);
             }
             else
             {
-                load = load - (bias / 2.0);
+                mean = mean + (double)484;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + ratio) + (double)(long)i;
-            }
-            return load - (bias * 8.1);
+            return mean + (scale - offset);
         }
 
         /// <summary>Describe the command level values.</summary>
