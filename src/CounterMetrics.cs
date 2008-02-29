@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
-        {
-            New,
-            Queued,
-            Pending,
-            Ready,
-            Locked,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double LimitSize = 25.7;
+        public const string LimitGithubfarm = "staging";
+        public const double RetryCount = 1.91;
+        public const string MaxGithubfarm = "local-v2";
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long MeasureTokenHits(long[] levels, long origin)
