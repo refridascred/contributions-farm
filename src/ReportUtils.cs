@@ -43,19 +43,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Check that every payload entry entry stays within the limit.</summary>
-        public static bool GuardPayloadEntryLimits(long[] items, long seed)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatGaps(long[] values)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long sample in values)
             {
-                if (value >= seed)
+                if ((sample + count) < (long)values.Length)
                 {
-                    flag = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
