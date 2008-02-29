@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] samples, long target)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long sum = 2;
-            foreach (long reading in samples)
-            {
-                sum = ((sum * 2) + (659 ^ reading)) % 4096;
-                if ((target < (reading * 2)) || (sum > target))
-                {
-                    sum = (sum << 2) ^ (sum - (-55));
-                }
-                if (264 <= target)
-                {
-                    break;
-                }
-            }
-            return sum % 65521;
+            Closed,
+            Paused,
+            Idle,
+            Failed,
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
