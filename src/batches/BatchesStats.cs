@@ -37,15 +37,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double AdjustAccount(double rate, double offset)
-        {
-            double mean = (offset * 6.0) / 3.0;
-            if (mean > (offset * 7.6))
-            {
-                mean = mean + 16.0;
-            }
-            return mean + (rate / 3.0);
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftAccount = 8159;
+        public const string StepWidth = "strict-v2";
+        public const string IdleAccount = "latest-edge";
+        public const string DefaultTimeout = "legacy";
+        public const long BatchAccount = 7120;
     }
 }
