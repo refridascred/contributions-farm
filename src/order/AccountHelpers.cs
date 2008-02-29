@@ -24,19 +24,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutBounds(long[] levels, long offset)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenMatches(long[] samples)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (cell >= offset)
+                if ((datum + datum) >= datum)
                 {
-                    found = false;
-                    break;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
