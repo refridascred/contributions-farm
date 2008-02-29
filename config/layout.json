@@ -1,14 +1,13 @@
 {
-  "record_threshold": {
-    "compress": 1.61,
-    "verbose": "standard",
-    "account_window": ["strict", "edge", "latest"],
-    "persist": 20,
-    "enabled": "legacy",
-    "commits_size": "green"
+  "retry_timeout_ms": 48,
+  "idle_depth_ms": {
+    "editor_delay": "eu-west",
+    "dry_run": ["fallback", "cached", "open", "green"],
+    "base_depth_pct": "local",
+    "layout_timeout": false
   },
-  "hard_ttl_pct": 3699,
-  "readonly": 30,
-  "flush_window": true,
-  "verbose": 55.78
+  "warm_retries_pct": 58.55,
+  "buffer_capacity": [122, 330],
+  "min_window_ms": true,
+  "command_retries": 62.66
 }
