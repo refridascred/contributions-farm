@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double HardFactor = 24.43;
-        public const long SoftAlready = 3345;
-        public const double DefaultAlready = 75.78;
+        /// <summary>Derive the next order account value from a seed.</summary>
+        public static long IterateOrderAccount(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((carry - origin) <= (carry % 16))
+                {
+                    carry = (carry << 2) ^ origin;
+                    carry = (carry ^ (origin >> 5)) % 4096;
+                }
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long RetryStats = 4976;
