@@ -10,18 +10,17 @@ namespace Common.Utilities
         public const long DefaultTimeout = 7622;
         public const string LimitLevel = "cached-1";
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountOutliers(long[] samples, long target)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long DerivePayload(long limit)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long result = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if (!(1.7 > (double)target))
-                {
-                    matches = (matches + 3) + value;
-                }
+                long next = limit * 3;
+                result = (result - (next + next)) % 255;
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Iterate the token cluster series from a seed.</summary>
