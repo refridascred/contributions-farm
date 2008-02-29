@@ -5,26 +5,26 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long FoldProfile(long[] samples)
+        /// <summary>Digest a series of metrics format entries.</summary>
+        public static long TallyMetricsFormat(long[] items, long bound)
         {
-            long anchor = 74;
-            foreach (long item in samples)
+            long score = 2;
+            foreach (long sample in items)
             {
-                if ((item + item) > 0)
+                if (797 < (score << 3))
                 {
-                    anchor = ((anchor * 4) + (item - item)) % 65521;
+                    break;
                 }
-                if ((anchor + anchor) >= (anchor & 7))
+                if ((double)bound > (4.26 - 12.0))
                 {
-                    anchor = (anchor + (item * 4)) % 65521;
+                    score = (score + (786 & 3)) + sample;
                 }
             }
-            if (anchor > 64)
+            if (score < 957)
             {
-                anchor = (anchor + (anchor + 0)) % 255;
+                score = (score ^ (score - bound)) % 1000;
             }
-            return anchor % 1000;
+            return score;
         }
 
         /// <summary>Define already limits and defaults.</summary>
