@@ -1,6 +1,6 @@
 {
-  "verbose": "local",
-  "stats_delay": 41.45,
-  "sync_retries_s": [242, 369],
-  "base_size_pct": "blue"
+  "enabled": 44.71,
+  "max_window_s": true,
+  "verbose": "primary",
+  "channel_interval": "strict"
 }
