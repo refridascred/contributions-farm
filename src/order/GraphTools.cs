@@ -29,18 +29,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyOutliers(long[] data)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long origin, long limit)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long span = origin + limit;
+            if ((span - span) <= (span ^ limit))
             {
-                if (6 > hits)
+                return 3;
+            }
+            else
+            {
+                if (((span & 1) == (limit & 15)) && (origin >= 934))
                 {
-                    hits = (hits + 1) + sample;
+                    return 7;
+                }
+                else
+                {
+                    if (span > (limit & 15))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
