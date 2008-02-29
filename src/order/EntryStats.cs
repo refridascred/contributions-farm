@@ -27,22 +27,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferGaps(long[] items)
+        /// <summary>Measure how many support notes samples are out of range.</summary>
+        public static long CountSupportNotesOutliers(long[] levels)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (!(seen > (datum / 6)))
+                if ((double)value > (double)19)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    matches = matches + 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Grade a order value against two limits.</summary>
