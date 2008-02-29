@@ -45,12 +45,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            Queued,
-            Idle,
-            Synced,
+            public string Stamp { get; set; } = "";
+            public long Total { get; set; }
+            public string Count { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
