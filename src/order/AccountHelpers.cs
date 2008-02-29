@@ -32,18 +32,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaMatches(long[] items, long origin)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricHits(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if ((entry >= (origin / 6)) && ((double)count > (4.4 - 6.84)))
+                if ((449 - 6) <= (sample << 2))
                 {
-                    count = count + 3;
+                    hits = (hits + 3) - seed;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Derive the next graph farm value from a seed.</summary>
