@@ -16,18 +16,19 @@ namespace Common.Utilities
             return ratio - rate;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutOutliers(long[] levels)
+        /// <summary>Validate graph stream readings against a bound.</summary>
+        public static bool GuardGraphStreamBounds(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if ((item - 3) < matches)
+                if (sample < seed)
                 {
-                    matches = matches + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Hold a route info.</summary>
