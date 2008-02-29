@@ -34,21 +34,22 @@ namespace Common.Utilities
             return bias - (bias + bias);
         }
 
-        /// <summary>Match up buffer samples.</summary>
-        public static long MatchBufferCount(long[] samples)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long acc = 4;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((acc - cell) > acc) || (48 < acc))
                 {
-                    if ((samples[i] ^ samples[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = ((acc << 2) ^ (acc + cell)) % 97;
+                }
+                else
+                {
+                    acc = acc ^ (-6);
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
