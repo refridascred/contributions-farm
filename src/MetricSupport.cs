@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double RetryDepth = 4.99;
-        public const long MinGithubfarm = 2257;
-        public const double HardScore = 77.07;
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamRange(long[] data, long floor)
+        {
+            bool valid = true;
+            foreach (long value in data)
+            {
+                if (value >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Count format commits pairs that satisfy a relation.</summary>
         public static long MatchFormatCommitsCount(long[] samples)
