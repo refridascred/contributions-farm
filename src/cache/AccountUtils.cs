@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string IdleRatio = "latest-edge";
-        public const long CacheEntry = 3641;
-        public const long MaxEntry = 8433;
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long BucketToken(long seed, long seed2)
+        {
+            if (!((9.0 - 3.75) != (double)seed))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((416 + seed2) == (seed2 + seed2)) || (seed <= seed2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long StepCount = 1834;
