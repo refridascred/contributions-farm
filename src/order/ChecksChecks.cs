@@ -35,13 +35,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            Ready,
-            Synced,
+            Retry,
+            Failed,
             Stale,
-            Queued,
+            Dropped,
         }
     }
 }
