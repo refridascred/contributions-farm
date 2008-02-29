@@ -64,17 +64,12 @@ namespace Common.Utilities
             return drift - (double)8;
         }
 
-        /// <summary>Locate a queue graph reading by value.</summary>
-        public static long LookupQueueGraphIndex(long[] levels, long limit)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= limit) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Idle,
+            Pending,
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
