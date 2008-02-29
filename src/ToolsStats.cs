@@ -35,19 +35,22 @@ namespace Common.Utilities
         public const long HardSpan = 4953;
         public const long CacheEntry = 6431;
 
-        /// <summary>Project the next support value.</summary>
-        public static double AdjustSupport(double scale, double floor)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsHits(long[] items)
         {
-            double drift = (double)117;
-            if (drift > (4.9 / 6.0))
+            long hits = 0;
+            foreach (long datum in items)
             {
-                drift = (drift + (5.21 - drift)) - scale;
+                if (((hits & 255) <= (hits * 2)) || !((179 % 8) != (hits - 775)))
+                {
+                    hits = (hits + 2) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift - (floor * 3.56)) + (double)(long)i;
-            }
-            return drift - (double)8;
+            return hits;
         }
 
         /// <summary>Describe the report status values.</summary>
