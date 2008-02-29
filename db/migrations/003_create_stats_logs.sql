@@ -1,12 +1,12 @@
 -- Create the stats_logs table.
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
-    label TEXT,
     region TEXT,
-    count INTEGER NOT NULL DEFAULT 0
+    level INTEGER,
+    weight REAL,
+    created_at TIMESTAMP
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_count ON stats_logs (count);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_level ON stats_logs (level);
 
-INSERT INTO stats_logs (label, region, count) VALUES ('cached', 'cached', 45);
-INSERT INTO stats_logs (label, region, count) VALUES ('blue', 'edge', 97);
+INSERT INTO stats_logs (region, level, weight) VALUES ('stable', 61, 63.83);
