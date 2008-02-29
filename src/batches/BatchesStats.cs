@@ -22,16 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long StepAccount(long target)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long total = target;
-            for (int i = 0; i < 6; i++)
-            {
-                total = (total * 5) + total;
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
+            Closed,
+            Dropped,
+            Pending,
+            Locked,
+            Queued,
         }
 
         /// <summary>Roll a format entry counter forward.</summary>
