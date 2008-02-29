@@ -74,14 +74,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
-        {
-            Paused,
-            Pending,
-            Synced,
-            Done,
-            Ready,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowLevel = 4849;
+        public const long DefaultCache = 699;
+        public const long LimitSize = 1906;
     }
 }
