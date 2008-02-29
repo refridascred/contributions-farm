@@ -1,15 +1,10 @@
 # githubfarm settings
-burst_ratio_pct: false
-persist: 66
-enabled: false
-channel_capacity:
-  warm_window: green
-  verbose: cached
-  min_retries:
-    soft_depth:
-      - 136
-      - 111
-    hard_retries_count: stable
-    retry_ratio_count: 4798
-    burst_delay_ms: 7603
-    compress: open
+min_delay_ms:
+  - fallback
+  - open
+  - eu-west
+  - fallback
+audit: 43
+account_interval: 28
+poll_size: 1407
+warm_threshold_count: 30
