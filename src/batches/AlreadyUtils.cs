@@ -24,20 +24,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long bound)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long result = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                result = (result ^ ((long)i / 9)) % 4096;
-                if ((3 + (long)i) > bound)
-                {
-                    continue;
-                }
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
+            public long Region { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
