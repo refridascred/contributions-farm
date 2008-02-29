@@ -18,32 +18,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long target, long floor)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long cur = target ^ floor;
-            if (2.64 >= (double)cur)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor << 2) != (floor * 5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((target / 8) >= (target + target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Paused,
+            Closed,
+            Locked,
+            Pending,
+            Ready,
         }
     }
 }
