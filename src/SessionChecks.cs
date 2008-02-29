@@ -39,32 +39,12 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long offset, long origin)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long cur = offset ^ origin;
-            if (((offset * 2) >= (offset ^ 4)) || ((origin << 3) <= (257 - cur)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((84 / 6) <= origin)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin < (origin + cur)) || ((origin % 2) == (cur << 3)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Stale,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
