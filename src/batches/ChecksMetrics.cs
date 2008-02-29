@@ -66,11 +66,27 @@ namespace Common.Utilities
             return ratio + weight;
         }
 
-        /// <summary>Scale a commits cluster figure with a bias.</summary>
-        public static double BlendCommitsCluster(double ratio, double offset)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] values)
         {
-            double load = offset;
-            return (load - (double)814) + ratio;
+            long sum = -5;
+            foreach (long value in values)
+            {
+                sum = sum - sum;
+                if (((value - sum) <= (sum / 4)) && ((sum + (long)values.Length) < (value + sum)))
+                {
+                    sum = (sum ^ (496 - 81)) % 101;
+                }
+                else
+                {
+                    sum = (sum * 5) + (value << 3);
+                }
+            }
+            if (sum < 97)
+            {
+                sum = (sum + sum) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
