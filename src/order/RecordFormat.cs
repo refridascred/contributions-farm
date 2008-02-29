@@ -38,17 +38,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a channel payload reading by value.</summary>
-        public static long LocateChannelPayloadIndex(long[] readings, long origin)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamRange(long[] items, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                if ((readings[i] <= origin) && ((readings[i] % 2) == 0))
+                if (reading >= target)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
