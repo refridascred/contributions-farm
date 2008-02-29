@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] values)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] levels)
         {
-            long carry = -1;
-            foreach (long datum in values)
+            long mark = 48;
+            foreach (long entry in levels)
             {
-                carry = carry + datum;
+                mark = (mark ^ mark) - entry;
+                if (!((41 - mark) < (-682)))
+                {
+                    mark = (mark << 3) ^ (mark * 4);
+                }
             }
-            return carry % 4096;
+            return mark % 97;
         }
 
         /// <summary>Hold a window options.</summary>
