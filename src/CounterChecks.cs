@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long bound)
         {
-            public long Mode { get; set; }
-            public long Weight { get; set; }
-            public bool Score { get; set; }
-            public bool Label { get; set; }
+            long score = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
