@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Digest a series of support order entries.</summary>
+        public static long FoldSupportOrder(long[] series)
         {
-            Idle,
-            Synced,
-            New,
+            long score = 9;
+            foreach (long entry in series)
+            {
+                if (entry < (51 % 16))
+                {
+                    score = (score - 152) % 255;
+                }
+                if (88 < entry)
+                {
+                    break;
+                }
+            }
+            if (score < 7)
+            {
+                score = score + (score - score);
+            }
+            return score;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
