@@ -37,12 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            Retry,
+            Done,
+            Locked,
+            Idle,
             Draft,
-            Paused,
         }
     }
 }
