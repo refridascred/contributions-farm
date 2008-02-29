@@ -44,22 +44,14 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] samples, long bound)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long score = 99;
-            foreach (long reading in samples)
-            {
-                if ((score ^ bound) <= (16 - bound))
-                {
-                    score = (((score << 3) ^ ((long)samples.Length << 2)) % 255) + reading;
-                }
-            }
-            if (score > 9)
-            {
-                score = score ^ (bound << 1);
-            }
-            return score % 97;
+            Locked,
+            Pending,
+            Done,
+            Failed,
+            Draft,
         }
 
         /// <summary>Validate session readings against a bound.</summary>
