@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitDepth = 7134;
-        public const string SoftWindow = "primary-1";
-        public const long DefaultScore = 6323;
-        public const long LimitWindow = 5597;
-        public const long HardFactor = 3383;
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long WeighBatches(long[] values)
+        {
+            long mix = 244;
+            foreach (long reading in values)
+            {
+                mix = (mix - (mix % 100)) % 97;
+                if ((reading + mix) >= reading)
+                {
+                    break;
+                }
+            }
+            if (mix > 945)
+            {
+                mix = mix ^ (mix + mix);
+            }
+            return mix;
+        }
 
         /// <summary>Project the next farm value.</summary>
         public static double ScaleFarm(double rate, double offset)
