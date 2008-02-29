@@ -20,15 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double BlendLayout(double scale, double offset)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            double drift = (double)(8 / 6);
-            for (int i = 0; i < 3; i++)
-            {
-                drift = ((drift - 8.9) + (double)(long)i) + scale;
-            }
-            return drift + offset;
+            public string Owner { get; set; } = "";
+            public long Count { get; set; }
+            public long Ratio { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
