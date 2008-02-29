@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Blend two command measurements.</summary>
-        public static double SmoothCommand(double weight, double bias)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double BlendFarm(double rate, double offset)
         {
-            double rate = weight;
-            if (rate >= bias)
+            double ratio = offset;
+            if (ratio <= (double)53)
             {
-                rate = rate - bias;
+                ratio = ratio + (double)4;
             }
-            else
-            {
-                rate = rate - rate;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - (weight - 5.9)) + (double)(long)i;
-            }
-            return rate - (double)640;
+            return ratio - rate;
         }
 
         /// <summary>Accumulate order samples.</summary>
