@@ -44,18 +44,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueOutliers(long[] series)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long SeekSupportIndex(long[] items, long origin)
         {
-            long hits = 0;
-            foreach (long item in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((-365) + item) >= (40 + hits))
+                if (items[i] >= origin)
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
