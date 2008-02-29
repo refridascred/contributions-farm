@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseScore = 4918;
-        public const double SoftCluster = 25.59;
-        public const long BatchCluster = 3242;
-        public const string WindowDepth = "latest-1";
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelMatches(long[] series)
+        {
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((reading - count) > reading)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every window batch entry stays within the limit.</summary>
         public static bool GuardWindowBatchBounds(long[] levels, long origin)
