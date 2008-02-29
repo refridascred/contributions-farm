@@ -38,21 +38,23 @@ namespace Common.Utilities
         public const long BatchEntry = 2987;
         public const long BurstRatio = 334;
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long OverlapRecordCount(long[] values)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] values, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = -273;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                state = ((state << 3) ^ (state + origin)) % 255;
+                if (cell >= (long)values.Length)
                 {
-                    if ((values[i] + values[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    state = (state - cell) % 1000;
                 }
             }
-            return hits;
+            if (state < 854)
+            {
+                state = (state * 3) + (origin + state);
+            }
+            return state;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
