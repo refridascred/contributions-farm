@@ -16,17 +16,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LookupLayoutIndex(long[] levels, long target)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long SortGithubfarm(long offset, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (((offset ^ offset) < offset) && ((double)0 != (double)step))
             {
-                if (levels[i] == target)
+                return 2;
+            }
+            else
+            {
+                if ((step + offset) == (step << 2))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate entry samples.</summary>
