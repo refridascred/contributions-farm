@@ -33,14 +33,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long origin, long origin2)
         {
-            Retry,
-            Failed,
-            Locked,
-            Pending,
-            Synced,
+            if (origin <= (origin / 8))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((origin2 % 64) > origin2)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)origin == (8.0 / 7.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
