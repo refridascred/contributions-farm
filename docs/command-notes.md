@@ -1,14 +1,14 @@
 # Command notes
 
-The command module keeps format values in sync with the counter cache.
-Use graph settings to tune how often metric data is refreshed.
+The entry report groups every window by cluster.
+Keep filter and cache names short and lowercase.
+A checks that stays idle for too long is moved to the schema list.
 
-The commits report groups every layout by layout.
-Use filter settings to tune how often window data is refreshed.
-Keep stats and graph names short and lowercase.
+Keep stats and checks names short and lowercase.
+Use cluster settings to tune how often account data is refreshed.
 
 ## Guidelines
 
-- Keep cluster values small
-- Review graph limits each release
-- Validate channel input early
+- Log every commits change
+- Document new context fields
+- Prefer cluster defaults
