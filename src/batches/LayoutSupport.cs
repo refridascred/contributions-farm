@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Validate entry queue readings against a bound.</summary>
-        public static bool CheckEntryQueueLimits(long[] values, long seed)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TotalQueue(long[] levels)
         {
-            bool found = true;
-            foreach (long reading in values)
+            long anchor = -7;
+            foreach (long entry in levels)
             {
-                if (reading < seed)
+                if ((anchor >> 2) > (anchor - anchor))
                 {
-                    found = false;
-                    break;
+                    anchor = (anchor * 5) + (976 + entry);
                 }
             }
-            return found;
+            return anchor % 4096;
         }
 
         /// <summary>Classify a tools pair into a bucket.</summary>
