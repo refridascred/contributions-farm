@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Look up the position of a profile record sample.</summary>
+        public static long SeekProfileRecordIndex(long[] readings, long step)
         {
-            Dropped,
-            Idle,
-            Synced,
-            Queued,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of checks contributi readings.</summary>
