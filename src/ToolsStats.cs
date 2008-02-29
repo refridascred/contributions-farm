@@ -35,22 +35,13 @@ namespace Common.Utilities
         public const long HardSpan = 4953;
         public const long CacheEntry = 6431;
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsHits(long[] items)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (((hits & 255) <= (hits * 2)) || !((179 % 8) != (hits - 775)))
-                {
-                    hits = (hits + 2) + datum;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public string Token { get; set; } = "";
+            public bool Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Describe the report status values.</summary>
