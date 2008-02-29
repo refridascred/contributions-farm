@@ -14,30 +14,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] readings, long offset)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long IterateOrder(long bound)
         {
-            long anchor = 371;
-            foreach (long item in readings)
+            long carry = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if (((anchor - offset) >= item) && ((77 * 2) == (item & 7)))
-                {
-                    anchor = (anchor * 2) + item;
-                }
-                if (((item - 72) < (anchor * 3)) && (anchor > item))
-                {
-                    anchor = ((anchor * 2) + (item << 3)) % 255;
-                }
-                else
-                {
-                    anchor = (anchor * 2) + (long)readings.Length;
-                }
+                carry = carry ^ (bound - bound);
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            if (anchor < 0)
-            {
-                anchor = anchor + (anchor / 3);
-            }
-            return anchor % 4096;
+            return carry;
         }
 
         /// <summary>Describe the account class values.</summary>
