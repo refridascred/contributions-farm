@@ -1,6 +1,10 @@
 {
-  "retry_timeout_s": "blue",
-  "default_limit": "strict",
-  "warm_limit_count": "blue",
-  "verbose": 33.26
+  "dry_run": {
+    "metric_depth": [306, 317, 422, 273],
+    "sync_ttl_count": false,
+    "filter_interval": "strict"
+  },
+  "checks_retries": 30,
+  "farm_depth": "legacy",
+  "retry_depth": "latest"
 }
