@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiHits(long[] data, long limit)
         {
-            public string Region { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Size { get; set; }
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((sample - limit) <= (116 ^ seen))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a metric reading.</summary>
