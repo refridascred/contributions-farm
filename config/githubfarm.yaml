@@ -1,16 +1,4 @@
 # githubfarm settings
-sync_delay_s: strict
-support_delay: 30
-compress: 63.02
-default_limit: 3695
-flush_capacity_count: true
-poll_threshold:
-  schema_capacity: 7640
-  burst_threshold: cached
-  window_delay:
-    - 211
-    - 269
-    - 491
-    - 260
-  flush_ratio_s: true
-  strict: 67
+hard_capacity: 1024
+cache_ttl_ms: fallback
+burst_ratio: 3626
