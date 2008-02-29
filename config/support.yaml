@@ -1,22 +1,16 @@
 # support settings
-route_window:
-  hard_timeout_pct:
-    min_size: 8505
-    base_interval_s: true
-    enabled: green
-    max_limit: 85.38
-    retry_window: true
-    record_ratio: 81.11
-  filter_timeout: true
-  poll_capacity_count: fallback
-order_size: 500
-audit: strict
-account_window:
-  - 202
-  - 277
-  - 409
-sync_timeout_pct:
-  - strict
-  - latest
-  - stable
-dry_run: false
+flush_ratio_count:
+  hard_interval_ms: fallback
+  batch_limit_count: stable
+  stats_capacity:
+    readonly: green
+    cache_capacity_s: legacy
+    verbose: false
+  compress: strict
+  hard_limit_s: 75
+  base_size_ms: 61.9
+persist: 2
+filter_limit:
+  sync_size_pct: green
+  cache_delay: 78.83
+  idle_interval_pct: 5505
