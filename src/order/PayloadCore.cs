@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long SeekStreamIndex(long[] values, long step)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long DeriveRoute(long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if (values[i] > step)
-                {
-                    return (long)i;
-                }
+                carry = (carry - (floor - floor)) % 101;
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
