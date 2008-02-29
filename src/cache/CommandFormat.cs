@@ -14,12 +14,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MaxFilter = 2466;
-        public const long BatchInterval = 7448;
-        public const string SoftCount = "staging";
-        public const long LimitFilter = 7792;
-        public const double DefaultDepth = 76.17;
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
+        {
+            Done,
+            Failed,
+            New,
+        }
 
         /// <summary>Project the next stats contributi value.</summary>
         public static double AdjustStatsContributi(double scale, double offset)
