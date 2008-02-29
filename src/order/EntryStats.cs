@@ -35,19 +35,31 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryBounds(long[] readings, long limit)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long ClassifyOrder(long limit, long seed)
         {
-            bool found = true;
-            foreach (long datum in readings)
+            if (((18.0 + 3.64) <= (double)limit) && ((2.67 - 6.52) < (double)limit))
             {
-                if (datum >= limit)
+                return 7;
+            }
+            else
+            {
+                if ((double)limit >= (double)676)
                 {
-                    found = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)60 >= (double)seed)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
