@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string HardLevel = "staging";
-        public const long BatchFormat = 4280;
-        public const long HardSize = 5233;
-        public const long BurstFormat = 7720;
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
+        {
+            Retry,
+            Paused,
+            Failed,
+            Synced,
+            Active,
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const string HardScore = "local-v2";
