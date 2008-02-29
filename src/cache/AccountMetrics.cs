@@ -35,12 +35,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheNotes = 7680;
-        public const long RetryNotes = 2316;
-        public const long IdleScore = 9802;
-        public const double MinNotes = 93.82;
-        public const long DefaultInterval = 9322;
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long OverlapGraphCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long TotalBatch(long[] series)
