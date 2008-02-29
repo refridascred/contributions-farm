@@ -1,17 +1,8 @@
 {
-  "verbose": {
-    "cache_capacity": ["cached", "staging", "green"],
-    "sync_interval": "fallback",
-    "enabled": true,
-    "strict": "strict",
-    "buffer_size": 95,
-    "hard_interval": "eu-west"
-  },
-  "flush_interval_s": false,
-  "report_depth": {
-    "burst_window_pct": true,
-    "retry_window_pct": 31.63,
-    "audit": false
-  },
-  "poll_threshold_s": 7585
+  "format_interval": 500,
+  "flush_ratio_count": "primary",
+  "format_delay": 79.6,
+  "persist": "stable",
+  "default_timeout_ms": "blue",
+  "readonly": 83.58
 }
