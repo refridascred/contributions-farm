@@ -45,22 +45,12 @@ namespace Common.Utilities
         public const double LimitRatio = 49.68;
         public const long CacheSpan = 1852;
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] readings, long limit)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long score = -389;
-            foreach (long reading in readings)
-            {
-                if ((double)score == (2.99 + 5.0))
-                {
-                    score = (((score * 2) + (reading ^ score)) % 65521) - limit;
-                }
-            }
-            if (score > 145)
-            {
-                score = (score ^ (score + score)) % 97;
-            }
-            return score;
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Compare every pair of record readings.</summary>
