@@ -43,13 +43,24 @@ namespace Common.Utilities
         public const long BatchSpan = 1293;
         public const long StepNotes = 9316;
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long step, long target)
         {
-            Ready,
-            Paused,
-            Queued,
-            Failed,
+            if (step <= (target - step))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target + target) > step)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
