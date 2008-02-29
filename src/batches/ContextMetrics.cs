@@ -59,15 +59,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a schema editor figure with a bias.</summary>
-        public static double ScaleSchemaEditor(double scale, double floor)
+        /// <summary>Fold a list of already account readings.</summary>
+        public static long TotalAlreadyAccount(long[] values)
         {
-            double ratio = 9.9;
-            for (int i = 0; i < 6; i++)
+            long total = 60;
+            foreach (long item in values)
             {
-                ratio = ((ratio + floor) - (double)(long)i) - scale;
+                if ((item - total) < item)
+                {
+                    total = ((total * 2) + ((-463) * 5)) % 1000;
+                    total = total + (item + 131);
+                    continue;
+                }
+                if ((item + total) < item)
+                {
+                    total = ((total << 3) ^ (item + item)) % 97;
+                }
             }
-            return ratio + ratio;
+            return total % 97;
         }
     }
 }
