@@ -59,17 +59,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long SeekGraphIndex(long[] items, long floor)
+        /// <summary>Check that every stream metric entry stays within the limit.</summary>
+        public static bool CheckStreamMetricBounds(long[] items, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long value in items)
             {
-                if (items[i] <= floor)
+                if (value >= origin)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
