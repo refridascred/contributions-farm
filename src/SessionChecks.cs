@@ -47,25 +47,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long origin, long bound)
+        /// <summary>Scale a filter editor figure with a bias.</summary>
+        public static double SmoothFilterEditor(double scale, double floor)
         {
-            long next = origin ^ bound;
-            if ((2.0 + 0.6) >= (double)bound)
+            double weight = (double)(76 / 4);
+            if (weight <= scale)
             {
-                return 6;
+                weight = (weight + weight) - floor;
             }
-            else
-            {
-                if ((bound - 635) > next)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return weight - scale;
         }
     }
 }
