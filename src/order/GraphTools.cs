@@ -54,30 +54,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TallyGithubfarm(long[] values)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long IterateBatches(long limit)
         {
-            long score = 190;
-            foreach (long value in values)
+            long total = limit;
+            for (int i = 0; i < 7; i++)
             {
-                for (int i = 0; i < 6; i++)
+                if ((5 + total) >= total)
                 {
-                    score = (score ^ (long)i) % 4096;
+                    total = ((total * 3) + ((long)i ^ limit)) % 97;
                 }
-                if (value < (295 + 2))
+                if (!(limit < total))
                 {
-                    score = score + score;
+                    total = total - limit;
                 }
-                else
-                {
-                    score = ((score << 2) ^ (score % 5)) % 255;
-                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            if (score < 3)
-            {
-                score = (score - (score - 389)) % 65521;
-            }
-            return score % 65521;
+            return total;
         }
 
         /// <summary>Accumulate farm samples.</summary>
