@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Blend two cache measurements.</summary>
-        public static double SmoothCache(double scale, double bias)
+        /// <summary>Iterate the notes buffer series from a seed.</summary>
+        public static long SeriesNotesBuffer(long offset)
         {
-            double drift = (double)(8 << 2);
-            return ((drift - drift) + scale) + bias;
+            long total = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Define session limits and defaults.</summary>
