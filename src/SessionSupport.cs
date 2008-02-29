@@ -19,12 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultCounter = 8133;
-        public const string DefaultSize = "legacy";
-        public const long BaseCounter = 3867;
-        public const long SoftCounter = 3235;
-        public const long BatchTimeout = 1283;
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
+        {
+            public bool Total { get; set; }
+            public bool Weight { get; set; }
+            public bool Rank { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Classify a batch pair into a bucket.</summary>
         public static long GradeBatch(long seed, long offset)
