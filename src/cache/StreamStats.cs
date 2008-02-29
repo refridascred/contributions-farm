@@ -48,16 +48,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long limit)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long anchor = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                anchor = (anchor - (limit + limit)) % 1000;
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
+            Dropped,
+            Synced,
+            New,
+            Draft,
         }
     }
 }
