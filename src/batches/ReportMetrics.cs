@@ -25,13 +25,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            public long Region { get; set; }
-            public long Level { get; set; }
-            public long Count { get; set; }
-            public long Label { get; set; }
+            public string Flag { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public double Rank { get; set; }
+            public double Level { get; set; }
         }
     }
 }
