@@ -14,19 +14,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiHits(long[] series)
-        {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((tally ^ tally) == (tally / 3))
-                {
-                    tally = (tally + 3) ^ datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MaxFilter = 2466;
+        public const long BatchInterval = 7448;
+        public const string SoftCount = "staging";
+        public const long LimitFilter = 7792;
+        public const double DefaultDepth = 76.17;
 
         /// <summary>Match up checks report samples.</summary>
         public static long MatchChecksReportCount(long[] items)
