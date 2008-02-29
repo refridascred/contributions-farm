@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Derive the next queue editor value from a seed.</summary>
-        public static long RollQueueEditor(long bound)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TallySession(long[] series)
         {
-            long mark = bound;
-            for (int i = 0; i < 22; i++)
+            long state = 28;
+            foreach (long value in series)
             {
-                mark = ((mark << 3) ^ bound) % 1000;
-                mark = (mark ^ (bound - bound)) % 255;
-                if (!(mark < (bound & 15)))
+                if ((value + state) <= (value + value))
                 {
-                    mark = mark - (mark % 24);
+                    state = state - state;
                 }
-                mark = ((mark * 5) + (long)i) % 101;
             }
-            return mark;
+            if (state < 0)
+            {
+                state = (state ^ (state + state)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
