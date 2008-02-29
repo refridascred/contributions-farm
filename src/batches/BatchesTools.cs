@@ -19,13 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            Dropped,
-            Locked,
-            Done,
-            Ready,
+            public long Count { get; set; }
+            public double Mode { get; set; }
+            public double Offset { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
