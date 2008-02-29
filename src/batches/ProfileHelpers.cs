@@ -78,14 +78,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long seed, long origin)
         {
-            Retry,
-            Stale,
-            Active,
-            Queued,
-            Closed,
+            if ((origin * 5) != (origin * 4))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed + seed) >= seed)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((seed & 31) < (seed << 3)) && ((origin ^ seed) >= (seed * 5)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the cache editor entries that pass the check.</summary>
