@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double HardInterval = 39.64;
-        public const long WindowRecord = 4857;
-        public const string IdleRecord = "strict";
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterMatches(long[] items, long step)
+        {
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((0 - (long)items.Length) < (count + 25))
+                {
+                    count = ((count + 1) - sample) - step;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Derive the next filter value from a seed.</summary>
         public static long RollFilter(long limit)
