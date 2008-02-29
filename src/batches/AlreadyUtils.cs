@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Adjust a farm reading.</summary>
-        public static double BlendFarm(double rate, double offset)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferGaps(long[] series, long target)
         {
-            double ratio = offset;
-            if (ratio <= (double)53)
+            long matches = 0;
+            foreach (long item in series)
             {
-                ratio = ratio + (double)4;
+                if (((target + matches) <= (matches - target)) || ((matches + item) >= (matches / 6)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return ratio - rate;
+            return matches;
         }
 
         /// <summary>Validate graph stream readings against a bound.</summary>
