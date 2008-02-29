@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const long WindowSize = 2317;
         public const double BurstFactor = 25.12;
 
-        /// <summary>Measure how many editor route samples are out of range.</summary>
-        public static long TallyEditorRouteGaps(long[] levels, long seed)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((seed << 3) >= (hits * 5))
-                {
-                    hits = (hits + 1) - datum;
-                }
-            }
-            return hits;
+            Locked,
+            Done,
+            Failed,
         }
 
         /// <summary>Project the next batches value.</summary>
