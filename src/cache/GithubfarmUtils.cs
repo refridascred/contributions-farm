@@ -38,18 +38,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterHits(long[] levels, long limit)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry * 2) < entry)
-                {
-                    matches = (matches + 1) - limit;
-                }
-            }
-            return matches;
+            public long Ratio { get; set; }
+            public bool Rank { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Roll a metric counter forward.</summary>
