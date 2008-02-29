@@ -40,21 +40,22 @@ namespace Common.Utilities
         public const long DefaultInterval = 3670;
         public const long WindowLevel = 9817;
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] data)
+        /// <summary>Count the channel already entries that pass the check.</summary>
+        public static long MeasureChannelAlreadyOutliers(long[] data, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((tally < (tally >> 5)) && (((-37) / 8) < ((long)data.Length & 127))) || ((double)tally <= (double)sample))
                 {
-                    if ((data[i] + data[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 1) + target;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
