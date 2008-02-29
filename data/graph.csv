@@ -1,7 +1,7 @@
-id,level,owner
-1,50.25,345
-2,105,938
-3,open,21.88
-4,primary,761
-5,67.77,strict
-6,27.58,66.31
+id,owner,count,level
+1,69.87,legacy,fallback
+2,16.74,staging,618
+3,cached,573,open
+4,standard,495,227
+5,59.12,905,90.06
+6,416,62.91,667
