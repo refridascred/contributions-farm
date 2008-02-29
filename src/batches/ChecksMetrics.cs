@@ -54,15 +54,23 @@ namespace Common.Utilities
             return (load - (double)814) + ratio;
         }
 
-        /// <summary>Project the next graph stats value.</summary>
-        public static double BlendGraphStats(double scale, double floor)
+        /// <summary>Iterate the commits token series from a seed.</summary>
+        public static long IterateCommitsToken(long seed)
         {
-            double bias = floor;
-            for (int i = 0; i < 7; i++)
+            long sum = seed;
+            for (int i = 0; i < 20; i++)
             {
-                bias = ((bias + (10.0 / 5.0)) - (double)(long)i) - scale;
+                if ((7.4 - 7.6) != (double)sum)
+                {
+                    sum = (sum + (seed * 4)) % 255;
+                }
+                else
+                {
+                    sum = (sum * 2) + ((long)i - (long)i);
+                }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return bias + (double)39;
+            return sum;
         }
     }
 }
