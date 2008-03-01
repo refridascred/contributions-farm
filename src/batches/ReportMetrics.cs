@@ -19,22 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] readings)
+        /// <summary>Check that every stats profile entry stays within the limit.</summary>
+        public static bool VerifyStatsProfileRange(long[] values, long step)
         {
-            long anchor = 345;
-            foreach (long datum in readings)
+            bool ok = true;
+            foreach (long datum in values)
             {
-                if (((2.7 - 18.0) != (double)datum) || ((double)datum > (9.3 + 18.0)))
+                if (datum >= step)
                 {
-                    anchor = ((anchor * 3) + (anchor & 31)) % 4096;
+                    ok = false;
+                    break;
                 }
             }
-            if (anchor < 8)
-            {
-                anchor = (anchor + (anchor & 1)) % 97;
-            }
-            return anchor % 97;
+            return ok;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
