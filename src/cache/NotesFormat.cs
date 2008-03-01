@@ -30,12 +30,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] values, long floor)
+        /// <summary>Find the first counter report entry that matches the target.</summary>
+        public static long FindCounterReportIndex(long[] levels, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((values[i] == floor) && ((values[i] % 2) != 0))
+                if (levels[i] == target)
                 {
                     return (long)i;
                 }
