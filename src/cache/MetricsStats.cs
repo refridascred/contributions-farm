@@ -74,18 +74,24 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TallyNotes(long[] samples, long target)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long SortPayload(long floor, long origin)
         {
-            long result = 744;
-            foreach (long value in samples)
+            if (floor <= (origin << 3))
             {
-                if ((value ^ target) < target)
+                return 1;
+            }
+            else
+            {
+                if (origin < floor)
                 {
-                    result = result ^ (6 / 9);
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return result % 4096;
         }
     }
 }
