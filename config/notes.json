@@ -1,10 +1,18 @@
 {
-  "format_capacity": {
-    "default_retries_count": [89, 280],
-    "enabled": "staging",
-    "batch_capacity_ms": 37.73,
-    "verbose": 30
+  "min_ratio_ms": 8549,
+  "min_timeout": 100,
+  "compress": {
+    "idle_timeout": {
+      "retry_delay": 85.53,
+      "idle_ratio_s": "latest",
+      "retry_capacity_pct": true,
+      "channel_limit": "green"
+    },
+    "hard_timeout_pct": true,
+    "cache_timeout": 93,
+    "audit": [296, 162, 50, 406],
+    "burst_ttl": "edge",
+    "batch_interval": "local"
   },
-  "metric_limit": false,
-  "min_limit_count": 7922
+  "soft_limit": "stable"
 }
