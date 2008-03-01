@@ -37,16 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long bound)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterRange(long[] data, long origin)
         {
-            long carry = bound;
-            for (int i = 0; i < 10; i++)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                carry = carry + (carry / 6);
-                carry = ((carry * 5) + (long)i) % 101;
+                if (reading != origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return carry;
+            return flag;
         }
     }
 }
