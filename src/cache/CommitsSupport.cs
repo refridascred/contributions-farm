@@ -29,12 +29,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long FindPayloadIndex(long[] values, long step)
+        /// <summary>Look up the position of a farm session sample.</summary>
+        public static long LocateFarmSessionIndex(long[] items, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((values[i] <= step) && ((values[i] % 2) != 0))
+                if (items[i] > origin)
                 {
                     return (long)i;
                 }
