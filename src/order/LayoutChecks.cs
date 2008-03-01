@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] readings, long target)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueLimits(long[] levels, long seed)
         {
-            long mark = -61;
-            foreach (long cell in readings)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                if (((double)mark != (6.27 / 2.0)) || ((17 * 2) != (cell - cell)))
+                if (cell <= seed)
                 {
-                    mark = (mark - (target + target)) % 1000;
-                }
-                else
-                {
-                    mark = (mark - (target << 2)) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
