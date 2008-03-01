@@ -34,18 +34,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordMatches(long[] values, long bound)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((((6.0 - 1.8) != (double)value) || ((hits << 3) < (3 >> 5))) || ((value * 4) >= (value << 2)))
-                {
-                    hits = (hits + 1) - bound;
-                }
-            }
-            return hits;
+            Pending,
+            Closed,
+            Done,
+            Paused,
         }
 
         /// <summary>Hold a tools header.</summary>
