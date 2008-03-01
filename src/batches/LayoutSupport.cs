@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the order entry entries that pass the check.</summary>
-        public static long TallyOrderEntryGaps(long[] samples, long floor)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if (((seen >> 2) != (datum + 3)) || ((floor + seen) < (floor + datum)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Token { get; set; }
+            public string Size { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Locate a account reading by value.</summary>
