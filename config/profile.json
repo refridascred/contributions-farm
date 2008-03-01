@@ -1,8 +1,17 @@
 {
-  "enabled": 82,
-  "idle_delay_count": ["standard", "legacy", "standard"],
-  "stream_depth": "legacy",
-  "poll_threshold_s": 88.21,
-  "base_interval_s": "latest",
-  "burst_timeout": 30
+  "contributi_depth": true,
+  "cache_timeout": {
+    "flush_capacity_ms": {
+      "soft_threshold_count": ["staging", "latest"],
+      "cache_delay": false,
+      "max_timeout_s": false,
+      "base_ttl_ms": "stable"
+    },
+    "dry_run": 2967,
+    "compress": false,
+    "poll_ttl": [49, 5, 226],
+    "verbose": ["cached", "edge", "edge", "green"]
+  },
+  "cluster_size": 56.99,
+  "batch_capacity": 58
 }
