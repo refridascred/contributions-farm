@@ -34,11 +34,9 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultBudget = 6025;
-        public const long CacheRatio = 696;
-        public const string StepCounter = "standard";
-        public const string MinRatio = "local-edge";
-        public const long BurstCounter = 7568;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double DefaultSize = 94.88;
+        public const string BurstMetrics = "local-v2";
+        public const long DefaultMetrics = 2226;
     }
 }
