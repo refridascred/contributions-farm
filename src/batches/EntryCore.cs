@@ -30,12 +30,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long ClassifyGithubfarm(long step, long offset)
         {
-            public long Rank { get; set; }
-            public double Score { get; set; }
-            public double Limit { get; set; }
+            long offset2 = step - offset;
+            if ((double)step != (6.36 * 3.24))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((step & 31) < (offset + offset2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (offset >= (2 - (-48)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
