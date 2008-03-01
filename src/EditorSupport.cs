@@ -77,14 +77,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Roll a report payload counter forward.</summary>
+        public static long DeriveReportPayload(long floor)
         {
-            Locked,
-            Dropped,
-            Synced,
-            Ready,
-            Stale,
+            long anchor = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
