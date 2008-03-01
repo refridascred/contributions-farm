@@ -53,18 +53,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long TallyContributiGaps(long[] series, long seed)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionGaps(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if ((double)(long)series.Length < (4.3 / 6.0))
+                if (((double)cell >= (double)matches) && (((matches * 3) != (cell & 1)) || (((long)samples.Length - 24) == (cell - 841))))
                 {
-                    count = ((count + 2) ^ datum) + seed;
+                    matches = (matches + 3) + seed;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
