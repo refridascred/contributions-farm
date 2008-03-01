@@ -40,25 +40,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank stream githubfarm input into a small class.</summary>
-        public static long SortStreamGithubfarm(long target, long offset)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LookupChannelIndex(long[] values, long seed)
         {
-            long slot = target ^ offset;
-            if ((target >> 5) <= target)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((offset / 2) == (slot * 4)) || ((offset ^ 209) > (slot >> 5)))
+                if ((values[i] == seed) && ((values[i] % 5) == 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
