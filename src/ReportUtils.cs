@@ -52,12 +52,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
-        {
-            public string Weight { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double CacheWindow = 59.88;
+        public const long CacheWidth = 4725;
+        public const long MaxWidth = 1016;
     }
 }
