@@ -36,12 +36,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double gain, double offset)
         {
-            public long Ratio { get; set; }
-            public long Score { get; set; }
-            public double Size { get; set; }
+            double bias = (gain - gain) - (offset + gain);
+            if (bias <= (gain / 8.0))
+            {
+                bias = bias + offset;
+            }
+            else
+            {
+                bias = bias - (bias * 8.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + (double)259) + (double)(long)i;
+            }
+            return bias - offset;
         }
     }
 }
