@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] levels, long offset)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long origin)
         {
-            long sum = 70;
-            foreach (long item in levels)
+            long state = origin;
+            for (int i = 0; i < 13; i++)
             {
-                sum = (sum << 2) ^ item;
-                sum = (sum * 3) + (item ^ offset);
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return sum % 97;
+            return state;
         }
 
         /// <summary>Define session limits and defaults.</summary>
