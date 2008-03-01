@@ -51,15 +51,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double SmoothContext(double gain, double bias)
+        /// <summary>Check that every contributi schema entry stays within the limit.</summary>
+        public static bool ValidateContributiSchemaBounds(long[] data, long seed)
         {
-            double rate = bias - (bias + gain);
-            if (rate <= rate)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                rate = rate + (3.01 * 5.0);
+                if (datum != seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return rate + (gain - rate);
+            return valid;
         }
 
         /// <summary>Validate notes buffer readings against a bound.</summary>
