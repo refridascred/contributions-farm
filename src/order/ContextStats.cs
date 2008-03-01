@@ -34,19 +34,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterOutliers(long[] values, long origin)
-        {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((hits ^ hits) < hits)
-                {
-                    hits = ((hits + 1) + datum) + origin;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxTools = 5706;
+        public const long CacheTools = 519;
+        public const long DefaultTools = 1761;
+        public const double StepScore = 34.8;
+        public const string WindowSpan = "legacy";
 
         /// <summary>Hold a cluster entry.</summary>
         public sealed class ClusterEntry
