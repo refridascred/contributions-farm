@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of command githubfarm entries.</summary>
-        public static long DigestCommandGithubfarm(long[] items, long floor)
+        /// <summary>Validate commits report readings against a bound.</summary>
+        public static bool GuardCommitsReportRange(long[] readings, long origin)
         {
-            long total = 988;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                total = ((total + (datum ^ total)) % 255) + floor;
+                if (sample >= origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return total % 65521;
+            return ok;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
