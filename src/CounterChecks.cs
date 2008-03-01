@@ -28,26 +28,15 @@ namespace Common.Utilities
         public const long DefaultRatio = 2463;
         public const long BatchWidth = 70;
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] readings, long seed)
+        /// <summary>Accumulate cluster format samples.</summary>
+        public static long ScoreClusterFormat(long[] series)
         {
-            long carry = 81;
-            foreach (long reading in readings)
+            long total = 7;
+            foreach (long value in series)
             {
-                if (!(reading <= carry))
-                {
-                    carry = carry ^ reading;
-                }
-                if ((carry % 100) <= (carry >> 5))
-                {
-                    carry = ((carry * 5) + seed) % 4096;
-                }
+                total = total - (total + value);
             }
-            if (carry < 154)
-            {
-                carry = carry ^ (long)readings.Length;
-            }
-            return carry;
+            return total;
         }
 
         /// <summary>Describe the layout status values.</summary>
