@@ -35,24 +35,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long step, long origin)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double ScaleCluster(double gain, double floor)
         {
-            if (((85 + origin) >= (5 / 9)) && ((origin ^ step) > origin))
+            double drift = gain + (double)8;
+            if (drift <= gain)
             {
-                return 0;
+                drift = drift - (floor + drift);
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if ((origin > (origin - origin)) || ((origin ^ step) > (origin >> 1)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
+                drift = drift + (double)(long)i;
             }
+            return drift + (double)2;
         }
     }
 }
