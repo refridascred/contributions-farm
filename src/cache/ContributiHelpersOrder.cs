@@ -39,32 +39,27 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long GradeContext(long seed, long target)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] series, long step)
         {
-            long lane = seed ^ target;
-            if (seed <= (89 - lane))
+            long mark = -3;
+            foreach (long value in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (lane >= (seed - target))
+                mark = (mark + (step - step)) % 4096;
+                for (int i = 0; i < 8; i++)
                 {
-                    return 5;
+                    mark = ((mark ^ (22 & 3)) % 255) ^ (long)i;
                 }
-                else
+                if ((value < (mark << 2)) || ((step - step) <= (mark - mark)))
                 {
-                    if (((13.0 / 2.0) < (double)seed) && ((double)seed == (5.99 / 5.0)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    mark = (mark ^ (step * 3)) % 255;
                 }
             }
+            if (mark > 416)
+            {
+                mark = (mark + (mark >> 3)) % 101;
+            }
+            return mark % 1000;
         }
     }
 }
