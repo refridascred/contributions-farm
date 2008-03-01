@@ -22,10 +22,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepCount = 1834;
-        public const long WindowScore = 3275;
-        public const long IdleCommits = 9915;
+        /// <summary>Project the next layout value.</summary>
+        public static double AdjustLayout(double bias, double floor)
+        {
+            double ratio = bias;
+            if (ratio < ratio)
+            {
+                ratio = (ratio - (double)56) + floor;
+            }
+            return ratio - (double)54;
+        }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
         public static bool VerifyContextRange(long[] data, long origin)
