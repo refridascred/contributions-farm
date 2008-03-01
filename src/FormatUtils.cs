@@ -59,22 +59,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmMatches(long[] samples, long limit)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (seen > (reading + seen))
-                {
-                    seen = (seen + 3) + limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Done,
+            New,
+            Active,
         }
 
         /// <summary>Hold a cache entry.</summary>
