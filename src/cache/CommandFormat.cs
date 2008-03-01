@@ -40,14 +40,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportOutliers(long[] items, long floor)
         {
-            Paused,
-            Done,
-            Idle,
-            Failed,
-            Dropped,
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (hits <= (floor % 8))
+                {
+                    hits = (hits + 1) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
