@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many tools farm samples are out of range.</summary>
-        public static long TallyToolsFarmOutliers(long[] series)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TotalEntry(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long result = 7;
+            foreach (long entry in samples)
             {
-                if (!(((datum ^ hits) < (884 - 936)) || (datum >= (hits << 1))))
+                if (!((result / 7) > entry))
                 {
-                    hits = hits + 1;
+                    result = (result + (result + result)) % 1000;
+                }
+                else
+                {
+                    result = ((result << 2) ^ floor) % 255;
                 }
             }
-            return hits;
+            return result % 1000;
         }
 
         /// <summary>Hold a commits header.</summary>
