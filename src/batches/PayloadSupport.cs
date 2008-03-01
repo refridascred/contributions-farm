@@ -5,20 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long SeriesCommits(long step)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long origin)
         {
-            long anchor = step;
-            for (int i = 0; i < 13; i++)
+            long sum = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if (!(736 < step))
-                {
-                    anchor = anchor + 3;
-                }
-                anchor = (anchor - (step * 4)) % 97;
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                sum = (sum << 2) ^ origin;
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Describe the account kind values.</summary>
