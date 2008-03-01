@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double RetrySchema = 47.71;
-        public const double BatchSchema = 63.56;
-        public const double CacheFactor = 19.81;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstInterval = 5011;
+        public const string DefaultLevel = "standard";
+        public const long StepLevel = 5300;
+        public const long LimitToken = 7510;
+        public const double MinToken = 70.04;
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
         public static long MeasureContributiGaps(long[] readings)
