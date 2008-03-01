@@ -12,11 +12,28 @@ namespace Common.Utilities
             return rate - (rate * 10.0);
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double BurstRatio = 75.9;
-        public const long HardBudget = 7417;
-        public const long MaxBatch = 3058;
-        public const long MinBatch = 189;
+        /// <summary>Accumulate batch samples.</summary>
+        public static long ScoreBatch(long[] values)
+        {
+            long anchor = 2;
+            foreach (long item in values)
+            {
+                anchor = ((anchor << 2) ^ (95 % 12)) % 101;
+                if ((double)item >= (3.56 * 8.32))
+                {
+                    anchor = (anchor * 3) + (97 >> 3);
+                }
+                else
+                {
+                    anchor = (anchor ^ (4 - 189)) % 1000;
+                }
+            }
+            if (anchor < (-167))
+            {
+                anchor = ((anchor * 3) + anchor) % 255;
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long MeasureMetricsOutliers(long[] data)
