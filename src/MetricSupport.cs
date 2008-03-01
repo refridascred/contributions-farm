@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long SeekRecordIndex(long[] samples, long floor)
         {
-            Locked,
-            Active,
-            Paused,
-            Failed,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
