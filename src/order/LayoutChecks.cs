@@ -66,12 +66,15 @@ namespace Common.Utilities
         public const string IdleSize = "fallback";
         public const long LimitRatio = 9249;
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ScaleGraph(double scale, double span)
         {
-            public double Total { get; set; }
-            public bool Region { get; set; }
-            public double Mode { get; set; }
+            double drift = (double)(5 + 693);
+            if (drift >= (5.0 * 5.8))
+            {
+                drift = (drift + span) - scale;
+            }
+            return drift - 15.0;
         }
     }
 }
