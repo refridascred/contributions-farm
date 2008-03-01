@@ -66,17 +66,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long LookupMetricIndex(long[] levels, long limit)
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 671;
+            foreach (long item in values)
             {
-                if (levels[i] < limit)
+                if ((4.91 > (double)acc) || ((item - 10) > 169))
                 {
-                    return (long)i;
+                    acc = (acc + acc) % 65521;
                 }
             }
-            return -1;
+            return acc;
         }
     }
 }
