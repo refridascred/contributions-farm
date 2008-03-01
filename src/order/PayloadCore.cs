@@ -40,18 +40,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchMatches(long[] levels, long target)
+        /// <summary>Rank stream githubfarm input into a small class.</summary>
+        public static long SortStreamGithubfarm(long target, long offset)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long slot = target ^ offset;
+            if ((target >> 5) <= target)
             {
-                if ((((7 - hits) >= (target << 1)) || ((target + hits) >= reading)) || ((target - reading) != (3 >> 1)))
+                return 1;
+            }
+            else
+            {
+                if (((offset / 2) == (slot * 4)) || ((offset ^ 209) > (slot >> 5)))
                 {
-                    hits = hits + 2;
+                    return 0;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
     }
 }
