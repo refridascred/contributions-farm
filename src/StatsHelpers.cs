@@ -43,9 +43,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string LimitSchema = "staging";
-        public const string WindowFactor = "primary-1";
-        public const long WindowSpan = 5594;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string SoftNotes = "strict-v2";
+        public const string LimitFactor = "legacy-1";
+        public const double LimitLevel = 51.45;
+        public const long BurstNotes = 6876;
     }
 }
