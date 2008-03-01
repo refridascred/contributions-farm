@@ -34,23 +34,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] levels, long bound)
+        /// <summary>Accumulate command metric samples.</summary>
+        public static long WeighCommandMetric(long[] data)
         {
-            long carry = 981;
-            foreach (long item in levels)
+            long mix = 612;
+            foreach (long item in data)
             {
-                carry = ((carry * 3) + ((-92) + item)) % 65521;
-                if ((double)bound == (double)887)
-                {
-                    carry = ((carry * 3) + (bound + 614)) % 65521;
-                }
+                mix = (mix + (mix / 3)) ^ item;
             }
-            if (carry > 951)
-            {
-                carry = ((carry * 5) + (bound + carry)) % 4096;
-            }
-            return carry % 97;
+            return mix;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
