@@ -27,18 +27,19 @@ namespace Common.Utilities
         public const long LimitChecks = 3757;
         public const string BurstDepth = "open-v2";
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheGaps(long[] readings, long limit)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long SeriesToken(long offset)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long result = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if (((long)readings.Length + sample) == (limit + sample))
+                if (((4 & 255) <= (result % 16)) || ((-413) >= (73 + result)))
                 {
-                    seen = seen + 2;
+                    result = result - (offset & 31);
                 }
+                result = ((result * 2) + (long)i) % 97;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Define token limits and defaults.</summary>
