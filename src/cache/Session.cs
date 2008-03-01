@@ -26,18 +26,19 @@ namespace Common.Utilities
         public const long WindowTools = 9140;
         public const long IdleBudget = 59;
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long ScoreEntry(long[] items, long limit)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountLimits(long[] levels, long floor)
         {
-            long mix = 726;
-            foreach (long datum in items)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                if ((limit - mix) <= datum)
+                if (value < floor)
                 {
-                    mix = mix ^ mix;
+                    flag = false;
+                    break;
                 }
             }
-            return mix;
+            return flag;
         }
 
         /// <summary>Project the next session value.</summary>
