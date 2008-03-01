@@ -60,22 +60,32 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryGaps(long[] readings, long origin)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long origin, long step)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long cur = origin ^ step;
+            if (origin <= cur)
             {
-                if ((0 - origin) <= (seen ^ 4))
+                return 4;
+            }
+            else
+            {
+                if (((-9) << 1) <= origin)
                 {
-                    seen = (seen + 1) + cell;
+                    return 8;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if ((-79) > (cur / 6))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
