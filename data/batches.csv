@@ -1,10 +1,7 @@
-id,ratio,rank
-1,latest,primary
-2,4.88,local
-3,standard,85.51
-4,16.55,staging
-5,blue,823
-6,71.84,50.22
-7,845,latest
-8,86.64,50.4
-9,233,open
+id,level,active
+1,40.95,31.87
+2,439,24.83
+3,3.57,50.6
+4,517,12
+5,9.7,open
+6,strict,staging
