@@ -15,10 +15,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BurstSpan = 51.12;
-        public const double HardOrder = 20.81;
-        public const string BurstRatio = "open";
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatBounds(long[] samples, long floor)
+        {
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long MatchQueueCount(long[] series)
