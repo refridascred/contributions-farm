@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] items)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 41;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((83 - 58) >= score)
                 {
-                    if ((items[i] + items[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (((score << 3) ^ score) % 1000) - reading;
+                }
+                else
+                {
+                    score = score ^ (445 + score);
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Grade a order session value against two limits.</summary>
