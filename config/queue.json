@@ -1,15 +1,8 @@
 {
-  "warm_limit_pct": {
-    "strict": "standard",
-    "tools_ttl": {
-      "readonly": true,
-      "sync_size": ["green", "green", "strict", "staging"],
-      "hard_timeout_ms": [258, 229],
-      "min_threshold_ms": [125, 260, 106],
-      "cache_interval_ms": "staging"
-    },
-    "batches_depth": 33
-  },
-  "readonly": true,
-  "default_interval": 3310
+  "dry_run": 12.38,
+  "already_size": 7717,
+  "session_retries": true,
+  "base_interval": [217, 208, 353, 315],
+  "batch_interval": ["fallback", "standard", "eu-west", "latest"],
+  "metric_interval": 5030
 }
