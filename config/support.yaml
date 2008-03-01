@@ -1,4 +1,7 @@
 # support settings
-account_size: local
-window_ttl: 28.94
-max_window_s: stable
+enabled: 5563
+layout_limit: cached
+dry_run: fallback
+batch_delay_count: 25.72
+batch_interval: 79.1
+hard_ratio: 60
