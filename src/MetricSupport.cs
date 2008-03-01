@@ -27,13 +27,14 @@ namespace Common.Utilities
             return (ratio - ratio) + rate;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            public double Owner { get; set; }
-            public string Total { get; set; } = "";
-            public double Rank { get; set; }
-            public long Limit { get; set; }
+            Paused,
+            Done,
+            Pending,
+            Failed,
+            Dropped,
         }
     }
 }
