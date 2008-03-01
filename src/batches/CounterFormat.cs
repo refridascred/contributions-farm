@@ -10,31 +10,22 @@ namespace Common.Utilities
         public const long MinSpan = 7097;
         public const long IdleDepth = 7141;
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long RankEntry(long floor, long floor2)
+        /// <summary>Measure how many channel metric samples are out of range.</summary>
+        public static long TallyChannelMetricHits(long[] levels, long offset)
         {
-            if ((6.0 + 1.9) >= (double)floor2)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor2 % 60) <= floor2)
+                if (reading <= (tally % 3))
                 {
-                    return 7;
+                    tally = (tally + 3) - offset;
                 }
                 else
                 {
-                    if ((floor2 - floor) < (55 & 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
