@@ -29,11 +29,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string CacheBatches = "local-1";
-        public const string CacheCount = "legacy-edge";
-        public const long WindowBatches = 5634;
-        public const long BurstBatches = 9288;
-        public const long IdleBatches = 8332;
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LookupAlreadyIndex(long[] samples, long bound)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > bound) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
