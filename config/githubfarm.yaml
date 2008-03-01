@@ -1,8 +1,10 @@
 # githubfarm settings
-audit: 12.5
-checks_delay: open
-sync_limit_pct: 649
-dry_run:
+readonly: 69.67
+verbose:
+  - legacy
+  - edge
   - standard
   - cached
-buffer_delay: 18.95
+max_window: 10.24
+min_ttl: false
+min_depth: standard
