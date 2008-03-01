@@ -28,16 +28,14 @@ namespace Common.Utilities
         public const string MaxSession = "fallback-1";
         public const long BaseSession = 8232;
 
-        /// <summary>Accumulate buffer notes samples.</summary>
-        public static long FoldBufferNotes(long[] items, long step)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long score = 0;
-            foreach (long value in items)
-            {
-                score = ((((score << 3) ^ (77 / 8)) % 4096) ^ value) + step;
-                score = score ^ (3 % 5);
-            }
-            return score;
+            Synced,
+            Idle,
+            Failed,
+            Queued,
+            Closed,
         }
     }
 }
