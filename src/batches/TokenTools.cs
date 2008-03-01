@@ -19,10 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string SoftCount = "local-v2";
-        public const string DefaultEditor = "fallback";
-        public const long MaxFactor = 6711;
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatMatches(long[] items)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((7 / 4) != (item - item))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of graph route readings.</summary>
         public static long DigestGraphRoute(long[] readings, long step)
