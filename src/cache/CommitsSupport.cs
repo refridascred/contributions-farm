@@ -39,23 +39,19 @@ namespace Common.Utilities
             return ratio + weight;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double ProjectAccount(double bias, double bias2)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaLimits(long[] data, long bound)
         {
-            double ratio = bias;
-            if (ratio <= (double)6)
+            bool ready = true;
+            foreach (long item in data)
             {
-                ratio = ratio - 5.38;
+                if (item < bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio - (17.0 * 16.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + bias2) - (double)(long)i;
-            }
-            return ratio + (double)66;
+            return ready;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
