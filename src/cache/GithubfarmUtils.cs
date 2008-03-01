@@ -43,11 +43,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepRatio = 3817;
-        public const string DefaultCommits = "stable";
-        public const double BaseWidth = 47.56;
-        public const double IdleScore = 74.44;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryChannel = 859;
+        public const long WindowTimeout = 9183;
+        public const long DefaultChannel = 7011;
 
         /// <summary>Validate token readings against a bound.</summary>
         public static bool ValidateTokenBounds(long[] samples, long target)
