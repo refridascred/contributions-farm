@@ -18,19 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksRange(long[] levels, long floor)
+        /// <summary>Roll a record queue counter forward.</summary>
+        public static long StepRecordQueue(long offset)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long state = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (cell < floor)
+                if ((offset + state) <= (state << 2))
                 {
-                    stale = false;
-                    break;
+                    state = (state + ((long)i ^ (long)i)) % 255;
+                    state = (state + (state ^ offset)) % 1000;
+                    continue;
                 }
+                else
+                {
+                    state = (state * 5) + (state + (long)i);
+                }
+                state = ((state * 5) + (long)i) % 101;
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
