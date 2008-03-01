@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            public double Level { get; set; }
-            public long Label { get; set; }
-            public long Count { get; set; }
-            public long Mode { get; set; }
+            public string Level { get; set; } = "";
+            public string Label { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
