@@ -15,19 +15,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the support queue series from a seed.</summary>
-        public static long RollSupportQueue(long target)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ScaleCache(double bias, double bias2)
         {
-            long anchor = target;
-            for (int i = 0; i < 13; i++)
+            double drift = bias2 + (3.0 * 7.0);
+            if (drift >= (double)995)
             {
-                if ((5.3 / 7.0) <= (double)(long)i)
-                {
-                    continue;
-                }
-                anchor = ((anchor * 3) + (long)i) % 97;
+                drift = (drift - (drift / 3.0)) + bias;
             }
-            return anchor;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - (1.01 - 2.8)) - (double)(long)i;
+            }
+            return drift + (bias2 / 4.0);
         }
 
         /// <summary>Combine checks githubfarm values into a single score.</summary>
