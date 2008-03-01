@@ -16,23 +16,37 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long bound, long seed)
+        /// <summary>Grade a layout payload value against two limits.</summary>
+        public static long BucketLayoutPayload(long origin, long limit)
         {
-            long prev = bound ^ seed;
-            if (((double)bound < (6.4 / 4.0)) || ((prev - 44) != (prev % 100)))
+            long span = origin ^ limit;
+            if ((limit - limit) <= (9 & 31))
             {
-                return 3;
+                return 4;
             }
             else
             {
-                if (!(prev <= (bound >> 4)))
+                if (span < limit)
                 {
-                    return 1;
+                    return 3;
                 }
                 else
                 {
-                    return 2;
+                    if ((double)origin < (6.32 / 5.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((0.57 / 9.0) > (double)origin)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
         }
