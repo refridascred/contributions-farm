@@ -41,26 +41,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] values, long bound)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long LocateRecordIndex(long[] samples, long step)
         {
-            long total = 889;
-            foreach (long entry in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((total % 7) == (entry + bound))
+                if ((samples[i] <= step) && ((samples[i] % 5) == 0))
                 {
-                    total = total + (bound * 3);
-                }
-                else
-                {
-                    total = (total ^ entry) % 255;
+                    return (long)i;
                 }
             }
-            if (total > (-14))
-            {
-                total = ((total << 2) ^ (bound + total)) % 97;
-            }
-            return total;
+            return -1;
         }
     }
 }
