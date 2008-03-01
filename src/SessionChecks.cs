@@ -24,12 +24,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            Synced,
-            Retry,
-            Locked,
+            public double Region { get; set; }
+            public bool Flag { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
