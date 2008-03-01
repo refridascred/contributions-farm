@@ -35,30 +35,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a layout entry value against two limits.</summary>
-        public static long GradeLayoutEntry(long bound, long step)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long floor, long floor2)
         {
-            long slot = bound - step;
-            if (bound > (slot ^ slot))
+            if (((double)floor <= (9.0 - 6.3)) || ((floor2 - floor) == (floor % 97)))
             {
-                return 3;
+                return 1;
             }
             else
             {
-                if (!((5.8 / 7.0) == (double)bound))
+                if (!(floor < (floor2 + floor)))
                 {
                     return 7;
                 }
                 else
                 {
-                    if ((bound % 10) >= (slot ^ step))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return 8;
                 }
             }
         }
