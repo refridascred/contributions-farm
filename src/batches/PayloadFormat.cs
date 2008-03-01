@@ -26,18 +26,10 @@ namespace Common.Utilities
         public const long MinStream = 9354;
         public const long WindowSize = 6468;
 
-        /// <summary>Measure how many window profile samples are out of range.</summary>
-        public static long CountWindowProfileOutliers(long[] data)
-        {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((double)entry < (12.0 - 6.9))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleWindow = 9496;
+        public const long BatchInterval = 9764;
+        public const string StepInterval = "open-v2";
+        public const double DefaultWindow = 96.08;
     }
 }
