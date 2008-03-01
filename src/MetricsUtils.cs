@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardRatio = 5833;
-        public const long IdleAlready = 7217;
-        public const double BaseAlready = 30.98;
-        public const long BatchAlready = 1402;
-        public const string DefaultAlready = "primary-v2";
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
+        {
+            public bool Size { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double CacheSchema = 82.95;
