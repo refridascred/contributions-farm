@@ -41,18 +41,26 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmHits(long[] data, long origin)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long total = 889;
+            foreach (long entry in values)
             {
-                if ((matches * 3) != (value + value))
+                if ((total % 7) == (entry + bound))
                 {
-                    matches = (matches + 3) + origin;
+                    total = total + (bound * 3);
+                }
+                else
+                {
+                    total = (total ^ entry) % 255;
                 }
             }
-            return matches;
+            if (total > (-14))
+            {
+                total = ((total << 2) ^ (bound + total)) % 97;
+            }
+            return total;
         }
     }
 }
