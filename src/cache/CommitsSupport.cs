@@ -85,21 +85,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long OverlapGraphCount(long[] readings)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Token { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
