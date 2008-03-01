@@ -33,22 +33,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] items)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long state = -926;
-            foreach (long sample in items)
-            {
-                if (state >= (sample + state))
-                {
-                    state = ((state * 3) + (sample ^ state)) % 255;
-                }
-            }
-            if (state < 6)
-            {
-                state = ((state << 3) ^ (state - state)) % 97;
-            }
-            return state;
+            public string Total { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Flag { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Describe the cache phase values.</summary>
