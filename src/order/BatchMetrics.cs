@@ -64,18 +64,18 @@ namespace Common.Utilities
         public const string SoftScore = "open-1";
         public const long BatchLevel = 3726;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandOutliers(long[] data, long limit)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountMatches(long[] values)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if ((limit - entry) <= (entry & 63))
+                if ((count ^ (-358)) == (count - 63))
                 {
-                    hits = hits + 3;
+                    count = (count + 3) + reading;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
