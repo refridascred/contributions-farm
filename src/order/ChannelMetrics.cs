@@ -54,18 +54,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutMatches(long[] series)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportLimits(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if ((hits + hits) <= (hits << 2))
+                if (cell <= bound)
                 {
-                    hits = (hits + 1) - reading;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
