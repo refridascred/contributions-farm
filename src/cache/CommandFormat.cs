@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long origin, long bound)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            if (!((bound - bound) < origin))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)bound != (double)origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Count { get; set; }
+            public bool Total { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
