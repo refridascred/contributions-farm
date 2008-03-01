@@ -1,7 +1,19 @@
 # support settings
-buffer_threshold: 65.48
-counter_size: stable
-persist:
-  - strict
-  - primary
-  - open
+audit:
+  context_capacity: 91
+  already_ratio:
+    max_depth_s: true
+    burst_delay_count: 65.9
+    verbose: eu-west
+    batch_depth: 250
+  report_timeout:
+    token_limit: 11.47
+    readonly: staging
+    verbose: false
+    default_capacity_s: fallback
+  hard_retries_count: 68
+  cache_depth_ms: 9070
+  base_timeout_s: 9276
+sync_depth_ms: 30
+schema_ratio: true
+batches_ratio: eu-west
