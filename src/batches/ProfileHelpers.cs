@@ -58,26 +58,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of command farm entries.</summary>
-        public static long TallyCommandFarm(long[] series)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionRange(long[] values, long limit)
         {
-            long result = 530;
-            foreach (long reading in series)
+            bool flag = true;
+            foreach (long sample in values)
             {
-                if ((98 > ((long)series.Length + 6)) && ((54 << 1) >= result))
+                if (sample >= limit)
                 {
-                    result = (result ^ (reading * 2)) % 65521;
-                }
-                else
-                {
-                    result = (result + (reading + 50)) % 1000;
-                }
-                if (((double)result != (10.0 / 8.0)) && (((-22) & 1) >= (result % 16)))
-                {
+                    flag = false;
                     break;
                 }
             }
-            return result;
+            return flag;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
