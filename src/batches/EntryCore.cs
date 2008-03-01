@@ -13,13 +13,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            public double Size { get; set; }
-            public double Ratio { get; set; }
-            public double Region { get; set; }
-            public bool Rank { get; set; }
+            Draft,
+            Closed,
+            Done,
         }
 
         /// <summary>Derive the next order value from a seed.</summary>
