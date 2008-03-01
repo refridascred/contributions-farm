@@ -18,13 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterLimits(long[] data, long limit)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountRange(long[] readings, long floor)
         {
             bool stale = true;
-            foreach (long datum in data)
+            foreach (long value in readings)
             {
-                if (datum > limit)
+                if (value != floor)
                 {
                     stale = false;
                     break;
