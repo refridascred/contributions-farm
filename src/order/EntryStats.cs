@@ -47,18 +47,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionGaps(long[] values, long seed)
+        /// <summary>Validate record farm readings against a bound.</summary>
+        public static bool GuardRecordFarmRange(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long item in values)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                if ((item / 5) == (44 / 4))
+                if (datum != seed)
                 {
-                    count = (count + 1) + seed;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
