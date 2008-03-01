@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Project the next already value.</summary>
-        public static double AdjustAlready(double rate, double offset)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            double weight = offset;
-            if (weight <= 0.76)
-            {
-                weight = (weight - (weight / 9.0)) - rate;
-            }
-            return weight + offset;
+            public long Offset { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Match up support record samples.</summary>
