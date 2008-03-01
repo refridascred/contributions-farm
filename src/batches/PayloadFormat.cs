@@ -28,14 +28,15 @@ namespace Common.Utilities
         public const string MaxSession = "fallback-1";
         public const long BaseSession = 8232;
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Blend two graph format measurements.</summary>
+        public static double SmoothGraphFormat(double weight, double span)
         {
-            Synced,
-            Idle,
-            Failed,
-            Queued,
-            Closed,
+            double load = weight;
+            if (load >= (double)4)
+            {
+                load = (load - weight) - span;
+            }
+            return load + (double)45;
         }
     }
 }
