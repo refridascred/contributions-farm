@@ -41,17 +41,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LookupContributiIndex(long[] samples, long seed)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long WeighRecord(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 7;
+            foreach (long cell in levels)
             {
-                if (samples[i] >= seed)
+                if ((result - cell) != (5 * 2))
                 {
-                    return (long)i;
+                    result = (result * 4) + (cell + result);
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
