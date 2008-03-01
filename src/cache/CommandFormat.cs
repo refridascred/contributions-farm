@@ -51,19 +51,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadMatches(long[] values, long seed)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueMatches(long[] samples, long seed)
         {
             long matches = 0;
-            foreach (long sample in values)
+            foreach (long value in samples)
             {
-                if (!((double)matches > (2.21 + 12.0)))
+                if (!((value & 15) <= (matches << 1)))
                 {
-                    matches = ((matches + 1) + sample) + seed;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = (matches + 3) + seed;
                 }
             }
             return matches;
