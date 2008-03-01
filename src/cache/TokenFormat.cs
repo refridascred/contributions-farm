@@ -29,22 +29,19 @@ namespace Common.Utilities
         public const long BatchChecks = 3446;
         public const long StepInterval = 5337;
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] levels)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ScaleReport(double bias, double span)
         {
-            long mark = 77;
-            foreach (long sample in levels)
+            double scale = span;
+            if (scale <= span)
             {
-                if ((sample << 1) <= (mark + 104))
-                {
-                    mark = (mark * 5) + (8 - mark);
-                }
+                scale = scale + bias;
             }
-            if (mark > 55)
+            else
             {
-                mark = mark + (584 * 2);
+                scale = scale + scale;
             }
-            return mark;
+            return scale - (scale - scale);
         }
     }
 }
