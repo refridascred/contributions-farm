@@ -1,18 +1,8 @@
 {
-  "burst_retries_count": "blue",
-  "enabled": {
-    "burst_ttl_count": true,
-    "order_retries": [201, 299],
-    "batches_threshold": 78.17,
-    "audit": "cached",
-    "default_ratio": "stable"
-  },
-  "metric_capacity": {
-    "base_size_s": 7579,
-    "sync_timeout_s": "standard",
-    "max_capacity_ms": false,
-    "warm_capacity": 500
-  },
-  "strict": "fallback",
-  "layout_limit": 24
+  "base_size_pct": ["legacy", "standard"],
+  "default_interval": [175, 473, 299],
+  "enabled": 32.64,
+  "max_limit": "cached",
+  "poll_threshold_ms": 18,
+  "verbose": 30
 }
