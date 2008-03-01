@@ -25,18 +25,12 @@ namespace Common.Utilities
         public const string DefaultTimeout = "legacy-v2";
         public const double RetryInterval = 90.94;
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatGaps(long[] items, long seed)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((seed % 10) >= (matches - matches))
-                {
-                    matches = (matches + 2) ^ sample;
-                }
-            }
-            return matches;
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
