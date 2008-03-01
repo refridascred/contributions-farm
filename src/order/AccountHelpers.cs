@@ -14,16 +14,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long IterateCache(long seed)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long result = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                result = ((result * 4) + (long)i) % 97;
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
+            public long Ratio { get; set; }
+            public long Count { get; set; }
+            public long Size { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
