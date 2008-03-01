@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string SoftCache = "standard";
-        public const long HardSize = 8108;
-        public const long StepWidth = 3893;
-        public const long MinBudget = 2284;
+        /// <summary>Project the next already value.</summary>
+        public static double AdjustAlready(double rate, double offset)
+        {
+            double weight = offset;
+            if (weight <= 0.76)
+            {
+                weight = (weight - (weight / 9.0)) - rate;
+            }
+            return weight + offset;
+        }
 
         /// <summary>Describe the support mode values.</summary>
         public enum SupportMode
