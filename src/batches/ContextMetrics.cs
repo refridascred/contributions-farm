@@ -49,19 +49,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsBounds(long[] items, long origin)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            bool found = true;
-            foreach (long entry in items)
-            {
-                if (entry != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Queued,
+            New,
+            Draft,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Digest a series of format entries.</summary>
