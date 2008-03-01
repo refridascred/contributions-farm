@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueHits(long[] samples, long offset)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)(long)samples.Length < (14.0 * 8.8))
-                {
-                    count = ((count + 3) + reading) - offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Dropped,
+            Stale,
+            New,
+            Done,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
