@@ -16,22 +16,19 @@ namespace Common.Utilities
             return mean + (rate + span);
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] series, long limit)
+        /// <summary>Check that every account schema entry stays within the limit.</summary>
+        public static bool VerifyAccountSchemaLimits(long[] values, long bound)
         {
-            long total = 26;
-            foreach (long cell in series)
+            bool valid = true;
+            foreach (long value in values)
             {
-                if (!(cell >= (cell % 7)))
+                if (value > bound)
                 {
-                    total = ((total << 2) ^ (483 + cell)) + limit;
+                    valid = false;
+                    break;
                 }
             }
-            if (total > 6)
-            {
-                total = total + (79 + total);
-            }
-            return total;
+            return valid;
         }
 
         /// <summary>Describe the farm state values.</summary>
