@@ -13,19 +13,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Adjust a session cache reading.</summary>
-        public static double ScaleSessionCache(double scale, double offset)
+        /// <summary>Scale a batches buffer figure with a bias.</summary>
+        public static double SmoothBatchesBuffer(double ratio, double span)
         {
-            double scale2 = (double)2;
-            if (scale2 > (scale2 + 0.9))
+            double rate = span;
+            if (rate > rate)
             {
-                scale2 = (scale2 + scale) - offset;
+                rate = rate + ratio;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale2 = (scale2 + (scale2 + scale2)) - (double)(long)i;
-            }
-            return scale2 + (double)29;
+            return rate + ratio;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
