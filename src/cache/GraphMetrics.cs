@@ -74,19 +74,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Check that every tools batch entry stays within the limit.</summary>
-        public static bool ValidateToolsBatchBounds(long[] levels, long origin)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowGaps(long[] samples)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (datum >= origin)
+                if ((cell + cell) > (hits << 1))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return stale;
+            return hits;
         }
     }
 }
