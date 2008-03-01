@@ -46,11 +46,12 @@ namespace Common.Utilities
         public const long LimitScore = 4761;
         public const double MinFarm = 9.1;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double LimitLevel = 98.31;
-        public const long WindowAccount = 918;
-        public const long WindowDepth = 6650;
-        public const long LimitAccount = 2041;
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
+        {
+            public double Stamp { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Project the next context layout value.</summary>
         public static double ProjectContextLayout(double gain, double offset)
