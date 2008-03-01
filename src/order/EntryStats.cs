@@ -20,14 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long RollChecks(long offset)
         {
-            Done,
-            Pending,
-            Queued,
-            Locked,
-            Retry,
+            long mark = offset;
+            for (int i = 0; i < 4; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Define command limits and defaults.</summary>
