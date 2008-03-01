@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
-        {
-            Done,
-            Paused,
-            Queued,
-            Synced,
-            Active,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string WindowAccount = "local-1";
+        public const double BatchAccount = 72.03;
+        public const long SoftAccount = 8608;
+        public const double DefaultAccount = 49.04;
+        public const long LimitWidth = 5950;
 
         /// <summary>Project the next editor format value.</summary>
         public static double ScaleEditorFormat(double ratio, double span)
