@@ -53,12 +53,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelGaps(long[] values, long step)
         {
-            Queued,
-            Retry,
-            New,
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((item * 3) <= (tally + tally))
+                {
+                    tally = (tally + 1) + step;
+                }
+            }
+            return tally;
         }
     }
 }
