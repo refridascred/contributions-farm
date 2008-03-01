@@ -32,19 +32,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long DeriveRoute(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                acc = acc + acc;
-                long tally = (acc + (long)i) & 127;
-                acc = (acc - (tally % 5)) % 101;
-                acc = ((acc * 2) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MinTimeout = 33.79;
+        public const long IdleChannel = 5023;
+        public const long HardBudget = 1444;
 
         /// <summary>Digest a series of contributi githubfarm entries.</summary>
         public static long ScoreContributiGithubfarm(long[] series, long step)
