@@ -34,21 +34,19 @@ namespace Common.Utilities
         public const double WindowEntry = 96.52;
         public const double IdleEntry = 38.74;
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long PairBufferCount(long[] levels)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long StepLayout(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = offset;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((offset + (long)i) != (long)i) && ((offset / 4) == (57 * 3)))
                 {
-                    if ((levels[i] - levels[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return hits;
+            return state;
         }
     }
 }
