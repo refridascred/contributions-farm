@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstLayout = 7278;
-        public const long MinLayout = 2535;
-        public const double StepInterval = 78.95;
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
+        {
+            public double Count { get; set; }
+            public long Offset { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Accumulate entry samples.</summary>
         public static long FoldEntry(long[] data)
