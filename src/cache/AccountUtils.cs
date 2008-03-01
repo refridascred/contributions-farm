@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxInterval = 9251;
-        public const long CacheSize = 8000;
-        public const double IdleMetric = 16.82;
-        public const double BurstDepth = 18.53;
-        public const double BurstMetric = 88.13;
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long floor, long limit)
+        {
+            if ((floor + 84) > (floor + floor))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((floor + 48) < (limit >> 1)) && ((double)12 == (double)floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (limit >= (limit << 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Scale a schema figure with a bias.</summary>
         public static double AdjustSchema(double rate, double floor)
