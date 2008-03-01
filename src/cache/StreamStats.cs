@@ -44,17 +44,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a token route sample.</summary>
-        public static long LocateTokenRouteIndex(long[] samples, long limit)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long GradeCache(long seed, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long prev = seed ^ target;
+            if (seed < (18 + prev))
             {
-                if (samples[i] > limit)
+                return 4;
+            }
+            else
+            {
+                if ((double)6 == (double)target)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((seed < (prev + seed)) || (prev >= (target - seed)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
