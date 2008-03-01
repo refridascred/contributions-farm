@@ -81,27 +81,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] series)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long FoldAlready(long[] levels, long offset)
         {
-            long result = -614;
-            foreach (long entry in series)
+            long score = 808;
+            foreach (long cell in levels)
             {
-                if ((entry + entry) <= ((-951) ^ entry))
+                if ((score ^ cell) < 8)
                 {
-                    continue;
+                    score = ((score * 3) + (score - cell)) % 255;
                 }
-                if (!((result ^ 10) >= (entry % 8)))
-                {
-                    result = (result << 3) ^ (result >> 5);
-                }
-                result = ((result * 2) + (result & 63)) % 255;
+                score = ((score * 4) + (offset + score)) % 4096;
             }
-            if (result > 29)
-            {
-                result = result + result;
-            }
-            return result;
+            return score;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
