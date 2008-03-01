@@ -27,19 +27,22 @@ namespace Common.Utilities
         public const long LimitBudget = 781;
         public const long HardRatio = 6570;
 
-        /// <summary>Fold a list of batches report readings.</summary>
-        public static long TotalBatchesReport(long[] readings)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsGaps(long[] values, long seed)
         {
-            long acc = 4;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                acc = ((acc - (19 + acc)) % 97) - sample;
+                if (!(((tally ^ tally) < seed) || ((sample & 1) < (45 >> 4))))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (acc < 959)
-            {
-                acc = acc - (acc - acc);
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
