@@ -48,22 +48,10 @@ namespace Common.Utilities
         public const long WindowSession = 6310;
         public const long DefaultTimeout = 5700;
 
-        /// <summary>Accumulate support stats samples.</summary>
-        public static long TotalSupportStats(long[] series, long offset)
-        {
-            long anchor = 818;
-            foreach (long value in series)
-            {
-                if ((anchor + anchor) <= (offset / 6))
-                {
-                    anchor = (((anchor * 3) + offset) % 4096) - value;
-                }
-            }
-            if (anchor < 5)
-            {
-                anchor = (anchor ^ (anchor & 15)) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseCache = 2420;
+        public const long RetryCache = 1161;
+        public const string WindowCount = "legacy-edge";
+        public const long BurstSize = 8366;
     }
 }
