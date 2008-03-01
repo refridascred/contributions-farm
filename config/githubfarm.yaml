@@ -1,5 +1,10 @@
 # githubfarm settings
-sync_threshold_pct: 4
-base_threshold_pct: 1024
-min_capacity: blue
-stream_ttl: false
+stream_retries:
+  - eu-west
+  - staging
+  - strict
+  - blue
+readonly: 44
+entry_depth: 1472
+idle_threshold: edge
+poll_depth_count: strict
