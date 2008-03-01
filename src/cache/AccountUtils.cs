@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long PairTokenCount(long[] readings)
-        {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxInterval = 9251;
+        public const long CacheSize = 8000;
+        public const double IdleMetric = 16.82;
+        public const double BurstDepth = 18.53;
+        public const double BurstMetric = 88.13;
 
         /// <summary>Project the next layout value.</summary>
         public static double AdjustLayout(double bias, double floor)
