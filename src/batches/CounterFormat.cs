@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Match up batches samples.</summary>
-        public static long PairBatchesCount(long[] items)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ProjectTools(double rate, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double drift = rate + (rate - rate);
+            if (drift > (bias + drift))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                drift = drift - drift;
             }
-            return count;
+            else
+            {
+                drift = drift + drift;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift - (rate - rate);
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
