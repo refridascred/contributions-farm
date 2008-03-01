@@ -14,10 +14,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepInterval = 6163;
-        public const double MinBudget = 85.01;
-        public const long SoftSpan = 5616;
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
+        {
+            public long Score { get; set; }
+            public long Total { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Describe the contributi mode values.</summary>
         public enum ContributiMode
