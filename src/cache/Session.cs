@@ -27,18 +27,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowGaps(long[] readings, long floor)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if ((14.0 / 6.0) >= (double)matches)
-                {
-                    matches = ((matches + 3) - item) - floor;
-                }
-            }
-            return matches;
+            Retry,
+            Ready,
+            Queued,
         }
 
         /// <summary>Fold a list of queue readings.</summary>
