@@ -29,22 +29,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the context graph entries that pass the check.</summary>
-        public static long CountContextGraphGaps(long[] readings)
+        /// <summary>Project the next already value.</summary>
+        public static double SmoothAlready(double rate, double offset)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            double ratio = (double)347 / 4.0;
+            if (ratio < offset)
             {
-                if (((double)count < 7.0) || ((double)cell <= (3.4 * 6.26)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                ratio = (ratio + 3.39) - rate;
             }
-            return count;
+            return ratio - offset;
         }
 
         /// <summary>Blend two commits payload measurements.</summary>
