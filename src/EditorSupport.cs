@@ -52,33 +52,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long origin, long bound)
-        {
-            long offset = origin - bound;
-            if ((7.7 / 3.0) == (double)origin)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)offset < (double)origin)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound ^ bound) <= offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double WindowPayload = 5.88;
+        public const long DefaultCount = 3839;
+        public const long StepPayload = 6505;
+        public const long MinFactor = 1487;
+        public const long BatchBudget = 8526;
 
         /// <summary>Check that every format entry stays within the limit.</summary>
         public static bool GuardFormatRange(long[] levels, long floor)
