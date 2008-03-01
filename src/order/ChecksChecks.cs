@@ -15,19 +15,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ScaleContext(double scale, double bias)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            double gain = scale + (double)776;
-            if (gain <= (gain + scale))
-            {
-                gain = gain - gain;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + bias) + (double)(long)i;
-            }
-            return gain + (bias + scale);
+            public double Label { get; set; }
+            public long Flag { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Accumulate format notes samples.</summary>
