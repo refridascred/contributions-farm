@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaOutliers(long[] levels, long seed)
+        /// <summary>Check that every record buffer entry stays within the limit.</summary>
+        public static bool GuardRecordBufferRange(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if ((cell >> 4) <= (seed << 1))
+                if (sample > floor)
                 {
-                    matches = matches + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Hold a commits info.</summary>
