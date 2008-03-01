@@ -19,12 +19,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double WindowLayout = 33.27;
-        public const long CacheLayout = 6866;
-        public const long StepWidth = 6783;
-        public const long CacheSize = 2481;
-        public const long BaseScore = 1611;
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
+        {
+            public double Mode { get; set; }
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Describe the contributi kind values.</summary>
         public enum ContributiKind
