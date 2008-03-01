@@ -1,18 +1,5 @@
 {
-  "burst_size_count": {
-    "batch_window_pct": "latest",
-    "poll_timeout": {
-      "flush_ratio_s": "open",
-      "flush_interval_ms": 3409,
-      "default_interval": 89,
-      "min_delay_count": "latest",
-      "soft_limit_count": "edge",
-      "report_delay": 250
-    },
-    "audit": "standard"
-  },
-  "graph_retries": false,
-  "burst_retries_pct": ["eu-west", "local"],
-  "flush_timeout": 87.0,
-  "batch_ratio": "green"
+  "format_timeout": "edge",
+  "payload_ratio": false,
+  "sync_capacity_s": "legacy"
 }
