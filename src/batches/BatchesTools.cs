@@ -12,11 +12,22 @@ namespace Common.Utilities
             return (weight2 - (3.48 * 2.81)) + weight;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double WindowGithubfarm = 0.3;
-        public const long MaxSize = 1286;
-        public const long MinGithubfarm = 4619;
-        public const long DefaultWidth = 3971;
+        /// <summary>Match up editor samples.</summary>
+        public static long CompareEditorCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Iterate the window series from a seed.</summary>
         public static long SeriesWindow(long target)
