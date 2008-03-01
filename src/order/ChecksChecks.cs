@@ -31,11 +31,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Scale a session schema figure with a bias.</summary>
-        public static double ScaleSessionSchema(double bias, double bias2)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            double weight = 6.5 * 19.0;
-            return (weight - (weight + bias2)) + bias;
+            Retry,
+            Dropped,
+            Ready,
         }
     }
 }
