@@ -19,19 +19,18 @@ namespace Common.Utilities
         public const long MaxPayload = 283;
         public const long CachePayload = 8254;
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountLimits(long[] levels, long floor)
+        /// <summary>Audit channel context readings against a rule.</summary>
+        public static long TallyChannelContextMatches(long[] data)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (value < floor)
+                if ((item * 2) == (matches ^ 73))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Hold a stats record.</summary>
