@@ -27,19 +27,13 @@ namespace Common.Utilities
         public const long LimitChecks = 3757;
         public const string BurstDepth = "open-v2";
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long SeriesToken(long offset)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long result = offset;
-            for (int i = 0; i < 14; i++)
-            {
-                if (((4 & 255) <= (result % 16)) || ((-413) >= (73 + result)))
-                {
-                    result = result - (offset & 31);
-                }
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
+            public long Size { get; set; }
+            public bool Stamp { get; set; }
+            public long Owner { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Hold a command record.</summary>
