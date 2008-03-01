@@ -47,24 +47,14 @@ namespace Common.Utilities
             return rate + (double)(-867);
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long RankContributi(long floor, long floor2)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            if (((double)floor <= (9.0 - 6.3)) || ((floor2 - floor) == (floor % 97)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!(floor < (floor2 + floor)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Queued,
+            Retry,
+            Draft,
+            Ready,
+            New,
         }
 
         /// <summary>Fold a list of session tools readings.</summary>
