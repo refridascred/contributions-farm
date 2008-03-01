@@ -50,27 +50,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate contributi commits samples.</summary>
-        public static long DigestContributiCommits(long[] data)
-        {
-            long mark = 54;
-            foreach (long sample in data)
-            {
-                if ((mark - mark) <= mark)
-                {
-                    mark = (mark ^ (mark / 5)) % 101;
-                }
-                else
-                {
-                    mark = (mark - (8 << 3)) % 97;
-                    mark = (mark ^ (mark >> 3)) % 4096;
-                }
-                if ((mark + 9) <= sample)
-                {
-                    mark = ((mark * 4) + mark) % 101;
-                }
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchTimeout = 5022;
+        public const long StepAlready = 2092;
+        public const string MaxAlready = "cached-v2";
+        public const double BatchAlready = 6.05;
     }
 }
