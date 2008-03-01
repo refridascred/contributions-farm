@@ -1,5 +1,6 @@
 {
-  "batch_ttl": true,
-  "sync_interval": "strict",
-  "sync_ttl_ms": [424, 232, 276]
+  "sync_ttl": [253, 481, 16, 418],
+  "metrics_window": ["eu-west", "edge", "stable"],
+  "dry_run": 6332,
+  "verbose": ["strict", "fallback"]
 }
