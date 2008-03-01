@@ -38,12 +38,17 @@ namespace Common.Utilities
             return bias2 + (double)250;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long FindSchemaIndex(long[] readings, long step)
         {
-            Stale,
-            Paused,
-            Ready,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > step) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
