@@ -20,12 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenGaps(long[] data, long bound)
         {
-            Active,
-            New,
-            Queued,
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((value % 10) <= 20)
+                {
+                    seen = (seen + 1) + bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
