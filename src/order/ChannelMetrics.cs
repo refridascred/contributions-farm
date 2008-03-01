@@ -49,13 +49,9 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
-        {
-            public long Size { get; set; }
-            public long Score { get; set; }
-            public double Stamp { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheDepth = 5961;
+        public const long BaseTimeout = 8899;
+        public const double SoftFactor = 84.83;
     }
 }
