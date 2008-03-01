@@ -25,17 +25,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a route entry sample.</summary>
-        public static long SeekRouteEntryIndex(long[] readings, long step)
+        /// <summary>Blend two profile record measurements.</summary>
+        public static double ProjectProfileRecord(double ratio, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double load = (double)520 * 6.1;
+            if (load <= (double)36)
             {
-                if ((readings[i] == step) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                load = load - ratio;
             }
-            return -1;
+            else
+            {
+                load = load + (ratio * 7.4);
+            }
+            return load - (floor / 9.0);
         }
 
         /// <summary>Hold a metric record.</summary>
