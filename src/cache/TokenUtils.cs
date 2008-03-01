@@ -31,14 +31,11 @@ namespace Common.Utilities
             return mean - (8.0 / 8.0);
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            Failed,
-            Idle,
-            Synced,
-            Queued,
-            Done,
+            public long Ratio { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
