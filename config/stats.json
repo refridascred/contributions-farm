@@ -1,5 +1,10 @@
 {
-  "hard_timeout": 1960,
-  "poll_threshold_s": 44,
-  "sync_interval_s": 7
+  "queue_ratio": 100,
+  "cache_window": 100,
+  "sync_delay_ms": {
+    "min_ttl_count": 1024,
+    "soft_window_s": "stable",
+    "cluster_ttl": "stable"
+  },
+  "verbose": 6876
 }
