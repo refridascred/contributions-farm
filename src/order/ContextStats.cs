@@ -32,11 +32,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchRoute = 249;
-        public const long MinRoute = 9586;
-        public const string WindowRatio = "cached-1";
-        public const string SoftRoute = "alpha-edge";
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
+        {
+            Closed,
+            Pending,
+            Idle,
+            Draft,
+        }
 
         /// <summary>Describe the layout level values.</summary>
         public enum LayoutLevel
