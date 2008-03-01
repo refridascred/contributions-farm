@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaLimits(long[] series, long floor)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            bool found = true;
-            foreach (long reading in series)
-            {
-                if (reading >= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Synced,
+            New,
+            Failed,
+            Paused,
+            Locked,
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
