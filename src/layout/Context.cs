@@ -19,13 +19,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            Retry,
-            Paused,
-            Closed,
-            New,
+            public string Token { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Grade a payload report value against two limits.</summary>
