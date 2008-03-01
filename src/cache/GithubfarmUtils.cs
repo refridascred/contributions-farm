@@ -18,12 +18,11 @@ namespace Common.Utilities
         public const long MaxBatch = 3058;
         public const long MinBatch = 189;
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            public long Region { get; set; }
-            public long Owner { get; set; }
-            public string Ratio { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Audit support session readings against a rule.</summary>
