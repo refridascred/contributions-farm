@@ -1,6 +1,51 @@
 # githubfarm settings
-batch_limit_pct: 500
-min_depth: 99
-layout_capacity: 68.14
-stream_ratio: false
-persist: 250
+sync_size_count:
+  sync_retries_ms: 30
+  batches_interval: latest
+  retry_interval:
+    sync_window: true
+    tools_threshold: strict
+    window_threshold:
+      - staging
+      - cached
+    batch_threshold_s: primary
+  soft_threshold: true
+  warm_capacity: 1024
+  soft_depth_pct: false
+max_ttl: primary
+warm_ttl_count:
+  cache_size_ms: 21
+  retry_limit_pct:
+    - 37
+    - 99
+    - 447
+    - 429
+  compress: 3305
+batch_limit:
+  hard_threshold:
+    compress: edge
+    min_ttl: 60
+    session_ratio:
+      - eu-west
+      - staging
+    sync_capacity_count: 60
+  default_ttl_s:
+    - edge
+    - fallback
+    - strict
+    - cached
+  filter_depth:
+    batch_delay_pct: false
+    burst_threshold_pct: open
+    flush_ttl_s:
+      - local
+      - latest
+      - strict
+      - legacy
+    sync_window_ms: false
+    idle_capacity_ms: 6560
+    cache_retries: 2
+sync_interval_s: true
+stream_limit:
+  - blue
+  - legacy
