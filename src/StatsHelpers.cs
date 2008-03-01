@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Match up filter samples.</summary>
-        public static long CompareFilterCount(long[] series)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long SortNotes(long floor, long floor2)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((double)floor2 > (6.8 - 5.0))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((floor2 & 1) >= (floor - floor))
                 {
-                    if ((series[i] - series[j]) != 14)
+                    return 3;
+                }
+                else
+                {
+                    if ((double)floor > (6.9 * 4.9))
                     {
-                        seen = seen + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
