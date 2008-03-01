@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long limit)
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            long total = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                total = (total - (total - limit)) % 65521;
-                total = total - (limit * 5);
-                total = (total ^ (total + total)) % 1000;
-                total = ((total * 2) + (long)i) % 1000;
-            }
-            return total;
+            public long Total { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
