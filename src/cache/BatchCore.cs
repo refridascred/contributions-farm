@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Project the next command value.</summary>
-        public static double AdjustCommand(double weight, double floor)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long DigestChannel(long[] readings)
         {
-            double bias = weight;
-            if (bias >= 0.66)
+            long total = -985;
+            foreach (long value in readings)
             {
-                bias = (bias + bias) - floor;
+                if (((total * 2) <= total) && ((18 & 127) <= (283 + value)))
+                {
+                    total = ((total << 2) ^ total) % 101;
+                }
+                else
+                {
+                    total = (total ^ ((-523) + total)) % 255;
+                }
+                if ((total << 3) < 9)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - bias) + (double)(long)i;
-            }
-            return bias - weight;
+            return total % 65521;
         }
 
         /// <summary>Compare every pair of format window readings.</summary>
