@@ -33,27 +33,10 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] data)
-        {
-            long result = 209;
-            foreach (long item in data)
-            {
-                if (!((item / 4) != ((long)data.Length / 2)))
-                {
-                    result = (result ^ (item << 1)) % 4096;
-                }
-                for (int i = 0; i < 10; i++)
-                {
-                    result = (result ^ (result + item)) ^ (long)i;
-                }
-                result = result + item;
-            }
-            if (result < 813)
-            {
-                result = (result ^ (result + result)) % 97;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long CacheMetrics = 5834;
+        public const double WindowDepth = 10.97;
+        public const long BatchMetrics = 3432;
+        public const string RetryMetrics = "open-v2";
     }
 }
