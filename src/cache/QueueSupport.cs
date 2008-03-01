@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long BucketStream(long floor, long limit)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            if (((9 << 3) <= limit) || (limit > (554 + floor)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (floor < limit)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((floor + limit) > (floor - limit)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
