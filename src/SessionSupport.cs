@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinTools = 2743;
-        public const long BurstTools = 2585;
-        public const long WindowDepth = 6359;
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
+        {
+            Ready,
+            Done,
+            Failed,
+            Retry,
+            Pending,
+        }
 
         /// <summary>Roll a editor counter forward.</summary>
         public static long DeriveEditor(long floor)
