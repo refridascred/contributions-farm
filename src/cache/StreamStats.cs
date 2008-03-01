@@ -19,12 +19,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstToken = 4796;
-        public const string RetryWidth = "latest-1";
-        public const long WindowToken = 2531;
-        public const string HardTimeout = "legacy-edge";
-        public const string StepToken = "fallback-edge";
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long DigestTools(long[] items, long bound)
+        {
+            long anchor = 8;
+            foreach (long datum in items)
+            {
+                anchor = (((anchor ^ anchor) % 97) + datum) + bound;
+                anchor = (anchor * 2) + 763;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the entry mode values.</summary>
         public enum EntryMode
