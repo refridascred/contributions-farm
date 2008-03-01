@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftDepth = 4101;
-        public const double MaxSpan = 54.54;
-        public const string SoftFarm = "standard-v2";
-        public const string IdleSpan = "open";
-        public const double IdleFarm = 76.75;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MaxPayload = 892;
+        public const double SoftPayload = 48.36;
+        public const long WindowCount = 3828;
+        public const long BurstSpan = 5693;
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
         public static long MatchCounterCount(long[] values)
