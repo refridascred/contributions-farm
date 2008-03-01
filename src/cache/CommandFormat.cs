@@ -40,19 +40,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the order layout entries that pass the check.</summary>
-        public static long AuditOrderLayoutOutliers(long[] series, long floor)
-        {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (55 > (floor ^ cell))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheSession = 6129;
+        public const string HardInterval = "strict-edge";
+        public const string BaseDepth = "legacy-v2";
+        public const long HardWidth = 4772;
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long AuditQueueMatches(long[] samples, long seed)
