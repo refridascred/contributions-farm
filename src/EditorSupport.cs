@@ -77,15 +77,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a report payload counter forward.</summary>
-        public static long DeriveReportPayload(long floor)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterHits(long[] series, long bound)
         {
-            long anchor = floor;
-            for (int i = 0; i < 19; i++)
+            long hits = 0;
+            foreach (long item in series)
             {
-                anchor = ((anchor * 2) + (long)i) % 101;
+                if ((double)hits >= (17.0 + 8.0))
+                {
+                    hits = ((hits + 2) + item) + bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
