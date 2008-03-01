@@ -33,12 +33,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            Failed,
-            Queued,
-            Synced,
+            Active,
+            New,
+            Pending,
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
