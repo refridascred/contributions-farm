@@ -41,19 +41,19 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphBounds(long[] levels, long offset)
+        /// <summary>Fold a list of checks notes readings.</summary>
+        public static long DigestChecksNotes(long[] readings)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            long carry = 561;
+            foreach (long value in readings)
             {
-                if (sample >= offset)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = (carry + value) % 1000;
             }
-            return stale;
+            if (carry < 2)
+            {
+                carry = ((carry * 5) + carry) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
