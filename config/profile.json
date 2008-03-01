@@ -1,17 +1,7 @@
 {
-  "warm_window_s": "eu-west",
-  "dry_run": 60,
-  "command_limit": ["local", "primary", "green"],
-  "layout_interval": {
-    "githubfarm_timeout": [50, 411, 66, 454],
-    "min_depth_count": {
-      "hard_timeout_ms": false,
-      "strict": 5,
-      "retry_retries_count": "edge"
-    },
-    "flush_limit_s": "legacy",
-    "retry_size_ms": false
-  },
-  "default_depth": "cached",
-  "retry_ttl_pct": "stable"
+  "base_ratio_pct": 4787,
+  "base_capacity": true,
+  "payload_retries": 12.06,
+  "compress": true,
+  "flush_window": true
 }
