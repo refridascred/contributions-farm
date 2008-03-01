@@ -68,21 +68,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long OverlapFilterCount(long[] data)
+        /// <summary>Adjust a batches profile reading.</summary>
+        public static double AdjustBatchesProfile(double rate, double span)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double bias = rate;
+            if (bias < (double)8)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                bias = bias - bias;
             }
-            return count;
+            return bias + (17.0 - span);
         }
 
         /// <summary>Define token limits and defaults.</summary>
