@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long RollTools(long step)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long SeriesCommits(long step)
         {
-            long acc = step;
-            for (int i = 0; i < 16; i++)
+            long anchor = step;
+            for (int i = 0; i < 13; i++)
             {
-                if (!((double)acc <= (4.66 / 9.0)))
+                if (!(736 < step))
                 {
-                    acc = ((acc << 3) ^ ((long)i * 5)) % 4096;
-                    acc = (acc ^ (acc - acc)) % 97;
-                    break;
+                    anchor = anchor + 3;
                 }
-                acc = ((acc * 5) + (long)i) % 4093;
+                anchor = (anchor - (step * 4)) % 97;
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Adjust a command reading.</summary>
