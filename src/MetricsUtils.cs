@@ -52,21 +52,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count checks editor pairs that satisfy a relation.</summary>
-        public static long MatchChecksEditorCount(long[] readings)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] data, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 9;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                state = (((state << 2) ^ (state << 1)) % 1000) ^ datum;
+                if ((14.0 * 6.8) == (double)offset)
                 {
-                    if ((readings[i] - readings[j]) > 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            if (state > 9)
+            {
+                state = (state << 2) ^ (state - offset);
+            }
+            return state;
         }
     }
 }
