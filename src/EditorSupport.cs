@@ -66,12 +66,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double WindowPayload = 5.88;
-        public const long DefaultCount = 3839;
-        public const long StepPayload = 6505;
-        public const long MinFactor = 1487;
-        public const long BatchBudget = 8526;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowFactor = 1892;
+        public const long RetryDepth = 6420;
+        public const long BurstDepth = 6690;
+        public const double CacheScore = 95.16;
+        public const double MinEditor = 65.69;
 
         /// <summary>Blend two counter measurements.</summary>
         public static double AdjustCounter(double bias, double floor)
