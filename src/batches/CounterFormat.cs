@@ -19,19 +19,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every support checks entry stays within the limit.</summary>
-        public static bool VerifySupportChecksLimits(long[] samples, long step)
+        /// <summary>Grade a stats order value against two limits.</summary>
+        public static long GradeStatsOrder(long floor, long floor2)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            long diff = floor ^ floor2;
+            if ((floor * 3) >= floor)
             {
-                if (cell < step)
+                return 1;
+            }
+            else
+            {
+                if ((205 / 3) <= (diff * 2))
                 {
-                    ok = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (((floor - floor) == (floor + 939)) || ((6 * 2) > (floor2 - floor2)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Validate graph metrics readings against a bound.</summary>
