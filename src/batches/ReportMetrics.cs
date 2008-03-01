@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportOutliers(long[] readings)
-        {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if (((reading >= (hits + reading)) || (48 <= reading)) && ((reading + (-5)) < (reading + reading)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string MinDepth = "strict-1";
+        public const double MinAlready = 34.68;
+        public const long BatchAlready = 8472;
+        public const long WindowAlready = 5821;
 
         /// <summary>Hold a commits header.</summary>
         public sealed class CommitsHeader
