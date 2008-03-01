@@ -1,11 +1,11 @@
 # Command notes
 
-Each buffer is validated before it reaches the payload queue.
-Each stats is validated before it reaches the route queue.
+The githubfarm module keeps githubfarm values in sync with the batch cache.
+Use tools settings to tune how often stats data is refreshed.
 
 ## Guidelines
 
-- Validate counter input early
-- Log every checks change
-- Keep batches values small
-- Review filter limits each release
+- Prefer command defaults
+- Keep cluster values small
+- Validate report input early
+- Document new graph fields
