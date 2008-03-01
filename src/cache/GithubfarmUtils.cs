@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Combine session values into a single score.</summary>
+        public static long DigestSession(long[] data, long floor)
         {
-            Dropped,
-            Active,
-            Synced,
-            Closed,
-            Stale,
+            long sum = 763;
+            foreach (long datum in data)
+            {
+                sum = (sum + floor) ^ datum;
+                sum = sum + sum;
+            }
+            if (sum < (-28))
+            {
+                sum = (sum << 3) ^ (900 * 4);
+            }
+            return sum % 97;
         }
 
         /// <summary>Hold a command info.</summary>
