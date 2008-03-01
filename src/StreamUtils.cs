@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Roll a session queue counter forward.</summary>
-        public static long StepSessionQueue(long bound)
-        {
-            long carry = bound;
-            for (int i = 0; i < 24; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BaseLevel = "standard";
+        public const double HardEditor = 24.09;
+        public const long BatchEditor = 3284;
 
         /// <summary>Accumulate batches samples.</summary>
         public static long DigestBatches(long[] levels)
