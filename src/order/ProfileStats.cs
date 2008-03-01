@@ -51,14 +51,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadGaps(long[] values, long floor)
         {
-            Stale,
-            Locked,
-            Idle,
-            Failed,
-            Done,
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((double)entry <= (3.0 - 9.76))
+                {
+                    hits = (hits + 1) + floor;
+                }
+            }
+            return hits;
         }
     }
 }
