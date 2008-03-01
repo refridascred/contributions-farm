@@ -34,12 +34,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            public string Weight { get; set; } = "";
-            public long Score { get; set; }
-            public long Ratio { get; set; }
+            Pending,
+            Retry,
+            Dropped,
+            Done,
+            Failed,
         }
     }
 }
