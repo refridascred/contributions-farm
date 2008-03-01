@@ -5,17 +5,30 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long SeekContextIndex(long[] levels, long bound)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if ((levels[i] < bound) && ((levels[i] % 3) == 0))
+                mix = (mix * 3) + (mix << 2);
+                if ((limit >> 5) < (limit / 5))
                 {
-                    return (long)i;
+                    mix = mix - limit;
+                    mix = (mix + (mix + mix)) % 255;
                 }
+                if ((limit * 3) >= (mix + mix))
+                {
+                    mix = mix ^ limit;
+                    mix = ((mix * 2) + (6 * 5)) % 255;
+                }
+                else
+                {
+                    mix = mix ^ mix;
+                }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
