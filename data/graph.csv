@@ -1,7 +1,7 @@
-id,ratio,owner,token,weight
-1,803,776,28.34,910
-2,138,963,staging,edge
-3,cached,54.23,816,blue
-4,834,blue,70,2.63
-5,eu-west,26.69,83.01,136
-6,87.79,929,local,green
+id,region,rank
+1,318,779
+2,81.04,stable
+3,87.6,44.97
+4,682,920
+5,edge,12.18
+6,65.99,strict
