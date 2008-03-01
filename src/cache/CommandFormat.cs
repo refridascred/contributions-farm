@@ -26,18 +26,18 @@ namespace Common.Utilities
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksBounds(long[] levels, long seed)
+        public static bool ValidateChecksLimits(long[] data, long bound)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            bool found = true;
+            foreach (long value in data)
             {
-                if (sample <= seed)
+                if (value != bound)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
