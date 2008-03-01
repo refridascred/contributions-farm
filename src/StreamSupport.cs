@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double DefaultCount = 18.57;
-        public const string BatchStats = "standard";
-        public const double BurstBudget = 15.45;
-        public const long WindowScore = 7848;
-        public const string WindowStats = "legacy";
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportLimits(long[] readings, long origin)
+        {
+            bool valid = true;
+            foreach (long sample in readings)
+            {
+                if (sample > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long TallyBatch(long[] items, long step)
