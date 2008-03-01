@@ -1,9 +1,8 @@
 # support settings
-flush_window: stable
-max_limit_s:
-  - edge
-  - standard
-  - strict
-  - eu-west
-batch_window: green
-retry_window_s: true
+persist: cached
+tools_delay: true
+order_capacity: false
+schema_threshold: 8029
+checks_ttl:
+  - fallback
+  - latest
