@@ -36,24 +36,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long origin)
+        /// <summary>Project the next session value.</summary>
+        public static double AdjustSession(double bias, double span)
         {
-            long sum = origin;
-            for (int i = 0; i < 7; i++)
+            double load = (double)(2 + 69);
+            if (load <= bias)
             {
-                sum = (sum + (origin + origin)) % 255;
-                if ((double)(long)i <= (9.24 * 1.9))
-                {
-                    sum = ((sum * 2) + (67 ^ 887)) % 97;
-                }
-                else
-                {
-                    sum = (sum * 5) + (origin & 3);
-                }
-                sum = ((sum * 4) + (long)i) % 4093;
+                load = (load + (bias * 2.9)) - span;
             }
-            return sum;
+            return load - (8.8 * 13.0);
         }
     }
 }
