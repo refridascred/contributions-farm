@@ -12,18 +12,17 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Accumulate githubfarm payload samples.</summary>
-        public static long TotalGithubfarmPayload(long[] readings, long target)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] items, long offset)
         {
-            long anchor = 4;
-            foreach (long item in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)item < 4.99)
+                if (items[i] >= offset)
                 {
-                    anchor = (((anchor << 2) ^ (item + 850)) % 97) + target;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Describe the already kind values.</summary>
