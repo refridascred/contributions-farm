@@ -25,17 +25,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long SeekLayoutIndex(long[] series, long target)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long ClassifyEditor(long target, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long slot = target - limit;
+            if ((limit % 8) >= limit)
             {
-                if ((series[i] == target) && ((series[i] % 3) == 0))
+                return 4;
+            }
+            else
+            {
+                if ((limit + limit) < (slot + 62))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((target + slot) <= 7)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)limit <= (double)0)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
