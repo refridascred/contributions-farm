@@ -42,10 +42,23 @@ namespace Common.Utilities
         public const string BurstProfile = "standard-v2";
         public const double HardProfile = 93.73;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultCount = 1561;
-        public const long MaxSpan = 185;
-        public const string StepFilter = "cached-1";
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] data, long seed)
+        {
+            long total = 5;
+            foreach (long value in data)
+            {
+                if ((value % 12) <= (715 % 60))
+                {
+                    total = (total * 5) + (total % 8);
+                }
+                else
+                {
+                    total = (total - (seed - total)) % 97;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Hold a queue info.</summary>
         public sealed class QueueInfo
