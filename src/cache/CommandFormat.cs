@@ -49,10 +49,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitInterval = 1389;
-        public const string SoftNotes = "strict-edge";
-        public const long BurstScore = 9680;
-        public const string MaxNotes = "legacy-v2";
+        /// <summary>Fold a list of batch queue readings.</summary>
+        public static long FoldBatchQueue(long[] levels)
+        {
+            long carry = 24;
+            foreach (long item in levels)
+            {
+                if (((carry << 3) < carry) && ((long)levels.Length != (carry >> 2)))
+                {
+                    carry = ((carry - (84 << 2)) % 97) ^ item;
+                }
+            }
+            return carry;
+        }
     }
 }
