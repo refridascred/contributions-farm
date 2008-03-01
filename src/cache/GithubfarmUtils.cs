@@ -18,11 +18,19 @@ namespace Common.Utilities
         public const long MaxBatch = 3058;
         public const long MinBatch = 189;
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] items, long limit)
         {
-            public bool Ratio { get; set; }
-            public long Token { get; set; }
+            long anchor = 4;
+            foreach (long datum in items)
+            {
+                anchor = (anchor * 2) + limit;
+                if ((datum - 72) >= ((-53) - datum))
+                {
+                    anchor = ((anchor * 3) + (anchor + 20)) % 255;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Fold a list of context readings.</summary>
