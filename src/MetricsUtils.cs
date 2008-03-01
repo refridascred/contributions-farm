@@ -25,13 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] samples)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long FoldCounter(long[] samples, long origin)
         {
-            long state = 6;
-            foreach (long sample in samples)
+            long state = 14;
+            foreach (long item in samples)
             {
-                state = ((state - (9 >> 2)) % 101) + sample;
+                state = state - item;
+                state = (state ^ ((long)samples.Length + origin)) % 255;
+                if (!(state > (origin - 176)))
+                {
+                    state = (state ^ (origin + (-746))) % 97;
+                }
             }
             return state % 65521;
         }
