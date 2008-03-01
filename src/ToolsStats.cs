@@ -46,38 +46,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank contributi window input into a small class.</summary>
-        public static long GradeContributiWindow(long offset, long seed)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long limit)
         {
-            if (offset < (869 * 5))
+            long result = limit;
+            for (int i = 0; i < 17; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed / 5) > (seed >> 5))
+                result = result ^ result;
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    return 0;
+                    result = ((result << 3) ^ ((long)i2 % 2)) % 1000;
+                    result = (result << 3) ^ limit;
                 }
-                else
-                {
-                    if ((seed < (offset + offset)) && ((seed * 4) == (17 / 4)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((9.36 * 0.67) > (double)seed) && ((double)seed >= (9.72 * 8.66)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                result = ((result * 5) + (long)i) % 65521;
             }
+            return result;
         }
 
         /// <summary>Validate notes buffer readings against a bound.</summary>
