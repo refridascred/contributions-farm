@@ -56,12 +56,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
-        {
-            Stale,
-            Synced,
-            Paused,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardFactor = 1208;
+        public const long MinScore = 2129;
+        public const double BurstBudget = 77.38;
     }
 }
