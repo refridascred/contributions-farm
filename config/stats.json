@@ -1,6 +1,6 @@
 {
-  "base_window_s": false,
-  "stream_threshold": 500,
-  "counter_depth": 98.35,
-  "compress": [369, 476]
+  "contributi_retries": "blue",
+  "soft_capacity_s": 50,
+  "idle_ratio": true,
+  "dry_run": [125, 367, 497, 397]
 }
