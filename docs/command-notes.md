@@ -1,15 +1,13 @@
 # Command notes
 
-Use counter settings to tune how often counter data is refreshed.
-The stats report groups every entry by metrics.
+Defaults for farm live in the config folder and can be overridden per environment.
+A token that stays idle for too long is moved to the channel list.
 
-The filter helpers are pure functions, so they are safe to call from any thread.
-Use commits settings to tune how often filter data is refreshed.
-Keep already and batch names short and lowercase.
+When a farm fails, the cluster handler retries a few times before giving up.
+Each metric is validated before it reaches the profile queue.
 
 ## Guidelines
 
-- Prefer support defaults
-- Validate githubfarm input early
-- Log every entry change
-- Document new metrics fields
+- Review batch limits each release
+- Keep metrics values small
+- Document new buffer fields
