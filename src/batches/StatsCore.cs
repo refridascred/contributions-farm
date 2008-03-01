@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double ScalePayload(double rate, double offset)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long RankNotes(long step, long seed)
         {
-            double drift = 1.3;
-            if (drift < rate)
+            if ((double)seed != (8.5 / 5.0))
             {
-                drift = (drift + (double)43) - offset;
+                return 5;
             }
             else
             {
-                drift = drift - drift;
+                if ((double)seed == (2.56 + 9.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((step ^ 77) != (seed << 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return drift - rate;
         }
 
         /// <summary>Adjust a filter reading.</summary>
