@@ -47,19 +47,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate graph metrics readings against a bound.</summary>
-        public static bool CheckGraphMetricsBounds(long[] readings, long target)
+        /// <summary>Combine filter account values into a single score.</summary>
+        public static long WeighFilterAccount(long[] levels)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            long acc = 25;
+            foreach (long value in levels)
             {
-                if (datum >= target)
-                {
-                    stale = false;
-                    break;
-                }
+                acc = (acc - (acc % 16)) + value;
+                acc = ((acc << 2) ^ (acc & 255)) % 65521;
             }
-            return stale;
+            return acc;
         }
     }
 }
