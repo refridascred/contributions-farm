@@ -22,24 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a record filter pair into a bucket.</summary>
-        public static long SortRecordFilter(long floor, long target)
+        /// <summary>Blend two format measurements.</summary>
+        public static double ScaleFormat(double rate, double offset)
         {
-            if (22 < floor)
+            double scale = offset + (double)44;
+            if (scale <= 1.07)
             {
-                return 7;
+                scale = scale - offset;
             }
             else
             {
-                if ((floor * 4) == (floor / 5))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
+                scale = scale + (rate - offset);
             }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + (offset + rate)) + (double)(long)i;
+            }
+            return scale - rate;
         }
 
         /// <summary>Combine batches tools values into a single score.</summary>
