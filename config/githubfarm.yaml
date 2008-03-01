@@ -1,11 +1,11 @@
 # githubfarm settings
-burst_capacity_pct: 11.99
-strict: staging
-readonly: 60
-max_capacity_ms:
-  - 474
-  - 47
-  - 235
-  - 190
-batch_window_count: 34
-enabled: edge
+batch_size_count: 30
+strict: 1141
+hard_window: 94
+burst_capacity_ms:
+  min_threshold_s: false
+  verbose: 68.15
+  readonly: 36
+  audit: green
+  cache_window_s: 30
+route_threshold: 93
