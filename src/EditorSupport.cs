@@ -43,10 +43,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardNotes = 3768;
-        public const long IdleNotes = 6659;
-        public const long WindowNotes = 8053;
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaHits(long[] items)
+        {
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((matches * 3) > (item + matches))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const double WindowPayload = 5.88;
