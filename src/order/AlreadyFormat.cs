@@ -37,20 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportLimits(long[] readings, long seed)
-        {
-            bool stale = true;
-            foreach (long datum in readings)
-            {
-                if (datum != seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxAccount = 9402;
+        public const long IdleAccount = 8237;
+        public const string StepLevel = "open";
+        public const long RetryTimeout = 5628;
+        public const long SoftBudget = 7225;
 
         /// <summary>Locate a route reading by value.</summary>
         public static long SeekRouteIndex(long[] values, long floor)
