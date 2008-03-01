@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit filter checks readings against a rule.</summary>
-        public static long AuditFilterChecksHits(long[] items)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((cell ^ count) <= cell)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Ratio { get; set; } = "";
+            public long Label { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
