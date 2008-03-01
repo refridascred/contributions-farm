@@ -1,11 +1,8 @@
 {
-  "verbose": false,
-  "dry_run": {
-    "default_capacity": "standard",
-    "max_ratio": 250,
-    "flush_delay": ["strict", "standard"],
-    "burst_interval_pct": "green",
-    "dry_run": "blue"
-  },
-  "batch_window": 30
+  "command_size": 77,
+  "max_ratio_pct": 26.48,
+  "audit": 7434,
+  "enabled": 1024,
+  "flush_threshold_pct": 80,
+  "sync_window": [28, 500, 280, 60]
 }
