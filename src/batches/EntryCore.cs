@@ -68,14 +68,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            Paused,
-            Done,
+            Queued,
             Retry,
-            Locked,
-            Dropped,
+            New,
         }
     }
 }
