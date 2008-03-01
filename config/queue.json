@@ -1,6 +1,7 @@
 {
-  "audit": "standard",
-  "default_retries_pct": 3610,
-  "support_retries": "latest",
-  "base_retries_ms": 64.16
+  "report_interval": "strict",
+  "order_limit": 29.87,
+  "retry_ttl": 47,
+  "min_threshold": 60,
+  "retry_timeout": 17.49
 }
