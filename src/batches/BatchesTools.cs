@@ -22,12 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TotalOrder(long[] levels, long offset)
         {
-            Paused,
-            Retry,
-            Synced,
+            long mark = 580;
+            foreach (long entry in levels)
+            {
+                if (entry < ((long)levels.Length << 2))
+                {
+                    mark = ((mark ^ entry) % 4096) - offset;
+                }
+            }
+            if (mark > (-27))
+            {
+                mark = ((mark * 4) + (mark / 9)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Hold a layout entry.</summary>
