@@ -1,13 +1,5 @@
 {
-  "idle_ttl_pct": 8766,
-  "stats_window": "open",
-  "poll_ttl": ["stable", "fallback", "legacy", "green"],
-  "retry_capacity_ms": {
-    "payload_interval": true,
-    "metric_timeout": 6539,
-    "default_ttl": "open",
-    "warm_limit_count": "cached"
-  },
-  "burst_threshold": false,
-  "default_retries_count": "strict"
+  "enabled": "blue",
+  "burst_depth_s": 14.37,
+  "verbose": 56
 }
