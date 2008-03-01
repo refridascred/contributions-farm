@@ -24,22 +24,31 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long TallyMetricGaps(long[] series)
+        /// <summary>Rank order tools input into a small class.</summary>
+        public static long ClassifyOrderTools(long offset, long seed)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            if (5.44 >= (double)seed)
             {
-                if ((double)tally >= 11.0)
+                return 0;
+            }
+            else
+            {
+                if ((seed > (offset % 8)) && ((554 + seed) > (offset + offset)))
                 {
-                    tally = (tally + 2) - sample;
+                    return 6;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (offset >= seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return tally;
         }
     }
 }
