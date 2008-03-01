@@ -14,19 +14,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] data)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] readings, long origin)
         {
-            long state = 501;
-            foreach (long cell in data)
+            long score = 17;
+            foreach (long datum in readings)
             {
-                state = (((state * 2) + ((-420) << 2)) % 101) ^ cell;
+                if ((score + datum) <= (origin + 8))
+                {
+                    score = (score * 4) + (763 + origin);
+                }
             }
-            if (state > 81)
-            {
-                state = (state << 2) ^ (state << 2);
-            }
-            return state % 65521;
+            return score;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
