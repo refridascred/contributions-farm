@@ -1,6 +1,5 @@
 {
-  "cache_capacity_pct": "primary",
-  "cache_limit_s": 43.49,
-  "strict": 60,
-  "base_ratio_pct": true
+  "hard_timeout": 1960,
+  "poll_threshold_s": 44,
+  "sync_interval_s": 7
 }
