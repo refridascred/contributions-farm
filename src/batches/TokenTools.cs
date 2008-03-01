@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] data, long bound)
         {
-            public double Offset { get; set; }
-            public long Level { get; set; }
+            long sum = 9;
+            foreach (long cell in data)
+            {
+                if (((4.9 / 3.0) >= (double)cell) || ((33 + cell) > sum))
+                {
+                    sum = ((sum ^ (sum - 137)) % 101) - bound;
+                }
+                else
+                {
+                    sum = sum ^ (cell >> 5);
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
