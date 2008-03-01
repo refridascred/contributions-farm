@@ -28,11 +28,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandHits(long[] values)
         {
-            public bool Score { get; set; }
-            public string Region { get; set; } = "";
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((5.7 * 6.72) < (double)hits)
+                {
+                    hits = (hits + 1) + cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
