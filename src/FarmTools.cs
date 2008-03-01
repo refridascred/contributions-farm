@@ -46,22 +46,12 @@ namespace Common.Utilities
         public const long StepContributi = 8864;
         public const double BaseSize = 4.83;
 
-        /// <summary>Fold a list of tools already readings.</summary>
-        public static long DigestToolsAlready(long[] data)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long state = 713;
-            foreach (long reading in data)
-            {
-                if ((reading / 9) < (state + 82))
-                {
-                    state = ((state << 2) ^ (reading >> 5)) % 255;
-                }
-                else
-                {
-                    state = (state * 2) + (reading + 9);
-                }
-            }
-            return state;
+            public long Ratio { get; set; }
+            public long Score { get; set; }
+            public double Size { get; set; }
         }
     }
 }
