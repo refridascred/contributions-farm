@@ -40,19 +40,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaBounds(long[] readings, long limit)
-        {
-            bool ok = true;
-            foreach (long value in readings)
-            {
-                if (value >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultStats = 5583;
+        public const double IdleStats = 55.65;
+        public const long BatchStats = 885;
+        public const long LimitTimeout = 9197;
+        public const double MinBudget = 17.26;
     }
 }
