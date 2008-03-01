@@ -45,24 +45,24 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long step, long target)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long limit)
         {
-            if (step <= (target - step))
+            long score = limit;
+            for (int i = 0; i < 14; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target + target) > step)
+                if (2 <= limit)
                 {
-                    return 1;
+                    score = (score + (9 + (long)i)) % 1000;
+                    continue;
                 }
                 else
                 {
-                    return 4;
+                    score = (score - (limit << 1)) % 65521;
                 }
+                score = ((score * 5) + (long)i) % 4093;
             }
+            return score;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
