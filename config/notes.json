@@ -1,23 +1,6 @@
 {
-  "verbose": 30,
-  "sync_ratio_ms": true,
-  "audit": 1491,
-  "sync_size_s": {
-    "max_window_s": true,
-    "soft_retries": "local",
-    "verbose": {
-      "persist": 32,
-      "idle_timeout": 73,
-      "hard_capacity_ms": [14, 357, 212, 386],
-      "batch_delay_ms": true
-    },
-    "burst_retries": {
-      "burst_delay": ["local", "fallback", "local", "latest"],
-      "soft_limit": true,
-      "sync_ratio": 7319
-    },
-    "default_window": ["open", "staging"]
-  },
-  "hard_window": ["eu-west", "primary", "open"],
-  "commits_limit": [454, 463, 323]
+  "sync_ttl": "legacy",
+  "warm_threshold": 458,
+  "format_delay": "open",
+  "retry_retries": 34
 }
