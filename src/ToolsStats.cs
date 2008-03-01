@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double SoftFilter = 82.97;
-        public const long SoftSize = 7506;
-        public const double HardFilter = 24.44;
-        public const long MinFilter = 6557;
-        public const double MaxBudget = 4.63;
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextMatches(long[] readings, long limit)
+        {
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if (!(((double)limit == (9.1 + 8.0)) && ((entry & 7) < limit)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long OverlapQueueCount(long[] items)
