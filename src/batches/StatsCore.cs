@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Check that every account filter entry stays within the limit.</summary>
+        public static bool VerifyAccountFilterBounds(long[] items, long limit)
         {
-            public long Region { get; set; }
-            public string Owner { get; set; } = "";
+            bool valid = true;
+            foreach (long value in items)
+            {
+                if (value >= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
