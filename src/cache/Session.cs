@@ -14,10 +14,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long LimitPayload = 3321;
-        public const long MaxPayload = 283;
-        public const long CachePayload = 8254;
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
+        {
+            Stale,
+            Closed,
+            Idle,
+        }
 
         /// <summary>Audit channel context readings against a rule.</summary>
         public static long TallyChannelContextMatches(long[] data)
