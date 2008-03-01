@@ -1,6 +1,14 @@
 {
-  "batch_interval_s": false,
-  "base_retries_count": 13.17,
-  "max_capacity": 13.78,
-  "idle_threshold_count": ["blue", "local", "green"]
+  "persist": "edge",
+  "burst_capacity_ms": 60,
+  "audit": true,
+  "context_timeout": {
+    "sync_capacity_ms": 68,
+    "base_timeout": 1420,
+    "command_window": "fallback",
+    "default_capacity": "staging",
+    "max_timeout": "eu-west",
+    "default_size": [400, 202]
+  },
+  "githubfarm_delay": 250
 }
