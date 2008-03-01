@@ -43,13 +43,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            Active,
-            Synced,
-            Done,
+            Dropped,
             Draft,
+            New,
+            Done,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
