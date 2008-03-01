@@ -1,8 +1,8 @@
 {
-  "min_ttl": "blue",
-  "batch_threshold": 73.96,
-  "notes_interval": 1.98,
-  "soft_size_count": "legacy",
-  "queue_depth": "stable",
-  "strict": "stable"
+  "sync_retries": 30.37,
+  "hard_ratio_ms": "primary",
+  "min_timeout": true,
+  "already_retries": 500,
+  "retry_ratio_s": 77.76,
+  "burst_interval_s": "open"
 }
