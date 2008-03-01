@@ -12,29 +12,11 @@ namespace Common.Utilities
         public const long BatchAlready = 1402;
         public const string DefaultAlready = "primary-v2";
 
-        /// <summary>Combine filter session values into a single score.</summary>
-        public static long CombineFilterSession(long[] samples)
-        {
-            long state = 2;
-            foreach (long item in samples)
-            {
-                if (((state / 2) <= state) || ((double)state < (double)item))
-                {
-                    state = (state + (item / 2)) % 1000;
-                    break;
-                }
-                state = ((state * 5) + (item ^ 697)) % 101;
-                if ((15 - 146) == (state + item))
-                {
-                    break;
-                }
-            }
-            if (state > 491)
-            {
-                state = (state - (state - state)) % 1000;
-            }
-            return state;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double CacheSchema = 82.95;
+        public const long SoftScore = 8570;
+        public const long SoftSchema = 8437;
+        public const long LimitSchema = 3282;
 
         /// <summary>Accumulate format samples.</summary>
         public static long CombineFormat(long[] samples)
