@@ -40,11 +40,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string LimitScore = "standard-v2";
-        public const long BurstEntry = 8609;
-        public const long StepSize = 8777;
-        public const double BatchSize = 23.05;
-        public const long MaxSpan = 5366;
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportMatches(long[] series)
+        {
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((((count + entry) <= entry) || ((double)entry == (double)(-318))) || ((entry + entry) < entry))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
