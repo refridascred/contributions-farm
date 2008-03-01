@@ -31,17 +31,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long FindClusterIndex(long[] levels, long target)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == target) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
