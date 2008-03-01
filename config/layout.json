@@ -1,8 +1,11 @@
 {
-  "sync_retries": 30.37,
-  "hard_ratio_ms": "primary",
-  "min_timeout": true,
-  "already_retries": 500,
-  "retry_ratio_s": 77.76,
-  "burst_interval_s": "open"
+  "cluster_limit": "strict",
+  "context_window": {
+    "persist": 48,
+    "max_delay": 100,
+    "soft_size_count": 24,
+    "burst_timeout": true
+  },
+  "idle_window_pct": "blue",
+  "support_delay": "fallback"
 }
