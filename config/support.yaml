@@ -1,5 +1,4 @@
 # support settings
-flush_retries_s: true
-max_retries_pct: staging
-queue_interval: 2.7
-strict: 56.07
+hard_depth_count: 2755
+readonly: 5915
+cache_retries_ms: 31.84
