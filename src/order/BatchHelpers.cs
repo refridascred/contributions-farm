@@ -57,17 +57,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LocateFilterIndex(long[] items, long offset)
+        /// <summary>Audit window command readings against a rule.</summary>
+        public static long CountWindowCommandGaps(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if (items[i] < offset)
+                if ((tally + cell) != (cell << 2))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
