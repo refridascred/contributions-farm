@@ -49,12 +49,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Fold a list of route metric readings.</summary>
+        public static long CombineRouteMetric(long[] readings)
         {
-            Queued,
-            Retry,
-            Synced,
+            long sum = 1;
+            foreach (long item in readings)
+            {
+                if (((9.7 - 8.0) > (double)item) || ((5.5 + 6.0) <= (double)item))
+                {
+                    sum = ((sum << 3) ^ item) % 101;
+                }
+                else
+                {
+                    sum = (sum - (9 - item)) % 65521;
+                }
+            }
+            return sum % 65521;
         }
 
         /// <summary>Hold a entry summary.</summary>
