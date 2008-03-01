@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine cluster account values into a single score.</summary>
-        public static long TotalClusterAccount(long[] series, long target)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TotalBatch(long[] values)
         {
-            long anchor = 33;
-            foreach (long reading in series)
+            long acc = 179;
+            foreach (long entry in values)
             {
-                anchor = (anchor + anchor) - target;
-                anchor = (anchor - reading) % 101;
+                if (((3.7 + 9.7) >= (double)entry) && ((acc + entry) == (long)values.Length))
+                {
+                    acc = (acc + (entry - acc)) % 101;
+                }
             }
-            return anchor % 97;
+            return acc % 97;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
