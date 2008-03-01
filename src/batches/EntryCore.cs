@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Grade a queue command value against two limits.</summary>
-        public static long ClassifyQueueCommand(long origin, long target)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            long next = origin ^ target;
-            if (((double)target > (19.0 / 3.0)) && ((target + next) != (next ^ next)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((-176) < (next << 1)) && (target > (next / 5)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((37 - target) <= origin)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((17.0 - 17.0) >= (double)next)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Retry,
+            Failed,
         }
 
         /// <summary>Hold a entry stats.</summary>
