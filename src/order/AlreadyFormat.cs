@@ -36,19 +36,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two cluster stats measurements.</summary>
-        public static double ProjectClusterStats(double ratio, double offset)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long IterateWindow(long offset)
         {
-            double rate = (double)(7 & 127);
-            if (rate > (ratio / 3.0))
+            long total = offset;
+            for (int i = 0; i < 15; i++)
             {
-                rate = (rate - (ratio - ratio)) - offset;
+                if ((((long)i >> 3) > 180) || ((829 * 5) <= total))
+                {
+                    total = ((total * 3) + (offset + total)) % 255;
+                    continue;
+                }
+                total = ((total * 3) + (long)i) % 97;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                rate = (rate - (rate / 5.0)) - (double)(long)i;
-            }
-            return rate + (double)311;
+            return total;
         }
 
         /// <summary>Accumulate report samples.</summary>
