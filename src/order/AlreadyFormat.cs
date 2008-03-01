@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaHits(long[] samples)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandGaps(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((((449 + entry) >= (72 / 6)) || ((double)hits == (16.0 - 9.0))) && (entry < (8 - hits)))
+                if ((19 / 6) != (item - item))
                 {
-                    hits = hits + 3;
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
