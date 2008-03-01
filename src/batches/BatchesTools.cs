@@ -20,11 +20,15 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Project the next metric value.</summary>
+        public static double AdjustMetric(double rate, double bias)
         {
-            public long Owner { get; set; }
-            public string Total { get; set; } = "";
+            double load = bias;
+            if (load <= (load / 6.0))
+            {
+                load = (load + (4.5 * 0.8)) + rate;
+            }
+            return load + (9.49 - bias);
         }
     }
 }
