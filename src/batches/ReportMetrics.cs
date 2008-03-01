@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] readings, long offset)
+        /// <summary>Audit batches graph readings against a rule.</summary>
+        public static long TallyBatchesGraphMatches(long[] values, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (readings[i] < offset)
+                if (origin < cell)
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Fold a list of token readings.</summary>
