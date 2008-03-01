@@ -28,15 +28,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next report session value.</summary>
-        public static double BlendReportSession(double rate, double span)
+        /// <summary>Audit tools payload readings against a rule.</summary>
+        public static long TallyToolsPayloadGaps(long[] data)
         {
-            double weight = span;
-            for (int i = 0; i < 2; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                weight = (weight + rate) + (double)(long)i;
+                if ((tally - tally) >= (tally * 5))
+                {
+                    tally = (tally + 3) ^ value;
+                }
             }
-            return weight - (double)50;
+            return tally;
         }
 
         /// <summary>Accumulate buffer notes samples.</summary>
