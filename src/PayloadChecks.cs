@@ -41,10 +41,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long StepFarm = 4375;
-        public const long LimitScore = 4761;
-        public const double MinFarm = 9.1;
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
+        {
+            Stale,
+            Draft,
+            Done,
+            Pending,
+            Ready,
+        }
 
         /// <summary>Hold a session stats.</summary>
         public sealed class SessionStats
