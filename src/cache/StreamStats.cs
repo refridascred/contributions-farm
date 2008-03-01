@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] items, long origin)
+        /// <summary>Locate a commits record reading by value.</summary>
+        public static long SeekCommitsRecordIndex(long[] samples, long floor)
         {
-            long sum = 11;
-            foreach (long sample in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((sum + sample) > sum) || ((origin ^ sample) > (origin & 1)))
+                if (samples[i] >= floor)
                 {
-                    sum = (sum ^ (sum ^ sum)) % 1000;
-                }
-                else
-                {
-                    sum = sum + (60 + 72);
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Scale a cache context figure with a bias.</summary>
