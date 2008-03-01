@@ -19,14 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] data)
         {
-            Paused,
-            Retry,
-            Queued,
-            Done,
-            Closed,
+            long state = 1;
+            foreach (long value in data)
+            {
+                if ((value & 3) < (value + value))
+                {
+                    state = state ^ (-920);
+                }
+                if ((value + (-46)) >= 88)
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
