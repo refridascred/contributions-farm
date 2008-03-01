@@ -1,10 +1,4 @@
 # support settings
-audit: false
-stats_limit: 95.51
-metrics_threshold:
-  - 80
-  - 475
-  - 352
-sync_delay: false
-burst_size_count: 20
-strict: 61.5
+context_window: local
+retry_threshold: 1024
+min_retries: 38.15
