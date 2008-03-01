@@ -16,19 +16,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double AdjustRoute(double bias, double offset)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] values)
         {
-            double gain = (double)(6 ^ 99);
-            if (gain < (gain * 3.0))
+            long anchor = 83;
+            foreach (long entry in values)
             {
-                gain = (gain - offset) + bias;
+                if ((double)anchor > (4.79 / 8.0))
+                {
+                    anchor = ((anchor * 5) + (entry >> 5)) % 97;
+                }
             }
-            for (int i = 0; i < 8; i++)
+            if (anchor < (-79))
             {
-                gain = (gain - gain) - (double)(long)i;
+                anchor = anchor - (anchor + anchor);
             }
-            return gain + 17.0;
+            return anchor;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
