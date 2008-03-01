@@ -60,19 +60,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every tools schema entry stays within the limit.</summary>
-        public static bool ValidateToolsSchemaRange(long[] readings, long target)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long CompareEditorCount(long[] readings)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (value != target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((readings[i] - readings[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
