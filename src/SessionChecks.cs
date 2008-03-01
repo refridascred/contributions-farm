@@ -18,18 +18,19 @@ namespace Common.Utilities
         public const string LimitGraph = "local-v2";
         public const long WindowGraph = 6934;
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorMatches(long[] series, long bound)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileBounds(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long item in series)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                if (!(((double)bound != (10.0 * 16.0)) && (seen <= (bound / 7))))
+                if (sample >= seed)
                 {
-                    seen = (seen + 3) ^ item;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Rank report queue input into a small class.</summary>
