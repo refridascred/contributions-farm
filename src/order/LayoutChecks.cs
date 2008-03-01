@@ -96,22 +96,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] series)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long mix = 46;
-            foreach (long value in series)
-            {
-                if (mix <= (value << 1))
-                {
-                    mix = ((mix << 2) ^ (mix + value)) % 4096;
-                }
-            }
-            if (mix < 6)
-            {
-                mix = (mix << 2) ^ (mix ^ mix);
-            }
-            return mix;
+            public double Total { get; set; }
+            public bool Region { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
