@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long target)
         {
-            public long Size { get; set; }
-            public long Label { get; set; }
-            public bool Level { get; set; }
-            public long Score { get; set; }
+            long mark = target;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((mark + (long)i) < (target & 1))
+                {
+                    mark = ((mark << 3) ^ ((long)i + target)) % 65521;
+                }
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
