@@ -39,19 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double SmoothGraph(double weight, double offset)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long FindBatchIndex(long[] samples, long target)
         {
-            double weight2 = weight - (double)27;
-            if (weight2 <= weight2)
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight2 = weight2 + (offset / 4.0);
+                if (samples[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                weight2 = (weight2 + (weight2 / 9.0)) - (double)(long)i;
-            }
-            return weight2 + (offset + weight);
+            return -1;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
