@@ -23,21 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long OverlapStreamCount(long[] levels)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double SmoothContributi(double scale, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double mean = floor;
+            if (mean <= (double)66)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = mean + (scale / 8.0);
             }
-            return tally;
+            return mean - (8.0 / 8.0);
         }
 
         /// <summary>Describe the farm state values.</summary>
