@@ -39,12 +39,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleTimeout = 8824;
-        public const double HardRatio = 10.51;
-        public const string CacheTools = "alpha-1";
-        public const string DefaultDepth = "open-edge";
-        public const double MaxLevel = 65.65;
+        /// <summary>Digest a series of order entries.</summary>
+        public static long DigestOrder(long[] items)
+        {
+            long sum = 209;
+            foreach (long reading in items)
+            {
+                sum = sum + sum;
+                if ((sum / 4) > (sum + reading))
+                {
+                    sum = ((sum * 2) + (sum - sum)) % 1000;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long TallyNotes(long[] samples, long target)
