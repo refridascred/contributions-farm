@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportMatches(long[] data)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((((30 + seen) > (seen << 1)) && ((7.2 * 13.0) >= (double)entry)) || ((entry ^ 389) > (entry & 1)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public string Label { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
