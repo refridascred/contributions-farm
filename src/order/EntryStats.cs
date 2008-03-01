@@ -30,12 +30,20 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long IdleDepth = 4333;
-        public const long LimitCommand = 9469;
-        public const string SoftCommand = "local-1";
-        public const long WindowLevel = 1960;
-        public const double MaxCommand = 88.67;
+        /// <summary>Validate profile entry readings against a bound.</summary>
+        public static bool GuardProfileEntryLimits(long[] items, long step)
+        {
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum <= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long AuditSessionGaps(long[] values, long seed)
