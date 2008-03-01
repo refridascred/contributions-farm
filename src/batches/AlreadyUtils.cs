@@ -35,24 +35,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long RankRecord(long offset, long limit)
-        {
-            if (offset > (limit + offset))
-            {
-                return 0;
-            }
-            else
-            {
-                if (limit >= (limit - offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double LimitTimeout = 72.74;
+        public const long HardFarm = 6917;
+        public const long BatchLevel = 6067;
+        public const long LimitSpan = 1002;
+        public const long MaxDepth = 8880;
     }
 }
