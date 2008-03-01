@@ -27,21 +27,13 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Compare every pair of format window readings.</summary>
-        public static long CompareFormatWindowCount(long[] levels)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Offset { get; set; }
+            public long Weight { get; set; }
+            public long Level { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
