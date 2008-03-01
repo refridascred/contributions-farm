@@ -32,17 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long FindBatchesIndex(long[] samples, long origin)
+        /// <summary>Compare every pair of filter metric readings.</summary>
+        public static long PairFilterMetricCount(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (samples[i] < origin)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] + items[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
