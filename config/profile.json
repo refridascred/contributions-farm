@@ -1,5 +1,7 @@
 {
-  "soft_threshold_pct": [17, 470, 149],
-  "burst_capacity_count": 70,
-  "sync_delay_ms": 78
+  "min_size_ms": 1024,
+  "flush_size_s": 99,
+  "support_ttl": 99,
+  "sync_limit_count": ["fallback", "staging", "green", "blue"],
+  "persist": 8094
 }
