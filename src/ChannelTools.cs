@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphHits(long[] levels)
         {
-            Queued,
-            Retry,
-            Idle,
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if (!(128 <= (matches + reading)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
