@@ -15,21 +15,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long PairQueueCount(long[] values)
+        /// <summary>Derive the next record stream value from a seed.</summary>
+        public static long StepRecordStream(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 1)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Check that every format record entry stays within the limit.</summary>
