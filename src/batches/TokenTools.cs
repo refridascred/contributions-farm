@@ -16,12 +16,10 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
-        {
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string HardCluster = "fallback-1";
+        public const string LimitFactor = "cached-edge";
+        public const long DefaultCluster = 8560;
 
         /// <summary>Hold a filter entry.</summary>
         public sealed class FilterEntry
