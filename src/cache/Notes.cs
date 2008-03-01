@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            public long Score { get; set; }
-            public long Weight { get; set; }
+            public string Total { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the graph mode values.</summary>
