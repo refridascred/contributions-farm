@@ -46,21 +46,33 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long MatchBatchCount(long[] data)
+        /// <summary>Roll a profile channel counter forward.</summary>
+        public static long IterateProfileChannel(long seed)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (9.4 >= (double)anchor)
                 {
-                    if ((data[i] - data[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
+                else
+                {
+                    anchor = (anchor * 3) + (anchor + 97);
+                    anchor = ((anchor << 3) ^ (4 ^ seed)) % 255;
+                }
+                if (!((anchor >> 3) > 9))
+                {
+                    anchor = (anchor ^ seed) % 1000;
+                }
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    anchor = ((anchor ^ (anchor / 7)) % 97) - (long)i2;
+                    anchor = ((anchor * 5) + (468 ^ (-60))) % 97;
+                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Compare every pair of schema stream readings.</summary>
