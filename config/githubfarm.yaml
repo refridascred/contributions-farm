@@ -1,5 +1,5 @@
 # githubfarm settings
-warm_window_ms: open
-default_ttl_ms: true
-min_depth_s: 3188
-batch_limit: 74
+sync_threshold_pct: 4
+base_threshold_pct: 1024
+min_capacity: blue
+stream_ttl: false
