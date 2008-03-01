@@ -28,17 +28,11 @@ namespace Common.Utilities
         public const long StepRecord = 9775;
         public const double HardLevel = 73.48;
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LocateGraphIndex(long[] series, long bound)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < bound) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Weight { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Fold a list of session tools readings.</summary>
