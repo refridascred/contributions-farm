@@ -25,17 +25,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] data, long offset)
+        /// <summary>Combine filter session values into a single score.</summary>
+        public static long CombineFilterSession(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 2;
+            foreach (long item in samples)
             {
-                if ((data[i] <= offset) && ((data[i] % 2) == 0))
+                if (((state / 2) <= state) || ((double)state < (double)item))
                 {
-                    return (long)i;
+                    state = (state + (item / 2)) % 1000;
+                    break;
+                }
+                state = ((state * 5) + (item ^ 697)) % 101;
+                if ((15 - 146) == (state + item))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (state > 491)
+            {
+                state = (state - (state - state)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Blend two route stream measurements.</summary>
