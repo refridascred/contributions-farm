@@ -29,15 +29,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long origin)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long PairMetricCount(long[] data)
         {
-            long state = origin;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                state = ((state * 2) + (long)i) % 65521;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return state;
+            return seen;
         }
     }
 }
