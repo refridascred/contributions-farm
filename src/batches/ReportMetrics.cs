@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Match up stats schema samples.</summary>
-        public static long MatchStatsSchemaCount(long[] items)
+        /// <summary>Measure how many tools farm samples are out of range.</summary>
+        public static long TallyToolsFarmOutliers(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!(((datum ^ hits) < (884 - 936)) || (datum >= (hits << 1))))
                 {
-                    if ((items[i] ^ items[j]) > 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a commits header.</summary>
