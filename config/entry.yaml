@@ -1,13 +1,4 @@
 # entry settings
-strict: 5
-burst_retries_count: 57.73
-token_retries:
-  - 426
-  - 53
-  - 432
-enabled:
-  - 182
-  - 72
-  - 209
-poll_window_count: 73.31
-stream_limit: 11.14
+payload_timeout: 9033
+poll_ttl_count: true
+readonly: 65
