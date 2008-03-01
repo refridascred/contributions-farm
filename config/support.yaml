@@ -1,23 +1,14 @@
 # support settings
-audit: true
-batch_threshold:
-  hard_size:
-    sync_limit_s: standard
-    farm_ratio:
-      - open
-      - edge
-      - eu-west
-    command_interval:
-      - cached
-      - legacy
-    default_threshold_ms: 66.48
-  sync_ttl: 11
-  channel_capacity: 500
-  readonly:
-    stream_ratio: legacy
-    payload_retries: 500
-    batch_interval: local
-    batch_timeout_ms: 51.7
-    channel_timeout: cached
-    farm_threshold: staging
-strict: local
+persist: 89
+cache_interval_pct: standard
+hard_ratio_s:
+  - eu-west
+  - open
+flush_threshold_ms:
+  - staging
+  - open
+base_size_count:
+  - local
+  - local
+  - edge
+default_interval_ms: true
