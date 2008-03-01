@@ -19,19 +19,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountRange(long[] readings, long floor)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long floor, long target)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            long gap = floor - target;
+            if (((3.93 + 2.13) == (double)gap) || (gap < (floor & 15)))
             {
-                if (value != floor)
+                return 1;
+            }
+            else
+            {
+                if ((gap ^ gap) > (floor - target))
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (((-7) / 2) <= floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Iterate the contributi checks series from a seed.</summary>
