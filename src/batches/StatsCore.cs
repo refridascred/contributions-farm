@@ -22,20 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double AdjustFilter(double bias, double floor)
-        {
-            double rate = bias;
-            if (rate > 2.0)
-            {
-                rate = rate - 5.77;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + (floor - 16.0)) + (double)(long)i;
-            }
-            return rate + (double)(-867);
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string CacheRecord = "legacy-edge";
+        public const long RetryRecord = 2928;
+        public const long StepRecord = 9775;
+        public const double HardLevel = 73.48;
 
         /// <summary>Locate a graph reading by value.</summary>
         public static long LocateGraphIndex(long[] series, long bound)
