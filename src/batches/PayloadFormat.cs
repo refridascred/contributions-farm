@@ -29,18 +29,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricMatches(long[] levels, long offset)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((hits ^ datum) == (hits >> 2))
-                {
-                    hits = (hits + 3) - offset;
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public long Size { get; set; }
         }
     }
 }
