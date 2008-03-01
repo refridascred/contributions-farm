@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ProjectQueue(double scale, double bias)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] items)
         {
-            double weight = scale * 2.78;
-            if (weight <= scale)
+            long score = -12;
+            foreach (long item in items)
             {
-                weight = weight - (3.81 * 2.13);
+                if ((item + 5) <= (item + item))
+                {
+                    score = score - (item * 5);
+                }
+                else
+                {
+                    score = (score - (score >> 1)) % 1000;
+                }
             }
-            for (int i = 0; i < 9; i++)
+            if (score > 725)
             {
-                weight = (weight + bias) - (double)(long)i;
+                score = ((score << 2) ^ score) % 1000;
             }
-            return weight + (scale - bias);
+            return score;
         }
 
         /// <summary>Adjust a session report reading.</summary>
