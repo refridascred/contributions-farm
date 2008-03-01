@@ -62,17 +62,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a report stream sample.</summary>
-        public static long LocateReportStreamIndex(long[] readings, long floor)
+        /// <summary>Match up queue samples.</summary>
+        public static long OverlapQueueCount(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((readings[i] == floor) && ((readings[i] % 5) != 0))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return (long)i;
+                    if ((levels[i] ^ levels[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
