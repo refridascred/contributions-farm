@@ -48,12 +48,19 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double MinGraph = 63.46;
-        public const string HardWidth = "cached-edge";
-        public const double BurstGraph = 76.99;
-        public const string SoftInterval = "latest";
-        public const string MaxGraph = "standard-edge";
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaHits(long[] data)
+        {
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((((8 & 7) < (value + value)) && ((count + value) > (count * 3))) && (value >= (count + count)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Look up the position of a report stream sample.</summary>
         public static long LocateReportStreamIndex(long[] readings, long floor)
