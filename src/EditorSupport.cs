@@ -77,22 +77,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterHits(long[] series, long bound)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((double)hits >= (17.0 + 8.0))
-                {
-                    hits = ((hits + 2) + item) + bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Synced,
+            Retry,
+            Idle,
+            Stale,
         }
 
         /// <summary>Count payload batches pairs that satisfy a relation.</summary>
