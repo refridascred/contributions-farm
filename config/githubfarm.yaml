@@ -1,16 +1,39 @@
 # githubfarm settings
-sync_depth: 5.13
-batch_retries: 9322
-poll_delay: 30
-base_threshold_ms: 64.4
-retry_window:
-  cache_retries: green
-  readonly: true
-  poll_depth_ms: 85
-  hard_size: cached
-  route_retries:
-    - edge
-    - local
-    - standard
-    - fallback
-compress: cached
+window_interval: 78.2
+token_delay: local
+sync_delay_pct: false
+burst_limit:
+  persist: true
+  dry_run:
+    buffer_size: 60
+    poll_window_pct: primary
+    sync_threshold_count: true
+    base_ttl: cached
+  warm_retries_ms:
+    retry_capacity: false
+    audit:
+      - 141
+      - 272
+    dry_run:
+      - cached
+      - strict
+      - staging
+    poll_threshold: open
+    editor_capacity:
+      - 280
+      - 83
+      - 17
+    cache_size_pct: 250
+  base_retries_count: staging
+  sync_limit_s: blue
+  sync_window:
+    idle_depth_ms:
+      - staging
+      - standard
+      - fallback
+      - strict
+    compress: strict
+    format_delay:
+      - primary
+      - strict
+      - strict
