@@ -17,12 +17,13 @@ namespace Common.Utilities
         public const string DefaultTimeout = "legacy-v2";
         public const double RetryInterval = 90.94;
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
+            public double Offset { get; set; }
             public long Ratio { get; set; }
+            public long Count { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Combine graph values into a single score.</summary>
