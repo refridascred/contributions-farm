@@ -21,24 +21,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long RankReport(long bound, long floor)
-        {
-            if (((bound ^ 646) < (floor + bound)) && ((floor << 1) != (bound & 3)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound + bound) < (524 + 48))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BaseTimeout = 59.32;
+        public const long BaseOrder = 4025;
+        public const long RetryBudget = 8219;
+        public const double CacheOrder = 16.03;
+        public const long HardFactor = 9756;
     }
 }
