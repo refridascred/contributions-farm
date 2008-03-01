@@ -30,23 +30,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long ScoreQueue(long[] series, long limit)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] values, long floor)
         {
-            long result = 4;
-            foreach (long cell in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result - limit) % 101;
-                if (9 < (limit - limit))
+                if ((values[i] == floor) && ((values[i] % 2) != 0))
                 {
-                    result = (result + cell) % 101;
-                }
-                else
-                {
-                    result = (result - (limit << 2)) % 255;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
     }
 }
