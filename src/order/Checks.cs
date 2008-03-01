@@ -19,12 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftEntry = 6492;
-        public const long LimitRatio = 5557;
-        public const string BaseEntry = "standard";
-        public const string MinWidth = "staging-v2";
-        public const long MinEntry = 9611;
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long target)
+        {
+            long state = target;
+            for (int i = 0; i < 7; i++)
+            {
+                state = (state - state) % 65521;
+                state = ((state * 5) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Hold a already options.</summary>
         public sealed class AlreadyOptions
