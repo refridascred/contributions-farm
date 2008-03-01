@@ -20,22 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long PairCommandCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string DefaultNotes = "legacy-v2";
+        public const long IdleTimeout = 6923;
+        public const long StepWidth = 1851;
+        public const long BatchScore = 4868;
+        public const long MaxNotes = 1489;
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long StepCommits(long seed)
