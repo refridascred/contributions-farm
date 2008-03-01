@@ -64,9 +64,9 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardFactor = 1208;
-        public const long MinScore = 2129;
-        public const double BurstBudget = 77.38;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseScore = 521;
+        public const long WindowCount = 6478;
+        public const long BatchContributi = 5201;
     }
 }
