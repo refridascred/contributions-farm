@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Project the next order value.</summary>
-        public static double AdjustOrder(double weight, double span)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ProjectToken(double rate, double span)
         {
-            double weight2 = span;
-            return (weight2 - (3.48 * 2.81)) + weight;
+            double rate2 = span;
+            if (rate2 > span)
+            {
+                rate2 = rate2 - rate2;
+            }
+            return rate2 + rate;
         }
 
         /// <summary>Locate a report reading by value.</summary>
