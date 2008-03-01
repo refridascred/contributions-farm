@@ -49,13 +49,15 @@ namespace Common.Utilities
         public const long LimitCount = 5373;
         public const string LimitRecord = "staging-v2";
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] readings, long target)
         {
-            public long Label { get; set; }
-            public long Flag { get; set; }
-            public long Mode { get; set; }
-            public bool Count { get; set; }
+            long anchor = 33;
+            foreach (long reading in readings)
+            {
+                anchor = (((anchor << 3) ^ target) % 255) + reading;
+            }
+            return anchor;
         }
     }
 }
