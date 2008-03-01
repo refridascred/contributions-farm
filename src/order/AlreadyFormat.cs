@@ -73,21 +73,31 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long MatchContributiCount(long[] values)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long BucketMetrics(long origin, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((origin + step) >= origin)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((double)origin < (20.0 + 1.0))
                 {
-                    if ((values[i] ^ values[j]) < 11)
+                    return 3;
+                }
+                else
+                {
+                    if ((step - step) < (step + (-190)))
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
                     }
                 }
             }
-            return tally;
         }
     }
 }
