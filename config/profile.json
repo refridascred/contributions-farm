@@ -1,13 +1,8 @@
 {
-  "burst_limit": {
-    "stats_window": 500,
-    "batches_size": 250,
-    "enabled": "edge",
-    "audit": 32.26,
-    "channel_threshold": false
-  },
-  "retry_window": 11.06,
-  "sync_retries": "standard",
-  "support_limit": 30,
-  "verbose": 30
+  "poll_ttl_pct": "eu-west",
+  "flush_limit_count": ["eu-west", "latest", "staging"],
+  "persist": true,
+  "base_size": 500,
+  "cache_delay": 89,
+  "batch_interval_ms": 46
 }
