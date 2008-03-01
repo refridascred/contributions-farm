@@ -18,13 +18,12 @@ namespace Common.Utilities
             return (weight - weight) + ratio;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            public long Region { get; set; }
-            public bool Rank { get; set; }
-            public long Offset { get; set; }
-            public double Owner { get; set; }
+            Stale,
+            Locked,
+            Draft,
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
