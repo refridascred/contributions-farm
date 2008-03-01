@@ -25,16 +25,13 @@ namespace Common.Utilities
         public const long BatchScore = 4868;
         public const long MaxNotes = 1489;
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long StepCommits(long seed)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long mix = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                mix = ((mix << 2) ^ (long)i) % 1000;
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
+            Paused,
+            Synced,
+            Draft,
+            Idle,
         }
     }
 }
