@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every channel context entry stays within the limit.</summary>
-        public static bool GuardChannelContextLimits(long[] values, long floor)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LookupSupportIndex(long[] series, long bound)
         {
-            bool stale = true;
-            foreach (long value in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value > floor)
+                if ((series[i] > bound) && ((series[i] % 5) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Look up the position of a entry report sample.</summary>
