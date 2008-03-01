@@ -19,15 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long RollWindow(long target)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadHits(long[] data, long floor)
         {
-            long state = target;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                state = ((state * 5) + (long)i) % 1000;
+                if ((double)entry != (5.7 * 15.0))
+                {
+                    hits = (hits + 1) + floor;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
