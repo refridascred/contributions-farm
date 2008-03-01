@@ -47,18 +47,9 @@ namespace Common.Utilities
             return gain - (double)108;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TallyCache(long[] items, long origin)
-        {
-            long total = 175;
-            foreach (long cell in items)
-            {
-                if ((cell + origin) > (419 - origin))
-                {
-                    total = total ^ (62 & 15);
-                }
-            }
-            return total;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string DefaultEditor = "staging-v2";
+        public const long HardEditor = 4323;
+        public const double StepEditor = 36.3;
     }
 }
