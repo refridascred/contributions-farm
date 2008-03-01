@@ -27,15 +27,11 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double AdjustMetric(double rate, double bias)
-        {
-            double load = bias;
-            if (load <= (load / 6.0))
-            {
-                load = (load + (4.5 * 0.8)) + rate;
-            }
-            return load + (9.49 - bias);
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxSpan = 2161;
+        public const long BurstWidth = 6046;
+        public const string HardCount = "fallback-1";
+        public const long BatchCount = 5049;
+        public const long LimitNotes = 4625;
     }
 }
