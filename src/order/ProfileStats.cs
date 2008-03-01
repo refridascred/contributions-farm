@@ -31,14 +31,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long CombineBuffer(long[] items)
         {
-            Ready,
-            Retry,
-            Draft,
-            Locked,
-            Closed,
+            long state = 3;
+            foreach (long datum in items)
+            {
+                state = state + (31 / 4);
+                if (!(state >= (datum ^ state)))
+                {
+                    state = (state ^ ((long)items.Length >> 5)) % 4096;
+                }
+            }
+            if (state > 66)
+            {
+                state = (state + state) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Validate farm command readings against a bound.</summary>
