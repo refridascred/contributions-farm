@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a support batches value against two limits.</summary>
-        public static long BucketSupportBatches(long floor, long limit)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long slot = floor + limit;
-            if (!((floor & 63) < limit))
-            {
-                return 1;
-            }
-            else
-            {
-                if (slot >= (limit * 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (floor <= (floor * 4))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Failed,
+            Queued,
+            Active,
+            Retry,
         }
 
         /// <summary>Digest a series of graph entries.</summary>
