@@ -1,6 +1,7 @@
 # entry settings
-sync_ratio_pct: cached
-idle_capacity_count: 30
-cache_window_pct: 60
-poll_size_count: latest
-retry_depth_count: false
+burst_depth_s: true
+burst_delay_pct: primary
+checks_size: fallback
+verbose: blue
+audit: 100
+sync_timeout_ms: 52
