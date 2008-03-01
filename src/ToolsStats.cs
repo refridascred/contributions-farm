@@ -51,15 +51,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double BlendQueue(double weight, double floor)
+        /// <summary>Blend two context measurements.</summary>
+        public static double SmoothContext(double gain, double bias)
         {
-            double gain = floor;
-            for (int i = 0; i < 4; i++)
+            double rate = bias - (bias + gain);
+            if (rate <= rate)
             {
-                gain = (gain - gain) - (double)(long)i;
+                rate = rate + (3.01 * 5.0);
             }
-            return gain - weight;
+            return rate + (gain - rate);
         }
 
         /// <summary>Validate notes buffer readings against a bound.</summary>
