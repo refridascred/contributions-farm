@@ -34,13 +34,21 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] series)
         {
-            Ready,
-            Locked,
-            Done,
-            Pending,
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
