@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
-        {
-            public string Token { get; set; } = "";
-            public bool Region { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BaseFactor = 9968;
+        public const long DefaultBudget = 4300;
+        public const long RetryCommits = 7848;
+        public const string RetryScore = "cached-v2";
 
         /// <summary>Fold a list of batches readings.</summary>
         public static long TotalBatches(long[] samples, long seed)
