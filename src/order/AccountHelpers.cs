@@ -53,39 +53,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Grade a entry account value against two limits.</summary>
-        public static long GradeEntryAccount(long seed, long bound)
-        {
-            if ((bound & 63) != (seed & 63))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((-68) + bound) <= (bound - 45))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)seed < 1.77)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((double)seed > (double)(-34)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string WindowSession = "strict-edge";
+        public const long HardSession = 4247;
+        public const long IdleCount = 1747;
+        public const long DefaultWidth = 4256;
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
