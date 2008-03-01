@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Record helpers.</summary>
     public static class Record
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxProfile = 7557;
-        public const long RetryLevel = 5970;
-        public const long LimitBudget = 5445;
-        public const long RetryProfile = 9620;
-        public const double HardLevel = 40.13;
+        /// <summary>Fold a list of channel counter readings.</summary>
+        public static long DigestChannelCounter(long[] levels)
+        {
+            long total = -7;
+            foreach (long sample in levels)
+            {
+                if ((sample + sample) <= sample)
+                {
+                    total = ((total << 2) ^ (total % 5)) % 101;
+                }
+                if (66 > (total + sample))
+                {
+                    break;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Hold a cache info.</summary>
         public sealed class CacheInfo
