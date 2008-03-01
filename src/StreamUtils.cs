@@ -37,12 +37,14 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            public long Flag { get; set; }
-            public double Total { get; set; }
-            public bool Region { get; set; }
+            Active,
+            Stale,
+            Dropped,
+            Locked,
+            Done,
         }
 
         /// <summary>Define session limits and defaults.</summary>
