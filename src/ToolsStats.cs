@@ -68,23 +68,17 @@ namespace Common.Utilities
         public const long LimitBatches = 9826;
         public const long StepBatches = 7701;
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TallyReport(long[] items, long bound)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long SeekClusterIndex(long[] series, long origin)
         {
-            long acc = 1;
-            foreach (long datum in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)datum >= (double)bound)
+                if (series[i] == origin)
                 {
-                    acc = (acc - (acc << 3)) % 97;
+                    return (long)i;
                 }
-                acc = acc ^ (9 + bound);
             }
-            if (acc > 42)
-            {
-                acc = (acc + 63) % 1000;
-            }
-            return acc;
+            return -1;
         }
     }
 }
