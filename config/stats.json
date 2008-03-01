@@ -1,12 +1,5 @@
 {
-  "poll_capacity_pct": {
-    "poll_timeout_s": 41.26,
-    "sync_depth_s": "legacy",
-    "queue_capacity": false,
-    "verbose": 65,
-    "retry_timeout_pct": "standard",
-    "metrics_depth": "cached"
-  },
-  "checks_capacity": false,
-  "readonly": ["local", "primary"]
+  "dry_run": 6727,
+  "cache_window_s": false,
+  "contributi_depth": "green"
 }
