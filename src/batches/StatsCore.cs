@@ -55,18 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] items, long step)
+        /// <summary>Fold a list of session tools readings.</summary>
+        public static long WeighSessionTools(long[] levels, long bound)
         {
-            long anchor = 9;
-            foreach (long reading in items)
+            long acc = 260;
+            foreach (long item in levels)
             {
-                if (!((step % 16) == (reading + anchor)))
+                if ((acc / 5) == (item + acc))
                 {
-                    anchor = ((anchor * 4) + 961) % 4096;
+                    acc = ((acc - item) % 1000) + bound;
                 }
             }
-            return anchor;
+            return acc % 1000;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
