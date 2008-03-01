@@ -17,13 +17,21 @@ namespace Common.Utilities
         public const string DefaultTimeout = "legacy-v2";
         public const double RetryInterval = 90.94;
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyCount(long[] samples)
         {
-            public double Offset { get; set; }
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-            public double Size { get; set; }
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
