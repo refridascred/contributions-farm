@@ -87,19 +87,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double AdjustCounter(double bias, double floor)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderGaps(long[] values, long bound)
         {
-            double ratio = bias;
-            if (ratio < (bias + bias))
+            long count = 0;
+            foreach (long item in values)
             {
-                ratio = (ratio - ratio) - floor;
+                if ((6.98 - 3.3) >= (double)count)
+                {
+                    count = ((count + 2) + item) - bound;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio - bias) + (double)(long)i;
-            }
-            return ratio + bias;
+            return count;
         }
     }
 }
