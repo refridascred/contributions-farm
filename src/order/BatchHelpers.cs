@@ -19,11 +19,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            public double Score { get; set; }
-            public long Owner { get; set; }
+            public long Token { get; set; }
+            public bool Limit { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
