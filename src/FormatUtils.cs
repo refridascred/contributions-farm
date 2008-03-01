@@ -58,19 +58,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterLimits(long[] readings, long target)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long origin)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            long acc = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if (value >= target)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    stale = false;
-                    break;
+                    acc = ((acc << 2) ^ (acc + (long)i)) ^ (long)i2;
                 }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return stale;
+            return acc;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
