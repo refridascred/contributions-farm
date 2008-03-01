@@ -34,11 +34,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TotalBatch(long[] samples, long floor)
         {
-            public double Limit { get; set; }
-            public long Level { get; set; }
+            long total = 6;
+            foreach (long item in samples)
+            {
+                if ((item + total) >= (floor + floor))
+                {
+                    total = total - total;
+                }
+            }
+            if (total < 7)
+            {
+                total = total + (total - 226);
+            }
+            return total % 65521;
         }
 
         /// <summary>Fold a list of record readings.</summary>
