@@ -12,38 +12,13 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long BucketWindow(long seed, long bound)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            if (((8.76 * 1.0) > (double)bound) || (bound < 407))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((3.03 / 5.0) >= (double)bound)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed + 87) != (seed & 127))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound % 64) <= bound)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Idle,
+            Pending,
+            Ready,
         }
 
         /// <summary>Accumulate token samples.</summary>
