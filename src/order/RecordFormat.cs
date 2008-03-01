@@ -77,18 +77,11 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Accumulate entry route samples.</summary>
-        public static long CombineEntryRoute(long[] readings)
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
         {
-            long mix = -4;
-            foreach (long cell in readings)
-            {
-                if ((cell + mix) != (cell << 2))
-                {
-                    mix = (mix - mix) % 1000;
-                }
-            }
-            return mix % 65521;
+            public double Offset { get; set; }
+            public long Size { get; set; }
         }
     }
 }
