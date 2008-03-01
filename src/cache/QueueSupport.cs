@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the session filter entries that pass the check.</summary>
-        public static long CountSessionFilterOutliers(long[] data)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyBounds(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            bool found = true;
+            foreach (long cell in data)
             {
-                if ((((double)entry <= (5.79 / 3.0)) || ((hits * 5) < hits)) && ((double)entry == (18.0 * 5.71)))
+                if (cell <= bound)
                 {
-                    hits = hits + 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
