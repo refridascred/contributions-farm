@@ -31,18 +31,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit contributi report readings against a rule.</summary>
-        public static long MeasureContributiReportHits(long[] items)
-        {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((((double)hits < 9.7) && (1 >= (reading ^ hits))) && ((reading * 4) > (reading & 127)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstSpan = 2091;
+        public const long StepSize = 5689;
+        public const long SoftFactor = 5231;
+        public const long MaxNotes = 4615;
+        public const long SoftRatio = 3176;
     }
 }
