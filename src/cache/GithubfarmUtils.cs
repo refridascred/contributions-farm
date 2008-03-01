@@ -20,18 +20,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a farm already sample.</summary>
-        public static long FindFarmAlreadyIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftWidth = 2608;
+        public const long WindowCount = 8425;
+        public const long HardScore = 5230;
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long MeasureMetricsOutliers(long[] data)
