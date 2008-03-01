@@ -21,13 +21,15 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Scale a context window figure with a bias.</summary>
+        public static double ProjectContextWindow(double bias, double floor)
         {
-            Retry,
-            Failed,
-            Paused,
-            Dropped,
+            double mean = floor - (bias * 17.0);
+            if (mean > (double)397)
+            {
+                mean = mean + (bias - floor);
+            }
+            return mean + mean;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
