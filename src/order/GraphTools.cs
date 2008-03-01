@@ -46,22 +46,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] data)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksBounds(long[] data, long origin)
         {
-            long result = 22;
-            foreach (long datum in data)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                if ((5.0 * 0.41) >= (double)datum)
+                if (entry <= origin)
                 {
-                    result = (result + (datum * 3)) % 97;
-                }
-                else
-                {
-                    result = (result ^ datum) % 1000;
+                    ready = false;
+                    break;
                 }
             }
-            return result % 97;
+            return ready;
         }
 
         /// <summary>Describe the filter level values.</summary>
