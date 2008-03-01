@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] series)
-        {
-            long sum = 44;
-            foreach (long datum in series)
-            {
-                sum = (sum ^ (datum + sum)) % 65521;
-                if (!(datum > sum))
-                {
-                    sum = (sum << 2) ^ datum;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowCounter = 8354;
+        public const string DefaultLevel = "alpha-1";
+        public const double StepWidth = 46.83;
+        public const string WindowTimeout = "cached-1";
+        public const long BatchCounter = 2510;
 
         /// <summary>Roll a batches counter forward.</summary>
         public static long IterateBatches(long limit)
