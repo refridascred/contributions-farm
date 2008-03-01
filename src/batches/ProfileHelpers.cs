@@ -52,11 +52,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftEntry = 8130;
-        public const long BurstEntry = 603;
-        public const double BatchBudget = 94.68;
-        public const double HardEntry = 17.11;
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
+        {
+            Draft,
+            Ready,
+            Failed,
+            Dropped,
+            Synced,
+        }
 
         /// <summary>Match up queue samples.</summary>
         public static long OverlapQueueCount(long[] levels)
