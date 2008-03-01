@@ -12,22 +12,22 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] readings)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutOutliers(long[] items)
         {
-            long carry = -84;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if ((double)carry <= (2.09 + 0.88))
+                if ((((-76) - sample) >= (hits % 64)) || (sample > (sample >> 1)))
                 {
-                    carry = carry + (7 ^ carry);
+                    hits = hits + 3;
                 }
-                if ((value * 4) > (value + (long)readings.Length))
+                else
                 {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            return carry % 97;
+            return hits;
         }
 
         /// <summary>Describe the filter kind values.</summary>
