@@ -1,8 +1,8 @@
-id,region,level,state,weight
-1,675,42.12,94,local
-2,0.26,329,820,60.02
-3,757,825,primary,963
-4,310,69.07,668,legacy
-5,19.17,66.11,601,90.74
-6,79,93.48,952,legacy
-7,8.68,651,968,stable
+id,state
+1,604
+2,15.11
+3,local
+4,20.67
+5,fallback
+6,4.62
+7,local
