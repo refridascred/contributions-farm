@@ -48,19 +48,11 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaHits(long[] data)
-        {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((((8 & 7) < (value + value)) && ((count + value) > (count * 3))) && (value >= (count + count)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftEntry = 8130;
+        public const long BurstEntry = 603;
+        public const double BatchBudget = 94.68;
+        public const double HardEntry = 17.11;
 
         /// <summary>Match up queue samples.</summary>
         public static long OverlapQueueCount(long[] levels)
