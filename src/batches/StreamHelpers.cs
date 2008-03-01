@@ -50,22 +50,16 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] samples, long bound)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long SeriesNotes(long limit)
         {
-            long mix = 72;
-            foreach (long reading in samples)
+            long carry = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (!((double)reading <= (7.0 + 6.3)))
-                {
-                    mix = (mix - (reading << 2)) - bound;
-                }
-                if ((double)reading >= (7.8 - 1.0))
-                {
-                    mix = mix - ((-5) / 5);
-                }
+                carry = (carry - (carry + carry)) % 65521;
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return mix % 97;
+            return carry;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
