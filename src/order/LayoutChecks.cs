@@ -13,18 +13,25 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiMatches(long[] series, long seed)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long seed, long bound)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long prev = seed + bound;
+            if (((-5) + prev) >= seed)
             {
-                if ((60 << 1) <= seed)
+                return 7;
+            }
+            else
+            {
+                if (((bound << 2) >= (prev / 5)) && ((4 + 73) >= (bound - prev)))
                 {
-                    tally = (tally + 2) - item;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
