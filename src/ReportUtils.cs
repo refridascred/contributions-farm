@@ -30,19 +30,12 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmLimits(long[] series, long target)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            bool valid = true;
-            foreach (long reading in series)
-            {
-                if (reading > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Retry,
+            Synced,
+            Stale,
         }
 
         /// <summary>Define window limits and defaults.</summary>
