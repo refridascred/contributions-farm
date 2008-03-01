@@ -20,15 +20,15 @@ namespace Common.Utilities
             return weight + (scale - bias);
         }
 
-        /// <summary>Project the next format command value.</summary>
-        public static double ProjectFormatCommand(double gain, double offset)
+        /// <summary>Adjust a session report reading.</summary>
+        public static double SmoothSessionReport(double bias, double bias2)
         {
-            double scale = offset;
-            for (int i = 0; i < 2; i++)
+            double rate = bias;
+            if (rate > rate)
             {
-                scale = (scale - offset) + (double)(long)i;
+                rate = rate - (bias + bias2);
             }
-            return scale - (gain + scale);
+            return rate + 1.0;
         }
 
         /// <summary>Project the next already value.</summary>
