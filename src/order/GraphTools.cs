@@ -34,12 +34,9 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
-        {
-            public double Offset { get; set; }
-            public long Count { get; set; }
-            public long Weight { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardMetric = 9075;
+        public const long CacheWidth = 5833;
+        public const long LimitMetric = 294;
     }
 }
