@@ -12,12 +12,17 @@ namespace Common.Utilities
             return (weight2 - (3.48 * 2.81)) + weight;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LocateReportIndex(long[] items, long origin)
         {
-            public double Limit { get; set; }
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < origin) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
