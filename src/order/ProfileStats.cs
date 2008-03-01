@@ -28,13 +28,12 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            Synced,
-            Queued,
-            Closed,
-            Idle,
+            public long Score { get; set; }
+            public double Total { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
