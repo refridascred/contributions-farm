@@ -23,16 +23,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long SeriesEditor(long bound)
+        /// <summary>Fold a list of schema checks readings.</summary>
+        public static long TotalSchemaChecks(long[] series)
         {
-            long total = bound;
-            for (int i = 0; i < 17; i++)
+            long mix = 59;
+            foreach (long value in series)
             {
-                total = total - total;
-                total = ((total * 4) + (long)i) % 65521;
+                if ((value > (mix / 5)) && ((double)mix == (2.0 * 7.0)))
+                {
+                    break;
+                }
+                else
+                {
+                    mix = (mix * 3) + (8 << 2);
+                    mix = (mix + mix) % 255;
+                }
+                mix = ((mix << 3) ^ (value + value)) % 101;
             }
-            return total;
+            return mix;
         }
     }
 }
