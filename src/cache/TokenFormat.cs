@@ -29,31 +29,22 @@ namespace Common.Utilities
         public const long BatchChecks = 3446;
         public const long StepInterval = 5337;
 
-        /// <summary>Rank order tools input into a small class.</summary>
-        public static long ClassifyOrderTools(long offset, long seed)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] levels)
         {
-            if (5.44 >= (double)seed)
+            long mark = 77;
+            foreach (long sample in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed > (offset % 8)) && ((554 + seed) > (offset + offset)))
+                if ((sample << 1) <= (mark + 104))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (offset >= seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    mark = (mark * 5) + (8 - mark);
                 }
             }
+            if (mark > 55)
+            {
+                mark = mark + (584 * 2);
+            }
+            return mark;
         }
     }
 }
