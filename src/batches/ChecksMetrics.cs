@@ -90,10 +90,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftBudget = 1273;
-        public const long SoftSpan = 8232;
-        public const long BaseBuffer = 7578;
-        public const long RetryBuffer = 8164;
+        /// <summary>Rank format input into a small class.</summary>
+        public static long GradeFormat(long limit, long target)
+        {
+            if ((limit + target) == (target / 7))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target >= limit) && (limit > (limit + target)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
     }
 }
