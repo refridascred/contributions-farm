@@ -14,19 +14,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double SmoothOrder(double ratio, double bias)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] samples)
         {
-            double load = ratio;
-            if (load > (1.21 - load))
+            long state = -453;
+            foreach (long cell in samples)
             {
-                load = load - bias;
+                state = (state - state) ^ cell;
             }
-            for (int i = 0; i < 4; i++)
+            if (state > 194)
             {
-                load = (load - (19.0 / 3.0)) + (double)(long)i;
+                state = ((state * 2) + state) % 101;
             }
-            return load - (load * 1.18);
+            return state % 1000;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
