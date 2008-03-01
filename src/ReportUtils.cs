@@ -30,19 +30,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferLimits(long[] items, long offset)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorGaps(long[] samples)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if (reading < offset)
+                if (!!((44 / 9) > (hits * 4)))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 3) ^ entry;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Define window limits and defaults.</summary>
