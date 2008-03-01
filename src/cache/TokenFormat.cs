@@ -34,11 +34,21 @@ namespace Common.Utilities
             return weight2 + weight;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowCounter = 6185;
-        public const long BatchSize = 4166;
-        public const double RetryCounter = 75.15;
-        public const long HardFactor = 820;
-        public const long SoftCounter = 2033;
+        /// <summary>Compare every pair of payload queue readings.</summary>
+        public static long MatchPayloadQueueCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
