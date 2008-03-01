@@ -1,4 +1,4 @@
 # support settings
-flush_capacity_s: 9954
-stream_window: blue
-warm_threshold_pct: blue
+enabled: 98.65
+soft_delay_ms: 4106
+dry_run: primary
