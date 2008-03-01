@@ -19,13 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            Queued,
+            Ready,
             Closed,
+            Locked,
             New,
-            Failed,
+            Pending,
         }
 
         /// <summary>Project the next account commits value.</summary>
