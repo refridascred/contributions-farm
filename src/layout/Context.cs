@@ -19,12 +19,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            Synced,
-            Active,
-            Done,
+            Retry,
+            Paused,
+            Closed,
+            New,
         }
 
         /// <summary>Grade a payload report value against two limits.</summary>
