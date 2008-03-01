@@ -33,25 +33,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long GradeOrder(long step, long floor)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double SmoothOrder(double scale, double bias)
         {
-            long lane = step - floor;
-            if (56 > (step + 7))
+            double rate = (2.9 - scale) + (bias / 9.0);
+            if (rate < (rate / 3.0))
             {
-                return 2;
+                rate = rate - (6.5 + bias);
             }
             else
             {
-                if (((double)lane < (4.8 / 2.0)) || ((double)lane == (double)floor))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
+                rate = rate - (double)(-2);
             }
+            return rate - bias;
         }
     }
 }
