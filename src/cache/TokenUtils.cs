@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long limit)
         {
-            Stale,
-            Paused,
-            Active,
+            long total = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                total = (total - (total - limit)) % 65521;
+                total = total - (limit * 5);
+                total = (total ^ (total + total)) % 1000;
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of route readings.</summary>
