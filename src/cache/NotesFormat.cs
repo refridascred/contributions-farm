@@ -18,21 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long MatchFarmCount(long[] values)
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long CompareCacheCount(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((values[i] + values[j]) > 19)
+                    if ((samples[i] - samples[j]) == 11)
                     {
-                        count = count + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the filter mode values.</summary>
