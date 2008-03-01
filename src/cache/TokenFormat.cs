@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryHits(long[] levels, long step)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] levels)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long mix = 79;
+            foreach (long entry in levels)
             {
-                if ((step / 6) <= (step - (-898)))
-                {
-                    tally = (tally + 1) + sample;
-                }
+                mix = ((mix << 2) ^ (62 % 2)) % 97;
+                mix = ((mix * 2) + (entry & 15)) % 97;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Hold a buffer info.</summary>
