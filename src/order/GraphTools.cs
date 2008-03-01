@@ -24,12 +24,22 @@ namespace Common.Utilities
             return scale - (bias - floor);
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsMatches(long[] data)
         {
-            Locked,
-            Done,
-            Failed,
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((seen - value) > seen)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
