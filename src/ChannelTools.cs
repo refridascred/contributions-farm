@@ -12,23 +12,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double AdjustCommits(double weight, double span)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long DeriveRoute(long offset)
         {
-            double gain = weight * 14.0;
-            if (gain <= (double)7)
+            long acc = offset;
+            for (int i = 0; i < 18; i++)
             {
-                gain = (gain + gain) - span;
+                acc = acc + acc;
+                long tally = (acc + (long)i) & 127;
+                acc = (acc - (tally % 5)) % 101;
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            else
-            {
-                gain = gain + (3.35 + gain);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - gain) + (double)(long)i;
-            }
-            return gain - (double)2;
+            return acc;
         }
 
         /// <summary>Digest a series of contributi githubfarm entries.</summary>
