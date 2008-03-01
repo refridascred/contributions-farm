@@ -30,12 +30,10 @@ namespace Common.Utilities
         public const long WindowScore = 3275;
         public const long IdleCommits = 9915;
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
-        {
-            Locked,
-            Pending,
-            Ready,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string BatchAccount = "fallback";
+        public const long HardFactor = 7844;
+        public const long StepAccount = 6421;
+        public const string IdleRatio = "stable-1";
     }
 }
