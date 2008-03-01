@@ -1,14 +1,10 @@
 # support settings
-persist: 89
-cache_interval_pct: standard
-hard_ratio_s:
-  - eu-west
-  - open
-flush_threshold_ms:
-  - staging
-  - open
-base_size_count:
-  - local
-  - local
-  - edge
-default_interval_ms: true
+audit: false
+stats_limit: 95.51
+metrics_threshold:
+  - 80
+  - 475
+  - 352
+sync_delay: false
+burst_size_count: 20
+strict: 61.5
