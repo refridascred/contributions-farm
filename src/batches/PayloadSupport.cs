@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ProjectCommits(double bias, double bias2)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesGaps(long[] items)
         {
-            double scale = 10.0;
-            if (scale < (1.8 - bias))
+            long hits = 0;
+            foreach (long entry in items)
             {
-                scale = (scale - (double)88) - bias2;
+                if ((entry ^ hits) != (hits + (-8)))
+                {
+                    hits = hits + 2;
+                }
             }
-            else
-            {
-                scale = scale - 7.0;
-            }
-            return scale - (scale - bias);
+            return hits;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
