@@ -23,14 +23,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LocateAccountIndex(long[] levels, long floor)
         {
-            Done,
-            Locked,
-            New,
-            Stale,
-            Closed,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two already measurements.</summary>
