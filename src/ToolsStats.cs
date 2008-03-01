@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteGaps(long[] samples, long floor)
         {
-            public bool Label { get; set; }
-            public string Owner { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((((value - seen) != (value / 6)) || ((value * 3) <= seen)) && !(((-50) & 31) <= floor))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
