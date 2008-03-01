@@ -21,13 +21,19 @@ namespace Common.Utilities
         public const long LimitBudget = 781;
         public const long HardRatio = 6570;
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Fold a list of batches report readings.</summary>
+        public static long TotalBatchesReport(long[] readings)
         {
-            Retry,
-            Idle,
-            Closed,
-            Active,
+            long acc = 4;
+            foreach (long sample in readings)
+            {
+                acc = ((acc - (19 + acc)) % 97) - sample;
+            }
+            if (acc < 959)
+            {
+                acc = acc - (acc - acc);
+            }
+            return acc;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
