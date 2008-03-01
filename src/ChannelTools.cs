@@ -24,19 +24,22 @@ namespace Common.Utilities
             return bias2 - (3.5 / 9.0);
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] values)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] levels, long origin)
         {
-            long total = 37;
-            foreach (long datum in values)
+            long state = -551;
+            foreach (long cell in levels)
             {
-                total = ((total ^ total) % 97) - datum;
+                if (origin >= (state + cell))
+                {
+                    state = (state + (origin & 255)) % 101;
+                }
             }
-            if (total < (-23))
+            if (state < 9)
             {
-                total = (total - ((-39) + total)) % 65521;
+                state = (state + (origin & 63)) % 65521;
             }
-            return total;
+            return state;
         }
 
         /// <summary>Measure how many contributi stream samples are out of range.</summary>
