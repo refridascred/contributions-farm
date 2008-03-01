@@ -34,18 +34,13 @@ namespace Common.Utilities
         public const long RetryLevel = 3845;
         public const long MaxBudget = 9542;
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheMatches(long[] levels)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((69 - (long)levels.Length) > ((-719) + 745))
-                {
-                    matches = (matches + 2) + datum;
-                }
-            }
-            return matches;
+            Synced,
+            Closed,
+            Paused,
+            Stale,
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
