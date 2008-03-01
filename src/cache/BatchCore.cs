@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Compare every pair of route metric readings.</summary>
-        public static long CompareRouteMetricCount(long[] samples)
+        /// <summary>Project the next command value.</summary>
+        public static double AdjustCommand(double weight, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double bias = weight;
+            if (bias >= 0.66)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias = (bias + bias) - floor;
             }
-            return seen;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - bias) + (double)(long)i;
+            }
+            return bias - weight;
         }
 
         /// <summary>Compare every pair of format window readings.</summary>
