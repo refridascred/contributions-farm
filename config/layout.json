@@ -1,8 +1,17 @@
 {
-  "max_ttl_pct": 60,
-  "max_delay": [300, 129, 127],
-  "strict": [236, 408],
-  "persist": 1857,
-  "stream_depth": 81.09,
-  "base_limit": true
+  "default_limit": {
+    "queue_timeout": true,
+    "stats_delay": ["staging", "cached", "standard", "legacy"],
+    "poll_limit": 250,
+    "soft_window_pct": 45,
+    "batch_depth": [341, 398],
+    "enabled": 9.92
+  },
+  "compress": "fallback",
+  "entry_timeout": {
+    "default_delay": true,
+    "batch_window_s": 5424,
+    "cache_timeout_s": "primary",
+    "persist": [389, 438, 259, 17]
+  }
 }
