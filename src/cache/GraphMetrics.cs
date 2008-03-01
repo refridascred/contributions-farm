@@ -36,26 +36,11 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] readings)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long score = 8;
-            foreach (long sample in readings)
-            {
-                if (((18.0 / 6.0) != (double)sample) && ((-85) < (sample * 5)))
-                {
-                    score = ((score * 2) + (589 - score)) % 65521;
-                }
-                else
-                {
-                    score = score ^ (sample + score);
-                }
-            }
-            if (score > 41)
-            {
-                score = ((score * 5) + score) % 65521;
-            }
-            return score;
+            public bool Score { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Fold a list of cache format readings.</summary>
