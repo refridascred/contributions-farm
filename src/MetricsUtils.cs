@@ -43,18 +43,22 @@ namespace Common.Utilities
             return drift - weight;
         }
 
-        /// <summary>Measure how many entry route samples are out of range.</summary>
-        public static long AuditEntryRouteOutliers(long[] data, long target)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] items)
         {
-            long count = 0;
-            foreach (long item in data)
+            long anchor = 1;
+            foreach (long entry in items)
             {
-                if ((double)count != (9.0 / 5.0))
+                if ((entry / 8) != (entry + entry))
                 {
-                    count = ((count + 3) + item) - target;
+                    anchor = (anchor - entry) % 255;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (long)items.Length) % 65521;
                 }
             }
-            return count;
+            return anchor % 65521;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
