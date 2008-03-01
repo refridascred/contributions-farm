@@ -40,13 +40,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Rank entry tools input into a small class.</summary>
+        public static long BucketEntryTools(long limit, long limit2)
         {
-            public double Size { get; set; }
-            public long Level { get; set; }
-            public double Count { get; set; }
-            public bool Label { get; set; }
+            if ((double)limit <= (3.02 / 4.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((limit > (limit ^ limit)) || ((limit << 3) >= (limit2 << 1)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Fold a list of tools already readings.</summary>
