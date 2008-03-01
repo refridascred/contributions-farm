@@ -19,12 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Digest a series of entry session entries.</summary>
+        public static long TotalEntrySession(long[] data)
         {
-            public bool Level { get; set; }
-            public double Flag { get; set; }
-            public string Size { get; set; } = "";
+            long mark = 385;
+            foreach (long datum in data)
+            {
+                if ((datum ^ mark) > 610)
+                {
+                    break;
+                }
+                if ((mark + mark) != (mark % 16))
+                {
+                    mark = (mark ^ (datum - datum)) % 97;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Adjust a channel reading.</summary>
