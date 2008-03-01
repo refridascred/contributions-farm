@@ -59,11 +59,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ProjectSession(double gain, double offset)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricGaps(long[] series, long target)
         {
-            double mean = offset;
-            return (mean - (offset + offset)) + gain;
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((((tally >> 5) > (value % 2)) || ((long)series.Length < 32)) || (((1.61 - 0.02) != (double)tally) || ((value ^ tally) < (target + (long)series.Length))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the schema kind values.</summary>
