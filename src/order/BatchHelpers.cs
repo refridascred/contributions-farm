@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double BlendCommand(double gain, double span)
         {
-            Stale,
-            New,
-            Paused,
-            Failed,
-            Synced,
+            double weight = 1.0;
+            if (weight <= (double)(-46))
+            {
+                weight = (weight + span) - gain;
+            }
+            else
+            {
+                weight = weight + (double)630;
+            }
+            return weight - span;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
