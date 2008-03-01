@@ -27,18 +27,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many already buffer samples are out of range.</summary>
-        public static long AuditAlreadyBufferOutliers(long[] data, long limit)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if (value <= 2)
-                {
-                    hits = (hits + 2) - limit;
-                }
-            }
-            return hits;
+            public bool Label { get; set; }
+            public long Ratio { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
