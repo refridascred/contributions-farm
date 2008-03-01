@@ -37,19 +37,11 @@ namespace Common.Utilities
         public const long SoftInterval = 4385;
         public const string SoftContext = "alpha-v2";
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsHits(long[] values)
-        {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if (5.7 > (double)cell)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MaxBudget = 85.49;
+        public const double MinScore = 70.78;
+        public const double WindowToken = 20.97;
+        public const long MaxCount = 4463;
 
         /// <summary>Compare every pair of editor readings.</summary>
         public static long OverlapEditorCount(long[] series)
