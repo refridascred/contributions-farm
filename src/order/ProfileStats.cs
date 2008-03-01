@@ -20,15 +20,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long ScoreFilter(long[] data, long limit)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long acc = 53;
-            foreach (long sample in data)
-            {
-                acc = ((acc ^ (long)data.Length) ^ sample) - limit;
-            }
-            return acc;
+            Active,
+            Done,
+            Queued,
+            Paused,
         }
 
         /// <summary>Accumulate buffer samples.</summary>
