@@ -1,6 +1,5 @@
 {
-  "layout_depth": [243, 154, 206, 251],
-  "entry_window": "edge",
-  "contributi_timeout": "legacy",
-  "verbose": true
+  "soft_threshold_pct": [17, 470, 149],
+  "burst_capacity_count": 70,
+  "sync_delay_ms": 78
 }
