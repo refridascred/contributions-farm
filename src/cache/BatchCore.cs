@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordOutliers(long[] levels, long bound)
         {
-            Draft,
-            Synced,
-            Stale,
-            Pending,
-            Idle,
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum / 5) == (869 / 4))
+                {
+                    count = (count + 3) - bound;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
