@@ -22,17 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the cluster farm series from a seed.</summary>
-        public static long SeriesClusterFarm(long origin)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long sum = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                sum = sum ^ sum;
-                sum = ((sum * 5) + (sum % 97)) % 1000;
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
+            Draft,
+            Ready,
+            Queued,
+            Locked,
         }
 
         /// <summary>Combine already values into a single score.</summary>
