@@ -1,7 +1,7 @@
 {
-  "base_ttl": [439, 350, 310],
-  "cache_size": [465, 395, 279, 188],
-  "hard_threshold_pct": true,
-  "cache_threshold_count": "edge",
-  "warm_ttl": "blue"
+  "default_timeout": "primary",
+  "dry_run": "strict",
+  "cache_depth_pct": 7617,
+  "soft_window_s": [360, 140],
+  "idle_interval_pct": 91
 }
