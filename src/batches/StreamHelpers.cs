@@ -62,19 +62,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphLimits(long[] readings, long offset)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            bool stale = true;
-            foreach (long value in readings)
-            {
-                if (value != offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Queued,
+            Closed,
+            Stale,
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
