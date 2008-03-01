@@ -22,11 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long ScoreCluster(long[] values)
         {
-            public long Limit { get; set; }
-            public string Mode { get; set; } = "";
+            long acc = 498;
+            foreach (long reading in values)
+            {
+                if (((367 % 24) > (reading & 3)) || ((836 - acc) >= (acc / 3)))
+                {
+                    acc = (acc ^ (acc >> 2)) % 65521;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Describe the checks mode values.</summary>
