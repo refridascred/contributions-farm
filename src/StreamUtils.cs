@@ -13,19 +13,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] levels)
-        {
-            long score = 57;
-            foreach (long entry in levels)
-            {
-                if ((score << 3) < score)
-                {
-                    score = (score - (entry - entry)) % 65521;
-                }
-            }
-            return score % 1000;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepLevel = 6261;
+        public const double DefaultScore = 21.44;
+        public const double DefaultRoute = 34.39;
+        public const long RetryScore = 4509;
+        public const long BaseLevel = 1569;
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long MeasureContributiMatches(long[] items)
