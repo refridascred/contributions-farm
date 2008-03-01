@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Compare every pair of format counter readings.</summary>
-        public static long CompareFormatCounterCount(long[] levels)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long TotalAlready(long[] series, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 310;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = ((acc ^ entry) % 101) - origin;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
