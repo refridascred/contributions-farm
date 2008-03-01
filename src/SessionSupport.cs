@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Blend two layout measurements.</summary>
+        public static double BlendLayout(double weight, double floor)
         {
-            Closed,
-            Failed,
-            New,
-            Stale,
+            double gain = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                gain = ((gain + gain) + (double)(long)i) + weight;
+            }
+            return gain + (1.0 + 12.0);
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
