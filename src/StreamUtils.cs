@@ -43,21 +43,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long OverlapFarmCount(long[] data)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamBounds(long[] levels, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (cell < floor)
                 {
-                    if ((data[i] - data[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
