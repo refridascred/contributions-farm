@@ -14,13 +14,10 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
-        {
-            public double Owner { get; set; }
-            public double Rank { get; set; }
-            public double Score { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepInterval = 6163;
+        public const double MinBudget = 85.01;
+        public const long SoftSpan = 5616;
 
         /// <summary>Describe the contributi mode values.</summary>
         public enum ContributiMode
