@@ -17,11 +17,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            public long Weight { get; set; }
-            public bool Size { get; set; }
+            Active,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Rank order tools input into a small class.</summary>
