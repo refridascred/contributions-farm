@@ -21,21 +21,13 @@ namespace Common.Utilities
         public const long LimitSession = 4450;
         public const long StepTimeout = 9243;
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long MatchSessionCount(long[] readings)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Paused,
+            Stale,
+            Queued,
+            Failed,
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
