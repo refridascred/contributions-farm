@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] series)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double BlendSchema(double weight, double span)
         {
-            long carry = 978;
-            foreach (long value in series)
+            double scale = 15.0;
+            if (scale < weight)
             {
-                carry = ((carry + (carry % 16)) % 1000) + value;
+                scale = (scale - scale) + span;
             }
-            if (carry < 36)
-            {
-                carry = (carry * 3) + (1 % 60);
-            }
-            return carry;
+            return scale - (scale * 0.2);
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
