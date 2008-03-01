@@ -23,19 +23,21 @@ namespace Common.Utilities
         public const long BurstSession = 3970;
         public const string DefaultLevel = "open-edge";
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsRange(long[] samples, long bound)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long OverlapAccountCount(long[] readings)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum <= bound)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((readings[i] - readings[j]) < 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Measure how many window profile samples are out of range.</summary>
