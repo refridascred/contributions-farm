@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long offset)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long SeriesChecks(long origin)
         {
-            long mark = offset;
-            for (int i = 0; i < 17; i++)
+            long score = origin;
+            for (int i = 0; i < 9; i++)
             {
-                mark = ((mark * 5) + (long)i) % 97;
+                if ((score % 3) == (origin + score))
+                {
+                    score = ((score << 2) ^ score) % 1000;
+                }
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return mark;
+            return score;
         }
 
         /// <summary>Locate a account reading by value.</summary>
