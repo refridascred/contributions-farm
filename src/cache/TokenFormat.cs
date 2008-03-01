@@ -23,12 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            Active,
-            Paused,
-            Dropped,
+            public double Label { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Rank order tools input into a small class.</summary>
