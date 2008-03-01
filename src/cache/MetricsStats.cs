@@ -16,22 +16,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] values)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long anchor = 83;
-            foreach (long entry in values)
-            {
-                if ((double)anchor > (4.79 / 8.0))
-                {
-                    anchor = ((anchor * 5) + (entry >> 5)) % 97;
-                }
-            }
-            if (anchor < (-79))
-            {
-                anchor = anchor - (anchor + anchor);
-            }
-            return anchor;
+            public long Mode { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
