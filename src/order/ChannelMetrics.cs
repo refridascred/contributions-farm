@@ -40,18 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] readings, long origin)
+        /// <summary>Look up the position of a entry report sample.</summary>
+        public static long SeekEntryReportIndex(long[] items, long target)
         {
-            long score = 17;
-            foreach (long datum in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((score + datum) <= (origin + 8))
+                if ((items[i] > target) && ((items[i] % 3) != 0))
                 {
-                    score = (score * 4) + (763 + origin);
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
