@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 8141;
-        public const long StepSpan = 7314;
-        public const long RetrySpan = 7662;
-        public const long BatchContext = 7936;
+        /// <summary>Grade a profile batch value against two limits.</summary>
+        public static long ClassifyProfileBatch(long offset, long seed)
+        {
+            if ((359 % 60) >= (0 - seed))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((offset % 60) >= (seed & 31))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long BatchAlready = 9842;
