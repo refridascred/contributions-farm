@@ -19,15 +19,18 @@ namespace Common.Utilities
         public const long SoftContributi = 8928;
         public const long IdleScore = 2523;
 
-        /// <summary>Measure how many record farm samples are out of range.</summary>
-        public static long TallyRecordFarmMatches(long[] items)
+        /// <summary>Match up format commits samples.</summary>
+        public static long OverlapFormatCommitsCount(long[] values)
         {
             long count = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((count ^ count) <= 77)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 2) + reading;
+                    if ((values[i] ^ values[j]) != 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
