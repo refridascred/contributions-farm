@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two token measurements.</summary>
-        public static double ScaleToken(double scale, double bias)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long RankReport(long floor, long floor2)
         {
-            double mean = bias;
-            if (mean < (double)9)
+            long offset = floor + floor2;
+            if ((offset >> 4) > offset)
             {
-                mean = (mean + (double)380) - scale;
+                return 6;
             }
             else
             {
-                mean = mean + 4.47;
+                if ((floor2 + floor2) <= (floor * 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((32 * 4) > (offset - floor2)) && ((double)offset > (3.6 + 6.9)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((754 % 2) <= (79 + floor))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return mean + (double)64;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
