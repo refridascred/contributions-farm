@@ -53,12 +53,15 @@ namespace Common.Utilities
             return load + span;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Iterate the profile filter series from a seed.</summary>
+        public static long SeriesProfileFilter(long floor)
         {
-            Dropped,
-            Locked,
-            Paused,
+            long sum = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
