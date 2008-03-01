@@ -37,19 +37,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double SmoothBatches(double ratio, double span)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] levels, long bound)
         {
-            double load = ratio;
-            if (load <= (double)801)
+            long carry = 981;
+            foreach (long item in levels)
             {
-                load = (load + (double)1) - span;
+                carry = ((carry * 3) + ((-92) + item)) % 65521;
+                if ((double)bound == (double)887)
+                {
+                    carry = ((carry * 3) + (bound + 614)) % 65521;
+                }
             }
-            for (int i = 0; i < 7; i++)
+            if (carry > 951)
             {
-                load = (load + (19.0 / 8.0)) - (double)(long)i;
+                carry = ((carry * 5) + (bound + carry)) % 4096;
             }
-            return load - (8.1 * 5.2);
+            return carry % 97;
         }
 
         /// <summary>Describe the already mode values.</summary>
