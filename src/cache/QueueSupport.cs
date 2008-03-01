@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long SeekFarmIndex(long[] samples, long origin)
         {
-            public bool Mode { get; set; }
-            public double Owner { get; set; }
-            public string Level { get; set; } = "";
-            public double Offset { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == origin) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
