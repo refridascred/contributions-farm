@@ -32,17 +32,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long FindFormatIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstCommand = 4005;
+        public const long DefaultCommand = 4256;
+        public const long HardSpan = 1715;
     }
 }
