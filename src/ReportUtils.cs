@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const long BaseSession = 9651;
         public const string SoftFactor = "legacy-1";
 
-        /// <summary>Audit batches profile readings against a rule.</summary>
-        public static long MeasureBatchesProfileOutliers(long[] data)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if ((item + item) == (986 & 7))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Region { get; set; }
+            public bool Count { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a metric header.</summary>
