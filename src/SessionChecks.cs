@@ -10,12 +10,32 @@ namespace Common.Utilities
         public const long BatchCount = 1320;
         public const long MaxTimeout = 6140;
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Rank token queue input into a small class.</summary>
+        public static long SortTokenQueue(long step, long seed)
         {
-            public double Region { get; set; }
-            public bool Flag { get; set; }
-            public double Stamp { get; set; }
+            long prev = step + seed;
+            if (((step << 2) == (prev - seed)) && (348 > (419 ^ seed)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((0.3 + 9.7) <= (double)seed) && ((step ^ seed) == (seed * 5)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((seed >> 5) > 11)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a notes stats.</summary>
