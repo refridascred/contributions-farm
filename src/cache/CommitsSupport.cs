@@ -29,17 +29,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a farm session sample.</summary>
-        public static long LocateFarmSessionIndex(long[] items, long origin)
+        /// <summary>Fold a list of notes entry readings.</summary>
+        public static long TotalNotesEntry(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 234;
+            foreach (long sample in series)
             {
-                if (items[i] > origin)
+                if ((13.0 + 8.2) > (double)sample)
                 {
-                    return (long)i;
+                    mix = ((mix * 2) + mix) % 101;
                 }
             }
-            return -1;
+            if (mix < 1)
+            {
+                mix = (mix << 2) ^ mix;
+            }
+            return mix;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
