@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelMatches(long[] items, long origin)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((item + origin) == (item / 4))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public double Limit { get; set; }
+            public long Mode { get; set; }
+            public string Count { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
