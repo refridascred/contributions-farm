@@ -95,18 +95,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderGaps(long[] values, long bound)
+        /// <summary>Count payload batches pairs that satisfy a relation.</summary>
+        public static long MatchPayloadBatchesCount(long[] levels)
         {
-            long count = 0;
-            foreach (long item in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((6.98 - 3.3) >= (double)count)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = ((count + 2) + item) - bound;
+                    if ((levels[i] - levels[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
