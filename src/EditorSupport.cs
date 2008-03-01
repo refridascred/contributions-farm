@@ -72,22 +72,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit support session readings against a rule.</summary>
-        public static long TallySupportSessionGaps(long[] samples, long seed)
+        /// <summary>Blend two account measurements.</summary>
+        public static double ScaleAccount(double ratio, double floor)
         {
-            long count = 0;
-            foreach (long value in samples)
+            double rate = ratio - (ratio + floor);
+            if (rate > rate)
             {
-                if ((((4.0 + 7.31) < (double)count) || ((count ^ count) >= count)) && ((70 - value) < (2 + seed)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                rate = rate - (rate - floor);
             }
-            return count;
+            else
+            {
+                rate = rate - floor;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = rate - (double)(long)i;
+            }
+            return rate - floor;
         }
 
         /// <summary>Describe the metric status values.</summary>
