@@ -32,11 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetryChecks = 55;
-        public const string MaxChecks = "local-v2";
-        public const double BaseChecks = 29.9;
-        public const long BaseScore = 721;
+        /// <summary>Measure how many farm metric samples are out of range.</summary>
+        public static long MeasureFarmMetricMatches(long[] samples)
+        {
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((0.8 - 5.52) == (double)item)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of schema stream readings.</summary>
         public static long CombineSchemaStream(long[] data)
