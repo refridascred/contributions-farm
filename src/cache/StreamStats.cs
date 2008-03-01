@@ -39,19 +39,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate metrics already readings against a bound.</summary>
-        public static bool GuardMetricsAlreadyLimits(long[] values, long origin)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] levels, long offset)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            long acc = 154;
+            foreach (long item in levels)
             {
-                if (entry != origin)
+                acc = (((acc * 4) + (acc - item)) % 97) - offset;
+                if ((acc - item) <= (item & 31))
                 {
-                    ready = false;
                     break;
                 }
             }
-            return ready;
+            return acc % 1000;
         }
     }
 }
