@@ -16,18 +16,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long WeighCluster(long[] series)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] levels)
         {
-            long state = 38;
-            foreach (long sample in series)
+            long score = 57;
+            foreach (long entry in levels)
             {
-                if ((sample / 3) <= (state - sample))
+                if ((score << 3) < score)
                 {
-                    state = (state - (sample * 5)) % 1000;
+                    score = (score - (entry - entry)) % 65521;
                 }
             }
-            return state % 4096;
+            return score % 1000;
         }
 
         /// <summary>Define format limits and defaults.</summary>
