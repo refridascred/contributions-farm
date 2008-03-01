@@ -71,18 +71,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatOutliers(long[] values)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandOutliers(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if ((sample & 255) <= count)
+                if ((limit - entry) <= (entry & 63))
                 {
-                    count = count + 3;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
