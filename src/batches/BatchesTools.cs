@@ -29,39 +29,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long target, long limit)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long slot = target - limit;
-            if ((limit % 8) >= limit)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit + limit) < (slot + 62))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((target + slot) <= 7)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)limit <= (double)0)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
