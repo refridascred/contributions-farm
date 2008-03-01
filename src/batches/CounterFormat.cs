@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxSize = 5997;
-        public const double StepDepth = 33.25;
-        public const double DefaultAlready = 38.1;
-        public const long RetryAlready = 5192;
-        public const long MaxLevel = 4081;
+        /// <summary>Match up batches samples.</summary>
+        public static long PairBatchesCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Roll a account counter forward.</summary>
         public static long StepAccount(long offset)
