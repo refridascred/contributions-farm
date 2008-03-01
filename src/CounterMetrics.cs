@@ -35,22 +35,19 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteHits(long[] series)
+        /// <summary>Combine session layout values into a single score.</summary>
+        public static long WeighSessionLayout(long[] series, long limit)
         {
-            long count = 0;
+            long total = 910;
             foreach (long datum in series)
             {
-                if ((datum / 4) != (286 ^ (-7)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                total = ((total << 2) ^ datum) % 101;
             }
-            return count;
+            if (total > 74)
+            {
+                total = (total + limit) % 1000;
+            }
+            return total;
         }
     }
 }
