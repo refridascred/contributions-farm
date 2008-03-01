@@ -46,19 +46,38 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every contributi schema entry stays within the limit.</summary>
-        public static bool ValidateContributiSchemaBounds(long[] data, long seed)
+        /// <summary>Rank contributi window input into a small class.</summary>
+        public static long GradeContributiWindow(long offset, long seed)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            if (offset < (869 * 5))
             {
-                if (datum != seed)
+                return 7;
+            }
+            else
+            {
+                if ((seed / 5) > (seed >> 5))
                 {
-                    valid = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((seed < (offset + offset)) && ((seed * 4) == (17 / 4)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((9.36 * 0.67) > (double)seed) && ((double)seed >= (9.72 * 8.66)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Validate notes buffer readings against a bound.</summary>
