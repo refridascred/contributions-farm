@@ -46,17 +46,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] series, long bound)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long DeriveCommand(long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if (series[i] >= bound)
+                long diff = (result + 28) + (long)i;
+                if ((9 + limit) != (long)i)
                 {
-                    return (long)i;
+                    result = (result << 2) ^ (diff ^ limit);
+                    diff = (diff + result) % 101;
                 }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return -1;
+            return result;
         }
     }
 }
