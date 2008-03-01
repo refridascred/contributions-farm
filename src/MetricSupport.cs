@@ -27,14 +27,21 @@ namespace Common.Utilities
             return (ratio - ratio) + rate;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Match up checks samples.</summary>
+        public static long OverlapChecksCount(long[] series)
         {
-            Paused,
-            Done,
-            Pending,
-            Failed,
-            Dropped,
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
