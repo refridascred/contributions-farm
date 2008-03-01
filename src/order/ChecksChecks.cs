@@ -13,13 +13,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] data)
         {
-            Draft,
-            Ready,
-            Queued,
-            Locked,
+            long sum = 27;
+            foreach (long datum in data)
+            {
+                sum = ((sum * 3) + (datum ^ sum)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
