@@ -38,12 +38,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchDepth = 2297;
-        public const long StepLayout = 8383;
-        public const long MaxBudget = 5732;
-        public const long RetryWidth = 8924;
-        public const string BurstTimeout = "open-1";
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphGaps(long[] data, long origin)
+        {
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (!!(origin <= (5 - origin)))
+                {
+                    tally = (tally + 3) + sample;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool GuardAlreadyLimits(long[] readings, long limit)
