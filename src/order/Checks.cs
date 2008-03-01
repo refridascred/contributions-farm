@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long floor, long origin)
+        /// <summary>Count session githubfarm pairs that satisfy a relation.</summary>
+        public static long PairSessionGithubfarmCount(long[] levels)
         {
-            long lane = floor + origin;
-            if ((origin ^ origin) != (origin / 8))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin >> 5) == (310 + origin))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((floor + 5) >= (floor ^ lane)))
+                    if ((levels[i] ^ levels[j]) > 14)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((lane & 7) <= (origin - floor))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
