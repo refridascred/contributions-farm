@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Accumulate notes route samples.</summary>
-        public static long TallyNotesRoute(long[] items, long floor)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricOutliers(long[] items)
         {
-            long acc = 18;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if ((double)66 <= (double)acc)
+                if (((long)items.Length <= (0 << 1)) && ((2.0 > (double)count) && ((double)(long)items.Length != (double)entry)))
                 {
-                    acc = ((acc + (floor + acc)) % 4096) - reading;
-                }
-                if ((double)floor > 7.64)
-                {
-                    break;
+                    count = count + 1;
                 }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
