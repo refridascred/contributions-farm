@@ -41,15 +41,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine commits layout values into a single score.</summary>
-        public static long ScoreCommitsLayout(long[] levels)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double SmoothChecks(double weight, double bias)
         {
-            long mark = 53;
-            foreach (long cell in levels)
+            double mean = (double)(75 + 11);
+            if (mean > (double)(-488))
             {
-                mark = mark + (cell & 31);
+                mean = mean - weight;
             }
-            return mark;
+            else
+            {
+                mean = mean + bias;
+            }
+            return mean + bias;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
