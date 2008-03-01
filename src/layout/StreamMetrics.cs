@@ -55,16 +55,24 @@ namespace Common.Utilities
             return ratio - (ratio - ratio);
         }
 
-        /// <summary>Iterate the batches graph series from a seed.</summary>
-        public static long StepBatchesGraph(long target)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long RankChannel(long offset, long target)
         {
-            long carry = target;
-            for (int i = 0; i < 14; i++)
+            if ((offset ^ 69) != (offset / 4))
             {
-                carry = (carry << 2) ^ (524 + carry);
-                carry = ((carry * 2) + (long)i) % 101;
+                return 3;
             }
-            return carry;
+            else
+            {
+                if ((double)offset < (8.0 - 2.95))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
