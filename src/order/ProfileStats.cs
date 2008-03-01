@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double MinBatch = 24.28;
-        public const long MaxDepth = 9977;
-        public const string CacheInterval = "fallback";
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
+        {
+            Retry,
+            New,
+            Failed,
+            Dropped,
+            Ready,
+        }
 
         /// <summary>Measure how many context filter samples are out of range.</summary>
         public static long TallyContextFilterGaps(long[] series)
