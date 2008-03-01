@@ -22,11 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string MinFormat = "staging";
-        public const long BatchFormat = 4234;
-        public const long MinSpan = 1463;
-        public const long MinWidth = 7913;
+        /// <summary>Iterate the cluster farm series from a seed.</summary>
+        public static long SeriesClusterFarm(long origin)
+        {
+            long sum = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                sum = sum ^ sum;
+                sum = ((sum * 5) + (sum % 97)) % 1000;
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
         public static bool ValidateChannelLimits(long[] levels, long origin)
