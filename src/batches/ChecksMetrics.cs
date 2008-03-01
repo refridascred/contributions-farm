@@ -18,17 +18,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] levels, long seed)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double AdjustStats(double bias, double bias2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = bias2;
+            if (ratio > (6.0 + ratio))
             {
-                if (levels[i] >= seed)
-                {
-                    return (long)i;
-                }
+                ratio = (ratio + (bias2 + bias2)) + bias;
             }
-            return -1;
+            else
+            {
+                ratio = ratio + 2.6;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + ratio) + (double)(long)i;
+            }
+            return ratio + bias2;
         }
 
         /// <summary>Define context limits and defaults.</summary>
