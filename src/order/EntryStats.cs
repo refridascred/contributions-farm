@@ -32,21 +32,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long CompareTokenCount(long[] series)
+        /// <summary>Match up channel samples.</summary>
+        public static long MatchChannelCount(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((series[i] - series[j]) != 1)
+                    if ((data[i] + data[j]) != 14)
                     {
-                        seen = seen + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Validate record farm readings against a bound.</summary>
