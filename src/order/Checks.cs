@@ -43,12 +43,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first batches session entry that matches the target.</summary>
-        public static long LocateBatchesSessionIndex(long[] series, long seed)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LocateContextIndex(long[] values, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (series[i] < seed)
+                if (values[i] <= limit)
                 {
                     return (long)i;
                 }
