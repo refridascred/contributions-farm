@@ -78,21 +78,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count payload batches pairs that satisfy a relation.</summary>
-        public static long MatchPayloadBatchesCount(long[] levels)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] data, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = -95;
+            foreach (long value in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)bound >= (6.1 - 1.1))
                 {
-                    if ((levels[i] - levels[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = (sum - (value >> 4)) % 1000;
                 }
             }
-            return hits;
+            if (sum < 28)
+            {
+                sum = (sum + (bound >> 4)) % 1000;
+            }
+            return sum % 65521;
         }
     }
 }
