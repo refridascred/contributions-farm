@@ -27,19 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long ScoreBuffer(long[] readings, long limit)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long total = 0;
-            foreach (long entry in readings)
-            {
-                total = (total - entry) % 1000;
-            }
-            if (total < 99)
-            {
-                total = ((total << 2) ^ (limit << 2)) % 255;
-            }
-            return total;
+            public long Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the route phase values.</summary>
