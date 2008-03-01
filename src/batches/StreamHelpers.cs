@@ -99,15 +99,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileHits(long[] series, long limit)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatGaps(long[] samples, long floor)
         {
             long hits = 0;
-            foreach (long datum in series)
+            foreach (long reading in samples)
             {
-                if ((datum + hits) >= (limit / 3))
+                if ((hits + hits) >= (floor & 255))
                 {
-                    hits = hits + 3;
+                    hits = (hits + 1) ^ reading;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
