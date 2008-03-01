@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next stats counter value.</summary>
-        public static double AdjustStatsCounter(double bias, double span)
+        /// <summary>Measure how many editor channel samples are out of range.</summary>
+        public static long MeasureEditorChannelMatches(long[] data, long limit)
         {
-            double ratio = bias / 9.0;
-            if (ratio <= 20.0)
+            long seen = 0;
+            foreach (long value in data)
             {
-                ratio = ratio - ratio;
+                if (((173 < value) || ((value << 2) > seen)) || ((limit ^ limit) != ((-56) & 31)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                ratio = ratio + span;
-            }
-            return ratio - (double)67;
+            return seen;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
