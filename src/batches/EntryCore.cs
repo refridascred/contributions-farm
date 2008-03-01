@@ -22,19 +22,16 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long DeriveGithubfarm(long seed)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long bound)
         {
-            long acc = seed;
-            for (int i = 0; i < 23; i++)
+            long state = bound;
+            for (int i = 0; i < 21; i++)
             {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    acc = ((acc - (380 + seed)) % 255) - (long)i2;
-                }
-                acc = ((acc * 4) + (long)i) % 4093;
+                state = ((state << 3) ^ (bound / 5)) % 97;
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
