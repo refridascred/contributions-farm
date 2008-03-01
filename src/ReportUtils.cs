@@ -30,13 +30,10 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
-        {
-            Retry,
-            Synced,
-            Stale,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftEntry = 3218;
+        public const long WindowBudget = 7934;
+        public const long LimitEntry = 321;
 
         /// <summary>Define window limits and defaults.</summary>
         public const double CacheWindow = 59.88;
