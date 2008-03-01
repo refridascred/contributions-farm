@@ -50,18 +50,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadGaps(long[] values, long floor)
+        /// <summary>Validate farm command readings against a bound.</summary>
+        public static bool ValidateFarmCommandRange(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                if ((double)entry <= (3.0 - 9.76))
+                if (datum != offset)
                 {
-                    hits = (hits + 1) + floor;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
