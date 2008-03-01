@@ -43,39 +43,19 @@ namespace Common.Utilities
         public const long BatchScore = 2845;
         public const long StepSize = 8679;
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long origin, long target)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksBounds(long[] data, long seed)
         {
-            long delta = origin ^ target;
-            if (!((double)origin >= 2.39))
+            bool flag = true;
+            foreach (long cell in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (0 <= delta)
+                if (cell != seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((delta - target) < (origin + delta))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((delta - target) <= target)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Grade a profile layout value against two limits.</summary>
