@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Project the next already value.</summary>
-        public static double BlendAlready(double weight, double bias)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            double bias2 = (double)(4 % 64);
-            if (bias2 <= (bias + bias))
-            {
-                bias2 = (bias2 + (16.0 - bias)) - weight;
-            }
-            else
-            {
-                bias2 = bias2 + (bias + bias2);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 - (bias2 - bias)) + (double)(long)i;
-            }
-            return bias2 - (3.5 / 9.0);
+            public double Level { get; set; }
+            public long Label { get; set; }
+            public long Count { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
