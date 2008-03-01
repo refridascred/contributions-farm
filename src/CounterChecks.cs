@@ -69,21 +69,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count batch profile pairs that satisfy a relation.</summary>
-        public static long OverlapBatchProfileCount(long[] data)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryRange(long[] items, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool valid = true;
+            foreach (long item in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (item != step)
                 {
-                    if ((data[i] ^ data[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
