@@ -1,20 +1,5 @@
 {
-  "checks_ratio": {
-    "strict": true,
-    "format_capacity": "blue",
-    "poll_limit": 500,
-    "token_delay": "staging",
-    "notes_ratio": ["fallback", "latest", "staging", "standard"],
-    "already_interval": {
-      "strict": "latest",
-      "warm_limit": 48.32,
-      "already_capacity": true,
-      "readonly": "green",
-      "retry_ttl_count": false,
-      "batches_delay": 30
-    }
-  },
-  "readonly": 30,
-  "retry_depth_pct": 80.14,
-  "format_depth": true
+  "persist": "fallback",
+  "poll_timeout_s": ["staging", "cached", "latest", "edge"],
+  "compress": ["local", "strict"]
 }
