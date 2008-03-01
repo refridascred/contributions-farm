@@ -1,11 +1,52 @@
 # entry settings
-batch_ratio: 250
-audit: 32.5
-metrics_ttl: green
-cache_limit_s: cached
-base_ttl_pct: open
-idle_timeout_pct:
-  - 407
-  - 199
-  - 185
-  - 62
+max_interval_ms:
+  verbose:
+    - 320
+    - 38
+  order_window: 28.99
+  poll_delay: blue
+  batch_interval_count:
+    audit: open
+    idle_window_count:
+      - 427
+      - 302
+      - 469
+    cluster_size: 250
+    retry_delay_count:
+      - 219
+      - 484
+      - 303
+    poll_size: local
+notes_ttl:
+  batch_retries:
+    persist: legacy
+    max_interval: 91.3
+    cluster_delay:
+      - 175
+      - 162
+    audit: 12.75
+  readonly: cached
+  queue_retries:
+    enabled:
+      - legacy
+      - cached
+      - blue
+    metric_retries: false
+    record_capacity: 3778
+    profile_threshold: 54
+    warm_depth_pct: 9165
+  retry_limit_s:
+    - 415
+    - 456
+    - 236
+    - 472
+  verbose: legacy
+  graph_threshold:
+    session_capacity: 1024
+    retry_size_count: 100
+    max_retries_ms: 0.09
+context_threshold: 63
+readonly:
+  - 373
+  - 108
+idle_retries_s: 40.48
