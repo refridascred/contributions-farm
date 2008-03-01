@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long FoldEditor(long[] readings, long target)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long mix = 2;
-            foreach (long reading in readings)
-            {
-                if (((target / 4) >= target) && ((target >> 5) <= target))
-                {
-                    mix = (mix - (reading + reading)) % 101;
-                }
-                else
-                {
-                    mix = (mix - 566) % 97;
-                }
-            }
-            if (mix > 24)
-            {
-                mix = (mix - (target % 97)) % 97;
-            }
-            return mix % 1000;
+            Retry,
+            Closed,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
