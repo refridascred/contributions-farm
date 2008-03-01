@@ -16,10 +16,17 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long DefaultLevel = 7187;
-        public const string BatchScore = "latest-1";
-        public const long SoftSize = 1665;
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long CombineStream(long[] items, long target)
+        {
+            long total = 3;
+            foreach (long reading in items)
+            {
+                total = ((total + (259 % 60)) ^ reading) - target;
+                total = total ^ ((long)items.Length * 4);
+            }
+            return total % 65521;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const string CacheBatches = "local-1";
