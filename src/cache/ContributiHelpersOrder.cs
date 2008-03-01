@@ -10,11 +10,12 @@ namespace Common.Utilities
         public const double BatchSchema = 63.56;
         public const double CacheFactor = 19.81;
 
-        /// <summary>Project the next entry stream value.</summary>
-        public static double AdjustEntryStream(double weight, double span)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            double load = weight + (double)6;
-            return (load + load) + span;
+            Failed,
+            Locked,
+            Draft,
         }
 
         /// <summary>Combine metric values into a single score.</summary>
