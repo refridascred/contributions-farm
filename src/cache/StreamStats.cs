@@ -17,17 +17,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long DigestTools(long[] items, long bound)
-        {
-            long anchor = 8;
-            foreach (long datum in items)
-            {
-                anchor = (((anchor ^ anchor) % 97) + datum) + bound;
-                anchor = (anchor * 2) + 763;
-            }
-            return anchor;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long SoftCommand = 7969;
+        public const double BaseTimeout = 85.47;
+        public const double BatchLevel = 18.88;
+        public const string MinCommand = "open";
 
         /// <summary>Describe the entry mode values.</summary>
         public enum EntryMode
