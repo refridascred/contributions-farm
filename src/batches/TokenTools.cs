@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] levels)
-        {
-            long anchor = 440;
-            foreach (long cell in levels)
-            {
-                if (((7.4 * 3.0) >= (double)cell) && ((2.8 - 2.3) > (double)cell))
-                {
-                    anchor = ((anchor << 3) ^ (cell ^ anchor)) % 255;
-                }
-                anchor = anchor - (69 - anchor);
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string StepFactor = "stable-1";
+        public const long MinMetrics = 6771;
+        public const long HardMetrics = 5126;
 
         /// <summary>Describe the cluster mode values.</summary>
         public enum ClusterMode
