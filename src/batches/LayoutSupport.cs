@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long offset)
         {
-            public long Token { get; set; }
-            public string Size { get; set; } = "";
-            public bool Ratio { get; set; }
+            long mark = offset;
+            for (int i = 0; i < 17; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Locate a account reading by value.</summary>
