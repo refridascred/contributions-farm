@@ -24,32 +24,17 @@ namespace Common.Utilities
         public const string LimitFactor = "cached-edge";
         public const long DefaultCluster = 8560;
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long SortGraph(long origin, long floor)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long IterateSchema(long target)
         {
-            long step = origin ^ floor;
-            if (!((origin + 2) != (77 >> 4)))
+            long total = target;
+            for (int i = 0; i < 14; i++)
             {
-                return 5;
+                total = total + (total ^ target);
+                total = (total - (target ^ target)) % 4096;
+                total = ((total * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if ((floor + step) < (step << 1))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin << 1) <= (99 + step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return total;
         }
     }
 }
