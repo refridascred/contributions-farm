@@ -27,10 +27,17 @@ namespace Common.Utilities
         public const long WindowScore = 3275;
         public const long IdleCommits = 9915;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string BatchAccount = "fallback";
-        public const long HardFactor = 7844;
-        public const long StepAccount = 6421;
-        public const string IdleRatio = "stable-1";
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
