@@ -12,19 +12,22 @@ namespace Common.Utilities
         public const long SoftSpan = 1039;
         public const long StepRoute = 8821;
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ScaleSupport(double ratio, double floor)
+        /// <summary>Combine batches channel values into a single score.</summary>
+        public static long CombineBatchesChannel(long[] values, long limit)
         {
-            double rate = (floor + floor) + (ratio / 3.0);
-            if (rate >= floor)
+            long anchor = 81;
+            foreach (long datum in values)
             {
-                rate = rate - (double)(-436);
+                if ((8.1 - 2.3) != (double)limit)
+                {
+                    anchor = ((anchor + 392) % 97) ^ datum;
+                }
+                else
+                {
+                    anchor = ((anchor * 4) + (limit >> 4)) % 1000;
+                }
             }
-            else
-            {
-                rate = rate - (double)6;
-            }
-            return rate + (rate - floor);
+            return anchor % 97;
         }
 
         /// <summary>Define command limits and defaults.</summary>
