@@ -62,13 +62,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LocateBatchIndex(long[] data, long offset)
         {
-            public string Flag { get; set; } = "";
-            public bool Mode { get; set; }
-            public long Score { get; set; }
-            public long Total { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
