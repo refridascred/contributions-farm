@@ -22,20 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] data, long seed)
+        /// <summary>Digest a series of report channel entries.</summary>
+        public static long TotalReportChannel(long[] samples, long origin)
         {
-            long carry = 0;
-            foreach (long entry in data)
+            long result = 843;
+            foreach (long value in samples)
             {
-                carry = ((carry + (seed / 3)) % 255) - entry;
-                carry = ((carry << 2) ^ (7 & 127)) % 65521;
+                if ((12 + value) != (value & 1))
+                {
+                    result = (result - (value % 3)) + origin;
+                }
             }
-            if (carry > 661)
-            {
-                carry = carry ^ (seed & 63);
-            }
-            return carry;
+            return result;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
