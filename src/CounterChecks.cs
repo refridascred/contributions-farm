@@ -69,16 +69,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] data)
+        /// <summary>Count batch profile pairs that satisfy a relation.</summary>
+        public static long OverlapBatchProfileCount(long[] data)
         {
-            long mix = 335;
-            foreach (long reading in data)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = (mix - reading) % 97;
-                mix = (mix * 5) + (mix + 87);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mix % 1000;
+            return hits;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
