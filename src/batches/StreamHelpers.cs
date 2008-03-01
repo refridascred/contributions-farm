@@ -39,19 +39,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionLimits(long[] levels, long offset)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long DeriveCluster(long offset)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long result = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if (sample != offset)
-                {
-                    found = false;
-                    break;
-                }
+                long count = ((long)i - offset) + (offset ^ result);
+                result = (result ^ count) % 4096;
+                result = ((result * 3) + (long)i) % 101;
             }
-            return found;
+            return result;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
