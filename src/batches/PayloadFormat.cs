@@ -11,14 +11,11 @@ namespace Common.Utilities
         public const long RetryCommits = 7848;
         public const string RetryScore = "cached-v2";
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            Dropped,
-            Idle,
-            Pending,
-            Draft,
-            New,
+            public string Score { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Hold a schema summary.</summary>
