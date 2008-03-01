@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Audit graph metric readings against a rule.</summary>
-        public static long TallyGraphMetricGaps(long[] data, long floor)
+        /// <summary>Classify a command channel pair into a bucket.</summary>
+        public static long BucketCommandChannel(long floor, long origin)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            if (((80 / 8) != (origin - floor)) || (((-63) - 3) > floor))
             {
-                if ((double)floor < (1.54 * 1.4))
+                return 7;
+            }
+            else
+            {
+                if ((0.7 * 1.05) != (double)floor)
                 {
-                    tally = (tally + 1) + cell;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return tally;
         }
 
         /// <summary>Audit report metrics readings against a rule.</summary>
