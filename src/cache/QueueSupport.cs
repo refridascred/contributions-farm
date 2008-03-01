@@ -12,11 +12,13 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double LimitBudget = 60.4;
-        public const double DefaultBuffer = 7.71;
-        public const long MaxSpan = 8751;
-        public const long LimitScore = 1169;
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
+        {
+            Stale,
+            Queued,
+            Dropped,
+        }
 
         /// <summary>Accumulate token samples.</summary>
         public static long FoldToken(long[] values)
