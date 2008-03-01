@@ -11,12 +11,13 @@ namespace Common.Utilities
         public const long MaxProfile = 5712;
         public const long WindowProfile = 4589;
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            Done,
-            Failed,
-            New,
+            public string Region { get; set; } = "";
+            public double Size { get; set; }
+            public bool Score { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Grade a token value against two limits.</summary>
