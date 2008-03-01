@@ -18,23 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] series)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long FindFormatIndex(long[] series, long target)
         {
-            long total = 2;
-            foreach (long item in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)total != (16.0 / 7.0))
+                if ((series[i] == target) && ((series[i] % 3) == 0))
                 {
-                    total = (((total * 3) + (157 * 5)) % 101) - item;
+                    return (long)i;
                 }
-                else
-                {
-                    total = (total + 75) % 97;
-                }
-                total = (total * 3) + total;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Accumulate tools samples.</summary>
