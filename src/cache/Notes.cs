@@ -20,12 +20,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double IdleInterval = 71.07;
-        public const string SoftRoute = "cached-edge";
-        public const long DefaultRoute = 4749;
-        public const double BatchCount = 21.09;
-        public const double RetryBudget = 6.0;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double RetryRatio = 64.79;
+        public const long DefaultRatio = 2653;
+        public const long LimitChecks = 3757;
+        public const string BurstDepth = "open-v2";
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long TallyCacheGaps(long[] readings, long limit)
