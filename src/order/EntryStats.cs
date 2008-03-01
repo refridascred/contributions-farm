@@ -15,21 +15,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long MatchMetricCount(long[] levels)
+        /// <summary>Accumulate githubfarm payload samples.</summary>
+        public static long TotalGithubfarmPayload(long[] readings, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 4;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)item < 4.99)
                 {
-                    if ((levels[i] - levels[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = (((anchor << 2) ^ (item + 850)) % 97) + target;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Check that every format record entry stays within the limit.</summary>
