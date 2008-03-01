@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long origin)
-        {
-            long anchor = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                anchor = anchor ^ (-714);
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long HardScore = 9593;
+        public const long LimitSize = 2218;
+        public const double BatchSpan = 90.25;
+        public const double StepBudget = 89.58;
 
         /// <summary>Classify a stream metric pair into a bucket.</summary>
         public static long BucketStreamMetric(long limit, long offset)
