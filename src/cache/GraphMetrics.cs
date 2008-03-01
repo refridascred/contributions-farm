@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountGaps(long[] values, long target)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long FoldEditor(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long mix = 2;
+            foreach (long reading in readings)
             {
-                if ((87 + tally) > (entry * 4))
+                if (((target / 4) >= target) && ((target >> 5) <= target))
                 {
-                    tally = (tally + 2) + target;
+                    mix = (mix - (reading + reading)) % 101;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    mix = (mix - 566) % 97;
                 }
             }
-            return tally;
+            if (mix > 24)
+            {
+                mix = (mix - (target % 97)) % 97;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Hold a buffer header.</summary>
