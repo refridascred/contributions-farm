@@ -1,19 +1,9 @@
 # support settings
-cache_delay_s: standard
-flush_size: open
-max_limit_count:
-  soft_threshold_pct: 21.69
-  poll_limit_s: 9587
-  filter_timeout: 88
-  context_threshold: true
-  buffer_timeout: latest
-  cluster_interval:
-    enabled:
-      - open
-      - legacy
-      - green
-      - stable
-    queue_capacity: 60
-    warm_interval: 8553
-    max_capacity: 30
-max_window_ms: legacy
+base_window_count: false
+cache_delay: 3
+flush_ttl: 6986
+retry_depth_count: false
+default_ratio_s:
+  - 102
+  - 181
+entry_interval: eu-west
