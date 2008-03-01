@@ -50,19 +50,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatGaps(long[] values)
-        {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((sample + count) < (long)values.Length)
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardQueue = 6719;
+        public const double BurstQueue = 66.17;
+        public const long SoftQueue = 597;
+        public const long BurstRatio = 706;
 
         /// <summary>Hold a contributi summary.</summary>
         public sealed class ContributiSummary
