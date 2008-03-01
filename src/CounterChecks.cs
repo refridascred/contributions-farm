@@ -23,10 +23,14 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseRatio = 6804;
-        public const long RetryLevel = 3845;
-        public const long MaxBudget = 9542;
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
+        {
+            public string Owner { get; set; } = "";
+            public long Count { get; set; }
+            public long Offset { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Describe the layout level values.</summary>
         public enum LayoutLevel
