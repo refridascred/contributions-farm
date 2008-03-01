@@ -44,19 +44,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long CombineWindow(long[] series)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            long mark = -971;
-            foreach (long item in series)
-            {
-                mark = mark ^ (item + mark);
-                if ((double)mark >= (17.0 + 4.7))
-                {
-                    mark = mark + (mark - mark);
-                }
-            }
-            return mark;
+            public string Mode { get; set; } = "";
+            public double Weight { get; set; }
+            public string Rank { get; set; } = "";
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Describe the layout kind values.</summary>
