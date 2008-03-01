@@ -27,12 +27,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Grade a layout entry value against two limits.</summary>
+        public static long GradeLayoutEntry(long bound, long step)
         {
-            Closed,
-            Retry,
-            Synced,
+            long slot = bound - step;
+            if (bound > (slot ^ slot))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((5.8 / 7.0) == (double)bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound % 10) >= (slot ^ step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of editor readings.</summary>
