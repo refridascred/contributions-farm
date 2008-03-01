@@ -45,19 +45,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long DigestOrder(long[] items)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long sum = 209;
-            foreach (long reading in items)
-            {
-                sum = sum + sum;
-                if ((sum / 4) > (sum + reading))
-                {
-                    sum = ((sum * 2) + (sum - sum)) % 1000;
-                }
-            }
-            return sum;
+            Active,
+            Ready,
+            Locked,
         }
 
         /// <summary>Digest a series of notes entries.</summary>
