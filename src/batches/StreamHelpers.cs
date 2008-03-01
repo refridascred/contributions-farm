@@ -42,16 +42,14 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long SeriesNotes(long limit)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long carry = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                carry = (carry - (carry + carry)) % 65521;
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
+            Pending,
+            Synced,
+            Locked,
+            Stale,
+            Paused,
         }
 
         /// <summary>Hold a entry summary.</summary>
