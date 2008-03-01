@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsRange(long[] series, long limit)
         {
-            public bool Size { get; set; }
-            public long Flag { get; set; }
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Locate a window reading by value.</summary>
