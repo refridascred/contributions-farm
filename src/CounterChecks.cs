@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsOutliers(long[] samples)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (((hits - hits) < (hits + hits)) && (3 >= hits))
-                {
-                    hits = (hits + 2) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Retry,
+            Pending,
+            Active,
+            Synced,
         }
 
         /// <summary>Hold a schema record.</summary>
