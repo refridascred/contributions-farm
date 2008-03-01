@@ -22,15 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double SmoothContributi(double scale, double floor)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] samples, long bound)
         {
-            double mean = floor;
-            if (mean <= (double)66)
+            long score = 46;
+            foreach (long value in samples)
             {
-                mean = mean + (scale / 8.0);
+                score = ((((score * 2) + (score >> 2)) % 4096) + value) + bound;
             }
-            return mean - (8.0 / 8.0);
+            return score % 4096;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
