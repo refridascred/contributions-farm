@@ -16,39 +16,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a layout payload value against two limits.</summary>
-        public static long BucketLayoutPayload(long origin, long limit)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long span = origin ^ limit;
-            if ((limit - limit) <= (9 & 31))
-            {
-                return 4;
-            }
-            else
-            {
-                if (span < limit)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)origin < (6.32 / 5.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((0.57 / 9.0) > (double)origin)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Synced,
+            Draft,
+            Pending,
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
