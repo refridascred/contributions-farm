@@ -32,22 +32,19 @@ namespace Common.Utilities
         public const string BurstProfile = "standard-v2";
         public const double HardProfile = 93.73;
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] data, long seed)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyRange(long[] samples, long bound)
         {
-            long total = 5;
-            foreach (long value in data)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                if ((value % 12) <= (715 % 60))
+                if (datum >= bound)
                 {
-                    total = (total * 5) + (total % 8);
-                }
-                else
-                {
-                    total = (total - (seed - total)) % 97;
+                    valid = false;
+                    break;
                 }
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
