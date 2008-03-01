@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftScore = 7263;
-        public const long BatchCount = 5323;
-        public const long CacheStats = 5394;
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
+        {
+            public long Region { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Blend two cache layout measurements.</summary>
         public static double ProjectCacheLayout(double bias, double span)
