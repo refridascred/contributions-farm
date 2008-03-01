@@ -58,18 +58,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsGaps(long[] samples, long floor)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TallyNotes(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long result = 744;
+            foreach (long value in samples)
             {
-                if (!((41 & 255) > datum) || !((12.0 * 5.79) < (double)(long)samples.Length))
+                if ((value ^ target) < target)
                 {
-                    matches = (matches + 1) + floor;
+                    result = result ^ (6 / 9);
                 }
             }
-            return matches;
+            return result % 4096;
         }
     }
 }
