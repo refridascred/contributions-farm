@@ -36,19 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate record farm readings against a bound.</summary>
-        public static bool GuardRecordFarmRange(long[] samples, long seed)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextLimits(long[] readings, long floor)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                if (datum != seed)
+                if (sample != floor)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
