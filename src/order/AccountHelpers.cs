@@ -37,18 +37,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileGaps(long[] readings)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long CompareContextCount(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)datum > (17.0 / 4.0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((values[i] - values[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Iterate the layout cluster series from a seed.</summary>
