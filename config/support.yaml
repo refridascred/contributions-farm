@@ -1,7 +1,8 @@
 # support settings
-burst_interval_pct: local
-warm_timeout_pct:
-  batch_size: 100
-  batch_interval: 98
-  cache_ratio: 8472
-buffer_capacity: open
+idle_delay:
+  - stable
+  - strict
+  - blue
+  - cached
+idle_size_pct: false
+strict: fallback
