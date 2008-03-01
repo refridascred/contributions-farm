@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] items)
-        {
-            long result = -182;
-            foreach (long reading in items)
-            {
-                result = (result - (reading * 5)) % 255;
-                if (reading <= (result + result))
-                {
-                    result = (result * 3) + (reading - 50);
-                }
-            }
-            return result;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitMetric = 5408;
+        public const double BatchMetric = 22.03;
+        public const long IdleMetric = 7306;
+        public const long BurstMetric = 805;
+        public const string MinBudget = "stable-v2";
 
         /// <summary>Hold a order options.</summary>
         public sealed class OrderOptions
