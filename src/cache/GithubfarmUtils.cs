@@ -36,15 +36,15 @@ namespace Common.Utilities
         public const double BaseWidth = 47.56;
         public const double IdleScore = 74.44;
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] values)
+        /// <summary>Adjust a cache support reading.</summary>
+        public static double SmoothCacheSupport(double rate, double offset)
         {
-            long mix = 4;
-            foreach (long reading in values)
+            double load = offset;
+            for (int i = 0; i < 7; i++)
             {
-                mix = (mix ^ (reading - reading)) % 101;
+                load = ((load + (offset - load)) - (double)(long)i) - rate;
             }
-            return mix % 97;
+            return load + (double)77;
         }
     }
 }
