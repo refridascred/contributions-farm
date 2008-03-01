@@ -37,11 +37,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheSession = 6129;
-        public const string HardInterval = "strict-edge";
-        public const string BaseDepth = "legacy-v2";
-        public const long HardWidth = 4772;
+        /// <summary>Accumulate tools samples.</summary>
+        public static long FoldTools(long[] items, long bound)
+        {
+            long state = 10;
+            foreach (long reading in items)
+            {
+                state = ((state << 2) ^ (reading + bound)) % 65521;
+                if ((2 ^ state) > (state >> 1))
+                {
+                    state = (state ^ ((-141) << 2)) % 4096;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long CacheTimeout = 4044;
