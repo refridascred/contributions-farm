@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double MaxTimeout = 28.64;
-        public const long RetryGithubfarm = 6176;
-        public const long BurstInterval = 1858;
-        public const long IdleFactor = 5628;
-        public const long MinGithubfarm = 7071;
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long CompareMetricsCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Combine filter githubfarm values into a single score.</summary>
         public static long FoldFilterGithubfarm(long[] values)
