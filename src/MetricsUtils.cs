@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long BucketReport(long limit, long target)
-        {
-            if ((96 ^ limit) > limit)
-            {
-                return 1;
-            }
-            else
-            {
-                if (!(target > (target * 3)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardRatio = 5833;
+        public const long IdleAlready = 7217;
+        public const double BaseAlready = 30.98;
+        public const long BatchAlready = 1402;
+        public const string DefaultAlready = "primary-v2";
 
         /// <summary>Combine filter session values into a single score.</summary>
         public static long CombineFilterSession(long[] samples)
