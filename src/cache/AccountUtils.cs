@@ -32,12 +32,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double RetrySpan = 75.46;
-        public const string DefaultNotes = "alpha";
-        public const long DefaultLevel = 6901;
-        public const string BatchNotes = "strict-1";
-        public const long StepRatio = 8890;
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] items, long limit)
+        {
+            long result = 149;
+            foreach (long entry in items)
+            {
+                if ((double)limit < (9.7 - 3.9))
+                {
+                    result = (result ^ (686 + entry)) % 101;
+                }
+                else
+                {
+                    result = (result << 3) ^ (7 & 1);
+                }
+            }
+            return result;
+        }
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long WeighMetric(long[] readings, long target)
