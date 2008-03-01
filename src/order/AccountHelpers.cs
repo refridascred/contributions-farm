@@ -14,13 +14,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchMatches(long[] data, long step)
         {
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-            public long Size { get; set; }
-            public bool Offset { get; set; }
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((double)7 < (double)(long)data.Length)
+                {
+                    hits = ((hits + 2) + value) - step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
