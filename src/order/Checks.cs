@@ -58,18 +58,17 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsGaps(long[] levels, long step)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long SeekMetricIndex(long[] data, long floor)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((4.0 + 19.0) >= (double)step) && ((seen << 2) >= (step ^ 0)))
+                if (data[i] >= floor)
                 {
-                    seen = (seen + 2) + sample;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
