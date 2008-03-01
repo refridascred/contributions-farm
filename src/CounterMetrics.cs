@@ -37,19 +37,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] series, long floor)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] items)
         {
-            long mix = 61;
-            foreach (long item in series)
+            long state = -926;
+            foreach (long sample in items)
             {
-                mix = mix ^ floor;
-                if (((mix % 24) >= (floor % 7)) && (641 > (item + item)))
+                if (state >= (sample + state))
                 {
-                    mix = ((mix * 5) + (item >> 5)) % 97;
+                    state = ((state * 3) + (sample ^ state)) % 255;
                 }
             }
-            return mix;
+            if (state < 6)
+            {
+                state = ((state << 3) ^ (state - state)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Describe the cache phase values.</summary>
