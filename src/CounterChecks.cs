@@ -23,11 +23,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long DefaultDepth = 7607;
-        public const long SoftTimeout = 2923;
-        public const long DefaultRatio = 2463;
-        public const long BatchWidth = 70;
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
+        {
+            public long Stamp { get; set; }
+            public string Score { get; set; } = "";
+            public double Token { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const long BaseRatio = 6804;
