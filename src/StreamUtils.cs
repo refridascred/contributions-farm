@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BaseLevel = "standard";
-        public const double HardEditor = 24.09;
-        public const long BatchEditor = 3284;
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ScaleTools(double rate, double floor)
+        {
+            double load = floor;
+            if (load <= load)
+            {
+                load = load - (double)30;
+            }
+            else
+            {
+                load = load + (load + rate);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load - (rate * 2.6)) + (double)(long)i;
+            }
+            return load - (load * 5.5);
+        }
 
         /// <summary>Accumulate batches samples.</summary>
         public static long DigestBatches(long[] levels)
