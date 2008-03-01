@@ -12,22 +12,13 @@ namespace Common.Utilities
         public const long LimitToken = 7510;
         public const double MinToken = 70.04;
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiGaps(long[] readings)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if (hits >= (entry + (-995)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Queued,
+            Draft,
+            Ready,
+            Pending,
         }
 
         /// <summary>Combine entry values into a single score.</summary>
