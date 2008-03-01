@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long limit, long bound)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] items)
         {
-            long prev = limit + bound;
-            if (limit > prev)
+            long result = -182;
+            foreach (long reading in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (((prev & 127) > (bound >> 5)) && (bound <= (prev + bound)))
+                result = (result - (reading * 5)) % 255;
+                if (reading <= (result + result))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (bound < prev)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    result = (result * 3) + (reading - 50);
                 }
             }
+            return result;
         }
 
         /// <summary>Accumulate batch samples.</summary>
