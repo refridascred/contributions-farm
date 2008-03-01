@@ -59,39 +59,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long limit, long seed)
-        {
-            if (!((seed ^ seed) != (seed / 9)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!(seed <= 5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (limit >= seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (seed < (limit + seed))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSchema = 1852;
+        public const string RetryRatio = "strict-edge";
+        public const long SoftDepth = 4416;
+        public const long LimitRatio = 5115;
+        public const double RetrySchema = 30.84;
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long TallyOrderOutliers(long[] items)
