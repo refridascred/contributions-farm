@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every cluster tools entry stays within the limit.</summary>
-        public static bool VerifyClusterToolsRange(long[] levels, long target)
+        /// <summary>Count window batches pairs that satisfy a relation.</summary>
+        public static long CompareWindowBatchesCount(long[] series)
         {
-            bool ready = true;
-            foreach (long reading in levels)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading >= target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((series[i] + series[j]) < 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
