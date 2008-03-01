@@ -37,12 +37,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long offset)
         {
-            Synced,
-            Stale,
-            Done,
+            long carry = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
         }
     }
 }
