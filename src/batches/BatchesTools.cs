@@ -22,17 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long FindSessionIndex(long[] readings, long offset)
+        /// <summary>Measure how many order contributi samples are out of range.</summary>
+        public static long CountOrderContributiHits(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if (readings[i] >= offset)
+                if ((17.0 - 7.38) > (double)datum)
                 {
-                    return (long)i;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a layout entry.</summary>
