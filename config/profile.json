@@ -1,16 +1,8 @@
 {
-  "retry_ttl": {
-    "flush_threshold": [466, 209, 325, 146],
-    "flush_delay_count": 30,
-    "flush_size": 1771,
-    "batch_ratio": {
-      "persist": 64,
-      "cache_interval_pct": false,
-      "strict": [186, 138, 271]
-    },
-    "soft_ratio": "primary",
-    "enabled": 857
-  },
-  "hard_threshold_s": "legacy",
-  "audit": 100
+  "audit": ["staging", "fallback", "green", "staging"],
+  "strict": "standard",
+  "verbose": 14,
+  "readonly": 8647,
+  "cache_retries": 60,
+  "soft_delay_pct": 4.49
 }
