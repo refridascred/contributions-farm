@@ -19,18 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the context contributi entries that pass the check.</summary>
-        public static long AuditContextContributiMatches(long[] levels)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if (datum >= (datum ^ seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Offset { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
