@@ -30,10 +30,20 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftEntry = 3218;
-        public const long WindowBudget = 7934;
-        public const long LimitEntry = 321;
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferLimits(long[] items, long offset)
+        {
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading < offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const double CacheWindow = 59.88;
