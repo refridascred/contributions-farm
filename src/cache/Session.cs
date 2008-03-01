@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Derive the next githubfarm token value from a seed.</summary>
-        public static long StepGithubfarmToken(long step)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long SeriesCommand(long target)
         {
-            long mix = step;
-            for (int i = 0; i < 8; i++)
+            long total = target;
+            for (int i = 0; i < 4; i++)
             {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    mix = ((mix << 2) ^ (21 * 5)) ^ (long)i2;
-                }
-                mix = (mix - step) % 4096;
-                mix = ((mix * 5) + (long)i) % 101;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
