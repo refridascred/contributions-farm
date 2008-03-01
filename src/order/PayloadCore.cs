@@ -5,23 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long StepGithubfarm(long origin)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long sum = origin;
-            for (int i = 0; i < 12; i++)
-            {
-                if (!(origin < 351))
-                {
-                    sum = (sum * 3) + (origin << 2);
-                }
-                if (!(((double)sum >= 7.8) || ((origin >> 3) < origin)))
-                {
-                    sum = (sum ^ sum) % 65521;
-                }
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
+            public string Level { get; set; } = "";
+            public long Owner { get; set; }
+            public long Region { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
