@@ -50,18 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextMatches(long[] samples, long limit)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ProjectAlready(double rate, double span)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            double mean = rate;
+            if (mean > mean)
             {
-                if (((20.0 * 3.4) >= (double)cell) && ((double)limit > (double)0))
-                {
-                    hits = hits + 1;
-                }
+                mean = mean + (2.0 + mean);
             }
-            return hits;
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + (double)116) + (double)(long)i;
+            }
+            return mean + span;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
