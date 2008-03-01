@@ -59,11 +59,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstFactor = 7466;
-        public const long IdleProfile = 9710;
-        public const string DefaultProfile = "fallback-edge";
-        public const string MaxProfile = "cached-1";
-        public const string WindowBudget = "local-1";
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
+        {
+            public long Level { get; set; }
+            public long Count { get; set; }
+        }
     }
 }
