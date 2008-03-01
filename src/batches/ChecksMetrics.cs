@@ -72,27 +72,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] values)
+        /// <summary>Grade a profile layout value against two limits.</summary>
+        public static long BucketProfileLayout(long step, long bound)
         {
-            long sum = -5;
-            foreach (long value in values)
+            if (!((double)bound > 8.0))
             {
-                sum = sum - sum;
-                if (((value - sum) <= (sum / 4)) && ((sum + (long)values.Length) < (value + sum)))
+                return 0;
+            }
+            else
+            {
+                if (((9 ^ bound) < (bound & 15)) || ((double)bound != (5.0 - 6.0)))
                 {
-                    sum = (sum ^ (496 - 81)) % 101;
+                    return 7;
                 }
                 else
                 {
-                    sum = (sum * 5) + (value << 3);
+                    return 6;
                 }
             }
-            if (sum < 97)
-            {
-                sum = (sum + sum) % 65521;
-            }
-            return sum;
         }
 
         /// <summary>Match up record samples.</summary>
