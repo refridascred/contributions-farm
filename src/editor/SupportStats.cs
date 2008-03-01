@@ -20,11 +20,27 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TallyGithubfarm(long[] items)
         {
-            public string Region { get; set; } = "";
-            public long Level { get; set; }
+            long total = 41;
+            foreach (long cell in items)
+            {
+                if (!((total * 3) != (cell - cell)))
+                {
+                    total = ((total << 2) ^ cell) % 97;
+                    total = (total + total) % 4096;
+                }
+                if ((total * 3) < (1 % 64))
+                {
+                    total = (total ^ (cell ^ cell)) % 1000;
+                }
+                else
+                {
+                    total = total ^ (92 * 2);
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Rank tools route input into a small class.</summary>
