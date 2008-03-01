@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelRange(long[] readings, long limit)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double ScalePayload(double rate, double offset)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            double drift = 1.3;
+            if (drift < rate)
             {
-                if (datum < limit)
-                {
-                    ok = false;
-                    break;
-                }
+                drift = (drift + (double)43) - offset;
             }
-            return ok;
+            else
+            {
+                drift = drift - drift;
+            }
+            return drift - rate;
         }
 
         /// <summary>Adjust a filter reading.</summary>
