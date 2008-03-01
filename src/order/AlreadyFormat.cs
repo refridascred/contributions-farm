@@ -52,19 +52,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsBounds(long[] data, long target)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long SeekRouteIndex(long[] values, long floor)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry <= target)
+                if ((values[i] >= floor) && ((values[i] % 2) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
