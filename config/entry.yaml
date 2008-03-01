@@ -1,12 +1,4 @@
 # entry settings
-counter_threshold: true
-base_size_count:
-  - 176
-  - 467
-  - 295
-order_size:
-  - staging
-  - latest
-  - eu-west
-  - green
-persist: 62
+soft_limit_ms: 507
+contributi_depth: 250
+hard_capacity_s: 1
