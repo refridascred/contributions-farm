@@ -1,5 +1,13 @@
 {
-  "profile_window": 8800,
-  "persist": [33, 368, 5],
-  "retry_depth_s": 8908
+  "batches_timeout": "standard",
+  "hard_size_pct": 9,
+  "flush_limit": {
+    "idle_limit_ms": false,
+    "enabled": "fallback",
+    "retry_window_s": "green",
+    "poll_threshold_s": "latest"
+  },
+  "order_ratio": ["fallback", "fallback", "primary", "eu-west"],
+  "idle_window": "cached",
+  "sync_capacity": false
 }
