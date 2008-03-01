@@ -23,19 +23,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two profile record measurements.</summary>
-        public static double ProjectProfileRecord(double ratio, double floor)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            double load = (double)520 * 6.1;
-            if (load <= (double)36)
-            {
-                load = load - ratio;
-            }
-            else
-            {
-                load = load + (ratio * 7.4);
-            }
-            return load - (floor / 9.0);
+            public bool Limit { get; set; }
+            public string Region { get; set; } = "";
+            public string Score { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
