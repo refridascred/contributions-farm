@@ -70,22 +70,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatGaps(long[] samples, long floor)
+        /// <summary>Audit buffer route readings against a rule.</summary>
+        public static long AuditBufferRouteHits(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((hits + hits) >= (floor & 255))
+                if ((9.0 / 3.0) != (double)seen)
                 {
-                    hits = (hits + 1) ^ reading;
+                    seen = (seen + 2) + entry;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
