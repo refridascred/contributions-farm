@@ -52,12 +52,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Count checks editor pairs that satisfy a relation.</summary>
+        public static long MatchChecksEditorCount(long[] readings)
         {
-            Closed,
-            Pending,
-            Ready,
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
