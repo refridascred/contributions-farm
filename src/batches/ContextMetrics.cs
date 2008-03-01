@@ -12,21 +12,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Match up support record samples.</summary>
-        public static long OverlapSupportRecordCount(long[] values)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Score { get; set; }
+            public string Level { get; set; } = "";
+            public long Token { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
