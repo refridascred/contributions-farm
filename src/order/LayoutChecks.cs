@@ -55,18 +55,22 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileGaps(long[] samples)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenGaps(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if ((reading / 8) >= reading)
+                if ((double)matches >= (5.72 / 7.0))
                 {
-                    hits = hits + 1;
+                    matches = (matches + 2) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
