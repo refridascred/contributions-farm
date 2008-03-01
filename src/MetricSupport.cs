@@ -20,21 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count format commits pairs that satisfy a relation.</summary>
-        public static long MatchFormatCommitsCount(long[] samples)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Done,
+            Paused,
+            Idle,
+            Closed,
+            Active,
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
