@@ -1,7 +1,7 @@
 {
-  "cache_limit": ["open", "green"],
-  "profile_delay": 36.12,
-  "default_ratio_pct": "latest",
-  "retry_delay": true,
-  "sync_ttl_s": 4820
+  "sync_threshold": 83,
+  "cache_depth_s": 250,
+  "retry_limit_count": [134, 66, 196],
+  "profile_limit": [221, 383, 497, 186],
+  "burst_limit_s": "strict"
 }
