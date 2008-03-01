@@ -17,12 +17,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaOutliers(long[] levels, long limit)
         {
-            Dropped,
-            Retry,
-            Failed,
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample / 7) == (sample ^ 3))
+                {
+                    seen = (seen + 2) - limit;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many layout buffer samples are out of range.</summary>
