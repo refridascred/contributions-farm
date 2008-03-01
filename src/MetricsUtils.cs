@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Look up the position of a githubfarm metric sample.</summary>
-        public static long LookupGithubfarmMetricIndex(long[] readings, long offset)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double BlendEntry(double ratio, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double drift = floor;
+            if (drift >= (double)26)
             {
-                if (readings[i] > offset)
-                {
-                    return (long)i;
-                }
+                drift = drift + (double)5;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = (drift - floor) - (double)(long)i;
+            }
+            return drift - (ratio - 9.9);
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
