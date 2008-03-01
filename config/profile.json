@@ -1,8 +1,6 @@
 {
-  "command_size": 77,
-  "max_ratio_pct": 26.48,
-  "audit": 7434,
-  "enabled": 1024,
-  "flush_threshold_pct": 80,
-  "sync_window": [28, 500, 280, 60]
+  "layout_depth": [243, 154, 206, 251],
+  "entry_window": "edge",
+  "contributi_timeout": "legacy",
+  "verbose": true
 }
