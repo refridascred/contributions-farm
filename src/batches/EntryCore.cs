@@ -31,19 +31,18 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ProjectRecord(double rate, double floor)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferHits(long[] values, long floor)
         {
-            double load = rate / 7.0;
-            if (load >= (rate * 7.0))
+            long tally = 0;
+            foreach (long sample in values)
             {
-                load = (load + 9.7) + floor;
+                if ((tally + 72) <= (floor ^ (long)values.Length))
+                {
+                    tally = (tally + 1) - sample;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + (double)26) + (double)(long)i;
-            }
-            return load - (double)6;
+            return tally;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
