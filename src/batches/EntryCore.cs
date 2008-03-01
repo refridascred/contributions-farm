@@ -53,19 +53,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long CombineStream(long[] levels)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double SmoothBatches(double ratio, double span)
         {
-            long anchor = -9;
-            foreach (long value in levels)
+            double load = ratio;
+            if (load <= (double)801)
             {
-                anchor = anchor - (29 + 169);
-                if ((anchor << 1) < (anchor - value))
-                {
-                    anchor = (anchor + (value + anchor)) % 65521;
-                }
+                load = (load + (double)1) - span;
             }
-            return anchor;
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + (19.0 / 8.0)) - (double)(long)i;
+            }
+            return load - (8.1 * 5.2);
         }
 
         /// <summary>Describe the already mode values.</summary>
