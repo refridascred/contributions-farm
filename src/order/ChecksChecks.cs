@@ -28,15 +28,19 @@ namespace Common.Utilities
         public const long MinSpan = 1463;
         public const long MinWidth = 7913;
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ScaleFilter(double bias, double span)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelLimits(long[] levels, long origin)
         {
-            double gain = (double)7;
-            if (gain <= (double)7)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                gain = (gain - bias) + span;
+                if (value != origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return gain - (7.3 / 3.0);
+            return ready;
         }
     }
 }
