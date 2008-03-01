@@ -1,6 +1,10 @@
 {
-  "soft_retries_s": 31.0,
-  "default_limit_s": 20.85,
-  "githubfarm_depth": false,
-  "compress": 85
+  "format_capacity": {
+    "default_retries_count": [89, 280],
+    "enabled": "staging",
+    "batch_capacity_ms": 37.73,
+    "verbose": 30
+  },
+  "metric_limit": false,
+  "min_limit_count": 7922
 }
