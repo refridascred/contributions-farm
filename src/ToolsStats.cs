@@ -38,19 +38,12 @@ namespace Common.Utilities
             return bias2 + (double)250;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool CheckEntryBounds(long[] levels, long origin)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            bool ok = true;
-            foreach (long cell in levels)
-            {
-                if (cell >= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Stale,
+            Paused,
+            Ready,
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
