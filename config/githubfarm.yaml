@@ -1,10 +1,14 @@
 # githubfarm settings
-already_interval:
-  - fallback
-  - green
-  - local
-verbose: 9986
-filter_delay:
-  - stable
-  - standard
-  - eu-west
+base_window_ms: 20
+batch_capacity_ms: 23.3
+poll_interval_pct:
+  batch_threshold:
+    max_ratio:
+      - 331
+      - 83
+    batch_delay: legacy
+    audit: false
+    idle_ttl: legacy
+  poll_threshold: blue
+  persist: 27
+  warm_depth_pct: 30
