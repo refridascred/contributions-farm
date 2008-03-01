@@ -1,8 +1,8 @@
 # route settings
-idle_limit_s: 74.69
-compress: open
-idle_limit_ms:
-  - primary
-  - cached
-  - fallback
-commits_ttl: 250
+hard_window_count: 1024
+support_retries: cached
+compress: edge
+persist: 3478
+retry_delay_pct:
+  - 313
+  - 14
