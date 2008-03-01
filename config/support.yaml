@@ -1,10 +1,7 @@
 # support settings
-persist: 334
-stream_timeout: false
-audit: false
-soft_interval_ms: standard
-retry_ttl_ms:
-  dry_run: true
-  max_threshold_ms: 30
-  burst_delay: false
-compress: true
+burst_interval_pct: local
+warm_timeout_pct:
+  batch_size: 100
+  batch_interval: 98
+  cache_ratio: 8472
+buffer_capacity: open
