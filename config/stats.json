@@ -1,5 +1,5 @@
 {
-  "base_capacity_count": 8072,
-  "max_delay": "stable",
-  "queue_timeout": ["edge", "primary", "eu-west", "green"]
+  "max_ttl": true,
+  "soft_interval": 7137,
+  "poll_ttl_count": "standard"
 }
