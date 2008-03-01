@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LocateSessionIndex(long[] samples, long limit)
+        /// <summary>Accumulate metric counter samples.</summary>
+        public static long CombineMetricCounter(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = -745;
+            foreach (long item in levels)
             {
-                if (samples[i] < limit)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 4) + (anchor - anchor)) ^ item;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Roll a record queue counter forward.</summary>
