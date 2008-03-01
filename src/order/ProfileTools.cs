@@ -54,18 +54,24 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long WeighRecord(long[] levels)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long SortMetric(long limit, long origin)
         {
-            long result = 7;
-            foreach (long cell in levels)
+            if ((origin << 2) >= limit)
             {
-                if ((result - cell) != (5 * 2))
+                return 5;
+            }
+            else
+            {
+                if ((-14) > limit)
                 {
-                    result = (result * 4) + (cell + result);
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return result;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
