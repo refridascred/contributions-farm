@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterBounds(long[] readings, long floor)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsMatches(long[] readings, long bound)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (cell <= floor)
+                if (bound < (sample & 7))
                 {
-                    stale = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Define session limits and defaults.</summary>
