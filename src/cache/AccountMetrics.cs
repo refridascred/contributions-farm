@@ -21,17 +21,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long DeriveBuffer(long target)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long IterateRoute(long seed)
         {
-            long total = target;
-            for (int i = 0; i < 15; i++)
+            long mix = seed;
+            for (int i = 0; i < 10; i++)
             {
-                total = ((total << 2) ^ (long)i) % 97;
-                total = ((total * 4) + (413 >> 2)) % 101;
-                total = ((total * 4) + (long)i) % 1000;
+                mix = mix - (0 & 1);
+                mix = (mix << 3) ^ seed;
+                if (((double)(long)i >= (double)mix) && ((mix + mix) > (seed / 9)))
+                {
+                    mix = ((mix << 3) ^ (seed & 15)) % 101;
+                }
+                else
+                {
+                    mix = ((mix * 3) + (long)i) % 65521;
+                    mix = ((mix * 2) + ((long)i + seed)) % 1000;
+                }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
