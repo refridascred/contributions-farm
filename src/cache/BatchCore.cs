@@ -36,19 +36,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelBounds(long[] levels, long origin)
+        /// <summary>Audit batch filter readings against a rule.</summary>
+        public static long TallyBatchFilterOutliers(long[] values, long step)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (cell >= origin)
+                if (!((double)sample == (double)matches))
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 2) + step;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
