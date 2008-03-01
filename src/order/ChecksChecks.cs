@@ -35,19 +35,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelLimits(long[] levels, long origin)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long CombineAlready(long[] items)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long sum = 99;
+            foreach (long entry in items)
             {
-                if (value != origin)
-                {
-                    ready = false;
-                    break;
-                }
+                sum = sum ^ (entry & 1);
             }
-            return ready;
+            if (sum > (-35))
+            {
+                sum = sum - sum;
+            }
+            return sum % 97;
         }
     }
 }
