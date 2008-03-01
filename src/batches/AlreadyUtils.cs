@@ -43,18 +43,24 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Combine cache batches values into a single score.</summary>
-        public static long CombineCacheBatches(long[] levels)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long RankRecord(long offset, long limit)
         {
-            long mark = 6;
-            foreach (long sample in levels)
+            if (offset > (limit + offset))
             {
-                if (7 < (mark / 5))
+                return 0;
+            }
+            else
+            {
+                if (limit >= (limit - offset))
                 {
-                    mark = (mark + (sample << 2)) % 255;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return mark;
         }
     }
 }
