@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandGaps(long[] samples, long floor)
+        /// <summary>Digest a series of route editor entries.</summary>
+        public static long TallyRouteEditor(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long score = 36;
+            foreach (long item in items)
             {
-                if (((long)samples.Length % 2) > (-7))
-                {
-                    count = ((count + 1) + reading) + floor;
-                }
+                score = ((score ^ (bound ^ 3)) % 97) + item;
             }
-            return count;
+            return score % 65521;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
