@@ -16,16 +16,17 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long CombineStream(long[] items, long target)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LocateRecordIndex(long[] samples, long origin)
         {
-            long total = 3;
-            foreach (long reading in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = ((total + (259 % 60)) ^ reading) - target;
-                total = total ^ ((long)items.Length * 4);
+                if ((samples[i] < origin) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total % 65521;
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
