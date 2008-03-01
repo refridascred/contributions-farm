@@ -31,12 +31,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterMatches(long[] items)
         {
-            public double Ratio { get; set; }
-            public bool Total { get; set; }
-            public double Offset { get; set; }
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if (!(((reading & 15) > (count * 4)) && (reading >= (894 & 15))))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate farm command readings against a bound.</summary>
