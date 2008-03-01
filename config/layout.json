@@ -1,8 +1,7 @@
 {
-  "graph_size": "eu-west",
-  "checks_depth": true,
-  "readonly": false,
-  "poll_threshold_ms": 34,
-  "compress": 2831,
-  "idle_delay": 2133
+  "entry_interval": "standard",
+  "farm_interval": ["strict", "latest", "staging"],
+  "base_depth_count": "latest",
+  "compress": 8527,
+  "contributi_capacity": 62.96
 }
