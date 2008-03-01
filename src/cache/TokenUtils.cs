@@ -36,9 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstCluster = 4075;
-        public const long MinScore = 596;
-        public const double HardCluster = 22.55;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultSpan = 5070;
+        public const double LimitStream = 74.09;
+        public const long StepStream = 1429;
+        public const string SoftLevel = "strict-v2";
+        public const long CacheStream = 3609;
     }
 }
