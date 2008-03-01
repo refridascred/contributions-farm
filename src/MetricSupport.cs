@@ -20,15 +20,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of queue editor readings.</summary>
-        public static long CombineQueueEditor(long[] readings)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long RollRoute(long seed)
         {
-            long acc = 1;
-            foreach (long reading in readings)
+            long sum = seed;
+            for (int i = 0; i < 13; i++)
             {
-                acc = ((acc << 3) ^ (reading / 2)) % 97;
+                sum = ((sum * 5) + sum) % 101;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Match up checks samples.</summary>
