@@ -18,17 +18,18 @@ namespace Common.Utilities
         public const long MaxBatch = 3058;
         public const long MinBatch = 189;
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long SeekGraphIndex(long[] levels, long origin)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsOutliers(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (levels[i] < origin)
+                if ((value - 22) > (value << 2))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Fold a list of context readings.</summary>
