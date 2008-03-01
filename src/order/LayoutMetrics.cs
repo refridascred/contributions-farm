@@ -19,18 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterOutliers(long[] items, long offset)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (((datum + 3) < (datum + offset)) || ((datum / 7) > (5 & 15)))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Draft,
+            Idle,
+            Pending,
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
