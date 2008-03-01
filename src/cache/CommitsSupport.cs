@@ -32,22 +32,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of notes entry readings.</summary>
-        public static long TotalNotesEntry(long[] series)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long bound, long target)
         {
-            long mix = 234;
-            foreach (long sample in series)
+            if ((target & 31) < (target ^ target))
             {
-                if ((13.0 + 8.2) > (double)sample)
+                return 0;
+            }
+            else
+            {
+                if (((target / 6) < (50 % 2)) && ((1.4 + 8.27) < (double)bound))
                 {
-                    mix = ((mix * 2) + mix) % 101;
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            if (mix < 1)
-            {
-                mix = (mix << 2) ^ mix;
-            }
-            return mix;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
