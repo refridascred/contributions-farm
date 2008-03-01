@@ -1,7 +1,7 @@
 # support settings
-enabled: 5563
-layout_limit: cached
-dry_run: fallback
-batch_delay_count: 25.72
-batch_interval: 79.1
-hard_ratio: 60
+buffer_threshold: 65.48
+counter_size: stable
+persist:
+  - strict
+  - primary
+  - open
