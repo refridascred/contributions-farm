@@ -27,17 +27,19 @@ namespace Common.Utilities
         public const long WindowScore = 3275;
         public const long IdleCommits = 9915;
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] series, long floor)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextRange(long[] data, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                if (series[i] <= floor)
+                if (sample >= origin)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
