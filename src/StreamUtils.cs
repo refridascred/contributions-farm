@@ -73,9 +73,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseScore = 521;
-        public const long WindowCount = 6478;
-        public const long BatchContributi = 5201;
+        /// <summary>Fold a list of window commits readings.</summary>
+        public static long FoldWindowCommits(long[] levels)
+        {
+            long score = 5;
+            foreach (long reading in levels)
+            {
+                if (874 <= (score ^ score))
+                {
+                    score = (score * 3) + (reading - reading);
+                }
+            }
+            return score;
+        }
     }
 }
