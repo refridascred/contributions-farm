@@ -32,22 +32,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many contributi stream samples are out of range.</summary>
-        public static long CountContributiStreamHits(long[] data)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if ((6 - seen) > (sample + sample))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            New,
+            Stale,
+            Dropped,
         }
     }
 }
