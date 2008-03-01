@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            public long Region { get; set; }
-            public string Owner { get; set; } = "";
+            public bool Mode { get; set; }
+            public double Owner { get; set; }
+            public string Level { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the cluster state values.</summary>
