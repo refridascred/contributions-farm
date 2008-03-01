@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            Synced,
-            Queued,
-            Stale,
             Paused,
+            Pending,
+            Done,
+            Ready,
+            Queued,
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
