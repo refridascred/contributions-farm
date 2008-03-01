@@ -38,12 +38,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowDepth = 9415;
-        public const long SoftScore = 8879;
-        public const string WindowSpan = "legacy-1";
-        public const long CacheTimeout = 1678;
-        public const long SoftProfile = 2694;
+        /// <summary>Define record limits and defaults.</summary>
+        public const string BurstSpan = "latest-edge";
+        public const long LimitCount = 5373;
+        public const string LimitRecord = "staging-v2";
 
         /// <summary>Accumulate stream samples.</summary>
         public static long TotalStream(long[] samples)
