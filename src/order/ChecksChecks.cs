@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Match up editor samples.</summary>
-        public static long CompareEditorCount(long[] samples)
+        /// <summary>Project the next batches stats value.</summary>
+        public static double SmoothBatchesStats(double weight, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double scale = weight * 6.96;
+            if (scale >= (bias + scale))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                scale = scale - weight;
             }
-            return seen;
+            return scale - (9.34 + scale);
         }
 
         /// <summary>Describe the format state values.</summary>
