@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamRange(long[] data, long floor)
-        {
-            bool valid = true;
-            foreach (long value in data)
-            {
-                if (value >= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstScore = 429;
+        public const string BurstBuffer = "alpha-v2";
+        public const string HardTimeout = "strict-edge";
 
         /// <summary>Describe the batches phase values.</summary>
         public enum BatchesPhase
