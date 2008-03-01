@@ -20,27 +20,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long ScoreBatch(long[] values)
+        /// <summary>Look up the position of a farm already sample.</summary>
+        public static long FindFarmAlreadyIndex(long[] data, long offset)
         {
-            long anchor = 2;
-            foreach (long item in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = ((anchor << 2) ^ (95 % 12)) % 101;
-                if ((double)item >= (3.56 * 8.32))
+                if (data[i] > offset)
                 {
-                    anchor = (anchor * 3) + (97 >> 3);
-                }
-                else
-                {
-                    anchor = (anchor ^ (4 - 189)) % 1000;
+                    return (long)i;
                 }
             }
-            if (anchor < (-167))
-            {
-                anchor = ((anchor * 3) + anchor) % 255;
-            }
-            return anchor % 65521;
+            return -1;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
