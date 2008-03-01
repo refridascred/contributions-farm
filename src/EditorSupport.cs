@@ -76,18 +76,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long origin)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatRange(long[] levels, long floor)
         {
-            long state = origin;
-            for (int i = 0; i < 11; i++)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                state = (state << 3) ^ (origin + origin);
-                state = (state << 2) ^ (long)i;
-                state = (state + origin) % 97;
-                state = ((state * 5) + (long)i) % 97;
+                if (value != floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return state;
+            return flag;
         }
     }
 }
