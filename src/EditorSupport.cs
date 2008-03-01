@@ -31,15 +31,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of route schema readings.</summary>
-        public static long CombineRouteSchema(long[] readings)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long RollEntry(long limit)
         {
-            long acc = 31;
-            foreach (long datum in readings)
+            long state = limit;
+            for (int i = 0; i < 24; i++)
             {
-                acc = ((acc * 4) + (datum >> 4)) % 1000;
+                if (!(((-341) & 255) != (775 - (long)i)))
+                {
+                    state = ((state * 3) + state) % 65521;
+                }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Describe the already status values.</summary>
