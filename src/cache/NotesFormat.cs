@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteMatches(long[] values)
+        /// <summary>Audit token filter readings against a rule.</summary>
+        public static long AuditTokenFilterHits(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if ((seen % 3) != (seen >> 1))
+                if (!((target - 1) > (tally + value)))
                 {
-                    seen = (seen + 2) ^ sample;
+                    tally = tally + 3;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
