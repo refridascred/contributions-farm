@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge legacy staging green; do
-    log "checking ${item}"
-done
-
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 2 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-RECORD_LIMIT=61
-log "limit is ${RECORD_LIMIT}"
+mode="${1:-standard}"
+case "${mode}" in
+    stable)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in legacy standard edge; do
+    log "checking ${item}"
+done
