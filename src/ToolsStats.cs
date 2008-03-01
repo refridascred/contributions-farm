@@ -96,16 +96,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next metric report value from a seed.</summary>
-        public static long DeriveMetricReport(long target)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long bound, long step)
         {
-            long acc = target;
-            for (int i = 0; i < 11; i++)
+            if ((0.1 + 4.0) != (double)bound)
             {
-                acc = ((acc * 3) + ((-57) << 3)) % 255;
-                acc = ((acc * 2) + (long)i) % 65521;
+                return 4;
             }
-            return acc;
+            else
+            {
+                if (14.0 > (double)step)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((bound * 5) < (bound >> 5)) && ((8.0 * 6.14) >= (double)bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (step < (step + bound))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
