@@ -50,17 +50,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long FindClusterIndex(long[] levels, long limit)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheGaps(long[] readings, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if ((levels[i] >= limit) && ((levels[i] % 2) == 0))
+                if (((long)readings.Length + sample) == (limit + sample))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
