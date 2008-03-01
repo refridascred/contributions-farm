@@ -36,20 +36,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long IterateWindow(long offset)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long total = offset;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((((long)i >> 3) > 180) || ((829 * 5) <= total))
-                {
-                    total = ((total * 3) + (offset + total)) % 255;
-                    continue;
-                }
-                total = ((total * 3) + (long)i) % 97;
-            }
-            return total;
+            public string Rank { get; set; } = "";
+            public double Count { get; set; }
+            public long Offset { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Accumulate report samples.</summary>
