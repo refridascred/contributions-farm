@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LocateAlreadyIndex(long[] samples, long seed)
+        /// <summary>Combine route order values into a single score.</summary>
+        public static long DigestRouteOrder(long[] values, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 268;
+            foreach (long item in values)
             {
-                if (samples[i] > seed)
+                if (!((bound - 3) == (result % 97)))
                 {
-                    return (long)i;
+                    result = ((result ^ (29 - result)) % 1000) ^ item;
                 }
             }
-            return -1;
+            return result % 97;
         }
 
         /// <summary>Locate a githubfarm stats reading by value.</summary>
