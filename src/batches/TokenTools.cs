@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Match up batch samples.</summary>
-        public static long PairBatchCount(long[] series)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueHits(long[] samples, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)(long)samples.Length < (14.0 * 8.8))
                 {
-                    if ((series[i] ^ series[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = ((count + 3) + reading) - offset;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a stats record.</summary>
