@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Blend two layout measurements.</summary>
-        public static double BlendLayout(double weight, double floor)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaLimits(long[] series, long limit)
         {
-            double gain = floor;
-            for (int i = 0; i < 8; i++)
+            bool flag = true;
+            foreach (long reading in series)
             {
-                gain = ((gain + gain) + (double)(long)i) + weight;
+                if (reading > limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return gain + (1.0 + 12.0);
+            return flag;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
