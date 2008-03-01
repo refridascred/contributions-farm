@@ -95,14 +95,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Match up record samples.</summary>
+        public static long CompareRecordCount(long[] data)
         {
-            Stale,
-            Pending,
-            Locked,
-            Done,
-            Idle,
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
