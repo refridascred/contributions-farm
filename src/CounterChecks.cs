@@ -48,32 +48,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long origin, long step)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long StepFarm(long target)
         {
-            long cur = origin ^ step;
-            if (origin <= cur)
+            long mix = target;
+            for (int i = 0; i < 11; i++)
             {
-                return 4;
+                mix = ((mix << 2) ^ target) % 4096;
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if (((-9) << 1) <= origin)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((-79) > (cur / 6))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
