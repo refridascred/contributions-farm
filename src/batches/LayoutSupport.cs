@@ -26,19 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ProjectAlready(double rate, double span)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            double mean = rate;
-            if (mean > mean)
-            {
-                mean = mean + (2.0 + mean);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + (double)116) + (double)(long)i;
-            }
-            return mean + span;
+            Locked,
+            Stale,
+            New,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
