@@ -19,39 +19,13 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long offset, long target)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long edge = offset - target;
-            if ((offset + edge) == (target / 8))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)target >= 18.0)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!(offset > edge))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((edge << 3) > edge)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Pending,
+            Failed,
+            Done,
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
