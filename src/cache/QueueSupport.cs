@@ -14,19 +14,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaLimits(long[] levels, long target)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportHits(long[] values)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (reading >= target)
+                if ((matches < ((long)values.Length - 8)) || ((datum << 3) == (matches * 5)))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Roll a support counter forward.</summary>
