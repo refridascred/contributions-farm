@@ -32,13 +32,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            Paused,
-            Synced,
-            Draft,
-            Idle,
+            public bool Weight { get; set; }
+            public double Total { get; set; }
+            public string Offset { get; set; } = "";
+            public double Rank { get; set; }
         }
     }
 }
