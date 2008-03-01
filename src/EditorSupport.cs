@@ -54,12 +54,32 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long origin, long bound)
         {
-            public long Flag { get; set; }
-            public double Offset { get; set; }
-            public string Mode { get; set; } = "";
+            long offset = origin - bound;
+            if ((7.7 / 3.0) == (double)origin)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)offset < (double)origin)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound ^ bound) <= offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
