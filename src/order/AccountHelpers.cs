@@ -55,10 +55,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchRecord = 4758;
-        public const long BatchFactor = 7221;
-        public const long SoftSize = 247;
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long PairClusterCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
