@@ -28,16 +28,13 @@ namespace Common.Utilities
             return rate + (double)31;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long StepLayout(long seed)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long anchor = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                anchor = ((anchor << 2) ^ (153 * 4)) % 101;
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
+            public long Label { get; set; }
+            public long Size { get; set; }
+            public double Offset { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
