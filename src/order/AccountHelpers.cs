@@ -47,10 +47,25 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double HardTimeout = 12.5;
-        public const long RetryAccount = 2512;
-        public const long LimitScore = 2620;
+        /// <summary>Iterate the layout cluster series from a seed.</summary>
+        public static long IterateLayoutCluster(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((long)i == (floor + score))
+                {
+                    score = (score ^ (floor / 5)) % 1000;
+                }
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    score = (score ^ ((-979) * 2)) + (long)i2;
+                    score = (score - (score / 2)) % 255;
+                }
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Scale a account figure with a bias.</summary>
         public static double AdjustAccount(double rate, double span)
