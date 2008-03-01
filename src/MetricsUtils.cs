@@ -56,11 +56,19 @@ namespace Common.Utilities
             return drift - weight;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double WindowSession = 13.53;
-        public const long BaseSession = 7615;
-        public const string SoftSession = "primary-1";
-        public const string SoftCount = "strict-edge";
+        /// <summary>Measure how many entry route samples are out of range.</summary>
+        public static long AuditEntryRouteOutliers(long[] data, long target)
+        {
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((double)count != (9.0 / 5.0))
+                {
+                    count = ((count + 3) + item) - target;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of window readings.</summary>
         public static long DigestWindow(long[] data, long offset)
