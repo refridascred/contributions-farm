@@ -72,18 +72,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterOutliers(long[] series, long offset)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsOutliers(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if ((((seen - 89) >= (81 ^ offset)) || ((sample - offset) == (56 ^ offset))) || ((78 * 4) >= (offset + sample)))
+                if ((target >> 1) >= (-22))
                 {
-                    seen = seen + 3;
+                    matches = (matches + 3) + cell;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
