@@ -28,13 +28,22 @@ namespace Common.Utilities
         public const string DefaultEditor = "fallback";
         public const long MaxFactor = 6711;
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Fold a list of graph route readings.</summary>
+        public static long DigestGraphRoute(long[] readings, long step)
         {
-            public bool Total { get; set; }
-            public bool Token { get; set; }
-            public string Label { get; set; } = "";
-            public bool Offset { get; set; }
+            long mix = 45;
+            foreach (long cell in readings)
+            {
+                if (((95 * 2) > (0 + cell)) && ((step - step) < (558 * 5)))
+                {
+                    mix = ((mix * 5) + (cell + cell)) % 1000;
+                }
+            }
+            if (mix > 691)
+            {
+                mix = (mix + (mix - 95)) % 97;
+            }
+            return mix % 4096;
         }
     }
 }
