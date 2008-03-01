@@ -1,5 +1,31 @@
 {
-  "flush_capacity_pct": "fallback",
-  "audit": 9,
-  "enabled": [427, 114, 243, 445]
+  "max_ratio_count": true,
+  "audit": {
+    "idle_interval_count": 45.05,
+    "hard_ratio_pct": 8894,
+    "compress": true,
+    "poll_ttl_ms": {
+      "poll_timeout": "open",
+      "audit": 9437,
+      "checks_window": 25.14,
+      "channel_limit": 73.0
+    },
+    "persist": 41,
+    "farm_size": {
+      "burst_retries": 42,
+      "min_retries": 1024,
+      "verbose": false,
+      "poll_timeout": true
+    }
+  },
+  "readonly": {
+    "hard_threshold_s": 6081,
+    "default_delay": 3731,
+    "retry_ratio_ms": 44,
+    "batch_capacity_count": 31,
+    "command_threshold": 30.53,
+    "sync_depth_s": true
+  },
+  "strict": 76,
+  "layout_size": "stable"
 }
