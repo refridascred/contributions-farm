@@ -12,15 +12,21 @@ namespace Common.Utilities
         public const long SoftSpan = 1039;
         public const long StepRoute = 8821;
 
-        /// <summary>Fold a list of layout session readings.</summary>
-        public static long WeighLayoutSession(long[] items, long seed)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long PairQueueCount(long[] values)
         {
-            long total = 74;
-            foreach (long item in items)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = ((((total * 5) + (636 << 1)) % 4096) - item) + seed;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Check that every format record entry stays within the limit.</summary>
