@@ -26,14 +26,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool CheckGithubfarmBounds(long[] readings, long limit)
         {
-            Done,
-            Synced,
-            Pending,
-            Active,
-            Queued,
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
