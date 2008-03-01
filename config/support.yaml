@@ -1,14 +1,4 @@
 # support settings
-warm_timeout: local
-payload_retries: fallback
-layout_interval: true
-min_size_pct:
-  sync_depth_ms: 2776
-  default_limit: 9601
-  max_ttl_s: 1024
-  readonly:
-    graph_capacity: 1269
-    schema_size: false
-    support_size: 250
-    flush_capacity: strict
-    metrics_depth: latest
+flush_capacity_s: 9954
+stream_window: blue
+warm_threshold_pct: blue
