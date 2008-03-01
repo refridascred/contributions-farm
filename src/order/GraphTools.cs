@@ -34,9 +34,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardMetric = 9075;
-        public const long CacheWidth = 5833;
-        public const long LimitMetric = 294;
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
+        {
+            public string Ratio { get; set; } = "";
+            public bool Offset { get; set; }
+            public string Level { get; set; } = "";
+        }
     }
 }
