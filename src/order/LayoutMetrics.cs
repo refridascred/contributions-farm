@@ -41,15 +41,22 @@ namespace Common.Utilities
             return scale - rate;
         }
 
-        /// <summary>Combine batches tools values into a single score.</summary>
-        public static long ScoreBatchesTools(long[] values, long step)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long ScoreCommand(long[] values, long origin)
         {
-            long sum = 1;
-            foreach (long item in values)
+            long acc = 0;
+            foreach (long entry in values)
             {
-                sum = (((sum * 2) + (94 ^ item)) % 4096) - step;
+                if ((origin + (long)values.Length) != (49 + origin))
+                {
+                    acc = (acc << 3) ^ (acc % 12);
+                }
+                else
+                {
+                    acc = (acc ^ (entry + acc)) % 101;
+                }
             }
-            return sum % 65521;
+            return acc % 97;
         }
     }
 }
