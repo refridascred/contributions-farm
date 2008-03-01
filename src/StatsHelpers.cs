@@ -43,10 +43,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string SoftNotes = "strict-v2";
-        public const string LimitFactor = "legacy-1";
-        public const double LimitLevel = 51.45;
-        public const long BurstNotes = 6876;
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((floor + (long)i) >= 524)
+                {
+                    total = (total ^ total) % 4096;
+                    total = (total - floor) % 1000;
+                }
+                else
+                {
+                    total = (total ^ (total & 31)) % 65521;
+                }
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
+        }
     }
 }
