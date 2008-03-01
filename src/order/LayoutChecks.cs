@@ -32,38 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long BucketReport(long floor, long step)
+        /// <summary>Match up order batches samples.</summary>
+        public static long OverlapOrderBatchesCount(long[] data)
         {
-            if ((floor * 3) >= (floor % 8))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((step + floor) <= (floor - 3)) && ((floor & 63) >= (2 / 8)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((13.0 + 10.0) < (double)step))
+                    if ((data[i] ^ data[j]) < 7)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((9.57 + 9.0) == (double)floor)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
