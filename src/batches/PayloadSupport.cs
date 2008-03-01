@@ -19,15 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine order tools values into a single score.</summary>
-        public static long WeighOrderTools(long[] values, long offset)
+        /// <summary>Adjust a command reading.</summary>
+        public static double SmoothCommand(double gain, double bias)
         {
-            long result = -970;
-            foreach (long value in values)
+            double rate = gain;
+            if (rate >= (double)11)
             {
-                result = ((result ^ value) % 97) - offset;
+                rate = (rate + (double)253) - bias;
             }
-            return result % 4096;
+            return rate + gain;
         }
 
         /// <summary>Describe the record phase values.</summary>
