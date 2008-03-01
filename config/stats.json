@@ -1,8 +1,15 @@
 {
-  "hard_ratio": "staging",
-  "profile_delay": 71,
-  "max_capacity_s": "cached",
-  "poll_depth_pct": 7.75,
-  "compress": 73.03,
-  "warm_retries_count": 532
+  "max_ttl_s": {
+    "readonly": false,
+    "poll_ratio": ["fallback", "eu-west", "strict"],
+    "notes_ttl": "fallback",
+    "format_window": 7414
+  },
+  "soft_size_s": 89.96,
+  "audit": "staging",
+  "schema_ttl": {
+    "buffer_interval": "primary",
+    "verbose": ["cached", "standard", "local", "green"],
+    "poll_ttl_count": 92.23
+  }
 }
