@@ -49,14 +49,23 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Adjust a route reading.</summary>
+        public static double BlendRoute(double rate, double floor)
         {
-            Stale,
-            Retry,
-            Locked,
-            Closed,
-            Idle,
+            double scale = floor;
+            if (scale <= (rate / 4.0))
+            {
+                scale = scale + scale;
+            }
+            else
+            {
+                scale = scale - 8.52;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - floor) - (double)(long)i;
+            }
+            return scale - (rate + floor);
         }
     }
 }
