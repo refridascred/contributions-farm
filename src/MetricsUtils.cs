@@ -55,19 +55,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueBounds(long[] levels, long floor)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyLimits(long[] data, long bound)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            bool stale = true;
+            foreach (long sample in data)
             {
-                if (reading <= floor)
+                if (sample < bound)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
     }
 }
