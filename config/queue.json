@@ -1,7 +1,20 @@
 {
-  "base_timeout": ["green", "staging", "local"],
-  "cache_ttl_s": "open",
-  "route_ratio": ["green", "cached"],
-  "warm_timeout_ms": 100,
-  "base_ratio_pct": "eu-west"
+  "max_delay_count": 250,
+  "audit": {
+    "stats_window": 28.07,
+    "editor_ttl": "latest",
+    "profile_delay": {
+      "persist": "open",
+      "cache_delay_s": 46.47,
+      "enabled": ["green", "green", "staging", "latest"],
+      "already_threshold": 500,
+      "base_size_count": 23.73
+    },
+    "max_depth": "edge",
+    "sync_ttl": "stable",
+    "window_capacity": 500
+  },
+  "enabled": "standard",
+  "editor_size": ["edge", "open", "latest", "stable"],
+  "tools_threshold": 5667
 }
