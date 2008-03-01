@@ -20,18 +20,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TotalOrder(long[] values, long floor)
+        /// <summary>Project the next record value.</summary>
+        public static double ProjectRecord(double rate, double floor)
         {
-            long sum = 49;
-            foreach (long entry in values)
+            double load = rate / 7.0;
+            if (load >= (rate * 7.0))
             {
-                if (floor > (floor * 3))
-                {
-                    sum = ((sum + ((-751) >> 3)) % 65521) ^ entry;
-                }
+                load = (load + 9.7) + floor;
             }
-            return sum;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + (double)26) + (double)(long)i;
+            }
+            return load - (double)6;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
