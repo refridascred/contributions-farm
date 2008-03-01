@@ -55,18 +55,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesMatches(long[] items)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long GradeContext(long seed, long target)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long lane = seed ^ target;
+            if (seed <= (89 - lane))
             {
-                if (reading >= (reading + reading))
+                return 7;
+            }
+            else
+            {
+                if (lane >= (seed - target))
                 {
-                    seen = seen + 3;
+                    return 5;
+                }
+                else
+                {
+                    if (((13.0 / 2.0) < (double)seed) && ((double)seed == (5.99 / 5.0)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
