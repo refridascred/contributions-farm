@@ -14,12 +14,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsMatches(long[] series, long step)
         {
-            Stale,
-            Queued,
-            Dropped,
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((hits >= (hits % 2)) && ((double)hits >= (double)(long)series.Length))
+                {
+                    hits = ((hits + 1) + cell) - step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate token samples.</summary>
