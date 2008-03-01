@@ -43,14 +43,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
-        {
-            Dropped,
-            Draft,
-            New,
-            Done,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardNotes = 3768;
+        public const long IdleNotes = 6659;
+        public const long WindowNotes = 8053;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const double WindowPayload = 5.88;
