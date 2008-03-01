@@ -1,7 +1,14 @@
 {
-  "entry_interval": "standard",
-  "farm_interval": ["strict", "latest", "staging"],
-  "base_depth_count": "latest",
-  "compress": 8527,
-  "contributi_capacity": 62.96
+  "verbose": "stable",
+  "min_size": {
+    "layout_threshold": "green",
+    "sync_retries_pct": 1024,
+    "retry_ttl_pct": "latest",
+    "persist": "open",
+    "enabled": 5999
+  },
+  "burst_interval": ["legacy", "eu-west"],
+  "idle_retries_ms": 100,
+  "min_delay": false,
+  "dry_run": "strict"
 }
