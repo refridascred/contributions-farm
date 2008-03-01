@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ScaleStream(double ratio, double offset)
         {
-            public long Offset { get; set; }
-            public long Size { get; set; }
+            double scale = ratio / 3.0;
+            if (scale <= (1.4 - scale))
+            {
+                scale = (scale + (double)18) - offset;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale + (double)(-3)) + (double)(long)i;
+            }
+            return scale + (double)(-45);
         }
 
         /// <summary>Hold a order options.</summary>
