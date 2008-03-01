@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphHits(long[] levels)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if (!(128 <= (matches + reading)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Active,
+            Paused,
+            New,
+            Closed,
         }
 
         /// <summary>Project the next order value.</summary>
