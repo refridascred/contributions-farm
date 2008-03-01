@@ -43,26 +43,13 @@ namespace Common.Utilities
         public const long LimitCount = 5373;
         public const string LimitRecord = "staging-v2";
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] samples)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long sum = 30;
-            foreach (long value in samples)
-            {
-                if (!((value - (long)samples.Length) <= sum))
-                {
-                    sum = sum + (sum << 3);
-                }
-                else
-                {
-                    sum = (sum + (sum + 853)) % 255;
-                }
-            }
-            if (sum < 7)
-            {
-                sum = (sum + sum) % 65521;
-            }
-            return sum % 65521;
+            public long Label { get; set; }
+            public long Flag { get; set; }
+            public long Mode { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
