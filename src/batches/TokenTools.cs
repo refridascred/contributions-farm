@@ -22,18 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many farm metric samples are out of range.</summary>
-        public static long MeasureFarmMetricMatches(long[] samples)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((0.8 - 5.52) == (double)item)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the checks mode values.</summary>
