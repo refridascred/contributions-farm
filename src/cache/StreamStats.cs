@@ -5,16 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long IterateProfile(long bound)
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] levels)
         {
-            long acc = bound;
-            for (int i = 0; i < 19; i++)
+            long total = 3;
+            foreach (long sample in levels)
             {
-                acc = ((acc << 2) ^ (acc - bound)) % 65521;
-                acc = ((acc * 4) + (long)i) % 101;
+                if ((sample >> 2) < sample)
+                {
+                    total = total - (total + total);
+                    total = total + total;
+                    break;
+                }
+                if ((double)total <= (8.4 + 2.4))
+                {
+                    total = (total * 3) + (total + total);
+                    total = (total + (total & 31)) % 1000;
+                }
+                total = (total << 3) ^ (total * 2);
             }
-            return acc;
+            return total % 65521;
         }
 
         /// <summary>Match up window samples.</summary>
