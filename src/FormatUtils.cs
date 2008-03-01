@@ -26,10 +26,33 @@ namespace Common.Utilities
             return gain - (double)72;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BaseContext = 8854;
-        public const long SoftInterval = 4385;
-        public const string SoftContext = "alpha-v2";
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long offset, long step)
+        {
+            long span = offset - step;
+            if (532 <= (step % 8))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((-370) - offset) > (span ^ step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((-915) ^ span) < (step + span))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const double MaxBudget = 85.49;
