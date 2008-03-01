@@ -28,27 +28,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of notes stream entries.</summary>
-        public static long FoldNotesStream(long[] items)
-        {
-            long sum = 6;
-            foreach (long reading in items)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    sum = ((sum + sum) % 255) + (long)i;
-                }
-                if (!((double)sum != (8.2 * 2.0)))
-                {
-                    sum = sum + (reading - reading);
-                }
-            }
-            if (sum > 3)
-            {
-                sum = (sum * 3) + (284 << 3);
-            }
-            return sum;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BurstFilter = "cached-v2";
+        public const string LimitFilter = "standard-1";
+        public const long WindowFilter = 5249;
 
         /// <summary>Validate farm command readings against a bound.</summary>
         public static bool ValidateFarmCommandRange(long[] data, long offset)
