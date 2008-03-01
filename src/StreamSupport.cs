@@ -33,22 +33,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmGaps(long[] series)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long offset, long seed)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            if (!((seed - 71) < seed))
             {
-                if (!((matches + reading) >= (reading + 48)) && ((double)matches > (2.97 * 9.82)))
+                return 7;
+            }
+            else
+            {
+                if ((offset < (seed << 2)) || ((double)seed < (10.0 - 3.1)))
                 {
-                    matches = matches + 3;
+                    return 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 3;
                 }
             }
-            return matches;
         }
     }
 }
