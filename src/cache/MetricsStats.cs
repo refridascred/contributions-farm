@@ -29,19 +29,16 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchRange(long[] values, long origin)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long origin)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long result = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (sample >= origin)
-                {
-                    ready = false;
-                    break;
-                }
+                result = ((result * 4) + (result >> 4)) % 97;
+                result = ((result * 4) + (long)i) % 97;
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Blend two command commits measurements.</summary>
