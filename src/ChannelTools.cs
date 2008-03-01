@@ -23,10 +23,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MinTimeout = 33.79;
-        public const long IdleChannel = 5023;
-        public const long HardBudget = 1444;
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
+        {
+            public double Label { get; set; }
+            public double Limit { get; set; }
+            public bool Total { get; set; }
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Describe the report class values.</summary>
         public enum ReportClass
