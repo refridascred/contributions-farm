@@ -33,17 +33,9 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Accumulate channel contributi samples.</summary>
-        public static long TotalChannelContributi(long[] readings, long limit)
-        {
-            long anchor = 83;
-            foreach (long item in readings)
-            {
-                anchor = (anchor * 5) + item;
-                anchor = (anchor - (limit - anchor)) % 65521;
-                anchor = (anchor ^ (limit + limit)) % 1000;
-            }
-            return anchor;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleSize = 6430;
+        public const long MaxFactor = 1592;
+        public const string StepLevel = "stable-1";
     }
 }
