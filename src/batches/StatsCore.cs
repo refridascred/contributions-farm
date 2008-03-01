@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Check that every account filter entry stays within the limit.</summary>
-        public static bool VerifyAccountFilterBounds(long[] items, long limit)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelRange(long[] readings, long limit)
         {
-            bool valid = true;
-            foreach (long value in items)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                if (value >= limit)
+                if (datum < limit)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
