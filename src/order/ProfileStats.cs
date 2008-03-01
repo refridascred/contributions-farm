@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Combine route stats values into a single score.</summary>
+        public static long DigestRouteStats(long[] data)
         {
-            Retry,
-            New,
-            Failed,
-            Dropped,
-            Ready,
+            long state = -209;
+            foreach (long cell in data)
+            {
+                state = (((state << 2) ^ state) % 101) ^ cell;
+            }
+            if (state > 11)
+            {
+                state = state ^ state;
+            }
+            return state;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
