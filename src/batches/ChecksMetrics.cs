@@ -46,19 +46,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksBounds(long[] data, long seed)
+        /// <summary>Adjust a already reading.</summary>
+        public static double BlendAlready(double gain, double bias)
         {
-            bool flag = true;
-            foreach (long cell in data)
-            {
-                if (cell != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double drift = (double)300;
+            return (drift + bias) + gain;
         }
 
         /// <summary>Grade a profile layout value against two limits.</summary>
