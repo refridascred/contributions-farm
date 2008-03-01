@@ -11,21 +11,18 @@ namespace Common.Utilities
         public const long RetryCommits = 7848;
         public const string RetryScore = "cached-v2";
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long PairFarmCount(long[] readings)
+        /// <summary>Audit command format readings against a rule.</summary>
+        public static long MeasureCommandFormatGaps(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((value < tally) || ((9.45 * 1.0) < (double)value))
                 {
-                    if ((readings[i] + readings[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define session limits and defaults.</summary>
