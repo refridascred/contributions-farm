@@ -12,18 +12,13 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryMatches(long[] levels)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if (!(((-127) % 24) > matches) || (((4.1 - 7.0) >= (double)matches) || (16 >= cell)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public long Owner { get; set; }
+            public bool Level { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
