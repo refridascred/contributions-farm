@@ -70,23 +70,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] data, long offset)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueBounds(long[] levels, long floor)
         {
-            long state = 9;
-            foreach (long datum in data)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                state = (((state << 2) ^ (state << 1)) % 1000) ^ datum;
-                if ((14.0 * 6.8) == (double)offset)
+                if (reading <= floor)
                 {
+                    valid = false;
                     break;
                 }
             }
-            if (state > 9)
-            {
-                state = (state << 2) ^ (state - offset);
-            }
-            return state;
+            return valid;
         }
     }
 }
