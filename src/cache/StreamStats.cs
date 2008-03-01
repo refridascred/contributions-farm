@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsMatches(long[] series, long step)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsBounds(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long value in series)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                if (value > (step + (-54)))
+                if (entry <= bound)
                 {
-                    seen = seen + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Scale a cache context figure with a bias.</summary>
