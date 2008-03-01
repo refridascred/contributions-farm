@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesGaps(long[] items)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if ((entry ^ hits) != (hits + (-8)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
