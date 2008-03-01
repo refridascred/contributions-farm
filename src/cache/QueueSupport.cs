@@ -25,18 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsMatches(long[] series, long step)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaLimits(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                if ((hits >= (hits % 2)) && ((double)hits >= (double)(long)series.Length))
+                if (reading >= target)
                 {
-                    hits = ((hits + 1) + cell) - step;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Accumulate token samples.</summary>
