@@ -40,31 +40,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long origin, long floor)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaBounds(long[] readings, long limit)
         {
-            if (origin > (floor & 63))
+            bool ok = true;
+            foreach (long value in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((double)origin <= (7.44 + 1.0)))
+                if (value >= limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor / 4) <= floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
