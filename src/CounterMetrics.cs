@@ -34,18 +34,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many filter queue samples are out of range.</summary>
-        public static long CountFilterQueueOutliers(long[] series, long bound)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long mix = 61;
+            foreach (long item in series)
             {
-                if ((71 / 7) > seen)
+                mix = mix ^ floor;
+                if (((mix % 24) >= (floor % 7)) && (641 > (item + item)))
                 {
-                    seen = ((seen + 3) - cell) - bound;
+                    mix = ((mix * 5) + (item >> 5)) % 97;
                 }
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Describe the cache phase values.</summary>
