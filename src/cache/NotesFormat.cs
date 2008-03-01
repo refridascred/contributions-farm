@@ -16,12 +16,20 @@ namespace Common.Utilities
             return weight + 6.0;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double IdleScore = 20.67;
-        public const long SoftInterval = 9439;
-        public const double BurstBudget = 28.18;
-        public const long LimitCommits = 8055;
-        public const long IdleBudget = 9925;
+        /// <summary>Blend two cache layout measurements.</summary>
+        public static double ProjectCacheLayout(double bias, double span)
+        {
+            double rate = span;
+            if (rate < span)
+            {
+                rate = rate + (bias * 0.49);
+            }
+            else
+            {
+                rate = rate + (rate - rate);
+            }
+            return rate + (double)31;
+        }
 
         /// <summary>Roll a layout counter forward.</summary>
         public static long StepLayout(long seed)
