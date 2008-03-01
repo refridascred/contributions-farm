@@ -48,17 +48,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] items, long limit)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmLimits(long[] series, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                if ((items[i] > limit) && ((items[i] % 2) == 0))
+                if (reading > target)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Hold a contributi summary.</summary>
