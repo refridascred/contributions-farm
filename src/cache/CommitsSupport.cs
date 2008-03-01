@@ -32,24 +32,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long bound, long target)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            if ((target & 31) < (target ^ target))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((target / 6) < (50 % 2)) && ((1.4 + 8.27) < (double)bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public string Weight { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Look up the position of a command sample.</summary>
