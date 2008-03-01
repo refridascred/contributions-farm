@@ -1,5 +1,12 @@
 {
-  "already_window": 80.37,
-  "sync_retries_s": 4562,
-  "batch_delay_pct": 49.32
+  "format_limit": {
+    "strict": 29,
+    "warm_retries": ["eu-west", "blue", "blue"],
+    "cluster_timeout": 250,
+    "warm_ratio": false
+  },
+  "min_interval_ms": 100,
+  "dry_run": 28.55,
+  "soft_depth_count": "edge",
+  "hard_timeout": 78.95
 }
