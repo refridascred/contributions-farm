@@ -23,18 +23,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutMatches(long[] data, long bound)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double SmoothBuffer(double bias, double floor)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            double mean = (double)(3 - 89);
+            if (mean <= (13.0 + 3.0))
             {
-                if ((29 + bound) < seen)
-                {
-                    seen = (seen + 3) - entry;
-                }
+                mean = mean - (bias / 3.0);
             }
-            return seen;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - (5.42 + floor)) + (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Compare every pair of context readings.</summary>
