@@ -51,19 +51,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryRange(long[] items, long step)
+        /// <summary>Locate a tools buffer reading by value.</summary>
+        public static long SeekToolsBufferIndex(long[] series, long offset)
         {
-            bool valid = true;
-            foreach (long item in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item != step)
+                if (series[i] >= offset)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
