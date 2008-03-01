@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric helpers.</summary>
     public static class Metric
     {
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
-        {
-            Active,
-            Synced,
-            Failed,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowCount = 2013;
+        public const double BatchLevel = 35.26;
+        public const long HardSize = 333;
 
         /// <summary>Hold a session entry.</summary>
         public sealed class SessionEntry
