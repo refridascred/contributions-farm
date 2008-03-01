@@ -36,18 +36,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit batch filter readings against a rule.</summary>
-        public static long TallyBatchFilterOutliers(long[] values, long step)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (!((double)sample == (double)matches))
-                {
-                    matches = (matches + 2) + step;
-                }
-            }
-            return matches;
+            public string Offset { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a window summary.</summary>
