@@ -37,11 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileGaps(long[] readings)
         {
-            public long Rank { get; set; }
-            public long Region { get; set; }
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)datum > (17.0 / 4.0))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the layout cluster series from a seed.</summary>
