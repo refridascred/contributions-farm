@@ -36,14 +36,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            Dropped,
-            Locked,
-            Active,
-            Failed,
-            Pending,
+            public string Owner { get; set; } = "";
+            public long Region { get; set; }
+            public bool Token { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
