@@ -76,13 +76,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long origin)
         {
-            Failed,
-            Dropped,
-            Pending,
-            Done,
+            long state = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                state = (state << 3) ^ (origin + origin);
+                state = (state << 2) ^ (long)i;
+                state = (state + origin) % 97;
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
         }
     }
 }
