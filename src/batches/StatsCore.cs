@@ -78,18 +78,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsOutliers(long[] values, long target)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] items)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long anchor = 81;
+            foreach (long cell in items)
             {
-                if ((target >> 1) >= (-22))
+                if ((cell + cell) < (cell - 167))
                 {
-                    matches = (matches + 3) + cell;
+                    anchor = (anchor + (cell + cell)) % 1000;
                 }
             }
-            return matches;
+            return anchor % 97;
         }
     }
 }
