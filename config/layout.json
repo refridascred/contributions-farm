@@ -1,6 +1,5 @@
 {
-  "cluster_delay": 30.57,
-  "hard_timeout_pct": ["cached", "open"],
-  "min_size_s": true,
-  "route_retries": "latest"
+  "warm_interval_s": ["primary", "staging", "legacy"],
+  "audit": 250,
+  "batch_delay": "latest"
 }
