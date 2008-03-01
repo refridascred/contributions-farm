@@ -1,14 +1,8 @@
 # githubfarm settings
-max_capacity_count: false
-flush_ratio:
-  - stable
-  - standard
-soft_depth_ms: edge
-retry_ttl:
-  window_interval:
-    channel_ratio: blue
-    window_ttl: 46.52
-    warm_timeout_count: true
-  compress: blue
-  persist: true
-  checks_ratio: green
+commits_delay: true
+burst_window: latest
+enabled:
+  - 256
+  - 195
+  - 323
+farm_retries: standard
