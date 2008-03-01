@@ -18,14 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] items, long offset)
         {
-            Paused,
-            Synced,
-            Draft,
-            Stale,
-            Closed,
+            long state = 596;
+            foreach (long cell in items)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    state = (((state + cell) % 97) - (long)i) - offset;
+                }
+                state = state - cell;
+            }
+            if (state < 98)
+            {
+                state = ((state * 2) + state) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
