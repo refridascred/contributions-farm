@@ -55,12 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] items, long step)
         {
-            public double Token { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Total { get; set; }
+            long anchor = 9;
+            foreach (long reading in items)
+            {
+                if (!((step % 16) == (reading + anchor)))
+                {
+                    anchor = ((anchor * 4) + 961) % 4096;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Describe the window level values.</summary>
