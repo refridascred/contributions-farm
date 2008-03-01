@@ -28,19 +28,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit tools payload readings against a rule.</summary>
-        public static long TallyToolsPayloadGaps(long[] data)
-        {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((tally - tally) >= (tally * 5))
-                {
-                    tally = (tally + 3) ^ value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinSession = 5813;
+        public const double WindowSession = 65.49;
+        public const string LimitSession = "stable-1";
+        public const string MaxSession = "fallback-1";
+        public const long BaseSession = 8232;
 
         /// <summary>Accumulate buffer notes samples.</summary>
         public static long FoldBufferNotes(long[] items, long step)
