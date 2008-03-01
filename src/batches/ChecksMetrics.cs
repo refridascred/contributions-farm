@@ -37,11 +37,14 @@ namespace Common.Utilities
             return ratio + bias2;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftContext = 5522;
-        public const string BurstScore = "latest";
-        public const long BatchScore = 2845;
-        public const long StepSize = 8679;
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
+        {
+            public bool Level { get; set; }
+            public double Size { get; set; }
+            public bool Rank { get; set; }
+            public double Mode { get; set; }
+        }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
         public static bool VerifyChecksBounds(long[] data, long seed)
