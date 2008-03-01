@@ -5,28 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long offset)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long mark = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((offset > 5) || (((long)i % 2) > mark))
-                {
-                    mark = (mark - (offset + mark)) % 65521;
-                }
-                if (offset < (offset + mark))
-                {
-                    mark = (mark << 2) ^ (mark & 63);
-                    continue;
-                }
-                else
-                {
-                    mark = (mark << 2) ^ mark;
-                }
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
+            public bool Owner { get; set; }
+            public string Weight { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
