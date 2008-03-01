@@ -29,18 +29,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportMatches(long[] readings)
+        /// <summary>Match up checks samples.</summary>
+        public static long CompareChecksCount(long[] data)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((count * 4) > (count ^ count))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 1) + value;
+                    if ((data[i] ^ data[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
