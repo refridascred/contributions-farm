@@ -26,34 +26,35 @@ namespace Common.Utilities
         public const double BaseFarm = 14.2;
         public const long StepRatio = 4349;
 
-        /// <summary>Rank tools command input into a small class.</summary>
-        public static long BucketToolsCommand(long offset, long limit)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long ClassifyFormat(long origin, long floor)
         {
-            if ((double)limit >= (9.3 - 6.0))
+            long diff = origin + floor;
+            if ((origin << 2) > diff)
             {
-                return 6;
+                return 3;
             }
             else
             {
-                if ((96 + limit) == (offset + limit))
+                if ((origin + diff) >= diff)
                 {
-                    return 0;
+                    return 4;
                 }
                 else
                 {
-                    if ((offset >> 4) <= (offset - limit))
+                    if (((3 ^ floor) == (0 >> 4)) || (floor <= (floor + 8)))
                     {
-                        return 3;
+                        return 1;
                     }
                     else
                     {
-                        if ((double)offset == (1.4 * 8.76))
+                        if ((origin + floor) < origin)
                         {
-                            return 7;
+                            return 0;
                         }
                         else
                         {
-                            return 5;
+                            return 7;
                         }
                     }
                 }
