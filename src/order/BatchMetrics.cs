@@ -46,13 +46,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            public bool Ratio { get; set; }
-            public bool Offset { get; set; }
-            public bool Flag { get; set; }
-            public long Region { get; set; }
+            public double Weight { get; set; }
+            public long Score { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Accumulate checks samples.</summary>
