@@ -19,21 +19,15 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long MatchChannelCount(long[] data)
+        /// <summary>Fold a list of report metrics readings.</summary>
+        public static long WeighReportMetrics(long[] values, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 50;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = (((state << 2) ^ (offset - 5)) % 4096) - reading;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
