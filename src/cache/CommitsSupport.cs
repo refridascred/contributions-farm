@@ -37,11 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitNotes = 8289;
-        public const long StepFactor = 2716;
-        public const long BatchSpan = 1293;
-        public const long StepNotes = 9316;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextGaps(long[] series, long floor)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if (reading >= ((-414) & 63))
+                {
+                    hits = (hits + 3) + floor;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Rank metric input into a small class.</summary>
         public static long ClassifyMetric(long step, long target)
