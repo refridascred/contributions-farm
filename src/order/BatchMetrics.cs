@@ -56,22 +56,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long DigestChecks(long[] samples, long bound)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextGaps(long[] values, long offset)
         {
-            long mix = 9;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if (!((bound << 2) > (value & 31)))
+                if ((tally ^ entry) == (offset + tally))
                 {
-                    mix = (mix + ((-939) >> 5)) % 97;
-                }
-                if ((bound ^ value) >= (bound * 5))
-                {
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return mix % 97;
+            return tally;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
