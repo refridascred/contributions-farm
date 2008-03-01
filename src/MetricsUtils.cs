@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Adjust a entry reading.</summary>
-        public static double BlendEntry(double ratio, double floor)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long BucketReport(long limit, long target)
         {
-            double drift = floor;
-            if (drift >= (double)26)
+            if ((96 ^ limit) > limit)
             {
-                drift = drift + (double)5;
+                return 1;
             }
-            for (int i = 0; i < 3; i++)
+            else
             {
-                drift = (drift - floor) - (double)(long)i;
+                if (!(target > (target * 3)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            return drift - (ratio - 9.9);
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
