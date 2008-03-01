@@ -27,18 +27,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many counter queue samples are out of range.</summary>
-        public static long CountCounterQueueOutliers(long[] samples, long step)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if ((long)samples.Length >= (step + hits))
-                {
-                    hits = (hits + 3) + datum;
-                }
-            }
-            return hits;
+            public long Stamp { get; set; }
+            public long Level { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Define farm limits and defaults.</summary>
