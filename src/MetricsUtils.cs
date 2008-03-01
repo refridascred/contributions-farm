@@ -12,11 +12,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double CacheSchema = 82.95;
-        public const long SoftScore = 8570;
-        public const long SoftSchema = 8437;
-        public const long LimitSchema = 3282;
+        /// <summary>Locate a window reading by value.</summary>
+        public static long SeekWindowIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate format samples.</summary>
         public static long CombineFormat(long[] samples)
