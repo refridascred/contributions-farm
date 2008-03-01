@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string IdleChecks = "legacy";
-        public const string SoftChecks = "primary-1";
-        public const long MinScore = 4419;
-        public const long MinCount = 344;
+        /// <summary>Compare every pair of format counter readings.</summary>
+        public static long CompareFormatCounterCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long TotalPayload(long[] series, long seed)
