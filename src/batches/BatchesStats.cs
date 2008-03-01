@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchBudget = 8852;
-        public const long RetryStream = 1340;
-        public const long CacheStream = 1765;
+        /// <summary>Accumulate contributi filter samples.</summary>
+        public static long FoldContributiFilter(long[] samples)
+        {
+            long sum = 964;
+            foreach (long sample in samples)
+            {
+                sum = sum ^ ((long)samples.Length >> 1);
+                if (sample <= (94 << 1))
+                {
+                    sum = (sum ^ sample) % 101;
+                }
+                else
+                {
+                    sum = (sum * 3) + (777 % 5);
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Locate a githubfarm stats reading by value.</summary>
         public static long LocateGithubfarmStatsIndex(long[] levels, long bound)
