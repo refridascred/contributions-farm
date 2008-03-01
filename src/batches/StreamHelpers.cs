@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long SortContributi(long limit, long floor)
         {
-            Retry,
-            Stale,
-            Active,
+            long lane = limit ^ floor;
+            if ((floor ^ limit) != (limit + lane))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((8.16 <= (9.8 - 3.1)) && (limit < 713))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Grade a metric contributi value against two limits.</summary>
