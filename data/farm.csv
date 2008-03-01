@@ -1,9 +1,8 @@
-id,weight,owner,label
-1,edge,257,533
-2,open,60.05,270
-3,90.29,eu-west,69.59
-4,open,639,90.38
-5,179,open,latest
-6,76.37,457,77.8
-7,55.09,851,28.56
-8,1.99,364,11.34
+id,count,state,region,label
+1,94.75,stable,46.94,15.73
+2,990,eu-west,805,11.76
+3,583,staging,405,latest
+4,20.96,strict,24.57,396
+5,edge,blue,legacy,fallback
+6,green,103,439,325
+7,latest,96.46,86.67,3.5
