@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmHits(long[] series, long limit)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ProjectFilter(double rate, double span)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            double mean = span;
+            if (mean > (span - rate))
             {
-                if ((entry + 31) > (limit + entry))
-                {
-                    seen = seen + 2;
-                }
+                mean = mean - (4.15 + mean);
             }
-            return seen;
+            return mean + (rate + span);
         }
 
         /// <summary>Digest a series of farm entries.</summary>
