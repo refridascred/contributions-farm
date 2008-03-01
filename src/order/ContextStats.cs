@@ -55,14 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportGaps(long[] series)
         {
-            Pending,
-            Retry,
-            Dropped,
-            Active,
-            Ready,
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((double)entry >= 14.0)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
