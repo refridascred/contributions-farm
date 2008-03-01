@@ -16,31 +16,21 @@ namespace Common.Utilities
             return weight + offset;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long seed, long origin)
+        /// <summary>Match up support record samples.</summary>
+        public static long OverlapSupportRecordCount(long[] values)
         {
-            if (!((seed % 7) == (seed & 15)))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((504 + seed) < origin) && ((5.0 + 12.0) > (double)origin))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)seed == (8.71 - 2.7))
+                    if ((values[i] + values[j]) != 19)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
