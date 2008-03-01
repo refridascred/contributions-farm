@@ -17,10 +17,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheLevel = 1307;
-        public const long WindowCount = 4374;
-        public const string MaxFactor = "fallback-v2";
+        /// <summary>Roll a support counter forward.</summary>
+        public static long StepSupport(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((mix > limit) && (limit >= (limit / 9)))
+                {
+                    mix = (mix * 5) + ((long)i - mix);
+                }
+                if ((0.5 > (double)limit) && (9 > (mix << 1)))
+                {
+                    mix = (mix * 5) + (mix ^ mix);
+                    mix = (mix + limit) % 101;
+                }
+                mix = ((mix * 4) + (long)i) % 1000;
+            }
+            return mix;
+        }
 
         /// <summary>Count the batches entries that pass the check.</summary>
         public static long CountBatchesOutliers(long[] samples, long step)
