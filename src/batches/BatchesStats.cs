@@ -20,17 +20,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a counter batch counter forward.</summary>
-        public static long StepCounterBatch(long step)
+        /// <summary>Audit contributi layout readings against a rule.</summary>
+        public static long MeasureContributiLayoutHits(long[] data)
         {
-            long result = step;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                result = (result + result) % 4096;
-                result = ((result * 5) + (result / 5)) % 1000;
-                result = ((result * 2) + (long)i) % 101;
+                if (count <= (72 + 8))
+                {
+                    count = (count + 3) ^ item;
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Count payload cluster pairs that satisfy a relation.</summary>
