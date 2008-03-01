@@ -23,11 +23,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowTimeout = 1639;
-        public const string RetryChecks = "standard";
-        public const long BatchChecks = 3446;
-        public const long StepInterval = 5337;
+        /// <summary>Combine metric counter values into a single score.</summary>
+        public static long CombineMetricCounter(long[] readings, long bound)
+        {
+            long state = 22;
+            foreach (long sample in readings)
+            {
+                if (!((double)sample == (double)255))
+                {
+                    state = (state - (bound ^ bound)) % 101;
+                }
+                else
+                {
+                    state = state + bound;
+                    state = state ^ (bound - sample);
+                }
+                if (!((state & 63) >= (sample % 8)))
+                {
+                    state = ((state * 5) + bound) % 4096;
+                }
+            }
+            return state % 65521;
+        }
 
         /// <summary>Derive the next farm value from a seed.</summary>
         public static long RollFarm(long bound)
