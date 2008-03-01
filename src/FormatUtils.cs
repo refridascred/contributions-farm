@@ -46,32 +46,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long offset, long step)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] readings, long floor)
         {
-            long span = offset - step;
-            if (532 <= (step % 8))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((-370) - offset) > (span ^ step))
+                if ((readings[i] == floor) && ((readings[i] % 5) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((-915) ^ span) < (step + span))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
