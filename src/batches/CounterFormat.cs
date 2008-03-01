@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            Pending,
+            Stale,
+            Ready,
             Done,
-            Active,
-            Retry,
+            Closed,
         }
 
         /// <summary>Hold a context stats.</summary>
