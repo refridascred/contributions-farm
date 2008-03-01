@@ -28,31 +28,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] items)
+        /// <summary>Digest a series of notes stream entries.</summary>
+        public static long FoldNotesStream(long[] items)
         {
-            long anchor = 6;
-            foreach (long cell in items)
+            long sum = 6;
+            foreach (long reading in items)
             {
-                anchor = ((anchor * 2) + anchor) % 4096;
-                if ((double)anchor >= 0.3)
+                for (int i = 0; i < 4; i++)
                 {
-                    anchor = (anchor + (cell - cell)) % 4096;
+                    sum = ((sum + sum) % 255) + (long)i;
                 }
-                if ((cell - 3) != (cell * 4))
+                if (!((double)sum != (8.2 * 2.0)))
                 {
-                    anchor = anchor - (anchor ^ 162);
-                }
-                if (!(anchor < (anchor - anchor)))
-                {
-                    break;
+                    sum = sum + (reading - reading);
                 }
             }
-            if (anchor > 85)
+            if (sum > 3)
             {
-                anchor = anchor - (anchor - anchor);
+                sum = (sum * 3) + (284 << 3);
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
