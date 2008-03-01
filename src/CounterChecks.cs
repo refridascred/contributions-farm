@@ -32,13 +32,11 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            Synced,
-            Closed,
-            Paused,
-            Stale,
+            public long Weight { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Roll a graph counter forward.</summary>
