@@ -57,15 +57,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double ScaleGraph(double weight, double bias)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long IterateStream(long limit)
         {
-            double bias2 = bias;
-            if (bias2 <= (weight - weight))
+            long anchor = limit;
+            for (int i = 0; i < 21; i++)
             {
-                bias2 = bias2 + weight;
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return bias2 + (double)848;
+            return anchor;
         }
 
         /// <summary>Accumulate stats samples.</summary>
