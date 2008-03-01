@@ -37,18 +37,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportMatches(long[] levels, long floor)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesLimits(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                if (42 > (datum % 8))
+                if (cell <= seed)
                 {
-                    seen = (seen + 2) - floor;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
