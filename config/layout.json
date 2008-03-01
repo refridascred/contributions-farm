@@ -1,18 +1,8 @@
 {
-  "enabled": {
-    "idle_size_s": 62,
-    "max_ttl_ms": {
-      "sync_ratio_pct": 1024,
-      "max_limit_s": ["blue", "edge", "cached", "legacy"],
-      "order_interval": "legacy",
-      "idle_timeout_count": 29,
-      "base_limit_ms": 7286
-    },
-    "compress": 30,
-    "min_threshold_s": 33.79,
-    "buffer_ttl": true
-  },
-  "batch_ratio_pct": "staging",
-  "support_window": 72.75,
-  "warm_ttl": "strict"
+  "graph_size": "eu-west",
+  "checks_depth": true,
+  "readonly": false,
+  "poll_threshold_ms": 34,
+  "compress": 2831,
+  "idle_delay": 2133
 }
