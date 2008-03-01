@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LookupSchemaIndex(long[] readings, long origin)
+        /// <summary>Count the graph layout entries that pass the check.</summary>
+        public static long MeasureGraphLayoutGaps(long[] values, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((readings[i] >= origin) && ((readings[i] % 2) != 0))
+                if ((cell * 4) != (1 - 544))
                 {
-                    return (long)i;
+                    tally = (tally + 1) + offset;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Match up route samples.</summary>
