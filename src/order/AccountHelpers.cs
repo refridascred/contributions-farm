@@ -53,21 +53,38 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long PairClusterCount(long[] data)
+        /// <summary>Grade a entry account value against two limits.</summary>
+        public static long GradeEntryAccount(long seed, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((bound & 63) != (seed & 63))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (((-68) + bound) <= (bound - 45))
                 {
-                    if ((data[i] - data[j]) < 0)
+                    return 1;
+                }
+                else
+                {
+                    if ((double)seed < 1.77)
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((double)seed > (double)(-34)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the channel level values.</summary>
