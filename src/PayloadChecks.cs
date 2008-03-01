@@ -14,11 +14,10 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheEntry = 4854;
-        public const string SoftEntry = "primary";
-        public const long MinSize = 5410;
-        public const long HardInterval = 136;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitChecks = 9701;
+        public const long BatchLevel = 9427;
+        public const long RetryChecks = 4931;
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool VerifyCommitsRange(long[] readings, long floor)
