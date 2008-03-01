@@ -1,7 +1,10 @@
 {
-  "compress": 1331,
-  "batch_ratio": "fallback",
-  "already_limit": false,
-  "retry_window": "stable",
-  "burst_size": 7
+  "default_ratio_count": "legacy",
+  "warm_size_pct": "legacy",
+  "retry_ttl": {
+    "format_delay": 30,
+    "min_delay_count": 22.37,
+    "flush_limit": "open",
+    "record_ratio": 75
+  }
 }
