@@ -28,11 +28,22 @@ namespace Common.Utilities
         public const long StepQueue = 4530;
         public const long WindowQueue = 2846;
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] levels, long seed)
         {
-            public double Token { get; set; }
-            public long Count { get; set; }
+            long total = 61;
+            foreach (long entry in levels)
+            {
+                if ((0.7 * 19.0) > (double)total)
+                {
+                    total = (((total * 4) + (seed & 127)) % 101) + entry;
+                }
+                else
+                {
+                    total = total + seed;
+                }
+            }
+            return total;
         }
     }
 }
