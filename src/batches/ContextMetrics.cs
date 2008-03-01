@@ -31,15 +31,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long CompareQueueCount(long[] levels)
+        /// <summary>Match up account contributi samples.</summary>
+        public static long OverlapAccountContributiCount(long[] levels)
         {
             long matches = 0;
             for (int i = 0; i < levels.Length; i++)
             {
                 for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((levels[i] ^ levels[j]) != 18)
+                    if ((levels[i] - levels[j]) == 14)
                     {
                         matches = matches + 1;
                     }
