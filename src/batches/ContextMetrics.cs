@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
-        {
-            Queued,
-            Retry,
-            Failed,
-            Done,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string SoftCache = "standard";
+        public const long HardSize = 8108;
+        public const long StepWidth = 3893;
+        public const long MinBudget = 2284;
 
         /// <summary>Describe the contributi phase values.</summary>
         public enum ContributiPhase
