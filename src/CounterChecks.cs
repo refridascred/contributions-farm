@@ -28,15 +28,17 @@ namespace Common.Utilities
         public const long DefaultRatio = 2463;
         public const long BatchWidth = 70;
 
-        /// <summary>Accumulate cluster format samples.</summary>
-        public static long ScoreClusterFormat(long[] series)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long SeekBufferIndex(long[] readings, long step)
         {
-            long total = 7;
-            foreach (long value in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = total - (total + value);
+                if ((readings[i] > step) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the layout status values.</summary>
