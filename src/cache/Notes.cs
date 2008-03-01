@@ -36,11 +36,11 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
-        {
-            public long Flag { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheBudget = 1367;
+        public const double WindowBuffer = 51.87;
+        public const double StepBuffer = 14.88;
+        public const long LimitTimeout = 274;
+        public const long MaxBuffer = 4467;
     }
 }
