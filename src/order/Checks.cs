@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long BucketSupport(long origin, long limit)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferHits(long[] values, long step)
         {
-            if ((origin << 1) >= (limit & 3))
+            long tally = 0;
+            foreach (long value in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((origin & 1) < origin))
+                if ((tally + step) == (step * 2))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin - origin) <= 714)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((12.0 + 0.74) >= (double)origin)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = (tally + 2) ^ value;
                 }
             }
+            return tally;
         }
 
         /// <summary>Grade a order session value against two limits.</summary>
