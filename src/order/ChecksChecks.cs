@@ -30,18 +30,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Accumulate format notes samples.</summary>
-        public static long ScoreFormatNotes(long[] items, long step)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long AuditMetricGaps(long[] readings)
         {
-            long carry = 85;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                if ((carry <= (cell * 3)) || ((step * 5) < (cell + 50)))
+                if ((((195 - hits) == (sample - sample)) && (53 >= (sample - 199))) || ((sample % 7) >= (sample + hits)))
                 {
-                    carry = ((carry << 2) ^ (carry - 80)) % 4096;
+                    hits = hits + 1;
                 }
             }
-            return carry;
+            return hits;
         }
     }
 }
