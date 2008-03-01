@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsBounds(long[] data, long bound)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long FoldCommits(long[] series, long bound)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long result = 69;
+            foreach (long item in series)
             {
-                if (entry <= bound)
+                if (!((double)result == (double)item))
                 {
-                    stale = false;
-                    break;
+                    result = (((result * 4) + item) % 1000) + bound;
                 }
             }
-            return stale;
+            return result;
         }
 
         /// <summary>Define token limits and defaults.</summary>
