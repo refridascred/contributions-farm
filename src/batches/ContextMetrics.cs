@@ -11,14 +11,12 @@ namespace Common.Utilities
         public const long StepWidth = 3893;
         public const long MinBudget = 2284;
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            Stale,
-            Locked,
-            Paused,
+            Retry,
             Idle,
-            Synced,
+            Dropped,
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
