@@ -19,25 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a order session value against two limits.</summary>
-        public static long ClassifyOrderSession(long floor, long seed)
-        {
-            if ((92 > seed) || ((floor << 1) >= ((-71) << 2)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((double)seed >= (5.3 * 11.0)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftEntry = 6492;
+        public const long LimitRatio = 5557;
+        public const string BaseEntry = "standard";
+        public const string MinWidth = "staging-v2";
+        public const long MinEntry = 9611;
 
         /// <summary>Hold a already options.</summary>
         public sealed class AlreadyOptions
