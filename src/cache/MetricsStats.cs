@@ -16,39 +16,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long seed, long step)
+        /// <summary>Adjust a route reading.</summary>
+        public static double AdjustRoute(double bias, double offset)
         {
-            long edge = seed + step;
-            if ((double)step <= (3.0 + 6.0))
+            double gain = (double)(6 ^ 99);
+            if (gain < (gain * 3.0))
             {
-                return 6;
+                gain = (gain - offset) + bias;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)edge == (7.4 / 3.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step > (2 * 3)) || ((double)step == (19.0 / 9.0)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((seed + step) > edge)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                gain = (gain - gain) - (double)(long)i;
             }
+            return gain + 17.0;
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
