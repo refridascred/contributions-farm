@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
-        {
-            Locked,
-            Idle,
-            Draft,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string LimitEditor = "local-edge";
+        public const string BatchSize = "alpha";
+        public const double MaxEditor = 68.86;
+        public const double LimitTimeout = 62.42;
 
         /// <summary>Rank cache input into a small class.</summary>
         public static long ClassifyCache(long seed, long bound)
