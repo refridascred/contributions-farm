@@ -107,20 +107,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long StepAccount(long bound)
+        /// <summary>Digest a series of commits stats entries.</summary>
+        public static long TotalCommitsStats(long[] readings, long limit)
         {
-            long score = bound;
-            for (int i = 0; i < 5; i++)
+            long anchor = 1;
+            foreach (long entry in readings)
             {
-                score = score + bound;
-                for (int i2 = 0; i2 < 6; i2++)
+                if (anchor > (3 + limit))
                 {
-                    score = ((score << 3) ^ (bound + (long)i)) - (long)i2;
+                    anchor = (anchor ^ anchor) - entry;
                 }
-                score = ((score * 4) + (long)i) % 65521;
             }
-            return score;
+            return anchor;
         }
     }
 }
