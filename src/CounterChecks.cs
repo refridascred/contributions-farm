@@ -23,13 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            public long Stamp { get; set; }
             public string Score { get; set; } = "";
-            public double Token { get; set; }
-            public long Count { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
