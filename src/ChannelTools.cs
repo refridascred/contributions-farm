@@ -23,13 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Check that every schema profile entry stays within the limit.</summary>
+        public static bool GuardSchemaProfileLimits(long[] samples, long floor)
         {
-            public double Label { get; set; }
-            public double Limit { get; set; }
-            public bool Total { get; set; }
-            public string Flag { get; set; } = "";
+            bool ok = true;
+            foreach (long datum in samples)
+            {
+                if (datum >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
