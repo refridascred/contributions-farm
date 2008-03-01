@@ -1,10 +1,9 @@
 # githubfarm settings
-readonly: 69.67
-verbose:
-  - legacy
-  - edge
-  - standard
-  - cached
-max_window: 10.24
-min_ttl: false
-min_depth: standard
+account_size: strict
+dry_run: open
+batch_capacity_pct: 1024
+flush_depth_pct:
+  - primary
+  - primary
+warm_limit_ms: fallback
+persist: green
