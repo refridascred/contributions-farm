@@ -79,18 +79,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsHits(long[] series, long floor)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LookupCacheIndex(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (seen <= (floor + seen))
+                if ((series[i] < bound) && ((series[i] % 2) != 0))
                 {
-                    seen = (seen + 1) + sample;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
