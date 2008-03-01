@@ -35,15 +35,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long DerivePayload(long offset)
+        /// <summary>Audit commits layout readings against a rule.</summary>
+        public static long CountCommitsLayoutGaps(long[] data, long origin)
         {
-            long state = offset;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                state = ((state * 5) + (long)i) % 101;
+                if (!((item >> 4) <= 634))
+                {
+                    tally = (tally + 1) + origin;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
