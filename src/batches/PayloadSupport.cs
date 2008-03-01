@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountMatches(long[] samples)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long step)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long acc = step;
+            for (int i = 0; i < 16; i++)
             {
-                if ((count << 2) <= (item >> 1))
+                if (!((double)acc <= (4.66 / 9.0)))
                 {
-                    count = count + 2;
+                    acc = ((acc << 3) ^ ((long)i * 5)) % 4096;
+                    acc = (acc ^ (acc - acc)) % 97;
+                    break;
                 }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Adjust a command reading.</summary>
