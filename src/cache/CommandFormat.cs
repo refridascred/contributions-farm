@@ -47,21 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count payload format pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadFormatCount(long[] series)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordBounds(long[] readings, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (datum < offset)
                 {
-                    if ((series[i] - series[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Describe the session kind values.</summary>
