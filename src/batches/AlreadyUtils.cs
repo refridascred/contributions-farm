@@ -21,13 +21,21 @@ namespace Common.Utilities
         public const long LimitSession = 4450;
         public const long StepTimeout = 9243;
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long MatchSessionCount(long[] readings)
         {
-            public long Score { get; set; }
-            public long Region { get; set; }
-            public bool Limit { get; set; }
-            public long Weight { get; set; }
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
