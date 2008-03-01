@@ -1,8 +1,10 @@
 {
-  "base_size_pct": ["legacy", "standard"],
-  "default_interval": [175, 473, 299],
-  "enabled": 32.64,
-  "max_limit": "cached",
-  "poll_threshold_ms": 18,
-  "verbose": 30
+  "enabled": 30,
+  "persist": 37,
+  "warm_limit_count": 500,
+  "cache_window_ms": {
+    "min_limit": true,
+    "cache_ttl_ms": "latest",
+    "readonly": "stable"
+  }
 }
