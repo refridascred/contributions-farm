@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandOutliers(long[] items)
+        /// <summary>Count the order entry entries that pass the check.</summary>
+        public static long TallyOrderEntryGaps(long[] samples, long floor)
         {
             long seen = 0;
-            foreach (long cell in items)
+            foreach (long datum in samples)
             {
-                if ((double)cell == (8.0 - 12.0))
+                if (((seen >> 2) != (datum + 3)) || ((floor + seen) < (floor + datum)))
                 {
-                    seen = seen + 2;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
