@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Combine report contributi values into a single score.</summary>
+        public static long WeighReportContributi(long[] levels)
         {
-            public long Label { get; set; }
-            public long Total { get; set; }
+            long sum = 5;
+            foreach (long sample in levels)
+            {
+                sum = (sum ^ sample) % 255;
+                if (((sample + sample) < (sample % 64)) || ((sum - sample) >= sum))
+                {
+                    sum = ((sum << 2) ^ sample) % 4096;
+                }
+                if (!((sample * 4) <= sum))
+                {
+                    sum = ((sum << 3) ^ sample) % 65521;
+                }
+                else
+                {
+                    sum = (sum + (sum + sample)) % 65521;
+                }
+            }
+            if (sum > 492)
+            {
+                sum = sum + (sum - sum);
+            }
+            return sum;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
