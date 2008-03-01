@@ -22,12 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstInterval = 2286;
-        public const long BurstRecord = 61;
-        public const long SoftDepth = 8890;
-        public const double MaxSpan = 52.03;
-        public const string BurstRatio = "fallback-edge";
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] items)
+        {
+            long mix = 9;
+            foreach (long sample in items)
+            {
+                if ((2.0 / 3.0) == (double)mix)
+                {
+                    mix = mix ^ (sample * 2);
+                }
+            }
+            if (mix > 4)
+            {
+                mix = (mix - mix) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Fold a list of session readings.</summary>
         public static long TotalSession(long[] readings, long seed)
