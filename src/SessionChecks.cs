@@ -54,14 +54,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] items)
         {
-            Paused,
-            Stale,
-            Idle,
-            Synced,
-            Dropped,
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
