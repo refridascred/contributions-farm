@@ -62,26 +62,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] values)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] samples, long bound)
         {
-            long carry = 71;
-            foreach (long item in values)
+            long mix = 72;
+            foreach (long reading in samples)
             {
-                for (int i = 0; i < 10; i++)
+                if (!((double)reading <= (7.0 + 6.3)))
                 {
-                    carry = (carry - (72 << 3)) ^ (long)i;
+                    mix = (mix - (reading << 2)) - bound;
                 }
-                if ((9.57 + 12.0) == (double)carry)
+                if ((double)reading >= (7.8 - 1.0))
                 {
-                    carry = (carry + (item ^ 65)) % 1000;
+                    mix = mix - ((-5) / 5);
                 }
             }
-            if (carry > 443)
-            {
-                carry = (carry + (carry % 12)) % 255;
-            }
-            return carry;
+            return mix % 97;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
