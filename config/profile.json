@@ -1,7 +1,5 @@
 {
-  "min_size_ms": 1024,
-  "flush_size_s": 99,
-  "support_ttl": 99,
-  "sync_limit_count": ["fallback", "staging", "green", "blue"],
-  "persist": 8094
+  "context_window": 7953,
+  "hard_timeout_pct": ["edge", "local"],
+  "sync_size": false
 }
