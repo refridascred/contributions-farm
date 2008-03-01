@@ -18,19 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountOutliers(long[] data, long target)
-        {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((double)target > (2.47 - 5.9))
-                {
-                    seen = (seen + 1) + cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double StepTools = 50.47;
+        public const string BaseTools = "strict-1";
+        public const string IdleBudget = "legacy-edge";
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long CombineCounter(long[] items, long seed)
