@@ -45,19 +45,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine session layout values into a single score.</summary>
-        public static long WeighSessionLayout(long[] series, long limit)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksMatches(long[] samples)
         {
-            long total = 910;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                total = ((total << 2) ^ datum) % 101;
+                if ((entry ^ 138) > entry)
+                {
+                    count = count + 3;
+                }
             }
-            if (total > 74)
-            {
-                total = (total + limit) % 1000;
-            }
-            return total;
+            return count;
         }
     }
 }
