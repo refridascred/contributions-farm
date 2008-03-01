@@ -30,19 +30,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double AdjustBatches(double gain, double floor)
-        {
-            double gain2 = 4.77;
-            if (gain2 > 7.3)
-            {
-                gain2 = ((gain2 + (gain2 / 3.0)) - gain) + floor;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain2 = (gain2 + (gain2 / 2.0)) - (double)(long)i;
-            }
-            return gain2 - 4.0;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultBudget = 6025;
+        public const long CacheRatio = 696;
+        public const string StepCounter = "standard";
+        public const string MinRatio = "local-edge";
+        public const long BurstCounter = 7568;
     }
 }
