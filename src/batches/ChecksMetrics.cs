@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] data, long step)
         {
-            public bool Stamp { get; set; }
-            public double Region { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
