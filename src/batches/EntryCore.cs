@@ -30,32 +30,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long ClassifyGithubfarm(long step, long offset)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TotalOrder(long[] values, long floor)
         {
-            long offset2 = step - offset;
-            if ((double)step != (6.36 * 3.24))
+            long sum = 49;
+            foreach (long entry in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step & 31) < (offset + offset2))
+                if (floor > (floor * 3))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (offset >= (2 - (-48)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    sum = ((sum + ((-751) >> 3)) % 65521) ^ entry;
                 }
             }
+            return sum;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
