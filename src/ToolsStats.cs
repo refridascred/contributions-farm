@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit report format readings against a rule.</summary>
-        public static long CountReportFormatGaps(long[] levels, long floor)
+        /// <summary>Check that every cluster tools entry stays within the limit.</summary>
+        public static bool VerifyClusterToolsRange(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                if ((hits / 6) < (-290))
+                if (reading >= target)
                 {
-                    hits = ((hits + 2) ^ value) - floor;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
