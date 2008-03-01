@@ -1,34 +1,13 @@
 # support settings
-batch_ratio_count: stable
-retry_limit_ms:
-  - 203
-  - 437
-  - 376
-flush_depth:
-  hard_capacity_count:
-    channel_depth: 30
-    min_depth: 452
-    order_threshold: fallback
-  min_capacity_ms: true
-  audit:
+poll_size:
+  min_ratio_count: 77.72
+  strict:
+    - fallback
+    - green
     - standard
-    - primary
-    - latest
-    - eu-west
-  report_ratio:
-    burst_size_pct: 5.0
-    buffer_window:
-      - 403
-      - 310
-      - 310
-      - 428
-    cache_size_s: 10.05
-    cache_size_ms: 5746
-    burst_ratio_s: 500
-  editor_retries: false
-audit:
-  - staging
-  - cached
-  - primary
-  - green
-min_threshold: 30.21
+    - standard
+  cluster_window: true
+  dry_run: 2467
+  contributi_retries: false
+max_limit: 60.9
+burst_retries_ms: local
