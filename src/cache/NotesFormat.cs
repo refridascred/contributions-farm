@@ -35,13 +35,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            Stale,
-            Idle,
-            Queued,
-            Dropped,
+            public double Size { get; set; }
+            public long Flag { get; set; }
+            public long Level { get; set; }
+            public long Label { get; set; }
         }
     }
 }
