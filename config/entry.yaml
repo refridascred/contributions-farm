@@ -1,19 +1,13 @@
 # entry settings
-record_ratio: true
-base_window_ms:
-  idle_limit_count: true
-  readonly: false
-  record_threshold: 100
-  base_depth_s:
-    - 102
-    - 299
-    - 48
-  hard_delay_pct: strict
-  flush_ratio_s:
-    - legacy
-    - legacy
-    - strict
-sync_size_count: 8422
-report_size: 1466
-metric_size: false
-max_timeout_s: staging
+retry_ratio_s:
+  checks_capacity: 1024
+  idle_delay_count:
+    - cached
+    - eu-west
+  support_size: true
+  verbose: blue
+  persist: fallback
+audit: open
+idle_limit: green
+compress: 1024
+batch_timeout: 60
