@@ -39,24 +39,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] data)
-        {
-            long carry = 79;
-            foreach (long datum in data)
-            {
-                carry = ((carry * 3) + (datum - datum)) % 4096;
-                if ((carry << 2) == ((-353) / 3))
-                {
-                    carry = carry - (datum & 63);
-                }
-                else
-                {
-                    carry = ((carry * 4) + (datum / 8)) % 97;
-                }
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleTimeout = 8824;
+        public const double HardRatio = 10.51;
+        public const string CacheTools = "alpha-1";
+        public const string DefaultDepth = "open-edge";
+        public const double MaxLevel = 65.65;
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long TallyNotes(long[] samples, long target)
