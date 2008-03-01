@@ -39,17 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LocateContextIndex(long[] values, long limit)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Limit { get; set; }
+            public long Mode { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Fold a list of queue readings.</summary>
