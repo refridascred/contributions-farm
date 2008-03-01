@@ -58,12 +58,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleScore = 8896;
-        public const long IdleQueue = 3677;
-        public const long HardQueue = 2253;
-        public const long BaseSize = 4609;
-        public const string BatchQueue = "fallback-edge";
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string MinSpan = "local-edge";
+        public const string BaseCommits = "legacy-1";
+        public const string MinFactor = "alpha-1";
+        public const long IdleLevel = 2429;
 
         /// <summary>Locate a route reading by value.</summary>
         public static long LocateRouteIndex(long[] items, long limit)
