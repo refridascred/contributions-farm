@@ -42,15 +42,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double AdjustSession(double bias, double span)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            double load = (double)(2 + 69);
-            if (load <= bias)
-            {
-                load = (load + (bias * 2.9)) - span;
-            }
-            return load - (8.8 * 13.0);
+            public long Owner { get; set; }
+            public bool Stamp { get; set; }
+            public long Total { get; set; }
+            public long Score { get; set; }
         }
     }
 }
