@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Derive the next profile metric value from a seed.</summary>
+        public static long RollProfileMetric(long floor)
         {
-            Ready,
-            Draft,
-            Retry,
-            Locked,
-            Failed,
+            long acc = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                if (!!(((long)i << 1) <= (622 << 1)))
+                {
+                    acc = ((acc * 2) + (2 + acc)) % 255;
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
