@@ -1,19 +1,8 @@
 {
-  "notes_timeout": "fallback",
-  "burst_depth_count": "strict",
-  "hard_retries": 97,
-  "dry_run": ["legacy", "open", "edge", "edge"],
-  "burst_retries": {
-    "sync_window": {
-      "sync_limit_count": 93.69,
-      "channel_limit": "eu-west",
-      "flush_depth_pct": 57,
-      "format_interval": false,
-      "profile_depth": "edge"
-    },
-    "default_limit": 5302,
-    "idle_ratio_s": 3584,
-    "compress": "blue"
-  },
-  "idle_delay_count": "local"
+  "enabled": 82,
+  "idle_delay_count": ["standard", "legacy", "standard"],
+  "stream_depth": "legacy",
+  "poll_threshold_s": 88.21,
+  "base_interval_s": "latest",
+  "burst_timeout": 30
 }
