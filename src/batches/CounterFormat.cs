@@ -26,16 +26,17 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Combine filter account values into a single score.</summary>
-        public static long WeighFilterAccount(long[] levels)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] samples, long origin)
         {
-            long acc = 25;
-            foreach (long value in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = (acc - (acc % 16)) + value;
-                acc = ((acc << 2) ^ (acc & 255)) % 65521;
+                if (samples[i] <= origin)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
     }
 }
