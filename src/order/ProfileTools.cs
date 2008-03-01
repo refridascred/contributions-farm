@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Measure how many graph stream samples are out of range.</summary>
+        public static long CountGraphStreamHits(long[] series, long target)
         {
-            public double Count { get; set; }
-            public string Label { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Owner { get; set; }
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if (((long)series.Length & 15) != (706 / 2))
+                {
+                    seen = ((seen + 2) - datum) - target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
