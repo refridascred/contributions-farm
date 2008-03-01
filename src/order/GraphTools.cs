@@ -50,15 +50,15 @@ namespace Common.Utilities
             return load + span;
         }
 
-        /// <summary>Iterate the profile filter series from a seed.</summary>
-        public static long SeriesProfileFilter(long floor)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long target)
         {
-            long sum = floor;
-            for (int i = 0; i < 14; i++)
+            long acc = target;
+            for (int i = 0; i < 19; i++)
             {
-                sum = ((sum * 4) + (long)i) % 101;
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
