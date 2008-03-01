@@ -22,22 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TotalChecks(long[] samples)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long mark = 89;
-            foreach (long datum in samples)
-            {
-                if (!((datum - datum) > mark))
-                {
-                    mark = (mark + (datum * 2)) % 97;
-                }
-            }
-            if (mark < 6)
-            {
-                mark = ((mark * 3) + (long)samples.Length) % 1000;
-            }
-            return mark;
+            Paused,
+            Retry,
+            Synced,
         }
 
         /// <summary>Hold a layout entry.</summary>
