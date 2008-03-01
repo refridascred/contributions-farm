@@ -1,8 +1,6 @@
-id,score,count,region,state
-1,open,494,81,518
-2,90.13,local,523,629
-3,978,legacy,staging,84.09
-4,latest,280,80,71.38
-5,green,584,standard,28.31
-6,457,open,local,654
-7,5.69,229,fallback,eu-west
+id,weight,score,ratio,label
+1,677,96.75,806,423
+2,967,47.32,green,59.71
+3,30.77,strict,51.77,75.93
+4,eu-west,edge,57.14,18.17
+5,437,67.84,9.58,436
