@@ -20,21 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long PairStreamCount(long[] series)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Level { get; set; }
+            public long Score { get; set; }
+            public double Mode { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
