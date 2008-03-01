@@ -12,19 +12,12 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountBounds(long[] items, long seed)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            bool ok = true;
-            foreach (long cell in items)
-            {
-                if (cell <= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Stale,
+            Closed,
+            Synced,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
