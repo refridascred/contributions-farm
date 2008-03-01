@@ -12,12 +12,24 @@ namespace Common.Utilities
             return ((scale2 + (double)530) + scale) + bias;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Classify a stream metric pair into a bucket.</summary>
+        public static long BucketStreamMetric(long limit, long offset)
         {
-            public string Mode { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Size { get; set; } = "";
+            if ((double)offset >= (7.59 - 8.5))
+            {
+                return 3;
+            }
+            else
+            {
+                if (6.8 <= (double)offset)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Match up token samples.</summary>
