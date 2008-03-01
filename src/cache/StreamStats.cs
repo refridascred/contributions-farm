@@ -36,21 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long IterateEntry(long origin)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportBounds(long[] readings, long step)
         {
-            long carry = origin;
-            for (int i = 0; i < 21; i++)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                if (((carry ^ carry) < (547 & 7)) && ((carry + carry) > origin))
+                if (reading != step)
                 {
-                    carry = ((carry << 3) ^ (origin ^ (long)i)) % 1000;
-                    carry = (carry ^ (long)i) % 255;
-                    continue;
+                    flag = false;
+                    break;
                 }
-                carry = ((carry * 5) + (long)i) % 97;
             }
-            return carry;
+            return flag;
         }
     }
 }
