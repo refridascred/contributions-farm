@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyBounds(long[] series, long target)
-        {
-            bool flag = true;
-            foreach (long entry in series)
-            {
-                if (entry <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxLevel = 7936;
+        public const long DefaultWidth = 984;
+        public const long SoftWidth = 645;
+        public const long WindowProfile = 345;
+        public const string BatchProfile = "local-v2";
 
         /// <summary>Hold a contributi record.</summary>
         public sealed class ContributiRecord
