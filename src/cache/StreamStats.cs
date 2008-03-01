@@ -17,11 +17,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long SoftCommand = 7969;
-        public const double BaseTimeout = 85.47;
-        public const double BatchLevel = 18.88;
-        public const string MinCommand = "open";
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheLevel = 1307;
+        public const long WindowCount = 4374;
+        public const string MaxFactor = "fallback-v2";
 
         /// <summary>Describe the entry mode values.</summary>
         public enum EntryMode
