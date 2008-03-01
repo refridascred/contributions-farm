@@ -63,18 +63,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of batch queue readings.</summary>
-        public static long FoldBatchQueue(long[] levels)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long carry = 24;
-            foreach (long item in levels)
-            {
-                if (((carry << 3) < carry) && ((long)levels.Length != (carry >> 2)))
-                {
-                    carry = ((carry - (84 << 2)) % 97) ^ item;
-                }
-            }
-            return carry;
+            Paused,
+            Failed,
+            Stale,
+            Draft,
         }
     }
 }
