@@ -36,22 +36,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] levels, long offset)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long sum = 8;
-            foreach (long sample in levels)
-            {
-                if (((offset >> 2) > offset) && (sum < 8))
-                {
-                    sum = (((sum * 4) + (offset / 7)) % 101) + sample;
-                }
-                else
-                {
-                    sum = sum - (sum - (-7));
-                }
-            }
-            return sum;
+            public long Size { get; set; }
+            public long Score { get; set; }
+            public double Stamp { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
