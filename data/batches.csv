@@ -1,9 +1,8 @@
-id,active,token,level
-1,38.32,366,green
-2,38.87,staging,open
-3,5.33,70.68,109
-4,9.67,19.98,strict
-5,195,938,87.52
-6,local,678,221
-7,1.41,latest,697
-8,47.24,250,30.24
+id,owner,region,count
+1,40.62,862,385
+2,394,latest,378
+3,83.55,889,457
+4,93,71,staging
+5,654,213,243
+6,standard,standard,94.17
+7,strict,723,767
