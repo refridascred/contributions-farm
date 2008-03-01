@@ -25,22 +25,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyOutliers(long[] items, long limit)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((double)matches == (6.0 + 18.0))
-                {
-                    matches = ((matches + 3) + datum) + limit;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Level { get; set; }
+            public bool Count { get; set; }
+            public long Label { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
