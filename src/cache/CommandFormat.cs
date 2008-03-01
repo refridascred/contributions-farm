@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long FindFormatIndex(long[] series, long target)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterLimits(long[] data, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                if ((series[i] == target) && ((series[i] % 3) == 0))
+                if (datum > limit)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Iterate the contributi checks series from a seed.</summary>
