@@ -98,18 +98,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterOutliers(long[] values, long seed)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long ClassifyPayload(long step, long offset)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long prev = step - offset;
+            if (((559 + prev) >= step) || ((11.0 / 6.0) >= (double)prev))
             {
-                if ((long)values.Length > (seed + entry))
+                return 3;
+            }
+            else
+            {
+                if ((offset > (prev & 63)) && ((prev >> 5) >= step))
                 {
-                    tally = tally + 1;
+                    return 6;
+                }
+                else
+                {
+                    if (((prev * 5) != (offset ^ 352)) || ((18.0 + 9.4) <= (double)step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((659 ^ 7) <= (offset - offset))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
