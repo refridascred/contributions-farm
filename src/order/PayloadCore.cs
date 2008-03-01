@@ -26,31 +26,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] samples)
-        {
-            long carry = 32;
-            foreach (long reading in samples)
-            {
-                if ((reading * 4) >= (reading + reading))
-                {
-                    continue;
-                }
-                if ((reading - (long)samples.Length) < carry)
-                {
-                    carry = (carry * 5) + carry;
-                }
-                if (!((1.95 + 19.0) < (double)reading))
-                {
-                    break;
-                }
-            }
-            if (carry < (-35))
-            {
-                carry = carry - carry;
-            }
-            return carry;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchAlready = 9842;
+        public const string IdleAlready = "primary-1";
+        public const double BurstAlready = 7.58;
+        public const long LimitBudget = 781;
+        public const long HardRatio = 6570;
 
         /// <summary>Grade a route value against two limits.</summary>
         public static long SortRoute(long bound, long target)
