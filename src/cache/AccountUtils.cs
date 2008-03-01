@@ -31,11 +31,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseReport = 8321;
-        public const string LimitReport = "latest-v2";
-        public const long StepReport = 9196;
-        public const string SoftTimeout = "local";
-        public const long BurstDepth = 6665;
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
+        {
+            Closed,
+            Paused,
+            Stale,
+            Failed,
+            Idle,
+        }
     }
 }
