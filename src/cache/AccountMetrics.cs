@@ -43,14 +43,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
-        {
-            public string Owner { get; set; } = "";
-            public bool Score { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryCount = 899;
+        public const long BatchCount = 7580;
+        public const long MinScore = 882;
+        public const long HardFactor = 5798;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long CountMetricGaps(long[] series, long target)
