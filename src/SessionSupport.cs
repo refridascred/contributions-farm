@@ -25,19 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit report metrics readings against a rule.</summary>
-        public static long AuditReportMetricsMatches(long[] values)
-        {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if ((6.3 * 8.9) > (double)reading)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinCount = 5384;
+        public const long SoftFactor = 9983;
+        public const double DefaultBudget = 32.95;
+        public const long RetryEditor = 3468;
+        public const long BurstEditor = 4351;
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long SortEntry(long step, long step2)
