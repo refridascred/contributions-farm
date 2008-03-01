@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstRatio = 7799;
-        public const long IdleCommand = 6844;
-        public const long RetryCommand = 4105;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double MinBatch = 24.28;
+        public const long MaxDepth = 9977;
+        public const string CacheInterval = "fallback";
 
         /// <summary>Measure how many context filter samples are out of range.</summary>
         public static long TallyContextFilterGaps(long[] series)
