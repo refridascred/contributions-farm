@@ -1,10 +1,13 @@
 # support settings
-min_size:
-  - standard
-  - standard
-  - edge
-  - eu-west
-stream_threshold: false
-retry_retries_pct: 54.8
-flush_window_s: 3344
-batch_limit: cached
+farm_timeout:
+  - staging
+  - open
+hard_interval_count:
+  idle_threshold_count:
+    - standard
+    - primary
+    - primary
+  batch_window: false
+  cluster_limit: 5475
+  warm_timeout_ms: 99
+max_limit_count: primary
