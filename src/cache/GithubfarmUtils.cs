@@ -15,13 +15,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            public bool Size { get; set; }
-            public string Token { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Mode { get; set; }
+            public double Token { get; set; }
+            public long Size { get; set; }
+            public long Level { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
