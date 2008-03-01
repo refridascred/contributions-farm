@@ -29,22 +29,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the context route entries that pass the check.</summary>
-        public static long AuditContextRouteHits(long[] levels)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long floor, long step)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long span = floor ^ step;
+            if ((4.2 / 2.0) != (double)span)
             {
-                if ((value / 4) == (matches ^ value))
+                return 6;
+            }
+            else
+            {
+                if ((double)199 == (double)floor)
                 {
-                    matches = matches + 3;
+                    return 7;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 3;
                 }
             }
-            return matches;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
