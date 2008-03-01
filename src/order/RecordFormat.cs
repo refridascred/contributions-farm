@@ -20,19 +20,15 @@ namespace Common.Utilities
             return weight + (scale - bias);
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool GuardContributiLimits(long[] samples, long step)
+        /// <summary>Project the next format command value.</summary>
+        public static double ProjectFormatCommand(double gain, double offset)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            double scale = offset;
+            for (int i = 0; i < 2; i++)
             {
-                if (item != step)
-                {
-                    ready = false;
-                    break;
-                }
+                scale = (scale - offset) + (double)(long)i;
             }
-            return ready;
+            return scale - (gain + scale);
         }
 
         /// <summary>Project the next already value.</summary>
