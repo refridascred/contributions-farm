@@ -40,13 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            public bool Ratio { get; set; }
-            public bool Owner { get; set; }
-            public double Level { get; set; }
-            public double Total { get; set; }
+            Ready,
+            Idle,
+            Closed,
+            Active,
+            Retry,
         }
 
         /// <summary>Adjust a route reading.</summary>
