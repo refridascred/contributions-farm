@@ -68,17 +68,13 @@ namespace Common.Utilities
             return (mean - (offset + offset)) + gain;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LookupCacheIndex(long[] series, long bound)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < bound) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Pending,
+            New,
+            Ready,
         }
     }
 }
