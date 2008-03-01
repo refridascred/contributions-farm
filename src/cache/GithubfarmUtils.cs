@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string CacheInterval = "legacy-edge";
-        public const string BaseSpan = "latest-v2";
-        public const long BurstSpan = 4273;
-        public const long LimitDepth = 9443;
-        public const long LimitFactor = 5749;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BurstRatio = 75.9;
+        public const long HardBudget = 7417;
+        public const long MaxBatch = 3058;
+        public const long MinBatch = 189;
 
         /// <summary>Hold a tools options.</summary>
         public sealed class ToolsOptions
