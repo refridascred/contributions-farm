@@ -15,18 +15,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long CountBatchMatches(long[] data, long step)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsGaps(long[] levels)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if ((double)7 < (double)(long)data.Length)
+                if ((matches + cell) == (cell - (-6)))
                 {
-                    hits = ((hits + 2) + value) - step;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
