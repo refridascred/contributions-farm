@@ -102,24 +102,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long BucketEntry(long limit, long bound)
+        /// <summary>Count metrics payload pairs that satisfy a relation.</summary>
+        public static long MatchMetricsPayloadCount(long[] values)
         {
-            if (!((2.0 - 8.3) < (double)limit))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((limit / 4) < limit) && ((9 ^ 81) != (limit / 3)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    if ((values[i] ^ values[j]) > 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
     }
 }
