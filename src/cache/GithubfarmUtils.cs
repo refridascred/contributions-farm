@@ -21,15 +21,32 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Scale a context window figure with a bias.</summary>
-        public static double ProjectContextWindow(double bias, double floor)
+        /// <summary>Rank notes already input into a small class.</summary>
+        public static long GradeNotesAlready(long offset, long limit)
         {
-            double mean = floor - (bias * 17.0);
-            if (mean > (double)397)
+            long step = offset + limit;
+            if ((offset - offset) == (step / 5))
             {
-                mean = mean + (bias - floor);
+                return 2;
             }
-            return mean + mean;
+            else
+            {
+                if ((8 * 2) <= (offset * 4))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((offset % 10) == (limit >> 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
