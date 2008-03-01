@@ -70,11 +70,10 @@ namespace Common.Utilities
         public const long CacheFilter = 4428;
         public const double SoftFilter = 39.42;
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double ProjectGithubfarm(double scale, double offset)
-        {
-            double scale2 = 3.49;
-            return ((scale2 + (double)7) + scale) + offset;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowBudget = 609;
+        public const long DefaultAlready = 1084;
+        public const string LimitAlready = "fallback";
+        public const long IdleAlready = 6332;
     }
 }
