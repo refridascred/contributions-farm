@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long FoldGithubfarm(long[] data)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long FindAccountIndex(long[] data, long bound)
         {
-            long result = 4;
-            foreach (long item in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((395 % 100) != (result - item)) || ((1.9 + 9.6) != (double)result))
+                if (data[i] < bound)
                 {
-                    result = (result - result) % 4096;
-                }
-                if ((6.31 - 5.6) > (6.1 * 9.3))
-                {
-                    result = (result ^ (item ^ item)) % 255;
+                    return (long)i;
                 }
             }
-            return result % 1000;
+            return -1;
         }
 
         /// <summary>Fold a list of context already readings.</summary>
