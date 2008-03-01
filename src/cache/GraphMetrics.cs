@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountGaps(long[] values, long target)
         {
-            public long Weight { get; set; }
-            public string Offset { get; set; } = "";
-            public long Owner { get; set; }
-            public long Flag { get; set; }
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((87 + tally) > (entry * 4))
+                {
+                    tally = (tally + 2) + target;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a buffer header.</summary>
