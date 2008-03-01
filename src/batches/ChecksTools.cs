@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long DigestPayload(long[] levels, long step)
+        /// <summary>Blend two channel route measurements.</summary>
+        public static double ProjectChannelRoute(double bias, double floor)
         {
-            long acc = 22;
-            foreach (long item in levels)
+            double rate = floor - floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)acc != (double)item)
-                {
-                    acc = (((acc * 3) + (item + item)) % 101) - step;
-                }
-                if (((double)item >= (4.0 + 3.34)) || (acc >= 320))
-                {
-                    acc = (acc * 5) + 912;
-                }
+                rate = ((rate + floor) - (double)(long)i) - bias;
             }
-            return acc;
+            return rate - 1.0;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
