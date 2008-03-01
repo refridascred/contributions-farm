@@ -1,21 +1,21 @@
 # githubfarm settings
-hard_delay: true
-default_threshold:
-  base_delay_ms: 43.67
-  flush_delay_s: 3557
-  buffer_window:
-    default_ratio_s: 83.81
-    hard_retries: 11.51
-    burst_retries_count: latest
-    verbose: 8906
-    farm_delay: false
-    already_limit: false
-  audit:
-    - fallback
-    - green
-    - staging
-    - stable
-max_threshold_s: 66.18
-burst_interval_ms: 75.79
-verbose: 85.57
-audit: true
+cache_depth_pct: 10.2
+entry_threshold:
+  default_depth: false
+  base_ratio_s:
+    burst_ttl:
+      - legacy
+      - local
+      - strict
+    min_interval_ms: true
+    record_timeout: 36.31
+    idle_retries_pct: 15.96
+  default_threshold: 11.46
+editor_size: blue
+cluster_size:
+  - standard
+  - staging
+  - eu-west
+  - standard
+hard_capacity_pct: true
+sync_timeout_ms: true
