@@ -23,17 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a githubfarm stats reading by value.</summary>
-        public static long LocateGithubfarmStatsIndex(long[] levels, long bound)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ProjectGithubfarm(double ratio, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double rate = bias;
+            return (rate - rate) + ratio;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
