@@ -21,11 +21,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            public string Label { get; set; } = "";
-            public long Total { get; set; }
+            Pending,
+            Locked,
+            Retry,
         }
 
         /// <summary>Hold a order options.</summary>
