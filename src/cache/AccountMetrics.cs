@@ -21,11 +21,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double StepLayout = 30.57;
-        public const long BurstLayout = 7009;
-        public const long BurstScore = 4876;
-        public const long DefaultBudget = 6600;
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long DeriveBuffer(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 15; i++)
+            {
+                total = ((total << 2) ^ (long)i) % 97;
+                total = ((total * 4) + (413 >> 2)) % 101;
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Locate a metric reading by value.</summary>
         public static long LookupMetricIndex(long[] data, long offset)
