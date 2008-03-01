@@ -21,19 +21,24 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] series)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long RankReport(long bound, long floor)
         {
-            long sum = 852;
-            foreach (long value in series)
+            if (((bound ^ 646) < (floor + bound)) && ((floor << 1) != (bound & 3)))
             {
-                sum = ((sum << 3) ^ value) % 97;
+                return 7;
             }
-            if (sum < 92)
+            else
             {
-                sum = sum + ((-512) * 5);
+                if ((bound + bound) < (524 + 48))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return sum % 1000;
         }
     }
 }
