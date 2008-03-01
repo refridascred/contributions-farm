@@ -42,18 +42,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchGaps(long[] items)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long CompareToolsCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (hits <= 0)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 2) + cell;
+                    if ((levels[i] + levels[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
