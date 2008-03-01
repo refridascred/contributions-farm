@@ -39,12 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSchema = 1852;
-        public const string RetryRatio = "strict-edge";
-        public const long SoftDepth = 4416;
-        public const long LimitRatio = 5115;
-        public const double RetrySchema = 30.84;
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchGaps(long[] items)
+        {
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if (hits <= 0)
+                {
+                    hits = (hits + 2) + cell;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Blend two counter measurements.</summary>
         public static double AdjustCounter(double gain, double floor)
