@@ -45,15 +45,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Derive the next support command value from a seed.</summary>
-        public static long SeriesSupportCommand(long bound)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long acc = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
+            public long Flag { get; set; }
+            public double Total { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
