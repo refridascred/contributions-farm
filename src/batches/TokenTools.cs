@@ -23,12 +23,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
-        {
-            public bool Flag { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string SoftCount = "local-v2";
+        public const string DefaultEditor = "fallback";
+        public const long MaxFactor = 6711;
 
         /// <summary>Derive the next cache value from a seed.</summary>
         public static long IterateCache(long step)
