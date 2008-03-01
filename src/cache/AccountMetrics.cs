@@ -34,12 +34,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetrySize = 532;
-        public const string CacheAlready = "local-1";
-        public const long BaseScore = 9829;
-        public const double CacheLevel = 59.92;
-        public const double LimitAlready = 26.25;
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyOutliers(long[] items, long limit)
+        {
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((double)matches == (6.0 + 18.0))
+                {
+                    matches = ((matches + 3) + datum) + limit;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Compare every pair of window readings.</summary>
         public static long PairWindowCount(long[] items)
