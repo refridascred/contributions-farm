@@ -25,18 +25,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit support session readings against a rule.</summary>
-        public static long TallySupportSessionGaps(long[] items)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] values)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long mix = 4;
+            foreach (long reading in values)
             {
-                if (value <= seen)
-                {
-                    seen = seen + 2;
-                }
+                mix = (mix ^ (reading - reading)) % 101;
             }
-            return seen;
+            return mix % 97;
         }
     }
 }
