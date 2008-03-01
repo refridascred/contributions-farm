@@ -48,22 +48,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaHits(long[] items)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long ClassifyLayout(long step, long target)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long slot = step ^ target;
+            if ((double)slot < (5.5 + 9.3))
             {
-                if ((matches * 3) > (item + matches))
+                return 5;
+            }
+            else
+            {
+                if (!(step > (slot + 320)))
                 {
-                    matches = matches + 3;
+                    return 4;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((18.0 * 6.0) >= (double)slot)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the metric status values.</summary>
