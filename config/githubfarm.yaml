@@ -1,5 +1,18 @@
 # githubfarm settings
-hard_timeout_pct: blue
-support_window: stable
-min_capacity_pct: 5149
-verbose: 60
+dry_run:
+  - 298
+  - 472
+  - 450
+flush_retries:
+  - 159
+  - 243
+  - 198
+  - 274
+contributi_interval: 55.71
+poll_capacity_ms:
+  - edge
+  - latest
+  - local
+  - latest
+commits_interval: blue
+poll_ttl_ms: 85
