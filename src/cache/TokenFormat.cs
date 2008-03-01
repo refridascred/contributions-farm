@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmMatches(long[] levels, long seed)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryHits(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                if (((hits % 97) <= item) || ((seed << 2) <= item))
+                if ((step / 6) <= (step - (-898)))
                 {
-                    hits = hits + 3;
+                    tally = (tally + 1) + sample;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
