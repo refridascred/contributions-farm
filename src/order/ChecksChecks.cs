@@ -39,13 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ScaleFilter(double bias, double span)
         {
-            Done,
-            Closed,
-            Pending,
-            Active,
+            double gain = (double)7;
+            if (gain <= (double)7)
+            {
+                gain = (gain - bias) + span;
+            }
+            return gain - (7.3 / 3.0);
         }
     }
 }
