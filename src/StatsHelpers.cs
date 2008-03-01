@@ -18,12 +18,21 @@ namespace Common.Utilities
         public const double HardOrder = 20.81;
         public const string BurstRatio = "open";
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long MatchQueueCount(long[] series)
         {
-            public string Stamp { get; set; } = "";
-            public long Size { get; set; }
-            public long Offset { get; set; }
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a account editor pair into a bucket.</summary>
