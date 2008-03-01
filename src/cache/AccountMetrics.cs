@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
-        {
-            Idle,
-            Failed,
-            Queued,
-            Done,
-            Locked,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double MaxSize = 46.15;
+        public const long BatchBudget = 6616;
+        public const string BaseRatio = "legacy";
+        public const string CacheSize = "cached-1";
+        public const double BurstLevel = 30.89;
 
         /// <summary>Accumulate entry samples.</summary>
         public static long FoldEntry(long[] data)
