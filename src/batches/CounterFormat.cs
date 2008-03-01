@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long OverlapBufferCount(long[] samples)
+        /// <summary>Count the counter session entries that pass the check.</summary>
+        public static long CountCounterSessionHits(long[] samples, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((5 + hits) >= (hits / 3))
                 {
-                    if ((samples[i] + samples[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = ((hits + 3) + datum) - bound;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Measure how many channel metric samples are out of range.</summary>
