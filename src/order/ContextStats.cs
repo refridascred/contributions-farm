@@ -20,12 +20,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long IterateSchema(long limit)
         {
-            public bool Region { get; set; }
-            public double Ratio { get; set; }
-            public double Total { get; set; }
+            long sum = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                sum = ((sum << 2) ^ (limit * 4)) % 97;
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Hold a report entry.</summary>
