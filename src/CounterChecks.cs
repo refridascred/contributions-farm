@@ -51,17 +51,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a tools buffer reading by value.</summary>
-        public static long SeekToolsBufferIndex(long[] series, long offset)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Closed,
+            New,
+            Queued,
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
