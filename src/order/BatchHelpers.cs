@@ -60,18 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountOutliers(long[] series)
+        /// <summary>Check that every tools schema entry stays within the limit.</summary>
+        public static bool ValidateToolsSchemaRange(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long value in readings)
             {
-                if (((double)tally != (double)reading) && ((86 + (long)series.Length) >= (tally % 2)))
+                if (value != target)
                 {
-                    tally = tally + 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
     }
 }
