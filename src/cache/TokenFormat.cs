@@ -19,25 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long CombineEntry(long[] series, long seed)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long sum = 173;
-            foreach (long entry in series)
-            {
-                long edge = seed;
-                if (!((4.0 * 6.0) <= (double)edge))
-                {
-                    sum = (sum - (6 ^ edge)) % 4096;
-                    continue;
-                }
-                sum = sum ^ (entry % 2);
-            }
-            if (sum < 88)
-            {
-                sum = (sum + (sum + seed)) % 101;
-            }
-            return sum % 97;
+            public double Size { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
