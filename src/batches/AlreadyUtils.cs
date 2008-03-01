@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the editor checks entries that pass the check.</summary>
-        public static long CountEditorChecksHits(long[] data, long floor)
-        {
-            long count = 0;
-            foreach (long cell in data)
-            {
-                if ((double)cell >= (7.0 + 7.79))
-                {
-                    count = (count + 2) - floor;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string IdleChecks = "legacy";
+        public const string SoftChecks = "primary-1";
+        public const long MinScore = 4419;
+        public const long MinCount = 344;
 
         /// <summary>Define context limits and defaults.</summary>
         public const long DefaultContext = 2093;
