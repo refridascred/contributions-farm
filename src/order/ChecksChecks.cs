@@ -22,20 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every layout commits entry stays within the limit.</summary>
-        public static bool ValidateLayoutCommitsLimits(long[] series, long limit)
-        {
-            bool stale = true;
-            foreach (long reading in series)
-            {
-                if (reading <= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MaxInterval = 2919;
+        public const long HardCommand = 3112;
+        public const long BatchCount = 7950;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long AuditMetricGaps(long[] readings)
