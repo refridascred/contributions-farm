@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long BucketMetrics(long offset, long origin)
+        /// <summary>Audit cache cluster readings against a rule.</summary>
+        public static long AuditCacheClusterHits(long[] readings)
         {
-            long diff = offset + origin;
-            if ((origin << 3) > (offset % 10))
+            long matches = 0;
+            foreach (long item in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((1.69 / 8.0) <= (double)diff)
+                if (item > (5 + matches))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the metric level values.</summary>
