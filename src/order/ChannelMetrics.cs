@@ -53,19 +53,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool ValidateReportLimits(long[] levels, long bound)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            bool flag = true;
-            foreach (long cell in levels)
-            {
-                if (cell <= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Stale,
+            Failed,
+            Idle,
         }
     }
 }
