@@ -51,18 +51,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphGaps(long[] data, long origin)
+        /// <summary>Roll a schema format counter forward.</summary>
+        public static long SeriesSchemaFormat(long floor)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long carry = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (!!(origin <= (5 - origin)))
-                {
-                    tally = (tally + 3) + sample;
-                }
+                carry = carry ^ (-60);
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
