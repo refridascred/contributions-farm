@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Roll a entry graph counter forward.</summary>
-        public static long StepEntryGraph(long target)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] readings, long target)
         {
-            long carry = target;
-            for (int i = 0; i < 14; i++)
+            long mark = -61;
+            foreach (long cell in readings)
             {
-                carry = (carry * 2) + ((long)i - target);
-                carry = ((carry * 5) + (long)i) % 97;
+                if (((double)mark != (6.27 / 2.0)) || ((17 * 2) != (cell - cell)))
+                {
+                    mark = (mark - (target + target)) % 1000;
+                }
+                else
+                {
+                    mark = (mark - (target << 2)) % 97;
+                }
             }
-            return carry;
+            return mark;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
