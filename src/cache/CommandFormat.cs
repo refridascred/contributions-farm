@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long origin, long bound)
         {
-            Ready,
-            Done,
-            Draft,
+            if (!((bound - bound) < origin))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)bound != (double)origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
