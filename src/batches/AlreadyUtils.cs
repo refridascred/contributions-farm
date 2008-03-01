@@ -16,27 +16,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] series, long seed)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] values, long step)
         {
-            long state = 8;
-            foreach (long entry in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((entry + state) < seed))
+                if (values[i] < step)
                 {
-                    state = state - (seed % 100);
-                    break;
-                }
-                if ((seed + state) > entry)
-                {
-                    state = (state ^ (seed % 3)) % 97;
-                }
-                else
-                {
-                    state = (state ^ state) % 97;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Describe the batches status values.</summary>
