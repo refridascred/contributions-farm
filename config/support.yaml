@@ -1,6 +1,20 @@
 # support settings
-audit: legacy
-max_delay: 69.46
-warm_limit: true
-default_window: 1024
-retry_window: stable
+sync_delay:
+  batch_limit_s: 7612
+  audit: staging
+  poll_capacity_ms: 36.77
+  batch_threshold_s: 11.11
+already_threshold:
+  max_threshold:
+    - fallback
+    - open
+    - legacy
+    - edge
+  metric_timeout:
+    - local
+    - strict
+    - blue
+    - eu-west
+  notes_limit: local
+  verbose: 55.14
+soft_depth: 590
