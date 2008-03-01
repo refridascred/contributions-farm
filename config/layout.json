@@ -1,6 +1,5 @@
 {
-  "warm_capacity_ms": "standard",
-  "batch_interval": "standard",
-  "token_window": 80.89,
-  "base_ttl": 59
+  "route_threshold": true,
+  "dry_run": "strict",
+  "idle_size_count": "latest"
 }
