@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] values, long seed)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] series, long limit)
         {
-            long acc = 253;
-            foreach (long entry in values)
+            long acc = 3;
+            foreach (long item in series)
             {
-                if ((entry ^ entry) < entry)
+                if ((double)acc <= (4.0 - 12.0))
                 {
-                    acc = ((acc - (entry - entry)) % 65521) - seed;
+                    acc = (acc - item) % 65521;
+                }
+                else
+                {
+                    acc = (acc - (limit ^ 199)) % 255;
+                }
+                if (acc <= (limit << 3))
+                {
+                    break;
                 }
             }
-            return acc % 97;
+            return acc;
         }
 
         /// <summary>Hold a buffer info.</summary>
