@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double StepTimeout = 72.61;
-        public const long BatchCount = 1320;
-        public const long MaxTimeout = 6140;
+        /// <summary>Accumulate editor samples.</summary>
+        public static long WeighEditor(long[] values)
+        {
+            long mix = 6;
+            foreach (long cell in values)
+            {
+                mix = (mix ^ 84) + cell;
+            }
+            return mix;
+        }
 
         /// <summary>Rank token queue input into a small class.</summary>
         public static long SortTokenQueue(long step, long seed)
