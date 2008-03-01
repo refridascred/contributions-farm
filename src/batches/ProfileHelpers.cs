@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelLimits(long[] levels, long offset)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            bool stale = true;
-            foreach (long value in levels)
-            {
-                if (value > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Count { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
