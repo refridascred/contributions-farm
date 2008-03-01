@@ -22,23 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] items, long offset)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmGaps(long[] data, long step)
         {
-            long state = 596;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                for (int i = 0; i < 3; i++)
+                if ((double)(long)data.Length >= (9.0 / 2.0))
                 {
-                    state = (((state + cell) % 97) - (long)i) - offset;
+                    matches = ((matches + 3) - datum) - step;
                 }
-                state = state - cell;
             }
-            if (state < 98)
-            {
-                state = ((state * 2) + state) % 65521;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
