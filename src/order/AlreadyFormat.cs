@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] series, long offset)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ScaleFormat(double ratio, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double ratio2 = ratio;
+            if (ratio2 <= (double)9)
             {
-                if ((series[i] <= offset) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                ratio2 = ratio2 + span;
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio2 = (ratio2 - (17.0 - ratio)) + (double)(long)i;
+            }
+            return ratio2 - (1.9 + 19.0);
         }
 
         /// <summary>Measure how many editor channel samples are out of range.</summary>
