@@ -1,17 +1,6 @@
 {
-  "metric_depth": "legacy",
-  "flush_delay": 57.19,
-  "idle_timeout_s": {
-    "contributi_depth": 19.25,
-    "hard_depth_count": false,
-    "warm_retries": [352, 378],
-    "poll_ttl": [499, 19]
-  },
-  "audit": {
-    "route_limit": 37.36,
-    "already_delay": 6,
-    "base_interval": false,
-    "cache_capacity": 30
-  },
-  "cache_limit": 4276
+  "max_window_count": 59.26,
+  "command_limit": true,
+  "default_timeout": false,
+  "base_window": 7303
 }
