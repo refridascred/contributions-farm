@@ -33,22 +33,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of graph route readings.</summary>
-        public static long DigestGraphRoute(long[] readings, long step)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long GradeOrder(long step, long floor)
         {
-            long mix = 45;
-            foreach (long cell in readings)
+            long lane = step - floor;
+            if (56 > (step + 7))
             {
-                if (((95 * 2) > (0 + cell)) && ((step - step) < (558 * 5)))
+                return 2;
+            }
+            else
+            {
+                if (((double)lane < (4.8 / 2.0)) || ((double)lane == (double)floor))
                 {
-                    mix = ((mix * 5) + (cell + cell)) % 1000;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            if (mix > 691)
-            {
-                mix = (mix + (mix - 95)) % 97;
-            }
-            return mix % 4096;
         }
     }
 }
