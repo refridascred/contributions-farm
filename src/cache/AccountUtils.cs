@@ -47,9 +47,15 @@ namespace Common.Utilities
             return gain - (double)108;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string DefaultEditor = "staging-v2";
-        public const long HardEditor = 4323;
-        public const double StepEditor = 36.3;
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] readings, long target)
+        {
+            long mix = 61;
+            foreach (long value in readings)
+            {
+                mix = ((mix - mix) ^ value) - target;
+            }
+            return mix;
+        }
     }
 }
