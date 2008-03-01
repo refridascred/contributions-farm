@@ -27,17 +27,18 @@ namespace Common.Utilities
             return gain - (double)108;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long SeekProfileIndex(long[] items, long step)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long WeighRecord(long[] readings, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 8;
+            foreach (long cell in readings)
             {
-                if ((items[i] > step) && ((items[i] % 5) != 0))
+                if ((mark % 97) <= (floor % 64))
                 {
-                    return (long)i;
+                    mark = ((mark - (mark & 63)) % 4096) + cell;
                 }
             }
-            return -1;
+            return mark;
         }
     }
 }
