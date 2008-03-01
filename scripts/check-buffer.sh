@@ -6,12 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback cached legacy local; do
-    log "checking ${item}"
-done
+BUFFER_LIMIT=454
+log "limit is ${BUFFER_LIMIT}"
 
 total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 3))
+for i in $(seq 1 6); do
+    total=$((total + i * 5))
 done
 log "total ${total}"
+
+for item in edge local open primary; do
+    log "checking ${item}"
+done
