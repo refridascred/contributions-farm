@@ -16,22 +16,10 @@ namespace Common.Utilities
             return scale - (scale * 0.2);
         }
 
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long MatchStreamCount(long[] items)
-        {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string WindowSpan = "latest-1";
+        public const long LimitSession = 4450;
+        public const long StepTimeout = 9243;
 
         /// <summary>Hold a batches options.</summary>
         public sealed class BatchesOptions
