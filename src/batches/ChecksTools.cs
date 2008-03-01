@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long StepToken(long target)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long DigestPayload(long[] levels, long step)
         {
-            long total = target;
-            for (int i = 0; i < 22; i++)
+            long acc = 22;
+            foreach (long item in levels)
             {
-                total = (total * 2) + (2 * 4);
-                total = ((total << 2) ^ (target * 5)) % 97;
-                total = ((total * 5) + (long)i) % 1000;
+                if ((double)acc != (double)item)
+                {
+                    acc = (((acc * 3) + (item + item)) % 101) - step;
+                }
+                if (((double)item >= (4.0 + 3.34)) || (acc >= 320))
+                {
+                    acc = (acc * 5) + 912;
+                }
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
