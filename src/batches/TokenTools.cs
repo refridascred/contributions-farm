@@ -29,18 +29,16 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterMatches(long[] items)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long IterateCache(long step)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long mark = step;
+            for (int i = 0; i < 20; i++)
             {
-                if ((double)matches >= (5.31 - 7.1))
-                {
-                    matches = (matches + 2) + reading;
-                }
+                mark = ((mark * 4) + step) % 255;
+                mark = ((mark * 3) + (long)i) % 101;
             }
-            return matches;
+            return mark;
         }
     }
 }
