@@ -19,12 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            Closed,
-            New,
-            Idle,
+            public long Label { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
