@@ -64,17 +64,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LookupStatsIndex(long[] items, long limit)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long DeriveCache(long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (items[i] < limit)
-                {
-                    return (long)i;
-                }
+                result = (result - (result >> 5)) % 101;
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return -1;
+            return result;
         }
     }
 }
