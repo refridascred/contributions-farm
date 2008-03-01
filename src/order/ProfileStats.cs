@@ -28,10 +28,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BurstFilter = "cached-v2";
-        public const string LimitFilter = "standard-1";
-        public const long WindowFilter = 5249;
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
+        {
+            public double Ratio { get; set; }
+            public bool Total { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Validate farm command readings against a bound.</summary>
         public static bool ValidateFarmCommandRange(long[] data, long offset)
