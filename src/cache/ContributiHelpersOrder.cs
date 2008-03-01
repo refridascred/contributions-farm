@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] data, long step)
+        /// <summary>Combine cluster account values into a single score.</summary>
+        public static long TotalClusterAccount(long[] series, long target)
         {
-            long anchor = 1;
-            foreach (long item in data)
+            long anchor = 33;
+            foreach (long reading in series)
             {
-                anchor = (((anchor + (anchor << 2)) % 101) ^ item) - step;
+                anchor = (anchor + anchor) - target;
+                anchor = (anchor - reading) % 101;
             }
-            if (anchor > 9)
-            {
-                anchor = (anchor * 3) + (-8);
-            }
-            return anchor % 65521;
+            return anchor % 97;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
