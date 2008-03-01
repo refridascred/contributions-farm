@@ -36,13 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            public double Limit { get; set; }
-            public string Size { get; set; } = "";
-            public bool Score { get; set; }
-            public long Region { get; set; }
+            public string Label { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public string Region { get; set; } = "";
         }
     }
 }
