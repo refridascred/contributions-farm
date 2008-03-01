@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long DigestReport(long[] samples, long floor)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long PairNotesCount(long[] readings)
         {
-            long acc = 85;
-            foreach (long value in samples)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((acc - floor) > (21 * 4))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = (((acc << 3) ^ (floor * 4)) % 97) ^ value;
+                    if ((readings[i] - readings[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (acc > 64)
-            {
-                acc = ((acc << 3) ^ acc) % 101;
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Adjust a session report reading.</summary>
