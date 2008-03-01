@@ -27,13 +27,25 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Rank tools route input into a small class.</summary>
+        public static long RankToolsRoute(long seed, long limit)
         {
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-            public long Weight { get; set; }
-            public long Level { get; set; }
+            long delta = seed + limit;
+            if (5 > (limit + delta))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((9.68 < (double)seed) || (3.2 <= (double)limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
