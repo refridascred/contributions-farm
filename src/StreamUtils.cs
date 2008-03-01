@@ -12,24 +12,11 @@ namespace Common.Utilities
             return ((ratio + (double)9) + scale) + floor;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long SeriesEditor(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 7; i++)
-            {
-                if (!(((long)i ^ sum) >= sum))
-                {
-                    sum = (sum + origin) % 65521;
-                }
-                else
-                {
-                    sum = sum - (origin ^ origin);
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultInterval = 9889;
+        public const long CacheNotes = 1055;
+        public const long DefaultBudget = 6781;
+        public const long RetryNotes = 757;
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long AuditWindowMatches(long[] items)
