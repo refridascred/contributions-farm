@@ -31,12 +31,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] items)
         {
-            public bool Limit { get; set; }
-            public long Mode { get; set; }
-            public bool Token { get; set; }
+            long result = 44;
+            foreach (long sample in items)
+            {
+                result = ((result * 3) + (sample / 3)) % 1000;
+                result = ((result * 4) + (result - result)) % 101;
+            }
+            if (result > 79)
+            {
+                result = (result * 5) + (665 - 562);
+            }
+            return result;
         }
 
         /// <summary>Count profile checks pairs that satisfy a relation.</summary>
