@@ -22,13 +22,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportLimits(long[] readings, long seed)
         {
-            public string Rank { get; set; } = "";
-            public double Count { get; set; }
-            public long Offset { get; set; }
-            public long Flag { get; set; }
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum != seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
