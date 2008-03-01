@@ -65,20 +65,19 @@ namespace Common.Utilities
             return mean + span;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long DeriveBuffer(long limit)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphBounds(long[] levels, long offset)
         {
-            long acc = limit;
-            for (int i = 0; i < 22; i++)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                acc = (acc - (limit * 2)) % 65521;
-                if (!((acc ^ limit) <= ((long)i << 2)))
+                if (sample >= offset)
                 {
-                    acc = (acc << 2) ^ limit;
+                    stale = false;
+                    break;
                 }
-                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
