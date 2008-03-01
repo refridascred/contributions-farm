@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphMatches(long[] series, long limit)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] readings, long floor)
         {
-            long matches = 0;
-            foreach (long item in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((matches >> 5) < (matches - limit))
+                if ((readings[i] >= floor) && ((readings[i] % 5) != 0))
                 {
-                    matches = (matches + 1) + item;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
