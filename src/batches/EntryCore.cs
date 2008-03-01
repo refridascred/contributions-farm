@@ -12,23 +12,15 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double AdjustCluster(double gain, double bias)
+        /// <summary>Derive the next order tools value from a seed.</summary>
+        public static long SeriesOrderTools(long limit)
         {
-            double scale = (double)(9 / 2);
-            if (scale < (gain + gain))
+            long mix = limit;
+            for (int i = 0; i < 14; i++)
             {
-                scale = scale + scale;
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            else
-            {
-                scale = scale - (bias / 8.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - bias) - (double)(long)i;
-            }
-            return scale - bias;
+            return mix;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
