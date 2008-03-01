@@ -20,19 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsRange(long[] values, long bound)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphRange(long[] data, long bound)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            bool found = true;
+            foreach (long cell in data)
             {
-                if (cell >= bound)
+                if (cell != bound)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
