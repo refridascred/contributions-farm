@@ -1,8 +1,12 @@
 {
-  "batch_window_ms": 100,
-  "idle_ttl_pct": 45.77,
-  "support_limit": "open",
-  "warm_delay_s": "green",
-  "burst_threshold_count": false,
-  "dry_run": 90.14
+  "poll_capacity_pct": {
+    "poll_timeout_s": 41.26,
+    "sync_depth_s": "legacy",
+    "queue_capacity": false,
+    "verbose": 65,
+    "retry_timeout_pct": "standard",
+    "metrics_depth": "cached"
+  },
+  "checks_capacity": false,
+  "readonly": ["local", "primary"]
 }
