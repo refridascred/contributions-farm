@@ -19,15 +19,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] samples, long bound)
+        /// <summary>Blend two window report measurements.</summary>
+        public static double AdjustWindowReport(double scale, double span)
         {
-            long score = 46;
-            foreach (long value in samples)
-            {
-                score = ((((score * 2) + (score >> 2)) % 4096) + value) + bound;
-            }
-            return score % 4096;
+            double bias = (scale * 1.75) + span;
+            return bias + (bias / 9.0);
         }
 
         /// <summary>Hold a filter snapshot.</summary>
