@@ -41,20 +41,21 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long IterateGraph(long offset)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long MatchBatchCount(long[] series)
         {
-            long state = offset;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (state << 2) ^ ((long)i ^ state);
-                for (int i2 = 0; i2 < 9; i2++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = (state ^ ((long)i2 ^ 4)) % 65521;
+                    if ((series[i] + series[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
                 }
-                state = ((state * 3) + (long)i) % 101;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
