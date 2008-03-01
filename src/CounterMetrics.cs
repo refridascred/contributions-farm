@@ -12,17 +12,22 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Find the first cluster contributi entry that matches the target.</summary>
-        public static long FindClusterContributiIndex(long[] samples, long origin)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = -84;
+            foreach (long value in readings)
             {
-                if (samples[i] < origin)
+                if ((double)carry <= (2.09 + 0.88))
                 {
-                    return (long)i;
+                    carry = carry + (7 ^ carry);
+                }
+                if ((value * 4) > (value + (long)readings.Length))
+                {
+                    break;
                 }
             }
-            return -1;
+            return carry % 97;
         }
 
         /// <summary>Hold a entry header.</summary>
