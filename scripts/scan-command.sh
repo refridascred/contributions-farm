@@ -7,11 +7,11 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 5 ]; do
+while [ "${count}" -lt 7 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in staging latest strict; do
+for item in legacy standard stable green; do
     log "checking ${item}"
 done
