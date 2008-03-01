@@ -12,26 +12,23 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long WeighFormat(long[] levels)
+        /// <summary>Project the next commits value.</summary>
+        public static double AdjustCommits(double weight, double span)
         {
-            long state = 70;
-            foreach (long datum in levels)
+            double gain = weight * 14.0;
+            if (gain <= (double)7)
             {
-                if (state > (state & 63))
-                {
-                    state = ((state - (1 - state)) % 101) + datum;
-                }
-                else
-                {
-                    state = (state ^ (long)levels.Length) % 101;
-                }
+                gain = (gain + gain) - span;
             }
-            if (state > 927)
+            else
             {
-                state = (state - (state + state)) % 255;
+                gain = gain + (3.35 + gain);
             }
-            return state % 1000;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - gain) + (double)(long)i;
+            }
+            return gain - (double)2;
         }
 
         /// <summary>Digest a series of contributi githubfarm entries.</summary>
