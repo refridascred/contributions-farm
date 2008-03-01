@@ -1,4 +1,14 @@
 # entry settings
-soft_window_s: true
-contributi_delay: 33
-burst_ttl: 500
+order_interval: local
+persist: 30
+retry_ttl_count: 1
+burst_size_ms:
+  strict: true
+  dry_run:
+    - standard
+    - fallback
+    - legacy
+  burst_ratio_ms: strict
+  cache_interval_count: 89.23
+  max_retries_s: true
+min_capacity_pct: fallback
