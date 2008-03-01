@@ -13,23 +13,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ScaleFormat(double rate, double offset)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportBounds(long[] samples, long limit)
         {
-            double scale = offset + (double)44;
-            if (scale <= 1.07)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                scale = scale - offset;
+                if (entry >= limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale + (rate - offset);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + (offset + rate)) + (double)(long)i;
-            }
-            return scale - rate;
+            return ready;
         }
 
         /// <summary>Fold a list of command readings.</summary>
