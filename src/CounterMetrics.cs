@@ -12,12 +12,17 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Find the first cluster contributi entry that matches the target.</summary>
+        public static long FindClusterContributiIndex(long[] samples, long origin)
         {
-            Paused,
-            Synced,
-            Dropped,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a entry header.</summary>
