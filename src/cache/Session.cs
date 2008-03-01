@@ -14,11 +14,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepCount = 6836;
-        public const long DefaultSpan = 7810;
-        public const long WindowTools = 9140;
-        public const long IdleBudget = 59;
+        /// <summary>Look up the position of a queue tools sample.</summary>
+        public static long LocateQueueToolsIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > seed) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool ValidateAccountLimits(long[] levels, long floor)
