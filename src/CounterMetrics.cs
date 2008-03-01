@@ -34,14 +34,15 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Roll a order token counter forward.</summary>
+        public static long IterateOrderToken(long floor)
         {
-            Queued,
-            Locked,
-            Pending,
-            Synced,
-            Closed,
+            long acc = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
         }
     }
 }
