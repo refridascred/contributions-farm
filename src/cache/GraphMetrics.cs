@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
-        {
-            Retry,
-            Closed,
-            Stale,
-            Dropped,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstDepth = 6867;
+        public const double MaxCommits = 94.09;
+        public const long CacheCommits = 4363;
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long AuditCacheOutliers(long[] readings)
