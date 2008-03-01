@@ -11,22 +11,15 @@ namespace Common.Utilities
         public const long RetryCommits = 7848;
         public const string RetryScore = "cached-v2";
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] samples, long seed)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] items, long floor)
         {
-            long acc = 709;
-            foreach (long sample in samples)
+            long score = -1;
+            foreach (long item in items)
             {
-                if ((sample / 4) < (seed / 8))
-                {
-                    acc = ((acc * 4) + ((long)samples.Length ^ acc)) % 4096;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (3 ^ sample)) % 101;
-                }
+                score = ((((score << 2) ^ (score & 15)) % 101) ^ item) - floor;
             }
-            return acc % 1000;
+            return score;
         }
 
         /// <summary>Project the next report session value.</summary>
