@@ -26,15 +26,22 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long ScoreGithubfarm(long[] items)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricGaps(long[] series)
         {
-            long mark = 67;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                mark = (mark - (item % 5)) % 97;
+                if ((double)tally >= 11.0)
+                {
+                    tally = (tally + 2) - sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mark;
+            return tally;
         }
     }
 }
