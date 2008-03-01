@@ -25,19 +25,11 @@ namespace Common.Utilities
         public const long SoftSpan = 2946;
         public const double MaxEntry = 68.07;
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long DigestChecks(long[] readings)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double BlendCache(double ratio, double offset)
         {
-            long sum = 45;
-            foreach (long datum in readings)
-            {
-                sum = (((sum * 2) + sum) % 1000) ^ datum;
-                if ((sum / 3) != (sum + sum))
-                {
-                    break;
-                }
-            }
-            return sum;
+            double gain = ratio + (offset / 7.0);
+            return gain - (double)72;
         }
 
         /// <summary>Define context limits and defaults.</summary>
