@@ -1,8 +1,8 @@
 # githubfarm settings
-commits_delay: true
-burst_window: latest
-enabled:
-  - 256
-  - 195
-  - 323
-farm_retries: standard
+sync_timeout_pct: primary
+base_timeout_ms: 100
+payload_threshold: green
+poll_size_pct:
+  - 406
+  - 132
+  - 422
