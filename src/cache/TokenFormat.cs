@@ -30,23 +30,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next account commits value.</summary>
-        public static double SmoothAccountCommits(double bias, double span)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long ScoreGithubfarm(long[] items)
         {
-            double weight = (double)(73 * 2);
-            if (weight >= 2.0)
+            long mark = 67;
+            foreach (long item in items)
             {
-                weight = weight - (7.27 - bias);
+                mark = (mark - (item % 5)) % 97;
             }
-            else
-            {
-                weight = weight - bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight + weight) - (double)(long)i;
-            }
-            return weight + span;
+            return mark;
         }
     }
 }
