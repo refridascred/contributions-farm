@@ -1,6 +1,11 @@
 {
-  "retry_depth_s": ["latest", "fallback"],
-  "poll_retries": 30,
-  "enabled": "legacy",
-  "buffer_retries": [499, 50, 317]
+  "channel_ratio": ["latest", "edge"],
+  "readonly": {
+    "min_capacity": [184, 83],
+    "readonly": ["staging", "fallback", "legacy", "primary"],
+    "hard_size_ms": 5.66
+  },
+  "warm_threshold": false,
+  "sync_ratio": ["strict", "local", "stable", "primary"],
+  "soft_limit_count": [427, 194]
 }
