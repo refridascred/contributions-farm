@@ -31,13 +31,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] levels, long offset)
         {
-            New,
-            Stale,
-            Failed,
-            Idle,
+            long sum = 8;
+            foreach (long sample in levels)
+            {
+                if (((offset >> 2) > offset) && (sum < 8))
+                {
+                    sum = (((sum * 4) + (offset / 7)) % 101) + sample;
+                }
+                else
+                {
+                    sum = sum - (sum - (-7));
+                }
+            }
+            return sum;
         }
     }
 }
