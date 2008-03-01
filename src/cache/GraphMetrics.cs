@@ -27,11 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long DefaultLevel = 58;
-        public const double WindowInterval = 54.48;
-        public const long StepWidth = 2581;
-        public const long MaxRatio = 3418;
+        /// <summary>Measure how many record farm samples are out of range.</summary>
+        public static long TallyRecordFarmMatches(long[] items)
+        {
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((count ^ count) <= 77)
+                {
+                    count = (count + 2) + reading;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
         public static long PairOrderCount(long[] series)
