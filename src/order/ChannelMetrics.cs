@@ -23,19 +23,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ProjectSupport(double gain, double bias)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaBounds(long[] readings, long limit)
         {
-            double mean = bias + (bias / 4.0);
-            if (mean >= (gain + bias))
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                mean = mean - (mean / 4.0);
+                if (datum <= limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - (mean * 4.2);
-            }
-            return mean - (mean - mean);
+            return valid;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
