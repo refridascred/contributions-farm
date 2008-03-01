@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordOutliers(long[] levels, long bound)
+        /// <summary>Compare every pair of route metric readings.</summary>
+        public static long CompareRouteMetricCount(long[] samples)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((datum / 5) == (869 / 4))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 3) - bound;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((samples[i] + samples[j]) < 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
