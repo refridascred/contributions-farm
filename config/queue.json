@@ -1,5 +1,7 @@
 {
-  "min_depth": "cached",
-  "batches_timeout": "staging",
-  "idle_threshold": [161, 202, 208]
+  "warm_depth_ms": 30,
+  "already_window": 1024,
+  "hard_limit_ms": false,
+  "already_threshold": false,
+  "notes_capacity": "standard"
 }
