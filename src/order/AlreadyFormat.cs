@@ -45,32 +45,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] levels, long seed)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsBounds(long[] data, long target)
         {
-            long total = 78;
-            foreach (long sample in levels)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                total = (total * 3) + (total * 2);
-                if (((total + 310) <= (seed % 16)) || ((double)total < (5.2 * 3.6)))
+                if (entry <= target)
                 {
-                    total = total - (total / 9);
+                    valid = false;
                     break;
                 }
-                if ((seed + sample) >= (total / 3))
-                {
-                    total = total ^ (sample >> 3);
-                }
-                else
-                {
-                    total = ((total * 5) + (total + sample)) % 65521;
-                }
             }
-            if (total > (-70))
-            {
-                total = (total + (7 * 3)) % 97;
-            }
-            return total % 65521;
+            return valid;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
