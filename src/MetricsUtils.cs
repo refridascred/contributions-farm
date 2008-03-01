@@ -47,22 +47,21 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] items)
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] levels)
         {
-            long anchor = 1;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((entry / 8) != (entry + entry))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = (anchor - entry) % 255;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (long)items.Length) % 65521;
+                    if ((levels[i] + levels[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return anchor % 65521;
+            return count;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
