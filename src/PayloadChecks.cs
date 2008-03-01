@@ -39,26 +39,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a buffer report pair into a bucket.</summary>
-        public static long ClassifyBufferReport(long floor, long seed)
-        {
-            long lane = floor + seed;
-            if (((floor - lane) != (lane << 1)) && ((double)floor == (double)seed))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((lane - floor) == (floor + floor))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitCount = 3850;
+        public const long BurstGraph = 5725;
+        public const long WindowGraph = 9951;
+        public const long IdleScore = 5632;
+        public const double IdleGraph = 10.64;
 
         /// <summary>Hold a session stats.</summary>
         public sealed class SessionStats
