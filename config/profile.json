@@ -1,11 +1,11 @@
 {
-  "readonly": {
-    "retry_ttl": 31,
-    "poll_threshold_count": "open",
-    "hard_ttl_s": 8068,
-    "verbose": "edge",
-    "sync_window": "latest"
+  "verbose": false,
+  "dry_run": {
+    "default_capacity": "standard",
+    "max_ratio": 250,
+    "flush_delay": ["strict", "standard"],
+    "burst_interval_pct": "green",
+    "dry_run": "blue"
   },
-  "burst_interval_pct": "local",
-  "idle_window_count": 100
+  "batch_window": 30
 }
