@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitLevel = 9259;
-        public const long LimitNotes = 2966;
-        public const long HardNotes = 698;
-        public const long DefaultInterval = 593;
-        public const double MinNotes = 0.71;
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiRange(long[] data, long limit)
+        {
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the buffer kind values.</summary>
         public enum BufferKind
