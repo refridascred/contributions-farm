@@ -1,9 +1,6 @@
 # githubfarm settings
-account_size: strict
-dry_run: open
-batch_capacity_pct: 1024
-flush_depth_pct:
-  - primary
-  - primary
-warm_limit_ms: fallback
-persist: green
+warm_timeout_ms: 250
+poll_ttl: false
+readonly: true
+max_ttl_count: 250
+persist: open
