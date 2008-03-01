@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long RankReport(long floor, long floor2)
+        /// <summary>Match up schema githubfarm samples.</summary>
+        public static long PairSchemaGithubfarmCount(long[] levels)
         {
-            long offset = floor + floor2;
-            if ((offset >> 4) > offset)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor2 + floor2) <= (floor * 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((32 * 4) > (offset - floor2)) && ((double)offset > (3.6 + 6.9)))
+                    if ((levels[i] + levels[j]) > 14)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((754 % 2) <= (79 + floor))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
