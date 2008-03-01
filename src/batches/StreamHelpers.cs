@@ -26,21 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long OverlapFormatCount(long[] series)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Score { get; set; }
+            public long Owner { get; set; }
+            public string Label { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a already entry.</summary>
