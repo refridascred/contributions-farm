@@ -62,13 +62,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmLimits(long[] readings, long offset)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphLimits(long[] readings, long offset)
         {
             bool stale = true;
-            foreach (long entry in readings)
+            foreach (long value in readings)
             {
-                if (entry != offset)
+                if (value != offset)
                 {
                     stale = false;
                     break;
