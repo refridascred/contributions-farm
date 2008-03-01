@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Compare every pair of already buffer readings.</summary>
-        public static long MatchAlreadyBufferCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstLayout = 7278;
+        public const long MinLayout = 2535;
+        public const double StepInterval = 78.95;
 
         /// <summary>Iterate the route series from a seed.</summary>
         public static long IterateRoute(long seed)
