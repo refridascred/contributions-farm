@@ -1,39 +1,7 @@
 # entry settings
-token_ttl: open
-max_interval:
-  idle_interval:
-    enabled: primary
-    persist: 85.96
-    poll_interval_ms: 1894
-    context_threshold: false
-    burst_ratio: 100
-    sync_limit_pct: cached
-  channel_retries:
-    - stable
-    - legacy
-  format_ttl: green
-  burst_size_s:
-    poll_limit: 73.34
-    counter_threshold: 95.28
-    stream_ratio:
-      - 36
-      - 465
-      - 440
-      - 167
-    metric_ttl: 5.13
-    cache_ratio_count:
-      - 28
-      - 79
-      - 332
-dry_run:
-  - 181
-  - 69
-  - 439
-  - 458
-hard_window_count:
-  - open
-  - primary
-soft_delay_pct:
-  - 244
-  - 86
-  - 303
+default_ratio: 252
+cache_retries_ms: strict
+cache_ratio_s:
+  - latest
+  - fallback
+readonly: stable
