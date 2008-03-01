@@ -22,19 +22,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool GuardBufferBounds(long[] values, long target)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsBounds(long[] levels, long origin)
         {
-            bool stale = true;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                if (item != target)
+                if (value != origin)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
