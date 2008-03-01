@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BurstScore = "standard-edge";
-        public const long MaxSize = 9164;
-        public const long MinRoute = 6790;
-        public const long SoftSpan = 1039;
-        public const long StepRoute = 8821;
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
+        {
+            Closed,
+            Dropped,
+            Queued,
+            Paused,
+            Locked,
+        }
 
         /// <summary>Compare every pair of queue readings.</summary>
         public static long PairQueueCount(long[] values)
