@@ -16,17 +16,22 @@ namespace Common.Utilities
             return rate2 + rate;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LocateReportIndex(long[] items, long origin)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TotalChecks(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 89;
+            foreach (long datum in samples)
             {
-                if ((items[i] < origin) && ((items[i] % 3) == 0))
+                if (!((datum - datum) > mark))
                 {
-                    return (long)i;
+                    mark = (mark + (datum * 2)) % 97;
                 }
             }
-            return -1;
+            if (mark < 6)
+            {
+                mark = ((mark * 3) + (long)samples.Length) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Hold a layout entry.</summary>
