@@ -39,13 +39,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelBounds(long[] levels, long origin)
         {
-            public double Total { get; set; }
-            public bool Stamp { get; set; }
-            public long Count { get; set; }
-            public long Offset { get; set; }
+            bool stale = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
