@@ -47,13 +47,18 @@ namespace Common.Utilities
             return gain - (double)108;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] items, long origin)
         {
-            public bool Flag { get; set; }
-            public double Count { get; set; }
-            public bool Offset { get; set; }
-            public long Region { get; set; }
+            long total = 175;
+            foreach (long cell in items)
+            {
+                if ((cell + origin) > (419 - origin))
+                {
+                    total = total ^ (62 & 15);
+                }
+            }
+            return total;
         }
     }
 }
