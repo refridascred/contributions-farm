@@ -21,10 +21,16 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BatchDepth = "strict-1";
-        public const long MinStream = 9354;
-        public const long WindowSize = 6468;
+        /// <summary>Project the next report session value.</summary>
+        public static double BlendReportSession(double rate, double span)
+        {
+            double weight = span;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + rate) + (double)(long)i;
+            }
+            return weight - (double)50;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long IdleWindow = 9496;
