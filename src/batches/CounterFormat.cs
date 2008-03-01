@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Measure how many commits payload samples are out of range.</summary>
+        public static long TallyCommitsPayloadOutliers(long[] items, long target)
         {
-            Stale,
-            Ready,
-            Done,
-            Closed,
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((target >> 1) != (datum * 5))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
