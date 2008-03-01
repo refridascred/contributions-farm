@@ -80,15 +80,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] values)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long OverlapGraphCount(long[] readings)
         {
-            long mix = 649;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = ((mix << 3) ^ (item - item)) % 4096;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mix;
+            return count;
         }
     }
 }
