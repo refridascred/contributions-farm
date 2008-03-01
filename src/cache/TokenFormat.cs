@@ -19,15 +19,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long DeriveAlready(long origin)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long CombineEntry(long[] series, long seed)
         {
-            long total = origin;
-            for (int i = 0; i < 8; i++)
+            long sum = 173;
+            foreach (long entry in series)
             {
-                total = ((total * 5) + (long)i) % 4093;
+                long edge = seed;
+                if (!((4.0 * 6.0) <= (double)edge))
+                {
+                    sum = (sum - (6 ^ edge)) % 4096;
+                    continue;
+                }
+                sum = sum ^ (entry % 2);
             }
-            return total;
+            if (sum < 88)
+            {
+                sum = (sum + (sum + seed)) % 101;
+            }
+            return sum % 97;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
