@@ -30,19 +30,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowMatches(long[] items)
-        {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((matches - matches) >= (121 + matches))
-                {
-                    matches = (matches + 1) ^ datum;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseBudget = 8317;
+        public const double RetryFormat = 15.46;
+        public const long BurstSpan = 8067;
 
         /// <summary>Hold a already record.</summary>
         public sealed class AlreadyRecord
