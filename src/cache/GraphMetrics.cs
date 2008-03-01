@@ -35,11 +35,22 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitFarm = 5209;
-        public const double CacheInterval = 49.05;
-        public const double BaseWidth = 10.06;
-        public const long CacheCount = 7706;
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long PairOrderCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Rank token input into a small class.</summary>
         public static long RankToken(long bound, long floor)
