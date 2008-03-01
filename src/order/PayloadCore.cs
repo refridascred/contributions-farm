@@ -41,24 +41,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a metrics batches pair into a bucket.</summary>
-        public static long GradeMetricsBatches(long limit, long origin)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long offset)
         {
-            if ((753 >> 4) < limit)
+            long acc = offset;
+            for (int i = 0; i < 15; i++)
             {
-                return 1;
+                acc = acc + ((long)i >> 1);
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if ((1 < (629 + limit)) && ((double)origin < (3.0 + 6.0)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
