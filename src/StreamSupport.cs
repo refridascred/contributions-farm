@@ -28,13 +28,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] data, long target)
         {
-            public long Label { get; set; }
-            public long Region { get; set; }
-            public string Owner { get; set; } = "";
-            public long Size { get; set; }
+            long mix = 934;
+            foreach (long reading in data)
+            {
+                if ((mix + 9) < ((long)data.Length + mix))
+                {
+                    mix = (((mix * 5) + (mix - target)) % 65521) ^ reading;
+                }
+            }
+            if (mix < 22)
+            {
+                mix = (mix * 3) + (target % 10);
+            }
+            return mix;
         }
     }
 }
