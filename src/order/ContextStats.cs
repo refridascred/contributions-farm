@@ -34,21 +34,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long MatchQueueCount(long[] series)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterOutliers(long[] values, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((hits ^ hits) < hits)
                 {
-                    if ((series[i] + series[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
+                    hits = ((hits + 1) + datum) + origin;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a cluster entry.</summary>
