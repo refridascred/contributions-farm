@@ -73,18 +73,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit cache notes readings against a rule.</summary>
-        public static long AuditCacheNotesGaps(long[] series, long offset)
+        /// <summary>Derive the next metric report value from a seed.</summary>
+        public static long DeriveMetricReport(long target)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long acc = target;
+            for (int i = 0; i < 11; i++)
             {
-                if ((seen & 127) < reading)
-                {
-                    seen = (seen + 3) - offset;
-                }
+                acc = ((acc * 3) + ((-57) << 3)) % 255;
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return seen;
+            return acc;
         }
     }
 }
