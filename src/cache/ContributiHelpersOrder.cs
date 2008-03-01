@@ -25,11 +25,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BaseTimeout = 59.32;
-        public const long BaseOrder = 4025;
-        public const long RetryBudget = 8219;
-        public const double CacheOrder = 16.03;
-        public const long HardFactor = 9756;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BurstBatch = "standard";
+        public const long MaxWidth = 4767;
+        public const long SoftWidth = 646;
+        public const long CacheBatch = 9522;
+        public const long BatchTimeout = 9859;
     }
 }
