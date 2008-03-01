@@ -1,10 +1,11 @@
 # Command notes
 
-Defaults for notes live in the config folder and can be overridden per environment.
-The farm module keeps batch values in sync with the channel cache.
+The filter module keeps session values in sync with the contributi cache.
+When a cluster fails, the metrics handler retries a few times before giving up.
+Keep entry and farm names short and lowercase.
 
 ## Guidelines
 
-- Keep cluster values small
-- Document new format fields
-- Review window limits each release
+- Prefer profile defaults
+- Review checks limits each release
+- Log every stats change
