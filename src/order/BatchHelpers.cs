@@ -38,18 +38,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit window command readings against a rule.</summary>
-        public static long CountWindowCommandGaps(long[] values)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((tally + cell) != (cell << 2))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Done,
+            Synced,
+            Pending,
+            Active,
+            Queued,
         }
     }
 }
