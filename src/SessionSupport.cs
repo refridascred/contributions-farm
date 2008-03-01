@@ -32,11 +32,10 @@ namespace Common.Utilities
         public const long RetryEditor = 3468;
         public const long BurstEditor = 4351;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultSpan = 36;
-        public const long SoftContext = 8575;
-        public const long StepFactor = 3410;
-        public const string WindowContext = "staging-edge";
-        public const double SoftInterval = 10.51;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxFormat = 4434;
+        public const long StepFactor = 7723;
+        public const string DefaultFormat = "latest";
+        public const long SoftScore = 5449;
     }
 }
