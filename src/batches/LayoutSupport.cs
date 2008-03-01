@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Rank window input into a small class.</summary>
+        public static long SortWindow(long limit, long bound)
         {
-            public double Ratio { get; set; }
-            public string Total { get; set; } = "";
-            public long Mode { get; set; }
+            if (((limit / 8) > (13 - limit)) || ((double)bound <= (2.0 + 8.5)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((4.75 / 3.0) != (double)limit)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((bound - bound) != (bound + bound)) || ((bound + bound) < (3 & 63)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the payload class values.</summary>
