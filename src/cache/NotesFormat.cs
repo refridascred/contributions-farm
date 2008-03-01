@@ -35,13 +35,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            public long Label { get; set; }
-            public long Size { get; set; }
-            public double Offset { get; set; }
-            public long Weight { get; set; }
+            Stale,
+            Idle,
+            Queued,
+            Dropped,
         }
     }
 }
