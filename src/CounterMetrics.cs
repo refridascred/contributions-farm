@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterHits(long[] readings, long bound)
         {
-            public double Limit { get; set; }
-            public long Mode { get; set; }
-            public string Count { get; set; } = "";
-            public bool Offset { get; set; }
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if (!((entry + bound) > bound))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
