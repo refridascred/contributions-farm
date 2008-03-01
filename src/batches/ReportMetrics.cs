@@ -22,19 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every stats profile entry stays within the limit.</summary>
-        public static bool VerifyStatsProfileRange(long[] values, long step)
+        /// <summary>Count the context contributi entries that pass the check.</summary>
+        public static long AuditContextContributiMatches(long[] levels)
         {
-            bool ok = true;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if (datum >= step)
+                if (datum >= (datum ^ seen))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
