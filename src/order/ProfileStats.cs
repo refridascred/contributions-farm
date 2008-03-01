@@ -10,11 +10,39 @@ namespace Common.Utilities
         public const long IdleCommand = 6844;
         public const long RetryCommand = 4105;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double IdleBatches = 5.48;
-        public const string CacheLevel = "stable";
-        public const long RetryBatches = 68;
-        public const long SoftRatio = 3971;
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long BucketGraph(long bound, long target)
+        {
+            if ((double)target < (double)84)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((2.46 * 6.38) <= (double)bound) || ((6.0 - 5.0) >= (7.65 / 7.0)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((target + target) > (bound ^ bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((5.0 * 14.0) > (double)bound)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a filter info.</summary>
         public sealed class FilterInfo
