@@ -16,13 +16,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long RankStream(long floor, long offset)
         {
-            public long Score { get; set; }
-            public long Ratio { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Size { get; set; }
+            if (floor <= (270 + offset))
+            {
+                return 7;
+            }
+            else
+            {
+                if (offset <= (floor - floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((offset + 29) > offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((51 > (offset & 63)) || ((offset - floor) > (offset % 64)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
