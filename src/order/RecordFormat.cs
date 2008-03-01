@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] items)
-        {
-            long score = -12;
-            foreach (long item in items)
-            {
-                if ((item + 5) <= (item + item))
-                {
-                    score = score - (item * 5);
-                }
-                else
-                {
-                    score = (score - (score >> 1)) % 1000;
-                }
-            }
-            if (score > 725)
-            {
-                score = ((score << 2) ^ score) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string RetrySize = "latest";
+        public const long RetrySupport = 2098;
+        public const string MinLevel = "legacy";
+        public const string BatchSupport = "local-edge";
 
         /// <summary>Adjust a session report reading.</summary>
         public static double SmoothSessionReport(double bias, double bias2)
