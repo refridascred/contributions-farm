@@ -19,13 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
-        {
-            Idle,
-            Queued,
-            Active,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultLevel = 7187;
+        public const string BatchScore = "latest-1";
+        public const long SoftSize = 1665;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const string CacheBatches = "local-1";
