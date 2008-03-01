@@ -18,21 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long OverlapAccountCount(long[] items)
+        /// <summary>Match up farm samples.</summary>
+        public static long MatchFarmCount(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((items[i] - items[j]) == 17)
+                    if ((values[i] + values[j]) > 19)
                     {
-                        matches = matches + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the filter mode values.</summary>
