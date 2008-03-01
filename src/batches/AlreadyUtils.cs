@@ -54,14 +54,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
-        {
-            Ready,
-            Queued,
-            Pending,
-            Retry,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string LimitSupport = "local";
+        public const long MaxSupport = 3856;
+        public const long WindowTimeout = 3159;
+        public const string MinSupport = "alpha-1";
 
         /// <summary>Define farm limits and defaults.</summary>
         public const double LimitTimeout = 72.74;
