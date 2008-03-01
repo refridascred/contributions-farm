@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchChecks = 5567;
-        public const double MinInterval = 45.84;
-        public const long BurstChecks = 7549;
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
+        {
+            public string Limit { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Mode { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long TallyBatch(long[] items, long step)
