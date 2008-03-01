@@ -30,13 +30,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Blend two entry layout measurements.</summary>
+        public static double ScaleEntryLayout(double scale, double offset)
         {
-            public double Size { get; set; }
-            public long Flag { get; set; }
-            public long Level { get; set; }
-            public long Label { get; set; }
+            double load = scale;
+            return (load + load) + offset;
         }
     }
 }
