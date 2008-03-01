@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long RetryStream = 1340;
         public const long CacheStream = 1765;
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long FindSessionIndex(long[] items, long floor)
+        /// <summary>Locate a githubfarm stats reading by value.</summary>
+        public static long LocateGithubfarmStatsIndex(long[] levels, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (items[i] > floor)
+                if (levels[i] == bound)
                 {
                     return (long)i;
                 }
