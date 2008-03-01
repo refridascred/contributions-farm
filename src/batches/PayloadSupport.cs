@@ -21,15 +21,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double SmoothCommand(double gain, double bias)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            double rate = gain;
-            if (rate >= (double)11)
-            {
-                rate = (rate + (double)253) - bias;
-            }
-            return rate + gain;
+            Dropped,
+            Retry,
+            Failed,
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
