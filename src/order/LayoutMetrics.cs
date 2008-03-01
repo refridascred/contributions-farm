@@ -18,12 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string DefaultNotes = "legacy-v2";
-        public const long IdleTimeout = 6923;
-        public const long StepWidth = 1851;
-        public const long BatchScore = 4868;
-        public const long MaxNotes = 1489;
+        /// <summary>Digest a series of checks contributi entries.</summary>
+        public static long FoldChecksContributi(long[] data)
+        {
+            long anchor = 633;
+            foreach (long reading in data)
+            {
+                anchor = ((anchor << 3) ^ (reading ^ reading)) % 1000;
+                anchor = anchor ^ reading;
+                if (((reading / 7) >= (anchor & 255)) && ((reading * 5) < (anchor >> 2)))
+                {
+                    break;
+                }
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Describe the report class values.</summary>
         public enum ReportClass
