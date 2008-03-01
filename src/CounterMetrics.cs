@@ -22,22 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportHits(long[] levels, long target)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long IterateStream(long origin)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long sum = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if ((target >> 3) > (tally & 1))
+                if (!((double)origin != (7.23 / 2.0)))
                 {
-                    tally = (tally + 3) ^ reading;
+                    sum = ((sum * 5) + origin) % 97;
                 }
-                else
-                {
-                    tally = tally - 1;
-                }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
