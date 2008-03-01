@@ -41,16 +41,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long offset)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long RollTools(long limit)
         {
-            long acc = offset;
-            for (int i = 0; i < 15; i++)
+            long total = limit;
+            for (int i = 0; i < 14; i++)
             {
-                acc = acc + ((long)i >> 1);
-                acc = ((acc * 3) + (long)i) % 65521;
+                total = total - (limit >> 3);
+                total = ((total * 4) + (long)i) % 101;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
