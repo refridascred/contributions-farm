@@ -66,10 +66,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinInterval = 6662;
-        public const long IdleFilter = 6590;
-        public const double BatchWidth = 56.56;
-        public const long BatchRatio = 8302;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryTools = 7342;
+        public const string BurstSize = "local-v2";
+        public const long BatchWidth = 2275;
     }
 }
