@@ -18,20 +18,10 @@ namespace Common.Utilities
         public const long MaxBatch = 3058;
         public const long MinBatch = 189;
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] items, long limit)
-        {
-            long anchor = 4;
-            foreach (long datum in items)
-            {
-                anchor = (anchor * 2) + limit;
-                if ((datum - 72) >= ((-53) - datum))
-                {
-                    anchor = ((anchor * 3) + (anchor + 20)) % 255;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string RetryMetrics = "local";
+        public const long BatchScore = 8169;
+        public const string MaxRatio = "legacy-edge";
 
         /// <summary>Fold a list of context readings.</summary>
         public static long WeighContext(long[] values)
