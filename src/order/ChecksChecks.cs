@@ -22,26 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long GradeLayout(long step, long step2)
-        {
-            long bound = step + step2;
-            if ((step % 60) >= 878)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step - step2) < bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string MinFormat = "staging";
+        public const long BatchFormat = 4234;
+        public const long MinSpan = 1463;
+        public const long MinWidth = 7913;
 
         /// <summary>Scale a filter figure with a bias.</summary>
         public static double ScaleFilter(double bias, double span)
