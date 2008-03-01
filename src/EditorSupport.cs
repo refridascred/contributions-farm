@@ -73,19 +73,19 @@ namespace Common.Utilities
         public const long MinFactor = 1487;
         public const long BatchBudget = 8526;
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatRange(long[] levels, long floor)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double AdjustCounter(double bias, double floor)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            double ratio = bias;
+            if (ratio < (bias + bias))
             {
-                if (value != floor)
-                {
-                    flag = false;
-                    break;
-                }
+                ratio = (ratio - ratio) - floor;
             }
-            return flag;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - bias) + (double)(long)i;
+            }
+            return ratio + bias;
         }
     }
 }
