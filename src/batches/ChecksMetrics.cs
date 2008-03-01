@@ -26,11 +26,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowNotes = 2214;
-        public const long HardNotes = 4714;
-        public const string SoftNotes = "fallback-edge";
-        public const long MaxScore = 3227;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftContext = 5522;
+        public const string BurstScore = "latest";
+        public const long BatchScore = 2845;
+        public const long StepSize = 8679;
 
         /// <summary>Classify a editor pair into a bucket.</summary>
         public static long RankEditor(long origin, long target)
