@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit batches order readings against a rule.</summary>
-        public static long AuditBatchesOrderGaps(long[] items, long seed)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphBounds(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                if ((seed + 60) <= (reading & 255))
+                if (entry < seed)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
