@@ -1,13 +1,6 @@
 # entry settings
-min_threshold: latest
-max_ratio: open
-queue_window: false
-sync_window_pct: 8117
-checks_window:
-  retry_size_s: cached
-  account_ratio:
-    - blue
-    - latest
-  editor_ratio: blue
-  base_interval_ms: 9889
-burst_ratio: true
+already_depth: 91.14
+idle_size_count: stable
+base_capacity: 0.75
+cache_capacity_s: 57.11
+metric_ttl: true
