@@ -22,10 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MaxInterval = 2919;
-        public const long HardCommand = 3112;
-        public const long BatchCount = 7950;
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
+        {
+            Idle,
+            Locked,
+            Draft,
+        }
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long AuditMetricGaps(long[] readings)
