@@ -32,19 +32,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileBounds(long[] readings, long seed)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorLimits(long[] levels, long offset)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            bool found = true;
+            foreach (long item in levels)
             {
-                if (sample >= seed)
+                if (item < offset)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
