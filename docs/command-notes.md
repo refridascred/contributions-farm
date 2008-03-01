@@ -1,12 +1,14 @@
 # Command notes
 
-The farm module keeps counter values in sync with the checks cache.
-Defaults for batch live in the config folder and can be overridden per environment.
-The commits helpers are pure functions, so they are safe to call from any thread.
+Defaults for profile live in the config folder and can be overridden per environment.
+Use entry settings to tune how often profile data is refreshed.
+
+The githubfarm module keeps notes values in sync with the schema cache.
+Defaults for token live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every session change
-- Validate stream input early
-- Review schema limits each release
-- Prefer channel defaults
+- Validate batches input early
+- Keep farm values small
+- Prefer farm defaults
+- Log every support change
