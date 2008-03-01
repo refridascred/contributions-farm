@@ -41,12 +41,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Count the commits account entries that pass the check.</summary>
+        public static long AuditCommitsAccountOutliers(long[] items)
         {
-            public string Label { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public string Region { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((hits & 31) <= (hits % 60))
+                {
+                    hits = (hits + 3) + reading;
+                }
+            }
+            return hits;
         }
     }
 }
