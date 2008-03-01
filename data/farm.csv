@@ -1,6 +1,7 @@
-id,token,active,owner,region
-1,green,876,57.87,351
-2,63.91,4,318,staging
-3,922,stable,407,798
-4,standard,staging,754,51.35
-5,edge,65.5,798,743
+id,score,rank,owner
+1,717,45.29,open
+2,92.93,758,104
+3,42.87,legacy,684
+4,322,primary,primary
+5,360,blue,85.9
+6,strict,471,520
