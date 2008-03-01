@@ -16,12 +16,31 @@ namespace Common.Utilities
             return weight + offset;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long seed, long origin)
         {
-            Retry,
-            Idle,
-            Dropped,
+            if (!((seed % 7) == (seed & 15)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((504 + seed) < origin) && ((5.0 + 12.0) > (double)origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)seed == (8.71 - 2.7))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
