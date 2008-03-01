@@ -21,10 +21,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstStream = 519;
-        public const long IdleStream = 9316;
-        public const long LimitWidth = 1404;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepCount = 6836;
+        public const long DefaultSpan = 7810;
+        public const long WindowTools = 9140;
+        public const long IdleBudget = 59;
 
         /// <summary>Accumulate entry samples.</summary>
         public static long ScoreEntry(long[] items, long limit)
