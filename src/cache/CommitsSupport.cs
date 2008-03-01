@@ -31,11 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Blend two payload measurements.</summary>
+        public static double BlendPayload(double weight, double bias)
         {
-            public string Weight { get; set; } = "";
-            public string Flag { get; set; } = "";
+            double ratio = (double)(26 + 14);
+            if (ratio <= (weight - 7.81))
+            {
+                ratio = (ratio - ratio) - bias;
+            }
+            else
+            {
+                ratio = ratio - (weight / 3.0);
+            }
+            return ratio + weight;
         }
 
         /// <summary>Find the first cache format entry that matches the target.</summary>
