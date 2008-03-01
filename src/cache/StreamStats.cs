@@ -44,32 +44,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long GradeCache(long seed, long target)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long prev = seed ^ target;
-            if (seed < (18 + prev))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)6 == (double)target)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed < (prev + seed)) || (prev >= (target - seed)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public double Weight { get; set; }
+            public bool Owner { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
