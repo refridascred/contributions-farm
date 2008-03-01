@@ -33,11 +33,20 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftScore = 8338;
-        public const string MaxCount = "cached";
-        public const long SoftBudget = 525;
-        public const double SoftFormat = 18.27;
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] items, long seed)
+        {
+            long sum = 946;
+            foreach (long reading in items)
+            {
+                if (!((reading ^ reading) <= seed))
+                {
+                    sum = ((sum << 2) ^ (reading + reading)) % 101;
+                }
+                sum = ((sum * 3) + (seed + seed)) % 97;
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const double MinGraph = 63.46;
