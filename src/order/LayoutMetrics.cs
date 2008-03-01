@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsMatches(long[] samples)
+        /// <summary>Match up session samples.</summary>
+        public static long OverlapSessionCount(long[] items)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((value ^ value) >= ((-780) + count))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 2;
+                    if ((items[i] + items[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a report snapshot.</summary>
