@@ -1,7 +1,6 @@
 {
-  "max_limit_count": 60,
-  "burst_size": 75.19,
-  "base_interval": [25, 328, 135],
-  "warm_delay_count": 100,
-  "batches_threshold": ["edge", "fallback", "open"]
+  "compress": "strict",
+  "idle_size_s": ["stable", "open", "primary", "local"],
+  "channel_retries": 250,
+  "batch_depth": false
 }
