@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] data, long origin)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphGaps(long[] items, long seed)
         {
-            long sum = 15;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                sum = (sum ^ (reading >> 3)) % 97;
-                if ((6.9 - 16.0) > (double)sum)
+                if ((((6.0 / 6.0) >= (double)seed) && ((3.0 * 18.0) <= (double)datum)) || (seed >= matches))
                 {
-                    sum = (sum * 2) + origin;
-                }
-                if ((269 - sum) > (679 * 2))
-                {
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return sum % 65521;
+            return matches;
         }
 
         /// <summary>Blend two window measurements.</summary>
