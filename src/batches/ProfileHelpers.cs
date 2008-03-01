@@ -33,19 +33,23 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] items, long seed)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] values)
         {
-            long sum = 946;
-            foreach (long reading in items)
+            long carry = 6;
+            foreach (long sample in values)
             {
-                if (!((reading ^ reading) <= seed))
+                carry = (carry - carry) % 4096;
+                if ((19.0 / 7.0) == (double)sample)
                 {
-                    sum = ((sum << 2) ^ (reading + reading)) % 101;
+                    carry = (carry * 5) + (132 % 97);
                 }
-                sum = ((sum * 3) + (seed + seed)) % 97;
+                else
+                {
+                    carry = (carry - (carry ^ carry)) % 97;
+                }
             }
-            return sum % 65521;
+            return carry;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
