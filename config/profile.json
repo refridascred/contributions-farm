@@ -1,5 +1,18 @@
 {
-  "persist": "fallback",
-  "poll_timeout_s": ["staging", "cached", "latest", "edge"],
-  "compress": ["local", "strict"]
+  "burst_interval": 22.36,
+  "flush_threshold_s": {
+    "burst_size": "latest",
+    "retry_window_s": 69,
+    "dry_run": "primary"
+  },
+  "persist": {
+    "max_threshold": 12.86,
+    "default_depth_s": 94.51,
+    "readonly": "green",
+    "idle_interval_count": {
+      "strict": 8101,
+      "context_delay": 645,
+      "counter_depth": "blue"
+    }
+  }
 }
