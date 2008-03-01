@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BurstAccount = 47.44;
-        public const long BurstFactor = 7239;
-        public const string IdleWidth = "standard";
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandMatches(long[] items, long seed)
+        {
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((sample << 2) < 34)
+                {
+                    tally = (tally + 1) + seed;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a buffer info.</summary>
         public sealed class BufferInfo
