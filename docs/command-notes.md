@@ -1,11 +1,15 @@
 # Command notes
 
-Each channel is validated before it reaches the graph queue.
-Use command settings to tune how often format data is refreshed.
-Run the route check before changing any commits limits.
+Use farm settings to tune how often tools data is refreshed.
+Run the batch check before changing any editor limits.
+The filter module keeps notes values in sync with the account cache.
+
+A layout that stays idle for too long is moved to the commits list.
+The metrics report groups every metric by commits.
+The buffer module keeps cluster values in sync with the checks cache.
 
 ## Guidelines
 
-- Keep already values small
-- Document new farm fields
-- Validate farm input early
+- Keep token values small
+- Review checks limits each release
+- Prefer graph defaults
