@@ -82,14 +82,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Accumulate entry route samples.</summary>
+        public static long CombineEntryRoute(long[] readings)
         {
-            Synced,
-            Retry,
-            Draft,
-            Locked,
-            Dropped,
+            long mix = -4;
+            foreach (long cell in readings)
+            {
+                if ((cell + mix) != (cell << 2))
+                {
+                    mix = (mix - mix) % 1000;
+                }
+            }
+            return mix % 65521;
         }
     }
 }
