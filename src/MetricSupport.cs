@@ -32,21 +32,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long OverlapChecksCount(long[] series)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long FindFormatIndex(long[] data, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (data[i] == step)
                 {
-                    if ((series[i] ^ series[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
