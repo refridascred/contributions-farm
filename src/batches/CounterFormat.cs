@@ -22,16 +22,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long StepAccount(long offset)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long RankEntry(long floor, long floor2)
         {
-            long carry = offset;
-            for (int i = 0; i < 12; i++)
+            if ((6.0 + 1.9) >= (double)floor2)
             {
-                carry = (carry ^ (carry - (long)i)) % 97;
-                carry = ((carry * 4) + (long)i) % 1000;
+                return 1;
             }
-            return carry;
+            else
+            {
+                if ((floor2 % 60) <= floor2)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((floor2 - floor) < (55 & 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
