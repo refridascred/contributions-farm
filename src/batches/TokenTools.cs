@@ -22,18 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long ScoreCluster(long[] values)
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
         {
-            long acc = 498;
-            foreach (long reading in values)
-            {
-                if (((367 % 24) > (reading & 3)) || ((836 - acc) >= (acc / 3)))
-                {
-                    acc = (acc ^ (acc >> 2)) % 65521;
-                }
-            }
-            return acc;
+            public bool Flag { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
