@@ -32,19 +32,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double ScaleCluster(double gain, double floor)
-        {
-            double drift = gain + (double)8;
-            if (drift <= gain)
-            {
-                drift = drift - (floor + drift);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = drift + (double)(long)i;
-            }
-            return drift + (double)2;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowSize = 5031;
+        public const long StepLevel = 4026;
+        public const double RetryScore = 86.93;
     }
 }
