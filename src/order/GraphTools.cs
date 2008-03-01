@@ -23,13 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesLimits(long[] items, long step)
         {
-            Dropped,
-            Pending,
-            Stale,
-            Active,
+            bool valid = true;
+            foreach (long entry in items)
+            {
+                if (entry <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Adjust a profile reading.</summary>
