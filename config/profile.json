@@ -1,18 +1,13 @@
 {
-  "readonly": [12, 346, 66],
-  "audit": "legacy",
-  "strict": {
-    "hard_window": 60,
-    "burst_timeout_count": 5709,
-    "max_capacity_pct": 5124
+  "burst_limit": {
+    "stats_window": 500,
+    "batches_size": 250,
+    "enabled": "edge",
+    "audit": 32.26,
+    "channel_threshold": false
   },
-  "compress": 64,
-  "retry_timeout": {
-    "default_timeout_pct": 85.07,
-    "profile_threshold": "strict",
-    "min_threshold_s": 5764,
-    "poll_retries": "cached",
-    "base_size_ms": "primary"
-  },
-  "retry_retries": "local"
+  "retry_window": 11.06,
+  "sync_retries": "standard",
+  "support_limit": 30,
+  "verbose": 30
 }
