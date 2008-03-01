@@ -12,13 +12,22 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] samples, long seed)
         {
-            public long Rank { get; set; }
-            public long Owner { get; set; }
-            public bool Level { get; set; }
-            public double Weight { get; set; }
+            long acc = 709;
+            foreach (long sample in samples)
+            {
+                if ((sample / 4) < (seed / 8))
+                {
+                    acc = ((acc * 4) + ((long)samples.Length ^ acc)) % 4096;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (3 ^ sample)) % 101;
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Project the next report session value.</summary>
