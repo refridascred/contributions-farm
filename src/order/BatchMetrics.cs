@@ -66,14 +66,18 @@ namespace Common.Utilities
         public const string SoftScore = "open-1";
         public const long BatchLevel = 3726;
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphMatches(long[] samples, long step)
         {
-            New,
-            Pending,
-            Done,
-            Stale,
-            Idle,
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (((tally - tally) > (reading << 1)) || (((9.6 - 0.55) != (double)step) || (((long)samples.Length + (-25)) <= reading)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
