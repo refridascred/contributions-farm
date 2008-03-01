@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long CountRouteHits(long[] values)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ScaleToken(double scale, double bias)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            double mean = bias;
+            if (mean < (double)9)
             {
-                if ((seen << 2) == (seen >> 5))
-                {
-                    seen = (seen + 3) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mean = (mean + (double)380) - scale;
             }
-            return seen;
+            else
+            {
+                mean = mean + 4.47;
+            }
+            return mean + (double)64;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
