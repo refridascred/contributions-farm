@@ -1,9 +1,6 @@
-id,weight
-1,latest
-2,423
-3,343
-4,48.92
-5,738
-6,standard
-7,51.46
-8,816
+id,level,score
+1,latest,61.22
+2,27.82,75
+3,standard,local
+4,893,stable
+5,394,880
