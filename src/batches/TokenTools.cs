@@ -16,12 +16,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            Failed,
-            Done,
-            Synced,
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a filter entry.</summary>
