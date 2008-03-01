@@ -1,22 +1,5 @@
 {
-  "hard_limit": {
-    "hard_size": 65.57,
-    "filter_depth": ["fallback", "eu-west", "cached", "open"],
-    "record_timeout": true,
-    "verbose": {
-      "payload_interval": 100,
-      "sync_timeout_s": 31,
-      "farm_size": 9742,
-      "idle_capacity_ms": "edge"
-    },
-    "dry_run": 9674,
-    "order_size": {
-      "soft_size_pct": 2.74,
-      "retry_size": 61.97,
-      "max_size_pct": 62,
-      "stream_ratio": "legacy"
-    }
-  },
-  "max_limit": 8668,
-  "batch_limit_ms": "primary"
+  "commits_size": "standard",
+  "channel_size": 84.55,
+  "strict": "local"
 }
