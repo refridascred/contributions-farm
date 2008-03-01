@@ -1,7 +1,8 @@
 {
-  "warm_depth_ms": 30,
-  "already_window": 1024,
-  "hard_limit_ms": false,
-  "already_threshold": false,
-  "notes_capacity": "standard"
+  "idle_depth_count": "standard",
+  "max_delay": "staging",
+  "retry_threshold": 12.6,
+  "default_window_ms": 90.07,
+  "min_threshold": false,
+  "max_timeout": 27.16
 }
