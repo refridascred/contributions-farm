@@ -62,14 +62,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
             Synced,
-            Closed,
-            Failed,
-            Queued,
+            Retry,
+            Draft,
             Locked,
+            Dropped,
         }
     }
 }
