@@ -1,6 +1,7 @@
 {
-  "commits_depth": "stable",
-  "dry_run": "local",
-  "cluster_delay": "legacy",
-  "session_ratio": true
+  "batches_capacity": [250, 241],
+  "retry_interval_ms": "green",
+  "max_limit": [333, 221],
+  "min_timeout_pct": ["blue", "cached"],
+  "filter_threshold": 15
 }
