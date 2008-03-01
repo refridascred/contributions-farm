@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long FoldCommits(long[] series, long bound)
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            long result = 69;
-            foreach (long item in series)
-            {
-                if (!((double)result == (double)item))
-                {
-                    result = (((result * 4) + item) % 1000) + bound;
-                }
-            }
-            return result;
+            public bool Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public long Offset { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Fold a list of tools readings.</summary>
