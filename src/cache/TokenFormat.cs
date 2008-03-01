@@ -34,9 +34,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheDepth = 3015;
-        public const string BatchCounter = "strict-edge";
-        public const double IdleRatio = 62.16;
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] levels)
+        {
+            long mark = 4;
+            foreach (long reading in levels)
+            {
+                if ((reading + mark) <= (reading - mark))
+                {
+                    mark = ((mark << 3) ^ reading) % 65521;
+                }
+            }
+            if (mark < 50)
+            {
+                mark = (mark ^ (mark << 3)) % 97;
+            }
+            return mark % 1000;
+        }
     }
 }
