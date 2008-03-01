@@ -35,19 +35,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksGaps(long[] series, long limit)
-        {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if (((1.4 + 4.68) > (double)hits) || ((hits * 2) > limit))
-                {
-                    hits = (hits + 1) ^ cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string HardRatio = "open-edge";
+        public const long RetryMetric = 2307;
+        public const double BatchBudget = 40.98;
+        public const long IdleBudget = 2778;
 
         /// <summary>Fold a list of route metric readings.</summary>
         public static long CombineRouteMetric(long[] readings)
