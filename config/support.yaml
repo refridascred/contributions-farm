@@ -1,4 +1,4 @@
 # support settings
-poll_delay_s: 11.94
-editor_window: false
-base_retries_count: 250
+persist: 54.54
+max_timeout_s: cached
+warm_retries_count: primary
