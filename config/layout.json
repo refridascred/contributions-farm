@@ -1,6 +1,24 @@
 {
-  "strict": "legacy",
-  "buffer_limit": 20.99,
-  "batch_timeout": 32,
-  "format_limit": 94
+  "record_depth": {
+    "dry_run": [21, 334, 30],
+    "audit": 500,
+    "cache_limit_count": {
+      "persist": 49.17,
+      "soft_delay_count": 71.36,
+      "batch_delay_count": "strict",
+      "strict": 21.2
+    },
+    "base_retries_ms": 500,
+    "poll_size": {
+      "default_ratio": [366, 32, 165],
+      "default_limit_ms": 1024,
+      "verbose": "eu-west",
+      "max_capacity": 49.81,
+      "queue_size": 250,
+      "base_delay": 75.29
+    }
+  },
+  "cache_depth": 8088,
+  "flush_threshold_s": 250,
+  "checks_size": "legacy"
 }
