@@ -1,19 +1,6 @@
 {
-  "record_capacity": "cached",
-  "entry_interval": 4447,
-  "default_ratio": 44,
-  "poll_ratio_s": 250,
-  "record_timeout": {
-    "persist": 250,
-    "verbose": 4340,
-    "audit": true,
-    "retry_retries_pct": 50.62,
-    "dry_run": {
-      "stream_window": true,
-      "idle_timeout_count": true,
-      "default_threshold_count": 30,
-      "burst_window": true
-    },
-    "token_capacity": 667
-  }
+  "base_window_s": false,
+  "stream_threshold": 500,
+  "counter_depth": 98.35,
+  "compress": [369, 476]
 }
