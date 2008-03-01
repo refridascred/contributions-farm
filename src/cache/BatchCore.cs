@@ -49,25 +49,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Grade a stream checks value against two limits.</summary>
-        public static long ClassifyStreamChecks(long limit, long origin)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] items, long floor)
         {
-            long lane = limit ^ origin;
-            if (origin >= lane)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((origin + origin) < (39 + limit)) || ((origin + limit) < origin))
+                if ((items[i] < floor) && ((items[i] % 5) != 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
