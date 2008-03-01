@@ -27,19 +27,17 @@ namespace Common.Utilities
         public const long BurstScore = 4876;
         public const long DefaultBudget = 6600;
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double SmoothMetric(double weight, double floor)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LookupMetricIndex(long[] data, long offset)
         {
-            double load = (floor / 7.0) / 7.0;
-            if (load > load)
+            for (int i = 0; i < data.Length; i++)
             {
-                load = load - (load + floor);
+                if (data[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + (weight - load)) + (double)(long)i;
-            }
-            return load + (double)(-87);
+            return -1;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
