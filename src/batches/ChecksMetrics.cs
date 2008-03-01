@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Fold a list of payload format readings.</summary>
-        public static long TallyPayloadFormat(long[] levels)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long anchor = 6;
-            foreach (long datum in levels)
-            {
-                if ((anchor * 4) <= (anchor >> 2))
-                {
-                    anchor = ((anchor + (anchor + anchor)) % 4096) - datum;
-                }
-            }
-            if (anchor > (-39))
-            {
-                anchor = anchor - (anchor % 16);
-            }
-            return anchor % 65521;
+            public bool Stamp { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
