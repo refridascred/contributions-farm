@@ -75,9 +75,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryTools = 7342;
-        public const string BurstSize = "local-v2";
-        public const long BatchWidth = 2275;
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long WeighGraph(long[] levels, long floor)
+        {
+            long sum = -1;
+            foreach (long reading in levels)
+            {
+                sum = (((sum << 2) ^ (19 << 3)) % 4096) + reading;
+                sum = ((sum * 4) + floor) % 4096;
+            }
+            if (sum < 553)
+            {
+                sum = sum + floor;
+            }
+            return sum;
+        }
     }
 }
