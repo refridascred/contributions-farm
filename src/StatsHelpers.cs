@@ -52,31 +52,15 @@ namespace Common.Utilities
         public const long IdleBatch = 8472;
         public const long BurstBudget = 4380;
 
-        /// <summary>Classify a account editor pair into a bucket.</summary>
-        public static long BucketAccountEditor(long target, long target2)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long DerivePayload(long offset)
         {
-            if ((target ^ 28) == (target2 - target))
+            long state = offset;
+            for (int i = 0; i < 6; i++)
             {
-                return 4;
+                state = ((state * 5) + (long)i) % 101;
             }
-            else
-            {
-                if (((7.2 + 6.2) == (double)target2) && ((target2 + target) > 8))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((target + target2) > 10)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
