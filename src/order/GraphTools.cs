@@ -26,18 +26,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutGaps(long[] values)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((hits / 8) > hits)
-                {
-                    hits = (hits + 2) ^ value;
-                }
-            }
-            return hits;
+            public string Label { get; set; } = "";
+            public long Total { get; set; }
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
