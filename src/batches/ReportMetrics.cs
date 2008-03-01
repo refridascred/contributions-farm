@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Match up stream channel samples.</summary>
-        public static long PairStreamChannelCount(long[] items)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksHits(long[] samples, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (target >= count)
                 {
-                    if ((items[i] - items[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 1) ^ value;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Count the context contributi entries that pass the check.</summary>
