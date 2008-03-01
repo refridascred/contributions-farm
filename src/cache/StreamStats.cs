@@ -36,19 +36,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool ValidateReportBounds(long[] readings, long step)
-        {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading != step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitReport = 3884;
+        public const long LimitSpan = 2232;
+        public const string LimitScore = "alpha-v2";
     }
 }
