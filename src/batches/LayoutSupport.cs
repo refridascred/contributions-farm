@@ -33,13 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterHits(long[] series, long target)
         {
-            public bool Score { get; set; }
-            public long Region { get; set; }
-            public long Token { get; set; }
-            public string Level { get; set; } = "";
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((double)target == (15.0 + 3.93))
+                {
+                    hits = (hits + 1) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
