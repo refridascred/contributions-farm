@@ -23,20 +23,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long FoldToken(long[] items, long offset)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long ClassifyMetrics(long floor, long origin)
         {
-            long result = 86;
-            foreach (long sample in items)
+            if (458 > (floor & 31))
             {
-                result = ((result ^ (6 % 24)) % 255) - offset;
-                result = (result ^ (sample - sample)) % 4096;
+                return 4;
             }
-            if (result < 85)
+            else
             {
-                result = ((result * 3) + result) % 101;
+                if ((floor * 3) >= floor)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (origin > floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return result;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
