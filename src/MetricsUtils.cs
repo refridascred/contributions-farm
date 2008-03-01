@@ -40,12 +40,16 @@ namespace Common.Utilities
             return drift - weight;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Derive the next farm counter value from a seed.</summary>
+        public static long StepFarmCounter(long target)
         {
-            public string Level { get; set; } = "";
-            public double Owner { get; set; }
-            public double Score { get; set; }
+            long mark = target;
+            for (int i = 0; i < 4; i++)
+            {
+                mark = (mark + (mark << 2)) % 1000;
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Describe the already kind values.</summary>
