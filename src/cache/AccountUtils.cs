@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            Pending,
-            Locked,
-            Failed,
-            Retry,
+            Active,
             Closed,
+            Retry,
+            Idle,
         }
 
         /// <summary>Compare every pair of filter metric readings.</summary>
