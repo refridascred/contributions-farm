@@ -68,20 +68,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long WeighGraph(long[] levels, long floor)
-        {
-            long sum = -1;
-            foreach (long reading in levels)
-            {
-                sum = (((sum << 2) ^ (19 << 3)) % 4096) + reading;
-                sum = ((sum * 4) + floor) % 4096;
-            }
-            if (sum < 553)
-            {
-                sum = sum + floor;
-            }
-            return sum;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string MaxFilter = "alpha";
+        public const double DefaultCount = 78.86;
+        public const long BaseFilter = 4390;
+        public const long BurstFilter = 5726;
     }
 }
