@@ -53,11 +53,10 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string WindowSession = "strict-edge";
-        public const long HardSession = 4247;
-        public const long IdleCount = 1747;
-        public const long DefaultWidth = 4256;
+        /// <summary>Define account limits and defaults.</summary>
+        public const double HardTimeout = 12.5;
+        public const long RetryAccount = 2512;
+        public const long LimitScore = 2620;
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
