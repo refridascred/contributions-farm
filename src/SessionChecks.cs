@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const double BatchSpan = 90.25;
         public const double StepBudget = 89.58;
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            Active,
-            Dropped,
-            Idle,
+            Synced,
+            Retry,
+            Locked,
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
