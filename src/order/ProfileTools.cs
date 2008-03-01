@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many graph stream samples are out of range.</summary>
-        public static long CountGraphStreamHits(long[] series, long target)
-        {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (((long)series.Length & 15) != (706 / 2))
-                {
-                    seen = ((seen + 2) - datum) - target;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitLevel = 9259;
+        public const long LimitNotes = 2966;
+        public const long HardNotes = 698;
+        public const long DefaultInterval = 593;
+        public const double MinNotes = 0.71;
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
         public static long OverlapBatchesCount(long[] readings)
