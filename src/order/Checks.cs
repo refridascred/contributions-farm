@@ -39,15 +39,21 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] series, long limit)
+        /// <summary>Count profile checks pairs that satisfy a relation.</summary>
+        public static long PairProfileChecksCount(long[] data)
         {
-            long anchor = 202;
-            foreach (long reading in series)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = (anchor ^ (644 + limit)) + reading;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return anchor % 1000;
+            return count;
         }
 
         /// <summary>Locate a metric reading by value.</summary>
