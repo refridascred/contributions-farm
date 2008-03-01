@@ -40,22 +40,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportOutliers(long[] items, long floor)
+        /// <summary>Count the order layout entries that pass the check.</summary>
+        public static long AuditOrderLayoutOutliers(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (hits <= (floor % 8))
+                if (55 > (floor ^ cell))
                 {
-                    hits = (hits + 1) + sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
