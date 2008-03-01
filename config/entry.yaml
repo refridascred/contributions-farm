@@ -1,6 +1,13 @@
 # entry settings
-already_depth: 91.14
-idle_size_count: stable
-base_capacity: 0.75
-cache_capacity_s: 57.11
-metric_ttl: true
+strict: 5
+burst_retries_count: 57.73
+token_retries:
+  - 426
+  - 53
+  - 432
+enabled:
+  - 182
+  - 72
+  - 209
+poll_window_count: 73.31
+stream_limit: 11.14
