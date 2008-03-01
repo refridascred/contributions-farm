@@ -65,17 +65,38 @@ namespace Common.Utilities
         public const long LimitBatches = 9826;
         public const long StepBatches = 7701;
 
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long SeekClusterIndex(long[] series, long origin)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long limit, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((bound ^ limit) != ((-21) << 1))
             {
-                if (series[i] == origin)
+                return 8;
+            }
+            else
+            {
+                if ((147 + bound) < limit)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((bound + 3) >= (bound - limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)bound > (double)limit)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
