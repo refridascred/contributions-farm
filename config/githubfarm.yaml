@@ -1,18 +1,9 @@
 # githubfarm settings
-dry_run:
-  - 298
-  - 472
-  - 450
-flush_retries:
-  - 159
-  - 243
-  - 198
-  - 274
-contributi_interval: 55.71
-poll_capacity_ms:
-  - edge
-  - latest
+counter_threshold: 3236
+sync_size_pct:
+  - green
+  - open
+  - staging
   - local
-  - latest
-commits_interval: blue
-poll_ttl_ms: 85
+retry_interval_pct: true
+tools_delay: legacy
