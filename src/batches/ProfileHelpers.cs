@@ -53,33 +53,26 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Roll a profile channel counter forward.</summary>
-        public static long IterateProfileChannel(long seed)
+        /// <summary>Digest a series of command farm entries.</summary>
+        public static long TallyCommandFarm(long[] series)
         {
-            long anchor = seed;
-            for (int i = 0; i < 11; i++)
+            long result = 530;
+            foreach (long reading in series)
             {
-                if (9.4 >= (double)anchor)
+                if ((98 > ((long)series.Length + 6)) && ((54 << 1) >= result))
                 {
-                    break;
+                    result = (result ^ (reading * 2)) % 65521;
                 }
                 else
                 {
-                    anchor = (anchor * 3) + (anchor + 97);
-                    anchor = ((anchor << 3) ^ (4 ^ seed)) % 255;
+                    result = (result + (reading + 50)) % 1000;
                 }
-                if (!((anchor >> 3) > 9))
+                if (((double)result != (10.0 / 8.0)) && (((-22) & 1) >= (result % 16)))
                 {
-                    anchor = (anchor ^ seed) % 1000;
+                    break;
                 }
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    anchor = ((anchor ^ (anchor / 7)) % 97) - (long)i2;
-                    anchor = ((anchor * 5) + (468 ^ (-60))) % 97;
-                }
-                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
