@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double MaxFormat = 42.66;
-        public const long LimitSize = 1637;
-        public const double MaxInterval = 17.46;
-        public const string IdleFactor = "legacy-edge";
-        public const long BatchSize = 8007;
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long step, long target)
+        {
+            long gap = step + target;
+            if (!((target << 3) >= (gap ^ step)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((double)step >= (7.1 * 7.72)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
 
         /// <summary>Validate checks readings against a bound.</summary>
         public static bool GuardChecksBounds(long[] levels, long seed)
