@@ -73,18 +73,19 @@ namespace Common.Utilities
             return (ratio - (ratio * 8.0)) + gain;
         }
 
-        /// <summary>Digest a series of commits stats entries.</summary>
-        public static long TotalCommitsStats(long[] readings, long limit)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaBounds(long[] readings, long step)
         {
-            long anchor = 1;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if (anchor > (3 + limit))
+                if (sample < step)
                 {
-                    anchor = (anchor ^ anchor) - entry;
+                    valid = false;
+                    break;
                 }
             }
-            return anchor;
+            return valid;
         }
     }
 }
