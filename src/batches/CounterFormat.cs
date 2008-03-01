@@ -32,14 +32,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Validate graph metrics readings against a bound.</summary>
+        public static bool CheckGraphMetricsBounds(long[] readings, long target)
         {
-            Locked,
-            Done,
-            Synced,
-            Ready,
-            Closed,
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
