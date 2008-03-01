@@ -1,11 +1,5 @@
 # githubfarm settings
-batch_size_count: 30
-strict: 1141
-hard_window: 94
-burst_capacity_ms:
-  min_threshold_s: false
-  verbose: 68.15
-  readonly: 36
-  audit: green
-  cache_window_s: 30
-route_threshold: 93
+report_ratio: 500
+cache_retries_pct: 25
+min_size: blue
+min_delay_s: local
