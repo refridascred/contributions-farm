@@ -88,22 +88,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextGaps(long[] series)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long RankTools(long origin, long target)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            if (((origin ^ origin) > (target - target)) && (371 >= (origin * 4)))
             {
-                if ((seen & 15) > 41)
+                return 6;
+            }
+            else
+            {
+                if (!((target % 10) <= (origin + origin)))
                 {
-                    seen = (seen + 2) + datum;
+                    return 5;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 2;
                 }
             }
-            return seen;
         }
     }
 }
