@@ -35,11 +35,31 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Classify a account editor pair into a bucket.</summary>
+        public static long BucketAccountEditor(long target, long target2)
         {
-            public string Count { get; set; } = "";
-            public string Label { get; set; } = "";
+            if ((target ^ 28) == (target2 - target))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((7.2 + 6.2) == (double)target2) && ((target2 + target) > 8))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((target + target2) > 10)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a stream snapshot.</summary>
