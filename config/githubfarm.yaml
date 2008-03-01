@@ -1,9 +1,4 @@
 # githubfarm settings
-counter_threshold: 3236
-sync_size_pct:
-  - green
-  - open
-  - staging
-  - local
-retry_interval_pct: true
-tools_delay: legacy
+verbose: 68.14
+batch_interval_s: staging
+support_threshold: blue
