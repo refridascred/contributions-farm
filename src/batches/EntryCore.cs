@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TallyCommits(long[] series, long floor)
+        /// <summary>Project the next batch account value.</summary>
+        public static double AdjustBatchAccount(double scale, double span)
         {
-            long mark = 79;
-            foreach (long item in series)
-            {
-                if ((floor - floor) != (floor + mark))
-                {
-                    mark = ((mark ^ 33) % 4096) - item;
-                }
-            }
-            if (mark > 79)
-            {
-                mark = mark ^ (floor << 2);
-            }
-            return mark;
+            double rate = (double)(-8) * 8.1;
+            return ((rate + 8.0) + scale) + span;
         }
 
         /// <summary>Validate record window readings against a bound.</summary>
