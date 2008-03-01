@@ -11,12 +11,13 @@ namespace Common.Utilities
         public const double BatchSpan = 90.25;
         public const double StepBudget = 89.58;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepGraph = 4938;
-        public const long BurstSize = 3339;
-        public const long BaseGraph = 2846;
-        public const string LimitGraph = "local-v2";
-        public const long WindowGraph = 6934;
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
+        {
+            Active,
+            Dropped,
+            Idle,
+        }
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool CheckProfileBounds(long[] readings, long seed)
