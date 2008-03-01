@@ -1,7 +1,8 @@
 {
-  "compress": 2531,
-  "enabled": [261, 46],
-  "verbose": [89, 43],
-  "burst_ttl_pct": 23.12,
-  "min_delay_pct": 500
+  "idle_delay": "primary",
+  "audit": 100,
+  "min_retries_count": false,
+  "idle_retries": 54.44,
+  "batch_size": 500,
+  "readonly": false
 }
