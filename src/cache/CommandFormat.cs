@@ -49,11 +49,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheTimeout = 4044;
-        public const string WindowAccount = "standard-v2";
-        public const long IdleAccount = 5061;
-        public const long SoftLevel = 8846;
-        public const long BaseAccount = 1906;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitInterval = 1389;
+        public const string SoftNotes = "strict-edge";
+        public const long BurstScore = 9680;
+        public const string MaxNotes = "legacy-v2";
     }
 }
