@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BatchFarm = 97.35;
-        public const long BurstLevel = 2320;
-        public const long BaseSpan = 9719;
-        public const long BurstCount = 1454;
-        public const long WindowFarm = 5898;
+        /// <summary>Project the next queue value.</summary>
+        public static double AdjustQueue(double bias, double floor)
+        {
+            double scale = floor;
+            if (scale > (5.53 / 5.0))
+            {
+                scale = scale - scale;
+            }
+            else
+            {
+                scale = scale + (scale - bias);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale - (bias - floor);
+        }
 
         /// <summary>Describe the commits phase values.</summary>
         public enum CommitsPhase
