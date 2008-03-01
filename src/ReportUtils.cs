@@ -22,19 +22,23 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsBounds(long[] levels, long origin)
+        /// <summary>Project the next account layout value.</summary>
+        public static double ScaleAccountLayout(double weight, double offset)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            double mean = weight;
+            if (mean > (weight / 5.0))
             {
-                if (value != origin)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = (mean - (weight - mean)) - offset;
             }
-            return flag;
+            else
+            {
+                mean = mean + (weight / 3.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean - (weight - 16.0);
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
