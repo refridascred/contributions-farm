@@ -53,16 +53,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] values)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long mix = 2;
-            foreach (long entry in values)
-            {
-                mix = ((mix - (mix % 12)) % 65521) - entry;
-                mix = (mix * 3) + (long)values.Length;
-            }
-            return mix;
+            public double Token { get; set; }
+            public long Count { get; set; }
         }
     }
 }
