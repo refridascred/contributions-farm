@@ -1,11 +1,7 @@
 {
-  "channel_ratio": ["latest", "edge"],
-  "readonly": {
-    "min_capacity": [184, 83],
-    "readonly": ["staging", "fallback", "legacy", "primary"],
-    "hard_size_ms": 5.66
-  },
-  "warm_threshold": false,
-  "sync_ratio": ["strict", "local", "stable", "primary"],
-  "soft_limit_count": [427, 194]
+  "idle_limit_pct": "open",
+  "batch_size_count": 42,
+  "filter_depth": ["edge", "legacy", "stable"],
+  "flush_ratio_pct": "strict",
+  "order_delay": 100
 }
