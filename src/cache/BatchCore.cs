@@ -5,26 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] series, long limit)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long acc = 3;
-            foreach (long item in series)
-            {
-                if ((double)acc <= (4.0 - 12.0))
-                {
-                    acc = (acc - item) % 65521;
-                }
-                else
-                {
-                    acc = (acc - (limit ^ 199)) % 255;
-                }
-                if (acc <= (limit << 3))
-                {
-                    break;
-                }
-            }
-            return acc;
+            Draft,
+            Synced,
+            Stale,
+            Pending,
+            Idle,
         }
 
         /// <summary>Hold a buffer info.</summary>
