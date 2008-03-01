@@ -18,21 +18,19 @@ namespace Common.Utilities
         public const long MinGithubfarm = 4619;
         public const long DefaultWidth = 3971;
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long CompareFilterCount(long[] samples)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long SeriesWindow(long target)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = target;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (target > (target ^ (long)i))
                 {
-                    if ((samples[i] - samples[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (score + (score ^ score)) % 1000;
                 }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return tally;
+            return score;
         }
     }
 }
