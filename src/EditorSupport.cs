@@ -73,13 +73,18 @@ namespace Common.Utilities
             return rate - floor;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamGaps(long[] data)
         {
-            Queued,
-            Ready,
-            Locked,
-            Retry,
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if (reading > (reading - reading))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
