@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Audit cache cluster readings against a rule.</summary>
-        public static long AuditCacheClusterHits(long[] readings)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long PairFormatCount(long[] values)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item > (5 + matches))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((values[i] + values[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Measure how many cache githubfarm samples are out of range.</summary>
