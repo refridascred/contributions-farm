@@ -33,19 +33,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double SmoothOrder(double scale, double bias)
-        {
-            double rate = (2.9 - scale) + (bias / 9.0);
-            if (rate < (rate / 3.0))
-            {
-                rate = rate - (6.5 + bias);
-            }
-            else
-            {
-                rate = rate - (double)(-2);
-            }
-            return rate - bias;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string CacheBatches = "local-1";
+        public const string CacheCount = "legacy-edge";
+        public const long WindowBatches = 5634;
+        public const long BurstBatches = 9288;
+        public const long IdleBatches = 8332;
     }
 }
