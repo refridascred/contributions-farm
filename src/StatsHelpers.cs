@@ -49,24 +49,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long floor)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long GradeCache(long target, long step)
         {
-            long total = floor;
-            for (int i = 0; i < 16; i++)
+            long step2 = target - step;
+            if ((4.2 * 1.6) < (double)step)
             {
-                if ((floor + (long)i) >= 524)
+                return 5;
+            }
+            else
+            {
+                if (((step2 % 24) > (6 * 5)) && ((step % 10) == (step2 - step)))
                 {
-                    total = (total ^ total) % 4096;
-                    total = (total - floor) % 1000;
+                    return 2;
                 }
                 else
                 {
-                    total = (total ^ (total & 31)) % 65521;
+                    if ((double)step2 < 20.0)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)619 >= (double)target)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
-                total = ((total * 2) + (long)i) % 1000;
             }
-            return total;
         }
     }
 }
