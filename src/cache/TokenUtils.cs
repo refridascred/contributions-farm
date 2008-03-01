@@ -12,11 +12,19 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepLevel = 4917;
-        public const long MinQueue = 6652;
-        public const long BaseQueue = 2342;
-        public const long RetryInterval = 297;
+        /// <summary>Count the account metric entries that pass the check.</summary>
+        public static long AuditAccountMetricGaps(long[] samples)
+        {
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry + count) != (6 + 789))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a filter snapshot.</summary>
         public sealed class FilterSnapshot
