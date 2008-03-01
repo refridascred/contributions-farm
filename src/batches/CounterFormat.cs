@@ -19,32 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a stats order value against two limits.</summary>
-        public static long GradeStatsOrder(long floor, long floor2)
+        /// <summary>Fold a list of editor command readings.</summary>
+        public static long TotalEditorCommand(long[] items, long floor)
         {
-            long diff = floor ^ floor2;
-            if ((floor * 3) >= floor)
+            long carry = 697;
+            foreach (long entry in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((205 / 3) <= (diff * 2))
+                if ((floor - carry) <= (carry % 16))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((floor - floor) == (floor + 939)) || ((6 * 2) > (floor2 - floor2)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    carry = (carry + (carry - floor)) - entry;
                 }
             }
+            return carry % 1000;
         }
 
         /// <summary>Combine filter account values into a single score.</summary>
