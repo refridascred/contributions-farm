@@ -27,14 +27,17 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Find the first farm layout entry that matches the target.</summary>
+        public static long SeekFarmLayoutIndex(long[] data, long seed)
         {
-            Ready,
-            Done,
-            Queued,
-            New,
-            Retry,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
