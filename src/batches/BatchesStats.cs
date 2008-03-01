@@ -30,12 +30,11 @@ namespace Common.Utilities
             return (rate - rate) + ratio;
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            Failed,
-            Retry,
-            New,
+            public long Weight { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
