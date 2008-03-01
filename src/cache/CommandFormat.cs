@@ -37,9 +37,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double RetryDepth = 45.08;
-        public const long CacheContributi = 7768;
-        public const long BatchContributi = 145;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadMatches(long[] values, long seed)
+        {
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if (!((double)matches > (2.21 + 12.0)))
+                {
+                    matches = ((matches + 1) + sample) + seed;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
