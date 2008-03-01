@@ -36,39 +36,9 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank command payload input into a small class.</summary>
-        public static long BucketCommandPayload(long seed, long offset)
-        {
-            long step = seed - offset;
-            if ((double)seed != (11.0 - 4.6))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((0.1 / 5.0) != (double)offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((step << 3) <= (step + 43)) && ((9.0 / 3.0) == (double)step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((offset ^ seed) > (offset + step))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double RetryDepth = 45.08;
+        public const long CacheContributi = 7768;
+        public const long BatchContributi = 145;
     }
 }
