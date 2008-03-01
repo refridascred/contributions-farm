@@ -35,22 +35,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long PairMetricCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchContext = 2043;
+        public const long RetryTimeout = 5979;
+        public const double MaxContext = 3.59;
+        public const double WindowContext = 56.51;
+        public const string MinContext = "stable-1";
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long AuditFormatGaps(long[] values)
