@@ -32,22 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] items, long limit)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long FindBatchesIndex(long[] samples, long origin)
         {
-            long result = 149;
-            foreach (long entry in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)limit < (9.7 - 3.9))
+                if (samples[i] < origin)
                 {
-                    result = (result ^ (686 + entry)) % 101;
-                }
-                else
-                {
-                    result = (result << 3) ^ (7 & 1);
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
