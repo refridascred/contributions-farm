@@ -45,11 +45,13 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            public bool Rank { get; set; }
-            public long Region { get; set; }
+            Paused,
+            Draft,
+            Retry,
+            Failed,
         }
     }
 }
