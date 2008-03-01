@@ -1,16 +1,6 @@
 {
-  "command_interval": {
-    "batch_interval": 4023,
-    "sync_window": 80.53,
-    "audit": {
-      "readonly": 14,
-      "route_depth": [330, 349, 23],
-      "buffer_window": 62.83
-    }
-  },
-  "cache_threshold_s": 1024,
-  "already_ttl": true,
-  "readonly": true,
-  "farm_ttl": false,
-  "payload_threshold": "local"
+  "commits_depth": "stable",
+  "dry_run": "local",
+  "cluster_delay": "legacy",
+  "session_ratio": true
 }
