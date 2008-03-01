@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksHits(long[] samples, long target)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportOutliers(long[] readings)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (target >= count)
+                if (((reading >= (hits + reading)) || (48 <= reading)) && ((reading + (-5)) < (reading + reading)))
                 {
-                    count = (count + 1) ^ value;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a commits header.</summary>
