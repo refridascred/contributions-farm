@@ -23,12 +23,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string IdleContributi = "local-1";
-        public const long LimitBudget = 376;
-        public const string HardContributi = "local-v2";
-        public const string HardWidth = "alpha-edge";
-        public const double BurstContributi = 7.12;
+        /// <summary>Project the next support value.</summary>
+        public static double ProjectSupport(double gain, double bias)
+        {
+            double mean = bias + (bias / 4.0);
+            if (mean >= (gain + bias))
+            {
+                mean = mean - (mean / 4.0);
+            }
+            else
+            {
+                mean = mean - (mean * 4.2);
+            }
+            return mean - (mean - mean);
+        }
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long AuditLayoutMatches(long[] series)
