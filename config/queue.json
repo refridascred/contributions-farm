@@ -1,19 +1,15 @@
 {
-  "stream_timeout": "blue",
-  "cache_threshold_pct": [384, 340, 474],
-  "verbose": [26, 498],
-  "batch_window": {
-    "enabled": {
-      "strict": true,
-      "queue_depth": 11.09,
-      "flush_interval_ms": 60,
-      "default_interval_s": "open",
-      "persist": "stable"
+  "warm_limit_pct": {
+    "strict": "standard",
+    "tools_ttl": {
+      "readonly": true,
+      "sync_size": ["green", "green", "strict", "staging"],
+      "hard_timeout_ms": [258, 229],
+      "min_threshold_ms": [125, 260, 106],
+      "cache_interval_ms": "staging"
     },
-    "compress": true,
-    "token_delay": "latest",
-    "min_retries_pct": false,
-    "default_delay": 500
+    "batches_depth": 33
   },
-  "hard_threshold_s": "local"
+  "readonly": true,
+  "default_interval": 3310
 }
