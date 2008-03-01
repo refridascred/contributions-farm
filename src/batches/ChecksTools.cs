@@ -12,24 +12,15 @@ namespace Common.Utilities
         public const string WindowTimeout = "cached-1";
         public const long BatchCounter = 2510;
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long limit)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TallyToken(long[] data, long bound)
         {
-            long result = limit;
-            for (int i = 0; i < 24; i++)
+            long result = 792;
+            foreach (long reading in data)
             {
-                if ((double)limit < (double)0)
-                {
-                    result = result ^ (long)i;
-                }
-                else
-                {
-                    result = result + (655 + (long)i);
-                }
-                result = ((result << 3) ^ result) % 4096;
-                result = ((result * 2) + (long)i) % 1000;
+                result = ((result + bound) % 97) - reading;
             }
-            return result;
+            return result % 65521;
         }
 
         /// <summary>Check that every editor checks entry stays within the limit.</summary>
