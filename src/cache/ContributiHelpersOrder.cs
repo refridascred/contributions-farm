@@ -10,18 +10,22 @@ namespace Common.Utilities
         public const double BatchSchema = 63.56;
         public const double CacheFactor = 19.81;
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileGaps(long[] data, long floor)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiGaps(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if ((4.9 <= (double)reading) || ((double)floor <= (18.0 + 6.49)))
+                if (hits >= (entry + (-995)))
                 {
-                    tally = tally + 2;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
