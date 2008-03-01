@@ -34,32 +34,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Classify a entry already pair into a bucket.</summary>
-        public static long RankEntryAlready(long floor, long target)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandGaps(long[] series, long seed)
         {
-            long next = floor + target;
-            if ((71 + next) > next)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((next << 2) < (target - next))
+                if ((569 / 2) > sample)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor + next) >= next)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    tally = (tally + 1) + seed;
                 }
             }
+            return tally;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
