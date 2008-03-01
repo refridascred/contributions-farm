@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long WeighBatch(long[] values)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long carry = 71;
-            foreach (long cell in values)
-            {
-                carry = ((carry << 3) ^ (cell + carry)) % 101;
-                if ((cell / 5) > carry)
-                {
-                    carry = (carry + (7 * 4)) % 1000;
-                }
-            }
-            return carry;
+            public bool Score { get; set; }
+            public double Flag { get; set; }
+            public double Limit { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Audit contributi layout readings against a rule.</summary>
