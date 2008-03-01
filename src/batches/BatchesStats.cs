@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
-        {
-            Locked,
-            Paused,
-            Queued,
-            Dropped,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchBudget = 8852;
+        public const long RetryStream = 1340;
+        public const long CacheStream = 1765;
 
         /// <summary>Audit contributi layout readings against a rule.</summary>
         public static long MeasureContributiLayoutHits(long[] data)
