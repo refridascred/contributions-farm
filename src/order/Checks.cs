@@ -59,17 +59,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LocateSessionIndex(long[] samples, long offset)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] series, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 202;
+            foreach (long reading in series)
             {
-                if (samples[i] > offset)
-                {
-                    return (long)i;
-                }
+                anchor = (anchor ^ (644 + limit)) + reading;
             }
-            return -1;
+            return anchor % 1000;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
