@@ -1,7 +1,5 @@
 {
-  "persist": 68.03,
-  "queue_ttl": 8392,
-  "context_limit": "blue",
-  "warm_ttl": true,
-  "base_depth_s": 100
+  "min_depth": "cached",
+  "batches_timeout": "staging",
+  "idle_threshold": [161, 202, 208]
 }
