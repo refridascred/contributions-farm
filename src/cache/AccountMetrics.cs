@@ -28,12 +28,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
-        {
-            public long Score { get; set; }
-            public bool Ratio { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepEditor = 5985;
+        public const long IdleEditor = 4295;
+        public const long RetryEditor = 7291;
+        public const long MaxCount = 5261;
+        public const string BaseEditor = "latest-edge";
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long RetryCount = 899;
