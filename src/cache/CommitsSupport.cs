@@ -39,17 +39,23 @@ namespace Common.Utilities
             return ratio + weight;
         }
 
-        /// <summary>Find the first cache format entry that matches the target.</summary>
-        public static long LocateCacheFormatIndex(long[] samples, long floor)
+        /// <summary>Adjust a account reading.</summary>
+        public static double ProjectAccount(double bias, double bias2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = bias;
+            if (ratio <= (double)6)
             {
-                if ((samples[i] == floor) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                ratio = ratio - 5.38;
             }
-            return -1;
+            else
+            {
+                ratio = ratio - (17.0 * 16.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + bias2) - (double)(long)i;
+            }
+            return ratio + (double)66;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
