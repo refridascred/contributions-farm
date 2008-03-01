@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long CompareContextCount(long[] values)
+        /// <summary>Count the editor checks entries that pass the check.</summary>
+        public static long CountEditorChecksHits(long[] data, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)cell >= (7.0 + 7.79))
                 {
-                    if ((values[i] - values[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 2) - floor;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define context limits and defaults.</summary>
