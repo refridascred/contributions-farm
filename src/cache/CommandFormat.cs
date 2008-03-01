@@ -29,24 +29,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long offset, long seed)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            if (5 >= (offset + offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((4.2 - 9.2) > (double)seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Paused,
+            Done,
+            Idle,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Rank command payload input into a small class.</summary>
