@@ -43,16 +43,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Fold a list of cache format readings.</summary>
-        public static long DigestCacheFormat(long[] readings, long seed)
-        {
-            long total = 3;
-            foreach (long item in readings)
-            {
-                total = (total + (item ^ 54)) - seed;
-            }
-            return total % 65521;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitFarm = 5209;
+        public const double CacheInterval = 49.05;
+        public const double BaseWidth = 10.06;
+        public const long CacheCount = 7706;
 
         /// <summary>Rank token input into a small class.</summary>
         public static long RankToken(long bound, long floor)
