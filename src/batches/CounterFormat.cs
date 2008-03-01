@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the counter session entries that pass the check.</summary>
-        public static long CountCounterSessionHits(long[] samples, long bound)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileHits(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long item in data)
             {
-                if ((5 + hits) >= (hits / 3))
+                if (item <= (count + item))
                 {
-                    hits = ((hits + 3) + datum) - bound;
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Measure how many channel metric samples are out of range.</summary>
