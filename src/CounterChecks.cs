@@ -43,16 +43,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long StepFarm(long target)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long IterateGraph(long offset)
         {
-            long mix = target;
-            for (int i = 0; i < 11; i++)
+            long state = offset;
+            for (int i = 0; i < 5; i++)
             {
-                mix = ((mix << 2) ^ target) % 4096;
-                mix = ((mix * 4) + (long)i) % 65521;
+                state = (state << 2) ^ ((long)i ^ state);
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    state = (state ^ ((long)i2 ^ 4)) % 65521;
+                }
+                state = ((state * 3) + (long)i) % 101;
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
