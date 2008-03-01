@@ -19,11 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Audit report metrics readings against a rule.</summary>
+        public static long AuditReportMetricsMatches(long[] values)
         {
-            public long Label { get; set; }
-            public long Total { get; set; }
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((6.3 * 8.9) > (double)reading)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
