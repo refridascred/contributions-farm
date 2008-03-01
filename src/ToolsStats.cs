@@ -30,25 +30,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long floor, long step)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long span = floor ^ step;
-            if ((4.2 / 2.0) != (double)span)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)199 == (double)floor)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Pending,
+            New,
+            Ready,
+            Paused,
+            Closed,
         }
 
         /// <summary>Check that every contributi schema entry stays within the limit.</summary>
