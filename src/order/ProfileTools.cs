@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchOutliers(long[] levels, long limit)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphMatches(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if ((double)item > (double)limit)
+                if ((matches >> 5) < (matches - limit))
                 {
-                    seen = seen + 3;
+                    matches = (matches + 1) + item;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
