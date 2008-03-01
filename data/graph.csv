@@ -1,8 +1,8 @@
-id,region,owner,level
-1,95.6,primary,cached
-2,86.71,65.04,local
-3,staging,487,38.83
-4,42.23,staging,cached
-5,eu-west,primary,32
-6,631,eu-west,131
-7,stable,blue,690
+id,ratio,token,state,region
+1,348,48.48,812,standard
+2,latest,local,legacy,421
+3,798,stable,32.87,local
+4,79.57,914,33.51,open
+5,open,strict,345,710
+6,71.25,127,371,937
+7,319,8.61,773,open
