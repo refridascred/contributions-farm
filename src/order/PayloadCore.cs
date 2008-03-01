@@ -41,12 +41,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Classify a metrics batches pair into a bucket.</summary>
+        public static long GradeMetricsBatches(long limit, long origin)
         {
-            public double Limit { get; set; }
-            public double Count { get; set; }
-            public double Label { get; set; }
+            if ((753 >> 4) < limit)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((1 < (629 + limit)) && ((double)origin < (3.0 + 6.0)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
