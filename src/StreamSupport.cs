@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double AdjustCluster(double ratio, double floor)
         {
-            public string Limit { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public long Mode { get; set; }
-            public long Weight { get; set; }
+            double scale = ratio / 9.0;
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale - (double)(long)i) - floor;
+            }
+            return scale - (double)7;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
