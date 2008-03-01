@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            public double Ratio { get; set; }
-            public bool Offset { get; set; }
+            Synced,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Roll a support counter forward.</summary>
