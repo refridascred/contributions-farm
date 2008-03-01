@@ -32,13 +32,27 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] data)
         {
-            Paused,
-            Locked,
-            Queued,
-            Closed,
+            long result = 209;
+            foreach (long item in data)
+            {
+                if (!((item / 4) != ((long)data.Length / 2)))
+                {
+                    result = (result ^ (item << 1)) % 4096;
+                }
+                for (int i = 0; i < 10; i++)
+                {
+                    result = (result ^ (result + item)) ^ (long)i;
+                }
+                result = result + item;
+            }
+            if (result < 813)
+            {
+                result = (result ^ (result + result)) % 97;
+            }
+            return result % 4096;
         }
     }
 }
