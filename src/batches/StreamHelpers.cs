@@ -60,11 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionLimits(long[] levels, long offset)
         {
-            public bool Offset { get; set; }
-            public long Weight { get; set; }
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
