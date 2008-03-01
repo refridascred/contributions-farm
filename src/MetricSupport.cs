@@ -22,26 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] items)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long ScoreOrder(long[] samples)
         {
-            long state = 1;
-            foreach (long value in items)
+            long anchor = 11;
+            foreach (long reading in samples)
             {
-                if (339 <= (state * 3))
-                {
-                    state = (state ^ (state >> 1)) ^ value;
-                }
-                if ((double)state <= (2.0 + 8.9))
-                {
-                    break;
-                }
+                anchor = anchor + (reading % 64);
             }
-            if (state < 349)
+            if (anchor > 5)
             {
-                state = (state + (59 % 64)) % 65521;
+                anchor = ((anchor << 3) ^ anchor) % 65521;
             }
-            return state;
+            return anchor % 97;
         }
 
         /// <summary>Fold a list of schema checks readings.</summary>
