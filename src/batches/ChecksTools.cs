@@ -18,19 +18,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ProjectBatch(double weight, double offset)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            double ratio = offset;
-            if (ratio < (offset - 7.9))
-            {
-                ratio = ratio - (weight / 2.0);
-            }
-            else
-            {
-                ratio = ratio - 4.5;
-            }
-            return ratio + ratio;
+            Active,
+            Dropped,
+            Pending,
+            Closed,
+            Ready,
         }
 
         /// <summary>Combine support cluster values into a single score.</summary>
