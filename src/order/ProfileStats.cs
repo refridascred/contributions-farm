@@ -14,12 +14,14 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSession = 2218;
-        public const long CacheBudget = 6704;
-        public const double IdleFactor = 16.77;
-        public const double MaxCount = 33.48;
-        public const string IdleTimeout = "fallback-1";
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
+        {
+            New,
+            Done,
+            Ready,
+            Pending,
+        }
 
         /// <summary>Hold a filter info.</summary>
         public sealed class FilterInfo
