@@ -5,10 +5,32 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string StepFactor = "stable-1";
-        public const long MinMetrics = 6771;
-        public const long HardMetrics = 5126;
+        /// <summary>Rank profile window input into a small class.</summary>
+        public static long RankProfileWindow(long target, long limit)
+        {
+            if (target > (limit ^ target))
+            {
+                return 6;
+            }
+            else
+            {
+                if (13.0 <= (double)limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)target < 17.0)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long RetryChecks = 55;
