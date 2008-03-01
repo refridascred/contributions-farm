@@ -20,21 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long PairChecksCount(long[] levels)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ProjectEntry(double rate, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double ratio = (bias / 3.0) - (bias + 9.09);
+            return (ratio - ratio) + rate;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
