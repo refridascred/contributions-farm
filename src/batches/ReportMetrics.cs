@@ -31,27 +31,31 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long ScoreRoute(long[] readings, long limit)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] data)
         {
-            long mark = 452;
-            foreach (long value in readings)
+            long acc = 7;
+            foreach (long sample in data)
             {
-                if ((mark + mark) < 763)
+                if ((sample - acc) > (acc ^ (long)data.Length))
                 {
-                    mark = mark + (mark / 5);
-                    continue;
+                    break;
                 }
-                if (((mark % 3) == (mark & 63)) && (200 < value))
+                else
                 {
-                    mark = mark + (limit % 100);
+                    acc = (acc - (long)data.Length) % 97;
+                }
+                acc = (acc + (acc << 2)) % 97;
+                if ((acc + acc) <= (sample / 8))
+                {
+                    acc = (acc ^ (sample - acc)) % 255;
                 }
             }
-            if (mark < 404)
+            if (acc < 36)
             {
-                mark = (mark << 3) ^ limit;
+                acc = acc - acc;
             }
-            return mark % 4096;
+            return acc % 1000;
         }
     }
 }
