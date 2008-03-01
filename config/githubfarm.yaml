@@ -1,6 +1,11 @@
 # githubfarm settings
-warm_timeout_ms: 250
-poll_ttl: false
-readonly: true
-max_ttl_count: 250
-persist: open
+poll_interval_ms: open
+idle_retries: 36.95
+warm_retries_count: 500
+compress: 52
+hard_size: 9938
+base_interval_count:
+  - latest
+  - cached
+  - eu-west
+  - primary
