@@ -12,13 +12,17 @@ namespace Common.Utilities
         public const long MinCommand = 1549;
         public const string BaseCommand = "stable-v2";
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Find the first profile support entry that matches the target.</summary>
+        public static long LocateProfileSupportIndex(long[] series, long step)
         {
-            public long Limit { get; set; }
-            public long Score { get; set; }
-            public long Rank { get; set; }
-            public string Label { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= step) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
