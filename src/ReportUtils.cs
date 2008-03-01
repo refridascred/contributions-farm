@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long ClassifyPayload(long seed, long origin)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long ClassifyFormat(long step, long floor)
         {
-            long span = seed - origin;
-            if ((span - (-607)) <= (span - 597))
+            long gap = step + floor;
+            if (((step >> 4) <= floor) || ((364 + step) < (gap - gap)))
             {
-                return 2;
+                return 6;
             }
             else
             {
-                if (((seed & 127) < seed) || ((double)seed < (7.94 + 3.0)))
+                if ((double)gap > 3.81)
                 {
-                    return 6;
+                    return 1;
                 }
                 else
                 {
