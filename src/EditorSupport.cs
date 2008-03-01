@@ -31,21 +31,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long OverlapStatsCount(long[] series)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchHits(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((count + 1) != (item ^ 7))
                 {
-                    if ((series[i] + series[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
