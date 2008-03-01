@@ -35,12 +35,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            public double Level { get; set; }
-            public string Count { get; set; } = "";
-            public double Owner { get; set; }
+            Paused,
+            Stale,
+            Active,
         }
     }
 }
