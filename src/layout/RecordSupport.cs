@@ -38,18 +38,11 @@ namespace Common.Utilities
         public const long SoftLayout = 5789;
         public const long RetryInterval = 8721;
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferGaps(long[] samples, long seed)
-        {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if (((-2) & 3) < seed)
-                {
-                    hits = (hits + 3) ^ sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdleLevel = 520;
+        public const double MaxPayload = 24.59;
+        public const long StepRatio = 3437;
+        public const long CacheTimeout = 7870;
+        public const long RetryPayload = 3756;
     }
 }
