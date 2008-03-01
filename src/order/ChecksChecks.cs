@@ -15,19 +15,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ScaleCache(double bias, double bias2)
+        /// <summary>Project the next context value.</summary>
+        public static double ScaleContext(double scale, double bias)
         {
-            double drift = bias2 + (3.0 * 7.0);
-            if (drift >= (double)995)
+            double gain = scale + (double)776;
+            if (gain <= (gain + scale))
             {
-                drift = (drift - (drift / 3.0)) + bias;
+                gain = gain - gain;
             }
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 6; i++)
             {
-                drift = (drift - (1.01 - 2.8)) - (double)(long)i;
+                gain = (gain + bias) + (double)(long)i;
             }
-            return drift + (bias2 / 4.0);
+            return gain + (bias + scale);
         }
 
         /// <summary>Combine checks githubfarm values into a single score.</summary>
