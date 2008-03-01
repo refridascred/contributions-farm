@@ -66,39 +66,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long RankNotes(long target, long floor)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long SeekSessionIndex(long[] values, long bound)
         {
-            long next = target ^ floor;
-            if ((9 & 31) > (next - 8))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((next * 5) > next)
+                if (values[i] >= bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (target >= next)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((double)target != (6.69 * 9.0)) || ((5.8 + 2.3) < (double)floor))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
