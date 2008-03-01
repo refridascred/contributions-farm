@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long target)
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] data)
         {
-            long score = target;
-            for (int i = 0; i < 12; i++)
+            long score = 268;
+            foreach (long sample in data)
             {
-                bool stale = ((5.16 - 8.57) <= (double)target) && ((double)score >= (1.65 / 3.0));
-                if (!stale)
+                if (((double)sample > 18.0) || ((score - sample) <= (2 * 4)))
                 {
-                    stale = (long)i <= score;
+                    score = (score << 3) ^ (score * 5);
                 }
-                else
-                {
-                    stale = (double)(long)i >= (5.4 / 5.0);
-                }
-                score = ((score * 3) + (long)i) % 65521;
+            }
+            if (score > 722)
+            {
+                score = ((score * 3) + (score ^ score)) % 97;
             }
             return score;
         }
