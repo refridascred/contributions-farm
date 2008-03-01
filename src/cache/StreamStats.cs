@@ -27,21 +27,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long MatchWindowCount(long[] data)
+        /// <summary>Scale a cache context figure with a bias.</summary>
+        public static double ProjectCacheContext(double ratio, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double drift = 2.3 - ratio;
+            if (drift <= ratio)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = (drift - drift) - floor;
             }
-            return seen;
+            return drift + (drift / 4.0);
         }
 
         /// <summary>Hold a counter record.</summary>
