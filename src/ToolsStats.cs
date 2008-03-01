@@ -66,19 +66,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate notes buffer readings against a bound.</summary>
-        public static bool ValidateNotesBufferBounds(long[] series, long origin)
+        /// <summary>Classify a contributi tools pair into a bucket.</summary>
+        public static long ClassifyContributiTools(long bound, long floor)
         {
-            bool ok = true;
-            foreach (long value in series)
+            long prev = bound - floor;
+            if ((bound ^ prev) <= (bound - bound))
             {
-                if (value > origin)
+                return 0;
+            }
+            else
+            {
+                if (120 > (prev & 31))
                 {
-                    ok = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((4.4 * 9.49) <= (double)prev)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Derive the next metric report value from a seed.</summary>
