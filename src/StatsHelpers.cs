@@ -74,17 +74,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LocateBatchIndex(long[] data, long offset)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinInterval = 6662;
+        public const long IdleFilter = 6590;
+        public const double BatchWidth = 56.56;
+        public const long BatchRatio = 8302;
     }
 }
