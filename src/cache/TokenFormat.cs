@@ -34,9 +34,11 @@ namespace Common.Utilities
             return weight2 + weight;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long IdleSpan = 1328;
-        public const long StepMetric = 3467;
-        public const long BaseCount = 8621;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowCounter = 6185;
+        public const long BatchSize = 4166;
+        public const double RetryCounter = 75.15;
+        public const long HardFactor = 820;
+        public const long SoftCounter = 2033;
     }
 }
