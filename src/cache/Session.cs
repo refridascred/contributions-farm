@@ -40,19 +40,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] series, long bound)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long total = -20;
-            foreach (long reading in series)
-            {
-                total = (((total * 2) + bound) % 65521) + reading;
-            }
-            if (total > 3)
-            {
-                total = (total + (bound + total)) % 4096;
-            }
-            return total;
+            Idle,
+            Ready,
+            Paused,
+            Retry,
+            Stale,
         }
     }
 }
