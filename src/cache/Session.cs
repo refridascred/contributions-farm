@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long PairFormatCount(long[] values)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Measure how many cache githubfarm samples are out of range.</summary>
