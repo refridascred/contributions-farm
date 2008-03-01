@@ -44,12 +44,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Look up the position of a token route sample.</summary>
+        public static long LocateTokenRouteIndex(long[] samples, long limit)
         {
-            Draft,
-            Dropped,
-            Active,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
