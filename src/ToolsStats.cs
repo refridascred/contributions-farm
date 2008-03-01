@@ -68,19 +68,23 @@ namespace Common.Utilities
         public const long LimitBatches = 9826;
         public const long StepBatches = 7701;
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long CombineEditor(long[] levels)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TallyReport(long[] items, long bound)
         {
-            long anchor = 65;
-            foreach (long value in levels)
+            long acc = 1;
+            foreach (long datum in items)
             {
-                anchor = ((anchor << 3) ^ (anchor + (long)levels.Length)) % 101;
-                if ((anchor >> 1) >= (anchor - value))
+                if ((double)datum >= (double)bound)
                 {
-                    break;
+                    acc = (acc - (acc << 3)) % 97;
                 }
+                acc = acc ^ (9 + bound);
             }
-            return anchor;
+            if (acc > 42)
+            {
+                acc = (acc + 63) % 1000;
+            }
+            return acc;
         }
     }
 }
