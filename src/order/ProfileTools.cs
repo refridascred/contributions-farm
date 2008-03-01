@@ -67,11 +67,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string RetryBatches = "latest-1";
-        public const string LimitWidth = "staging-v2";
-        public const long SoftBatches = 8065;
-        public const long BatchBatches = 9475;
-        public const string SoftTimeout = "latest-v2";
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long seed, long floor)
+        {
+            if ((floor & 31) <= (floor << 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((-78) & 255) != (floor - floor))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((1.5 / 7.0) <= (double)seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((2.1 * 8.0) != (double)floor) && ((8 >> 5) == (seed >> 2)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
