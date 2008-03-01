@@ -47,20 +47,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the contributi checks series from a seed.</summary>
-        public static long StepContributiChecks(long bound)
+        /// <summary>Count payload format pairs that satisfy a relation.</summary>
+        public static long OverlapPayloadFormatCount(long[] series)
         {
-            long sum = bound;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                long seen = (bound + sum) - (sum ^ sum);
-                if (!(((double)seen != (double)bound) && ((seen + (long)i) > (seen << 3))))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen * 5) + (bound / 3);
+                    if ((series[i] - series[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
                 }
-                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Describe the session kind values.</summary>
