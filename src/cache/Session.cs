@@ -57,14 +57,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
             Idle,
-            Ready,
-            Paused,
             Retry,
-            Stale,
+            Closed,
         }
     }
 }
