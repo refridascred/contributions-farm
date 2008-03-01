@@ -55,15 +55,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] readings, long offset)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long sum = 65;
-            foreach (long cell in readings)
-            {
-                sum = (((sum ^ (8 % 10)) % 101) ^ cell) - offset;
-            }
-            return sum % 4096;
+            public double Token { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Describe the window level values.</summary>
