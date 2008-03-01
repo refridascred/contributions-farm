@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long RankNotes(long step, long seed)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long CompareSupportCount(long[] series)
         {
-            if ((double)seed != (8.5 / 5.0))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)seed == (2.56 + 9.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((step ^ 77) != (seed << 1))
+                    if ((series[i] ^ series[j]) > 3)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Adjust a filter reading.</summary>
