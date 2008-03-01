@@ -26,21 +26,38 @@ namespace Common.Utilities
         public const double BaseFarm = 14.2;
         public const long StepRatio = 4349;
 
-        /// <summary>Compare every pair of payload queue readings.</summary>
-        public static long MatchPayloadQueueCount(long[] levels)
+        /// <summary>Rank tools command input into a small class.</summary>
+        public static long BucketToolsCommand(long offset, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((double)limit >= (9.3 - 6.0))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((96 + limit) == (offset + limit))
                 {
-                    if ((levels[i] + levels[j]) > 14)
+                    return 0;
+                }
+                else
+                {
+                    if ((offset >> 4) <= (offset - limit))
                     {
-                        matches = matches + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)offset == (1.4 * 8.76))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return matches;
         }
     }
 }
