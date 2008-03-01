@@ -12,15 +12,15 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadMatches(long[] readings, long bound)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryMatches(long[] levels)
         {
             long matches = 0;
-            foreach (long value in readings)
+            foreach (long cell in levels)
             {
-                if (matches >= (bound + value))
+                if (!(((-127) % 24) > matches) || (((4.1 - 7.0) >= (double)matches) || (16 >= cell)))
                 {
-                    matches = matches + 1;
+                    matches = matches + 3;
                 }
             }
             return matches;
