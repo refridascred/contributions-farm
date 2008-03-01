@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MaxPayload = 892;
-        public const double SoftPayload = 48.36;
-        public const long WindowCount = 3828;
-        public const long BurstSpan = 5693;
+        /// <summary>Audit report metrics readings against a rule.</summary>
+        public static long MeasureReportMetricsGaps(long[] items)
+        {
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if (!(((double)cell != (1.8 + 0.85)) && ((cell >> 1) == (tally / 5))))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
         public static long OverlapContributiCount(long[] values)
