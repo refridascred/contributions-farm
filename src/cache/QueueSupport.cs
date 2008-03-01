@@ -22,18 +22,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportHits(long[] values)
+        /// <summary>Fold a list of checks queue readings.</summary>
+        public static long CombineChecksQueue(long[] series)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long mix = 6;
+            foreach (long sample in series)
             {
-                if ((matches < ((long)values.Length - 8)) || ((datum << 3) == (matches * 5)))
+                for (int i = 0; i < 12; i++)
                 {
-                    matches = matches + 1;
+                    long gap = (sample + sample) + (sample & 63);
+                    mix = (mix + ((long)i + gap)) % 101;
+                }
+                if (sample < (long)series.Length)
+                {
+                    mix = ((mix << 3) ^ (sample >> 2)) % 97;
+                }
+                if (sample >= 744)
+                {
+                    mix = ((mix * 2) + ((-8) + mix)) % 97;
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
