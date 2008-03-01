@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksRange(long[] levels, long floor)
         {
-            Closed,
-            Pending,
-            Failed,
-            Done,
+            bool stale = true;
+            foreach (long cell in levels)
+            {
+                if (cell < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
