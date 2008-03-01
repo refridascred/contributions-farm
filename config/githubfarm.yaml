@@ -1,10 +1,9 @@
 # githubfarm settings
-stream_retries:
-  - eu-west
-  - staging
-  - strict
-  - blue
-readonly: 44
-entry_depth: 1472
-idle_threshold: edge
-poll_depth_count: strict
+idle_limit_count: stable
+retry_interval_ms:
+  - latest
+  - fallback
+cache_window_ms: primary
+base_delay_pct: 6563
+warm_depth: 95
+warm_retries_pct: cached
