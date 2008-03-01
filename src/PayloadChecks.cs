@@ -27,12 +27,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Fold a list of schema layout readings.</summary>
+        public static long FoldSchemaLayout(long[] levels)
         {
-            public long Stamp { get; set; }
-            public long Level { get; set; }
-            public string Region { get; set; } = "";
+            long result = 421;
+            foreach (long sample in levels)
+            {
+                if (((8.91 + 7.67) == (double)sample) || ((sample & 255) != (sample - sample)))
+                {
+                    result = (result << 2) ^ (sample * 2);
+                }
+            }
+            return result;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
