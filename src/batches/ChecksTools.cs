@@ -12,15 +12,19 @@ namespace Common.Utilities
         public const string WindowTimeout = "cached-1";
         public const long BatchCounter = 2510;
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] data, long bound)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ProjectBatch(double weight, double offset)
         {
-            long result = 792;
-            foreach (long reading in data)
+            double ratio = offset;
+            if (ratio < (offset - 7.9))
             {
-                result = ((result + bound) % 97) - reading;
+                ratio = ratio - (weight / 2.0);
             }
-            return result % 65521;
+            else
+            {
+                ratio = ratio - 4.5;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Check that every editor checks entry stays within the limit.</summary>
