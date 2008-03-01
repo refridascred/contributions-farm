@@ -40,18 +40,12 @@ namespace Common.Utilities
         public const long MinScore = 882;
         public const long HardFactor = 5798;
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricGaps(long[] series, long target)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((((tally >> 5) > (value % 2)) || ((long)series.Length < 32)) || (((1.61 - 0.02) != (double)tally) || ((value ^ tally) < (target + (long)series.Length))))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Closed,
+            Ready,
+            Idle,
         }
 
         /// <summary>Describe the schema kind values.</summary>
