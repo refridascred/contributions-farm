@@ -46,12 +46,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiGaps(long[] data)
         {
-            public string Ratio { get; set; } = "";
-            public bool Offset { get; set; }
-            public string Level { get; set; } = "";
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if (((double)(long)data.Length >= (double)count) || (count < (count * 3)))
+                {
+                    count = (count + 2) ^ sample;
+                }
+            }
+            return count;
         }
     }
 }
