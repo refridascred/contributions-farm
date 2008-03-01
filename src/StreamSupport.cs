@@ -33,24 +33,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long offset, long seed)
+        /// <summary>Match up command samples.</summary>
+        public static long PairCommandCount(long[] items)
         {
-            if (!((seed - 71) < seed))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset < (seed << 2)) || ((double)seed < (10.0 - 3.1)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    if ((items[i] ^ items[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
     }
 }
