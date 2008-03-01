@@ -1,5 +1,5 @@
 {
-  "warm_interval_s": ["primary", "staging", "legacy"],
-  "audit": 250,
-  "batch_delay": "latest"
+  "flush_capacity_pct": "fallback",
+  "audit": 9,
+  "enabled": [427, 114, 243, 445]
 }
