@@ -1,29 +1,5 @@
 # githubfarm settings
-payload_threshold: open
-soft_delay_pct:
-  default_delay_ms: legacy
-  flush_window:
-    - 288
-    - 210
-    - 439
-    - 448
-  compress: 70.76
-  hard_size: 250
-schema_limit:
-  - 51
-  - 49
-  - 155
-  - 137
-base_depth_ms: local
-queue_delay:
-  base_size: stable
-  schema_ttl: 3256
-  min_depth_count:
-    burst_interval_s: standard
-    profile_limit: fallback
-    soft_limit_count: 58.92
-    buffer_ratio: primary
-    burst_ratio:
-      - 148
-      - 152
-    warm_ratio_pct: true
+warm_window_ms: open
+default_ttl_ms: true
+min_depth_s: 3188
+batch_limit: 74
