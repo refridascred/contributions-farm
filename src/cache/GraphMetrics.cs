@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstDepth = 6867;
-        public const double MaxCommits = 94.09;
-        public const long CacheCommits = 4363;
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
+        {
+            public bool Ratio { get; set; }
+            public bool Offset { get; set; }
+            public string Region { get; set; } = "";
+            public long Size { get; set; }
+        }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
         public static long AuditCacheOutliers(long[] readings)
