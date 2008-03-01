@@ -31,11 +31,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Adjust a batches reading.</summary>
+        public static double AdjustBatches(double gain, double floor)
         {
-            public long Label { get; set; }
-            public bool Region { get; set; }
+            double gain2 = 4.77;
+            if (gain2 > 7.3)
+            {
+                gain2 = ((gain2 + (gain2 / 3.0)) - gain) + floor;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain2 = (gain2 + (gain2 / 2.0)) - (double)(long)i;
+            }
+            return gain2 - 4.0;
         }
     }
 }
