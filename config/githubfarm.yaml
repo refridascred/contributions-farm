@@ -1,12 +1,16 @@
 # githubfarm settings
-max_retries_ms: fallback
-payload_timeout:
-  profile_limit: 500
-  contributi_size:
-    - green
+sync_depth: 5.13
+batch_retries: 9322
+poll_delay: 30
+base_threshold_ms: 64.4
+retry_window:
+  cache_retries: green
+  readonly: true
+  poll_depth_ms: 85
+  hard_size: cached
+  route_retries:
+    - edge
+    - local
     - standard
-    - strict
-  warm_timeout: edge
-retry_depth: true
-entry_window: 1977
-profile_ratio: latest
+    - fallback
+compress: cached
