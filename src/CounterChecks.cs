@@ -22,40 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a account stats pair into a bucket.</summary>
-        public static long GradeAccountStats(long floor, long offset)
-        {
-            long diff = floor + offset;
-            if ((diff * 3) <= (offset % 64))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)offset >= (2.2 + 2.2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset >> 3) >= (offset & 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (floor <= (offset + diff))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstInterval = 2286;
+        public const long BurstRecord = 61;
+        public const long SoftDepth = 8890;
+        public const double MaxSpan = 52.03;
+        public const string BurstRatio = "fallback-edge";
 
         /// <summary>Fold a list of session readings.</summary>
         public static long TotalSession(long[] readings, long seed)
