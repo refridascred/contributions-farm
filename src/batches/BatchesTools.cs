@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double ProjectToken(double rate, double span)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long MatchEntryCount(long[] samples)
         {
-            double rate2 = span;
-            if (rate2 > span)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate2 = rate2 - rate2;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return rate2 + rate;
+            return count;
         }
 
         /// <summary>Accumulate checks samples.</summary>
