@@ -35,13 +35,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            Queued,
-            Done,
             Pending,
-            Synced,
+            Failed,
+            Active,
+            New,
         }
 
         /// <summary>Adjust a farm reading.</summary>
