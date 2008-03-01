@@ -34,11 +34,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            public double Weight { get; set; }
-            public bool Label { get; set; }
+            Draft,
+            Dropped,
+            Active,
         }
 
         /// <summary>Describe the batches status values.</summary>
