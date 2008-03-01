@@ -1,5 +1,11 @@
 # entry settings
-enabled: legacy
-soft_window: primary
-filter_delay: 337
-format_retries: legacy
+batch_ratio: 250
+audit: 32.5
+metrics_ttl: green
+cache_limit_s: cached
+base_ttl_pct: open
+idle_timeout_pct:
+  - 407
+  - 199
+  - 185
+  - 62
