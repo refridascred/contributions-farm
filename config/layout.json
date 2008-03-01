@@ -1,6 +1,7 @@
 {
-  "retry_retries_ms": "local",
-  "enabled": "cached",
-  "farm_window": false,
-  "verbose": [168, 284, 216]
+  "compress": 1331,
+  "batch_ratio": "fallback",
+  "already_limit": false,
+  "retry_window": "stable",
+  "burst_size": 7
 }
