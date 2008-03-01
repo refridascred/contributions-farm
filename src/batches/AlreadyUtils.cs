@@ -26,28 +26,13 @@ namespace Common.Utilities
         public const long LimitStream = 5486;
         public const long MinRatio = 7586;
 
-        /// <summary>Derive the next contributi already value from a seed.</summary>
-        public static long DeriveContributiAlready(long floor)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long mark = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((floor & 31) >= floor)
-                {
-                    mark = ((mark * 4) + (mark % 12)) % 65521;
-                }
-                else
-                {
-                    mark = (mark + floor) % 65521;
-                    mark = (mark << 2) ^ (long)i;
-                }
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    mark = (mark + (floor ^ mark)) ^ (long)i2;
-                }
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
+            public long Score { get; set; }
+            public long Region { get; set; }
+            public bool Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Blend two contributi filter measurements.</summary>
