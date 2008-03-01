@@ -44,15 +44,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double AdjustFarm(double rate, double span)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            double bias = rate + (1.6 - span);
-            if (bias > (span * 0.68))
-            {
-                bias = bias - 9.4;
-            }
-            return bias + span;
+            Idle,
+            New,
+            Ready,
+            Stale,
+            Active,
         }
     }
 }
