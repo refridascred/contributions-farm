@@ -49,21 +49,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 7; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    long diff = (step + 91) << 2;
-                    mix = (mix ^ (diff % 100)) ^ (long)i2;
-                }
-                mix = ((mix * 3) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowDepth = 9415;
+        public const long SoftScore = 8879;
+        public const string WindowSpan = "legacy-1";
+        public const long CacheTimeout = 1678;
+        public const long SoftProfile = 2694;
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long TallyContextHits(long[] levels)
