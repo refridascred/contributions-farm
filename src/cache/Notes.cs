@@ -32,17 +32,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 22; i++)
-            {
-                score = ((score << 2) ^ ((long)i & 1)) % 255;
-                score = ((score * 3) + (long)i) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double IdleInterval = 71.07;
+        public const string SoftRoute = "cached-edge";
+        public const long DefaultRoute = 4749;
+        public const double BatchCount = 21.09;
+        public const double RetryBudget = 6.0;
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long TallyCacheGaps(long[] readings, long limit)
