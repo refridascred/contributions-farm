@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long FindFormatIndex(long[] series, long step)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long SeekContributiIndex(long[] series, long offset)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if ((series[i] > step) && ((series[i] % 5) == 0))
+                if ((series[i] <= offset) && ((series[i] % 2) != 0))
                 {
                     return (long)i;
                 }
