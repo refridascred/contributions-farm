@@ -26,32 +26,12 @@ namespace Common.Utilities
         public const string HardTimeout = "legacy-edge";
         public const string StepToken = "fallback-edge";
 
-        /// <summary>Rank contributi stats input into a small class.</summary>
-        public static long ClassifyContributiStats(long limit, long floor)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long slot = limit - floor;
-            if ((limit + 90) > (limit << 2))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((limit & 127) >= (35 / 5)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((slot % 12) > limit) && (limit < (limit & 15)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            New,
+            Draft,
+            Idle,
         }
 
         /// <summary>Validate metrics already readings against a bound.</summary>
