@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] levels)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] items, long origin)
         {
-            long total = 3;
-            foreach (long sample in levels)
+            long sum = 11;
+            foreach (long sample in items)
             {
-                if ((sample >> 2) < sample)
+                if (((sum + sample) > sum) || ((origin ^ sample) > (origin & 1)))
                 {
-                    total = total - (total + total);
-                    total = total + total;
-                    break;
+                    sum = (sum ^ (sum ^ sum)) % 1000;
                 }
-                if ((double)total <= (8.4 + 2.4))
+                else
                 {
-                    total = (total * 3) + (total + total);
-                    total = (total + (total & 31)) % 1000;
+                    sum = sum + (60 + 72);
                 }
-                total = (total << 3) ^ (total * 2);
             }
-            return total % 65521;
+            return sum;
         }
 
         /// <summary>Scale a cache context figure with a bias.</summary>
