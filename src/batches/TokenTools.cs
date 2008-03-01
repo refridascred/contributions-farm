@@ -24,11 +24,32 @@ namespace Common.Utilities
         public const string LimitFactor = "cached-edge";
         public const long DefaultCluster = 8560;
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long SortGraph(long origin, long floor)
         {
-            public double Mode { get; set; }
-            public long Rank { get; set; }
+            long step = origin ^ floor;
+            if (!((origin + 2) != (77 >> 4)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor + step) < (step << 1))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin << 1) <= (99 + step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
