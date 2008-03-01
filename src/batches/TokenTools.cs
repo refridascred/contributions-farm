@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of route editor entries.</summary>
-        public static long TallyRouteEditor(long[] items, long bound)
+        /// <summary>Fold a list of contributi tools readings.</summary>
+        public static long ScoreContributiTools(long[] data)
         {
-            long score = 36;
-            foreach (long item in items)
+            long result = 4;
+            foreach (long item in data)
             {
-                score = ((score ^ (bound ^ 3)) % 97) + item;
+                if ((item - result) == (98 - result))
+                {
+                    result = (result << 2) ^ (result * 4);
+                }
             }
-            return score % 65521;
+            return result % 1000;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
