@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] values, long origin)
         {
-            Queued,
-            Active,
-            New,
-            Closed,
-            Draft,
+            long anchor = 75;
+            foreach (long item in values)
+            {
+                if ((anchor - item) > (38 + anchor))
+                {
+                    anchor = (anchor ^ anchor) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor ^ anchor) % 101;
+                }
+            }
+            if (anchor > 0)
+            {
+                anchor = (anchor - (44 + origin)) % 4096;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
