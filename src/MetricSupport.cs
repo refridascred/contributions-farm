@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstScore = 429;
-        public const string BurstBuffer = "alpha-v2";
-        public const string HardTimeout = "strict-edge";
+        /// <summary>Match up profile samples.</summary>
+        public static long PairProfileCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of report readings.</summary>
         public static long CombineReport(long[] items)
