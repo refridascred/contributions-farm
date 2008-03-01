@@ -38,18 +38,20 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionMatches(long[] data)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long RollAlready(long seed)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long result = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if ((reading + reading) == (reading - seen))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    seen = seen + 3;
+                    result = ((result << 3) ^ (result / 2)) ^ (long)i2;
+                    result = result - (result >> 2);
                 }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
