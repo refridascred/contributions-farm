@@ -45,16 +45,11 @@ namespace Common.Utilities
             return drift - weight;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double bias, double span)
-        {
-            double gain = 5.82;
-            for (int i = 0; i < 5; i++)
-            {
-                gain = ((gain - span) + (double)(long)i) + bias;
-            }
-            return gain + gain;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double WindowSession = 13.53;
+        public const long BaseSession = 7615;
+        public const string SoftSession = "primary-1";
+        public const string SoftCount = "strict-edge";
 
         /// <summary>Fold a list of window readings.</summary>
         public static long DigestWindow(long[] data, long offset)
