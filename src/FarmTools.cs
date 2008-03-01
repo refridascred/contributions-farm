@@ -40,25 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank entry tools input into a small class.</summary>
-        public static long BucketEntryTools(long limit, long limit2)
-        {
-            if ((double)limit <= (3.02 / 4.0))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((limit > (limit ^ limit)) || ((limit << 3) >= (limit2 << 1)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchContributi = 522;
+        public const long IdleContributi = 8969;
+        public const long StepContributi = 8864;
+        public const double BaseSize = 4.83;
 
         /// <summary>Fold a list of tools already readings.</summary>
         public static long DigestToolsAlready(long[] data)
