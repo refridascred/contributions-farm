@@ -28,12 +28,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepEditor = 5985;
-        public const long IdleEditor = 4295;
-        public const long RetryEditor = 7291;
-        public const long MaxCount = 5261;
-        public const string BaseEditor = "latest-edge";
+        /// <summary>Define context limits and defaults.</summary>
+        public const double HardContext = 23.66;
+        public const long MaxWidth = 2180;
+        public const long RetryContext = 7768;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long RetryCount = 899;
