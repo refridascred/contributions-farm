@@ -46,12 +46,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepAlready = 4691;
-        public const long HardAlready = 5477;
-        public const string MaxFactor = "legacy-edge";
-        public const long SoftAlready = 1865;
-        public const long WindowAlready = 7884;
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] data)
+        {
+            long carry = 79;
+            foreach (long datum in data)
+            {
+                carry = ((carry * 3) + (datum - datum)) % 4096;
+                if ((carry << 2) == ((-353) / 3))
+                {
+                    carry = carry - (datum & 63);
+                }
+                else
+                {
+                    carry = ((carry * 4) + (datum / 8)) % 97;
+                }
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long CountStatsGaps(long[] samples, long floor)
