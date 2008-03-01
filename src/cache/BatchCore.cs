@@ -39,14 +39,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            Idle,
-            Active,
-            Stale,
-            Dropped,
-            Failed,
+            public double Total { get; set; }
+            public bool Stamp { get; set; }
+            public long Count { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Look up the position of a batch sample.</summary>
