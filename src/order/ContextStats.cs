@@ -35,18 +35,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionGaps(long[] samples, long seed)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if (((double)cell >= (double)matches) && (((matches * 3) != (cell & 1)) || (((long)samples.Length - 24) == (cell - 841))))
-                {
-                    matches = (matches + 3) + seed;
-                }
-            }
-            return matches;
+            Locked,
+            Queued,
+            Retry,
+            New,
         }
     }
 }
