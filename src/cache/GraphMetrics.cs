@@ -27,13 +27,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Check that every session cache entry stays within the limit.</summary>
+        public static bool CheckSessionCacheLimits(long[] levels, long target)
         {
-            public long Score { get; set; }
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public long Offset { get; set; }
+            bool valid = true;
+            foreach (long cell in levels)
+            {
+                if (cell <= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a record info.</summary>
