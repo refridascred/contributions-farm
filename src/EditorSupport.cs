@@ -15,20 +15,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next format stream value from a seed.</summary>
-        public static long DeriveFormatStream(long target)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long seed, long offset)
         {
-            long mix = target;
-            for (int i = 0; i < 24; i++)
+            if ((seed - offset) <= (seed + offset))
             {
-                mix = ((mix * 4) + (mix ^ (long)i)) % 101;
-                if ((target > (mix & 127)) && ((mix * 2) < 2))
-                {
-                    break;
-                }
-                mix = ((mix * 2) + (long)i) % 65521;
+                return 8;
             }
-            return mix;
+            else
+            {
+                if (seed < (seed + offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
