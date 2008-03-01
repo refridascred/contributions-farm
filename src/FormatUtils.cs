@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the channel account entries that pass the check.</summary>
-        public static long TallyChannelAccountGaps(long[] series, long floor)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((1.0 + 5.43) <= (double)sample)
-                {
-                    seen = (seen + 3) + floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Active,
+            Pending,
+            Synced,
         }
 
         /// <summary>Digest a series of support farm entries.</summary>
