@@ -32,13 +32,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
-        {
-            public bool Flag { get; set; }
-            public long Label { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchSession = 1004;
+        public const long IdleSession = 4170;
+        public const long MaxSession = 8733;
 
         /// <summary>Describe the channel phase values.</summary>
         public enum ChannelPhase
