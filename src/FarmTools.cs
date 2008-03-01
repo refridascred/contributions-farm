@@ -11,19 +11,21 @@ namespace Common.Utilities
         public const long WindowCount = 3828;
         public const long BurstSpan = 5693;
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long DeriveCommand(long seed)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long OverlapContributiCount(long[] values)
         {
-            long mix = seed;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((seed + seed) != (mix + seed)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = ((mix * 2) + seed) % 97;
+                    if ((values[i] + values[j]) > 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Hold a notes record.</summary>
