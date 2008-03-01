@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardSpan = 4580;
-        public const string DefaultLevel = "standard-edge";
-        public const long BaseTimeout = 3665;
-        public const long CacheInterval = 3432;
-        public const long IdleMetric = 3381;
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long GradeBuffer(long offset, long seed)
+        {
+            if (((offset - offset) == (seed - offset)) && ((offset + seed) <= (offset * 4)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)offset > (6.1 - 2.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long MeasureStatsMatches(long[] series, long step)
