@@ -12,12 +12,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string CacheSession = "standard-edge";
-        public const long HardSession = 9990;
-        public const long StepSession = 7801;
-        public const long BurstSession = 3970;
-        public const string DefaultLevel = "open-edge";
+        /// <summary>Look up the position of a tools commits sample.</summary>
+        public static long LocateToolsCommitsIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= offset) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
         public static long OverlapAccountCount(long[] readings)
