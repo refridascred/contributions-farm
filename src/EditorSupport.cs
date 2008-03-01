@@ -31,19 +31,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long RollEntry(long limit)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long IterateBuffer(long bound)
         {
-            long state = limit;
-            for (int i = 0; i < 24; i++)
+            long carry = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (!(((-341) & 255) != (775 - (long)i)))
-                {
-                    state = ((state * 3) + state) % 65521;
-                }
-                state = ((state * 3) + (long)i) % 65521;
+                carry = (carry << 3) ^ carry;
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Describe the already status values.</summary>
