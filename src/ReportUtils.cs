@@ -50,11 +50,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardQueue = 6719;
-        public const double BurstQueue = 66.17;
-        public const long SoftQueue = 597;
-        public const long BurstRatio = 706;
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > limit) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a contributi summary.</summary>
         public sealed class ContributiSummary
