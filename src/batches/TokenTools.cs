@@ -36,13 +36,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
-        {
-            Done,
-            Stale,
-            Paused,
-            Idle,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MaxScore = 94.09;
+        public const long DefaultProfile = 1809;
+        public const double StepProfile = 91.29;
     }
 }
