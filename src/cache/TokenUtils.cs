@@ -19,20 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long RollAlready(long target)
+        /// <summary>Blend two window measurements.</summary>
+        public static double SmoothWindow(double bias, double bias2)
         {
-            long mark = target;
-            for (int i = 0; i < 11; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    mark = ((mark * 4) + ((-57) % 24)) ^ (long)i2;
-                }
-                mark = (mark ^ (target << 1)) % 65521;
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
+            double load = 9.0;
+            return ((load + 2.51) + bias) + bias2;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
