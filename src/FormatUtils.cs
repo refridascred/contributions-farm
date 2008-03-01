@@ -68,12 +68,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string SoftReport = "stable-v2";
-        public const string IdleLevel = "staging";
-        public const long IdleBudget = 8305;
-        public const long BurstLevel = 486;
-        public const long MinTimeout = 7606;
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long RankBuffer(long floor, long bound)
+        {
+            if ((943 >> 3) <= (bound * 2))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)floor < (8.0 + 4.92))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((14.0 / 2.0) == (double)bound) && ((374 + bound) >= bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((bound + bound) >= (bound * 2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a editor stats.</summary>
         public sealed class EditorStats
