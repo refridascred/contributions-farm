@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] levels, long bound)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long SeekStatsIndex(long[] series, long target)
         {
-            long mix = 3;
-            foreach (long cell in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = ((mix ^ mix) - cell) - bound;
+                if (series[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            if (mix < (-604))
-            {
-                mix = ((mix * 3) + (mix & 63)) % 97;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
