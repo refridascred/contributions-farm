@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MinToken = 80.8;
-        public const long DefaultToken = 8282;
-        public const long CacheToken = 4696;
-        public const long RetryBudget = 3687;
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TallyCommits(long[] series, long floor)
+        {
+            long mark = 79;
+            foreach (long item in series)
+            {
+                if ((floor - floor) != (floor + mark))
+                {
+                    mark = ((mark ^ 33) % 4096) - item;
+                }
+            }
+            if (mark > 79)
+            {
+                mark = mark ^ (floor << 2);
+            }
+            return mark;
+        }
 
         /// <summary>Validate record window readings against a bound.</summary>
         public static bool CheckRecordWindowLimits(long[] levels, long offset)
