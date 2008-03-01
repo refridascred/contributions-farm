@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long step, long target)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long gap = step + target;
-            if (!((target << 3) >= (gap ^ step)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((double)step >= (7.1 * 7.72)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Ready,
+            Done,
+            Draft,
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
