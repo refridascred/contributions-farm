@@ -1,10 +1,7 @@
 {
-  "enabled": 30,
-  "persist": 37,
-  "warm_limit_count": 500,
-  "cache_window_ms": {
-    "min_limit": true,
-    "cache_ttl_ms": "latest",
-    "readonly": "stable"
-  }
+  "persist": 68.03,
+  "queue_ttl": 8392,
+  "context_limit": "blue",
+  "warm_ttl": true,
+  "base_depth_s": 100
 }
