@@ -13,17 +13,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long FindStatsIndex(long[] samples, long origin)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryMatches(long[] items, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if (samples[i] >= origin)
+                if (!((1.2 / 7.0) >= (double)entry) && !(entry <= (matches >> 1)))
                 {
-                    return (long)i;
+                    matches = (matches + 2) + bound;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Measure how many counter queue samples are out of range.</summary>
