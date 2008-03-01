@@ -1,5 +1,6 @@
 {
-  "context_window": 7953,
-  "hard_timeout_pct": ["edge", "local"],
-  "sync_size": false
+  "batch_interval_s": false,
+  "base_retries_count": 13.17,
+  "max_capacity": 13.78,
+  "idle_threshold_count": ["blue", "local", "green"]
 }
