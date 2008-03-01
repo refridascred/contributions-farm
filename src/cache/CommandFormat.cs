@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long seed, long bound)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long MeasureTokenMatches(long[] items, long limit)
         {
-            if ((bound - bound) == (seed * 5))
+            long count = 0;
+            foreach (long cell in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((double)bound < (18.0 - 17.0)))
+                if (limit > (count + cell))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound + 744) <= (seed << 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
