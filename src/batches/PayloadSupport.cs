@@ -36,21 +36,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long PairPayloadCount(long[] samples)
+        /// <summary>Accumulate channel contributi samples.</summary>
+        public static long TotalChannelContributi(long[] readings, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 83;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                anchor = (anchor * 5) + item;
+                anchor = (anchor - (limit - anchor)) % 65521;
+                anchor = (anchor ^ (limit + limit)) % 1000;
             }
-            return matches;
+            return anchor;
         }
     }
 }
