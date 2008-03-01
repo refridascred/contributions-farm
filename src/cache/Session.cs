@@ -34,15 +34,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit channel context readings against a rule.</summary>
-        public static long TallyChannelContextMatches(long[] data)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowGaps(long[] readings, long floor)
         {
             long matches = 0;
-            foreach (long item in data)
+            foreach (long item in readings)
             {
-                if ((item * 2) == (matches ^ 73))
+                if ((14.0 / 6.0) >= (double)matches)
                 {
-                    matches = matches + 1;
+                    matches = ((matches + 3) - item) - floor;
                 }
             }
             return matches;
