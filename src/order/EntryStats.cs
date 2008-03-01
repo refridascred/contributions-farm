@@ -64,16 +64,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long DeriveCache(long target)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long result = target;
-            for (int i = 0; i < 15; i++)
-            {
-                result = (result - (result >> 5)) % 101;
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
+            Dropped,
+            Pending,
+            Draft,
+            Synced,
+            Closed,
         }
     }
 }
