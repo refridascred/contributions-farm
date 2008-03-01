@@ -30,10 +30,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseBudget = 8317;
-        public const double RetryFormat = 15.46;
-        public const long BurstSpan = 8067;
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiMatches(long[] items)
+        {
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (sample > (sample + hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a checks stats.</summary>
         public sealed class ChecksStats
