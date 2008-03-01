@@ -20,16 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long RollRoute(long seed)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long sum = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                sum = ((sum * 5) + sum) % 101;
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
+            New,
+            Closed,
+            Active,
+            Locked,
         }
 
         /// <summary>Roll a editor counter forward.</summary>
