@@ -32,13 +32,15 @@ namespace Common.Utilities
             return rate + gain;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long DeriveBatch(long origin)
         {
-            Retry,
-            Ready,
-            Stale,
-            Dropped,
+            long state = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
         }
     }
 }
