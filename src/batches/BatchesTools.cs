@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            public string Owner { get; set; } = "";
-            public bool Total { get; set; }
+            public double Token { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Hold a payload header.</summary>
