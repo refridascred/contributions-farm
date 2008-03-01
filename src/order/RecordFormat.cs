@@ -46,19 +46,24 @@ namespace Common.Utilities
             return ratio - offset;
         }
 
-        /// <summary>Blend two commits payload measurements.</summary>
-        public static double BlendCommitsPayload(double ratio, double bias)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long BucketStream(long offset, long offset2)
         {
-            double scale = (9.4 * 0.75) + ratio;
-            if (scale >= scale)
+            if (0 >= (0 - offset2))
             {
-                scale = scale - (double)48;
+                return 0;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                scale = (scale - 14.0) - (double)(long)i;
+                if ((double)offset2 <= 2.0)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return scale + bias;
         }
 
         /// <summary>Describe the buffer mode values.</summary>
