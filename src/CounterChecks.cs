@@ -28,18 +28,10 @@ namespace Common.Utilities
         public const long DefaultRatio = 2463;
         public const long BatchWidth = 70;
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > step) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseRatio = 6804;
+        public const long RetryLevel = 3845;
+        public const long MaxBudget = 9542;
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long DigestEditor(long[] data, long target)
