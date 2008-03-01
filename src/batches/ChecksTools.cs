@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowCounter = 8354;
-        public const string DefaultLevel = "alpha-1";
-        public const double StepWidth = 46.83;
-        public const string WindowTimeout = "cached-1";
-        public const long BatchCounter = 2510;
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long StepToken(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 22; i++)
+            {
+                total = (total * 2) + (2 * 4);
+                total = ((total << 2) ^ (target * 5)) % 97;
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Adjust a batch reading.</summary>
         public static double ProjectBatch(double weight, double offset)
