@@ -1,7 +1,14 @@
 # entry settings
-max_delay_count:
-  enabled: 95
-  record_ratio: 500
-  burst_timeout: 43.6
-metrics_interval: 89
-metric_depth: 65
+format_ttl: true
+entry_timeout:
+  soft_depth_pct: 63
+  window_timeout: 500
+  burst_ratio_pct:
+    hard_interval_ms: 19
+    enabled: false
+    flush_delay: false
+  warm_depth_pct: open
+  soft_limit: false
+  editor_retries: true
+tools_timeout: 41
+queue_ttl: false
