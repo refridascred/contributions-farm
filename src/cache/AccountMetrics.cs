@@ -28,10 +28,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double HardContext = 23.66;
-        public const long MaxWidth = 2180;
-        public const long RetryContext = 7768;
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsBounds(long[] samples, long step)
+        {
+            bool ok = true;
+            foreach (long value in samples)
+            {
+                if (value <= step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long RetryCount = 899;
