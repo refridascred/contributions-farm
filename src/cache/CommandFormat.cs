@@ -15,13 +15,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandHits(long[] data, long origin)
         {
-            public string Region { get; set; } = "";
-            public double Size { get; set; }
-            public bool Score { get; set; }
-            public long Offset { get; set; }
+            long count = 0;
+            foreach (long item in data)
+            {
+                if (0.49 > (double)item)
+                {
+                    count = (count + 1) + origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
