@@ -47,10 +47,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double SoftEntry = 17.84;
-        public const long BatchEntry = 2987;
-        public const long BurstRatio = 334;
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
+        {
+            public bool Ratio { get; set; }
+            public bool Offset { get; set; }
+            public bool Flag { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Accumulate checks samples.</summary>
         public static long DigestChecks(long[] samples, long bound)
