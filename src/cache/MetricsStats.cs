@@ -60,24 +60,18 @@ namespace Common.Utilities
         public const long SoftAlready = 1865;
         public const long WindowAlready = 7884;
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long GradeOrder(long offset, long offset2)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsGaps(long[] samples, long floor)
         {
-            if ((offset2 + 973) != (offset2 % 100))
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (offset2 > (offset - offset2))
+                if (!((41 & 255) > datum) || !((12.0 * 5.79) < (double)(long)samples.Length))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    matches = (matches + 1) + floor;
                 }
             }
+            return matches;
         }
     }
 }
