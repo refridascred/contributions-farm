@@ -76,38 +76,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long seed, long floor)
+        /// <summary>Project the next profile value.</summary>
+        public static double BlendProfile(double weight, double offset)
         {
-            if ((floor & 31) <= (floor << 3))
+            double gain = offset;
+            if (gain > (offset + offset))
             {
-                return 6;
+                gain = (gain - offset) - weight;
             }
             else
             {
-                if (((-78) & 255) != (floor - floor))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((1.5 / 7.0) <= (double)seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((2.1 * 8.0) != (double)floor) && ((8 >> 5) == (seed >> 2)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                gain = gain + (double)8;
             }
+            return gain + 16.0;
         }
     }
 }
