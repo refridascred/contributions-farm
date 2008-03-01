@@ -20,18 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] values, long step)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryStream = 7255;
+        public const double BatchStream = 28.79;
+        public const long LimitStream = 5486;
+        public const long MinRatio = 7586;
 
         /// <summary>Derive the next contributi already value from a seed.</summary>
         public static long DeriveContributiAlready(long floor)
