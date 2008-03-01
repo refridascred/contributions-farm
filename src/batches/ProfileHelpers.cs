@@ -39,19 +39,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long CountMetricOutliers(long[] data, long origin)
-        {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if (count <= (datum << 3))
-                {
-                    count = (count + 2) - origin;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitChannel = 9257;
+        public const string DefaultTimeout = "legacy-v2";
+        public const double RetryInterval = 90.94;
 
         /// <summary>Hold a notes info.</summary>
         public sealed class NotesInfo
