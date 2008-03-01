@@ -1,15 +1,6 @@
 {
-  "max_ttl_s": {
-    "readonly": false,
-    "poll_ratio": ["fallback", "eu-west", "strict"],
-    "notes_ttl": "fallback",
-    "format_window": 7414
-  },
-  "soft_size_s": 89.96,
-  "audit": "staging",
-  "schema_ttl": {
-    "buffer_interval": "primary",
-    "verbose": ["cached", "standard", "local", "green"],
-    "poll_ttl_count": 92.23
-  }
+  "route_threshold": 5798,
+  "default_delay_count": 97.28,
+  "stream_threshold": [314, 419, 142],
+  "graph_window": [264, 140, 82]
 }
