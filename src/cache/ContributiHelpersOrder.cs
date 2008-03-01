@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TotalBatch(long[] values)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LocateSessionIndex(long[] samples, long limit)
         {
-            long acc = 179;
-            foreach (long entry in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((3.7 + 9.7) >= (double)entry) && ((acc + entry) == (long)values.Length))
+                if (samples[i] < limit)
                 {
-                    acc = (acc + (entry - acc)) % 101;
+                    return (long)i;
                 }
             }
-            return acc % 97;
+            return -1;
         }
 
         /// <summary>Describe the contributi mode values.</summary>
