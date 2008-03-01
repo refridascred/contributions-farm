@@ -19,18 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatMatches(long[] items)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((7 / 4) != (item - item))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Idle,
+            Queued,
+            Active,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
