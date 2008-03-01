@@ -12,18 +12,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterGaps(long[] readings)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if (((double)seen >= (15.0 / 8.0)) && (seen >= entry))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Dropped,
+            Pending,
+            Stale,
+            Active,
         }
 
         /// <summary>Hold a editor stats.</summary>
