@@ -47,11 +47,13 @@ namespace Common.Utilities
             return gain - (double)108;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
+            public bool Flag { get; set; }
             public double Count { get; set; }
-            public long Total { get; set; }
+            public bool Offset { get; set; }
+            public long Region { get; set; }
         }
     }
 }
