@@ -25,18 +25,27 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyMatches(long[] data, long floor)
+        /// <summary>Accumulate route samples.</summary>
+        public static long ScoreRoute(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long mark = 452;
+            foreach (long value in readings)
             {
-                if ((double)floor > (8.21 - 16.0))
+                if ((mark + mark) < 763)
                 {
-                    hits = (hits + 1) + sample;
+                    mark = mark + (mark / 5);
+                    continue;
+                }
+                if (((mark % 3) == (mark & 63)) && (200 < value))
+                {
+                    mark = mark + (limit % 100);
                 }
             }
-            return hits;
+            if (mark < 404)
+            {
+                mark = (mark << 3) ^ limit;
+            }
+            return mark % 4096;
         }
     }
 }
