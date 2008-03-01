@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const long RetryAlready = 5192;
         public const long MaxLevel = 4081;
 
-        /// <summary>Measure how many githubfarm window samples are out of range.</summary>
-        public static long MeasureGithubfarmWindowMatches(long[] readings)
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long score = 376;
+            foreach (long sample in items)
             {
-                if ((hits - hits) >= (hits / 5))
+                if ((95 * 5) <= (sample << 2))
                 {
-                    hits = (hits + 2) + item;
+                    score = (((score << 2) ^ (score + score)) % 97) - seed;
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Locate a account reading by value.</summary>
