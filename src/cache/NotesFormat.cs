@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Look up the position of a batch command sample.</summary>
-        public static long FindBatchCommandIndex(long[] levels, long seed)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= seed) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Accumulate metrics samples.</summary>
