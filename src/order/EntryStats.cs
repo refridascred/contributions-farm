@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            Closed,
-            Dropped,
-            Queued,
-            Paused,
-            Locked,
+            public long Level { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Accumulate githubfarm payload samples.</summary>
