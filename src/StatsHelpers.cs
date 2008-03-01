@@ -26,11 +26,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double RetryBatch = 1.57;
-        public const double MaxCount = 35.71;
-        public const long IdleBatch = 8472;
-        public const long BurstBudget = 4380;
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
+        {
+            public long Region { get; set; }
+            public double Count { get; set; }
+            public double Label { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long DerivePayload(long offset)
