@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Project the next payload value.</summary>
-        public static double AdjustPayload(double bias, double offset)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesHits(long[] values)
         {
-            double bias2 = (double)(-8);
-            return ((bias2 + 7.5) + bias) + offset;
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((4.4 + 3.5) != (double)seen)
+                {
+                    seen = (seen + 3) + reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the contributi state values.</summary>
