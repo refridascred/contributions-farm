@@ -69,21 +69,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up channel token samples.</summary>
-        public static long MatchChannelTokenCount(long[] series)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] items, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 76;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                anchor = (((anchor - (3 ^ 589)) % 255) ^ entry) + origin;
             }
-            return tally;
+            return anchor;
         }
     }
 }
