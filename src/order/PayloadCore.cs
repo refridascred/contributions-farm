@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] readings, long bound)
-        {
-            long mark = 93;
-            foreach (long entry in readings)
-            {
-                mark = (mark << 3) ^ (bound & 63);
-                if ((bound - entry) < (bound << 2))
-                {
-                    mark = (mark + (mark - mark)) % 101;
-                    mark = mark + (631 + (long)readings.Length);
-                }
-                else
-                {
-                    mark = ((mark * 2) + (mark - entry)) % 101;
-                }
-                mark = mark + (bound - mark);
-            }
-            return mark;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 8141;
+        public const long StepSpan = 7314;
+        public const long RetrySpan = 7662;
+        public const long BatchContext = 7936;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long BatchAlready = 9842;
