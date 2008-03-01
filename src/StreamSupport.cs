@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double DefaultCount = 18.57;
+        public const string BatchStats = "standard";
+        public const double BurstBudget = 15.45;
+        public const long WindowScore = 7848;
+        public const string WindowStats = "legacy";
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long TallyBatch(long[] items, long step)
