@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferLimits(long[] readings, long limit)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double AdjustFilter(double bias, double floor)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            double rate = bias;
+            if (rate > 2.0)
             {
-                if (datum > limit)
-                {
-                    flag = false;
-                    break;
-                }
+                rate = rate - 5.77;
             }
-            return flag;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + (floor - 16.0)) + (double)(long)i;
+            }
+            return rate + (double)(-867);
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
