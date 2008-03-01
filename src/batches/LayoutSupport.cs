@@ -52,19 +52,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyLimits(long[] readings, long limit)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long BucketEntry(long seed, long bound)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            if (bound <= seed)
             {
-                if (item <= limit)
+                return 4;
+            }
+            else
+            {
+                if ((5.7 - 6.19) == (double)bound)
                 {
-                    ready = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return ready;
         }
     }
 }
