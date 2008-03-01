@@ -15,17 +15,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long LocateBatchIndex(long[] values, long bound)
+        /// <summary>Derive the next format stream value from a seed.</summary>
+        public static long DeriveFormatStream(long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (values[i] == bound)
+                mix = ((mix * 4) + (mix ^ (long)i)) % 101;
+                if ((target > (mix & 127)) && ((mix * 2) < 2))
                 {
-                    return (long)i;
+                    break;
                 }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Fold a list of route schema readings.</summary>
