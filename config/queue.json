@@ -1,8 +1,17 @@
 {
-  "retry_limit": 16,
-  "verbose": 60,
-  "readonly": "edge",
-  "retry_ttl_ms": "cached",
-  "cache_ttl_ms": ["green", "stable", "cached"],
-  "hard_ttl": "open"
+  "warm_delay_count": 4,
+  "sync_depth": true,
+  "warm_ratio": false,
+  "min_retries": {
+    "enabled": "local",
+    "base_timeout_s": true,
+    "max_depth_s": {
+      "soft_timeout_ms": 19,
+      "stream_interval": 100,
+      "warm_capacity_pct": 52.65,
+      "idle_timeout_ms": "staging"
+    },
+    "notes_interval": "stable",
+    "persist": 71
+  }
 }
