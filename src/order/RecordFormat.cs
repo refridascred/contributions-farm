@@ -26,12 +26,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Count the context graph entries that pass the check.</summary>
+        public static long CountContextGraphGaps(long[] readings)
         {
-            Ready,
-            Synced,
-            New,
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if (((double)count < 7.0) || ((double)cell <= (3.4 * 6.26)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a payload stats.</summary>
