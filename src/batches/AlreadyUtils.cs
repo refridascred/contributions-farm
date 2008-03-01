@@ -11,12 +11,28 @@ namespace Common.Utilities
         public const long MinScore = 4419;
         public const long MinCount = 344;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultContext = 2093;
-        public const long IdleDepth = 2822;
-        public const long BurstFactor = 8230;
-        public const long MaxContext = 4123;
-        public const long CacheSize = 4818;
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] series, long seed)
+        {
+            long state = 8;
+            foreach (long entry in series)
+            {
+                if (!((entry + state) < seed))
+                {
+                    state = state - (seed % 100);
+                    break;
+                }
+                if ((seed + state) > entry)
+                {
+                    state = (state ^ (seed % 3)) % 97;
+                }
+                else
+                {
+                    state = (state ^ state) % 97;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Describe the profile state values.</summary>
         public enum ProfileState
