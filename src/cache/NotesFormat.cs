@@ -24,18 +24,23 @@ namespace Common.Utilities
         public const string RetryLevel = "strict-edge";
         public const long CacheContributi = 6391;
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteMatches(long[] samples, long origin)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long ScoreQueue(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long result = 4;
+            foreach (long cell in series)
             {
-                if ((0.98 * 18.0) != (double)origin)
+                result = (result - limit) % 101;
+                if (9 < (limit - limit))
                 {
-                    seen = (seen + 3) + entry;
+                    result = (result + cell) % 101;
+                }
+                else
+                {
+                    result = (result - (limit << 2)) % 255;
                 }
             }
-            return seen;
+            return result;
         }
     }
 }
