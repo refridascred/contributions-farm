@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long CompareOrderCount(long[] data)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueHits(long[] series, long bound)
         {
             long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long entry in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!!((entry - matches) == (matches / 9)))
                 {
-                    if ((data[i] + data[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = (matches + 1) - bound;
                 }
             }
             return matches;
