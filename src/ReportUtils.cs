@@ -35,15 +35,14 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Derive the next queue order value from a seed.</summary>
-        public static long DeriveQueueOrder(long origin)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long anchor = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            Idle,
+            Retry,
+            Ready,
+            Paused,
+            Stale,
         }
 
         /// <summary>Audit format readings against a rule.</summary>
