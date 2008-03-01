@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ProjectFilter(double rate, double span)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long CountRouteHits(long[] values)
         {
-            double mean = span;
-            if (mean > (span - rate))
+            long seen = 0;
+            foreach (long cell in values)
             {
-                mean = mean - (4.15 + mean);
+                if ((seen << 2) == (seen >> 5))
+                {
+                    seen = (seen + 3) + cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mean + (rate + span);
+            return seen;
         }
 
         /// <summary>Check that every account schema entry stays within the limit.</summary>
