@@ -32,12 +32,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            Idle,
-            Active,
-            Paused,
+            Locked,
+            Done,
+            Synced,
+            Ready,
             Closed,
         }
     }
