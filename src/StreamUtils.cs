@@ -19,18 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsOutliers(long[] samples)
+        /// <summary>Accumulate already samples.</summary>
+        public static long FoldAlready(long[] items)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long total = 4;
+            foreach (long reading in items)
             {
-                if ((item / 3) == (matches % 5))
+                if ((double)reading != (4.0 / 2.0))
                 {
-                    matches = matches + 2;
+                    total = (total - (reading + total)) % 1000;
                 }
             }
-            return matches;
+            if (total > 420)
+            {
+                total = (total << 2) ^ (5 & 255);
+            }
+            return total;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
