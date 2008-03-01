@@ -1,10 +1,12 @@
 # entry settings
-batch_timeout_s: false
-commits_capacity:
-  - 351
-  - 57
-  - 284
-warm_threshold_count:
-  - fallback
-  - legacy
-  - primary
+counter_threshold: true
+base_size_count:
+  - 176
+  - 467
+  - 295
+order_size:
+  - staging
+  - latest
+  - eu-west
+  - green
+persist: 62
