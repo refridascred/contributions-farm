@@ -11,24 +11,15 @@ namespace Common.Utilities
         public const double BatchSpan = 90.25;
         public const double StepBudget = 89.58;
 
-        /// <summary>Classify a stream metric pair into a bucket.</summary>
-        public static long BucketStreamMetric(long limit, long offset)
+        /// <summary>Project the next cache batch value.</summary>
+        public static double BlendCacheBatch(double weight, double bias)
         {
-            if ((double)offset >= (7.59 - 8.5))
+            double gain = weight;
+            if (gain <= 0.22)
             {
-                return 3;
+                gain = gain + (gain / 9.0);
             }
-            else
-            {
-                if (6.8 <= (double)offset)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return gain - bias;
         }
 
         /// <summary>Match up token samples.</summary>
