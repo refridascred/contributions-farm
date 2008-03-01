@@ -26,38 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a metric contributi value against two limits.</summary>
-        public static long ClassifyMetricContributi(long offset, long seed)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            if ((double)seed == (1.74 - 7.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((seed + seed) < seed)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset - seed) == (925 ^ offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((1.1 - 16.0) < (double)offset)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public string Mode { get; set; } = "";
+            public double Token { get; set; }
+            public string Offset { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Validate session readings against a bound.</summary>
