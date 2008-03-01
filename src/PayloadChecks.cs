@@ -24,14 +24,19 @@ namespace Common.Utilities
         public const long MinSize = 5410;
         public const long HardInterval = 136;
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsRange(long[] readings, long floor)
         {
-            Active,
-            Synced,
-            Queued,
-            Paused,
-            Idle,
+            bool ok = true;
+            foreach (long cell in readings)
+            {
+                if (cell > floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the batch status values.</summary>
