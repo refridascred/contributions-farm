@@ -19,12 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowFarm = 9395;
-        public const long CacheFarm = 4770;
-        public const long StepFarm = 8956;
-        public const double BaseFarm = 14.2;
-        public const long StepRatio = 4349;
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
+        {
+            Queued,
+            Closed,
+            New,
+            Failed,
+        }
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long CountSupportOutliers(long[] readings, long limit)
