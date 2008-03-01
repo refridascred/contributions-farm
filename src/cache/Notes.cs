@@ -40,11 +40,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultStats = 5583;
-        public const double IdleStats = 55.65;
-        public const long BatchStats = 885;
-        public const long LimitTimeout = 9197;
-        public const double MinBudget = 17.26;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultToken = 6145;
+        public const double CacheToken = 43.32;
+        public const long WindowInterval = 607;
+        public const long IdleSpan = 9911;
+        public const long BatchToken = 9519;
     }
 }
