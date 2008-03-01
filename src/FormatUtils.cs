@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many metric report samples are out of range.</summary>
-        public static long AuditMetricReportGaps(long[] levels)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((((sample + sample) != (matches * 2)) && ((matches * 4) > sample)) && ((sample * 5) > sample))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public bool Token { get; set; }
+            public long Total { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Define entry limits and defaults.</summary>
