@@ -51,15 +51,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate window command samples.</summary>
-        public static long CombineWindowCommand(long[] readings, long step)
+        /// <summary>Validate account farm readings against a bound.</summary>
+        public static bool ValidateAccountFarmRange(long[] series, long offset)
         {
-            long score = 954;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long sample in series)
             {
-                score = ((score - (reading + reading)) % 4096) - step;
+                if (sample >= offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return score;
+            return found;
         }
     }
 }
