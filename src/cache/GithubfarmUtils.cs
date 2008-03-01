@@ -27,18 +27,12 @@ namespace Common.Utilities
         public const long LimitDepth = 9443;
         public const long LimitFactor = 5749;
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionGaps(long[] series)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((double)hits < 0.7)
-                {
-                    hits = (hits + 2) + entry;
-                }
-            }
-            return hits;
+            public long Region { get; set; }
+            public long Owner { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Audit support session readings against a rule.</summary>
