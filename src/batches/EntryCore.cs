@@ -22,16 +22,21 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long bound)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long SeriesOrder(long offset)
         {
-            long state = bound;
-            for (int i = 0; i < 21; i++)
+            long mix = offset;
+            for (int i = 0; i < 4; i++)
             {
-                state = ((state << 3) ^ (bound / 5)) % 97;
-                state = ((state * 4) + (long)i) % 4093;
+                long gap = offset;
+                gap = gap - (789 ^ (long)i);
+                if ((gap ^ mix) < (217 ^ mix))
+                {
+                    gap = ((gap << 2) ^ (8 + gap)) % 97;
+                }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Accumulate command metric samples.</summary>
