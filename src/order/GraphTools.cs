@@ -61,19 +61,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsRange(long[] series, long limit)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LocateQueueIndex(long[] readings, long step)
         {
-            bool ok = true;
-            foreach (long cell in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell <= limit)
+                if ((readings[i] > step) && ((readings[i] % 3) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
