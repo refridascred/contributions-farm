@@ -35,12 +35,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long step, long origin)
         {
-            Paused,
-            Stale,
-            Active,
+            if (((85 + origin) >= (5 / 9)) && ((origin ^ step) > origin))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((origin > (origin - origin)) || ((origin ^ step) > (origin >> 1)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
