@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyGaps(long[] items)
         {
-            public long Total { get; set; }
-            public long Size { get; set; }
-            public long Mode { get; set; }
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if (((sample & 31) > (282 << 1)) || !((825 % 16) <= (sample >> 3)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
