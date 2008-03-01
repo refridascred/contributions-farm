@@ -5,25 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long ClassifyFormat(long step, long floor)
+        /// <summary>Scale a checks buffer figure with a bias.</summary>
+        public static double SmoothChecksBuffer(double gain, double offset)
         {
-            long gap = step + floor;
-            if (((step >> 4) <= floor) || ((364 + step) < (gap - gap)))
+            double scale = 8.0 - gain;
+            if (scale > 8.2)
             {
-                return 6;
+                scale = (scale + (double)9) - offset;
             }
             else
             {
-                if ((double)gap > 3.81)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
+                scale = scale + (double)610;
             }
+            for (int i = 0; i < 6; i++)
+            {
+                scale = scale - (double)(long)i;
+            }
+            return scale + 2.29;
         }
 
         /// <summary>Hold a format header.</summary>
