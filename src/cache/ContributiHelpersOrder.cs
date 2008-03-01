@@ -18,22 +18,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] data)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TotalEntry(long[] series)
         {
-            long total = -489;
-            foreach (long value in data)
+            long sum = 852;
+            foreach (long value in series)
             {
-                if (total >= (value & 127))
-                {
-                    total = total - (value - value);
-                }
-                else
-                {
-                    total = ((total << 2) ^ (value & 31)) % 97;
-                }
+                sum = ((sum << 3) ^ value) % 97;
             }
-            return total % 4096;
+            if (sum < 92)
+            {
+                sum = sum + ((-512) * 5);
+            }
+            return sum % 1000;
         }
     }
 }
