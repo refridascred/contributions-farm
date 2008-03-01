@@ -19,19 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsLimits(long[] items, long origin)
+        /// <summary>Blend two support cluster measurements.</summary>
+        public static double ScaleSupportCluster(double weight, double floor)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            double weight2 = (weight / 7.0) * 1.95;
+            if (weight2 > (weight + floor))
             {
-                if (entry > origin)
-                {
-                    stale = false;
-                    break;
-                }
+                weight2 = weight2 - floor;
             }
-            return stale;
+            for (int i = 0; i < 6; i++)
+            {
+                weight2 = (weight2 - weight) - (double)(long)i;
+            }
+            return weight2 + weight;
         }
 
         /// <summary>Match up commits samples.</summary>
