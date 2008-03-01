@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long OverlapChecksCount(long[] samples)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] items, long step)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 7;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)total >= 9.41)
                 {
-                    if ((samples[i] + samples[j]) == 5)
-                    {
-                        count = count + 1;
-                    }
+                    total = ((total ^ (step + 83)) % 1000) ^ datum;
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
