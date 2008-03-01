@@ -25,10 +25,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstCommits = 7543;
-        public const long RetryBudget = 2587;
-        public const string WindowScore = "open-v2";
+        /// <summary>Look up the position of a command schema sample.</summary>
+        public static long LocateCommandSchemaIndex(long[] readings, long offset)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > offset) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate layout samples.</summary>
         public static long TotalLayout(long[] data, long seed)
