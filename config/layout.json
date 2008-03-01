@@ -1,5 +1,6 @@
 {
-  "flush_ratio_pct": ["legacy", "edge"],
-  "soft_timeout_ms": 5314,
-  "idle_limit": true
+  "strict": "legacy",
+  "buffer_limit": 20.99,
+  "batch_timeout": 32,
+  "format_limit": 94
 }
