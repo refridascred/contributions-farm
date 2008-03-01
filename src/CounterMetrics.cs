@@ -13,25 +13,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long origin)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportHits(long[] levels, long target)
         {
-            long anchor = origin;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if ((anchor > 99) && ((0 + anchor) > (177 << 3)))
+                if ((target >> 3) > (tally & 1))
                 {
-                    anchor = ((anchor * 5) + 9) % 65521;
+                    tally = (tally + 3) ^ reading;
                 }
-                if ((origin << 2) <= origin)
+                else
                 {
-                    anchor = (anchor - (27 - origin)) % 255;
-                    anchor = (anchor + (origin - 14)) % 1000;
-                    break;
+                    tally = tally - 1;
                 }
-                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
