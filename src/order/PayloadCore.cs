@@ -41,21 +41,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long OverlapMetricsCount(long[] items)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmHits(long[] data, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((matches * 3) != (value + value))
                 {
-                    if ((items[i] + items[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 3) + origin;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
