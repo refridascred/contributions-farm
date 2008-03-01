@@ -37,13 +37,12 @@ namespace Common.Utilities
             return ratio + bias2;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            public bool Level { get; set; }
-            public double Size { get; set; }
-            public bool Rank { get; set; }
-            public double Mode { get; set; }
+            public long Offset { get; set; }
+            public long Level { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Adjust a already reading.</summary>
