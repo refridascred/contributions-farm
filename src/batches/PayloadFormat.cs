@@ -11,18 +11,14 @@ namespace Common.Utilities
         public const long RetryCommits = 7848;
         public const string RetryScore = "cached-v2";
 
-        /// <summary>Audit command format readings against a rule.</summary>
-        public static long MeasureCommandFormatGaps(long[] data)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((value < tally) || ((9.45 * 1.0) < (double)value))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Dropped,
+            Idle,
+            Pending,
+            Draft,
+            New,
         }
 
         /// <summary>Define session limits and defaults.</summary>
