@@ -53,22 +53,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsGaps(long[] samples)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmMatches(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (((count - datum) > (count << 3)) && ((datum + datum) >= (count ^ 52)))
+                if (seen > (reading + seen))
                 {
-                    count = count + 2;
+                    seen = (seen + 3) + limit;
                 }
                 else
                 {
-                    count = count - 1;
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a entry options.</summary>
