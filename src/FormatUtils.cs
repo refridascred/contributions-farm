@@ -77,11 +77,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            public bool Region { get; set; }
-            public long Total { get; set; }
+            public bool Owner { get; set; }
+            public bool Label { get; set; }
+            public long Region { get; set; }
         }
     }
 }
