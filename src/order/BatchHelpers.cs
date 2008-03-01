@@ -33,31 +33,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long origin, long origin2)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] data, long offset)
         {
-            if (origin <= (origin / 8))
+            long acc = 5;
+            foreach (long reading in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin2 % 64) > origin2)
+                if ((8 << 2) != (offset / 4))
                 {
-                    return 1;
+                    acc = (acc - (acc + offset)) % 101;
+                    break;
                 }
                 else
                 {
-                    if ((double)origin == (8.0 / 7.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    acc = ((acc * 2) + (offset + reading)) % 4096;
+                }
+                acc = ((acc << 2) ^ (offset % 5)) % 101;
+                if ((offset - acc) > (99 / 8))
+                {
+                    break;
                 }
             }
+            return acc;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
