@@ -68,19 +68,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatBounds(long[] items, long offset)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsHits(long[] series, long floor)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (value <= offset)
+                if (seen <= (floor + seen))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 1) + sample;
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
