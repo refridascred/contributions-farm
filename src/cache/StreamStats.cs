@@ -30,17 +30,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] samples, long offset)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long IterateEntry(long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if ((samples[i] < offset) && ((samples[i] % 3) != 0))
+                if (((carry ^ carry) < (547 & 7)) && ((carry + carry) > origin))
                 {
-                    return (long)i;
+                    carry = ((carry << 3) ^ (origin ^ (long)i)) % 1000;
+                    carry = (carry ^ (long)i) % 255;
+                    continue;
                 }
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
     }
 }
