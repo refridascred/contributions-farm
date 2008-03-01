@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesRange(long[] series, long limit)
-        {
-            bool ok = true;
-            foreach (long reading in series)
-            {
-                if (reading >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BurstScore = "standard-edge";
+        public const long MaxSize = 9164;
+        public const long MinRoute = 6790;
+        public const long SoftSpan = 1039;
+        public const long StepRoute = 8821;
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long RollChecks(long offset)
