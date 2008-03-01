@@ -19,12 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Check that every commits payload entry stays within the limit.</summary>
+        public static bool VerifyCommitsPayloadLimits(long[] levels, long step)
         {
-            Stale,
-            Closed,
-            Idle,
+            bool valid = true;
+            foreach (long item in levels)
+            {
+                if (item != step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
