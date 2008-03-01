@@ -82,21 +82,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up entry farm samples.</summary>
-        public static long PairEntryFarmCount(long[] series)
-        {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BaseTools = 889;
+        public const double BurstTools = 94.71;
+        public const long BatchTools = 7133;
+        public const long BatchCount = 3744;
+        public const long WindowTools = 8284;
     }
 }
