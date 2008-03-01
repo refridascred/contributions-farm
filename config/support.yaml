@@ -1,13 +1,9 @@
 # support settings
-poll_size:
-  min_ratio_count: 77.72
-  strict:
-    - fallback
-    - green
-    - standard
-    - standard
-  cluster_window: true
-  dry_run: 2467
-  contributi_retries: false
-max_limit: 60.9
-burst_retries_ms: local
+flush_window: stable
+max_limit_s:
+  - edge
+  - standard
+  - strict
+  - eu-west
+batch_window: green
+retry_window_s: true
