@@ -14,12 +14,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinSize = 4230;
-        public const double IdleFactor = 7.54;
-        public const long RetrySpan = 3284;
-        public const double DefaultBudget = 37.81;
-        public const string CacheCount = "local-edge";
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long SeekSchemaIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every buffer githubfarm entry stays within the limit.</summary>
         public static bool CheckBufferGithubfarmLimits(long[] items, long bound)
