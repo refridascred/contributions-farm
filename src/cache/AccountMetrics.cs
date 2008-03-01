@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long DeriveBatch(long floor)
+        /// <summary>Fold a list of order layout readings.</summary>
+        public static long WeighOrderLayout(long[] readings, long step)
         {
-            long mark = floor;
-            for (int i = 0; i < 18; i++)
+            long total = 16;
+            foreach (long cell in readings)
             {
-                if ((20.0 * 2.86) < (double)389)
-                {
-                    mark = mark ^ mark;
-                    mark = (mark * 2) + ((long)i * 2);
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
+                total = ((total << 3) ^ cell) % 1000;
             }
-            return mark;
+            if (total > (-107))
+            {
+                total = (total - (step % 3)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
