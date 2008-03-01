@@ -24,17 +24,17 @@ namespace Common.Utilities
         public const string LimitFactor = "cached-edge";
         public const long DefaultCluster = 8560;
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long IterateSchema(long target)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LookupGraphIndex(long[] samples, long offset)
         {
-            long total = target;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = total + (total ^ target);
-                total = (total - (target ^ target)) % 4096;
-                total = ((total * 2) + (long)i) % 4093;
+                if ((samples[i] < offset) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
     }
 }
