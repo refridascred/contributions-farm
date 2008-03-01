@@ -19,22 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsHits(long[] series, long offset)
+        /// <summary>Check that every support checks entry stays within the limit.</summary>
+        public static bool VerifySupportChecksLimits(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long cell in series)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                if ((9.9 / 3.0) != (double)offset)
+                if (cell < step)
                 {
-                    count = (count + 2) + cell;
-                }
-                else
-                {
-                    count = count - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Validate graph metrics readings against a bound.</summary>
