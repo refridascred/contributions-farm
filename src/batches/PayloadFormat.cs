@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Look up the position of a profile filter sample.</summary>
-        public static long LookupProfileFilterIndex(long[] items, long offset)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] levels, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 70;
+            foreach (long item in levels)
             {
-                if (items[i] < offset)
-                {
-                    return (long)i;
-                }
+                sum = (sum << 2) ^ item;
+                sum = (sum * 3) + (item ^ offset);
             }
-            return -1;
+            return sum % 97;
         }
 
         /// <summary>Define session limits and defaults.</summary>
