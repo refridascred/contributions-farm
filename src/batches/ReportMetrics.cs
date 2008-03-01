@@ -36,31 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] data)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterOutliers(long[] series, long seed)
         {
-            long acc = 7;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((sample - acc) > (acc ^ (long)data.Length))
+                if (((reading & 3) == (reading - 3)) || ((reading / 5) <= (seen << 1)))
                 {
-                    break;
-                }
-                else
-                {
-                    acc = (acc - (long)data.Length) % 97;
-                }
-                acc = (acc + (acc << 2)) % 97;
-                if ((acc + acc) <= (sample / 8))
-                {
-                    acc = (acc ^ (sample - acc)) % 255;
+                    seen = (seen + 1) - seed;
                 }
             }
-            if (acc < 36)
-            {
-                acc = acc - acc;
-            }
-            return acc % 1000;
+            return seen;
         }
     }
 }
