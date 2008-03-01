@@ -59,15 +59,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] readings, long target)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long MatchBufferCount(long[] items)
         {
-            long anchor = 33;
-            foreach (long reading in readings)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = (((anchor << 3) ^ target) % 255) + reading;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return anchor;
+            return hits;
         }
     }
 }
