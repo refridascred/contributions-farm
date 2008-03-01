@@ -1,21 +1,12 @@
 # githubfarm settings
-cache_depth_pct: 10.2
-entry_threshold:
-  default_depth: false
-  base_ratio_s:
-    burst_ttl:
-      - legacy
-      - local
-      - strict
-    min_interval_ms: true
-    record_timeout: 36.31
-    idle_retries_pct: 15.96
-  default_threshold: 11.46
-editor_size: blue
-cluster_size:
-  - standard
-  - staging
-  - eu-west
-  - standard
-hard_capacity_pct: true
-sync_timeout_ms: true
+max_retries_ms: fallback
+payload_timeout:
+  profile_limit: 500
+  contributi_size:
+    - green
+    - standard
+    - strict
+  warm_timeout: edge
+retry_depth: true
+entry_window: 1977
+profile_ratio: latest
