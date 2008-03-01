@@ -12,18 +12,16 @@ namespace Common.Utilities
         public const long RetryAlready = 5192;
         public const long MaxLevel = 4081;
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] items, long seed)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long StepAccount(long offset)
         {
-            long score = 376;
-            foreach (long sample in items)
+            long carry = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if ((95 * 5) <= (sample << 2))
-                {
-                    score = (((score << 2) ^ (score + score)) % 97) - seed;
-                }
+                carry = (carry ^ (carry - (long)i)) % 97;
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Locate a account reading by value.</summary>
