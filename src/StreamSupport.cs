@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] series)
         {
-            public double Rank { get; set; }
-            public bool Flag { get; set; }
+            long state = 43;
+            foreach (long sample in series)
+            {
+                if (((state + 832) <= state) && ((double)state != (9.4 * 7.1)))
+                {
+                    state = (state ^ sample) % 1000;
+                }
+                else
+                {
+                    state = state - (9 - 0);
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Digest a series of session entries.</summary>
