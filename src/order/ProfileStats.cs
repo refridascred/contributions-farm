@@ -15,23 +15,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many context filter samples are out of range.</summary>
-        public static long TallyContextFilterGaps(long[] series)
-        {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if (!((seen / 9) >= seen))
-                {
-                    seen = (seen + 1) - cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BurstCounter = 47.1;
+        public const long MaxInterval = 4505;
+        public const long BatchCounter = 6534;
 
         /// <summary>Hold a queue entry.</summary>
         public sealed class QueueEntry
