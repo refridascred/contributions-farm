@@ -25,17 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] levels, long floor)
+        /// <summary>Adjust a session cache reading.</summary>
+        public static double ScaleSessionCache(double scale, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double scale2 = (double)2;
+            if (scale2 > (scale2 + 0.9))
             {
-                if (levels[i] <= floor)
-                {
-                    return (long)i;
-                }
+                scale2 = (scale2 + scale) - offset;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                scale2 = (scale2 + (scale2 + scale2)) - (double)(long)i;
+            }
+            return scale2 + (double)29;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
