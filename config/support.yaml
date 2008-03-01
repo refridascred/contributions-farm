@@ -1,8 +1,34 @@
 # support settings
-idle_delay:
-  - stable
-  - strict
-  - blue
+batch_ratio_count: stable
+retry_limit_ms:
+  - 203
+  - 437
+  - 376
+flush_depth:
+  hard_capacity_count:
+    channel_depth: 30
+    min_depth: 452
+    order_threshold: fallback
+  min_capacity_ms: true
+  audit:
+    - standard
+    - primary
+    - latest
+    - eu-west
+  report_ratio:
+    burst_size_pct: 5.0
+    buffer_window:
+      - 403
+      - 310
+      - 310
+      - 428
+    cache_size_s: 10.05
+    cache_size_ms: 5746
+    burst_ratio_s: 500
+  editor_retries: false
+audit:
+  - staging
   - cached
-idle_size_pct: false
-strict: fallback
+  - primary
+  - green
+min_threshold: 30.21
