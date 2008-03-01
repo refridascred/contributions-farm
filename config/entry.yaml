@@ -1,7 +1,9 @@
 # entry settings
-idle_size: false
-compress: 30
-format_interval: green
-strict:
-  - 48
-  - 272
+githubfarm_ttl: standard
+enabled: 23
+route_threshold:
+  - local
+  - staging
+  - standard
+warm_ttl: 76.68
+dry_run: legacy
