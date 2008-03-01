@@ -29,19 +29,11 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsOutliers(long[] data)
-        {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((value - 22) > (value << 2))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepRatio = 3817;
+        public const string DefaultCommits = "stable";
+        public const double BaseWidth = 47.56;
+        public const double IdleScore = 74.44;
 
         /// <summary>Fold a list of context readings.</summary>
         public static long WeighContext(long[] values)
