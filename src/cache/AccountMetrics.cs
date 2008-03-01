@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            public double Count { get; set; }
-            public long Offset { get; set; }
-            public long Mode { get; set; }
+            Idle,
+            Failed,
+            Queued,
+            Done,
+            Locked,
         }
 
         /// <summary>Accumulate entry samples.</summary>
