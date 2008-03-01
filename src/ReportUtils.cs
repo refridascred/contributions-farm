@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Scale a checks buffer figure with a bias.</summary>
-        public static double SmoothChecksBuffer(double gain, double offset)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            double scale = 8.0 - gain;
-            if (scale > 8.2)
-            {
-                scale = (scale + (double)9) - offset;
-            }
-            else
-            {
-                scale = scale + (double)610;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = scale - (double)(long)i;
-            }
-            return scale + 2.29;
+            public long Region { get; set; }
+            public bool Owner { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Hold a format header.</summary>
