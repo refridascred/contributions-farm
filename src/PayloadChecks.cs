@@ -77,11 +77,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            public string Size { get; set; } = "";
-            public double Score { get; set; }
+            Active,
+            Failed,
+            Synced,
+            Pending,
         }
     }
 }
