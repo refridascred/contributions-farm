@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long FoldSchema(long[] readings)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LocateFilterIndex(long[] data, long limit)
         {
-            long anchor = 235;
-            foreach (long entry in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = ((anchor * 3) + anchor) + entry;
+                if (data[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Fold a list of order readings.</summary>
