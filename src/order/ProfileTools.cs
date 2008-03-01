@@ -62,14 +62,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
+            Retry,
             Idle,
-            New,
-            Ready,
             Stale,
-            Active,
+            Pending,
         }
     }
 }
