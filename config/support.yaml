@@ -1,9 +1,14 @@
 # support settings
-base_window_count: false
-cache_delay: 3
-flush_ttl: 6986
-retry_depth_count: false
-default_ratio_s:
-  - 102
-  - 181
-entry_interval: eu-west
+warm_timeout: local
+payload_retries: fallback
+layout_interval: true
+min_size_pct:
+  sync_depth_ms: 2776
+  default_limit: 9601
+  max_ttl_s: 1024
+  readonly:
+    graph_capacity: 1269
+    schema_size: false
+    support_size: 250
+    flush_capacity: strict
+    metrics_depth: latest
