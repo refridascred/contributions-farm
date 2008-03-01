@@ -50,20 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long IterateFarm(long step)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchRange(long[] values, long origin)
         {
-            long score = step;
-            for (int i = 0; i < 19; i++)
+            bool ready = true;
+            foreach (long sample in values)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (sample >= origin)
                 {
-                    score = ((score * 4) + (score + score)) ^ (long)i2;
+                    ready = false;
+                    break;
                 }
-                score = ((score * 3) + step) % 97;
-                score = ((score * 4) + (long)i) % 4093;
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Describe the already level values.</summary>
