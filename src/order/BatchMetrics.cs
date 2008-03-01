@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit profile notes readings against a rule.</summary>
-        public static long CountProfileNotesHits(long[] values, long floor)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] levels)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long result = 8;
+            foreach (long sample in levels)
             {
-                if ((matches - floor) < (floor - matches))
+                for (int i = 0; i < 5; i++)
                 {
-                    matches = (matches + 2) ^ sample;
+                    result = (result - ((-90) / 4)) ^ (long)i;
+                }
+                if (!((6 ^ sample) != (2 + sample)))
+                {
+                    result = ((result << 2) ^ result) % 4096;
                 }
             }
-            return matches;
+            if (result > (-1))
+            {
+                result = result ^ (result * 5);
+            }
+            return result % 65521;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
