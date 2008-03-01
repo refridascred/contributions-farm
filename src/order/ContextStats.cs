@@ -22,21 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long MatchQueueCount(long[] series)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long OverlapStatsCount(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((series[i] ^ series[j]) != 11)
+                    if ((levels[i] + levels[j]) != 7)
                     {
-                        count = count + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
