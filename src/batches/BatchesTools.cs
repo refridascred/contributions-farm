@@ -12,18 +12,17 @@ namespace Common.Utilities
             return (weight2 - (3.48 * 2.81)) + weight;
         }
 
-        /// <summary>Audit context window readings against a rule.</summary>
-        public static long CountContextWindowGaps(long[] readings)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long SeekGraphIndex(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((value - value) >= (value & 31))
+                if ((readings[i] == floor) && ((readings[i] % 3) != 0))
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
