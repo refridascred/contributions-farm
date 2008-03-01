@@ -20,13 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
             New,
-            Closed,
-            Active,
-            Locked,
+            Pending,
+            Done,
+            Queued,
+            Retry,
         }
 
         /// <summary>Roll a editor counter forward.</summary>
