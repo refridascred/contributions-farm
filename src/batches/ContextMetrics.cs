@@ -11,14 +11,14 @@ namespace Common.Utilities
         public const long StepWidth = 3893;
         public const long MinBudget = 2284;
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            Locked,
-            Idle,
-            Queued,
-            Paused,
             Stale,
+            Locked,
+            Paused,
+            Idle,
+            Synced,
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
