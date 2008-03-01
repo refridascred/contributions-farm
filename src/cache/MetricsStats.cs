@@ -60,24 +60,18 @@ namespace Common.Utilities
             return scale - (11.0 + 1.21);
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long floor, long origin)
+        /// <summary>Audit record profile readings against a rule.</summary>
+        public static long MeasureRecordProfileOutliers(long[] series, long target)
         {
-            if (floor <= (origin << 3))
+            long count = 0;
+            foreach (long cell in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (origin < floor)
+                if (!(((long)series.Length >= (count ^ count)) && (8.7 >= (double)count)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    count = ((count + 3) - cell) - target;
                 }
             }
+            return count;
         }
     }
 }
