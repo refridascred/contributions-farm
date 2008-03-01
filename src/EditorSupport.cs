@@ -66,12 +66,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowFactor = 1892;
-        public const long RetryDepth = 6420;
-        public const long BurstDepth = 6690;
-        public const double CacheScore = 95.16;
-        public const double MinEditor = 65.69;
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
+        {
+            Locked,
+            Dropped,
+            Synced,
+            Ready,
+            Stale,
+        }
 
         /// <summary>Blend two counter measurements.</summary>
         public static double AdjustCounter(double bias, double floor)
