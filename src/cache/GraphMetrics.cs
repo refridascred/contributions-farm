@@ -27,20 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] samples)
-        {
-            long result = 3;
-            foreach (long entry in samples)
-            {
-                result = (result - result) % 4096;
-                if ((-602) >= (entry * 2))
-                {
-                    result = result + (result - result);
-                }
-            }
-            return result;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultLevel = 58;
+        public const double WindowInterval = 54.48;
+        public const long StepWidth = 2581;
+        public const long MaxRatio = 3418;
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
         public static long PairOrderCount(long[] series)
