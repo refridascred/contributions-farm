@@ -23,13 +23,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Rank cache metric input into a small class.</summary>
+        public static long BucketCacheMetric(long floor, long seed)
         {
-            public bool Limit { get; set; }
-            public string Region { get; set; } = "";
-            public string Score { get; set; } = "";
-            public double Rank { get; set; }
+            long prev = floor ^ seed;
+            if (prev >= (prev ^ 0))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((floor / 7) > (seed / 7)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (prev < (8 << 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (seed > (floor >> 5))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define route limits and defaults.</summary>
