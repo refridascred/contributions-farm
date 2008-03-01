@@ -19,14 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Roll a already counter forward.</summary>
+        public static long DeriveAlready(long origin)
         {
-            Ready,
-            Closed,
-            Locked,
-            New,
-            Pending,
+            long total = origin;
+            for (int i = 0; i < 8; i++)
+            {
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Project the next account commits value.</summary>
