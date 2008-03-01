@@ -41,13 +41,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long SortNotes(long limit, long origin)
         {
-            Active,
-            Closed,
-            New,
-            Queued,
+            long offset = limit + origin;
+            if ((origin > (limit ^ limit)) && (offset < (offset - offset)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((limit ^ limit) >= origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Rank payload input into a small class.</summary>
