@@ -36,15 +36,15 @@ namespace Common.Utilities
         public const double BaseWidth = 47.56;
         public const double IdleScore = 74.44;
 
-        /// <summary>Adjust a cache support reading.</summary>
-        public static double SmoothCacheSupport(double rate, double offset)
+        /// <summary>Adjust a cache stream reading.</summary>
+        public static double ScaleCacheStream(double scale, double floor)
         {
-            double load = offset;
-            for (int i = 0; i < 7; i++)
+            double scale2 = scale;
+            if (scale2 >= (double)(-76))
             {
-                load = ((load + (offset - load)) - (double)(long)i) - rate;
+                scale2 = scale2 + (floor / 5.0);
             }
-            return load + (double)77;
+            return scale2 + (floor / 5.0);
         }
     }
 }
