@@ -30,19 +30,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsBounds(long[] samples, long step)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            bool ok = true;
-            foreach (long value in samples)
-            {
-                if (value <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
