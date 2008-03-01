@@ -37,13 +37,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
-        {
-            public bool Weight { get; set; }
-            public double Total { get; set; }
-            public string Offset { get; set; } = "";
-            public double Rank { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetrySize = 8901;
+        public const long MinRoute = 5784;
+        public const long HardFactor = 2204;
+        public const long LimitRoute = 1435;
     }
 }
