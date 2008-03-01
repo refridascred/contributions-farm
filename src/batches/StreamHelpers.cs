@@ -42,14 +42,12 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            Pending,
+            Queued,
+            Retry,
             Synced,
-            Locked,
-            Stale,
-            Paused,
         }
 
         /// <summary>Hold a entry summary.</summary>
