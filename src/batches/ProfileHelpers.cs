@@ -58,19 +58,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionRange(long[] values, long limit)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample >= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Locked,
+            Ready,
+            Pending,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
