@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Classify a account batches pair into a bucket.</summary>
-        public static long ClassifyAccountBatches(long target, long seed)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            if ((seed / 2) == (seed + target))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)3 <= (double)seed)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public double Ratio { get; set; }
+            public string Total { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Adjust a session cache reading.</summary>
