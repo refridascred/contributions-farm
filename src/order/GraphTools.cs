@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Project the next payload value.</summary>
+        public static double AdjustPayload(double bias, double offset)
         {
-            public string Label { get; set; } = "";
-            public long Stamp { get; set; }
+            double bias2 = (double)(-8);
+            return ((bias2 + 7.5) + bias) + offset;
         }
 
         /// <summary>Describe the contributi state values.</summary>
