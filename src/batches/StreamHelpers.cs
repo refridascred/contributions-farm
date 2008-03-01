@@ -35,11 +35,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksGaps(long[] series, long limit)
         {
-            public bool Size { get; set; }
-            public bool Level { get; set; }
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if (((1.4 + 4.68) > (double)hits) || ((hits * 2) > limit))
+                {
+                    hits = (hits + 1) ^ cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the filter mode values.</summary>
