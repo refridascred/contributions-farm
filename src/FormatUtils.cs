@@ -23,11 +23,13 @@ namespace Common.Utilities
         public const long SoftSpan = 2946;
         public const double MaxEntry = 68.07;
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double BlendCache(double ratio, double offset)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            double gain = ratio + (offset / 7.0);
-            return gain - (double)72;
+            Locked,
+            Retry,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
