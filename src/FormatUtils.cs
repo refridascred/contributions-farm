@@ -19,15 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
-        {
-            Failed,
-            Idle,
-            New,
-            Pending,
-            Ready,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double StepEntry = 61.09;
+        public const long StepSpan = 2177;
+        public const long SoftSpan = 2946;
+        public const double MaxEntry = 68.07;
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long DigestChecks(long[] readings)
