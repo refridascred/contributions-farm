@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ProjectTools(double rate, double bias)
-        {
-            double drift = rate + (rate - rate);
-            if (drift > (bias + drift))
-            {
-                drift = drift - drift;
-            }
-            else
-            {
-                drift = drift + drift;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift - (rate - rate);
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepScore = 8988;
+        public const long MinSpan = 7097;
+        public const long IdleDepth = 7141;
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long RankEntry(long floor, long floor2)
