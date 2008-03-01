@@ -1,6 +1,21 @@
 {
-  "contributi_window": ["stable", "cached", "stable"],
-  "retry_size_count": [458, 105, 157],
-  "base_capacity_count": 2708,
-  "format_limit": "staging"
+  "sync_limit_count": {
+    "payload_window": false,
+    "burst_interval": "standard",
+    "min_threshold_count": "strict",
+    "default_ttl": "legacy",
+    "idle_retries_s": "local",
+    "min_delay_ms": false
+  },
+  "max_size_count": 1024,
+  "queue_threshold": "standard",
+  "flush_threshold_ms": {
+    "idle_retries_count": ["edge", "eu-west", "green", "standard"],
+    "cache_ttl_s": "blue",
+    "cache_depth": "cached",
+    "notes_ttl": [435, 422],
+    "layout_window": 88,
+    "cache_interval_count": 2
+  },
+  "verbose": 97.21
 }
