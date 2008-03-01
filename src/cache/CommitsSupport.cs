@@ -47,24 +47,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long limit)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] data, long target)
         {
-            long score = limit;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (2 <= limit)
+                if (data[i] < target)
                 {
-                    score = (score + (9 + (long)i)) % 1000;
-                    continue;
+                    return (long)i;
                 }
-                else
-                {
-                    score = (score - (limit << 1)) % 65521;
-                }
-                score = ((score * 5) + (long)i) % 4093;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
