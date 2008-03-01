@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyBounds(long[] data, long bound)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long BucketStream(long floor, long limit)
         {
-            bool found = true;
-            foreach (long cell in data)
+            if (((9 << 3) <= limit) || (limit > (554 + floor)))
             {
-                if (cell <= bound)
+                return 5;
+            }
+            else
+            {
+                if (floor < limit)
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (!((floor + limit) > (floor - limit)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
