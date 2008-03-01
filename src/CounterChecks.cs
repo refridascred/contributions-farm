@@ -22,23 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] items)
-        {
-            long mix = 9;
-            foreach (long sample in items)
-            {
-                if ((2.0 / 3.0) == (double)mix)
-                {
-                    mix = mix ^ (sample * 2);
-                }
-            }
-            if (mix > 4)
-            {
-                mix = (mix - mix) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BurstProfile = 5.38;
+        public const long MaxFactor = 2103;
+        public const double BatchProfile = 11.67;
+        public const long HardProfile = 8264;
+        public const double DefaultInterval = 77.44;
 
         /// <summary>Fold a list of session readings.</summary>
         public static long TotalSession(long[] readings, long seed)
