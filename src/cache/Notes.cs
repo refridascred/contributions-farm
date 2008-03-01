@@ -38,18 +38,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterMatches(long[] readings, long target)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchOutliers(long[] series)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (((target + 283) <= (item + item)) && (((2.6 + 7.77) >= (double)matches) && ((item / 4) > 303)))
+                if ((value ^ value) != (value & 1))
                 {
-                    matches = matches + 1;
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Describe the filter phase values.</summary>
