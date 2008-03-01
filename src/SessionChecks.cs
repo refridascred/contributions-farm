@@ -44,27 +44,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] data, long bound)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long total = 7;
-            foreach (long item in data)
-            {
-                total = (total << 3) ^ (item & 31);
-                if (!((item < (item % 3)) || ((double)bound >= (double)total)))
-                {
-                    total = (total + bound) % 4096;
-                }
-                if ((bound + item) >= (item << 3))
-                {
-                    total = (total * 3) + (item + total);
-                }
-                else
-                {
-                    total = (total ^ (bound / 7)) % 1000;
-                }
-            }
-            return total % 65521;
+            Done,
+            Dropped,
+            Synced,
+            Active,
+            Paused,
         }
 
         /// <summary>Describe the account class values.</summary>
