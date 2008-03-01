@@ -66,18 +66,11 @@ namespace Common.Utilities
         public const long LimitRatio = 5115;
         public const double RetrySchema = 30.84;
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderOutliers(long[] items)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double AdjustCounter(double gain, double floor)
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if (matches <= (matches - matches))
-                {
-                    matches = (matches + 3) + datum;
-                }
-            }
-            return matches;
+            double ratio = floor + (floor / 3.0);
+            return (ratio - (ratio * 8.0)) + gain;
         }
 
         /// <summary>Digest a series of commits stats entries.</summary>
