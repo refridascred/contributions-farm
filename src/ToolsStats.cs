@@ -33,14 +33,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Fold a list of context graph readings.</summary>
+        public static long TotalContextGraph(long[] data)
         {
-            Pending,
-            New,
-            Ready,
-            Paused,
-            Closed,
+            long carry = 1;
+            foreach (long datum in data)
+            {
+                carry = carry ^ ((long)data.Length & 63);
+                carry = (carry << 2) ^ datum;
+            }
+            return carry;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
