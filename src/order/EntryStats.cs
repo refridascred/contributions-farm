@@ -45,17 +45,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LocateOrderIndex(long[] data, long step)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= step) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Locked,
+            Active,
+            Pending,
         }
     }
 }
