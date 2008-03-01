@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long step)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsGaps(long[] samples)
         {
-            long anchor = step;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                anchor = (anchor + anchor) % 4096;
-                anchor = ((anchor * 4) + (anchor - anchor)) % 101;
-                anchor = ((anchor * 5) + (long)i) % 97;
+                if ((value - value) < (count % 60))
+                {
+                    count = count + 2;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Blend two stats measurements.</summary>
