@@ -41,11 +41,14 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string IdlePayload = "cached-edge";
-        public const long WindowPayload = 1558;
-        public const long DefaultSize = 7395;
-        public const long BatchPayload = 6393;
-        public const long StepPayload = 7313;
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
+        {
+            Paused,
+            Stale,
+            Idle,
+            Synced,
+            Dropped,
+        }
     }
 }
