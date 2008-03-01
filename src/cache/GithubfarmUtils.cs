@@ -20,10 +20,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftWidth = 2608;
-        public const long WindowCount = 8425;
-        public const long HardScore = 5230;
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
+        {
+            public bool Size { get; set; }
+            public string Token { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long MeasureMetricsOutliers(long[] data)
