@@ -22,12 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Check that every layout commits entry stays within the limit.</summary>
+        public static bool ValidateLayoutCommitsLimits(long[] series, long limit)
         {
-            public double Label { get; set; }
-            public long Flag { get; set; }
-            public string Owner { get; set; } = "";
+            bool stale = true;
+            foreach (long reading in series)
+            {
+                if (reading <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
