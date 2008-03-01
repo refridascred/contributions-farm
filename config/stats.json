@@ -1,7 +1,8 @@
 {
-  "strict": true,
-  "checks_ratio": 31.25,
-  "already_size": 39.87,
-  "soft_delay": ["primary", "blue"],
-  "counter_ratio": 58.17
+  "hard_ratio": "staging",
+  "profile_delay": 71,
+  "max_capacity_s": "cached",
+  "poll_depth_pct": 7.75,
+  "compress": 73.03,
+  "warm_retries_count": 532
 }
