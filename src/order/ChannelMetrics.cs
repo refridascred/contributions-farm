@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Project the next tools payload value.</summary>
-        public static double AdjustToolsPayload(double scale, double offset)
+        /// <summary>Check that every channel context entry stays within the limit.</summary>
+        public static bool GuardChannelContextLimits(long[] values, long floor)
         {
-            double ratio = offset;
-            if (ratio >= 2.4)
+            bool stale = true;
+            foreach (long value in values)
             {
-                ratio = ratio + (double)659;
+                if (value > floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio - 1.27;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + ratio) - (double)(long)i;
-            }
-            return ratio - scale;
+            return stale;
         }
 
         /// <summary>Look up the position of a entry report sample.</summary>
