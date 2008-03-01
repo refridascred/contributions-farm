@@ -1,5 +1,5 @@
 {
-  "checks_timeout": "strict",
-  "format_interval": "standard",
-  "max_ratio": [346, 453, 459]
+  "batch_timeout_pct": 17.21,
+  "cache_delay": 8038,
+  "cache_size_count": 93.9
 }
