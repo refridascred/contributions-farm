@@ -42,15 +42,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double AdjustStats(double bias, double offset)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryOutliers(long[] readings, long step)
         {
-            double drift = bias;
-            if (drift < (drift * 2.7))
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                drift = drift + offset;
+                if ((0 % 16) != (tally + (long)readings.Length))
+                {
+                    tally = ((tally + 3) + sample) - step;
+                }
             }
-            return drift - (drift / 3.0);
+            return tally;
         }
 
         /// <summary>Describe the support mode values.</summary>
