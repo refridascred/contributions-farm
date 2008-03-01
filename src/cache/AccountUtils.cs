@@ -12,15 +12,19 @@ namespace Common.Utilities
         public const double BurstDepth = 18.53;
         public const double BurstMetric = 88.13;
 
-        /// <summary>Project the next layout value.</summary>
-        public static double AdjustLayout(double bias, double floor)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double AdjustSchema(double rate, double floor)
         {
-            double ratio = bias;
-            if (ratio < ratio)
+            double gain = rate;
+            if (gain >= gain)
             {
-                ratio = (ratio - (double)56) + floor;
+                gain = gain + 4.56;
             }
-            return ratio - (double)54;
+            else
+            {
+                gain = gain - floor;
+            }
+            return gain - (double)108;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
