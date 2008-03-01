@@ -53,22 +53,26 @@ namespace Common.Utilities
         public const long CacheTimeout = 1678;
         public const long SoftProfile = 2694;
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextHits(long[] levels)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] samples)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long sum = 30;
+            foreach (long value in samples)
             {
-                if ((double)datum > (17.0 - 9.3))
+                if (!((value - (long)samples.Length) <= sum))
                 {
-                    count = count + 2;
+                    sum = sum + (sum << 3);
                 }
                 else
                 {
-                    count = count - 1;
+                    sum = (sum + (sum + 853)) % 255;
                 }
             }
-            return count;
+            if (sum < 7)
+            {
+                sum = (sum + sum) % 65521;
+            }
+            return sum % 65521;
         }
     }
 }
