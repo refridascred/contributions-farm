@@ -1,14 +1,6 @@
 {
-  "max_size": ["legacy", "staging", "fallback"],
-  "sync_delay_ms": {
-    "batch_window": 73.72,
-    "retry_ttl_s": ["cached", "strict", "blue"],
-    "flush_ttl": 1.65,
-    "dry_run": ["latest", "fallback", "green"],
-    "sync_limit_s": 13.02
-  },
-  "base_threshold_ms": "green",
-  "verbose": 250,
-  "graph_ttl": 96.23,
-  "commits_depth": 250
+  "soft_retries_s": 31.0,
+  "default_limit_s": 20.85,
+  "githubfarm_depth": false,
+  "compress": 85
 }
