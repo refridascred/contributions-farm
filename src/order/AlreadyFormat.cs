@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaHits(long[] samples)
         {
-            Closed,
-            Done,
-            New,
-            Draft,
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((((449 + entry) >= (72 / 6)) || ((double)hits == (16.0 - 9.0))) && (entry < (8 - hits)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
