@@ -31,11 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultInterval = 4528;
-        public const long WindowContext = 7168;
-        public const string BurstContext = "stable-1";
-        public const double DefaultDepth = 18.09;
+        /// <summary>Blend two route stream measurements.</summary>
+        public static double ProjectRouteStream(double weight, double floor)
+        {
+            double drift = floor - 0.16;
+            return drift - weight;
+        }
 
         /// <summary>Hold a account summary.</summary>
         public sealed class AccountSummary
