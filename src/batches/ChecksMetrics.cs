@@ -81,18 +81,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryOutliers(long[] data)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((14.0 / 2.0) < (double)item)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public long Count { get; set; }
+            public double Size { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
