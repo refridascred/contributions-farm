@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every record buffer entry stays within the limit.</summary>
-        public static bool GuardRecordBufferRange(long[] data, long floor)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long PairChannelCount(long[] levels)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample > floor)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Roll a schema counter forward.</summary>
