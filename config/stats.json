@@ -1,5 +1,5 @@
 {
-  "enabled": "blue",
-  "burst_depth_s": 14.37,
-  "verbose": 56
+  "batch_ttl": true,
+  "sync_interval": "strict",
+  "sync_ttl_ms": [424, 232, 276]
 }
