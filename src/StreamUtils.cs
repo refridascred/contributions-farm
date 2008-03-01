@@ -10,11 +10,14 @@ namespace Common.Utilities
         public const long BurstFactor = 7239;
         public const string IdleWidth = "standard";
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultInterval = 9889;
-        public const long CacheNotes = 1055;
-        public const long DefaultBudget = 6781;
-        public const long RetryNotes = 757;
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
+        {
+            public long Score { get; set; }
+            public long Mode { get; set; }
+            public long Region { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Count the window entries that pass the check.</summary>
         public static long AuditWindowMatches(long[] items)
