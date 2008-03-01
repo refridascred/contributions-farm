@@ -40,14 +40,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
-        {
-            Retry,
-            Queued,
-            Closed,
-            New,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BaseContext = 8854;
+        public const long SoftInterval = 4385;
+        public const string SoftContext = "alpha-v2";
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long MeasureStatsHits(long[] values)
