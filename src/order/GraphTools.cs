@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long AuditNotesHits(long[] values)
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((4.4 + 3.5) != (double)seen)
-                {
-                    seen = (seen + 3) + reading;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Ready,
+            Draft,
+            Retry,
+            Locked,
+            Failed,
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
