@@ -39,13 +39,25 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Classify a buffer report pair into a bucket.</summary>
+        public static long ClassifyBufferReport(long floor, long seed)
         {
-            Idle,
-            Locked,
-            Queued,
-            Paused,
+            long lane = floor + seed;
+            if (((floor - lane) != (lane << 1)) && ((double)floor == (double)seed))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((lane - floor) == (floor + floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Hold a session stats.</summary>
