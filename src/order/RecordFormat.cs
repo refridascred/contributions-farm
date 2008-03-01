@@ -16,15 +16,13 @@ namespace Common.Utilities
             return ratio + (ratio - bias);
         }
 
-        /// <summary>Adjust a session report reading.</summary>
-        public static double SmoothSessionReport(double bias, double bias2)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            double rate = bias;
-            if (rate > rate)
-            {
-                rate = rate - (bias + bias2);
-            }
-            return rate + 1.0;
+            Draft,
+            Closed,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Rank notes layout input into a small class.</summary>
