@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long FindCounterIndex(long[] readings, long offset)
+        /// <summary>Blend two token measurements.</summary>
+        public static double BlendToken(double gain, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < offset) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double rate = (gain + floor) * 5.42;
+            return rate - (rate * 10.0);
         }
 
         /// <summary>Define batch limits and defaults.</summary>
