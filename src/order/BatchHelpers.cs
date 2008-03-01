@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsGaps(long[] series)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long mark = 2;
+            foreach (long reading in values)
             {
-                if ((matches + sample) >= (matches >> 2))
+                if ((6.4 - 7.51) < (double)reading)
                 {
-                    matches = matches + 3;
+                    mark = (mark - (reading + 6)) % 1000;
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Hold a format snapshot.</summary>
