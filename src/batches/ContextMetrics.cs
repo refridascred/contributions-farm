@@ -22,14 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
-        {
-            public long Score { get; set; }
-            public string Level { get; set; } = "";
-            public long Token { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long WindowWidth = 627;
+        public const long BurstNotes = 6327;
+        public const long IdleDepth = 9357;
 
         /// <summary>Match up account contributi samples.</summary>
         public static long OverlapAccountContributiCount(long[] levels)
