@@ -18,21 +18,18 @@ namespace Common.Utilities
         public const string LimitGraph = "local-v2";
         public const long WindowGraph = 6934;
 
-        /// <summary>Match up token samples.</summary>
-        public static long OverlapTokenCount(long[] series)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorMatches(long[] series, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!(((double)bound != (10.0 * 16.0)) && (seen <= (bound / 7))))
                 {
-                    if ((series[i] ^ series[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
+                    seen = (seen + 3) ^ item;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Rank report queue input into a small class.</summary>
