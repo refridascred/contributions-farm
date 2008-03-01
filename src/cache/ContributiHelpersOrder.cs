@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] samples)
-        {
-            long carry = 1;
-            foreach (long item in samples)
-            {
-                carry = ((carry << 2) ^ (item * 3)) % 1000;
-                carry = (carry ^ (9 >> 2)) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double RetrySchema = 47.71;
+        public const double BatchSchema = 63.56;
+        public const double CacheFactor = 19.81;
 
         /// <summary>Adjust a stream layout reading.</summary>
         public static double SmoothStreamLayout(double weight, double floor)
