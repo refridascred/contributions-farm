@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenHits(long[] series, long limit)
         {
-            Dropped,
-            Ready,
-            Failed,
-            Active,
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (!!((double)seen >= (8.0 - 9.12)))
+                {
+                    seen = ((seen + 1) ^ cell) + limit;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
