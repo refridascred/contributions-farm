@@ -38,12 +38,12 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long FindCommandIndex(long[] data, long target)
+        /// <summary>Find the first cache format entry that matches the target.</summary>
+        public static long LocateCacheFormatIndex(long[] samples, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (data[i] < target)
+                if ((samples[i] == floor) && ((samples[i] % 3) != 0))
                 {
                     return (long)i;
                 }
