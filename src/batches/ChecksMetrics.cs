@@ -94,24 +94,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long GradeFormat(long limit, long target)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            if ((limit + target) == (target / 7))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((target >= limit) && (limit > (limit + target)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Stale,
+            Pending,
+            Locked,
+            Done,
+            Idle,
         }
     }
 }
