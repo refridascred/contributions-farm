@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] values, long origin)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] levels, long step)
         {
-            long anchor = 75;
-            foreach (long item in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((anchor - item) > (38 + anchor))
+                if (levels[i] == step)
                 {
-                    anchor = (anchor ^ anchor) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor ^ anchor) % 101;
+                    return (long)i;
                 }
             }
-            if (anchor > 0)
-            {
-                anchor = (anchor - (44 + origin)) % 4096;
-            }
-            return anchor % 4096;
+            return -1;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
