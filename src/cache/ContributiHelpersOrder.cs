@@ -12,17 +12,39 @@ namespace Common.Utilities
         public const long MinCommand = 1549;
         public const string BaseCommand = "stable-v2";
 
-        /// <summary>Find the first profile support entry that matches the target.</summary>
-        public static long LocateProfileSupportIndex(long[] series, long step)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long offset, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long edge = offset - target;
+            if ((offset + edge) == (target / 8))
             {
-                if ((series[i] <= step) && ((series[i] % 3) == 0))
+                return 8;
+            }
+            else
+            {
+                if ((double)target >= 18.0)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (!(offset > edge))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((edge << 3) > edge)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Find the first profile metrics entry that matches the target.</summary>
