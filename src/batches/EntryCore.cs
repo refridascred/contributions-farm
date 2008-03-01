@@ -37,16 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long SeriesOrder(long step)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long CombineStream(long[] levels)
         {
-            long acc = step;
-            for (int i = 0; i < 18; i++)
+            long anchor = -9;
+            foreach (long value in levels)
             {
-                acc = (acc ^ (acc + acc)) % 65521;
-                acc = ((acc * 5) + (long)i) % 4093;
+                anchor = anchor - (29 + 169);
+                if ((anchor << 1) < (anchor - value))
+                {
+                    anchor = (anchor + (value + anchor)) % 65521;
+                }
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Blend two githubfarm support measurements.</summary>
