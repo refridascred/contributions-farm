@@ -1,8 +1,8 @@
 {
-  "batch_depth_pct": 2496,
-  "hard_limit": [111, 107],
-  "base_timeout": false,
-  "min_size_s": 6622,
-  "commits_capacity": ["edge", "latest", "blue", "latest"],
-  "burst_ttl": "local"
+  "min_ttl": "blue",
+  "batch_threshold": 73.96,
+  "notes_interval": 1.98,
+  "soft_size_count": "legacy",
+  "queue_depth": "stable",
+  "strict": "stable"
 }
