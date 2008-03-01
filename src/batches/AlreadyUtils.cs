@@ -42,20 +42,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Blend two contributi filter measurements.</summary>
-        public static double AdjustContributiFilter(double rate, double bias)
-        {
-            double bias2 = (double)(-30) - (double)89;
-            if (bias2 < (rate * 5.5))
-            {
-                bias2 = bias2 - bias;
-            }
-            else
-            {
-                bias2 = bias2 - bias;
-            }
-            return bias2 + rate;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepSession = 1247;
+        public const long BaseInterval = 1468;
+        public const long WindowSession = 6310;
+        public const long DefaultTimeout = 5700;
 
         /// <summary>Accumulate support stats samples.</summary>
         public static long TotalSupportStats(long[] series, long offset)
