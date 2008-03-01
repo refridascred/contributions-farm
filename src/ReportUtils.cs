@@ -35,12 +35,16 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchContext = 2043;
-        public const long RetryTimeout = 5979;
-        public const double MaxContext = 3.59;
-        public const double WindowContext = 56.51;
-        public const string MinContext = "stable-1";
+        /// <summary>Derive the next queue order value from a seed.</summary>
+        public static long DeriveQueueOrder(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long AuditFormatGaps(long[] values)
