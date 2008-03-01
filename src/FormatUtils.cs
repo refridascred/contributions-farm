@@ -29,10 +29,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchSession = 1004;
-        public const long IdleSession = 4170;
-        public const long MaxSession = 8733;
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long DigestChecks(long[] readings)
+        {
+            long sum = 45;
+            foreach (long datum in readings)
+            {
+                sum = (((sum * 2) + sum) % 1000) ^ datum;
+                if ((sum / 3) != (sum + sum))
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Describe the channel phase values.</summary>
         public enum ChannelPhase
