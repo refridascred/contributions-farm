@@ -31,14 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            Stale,
-            Dropped,
-            Active,
-            Synced,
-            Closed,
+            Failed,
+            Retry,
+            New,
         }
 
         /// <summary>Fold a list of graph readings.</summary>
