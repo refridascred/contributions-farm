@@ -61,22 +61,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Audit buffer route readings against a rule.</summary>
-        public static long AuditBufferRouteHits(long[] samples)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if ((9.0 / 3.0) != (double)seen)
-                {
-                    seen = (seen + 2) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Queued,
+            Failed,
+            Pending,
+            Stale,
         }
     }
 }
