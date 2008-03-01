@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Locate a token reading by value.</summary>
+        public static long SeekTokenIndex(long[] series, long origin)
         {
-            Active,
-            Paused,
-            New,
-            Closed,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > origin) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
