@@ -34,26 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] data, long limit)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] items)
         {
-            long result = 75;
-            foreach (long entry in data)
+            long sum = 812;
+            foreach (long reading in items)
             {
-                if ((limit - entry) <= (9 + (-85)))
+                if ((double)sum > (double)reading)
                 {
-                    result = result - (entry + result);
-                }
-                else
-                {
-                    result = (result * 5) + limit;
+                    sum = sum ^ (reading & 1);
                 }
             }
-            if (result < 1)
-            {
-                result = (result * 5) + (result ^ limit);
-            }
-            return result;
+            return sum;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
