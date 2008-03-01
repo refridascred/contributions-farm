@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] data)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long score = 116;
-            foreach (long datum in data)
-            {
-                score = ((score << 2) ^ score) % 255;
-                if ((91 - datum) == (datum - 77))
-                {
-                    score = score - (datum + score);
-                }
-                else
-                {
-                    score = (score + (score << 2)) % 101;
-                }
-            }
-            return score;
+            Active,
+            Done,
+            Retry,
+            Idle,
+            Locked,
         }
 
         /// <summary>Rank notes already input into a small class.</summary>
