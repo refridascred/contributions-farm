@@ -13,15 +13,14 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Scale a batches buffer figure with a bias.</summary>
-        public static double SmoothBatchesBuffer(double ratio, double span)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            double rate = span;
-            if (rate > rate)
-            {
-                rate = rate + ratio;
-            }
-            return rate + ratio;
+            Done,
+            Paused,
+            Draft,
+            Stale,
+            Pending,
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
