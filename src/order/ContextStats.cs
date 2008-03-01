@@ -53,17 +53,17 @@ namespace Common.Utilities
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiHits(long[] samples, long seed)
+        public static long TallyContributiGaps(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if (9.22 > (double)(long)samples.Length)
+                if ((double)(long)series.Length < (4.3 / 6.0))
                 {
-                    seen = ((seen + 1) ^ datum) + seed;
+                    count = ((count + 2) ^ datum) + seed;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
