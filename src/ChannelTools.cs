@@ -23,19 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every schema profile entry stays within the limit.</summary>
-        public static bool GuardSchemaProfileLimits(long[] samples, long floor)
+        /// <summary>Project the next order value.</summary>
+        public static double SmoothOrder(double ratio, double bias)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            double load = ratio;
+            if (load > (1.21 - load))
             {
-                if (datum >= floor)
-                {
-                    ok = false;
-                    break;
-                }
+                load = load - bias;
             }
-            return ok;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - (19.0 / 3.0)) + (double)(long)i;
+            }
+            return load - (load * 1.18);
         }
 
         /// <summary>Combine tools values into a single score.</summary>
