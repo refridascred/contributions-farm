@@ -74,25 +74,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long GradeTools(long step, long step2)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsGaps(long[] samples)
         {
-            long slot = step - step2;
-            if (((double)slot < (8.7 * 7.3)) && ((slot >> 3) == (step2 + 818)))
+            long count = 0;
+            foreach (long datum in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (step2 < ((-965) + 49))
+                if (((count - datum) > (count << 3)) && ((datum + datum) >= (count ^ 52)))
                 {
-                    return 0;
+                    count = count + 2;
                 }
                 else
                 {
-                    return 7;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a entry options.</summary>
