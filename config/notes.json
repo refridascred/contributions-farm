@@ -1,16 +1,7 @@
 {
-  "max_interval_count": {
-    "cache_retries": {
-      "retry_capacity": 13,
-      "base_size_s": 4929,
-      "poll_depth": [227, 56, 374],
-      "schema_retries": true,
-      "idle_threshold_count": "green"
-    },
-    "batch_delay_ms": 6.04,
-    "route_window": 20.74,
-    "idle_interval_pct": [386, 131]
-  },
-  "enabled": 66,
-  "soft_ttl": "standard"
+  "max_limit_count": 60,
+  "burst_size": 75.19,
+  "base_interval": [25, 328, 135],
+  "warm_delay_count": 100,
+  "batches_threshold": ["edge", "fallback", "open"]
 }
