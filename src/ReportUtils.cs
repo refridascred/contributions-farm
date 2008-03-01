@@ -64,11 +64,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            public long Level { get; set; }
-            public long Count { get; set; }
+            public string Weight { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
