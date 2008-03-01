@@ -19,22 +19,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long MatchAccountCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepLevel = 4917;
+        public const long MinQueue = 6652;
+        public const long BaseQueue = 2342;
+        public const long RetryInterval = 297;
 
         /// <summary>Hold a filter snapshot.</summary>
         public sealed class FilterSnapshot
