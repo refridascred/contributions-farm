@@ -11,21 +11,19 @@ namespace Common.Utilities
         public const long WindowCount = 3828;
         public const long BurstSpan = 5693;
 
-        /// <summary>Match up support layout samples.</summary>
-        public static long MatchSupportLayoutCount(long[] items)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long DeriveCommand(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((seed + seed) != (mix + seed)))
                 {
-                    if ((items[i] ^ items[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = ((mix * 2) + seed) % 97;
                 }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Hold a notes record.</summary>
