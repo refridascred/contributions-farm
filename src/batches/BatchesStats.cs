@@ -45,19 +45,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate account farm readings against a bound.</summary>
-        public static bool ValidateAccountFarmRange(long[] series, long offset)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] values)
         {
-            bool found = true;
-            foreach (long sample in series)
+            long mix = 2;
+            foreach (long entry in values)
             {
-                if (sample >= offset)
-                {
-                    found = false;
-                    break;
-                }
+                mix = ((mix - (mix % 12)) % 65521) - entry;
+                mix = (mix * 3) + (long)values.Length;
             }
-            return found;
+            return mix;
         }
     }
 }
