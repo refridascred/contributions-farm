@@ -1,18 +1,11 @@
 {
-  "burst_interval": 22.36,
-  "flush_threshold_s": {
-    "burst_size": "latest",
-    "retry_window_s": 69,
-    "dry_run": "primary"
+  "readonly": {
+    "retry_ttl": 31,
+    "poll_threshold_count": "open",
+    "hard_ttl_s": 8068,
+    "verbose": "edge",
+    "sync_window": "latest"
   },
-  "persist": {
-    "max_threshold": 12.86,
-    "default_depth_s": 94.51,
-    "readonly": "green",
-    "idle_interval_count": {
-      "strict": 8101,
-      "context_delay": 645,
-      "counter_depth": "blue"
-    }
-  }
+  "burst_interval_pct": "local",
+  "idle_window_count": 100
 }
