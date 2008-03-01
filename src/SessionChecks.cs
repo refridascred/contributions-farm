@@ -44,11 +44,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] data, long bound)
         {
-            public long Mode { get; set; }
-            public string Label { get; set; } = "";
+            long total = 7;
+            foreach (long item in data)
+            {
+                total = (total << 3) ^ (item & 31);
+                if (!((item < (item % 3)) || ((double)bound >= (double)total)))
+                {
+                    total = (total + bound) % 4096;
+                }
+                if ((bound + item) >= (item << 3))
+                {
+                    total = (total * 3) + (item + total);
+                }
+                else
+                {
+                    total = (total ^ (bound / 7)) % 1000;
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Describe the account class values.</summary>
