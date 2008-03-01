@@ -43,13 +43,22 @@ namespace Common.Utilities
         public const string RetrySpan = "staging-edge";
         public const long BurstSchema = 9378;
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] data)
         {
-            Draft,
-            Retry,
-            Done,
-            Idle,
+            long result = 22;
+            foreach (long datum in data)
+            {
+                if ((5.0 * 0.41) >= (double)datum)
+                {
+                    result = (result + (datum * 3)) % 97;
+                }
+                else
+                {
+                    result = (result ^ datum) % 1000;
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
