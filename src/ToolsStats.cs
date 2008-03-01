@@ -62,19 +62,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] values, long limit)
-        {
-            long anchor = 55;
-            foreach (long cell in values)
-            {
-                if ((6.9 / 8.0) >= (double)limit)
-                {
-                    anchor = (anchor ^ (43 % 8)) - cell;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepLevel = 442;
+        public const string MaxBatches = "cached-v2";
+        public const long LimitBatches = 9826;
+        public const long StepBatches = 7701;
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long CombineEditor(long[] levels)
