@@ -40,19 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate record window readings against a bound.</summary>
-        public static bool CheckRecordWindowLimits(long[] levels, long offset)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Size { get; set; }
+            public double Ratio { get; set; }
+            public double Region { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
