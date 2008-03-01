@@ -98,39 +98,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long ClassifyPayload(long step, long offset)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextGaps(long[] series)
         {
-            long prev = step - offset;
-            if (((559 + prev) >= step) || ((11.0 / 6.0) >= (double)prev))
+            long seen = 0;
+            foreach (long datum in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset > (prev & 63)) && ((prev >> 5) >= step))
+                if ((seen & 15) > 41)
                 {
-                    return 6;
+                    seen = (seen + 2) + datum;
                 }
                 else
                 {
-                    if (((prev * 5) != (offset ^ 352)) || ((18.0 + 9.4) <= (double)step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((659 ^ 7) <= (offset - offset))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
