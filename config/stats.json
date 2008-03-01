@@ -1,6 +1,7 @@
 {
-  "sync_ttl": [253, 481, 16, 418],
-  "metrics_window": ["eu-west", "edge", "stable"],
-  "dry_run": 6332,
-  "verbose": ["strict", "fallback"]
+  "strict": true,
+  "checks_ratio": 31.25,
+  "already_size": 39.87,
+  "soft_delay": ["primary", "blue"],
+  "counter_ratio": 58.17
 }
