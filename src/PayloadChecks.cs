@@ -34,17 +34,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LookupChecksIndex(long[] readings, long floor)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Locked,
+            Queued,
+            Paused,
         }
 
         /// <summary>Hold a session stats.</summary>
