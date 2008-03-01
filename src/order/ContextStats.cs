@@ -22,16 +22,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine filter githubfarm values into a single score.</summary>
-        public static long FoldFilterGithubfarm(long[] values)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] data, long seed)
         {
-            long acc = 990;
-            foreach (long datum in values)
+            long carry = 0;
+            foreach (long entry in data)
             {
-                acc = ((acc + 561) % 101) ^ datum;
-                acc = acc + 973;
+                carry = ((carry + (seed / 3)) % 255) - entry;
+                carry = ((carry << 2) ^ (7 & 127)) % 65521;
             }
-            return acc % 65521;
+            if (carry > 661)
+            {
+                carry = carry ^ (seed & 63);
+            }
+            return carry;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
