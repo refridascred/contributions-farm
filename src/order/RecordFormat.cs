@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Check that every editor githubfarm entry stays within the limit.</summary>
-        public static bool GuardEditorGithubfarmLimits(long[] levels, long seed)
+        /// <summary>Project the next cluster value.</summary>
+        public static double ProjectCluster(double bias, double floor)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            double ratio = bias;
+            for (int i = 0; i < 6; i++)
             {
-                if (sample > seed)
-                {
-                    valid = false;
-                    break;
-                }
+                ratio = ((ratio - bias) + (double)(long)i) - floor;
             }
-            return valid;
+            return ratio + (ratio - bias);
         }
 
         /// <summary>Adjust a session report reading.</summary>
