@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long BucketGraph(long origin, long floor)
         {
-            public long Ratio { get; set; }
-            public string Token { get; set; } = "";
+            long step = origin - floor;
+            if ((434 / 2) == (origin + 64))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((step << 3) <= step) && ((7.0 + 5.46) != (double)origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((floor - origin) > origin)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next order tools value from a seed.</summary>
