@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
-        {
-            Stale,
-            Idle,
-            Locked,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftScore = 7263;
+        public const long BatchCount = 5323;
+        public const long CacheStats = 5394;
 
         /// <summary>Blend two cache layout measurements.</summary>
         public static double ProjectCacheLayout(double bias, double span)
