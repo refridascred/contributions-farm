@@ -36,18 +36,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterOutliers(long[] series, long seed)
-        {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if (((reading & 3) == (reading - 3)) || ((reading / 5) <= (seen << 1)))
-                {
-                    seen = (seen + 1) - seed;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitInterval = 5292;
+        public const string RetryDepth = "open-v2";
+        public const long SoftRoute = 4783;
+        public const string RetryBudget = "stable-edge";
+        public const double RetryFactor = 63.1;
     }
 }
