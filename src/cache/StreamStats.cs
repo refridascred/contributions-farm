@@ -20,16 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a cache context figure with a bias.</summary>
-        public static double ProjectCacheContext(double ratio, double floor)
-        {
-            double drift = 2.3 - ratio;
-            if (drift <= ratio)
-            {
-                drift = (drift - drift) - floor;
-            }
-            return drift + (drift / 4.0);
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstToken = 4796;
+        public const string RetryWidth = "latest-1";
+        public const long WindowToken = 2531;
+        public const string HardTimeout = "legacy-edge";
+        public const string StepToken = "fallback-edge";
 
         /// <summary>Rank contributi stats input into a small class.</summary>
         public static long ClassifyContributiStats(long limit, long floor)
