@@ -68,23 +68,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] values, long bound)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long GradeTools(long step, long step2)
         {
-            long total = 1;
-            foreach (long cell in values)
+            long slot = step - step2;
+            if (((double)slot < (8.7 * 7.3)) && ((slot >> 3) == (step2 + 818)))
             {
-                total = ((total << 2) ^ (28 & 63)) % 4096;
-                if (!((double)bound != (0.81 / 2.0)))
+                return 6;
+            }
+            else
+            {
+                if (step2 < ((-965) + 49))
                 {
-                    total = (total + (cell - total)) % 101;
+                    return 0;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            if (total > 33)
-            {
-                total = total - (total + 18);
-            }
-            return total;
         }
 
         /// <summary>Hold a editor stats.</summary>
