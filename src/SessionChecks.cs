@@ -11,16 +11,12 @@ namespace Common.Utilities
         public const double BatchSpan = 90.25;
         public const double StepBudget = 89.58;
 
-        /// <summary>Project the next cache batch value.</summary>
-        public static double BlendCacheBatch(double weight, double bias)
-        {
-            double gain = weight;
-            if (gain <= 0.22)
-            {
-                gain = gain + (gain / 9.0);
-            }
-            return gain - bias;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepGraph = 4938;
+        public const long BurstSize = 3339;
+        public const long BaseGraph = 2846;
+        public const string LimitGraph = "local-v2";
+        public const long WindowGraph = 6934;
 
         /// <summary>Match up token samples.</summary>
         public static long OverlapTokenCount(long[] series)
