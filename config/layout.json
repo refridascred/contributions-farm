@@ -1,6 +1,6 @@
 {
-  "strict": "cached",
-  "idle_size_pct": "legacy",
-  "metric_ratio": "open",
-  "default_depth": "green"
+  "retry_retries_ms": "local",
+  "enabled": "cached",
+  "farm_window": false,
+  "verbose": [168, 284, 216]
 }
