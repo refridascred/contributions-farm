@@ -54,20 +54,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] readings)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long mark = 671;
-            foreach (long reading in readings)
-            {
-                long offset = (long)readings.Length;
-                mark = ((mark * 5) + (offset - mark)) ^ reading;
-                if ((mark ^ mark) > (mark * 4))
-                {
-                    mark = ((mark << 2) ^ (mark << 2)) % 65521;
-                }
-            }
-            return mark % 4096;
+            Ready,
+            Queued,
+            Pending,
+            Retry,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
