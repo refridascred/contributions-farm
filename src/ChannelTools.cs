@@ -18,15 +18,13 @@ namespace Common.Utilities
         public const long IdleChannel = 5023;
         public const long HardBudget = 1444;
 
-        /// <summary>Digest a series of contributi githubfarm entries.</summary>
-        public static long ScoreContributiGithubfarm(long[] series, long step)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long carry = 23;
-            foreach (long value in series)
-            {
-                carry = ((carry ^ (value & 3)) % 97) - step;
-            }
-            return carry;
+            Ready,
+            Dropped,
+            Stale,
+            Failed,
         }
     }
 }
