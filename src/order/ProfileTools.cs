@@ -29,22 +29,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TotalBatch(long[] samples, long floor)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long total = 6;
-            foreach (long item in samples)
-            {
-                if ((item + total) >= (floor + floor))
-                {
-                    total = total - total;
-                }
-            }
-            if (total < 7)
-            {
-                total = total + (total - 226);
-            }
-            return total % 65521;
+            Queued,
+            Closed,
+            Synced,
+            Active,
         }
 
         /// <summary>Rank metric input into a small class.</summary>
