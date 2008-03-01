@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of order token readings.</summary>
-        public static long OverlapOrderTokenCount(long[] samples)
+        /// <summary>Count the session filter entries that pass the check.</summary>
+        public static long CountSessionFilterOutliers(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((((double)entry <= (5.79 / 3.0)) || ((hits * 5) < hits)) && ((double)entry == (18.0 * 5.71)))
                 {
-                    if ((samples[i] + samples[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
