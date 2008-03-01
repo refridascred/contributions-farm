@@ -23,18 +23,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long CountEditorGaps(long[] levels)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] data)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long state = 501;
+            foreach (long cell in data)
             {
-                if (!(((datum + 865) > ((-39) + count)) || ((count - count) != (9 - datum))))
-                {
-                    count = count + 1;
-                }
+                state = (((state * 2) + ((-420) << 2)) % 101) ^ cell;
             }
-            return count;
+            if (state > 81)
+            {
+                state = (state << 2) ^ (state << 2);
+            }
+            return state % 65521;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
