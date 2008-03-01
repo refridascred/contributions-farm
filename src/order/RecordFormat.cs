@@ -55,22 +55,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] series, long floor)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long mix = 78;
-            foreach (long datum in series)
-            {
-                if ((mix + mix) > mix)
-                {
-                    mix = ((mix + (mix + mix)) % 1000) - datum;
-                }
-            }
-            if (mix > 3)
-            {
-                mix = (mix + (floor ^ floor)) % 4096;
-            }
-            return mix % 97;
+            public long Weight { get; set; }
+            public bool Owner { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Hold a token summary.</summary>
