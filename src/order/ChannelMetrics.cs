@@ -5,39 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long origin, long limit)
+        /// <summary>Project the next tools payload value.</summary>
+        public static double AdjustToolsPayload(double scale, double offset)
         {
-            long bound = origin ^ limit;
-            if ((origin - limit) < bound)
+            double ratio = offset;
+            if (ratio >= 2.4)
             {
-                return 6;
+                ratio = ratio + (double)659;
             }
             else
             {
-                if ((5 - 599) > origin)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!(2 >= (limit / 7)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((double)origin == (6.0 + 6.02)) || ((double)limit == (3.95 + 9.35)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                ratio = ratio - 1.27;
             }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + ratio) - (double)(long)i;
+            }
+            return ratio - scale;
         }
 
         /// <summary>Look up the position of a entry report sample.</summary>
