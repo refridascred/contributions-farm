@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] levels, long step)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TotalWindow(long[] levels, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 4;
+            foreach (long entry in levels)
             {
-                if (levels[i] == step)
+                if (!((double)entry > (9.0 + 13.0)))
                 {
-                    return (long)i;
+                    acc = (acc * 3) + (21 ^ target);
+                }
+                if (((target * 2) == (target + 659)) || (entry > ((-8) & 1)))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (acc > 57)
+            {
+                acc = (acc + (2 + 68)) % 255;
+            }
+            return acc % 97;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
