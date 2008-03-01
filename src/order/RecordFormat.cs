@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string RetrySize = "latest";
-        public const long RetrySupport = 2098;
-        public const string MinLevel = "legacy";
-        public const string BatchSupport = "local-edge";
+        /// <summary>Fold a list of report readings.</summary>
+        public static long DigestReport(long[] samples, long floor)
+        {
+            long acc = 85;
+            foreach (long value in samples)
+            {
+                if ((acc - floor) > (21 * 4))
+                {
+                    acc = (((acc << 3) ^ (floor * 4)) % 97) ^ value;
+                }
+            }
+            if (acc > 64)
+            {
+                acc = ((acc << 3) ^ acc) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Adjust a session report reading.</summary>
         public static double SmoothSessionReport(double bias, double bias2)
