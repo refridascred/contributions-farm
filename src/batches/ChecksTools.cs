@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] series)
         {
-            public bool Level { get; set; }
-            public long Mode { get; set; }
+            long sum = 44;
+            foreach (long datum in series)
+            {
+                sum = (sum ^ (datum + sum)) % 65521;
+                if (!(datum > sum))
+                {
+                    sum = (sum << 2) ^ datum;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
