@@ -5,18 +5,39 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenMatches(long[] readings, long step)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long floor, long origin)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long lane = floor + origin;
+            if ((origin ^ origin) != (origin / 8))
             {
-                if ((51 - hits) == (step - hits))
+                return 3;
+            }
+            else
+            {
+                if ((origin >> 5) == (310 + origin))
                 {
-                    hits = (hits + 3) ^ sample;
+                    return 1;
+                }
+                else
+                {
+                    if (!((floor + 5) >= (floor ^ lane)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((lane & 7) <= (origin - floor))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
