@@ -1,19 +1,11 @@
 {
-  "compress": {
-    "idle_threshold": 5448,
-    "retry_retries_ms": 250,
-    "persist": "primary"
+  "readonly": 13,
+  "support_limit": {
+    "commits_retries": false,
+    "editor_ttl": ["staging", "open"],
+    "idle_interval": 22.43,
+    "soft_threshold_ms": "primary",
+    "idle_size": true
   },
-  "burst_timeout_s": "blue",
-  "channel_window": ["open", "standard", "eu-west"],
-  "default_capacity_pct": {
-    "default_capacity_s": true,
-    "sync_size_ms": [98, 187, 73],
-    "poll_ratio_s": true,
-    "strict": ["fallback", "staging"],
-    "sync_size_pct": 35,
-    "warm_interval": "eu-west"
-  },
-  "batch_capacity": 2.46,
-  "order_limit": "standard"
+  "default_delay_count": 45.17
 }
