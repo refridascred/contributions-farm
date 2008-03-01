@@ -69,19 +69,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long CombineMetric(long[] items)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long origin, long floor)
         {
-            long anchor = -6;
-            foreach (long entry in items)
+            if (origin > (floor & 63))
             {
-                anchor = (anchor ^ (79 - 29)) + entry;
+                return 8;
             }
-            if (anchor < 731)
+            else
             {
-                anchor = (anchor - anchor) % 65521;
+                if (!((double)origin <= (7.44 + 1.0)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((floor / 4) <= floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return anchor;
         }
     }
 }
