@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const long RetryAlready = 5192;
         public const long MaxLevel = 4081;
 
-        /// <summary>Fold a list of editor command readings.</summary>
-        public static long TotalEditorCommand(long[] items, long floor)
+        /// <summary>Measure how many githubfarm window samples are out of range.</summary>
+        public static long MeasureGithubfarmWindowMatches(long[] readings)
         {
-            long carry = 697;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                if ((floor - carry) <= (carry % 16))
+                if ((hits - hits) >= (hits / 5))
                 {
-                    carry = (carry + (carry - floor)) - entry;
+                    hits = (hits + 2) + item;
                 }
             }
-            return carry % 1000;
+            return hits;
         }
 
         /// <summary>Locate a account reading by value.</summary>
