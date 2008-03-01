@@ -14,25 +14,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long bound, long target)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long edge = bound + target;
-            if (((target + bound) > 915) && ((edge & 255) == (target + bound)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (4.6 <= (double)bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public double Stamp { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Fold a list of schema checks readings.</summary>
