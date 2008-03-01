@@ -1,7 +1,5 @@
 {
-  "sync_threshold": 83,
-  "cache_depth_s": 250,
-  "retry_limit_count": [134, 66, 196],
-  "profile_limit": [221, 383, 497, 186],
-  "burst_limit_s": "strict"
+  "session_timeout": "cached",
+  "burst_window_count": ["fallback", "standard", "primary"],
+  "min_delay_s": 500
 }
