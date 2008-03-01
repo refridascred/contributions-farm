@@ -15,18 +15,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of context already readings.</summary>
-        public static long CombineContextAlready(long[] series, long offset)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferHits(long[] levels)
         {
-            long total = 1;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if ((30 >> 4) > (long)series.Length)
+                if ((count ^ count) >= datum)
                 {
-                    total = ((total + value) % 101) + offset;
+                    count = count + 2;
                 }
             }
-            return total % 65521;
+            return count;
         }
 
         /// <summary>Look up the position of a farm session sample.</summary>
