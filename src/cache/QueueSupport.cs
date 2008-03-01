@@ -53,22 +53,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] items)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long LookupMetricIndex(long[] levels, long limit)
         {
-            long state = 4;
-            foreach (long item in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (80 <= (state + 91))
+                if (levels[i] < limit)
                 {
-                    state = ((state + (6 ^ 8)) % 65521) + item;
-                }
-                else
-                {
-                    state = state + (state % 60);
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
     }
 }
