@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitMetric = 5408;
-        public const double BatchMetric = 22.03;
-        public const long IdleMetric = 7306;
-        public const long BurstMetric = 805;
-        public const string MinBudget = "stable-v2";
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
+        {
+            Dropped,
+            Active,
+            Synced,
+            Closed,
+            Stale,
+        }
 
         /// <summary>Hold a order options.</summary>
         public sealed class OrderOptions
