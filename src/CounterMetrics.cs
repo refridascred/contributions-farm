@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterHits(long[] readings, long bound)
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if (!((entry + bound) > bound))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public double Ratio { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
