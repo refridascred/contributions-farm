@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long OverlapBatchCount(long[] levels)
+        /// <summary>Grade a route schema value against two limits.</summary>
+        public static long GradeRouteSchema(long step, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long cur = step - offset;
+            if ((offset + 806) < (offset + offset))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((554 * 5) < (offset + cur))
                 {
-                    if ((levels[i] ^ levels[j]) > 19)
+                    return 6;
+                }
+                else
+                {
+                    if ((3 - cur) != (cur - offset))
                     {
-                        hits = hits + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
