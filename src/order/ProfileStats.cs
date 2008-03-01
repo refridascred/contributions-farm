@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Compare every pair of already cache readings.</summary>
-        public static long MatchAlreadyCacheCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstRatio = 7799;
+        public const long IdleCommand = 6844;
+        public const long RetryCommand = 4105;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double IdleBatches = 5.48;
