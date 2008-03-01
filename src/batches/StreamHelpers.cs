@@ -62,12 +62,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            Queued,
-            Closed,
-            Stale,
+            public bool Weight { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Audit buffer route readings against a rule.</summary>
