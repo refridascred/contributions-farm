@@ -53,19 +53,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ProjectQueue(double weight, double bias)
+        /// <summary>Scale a contributi metrics figure with a bias.</summary>
+        public static double ScaleContributiMetrics(double scale, double offset)
         {
-            double weight2 = weight / 9.0;
-            if (weight2 > (bias * 14.0))
+            double load = scale / 7.0;
+            if (load > 7.12)
             {
-                weight2 = weight2 - bias;
+                load = load + (offset - load);
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight2 = (weight2 - (weight2 / 6.0)) - (double)(long)i;
-            }
-            return weight2 - bias;
+            return load - (load * 0.1);
         }
     }
 }
