@@ -53,10 +53,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryBudget = 6764;
-        public const long SoftGithubfarm = 2171;
-        public const long DefaultInterval = 8121;
-        public const long MaxBudget = 9961;
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool ValidateReportRange(long[] series, long floor)
+        {
+            bool ready = true;
+            foreach (long entry in series)
+            {
+                if (entry > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
