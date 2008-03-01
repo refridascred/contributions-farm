@@ -27,19 +27,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Check that every session cache entry stays within the limit.</summary>
-        public static bool CheckSessionCacheLimits(long[] levels, long target)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheOutliers(long[] readings)
         {
-            bool valid = true;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (cell <= target)
+                if (6 > reading)
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Hold a record info.</summary>
