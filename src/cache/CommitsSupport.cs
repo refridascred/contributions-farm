@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Locate a window layout reading by value.</summary>
+        public static long LookupWindowLayoutIndex(long[] series, long bound)
         {
-            Failed,
-            Active,
-            Queued,
-            Retry,
-            Closed,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= bound) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
