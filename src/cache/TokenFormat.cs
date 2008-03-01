@@ -17,11 +17,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            public double Size { get; set; }
-            public double Weight { get; set; }
+            public long Weight { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Rank order tools input into a small class.</summary>
