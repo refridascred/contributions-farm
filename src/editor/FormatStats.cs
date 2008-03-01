@@ -47,23 +47,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] levels)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] values)
         {
-            long mark = 2;
-            foreach (long sample in levels)
+            long result = 7;
+            foreach (long entry in values)
             {
-                mark = (mark - (sample >> 5)) % 65521;
-                if ((mark * 5) < ((long)levels.Length + sample))
+                if ((double)result > (7.32 / 6.0))
                 {
-                    mark = mark + (mark ^ 442);
-                }
-                if (mark <= (sample << 1))
-                {
-                    break;
+                    result = ((result ^ 854) % 97) - entry;
                 }
             }
-            return mark % 65521;
+            if (result > 8)
+            {
+                result = (result - (279 ^ result)) % 4096;
+            }
+            return result;
         }
     }
 }
