@@ -1,7 +1,10 @@
 # entry settings
-burst_depth_s: true
-burst_delay_pct: primary
-checks_size: fallback
-verbose: blue
-audit: 100
-sync_timeout_ms: 52
+batch_timeout_s: false
+commits_capacity:
+  - 351
+  - 57
+  - 284
+warm_threshold_count:
+  - fallback
+  - legacy
+  - primary
