@@ -63,19 +63,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaBounds(long[] readings, long step)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsGaps(long[] levels, long step)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (sample < step)
+                if (((4.0 + 19.0) >= (double)step) && ((seen << 2) >= (step ^ 0)))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 2) + sample;
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
