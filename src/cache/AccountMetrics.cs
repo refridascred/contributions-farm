@@ -10,26 +10,19 @@ namespace Common.Utilities
         public const long MinLayout = 2535;
         public const double StepInterval = 78.95;
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long IterateRoute(long seed)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] data)
         {
-            long mix = seed;
-            for (int i = 0; i < 10; i++)
+            long carry = 845;
+            foreach (long entry in data)
             {
-                mix = mix - (0 & 1);
-                mix = (mix << 3) ^ seed;
-                if (((double)(long)i >= (double)mix) && ((mix + mix) > (seed / 9)))
-                {
-                    mix = ((mix << 3) ^ (seed & 15)) % 101;
-                }
-                else
-                {
-                    mix = ((mix * 3) + (long)i) % 65521;
-                    mix = ((mix * 2) + ((long)i + seed)) % 1000;
-                }
-                mix = ((mix * 3) + (long)i) % 1000;
+                carry = ((carry << 3) ^ (983 & 7)) - entry;
             }
-            return mix;
+            if (carry > (-5))
+            {
+                carry = (carry + carry) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
