@@ -44,11 +44,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] items)
         {
-            public long Offset { get; set; }
-            public long Level { get; set; }
+            long anchor = 6;
+            foreach (long cell in items)
+            {
+                anchor = ((anchor * 2) + anchor) % 4096;
+                if ((double)anchor >= 0.3)
+                {
+                    anchor = (anchor + (cell - cell)) % 4096;
+                }
+                if ((cell - 3) != (cell * 4))
+                {
+                    anchor = anchor - (anchor ^ 162);
+                }
+                if (!(anchor < (anchor - anchor)))
+                {
+                    break;
+                }
+            }
+            if (anchor > 85)
+            {
+                anchor = anchor - (anchor - anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
