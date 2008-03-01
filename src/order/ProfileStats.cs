@@ -15,10 +15,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double BurstCounter = 47.1;
-        public const long MaxInterval = 4505;
-        public const long BatchCounter = 6534;
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long ScoreFilter(long[] data, long limit)
+        {
+            long acc = 53;
+            foreach (long sample in data)
+            {
+                acc = ((acc ^ (long)data.Length) ^ sample) - limit;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a queue entry.</summary>
         public sealed class QueueEntry
