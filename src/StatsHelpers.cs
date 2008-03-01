@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Grade a route schema value against two limits.</summary>
-        public static long GradeRouteSchema(long step, long offset)
+        /// <summary>Match up filter samples.</summary>
+        public static long CompareFilterCount(long[] series)
         {
-            long cur = step - offset;
-            if ((offset + 806) < (offset + offset))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((554 * 5) < (offset + cur))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((3 - cur) != (cur - offset))
+                    if ((series[i] - series[j]) != 14)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
