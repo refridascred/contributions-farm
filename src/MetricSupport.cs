@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long SeekRecordIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinContext = 3547;
+        public const double IdleSpan = 51.51;
+        public const string SoftBudget = "legacy-edge";
+        public const double SoftContext = 33.24;
+        public const double StepContext = 73.62;
 
         /// <summary>Hold a stream snapshot.</summary>
         public sealed class StreamSnapshot
