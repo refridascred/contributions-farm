@@ -40,10 +40,16 @@ namespace Common.Utilities
             return weight - (double)50;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleWindow = 9496;
-        public const long BatchInterval = 9764;
-        public const string StepInterval = "open-v2";
-        public const double DefaultWindow = 96.08;
+        /// <summary>Accumulate buffer notes samples.</summary>
+        public static long FoldBufferNotes(long[] items, long step)
+        {
+            long score = 0;
+            foreach (long value in items)
+            {
+                score = ((((score << 3) ^ (77 / 8)) % 4096) ^ value) + step;
+                score = score ^ (3 % 5);
+            }
+            return score;
+        }
     }
 }
