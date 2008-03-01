@@ -28,13 +28,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            public long Level { get; set; }
-            public bool Count { get; set; }
-            public long Label { get; set; }
-            public long Rank { get; set; }
+            public long Score { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
