@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long TotalAlready(long[] series, long origin)
+        /// <summary>Audit batches order readings against a rule.</summary>
+        public static long AuditBatchesOrderGaps(long[] items, long seed)
         {
-            long acc = 310;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                acc = ((acc ^ entry) % 101) - origin;
+                if ((seed + 60) <= (reading & 255))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
