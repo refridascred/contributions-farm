@@ -52,17 +52,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Look up the position of a support commits sample.</summary>
-        public static long LocateSupportCommitsIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryBudget = 6764;
+        public const long SoftGithubfarm = 2171;
+        public const long DefaultInterval = 8121;
+        public const long MaxBudget = 9961;
     }
 }
