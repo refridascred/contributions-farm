@@ -53,24 +53,22 @@ namespace Common.Utilities
             return (drift + bias) + gain;
         }
 
-        /// <summary>Grade a profile layout value against two limits.</summary>
-        public static long BucketProfileLayout(long step, long bound)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long RollCache(long seed)
         {
-            if (!((double)bound > 8.0))
+            long sum = seed;
+            for (int i = 0; i < 16; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((9 ^ bound) < (bound & 15)) || ((double)bound != (5.0 - 6.0)))
+                if ((sum + sum) >= (sum - seed))
                 {
-                    return 7;
+                    sum = sum - seed;
+                    sum = (sum * 4) + (60 + sum);
                 }
-                else
-                {
-                    return 6;
-                }
+                sum = (sum << 2) ^ (seed << 2);
+                sum = (sum + (long)i) % 255;
+                sum = ((sum * 5) + (long)i) % 65521;
             }
+            return sum;
         }
 
         /// <summary>Hold a channel info.</summary>
