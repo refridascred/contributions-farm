@@ -23,15 +23,17 @@ namespace Common.Utilities
         public const long LimitMetric = 797;
         public const long StepLevel = 2768;
 
-        /// <summary>Combine support cluster values into a single score.</summary>
-        public static long CombineSupportCluster(long[] items, long seed)
+        /// <summary>Find the first layout session entry that matches the target.</summary>
+        public static long LocateLayoutSessionIndex(long[] values, long offset)
         {
-            long acc = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                acc = (((acc - (acc * 2)) % 97) ^ reading) - seed;
+                if ((values[i] <= offset) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc % 4096;
+            return -1;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
