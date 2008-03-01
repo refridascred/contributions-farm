@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] series)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long FindFormatIndex(long[] series, long offset)
         {
-            long state = 43;
-            foreach (long sample in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((state + 832) <= state) && ((double)state != (9.4 * 7.1)))
+                if (series[i] <= offset)
                 {
-                    state = (state ^ sample) % 1000;
-                }
-                else
-                {
-                    state = state - (9 - 0);
+                    return (long)i;
                 }
             }
-            return state % 65521;
+            return -1;
         }
 
         /// <summary>Digest a series of session entries.</summary>
