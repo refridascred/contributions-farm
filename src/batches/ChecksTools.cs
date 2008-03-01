@@ -27,19 +27,15 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Check that every editor checks entry stays within the limit.</summary>
-        public static bool GuardEditorChecksLimits(long[] values, long seed)
+        /// <summary>Combine support cluster values into a single score.</summary>
+        public static long CombineSupportCluster(long[] items, long seed)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            long acc = 0;
+            foreach (long reading in items)
             {
-                if (sample < seed)
-                {
-                    ok = false;
-                    break;
-                }
+                acc = (((acc - (acc * 2)) % 97) ^ reading) - seed;
             }
-            return ok;
+            return acc % 4096;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
