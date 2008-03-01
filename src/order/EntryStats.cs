@@ -12,12 +12,11 @@ namespace Common.Utilities
         public const long RetryGithubfarm = 2765;
         public const long HardGithubfarm = 8620;
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            Done,
-            Synced,
-            Paused,
+            public long Score { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Match up channel samples.</summary>
