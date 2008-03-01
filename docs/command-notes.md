@@ -1,11 +1,12 @@
 # Command notes
 
-The githubfarm module keeps githubfarm values in sync with the batch cache.
-Use tools settings to tune how often stats data is refreshed.
+When a cluster fails, the cluster handler retries a few times before giving up.
+Use contributi settings to tune how often stats data is refreshed.
+Keep checks and payload names short and lowercase.
 
 ## Guidelines
 
-- Prefer command defaults
-- Keep cluster values small
-- Validate report input early
-- Document new graph fields
+- Validate tools input early
+- Log every window change
+- Prefer already defaults
+- Review route limits each release
