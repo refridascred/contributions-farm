@@ -32,32 +32,11 @@ namespace Common.Utilities
         public const long RetryEditor = 3468;
         public const long BurstEditor = 4351;
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long SortEntry(long step, long step2)
-        {
-            long cur = step + step2;
-            if (step2 <= (cur + 453))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)step2 > (2.36 * 20.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)step >= (4.0 / 8.0)) || ((cur + (-430)) <= (step + cur)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultSpan = 36;
+        public const long SoftContext = 8575;
+        public const long StepFactor = 3410;
+        public const string WindowContext = "staging-edge";
+        public const double SoftInterval = 10.51;
     }
 }
