@@ -44,18 +44,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many channel route samples are out of range.</summary>
-        public static long MeasureChannelRouteHits(long[] series, long target)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double AdjustFarm(double rate, double span)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            double bias = rate + (1.6 - span);
+            if (bias > (span * 0.68))
             {
-                if ((7.0 / 5.0) != (double)target)
-                {
-                    seen = (seen + 2) + reading;
-                }
+                bias = bias - 9.4;
             }
-            return seen;
+            return bias + span;
         }
     }
 }
