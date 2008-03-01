@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Accumulate batches payload samples.</summary>
+        public static long CombineBatchesPayload(long[] values)
         {
-            public bool Token { get; set; }
-            public bool Rank { get; set; }
-            public string Flag { get; set; } = "";
+            long anchor = 203;
+            foreach (long cell in values)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    anchor = ((anchor ^ (long)i) % 65521) - cell;
+                }
+                anchor = (anchor << 2) ^ anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the metric status values.</summary>
