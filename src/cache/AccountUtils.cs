@@ -35,15 +35,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] readings, long target)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long mix = 61;
-            foreach (long value in readings)
-            {
-                mix = ((mix - mix) ^ value) - target;
-            }
-            return mix;
+            Pending,
+            Dropped,
+            Ready,
         }
     }
 }
