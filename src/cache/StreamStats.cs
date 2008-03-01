@@ -34,13 +34,32 @@ namespace Common.Utilities
             return drift + (drift / 4.0);
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Rank contributi stats input into a small class.</summary>
+        public static long ClassifyContributiStats(long limit, long floor)
         {
-            public long Ratio { get; set; }
-            public double Weight { get; set; }
-            public bool Owner { get; set; }
-            public bool Count { get; set; }
+            long slot = limit - floor;
+            if ((limit + 90) > (limit << 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((limit & 127) >= (35 / 5)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((slot % 12) > limit) && (limit < (limit & 15)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate report readings against a bound.</summary>
