@@ -40,14 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            Ready,
-            Idle,
-            Closed,
-            Active,
-            Retry,
+            public double Size { get; set; }
+            public long Level { get; set; }
+            public double Count { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Adjust a route reading.</summary>
