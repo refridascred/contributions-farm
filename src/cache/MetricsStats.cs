@@ -71,12 +71,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Adjust a format reading.</summary>
+        public static double AdjustFormat(double gain, double floor)
         {
-            Active,
-            Ready,
-            Locked,
+            double drift = gain;
+            if (drift < 7.8)
+            {
+                drift = (drift + (double)39) - floor;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - (gain / 6.0)) + (double)(long)i;
+            }
+            return drift - drift;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
