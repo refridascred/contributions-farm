@@ -1,5 +1,7 @@
 # support settings
-readonly: 2210
-idle_threshold: 65.97
-min_limit_ms: staging
-verbose: eu-west
+report_limit: false
+burst_ttl_s: 41.03
+default_ttl_pct:
+  hard_interval_ms: 97.12
+  flush_depth_pct: 41
+  flush_ttl_pct: true
