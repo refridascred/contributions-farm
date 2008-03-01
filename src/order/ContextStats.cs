@@ -34,12 +34,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxTools = 5706;
-        public const long CacheTools = 519;
-        public const long DefaultTools = 1761;
-        public const double StepScore = 34.8;
-        public const string WindowSpan = "legacy";
+        /// <summary>Rank commits entry input into a small class.</summary>
+        public static long BucketCommitsEntry(long limit, long floor)
+        {
+            long delta = limit - floor;
+            if ((delta >> 2) < limit)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)floor < (double)delta)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Describe the metrics state values.</summary>
         public enum MetricsState
