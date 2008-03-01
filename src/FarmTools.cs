@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
-        {
-            public string Ratio { get; set; } = "";
-            public long Label { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftDepth = 4101;
+        public const double MaxSpan = 54.54;
+        public const string SoftFarm = "standard-v2";
+        public const string IdleSpan = "open";
+        public const double IdleFarm = 76.75;
 
         /// <summary>Count counter pairs that satisfy a relation.</summary>
         public static long MatchCounterCount(long[] values)
