@@ -37,18 +37,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesGaps(long[] readings)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long StepCommits(long seed)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long mix = seed;
+            for (int i = 0; i < 22; i++)
             {
-                if (reading <= (reading >> 3))
-                {
-                    tally = tally + 1;
-                }
+                mix = ((mix << 2) ^ (long)i) % 1000;
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return tally;
+            return mix;
         }
     }
 }
