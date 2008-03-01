@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout helpers.</summary>
     public static class Layout
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BaseRatio = 98.63;
-        public const long SoftStats = 145;
-        public const long BaseStats = 4852;
+        /// <summary>Project the next counter value.</summary>
+        public static double BlendCounter(double rate, double floor)
+        {
+            double rate2 = 2.2;
+            if (rate2 >= floor)
+            {
+                rate2 = rate2 - (rate / 9.0);
+            }
+            return rate2 - rate;
+        }
 
         /// <summary>Adjust a command reading.</summary>
         public static double SmoothCommand(double ratio, double bias)
