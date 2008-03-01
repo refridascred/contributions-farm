@@ -31,19 +31,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long FoldTools(long[] items, long bound)
+        /// <summary>Iterate the contributi checks series from a seed.</summary>
+        public static long StepContributiChecks(long bound)
         {
-            long state = 10;
-            foreach (long reading in items)
+            long sum = bound;
+            for (int i = 0; i < 13; i++)
             {
-                state = ((state << 2) ^ (reading + bound)) % 65521;
-                if ((2 ^ state) > (state >> 1))
+                long seen = (bound + sum) - (sum ^ sum);
+                if (!(((double)seen != (double)bound) && ((seen + (long)i) > (seen << 3))))
                 {
-                    state = (state ^ ((-141) << 2)) % 4096;
+                    seen = (seen * 5) + (bound / 3);
                 }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Define account limits and defaults.</summary>
