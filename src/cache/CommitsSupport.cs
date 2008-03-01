@@ -54,19 +54,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] series, long target)
+        /// <summary>Project the next farm account value.</summary>
+        public static double SmoothFarmAccount(double weight, double floor)
         {
-            long score = 94;
-            foreach (long cell in series)
+            double mean = weight;
+            if (mean <= (double)69)
             {
-                score = score - target;
-                if (((cell + (-603)) != (score - cell)) && ((target & 15) == (score * 4)))
-                {
-                    score = (score * 2) + score;
-                }
+                mean = (mean - mean) - floor;
             }
-            return score;
+            else
+            {
+                mean = mean - (2.54 / 8.0);
+            }
+            return mean - (double)89;
         }
 
         /// <summary>Hold a context record.</summary>
