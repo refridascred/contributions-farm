@@ -15,15 +15,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next record stream value from a seed.</summary>
-        public static long StepRecordStream(long floor)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long FindGraphIndex(long[] samples, long seed)
         {
-            long state = floor;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = ((state * 5) + (long)i) % 4093;
+                if ((samples[i] == seed) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Check that every format record entry stays within the limit.</summary>
