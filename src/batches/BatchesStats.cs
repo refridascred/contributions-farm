@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftStream = 9108;
-        public const long BaseStream = 8452;
-        public const string StepStream = "local";
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long WeighBatch(long[] values)
+        {
+            long carry = 71;
+            foreach (long cell in values)
+            {
+                carry = ((carry << 3) ^ (cell + carry)) % 101;
+                if ((cell / 5) > carry)
+                {
+                    carry = (carry + (7 * 4)) % 1000;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Roll a counter batch counter forward.</summary>
         public static long StepCounterBatch(long step)
