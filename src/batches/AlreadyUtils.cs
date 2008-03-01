@@ -53,10 +53,12 @@ namespace Common.Utilities
             return drift - (drift / 3.0);
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseCache = 2420;
-        public const long RetryCache = 1161;
-        public const string WindowCount = "legacy-edge";
-        public const long BurstSize = 8366;
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
+        {
+            Done,
+            Idle,
+            Locked,
+        }
     }
 }
