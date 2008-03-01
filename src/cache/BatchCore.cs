@@ -27,13 +27,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Blend two counter measurements.</summary>
+        public static double AdjustCounter(double bias, double span)
         {
-            public bool Offset { get; set; }
-            public long Weight { get; set; }
-            public long Level { get; set; }
-            public long Stamp { get; set; }
+            double drift = span;
+            if (drift <= span)
+            {
+                drift = drift + bias;
+            }
+            return drift - span;
         }
 
         /// <summary>Hold a cluster header.</summary>
