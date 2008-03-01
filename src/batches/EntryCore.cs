@@ -11,15 +11,19 @@ namespace Common.Utilities
         public const long CacheToken = 4696;
         public const long RetryBudget = 3687;
 
-        /// <summary>Derive the next order tools value from a seed.</summary>
-        public static long SeriesOrderTools(long limit)
+        /// <summary>Validate record window readings against a bound.</summary>
+        public static bool CheckRecordWindowLimits(long[] levels, long offset)
         {
-            long mix = limit;
-            for (int i = 0; i < 14; i++)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                mix = ((mix * 4) + (long)i) % 101;
+                if (value >= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
