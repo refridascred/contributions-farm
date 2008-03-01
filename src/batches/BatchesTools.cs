@@ -20,19 +20,17 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long SeriesWindow(long target)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long SeekLayoutIndex(long[] series, long target)
         {
-            long score = target;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (target > (target ^ (long)i))
+                if ((series[i] == target) && ((series[i] % 3) == 0))
                 {
-                    score = (score + (score ^ score)) % 1000;
+                    return (long)i;
                 }
-                score = ((score * 2) + (long)i) % 4093;
             }
-            return score;
+            return -1;
         }
     }
 }
