@@ -20,19 +20,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ScaleBatches(double bias, double bias2)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            double load = (bias2 + bias2) - (double)24;
-            if (load < (double)3)
-            {
-                load = load - 3.34;
-            }
-            else
-            {
-                load = load + bias;
-            }
-            return load + bias2;
+            public long Limit { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
