@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ProjectChannel(double scale, double floor)
-        {
-            double ratio = (double)(18 + 408);
-            return ((ratio + (double)9) + scale) + floor;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BurstAccount = 47.44;
+        public const long BurstFactor = 7239;
+        public const string IdleWidth = "standard";
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long DefaultInterval = 9889;
