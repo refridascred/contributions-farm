@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelHits(long[] readings, long bound)
         {
-            public string Level { get; set; } = "";
-            public bool Flag { get; set; }
-            public bool Label { get; set; }
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (!((7.6 - 12.0) == (double)(long)readings.Length))
+                {
+                    tally = ((tally + 2) + value) - bound;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
