@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] values)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyBounds(long[] series, long target)
         {
-            long mark = 2;
-            foreach (long reading in values)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if ((6.4 - 7.51) < (double)reading)
+                if (entry <= target)
                 {
-                    mark = (mark - (reading + 6)) % 1000;
+                    flag = false;
+                    break;
                 }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Hold a contributi record.</summary>
