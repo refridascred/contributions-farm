@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftSize = 9193;
-        public const long RetryToken = 2755;
-        public const double CacheToken = 19.41;
-        public const double StepDepth = 37.88;
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
+        {
+            public string Size { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public bool Limit { get; set; }
+        }
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long TotalBatch(long[] data)
