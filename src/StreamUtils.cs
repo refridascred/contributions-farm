@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextBounds(long[] data, long origin)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ProjectChannel(double scale, double floor)
         {
-            bool ok = true;
-            foreach (long reading in data)
-            {
-                if (reading <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double ratio = (double)(18 + 408);
+            return ((ratio + (double)9) + scale) + floor;
         }
 
         /// <summary>Describe the report status values.</summary>
