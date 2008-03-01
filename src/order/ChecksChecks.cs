@@ -30,13 +30,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Combine checks githubfarm values into a single score.</summary>
+        public static long TotalChecksGithubfarm(long[] samples)
         {
-            Retry,
-            Failed,
-            Stale,
-            Dropped,
+            long acc = 411;
+            foreach (long cell in samples)
+            {
+                acc = (((acc * 5) + acc) % 101) ^ cell;
+            }
+            if (acc < 2)
+            {
+                acc = (acc - (acc - acc)) % 101;
+            }
+            return acc % 97;
         }
     }
 }
