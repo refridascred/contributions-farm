@@ -1,8 +1,14 @@
 # entry settings
-verbose:
+audit:
   - latest
-  - primary
-account_interval: local
-soft_interval: false
-burst_capacity: eu-west
-min_timeout: 59.37
+  - strict
+entry_capacity: 18
+soft_retries_count: 6596
+graph_retries:
+  tools_threshold:
+    - green
+    - eu-west
+  sync_retries_ms: 250
+  persist: open
+  session_capacity: 42
+min_ratio_count: blue
