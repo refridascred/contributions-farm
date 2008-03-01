@@ -1,10 +1,25 @@
 # entry settings
-format_size: local
-readonly: 82
-poll_retries_s:
-  sync_size: true
-  window_delay: 2311
-  profile_limit: 500
-  channel_depth: 34.03
-persist: primary
-poll_interval: false
+filter_capacity:
+  - staging
+  - blue
+  - local
+verbose: 100
+default_delay_pct: 1463
+poll_limit_pct: 96.58
+strict:
+  burst_limit: latest
+  sync_interval_ms: primary
+  default_size_pct: true
+  support_interval:
+    soft_threshold_s: 5446
+    dry_run: true
+    soft_interval: true
+  persist:
+    cache_depth: strict
+    flush_depth_pct: 14.63
+    warm_depth: 54
+    audit: 3369
+    queue_depth: 37
+    batch_capacity:
+      - 150
+      - 214
