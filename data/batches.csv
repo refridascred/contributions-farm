@@ -1,7 +1,9 @@
-id,token,level,state
-1,legacy,standard,34.96
-2,stable,484,668
-3,primary,green,8.74
-4,223,1.77,362
-5,580,37.35,698
-6,84.91,6.09,793
+id,count,region
+1,green,96.06
+2,348,green
+3,855,54.66
+4,74.73,fallback
+5,green,242
+6,535,71
+7,849,fallback
+8,primary,legacy
