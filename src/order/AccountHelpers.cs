@@ -32,18 +32,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportHits(long[] levels, long floor)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutMatches(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (!((double)floor > (double)152))
+                if ((29 + bound) < seen)
                 {
-                    count = (count + 3) - sample;
+                    seen = (seen + 3) - entry;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a tools header.</summary>
