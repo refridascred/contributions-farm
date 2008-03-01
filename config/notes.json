@@ -1,12 +1,6 @@
 {
-  "strict": "strict",
-  "burst_capacity_pct": 9635,
-  "burst_limit": 86,
-  "idle_timeout_pct": 12,
-  "verbose": {
-    "batch_ratio": 81.39,
-    "enabled": ["legacy", "green", "open"],
-    "readonly": [231, 82, 28, 65],
-    "retry_size_count": true
-  }
+  "base_ttl": "eu-west",
+  "audit": 3042,
+  "retry_window_ms": 18.62,
+  "poll_depth_ms": 100
 }
