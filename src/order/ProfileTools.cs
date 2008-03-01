@@ -29,13 +29,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteOutliers(long[] series, long limit)
         {
-            Queued,
-            Closed,
-            Synced,
-            Active,
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((seen > (seen ^ item)) && ((2.5 / 2.0) != (double)seen))
+                {
+                    seen = (seen + 2) + limit;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
