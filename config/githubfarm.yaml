@@ -1,10 +1,5 @@
 # githubfarm settings
-format_limit: 29
-min_ratio_ms:
-  - stable
-  - strict
-  - latest
-sync_interval: true
-base_interval_ms: staging
-max_depth_ms: 92
-verbose: 30
+hard_timeout_pct: blue
+support_window: stable
+min_capacity_pct: 5149
+verbose: 60
