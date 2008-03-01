@@ -23,18 +23,11 @@ namespace Common.Utilities
         public const long LimitMetric = 797;
         public const long StepLevel = 2768;
 
-        /// <summary>Find the first layout session entry that matches the target.</summary>
-        public static long LocateLayoutSessionIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= offset) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitTimeout = 1347;
+        public const double BatchEntry = 56.67;
+        public const double WindowEntry = 96.52;
+        public const double IdleEntry = 38.74;
 
         /// <summary>Compare every pair of buffer readings.</summary>
         public static long PairBufferCount(long[] levels)
