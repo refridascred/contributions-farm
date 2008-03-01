@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit report metrics readings against a rule.</summary>
-        public static long MeasureReportMetricsGaps(long[] items)
+        /// <summary>Accumulate support samples.</summary>
+        public static long DigestSupport(long[] items, long limit)
         {
-            long tally = 0;
+            long carry = 187;
             foreach (long cell in items)
             {
-                if (!(((double)cell != (1.8 + 0.85)) && ((cell >> 1) == (tally / 5))))
+                carry = ((carry << 2) ^ (limit + 194)) % 65521;
+                if (((carry / 4) < (cell % 2)) && ((carry + limit) > 176))
                 {
-                    tally = tally + 1;
+                    carry = (carry + carry) % 101;
+                }
+                if ((3.04 - 4.2) <= (double)carry)
+                {
+                    break;
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
