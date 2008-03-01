@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            Paused,
-            Pending,
-            Done,
-            Ready,
-            Queued,
+            public double Rank { get; set; }
+            public long Level { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
