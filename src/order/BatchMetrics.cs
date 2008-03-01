@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] items)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileMatches(long[] values)
         {
-            long total = 5;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (((long)items.Length * 5) <= (total ^ total))
+                if ((reading + hits) < hits)
                 {
-                    total = (total << 3) ^ datum;
+                    hits = hits + 3;
                 }
             }
-            if (total > 716)
-            {
-                total = ((total << 2) ^ (total + total)) % 65521;
-            }
-            return total % 97;
+            return hits;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
