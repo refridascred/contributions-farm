@@ -42,13 +42,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] values)
         {
-            Dropped,
-            Synced,
-            New,
-            Draft,
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
