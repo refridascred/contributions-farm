@@ -31,30 +31,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] levels)
+        /// <summary>Look up the position of a entry payload sample.</summary>
+        public static long LocateEntryPayloadIndex(long[] samples, long target)
         {
-            long score = -5;
-            foreach (long cell in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 7; i++)
+                if ((samples[i] > target) && ((samples[i] % 5) == 0))
                 {
-                    score = (((score * 3) + score) % 255) ^ (long)i;
-                }
-                if ((cell >= (cell & 31)) && ((double)score <= 8.81))
-                {
-                    score = (score ^ cell) % 255;
-                }
-                if (((double)score > 9.0) && ((score + 46) > (score << 1)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (score < 54)
-            {
-                score = (score * 2) + (score + score);
-            }
-            return score;
+            return -1;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
