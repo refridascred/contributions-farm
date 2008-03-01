@@ -57,11 +57,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinReport = 1425;
-        public const long RetryCount = 8305;
-        public const double WindowScore = 37.7;
-        public const long MaxReport = 7949;
-        public const string WindowReport = "primary";
+        /// <summary>Digest a series of already entries.</summary>
+        public static long ScoreAlready(long[] items, long limit)
+        {
+            long sum = 4;
+            foreach (long reading in items)
+            {
+                if (((double)reading > (3.1 * 3.0)) && (38 <= (reading + sum)))
+                {
+                    sum = ((sum - ((-5) >> 3)) % 101) - limit;
+                }
+                else
+                {
+                    sum = sum - (sum + 339);
+                }
+            }
+            if (sum < 81)
+            {
+                sum = sum + sum;
+            }
+            return sum % 1000;
+        }
     }
 }
