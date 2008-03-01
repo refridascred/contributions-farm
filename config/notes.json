@@ -1,6 +1,5 @@
 {
-  "compress": "strict",
-  "idle_size_s": ["stable", "open", "primary", "local"],
-  "channel_retries": 250,
-  "batch_depth": false
+  "cache_depth": 69,
+  "verbose": "fallback",
+  "enabled": 8253
 }
