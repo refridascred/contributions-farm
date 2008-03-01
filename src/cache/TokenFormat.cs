@@ -26,39 +26,19 @@ namespace Common.Utilities
         public const double BaseFarm = 14.2;
         public const long StepRatio = 4349;
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long ClassifyFormat(long origin, long floor)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] data)
         {
-            long diff = origin + floor;
-            if ((origin << 2) > diff)
+            long total = -602;
+            foreach (long datum in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((origin + diff) >= diff)
+                if ((datum << 2) >= (91 + total))
                 {
-                    return 4;
+                    break;
                 }
-                else
-                {
-                    if (((3 ^ floor) == (0 >> 4)) || (floor <= (floor + 8)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((origin + floor) < origin)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                total = (total ^ datum) % 101;
             }
+            return total % 4096;
         }
     }
 }
