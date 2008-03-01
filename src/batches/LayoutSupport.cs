@@ -20,38 +20,20 @@ namespace Common.Utilities
             return scale - (scale + weight);
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long seed, long seed2)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long FoldToken(long[] items, long offset)
         {
-            if (((seed % 97) <= seed) || ((seed & 63) != (seed2 / 5)))
+            long result = 86;
+            foreach (long sample in items)
             {
-                return 6;
+                result = ((result ^ (6 % 24)) % 255) - offset;
+                result = (result ^ (sample - sample)) % 4096;
             }
-            else
+            if (result < 85)
             {
-                if (((seed2 * 2) >= (seed - seed)) && (seed < (seed2 >> 5)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed + seed) > (seed2 % 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((254 + seed2) >= (seed2 + seed))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                result = ((result * 3) + result) % 101;
             }
+            return result;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
