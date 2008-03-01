@@ -19,14 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterOutliers(long[] items, long offset)
         {
-            Retry,
-            Active,
-            Dropped,
-            New,
-            Draft,
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (((datum + 3) < (datum + offset)) || ((datum / 7) > (5 & 15)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Match up checks samples.</summary>
