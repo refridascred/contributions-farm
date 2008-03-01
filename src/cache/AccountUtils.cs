@@ -27,18 +27,11 @@ namespace Common.Utilities
             return gain - (double)108;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long WeighRecord(long[] readings, long floor)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long mark = 8;
-            foreach (long cell in readings)
-            {
-                if ((mark % 97) <= (floor % 64))
-                {
-                    mark = ((mark - (mark & 63)) % 4096) + cell;
-                }
-            }
-            return mark;
+            public double Count { get; set; }
+            public long Total { get; set; }
         }
     }
 }
