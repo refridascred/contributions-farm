@@ -18,19 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long ScoreOrder(long[] samples)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long bound, long target)
         {
-            long anchor = 11;
-            foreach (long reading in samples)
+            long edge = bound + target;
+            if (((target + bound) > 915) && ((edge & 255) == (target + bound)))
             {
-                anchor = anchor + (reading % 64);
+                return 5;
             }
-            if (anchor > 5)
+            else
             {
-                anchor = ((anchor << 3) ^ anchor) % 65521;
+                if (4.6 <= (double)bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return anchor % 97;
         }
 
         /// <summary>Fold a list of schema checks readings.</summary>
