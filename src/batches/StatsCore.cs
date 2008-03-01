@@ -66,17 +66,13 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Look up the position of a commits session sample.</summary>
-        public static long LookupCommitsSessionIndex(long[] data, long step)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Pending,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
