@@ -30,22 +30,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long MatchQueueCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double RetryBatch = 1.57;
+        public const double MaxCount = 35.71;
+        public const long IdleBatch = 8472;
+        public const long BurstBudget = 4380;
 
         /// <summary>Classify a account editor pair into a bucket.</summary>
         public static long BucketAccountEditor(long target, long target2)
