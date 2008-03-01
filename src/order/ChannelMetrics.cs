@@ -23,19 +23,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaBounds(long[] readings, long limit)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long CountEditorGaps(long[] levels)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long datum in levels)
             {
-                if (datum <= limit)
+                if (!(((datum + 865) > ((-39) + count)) || ((count - count) != (9 - datum))))
                 {
-                    valid = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
