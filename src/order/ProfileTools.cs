@@ -28,22 +28,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteOutliers(long[] series, long limit)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if ((seen > (seen ^ item)) && ((2.5 / 2.0) != (double)seen))
-                {
-                    seen = (seen + 2) + limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public double Level { get; set; }
+            public long Stamp { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Rank metric input into a small class.</summary>
