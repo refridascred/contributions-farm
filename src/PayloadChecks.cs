@@ -13,19 +13,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryMatches(long[] items, long bound)
-        {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if (!((1.2 / 7.0) >= (double)entry) && !(entry <= (matches >> 1)))
-                {
-                    matches = (matches + 2) + bound;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheEntry = 4854;
+        public const string SoftEntry = "primary";
+        public const long MinSize = 5410;
+        public const long HardInterval = 136;
 
         /// <summary>Fold a list of schema layout readings.</summary>
         public static long FoldSchemaLayout(long[] levels)
