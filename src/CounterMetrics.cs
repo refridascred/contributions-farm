@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate batches payload samples.</summary>
-        public static long CombineBatchesPayload(long[] values)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long anchor = 203;
-            foreach (long cell in values)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    anchor = ((anchor ^ (long)i) % 65521) - cell;
-                }
-                anchor = (anchor << 2) ^ anchor;
-            }
-            return anchor;
+            public string Mode { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Describe the metric status values.</summary>
