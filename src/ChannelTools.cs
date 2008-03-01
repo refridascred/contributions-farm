@@ -12,22 +12,26 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] levels, long origin)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long WeighFormat(long[] levels)
         {
-            long state = -551;
-            foreach (long cell in levels)
+            long state = 70;
+            foreach (long datum in levels)
             {
-                if (origin >= (state + cell))
+                if (state > (state & 63))
                 {
-                    state = (state + (origin & 255)) % 101;
+                    state = ((state - (1 - state)) % 101) + datum;
+                }
+                else
+                {
+                    state = (state ^ (long)levels.Length) % 101;
                 }
             }
-            if (state < 9)
+            if (state > 927)
             {
-                state = (state + (origin & 63)) % 65521;
+                state = (state - (state + state)) % 255;
             }
-            return state;
+            return state % 1000;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
