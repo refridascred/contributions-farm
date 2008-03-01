@@ -29,19 +29,16 @@ namespace Common.Utilities
         public const long BatchChecks = 3446;
         public const long StepInterval = 5337;
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ScaleReport(double bias, double span)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long RollFarm(long bound)
         {
-            double scale = span;
-            if (scale <= span)
+            long sum = bound;
+            for (int i = 0; i < 19; i++)
             {
-                scale = scale + bias;
+                sum = ((sum << 2) ^ 0) % 255;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            else
-            {
-                scale = scale + scale;
-            }
-            return scale - (scale - scale);
+            return sum;
         }
     }
 }
