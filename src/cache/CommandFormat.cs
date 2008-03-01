@@ -18,19 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksLimits(long[] data, long bound)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] series)
         {
-            bool found = true;
-            foreach (long value in data)
+            long total = 2;
+            foreach (long item in series)
             {
-                if (value != bound)
+                if ((double)total != (16.0 / 7.0))
                 {
-                    found = false;
-                    break;
+                    total = (((total * 3) + (157 * 5)) % 101) - item;
                 }
+                else
+                {
+                    total = (total + 75) % 97;
+                }
+                total = (total * 3) + total;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Define session limits and defaults.</summary>
