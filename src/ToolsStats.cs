@@ -26,16 +26,19 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Fold a list of context graph readings.</summary>
-        public static long TotalContextGraph(long[] data)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool CheckEntryBounds(long[] levels, long origin)
         {
-            long carry = 1;
-            foreach (long datum in data)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                carry = carry ^ ((long)data.Length & 63);
-                carry = (carry << 2) ^ datum;
+                if (cell >= origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
