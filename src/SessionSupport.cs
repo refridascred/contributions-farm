@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaLimits(long[] series, long limit)
-        {
-            bool flag = true;
-            foreach (long reading in series)
-            {
-                if (reading > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstSpan = 753;
+        public const long LimitSpan = 8958;
+        public const double MaxSpan = 65.47;
+        public const string BaseDepth = "staging-edge";
 
         /// <summary>Hold a queue stats.</summary>
         public sealed class QueueStats
