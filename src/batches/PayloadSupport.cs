@@ -33,9 +33,13 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleSize = 6430;
-        public const long MaxFactor = 1592;
-        public const string StepLevel = "stable-1";
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
+        {
+            Retry,
+            Ready,
+            Stale,
+            Dropped,
+        }
     }
 }
