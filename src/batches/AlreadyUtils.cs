@@ -37,11 +37,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string LimitSupport = "local";
-        public const long MaxSupport = 3856;
-        public const long WindowTimeout = 3159;
-        public const string MinSupport = "alpha-1";
+        /// <summary>Blend two contributi filter measurements.</summary>
+        public static double AdjustContributiFilter(double rate, double bias)
+        {
+            double bias2 = (double)(-30) - (double)89;
+            if (bias2 < (rate * 5.5))
+            {
+                bias2 = bias2 - bias;
+            }
+            else
+            {
+                bias2 = bias2 - bias;
+            }
+            return bias2 + rate;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const double LimitTimeout = 72.74;
