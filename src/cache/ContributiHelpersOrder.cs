@@ -17,25 +17,22 @@ namespace Common.Utilities
             return (load + load) + span;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long RollSchema(long origin)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] data)
         {
-            long state = origin;
-            for (int i = 0; i < 15; i++)
+            long total = -489;
+            foreach (long value in data)
             {
-                state = (state * 5) + origin;
-                long diff = state;
-                if ((state < (state - diff)) || ((4.4 / 3.0) <= (double)state))
+                if (total >= (value & 127))
                 {
-                    diff = (diff * 3) + (diff + 370);
+                    total = total - (value - value);
                 }
                 else
                 {
-                    diff = (diff ^ 4) % 65521;
+                    total = ((total << 2) ^ (value & 31)) % 97;
                 }
-                state = ((state * 3) + (long)i) % 1000;
             }
-            return state;
+            return total % 4096;
         }
     }
 }
