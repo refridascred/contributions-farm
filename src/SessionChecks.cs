@@ -48,15 +48,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long offset)
+        /// <summary>Rank report queue input into a small class.</summary>
+        public static long ClassifyReportQueue(long seed, long step)
         {
-            long carry = offset;
-            for (int i = 0; i < 15; i++)
+            if (((42 << 1) == (step ^ step)) && ((step << 1) != (3 & 1)))
             {
-                carry = ((carry * 5) + (long)i) % 97;
+                return 7;
             }
-            return carry;
+            else
+            {
+                if (((seed + seed) >= step) || ((double)seed != (9.0 + 6.9)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
