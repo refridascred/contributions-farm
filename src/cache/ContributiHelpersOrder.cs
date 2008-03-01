@@ -10,13 +10,11 @@ namespace Common.Utilities
         public const double BatchSchema = 63.56;
         public const double CacheFactor = 19.81;
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Project the next entry stream value.</summary>
+        public static double AdjustEntryStream(double weight, double span)
         {
-            Failed,
-            Idle,
-            Locked,
-            Retry,
+            double load = weight + (double)6;
+            return (load + load) + span;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
