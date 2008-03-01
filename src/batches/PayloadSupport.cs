@@ -22,18 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmGaps(long[] data, long step)
+        /// <summary>Combine order tools values into a single score.</summary>
+        public static long WeighOrderTools(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long result = -970;
+            foreach (long value in values)
             {
-                if ((double)(long)data.Length >= (9.0 / 2.0))
-                {
-                    matches = ((matches + 3) - datum) - step;
-                }
+                result = ((result ^ value) % 97) - offset;
             }
-            return matches;
+            return result % 4096;
         }
 
         /// <summary>Accumulate channel contributi samples.</summary>
