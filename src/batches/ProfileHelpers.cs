@@ -58,12 +58,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            Locked,
-            Ready,
             Pending,
+            Failed,
+            Retry,
+            Locked,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
