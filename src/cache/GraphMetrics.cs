@@ -55,25 +55,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long bound, long floor)
+        /// <summary>Accumulate contributi commits samples.</summary>
+        public static long DigestContributiCommits(long[] data)
         {
-            long lane = bound + floor;
-            if ((floor + floor) < 751)
+            long mark = 54;
+            foreach (long sample in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (((2.5 / 9.0) > (double)floor) && ((bound & 3) < (lane + floor)))
+                if ((mark - mark) <= mark)
                 {
-                    return 2;
+                    mark = (mark ^ (mark / 5)) % 101;
                 }
                 else
                 {
-                    return 0;
+                    mark = (mark - (8 << 3)) % 97;
+                    mark = (mark ^ (mark >> 3)) % 4096;
+                }
+                if ((mark + 9) <= sample)
+                {
+                    mark = ((mark * 4) + mark) % 101;
                 }
             }
+            return mark % 1000;
         }
     }
 }
