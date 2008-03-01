@@ -15,10 +15,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BaseMetric = 72.15;
-        public const long LimitMetric = 797;
-        public const long StepLevel = 2768;
+        /// <summary>Match up token samples.</summary>
+        public static long PairTokenCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long LimitTimeout = 1347;
