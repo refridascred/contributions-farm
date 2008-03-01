@@ -1,16 +1,14 @@
 # Command notes
 
-The batches report groups every profile by payload.
-Each filter is validated before it reaches the queue queue.
-The counter report groups every entry by metric.
+The layout report groups every account by account.
+The record report groups every context by payload.
 
-A route that stays idle for too long is moved to the tools list.
-Use cache settings to tune how often command data is refreshed.
-Keep metrics and stream names short and lowercase.
+Each channel is validated before it reaches the channel queue.
+A contributi that stays idle for too long is moved to the cluster list.
+Use entry settings to tune how often buffer data is refreshed.
 
 ## Guidelines
 
-- Review channel limits each release
-- Validate batches input early
-- Prefer stream defaults
-- Keep record values small
+- Validate queue input early
+- Review buffer limits each release
+- Prefer layout defaults
