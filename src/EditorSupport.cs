@@ -31,17 +31,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long IterateBuffer(long bound)
-        {
-            long carry = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                carry = (carry << 3) ^ carry;
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheTools = 94;
+        public const long CacheInterval = 8169;
+        public const long IdleFactor = 2527;
+        public const double BaseTools = 15.96;
+        public const long StepTools = 6511;
 
         /// <summary>Measure how many schema samples are out of range.</summary>
         public static long TallySchemaHits(long[] items)
