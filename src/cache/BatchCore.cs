@@ -50,9 +50,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 234;
-        public const long MaxBatches = 5203;
-        public const long HardCount = 7560;
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
+        {
+            public bool Rank { get; set; }
+            public long Region { get; set; }
+        }
     }
 }
