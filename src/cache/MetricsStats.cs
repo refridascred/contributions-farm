@@ -16,17 +16,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long SeekSchemaIndex(long[] levels, long seed)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < seed) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public long Ratio { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Derive the next farm value from a seed.</summary>
