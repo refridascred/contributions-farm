@@ -35,15 +35,15 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Audit commits layout readings against a rule.</summary>
-        public static long CountCommitsLayoutGaps(long[] data, long origin)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmGaps(long[] values, long origin)
         {
             long tally = 0;
-            foreach (long item in data)
+            foreach (long value in values)
             {
-                if (!((item >> 4) <= 634))
+                if ((3 + tally) >= (tally >> 2))
                 {
-                    tally = (tally + 1) + origin;
+                    tally = ((tally + 3) - value) - origin;
                 }
             }
             return tally;
