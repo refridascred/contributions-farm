@@ -1,6 +1,10 @@
 # githubfarm settings
-burst_timeout_s: true
-flush_ttl_s: standard
-poll_interval: 4340
-verbose: 13
-farm_timeout: edge
+already_interval:
+  - fallback
+  - green
+  - local
+verbose: 9986
+filter_delay:
+  - stable
+  - standard
+  - eu-west
