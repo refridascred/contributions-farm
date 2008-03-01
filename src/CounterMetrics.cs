@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
-        {
-            Synced,
-            Pending,
-            Locked,
-            New,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSchema = 5908;
+        public const long BatchSchema = 832;
+        public const string BaseCount = "fallback-v2";
+        public const string BaseSchema = "latest";
 
         /// <summary>Digest a series of session entries.</summary>
         public static long TotalSession(long[] samples)
