@@ -43,12 +43,15 @@ namespace Common.Utilities
         public const long MinScore = 882;
         public const long HardFactor = 5798;
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Derive the next cache channel value from a seed.</summary>
+        public static long RollCacheChannel(long seed)
         {
-            Closed,
-            Ready,
-            Idle,
+            long mix = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Describe the schema kind values.</summary>
