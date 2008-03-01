@@ -1,7 +1,7 @@
 {
-  "idle_limit_pct": "open",
-  "batch_size_count": 42,
-  "filter_depth": ["edge", "legacy", "stable"],
-  "flush_ratio_pct": "strict",
-  "order_delay": 100
+  "base_ttl": [439, 350, 310],
+  "cache_size": [465, 395, 279, 188],
+  "hard_threshold_pct": true,
+  "cache_threshold_count": "edge",
+  "warm_ttl": "blue"
 }
