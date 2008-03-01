@@ -49,10 +49,19 @@ namespace Common.Utilities
         public const double BaseWidth = 47.56;
         public const double IdleScore = 74.44;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BatchWindow = 6840;
-        public const double DefaultCount = 84.77;
-        public const long WindowSize = 3078;
-        public const long WindowInterval = 7642;
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenBounds(long[] samples, long target)
+        {
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
