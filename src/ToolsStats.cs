@@ -70,38 +70,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long limit, long bound)
+        /// <summary>Audit cache notes readings against a rule.</summary>
+        public static long AuditCacheNotesGaps(long[] series, long offset)
         {
-            if ((bound ^ limit) != ((-21) << 1))
+            long seen = 0;
+            foreach (long reading in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((147 + bound) < limit)
+                if ((seen & 127) < reading)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((bound + 3) >= (bound - limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)bound > (double)limit)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    seen = (seen + 3) - offset;
                 }
             }
+            return seen;
         }
     }
 }
