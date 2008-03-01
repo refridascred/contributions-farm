@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            Draft,
-            Dropped,
-            Locked,
-            Retry,
+            public double Count { get; set; }
+            public string Label { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
