@@ -47,15 +47,11 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Project the next context layout value.</summary>
-        public static double ProjectContextLayout(double gain, double offset)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            double bias = 5.84 / 2.0;
-            if (bias > (3.51 - offset))
-            {
-                bias = bias + (gain - offset);
-            }
-            return bias - gain;
+            public string Size { get; set; } = "";
+            public double Score { get; set; }
         }
     }
 }
