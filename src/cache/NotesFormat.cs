@@ -13,17 +13,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] samples, long step)
-        {
-            long state = 52;
-            foreach (long value in samples)
-            {
-                state = state ^ (step / 8);
-                state = state - value;
-            }
-            return state;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftBudget = 8918;
+        public const long DefaultGraph = 8919;
+        public const long WindowGraph = 6407;
+        public const long CacheGraph = 8231;
 
         /// <summary>Blend two entry layout measurements.</summary>
         public static double ScaleEntryLayout(double scale, double offset)
