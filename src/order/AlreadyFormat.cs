@@ -51,10 +51,33 @@ namespace Common.Utilities
             return rate + (double)311;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string LimitSize = "fallback-1";
-        public const long MaxMetrics = 7958;
-        public const double MinWidth = 21.48;
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] levels, long seed)
+        {
+            long total = 78;
+            foreach (long sample in levels)
+            {
+                total = (total * 3) + (total * 2);
+                if (((total + 310) <= (seed % 16)) || ((double)total < (5.2 * 3.6)))
+                {
+                    total = total - (total / 9);
+                    break;
+                }
+                if ((seed + sample) >= (total / 3))
+                {
+                    total = total ^ (sample >> 3);
+                }
+                else
+                {
+                    total = ((total * 5) + (total + sample)) % 65521;
+                }
+            }
+            if (total > (-70))
+            {
+                total = (total + (7 * 3)) % 97;
+            }
+            return total % 65521;
+        }
 
         /// <summary>Count the stats channel entries that pass the check.</summary>
         public static long AuditStatsChannelHits(long[] readings, long bound)
