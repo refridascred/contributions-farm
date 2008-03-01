@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            Ready,
-            Done,
+            Closed,
             Failed,
-            Retry,
-            Pending,
+            New,
+            Stale,
         }
 
         /// <summary>Roll a editor counter forward.</summary>
