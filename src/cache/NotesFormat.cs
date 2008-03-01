@@ -19,11 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftBudget = 8918;
-        public const long DefaultGraph = 8919;
-        public const long WindowGraph = 6407;
-        public const long CacheGraph = 8231;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftFactor = 6858;
+        public const string RetryLevel = "strict-edge";
+        public const long CacheContributi = 6391;
 
         /// <summary>Blend two entry layout measurements.</summary>
         public static double ScaleEntryLayout(double scale, double offset)
