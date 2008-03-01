@@ -78,21 +78,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long CompareRecordCount(long[] data)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryOutliers(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((14.0 / 2.0) < (double)item)
                 {
-                    if ((data[i] ^ data[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 1;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
