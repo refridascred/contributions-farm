@@ -19,13 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsOutliers(long[] samples)
         {
-            public long Score { get; set; }
-            public long Mode { get; set; }
-            public long Region { get; set; }
-            public bool Label { get; set; }
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((item / 3) == (matches % 5))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
