@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricOutliers(long[] items)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long score = 36;
+            foreach (long cell in items)
             {
-                if (((long)items.Length <= (0 << 1)) && ((2.0 > (double)count) && ((double)(long)items.Length != (double)entry)))
+                if (8.4 < (double)score)
                 {
-                    count = count + 1;
+                    score = (((score * 3) + 59) + cell) + bound;
                 }
             }
-            return count;
+            return score;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
