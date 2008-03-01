@@ -12,12 +12,6 @@ while [ "${count}" -lt 5 ]; do
 done
 log "ran ${count} rounds"
 
-mode="${1:-fallback}"
-case "${mode}" in
-    local)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in staging latest strict; do
+    log "checking ${item}"
+done
