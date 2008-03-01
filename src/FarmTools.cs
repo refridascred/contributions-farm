@@ -49,23 +49,22 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double BlendRoute(double rate, double floor)
+        /// <summary>Fold a list of tools already readings.</summary>
+        public static long DigestToolsAlready(long[] data)
         {
-            double scale = floor;
-            if (scale <= (rate / 4.0))
+            long state = 713;
+            foreach (long reading in data)
             {
-                scale = scale + scale;
+                if ((reading / 9) < (state + 82))
+                {
+                    state = ((state << 2) ^ (reading >> 5)) % 255;
+                }
+                else
+                {
+                    state = (state * 2) + (reading + 9);
+                }
             }
-            else
-            {
-                scale = scale - 8.52;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - floor) - (double)(long)i;
-            }
-            return scale - (rate + floor);
+            return state;
         }
     }
 }
