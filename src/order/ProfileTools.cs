@@ -35,38 +35,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long bound, long bound2)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            if ((bound2 - bound2) != (bound + bound))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound % 100) == (bound + bound2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound + 1) <= bound2)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((5.54 / 2.0) == (double)bound2) || ((bound - bound2) <= bound))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Done,
+            Pending,
+            Synced,
         }
 
         /// <summary>Measure how many channel route samples are out of range.</summary>
