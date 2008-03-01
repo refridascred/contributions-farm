@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many tools report samples are out of range.</summary>
-        public static long MeasureToolsReportHits(long[] levels)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long anchor = 1;
+            foreach (long item in data)
             {
-                if (reading < (long)levels.Length)
-                {
-                    tally = tally + 2;
-                }
+                anchor = (((anchor + (anchor << 2)) % 101) ^ item) - step;
             }
-            return tally;
+            if (anchor > 9)
+            {
+                anchor = (anchor * 3) + (-8);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
