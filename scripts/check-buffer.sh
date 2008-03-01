@@ -7,10 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 4))
+for i in $(seq 1 4); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-BUFFER_LIMIT=199
+for item in standard open fallback; do
+    log "checking ${item}"
+done
+
+BUFFER_LIMIT=302
 log "limit is ${BUFFER_LIMIT}"
