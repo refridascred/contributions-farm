@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstSpan = 753;
-        public const long LimitSpan = 8958;
-        public const double MaxSpan = 65.47;
-        public const string BaseDepth = "staging-edge";
+        /// <summary>Audit graph metric readings against a rule.</summary>
+        public static long TallyGraphMetricGaps(long[] data, long floor)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((double)floor < (1.54 * 1.4))
+                {
+                    tally = (tally + 1) + cell;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate cache samples.</summary>
         public static long WeighCache(long[] samples)
