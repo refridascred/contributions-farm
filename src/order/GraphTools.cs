@@ -24,19 +24,15 @@ namespace Common.Utilities
             return scale - (bias - floor);
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsMatches(long[] data)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterGaps(long[] readings)
         {
             long seen = 0;
-            foreach (long value in data)
+            foreach (long entry in readings)
             {
-                if ((seen - value) > seen)
+                if (((double)seen >= (15.0 / 8.0)) && (seen >= entry))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = seen + 1;
                 }
             }
             return seen;
