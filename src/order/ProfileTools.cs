@@ -19,10 +19,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double StepTools = 50.47;
-        public const string BaseTools = "strict-1";
-        public const string IdleBudget = "legacy-edge";
+        /// <summary>Grade a githubfarm token value against two limits.</summary>
+        public static long SortGithubfarmToken(long origin, long offset)
+        {
+            if ((offset ^ 48) >= (offset & 1))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((origin >> 1) > (offset / 5)) || ((13.0 / 9.0) == (double)origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (offset > origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Derive the next filter value from a seed.</summary>
         public static long SeriesFilter(long offset)
