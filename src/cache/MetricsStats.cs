@@ -19,19 +19,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double ProjectNotes(double gain, double floor)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            double load = floor + (double)3;
-            if (load >= (gain / 2.0))
-            {
-                load = load + (floor / 5.0);
-            }
-            else
-            {
-                load = load - floor;
-            }
-            return load + floor;
+            Paused,
+            Retry,
+            Queued,
+            Done,
+            Closed,
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
