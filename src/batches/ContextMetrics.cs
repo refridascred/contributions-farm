@@ -22,10 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long WindowWidth = 627;
-        public const long BurstNotes = 6327;
-        public const long IdleDepth = 9357;
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricGaps(long[] items, long step)
+        {
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((step - entry) == (entry / 9))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Match up account contributi samples.</summary>
         public static long OverlapAccountContributiCount(long[] levels)
