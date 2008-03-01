@@ -42,11 +42,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepSession = 1247;
-        public const long BaseInterval = 1468;
-        public const long WindowSession = 6310;
-        public const long DefaultTimeout = 5700;
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
+        {
+            Done,
+            Closed,
+            New,
+            Synced,
+            Stale,
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const long BaseCache = 2420;
