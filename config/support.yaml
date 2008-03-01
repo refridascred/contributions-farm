@@ -1,8 +1,4 @@
 # support settings
-persist: cached
-tools_delay: true
-order_capacity: false
-schema_threshold: 8029
-checks_ttl:
-  - fallback
-  - latest
+account_size: local
+window_ttl: 28.94
+max_window_s: stable
