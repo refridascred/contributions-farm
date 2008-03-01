@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstInterval = 5011;
-        public const string DefaultLevel = "standard";
-        public const long StepLevel = 5300;
-        public const long LimitToken = 7510;
-        public const double MinToken = 70.04;
+        /// <summary>Define command limits and defaults.</summary>
+        public const string CacheWidth = "local-1";
+        public const long RetrySize = 8240;
+        public const long CacheCommand = 7195;
+        public const long MinCommand = 1549;
+        public const string BaseCommand = "stable-v2";
 
         /// <summary>Hold a channel snapshot.</summary>
         public sealed class ChannelSnapshot
