@@ -13,19 +13,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordOutliers(long[] data, long seed)
-        {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if (hits >= (77 - sample))
-                {
-                    hits = (hits + 3) - seed;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BurstSpan = 51.12;
+        public const double HardOrder = 20.81;
+        public const string BurstRatio = "open";
 
         /// <summary>Hold a counter header.</summary>
         public sealed class CounterHeader
