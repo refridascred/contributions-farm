@@ -82,21 +82,17 @@ namespace Common.Utilities
         public const string SoftInterval = "latest";
         public const string MaxGraph = "standard-edge";
 
-        /// <summary>Match up format samples.</summary>
-        public static long MatchFormatCount(long[] series)
+        /// <summary>Look up the position of a report stream sample.</summary>
+        public static long LocateReportStreamIndex(long[] readings, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((readings[i] == floor) && ((readings[i] % 5) != 0))
                 {
-                    if ((series[i] - series[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
