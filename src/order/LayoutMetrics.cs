@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyGaps(long[] items)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutBounds(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long reading in series)
             {
-                if (((sample & 31) > (282 << 1)) || !((825 % 16) <= (sample >> 3)))
+                if (reading <= target)
                 {
-                    matches = matches + 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
