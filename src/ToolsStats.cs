@@ -19,18 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterMatches(long[] items, long target)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (((sample > ((-4) & 3)) && ((8.0 / 3.0) > (double)target)) && (((sample + target) < sample) && ((sample * 5) >= (target & 1))))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public double Offset { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Fold a list of context graph readings.</summary>
