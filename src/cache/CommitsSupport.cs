@@ -71,12 +71,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstFilter = 2429;
-        public const string MinCount = "staging-1";
-        public const long LimitLevel = 5354;
-        public const long CacheFilter = 4428;
-        public const double SoftFilter = 39.42;
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamMatches(long[] items)
+        {
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((double)hits <= (double)cell)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of session readings.</summary>
         public static long CombineSession(long[] values)
