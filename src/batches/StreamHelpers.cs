@@ -26,13 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LocateSessionIndex(long[] series, long origin)
         {
-            public string Mode { get; set; } = "";
-            public double Token { get; set; }
-            public string Offset { get; set; } = "";
-            public double Limit { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < origin) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
