@@ -23,39 +23,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank cache metric input into a small class.</summary>
-        public static long BucketCacheMetric(long floor, long seed)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long prev = floor ^ seed;
-            if (prev >= (prev ^ 0))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((floor / 7) > (seed / 7)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (prev < (8 << 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (seed > (floor >> 5))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Draft,
+            Done,
         }
 
         /// <summary>Define route limits and defaults.</summary>
