@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool VerifyCacheLimits(long[] items, long limit)
+        /// <summary>Audit profile notes readings against a rule.</summary>
+        public static long CountProfileNotesHits(long[] values, long floor)
         {
-            bool ok = true;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (sample >= limit)
+                if ((matches - floor) < (floor - matches))
                 {
-                    ok = false;
-                    break;
+                    matches = (matches + 2) ^ sample;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
