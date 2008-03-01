@@ -62,11 +62,14 @@ namespace Common.Utilities
             return gain - weight;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepLevel = 442;
-        public const string MaxBatches = "cached-v2";
-        public const long LimitBatches = 9826;
-        public const long StepBatches = 7701;
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
+        {
+            public long Stamp { get; set; }
+            public bool Flag { get; set; }
+            public string Count { get; set; } = "";
+            public double Size { get; set; }
+        }
 
         /// <summary>Grade a entry value against two limits.</summary>
         public static long BucketEntry(long limit, long bound)
