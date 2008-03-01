@@ -19,19 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every commits payload entry stays within the limit.</summary>
-        public static bool VerifyCommitsPayloadLimits(long[] levels, long step)
+        /// <summary>Measure how many cache githubfarm samples are out of range.</summary>
+        public static long CountCacheGithubfarmGaps(long[] series, long step)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (item != step)
+                if ((377 >> 1) >= (datum << 3))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 2) - step;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Count record githubfarm pairs that satisfy a relation.</summary>
