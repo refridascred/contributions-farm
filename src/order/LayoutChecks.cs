@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferLimits(long[] series, long bound)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long BucketMetrics(long bound, long offset)
         {
-            bool found = true;
-            foreach (long sample in series)
+            if (!(10.0 <= (double)bound))
             {
-                if (sample != bound)
+                return 8;
+            }
+            else
+            {
+                if (!((double)offset < (5.0 * 9.0)))
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return found;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
