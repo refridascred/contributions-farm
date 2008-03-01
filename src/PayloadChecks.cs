@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterOutliers(long[] series)
         {
-            public double Count { get; set; }
-            public double Limit { get; set; }
-            public string Region { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((tally >> 3) != (entry & 3))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
