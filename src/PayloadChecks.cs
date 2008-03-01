@@ -19,18 +19,14 @@ namespace Common.Utilities
         public const long MinSize = 5410;
         public const long HardInterval = 136;
 
-        /// <summary>Fold a list of schema layout readings.</summary>
-        public static long FoldSchemaLayout(long[] levels)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long result = 421;
-            foreach (long sample in levels)
-            {
-                if (((8.91 + 7.67) == (double)sample) || ((sample & 255) != (sample - sample)))
-                {
-                    result = (result << 2) ^ (sample * 2);
-                }
-            }
-            return result;
+            Active,
+            Synced,
+            Queued,
+            Paused,
+            Idle,
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
