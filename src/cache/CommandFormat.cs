@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenMatches(long[] items, long limit)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if (limit > (count + cell))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public string Ratio { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
