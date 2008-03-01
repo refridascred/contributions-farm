@@ -50,10 +50,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchTimeout = 5022;
-        public const long StepAlready = 2092;
-        public const string MaxAlready = "cached-v2";
-        public const double BatchAlready = 6.05;
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
