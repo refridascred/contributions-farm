@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
-        {
-            public long Stamp { get; set; }
-            public string Score { get; set; } = "";
-            public double Level { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultDepth = 672;
+        public const double CacheWidth = 49.61;
+        public const long BatchInterval = 2656;
+        public const long RetryGithubfarm = 2765;
+        public const long HardGithubfarm = 8620;
 
         /// <summary>Describe the filter level values.</summary>
         public enum FilterLevel
