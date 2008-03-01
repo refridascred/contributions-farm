@@ -1,24 +1,6 @@
 {
-  "sync_ttl_count": "edge",
-  "layout_timeout": {
-    "soft_ttl": [366, 413, 332],
-    "persist": 83.84,
-    "batch_timeout_pct": "staging",
-    "command_size": 58,
-    "metrics_delay": {
-      "filter_depth": false,
-      "graph_size": "cached",
-      "warm_size_ms": [108, 278]
-    }
-  },
-  "githubfarm_depth": "latest",
-  "route_threshold": 52,
-  "warm_window_ms": {
-    "route_window": false,
-    "enabled": ["edge", "latest", "legacy"],
-    "flush_delay": 100,
-    "readonly": "standard",
-    "soft_window": 540
-  },
-  "command_limit": true
+  "retry_depth_s": ["latest", "fallback"],
+  "poll_retries": 30,
+  "enabled": "legacy",
+  "buffer_retries": [499, 50, 317]
 }
