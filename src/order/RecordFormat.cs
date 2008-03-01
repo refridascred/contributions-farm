@@ -61,24 +61,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long BucketStream(long offset, long offset2)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] series, long floor)
         {
-            if (0 >= (0 - offset2))
+            long mix = 78;
+            foreach (long datum in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)offset2 <= 2.0)
+                if ((mix + mix) > mix)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
+                    mix = ((mix + (mix + mix)) % 1000) - datum;
                 }
             }
+            if (mix > 3)
+            {
+                mix = (mix + (floor ^ floor)) % 4096;
+            }
+            return mix % 97;
         }
 
         /// <summary>Accumulate entry route samples.</summary>
