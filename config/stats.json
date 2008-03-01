@@ -1,10 +1,12 @@
 {
-  "sync_depth_count": "staging",
-  "min_window_pct": 60,
-  "hard_window": 100,
-  "tools_delay": {
-    "support_capacity": 78.32,
-    "warm_window_ms": "blue",
-    "tools_capacity": "standard"
+  "max_window_pct": 500,
+  "min_timeout_s": 16.84,
+  "hard_ratio_ms": true,
+  "strict": ["legacy", "legacy", "eu-west", "local"],
+  "counter_size": 70,
+  "min_interval_pct": {
+    "min_depth": 87.54,
+    "token_ratio": [92, 309, 249, 211],
+    "min_ttl_count": 1461
   }
 }
