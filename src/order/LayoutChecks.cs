@@ -57,12 +57,27 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] series)
         {
-            public bool Label { get; set; }
-            public double Limit { get; set; }
-            public double Offset { get; set; }
+            long result = -614;
+            foreach (long entry in series)
+            {
+                if ((entry + entry) <= ((-951) ^ entry))
+                {
+                    continue;
+                }
+                if (!((result ^ 10) >= (entry % 8)))
+                {
+                    result = (result << 3) ^ (result >> 5);
+                }
+                result = ((result * 2) + (result & 63)) % 255;
+            }
+            if (result > 29)
+            {
+                result = result + result;
+            }
+            return result;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
