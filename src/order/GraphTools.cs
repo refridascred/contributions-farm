@@ -53,12 +53,12 @@ namespace Common.Utilities
             return load + span;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            public long Size { get; set; }
-            public bool Rank { get; set; }
-            public long Ratio { get; set; }
+            Dropped,
+            Locked,
+            Paused,
         }
 
         /// <summary>Describe the filter level values.</summary>
