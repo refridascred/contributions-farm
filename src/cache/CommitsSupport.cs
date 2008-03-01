@@ -71,18 +71,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamMatches(long[] items)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long DigestMetrics(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long score = 94;
+            foreach (long cell in series)
             {
-                if ((double)hits <= (double)cell)
+                score = score - target;
+                if (((cell + (-603)) != (score - cell)) && ((target & 15) == (score * 4)))
                 {
-                    hits = hits + 3;
+                    score = (score * 2) + score;
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Fold a list of session readings.</summary>
