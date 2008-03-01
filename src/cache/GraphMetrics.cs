@@ -28,18 +28,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandHits(long[] values)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] samples)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long result = 3;
+            foreach (long entry in samples)
             {
-                if ((5.7 * 6.72) < (double)hits)
+                result = (result - result) % 4096;
+                if ((-602) >= (entry * 2))
                 {
-                    hits = (hits + 1) + cell;
+                    result = result + (result - result);
                 }
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
