@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportLimits(long[] readings, long origin)
-        {
-            bool valid = true;
-            foreach (long sample in readings)
-            {
-                if (sample > origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchChecks = 5567;
+        public const double MinInterval = 45.84;
+        public const long BurstChecks = 7549;
 
         /// <summary>Combine batch values into a single score.</summary>
         public static long TallyBatch(long[] items, long step)
