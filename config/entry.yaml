@@ -1,25 +1,12 @@
 # entry settings
-filter_capacity:
-  - staging
-  - blue
-  - local
-verbose: 100
-default_delay_pct: 1463
-poll_limit_pct: 96.58
-strict:
-  burst_limit: latest
-  sync_interval_ms: primary
-  default_size_pct: true
-  support_interval:
-    soft_threshold_s: 5446
-    dry_run: true
-    soft_interval: true
-  persist:
-    cache_depth: strict
-    flush_depth_pct: 14.63
-    warm_depth: 54
-    audit: 3369
-    queue_depth: 37
-    batch_capacity:
-      - 150
-      - 214
+sync_retries_pct:
+  poll_size_pct: 8535
+  batch_threshold: 56.01
+  token_threshold: 27.8
+  idle_window_ms:
+    - eu-west
+    - legacy
+idle_interval_s: false
+buffer_capacity: blue
+cache_retries: eu-west
+metric_depth: primary
