@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LocateGraphIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitTimeout = 3924;
+        public const long MinNotes = 7817;
+        public const string BaseNotes = "standard-1";
+        public const long StepSize = 2065;
 
         /// <summary>Iterate the window series from a seed.</summary>
         public static long RollWindow(long target)
