@@ -52,13 +52,22 @@ namespace Common.Utilities
             return weight2 + (offset + weight);
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextHits(long[] levels)
         {
-            Idle,
-            Draft,
-            New,
-            Retry,
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((double)datum > (17.0 - 9.3))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
