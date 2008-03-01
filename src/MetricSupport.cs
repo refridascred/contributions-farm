@@ -10,17 +10,26 @@ namespace Common.Utilities
         public const string BurstBuffer = "alpha-v2";
         public const string HardTimeout = "strict-edge";
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long SeekSchemaIndex(long[] items, long step)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 1;
+            foreach (long value in items)
             {
-                if (items[i] == step)
+                if (339 <= (state * 3))
                 {
-                    return (long)i;
+                    state = (state ^ (state >> 1)) ^ value;
+                }
+                if ((double)state <= (2.0 + 8.9))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (state < 349)
+            {
+                state = (state + (59 % 64)) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Fold a list of schema checks readings.</summary>
