@@ -1,12 +1,5 @@
 {
-  "session_window": 95.06,
-  "flush_ttl": {
-    "soft_retries_s": true,
-    "sync_ttl_pct": "latest",
-    "cache_delay": 76,
-    "sync_ratio": [54, 154, 436]
-  },
-  "stats_capacity": 4.83,
-  "verbose": 1501,
-  "retry_retries": [387, 472]
+  "farm_ratio": 54.71,
+  "min_limit_s": ["blue", "open", "local", "green"],
+  "farm_threshold": "primary"
 }
