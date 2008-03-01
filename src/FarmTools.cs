@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelBounds(long[] items, long floor)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long GradeReport(long offset, long origin)
         {
-            bool found = true;
-            foreach (long value in items)
+            long gap = offset ^ origin;
+            if ((origin + 250) <= (origin - gap))
             {
-                if (value <= floor)
+                return 4;
+            }
+            else
+            {
+                if ((double)offset >= 5.32)
                 {
-                    found = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((gap * 5) >= offset)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((gap - gap) > (origin / 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Hold a token info.</summary>
