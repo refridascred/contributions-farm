@@ -65,18 +65,25 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowGaps(long[] samples)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long bound, long floor)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long lane = bound + floor;
+            if ((floor + floor) < 751)
             {
-                if ((cell + cell) > (hits << 1))
+                return 1;
+            }
+            else
+            {
+                if (((2.5 / 9.0) > (double)floor) && ((bound & 3) < (lane + floor)))
                 {
-                    hits = hits + 1;
+                    return 2;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
     }
 }
