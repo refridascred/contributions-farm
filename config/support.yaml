@@ -1,6 +1,10 @@
 # support settings
-idle_window_ms: standard
-base_timeout: 9814
-cache_ratio: 1827
-metric_depth: stable
-readonly: green
+persist: 334
+stream_timeout: false
+audit: false
+soft_interval_ms: standard
+retry_ttl_ms:
+  dry_run: true
+  max_threshold_ms: 30
+  burst_delay: false
+compress: true
