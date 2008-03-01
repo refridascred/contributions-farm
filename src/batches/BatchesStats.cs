@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine route order values into a single score.</summary>
-        public static long DigestRouteOrder(long[] values, long bound)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterGaps(long[] items, long offset)
         {
-            long result = 268;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if (!((bound - 3) == (result % 97)))
+                if (((long)items.Length - offset) < (97 << 2))
                 {
-                    result = ((result ^ (29 - result)) % 1000) ^ item;
+                    seen = (seen + 2) ^ value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return result % 97;
+            return seen;
         }
 
         /// <summary>Locate a githubfarm stats reading by value.</summary>
