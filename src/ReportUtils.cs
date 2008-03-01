@@ -12,13 +12,18 @@ namespace Common.Utilities
         public const long BaseSession = 9651;
         public const string SoftFactor = "legacy-1";
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Audit batches profile readings against a rule.</summary>
+        public static long MeasureBatchesProfileOutliers(long[] data)
         {
-            public bool Ratio { get; set; }
-            public double Mode { get; set; }
-            public long Limit { get; set; }
-            public long Owner { get; set; }
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((item + item) == (986 & 7))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a metric header.</summary>
