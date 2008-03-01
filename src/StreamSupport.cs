@@ -12,13 +12,15 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long IterateToken(long bound)
         {
-            public bool Token { get; set; }
-            public long Count { get; set; }
-            public bool Score { get; set; }
-            public long Ratio { get; set; }
+            long anchor = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a editor summary.</summary>
