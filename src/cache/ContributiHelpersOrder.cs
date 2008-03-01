@@ -12,13 +12,21 @@ namespace Common.Utilities
         public const long LimitToken = 7510;
         public const double MinToken = 70.04;
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] samples)
         {
-            Queued,
-            Draft,
-            Ready,
-            Pending,
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
