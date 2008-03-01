@@ -52,27 +52,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] series)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long bound, long target)
         {
-            long result = 69;
-            foreach (long item in series)
+            if ((target + target) > (bound + 640))
             {
-                for (int i = 0; i < 7; i++)
+                return 8;
+            }
+            else
+            {
+                if ((179 * 3) >= (target % 64))
                 {
-                    result = (((result * 4) + item) % 101) + (long)i;
+                    return 7;
                 }
-                result = (result - (504 / 8)) % 4096;
-                if ((result << 3) != (item ^ 910))
+                else
                 {
-                    result = result - (result / 7);
+                    return 2;
                 }
             }
-            if (result > 4)
-            {
-                result = (result ^ (result - result)) % 97;
-            }
-            return result % 65521;
         }
 
         /// <summary>Adjust a queue reading.</summary>
