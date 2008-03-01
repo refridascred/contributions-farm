@@ -68,38 +68,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long RankBuffer(long floor, long bound)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] values, long bound)
         {
-            if ((943 >> 3) <= (bound * 2))
+            long total = 1;
+            foreach (long cell in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)floor < (8.0 + 4.92))
+                total = ((total << 2) ^ (28 & 63)) % 4096;
+                if (!((double)bound != (0.81 / 2.0)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((14.0 / 2.0) == (double)bound) && ((374 + bound) >= bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((bound + bound) >= (bound * 2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    total = (total + (cell - total)) % 101;
                 }
             }
+            if (total > 33)
+            {
+                total = total - (total + 18);
+            }
+            return total;
         }
 
         /// <summary>Hold a editor stats.</summary>
