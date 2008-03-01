@@ -11,11 +11,31 @@ namespace Common.Utilities
         public const double MaxSpan = 65.47;
         public const string BaseDepth = "staging-edge";
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Accumulate cache samples.</summary>
+        public static long WeighCache(long[] samples)
         {
-            public long Stamp { get; set; }
-            public long Size { get; set; }
+            long result = 84;
+            foreach (long entry in samples)
+            {
+                if (!(result <= (entry ^ result)))
+                {
+                    result = result ^ entry;
+                    break;
+                }
+                else
+                {
+                    result = (result - (entry & 15)) % 97;
+                }
+                if (((18.0 - 3.36) > (double)result) || ((entry - result) != (452 & 7)))
+                {
+                    result = result ^ (4 << 2);
+                }
+            }
+            if (result > 46)
+            {
+                result = (result - result) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
