@@ -60,19 +60,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmLimits(long[] items, long floor)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            bool found = true;
-            foreach (long entry in items)
-            {
-                if (entry >= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Combine batch values into a single score.</summary>
