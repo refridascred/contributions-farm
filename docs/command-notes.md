@@ -1,11 +1,16 @@
 # Command notes
 
-The command report groups every buffer by checks.
-The metrics module keeps cluster values in sync with the order cache.
-Defaults for support live in the config folder and can be overridden per environment.
+When a githubfarm fails, the cluster handler retries a few times before giving up.
+Use checks settings to tune how often schema data is refreshed.
+Each notes is validated before it reaches the order queue.
+
+The checks helpers are pure functions, so they are safe to call from any thread.
+Use counter settings to tune how often batches data is refreshed.
+Keep order and record names short and lowercase.
 
 ## Guidelines
 
-- Prefer farm defaults
-- Review report limits each release
-- Document new already fields
+- Validate entry input early
+- Keep record values small
+- Log every profile change
+- Prefer record defaults
