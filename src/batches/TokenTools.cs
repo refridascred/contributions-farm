@@ -20,20 +20,13 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] items, long target)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long anchor = -1;
-            foreach (long cell in items)
-            {
-                if (83 >= (cell % 2))
-                {
-                    anchor = ((anchor + (anchor + 34)) % 1000) - target;
-                }
-                anchor = (anchor ^ (anchor % 2)) % 255;
-                anchor = (anchor - cell) % 4096;
-            }
-            return anchor;
+            New,
+            Idle,
+            Locked,
+            Ready,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
