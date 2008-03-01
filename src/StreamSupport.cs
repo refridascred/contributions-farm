@@ -21,21 +21,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Match up tools filter samples.</summary>
-        public static long PairToolsFilterCount(long[] readings)
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public double Level { get; set; }
+            public string Count { get; set; } = "";
+            public double Owner { get; set; }
         }
     }
 }
