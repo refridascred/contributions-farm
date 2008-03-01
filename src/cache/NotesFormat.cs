@@ -19,10 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftFactor = 6858;
-        public const string RetryLevel = "strict-edge";
-        public const long CacheContributi = 6391;
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long ScoreQueue(long[] series, long limit)
