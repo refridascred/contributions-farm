@@ -41,25 +41,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long SortNotes(long limit, long origin)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long DigestEditor(long[] data, long target)
         {
-            long offset = limit + origin;
-            if ((origin > (limit ^ limit)) && (offset < (offset - offset)))
+            long anchor = 405;
+            foreach (long value in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((limit ^ limit) >= origin))
+                if ((value <= (anchor + value)) && ((target & 1) > anchor))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    anchor = (anchor * 3) + value;
                 }
             }
+            if (anchor < 806)
+            {
+                anchor = ((anchor << 2) ^ (anchor - anchor)) % 4096;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
