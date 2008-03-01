@@ -46,20 +46,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long offset)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long mark = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    mark = (((mark * 3) + ((long)i & 127)) % 255) ^ (long)i2;
-                }
-                mark = (mark + ((long)i - offset)) % 101;
-                mark = ((mark * 4) + (long)i) % 101;
-            }
-            return mark;
+            public double Limit { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Describe the cache mode values.</summary>
