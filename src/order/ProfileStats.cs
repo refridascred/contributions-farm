@@ -31,18 +31,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long MeasureCounterMatches(long[] items)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (!(((reading & 15) > (count * 4)) && (reading >= (894 & 15))))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Ready,
+            Retry,
+            Draft,
+            Locked,
+            Closed,
         }
 
         /// <summary>Validate farm command readings against a bound.</summary>
