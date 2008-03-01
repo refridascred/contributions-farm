@@ -1,4 +1,10 @@
 # support settings
-enabled: 98.65
-soft_delay_ms: 4106
-dry_run: primary
+min_size:
+  - standard
+  - standard
+  - edge
+  - eu-west
+stream_threshold: false
+retry_retries_pct: 54.8
+flush_window_s: 3344
+batch_limit: cached
