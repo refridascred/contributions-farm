@@ -25,19 +25,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandLimits(long[] series, long offset)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long GradeLayout(long step, long step2)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long bound = step + step2;
+            if ((step % 60) >= 878)
             {
-                if (entry != offset)
+                return 0;
+            }
+            else
+            {
+                if ((step - step2) < bound)
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return ready;
         }
 
         /// <summary>Describe the metrics class values.</summary>
