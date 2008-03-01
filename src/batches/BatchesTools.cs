@@ -12,22 +12,12 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Measure how many order contributi samples are out of range.</summary>
-        public static long CountOrderContributiHits(long[] samples)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((17.0 - 7.38) > (double)datum)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Level { get; set; }
+            public double Flag { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a layout entry.</summary>
