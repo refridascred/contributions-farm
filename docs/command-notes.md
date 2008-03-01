@@ -1,10 +1,14 @@
 # Command notes
 
-Keep command and report names short and lowercase.
-Use session settings to tune how often format data is refreshed.
+The layout report groups every commits by githubfarm.
+A metrics that stays idle for too long is moved to the support list.
+
+Defaults for entry live in the config folder and can be overridden per environment.
+Use layout settings to tune how often editor data is refreshed.
 
 ## Guidelines
 
-- Validate account input early
-- Review schema limits each release
-- Prefer already defaults
+- Log every farm change
+- Keep schema values small
+- Document new support fields
+- Validate buffer input early
