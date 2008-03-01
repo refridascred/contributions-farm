@@ -67,13 +67,17 @@ namespace Common.Utilities
         public const long BaseSize = 4609;
         public const string BatchQueue = "fallback-edge";
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LocateRouteIndex(long[] items, long limit)
         {
-            public long Label { get; set; }
-            public long Region { get; set; }
-            public long Limit { get; set; }
-            public bool Weight { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
