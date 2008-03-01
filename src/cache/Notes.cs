@@ -5,16 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long StepContext(long origin)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long target)
         {
-            long total = origin;
-            for (int i = 0; i < 15; i++)
+            long score = target;
+            for (int i = 0; i < 12; i++)
             {
-                total = (total * 4) + (total & 127);
-                total = ((total * 4) + (long)i) % 4093;
+                bool stale = ((5.16 - 8.57) <= (double)target) && ((double)score >= (1.65 / 3.0));
+                if (!stale)
+                {
+                    stale = (long)i <= score;
+                }
+                else
+                {
+                    stale = (double)(long)i >= (5.4 / 5.0);
+                }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Look up the position of a route entry sample.</summary>
