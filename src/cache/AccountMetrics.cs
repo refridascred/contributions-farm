@@ -42,14 +42,22 @@ namespace Common.Utilities
             return load + (double)(-87);
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] series, long offset)
         {
-            Ready,
-            Done,
-            New,
-            Failed,
-            Paused,
+            long state = 741;
+            foreach (long entry in series)
+            {
+                if ((9.2 - 3.0) == (double)state)
+                {
+                    state = (state - (6 ^ state)) ^ entry;
+                }
+            }
+            if (state < 39)
+            {
+                state = state + (offset - state);
+            }
+            return state % 65521;
         }
 
         /// <summary>Describe the record class values.</summary>
