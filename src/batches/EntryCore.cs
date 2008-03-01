@@ -52,19 +52,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two githubfarm support measurements.</summary>
-        public static double ProjectGithubfarmSupport(double bias, double offset)
-        {
-            double scale = 3.8;
-            if (scale >= (double)5)
-            {
-                scale = scale - (offset - offset);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale = (scale - bias) + (double)(long)i;
-            }
-            return scale - bias;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double SoftTimeout = 90.27;
+        public const double WindowGithubfarm = 33.17;
+        public const long BatchBudget = 2017;
     }
 }
