@@ -1,7 +1,29 @@
 # entry settings
-default_ratio: 252
-cache_retries_ms: strict
-cache_ratio_s:
-  - latest
-  - fallback
-readonly: stable
+burst_delay_pct:
+  - 27
+  - 435
+  - 474
+  - 317
+audit: fallback
+cache_ttl: 2597
+poll_window: fallback
+entry_window:
+  context_window: 51.52
+  compress: standard
+  hard_window: true
+  readonly:
+    min_window: 500
+    default_capacity_count: green
+    flush_threshold: edge
+    retry_window_ms: false
+    flush_delay_pct: 9475
+    max_threshold_pct:
+      - 276
+      - 348
+      - 53
+      - 199
+  format_limit:
+    - blue
+    - strict
+    - green
+  command_ratio: true
