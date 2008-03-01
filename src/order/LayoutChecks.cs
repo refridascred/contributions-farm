@@ -25,25 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long seed, long bound)
+        /// <summary>Project the next metric value.</summary>
+        public static double ProjectMetric(double scale, double offset)
         {
-            long prev = seed + bound;
-            if (((-5) + prev) >= seed)
-            {
-                return 7;
-            }
-            else
-            {
-                if (((bound << 2) >= (prev / 5)) && ((4 + 73) >= (bound - prev)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            double ratio = (8.9 + 3.2) - offset;
+            return ratio + (scale * 7.91);
         }
 
         /// <summary>Match up order batches samples.</summary>
