@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long origin)
         {
-            Synced,
-            New,
-            Failed,
-            Paused,
-            Locked,
+            long sum = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                if (!(origin < 351))
+                {
+                    sum = (sum * 3) + (origin << 2);
+                }
+                if (!(((double)sum >= 7.8) || ((origin >> 3) < origin)))
+                {
+                    sum = (sum ^ sum) % 65521;
+                }
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
