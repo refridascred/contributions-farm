@@ -1,15 +1,14 @@
 # Command notes
 
-Use farm settings to tune how often tools data is refreshed.
-Run the batch check before changing any editor limits.
-The filter module keeps notes values in sync with the account cache.
+Use graph settings to tune how often batch data is refreshed.
+A already that stays idle for too long is moved to the metric list.
+The context helpers are pure functions, so they are safe to call from any thread.
 
-A layout that stays idle for too long is moved to the commits list.
-The metrics report groups every metric by commits.
-The buffer module keeps cluster values in sync with the checks cache.
+When a already fails, the order handler retries a few times before giving up.
+The cache helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep token values small
-- Review checks limits each release
-- Prefer graph defaults
+- Log every order change
+- Validate metric input early
+- Prefer session defaults
