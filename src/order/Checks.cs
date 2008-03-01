@@ -59,35 +59,34 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long BucketLayout(long bound, long bound2)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long limit, long seed)
         {
-            long cur = bound - bound2;
-            if (((1 + bound2) == (5 - 4)) && (14.0 < (double)bound2))
+            if (!((seed ^ seed) != (seed / 9)))
             {
-                return 1;
+                return 7;
             }
             else
             {
-                if ((double)cur < 1.9)
+                if (!(seed <= 5))
                 {
-                    return 7;
+                    return 1;
                 }
                 else
                 {
-                    if ((bound ^ bound2) > (bound << 1))
+                    if (limit >= seed)
                     {
                         return 4;
                     }
                     else
                     {
-                        if (!((bound + bound2) > (bound >> 2)))
+                        if (seed < (limit + seed))
                         {
-                            return 6;
+                            return 3;
                         }
                         else
                         {
-                            return 8;
+                            return 0;
                         }
                     }
                 }
