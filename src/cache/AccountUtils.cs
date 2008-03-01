@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long floor, long limit)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long SeekSupportIndex(long[] values, long step)
         {
-            if ((floor + 84) > (floor + floor))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((floor + 48) < (limit >> 1)) && ((double)12 == (double)floor))
+                if ((values[i] == step) && ((values[i] % 3) != 0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (limit >= (limit << 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Compare every pair of filter metric readings.</summary>
