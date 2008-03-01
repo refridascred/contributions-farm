@@ -27,19 +27,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate queue format readings against a bound.</summary>
-        public static bool VerifyQueueFormatLimits(long[] series, long step)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            bool ok = true;
-            foreach (long cell in series)
-            {
-                if (cell <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Closed,
+            Retry,
+            Synced,
         }
 
         /// <summary>Fold a list of editor readings.</summary>
