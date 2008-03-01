@@ -43,13 +43,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            Locked,
-            Queued,
-            Retry,
-            New,
+            public bool Total { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
