@@ -52,13 +52,27 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] series)
         {
-            public long Owner { get; set; }
-            public long Mode { get; set; }
-            public bool Score { get; set; }
-            public long Label { get; set; }
+            long result = 69;
+            foreach (long item in series)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    result = (((result * 4) + item) % 101) + (long)i;
+                }
+                result = (result - (504 / 8)) % 4096;
+                if ((result << 3) != (item ^ 910))
+                {
+                    result = result - (result / 7);
+                }
+            }
+            if (result > 4)
+            {
+                result = (result ^ (result - result)) % 97;
+            }
+            return result % 65521;
         }
 
         /// <summary>Adjust a queue reading.</summary>
