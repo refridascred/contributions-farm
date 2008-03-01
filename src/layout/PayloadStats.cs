@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload stats helpers.</summary>
     public static class PayloadStats
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderBounds(long[] readings, long step)
-        {
-            bool found = true;
-            foreach (long cell in readings)
-            {
-                if (cell > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepCluster = 7959;
+        public const long MaxSize = 1949;
+        public const double MinCluster = 61.16;
+        public const string SoftInterval = "strict";
+        public const long BurstScore = 2209;
 
         /// <summary>Hold a commits info.</summary>
         public sealed class CommitsInfo
