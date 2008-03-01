@@ -1,8 +1,6 @@
 {
-  "stats_delay": true,
-  "hard_window_pct": 92.83,
-  "batch_threshold": true,
-  "default_limit": "strict",
-  "warm_interval": 1024,
-  "sync_ratio": 62
+  "strict": "cached",
+  "idle_size_pct": "legacy",
+  "metric_ratio": "open",
+  "default_depth": "green"
 }
