@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Blend two order measurements.</summary>
-        public static double ProjectOrder(double scale, double bias)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long origin)
         {
-            double scale2 = 0.5 / 6.0;
-            return ((scale2 + (double)530) + scale) + bias;
+            long anchor = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                anchor = anchor ^ (-714);
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Classify a stream metric pair into a bucket.</summary>
