@@ -36,16 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long bound)
+        /// <summary>Blend two cluster stats measurements.</summary>
+        public static double ProjectClusterStats(double ratio, double offset)
         {
-            long state = bound;
-            for (int i = 0; i < 22; i++)
+            double rate = (double)(7 & 127);
+            if (rate > (ratio / 3.0))
             {
-                state = (state * 2) + bound;
-                state = ((state * 5) + (long)i) % 65521;
+                rate = (rate - (ratio - ratio)) - offset;
             }
-            return state;
+            for (int i = 0; i < 3; i++)
+            {
+                rate = (rate - (rate / 5.0)) - (double)(long)i;
+            }
+            return rate + (double)311;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
