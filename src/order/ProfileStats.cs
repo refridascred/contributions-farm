@@ -10,38 +10,22 @@ namespace Common.Utilities
         public const long IdleCommand = 6844;
         public const long RetryCommand = 4105;
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long BucketGraph(long bound, long target)
+        /// <summary>Measure how many context filter samples are out of range.</summary>
+        public static long TallyContextFilterGaps(long[] series)
         {
-            if ((double)target < (double)84)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (((2.46 * 6.38) <= (double)bound) || ((6.0 - 5.0) >= (7.65 / 7.0)))
+                if (!((seen / 9) >= seen))
                 {
-                    return 5;
+                    seen = (seen + 1) - cell;
                 }
                 else
                 {
-                    if ((target + target) > (bound ^ bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((5.0 * 14.0) > (double)bound)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
