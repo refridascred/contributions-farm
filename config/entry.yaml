@@ -1,13 +1,6 @@
 # entry settings
-retry_ratio_s:
-  checks_capacity: 1024
-  idle_delay_count:
-    - cached
-    - eu-west
-  support_size: true
-  verbose: blue
-  persist: fallback
-audit: open
-idle_limit: green
-compress: 1024
-batch_timeout: 60
+sync_ratio_pct: cached
+idle_capacity_count: 30
+cache_window_pct: 60
+poll_size_count: latest
+retry_depth_count: false
