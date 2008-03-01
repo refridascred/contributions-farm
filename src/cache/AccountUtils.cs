@@ -31,12 +31,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
-        {
-            Pending,
-            Dropped,
-            Ready,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseReport = 8321;
+        public const string LimitReport = "latest-v2";
+        public const long StepReport = 9196;
+        public const string SoftTimeout = "local";
+        public const long BurstDepth = 6665;
     }
 }
