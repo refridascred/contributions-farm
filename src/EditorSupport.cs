@@ -82,15 +82,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamGaps(long[] data)
+        /// <summary>Count the counter batches entries that pass the check.</summary>
+        public static long TallyCounterBatchesGaps(long[] data)
         {
             long hits = 0;
-            foreach (long reading in data)
+            foreach (long value in data)
             {
-                if (reading > (reading - reading))
+                if (((hits ^ hits) > (value / 8)) && (value <= (hits - 9)))
                 {
-                    hits = hits + 3;
+                    hits = hits + 1;
                 }
             }
             return hits;
